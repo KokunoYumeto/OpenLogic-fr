@@ -1,0 +1,109 @@
+% Partie : sets-functions-relations
+% Chapitre : sets
+% Section : subsets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{set}{sub}
+\olsection{Sous-ensembles et ensembles des parties}
+
+\begin{explain}
+Nous voudrons souvent comparer des ensembles. Une comparaison
+naturelle consiste à vérifier si \emph{tout ce qui appartient à
+l'un appartient aussi à l'autre}. Cette situation est assez
+importante pour justifier une nouvelle notation.
+\end{explain}
+
+\begin{defn}[Sous-ensemble]
+Si tout !!{element} d'un ensemble $A$ est aussi !!a{element} de~$B$,
+on dit que $A$ est un \emph{sous-ensemble}, ou une \emph{partie},
+de~$B$, et on écrit $A \subseteq B$. Si $A$ n'est pas un
+sous-ensemble de~$B$, on écrit $A \not\subseteq B$.
+Si $A \subseteq B$ mais $A \neq B$, on écrit $A \subsetneq B$
+et on dit que $A$ est un \emph{sous-ensemble strict} de $B$.
+\end{defn}
+
+\begin{ex}
+Tout ensemble est un sous-ensemble de lui-même, et $\emptyset$ est
+un sous-ensemble de tout ensemble. L'ensemble des entiers naturels
+pairs est un sous-ensemble de l'ensemble des entiers naturels.
+On a aussi $\{ a, b \} \subseteq \{ a, b, c \}$. En revanche,
+si $e$ est distinct de $a$, $b$ et $c$, l'ensemble $\{ a, b, e \}$
+n'est pas un sous-ensemble de $\{ a, b, c \}$.\footnote{L'hypothèse
+sur $e$, implicite dans l'exemple original, est rendue explicite.}
+\end{ex}
+
+\begin{ex}
+Le nombre $2$ est un !!{element} de l'ensemble des entiers relatifs,
+tandis que l'ensemble des entiers pairs en est un sous-ensemble.
+Un ensemble peut toutefois être \emph{à la fois} un !!{element}
+et un sous-ensemble d'un autre ensemble : par exemple,
+$\{0\} \in \{0, \{0\}\}$ et $\{0\} \subseteq \{0, \{0\}\}$.
+\end{ex}
+
+L'extensionnalité donne un critère d'égalité des ensembles :
+$A = B$ si et seulement si tout !!{element} de~$A$ est aussi
+!!a{element} de~$B$, et réciproquement. La définition de
+«~sous-ensemble~» donne à $A \subseteq B$ exactement le sens de
+la première moitié de ce critère : tout !!{element} de~$A$ est
+aussi !!a{element} de~$B$. Elle s'applique également en échangeant
+$A$ et $B$ : $B \subseteq A$ si et seulement si tout !!{element}
+de~$B$ est aussi !!a{element} de~$A$. C'est précisément ce
+qu'exprime «~et réciproquement~» dans le principe d'extensionnalité.
+Autrement dit, ce principe entraîne que deux ensembles sont égaux
+si et seulement si chacun est un sous-ensemble de l'autre.
+
+\begin{prop}
+$A = B$ si et seulement si $A \subseteq B$ et $B \subseteq A$.
+\end{prop}
+
+Introduisons à présent quelques notations utiles. Pour définir
+l'inclusion de $A$ dans~$B$, nous avons utilisé l'expression
+«~tout !!{element} de~$A$ est \dots~», en remplaçant «~$\dots$~»
+par «~!!a{element} de $B$~». Cette \emph{forme}
+d'expression est si fréquente qu'une notation formelle nous
+sera utile.
+
+\begin{defn}\ollabel{forallxina}
+$(\forall x \in A)\phi$ abrège $\forall x(x \in A \lif
+\phi)$. De même, $(\exists x \in A)\phi$ abrège $\exists x(x
+\in A \land \phi)$.
+\end{defn}
+
+Avec cette notation, $A \subseteq B$ si et seulement si
+$(\forall x \in A)x \in B$.
+
+Considérons maintenant un type particulier d'ensemble :
+l'ensemble de tous les sous-ensembles d'un ensemble donné.
+
+\begin{defn}[Ensemble des parties]
+L'ensemble de tous les sous-ensembles d'un ensemble~$A$ est appelé
+l'\emph{ensemble des parties de}~$A$ et se note $\Pow{A}$.
+  \[
+    \Pow{A} = \Setabs{B}{B \subseteq A}
+  \]
+\end{defn}
+
+\begin{ex}
+Quels sont tous les sous-ensembles possibles de $\{ a, b, c \}$ ?
+Ce sont $\emptyset$, $\{a \}$, $\{b\}$, $\{c\}$, $\{a, b\}$,
+$\{a, c\}$, $\{b, c\}$ et $\{a, b, c\}$. L'ensemble de tous
+ces sous-ensembles est $\Pow{\{a,b,c\}}$ :
+\[
+\Pow{\{ a, b, c \}} = \{\emptyset, \{a \}, \{b\}, \{c\}, \{a, b\},
+\{b, c\}, \{a, c\}, \{a, b, c\}\}
+\]
+\end{ex}
+
+\begin{prob}
+Énumérer tous les sous-ensembles de $\{a, b, c, d\}$.
+\end{prob}
+
+\begin{prob}
+Montrer que, si $A$ a $n$ !!{element}s, alors $\Pow{A}$ a
+$2^n$ !!{element}s.
+\end{prob}
+
+\end{document}

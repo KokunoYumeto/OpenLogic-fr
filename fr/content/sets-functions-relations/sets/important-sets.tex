@@ -1,0 +1,72 @@
+% Partie : sets-functions-relations
+% Chapitre : sets
+% Section : important-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{set}{imp}
+\olsection{Quelques ensembles importants}
+
+\begin{ex}
+Nous étudierons surtout des ensembles dont les !!{element}s sont
+des objets mathématiques. Quatre d'entre eux sont assez importants
+pour porter un nom particulier :
+\begin{multline*}
+    \Nat = \{0, 1, 2, 3, \ldots\} \\
+    \shoveright{\text{l'ensemble des entiers naturels}}\\
+    \shoveleft{\Int = \{\ldots, -2, -1, 0, 1, 2, \ldots\}} \\
+    \shoveright{\text{l'ensemble des entiers relatifs}}\\
+    \shoveleft{\Rat = \Setabs{\nicefrac{m}{n}}{m, n \in \Int\text{ et }n \neq 0}}\\
+    \shoveright{\text{l'ensemble des nombres rationnels}}\\
+    \shoveleft{\Real = (-\infty, \infty)}\\
+    \text{l'ensemble des nombres réels (le continu)}
+\end{multline*}
+Ce sont tous des ensembles \emph{infinis} : chacun possède une
+infinité d'!!{element}s.
+
+En passant d'un ensemble au suivant, nous disposons de
+\emph{nouveaux} nombres. On voit en effet que
+$\Nat \subseteq \Int \subseteq \Rat \subseteq \Real$ :
+tout entier naturel est un entier relatif ; tout entier relatif
+est rationnel ; tout nombre rationnel est réel.
+On voit également que $\Nat \subsetneq \Int \subsetneq \Rat$,
+puisque $-1$ est un entier relatif qui n'est pas naturel, et
+$\nicefrac{1}{2}$ est rationnel sans être entier.
+Il est moins évident que $\Rat \subsetneq \Real$, c'est-à-dire
+qu'il existe des nombres réels non rationnels\oliflabeldef{sfr:arith:real:realline}{,
+mais nous y reviendrons plus loin (\olref[arith][real]{realline})}{}.
+
+Nous utiliserons aussi parfois l'ensemble des entiers strictement
+positifs $\PosInt = \{1, 2, 3, \dots\}$ et l'ensemble formé
+des deux premiers entiers naturels, $\Bin = \{0, 1\}$.
+\end{ex}
+
+\begin{tagblock}{compsci}
+\begin{ex}[Mots]
+Un autre exemple intéressant est l'ensemble $A^{*}$ des
+\emph{mots finis} sur un alphabet $A$ : toute suite finie
+d'éléments de~$A$ est un mot sur $A$. Pour tout alphabet~$A$,
+le \emph{mot vide $\Lambda$} fait partie des mots sur~$A$.
+Par exemple,
+\begin{multline*}
+\Bin^*
+=\{\Lambda,0,1,00,01,10,11,\\
+000,001,010,011,100,101,110,111,0000,\ldots\}.
+\end{multline*}
+Si $x=x_{1}\ldots x_{n}\in A^{*}$ est un mot formé de $n$
+«~lettres~» de $A$, sa \emph{longueur} est~$n$,
+et on écrit $\len{x}=n$.
+\end{ex}
+\end{tagblock}
+
+\begin{ex}[Suites infinies]
+Pour tout ensemble $A$, on peut aussi considérer l'ensemble~$A^\omega$
+des suites infinies d'!!{element}s de~$A$. Une suite infinie
+$a_1a_2a_3a_4\dots$ est une liste d'objets qui se prolonge
+indéfiniment dans une seule direction, chacun de ces objets
+étant !!a{element} de~$A$.
+\end{ex}
+
+\end{document}

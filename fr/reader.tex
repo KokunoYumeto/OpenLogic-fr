@@ -1,0 +1,64 @@
+\documentclass[11pt,a4paper,openany]{memoir}
+\usepackage{mathpazo}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+\usepackage{natbib}
+\newcommand*{\olpath}{../..}
+\newcommand*{\ollangid}{fr}
+\newcommand*{\ollanguage}{french}
+\input{\olpath/sty/open-logic.sty}
+\input{\olpath/sty/open-logic-defer.sty}
+\includeenv{editorial}
+\problemsperchapter
+\setlrmarginsandblock{28mm}{28mm}{*}
+\setulmarginsandblock{26mm}{28mm}{*}
+\checkandfixthelayout
+\linespread{1.05}
+\setlength{\emergencystretch}{2em}
+\let\cleardoublepage\clearpage
+\pagestyle{plain}
+\hypersetup{pdftitle={OpenLogic : édition française — Ensembles},
+pdfauthor={Open Logic Project ; traduction française assistée par IA},
+pdfsubject={Chapitre introductif : ensembles, opérations et paradoxe de Russell},
+linkcolor=black,urlcolor=blue}
+\begin{document}
+\frontmatter
+\begin{titlingpage}
+\setlength{\parindent}{0pt}
+\vspace*{15mm}
+{\sffamily\Huge\bfseries OpenLogic\par}
+\vspace{6mm}
+{\sffamily\LARGE Édition française\par}
+\vspace{14mm}
+{\sffamily\huge Ensembles\par}
+\vspace{5mm}
+{\large Extensionnalité, sous-ensembles, opérations,\\
+produits cartésiens et paradoxe de Russell\par}
+\vfill
+{\large Première livraison : un chapitre complet\par}
+\vspace{4mm}
+Cette livraison comprend six sections et leur chapitre d'organisation,
+soit 7 des 722 unités de contenu prévues pour l'édition intégrale.
+Elle conserve les démonstrations, exemples, figures et exercices
+du chapitre original. Les précisions éditoriales sont signalées
+dans le texte.
+\vspace{7mm}
+\par\small
+Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
+Traduction française et révision éditoriale assistées par IA.
+Aucune validation humaine indépendante n'est revendiquée.
+\par\medskip
+Texte original et traduction : licence
+\href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons
+Attribution 4.0 International}. Les notices de droits propres aux
+composants sont conservées avec les sources.
+\par\medskip
+\href{https://kokunoyumeto.github.io/OpenLogic-translations/}{Catalogue
+des traductions d'OpenLogic}
+\end{titlingpage}
+\tableofcontents*
+\mainmatter
+\olimport[content/sets-functions-relations/sets]{sets}
+\end{document}

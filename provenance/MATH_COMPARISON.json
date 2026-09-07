@@ -1,0 +1,145 @@
+[
+  {
+    "file": "basics.tex",
+    "source_math_spans": 52,
+    "target_math_spans": 52,
+    "differences": []
+  },
+  {
+    "file": "important-sets.tex",
+    "source_math_spans": 26,
+    "target_math_spans": 26,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "A"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "A"
+        ],
+        "target": []
+      }
+    ]
+  },
+  {
+    "file": "pairs-and-products.tex",
+    "source_math_spans": 78,
+    "target_math_spans": 82,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "n"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "\\emptyset",
+          "A",
+          "\\emptyset"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "russells-paradox.tex",
+    "source_math_spans": 34,
+    "target_math_spans": 34,
+    "differences": []
+  },
+  {
+    "file": "sets.tex",
+    "source_math_spans": 0,
+    "target_math_spans": 0,
+    "differences": []
+  },
+  {
+    "file": "subsets.tex",
+    "source_math_spans": 65,
+    "target_math_spans": 70,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "e",
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "e"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "unions-and-intersections.tex",
+    "source_math_spans": 72,
+    "target_math_spans": 86,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "a",
+          "b",
+          "c",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "c\\neqd"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "c\\neqd"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "A\\neq\\emptyset",
+          "U",
+          "U"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "b\\neqd",
+          "b\\neqd",
+          "a"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "I\\neq\\emptyset"
+        ]
+      }
+    ]
+  }
+]

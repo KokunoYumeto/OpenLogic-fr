@@ -1,0 +1,203 @@
+% Partie : sets-functions-relations
+% Chapitre : sets
+% Section : unions-and-intersections
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{set}{uni}
+\olsection{Réunions et intersections}
+
+\begin{explain}
+Dans la \olref[sfr][set][bas]{sec}, nous avons introduit les définitions
+d'ensembles en compréhension, c'est-à-dire de la forme
+$\Setabs{x}{\phi(x)}$. On fait ici appel à une propriété~$\phi$,
+qui peut mentionner des ensembles déjà définis. Ainsi, si $A$ et~$B$
+sont des ensembles, $\Setabs{x}{x \in A \lor x \in B}$ est formé
+de tous les objets qui sont des !!{element}s de $A$ ou de~$B$ :
+il rassemble les !!{element}s de $A$ et de~$B$.
+La \olref{fig:union} représente cette situation : la zone colorée
+correspond aux !!{element}s des deux ensembles $A$ et~$B$ réunis.
+
+\begin{figure}
+  \olasset{assets/diagrams/union.tikz}
+  \caption{La réunion $A \cup B$ de deux ensembles rassemble
+    les !!{element}s de $A$ et ceux de~$B$.}
+  \ollabel{fig:union}
+\end{figure}
+
+Cette opération qui consiste à réunir des ensembles est très
+utile et fréquente ; donnons-lui un nom et un symbole.
+\end{explain}
+
+\begin{defn}[Réunion]
+La \emph{réunion} de deux ensembles $A$ et $B$, notée $A \cup B$,
+est l'ensemble de tous les objets qui sont des !!{element}s
+de $A$, de $B$, ou des deux.
+\[
+A \cup B = \Setabs{x}{x \in A \lor x \in B}
+\]
+\end{defn}
+
+\begin{ex}
+Puisque la répétition des !!{element}s n'importe pas, la réunion de
+deux ensembles ayant !!a{element} en commun ne contient cet
+!!{element} qu'une seule fois. Par exemple,
+$\{ a, b, c\} \cup \{ a, 0, 1\} = \{a, b, c, 0, 1\}$.
+
+La réunion d'un ensemble et de l'un de ses sous-ensembles est
+simplement le plus grand des deux :
+$\{a, b, c \} \cup \{a \} = \{a, b, c\}$.
+
+La réunion d'un ensemble et de l'ensemble vide est égale à
+cet ensemble : $\{a, b, c \} \cup \emptyset = \{a, b, c \}$.
+\end{ex}
+
+\begin{prob}
+Démontrer que, si $A \subseteq B$, alors $A \cup B = B$.
+\end{prob}
+
+\begin{explain}
+On peut aussi considérer une opération «~duale~» de la réunion :
+former l'ensemble de tous les !!{element}s qui appartiennent
+à la fois à~$A$ et à~$B$. Cette opération s'appelle
+l'\emph{intersection} ; elle est représentée dans
+la \olref{fig:intersection}.
+\begin{figure}
+  \olasset{assets/diagrams/intersection.tikz}
+  \caption{L'intersection $A \cap B$ de deux ensembles est
+    l'ensemble de leurs !!{element}s communs.}
+  \ollabel{fig:intersection}
+\end{figure}
+\end{explain}
+
+\begin{defn}[Intersection]
+L'\emph{intersection} de deux ensembles $A$ et $B$, notée
+$A \cap B$, est l'ensemble de tous les objets qui sont
+des !!{element}s à la fois de $A$ et de~$B$.
+\[
+A \cap B = \Setabs{x}{x \in A \land x \in B}
+\]
+Deux ensembles sont dits \emph{disjoints} si leur intersection
+est vide, c'est-à-dire s'ils n'ont aucun !!{element} en commun.
+\end{defn}
+
+\begin{ex}
+Si deux ensembles n'ont aucun !!{element} en commun, leur
+intersection est vide. Dans l'exemple suivant, on suppose que
+$a$, $b$ et $c$ sont distincts de $0$ et de $1$ :\footnote{Cette
+hypothèse, implicite dans l'exemple original, est rendue explicite.}
+$\{ a, b, c\} \cap \{ 0, 1\} = \emptyset$.
+
+S'ils ont des !!{element}s en commun, leur intersection est
+l'ensemble de ces !!{element}s. En supposant ici $c\neq d$,
+on a $\{a, b, c \} \cap \{a, b, d \} = \{a, b\}$.\footnote{Précision
+de l'édition française : l'hypothèse $c\neq d$ suffit pour cet exemple.
+Sans elle, un élément commun supplémentaire pourrait apparaître.}
+
+L'intersection d'un ensemble et de l'un de ses sous-ensembles
+est simplement le plus petit des deux :
+$\{a, b, c\} \cap \{a, b\} = \{a, b\}$.
+
+L'intersection de tout ensemble avec l'ensemble vide est vide :
+$\{a, b, c \} \cap \emptyset = \emptyset$.
+\end{ex}
+
+\begin{prob}
+Démontrer rigoureusement que, si $A \subseteq B$, alors
+$A \cap B = A$.
+\end{prob}
+
+\begin{explain}
+On peut aussi former la réunion ou l'intersection de plus de
+deux ensembles. Voici une manière commode de traiter le cas général :
+réunissons en un seul ensemble tous les ensembles dont nous voulons
+prendre la réunion (ou l'intersection). La réunion des ensembles
+de départ est alors l'ensemble des objets qui appartiennent à
+au moins un !!{element} de cette famille ; leur intersection
+est l'ensemble des objets qui appartiennent à chacun de ses
+!!{element}s. Pour l'intersection, nous supposons la famille non vide.
+\end{explain}
+
+\begin{defn}
+Si $A$ est un ensemble d'ensembles, $\bigcup A$ est l'ensemble
+des !!{element}s des !!{element}s de~$A$ :
+\begin{align*}
+\bigcup A & = \Setabs{x}{x \text{ appartient à un !!{element} de } A},
+\text{ soit}\\
+& = \Setabs{x}{\text{il existe } B \in A
+  \text{ tel que } x \in B}
+\end{align*}
+\end{defn}
+
+\begin{defn}
+Si $A$ est un ensemble non vide d'ensembles, $\bigcap A$ est
+l'ensemble des objets communs à tous les éléments de~$A$ :
+\begin{align*}
+\bigcap A & = \Setabs{x}{x \text{ appartient à tout !!{element} de } A},
+\text{ soit}\\
+ & = \Setabs{x}{\text{pour tout } B \in A, x \in B}
+\end{align*}
+\end{defn}
+\noindent\emph{Précision de l'édition française.}
+L'hypothèse $A\neq\emptyset$ est nécessaire ici : sans elle, la
+condition universelle serait vérifiée par tout objet. Si l'on travaille
+dans un ensemble ambiant fixé $U$, on peut en revanche définir
+l'intersection de la famille vide comme étant $U$.
+
+\begin{ex}
+Supposons que $A = \{ \{ a, b \}, \{ a, d, e \}, \{ a, d \} \}$,
+avec $b\neq d$.\footnote{Précision de l'édition française :
+l'hypothèse $b\neq d$, implicite dans l'exemple original,
+garantit que les trois ensembles n'ont aucun élément commun autre que $a$.}
+Alors $\bigcup A = \{ a, b, d, e \}$ et $\bigcap A = \{ a \}$.
+\end{ex}
+\begin{prob}
+	Montrer que, si $A$ est un ensemble et $A \in B$,
+	alors $A \subseteq \bigcup B$.
+\end{prob}
+
+On peut procéder de même pour une suite d'ensembles
+$A_1$, $A_2$, \dots
+\begin{align*}
+\bigcup_i A_i & = \Setabs{x}{x \text{ appartient à l'un des } A_i}\\
+\bigcap_i A_i & = \Setabs{x}{x \text{ appartient à chacun des } A_i}.
+\end{align*}
+
+Si les ensembles sont \emph{indexés} par un ensemble $I$,
+c'est-à-dire si l'on considère un ensemble $A_i$ pour chaque
+$i \in I$, on peut aussi employer les abréviations suivantes,
+avec $I\neq\emptyset$ pour l'intersection sans ensemble ambiant fixé :
+\begin{align*}
+	\bigcup_{i \in I} A_i & = \bigcup \Setabs{A_i }{i \in I}\\
+	\bigcap_{i \in I} A_i & = \bigcap\Setabs{A_i}{i \in I}
+\end{align*}
+
+Enfin, on peut considérer l'ensemble de tous les !!{element}s
+de~$A$ qui n'appartiennent pas à~$B$. La \olref{difference}
+en donne une représentation.
+
+\begin{figure}
+  \olasset{assets/diagrams/difference.tikz}
+  \caption{La différence $A \setminus B$ de deux ensembles
+    est l'ensemble des !!{element}s de~$A$ qui ne sont pas
+    des !!{element}s de~$B$.}
+  \ollabel{difference}
+\end{figure}
+
+\begin{defn}[Différence]
+La \emph{différence ensembliste}~$A \setminus B$ est l'ensemble
+de tous les !!{element}s de $A$ qui ne sont pas des !!{element}s
+de~$B$, c'est-à-dire
+\[
+A\setminus B = \Setabs{x}{x\in A \text{ et } x \notin B}.
+\]
+\end{defn}
+
+\begin{prob}
+	Démontrer que, si $A \subsetneq B$,
+	alors $B \setminus A \neq \emptyset$.
+\end{prob}
+
+\end{document}

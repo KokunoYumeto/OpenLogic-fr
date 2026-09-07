@@ -1,0 +1,109 @@
+{
+  "batch": "sets-001",
+  "units": 7,
+  "prose_sections": 6,
+  "translated_text_blocks": 86,
+  "aligned_blocks": 121,
+  "structural_failures": [],
+  "checks": {
+    "source_hashes": "pass, affected 7 units against verified manifest",
+    "block_alignment": "pass, one-to-one source and target blank-line blocks inspected",
+    "UTF8_NFC": "pass",
+    "labels_assets_references_environment_order": "pass",
+    "no_placeholders": "pass",
+    "semantic_review": "Completed bounded review of all seven units; see SEMANTIC_REVIEW.md and disclosed source repairs.",
+    "math_parity": "All original mathematical spans retained, allowing one moved alphabet identifier; additions are title notation and disclosed editorial notes. Text inside formulas separately checked.",
+    "reader_build": "PASS: two fresh three-pass XeLaTeX builds under the global mutex; byte-identical PDF.",
+    "visual_QA": "PASS: all 11 rendered pages inspected; font/ligature/guillemet and automatic-reference grammar defects repaired.",
+    "untranslated_ordinary_prose": "No untranslated ordinary prose or placeholders in the seven published French units. The remaining 715 units are not claimed translated."
+  },
+  "edition_total": 722,
+  "remaining_units": 715,
+  "full_edition_complete": false,
+  "pdf": {
+    "filename": "openlogic-fr-ensembles.pdf",
+    "bytes": 86066,
+    "sha256": "90a3f14cf49035e929cdf18a47478e8970397e0e430c88497730f50ae7577cc3",
+    "pages": 11,
+    "exercises": 10,
+    "figures": 3
+  },
+  "reproducibility": {
+    "byte_identical": true,
+    "source_date_epoch": "1788739200",
+    "engine": "XeTeX / MiKTeX; see source log header",
+    "build_receipts_sha256": [
+      "0f5a8db06b6ee6d672f3c3cbb4800855be4f31038563bbd8682bc25d58de7e4f",
+      "9c4046a275648f18fd7b5e348e6b458e41d008f49b9ca88fb17dd1be5185198c"
+    ],
+    "log_header": "This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) ("
+  },
+  "visual_pages": [
+    {
+      "page": 1,
+      "png_sha256": "481e2ea00cbc815feaf7182ccbbb0a2e19c62c8f0729b5b03057a2d637671a90",
+      "visually_inspected": true
+    },
+    {
+      "page": 2,
+      "png_sha256": "0941aa02af5dd30eed15d191db959df3975b2a49ecae22c20d604db32ec1d331",
+      "visually_inspected": true
+    },
+    {
+      "page": 3,
+      "png_sha256": "1b0b9b292a9c7c525d354be38091912a2d5f68c387994368fa570a7b799779e7",
+      "visually_inspected": true
+    },
+    {
+      "page": 4,
+      "png_sha256": "6d65f3e1c33b56758d3c4402cdbfa8671010be6466e9f2433e82b529c62f3eed",
+      "visually_inspected": true
+    },
+    {
+      "page": 5,
+      "png_sha256": "e64913c2c674d3751ceee322ba1ce95410724f362d06479634f4a8994fcc3fe1",
+      "visually_inspected": true
+    },
+    {
+      "page": 6,
+      "png_sha256": "c4cc438343f20f9eee92ca2a5949d4f4d050e712a9e097b55ec1ce6b49102693",
+      "visually_inspected": true
+    },
+    {
+      "page": 7,
+      "png_sha256": "101c7164601ab4f72a6756664143c63d975b4546b68f738ac726952e27df7d74",
+      "visually_inspected": true
+    },
+    {
+      "page": 8,
+      "png_sha256": "728e859f18c5d903cacbf5cbd61b1df6de67fc7397655c05089803adcf5d4eb7",
+      "visually_inspected": true
+    },
+    {
+      "page": 9,
+      "png_sha256": "4e552fa56c27d5e24e70ef7ffd9c2e33ec75454339d5d30ef6617c44c94151b1",
+      "visually_inspected": true
+    },
+    {
+      "page": 10,
+      "png_sha256": "f1726e3d08c0cf3f9f48b710538998f9675645f26cec6838e66ce729ed865b97",
+      "visually_inspected": true
+    },
+    {
+      "page": 11,
+      "png_sha256": "b7ca4f8f8b527872b87bfa9694bdd5edb3a82d6816f99401858f463fea575be0",
+      "visually_inspected": true
+    }
+  ],
+  "nonfatal_warnings": [
+    "Package hyperref Warning: Option `bookmarks' has already been used,",
+    "LaTeX Warning: You have requested file `',",
+    "LaTeX Warning: You have requested file `',",
+    "Class memoir Warning: \\addtodef is marked deprecated and will be"
+  ],
+  "manager_review": {
+    "scope": "basics and unions-and-intersections only; not whole-chapter acceptance",
+    "review_sha256": "de67753bc97bbaa9b078b0bcf06e1eb8465c246a35b46724a4c8acf36b307ca2"
+  },
+  "release_gate": "pass_for_sets_chapter_only"
+}

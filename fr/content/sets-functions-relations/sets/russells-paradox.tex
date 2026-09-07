@@ -1,0 +1,105 @@
+% Partie : sets-functions-relations
+% Chapitre : sets
+% Section : russells-paradox
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+
+\begin{document}
+
+\olfileid[fr]{sfr}{set}{rus}
+\olsection{Le paradoxe de Russell}
+
+L'extensionnalité justifie la notation $\Setabs{x}{\phi(x)}$ pour
+\emph{l'}ensemble des $x$ tels que~$\phi(x)$. Mais ce qu'elle
+justifie \emph{exactement}, c'est ceci : \emph{s'il existe}
+un ensemble dont les membres sont tous les objets vérifiant
+$\phi$, et eux seuls, \emph{alors} il n'y en a qu'un.
+Autrement dit, une fois~$\phi$ fixé, l'ensemble
+$\Setabs{x}{\phi(x)}$ est unique, \emph{s'il existe}.
+
+Cette condition est essentielle !{} Toutes les propriétés ne
+permettent pas de définir un ensemble par \emph{compréhension} :
+certaines ne définissent \emph{aucun} ensemble.
+Si toute propriété définissait un ensemble, nous aboutirions
+à des contradictions. Le paradoxe de Russell en est l'exemple
+le plus célèbre.
+
+Les ensembles peuvent être des !!{element}s d'autres ensembles :
+par exemple, l'ensemble des parties d'un ensemble~$A$ est
+constitué d'ensembles. Il est donc légitime de se demander
+si un ensemble est !!a{element} d'un autre.
+Un ensemble peut-il être membre de lui-même ?
+Rien dans l'idée intuitive d'ensemble ne semble l'exclure.
+Si \emph{tous} les ensembles forment une collection d'objets,
+on pourrait penser les rassembler en un seul ensemble :
+l'ensemble de tous les ensembles. Étant lui-même un ensemble,
+il serait !!a{element} de l'ensemble de tous les ensembles.
+
+Le paradoxe de Russell apparaît lorsqu'on considère la propriété
+de ne pas avoir soi-même pour !!{element}, autrement dit
+de \emph{ne pas s'appartenir à soi-même}.
+Supposons qu'il existe un ensemble de tous les ensembles
+qui ne s'appartiennent pas à eux-mêmes. L'ensemble
+\[
+R = \Setabs{x}{x \notin x}
+\]
+existe-t-il ? On peut démontrer que non.
+
+\begin{thm}[Paradoxe de Russell]\ollabel{thm:russells-paradox}
+	Il n'existe pas d'ensemble $R = \Setabs{x}{x \notin x}$.
+\end{thm}
+
+\begin{proof}
+Si $R = \Setabs{x}{x \notin x}$ existe, alors
+$R \in R$ si et seulement si $R \notin R$,
+ce qui est contradictoire.
+\end{proof}
+
+\begin{tagblock}{novice}
+\begin{explain}
+Reprenons cette démonstration plus en détail.
+Si $R$ existe, on peut se demander si $R \in R$.
+Supposons que $R \in R$. Or $R$ est défini comme
+l'ensemble de tous les ensembles qui ne sont pas des
+!!{element}s d'eux-mêmes. Si $R \in R$, alors $R$ ne vérifie
+pas la propriété qui définit $R$. Mais seuls les ensembles
+qui vérifient cette propriété appartiennent à~$R$.
+Donc $R$ ne peut pas être !!a{element} de~$R$,
+c'est-à-dire $R \notin R$. Mais $R$ ne peut pas à la fois
+être et ne pas être !!a{element} de~$R$ :
+nous obtenons une contradiction.
+
+Puisque l'hypothèse $R \in R$ conduit à une contradiction,
+on a $R \notin R$. Mais cela conduit aussi à une contradiction !{}
+En effet, si $R \notin R$, alors $R$ vérifie lui-même
+la propriété qui définit $R$. Ainsi, $R$ serait !!a{element} de $R$,
+comme tous les autres ensembles qui ne s'appartiennent pas
+à eux-mêmes. Là encore, il ne peut pas à la fois
+ne pas être et être !!a{element} de~$R$.
+\end{explain}
+\end{tagblock}
+
+\begin{digress}
+Comment construire une théorie des ensembles qui évite
+le paradoxe de Russell, c'est-à-dire qui n'affirme pas,
+de façon \emph{contradictoire}, l'existence de
+$R = \Setabs{x}{x \notin x}$ ?
+Il faut poser des axiomes qui précisent exactement
+dans quelles conditions les ensembles existent,
+et dans quelles conditions ils n'existent pas.
+
+La théorie des ensembles esquissée dans ce chapitre
+ne le fait pas : elle est \emph{naïve}.
+Elle dit seulement que les ensembles satisfont le principe
+d'extensionnalité et qu'à partir d'ensembles donnés, on peut
+former leur réunion, leur intersection, etc.
+Il est possible de développer la théorie des ensembles
+avec davantage de rigueur. \oliflabeldef{cumul:::part}{Ce sera
+l'objet de la partie \olref[cumul][][]{part}.
+Pour l'instant, nous poursuivrons de manière naïve,
+en veillant à éviter les contradictions.}{}
+\end{digress}
+
+
+\end{document}

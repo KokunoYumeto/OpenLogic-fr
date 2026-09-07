@@ -1,0 +1,108 @@
+% Partie : sets-functions-relations
+% Chapitre : sets
+% Section : basics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{set}{bas}
+\olsection{Extensionnalité}
+
+Un \emph{ensemble} est une collection d'objets considérée comme un seul
+objet. Les objets qui le constituent sont appelés ses \emph{éléments}
+ou ses \emph{membres}. Si $x$ est !!a{element} d'un ensemble~$A$,
+on écrit $x \in A$ ; sinon, on écrit $x \notin A$. L'ensemble qui n'a
+aucun !!{element} est appelé l'ensemble \emph{vide} et se note
+«~$\emptyset$~».
+
+\begin{explain}
+Peu importe la manière dont on \emph{décrit} l'ensemble,
+l'\emph{ordre} dans lequel on donne ses !!{element}s, ou même le
+\emph{nombre de fois} où on les énumère. Seule compte l'identité
+de ses !!{element}s. Le principe suivant exprime cette idée.
+\end{explain}
+
+\begin{defn}[Extensionnalité]
+  Si $A$ et $B$ sont des ensembles, alors $A = B$ si et seulement si
+  tout !!{element} de~$A$ est aussi !!a{element} de~$B$, et
+  réciproquement.
+\end{defn}
+
+L'extensionnalité justifie certaines notations. En général, étant donnés
+des objets $a_{1}$, \dots, $a_{n}$, on note $\{a_{1}, \dots, a_{n}\}$
+\emph{l'}ensemble dont les !!{element}s sont $a_1, \ldots, a_n$.
+L'article défini est essentiel : l'extensionnalité nous dit qu'il ne
+peut y avoir qu'\emph{un seul} ensemble de ce type. Elle justifie
+également l'égalité suivante :
+  \[
+    \{a, a, b\} = \{a, b\} = \{b,a\}.
+  \]
+On retrouve ainsi l'idée que, pour les ensembles, ni l'ordre dans
+lequel on indique les !!{element}s ni le nombre de leurs occurrences
+n'importent.
+
+\begin{tagblock}{novice}
+\begin{ex}
+Lorsqu'on dispose d'objets, on peut les réunir en un ensemble.
+Par exemple, l'ensemble des frères et sœurs de Richard contient
+une personne et peut s'écrire $S=\{\textrm{Ruth}\}$.
+L'ensemble des entiers strictement positifs inférieurs à $4$ est
+$\{1, 2, 3\}$ ; on peut aussi l'écrire $\{3, 2, 1\}$ ou même
+$\{1, 2, 1, 2, 3\}$. Il s'agit chaque fois du même ensemble,
+par extensionnalité : tout !!{element} de $\{1, 2, 3\}$ est aussi
+!!a{element} de $\{3, 2, 1\}$ (et de $\{1, 2, 1, 2, 3\}$), et
+réciproquement.
+\end{ex}
+\end{tagblock}
+
+Nous décrirons souvent un ensemble à l'aide d'une propriété commune
+à ses !!{element}s. Nous utiliserons pour cela la notation abrégée
+$\Setabs{x}{\phi(x)}$, où $\phi(x)$ désigne la propriété que~$x$
+doit vérifier pour figurer parmi les !!{element}s de l'ensemble.
+
+\begin{tagblock}{novice}
+\begin{ex}
+Dans notre exemple, nous aurions aussi pu définir $S$ par
+\[
+S = \Setabs{x}{x \text{ est un frère ou une sœur de Richard}}.
+\]
+\end{ex}
+\end{tagblock}
+
+\begin{tagblock}{math}
+\begin{ex}
+Un entier strictement positif est dit \emph{parfait} si et seulement
+s'il est égal à la somme de ses diviseurs propres positifs
+(c'est-à-dire des entiers positifs qui le divisent et lui sont
+strictement inférieurs).\footnote{Précision de l'édition française :
+les diviseurs considérés sont positifs, et la notion de nombre parfait
+porte ici sur les entiers strictement positifs.}
+Par exemple, $6$ est parfait, car ses diviseurs propres positifs
+sont $1$, $2$ et~$3$, et $6 = 1 + 2 + 3$. En fait, $6$ est le seul
+entier strictement positif inférieur à $10$ qui soit parfait.
+L'extensionnalité nous permet donc d'écrire :
+\[
+	\{6\} = \Setabs{x}{x\text{ est parfait et }0 \leq x \leq 10}
+\]
+La notation de droite se lit «~l'ensemble des $x$ tels que $x$
+est parfait et $0 \leq x \leq 10$~». Cette égalité confirme que
+la manière de décrire un ensemble n'importe pas. Plus généralement,
+l'extensionnalité garantit qu'il y a au plus un ensemble des $x$
+tels que $\phi(x)$. Elle justifie donc que l'on appelle
+$\Setabs{x}{\phi(x)}$ \emph{l'}ensemble des $x$ tels que~$\phi(x)$,
+s'il existe.\footnote{La condition d'existence est explicitée ici ;
+la section consacrée au paradoxe de Russell en explique la nécessité.}
+\end{ex}
+\end{tagblock}
+
+L'extensionnalité fournit une méthode pour montrer que deux ensembles
+sont égaux : pour établir $A = B$, on montre que, si $x \in A$,
+alors $x \in B$, et que, si $y \in B$, alors $y \in A$.
+
+\begin{prob}
+Démontrer qu'il existe au plus un ensemble vide : si $A$ et $B$ sont
+des ensembles sans !!{element}, montrer que $A = B$.
+\end{prob}
+
+\end{document}
