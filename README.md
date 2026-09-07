@@ -6,6 +6,8 @@ Une édition française du manuel ouvert de logique mathématique de l’[Open L
 
 [Lire le chapitre en PDF](reader/openlogic-fr-ensembles.pdf) · [Sources françaises](fr/content/sets-functions-relations/sets) · [Choix éditoriaux](review/CHOICES.md) · [Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/)
 
+Version archivée avec DOI : [10.5281/zenodo.22650158](https://doi.org/10.5281/zenodo.22650158).
+
 Le chapitre traite de l’extensionnalité, des sous-ensembles et de l’ensemble des parties, des principaux ensembles de nombres, des mots et des suites, des réunions et intersections, des produits cartésiens et du paradoxe de Russell. Les dix exercices sont réunis en fin de chapitre.
 
 La traduction s’appuie sur des passages précisément repérés de cours universitaires français. Les références documentent la terminologie, certaines formulations et les conventions ; le texte anglais reste l’autorité pour les énoncés traduits. Les alternatives, leurs motifs et les incertitudes sont consignées dans le dossier de révision. La traduction et sa révision ont été assistées par IA. Aucune validation humaine indépendante du chapitre entier n’est revendiquée.
