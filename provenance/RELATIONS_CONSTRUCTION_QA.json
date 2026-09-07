@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-09-07T22:52:35.331694+00:00",
+  "source_target_identities_replayed": 9,
+  "alignment_blocks_replayed": 150,
+  "text_blocks_contextually_audited": 104,
+  "previously_missing_blocks_repaired": 40,
+  "previously_linked_blocks_reaudited": 64,
+  "dedicated_new_choices": 104,
+  "exact_construction_spans": 311,
+  "span_identity_failures": [],
+  "target_prose_mutations": 0,
+  "whole_word_audit_claim": false,
+  "limitations": "Mechanical coverage checks text-block presence and exact anchors only; editorial adequacy rests on the recorded bilingual contextual review and remains open to expert revision.",
+  "canon_sources_added": 6,
+  "canon_passages_added": 7,
+  "historical_initial_audit_sha256": "56eb22a65b8bd43e1afed7bdb2f010f90f3631ecacfcd3f7c62e0271281fb0d8",
+  "audit_sha256": "d5c45fa7e8128b32ce71265a878df6d93ef4824907ed340eeb9e57f063cf1bc1",
+  "record_repair_receipt_sha256": "78f96fbef9db826a76cf09a70e1323d8d758754310d5d5b4342d32310ba9f4ae",
+  "record_repair_utc": "2026-09-07T23:44:58.062706+00:00"
+}

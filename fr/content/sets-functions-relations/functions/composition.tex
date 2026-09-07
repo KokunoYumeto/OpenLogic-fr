@@ -1,0 +1,68 @@
+% Partie : sets-functions-relations
+% Chapitre : functions
+% Section : composition
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{fun}{cmp}
+\olsection{Composition des fonctions}
+
+\begin{explain}
+\oliflabeldef{sfr:fun:inv:sec}{Nous avons vu dans la \olref[inv]{sec}
+que l’inverse~$f^{-1}$ d’!!a{bijection}~$f$ est lui-même une fonction.
+Une autre opération sur les fonctions est la composition : on}{On}
+peut définir une nouvelle fonction en composant deux fonctions $f$ et~$g$,
+c’est-à-dire en appliquant d’abord $f$, puis~$g$. Cela exige que les
+images et les domaines soient compatibles : l’image de~$f$ doit être
+incluse dans le domaine de~$g$.
+\oliflabeldef{sfr:rel:ops:sec}{Cette opération est l’analogue, pour les
+fonctions, du produit relatif des relations défini dans la
+\olref[rel][ops]{sec}.}{}
+
+Un diagramme peut aider à comprendre la composition. La
+\olref{fig:composition} représente deux fonctions $f\colon A \to B$
+et $g\colon B \to C$, ainsi que leur composée~$(\comp{f}{g})$.
+La fonction $(\comp{f}{g})\colon A \to C$ associe à chaque !!{element}
+de~$A$ un !!{element} de~$C$. Voici comment déterminer lequel :
+étant donnée une entrée $x \in A$, on applique d’abord $f$ à~$x$,
+ce qui donne $f(x) = y \in B$, puis on applique $g$ à~$y$,
+ce qui donne $g(f(x)) = g(y) = z \in C$.
+\begin{figure}
+  \olasset[2\olphotowidth]{assets/diagrams/composition.tikz}
+  \caption{La composée $g \circ f$ de deux fonctions $f$ et~$g$.}
+  \ollabel{fig:composition}
+\end{figure}
+\end{explain}
+
+\begin{defn}[Composition]
+Soient $f\colon A \to B$ et $g\colon B \to C$ deux fonctions.
+La \emph{composée} de $f$ suivie de~$g$ est
+$\comp{f}{g}\colon A \to C$, définie par
+$(\comp{f}{g})(x) = g(f(x))$.
+\end{defn}
+
+\begin{ex}
+Considérons les fonctions $f(x) = x + 1$ et $g(x) = 2x$.
+Puisque $(\comp{f}{g})(x) = g(f(x))$, il faut, pour chaque entrée~$x$,
+prendre d’abord son successeur, puis multiplier le résultat par deux.
+La composée est donc donnée par $(\comp{f}{g})(x) = 2(x+1)$.
+\end{ex}
+
+\begin{prob}
+Montrez que, si $f\colon A \to B$ et $g\colon B \to C$ sont toutes deux
+!!{injective}s, alors $\comp{f}{g}\colon A \to C$ est !!{injective}.
+\end{prob}
+
+\begin{prob}
+Montrez que, si $f\colon A \to B$ et $g\colon B \to C$ sont toutes deux
+!!{surjective}s, alors $\comp{f}{g}\colon A \to C$ est !!{surjective}.
+\end{prob}
+
+\begin{prob}
+Soient $f\colon A \to B$ et $g\colon B \to C$. Montrez que le graphe
+de $\comp{f}{g}$ est $R_f \mid R_g$.
+\end{prob}
+
+\end{document}

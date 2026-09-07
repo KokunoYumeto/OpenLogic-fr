@@ -1,0 +1,188 @@
+% Partie : sets-functions-relations
+% Chapitre : functions
+% Section : inverses
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{fun}{inv}
+\olsection{Inverses des fonctions}
+
+\begin{explain}
+Nous envisageons les fonctions comme des correspondances entre objets.
+Il est alors naturel de se demander si l’on peut « inverser » une telle
+correspondance. Par exemple, on peut inverser la fonction successeur
+$f(x) = x + 1$, au sens où la fonction $g(y) = y - 1$ « défait »
+ce que fait $f$.
+
+Il faut cependant être prudent. La définition de~$g$ donne bien une
+fonction $\Int \to \Int$, mais elle ne définit pas une \emph{fonction}
+$\Nat \to \Nat$, car $g(0) \notin \Nat$. Même dans un cas simple,
+la possibilité d’inverser une fonction ne va donc pas de soi :
+elle peut dépendre du domaine et de l’ensemble d’arrivée.
+
+La notion d’inverse d’une fonction permet de préciser cette idée.
+\end{explain}
+
+\begin{defn}
+Une fonction $g\colon B \to A$ est un \emph{inverse} d’une fonction
+$f\colon A \to B$ si $f(g(y)) = y$ et $g(f(x)) = x$ pour tous
+$x \in A$ et $y \in B$.
+\end{defn}
+
+Si $f$ admet un inverse~$g$, on écrit souvent $f^{-1}$ au lieu de~$g$.
+
+\begin{explain}
+Déterminons maintenant quelles fonctions admettent un inverse.
+Pour inverser $f\colon A \to B$, on peut envisager la fonction
+$g\colon B \to A$ « définie par »
+\[
+g(y) = \text{« le » $x$ tel que $f(x) = y$.}
+\]
+Mais les guillemets autour de « définie par » et de « le » signalent
+qu’il ne s’agit pas encore d’une définition valable en toute généralité.
+Pour définir ainsi une fonction, il faut qu’il existe un et un seul~$x$
+tel que $f(x) = y$ : la valeur de~$g$ doit être déterminée de manière
+unique. Elle doit en outre être définie pour chaque $y \in B$.
+S’il existe $x_1,x_2 \in A$ tels que $x_1 \neq x_2$ mais
+$f(x_1) = f(x_2)$, la valeur $g(y)$ n’est pas déterminée de manière
+unique pour $y = f(x_1) = f(x_2)$. Et s’il n’existe aucun~$x$ tel que
+$f(x) = y$, la valeur $g(y)$ n’est pas définie du tout.
+Autrement dit, pour que $g$ soit ainsi définie, il faut que $f$ soit
+à la fois !!{injective} et !!{surjective}.
+
+Procédons par étapes. Séparons la question en deux : étant donnée une
+fonction~$f\colon A \to B$, quand existe-t-il une fonction
+$g\colon B \to A$ telle que $g(f(x)) = x$ ? Une telle fonction $g$
+« défait » ce que fait $f$ ; on l’appelle un \emph{inverse à gauche}
+de~$f$. D’autre part, quand existe-t-il une fonction $h\colon B \to A$
+telle que $f(h(y)) = y$ ? Une telle fonction $h$ est un
+\emph{inverse à droite} de~$f$ : cette fois, $f$ « défait » ce que fait~$h$.
+\end{explain}
+
+\begin{prop}
+Si $f\colon A \to B$ est !!{injective} et si $A$ est non vide,
+alors $f$ possède un \emph{inverse à gauche}~$g\colon B \to A$ tel que
+$g(f(x)) = x$ pour tout $x \in A$.\footnote{Précision éditoriale :
+l’hypothèse que le domaine est non vide manque dans l’original.
+L’unique fonction de $\emptyset$ vers un ensemble non vide est injective,
+mais aucune fonction en sens inverse n’existe. Si les deux ensembles
+sont vides, leur unique fonction est son propre inverse.}
+\end{prop}
+
+\begin{proof}
+Supposons $f\colon A \to B$ !!{injective}, avec $A$ non vide.
+Considérons $y \in B$. Si $y \in \ran{f}$, il existe $x \in A$ tel que
+$f(x) = y$. L’injectivité de $f$ assure l’unicité d’un tel~$x \in A$.
+On peut donc poser $g(y) = x$ : $g(y)$ est « le » $x \in A$ tel que
+$f(x) = y$. Si $y \notin \ran{f}$, on peut l’envoyer sur n’importe
+quel~$a \in A$. Fixons donc $a \in A$ et définissons $g\colon B \to A$ par
+\[
+g(y) = \begin{cases}
+    x & \text{si $f(x) = y$}\\
+    a & \text{si $y \notin \ran{f}$.}
+\end{cases}
+\]
+La fonction est définie pour tout $y \in B$ : dans le premier cas,
+il existe exactement un $x \in A$ tel que $f(x) = y$, et dans le second
+cas la valeur est $a$. Par définition, si $y = f(x)$, alors $g(y) = x$,
+c’est-à-dire $g(f(x)) = x$.
+\end{proof}
+
+\begin{prob}
+Montrez que, si $f\colon A \to B$ possède un inverse à gauche~$g$,
+alors $f$ est !!{injective}.
+\end{prob}
+
+\begin{prop}
+Si $f\colon A \to B$ est !!{surjective}, alors $f$ possède un
+\emph{inverse à droite}~$h\colon B \to A$ tel que $f(h(y)) = y$
+pour tout~$y \in B$.
+\end{prop}
+
+\begin{proof}
+Supposons que $f\colon A \to B$ soit !!{surjective}. Considérons
+$y \in B$. La surjectivité de $f$ assure l’existence de $x_y \in A$
+tel que $f(x_y) = y$. On peut alors poser $h(y) = x_y$ : pour chaque
+$y \in B$, on choisit un $x \in A$ tel que $f(x) = y$.
+Puisque $f$ est !!{surjective}, il existe toujours au moins un tel
+objet.\footnote{La surjectivité de $f$ assure que, pour chaque~$y \in B$,
+l’ensemble $\Setabs{x}{f(x) = y}$ est non vide. Définir~$h$ exige de
+choisir un seul $x$ dans chacun de ces ensembles. Il ne va pas de soi
+que cela soit toujours possible : la possibilité d’effectuer ces choix
+est posée comme un axiome. Autrement dit, cette proposition suppose
+l’axiome du choix, une question que nous
+\oliflabeldef{sth:choice::chap}{reprendrons dans le
+\olref[sth][choice][]{chap}}{laisserons ici de côté}.
+Dans de nombreux cas particuliers, par exemple lorsque $A = \Nat$,
+lorsque $A$ est fini ou lorsque $f$ est !!{bijective}, l’axiome du choix
+n’est toutefois pas nécessaire. Dans ce dernier cas, pour chaque $y \in B$,
+l’ensemble $\Setabs{x}{f(x) = y}$ possède exactement un !!{element} :
+il n’y a donc aucun choix à faire.}
+Par définition, si $x = h(y)$, alors $f(x) = y$ ; ainsi,
+pour tout $y \in B$, on a $f(h(y)) = y$.
+\end{proof}
+
+\begin{prob}
+Montrez que, si $f\colon A \to B$ possède un inverse à droite~$h$,
+alors $f$ est !!{surjective}.
+\end{prob}
+
+\begin{explain}
+En combinant les idées de la démonstration précédente, on obtient que
+toute !!{bijection} possède un inverse : une même fonction est à la fois
+un inverse à gauche et un inverse à droite de~$f$.
+\end{explain}
+
+\begin{prop}\ollabel{prop:bijection-inverse}
+Si $f\colon A \to B$ est !!{bijective}, il existe une
+fonction~$f^{-1}\colon B \to A$ telle que, pour tout $x \in A$,
+$f^{-1}(f(x)) = x$ et, pour tout $y \in B$, $f(f^{-1}(y)) = y$.
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrez la \olref[sfr][fun][inv]{prop:bijection-inverse}.
+Il faut définir~$f^{-1}$, montrer qu’il s’agit d’une fonction, puis
+qu’elle est un inverse de~$f$, c’est-à-dire que $f^{-1}(f(x)) = x$ et
+$f(f^{-1}(y)) = y$ pour tous $x \in A$ et $y \in B$.
+\end{prob}
+
+\begin{explain}
+On peut obtenir des inverses d’une manière légèrement plus générale.
+Nous avons vu dans la \olref[kin]{sec} que toute fonction $f$ induit
+!!a{surjection} $f'\colon A \to \ran{f}$, en posant $f'(x) = f(x)$
+pour tout $x \in A$. Si $f$ est !!{injective}, $f'$ est manifestement
+!!{bijective} et possède donc un inverse unique, d’après la
+\olref{prop:bijection-inverse}. Par un très léger abus de notation,
+on appelle parfois simplement l’inverse de $f'$ « l’inverse de~$f$ ».
+\end{explain}
+
+\begin{prop}\ollabel{prop:left-right}%
+Montrez que, si $f\colon A \to B$ possède un inverse à gauche~$g$
+et un inverse à droite~$h$, alors $h = g$.
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrez la \olref[sfr][fun][inv]{prop:left-right}.
+\end{prob}
+
+\begin{prop}\ollabel{prop:inverse-unique}
+Toute fonction~$f$ possède au plus un inverse.
+\end{prop}
+
+\begin{proof}
+Supposons que $g$ et $h$ soient deux inverses de~$f$. En particulier,
+$g$ est un inverse à gauche de~$f$ et $h$ un inverse à droite.
+Par la \olref{prop:left-right}, on a $g = h$.
+\end{proof}
+
+\end{document}

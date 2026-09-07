@@ -1,0 +1,144 @@
+% Partie : sets-functions-relations
+% Chapitre : functions
+% Section : basics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{fun}{bas}
+\olsection{Notions de base}
+
+\begin{explain}
+Une \emph{fonction} associe à chaque !!{element} d’un ensemble donné
+un !!{element} déterminé d’un autre ensemble donné, qui peut être le même.
+Par exemple, l’opération qui consiste à ajouter~$1$ définit une fonction :
+à chaque nombre~$n$, elle associe l’unique nombre~$n+1$.
+
+Plus généralement, une fonction peut recevoir en entrée des couples,
+des triplets, etc., et produire une sortie. L’arithmétique élémentaire
+nous fournit de nombreuses fonctions familières : l’addition et la
+multiplication, par exemple, reçoivent deux nombres et en renvoient un troisième.
+
+Dans ce sens mathématique abstrait, une fonction est une \emph{boîte noire} :
+seule compte la sortie associée à chaque entrée, et non la méthode
+qui permet de la calculer.
+\end{explain}
+
+\begin{defn}[Fonction]
+Une \emph{fonction} $f \colon A \to B$ associe à chaque !!{element}
+de~$A$ un unique !!{element} de~$B$.
+
+On appelle $A$ le \emph{domaine} de~$f$ et $B$ son \emph{ensemble d’arrivée}.
+Les !!{element}s de~$A$ sont les entrées ou \emph{arguments} de~$f$.
+L’!!{element} de~$B$ que~$f$ associe à un argument~$x$ est appelé
+la \emph{valeur de~$f$} en~$x$ et se note~$f(x)$.
+
+L’\emph{image} $\ran{f}$ de~$f$ est la partie de son ensemble d’arrivée
+constituée des valeurs effectivement prises par~$f$ :
+$\ran{f} = \Setabs{f(x)}{x \in A}$.
+\end{defn}
+
+Le diagramme de la \olref{fig:function} aide à se représenter une fonction.
+L’ellipse de gauche représente son \emph{domaine}, celle de droite
+son \emph{ensemble d’arrivée}. Chaque flèche part d’un \emph{argument}
+du domaine et aboutit à la \emph{valeur} correspondante dans l’ensemble d’arrivée.
+
+\begin{figure}
+  \olasset{assets/diagrams/function.tikz}
+  \caption{Une fonction associe à chaque !!{element} d’un ensemble
+    !!a{element} d’un autre ensemble. Une flèche part d’un argument
+    du domaine et aboutit à la valeur correspondante dans l’ensemble d’arrivée.}
+  \ollabel{fig:function}
+\end{figure}
+
+\begin{ex}
+La multiplication reçoit en entrée des couples d’entiers naturels et
+renvoie des entiers naturels. Elle va donc de $\Nat \times \Nat$
+(son domaine) dans $\Nat$ (son ensemble d’arrivée).
+Son image est elle aussi $\Nat$, puisque tout $n \in \Nat$ est égal à
+$n \times 1$.
+\end{ex}
+
+\begin{ex}
+La multiplication est une fonction parce qu’elle associe à chaque entrée,
+c’est-à-dire à chaque couple d’entiers naturels, une unique sortie :
+$\times \colon \Nat^2 \to \Nat$. En revanche, associer à un entier
+naturel~$n$ un réel~$x$ tel que $x^2 = n$ ne définit pas une fonction :
+chaque entier strictement positif~$n$ possède deux racines carrées,
+$\sqrt{n}$ et~$-\sqrt{n}$. On obtient une fonction en ne retenant que
+la racine carrée positive ou nulle :
+$\sqrt{\phantom{X}} \colon \Nat \to \Real$.
+\footnote{Précision éditoriale : on inclut la racine nulle pour que
+la fonction soit aussi définie en zéro, qui appartient à son domaine.}
+\end{ex}
+
+\begin{ex}
+La relation qui associe à chaque étudiant d’un cours sa note finale est
+une fonction : un étudiant ne peut pas recevoir deux notes finales
+différentes pour un même cours. La relation qui associe à chaque étudiant
+ses parents n’est pas une fonction : un étudiant peut avoir zéro, deux
+ou davantage de parents.
+\end{ex}
+
+\begin{explain}
+Pour définir une fonction, on peut préciser sa valeur pour chaque
+argument possible. On peut le faire par une formule, par une méthode
+de calcul ou par une liste des valeurs correspondant aux arguments.
+Quelle que soit la méthode choisie, il faut s’assurer qu’à chaque
+argument correspond une valeur et une seule.
+\end{explain}
+
+\begin{ex}
+Soit $f \colon \Nat \to \Nat$ définie par $f(x) = x+1$.
+Cette définition précise que $f$ reçoit des entiers naturels et renvoie
+des entiers naturels : à tout entier naturel~$x$, elle associe son
+successeur~$x+1$. Ici, l’ensemble d’arrivée $\Nat$ n’est pas l’image
+de~$f$, car l’entier naturel~$0$ n’est le successeur d’aucun entier naturel.
+L’image de~$f$ est l’ensemble des entiers strictement positifs, $\Int^{+}$.
+\end{ex}
+
+\begin{ex}\ollabel{examplefunext}
+Soit $g \colon \Nat \to \Nat$ définie par $g(x) = x+2-1$.
+C’est une fonction qui reçoit des entiers naturels et renvoie des
+entiers naturels. À un entier naturel~$x$, elle associe le prédécesseur
+du successeur du successeur de~$x$, soit $x+1$.
+\footnote{Correction éditoriale : l’original appelait l’entrée
+$n$ avant de la désigner par $x$ ; on emploie ici la même lettre.}
+\end{ex}
+
+\begin{explain}
+Nous venons de considérer deux fonctions $f$ et $g$ données par des
+\emph{définitions} différentes. Pourtant, il s’agit de la \emph{même fonction}.
+Pour tout entier naturel~$n$, on a en effet
+$f(n) = n+1 = n+2-1 = g(n)$. Autrement dit, nos définitions de $f$ et~$g$
+décrivent la même correspondance au moyen d’équations différentes.
+Nous utilisons donc implicitement un principe d’extensionnalité
+pour les fonctions :
+\[
+  \text{si }\forall x\, f(x) = g(x)\text{, alors }f = g
+\]
+à condition que $f$ et~$g$ aient le même domaine et le même ensemble d’arrivée.
+\end{explain}
+
+\begin{ex}
+On peut aussi définir une fonction par cas. Définissons par exemple
+$h \colon \Nat \to \Nat$ par
+\[
+h(x) =
+\begin{cases}
+  \frac{x}{2} & \text{si $x$ est pair} \\
+  \frac{x+1}{2} & \text{si $x$ est impair.}
+\end{cases}
+\]
+Tout entier naturel étant pair ou impair, cette fonction renvoie toujours
+un entier naturel. Dans une telle définition par cas disjoints, toute
+entrée possible doit relever d’un cas et d’un seul. Il faut parfois
+démontrer que les cas sont exhaustifs et mutuellement exclusifs.
+\footnote{Précision éditoriale : l’original présente cette condition comme
+une exigence générale. Des cas peuvent aussi se recouper, à condition
+qu’ils attribuent la même valeur aux entrées communes ; toutes les entrées
+doivent néanmoins être couvertes.}
+\end{ex}
+
+\end{document}

@@ -1,0 +1,77 @@
+% Partie : sets-functions-relations
+% Chapitre : functions
+% Section : partial-functions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+
+\begin{document}
+
+\olfileid[fr]{sfr}{fun}{par}
+
+\olsection{Fonctions partielles}
+
+\begin{explain}
+Il est parfois utile d’assouplir la définition d’une fonction en
+n’exigeant plus que sa valeur soit définie pour toute entrée possible.
+On parle alors de \emph{fonctions partielles}.
+\end{explain}
+
+\begin{defn}
+Une \emph{fonction partielle} $f\colon A \pto B$ est une correspondance
+qui associe à chaque !!{element} de~$A$ au plus un !!{element} de~$B$.
+Si $f$ associe un élément de~$B$ à $x \in A$, on dit que $f(x)$ est
+\emph{définie} ; sinon, on dit qu’elle est \emph{non définie}.
+Si $f(x)$ est définie, on écrit $f(x) \fdefined$ ; sinon,
+on écrit $f(x) \fundefined$. Le \emph{domaine} d’une fonction
+partielle~$f$ est la partie de~$A$ où elle est définie :
+$\dom{f} = \Setabs{x \in A}{f(x) \fdefined}$.
+\end{defn}
+
+\begin{ex}
+Toute fonction $f\colon A \to B$ est aussi une fonction partielle.
+Les fonctions partielles définies partout sur~$A$, c’est-à-dire celles
+que nous avons jusqu’ici simplement appelées des fonctions, sont aussi
+appelées des fonctions \emph{totales}.
+\end{ex}
+
+\begin{ex}
+La fonction partielle $f\colon \Real \pto \Real$ donnée par $f(x) = 1/x$
+n’est pas définie pour $x = 0$, et elle est définie partout ailleurs.
+\end{ex}
+
+\begin{prob}
+Étant donnée $f\colon A \pto B$, définissons la fonction partielle
+$g\colon B \pto A$ de la manière suivante : pour tout $y \in B$,
+s’il existe un unique $x \in A$ tel que $f(x) = y$, on pose $g(y) = x$ ;
+sinon, $g(y) \fundefined$. Montrez que, si $f$ est injective, alors
+$g(f(x)) = x$ pour tout $x \in \dom{f}$, et $f(g(y)) = y$ pour tout
+$y \in \ran{f}$.
+\end{prob}
+
+\begin{defn}[Graphe d’une fonction partielle]
+Soit $f\colon A \pto B$ une fonction partielle. Le \emph{graphe} de~$f$
+est la relation $R_f \subseteq A \times B$ définie par
+\[
+R_f = \Setabs{\tuple{x,y}}{f(x) = y}.
+\]
+\end{defn}
+
+\begin{prop}
+Supposons que $R \subseteq A \times B$ vérifie la propriété suivante :
+chaque fois que $Rxy$ et $Rxy'$, on a $y = y'$.
+Alors $R$ est le graphe de la fonction partielle $f\colon A \pto B$
+définie ainsi : s’il existe $y$ tel que $Rxy$, on pose $f(x) = y$ ;
+sinon, $f(x) \fundefined$. Si $R$ est de plus \emph{sérielle},
+c’est-à-dire si, pour chaque $x \in A$, il existe $y \in B$ tel que
+$Rxy$, alors $f$ est totale.
+\end{prop}
+
+\begin{proof}
+Supposons qu’il existe $y$ tel que $Rxy$. S’il existait aussi $y' \neq y$
+tel que $Rxy'$, la condition sur $R$ serait violée. Ainsi, un tel $y$,
+lorsqu’il existe, est unique ; $f$ est donc bien définie.
+On a manifestement $R_f = R$, et $f$ est totale si~$R$ est sérielle.
+\end{proof}
+
+\end{document}

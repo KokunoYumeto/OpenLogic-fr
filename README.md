@@ -2,15 +2,15 @@
 
 Une édition française du manuel ouvert de logique mathématique de l’[Open Logic Project](https://openlogicproject.org/), avec ses démonstrations, exemples, figures et exercices.
 
-**Deuxième livraison : les chapitres « Ensembles » et « Relations » sont complets.** Leurs quatorze sections et deux fichiers de chapitre représentent **16 des 722 unités** prévues pour l’édition intégrale. Les 706 autres unités restent à achever et à intégrer.
+**Troisième livraison : les chapitres « Ensembles », « Relations » et « Fonctions » sont complets.** Leurs vingt sections et trois fichiers de chapitre représentent **23 des 722 unités** prévues pour l’édition intégrale. Les 699 autres unités restent à achever et à intégrer.
 
-[Lire les deux chapitres en PDF](reader/openlogic-fr-ensembles-relations.pdf) · [Sources françaises](fr/content/sets-functions-relations) · [Choix éditoriaux](review/CHOICES.md) · [Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/)
+[Lire les trois chapitres en PDF](reader/openlogic-fr-ensembles-relations-fonctions.pdf) · [Sources françaises](fr/content/sets-functions-relations) · [Choix éditoriaux](review/CHOICES.md) · [Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/)
 
-Version archivée avec DOI : [10.5281/zenodo.22650499](https://doi.org/10.5281/zenodo.22650499). [Toutes les versions](https://doi.org/10.5281/zenodo.22650157).
+Livraison précédente archivée avec DOI : [10.5281/zenodo.22650499](https://doi.org/10.5281/zenodo.22650499). [Toutes les versions](https://doi.org/10.5281/zenodo.22650157).
 
-Le lecteur de 22 pages traite des ensembles et de leurs opérations, du paradoxe de Russell, des relations binaires, de leurs interprétations philosophiques, des relations d’équivalence, des ordres, des graphes, des arbres et des opérations sur les relations. Les seize exercices sont réunis à la fin des chapitres. Les figures et les démonstrations sont conservées.
+Le lecteur de 31 pages traite des ensembles et de leurs opérations, du paradoxe de Russell, des relations binaires, de leurs interprétations philosophiques, des relations d’équivalence, des ordres, des graphes, des arbres, des opérations sur les relations, des fonctions, de leurs inverses, de leur composition et des fonctions partielles. Les vingt-quatre exercices sont réunis à la fin des chapitres. Les figures et les démonstrations sont conservées.
 
-La traduction s’appuie sur des passages précisément repérés de cours universitaires français. Les références documentent la terminologie, certaines formulations et les conventions ; le texte anglais reste l’autorité pour les énoncés traduits. Cinquante choix avec leurs alternatives, motifs et incertitudes sont consignés dans le dossier de révision. La traduction et sa révision ont été assistées par IA. Aucune validation humaine indépendante des chapitres entiers n’est revendiquée.
+La traduction s’appuie sur des passages précisément repérés de cours universitaires français. Les références documentent la terminologie, certaines formulations et les conventions ; le texte anglais reste l’autorité pour les énoncés traduits. Deux cent quarante-neuf décisions de rédaction ou de relecture, avec leurs alternatives, motifs et incertitudes, sont consignées dans le dossier de révision. La traduction et sa révision ont été assistées par IA. Aucune validation humaine indépendante des chapitres entiers n’est revendiquée.
 
 Les précisions apportées aux exemples et aux conditions d’existence sont signalées dans le lecteur. Le dossier de provenance distingue ces corrections de la traduction. Les PDF de référence externes ne sont pas redistribués.
 

@@ -1,0 +1,120 @@
+% Partie : sets-functions-relations
+% Chapitre : functions
+% Section : kinds
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{fun}{kin}
+\olsection{Types de fonctions}
+
+\begin{explain}
+Il sera utile de classer certains types de fonctions que nous rencontrerons
+fréquemment.
+
+Commençons par les fonctions pour lesquelles chaque élément de l’ensemble
+d’arrivée est une valeur prise par la fonction. Elles sont dites
+!!{surjective}s et peuvent être représentées comme dans la
+\olref{fig:surjective}.
+
+\begin{figure}
+  \olasset{assets/diagrams/surjective.tikz}
+  \caption{Une fonction !!{surjective} prend pour valeur chaque
+    !!{element} de son ensemble d’arrivée.}
+  \ollabel{fig:surjective}
+\end{figure}
+\end{explain}
+
+\begin{defn}[Fonction !!{surjective}]
+Une fonction $f \colon A \rightarrow B$ est \emph{!!{surjective}} si et
+seulement si $B$ est aussi l’image de~$f$ : pour tout $y \in B$, il existe
+au moins un $x \in A$ tel que~$f(x) = y$. En symboles :
+\[
+  (\forall y \in B)(\exists x \in A)f(x) = y.
+\]
+On appelle une telle fonction !!a{surjection} de $A$ dans $B$.
+\end{defn}
+
+\begin{explain}
+Pour montrer que $f$ est !!a{surjection}, il faut montrer que chaque
+objet de son ensemble d’arrivée est égal à $f(x)$ pour une certaine
+entrée $x$.
+
+Toute fonction \emph{induit} une surjection. Étant donnée
+$f \colon A \to B$, définissons $f' \colon A \to \ran{f}$ par
+$f'(x) = f(x)$. Puisque $\ran{f}$ est \emph{par définition}
+$\Setabs{f(x) \in B}{x \in A}$, la fonction $f'$ est nécessairement
+!!a{surjection}.
+\end{explain}
+
+\begin{explain}
+Toute fonction associe à chaque entrée possible une unique sortie.
+Certaines fonctions ont en outre la propriété de ne jamais associer
+la même sortie à deux entrées différentes. Elles sont dites
+!!{injective}s et peuvent être représentées comme dans la
+\olref{fig:injective}.
+\begin{figure}
+  \olasset{assets/diagrams/injective.tikz}
+  \caption{Une fonction !!{injective} n’associe jamais la même valeur
+    à deux arguments différents.}
+  \ollabel{fig:injective}
+\end{figure}
+\end{explain}
+
+\begin{defn}[Fonction !!{injective}]
+Une fonction $f \colon A \rightarrow B$ est \emph{!!{injective}} si et
+seulement si, pour chaque $y \in B$, il existe au plus un $x \in A$
+tel que~$f(x) = y$. On appelle une telle fonction !!a{injection}
+de $A$ dans~$B$.
+\end{defn}
+
+\begin{explain}
+Pour montrer que $f$ est !!a{injection}, il faut montrer que,
+pour tous les !!{element}s $x$ et $y$ de son domaine,
+si $f(x)=f(y)$, alors $x=y$.
+\end{explain}
+
+\begin{ex}
+La fonction constante $f\colon \Nat \to \Nat$ définie par $f(x) = 1$
+n’est ni !!{injective} ni !!{surjective}.
+
+La fonction identité $f\colon \Nat \to \Nat$ définie par $f(x) = x$
+est à la fois !!{injective} et !!{surjective}.
+
+La fonction successeur $f \colon \Nat \to \Nat$ définie par $f(x) = x+1$
+est !!{injective}, mais n’est pas !!{surjective}.
+
+La fonction $f \colon \Nat \to \Nat$ définie par
+\[
+  f(x) =
+  \begin{cases}
+    \frac{x}{2} & \text{si $x$ est pair} \\
+    \frac{x+1}{2} & \text{si $x$ est impair.}
+  \end{cases}
+\]
+est !!{surjective}, mais n’est pas !!{injective}.
+\end{ex}
+
+\begin{explain}
+Nous aurons souvent besoin de fonctions à la fois !!{injective}s et
+!!{surjective}s. On les dit !!{bijective}s ; elles se représentent
+comme dans la \olref{fig:bijective}. Les !!{bijection}s sont aussi
+parfois appelées \emph{correspondances biunivoques}, car elles font
+correspondre de manière unique les éléments de l’ensemble d’arrivée
+à ceux du domaine.
+\begin{figure}
+  \olasset{assets/diagrams/bijective.tikz}
+  \caption{Une fonction !!{bijective} fait correspondre de manière unique
+    les éléments de l’ensemble d’arrivée à ceux du domaine.}
+  \ollabel{fig:bijective}
+\end{figure}
+\end{explain}
+
+\begin{defn}[!!^{bijection}]
+Une fonction $f \colon A \to B$ est \emph{!!{bijective}} si et seulement
+si elle est à la fois !!{surjective} et !!{injective}.
+On l’appelle !!a{bijection} de $A$ dans~$B$ (ou entre $A$ et~$B$).
+\end{defn}
+
+\end{document}

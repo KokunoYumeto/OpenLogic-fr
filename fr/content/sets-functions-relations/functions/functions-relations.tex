@@ -1,0 +1,112 @@
+% Partie : sets-functions-relations
+% Chapitre : functions
+% Section : functions-relations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+
+\begin{document}
+
+\olfileid[fr]{sfr}{fun}{rel}
+
+\olsection{Les fonctions comme relations}
+
+\begin{explain}
+Une fonction qui envoie les !!{element}s de~$A$ sur des !!{element}s de~$B$
+définit une relation entre $A$ et~$B$ : celle qui relie $x$ à $y$ si et
+seulement si $f(x) = y$. On pourrait même, par exemple si l’on souhaite
+réduire le nombre de notions fondamentales des mathématiques,
+\emph{identifier} la fonction~$f$ à cette relation, c’est-à-dire à un
+ensemble de couples. Une question se pose alors : quelles relations
+définissent ainsi des fonctions ?
+\end{explain}
+
+\begin{defn}[Graphe d’une fonction] Soit $f\colon A \to B$ une fonction.
+Le \emph{graphe} de~$f$ est la relation $R_f \subseteq A \times B$
+définie par
+\[
+R_f = \Setabs{\tuple{x,y}}{f(x) = y}.
+\]
+\end{defn}
+
+\begin{explain}
+Par extensionnalité, le graphe d’une fonction est déterminé de manière
+unique. De plus, l’extensionnalité des ensembles justifie immédiatement
+le principe implicite d’extensionnalité des fonctions : deux fonctions
+$f$ et~$g$ de mêmes domaine et ensemble d’arrivée sont identiques si
+elles prennent les mêmes valeurs en chaque point de leur domaine.
+
+De même, une relation « fonctionnelle » est le graphe d’une fonction.
+\end{explain}
+
+\begin{prop}\ollabel{prop:graph-function}
+Soit $R \subseteq A \times B$ telle que :
+\begin{enumerate}
+\item si $Rxy$ et $Rxz$, alors $y = z$ ; et
+\item pour tout $x \in A$, il existe $y \in B$ tel que
+$\tuple{x,y} \in R$.
+\end{enumerate}
+Alors $R$ est le graphe de la fonction $f\colon A \to B$ définie par
+$f(x) = y$ si et seulement si $Rxy$.
+\end{prop}
+
+\begin{proof}
+Supposons qu’il existe $y$ tel que $Rxy$. S’il existait aussi $z \neq y$
+tel que $Rxz$, la première condition sur~$R$ serait violée. Ainsi, un tel
+$y$, lorsqu’il existe, est unique. La seconde condition en assure
+l’existence pour chaque $x \in A$ ; la fonction $f$ est donc bien définie.
+On a manifestement $R_f = R$.
+\end{proof}
+
+\begin{explain}
+Toute fonction $f\colon A \to B$ possède un graphe : une relation
+incluse dans $A \times B$, définie par $f(x) = y$. Réciproquement, toute
+relation~$R \subseteq A \times B$ qui possède les propriétés de la
+\olref{prop:graph-function} est le graphe d’une fonction~$f\colon A \to B$.
+Ce lien étroit permet de considérer une fonction simplement comme son
+graphe. Autrement dit, on peut identifier les fonctions à certaines
+relations, donc à certains ensembles de couples.
+\oliflabeldef{sfr:rel:ref:sec}{Il faut toutefois comprendre cette
+« identification » dans l’esprit de la \olref[sfr][rel][ref]{sec} :
+il ne s’agit pas d’une affirmation sur la métaphysique des fonctions,
+mais du constat qu’il est commode de les \emph{traiter} comme certains
+ensembles. Cela permet notamment d’envisager}{On peut ainsi envisager}
+sur les fonctions des opérations analogues à celles que nous
+avons effectuées sur les relations (voir la \olref[sfr][rel][ops]{sec}).
+En particulier :
+\end{explain}
+
+\begin{defn}\ollabel{defn:funimage}
+Soit $f\colon A \to B$ une fonction et soit $C\subseteq A$.
+
+La \emph{restriction} de~$f$ à~$C$ est la
+fonction~$\funrestrictionto{f}{C}\colon C \to B$ définie par
+$(\funrestrictionto{f}{C})(x) = f(x)$ pour tout $x \in C$.
+Autrement dit, $\funrestrictionto{f}{C} =
+\Setabs{\tuple{x, y} \in R_f}{x \in C}$.
+
+L’\emph{image} de~$C$ par~$f$ est $\funimage{f}{C} =
+\Setabs{f(x)}{x \in C}$. On parle aussi de l’\emph{image directe}
+de~$C$ par~$f$.
+\end{defn}
+
+\begin{explain}
+Ces définitions donnent $\ran{f} = \funimage{f}{\dom{f}}$ pour toute
+fonction~$f$.
+\oliflabeldef{sfr:rel:ops:sec}{La notion d’image concorde avec celle
+de la \olref[sfr][rel][ops]{sec} lorsqu’on identifie les fonctions à
+leurs graphes. Pour la restriction, il faut distinguer les deux
+conventions.\footnote{Précision éditoriale : l’original annonce un
+accord des notions, mais la restriction d’une fonction à $C$ ne
+restreint que la première coordonnée, tandis que la restriction d’une
+relation définie précédemment intersecte son graphe avec $C^2$.
+Ainsi, pour $f(n)=n+1$ sur $\Nat$ et $C=\{0\}$, la restriction
+fonctionnelle a pour graphe $\{\tuple{0,1}\}$, alors que la restriction
+relationnelle à $C$ est vide. Les deux coïncident lorsque
+$\funimage{f}{C}\subseteq C$.}
+Deux autres opérations, l’inversion et le produit relatif, demandent
+quelques précisions supplémentaires. Nous les donnerons dans la
+\olref[inv]{sec} et dans la \olref[cmp]{sec}.}{}
+\end{explain}
+
+\end{document}

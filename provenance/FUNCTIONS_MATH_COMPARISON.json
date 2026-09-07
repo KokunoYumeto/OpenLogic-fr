@@ -1,0 +1,255 @@
+[
+  {
+    "file": "composition.tex",
+    "source_sha256": "1733e9f6b7f1009f7d36cb47b3f11ec8cccc28ef173a379e4d69c3de352fcf28",
+    "target_sha256": "89346062ef5fd99955b7c5b8d2c5b3b210a977d55693abc4b01eb914423d396f",
+    "source_math_spans": 47,
+    "target_math_spans": 45,
+    "differences": [
+      {
+        "kind": "delete",
+        "source": [
+          "C",
+          "A"
+        ],
+        "target": []
+      }
+    ]
+  },
+  {
+    "file": "function-basics.tex",
+    "source_sha256": "d1fa0923e303fc49a88d4e476c319d6e91a8088de44c232dcfba5878325faea3",
+    "target_sha256": "298afb15f4649ec76509090c08c6a90931878f89e725e33677490285fa322ae3",
+    "source_math_spans": 64,
+    "target_math_spans": 62,
+    "differences": [
+      {
+        "kind": "delete",
+        "source": [
+          "f"
+        ],
+        "target": []
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "f"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "f"
+        ],
+        "target": []
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "f"
+        ],
+        "target": []
+      },
+      {
+        "kind": "replace",
+        "source": [
+          "g",
+          "n",
+          "g"
+        ],
+        "target": [
+          "x"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "n",
+          "x"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "function-kinds.tex",
+    "source_sha256": "4d30902b7c66720afabb8b079294106a685aefba0dc02ca10d9921bb554db0ac",
+    "target_sha256": "66a3831f79c49d7a823eb3e06d38483750db7a48464f09a3832ad8ae41aac8bc",
+    "source_math_spans": 44,
+    "target_math_spans": 42,
+    "differences": [
+      {
+        "kind": "delete",
+        "source": [
+          "f"
+        ],
+        "target": []
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "f"
+        ],
+        "target": []
+      }
+    ]
+  },
+  {
+    "file": "functions-relations.tex",
+    "source_sha256": "e2e46c0270c44b6f54861a4565f3829b1b5f91a7f72dca84046361e5abf622c3",
+    "target_sha256": "a0046a763547b63d4249b0ae17c674b5f1608237c5a53bd7bd36af65e401b104",
+    "source_math_spans": 55,
+    "target_math_spans": 62,
+    "differences": [
+      {
+        "kind": "replace",
+        "source": [
+          "Rxy",
+          "y"
+        ],
+        "target": [
+          "x\\inA"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "C"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "C"
+        ],
+        "target": []
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "C",
+          "C^2",
+          "f(n)=n+1",
+          "\\Nat",
+          "C=\\{0\\}",
+          "\\{\\tuple{0,1}\\}",
+          "C",
+          "\\funimage{f}{C}\\subseteqC"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "functions.tex",
+    "source_sha256": "d68bba27e593df2c17e2dc93b34256d829361b04134b4a962b997d5f4a230a59",
+    "target_sha256": "5500b55f06fba2e5151fe12df4cabf21cb5f06a412a94ce71d18970d10f5abb2",
+    "source_math_spans": 0,
+    "target_math_spans": 0,
+    "differences": []
+  },
+  {
+    "file": "inverses.tex",
+    "source_sha256": "96e36d8cd8dc4ec0e73e9507147ecfe33d7e4f368ecf46de92efb423a7d409c1",
+    "target_sha256": "dd073b751e53264efd6e756fbb4433942351c8428f8c333ac715e73e70e0f2c0",
+    "source_math_spans": 143,
+    "target_math_spans": 145,
+    "differences": [
+      {
+        "kind": "replace",
+        "source": [
+          "x_1",
+          "x_2\\inA"
+        ],
+        "target": [
+          "x_1,x_2\\inA"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "A",
+          "f"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "f"
+        ],
+        "target": []
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "\\emptyset"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "A"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "y\\in\\ran{f}"
+        ],
+        "target": []
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "a"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "f"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "f"
+        ],
+        "target": []
+      },
+      {
+        "kind": "replace",
+        "source": [
+          "f"
+        ],
+        "target": [
+          "A"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "partial-functions.tex",
+    "source_sha256": "0f638e25ad1f565b9256846fb8b293c03663072b69a2adc5f2cfea1e94d00933",
+    "target_sha256": "5f9509624e10771e33638812851fcb5a4baaeeae7d1aed467b5e11bf17c9b205",
+    "source_math_spans": 61,
+    "target_math_spans": 59,
+    "differences": [
+      {
+        "kind": "delete",
+        "source": [
+          "Rxy",
+          "y"
+        ],
+        "target": []
+      }
+    ]
+  }
+]
