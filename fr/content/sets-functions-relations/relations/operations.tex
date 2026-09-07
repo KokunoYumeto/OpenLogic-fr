@@ -1,0 +1,76 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: operations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{rel}{ops}
+\olsection{Opérations sur les relations}
+
+Il est souvent utile de modifier ou de combiner des relations.
+Dans la \olref[sfr][rel][ord]{prop:stricttopartial}, nous avons considéré
+leur \emph{réunion}, qui est simplement la réunion de deux relations
+prises comme ensembles de couples. De même, dans la
+\olref[sfr][rel][ord]{prop:partialtostrict}, nous avons considéré
+leur différence ensembliste. Voici quelques autres opérations sur les relations.
+
+\begin{defn}\ollabel{relationoperations}
+Soient $R$ et $S$ des relations, et $A$ un ensemble quelconque.
+
+La relation \emph{inverse} de $R$ est
+$R^{-1} = \Setabs{\tuple{y, x}}{\tuple{x, y} \in R}$.
+
+Le \emph{produit relatif} de $R$ et $S$ est
+$(R \mid S) = \{\tuple{x, z} : \exists y(Rxy \land Syz)\}$.
+
+La \emph{restriction} de $R$ à $A$ est
+$\funrestrictionto{R}{A}= R \cap A^2$.
+
+L’\emph{image} de $A$ par $R$ est
+$\funimage{R}{A} = \{y : (\exists x \in A)Rxy\}$.
+\end{defn}
+
+\begin{ex}
+Soit $S \subseteq \Int^2$ la relation de succession sur~$\Int$ :
+$S = \Setabs{\tuple{x, y} \in \Int^2}{x + 1 = y}$.
+Ainsi, $Sxy$ si et seulement si $x + 1 = y$.
+
+$S^{-1}$ est la relation qui associe à chaque entier son prédécesseur,
+soit $\Setabs{\tuple{x,y}\in\Int^2}{x -1 =y}$.
+
+$S\mid S$ est $ \Setabs{\tuple{x,y}\in\Int^2}{x + 2 =y}$.
+
+$\funrestrictionto{S}{\Nat}$ est la relation de succession sur~$\Nat$.
+
+$\funimage{S}{\{1,2,3\}}$ est $\{2, 3, 4\}$.
+\end{ex}
+
+\begin{defn}[Clôture transitive]
+Soit $R \subseteq A^2$ une relation binaire.\footnote{Précision de notation :
+dans cette section, le signe plus en exposant désigne la clôture transitive.
+Il n’a donc pas le sens local de clôture réflexive employé dans la
+section sur les ordres. Les notations de l’original sont conservées.}
+
+La \emph{clôture transitive} de~$R$ est
+$R^+ = \bigcup_{0 < n \in \Nat} R^n$, où l’on définit par récurrence
+$R^1 = R$ et $R^{n+1} = R^n \mid R$.
+
+La \emph{clôture réflexive et transitive} de $R$ est
+$R^* = R^+ \cup \Id{A}$.
+\end{defn}
+
+\begin{ex}
+Reprenons la relation de succession $S \subseteq \Int^2$.
+On a $S^2xy$ si et seulement si $x + 2 = y$, $S^3xy$ si et seulement si
+$x + 3 = y$, etc. Ainsi, $S^+xy$ si et seulement si $x + n = y$
+pour un certain $n \geq 1$. Autrement dit, $S^+xy$ si et seulement si
+$x < y$, et $S^*xy$ si et seulement si $x \le y$.
+\end{ex}
+
+\begin{prob}
+Montrez que la clôture transitive de $R$ est effectivement transitive.
+\end{prob}
+
+\end{document}

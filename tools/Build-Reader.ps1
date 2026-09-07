@@ -37,6 +37,15 @@ try {
     $receipt.passes += @{pass=$passNumber; exit_code=$texProcess.ExitCode}
     if ($texProcess.ExitCode -ne 0) { throw "TeX failed on pass $passNumber; see captured output." }
     $texProcess = $null
+    if ($passNumber -eq 1) {
+      $bibEngine = (Get-Command bibtex.exe).Source
+      $texProcess = Start-Process -FilePath $bibEngine -ArgumentList @('-disable-installer','reader') -WorkingDirectory $localized -RedirectStandardOutput (Join-Path $scratchPath 'bibtex.stdout.txt') -RedirectStandardError (Join-Path $scratchPath 'bibtex.stderr.txt') -WindowStyle Hidden -PassThru
+      $texProcess.WaitForExit()
+      $texProcess.Refresh()
+      $receipt.passes += @{phase='bibliography'; exit_code=$texProcess.ExitCode}
+      if ($texProcess.ExitCode -ne 0) { throw 'BibTeX failed; see captured output.' }
+      $texProcess = $null
+    }
   }
   $log = Get-Content -LiteralPath (Join-Path $localized 'reader.log') -Raw
   $receipt.log_findings = @([regex]::Matches($log,'(?m)^.*(?:Warning|Overfull|Undefined control|undefined references).*$') | ForEach-Object { $_.Value })

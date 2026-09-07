@@ -1,0 +1,173 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: orders
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{rel}{ord}
+\olsection{Ordres}
+
+\begin{explain}
+Dans bien des comparaisons, nous décrivons certains objets comme
+« inférieurs », « égaux » ou « supérieurs » à d’autres, sous un certain
+rapport. Ces comparaisons font intervenir des relations d’\emph{ordre}.
+Il en existe cependant plusieurs types. Certaines exigent que deux objets
+quelconques soient comparables, d’autres non. Certaines comprennent
+l’identité (comme~$\le$), d’autres l’excluent (comme~$<$).
+Il nous sera utile de les classer.
+\end{explain}
+
+\begin{defn}[Préordre]
+Une relation à la fois réflexive et transitive est appelée un
+\emph{préordre}.
+\end{defn}
+
+\begin{defn}[Ordre partiel]
+Un préordre qui est aussi antisymétrique est appelé un \emph{ordre partiel}.
+\end{defn}
+
+\begin{defn}[Ordre linéaire]\ollabel{def:linearorder}
+Un ordre partiel qui est aussi connexe est appelé un \emph{ordre total}
+ou \emph{ordre linéaire}.
+\end{defn}
+
+\begin{ex}
+Tout ordre linéaire est aussi un ordre partiel, et tout ordre partiel
+est aussi un préordre, mais les réciproques sont fausses.
+La relation universelle sur~$A$ est un préordre, car elle est réflexive
+et transitive. Mais, si $A$ possède plus d’un !!{element}, cette relation
+n’est pas antisymétrique ; ce n’est donc pas un ordre partiel.
+\end{ex}
+
+\begin{ex}
+Considérons sur~$\Bin^*$ la relation $\preccurlyeq$, qui se lit
+\emph{est de longueur inférieure ou égale à} : $x \preccurlyeq y$ si et
+seulement si $\len{x} \le \len{y}$. C’est un préordre (réflexif et
+transitif), qui est même connexe, mais ce n’est pas un ordre partiel,
+car il n’est pas antisymétrique. Ainsi, $01 \preccurlyeq 10$ et
+$10 \preccurlyeq 01$, alors que $01 \neq 10$.
+\end{ex}
+
+\begin{ex}
+La relation $\subseteq$ sur un ensemble d’ensembles est un ordre partiel
+important. Ce n’est pas en général un ordre linéaire : si $a \neq b$ et
+que l’on considère $\Pow{\{a, b\}} = \{\emptyset, \{a\}, \{b\}, \{a,b\}\}$,
+on constate que $\{a\} \nsubseteq \{b\}$, que $\{a\} \neq \{b\}$ et que
+$\{b\} \nsubseteq \{a\}$.
+\end{ex}
+
+\begin{ex}
+La relation de \emph{divisibilité} fournit un ordre partiel qui n’est pas
+linéaire. Pour des entiers $n$ et~$m$, on écrit $n \mid m$ pour dire que
+$n$ divise $m$ sans reste, c’est-à-dire qu’il existe un entier~$k$ tel que
+$m = kn$. Sur~$\Nat$, c’est un ordre partiel, mais pas un ordre linéaire :
+par exemple, $2 \nmid 3$ et $3 \nmid 2$. Sur $\Int$, la divisibilité
+n’est qu’un préordre, car elle n’est pas antisymétrique : $1 \mid -1$ et
+$-1 \mid 1$, alors que $1 \neq -1$.
+\end{ex}
+
+\begin{ex}
+La relation de \emph{prolongement} sur l’ensemble de suites~$A^*$ se
+définit ainsi : $s \sqsubseteq s'$ si et seulement si $s = \emptyseq$
+(la suite vide), $s = s'$, ou bien $s = \tuple{s_1, \dots, s_n}$ et
+$s' = \tuple{s_1, \dots, s_n, s_{n+1}, \dots, s_m}$.
+Lorsque $s \sqsubseteq s'$, on dit aussi que $s$ est un \emph{segment initial}
+de~$s'$. La relation de prolongement sur $A^*$ est un ordre partiel.
+Elle n’est pas linéaire dès que l’alphabet contient deux symboles distincts :
+si $a \neq b$, alors $ab \not\sqsubseteq ba$ et $ba \not\sqsubseteq ab$.
+\footnote{Précisions éditoriales : avec au plus un symbole, cet ordre est
+linéaire. On considère ici de véritables suites finies, dont la longueur
+fait partie de l’identité, conformément à la précision sur le codage des
+mots donnée au chapitre précédent.}
+\end{ex}
+
+\begin{defn}[Ordre strict]
+Un \emph{ordre strict} est une relation irréflexive, asymétrique et transitive.
+\end{defn}
+
+\begin{defn}[Ordre linéaire strict]\ollabel{def:strictlinearorder}
+Un ordre strict qui est aussi connexe est appelé un \emph{ordre total strict}
+ou \emph{ordre linéaire strict}.
+\end{defn}
+
+\begin{ex}
+$\le$ est l’ordre linéaire correspondant à l’ordre linéaire strict~$<$.
+$\subseteq$ est l’ordre partiel correspondant à l’ordre strict~$\subsetneq$.
+\end{ex}
+
+On peut transformer tout ordre strict $R$ sur~$A$ en un ordre partiel
+en lui ajoutant la diagonale $\Id{A}$, c’est-à-dire tous les
+couples~$\tuple{x, x}$. On obtient ainsi la \emph{clôture réflexive} de~$R$.
+Réciproquement, on obtient un ordre strict à partir d’un ordre partiel
+en en retirant~$\Id{A}$. Les deux résultats suivants le précisent.
+
+\begin{prop}\ollabel{prop:stricttopartial}
+Si $R$ est un ordre strict sur~$A$, alors $R^+ = R \cup \Id{A}$ est un
+ordre partiel. De plus, si $R$ est un ordre linéaire strict, $R^+$ est
+un ordre linéaire.
+\end{prop}
+
+\begin{proof}
+Supposons que $R$ soit un ordre strict : $R \subseteq A^2$ et $R$ est
+irréflexive, asymétrique et transitive. Posons $R^+ = R \cup \Id{A}$.
+Il faut montrer que $R^+$ est réflexive, antisymétrique et transitive.
+
+$R^+$ est manifestement réflexive, puisque
+$\tuple{x, x} \in \Id{A} \subseteq R^+$ pour tout $x \in A$.
+
+Pour établir l’antisymétrie de $R^+$, supposons, par l’absurde, que
+$R^+xy$ et $R^+yx$, mais que $x \neq y$. Puisque
+$\tuple{x,y} \in R \cup \Id{A}$ et $\tuple{x, y} \notin \Id{A}$,
+on a nécessairement $\tuple{x, y} \in R$, c’est-à-dire $Rxy$.
+De même, on a~$Ryx$. Cela contredit l’hypothèse selon laquelle $R$
+est asymétrique.
+
+Pour la transitivité, supposons $R^+xy$ et $R^+yz$. Si l’on a à la fois
+$\tuple{x, y} \in R$ et $\tuple{y,z} \in R$, alors
+$\tuple{x, z} \in R$, puisque $R$ est transitive. Sinon,
+$\tuple{x, y} \in \Id{A}$, c’est-à-dire $x = y$, ou bien
+$\tuple{y, z} \in \Id{A}$, c’est-à-dire $y = z$.
+Dans le premier cas, on a $R^+yz$ par hypothèse et $x = y$, donc $R^+xz$.
+Le second cas se traite de la même manière. Dans tous les cas, $R^+xz$ :
+$R^+$ est donc aussi transitive.
+
+Pour la dernière affirmation, supposons que $R$ soit en outre connexe.
+Pour tous $x \neq y$, on a donc $Rxy$ ou~$Ryx$, c’est-à-dire
+$\tuple{x, y} \in R$ ou $\tuple{y, x} \in R$.
+Puisque $R \subseteq R^+$, cela reste vrai pour $R^+$, qui est donc
+connexe elle aussi.
+\end{proof}
+
+\begin{prop}\ollabel{prop:partialtostrict}
+Si $R$ est un ordre partiel sur~$A$, alors $R^- = R \setminus \Id{A}$
+est un ordre strict. De plus, si $R$ est un ordre linéaire, $R^-$ est
+un ordre linéaire strict.
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrez la \olref[sfr][rel][ord]{prop:partialtostrict}.
+\end{prob}
+
+Le résultat élémentaire suivant établit que les ordres linéaires stricts
+possèdent une propriété analogue à l’extensionnalité.
+
+\begin{prop}\ollabel{prop:extensionality-strictlinearorders}
+Si $<$ est un ordre linéaire strict sur $A$, alors :
+\[
+  (\forall a, b \in A)((\forall x \in A)(x < a \liff x < b) \lif a = b).
+\]
+\end{prop}
+
+\begin{proof}
+Supposons $(\forall x \in A)(x < a \liff x < b)$. Si $a < b$, alors
+$a < a$, ce qui contredit l’irréflexivité de $<$ ; donc $a \nless b$.
+De la même manière, $b \nless a$. Puisque $<$ est connexe, on a $a = b$.
+\end{proof}
+
+\end{document}

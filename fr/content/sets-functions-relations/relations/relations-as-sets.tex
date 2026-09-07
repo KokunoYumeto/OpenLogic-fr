@@ -1,0 +1,147 @@
+% Partie : sets-functions-relations
+% Chapitre : relations
+% Section : relations-as-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{rel}{set}
+\olsection{Les relations comme ensembles}
+
+\begin{explain}
+Dans la \olref[sfr][set][imp]{sec}, nous avons présenté quelques
+ensembles importants : $\Nat$, $\Int$, $\Rat$, $\Real$.
+Vous connaissez sans doute déjà certaines relations entre les
+!!{element}s de ces ensembles. Chacun porte, par exemple,
+une \emph{relation d'ordre} usuelle. Il y a aussi la relation
+\emph{être identique à}, que tout objet entretient avec lui-même,
+et avec aucun autre objet. Nous rencontrerons bien d'autres
+relations intéressantes ; les relations possibles sont encore
+plus nombreuses. Avant de les examiner, remarquons que l'on
+peut considérer les relations comme des ensembles particuliers.
+
+Rappelons pour cela deux notions de la \olref[sfr][set][pai]{sec}.
+Tout d'abord, celle de \emph{couple} : étant donnés $a$ et $b$,
+on peut former~$\tuple{a, b}$. Ici, l'ordre des composantes
+\emph{importe}. Si $a \neq b$, alors
+$\tuple{a, b} \neq \tuple{b, a}$.
+La situation diffère de celle des paires non ordonnées,
+c'est-à-dire des ensembles à $2$ éléments dans ce cas :
+$\{a, b\}=\{b, a\}$.
+Ensuite, rappelons le \emph{produit cartésien} : si $A$ et $B$
+sont des ensembles, on peut former~$A \times B$, l'ensemble
+de tous les couples $\tuple{x, y}$ tels que $x \in A$ et $y \in B$.
+En particulier, $A^{2}= A \times A$ est l'ensemble de tous
+les couples d'éléments de~$A$.
+
+Considérons maintenant une relation particulière :
+la relation $<$ sur l'ensemble~$\Nat$ des entiers naturels.
+Formons l'ensemble de tous les couples de nombres $\tuple{n, m}$
+tels que $n<m$, c'est-à-dire
+\[
+  R=\Setabs{\tuple{n, m}}{n, m \in \Nat \text{ et } n<m}.
+\]
+Il y a un lien étroit entre le fait que $n$ soit strictement
+inférieur à $m$ et l'appartenance du couple $\tuple{n, m}$ à $R$ :
+\[
+      n<m\text{ si et seulement si }\tuple{n, m} \in R.
+\]
+On peut ainsi, sans perdre d'information, considérer que
+l'ensemble $R$ \emph{est} la relation $<$ sur $\Nat$.
+
+De même, on peut construire un sous-ensemble de $\Nat^{2}$
+pour toute relation entre entiers naturels.
+Réciproquement, à tout ensemble de couples d'entiers naturels
+$S \subseteq \Nat^{2}$ correspond une relation :
+celle que $n$ entretient avec $m$ si et seulement si
+$\tuple{n, m} \in S$. Cela justifie la définition suivante.
+\end{explain}
+
+\begin{defn}[Relation binaire]
+Une \emph{relation binaire} sur un ensemble $A$ est un
+sous-ensemble de~$A^{2}$. Si $R \subseteq A^{2}$ est
+une relation binaire sur~$A$ et si $x, y \in A$,
+on écrit parfois $Rxy$ (ou $xRy$) pour $\tuple{x, y} \in R$.
+\end{defn}
+
+\begin{ex}
+  \ollabel{relations}
+On peut disposer les couples d'entiers naturels qui
+constituent l'ensemble $\Nat^{2}$ dans un tableau à deux dimensions :
+\[
+  \begin{array}{ccccc}
+  \mathbf{\tuple{ 0,0 }} & \tuple{ 0,1 } &
+    \tuple{ 0,2 } & \tuple{ 0,3 } & \ldots\\
+  \tuple{ 1,0 } & \mathbf{\tuple{ 1,1 }} &
+    \tuple{ 1,2 } & \tuple{ 1,3 } & \ldots\\
+  \tuple{ 2,0 } & \tuple{ 2,1 } &
+    \mathbf{\tuple{ 2,2 }} & \tuple{ 2,3 } & \ldots\\
+  \tuple{ 3,0 } & \tuple{ 3,1 } & \tuple{ 3,2 } &
+    \mathbf{\tuple{ 3,3 }} & \ldots\\
+  \vdots & \vdots & \vdots & \vdots & \mathbf{\ddots}
+  \end{array}
+\]
+La diagonale est indiquée en gras, car le sous-ensemble de $\Nat^2$
+formé des couples qui s'y trouvent, c'est-à-dire
+\[
+  \{\tuple{0,0 }, \tuple{ 1,1 }, \tuple{ 2,2 }, \dots\},
+  \]
+est la \emph{relation d'identité sur}~$\Nat$.
+Cette relation étant fréquente, posons, pour tout ensemble $A$,
+$\Id{A}=\Setabs{\tuple{ x,x }}{x \in A}$.
+Le sous-ensemble de tous les couples situés au-dessus
+de la diagonale, c'est-à-dire
+\[
+  L = \{\tuple{ 0,1 },\tuple{ 0,2 },\ldots,\tuple{ 1,2 },
+  \tuple{ 1,3 }, \dots, \tuple{ 2,3 }, \tuple{ 2,4 },\ldots\},
+\]
+est la relation \emph{être strictement inférieur à} :
+$Lnm$ si et seulement si $n<m$.
+Le sous-ensemble des couples situés au-dessous
+de la diagonale, c'est-à-dire
+\[
+  G=\{ \tuple{ 1,0 },\tuple{ 2,0 },\tuple{
+    2,1 }, \tuple{ 3,0 },\tuple{ 3,1 },\tuple{ 3,2 }, \dots\},
+\]
+est la relation \emph{être strictement supérieur à} :
+$Gnm$ si et seulement si $n>m$.
+Notons ici $I=\Id{\Nat}$.\footnote{Précision de l'édition
+française : la notation $I$, utilisée sans définition explicite
+dans la suite de l'exemple original, désigne la relation
+d'identité sur les entiers naturels.}
+La réunion de $L$ et de $I$, que l'on peut noter $K=L\cup I$,
+est la relation \emph{être inférieur ou égal à} :
+$Knm$ si et seulement si $n \le m$.
+De même, $H=G \cup I$ est la relation
+\emph{être supérieur ou égal à}.
+Ces relations $L$, $G$, $K$ et $H$ sont des relations
+particulières appelées des \emph{ordres}.
+Les relations $L$ et $G$ ont la propriété qu'aucun entier naturel
+n'entretient $L$ ou $G$ avec lui-même : pour tout $n$,
+ni $Lnn$ ni $Gnn$.
+Les relations qui possèdent cette propriété sont dites
+\emph{irréflexives} ; lorsqu'elles sont aussi des ordres,
+on les appelle des \emph{ordres stricts}.
+\end{ex}
+
+\begin{explain}
+Les ordres et l'identité sont des relations importantes
+et naturelles. Soulignons cependant que notre définition fait
+de \emph{tout} sous-ensemble de $A^{2}$ une relation sur~$A$,
+aussi artificielle ou peu naturelle qu'elle puisse paraître.
+En particulier, $\emptyset$ est une relation sur tout ensemble :
+la \emph{relation vide}, qui ne relie aucun couple d'éléments.
+L'ensemble $A^{2}$ lui-même est aussi une relation sur~$A$ :
+elle relie tout couple d'éléments et s'appelle la
+\emph{relation universelle}. Même un ensemble tel que
+$E=\Setabs{\tuple{n, m}}{n>5 \text{ ou } m \times n \ge 34}$
+définit une relation, ici entre entiers naturels.
+\end{explain}
+
+\begin{prob}
+  Énumérer les !!{element}s de la relation $\subseteq$
+  sur l'ensemble $\Pow{\{a, b, c\}}$.
+\end{prob}
+
+\end{document}

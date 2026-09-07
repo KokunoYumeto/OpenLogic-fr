@@ -1,0 +1,250 @@
+[
+  {
+    "unit_id": "OLP-0015",
+    "file": "equivalence-relations.tex",
+    "source_math_spans": 70,
+    "target_math_spans": 68,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "\\equivrep{x}{R}=\\equivrep{y}{R}"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "\\equivrep{x}{R}=\\equivrep{y}{R}"
+        ],
+        "target": []
+      },
+      {
+        "kind": "replace",
+        "source": [
+          "a",
+          "b"
+        ],
+        "target": [
+          "a,b\\in\\Nat"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "n"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "n",
+          "\\equiv_n"
+        ],
+        "target": []
+      }
+    ]
+  },
+  {
+    "unit_id": "OLP-0017",
+    "file": "graphs.tex",
+    "source_math_spans": 18,
+    "target_math_spans": 18,
+    "differences": [
+      {
+        "kind": "replace",
+        "source": [
+          "&\\begin{tikzpicture}[->,nodedistance=2cm]\\node[draw,circle](A){$1$};\\node[draw,circle](B)[rightof=A]{$2$};\\node[draw,circle](C)[belowof=B]{$3$};\\node[draw,circle](D)[rightof=B]{$4$};\\draw(A)to[loopabove](A);\\draw(A)to(B);\\draw(A)to(C);\\draw(B)to(C);\\end{tikzpicture}\\intertext{Thisisadifferentgraphthan$\\tuple{V',E}$with$V'=\\{1,2,3\\}$,whichlookslikethis:}&\\begin{tikzpicture}[->,nodedistance=2cm]\\node[draw,circle](A){$1$};\\node[draw,circle](B)[rightof=A]{$2$};\\node[draw,circle](C)[belowof=B]{$3$};\\draw(A)to[loopabove](A);\\draw(A)to(B);\\draw(A)to(C);\\draw(B)to(C);\\end{tikzpicture}"
+        ],
+        "target": [
+          "&\\begin{tikzpicture}[->,nodedistance=2cm]\\node[draw,circle](A){$1$};\\node[draw,circle](B)[rightof=A]{$2$};\\node[draw,circle](C)[belowof=B]{$3$};\\node[draw,circle](D)[rightof=B]{$4$};\\draw(A)to[loopabove](A);\\draw(A)to(B);\\draw(A)to(C);\\draw(B)to(C);\\end{tikzpicture}\\intertext{Ildiffèredugraphe$\\tuple{V',E}$où$V'=\\{1,2,3\\}$,représentéci-dessous:}&\\begin{tikzpicture}[->,nodedistance=2cm]\\node[draw,circle](A){$1$};\\node[draw,circle](B)[rightof=A]{$2$};\\node[draw,circle](C)[belowof=B]{$3$};\\draw(A)to[loopabove](A);\\draw(A)to(B);\\draw(A)to(C);\\draw(B)to(C);\\end{tikzpicture}"
+        ]
+      }
+    ]
+  },
+  {
+    "unit_id": "OLP-0019",
+    "file": "operations.tex",
+    "source_math_spans": 48,
+    "target_math_spans": 47,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "A"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "A"
+        ],
+        "target": []
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "\\Int"
+        ],
+        "target": []
+      }
+    ]
+  },
+  {
+    "unit_id": "OLP-0016",
+    "file": "orders.tex",
+    "source_math_spans": 117,
+    "target_math_spans": 116,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "\\Bin^*"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "\\Bin^*"
+        ],
+        "target": []
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "R^+"
+        ],
+        "target": []
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "<"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "<"
+        ],
+        "target": []
+      }
+    ]
+  },
+  {
+    "unit_id": "OLP-0013",
+    "file": "reflections.tex",
+    "source_math_spans": 25,
+    "target_math_spans": 25,
+    "differences": []
+  },
+  {
+    "unit_id": "OLP-0012",
+    "file": "relations-as-sets.tex",
+    "source_math_spans": 83,
+    "target_math_spans": 85,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "A"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "A"
+        ],
+        "target": []
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "I=\\Id{\\Nat}",
+          "I"
+        ]
+      }
+    ]
+  },
+  {
+    "unit_id": "OLP-0011",
+    "file": "relations-complete.tex",
+    "source_math_spans": 0,
+    "target_math_spans": 0,
+    "differences": []
+  },
+  {
+    "unit_id": "OLP-0014",
+    "file": "special-properties.tex",
+    "source_math_spans": 47,
+    "target_math_spans": 48,
+    "differences": [
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "A"
+        ]
+      }
+    ]
+  },
+  {
+    "unit_id": "OLP-0018",
+    "file": "trees.tex",
+    "source_math_spans": 109,
+    "target_math_spans": 107,
+    "differences": [
+      {
+        "kind": "delete",
+        "source": [
+          "y"
+        ],
+        "target": []
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "T"
+        ],
+        "target": []
+      },
+      {
+        "kind": "replace",
+        "source": [
+          "z\\inX\\setminusB"
+        ],
+        "target": [
+          "z\\inA\\setminusB"
+        ]
+      },
+      {
+        "kind": "insert",
+        "source": [],
+        "target": [
+          "X",
+          "A"
+        ]
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "\\sqsubseteq"
+        ],
+        "target": []
+      },
+      {
+        "kind": "delete",
+        "source": [
+          "A"
+        ],
+        "target": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,90 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: equivalence-relations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{rel}{eqv}
+
+\olsection{Relations d’équivalence}
+
+La relation d’identité sur un ensemble est réflexive, symétrique et
+transitive. Les relations~$R$ qui possèdent ces trois propriétés sont
+très courantes.
+
+\begin{defn}[Relation d’équivalence]
+Une relation $R \subseteq A^2$ réflexive, symétrique et transitive est
+appelée une \emph{relation d’équivalence}. Deux !!{element}s $x$ et $y$
+de~$A$ sont dits \emph{$R$-équivalents} si~$Rxy$.
+\end{defn}
+
+Les relations d’équivalence conduisent à la notion de \emph{classe
+d’équivalence}. Une relation d’équivalence découpe son domaine en blocs
+qui forment une partition.\footnote{Précision terminologique : l’original
+emploie ici « partitions » pour désigner les blocs d’une même partition.}
+Dans chaque bloc, tous les objets sont en relation les uns avec les autres ;
+aucun objet d’un bloc n’est en relation avec un objet d’un autre bloc.
+Il est parfois utile de parler \emph{directement} de ces blocs.
+C’est pourquoi nous introduisons la définition suivante.
+
+\begin{defn}\ollabel{def:equivalenceclass}
+Soit $R \subseteq A^2$ une relation d’équivalence. Pour chaque $x \in A$,
+la \emph{classe d’équivalence} de $x$ dans~$A$ est l’ensemble
+$\equivrep{x}{R} = \Setabs{y \in A}{Rxy}$. L’\emph{ensemble quotient}
+de $A$ par~$R$ est $\equivclass{A}{R} = \Setabs{\equivrep{x}{R}}{x \in A}$,
+c’est-à-dire l’ensemble de ces classes d’équivalence.
+\end{defn}
+
+Le résultat suivant justifie cette définition et explique pourquoi les
+classes d’équivalence forment bien les blocs d’une partition de~$A$.
+
+\begin{prop}
+Si $R \subseteq A^2$ est une relation d’équivalence, alors $Rxy$ si et
+seulement si $\equivrep{x}{R} = \equivrep{y}{R}$.
+\end{prop}
+
+\begin{proof}
+Pour le sens direct, supposons $Rxy$ et soit $z \in \equivrep{x}{R}$.
+Par définition, $Rxz$. Comme $R$ est une relation d’équivalence, on a $Ryz$.
+Explicitons ce raisonnement : de $Rxy$ et de la symétrie de~$R$, on tire
+$Ryx$ ; de $Rxz$ et de la transitivité de~$R$, on tire alors~$Ryz$.
+Ainsi, $z \in \equivrep{y}{R}$. Puisque ce raisonnement vaut pour tout
+tel objet, $\equivrep{x}{R} \subseteq \equivrep{y}{R}$. De la même manière,
+$\equivrep{y}{R} \subseteq \equivrep{x}{R}$. Par extensionnalité,
+$\equivrep{x}{R} = \equivrep{y}{R}$.
+
+Pour la réciproque, supposons $\equivrep{x}{R} = \equivrep{y}{R}$.
+Comme $R$ est réflexive, $Ryy$, donc $y \in \equivrep{y}{R}$.
+L’hypothèse $\equivrep{x}{R} = \equivrep{y}{R}$ donne alors
+$y \in \equivrep{x}{R}$. On a donc $Rxy$.
+\end{proof}
+
+\begin{ex}
+L’arithmétique modulaire fournit un exemple intéressant de relation
+d’équivalence. Pour tous $a,b \in \Nat$ et $n \in \PosInt$,\footnote{Précision
+éditoriale : on prend ici les deux nombres dans les entiers naturels,
+zéro compris, pour que la relation soit définie sur tout le domaine du
+quotient ci-dessous. L’original les rangeait avec le module parmi les
+entiers strictement positifs.}
+on pose $a \equiv_n b$ si et seulement si la division de $a$ par~$n$
+donne le même reste que celle de $b$ par~$n$. En symboles : $a \equiv_n b$
+si et seulement s’il existe $k \in \Int$ tel que $a - b = kn$.
+Pour tout~$n$, $\equiv_n$ est une relation d’équivalence. Elle détermine
+exactement $n$ classes d’équivalence distinctes ; autrement dit,
+$\equivclass{\Nat}{\equiv_n}$ possède $n$ !!{element}s. Ces classes sont :
+l’ensemble des nombres divisibles par $n$ sans reste, soit
+$\equivrep{0}{\equiv_n}$ ; l’ensemble des nombres dont la division par $n$
+donne le reste~$1$, soit $\equivrep{1}{\equiv_n}$ ; \ldots ; et l’ensemble
+des nombres dont la division par~$n$ donne le reste~$n-1$, soit
+$\equivrep{n-1}{\equiv_n}$.
+\end{ex}
+
+\begin{prob}
+Montrez que $\equiv_n$ est une relation d’équivalence pour tout
+$n \in \PosInt$, et que $\equivclass{\Nat}{\equiv_n}$ possède exactement
+$n$ éléments.
+\end{prob}
+
+\end{document}

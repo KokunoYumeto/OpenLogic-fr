@@ -19,10 +19,10 @@
 \setlength{\emergencystretch}{2em}
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
-\hypersetup{pdftitle={OpenLogic : édition française — Ensembles},
+\hypersetup{pdftitle={OpenLogic : édition française — Ensembles et relations},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Chapitre introductif : ensembles, opérations et paradoxe de Russell},
-linkcolor=black,urlcolor=blue}
+pdfsubject={Ensembles, relations, ordres, graphes et arbres},
+linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
 \begin{titlingpage}
@@ -32,17 +32,17 @@ linkcolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Ensembles\par}
+{\sffamily\huge Ensembles et relations\par}
 \vspace{5mm}
-{\large Extensionnalité, sous-ensembles, opérations,\\
-produits cartésiens et paradoxe de Russell\par}
+{\large Des ensembles aux relations d’équivalence,\\
+aux ordres, aux graphes et aux arbres\par}
 \vfill
-{\large Première livraison : un chapitre complet\par}
+{\large Deuxième livraison : deux chapitres complets\par}
 \vspace{4mm}
-Cette livraison comprend six sections et leur chapitre d'organisation,
-soit 7 des 722 unités de contenu prévues pour l'édition intégrale.
+Cette livraison comprend quatorze sections et leurs deux chapitres d’organisation,
+soit 16 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
-du chapitre original. Les précisions éditoriales sont signalées
+des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte.
 \vspace{7mm}
 \par\small
@@ -61,4 +61,8 @@ des traductions d'OpenLogic}
 \tableofcontents*
 \mainmatter
 \olimport[content/sets-functions-relations/sets]{sets}
+\olimport[content/sets-functions-relations/relations]{relations-complete}
+\backmatter
+\bibliographystyle{plainnat}
+\bibliography{../../bib/open-logic}
 \end{document}

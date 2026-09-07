@@ -313,3 +313,300 @@ Confiance : high — Défauts constatés dans le PDF et le journal de compilatio
 Question de réexamen : Vérifier les autres langues et macros de ponctuation lors des chapitres suivants, sans extrapoler cette correction à des opérateurs mathématiques.
 
 Segments : OLP-0005-B04, OLP-0005-B08, OLP-0005-B10, OLP-0010-B05, OLP-0010-B11 ; passages : L06.
+
+# Relations : premières sections
+
+Ces choix concernent les trois premières unités du chapitre Relations, intégré dans la présente livraison.
+
+## C27 — relation d’identité ; strictement inférieur/supérieur
+
+Autre solution : relation d’égalité ; inférieur/supérieur sans précision.
+
+Motif : Identité conserve la relation que chaque objet entretient avec lui-même ; strictement distingue les relations hors diagonale des relations comprenant la diagonale.
+
+Confiance : high — Définitions et exemples de H07 ainsi que les formules OLP concordent.
+
+Question : Employer identité systématiquement lorsqu’il s’agit d’une relation ensembliste, même si le prédicat est nommé égalité ?
+
+Segments : OLP-0012-B04, OLP-0012-B09 ; passages : H07.
+
+## C28 — définir localement I=Id_Nat avec une note éditoriale
+
+Autre solution : laisser I implicite ou remplacer I dans toutes les formules.
+
+Motif : La notation Id_A était définie, mais I apparaissait ensuite sans définition. L’ajout minimal permet de conserver K=L∪I et H=G∪I à l’identique.
+
+Confiance : high — Lecture directe du fichier et définition de la diagonale ; aucune autre signification de I n’est introduite.
+
+Question : Faut-il étendre cette notation I aux seules lignes de l’exemple ? La traduction la limite déjà par ici.
+
+Segments : OLP-0012-B09 ; passages : H05, H07.
+
+## C29 — relation sur un ensemble fixé ; aucun couple ou tout couple
+
+Autre solution : relation quelconque entre tous les objets sans domaine.
+
+Motif : Le domaine A fait partie de la définition et explique la relation vide et universelle ; il ne crée pas d’ensemble de toutes les relations ou de tous les ensembles.
+
+Confiance : high — Restriction au produit A² explicitement présente dans H04 et OLP.
+
+Question : Le mot universelle appelle-t-il un rappel du domaine dans les chapitres ultérieurs ?
+
+Segments : OLP-0012-B08, OLP-0012-B10 ; passages : H04.
+
+## C30 — identité métaphysique ; traiter certaines relations comme des ensembles
+
+Autre solution : égalité ontologique ; affirmer qu’elles sont littéralement ces ensembles.
+
+Motif : La prudence philosophique de l’original porte sur l’identification, sans remettre en cause l’usage mathématique de la représentation. Les modalisations et certaines sont conservées.
+
+Confiance : medium-high — Sens contrôlé sur l’anglais ; le canon apporte un contraste relation/ensemble, pas une doctrine métaphysique indépendante.
+
+Question : Identité métaphysique est-il le meilleur choix pour identity fact dans ce passage précis ?
+
+Segments : OLP-0013-B03, OLP-0013-B07 ; passages : L13.
+
+## C31 — réductionnisme ensembliste ; exclure l’existence
+
+Autre solution : réduction aux ensembles ; nier comme simple opinion.
+
+Motif : Le premier choix conserve le nom de la position philosophique. Le second indique que l’axiomatique entraîne la non-existence, tout en gardant les deux branches du renvoi conditionnel.
+
+Confiance : medium-high — Les deux codages et l’argument par l’ensemble universel sont conservés ; la référence Benacerraf1965 est celle de la source OLP.
+
+Question : Vérifier ultérieurement le lexique philosophique auprès d’un texte francophone spécialisé sans attribuer cette validation aux cours mathématiques actuels.
+
+Segments : OLP-0013-B04, OLP-0013-B05 ; passages : L02, L06, L13.
+
+## C32 — prédicat ; termes singuliers ; proposition
+
+Autre solution : relation-objet ; mots ; phrase.
+
+Motif : L’argument distingue ce qui sert à prédiquer de trois expressions qui désignent des objets. Termes singuliers conserve le niveau conceptuel de l’anglais, et proposition garde la question de ce qui est exprimé.
+
+Confiance : medium — Fidélité au passage anglais certaine ; attestation française spécialisée de toute la série encore limitée.
+
+Question : Le contexte français préfère-t-il énoncé à proposition ici, sans confondre phrase et contenu ?
+
+Segments : OLP-0013-B06 ; passages : L13.
+
+## C33 — la tasse le pot à crayons la table
+
+Autre solution : la tasse pot à crayons la table.
+
+Motif : La suite doit rester volontairement dépourvue de prédication ; les trois groupes nominaux ne doivent pas devenir une phrase française assertive. Ajouter l’article au groupe central rend les trois désignations identifiables.
+
+Confiance : medium-high — Structure de liste de noms conservée ; ce choix ne prétend pas être une citation française canonique.
+
+Question : La suite conserve-t-elle assez nettement le caractère volontairement absurde de l’original ?
+
+Segments : OLP-0013-B06 ; passages : L13.
+
+# Relations : chapitre complet rédigé
+
+Choix effectués pendant la traduction ; lecteur compilé, vérifié visuellement et reproduit à l’identique. Les questions restent des pistes de révision, sans condition humaine de publication.
+
+## C34 — réflexive, irréflexive, antisymétrique et asymétrique ; chaque fois que ; aucun couple
+
+Autre solution : non réflexive pour irréflexive ; non symétrique pour antisymétrique ; anti-symétrique avec trait d’union.
+
+Motif : Irréflexive nie chaque boucle, alors que non réflexive nie la propriété universelle. L’antisymétrie autorise la diagonale, l’asymétrie l’exclut. La graphie soudée est adoptée comme choix orthographique ; le cours consulté emploie un trait d’union.
+
+Confiance : high — Les quantificateurs sont contrôlés sur H06 et les définitions anglaises. La graphie est un choix éditorial distinct de la preuve.
+
+Question : La graphie soudée est-elle préférable pour assurer la cohérence avec asymétrique dans cette édition ?
+
+Segments : OLP-0014-B05, OLP-0014-B08, OLP-0014-B09, OLP-0014-B12, OLP-0014-B13 ; passages : H06, H07.
+
+## C35 — relation connexe ; connexité
+
+Autre solution : relation totale ; comparabilité des éléments distincts.
+
+Motif : Connexe conserve une propriété applicable aussi aux ordres stricts, où la diagonale est exclue. La condition x différent de y reste explicite. Employer totale avant de définir ordre total risquerait de confondre deux usages.
+
+Confiance : medium — La définition OLP est préservée exactement ; le mot connexe n’est pas attesté par les passages primaires actuellement indexés. Le canon fournit ici le registre des définitions seulement.
+
+Question : Un lecteur francophone préférerait-il comparabilité à connexité pour éviter l’association avec la connexité des graphes ?
+
+Segments : OLP-0014-B10, OLP-0016-B07, OLP-0016-B14, OLP-0016-B22, OLP-0016-B28 ; passages : H06, H13, H14.
+
+## C36 — existence de relations ni réflexives ni irréflexives sous au moins deux éléments
+
+Autre solution : existence sur tout ensemble non vide.
+
+Motif : Sur un singleton, la relation vide est irréflexive et la diagonale est réflexive : il n’y a pas de troisième relation. La précision est donnée dans le texte avec une note explicite.
+
+Confiance : high — Contre-exemple exhaustif sur singleton et construction avec une seule boucle sur un domaine de deux éléments.
+
+Question : La note présente-t-elle suffisamment clairement le statut de correction de la source ?
+
+Segments : OLP-0014-B14 ; passages : H06.
+
+## C37 — blocs d’une partition ; ensemble quotient ; sens direct et réciproque
+
+Autre solution : plusieurs partitions ; quotient sans nom ensemble ; direction de gauche à droite.
+
+Motif : Les classes sont les blocs, non chacune une partition du domaine. Ensemble quotient nomme explicitement l’ensemble de classes. Les deux sens de la preuve restent séparés avec les usages de symétrie, transitivité et réflexivité.
+
+Confiance : high — Définition de classe et égalité ensembliste contrôlées ; la preuve couvre les mêmes dépendances que l’anglais.
+
+Question : Faut-il ajouter ultérieurement une preuve autonome de disjonction et recouvrement, plutôt que laisser leur déduction au lecteur comme ici ?
+
+Segments : OLP-0015-B07, OLP-0015-B08, OLP-0015-B09, OLP-0015-B11, OLP-0015-B12 ; passages : H09, L01, L07.
+
+## C38 — a et b naturels, n strictement positif ; reste de la division
+
+Autre solution : a, b et n tous strictement positifs comme dans la phrase source.
+
+Motif : Le quotient porte sur les naturels et comprend la classe de zéro ; la relation doit être définie pour zéro. Le module reste strictement positif, et le témoin multiplicateur reste un entier relatif.
+
+Confiance : high — Le domaine du quotient, la classe de zéro et la formule a-b=kn concordent après cette correction locale déclarée.
+
+Question : La précision sur le domaine est-elle assez proche de la première définition de la congruence ?
+
+Segments : OLP-0015-B13, OLP-0015-B14 ; passages : H08, L04.
+
+## C39 — préordre ; ordre partiel comprenant le cas total ; ordre strict avec asymétrie explicite
+
+Autre solution : ordre partiel signifiant non total ; supprimer asymétrique comme redondant.
+
+Motif : L’inclusion des ordres totaux dans les ordres partiels correspond à OLP et H13. L’asymétrie découle des deux autres propriétés mais reste énoncée comme dans la source.
+
+Confiance : high — Définitions primaires concordantes et absence de changement de convention.
+
+Question : Le maintien de la condition redondante aide-t-il la progression pédagogique avant la comparaison avec d’autres manuels ?
+
+Segments : OLP-0016-B05, OLP-0016-B06, OLP-0016-B07, OLP-0016-B08, OLP-0016-B13 ; passages : H13, H14.
+
+## C40 — de longueur inférieure ou égale à ; divisibilité
+
+Autre solution : pas plus long que ; division entière.
+
+Motif : La longueur est comparée sans identifier les mots. Divisibilité désigne l’existence d’un multiplicateur, pas l’opération de division euclidienne. La distinction entre domaines naturel et relatif reste décisive.
+
+Confiance : high — Les deux contre-exemples à l’antisymétrie et à la totalité sont conservés avec leurs domaines.
+
+Question : La locution longue sur la longueur reste-t-elle naturelle dans le cours sans un symbole lexical supplémentaire ?
+
+Segments : OLP-0016-B09, OLP-0016-B11 ; passages : H13, H07.
+
+## C41 — prolongement ; segment initial ; suites avec longueur ; non-linéarité si deux symboles distincts
+
+Autre solution : extension ; ordre non linéaire sur tout alphabet ; codage sans longueur.
+
+Motif : Prolongement rend le sens préfixe sans suggérer un surensemble. Un alphabet vide ou singleton donne un ordre linéaire. La longueur distingue les suites, comme la note de codage du premier chapitre le prévoit.
+
+Confiance : high — Contre-exemples aux petits alphabets explicites ; convention de suites compatible avec les arbres de mots.
+
+Question : Préfixe serait-il plus immédiat que segment initial pour les exemples informatiques, tout en conservant le terme ensembliste ?
+
+Segments : OLP-0016-B12, OLP-0018-B17 ; passages : L14, H02.
+
+## C42 — clôture réflexive ; clôture transitive ; note sur deux sens locaux de R+
+
+Autre solution : fermeture ; renommer uniformément R+ dans la source.
+
+Motif : Clôture suit le cours de logique consulté. OLP utilise R+ pour deux opérations différentes ; une note rend cette surcharge visible en gardant chaque formule originale.
+
+Confiance : high — Les deux définitions et leur domaine de validité sont comparées directement.
+
+Question : Une édition ultérieure devrait-elle harmoniser ce symbole à l’échelle du corpus plutôt que garder la surcharge signalée ?
+
+Segments : OLP-0016-B16, OLP-0016-B17, OLP-0019-B15, OLP-0019-B16, OLP-0019-B17 ; passages : H11, H14.
+
+## C43 — graphe orienté ; nœuds ou sommets ; arêtes ; se représente par un diagramme
+
+Autre solution : graphe dirigé ; vertices ; arcs exclusivement ; identifier le graphe au dessin.
+
+Motif : Le canon atteste les termes retenus, même arête pour le cas orienté. Se représente distingue l’objet de son dessin conformément à la définition par couple. La flèche va du premier sommet au second ; le sommet isolé demeure essentiel.
+
+Confiance : high — Texte et schémas français consultés ; deux diagrammes OLP inchangés.
+
+Question : Ajouter arcs comme synonyme des arêtes orientées apporterait-il une aide utile sans surcharger l’introduction ?
+
+Segments : OLP-0017-B04, OLP-0017-B05, OLP-0017-B06, OLP-0017-B07 ; passages : G01, G02, G03.
+
+## C44 — racine en bas ; arbre enraciné non vide ; bien ordonné ; plus petit élément
+
+Autre solution : arbre binaire récursif pouvant être vide ; élément minimal.
+
+Motif : Le vocabulaire du cours informatique est utile, mais sa convention d’arbre n’est pas celle d’OLP. Plus petit exige d’être inférieur à tous les éléments ; minimal serait trop faible pour un ordre partiel.
+
+Confiance : high — Sens du bon ordre vérifié dans Lyon ; représentation OLP et condition de racine préservées.
+
+Question : La transition du dessin fini à l’arbre ensembliste plus général mérite-t-elle un exemple transﬁni dans une future révision ?
+
+Segments : OLP-0018-B04, OLP-0018-B07, OLP-0018-B08, OLP-0018-B09 ; passages : T01, T02, L14.
+
+## C45 — successeur au sens immédiat ; enfant ; parent ; au plus un prédécesseur ; à branchement fini
+
+Autre solution : successeur quelconque ; descendant ; exactement un prédécesseur.
+
+Motif : La définition exclut tout nœud intermédiaire. Au plus un est indispensable pour les arbres infinis où un nœud limite peut ne pas avoir de prédécesseur immédiat. Le branchement compte ces seuls successeurs.
+
+Confiance : high — Quantificateurs et démonstration inchangés ; le canon informatique atteste parent et fils, enfant est le choix éditorial plus neutre.
+
+Question : Faut-il annoncer explicitement immédiat à chaque reprise du mot successeur ou sa définition suffit-elle ?
+
+Segments : OLP-0018-B10, OLP-0018-B11, OLP-0018-B12, OLP-0018-B13, OLP-0018-B14 ; passages : T01, T02, L14.
+
+## C46 — chaîne maximale ; domaine A dans z appartenant à A privé de B
+
+Autre solution : chaîne maximum ; conserver X non défini.
+
+Motif : Maximale signifie qu’aucun autre nœud ne peut être ajouté, non qu’elle ait la plus grande cardinalité. A est le domaine déclaré de l’arbre ; X est une coquille signalée en note.
+
+Confiance : high — La condition explicite de non-comparabilité contrôle la maximalité ; correction de variable vérifiable dans la source.
+
+Question : La phrase française conserve-t-elle assez clairement la portée existentielle de u pour chaque z extérieur ?
+
+Segments : OLP-0018-B15 ; passages : L14, T01.
+
+## C47 — partie non vide stable par passage aux segments initiaux
+
+Autre solution : partie fermée sous prolongement sans direction ni non-vacuité.
+
+Motif : La fermeture est vers les préfixes, non vers tous les prolongements. Non vide assure la racine vide selon la définition précédente. La précision ajoutée est signalée.
+
+Confiance : high — Le contre-exemple de la partie vide est immédiat ; toute partie non vide fermée vers les préfixes contient la suite vide.
+
+Question : La locution stable par passage aux segments initiaux est-elle préférable à fermée vers le bas pour ce lectorat ?
+
+Segments : OLP-0018-B17 ; passages : L14, T01.
+
+## C48 — lemme de König ; lemme faible de König ; branche infinie
+
+Autre solution : lemme de Koenig ; faible lemme ; chemin infini.
+
+Motif : Le nom conserve le codage diacritique TeX original. Branche renvoie à la chaîne maximale déjà définie ; faible qualifie la version du lemme sur les arbres binaires. T03 ne fournit que le registre de preuve, pas une validation française de ce théorème.
+
+Confiance : medium-high — Fidélité à l’énoncé OLP ; terminologie spécialisée encore sans passage primaire français dédié dans cet index.
+
+Question : La dénomination lemme faible de König doit-elle être préférée à forme faible du lemme de König dans le chapitre de calculabilité ?
+
+Segments : OLP-0018-B18, OLP-0018-B19 ; passages : T03.
+
+## C49 — relation inverse ; produit relatif suivant R puis S ; par récurrence
+
+Autre solution : relation réciproque ; composition R après S ; par récursion sans précision.
+
+Motif : L’inversion échange les coordonnées. Le produit R|S suit R puis S, comme S composé avec R dans H10. La notation OLP reste intacte ; la définition des puissances conserve son point de départ 1.
+
+Confiance : high — Formules directement comparées au témoin intermédiaire de H10 et aux coordonnées de H15.
+
+Question : Le terme produit relatif mérite-t-il un renvoi explicite au mot composition avant le chapitre sur les fonctions ?
+
+Segments : OLP-0019-B06, OLP-0019-B07, OLP-0019-B11, OLP-0019-B12, OLP-0019-B16 ; passages : H10, H15.
+
+## C50 — restriction à A par intersection avec A² ; image de A par R
+
+Autre solution : restriction du premier argument seul ; application de R à A.
+
+Motif : La restriction porte sur les deux coordonnées selon la formule OLP. Image évite la confusion avec une application comme objet fonctionnel et traduit le résultat ensembliste de l’opération.
+
+Confiance : high — Les formules et leurs exemples sont conservés ; H15 atteste image dans le cas fonctionnel seulement.
+
+Question : Faut-il employer image directe dans les reprises où une image réciproque apparaît aussi ?
+
+Segments : OLP-0019-B08, OLP-0019-B09, OLP-0019-B13, OLP-0019-B14 ; passages : H01, H04, H15.
+

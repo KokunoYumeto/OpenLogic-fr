@@ -1,98 +1,168 @@
 {
-  "batch": "sets-001",
-  "units": 7,
-  "prose_sections": 6,
-  "translated_text_blocks": 86,
-  "aligned_blocks": 121,
-  "structural_failures": [],
+  "release_gate": "pass_for_16_unit_two_chapter_reader",
+  "total_units": 722,
+  "validated_units": 16,
+  "aligned_blocks": 271,
+  "translated_text_blocks": 190,
   "checks": {
-    "source_hashes": "pass, affected 7 units against verified manifest",
-    "block_alignment": "pass, one-to-one source and target blank-line blocks inspected",
-    "UTF8_NFC": "pass",
-    "labels_assets_references_environment_order": "pass",
-    "no_placeholders": "pass",
-    "semantic_review": "Completed bounded review of all seven units; see SEMANTIC_REVIEW.md and disclosed source repairs.",
-    "math_parity": "All original mathematical spans retained, allowing one moved alphabet identifier; additions are title notation and disclosed editorial notes. Text inside formulas separately checked.",
-    "reader_build": "PASS: two fresh three-pass XeLaTeX builds under the global mutex; byte-identical PDF.",
-    "visual_QA": "PASS: all 11 rendered pages inspected; font/ligature/guillemet and automatic-reference grammar defects repaired.",
-    "untranslated_ordinary_prose": "No untranslated ordinary prose or placeholders in the seven published French units. The remaining 715 units are not claimed translated."
+    "source_identity": "All 722 raw source hashes verified at acquisition; 16 release unit identities checked against alignment.",
+    "structure": "No missing environments, labels, references, assets or citations in release units.",
+    "semantic_math": "Bounded review of both chapters; all corrections and mathematical-span differences disclosed.",
+    "untranslated_prose": "No ordinary untranslated prose or placeholders in 16 release units; no claim about the remaining 706.",
+    "typography": "UTF-8/NFC; French macro inflection, references, captions and citation contrast checked in actual PDF.",
+    "reader_build": "3 XeLaTeX passes plus BibTeX, continuously holding global TeX mutex.",
+    "visual_QA": "All 22 pages inspected; only citation-color issue repaired; no clipping, overlap, missing glyph or overfull box."
   },
-  "edition_total": 722,
-  "remaining_units": 715,
-  "full_edition_complete": false,
   "pdf": {
-    "filename": "openlogic-fr-ensembles.pdf",
-    "bytes": 86066,
-    "sha256": "90a3f14cf49035e929cdf18a47478e8970397e0e430c88497730f50ae7577cc3",
-    "pages": 11,
-    "exercises": 10,
-    "figures": 3
+    "filename": "openlogic-fr-ensembles-relations.pdf",
+    "bytes": 143290,
+    "sha256": "a03d56d49158bd5044761d260d47402e3cfecb9e940b7fe5a7f432c69a14a8a7",
+    "pages": 22,
+    "exercises": 16,
+    "numbered_figures": 3,
+    "additional_tikz_diagrams": 3
   },
   "reproducibility": {
     "byte_identical": true,
     "source_date_epoch": "1788739200",
-    "engine": "XeTeX / MiKTeX; see source log header",
     "build_receipts_sha256": [
-      "0f5a8db06b6ee6d672f3c3cbb4800855be4f31038563bbd8682bc25d58de7e4f",
-      "9c4046a275648f18fd7b5e348e6b458e41d008f49b9ca88fb17dd1be5185198c"
+      "db5f6901b4760ded7260c0818c3a5291109943f45bca75b3ce255dc62bcd3823",
+      "e4f9e40ca19a24e87b111f72ee6d484146d6f86306a457e958eab56e7b52543a"
     ],
-    "log_header": "This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) ("
+    "engine": "XeTeX / MiKTeX"
   },
   "visual_pages": [
     {
       "page": 1,
-      "png_sha256": "481e2ea00cbc815feaf7182ccbbb0a2e19c62c8f0729b5b03057a2d637671a90",
-      "visually_inspected": true
+      "png_sha256": "f4395fe611cfb69fe4f79a2de2b8c91cecaa91cda95de5c73f783e1da4924314",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 2,
-      "png_sha256": "0941aa02af5dd30eed15d191db959df3975b2a49ecae22c20d604db32ec1d331",
-      "visually_inspected": true
+      "png_sha256": "8a70043204328a758ddeb137996573864d39ca7a3d6ca9a7af81118dc386db73",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 3,
-      "png_sha256": "1b0b9b292a9c7c525d354be38091912a2d5f68c387994368fa570a7b799779e7",
-      "visually_inspected": true
+      "png_sha256": "ee941c2693256d306b59a4333556cae50f7cbd6cd5dc8e9f00175624dda2ebf5",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 4,
-      "png_sha256": "6d65f3e1c33b56758d3c4402cdbfa8671010be6466e9f2433e82b529c62f3eed",
-      "visually_inspected": true
+      "png_sha256": "eddb8b37b5cec744fa0b80ef4663cd3cd65c0133f9116d93948c4b9ea88e9220",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 5,
-      "png_sha256": "e64913c2c674d3751ceee322ba1ce95410724f362d06479634f4a8994fcc3fe1",
-      "visually_inspected": true
+      "png_sha256": "a91757380fde1ea098d34fb652f4263bbd4e5c644e2272636516a43820b0b125",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 6,
-      "png_sha256": "c4cc438343f20f9eee92ca2a5949d4f4d050e712a9e097b55ec1ce6b49102693",
-      "visually_inspected": true
+      "png_sha256": "1e9a0b7fdc3c865dc12052625b8f101d66551be03b4a6e15de1e1423f199f50b",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 7,
-      "png_sha256": "101c7164601ab4f72a6756664143c63d975b4546b68f738ac726952e27df7d74",
-      "visually_inspected": true
+      "png_sha256": "bedc2fc482135856304ac1b64c673bb39fc2b3979b475f55153f8e9844b2831e",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 8,
-      "png_sha256": "728e859f18c5d903cacbf5cbd61b1df6de67fc7397655c05089803adcf5d4eb7",
-      "visually_inspected": true
+      "png_sha256": "538a48faf61c6b982bafc8fa3661e087f2f1853ea7ad47f23f39dc89ffe0a340",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 9,
-      "png_sha256": "4e552fa56c27d5e24e70ef7ffd9c2e33ec75454339d5d30ef6617c44c94151b1",
-      "visually_inspected": true
+      "png_sha256": "ed9a7fd9154013e0d2d75f278490f9c719b05c474f721ddc66aa605bb1147c67",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 10,
-      "png_sha256": "f1726e3d08c0cf3f9f48b710538998f9675645f26cec6838e66ce729ed865b97",
-      "visually_inspected": true
+      "png_sha256": "21028df80cbe03ad8f26d073b73dc9b22ad7d42cc98575db61e440fa85ae2317",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     },
     {
       "page": 11,
-      "png_sha256": "b7ca4f8f8b527872b87bfa9694bdd5edb3a82d6816f99401858f463fea575be0",
-      "visually_inspected": true
+      "png_sha256": "0ab0c9729e12fab3ec56edd178009c4c9962c6058a288dab2df5b57d64d63ccf",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 12,
+      "png_sha256": "257e87a30548f5b8d55346626990ad7c9b10928334e417cec7e8efab35218616",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 13,
+      "png_sha256": "2d743bd55c593b291cf00bd03da0268176764c58c0708cc4274a420c6f1953fe",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 14,
+      "png_sha256": "1cb13bef3b8bb8faf550750ad40176f5633c8a1d829f67ae8bcbf6ba1060bfd0",
+      "visually_inspected": true,
+      "inspection": "corrected final page"
+    },
+    {
+      "page": 15,
+      "png_sha256": "3bec32aa60ba3a0f5a8b378667e625a96528d3866dfafc360d8ecef875681d45",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 16,
+      "png_sha256": "5f43644713f1f4db685e2106e6350fdf35a9f9ac743c4b811ff9813ad9796ce3",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 17,
+      "png_sha256": "122c2f8913974fb983cabcb8613979c6030a356477ba179d67fc4a6ac0989f32",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 18,
+      "png_sha256": "c66b9e9b14c86334667931a9e1fcb2faf46e036fe377628829e1266782d32667",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 19,
+      "png_sha256": "4f9e21d974e201edbfe50bb3d1e4143c479276c6b15cf107c27f76e5600080db",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 20,
+      "png_sha256": "7b599a88ab7bc04f946450db671b596dba2150d6897c4eb8c5cf07040cc4ede7",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 21,
+      "png_sha256": "eb89cd2a145ce8087d601d4c8f1e1ada79479ded5dc9e62b89a3e92ff04cb5c8",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
+    },
+    {
+      "page": 22,
+      "png_sha256": "0b107be6cb85ca8060906d9143410528ffbb26a448e4333612fe2d761787b615",
+      "visually_inspected": true,
+      "inspection": "visually inspected build-012, identical final raster"
     }
   ],
   "nonfatal_warnings": [
@@ -101,9 +171,5 @@
     "LaTeX Warning: You have requested file `',",
     "Class memoir Warning: \\addtodef is marked deprecated and will be"
   ],
-  "manager_review": {
-    "scope": "basics and unions-and-intersections only; not whole-chapter acceptance",
-    "review_sha256": "de67753bc97bbaa9b078b0bcf06e1eb8465c246a35b46724a4c8acf36b307ca2"
-  },
-  "release_gate": "pass_for_sets_chapter_only"
+  "independent_review": "Manager independently read only basics.tex and unions-and-intersections.tex of the first chapter; no independent whole-edition endorsement."
 }

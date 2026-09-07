@@ -1,0 +1,90 @@
+% Part: sets-functions-relations
+% Chapter: relations
+% Section: special-properties
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{rel}{prp}
+\olsection{Propriétés particulières des relations}
+
+\begin{intro}
+Certains types de relations sont si fréquents qu’on leur a donné des noms
+particuliers. Ainsi, $\le$ et~$\subseteq$ mettent les objets de leurs domaines
+respectifs (par exemple $\Nat$ pour~$\le$ et $\Pow{A}$ pour~$\subseteq$)
+en relation de façons semblables. Pour préciser ce qui rapproche ces
+relations et ce qui les distingue, nous les classons selon certaines
+propriétés qu’elles peuvent posséder. Certaines combinaisons de ces
+propriétés définissent des types de relations particulièrement importants :
+les relations d’ordre et les relations d’équivalence.
+\end{intro}
+
+\begin{defn}[Réflexivité]
+Une relation $R \subseteq A^2$ est \emph{réflexive} si et seulement si,
+pour tout $x \in A$, on a $Rxx$.
+\end{defn}
+
+\begin{defn}[Transitivité]
+Une relation $R \subseteq A^2$ est \emph{transitive} si et seulement si,
+chaque fois que $Rxy$ et $Ryz$, on a aussi $Rxz$.
+\end{defn}
+
+\begin{defn}[Symétrie]
+Une relation~$R \subseteq A^2$ est \emph{symétrique} si et seulement si,
+chaque fois que $Rxy$, on a aussi~$Ryx$.
+\end{defn}
+
+\begin{defn}[Antisymétrie]
+Une relation~$R \subseteq A^2$ est \emph{antisymétrique} si et seulement si,
+chaque fois que l’on a à la fois $Rxy$ et $Ryx$, on a $x=y$
+(autrement dit : si $x\neq y$, alors $\lnot Rxy$ ou $\lnot Ryx$).
+\end{defn}
+
+\begin{explain}
+Pour une relation symétrique, $Rxy$ et $Ryx$ sont toujours vraies toutes
+les deux ou fausses toutes les deux. Pour une relation antisymétrique,
+$Rxy$ et $Ryx$ ne peuvent être vraies toutes les deux que si $x = y$.
+Cela n’\emph{exige} pas que $Rxy$ et $Ryx$ soient vraies lorsque $x = y$ ;
+cette possibilité n’est simplement pas exclue. Une relation antisymétrique
+peut donc être réflexive, mais toute relation antisymétrique n’est pas
+nécessairement réflexive. Remarquons aussi qu’être antisymétrique et ne pas
+être symétrique sont deux conditions différentes. Une relation peut même
+être à la fois symétrique et antisymétrique : c’est le cas, par exemple,
+de la relation d’identité.
+\end{explain}
+
+\begin{defn}[Connexité]
+Une relation $R \subseteq A^2$ est \emph{connexe} si, pour tous $x,y\in A$,
+lorsque $x \neq y$, on a $Rxy$ ou~$Ryx$.
+\end{defn}
+
+\begin{prob}
+Donnez des exemples de relations qui sont (a) réflexives et symétriques
+mais non transitives, (b) réflexives et antisymétriques,
+(c) antisymétriques et transitives mais non réflexives, et
+(d) réflexives, symétriques et transitives. N’utilisez pas de relations
+portant sur des nombres ou des ensembles.
+\end{prob}
+
+\begin{defn}[Irréflexivité]
+Une relation $R \subseteq A^2$ est dite \emph{irréflexive} si,
+pour tout $x \in A$, on n’a pas $Rxx$.
+\end{defn}
+
+\begin{defn}[Asymétrie]
+Une relation $R \subseteq A^2$ est dite \emph{asymétrique} s’il n’existe
+aucun couple $x,y\in A$ pour lequel on ait à la fois $Rxy$ et~$Ryx$.
+\end{defn}
+
+Si $A \neq \emptyset$, aucune relation irréflexive sur~$A$ n’est réflexive,
+et toute relation asymétrique sur~$A$ est aussi antisymétrique.
+Il existe cependant, dès que $A$ contient au moins deux éléments,
+des relations $R \subseteq A^2$ qui ne sont ni réflexives ni
+irréflexives ; et, sur tout ensemble non vide, il existe des relations
+antisymétriques qui ne sont pas asymétriques.\footnote{Précision éditoriale :
+la première affirmation d’existence de l’original demande au moins deux
+éléments. Sur un singleton, les seules relations sont la relation vide,
+irréflexive, et la relation d’identité, réflexive.}
+
+\end{document}

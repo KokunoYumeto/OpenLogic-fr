@@ -1,0 +1,93 @@
+% Partie : sets-functions-relations
+% Chapitre : relations
+% Section : reflections
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{rel}{ref}
+\olsection{Réflexions philosophiques}
+
+Dans la \olref[set]{sec}, nous avons défini les relations comme
+certains ensembles. Arrêtons-nous un instant sur une question
+philosophique : que \emph{fait} une telle définition ?
+Il est fort douteux que nous voulions dire avoir
+\emph{découvert} des identités métaphysiques : par exemple,
+que la relation d'ordre sur $\Nat$ \emph{se serait révélée être}
+l'ensemble $R= \Setabs{\tuple{n,m}}{n, m \in \Nat\text{ et }
+n < m}$ défini dans la \olref[set]{sec}.
+Voici trois raisons d'en douter.
+
+Premièrement, dans la \olref[set][pai]{wienerkuratowski},
+nous avons défini $\tuple{a, b} = \{\{a\}, \{a, b\}\}$.
+Considérons plutôt la définition
+$\lVert a, b\rVert = \{\{b\}, \{a, b\}\} = \tuple{b,a}$.
+Lorsque $a \neq b$, on a
+$\tuple{a, b} \neq \lVert a,b\rVert$.
+Pourtant, nous aurions tout aussi bien pu choisir
+$\lVert a,b\rVert$ comme définition d'un couple, au lieu de
+$\tuple{a,b}$. Les deux définitions auraient aussi bien convenu.
+Nous avons donc deux candidats tout aussi satisfaisants
+pour «~être~» la relation d'ordre sur les entiers naturels :
+\begin{align*}
+		R &= \Setabs{\tuple{n,m}}{n, m \in \Nat \text{ et }n < m}\\
+		S &= \Setabs{\lVert n,m\rVert}{n, m \in \Nat \text{ et }n < m}.
+\end{align*}
+Puisque $R \neq S$, par extensionnalité, ils ne peuvent
+manifestement pas être \emph{tous deux} identiques à la relation
+d'ordre sur~$\Nat$. Mais il serait arbitraire, et donc quelque
+peu embarrassant, d'affirmer que c'est $R$, plutôt que $S$
+(ou l'inverse), qui \emph{est}, dans les faits, cette relation
+d'ordre. Il s'agit d'un exemple très simple d'un argument
+contre le réductionnisme ensembliste, rendu célèbre par
+Benacerraf en \citeyear{Benacerraf1965}.
+Nous y reviendrons à plusieurs reprises.
+
+Deuxièmement, si \emph{toute} relation doit être identifiée
+à un ensemble, la relation d'appartenance elle-même, $\in$,
+devrait être un ensemble particulier : précisément,
+$\Setabs{\tuple{x,y}}{x \in y}$.
+Mais cet ensemble existe-t-il ?
+Le paradoxe de Russell nous avertit que son existence
+ne va pas de soi. En fait,
+\oliflabeldef{cumul:::part}{la théorie des ensembles développée
+dans la partie \olref[cumul][][]{part} \emph{exclura} l'existence
+de cet ensemble.\footnote{En anticipant sur la suite, voici
+pourquoi. Supposons, pour raisonner par l'absurde, que
+$I = \Setabs{\tuple{x,y}}{x \in y}$ existe.
+Alors $\bigcup \bigcup I$ est l'ensemble universel,
+ce qui contredit le résultat \olref[sfr][z][sep]{thm:NoUniversalSet}.}}{on peut
+développer rigoureusement la théorie des ensembles sous forme
+axiomatique, et cette théorie exclura effectivement l'existence
+de cet ensemble.}
+Ainsi, même si certaines relations peuvent être traitées
+comme des ensembles, la relation d'appartenance devra
+constituer un cas particulier.
+
+Troisièmement, en «~identifiant~» les relations à des ensembles,
+nous nous sommes autorisés à écrire $Rxy$ pour
+$\tuple{x,y} \in R$. Cela convient si la relation
+d'appartenance, «~$\in$~», est traitée \emph{comme} un prédicat.
+Mais si «~$\in$~» désigne un certain type d'ensemble,
+l'expression «~$\tuple{x,y} \in R$~» ne consiste plus
+qu'en trois termes singuliers désignant des ensembles :
+«~$\tuple{x,y}$~», «~$\in$~» et «~$R$~».
+Or une telle liste de noms n'est pas plus capable d'exprimer
+une proposition que la suite de mots dépourvue de sens :
+«~la tasse le pot à crayons la table~».
+Là encore, même si certaines relations peuvent être traitées
+comme des ensembles, la relation d'appartenance doit constituer
+un cas particulier. Cet argument réunit une version simple
+du paradoxe frégéen du concept \emph{cheval} et une célèbre
+objection que Wittgenstein a adressée à Russell.
+
+Que faut-il en conclure ?
+Il n'y a rien de \emph{fautif} à dire que les relations sur
+les nombres sont des ensembles, à condition de comprendre
+dans quel esprit on le dit. Nous n'affirmons pas une identité
+métaphysique. Nous remarquons simplement que, dans certains
+contextes, on peut \emph{traiter} certaines relations comme
+certains ensembles, et que c'est ce que nous ferons.
+
+\end{document}

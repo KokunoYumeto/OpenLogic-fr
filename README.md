@@ -2,15 +2,15 @@
 
 Une édition française du manuel ouvert de logique mathématique de l’[Open Logic Project](https://openlogicproject.org/), avec ses démonstrations, exemples, figures et exercices.
 
-**Première livraison : le chapitre « Ensembles » est complet.** Ses six sections et son fichier de chapitre représentent **7 des 722 unités** prévues pour l’édition intégrale. Les 715 autres unités restent à traduire et à intégrer. Cette livraison n’est donc pas présentée comme le manuel complet.
+**Deuxième livraison : les chapitres « Ensembles » et « Relations » sont complets.** Leurs quatorze sections et deux fichiers de chapitre représentent **16 des 722 unités** prévues pour l’édition intégrale. Les 706 autres unités restent à achever et à intégrer.
 
-[Lire le chapitre en PDF](reader/openlogic-fr-ensembles.pdf) · [Sources françaises](fr/content/sets-functions-relations/sets) · [Choix éditoriaux](review/CHOICES.md) · [Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/)
+[Lire les deux chapitres en PDF](reader/openlogic-fr-ensembles-relations.pdf) · [Sources françaises](fr/content/sets-functions-relations) · [Choix éditoriaux](review/CHOICES.md) · [Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/)
 
-Version archivée avec DOI : [10.5281/zenodo.22650158](https://doi.org/10.5281/zenodo.22650158).
+Livraisons archivées : [versions Zenodo](https://zenodo.org/records/22650158).
 
-Le chapitre traite de l’extensionnalité, des sous-ensembles et de l’ensemble des parties, des principaux ensembles de nombres, des mots et des suites, des réunions et intersections, des produits cartésiens et du paradoxe de Russell. Les dix exercices sont réunis en fin de chapitre.
+Le lecteur de 22 pages traite des ensembles et de leurs opérations, du paradoxe de Russell, des relations binaires, de leurs interprétations philosophiques, des relations d’équivalence, des ordres, des graphes, des arbres et des opérations sur les relations. Les seize exercices sont réunis à la fin des chapitres. Les figures et les démonstrations sont conservées.
 
-La traduction s’appuie sur des passages précisément repérés de cours universitaires français. Les références documentent la terminologie, certaines formulations et les conventions ; le texte anglais reste l’autorité pour les énoncés traduits. Les alternatives, leurs motifs et les incertitudes sont consignées dans le dossier de révision. La traduction et sa révision ont été assistées par IA. Aucune validation humaine indépendante du chapitre entier n’est revendiquée.
+La traduction s’appuie sur des passages précisément repérés de cours universitaires français. Les références documentent la terminologie, certaines formulations et les conventions ; le texte anglais reste l’autorité pour les énoncés traduits. Cinquante choix avec leurs alternatives, motifs et incertitudes sont consignés dans le dossier de révision. La traduction et sa révision ont été assistées par IA. Aucune validation humaine indépendante des chapitres entiers n’est revendiquée.
 
 Les précisions apportées aux exemples et aux conditions d’existence sont signalées dans le lecteur. Le dossier de provenance distingue ces corrections de la traduction. Les PDF de référence externes ne sont pas redistribués.
 
@@ -33,7 +33,7 @@ Sous Windows, avec PowerShell, MiKTeX ou une distribution compatible fournissant
 .\tools\Build-Reader.ps1 -ScratchRoot C:\chemin\vers\un-nouveau-dossier
 ```
 
-Le dossier doit être nouveau. Le script y assemble une copie des sources et effectue trois passes de XeLaTeX. Le PDF se trouve ensuite dans `source/locale/fr/reader.pdf`. Le script fixe la date de compilation et utilise le mutex `Global\InterlanguageTeXSlotV1` pendant toutes les passes. Si le créneau est occupé, aucun moteur TeX n’est lancé.
+Le dossier doit être nouveau. Le script y assemble une copie des sources et effectue trois passes de XeLaTeX avec BibTeX après la première. Le PDF se trouve ensuite dans `source/locale/fr/reader.pdf`. Le script fixe la date de compilation et utilise le mutex `Global\InterlanguageTeXSlotV1` pendant toutes les passes et la bibliographie. Si le créneau est occupé, aucun moteur TeX n’est lancé.
 
 Deux compilations dans des dossiers distincts ont produit un PDF identique octet pour octet. Les versions et empreintes pertinentes figurent dans `provenance/QA.json`.
 
