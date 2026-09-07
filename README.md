@@ -6,7 +6,7 @@ Une édition française du manuel ouvert de logique mathématique de l’[Open L
 
 [Lire les deux chapitres en PDF](reader/openlogic-fr-ensembles-relations.pdf) · [Sources françaises](fr/content/sets-functions-relations) · [Choix éditoriaux](review/CHOICES.md) · [Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/)
 
-Livraisons archivées : [versions Zenodo](https://zenodo.org/records/22650158).
+Version archivée avec DOI : [10.5281/zenodo.22650499](https://doi.org/10.5281/zenodo.22650499). [Toutes les versions](https://doi.org/10.5281/zenodo.22650157).
 
 Le lecteur de 22 pages traite des ensembles et de leurs opérations, du paradoxe de Russell, des relations binaires, de leurs interprétations philosophiques, des relations d’équivalence, des ordres, des graphes, des arbres et des opérations sur les relations. Les seize exercices sont réunis à la fin des chapitres. Les figures et les démonstrations sont conservées.
 
