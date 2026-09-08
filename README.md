@@ -6,7 +6,7 @@ Une édition française du manuel ouvert de logique mathématique de l’[Open L
 
 [Lire les quatre chapitres en PDF](reader/openlogic-fr-ensembles-relations-fonctions-denombrabilite.pdf) · [Sources françaises](fr/content/sets-functions-relations) · [Choix éditoriaux](review/CHOICES.md) · [Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/)
 
-Livraison précédente archivée avec DOI : [10.5281/zenodo.22651341](https://doi.org/10.5281/zenodo.22651341). [Toutes les versions](https://doi.org/10.5281/zenodo.22650157).
+Version archivée avec DOI : [10.5281/zenodo.22660720](https://doi.org/10.5281/zenodo.22660720). [Toutes les versions](https://doi.org/10.5281/zenodo.22650157).
 
 Le lecteur de 55 pages traite des ensembles et de leurs opérations, du paradoxe de Russell, des relations binaires, de leurs interprétations philosophiques, des relations d’équivalence, des ordres, des graphes, des arbres, des opérations sur les relations, des fonctions, de leurs inverses, de leur composition et des fonctions partielles, puis des énumérations, des fonctions de couplage, de la diagonalisation, de l’équipotence et des théorèmes de Cantor et de Schröder-Bernstein. Les soixante-quatre exercices sont réunis à la fin des chapitres. Les figures et les démonstrations sont conservées.
 
