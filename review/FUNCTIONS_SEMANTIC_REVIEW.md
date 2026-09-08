@@ -1,3 +1,7 @@
+# État de cette pièce dans la livraison 0.4
+
+Les observations datées ci-dessous conservent le contexte de leur rédaction. Les 37 unités sont désormais intégrées et le lecteur actuel est validé ; voir provenance/QA.json et review/RELEASE_REVIEW.md pour l’état final. Les mentions de brouillons ou de contrôles encore à venir décrivent les étapes antérieures, pas un travail suspendu. Les hashes intermédiaires sont historiques ; provenance/ALIGNMENT.jsonl contient les identités finales.
+
 # Fonctions : relecture sémantique et mathématique
 
 Périmètre : les sept unités OLP-0020–0026, leurs six sections, 125 blocs alignés dont 87 blocs de prose. Révision bornée du chapitre entier par le même assistant ; aucune validation humaine indépendante ni justification exhaustive de chaque mot n’est revendiquée. Les 34 décisions nouvelles C216–C249 sont une relecture actuelle des premiers brouillons, et non une reconstruction de leur rédaction initiale. Les 53 autres décisions C163–C215 ont été consignées lors de la rédaction. Les anciennes décisions C51–C58 restent historiques.
@@ -28,5 +32,3 @@ Le relevé mécanique des segments mathématiques est dans FUNCTIONS_MATH_COMPAR
 # Incertitudes conservées
 
 « Biunivoque » et « sérielle » sont des choix éditoriaux réversibles ; la définition mathématique les accompagne. Les références natives éclairent les constructions et conventions explicitement indiquées, sans certifier tout le vocabulaire ou l’ensemble du raisonnement du manuel. Les questions précises et alternatives se trouvent dans l’audit de construction.
-
-Le lecteur cumulatif a maintenant été compilé et reproduit à l’identique ; la relecture visuelle est terminée. Voir provenance/QA.json.

@@ -1,0 +1,138 @@
+% Partie : sets-functions-relations
+% Chapitre : size-of-sets
+% Section : zig-zag
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{zigzag}
+
+\olsection{La méthode en zigzag de Cantor}
+
+\begin{explain}
+Nous avons déjà rencontré quelques énumérations simples. Passons
+à un exemple un peu plus difficile. Considérons l’ensemble des couples
+d’entiers naturels\oliflabeldef{sfr:set:pai:sec}{, défini dans la
+\olref[set][pai]{sec} par :}{défini par :}
+\[
+\Nat \times \Nat = \Setabs{\tuple{n,m}}{n,m \in \Nat}
+\]
+On peut disposer ces couples dans un \emph{tableau} :
+\[
+\begin{array}{ c | c | c | c | c | c}
+& \mathbf 0 & \mathbf 1 & \mathbf 2 & \mathbf 3 & \dots \\
+\hline
+\mathbf 0 & \tuple{0,0} & \tuple{0,1} & \tuple{0,2} & \tuple{0,3} & \dots \\
+\hline
+\mathbf 1 & \tuple{1,0} & \tuple{1,1} & \tuple{1,2} & \tuple{1,3} & \dots \\
+\hline
+\mathbf 2 & \tuple{2,0} & \tuple{2,1} & \tuple{2,2} & \tuple{2,3} & \dots \\
+\hline
+\mathbf 3 & \tuple{3,0} & \tuple{3,1} & \tuple{3,2} & \tuple{3,3} & \dots \\
+\hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots\\
+\end{array}
+\]
+Chaque couple de $\Nat \times \Nat$ apparaît exactement une fois
+dans ce tableau : $\tuple{n,m}$ se trouve à la ligne d’indice~$n$
+et à la colonne d’indice~$m$, les indices commençant à~$0$.
+Mais comment ranger les éléments d’un tel tableau dans une liste
+« à une seule dimension » ? Le tableau suivant indique une manière
+de les numéroter, parmi bien d’autres possibles :
+\[
+\begin{array}{ c | c | c | c | c | c | c}
+& \mathbf 0 & \mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 &\dots \\
+\hline
+\mathbf 0 & 0  & 1& 3 & 6& 10 &\ldots \\
+\hline
+\mathbf 1 &2 & 4& 7 & 11 & \dots &\ldots \\
+\hline
+\mathbf 2 & 5 & 8 & 12 & \ldots & \dots&\ldots \\
+\hline
+\mathbf 3 & 9 & 13 & \ldots & \ldots & \dots & \ldots \\
+\hline
+\mathbf 4 & 14 & \ldots & \ldots & \ldots & \dots & \ldots \\
+\hline
+\vdots & \vdots & \vdots & \vdots & \vdots&\ldots & \ddots\\
+\end{array}
+\]\noindent
+Ce procédé est appelé \emph{méthode en zigzag de Cantor}.
+Il énumère $\Nat \times \Nat$ dans l’ordre suivant :
+\[
+\tuple{0,0}, \tuple{0,1}, \tuple{1,0}, \tuple{0,2}, \tuple{1,1},
+\tuple{2,0}, \tuple{0,3}, \tuple{1,2}, \tuple{2,1}, \tuple{3,0}, \dots
+\]
+On obtient ainsi le résultat suivant.
+\end{explain}
+
+\begin{prop}\ollabel{natsquaredenumerable}
+$\Nat \times \Nat$ est !!{enumerable}.
+\end{prop}
+
+\begin{proof}
+Soit $f \colon \Nat \to \Nat\times\Nat$ la fonction qui associe
+à chaque $k \in \Nat$ le couple $\tuple{n,m} \in \Nat \times \Nat$
+dont la case, à la ligne d’indice~$n$ et à la colonne d’indice~$m$,
+porte le numéro~$k$ dans le tableau en zigzag de Cantor.
+Chaque couple est atteint : il se trouve sur la diagonale finie
+où la somme des deux coordonnées vaut $n+m$, après un nombre fini
+de diagonales finies. La fonction $f$ est donc surjective.
+\end{proof}
+
+\begin{explain}
+Cette méthode se généralise aisément. On peut, par exemple,
+l’utiliser pour énumérer l’ensemble des triplets d’entiers naturels :
+\[
+\Nat \times \Nat \times \Nat = \Setabs{\tuple{n,m,k}}{n,m,k \in \Nat}
+\]
+On considère $\Nat \times \Nat \times \Nat$ comme le produit
+cartésien de $\Nat \times \Nat$ par $\Nat$, conformément au codage
+des triplets par des couples emboîtés :
+\[
+\Nat^3 = (\Nat \times \Nat) \times \Nat =
+\Setabs{\tuple{\tuple{n,m},k}}{n, m, k
+  \in \Nat }
+\]
+Pour énumérer $\Nat^3$, on peut donc employer un tableau dont
+un axe suit l’énumération de $\Nat$ et l’autre celle de $\Nat^2$ :
+\[
+\begin{array}{ c | c | c | c | c | c}
+& \mathbf 0 & \mathbf 1 & \mathbf 2 & \mathbf 3 & \dots \\
+\hline
+\mathbf{\tuple{0,0}} & \tuple{0,0,0} & \tuple{0,0,1} & \tuple{0,0,2} & \tuple{0,0,3} & \dots \\
+\hline
+\mathbf{\tuple{0,1}} & \tuple{0,1,0} & \tuple{0,1,1} & \tuple{0,1,2} & \tuple{0,1,3} & \dots \\
+\hline
+\mathbf{\tuple{1,0}} & \tuple{1,0,0} & \tuple{1,0,1} & \tuple{1,0,2} & \tuple{1,0,3} & \dots \\
+\hline
+\mathbf{\tuple{0,2}} & \tuple{0,2,0} & \tuple{0,2,1} & \tuple{0,2,2} & \tuple{0,2,3} & \dots\\
+\hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots \\
+\end{array}
+\]
+En parcourant ce tableau par la méthode en zigzag de Cantor,
+on obtient donc une énumération de~$\Nat^3$. On peut poursuivre
+de même et construire une énumération de $\Nat^n$ pour tout entier
+naturel~$n$. Pour $n=0$, on adopte la convention selon laquelle
+$\Nat^0$ ne contient que le $0$-uplet, c’est-à-dire la suite
+vide.\footnote{Convention explicitée par l’édition française :
+la définition antérieure des puissances cartésiennes commençait
+à l’exposant~$1$ ; l’énoncé suivant inclut aussi l’exposant~$0$.}
+On a ainsi :
+\end{explain}
+
+\begin{prop}
+$\Nat^n$ est !!{enumerable} pour tout $n \in \Nat$.
+\end{prop}
+
+\begin{prob}\label{sfr:siz:zigzag:prob:posint-n}
+Montrez que $(\PosInt)^n$ est !!{enumerable} pour tout $n \in \Nat$.
+\end{prob}
+
+\begin{prob}\label{sfr:siz:zigzag:prob:posint-star}
+Montrez que $(\PosInt)^*$ est !!{enumerable}.
+Vous pouvez admettre le résultat de l’\cref{sfr:siz:zigzag:prob:posint-n}.
+\end{prob}
+
+\end{document}

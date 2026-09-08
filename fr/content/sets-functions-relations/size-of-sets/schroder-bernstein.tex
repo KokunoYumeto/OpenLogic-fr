@@ -1,0 +1,52 @@
+% Part:sets-functions-relations
+% Chapter: sets
+% Section: schroder-bernstein
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{sb}
+
+\olsection{La notion de taille et le théorème de Schr\"oder-Bernstein}
+
+\begin{explain}
+Voici une idée intuitive : si $A$ n'est pas plus grand que $B$ et
+si $B$ n'est pas plus grand que $A$, alors $A$ et $B$ sont
+équipotents. À vrai dire, si cette idée était \emph{fausse}, nous
+aurions bien du mal à justifier que notre définition de l'équipotence
+exprime une comparaison des «~tailles~» des ensembles !{} Heureusement,
+cette intuition est correcte, comme l'établit le théorème de
+Schr\"oder-Bernstein.
+\end{explain}
+
+\begin{thm}[Schr\"oder-Bernstein]
+  \ollabel{thm:schroder-bernstein}
+  Si $\cardle{A}{B}$ et $\cardle{B}{A}$, alors $\cardeq{A}{B}$.
+\end{thm}
+
+\begin{explain}
+Autrement dit, s'il existe une !!{injection} de $A$ dans~$B$ et
+une !!{injection} de $B$ dans~$A$, alors il existe une
+!!{bijection} de $A$ dans~$B$.
+
+Ce résultat est toutefois assez \emph{difficile} à démontrer. Cantor
+l'avait énoncé, mais ce sont d'autres mathématiciens qui l'ont
+démontré.\footnote{Pour plus de détails historiques, voir par exemple
+\citet[pp.~165--6]{Potter2004}.}
+\oliflabeldef{sfr:cardinals:card-sb:sec}{Nous ne disposerons des
+outils nécessaires pour \emph{démontrer} le théorème de
+Schr\"oder-Bernstein qu'à la
+\olref[sfr][cardinals][card-sb]{sec}.}{}%
+Pour le moment, vous pouvez, et devez, l'admettre.
+
+Le théorème de Schr\"oder-Bernstein est heureusement \emph{vrai} :
+il justifie que nous considérions les relations $\cardeq{A}{B}$
+et $\cardle{A}{B}$ comme des comparaisons de « taille ». Il est
+aussi très \emph{utile}. Construire une !!{bijection} entre deux
+ensembles équipotents peut être difficile. Le théorème de
+Schr\"oder-Bernstein permet de scinder ce travail en deux :
+il suffit de construire une !!{injection} du premier ensemble
+dans le second, puis une autre dans le sens inverse.
+\end{explain}
+\end{document}

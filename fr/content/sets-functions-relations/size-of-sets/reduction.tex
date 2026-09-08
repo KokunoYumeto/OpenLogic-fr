@@ -1,0 +1,147 @@
+% Part:sets-functions-relations
+% Chapter: sets
+% Section: reduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{red}
+
+\Needspace{8\baselineskip}\olsection{Réduction}
+
+\begin{editorial}
+  Cette section établit la non-dénombrabilité par réduction, en reprenant
+  les résultats de la \olref[nen]{sec}. Une autre version, un peu plus
+  condensée et correspondant aux résultats de la \olref[nen-alt]{sec},
+  figure à la \olref[red-alt]{sec}.
+\end{editorial}
+
+Nous avons montré par diagonalisation que $\Pow{\PosInt}$ est
+!!{nonenumerable}. Nous disposions déjà d'une démonstration de la
+non-dénombrabilité de $\Bin^\omega$, l'ensemble de toutes les suites
+infinies de $0$ et de $1$. Voici une autre manière de montrer que
+$\Pow{\PosInt}$ est !!{nonenumerable} : établir que \emph{si
+$\Pow{\PosInt}$ est !!{enumerable}, alors $\Bin^\omega$ l'est aussi}.
+Puisque nous savons que $\Bin^\omega$ n'est pas !!{enumerable},
+$\Pow{\PosInt}$ ne peut pas l'être non plus. C'est ce qu'on appelle
+\emph{réduire} un problème à un autre : ici, nous réduisons le problème
+de l'énumération de $\Bin^\omega$ à celui de l'énumération de
+$\Pow{\PosInt}$. Une solution du second problème, à savoir une
+énumération de $\Pow{\PosInt}$, fournirait une solution du premier,
+c'est-à-dire une énumération de $\Bin^\omega$.
+
+Comment réduire le problème de l'énumération d'un ensemble~$B$ à celui
+de l'énumération d'un ensemble~$A$ ? Il faut donner un moyen de
+transformer une énumération de~$A$ en une énumération de~$B$. Le plus
+simple est de définir une fonction !!{surjective} $f\colon A \to B$.
+Si $x_1$, $x_2$, \dots{} énumèrent~$A$, alors $f(x_1)$, $f(x_2)$,
+\dots{} énumèrent~$B$. Dans notre cas, nous cherchons donc une fonction
+surjective $f\colon \Pow{\PosInt} \to \Bin^\omega$.
+
+\begin{prob}
+Montrer que, s'il existe une fonction !!{injective} $g\colon B \to A$
+et si $B$ est !!{nonenumerable}, alors $A$ l'est aussi. Pour cela,
+expliquer comment utiliser~$g$ pour transformer une énumération de~$A$
+en une énumération de~$B$.
+\end{prob}
+
+\begin{proof}[Démonstration du {\olref[nen]{thm:nonenum-pownat}} par réduction]
+Supposons que $\Pow{\PosInt}$ soit !!{enumerable}. Il en existe alors
+une énumération $Z_{1}$, $Z_{2}$, $Z_{3}$, \dots
+
+Définissons $f \colon \Pow{\PosInt} \to \Bin^\omega$ en associant
+à chaque $Z$ la suite $s$ telle que $s(n) = 1$ si et seulement si
+$n \in Z$, et $s(n) = 0$ sinon.\footnote{Note de traduction :
+l'original nomme ici la suite $s_k$ sans définir l'indice $k$.
+Nous écrivons $s$ pour la suite associée au seul ensemble $Z$.}
+Cela définit bien une fonction : pour tout $Z \subseteq \PosInt$,
+chaque $n \in \PosInt$ appartient ou n'appartient pas à~$Z$.
+Par exemple, l'ensemble $2\PosInt = \{2, 4, 6, \dots\}$ des entiers
+pairs strictement positifs a pour image la suite $010101\dots$ ;
+l'ensemble vide a pour image $0000\dots$, et l'ensemble $\PosInt$
+lui-même a pour image $1111\dots$.
+
+Cette fonction est aussi !!{surjective} : à toute suite de $0$ et de
+$1$ correspond un ensemble d'entiers strictement positifs, celui des
+indices auxquels la suite vaut~$1$. Plus précisément, soit
+$s \in \Bin^\omega$. Définissons $Z \subseteq \PosInt$ par :
+\[
+Z = \Setabs{n \in \PosInt}{s(n) = 1}
+\]
+On a alors $f(Z) = s$, comme on le vérifie à partir de la définition
+de~$f$.
+
+Considérons maintenant la liste
+\[
+f(Z_1), f(Z_2), f(Z_3), \dots
+\]
+Puisque $f$ est !!{surjective}, chaque élément de $\Bin^\omega$ est
+la valeur de~$f$ en un certain argument et doit donc figurer dans
+cette liste. Celle-ci énumère ainsi tout~$\Bin^\omega$.
+
+Si $\Pow{\PosInt}$ était !!{enumerable}, $\Bin^\omega$ le serait
+donc aussi. Or $\Bin^\omega$ est !!{nonenumerable}
+(\olref[nen]{thm:nonenum-bin-omega}). Par conséquent,
+$\Pow{\PosInt}$ est !!{nonenumerable}.
+\end{proof}
+
+\begin{explain}
+Il est facile de se tromper sur le sens de la réduction. Par exemple,
+une fonction !!{surjective} $g \colon \Bin^\omega \to B$ ne permet
+\emph{pas} d'établir que $B$ est !!{nonenumerable}. Considérons
+$g \colon \Bin^\omega \to \Bin$, définie par $g(s) = s(1)$ : elle
+associe à une suite de $0$ et de $1$ son premier terme. Elle est
+!!{surjective}, car certaines suites commencent par $0$ et d'autres
+par $1$. Pourtant, $\Bin$ est fini. Remarquons aussi que la
+fonction~$f$ doit être !!{surjective} : sans cette hypothèse,
+l'argument ne fonctionne plus, car rien ne garantit que $f(x_1)$,
+$f(x_2)$, \dots{} contiennent tous les éléments de~$B$. Par exemple,
+\[
+h(n) = \underbrace{000\dots0}_{\text{$n$ zéros}}111\dots
+\]
+définit une fonction $h\colon \PosInt \to \Bin^\omega$, alors que
+$\PosInt$ est !!{enumerable}.\footnote{Note de traduction : l'original
+affiche seulement un mot fini de $n$ zéros, qui n'appartient pas à
+$\Bin^\omega$. Nous le complétons ici par une infinité de $1$.
+Cette fonction n'est pas surjective : la suite constante égale à $0$,
+par exemple, n'est l'image d'aucun entier.}
+\end{explain}
+
+\begin{prob}
+Montrer par réduction que l'ensemble de tous les \emph{ensembles de}
+couples d'entiers strictement positifs est !!{nonenumerable}.
+\end{prob}
+
+\begin{prob}\label{sfr:siz:red:prob:nat-nat}
+  Montrer par réduction que l'ensemble~$X$ de toutes les fonctions
+  $f\colon \Nat \to \Nat$ est !!{nonenumerable}. Indication : donner
+  une fonction surjective de $X$ dans~$\Bin^\omega$.
+\end{prob}
+
+\begin{prob}
+Montrer par réduction que $\Nat^\omega$, l'ensemble des suites
+infinies d'entiers naturels, est !!{nonenumerable}.
+\end{prob}
+
+\begin{prob}
+Soit $P$ l'ensemble des fonctions de l'ensemble des entiers
+strictement positifs dans $\{0\}$, et soit $Q$ l'ensemble des
+fonctions \emph{partielles} entre ces mêmes ensembles. Montrer que
+$P$ est !!{enumerable} et que $Q$ ne l'est pas. Indication : réduire
+le problème de l'énumération de $\Bin^\omega$ à celui de
+l'énumération de~$Q$.
+\end{prob}
+
+\begin{prob}
+Soit $S$ l'ensemble de toutes les fonctions !!{surjective}s de
+l'ensemble des entiers strictement positifs dans l'ensemble $\{0,1\}$ :
+autrement dit, $S$ contient exactement les fonctions !!{surjective}s
+$f\colon \PosInt \to \Bin$. Montrer que $S$ est !!{nonenumerable}.
+\end{prob}
+
+\begin{prob}
+Montrer que l'ensemble~$\Real$ des nombres réels est !!{nonenumerable}.
+\end{prob}
+
+\end{document}

@@ -11,6 +11,10 @@
 \input{\olpath/sty/open-logic.sty}
 \input{\olpath/sty/open-logic-defer.sty}
 \includeenv{editorial}
+% Les cadres doivent restituer les notes après leur fermeture.
+\usepackage{footnotehyper}
+\makesavenoteenv{editorial}
+\frcompletevariantstrue
 \problemsperchapter
 \setlrmarginsandblock{28mm}{28mm}{*}
 \setulmarginsandblock{26mm}{28mm}{*}
@@ -19,9 +23,9 @@
 \setlength{\emergencystretch}{2em}
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
-\hypersetup{pdftitle={OpenLogic : édition française — Ensembles, relations et fonctions},
+\hypersetup{pdftitle={OpenLogic : édition française — Ensembles, relations, fonctions et dénombrabilité},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, ordres, graphes, arbres et fonctions},
+pdfsubject={Ensembles, relations, fonctions, énumérations et comparaison des tailles},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -32,18 +36,19 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Ensembles, relations\\et fonctions\par}
+{\sffamily\huge Ensembles, relations,\\fonctions et dénombrabilité\par}
 \vspace{5mm}
-{\large Des ensembles aux relations d’équivalence,\\
-aux ordres, aux graphes, aux arbres et aux fonctions\par}
+{\large Des ensembles et des fonctions\\
+aux énumérations, à Cantor et à Schröder-Bernstein\par}
 \vfill
-{\large Troisième livraison : trois chapitres complets\par}
+{\large Quatrième livraison : quatre chapitres complets\par}
 \vspace{4mm}
-Cette livraison comprend vingt sections et leurs trois chapitres d’organisation,
-soit 23 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend trente-trois sections et leurs quatre chapitres d’organisation,
+soit 37 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
-dans le texte.
+dans le texte. Les présentations alternatives de la dénombrabilité
+sont réunies dans un même chapitre, avec leurs conventions explicites.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -63,7 +68,10 @@ des traductions d'OpenLogic}
 \olimport[content/sets-functions-relations/sets]{sets}
 \olimport[content/sets-functions-relations/relations]{relations-complete}
 \olimport[content/sets-functions-relations/functions]{functions}
+\olimport[content/sets-functions-relations/size-of-sets]{size-of-sets-complete}
 \backmatter
+% La notice Frege1884 cite elle-même cette traduction anglaise.
+\nocite{Frege1953}
 \bibliographystyle{plainnat}
 \bibliography{../../bib/open-logic}
 \end{document}

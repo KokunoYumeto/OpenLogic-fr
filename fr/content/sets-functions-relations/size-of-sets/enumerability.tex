@@ -1,0 +1,292 @@
+% Partie : sets-functions-relations
+% Chapitre : size-of-sets
+% Section : enumerations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{enm}
+
+\olsection{Énumérations et ensembles \usetoken{p}{enumerable}}
+
+\begin{editorial}
+Cette section définit les énumérations d’ensembles comme des surjections
+de $\PosInt$ sur ces ensembles. Elle procède progressivement, pour
+les lecteurs ayant peu de connaissances mathématiques préalables.
+La \olref[enm-alt]{sec} propose une présentation plus concise, fondée
+sur une autre définition : une bijection avec $\Nat$ ou avec un segment
+initial. Dans cette édition, \emph{au plus dénombrable} inclut les
+ensembles finis et l’ensemble vide.\footnote{Convention éditoriale :
+le mot anglais \emph{enumerable} est employé ici sans condition de
+calculabilité. Une énumération n’est pas nécessairement donnée par
+un algorithme ; il ne s’agit pas d’énumérabilité calculable.}
+\end{editorial}
+
+\begin{explain}
+Nous avons déjà donné des exemples d’ensembles en dressant la liste
+de leurs !!{element}s. Examinons plus généralement comment et dans
+quels cas on peut dresser la liste des !!{element}s d’un ensemble,
+même infini.
+\end{explain}
+
+\begin{defn}[Énumération : définition informelle]
+Informellement, une \emph{énumération} d’un ensemble~$A$ est une liste,
+éventuellement infinie, d’!!{element}s de~$A$, dans laquelle chaque
+!!{element} de $A$ apparaît à une position finie. Si $A$ possède
+une énumération, on dit qu’il est \emph{!!{enumerable}}.
+\end{defn}
+
+\begin{explain}
+Précisons quelques points sur les énumérations :
+\begin{enumerate}
+\item Sauf pour la liste vide, admise ci-dessous, les listes considérées
+  ont un premier !!{element}, et chaque !!{element} autre que le premier
+  possède un unique !!{element} immédiatement avant lui. Nous exigeons
+  en outre qu’il n’y ait qu’un nombre fini d’éléments entre le premier
+  !!{element} et tout autre !!{element} de la liste. Ainsi, chaque
+  !!{element} de l’énumération occupe une position finie : le premier
+  est en position~$1$, le deuxième en position~$2$, etc.\footnote{Précision
+  éditoriale : l’original présente ces deux conditions comme équivalentes.
+  L’existence d’un prédécesseur immédiat ne suffit pas, à elle seule,
+  à assurer que chaque terme occupe une position finie.}
+\item Un même ensemble~$A$ peut avoir plusieurs énumérations, où les
+  !!{element}s apparaissent dans des ordres différents : $4$, $1$,
+  $25$, $16$,~$9$ énumère les cinq premiers carrés strictement positifs
+  aussi bien que $1$, $4$, $9$, $16$,~$25$.
+\item Une liste avec répétitions reste une énumération : $1$, $1$, $2$,
+  $2$, $3$, $3$,~\dots{} énumère le même ensemble que $1$, $2$,
+  $3$,~\dots
+\item L’ordre et les répétitions \emph{comptent}, en revanche, lorsqu’on
+  précise une énumération particulière. On peut énumérer les entiers
+  strictement positifs en commençant par $1$, $2$, $3$, $1$, \dots{},
+  mais la règle est plus facile à reconnaître dans l’énumération
+  habituelle $1$, $2$, $3$, $4$,~\dots
+\item Une énumération non vide doit avoir un début : \dots, $3$, $2$,
+  $1$ n’est pas une énumération des entiers strictement positifs, car
+  cette liste n’a pas de premier !!{element}. Pour comprendre le lien
+  avec la définition informelle, demandez-vous à quelle position
+  de cette liste se trouverait le nombre 76.
+\item La liste suivante n’énumère pas non plus les entiers strictement
+  positifs : $1$, $3$, $5$, \dots, $2$, $4$, $6$, \dots\@ Les nombres
+  pairs y seraient placés aux positions $\infty + 1$, $\infty + 2$,
+  $\infty + 3$, et non à des positions finies.
+\item L’ensemble vide est au plus dénombrable : la liste vide l’énumère !
+\end{enumerate}
+\end{explain}
+
+\begin{prop}
+Si $A$ possède une énumération, il en possède une sans répétitions.
+\end{prop}
+
+\begin{proof}
+Si $A$ est vide, sa liste vide ne comporte aucune répétition.
+Sinon, supposons que $A$ possède une énumération $x_1$, $x_2$, \dots{}, dont
+chaque terme $x_i$ est un !!{element} de~$A$. On peut supprimer les
+répétitions en retirant les termes déjà rencontrés : on conserve $x_i$
+s’il ne figure pas parmi $x_1$, \dots, $x_{i-1}$, et on le retire
+s’il apparaît déjà parmi $x_1$, \dots,~$x_{i-1}$.
+\end{proof}
+
+Ce dernier raisonnement montre que, pour mieux comprendre les
+énumérations et les ensembles !!{enumerable}s, puis démontrer des
+résultats à leur sujet, il nous faut une définition plus précise.
+La voici.
+
+\begin{defn}[Énumération : définition formelle]
+Une \emph{énumération} d’un ensemble $A \neq \emptyset$ est une
+fonction !!{surjective} $f \colon \PosInt \to A$.
+\end{defn}
+
+\begin{explain}
+Vérifions que cette définition formelle correspond à la définition
+informelle par une liste éventuellement infinie. Toute fonction
+!!{surjective} de $\PosInt$ dans un ensemble~$A$ énumère~$A$ : elle
+détermine la liste $f(1)$, $f(2)$, $f(3)$, \dots. La surjectivité de $f$
+assure que chaque !!{element} de~$A$ est la valeur de~$f(n)$ pour
+un certain~$n \in \PosInt$. Chaque !!{element} apparaît donc à une
+position finie. La fonction n’étant pas nécessairement !!{injective},
+la liste peut comporter des répétitions ; nous avons vu que cela
+est permis.
+
+Réciproquement, à partir d’une liste qui énumère tous les !!{element}s
+de~$A$, on peut définir une fonction !!{surjective} $f\colon \PosInt \to A$
+en prenant pour $f(n)$ le $n$-ième !!{element} de la liste, ou son dernier
+!!{element} si elle n’a pas de $n$-ième !!{element}. Cette construction
+échoue seulement lorsque $A$ est vide, et que la liste est donc vide.
+Ainsi, toute liste non vide qui énumère~$A$ détermine une fonction
+!!{surjective} $f\colon \PosInt \to A$.
+\end{explain}
+
+\begin{defn}
+  \ollabel{defn:enumerable}
+Un ensemble~$A$ est !!{enumerable} si et seulement s’il est vide
+ou possède une énumération.
+\end{defn}
+
+\begin{ex}
+Pour énumérer les entiers strictement positifs ($\PosInt$), il suffit
+de la fonction identité $f(n) = n$. La fonction $g(n) = n - 1$
+énumère les entiers naturels $\Nat$.
+\end{ex}
+
+\begin{ex}
+Les fonctions $f\colon \PosInt \to \PosInt$ et
+$g \colon \PosInt \to \PosInt$ définies par
+\begin{align*}
+f(n) & = 2n \text{ et}\\
+g(n) & = 2n - 1
+\end{align*}
+énumèrent respectivement les entiers pairs strictement positifs et
+les entiers impairs strictement positifs. Cependant, aucune des deux
+n’énumère $\PosInt$, car aucune n’est !!{surjective} sur cet ensemble.
+\end{ex}
+
+\begin{prob}
+Définissez une énumération des carrés strictement positifs
+$1$, $4$, $9$, $16$, \dots
+\end{prob}
+
+\begin{ex}
+La fonction $f(n) = (-1)^{n} \lceil \frac{(n-1)}{2}\rceil$ énumère
+l’ensemble des entiers relatifs~$\Int$. Ici, $\lceil x \rceil$ désigne
+le \emph{plafond} de~$x$, c’est-à-dire le plus petit entier supérieur
+ou égal à~$x$. Les valeurs de $f$ passent alternativement des entiers
+positifs aux entiers négatifs :
+\[
+\begin{array}{c c c c c c c c}
+f(1) & f(2) & f(3) & f(4) & f(5) & f(6) & f(7) & \dots \\ \\
+- \lceil \tfrac{0}{2} \rceil & \lceil \tfrac{1}{2}\rceil & - \lceil \tfrac{2}{2} \rceil & \lceil \tfrac{3}{2} \rceil & - \lceil \tfrac{4}{2} \rceil  & \lceil \tfrac{5}{2}
+\rceil & - \lceil \tfrac{6}{2} \rceil & \dots \\ \\
+0 & 1 & -1 & 2 & -2 & 3 & -3 & \dots
+\end{array}
+\]
+\footnote{Correction éditoriale : on rétablit la valeur $-3$ sous
+$f(7)$ dans la dernière ligne du tableau ; elle manquait dans l’original.}
+On peut également définir $f$ par cas :
+\[
+f(n) = \begin{cases}
+  0 & \text{si $n = 1$}\\
+  n/2 & \text{si $n$ est pair}\\
+  -(n-1)/2 & \text{si $n$ est impair et $>1$}
+  \end{cases}
+\]
+\end{ex}
+
+\begin{prob}
+Montrez que, si $A$ et $B$ sont !!{enumerable}s, $A \cup B$ l’est aussi.
+Pour cela, supposez données des fonctions !!{surjective}s
+$f\colon \PosInt \to A$ et $g\colon \PosInt \to B$. Définissez une
+fonction~$h\colon \PosInt \to A \cup B$ et montrez qu’elle est
+!!{surjective}. Traitez aussi les cas où $A$ ou~$B = \emptyset$.
+\end{prob}
+
+\begin{prob}
+Montrez que, si $B \subseteq A$ et $A$ est !!{enumerable}, $B$ l’est
+aussi. Supposez pour cela donnée une fonction !!{surjective}
+$f\colon \PosInt \to A$. Définissez une fonction~$g\colon \PosInt \to B$
+et montrez qu’elle est !!{surjective}. Que se passe-t-il si
+$B = \emptyset$ ?
+\end{prob}
+
+\begin{prob}
+Montrez par récurrence sur $n$ que, si $A_1$, $A_2$, \dots, $A_n$ sont
+tous !!{enumerable}s, $A_1 \cup \dots \cup A_n$ l’est aussi.
+Vous pouvez admettre que la réunion de deux ensembles $A$ et~$B$
+!!{enumerable}s, $A \cup B$, est !!{enumerable}.
+\end{prob}
+
+Lorsqu’on dresse la liste des !!{element}s d’un ensemble, il paraît
+peut-être plus naturel de commencer par le premier. Les mathématiciens
+utilisent pourtant volontiers les entiers naturels~$\Nat$ pour
+numéroter les objets : ils parlent du terme d’indice~$0$, puis des
+termes d’indices~$1$, $2$, etc. On peut donc aussi définir une énumération
+comme une fonction !!{surjective} de $\Nat$ dans~$A$.
+Les deux définitions sont équivalentes.
+
+\begin{prop}\ollabel{prop:enum-shift}
+Il existe !!a{surjection} $f\colon \PosInt \to A$ si et seulement
+s’il existe !!a{surjection} $g\colon \Nat \to A$.
+\end{prop}
+
+\begin{proof}
+Étant donnée !!a{surjection} $f\colon \PosInt \to A$, posons
+$g(n) = f(n+1)$ pour tout $n \in \Nat$. On vérifie aisément que
+$g\colon \Nat \to A$ est !!{surjective}. Réciproquement, étant donnée
+!!a{surjection} $g\colon \Nat \to A$, posons $f(n) = g(n-1)$.
+\end{proof}
+
+On obtient ainsi le résultat suivant :
+
+\begin{cor}\ollabel{cor:enum-nat}
+Un ensemble $A$ est !!{enumerable} si et seulement s’il est vide
+ou s’il existe une fonction !!{surjective} $f\colon \Nat \to A$.
+\end{cor}
+
+Nous avons vu qu’on peut transformer une liste d’!!{element}s
+d’un ensemble~$A$ en une liste sans répétitions. Cela vaut aussi pour
+les énumérations au sens formel, mais l’énoncé et la démonstration
+demandent davantage de soin. Toute fonction $f\colon \PosInt \to A$
+doit être définie pour chaque $n \in \PosInt$. Si $A$ ne possède
+qu’un nombre fini d’!!{element}s, une fonction définie sur tous les
+!!{element}s de $\PosInt$ ne peut prendre pour valeurs tous les
+!!{element}s de~$A$ sans jamais se répéter. Lorsque la liste sans
+répétitions est finie, il faut donc choisir pour~$f$ un autre domaine,
+qui ne possède qu’un nombre fini d’!!{element}s. L’absence de répétitions
+signifie que $f$ est !!{injective}. Puisqu’elle est aussi !!{surjective},
+nous cherchons !!a{bijection} entre $\{1, \dots, n\}$ ou $\PosInt$ et~$A$.
+
+\begin{prop}\ollabel{prop:enum-bij}
+Si $f\colon \PosInt \to A$ est !!{surjective}, c’est-à-dire si elle
+énumère~$A$, il existe !!a{bijection} $g\colon Z \to A$, où $Z$ est
+soit~$\PosInt$, soit $\{1, \dots, n\}$ pour un certain~$n \in \PosInt$.
+\end{prop}
+
+\begin{proof}
+Définissons $g$ par récurrence. Posons $g(1) = f(1)$. Une fois la valeur
+$g(i)$ définie, prenons pour $g(i+1)$ la première valeur de la liste $f(1)$,
+$f(2)$, \dots{} qui ne figure pas déjà parmi $g(1)$, \dots, $g(i)$,
+s’il en existe une. Si $A$ possède exactement $n$ !!{element}s,
+toutes les valeurs $g(1)$, \dots, $g(n)$ sont définies, ce qui donne
+une fonction $g\colon \{1, \dots, n\} \to A$. Si $A$ possède une
+infinité d’!!{element}s, alors, pour tout $i$, l’énumération $f(1)$,
+$f(2)$, \dots{} contient un !!{element} de~$A$ qui ne figure pas encore
+parmi $g(1)$, \dots, $g(i)$. On obtient alors une fonction
+$g\colon \PosInt \to A$.
+
+La fonction $g$ est !!{surjective} : tout élément de~$A$ apparaît
+parmi $f(1)$, $f(2)$, \dots{}, puisque $f$ est !!{surjective}, et finit
+donc par être une valeur $g(i)$. Elle est aussi !!{injective} : s’il
+existait $j < i$ tel que $g(j) = g(i)$, la valeur $g(i)$ figurerait déjà
+parmi $g(1)$, \dots, $g(i-1)$, contrairement à la définition de~$g$.
+\end{proof}
+
+\begin{cor}\ollabel{cor:enum-nat-bij}
+Un ensemble $A$ est !!{enumerable} si et seulement s’il est vide
+ou s’il existe !!a{bijection} $f\colon N \to A$, où $N = \Nat$
+ou $N = \{0, \dots, n\}$ pour un certain $n \in \Nat$.
+\end{cor}
+
+\begin{proof}
+L’ensemble $A$ est !!{enumerable} si et seulement s’il est vide
+ou s’il existe une fonction !!{surjective} $f\colon \PosInt \to A$.
+D’après la \olref{prop:enum-bij}, cette dernière condition équivaut
+à l’existence d’une fonction !!{bijective}~$f\colon Z \to A$, où
+$Z = \PosInt$ ou $Z = \{1, \dots, n\}$ pour un certain $n \in \PosInt$.
+Le même décalage d’indice que dans la preuve de la \olref{prop:enum-shift}
+montre que cette condition équivaut à l’existence d’!!a{bijection}
+$g\colon N \to A$, où $N = \Nat$ ou $N = \{0, \dots, n-1\}$.
+\end{proof}
+
+\begin{prob}
+D’après la \olref[sfr][siz][enm]{defn:enumerable}, un ensemble $A$
+est au plus dénombrable si et seulement si $A = \emptyset$ ou s’il
+existe une fonction !!{surjective} $f\colon \PosInt \to A$.
+On peut aussi définir les ensembles !!{enumerable}s par l’existence
+d’une fonction !!{injective} $g\colon A \to \PosInt$. Montrez que
+les deux définitions sont équivalentes : il existe une fonction
+!!{injective} $g\colon A \to \PosInt$ si et seulement si $A = \emptyset$
+ou s’il existe une fonction !!{surjective} $f\colon \PosInt \to A$.
+\end{prob}
+
+\end{document}

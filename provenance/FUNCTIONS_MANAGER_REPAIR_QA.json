@@ -1,0 +1,30 @@
+{
+  "repaired_utc": "2026-09-08T02:04:57.871743+00:00",
+  "findings": [
+    "FR-FUN-001",
+    "FR-FUN-002",
+    "FR-FUN-003",
+    "FR-FUN-004",
+    "FR-FUN-005"
+  ],
+  "changed_choice_ids": [
+    "C165",
+    "C177",
+    "C193",
+    "C200",
+    "C204",
+    "C205",
+    "C206",
+    "C210",
+    "C212",
+    "C220"
+  ],
+  "refreshed_inverse_choice_spans": 24,
+  "source_sha256": "96e36d8cd8dc4ec0e73e9507147ecfe33d7e4f368ecf46de92efb423a7d409c1",
+  "target_sha256": "2d4daee5e5884adfd61aee1c06315428a148a287b6e56f652e726b08ce63f841",
+  "public_v030_unchanged": true,
+  "next_render_required": true,
+  "added_reference": "\\olref{prop:inverse-unique}",
+  "parent_report_sha256": "b5fbfca42d18c7d73fb19e1682185cb59f48338e83d8286e5f6628e28dec8519",
+  "validation": "Existing construction validator passed:125aligned blocks,87prose records,210anchors,zero errors. Targeted maps checked against CHOICES, ALIGNMENT and SEGMENT_CANON_USE; next reader render pending."
+}

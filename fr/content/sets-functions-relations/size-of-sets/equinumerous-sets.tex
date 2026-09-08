@@ -1,0 +1,132 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: equinumerous-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{equ}
+
+\olsection{Équipotence}
+
+Notre notion intuitive de « taille » d'un ensemble convient bien aux
+ensembles finis. Mais qu'en est-il des ensembles infinis ? Pour
+comparer de manière formelle les tailles de deux ensembles
+\emph{quelconques}, commençons par définir ce que signifie avoir la
+même taille. Voici comment Frege présente cette idée :
+\begin{quote}
+  Si un serveur veut s'assurer qu'il dispose sur la table autant de
+  couteaux que d'assiettes, il n'a besoin de compter ni les uns ni les
+  autres : il lui suffit de placer un couteau à droite de chaque
+  assiette, de sorte que chaque couteau sur la table se trouve à droite
+  d'une assiette. Les assiettes et les couteaux sont ainsi mis en
+  correspondance de manière univoque dans les deux sens, et ce par la
+  même relation de position. \citep[\S70]{Frege1884}\footnote{Traduction
+  établie pour cette édition après consultation du texte allemand de
+  1884 ; elle ne reproduit pas une traduction française publiée.}
+\end{quote}
+Une définition formelle permet de préciser l'idée de ce passage :
+
+\begin{defn}\ollabel{comparisondef}
+  On dit que $A$ est \emph{équipotent} à $B$, et on écrit
+  $\cardeq{A}{B}$, si et seulement s'il existe une !!{bijection}
+  $f \colon A \to B$.
+\end{defn}
+
+\begin{prop}\ollabel{equinumerosityisequi}
+L'équipotence est une relation d'équivalence.\footnote{Précision
+éditoriale : cela signifie ici qu'elle est réflexive, symétrique et
+transitive pour les ensembles. Sur toute famille d'ensembles qui est
+elle-même un ensemble, elle définit donc une relation d'équivalence
+au sens du chapitre précédent ; on ne suppose pas l'existence d'un
+ensemble de tous les ensembles.}
+\end{prop}
+
+\begin{proof}
+Il faut montrer que l'équipotence est réflexive, symétrique et
+transitive. Soient $A$, $B$ et $C$ des ensembles.
+
+\emph{Réflexivité.} L'application identité $\Id{A} \colon A \to A$,
+définie par $\Id{A}(x) = x$ pour tout $x \in A$, est une
+!!{bijection}. On a donc $\cardeq{A}{A}$.
+
+\emph{Symétrie.} Supposons que $\cardeq{A}{B}$ : il existe une
+!!{bijection} $f\colon A \to B$. Puisque $f$ est !!{bijective},
+sa réciproque $f^{-1}$ existe et est elle aussi !!{bijective}.
+Ainsi, $f^{-1}\colon B \to A$ est une !!{bijection}, d'où
+$\cardeq{B}{A}$.
+
+\emph{Transitivité.} Supposons que $\cardeq{A}{B}$ et
+$\cardeq{B}{C}$ : il existe des !!{bijection}s $f\colon A \to B$
+et $g\colon B \to C$. La composée $\comp{f}{g}\colon A \to C$
+est alors !!{bijective}, d'où $\cardeq{A}{C}$.
+\end{proof}
+
+\begin{prop}
+Si $\cardeq{A}{B}$, alors $A$ est !!{enumerable} si et seulement si
+$B$ l'est.
+\end{prop}
+
+\begin{editorial}
+La démonstration suivante utilise la \olref[enm]{defn:enumerable}
+si la \olref[enm]{sec} est incluse, et la
+\olref[enm-alt]{defn:enumerable} dans le cas contraire.
+Dans le lecteur complet, les deux versions sont présentées ci-dessous,
+avec leurs définitions respectives de l'énumération.
+\end{editorial}
+
+\begin{proof}
+Supposons que $\cardeq{A}{B}$, donc qu'il existe une !!{bijection}
+$f \colon A \to B$, et que $A$ soit !!{enumerable}.
+\frproofversions{Avec une énumération par surjection.}{Avec une énumération bijective.}{sfr:siz:enm:defn:enumerable}{
+  Ou bien $A = \emptyset$, ou bien il existe une fonction
+  !!{surjective} $g\colon \PosInt \to A$. Si $A = \emptyset$,
+  alors $B = \emptyset$ aussi : sinon il existerait un élément
+  $y \in B$ mais aucun $x \in A$ tel que $f(x) = y$,
+  contrairement à la surjectivité de~$f$.\footnote{Note de traduction :
+  dans les deux versions de cette démonstration, l'original écrit
+  $g(x) = y$ dans l'argument relatif au cas vide. C'est la fonction
+  $f\colon A \to B$ qui doit intervenir ici.}
+  Si, en revanche, $g\colon \PosInt \to A$ est !!{surjective},
+  alors $\comp{g}{f} \colon \PosInt \to B$ est !!{surjective}.
+  En effet, soit $y \in B$. La surjectivité de $f$ fournit un
+  $x \in A$ tel que $f(x) = y$ ; celle de $g$ fournit un
+  $n \in \PosInt$ tel que $g(n) = x$. Par conséquent,
+\[
+(\comp{g}{f})(n) = f(g(n)) = f(x) = y
+\]
+et $\comp{g}{f}$ est bien !!{surjective}. Ainsi, $\comp{g}{f}$ est
+une énumération de~$B$, donc $B$ est !!{enumerable}.}
+{
+  Ou bien $A = \emptyset$, ou bien il existe une !!{bijection}~$g$
+  dont l'image est $A$ et dont le domaine est $\Nat$ ou un segment
+  initial des entiers naturels. Si $A = \emptyset$, alors
+  $B = \emptyset$ aussi : sinon il existerait un $y \in B$ sans
+  aucun $x \in A$ tel que $f(x) = y$, contrairement à la
+  surjectivité de~$f$.\footnote{Note de traduction : l'original
+  écrit $g(x) = y$ dans le cas vide ; c'est $f\colon A \to B$
+  qui doit intervenir. La même correction figure dans l'autre
+  version de la démonstration.}
+  Supposons donc donnée la !!{bijection}~$g$. Alors $\comp{g}{f}$
+  est une !!{bijection} d'image~$B$ et de même domaine que~$g$
+  (c'est-à-dire $\Nat$ ou l'un de ses segments initiaux).
+  Ainsi, $B$ est !!{enumerable}.}
+
+Si $B$ est !!{enumerable}, on montre que $A$ l'est aussi en
+reprenant l'argument avec la !!{bijection} $f^{-1}\colon B \to A$
+à la place de~$f$.
+\end{proof}
+
+\begin{prob}
+Montrer que, si $\cardeq{A}{C}$ et $\cardeq{B}{D}$, et si
+$A \cap B = C \cap D = \emptyset$, alors
+$\cardeq{A \cup B}{C \cup D}$.
+\end{prob}
+
+\begin{prob}
+Montrer que, si $A$ est infini et !!{enumerable}, alors
+$\cardeq{A}{\Nat}$.
+\end{prob}
+
+\end{document}

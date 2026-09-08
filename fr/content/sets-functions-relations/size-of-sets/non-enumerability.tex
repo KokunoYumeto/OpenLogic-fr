@@ -1,0 +1,223 @@
+% Partie : sets-functions-relations
+% Chapitre : size-of-sets
+% Section : non-enumerability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{nen}
+
+\olsection{Ensembles \usetoken{p}{nonenumerable}}
+
+\begin{editorial}
+Cette section démontre que $\Bin^\omega$ et $\Pow{\PosInt}$ sont
+\usetoken{p}{nonenumerable}, à partir de la définition de
+la \olref[enm]{sec}. Elle propose une présentation un peu plus
+élémentaire et détaillée que la variante de la \olref[nen-alt]{sec}.
+\footnote{Correction éditoriale : l’original renvoie ici à la section
+sur les énumérations ; le renvoi vise la présentation parallèle
+de la non-dénombrabilité.}
+\end{editorial}
+
+Certains ensembles, comme l’ensemble $\PosInt$ des entiers
+strictement positifs, sont infinis. Jusqu’ici, tous les exemples
+d’ensembles infinis rencontrés étaient \usetoken{p}{enumerable}.
+Il existe pourtant des ensembles infinis qui ne possèdent pas
+cette propriété. On les appelle des ensembles
+\emph{\usetoken{p}{nonenumerable}}.
+
+L’existence même d’ensembles \usetoken{p}{nonenumerable} peut
+surprendre. Pour tout ensemble non vide~$A$ qui est !!{enumerable},
+il existe une fonction surjective $f \colon \PosInt \to A$.
+\footnote{Précision éditoriale : l’original omet ici la condition
+non vide. L’ensemble vide est au plus dénombrable, mais aucune
+fonction d’un ensemble non vide vers l’ensemble vide n’existe.}
+Si $A$ est !!{nonenumerable}, aucune telle fonction n’existe.
+Autrement dit, aucune fonction qui associe aux !!{element}s,
+en nombre infini, de~$\PosInt$ des éléments de~$A$ ne peut atteindre
+tous les éléments de~$A$. Il y a donc, en ce sens, « plus »
+d’éléments dans~$A$ que d’entiers strictement positifs.
+
+Comment démontrer qu’un ensemble est !!{nonenumerable} ?
+Il faut montrer qu’aucune fonction surjective de ce type ne peut
+exister. Pour un ensemble non vide, cela revient à montrer que
+ses éléments ne peuvent pas être énumérés dans une liste infinie
+ayant un premier terme. On peut y parvenir en prouvant que toute
+liste d’éléments de~$A$ en omet au moins un : aucune fonction
+$f\colon \PosInt \to A$ ne peut alors être surjective.
+La \emph{méthode diagonale} de Cantor fournit un tel procédé.
+Étant donnée une liste $x_1$, $x_2$, \dots{} d’éléments de~$A$,
+on construit un autre élément de~$A$ qui, par sa construction
+même, ne figure pas dans cette liste.
+
+Notre premier exemple est l’ensemble~$\Bin^\omega$ de toutes
+les suites infinies de $0$ et de $1$, dont les termes sont ici
+indexés par les entiers strictement positifs, sans position manquante.
+
+\begin{thm}
+\ollabel{thm:nonenum-bin-omega}
+$\Bin^\omega$ est !!{nonenumerable}.
+\end{thm}
+
+\begin{proof}
+Supposons, par l’absurde, que $\Bin^\omega$ soit !!{enumerable}.
+Il existe alors une liste $s_{1}$, $s_{2}$, $s_{3}$, $s_{4}$, \dots{}
+de tous les éléments de~$\Bin^\omega$. Chaque $s_i$ est elle-même
+une suite infinie de $0$ et de~$1$. Notons $s_i(j)$ le $j$-ième terme
+de la $i$-ième suite de cette liste. La suite~$s_i$ s’écrit donc
+\[
+s_i(1), s_i(2), s_i(3), \dots
+\]
+
+Disposons la liste des suites et les termes de chaque suite~$s_i$
+dans un tableau :
+\[
+\begin{array}{c|c|c|c|c|c}
+& 1 & 2 & 3 & 4 & \dots \\\hline
+1 & \mathbf{s_{1}(1)} & s_{1}(2) & s_{1}(3) & s_1(4) & \dots \\\hline
+2 & s_{2}(1)& \mathbf{s_{2}(2)} & s_2(3) & s_2(4) & \dots \\\hline
+3 & s_{3}(1)& s_{3}(2) & \mathbf{s_3(3)} & s_3(4) & \dots \\\hline
+4 & s_{4}(1)& s_{4}(2) & s_4(3) & \mathbf{s_4(4)} & \dots \\\hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \mathbf{\ddots}
+\end{array}
+\]
+Les numéros à gauche repèrent les suites dans la liste $s_1$, $s_2$,
+\dots ; ceux du haut repèrent les termes de chacune de ces suites.
+Ainsi, $s_{1}(1)$ désigne le nombre, $0$ ou~$1$, qui est le premier
+terme de la suite~$s_{1}$, et ainsi de suite.
+
+Construisons maintenant une suite infinie~$\overline{s}$ de $0$
+et de $1$ qui ne peut pas figurer dans cette liste. Sa définition
+dépendra de la liste $s_1$, $s_2$, \dots. Toute liste infinie de
+suites infinies de $0$ et de $1$ permet ainsi de construire une
+suite infinie~$\overline{s}$ absente de cette liste.
+
+Pour définir $\overline{s}$, il faut préciser tous ses termes,
+c’est-à-dire $\overline{s}(n)$ pour chaque $n \in \PosInt$.
+Parcourons la diagonale du tableau, d’où le nom de « méthode
+diagonale », en remplaçant chaque $1$ par un $0$ et chaque $0$
+par un~$1$. Plus précisément, $\overline{s}(n)$ vaut $0$ ou $1$
+selon que le $n$-ième terme de la diagonale, $s_n(n)$, vaut $1$ ou $0$ :
+\[
+\overline{s}(n) =
+\begin{cases}
+1 & \text{si $s_{n}(n) = 0$}\\
+0 & \text{si $s_{n}(n) = 1$}.
+\end{cases}
+\]
+Si l’on préfère une formule à cette définition par cas, on peut
+aussi poser $\overline{s}(n) = 1 - s_n(n)$.
+
+La suite~$\overline{s}$ est bien une suite infinie de $0$ et de $1$ :
+on l’obtient en échangeant les deux valeurs dans la suite lue
+sur la diagonale du tableau. Ainsi, $\overline{s}$ appartient
+à~$\Bin^\omega$. Pourtant, elle ne figure pas dans la liste
+$s_1$, $s_2$, \dots. Voyons pourquoi.
+
+Elle ne peut pas être la première suite~$s_1$, car son premier
+terme est différent de celui de~$s_1$ : quelle que soit la valeur
+de $s_1(1)$, on a défini $\overline{s}(1)$ en échangeant $0$ et $1$.
+Elle ne peut pas non plus être la deuxième suite, puisqu’elle
+diffère de $s_2$ au deuxième terme : si $s_2(2)$ vaut $0$,
+$\overline{s}(2)$ vaut $1$, et inversement. On poursuit de même.
+
+Plus précisément, si $\overline{s}$ figurait dans la liste,
+il existerait un indice~$k$ tel que $\overline{s} = s_{k}$.
+Deux suites sont égales si et seulement si tous leurs termes
+de même indice sont égaux : pour tout~$n$, on aurait
+$\overline{s}(n) = s_{k}(n)$. En particulier, pour $n = k$,
+on aurait $\overline{s}(k) = s_{k}(k)$. Or $s_k(k)$ vaut $0$ ou~$1$.
+Dans le premier cas, $\overline{s}(k)$ vaut~$1$ par définition ;
+si $s_k(k) = 1$, on a au contraire $\overline{s}(k) = 0$.
+Dans les deux cas,
+$\overline{s}(k) \neq s_{k}(k)$.
+
+Nous étions partis d’une liste $s_1$, $s_2$, \dots{} d’éléments
+de~$\Bin^\omega$. Nous avons construit à partir de cette liste
+une suite~$\overline{s}$ qui n’y figure pas. Pourtant, dès lors
+que toutes les suites $s_i$ sont constituées de $0$ et de $1$,
+la suite construite l’est aussi : $\overline{s} \in \Bin^\omega$.
+Il ne peut donc exister de liste de \emph{tous} les éléments
+de~$\Bin^\omega$, puisque chaque liste permet de construire
+un élément qui lui échappe. L’hypothèse d’une liste contenant
+toutes ces suites conduit à une contradiction.
+\end{proof}
+
+\begin{explain}
+Cette méthode de démonstration s’appelle la « diagonalisation » :
+elle utilise la diagonale du tableau pour définir~$\overline{s}$.
+Une diagonalisation n’exige toutefois pas de tableau. Une idée
+semblable permet de prouver la non-dénombrabilité d’ensembles
+sans faire apparaître de tableau ni de diagonale au sens géométrique.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:nonenum-pownat}
+$\Pow{\PosInt}$ n’est pas !!{enumerable}.
+\end{thm}
+
+\begin{proof}
+Procédons de même : montrons que toute liste de parties
+de~$\PosInt$ omet au moins une partie de $\PosInt$.
+Soit une liste de parties de~$\PosInt$ :
+\[
+Z_{1}, Z_{2}, Z_{3}, \dots
+\]
+Définissons un ensemble~$\overline{Z}$ tel que, pour tout
+$n \in \PosInt$, on ait $n \in \overline{Z}$ si et seulement si
+$n \notin Z_{n}$ :
+\[
+\overline{Z} = \Setabs{n \in \PosInt}{n \notin Z_n}
+\]
+Par définition, $\overline{Z}$ est un ensemble d’entiers strictement
+positifs ; on a donc $\overline{Z} \in \Pow{\PosInt}$.
+Mais il ne peut pas figurer dans la liste. Pour le montrer,
+établissons que $\overline{Z} \neq Z_k$ pour tout $k \in \PosInt$.
+
+Soit donc $k \in \PosInt$ quelconque. Par définition,
+pour tout $n \in \PosInt$, on a $n \in \overline{Z}$ si et seulement
+si $n \notin Z_n$. En particulier, pour $n=k$,
+$k \in \overline{Z}$ si et seulement si $k \notin Z_k$.
+On a donc $\overline{Z} \neq Z_k$ :
+$k$ appartient à l’un et pas à l’autre. Comme $k$ était quelconque,
+$\overline{Z}$ ne figure pas dans la liste $Z_1$, $Z_2$, \dots
+\end{proof}
+
+\begin{explain}
+La démonstration précédente ne mentionne aucune diagonale,
+mais on peut en faire apparaître une de la manière suivante.
+Disposons les ensembles $Z_1$, $Z_2$, \dots{} dans un tableau,
+en plaçant chaque élément~$j \in Z_i$ dans la colonne d’indice~$j$.
+Si les quatre premiers ensembles de la liste sont
+$\{1,2,3,\dots\}$, $\{2, 4, 6, \dots\}$, $\{1,2,5\}$
+et $\{3,4,5,\dots\}$, le tableau commence ainsi :
+\[
+\begin{array}{r@{}rrrrrrr}
+  Z_1 = \{ & \mathbf{1}, & 2, & 3, & 4, & 5, & 6, & \dots\}\\
+  Z_2 = \{ &  & \mathbf{2}, &  & 4, &  & 6, & \dots\}\\
+  Z_3 = \{ & 1, & 2, &  &  & 5\phantom{,} &  & \}\\
+  Z_4 = \{ &  &  & 3, & \mathbf{4}, & 5, & 6, & \dots\}\\
+  \vdots & & & & & \ddots
+\end{array}
+\]
+Pour obtenir $\overline{Z}$, on parcourt la diagonale : on exclut
+les nombres qui y figurent et on inclut les indices~$j$ pour lesquels
+la case à la ligne~$j$ et à la colonne~$j$ est vide. Dans cet exemple,
+on exclut $1$ et $2$, on inclut~$3$, on exclut~$4$, etc.
+\end{explain}
+
+\begin{prob}
+Montrez, par un argument diagonal, que $\Pow{\Nat}$ est !!{nonenumerable}.
+\end{prob}
+
+\begin{prob}\label{sfr:siz:nen:prob:f-posint}
+Montrez, par un argument diagonal explicite, que l’ensemble
+des fonctions $f \colon \PosInt \to \PosInt$ est !!{nonenumerable}.
+Autrement dit, si $f_1$, $f_2$, \dots{} est une liste de fonctions
+dont chacune vérifie $f_i\colon \PosInt \to \PosInt$, construisez
+une fonction $\overline{f}\colon \PosInt \to \PosInt$ qui ne figure
+pas dans cette liste.
+\end{prob}
+
+\end{document}

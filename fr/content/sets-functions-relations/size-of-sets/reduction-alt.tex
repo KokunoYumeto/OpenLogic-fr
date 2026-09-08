@@ -1,0 +1,173 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: reduction-alt
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{red-alt}
+
+\olsection{Réduction : variante bijective}
+
+\begin{editorial}
+  Cette section établit la non-dénombrabilité par réduction, en
+  reprenant les résultats de la \olref[nen-alt]{sec}. Une autre
+  version, un peu plus détaillée et correspondant aux résultats
+  de la \olref[nen]{sec}, figure à la \olref[red]{sec}.
+\end{editorial}
+
+Nous avons prouvé par diagonalisation que $\Bin^\omega$ est
+!!{nonenumerable}, puis utilisé un argument semblable pour
+$\Pow{\Nat}$. Voici une autre manière de montrer que
+$\Pow{\Nat}$ est !!{nonenumerable} : établir que \emph{si
+$\Pow{\Nat}$ est !!{enumerable}, alors $\Bin^\omega$ l'est
+aussi}. Puisque $\Bin^\omega$ est !!{nonenumerable}, il en
+résultera que $\Pow{\Nat}$ l'est également.
+
+C'est ce qu'on appelle \emph{réduire} un problème à un autre.
+Ici, nous réduisons le problème de l'énumération de $\Bin^\omega$
+à celui de l'énumération de $\Pow{\Nat}$. Une solution du second,
+c'est-à-dire une énumération de $\Pow{\Nat}$, fournirait une
+solution du premier, c'est-à-dire une énumération de $\Bin^\omega$.
+
+Pour réduire le problème de l'énumération d'un ensemble~$B$ à
+celui de l'énumération d'un ensemble~$A$, il faut donner un moyen
+de transformer une énumération de~$A$ en une énumération de~$B$.
+Le plus simple est de définir une !!{surjection} $f\colon A \to B$.
+Si $x_1$, $x_2$, \dots{} énumèrent~$A$, la liste $f(x_1)$,
+$f(x_2)$, \dots{} parcourt tout~$B$ ; en retirant les répétitions,
+on obtient une énumération de~$B$.\footnote{Précision éditoriale :
+la définition bijective de cette variante exige que chaque élément
+apparaisse une seule fois. Une surjection seule ne garantit pas
+cette condition, laissée implicite dans l'original. On conserve
+chaque valeur à sa première apparition, puis on réindexe la liste
+obtenue par $\Nat$ ou par un segment initial si elle est finie.}
+Dans notre cas, nous cherchons une !!{surjection}
+$f\colon \Pow{\Nat} \to \Bin^\omega$.
+
+\begin{prob}
+Montrer que, s'il existe une fonction !!{injective} $g\colon B \to A$
+et si $B$ est !!{nonenumerable}, alors $A$ l'est aussi. Pour cela,
+expliquer comment utiliser~$g$ pour transformer une énumération
+de~$A$ en une énumération de~$B$.
+\end{prob}
+
+\begin{proof}[Démonstration du {\olref[nen-alt]{thm:nonenum-pownat}} par réduction]
+Supposons que $\Pow{\Nat}$ soit !!{enumerable}, et soit
+$N_{1}$, $N_{2}$, $N_{3}$, \dots{} une énumération de ses
+éléments.\footnote{L'ensemble $\Pow{\Nat}$ est infini, puisqu'il
+contient tous les singletons d'entiers naturels. Cette liste est
+donc infinie ; ses indices commencent à $1$ comme dans l'original,
+ce qui revient à décaler d'une unité les indices de~$\Nat$.}
+
+Définissons $f \colon \Pow{\Nat} \to \Bin^\omega$ en associant
+à $N$ la suite $s$ telle que $s(n) = 1$ si et seulement si
+$n \in N$, et $s(n) = 0$ sinon.\footnote{Note de traduction :
+l'original écrit $s_k$ sans définir l'indice $k$ ; nous écrivons
+$s$ pour la suite associée à~$N$.}
+
+Cela définit bien une fonction : pour tout $N \subseteq \Nat$,
+chaque $n \in \Nat$ appartient ou n'appartient pas à~$N$.
+Par exemple, l'ensemble $2\Nat = \Setabs{2n}{n \in \Nat}
+= \{0,2, 4, 6, \dots\}$ des entiers naturels pairs a pour
+image la suite $1010101\dots$ ; $\emptyset$ a pour image
+$0000\dots$ ; $\Nat$ a pour image $1111\dots$.
+
+Cette fonction est aussi !!{surjective} : toute suite de $0$ et
+de $1$ correspond à l'ensemble des indices naturels auxquels
+elle vaut~$1$. Plus précisément, pour $s \in \Bin^\omega$,
+définissons $N \subseteq \Nat$ par
+\[
+N = \Setabs{n \in \Nat}{s(n) = 1}
+\]
+Alors $f(N) = s$, comme on le vérifie à partir de la définition
+de~$f$. De plus, $f$ est injective : deux parties distinctes de
+$\Nat$ diffèrent par l'appartenance d'au moins un entier, et
+leurs suites diffèrent donc au terme de cet indice.\footnote{
+Précision éditoriale : cette vérification d'injectivité est ajoutée
+pour établir directement une énumération bijective dans la
+démonstration qui suit.}
+
+Considérons maintenant la liste
+\[
+f(N_1), f(N_2), f(N_3), \dots
+\]
+Puisque $f$ est !!{surjective}, chaque élément de $\Bin^\omega$
+est une valeur de~$f$ et figure donc dans cette liste. Puisque
+$f$ est aussi injective et que les $N_i$ sont distincts, la
+liste ne contient aucune répétition. Elle énumère donc
+tout~$\Bin^\omega$ au sens bijectif.
+
+Si $\Pow{\Nat}$ était !!{enumerable}, $\Bin^\omega$ le serait
+donc aussi. Or $\Bin^\omega$ est !!{nonenumerable}
+(\olref[nen-alt]{thm:nonenum-bin-omega}). Par conséquent,
+$\Pow{\Nat}$ est !!{nonenumerable}.
+\end{proof}
+
+\begin{editorial}\textit{Passage conservé en commentaire dans l'original.}
+\begin{explain}
+Il est facile de se tromper sur le sens de la réduction. Une fonction
+!!{surjective} $g\colon \Bin^\omega \to X$ ne permet \emph{pas}
+d'établir que $X$ est !!{nonenumerable}. Considérons, par exemple,
+$g\colon \Bin^\omega \to \Bin$ définie par $g(s) = s(1)$ : elle
+associe à chaque suite binaire son terme d'indice $1$, le deuxième
+avec l'indexation adoptée ici. Elle est surjective, car ce terme peut
+valoir $0$ ou $1$, alors que $\Bin$ est fini. De même, la fonction
+$f\colon A \to B$ du transfert doit être surjective : sinon,
+rien ne garantit que $f(x_1)$, $f(x_2)$, \dots{} atteignent tous
+les éléments de~$B$. Par exemple, la fonction $h\colon \Nat \to
+\Bin^\omega$ définie par
+\[
+h(n) = \underbrace{000\dots0}_{\text{$n$ zéros}}111\dots
+\]
+est bien une fonction, alors que $\Nat$ est !!{enumerable}.
+\footnote{Note de traduction : la source appelle $s(1)$ le premier
+terme ; nous précisons son indice sans changer la formule. Son $Y$
+final n'est pas défini : nous reprenons $B$ du transfert de $A$ vers $B$.
+Son mot fini de $n$ zéros est complété par une infinité de $1$ pour
+avoir le type annoncé ; cette application n'atteint pas la suite
+constante égale à $0$.}
+\end{explain}
+\end{editorial}
+
+\begin{prob}\label{sfr:siz:red-alt:prob:nat-nat}
+  % Le label source red:prob:nat-nat est aussi défini dans reduction.tex.
+  % Le nom red-alt évite ce doublon dans le lecteur intégrant les variantes.
+  Montrer par réduction que l'ensemble~$X$ de toutes les fonctions
+  $f\colon \Nat \to \Nat$ est !!{nonenumerable}. Indication :
+  donner une fonction surjective de $X$ dans~$\Bin^\omega$.
+\end{prob}
+
+\begin{prob}
+Montrer par réduction que l'ensemble de tous les \emph{ensembles de}
+couples d'entiers naturels, c'est-à-dire $\Pow{\Nat \times \Nat}$,
+est !!{nonenumerable}.
+\end{prob}
+
+\begin{prob}
+Montrer par réduction que $\Nat^\omega$, l'ensemble des suites
+infinies d'entiers naturels, est !!{nonenumerable}.
+\end{prob}
+
+\begin{prob}
+\textit{Exercice conservé en commentaire dans l'original.}
+Soit $P$ l'ensemble des fonctions de $\Nat$ dans $\{0\}$, et soit $Q$
+l'ensemble des fonctions partielles des entiers strictement positifs
+dans $\{0\}$. Montrer que $P$ est !!{enumerable} et que $Q$ ne l'est pas.
+Indication : réduire le problème de l'énumération de $\Bin^\omega$
+à celui de l'énumération de~$Q$.
+\end{prob}
+
+\begin{prob}
+Soit $S$ l'ensemble de toutes les !!{surjection}s de $\Nat$ dans
+$\{0,1\}$ ; autrement dit, $S$ contient exactement les
+!!{surjection}s $f \colon \Nat \to \Bin$. Montrer que $S$
+est !!{nonenumerable}.
+\end{prob}
+
+\begin{prob}
+Montrer que l'ensemble~$\Real$ des nombres réels est !!{nonenumerable}.
+\end{prob}
+
+\end{document}

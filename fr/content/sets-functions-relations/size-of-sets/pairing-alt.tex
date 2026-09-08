@@ -1,0 +1,125 @@
+% Partie : sets-functions-relations
+% Chapitre : size-of-sets
+% Section : pairing-alt
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{pai-alt}
+
+\olsection{Une autre fonction de couplage}
+
+\begin{explain}
+Il existe d’autres énumérations de $\Nat^2$ dont l’inverse est
+plus facile à déterminer. En voici une. Au lieu de disposer
+l’énumération dans un tableau, partons d’une liste de places
+numérotées par les entiers strictement positifs, toutes vides
+au départ. Remplissons-les progressivement avec des couples
+$\tuple{n,m}$ de la manière suivante. Commençons par les couples
+dont la première coordonnée vaut~$0$, c’est-à-dire les couples
+$\tuple{0,m}$. Plaçons le premier, $\tuple{0,0}$, à la première
+place vide ; laissons la suivante vide ; plaçons le deuxième,
+$\tuple{0,1}$, à la place vide suivante ; sautons encore une
+place, et ainsi de suite.\footnote{Correction éditoriale :
+l’original donne ici $\tuple{0,2}$ comme deuxième couple,
+alors que le tableau et l’ordre annoncé donnent $\tuple{0,1}$.}
+Le début, encore incomplet, de l’énumération est alors :
+{\small\[
+\begin{array}{@{}c c c c c c c c c c c@{}}
+\mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 & \mathbf 5 & \mathbf 6 & \mathbf 7 & \mathbf 8 & \mathbf 9 & \mathbf{10} & \dots \\ \\
+\tuple{0,0} &  & \tuple{0,1} &  & \tuple{0,2} &  & \tuple{0,3} & & \tuple{0,4} &  & \dots \\
+\end{array}
+\]}
+Recommençons avec les couples $\tuple{1,m}$ aux places encore
+vides, en laissant de nouveau une place vide sur deux :
+{\small\[
+\begin{array}{@{}c c c c c c c c c c c@{}}
+\mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 & \mathbf 5 & \mathbf 6 & \mathbf 7 & \mathbf 8 & \mathbf 9 & \mathbf{10} & \dots \\ \\
+\tuple{0,0} & \tuple{1,0} & \tuple{0,1} &  & \tuple{0,2} & \tuple{1,1} &
+\tuple{0,3} & & \tuple{0,4} &  \tuple{1,2} & \dots \\
+\end{array}
+\]}
+Insérons de même les couples $\tuple{2,m}$, puis $\tuple{3,m}$,
+etc.\footnote{Correction éditoriale : l’original répète
+$\tuple{2,m}$ au lieu de passer à $\tuple{3,m}$.}
+L’énumération complète commence ainsi :
+{\small\[
+\begin{array}{@{}cc c c c c c c c c c@{}}
+\mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 & \mathbf 5 & \mathbf 6 & \mathbf 7 & \mathbf 8 & \mathbf 9 & \mathbf{10} & \dots \\ \\
+\tuple{0,0} & \tuple{1,0} & \tuple{0,1} & \tuple{2,0}  & \tuple{0,2} &
+\tuple{1,1} & \tuple{0,3} & \tuple{3,0}  & \tuple{0,4} &  \tuple{1,2} & \dots \\
+\end{array}
+\]}
+Si l’on reporte les positions de cette énumération dans le tableau
+des couples, on n’obtient plus un parcours en zigzag, mais la disposition
+suivante :
+\[
+\begin{array}{ c | c | c | c | c | c | c | c }
+& \mathbf 0 & \mathbf 1 & \mathbf 2 & \mathbf 3 & \mathbf 4 & \mathbf 5 & \dots \\
+\hline
+\mathbf 0 & 1 & 3 & 5 & 7 & 9 & 11 & \dots \\
+\hline
+\mathbf 1 & 2 & 6 & 10 & 14 & 18 & \dots & \dots \\
+\hline
+\mathbf 2 & 4 & 12 & 20 & 28 & \dots & \dots & \dots \\
+\hline
+\mathbf 3 & 8 & 24 & 40 & \dots & \dots & \dots & \dots \\
+\hline
+\mathbf 4 & 16 & 48 & \dots & \dots & \dots & \dots & \dots \\
+\hline
+\mathbf 5 & 32 & \dots & \dots & \dots & \dots & \dots & \dots \\
+\hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots\\
+\end{array}
+\]
+Les couples de la ligne d’indice~$0$ occupent les positions impaires :
+le couple $\tuple{0,m}$ est en position $2m+1$. Les couples
+$\tuple{1,m}$ de la deuxième ligne occupent les positions dont
+le numéro est le double d’un nombre impair, à savoir $2 \cdot (2m+1)$.
+Ceux de la troisième ligne, $\tuple{2,m}$, occupent les positions
+dont le numéro est le quadruple d’un nombre impair, $4 \cdot (2m+1)$,
+et ainsi de suite. Les facteurs de $(2m+1)$ associés aux lignes,
+$1$, $2$, $4$, $8$, \dots, sont exactement les puissances de~$2$ :
+$1= 2^0$, $2 = 2^1$, $4 = 2^2$, $8 = 2^3$, \dots\@
+L’exposant est toujours la première coordonnée du couple.
+Pour $\tuple{n,m}$, le facteur est donc $2^n$, d’où la formule
+générale $2^n \cdot (2m+1)$. Cette formule associe toutefois
+aux couples des entiers \emph{strictement positifs} : le couple
+$\tuple{0,0}$ occupe la position~$1$. Pour commencer la numérotation
+à~$0$, il suffit de soustraire~$1$. On obtient alors :
+\end{explain}
+
+\begin{ex}
+La fonction $h\colon \Nat^2 \to \Nat$ définie par
+\[
+h(n,m) = 2^n (2m+1) - 1
+\]
+est une fonction de couplage de l’ensemble $\Nat^2$ des couples
+d’entiers naturels.
+\end{ex}
+
+\begin{explain}
+Dans cette deuxième énumération de $\Nat^2$, le couple
+$\tuple{0,0}$ a donc pour code $h(0,0) = 2^0(2\cdot 0+1) - 1 = 0$ ;
+le couple $\tuple{1,2}$ a pour code $2^{1} \cdot (2 \cdot 2 + 1) - 1 = 2
+\cdot 5 - 1 = 9$ ; et le couple $\tuple{2,6}$ a pour code
+$2^{2} \cdot (2 \cdot 6 + 1) - 1 = 51$.
+\end{explain}
+
+Il suffit parfois de coder les couples d’entiers naturels~$\Nat^2$
+sans exiger que le codage soit surjectif. L’inverse d’un tel codage,
+considéré sur l’ensemble d’arrivée entier, est alors une fonction
+partielle, définie seulement sur les codes effectivement utilisés.
+
+\begin{ex}
+La fonction $j\colon \Nat^2 \to \Nat^+$ définie par
+\[
+j(n,m) = 2^n3^m
+\]
+est injective. En considérant ses valeurs comme des éléments de
+$\Nat$, on obtient donc aussi une fonction !!{injective}
+$\Nat^2 \to \Nat$.
+\end{ex}
+
+\end{document}

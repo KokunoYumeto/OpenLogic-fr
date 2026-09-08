@@ -1,0 +1,401 @@
+{
+  "scope": "Four size drafts OLP0030–0033 only; pending chapter integration and actual PDF QA.",
+  "files": [
+    {
+      "file": "zig-zag.tex",
+      "source_sha256": "514c709d325dd5496ee321828b0c4a0e7eea089a58d3f2ecde05128b9e7daf26",
+      "target_sha256": "4ef05b8f9c186136bd76408d397e0c75defd9a3b4fdf42d45a4911f4ebc29538",
+      "display_blocks": 7,
+      "displays_equal_after_whitespace_and_if_si": true,
+      "inline_differences_for_editorial_review": [
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "0"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "k"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "k",
+            "n+m",
+            "f"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "n=0",
+            "\\Nat^0",
+            "0",
+            "1",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pairing.tex",
+      "source_sha256": "fb6cc1176e91e56cea5f5b9708723c59191813f8fe256aac8ed0457a0119a9bf",
+      "target_sha256": "4c512eff1cb48d8b8651b84f1e5cb79143612b4b550e5d4347989b987f0808d8",
+      "display_blocks": 2,
+      "displays_equal_after_whitespace_and_if_si": true,
+      "inline_differences_for_editorial_review": [
+        {
+          "kind": "replace",
+          "source": [
+            "(n+1)",
+            "(m-1)",
+            "v + 1"
+          ],
+          "target": [
+            "m\\geq 1",
+            "n+1",
+            "m-1",
+            "v+1"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "< k"
+          ],
+          "target": [
+            "0",
+            "k"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "m-1",
+            "m\\geq 1",
+            "k",
+            "k(k-1)/2"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "(n+m)^\\text{th}"
+          ],
+          "target": [
+            "n+m"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "\\frac{4 \\times 3}{2} +\n1 = 7"
+          ],
+          "target": [
+            "\\frac{4 \\times 3}{2} + 1 = 7"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "f"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\Nat"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\bigcup_{i=1}^\\infty A_i"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\bigcup_{i=1}^\\infty\nA_i"
+          ],
+          "target": []
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "f"
+          ],
+          "target": [
+            "\\ran{f}"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "A \\times B",
+            "\\Nat"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "pairing-alt.tex",
+      "source_sha256": "c26b4e0da9e2e0b0ec839470ddd1d0d5eb1b3d3922d3b6986c9a795f34328797",
+      "target_sha256": "98d142d3053554d84827c44f937cab61ced0ffd0545b0ee3547776fc5e746faa",
+      "display_blocks": 6,
+      "displays_equal_after_whitespace_and_if_si": true,
+      "inline_differences_for_editorial_review": [
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\tuple{0,1}"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\tuple{0,1}"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\tuple{3,m}"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\tuple{3,m}"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "2^{2} \\cdot (2\n\\cdot 6 + 1) - 1 = 51"
+          ],
+          "target": [
+            "2^{2} \\cdot (2 \\cdot 6 + 1) - 1 = 51"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\Nat"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "non-enumerability.tex",
+      "source_sha256": "4471def29c2da48dcb01635adf692cd0bc89cb6885636db149f4b2d86ff4e9fa",
+      "target_sha256": "4a96c433a5586a2498ab2e7f41e60f008f98fac3571bc8f9f6a9b3c3eff1cb00",
+      "display_blocks": 6,
+      "displays_equal_after_whitespace_and_if_si": true,
+      "inline_differences_for_editorial_review": [
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "A"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "A"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "A"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "A"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "s_i(j)"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "i",
+            "s_i(j)"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\overline{s}"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "0",
+            "1"
+          ],
+          "target": []
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "\\overline{s}"
+          ],
+          "target": [
+            "0",
+            "1"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "\\overline{s}(n) =\ns_{k}(n)"
+          ],
+          "target": [
+            "\\overline{s}(n) = s_{k}(n)"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "0"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\overline{s}"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\overline{s}"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\Bin^\\omega"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\Bin^\\omega"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "0",
+            "1"
+          ],
+          "target": []
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "\\overline{s} \\in\n\\Bin^\\omega",
+            "\\Bin^\\omega",
+            "\\overline{s}"
+          ],
+          "target": [
+            "\\overline{s} \\in \\Bin^\\omega"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "Z_n",
+            "\\overline{Z} \\in\n\\Pow{\\PosInt}",
+            "\\overline{Z}"
+          ],
+          "target": [
+            "\\overline{Z} \\in \\Pow{\\PosInt}",
+            "\\overline{Z} \\neq Z_k"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\overline{Z} \\neq\nZ_k"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\overline{Z}"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\overline{Z}",
+            "Z_k"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "j"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "f_i\\colon\n\\PosInt \\to \\PosInt",
+            "\\overline{f}\\colon \\PosInt \\to\n\\PosInt"
+          ],
+          "target": [
+            "f_i\\colon \\PosInt \\to \\PosInt",
+            "\\overline{f}\\colon \\PosInt \\to \\PosInt"
+          ]
+        }
+      ]
+    }
+  ],
+  "all_displays_preserved": true,
+  "changes_not_inferred_semantically_valid_from_marker_counts": true
+}

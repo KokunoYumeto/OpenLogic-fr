@@ -1,0 +1,148 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: enumerations-alt
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{enm-alt}
+
+\olsection{Énumérations bijectives et ensembles \usetoken{p}{enumerable}}
+
+\begin{editorial}
+  Cette section définit les énumérations comme des bijections avec
+  $\Nat$ ou avec un segment initial de~$\Nat$, selon l'usage de
+  la théorie des ensembles. Cette définition diffère donc légèrement
+  de celle de la \olref[enm]{sec}, dont tous les exemples sont repris
+  ici. La présentation est aussi un peu plus concise.
+\end{editorial}
+
+On peut décrire un ensemble fini en énumérant simplement ses éléments,
+comme lorsqu'on écrit :
+\[
+  A = \{a_1, a_2, \ldots, a_n\}.
+\]
+Si les éléments $a_1$, \dots, $a_n$ sont tous distincts, cette
+écriture donne une !!{bijection} entre $A$ et les $n$ premiers
+entiers naturels $0$, \dots, $n-1$. Réciproquement, tout ensemble
+fini ne possède qu'un nombre fini d'éléments et peut donc être mis
+en une telle correspondance. Autrement dit, si $A$ est fini, il
+existe une !!{bijection} entre $A$ et $\{0, \dots, n-1\}$, où
+$n$ est le nombre d'éléments de~$A$.\footnote{Précision éditoriale :
+pour $n=0$, le segment formé des $n$ premiers entiers est vide.
+La définition d'énumération ci-dessous utilise quant à elle des
+segments non vides ; elle traite l'ensemble vide séparément dans
+la définition de la dénombrabilité.}
+
+Si l'on admet certains ensembles infinis, on peut aussi admettre
+des énumérations infinies. Précisons cette idée : un ensemble infini
+est énuméré par une !!{bijection} entre cet ensemble et tout~$\Nat$.
+
+\begin{defn}[Énumération au sens ensembliste]
+Une \emph{énumération} d'un ensemble $A$ est une !!{bijection} dont
+l'image est $A$ et dont le domaine est soit un segment initial
+$\{0, 1, \ldots, n\}$ des entiers naturels, soit l'ensemble
+$\Nat$ tout entier.
+\end{defn}
+
+\begin{explain}
+L'emploi du mot \emph{énumération} repose sur une idée intuitive :
+énumérer un ensemble $A$, c'est disposer d'une !!{bijection} $f$
+qui permet d'en compter les éléments un à un. L'élément d'indice
+$0$ est $f(0)$, celui d'indice $1$ est $f(1)$, \ldots, celui
+d'indice $n$ est $f(n)$, \ldots.\footnote{Nous commençons bien
+à compter à partir de $0$. On pourrait aussi commencer à $1$ :
+cela ne changerait rien d'essentiel. Il suffirait de remplacer
+$\Nat$ par~$\PosInt$.} La définition suivante précise encore
+cette idée.
+\end{explain}
+
+\begin{defn}
+  \ollabel{defn:enumerable}
+  Un ensemble~$A$ est !!{enumerable} si et seulement si
+  $A = \emptyset$ ou s'il existe une énumération de~$A$.
+  On dit que $A$ est !!{nonenumerable} si et seulement s'il
+  n'est pas !!{enumerable}.
+\end{defn}
+
+\begin{explain}
+Ainsi, un ensemble est !!{enumerable} si et seulement s'il est
+vide ou si une énumération permet d'en compter les éléments un à un.
+\end{explain}
+
+\begin{ex}
+L'identité $\Id{\Nat} \colon \Nat \to \Nat$, définie par
+$\Id{\Nat}(n) = n$, énumère les entiers naturels. La fonction
+$g(n) = n + 1$, c'est-à-dire la fonction successeur, énumère les
+entiers naturels \emph{strictement positifs}
+$\Nat^+ = \Nat \setminus \{0\}$.
+\end{ex}
+
+\begin{prob}
+Montrer qu'un ensemble $A$ est !!{enumerable} si et seulement si
+$A = \emptyset$ ou s'il existe une !!{surjection}
+$f\colon \Nat \to A$. Montrer aussi que $A$ est !!{enumerable}
+si et seulement s'il existe une !!{injection} $g\colon A \to \Nat$.
+\end{prob}
+
+\begin{ex}
+Les fonctions $f\colon \Nat \to \Nat$ et $g \colon \Nat \to \Nat$
+définies par
+\begin{align*}
+  f(n) & = 2n \text{ et}\\
+  g(n) & = 2n+1
+\end{align*}
+énumèrent respectivement les entiers naturels pairs et les entiers
+naturels impairs, lorsque l'on prend leur image respective comme
+ensemble d'arrivée.\footnote{Précision éditoriale : ces applications
+deviennent des bijections par coréstriction à leur image.
+L'original les appelle directement énumérations tout en les écrivant
+à valeurs dans $\Nat$ ; cette distinction est nécessaire avec
+la définition bijective adoptée ici.}
+Mais aucune des deux fonctions à valeurs dans $\Nat$ n'est
+!!{surjective} ; aucune n'est donc une énumération de~$\Nat$.
+\end{ex}
+
+\begin{prob}
+Définir une énumération des nombres carrés $1$, $4$, $9$, $16$, \dots
+\end{prob}
+
+\begin{ex}
+Notons $\lceil x \rceil$ le \emph{plafond} de $x$, c'est-à-dire
+le plus petit entier supérieur ou égal à~$x$. La fonction
+$f \colon \Nat \to \Int$ définie par
+\[
+  f(n) = (-1)^{n} \left\lceil\tfrac{n}{2}\right\rceil
+\]
+énumère l'ensemble des entiers relatifs~$\Int$ de la manière suivante :
+\[
+\begin{array}{c c c c c c c c}
+f(0) & f(1) & f(2) & f(3) & f(4) & f(5) & f(6) & \dots \\ \\
+\big\lceil \tfrac{0}{2} \big\rceil & -\big\lceil \tfrac{1}{2}\big\rceil &  \big\lceil \tfrac{2}{2} \big\rceil & -\big\lceil \tfrac{3}{2} \big\rceil & \big\lceil \tfrac{4}{2} \big\rceil  & -\big\lceil \tfrac{5}{2}\big\rceil & \big\lceil \tfrac{6}{2} \big\rceil & \dots \\ \\
+0 & -1 & 1 & -2 & 2 & -3 & 3& \dots
+\end{array}
+\]
+La fonction $f$ produit les valeurs de $\Int$ en « sautant »
+d'un côté à l'autre de zéro, entre entiers positifs et négatifs.
+On peut aussi la définir par cas :
+\[
+f(n) = \begin{cases}
+  \frac{n}{2} & \text{si $n$ est pair}\\
+  -\frac{n+1}{2} & \text{si $n$ est impair}
+  \end{cases}
+\]
+\end{ex}
+
+\begin{prob}
+Montrer que, si $A$ et $B$ sont !!{enumerable}s, alors
+$A \cup B$ l'est aussi.
+\end{prob}
+
+\begin{prob}
+Montrer par récurrence sur $n$ que, si $A_1$, $A_2$, \dots,
+$A_n$ sont tous !!{enumerable}s, alors $A_1 \cup \dots \cup A_n$
+l'est aussi.
+\end{prob}
+
+\end{document}

@@ -1,0 +1,138 @@
+% Partie : sets-functions-relations
+% Chapitre : size-of-sets
+% Section : pairing
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{pai}
+\olsection{Fonctions de couplage et codes}
+
+\begin{explain}
+La méthode en zigzag de Cantor permet de voir que $\Nat^n$ est
+!!{enumerable}. Revenons au tableau représentant $\Nat^2$.
+En suivant le parcours en zigzag et en comptant les positions,
+on vérifie que le couple $\tuple{1,2}$ est associé au numéro~$7$.
+Il serait toutefois utile de calculer ce numéro directement.
+Autrement dit, on voudrait disposer de l’\emph{inverse} de
+l’énumération en zigzag, $g\colon \Nat^2 \to \Nat$, tel que
+\[
+g(\tuple{0,0}) = 0, \;
+g(\tuple{0,1}) = 1, \;
+g(\tuple{1,0}) = 2, \; \dots,
+g(\tuple{1,2}) = 7, \; \dots
+\]
+Cette fonction donnerait la position exacte du couple $\tuple{n, m}$
+dans l’énumération.
+
+Deux observations permettent de définir directement~$g$.
+Premièrement, si la case de la ligne d’indice~$n$ et de la colonne
+d’indice~$m$ contient la valeur~$v$, alors, pour $m\geq 1$, la case
+de la ligne d’indice~$n+1$ et de la colonne d’indice~$m-1$ contient
+la valeur~$v+1$. Deuxièmement, la première ligne contient les nombres
+triangulaires, qui commencent par $0$, $1$, $3$, $6$, etc.
+Le nombre triangulaire d’indice~$k$ est la somme des entiers naturels
+de $0$ à $k$ inclus, soit $k(k+1)/2$.\footnote{Corrections éditoriales :
+pour passer à la colonne d’indice~$m-1$, il faut $m\geq 1$.
+L’original décrit en outre la somme des entiers strictement inférieurs
+à~$k$, qui vaut $k(k-1)/2$ ; on corrige cette borne pour l’accorder
+avec la formule et les valeurs affichées.}
+Ces deux observations conduisent à la fonction
+\[
+  g(n,m) = \frac{(n+m+1)(n+m)}{2} + n
+\]
+On écrit souvent $g(n, m)$ plutôt que $g(\tuple{n, m})$ pour alléger
+la notation. Pour calculer cette valeur, on prend le nombre triangulaire
+d’indice~$n+m$, puis on lui ajoute~$n$. On retrouve exactement
+les numéros du tableau. En particulier, le couple $\tuple{1, 2}$
+a pour image $\frac{4 \times 3}{2} + 1 = 7$.
+
+Cette fonction~$g$ est l’\emph{inverse} d’une énumération
+d’un ensemble de couples. De telles fonctions sont appelées
+\emph{fonctions de couplage}.
+\end{explain}
+
+\begin{defn}[Fonction de couplage]
+Une fonction $f\colon A \times B \to \Nat$ est une
+\emph{fonction de couplage arithmétique} si elle est injective.
+On dit aussi que $f$ \emph{code} $A \times B$ et que $f(x,y)$
+est le \emph{code} du couple $\tuple{x,y}$.
+\end{defn}
+
+\begin{explain}
+Les fonctions de couplage servent notamment à coder des couples
+d’entiers naturels : chaque \emph{couple} d’éléments est représenté
+par un \emph{seul} nombre. L’inverse de la fonction de couplage,
+défini sur son image, permet de \emph{décoder} un tel nombre,
+c’est-à-dire de retrouver le couple qu’il représente.
+\end{explain}
+
+\begin{prob}
+Donnez une énumération de l’ensemble des nombres rationnels
+positifs ou nuls.
+\end{prob}
+
+\begin{prob}
+Montrez que $\Rat$ est !!{enumerable}. Rappelez-vous que tout
+nombre rationnel s’écrit sous la forme d’une fraction $z/m$,
+avec $z \in \Int$ et $m \in \Nat^+$.
+\end{prob}
+
+\begin{prob}
+Définissez une énumération de $\Bin^*$.
+\end{prob}
+
+\begin{prob}
+Rappelez-vous, d’après votre cours d’introduction à la logique,
+que toute table de vérité représente une fonction de vérité,
+ou fonction booléenne. Autrement dit, ces fonctions sont toutes
+les fonctions $\Bin^k \to \Bin$, pour un certain entier
+naturel~$k$. Montrez que l’ensemble de toutes ces fonctions
+est !!{enumerable}.
+\end{prob}
+
+\begin{prob}
+Montrez que l’ensemble des parties finies d’un ensemble infini
+!!{enumerable} quelconque est !!{enumerable}.
+\end{prob}
+
+\begin{prob}
+Une partie de $\Nat$ est dite \emph{cofinie} si et seulement si
+elle est le complémentaire, dans $\Nat$, d’une partie finie de $\Nat$.
+Autrement dit, $A \subseteq \Nat$ est cofinie si et seulement si
+$\Nat\setminus A$ est fini. Soit $I$ l’ensemble dont les
+!!{element}s sont exactement les parties finies et les parties
+cofinies de $\Nat$. Montrez que $I$ est !!{enumerable}.
+\end{prob}
+
+\begin{prob}
+Montrez que la réunion d’une famille !!{enumerable} d’ensembles
+\usetoken{p}{enumerable} est !!{enumerable}. Autrement dit,
+si $A_1$, $A_2$, \dots{} sont des ensembles dont chacun est
+!!{enumerable}, alors leur réunion $\bigcup_{i=1}^\infty A_i$
+est !!{enumerable}. [Attention : cet exercice est difficile !]
+\footnote{Précision éditoriale : pour choisir une énumération de
+chaque ensemble non vide $A_i$ lorsque ces énumérations ne sont
+pas déjà données, on peut utiliser l’axiome du choix dénombrable.
+La preuve par parcours en zigzag porte ensuite sur les énumérations
+ainsi choisies.}
+\end{prob}
+
+\begin{prob}
+Soit $f \colon A \times B \to \Nat$ une fonction de couplage
+quelconque. Montrez que son inverse, défini sur $\ran{f}$,
+permet d’obtenir une énumération de $A \times B$.
+Traitez aussi le cas où $A \times B$ est vide.\footnote{Correction
+éditoriale : l’original affirme que l’inverse est lui-même une
+énumération. Or une fonction de couplage est seulement injective :
+son inverse a pour domaine son image, qui peut être une partie
+propre de $\Nat$. Il faut donc construire l’énumération à partir
+de cet inverse, en tenant compte du cas vide.}
+\end{prob}
+
+\begin{prob}
+Donnez une fonction qui code $\Nat^3$.
+\end{prob}
+
+\end{document}

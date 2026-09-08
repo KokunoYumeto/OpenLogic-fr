@@ -1,0 +1,58 @@
+[
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/zig-zag.tex",
+    "source_line": 115,
+    "source_excerpt": "$\\Nat^n$ is !!{enumerable}, for every $n \\in \\Nat$.",
+    "source_sha256": "514c709d325dd5496ee321828b0c4a0e7eea089a58d3f2ecde05128b9e7daf26",
+    "target_sha256": "4ef05b8f9c186136bd76408d397e0c75defd9a3b4fdf42d45a4911f4ebc29538",
+    "finding": "Exponent0 included although earlier product-power definition starts at1; explicit empty-tuple convention added."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/pairing.tex",
+    "source_line": 34,
+    "source_excerpt": "the sum of the natural numbers $< k$, which can be computed as",
+    "source_sha256": "fb6cc1176e91e56cea5f5b9708723c59191813f8fe256aac8ed0457a0119a9bf",
+    "target_sha256": "4c512eff1cb48d8b8651b84f1e5cb79143612b4b550e5d4347989b987f0808d8",
+    "finding": "Sum with strict bound is k(k−1)/2, not the stated k(k+1)/2; target uses inclusive bound."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/pairing.tex",
+    "source_line": 108,
+    "source_excerpt": "Show that the inverse of $f$ is an enumeration of $A \\times B$.",
+    "source_sha256": "fb6cc1176e91e56cea5f5b9708723c59191813f8fe256aac8ed0457a0119a9bf",
+    "target_sha256": "4c512eff1cb48d8b8651b84f1e5cb79143612b4b550e5d4347989b987f0808d8",
+    "finding": "General injective pairing inverse is defined only on its image, possibly a proper subset of Nat; target asks to construct enumeration from it, with empty case."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/pairing-alt.tex",
+    "source_line": 21,
+    "source_excerpt": "place, then skip an empty space, put the second (i.e., $\\tuple{0,2}$)",
+    "source_sha256": "c26b4e0da9e2e0b0ec839470ddd1d0d5eb1b3d3922d3b6986c9a795f34328797",
+    "target_sha256": "98d142d3053554d84827c44f937cab61ced0ffd0545b0ee3547776fc5e746faa",
+    "finding": "Second pair must be(0,1), as in the table; corrected and disclosed."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/pairing-alt.tex",
+    "source_line": 39,
+    "source_excerpt": "Enter pairs $\\tuple{2,m}$, $\\tuple{2,m}$, etc., in the same way. Our",
+    "source_sha256": "c26b4e0da9e2e0b0ec839470ddd1d0d5eb1b3d3922d3b6986c9a795f34328797",
+    "target_sha256": "98d142d3053554d84827c44f937cab61ced0ffd0545b0ee3547776fc5e746faa",
+    "finding": "Second family must advance to(3,m), as in the table; corrected and disclosed."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/non-enumerability.tex",
+    "source_line": 17,
+    "source_excerpt": "  than the version in \\olref[enm-alt]{sec}",
+    "source_sha256": "4471def29c2da48dcb01635adf692cd0bc89cb6885636db149f4b2d86ff4e9fa",
+    "target_sha256": "4a96c433a5586a2498ab2e7f41e60f008f98fac3571bc8f9f6a9b3c3eff1cb00",
+    "finding": "Parallel non-enumerability proof is at nen-alt; corrected and disclosed."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/non-enumerability.tex",
+    "source_line": 26,
+    "source_excerpt": "!!{nonenumerable} sets.  For any !!{enumerable} set~$A$ there is",
+    "source_sha256": "4471def29c2da48dcb01635adf692cd0bc89cb6885636db149f4b2d86ff4e9fa",
+    "target_sha256": "4a96c433a5586a2498ab2e7f41e60f008f98fac3571bc8f9f6a9b3c3eff1cb00",
+    "finding": "Surjection from PosInt requires A nonempty; empty A is still countable. Nonempty condition added and disclosed."
+  }
+]

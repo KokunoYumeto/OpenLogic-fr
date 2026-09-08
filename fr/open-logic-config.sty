@@ -1,4 +1,5 @@
 % Formes effectivement nécessaires aux chapitres intégrés.
+\RequirePackage{needspace}
 \settexttoken{element}{élément}{éléments}[Élément][Éléments]
 \definetoken{a}{element}{un}
 \definetoken{A}{element}{Un}
@@ -21,3 +22,14 @@
 \definetoken{a}{bijection}{une}
 \definetoken{A}{bijection}{Une}
 \tagtrue{novice,math,compsci}
+\settexttoken{enumerable}{au plus dénombrable}{au plus dénombrables}[Au plus dénombrable][Au plus dénombrables]
+\settexttoken{nonenumerable}{non dénombrable}{non dénombrables}[Non dénombrable][Non dénombrables]
+\settexttoken{denumerable}{infini dénombrable}{infinis dénombrables}[Infini dénombrable][Infinis dénombrables]
+% Le lecteur complet expose les variantes, tout en permettant leur sélection
+% usuelle lorsqu'une section est réutilisée dans un autre cours.
+\newif\iffrcompletevariants
+\long\def\frproofversions#1#2#3#4#5{%
+  \iffrcompletevariants
+    \par\medskip\noindent\emph{#1}\par\nobreak #4%
+    \par\medskip\noindent\emph{#2}\par\nobreak #5%
+  \else\oliflabeldef{#3}{#4}{#5}\fi}

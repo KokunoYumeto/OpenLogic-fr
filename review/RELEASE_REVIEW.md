@@ -1,0 +1,7 @@
+# Quatrième livraison : état final
+
+Quatre chapitres, 37 unités, 662 blocs alignés dont 464 de prose, 436 décisions. Les 14 unités du chapitre sur la taille des ensembles ajoutent 187 blocs de prose. Les variantes par surjections et par bijections, les deux preuves d’équipotence et de Cantor, et deux passages source commentés sont intégrés avec leurs conventions et leur provenance. Les sources anglaises restent intactes.
+
+Les cinq corrections du contrôle Functions sont incluses : existence/unicité avec les bons renvois, mappings de canon complétés et limites des justifications corrigées. Le tableau de la variante diagonale rétablit quatre valeurs explicitement annoncées par les ensembles source ; ses diagonales restent inchangées. Les autres réparations de source sont exposées dans les notes et les revues. Les notes des encadrés sont visibles ; les renvois automatiques ont leurs articles français et les titres ne restent pas isolés.
+
+Deux compilations fraîches sous un mutex continu produisent exactement le même PDF. Le lecteur comprend 55 pages et 64 exercices. Chaque page nouvelle ou modifiée a été inspectée ; les inspections antérieures ne sont réutilisées que par identité exacte de raster. Les revues détaillées restent datées : leurs anciennes attentes de compilation sont closes par provenance/QA.json. Les incertitudes lexicales et historiques restent explicites et révisables. Aucun aval humain indépendant n’est revendiqué. 685 unités restent à achever pour l’édition intégrale.

@@ -1,0 +1,50 @@
+[
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/reduction.tex",
+    "source_line": 52,
+    "source_excerpt": "sequence $s_{k}$",
+    "source_sha256": "0d6d2e3280698668b837cef6dcf3134b86d2a4b48831ae516e6e33e42898c79a",
+    "target_sha256": "e1be69ef75f68eaa95f0b1eaf35771b85672674338d190bf01be004ee05595e5",
+    "finding": "Undefined index k removed from characteristic sequence and disclosed."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/reduction.tex",
+    "source_line": 97,
+    "source_excerpt": "h(n) = \\underbrace{000\\dots0}_{\\text{$n$ $0$'s}}",
+    "source_sha256": "0d6d2e3280698668b837cef6dcf3134b86d2a4b48831ae516e6e33e42898c79a",
+    "target_sha256": "e1be69ef75f68eaa95f0b1eaf35771b85672674338d190bf01be004ee05595e5",
+    "finding": "Finite n-zero word has wrong type for Bin^omega; completed by infinitely many ones with visible editorial note."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/equinumerous-sets.tex",
+    "source_line": 75,
+    "source_excerpt": "g(x) = y",
+    "source_sha256": "025a3fc368d6873825effcb07631913762edbf2d3f9a0711d57dcd9575361251",
+    "target_sha256": "451b3918f49d60f607d8bfd69d6801f68a9157de9ef828fc838483e9d3d930bd",
+    "finding": "Both empty-set branches must use f(x)=y; g is the enumeration in the nonempty branch. Corrected with notes."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/equinumerous-sets.tex",
+    "source_line": 91,
+    "source_excerpt": "g(x) = y",
+    "source_sha256": "025a3fc368d6873825effcb07631913762edbf2d3f9a0711d57dcd9575361251",
+    "target_sha256": "451b3918f49d60f607d8bfd69d6801f68a9157de9ef828fc838483e9d3d930bd",
+    "finding": "Both empty-set branches must use f(x)=y; g is the enumeration in the nonempty branch. Corrected with notes."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/comparing-size.tex",
+    "source_line": 45,
+    "source_excerpt": "that $A$ is !!{nonenumerable} iff $\\cardless{\\Nat}{A}$",
+    "source_sha256": "075810b1cf1c8b54266518523d4665d3deae4a4937f4e19a66a09cc0e1aaebf7",
+    "target_sha256": "bd0830c69a249cec34ecbf6fcf3b8d61b2b35d05a64245dcb90ff98935b64a67",
+    "finding": "Equivalence assumes a choice principle sufficient to provide Nat injection into an arbitrary infinite A. AC disclosed as sufficient, not claimed minimal."
+  },
+  {
+    "source_file": "content/sets-functions-relations/size-of-sets/comparing-size.tex",
+    "source_line": 88,
+    "source_excerpt": "for each $x \\in\n  \\overline{A}$",
+    "source_sha256": "075810b1cf1c8b54266518523d4665d3deae4a4937f4e19a66a09cc0e1aaebf7",
+    "target_sha256": "bd0830c69a249cec34ecbf6fcf3b8d61b2b35d05a64245dcb90ff98935b64a67",
+    "finding": "Final universal index in diagonal proof must range over A, not only diagonal subset. Corrected with visible note and two cases."
+  }
+]

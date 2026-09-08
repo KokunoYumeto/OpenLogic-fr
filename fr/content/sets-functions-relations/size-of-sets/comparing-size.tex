@@ -1,0 +1,174 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: comparing-sizes
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{car}
+
+\olsection{Ensembles de tailles différentes et théorème de Cantor}
+
+\begin{explain}
+Nous avons précisé ce que signifie, pour deux ensembles, avoir la
+même taille. Nous pouvons aussi préciser ce que signifie être plus
+petit qu'un autre ensemble. Pour définir « être plus petit ou
+équipotent », nous demanderons une !!{injection} du premier ensemble
+dans le second, au lieu d'une !!{bijection} entre les deux. S'il existe
+une telle fonction, la taille du premier ensemble est inférieure ou
+égale à celle du second. Intuitivement, une !!{injection} garantit
+que l'image contient au moins autant d'éléments que le domaine,
+puisque deux éléments distincts du domaine ne peuvent pas avoir
+la même image.
+\end{explain}
+
+\begin{defn}
+On dit que $A$ est \emph{de taille inférieure ou égale à celle
+de}~$B$, et on écrit $\cardle{A}{B}$, si et seulement s'il existe
+une !!{injection} $f \colon A \to B$.
+\end{defn}
+
+Cette relation est réflexive et transitive, mais elle n'est pas
+symétrique ; on laisse la vérification en exercice. On peut aussi
+définir une relation exprimant qu'un ensemble est strictement plus
+petit qu'un autre.
+
+\begin{defn}
+On dit que $A$ est \emph{strictement plus petit que}~$B$, et on écrit
+$\cardless{A}{B}$, si et seulement s'il existe une !!{injection}
+$f\colon A \to B$ mais aucune !!{bijection} $g\colon A \to B$,
+c'est-à-dire si $\cardle{A}{B}$ et $\cardneq{A}{B}$.
+\end{defn}
+
+Cette relation est irréflexive et transitive ; on laisse également
+la vérification en exercice. Avec cette notation, $A$ est
+!!{enumerable} si et seulement si $\cardle{A}{\Nat}$, et $A$ est
+!!{nonenumerable} si et seulement si $\cardless{\Nat}{A}$.\footnote{
+Précision éditoriale : la seconde caractérisation utilise une
+hypothèse de choix laissée implicite dans l'original. Sous l'axiome
+du choix, tout ensemble infini contient une partie équipotente à
+$\Nat$, ce qui justifie l'injection de $\Nat$ dans~$A$. Sans
+hypothèse de choix, la définition générale de la non-dénombrabilité
+reste la négation de $\cardle{A}{\Nat}$ ; on ne peut pas en déduire
+en général $\cardless{\Nat}{A}$.}
+On peut ainsi reformuler
+\oliflabeldef{sfr:siz:nen-alt:thm:nonenum-pownat}{%
+le résultat du \olref[sfr][siz][nen-alt]{thm:nonenum-pownat}
+par $\cardless{\Nat}{\Pow{\Nat}}$}{%
+le résultat du \olref[sfr][siz][nen]{thm:nonenum-pownat}
+par $\cardless{\PosInt}{\Pow{\PosInt}}$}.
+En fait, \citet{Cantor1892} a montré que ce dernier phénomène est
+\emph{tout à fait général} :
+
+\begin{thm}[Cantor]\ollabel{thm:cantor}
+Pour tout ensemble $A$, on a $\cardless{A}{\Pow{A}}$.
+\end{thm}
+
+\begin{proof}
+L'application $f(x) = \{x\}$ est une !!{injection}
+$f \colon A \to \Pow{A}$ : si $x \neq y$, alors
+$\{x\} \neq \{y\}$ par extensionnalité, donc $f(x) \neq f(y)$.
+Ainsi, $\cardle{A}{\Pow{A}}$.
+
+\begin{editorial}
+Si la \olref[nen]{sec} est présente, nous donnons la démonstration
+détaillée ; sinon, nous donnons une démonstration plus brève,
+correspondant à la \olref[nen-alt]{sec}.
+Le lecteur complet conserve les deux démonstrations, dans cet ordre.
+\end{editorial}
+
+\frproofversions{Démonstration détaillée.}{Démonstration condensée.}{sfr:siz:nen:sec}{%
+  Montrons maintenant qu'il ne peut exister de fonction
+  !!{surjective} $g\colon A \to \Pow{A}$, et donc a fortiori
+  aucune fonction !!{bijective}. Nous aurons ainsi
+  $\cardneq{A}{\Pow{A}}$. Soit $g\colon A \to \Pow{A}$.
+  Puisque $g$ est totale, chaque $x \in A$ a pour image une partie
+  $g(x) \subseteq A$. Pour montrer que $g$ n'est pas surjective,
+  définissons une partie $\overline{A} \subseteq A$ qui, par sa
+  construction, ne peut pas appartenir à l'image de~$g$. Posons
+  \[
+  \overline{A} = \Setabs{x \in A}{x \notin g(x)}.
+  \]
+  Comme $g(x)$ est défini pour tout $x \in A$, cette définition
+  donne bien une partie de~$A$. Pourtant, $\overline{A}$ ne peut
+  pas appartenir à l'image de~$g$. Soit $x \in A$ quelconque ;
+  montrons que $\overline{A} \neq g(x)$. Si $x \in g(x)$,
+  il ne satisfait pas la condition $x \notin g(x)$, donc
+  $x \notin \overline{A}$. Inversement, si
+  $x \notin g(x)$, alors $x \in A$ et $x \notin g(x)$,
+  donc $x \in \overline{A}$ ; tout $x \in \overline{A}$
+  satisfait lui-même cette condition. Ainsi, pour chaque
+  $x \in A$, on a $x \in g(x)$ si et seulement si
+  $x \notin \overline{A}$, et donc $g(x) \neq \overline{A}$.\footnote{
+  Note de traduction : l'original écrit ici « pour chaque
+  $x \in \overline{A}$ ». Il faut considérer chaque $x \in A$
+  pour exclure $\overline{A}$ de toute l'image de~$g$ ; les deux
+  cas de l'argument sont explicités en conséquence.}
+  Autrement dit, $\overline{A}$ n'appartient pas à l'image de~$g$,
+  ce qui contredirait la surjectivité de~$g$.}{
+  Il reste à montrer que $\cardneq{A}{\Pow{A}}$. Raisonnons par
+  l'absurde : supposons que $\cardeq{A}{\Pow{A}}$, donc qu'il
+  existe une !!{bijection} $g \colon A \to \Pow{A}$. Considérons
+  \[
+    D = \Setabs{x \in A}{x \notin g(x)}
+  \]
+  On a $D \subseteq A$, donc $D \in \Pow{A}$. Puisque $g$ est
+  une !!{bijection}, il existe un $y \in A$ tel que $g(y) = D$.
+  Mais alors :
+  \[
+    y \in g(y) \text{ si et seulement si } y \in D
+    \text{ si et seulement si } y \notin g(y).
+  \]
+  C'est une contradiction ; on a donc $\cardneq{A}{\Pow{A}}$.}{}
+\end{proof}
+
+\begin{explain}
+\oliflabeldef{sfr:siz:nen:thm:nonenum-pownat}{Comparons la démonstration
+  du \olref{thm:cantor} à celle du
+  \olref[nen]{thm:nonenum-pownat}. Nous y avons montré que, pour
+  toute liste $Z_1$, $Z_2$, \dots{} de parties de~$\PosInt$,
+  on peut construire un ensemble d'entiers~$\overline{Z}$ qui
+  ne figure pas dans la liste. En effet, pour chaque
+  $n \in \PosInt$, on a $n \in Z_n$ si et seulement si
+  $n \notin \overline{Z}$. Il existe donc toujours un entier
+  qui appartient à l'un des ensembles $Z_n$ et $\overline{Z}$,
+  mais pas à l'autre. Nous reprenons ici la même idée : les
+  indices~$n$ sont désormais des éléments de~$A$, au lieu
+  d'être des éléments de~$\PosInt$. L'ensemble $\overline{A}$
+  est défini de manière à différer de~$g(x)$ pour chaque
+  $x \in A$, car $x \in g(x)$ si et seulement si
+  $x \notin \overline{A}$. Là encore, pour chaque $x \in A$,
+  cet élément appartient à l'un des ensembles $g(x)$ et
+  $\overline{A}$, mais pas à l'autre. De même que
+  $\overline{Z}$ ne peut pas figurer dans la liste $Z_1$, $Z_2$,
+  \dots, $\overline{A}$ ne peut pas appartenir à l'image de~$g$.}{}
+
+\oliflabeldef{sfr:siz:nen-alt:thm:nonenum-pownat}{Comparons la
+  démonstration du \olref{thm:cantor} à celle du
+  \olref[nen-alt]{thm:nonenum-pownat}. Nous y avons montré que,
+  pour toute liste $N_0$, $N_1$, $N_2$, \dots{} de parties
+  de~$\Nat$, on peut construire un ensemble d'entiers~$D$ qui
+  ne figure pas dans la liste. En effet, pour chaque $n \in \Nat$,
+  on a $n \in N_n$ si et seulement si $n \notin D$. Nous
+  reprenons ici la même idée : les indices~$n$ sont désormais
+  des éléments de~$A$ au lieu d'être des éléments de~$\Nat$.
+  L'ensemble $D$ est défini de manière à différer de~$g(x)$
+  pour chaque $x \in A$, car $x \in g(x)$ si et seulement si
+  $x \notin D$.}{}
+
+On peut aussi rapprocher cette démonstration de celle du paradoxe
+de Russell, \olref[sfr][set][rus]{thm:russells-paradox}. Le
+théorème de Cantor a en effet inspiré à Russell son propre paradoxe.
+\end{explain}
+
+\begin{prob}
+  Montrer que, pour tout ensemble~$A$, il ne peut exister
+  d'!!{injection} $g\colon \Pow{A} \to A$. Indication : supposons
+  $g\colon \Pow{A} \to A$ !!{injective}. Considérer
+  $D = \Setabs{g(B)}{B \subseteq A \text{ et } g(B) \notin B}$,
+  puis poser $x = g(D)$. Utiliser l'injectivité de~$g$ pour obtenir
+  une contradiction.
+\end{prob}
+
+\end{document}

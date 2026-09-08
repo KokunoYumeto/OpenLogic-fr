@@ -1,0 +1,188 @@
+% Part:sets-functions-relations
+% Chapter: size-of-sets
+% Section: non-enumerability-alt
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{siz}{nen-alt}
+
+\olsection{Ensembles \printtoken{p}{nonenumerable} : variante bijective}
+
+\begin{editorial}
+  Cette section démontre la non-dénombrabilité de $\Bin^\omega$
+  et de $\Pow{\Nat}$ à partir des définitions de la
+  \olref[enm-alt]{sec}. Pour énumérer un ensemble infini, on
+  demande donc une bijection avec~$\Nat$, au lieu d'une
+  surjection de $\PosInt$ sur cet ensemble.
+\end{editorial}
+
+\begin{explain}
+L'ensemble $\Nat$ des entiers naturels est infini et manifestement
+!!{enumerable}. Fait remarquable, il existe pourtant des ensembles
+\emph{!!{nonenumerable}s}, c'est-à-dire qui ne sont pas
+!!{enumerable}s (voir la \olref[sfr][siz][enm-alt]{defn:enumerable}).
+
+Cela peut surprendre. Pour un ensemble $A$ \emph{infini}, dire
+qu'il est !!{nonenumerable} signifie qu'il n'existe \emph{aucune}
+!!{bijection} $f\colon \Nat \to A$ ; autrement dit, aucune
+fonction des entiers naturels dans~$A$ ne peut atteindre tous
+les éléments de~$A$. Il y a donc, en ce sens, « davantage »
+d'éléments de~$A$ que d'entiers naturels.\footnote{Note de traduction :
+l'original omet ici l'hypothèse que $A$ est infini. Un ensemble
+fini non vide n'est pas en bijection avec $\Nat$, mais peut être
+l'image d'une surjection depuis $\Nat$ ; l'ensemble vide est
+lui aussi au plus dénombrable par définition. La comparaison
+générale des tailles relève du cadre de choix précisé plus haut.}
+
+Pour prouver qu'un ensemble infini est !!{nonenumerable}, il faut
+montrer qu'aucune !!{bijection} appropriée ne peut exister. Une
+bonne méthode consiste à montrer que toute tentative d'énumération
+omet nécessairement au moins un élément : aucune fonction
+$f\colon \Nat \to A$ ne peut alors être !!{surjective}.
+Une stratégie générale est la \emph{méthode diagonale} de Cantor.
+Étant donnée une liste d'éléments de $A$, par exemple $x_1$, $x_2$,
+\dots, on construit un autre élément de~$A$ qui, par sa construction
+même, ne peut pas figurer dans cette liste.
+
+Un exemple permettra de mieux comprendre l'argument. Prenons
+l'ensemble~$\Bin^\omega$ de toutes les suites infinies de $0$ et
+de $1$. Le symbole $\Bin$ évoque le mot « binaire » ; on peut
+simplement y voir l'ensemble à deux éléments $\{0,1\}$.
+\oliflabeldef{sfr:card-arithmetic:card-opps:sec}{\footnote{Plus
+précisément, $\Bin^\omega$ est l'ensemble de toutes les suites
+de $0$ et de $1$ indexées par $\omega$, c'est-à-dire l'ensemble
+$\funfromto{\omega}{\{0,1\}}$. Le sens de cette notation sera
+précisé à la \olref[sfr][card-arithmetic][card-opps]{sec}.}}{}
+Cette formulation encore un peu informelle ne devrait pas prêter
+à confusion pour le moment.
+% Correction de structure : la note source ne ferme pas le deuxième
+% argument de oliflabeldef avant son argument vide. Les trois arguments
+% sont ici délimités conformément à open-logic-referencing.sty.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:nonenum-bin-omega}
+$\Bin^\omega$ est !!{nonenumerable}.
+\end{thm}
+
+\begin{proof}
+Considérons une liste quelconque $s_{0}$, $s_{1}$, $s_{2}$, \dots{}
+de suites infinies de $0$ et de~$1$, donc d'éléments d'une partie
+de $\Bin^\omega$.\footnote{Précision éditoriale : $\Bin^\omega$
+est infini, puisque les suites comportant un unique $1$ à des
+indices différents sont toutes distinctes. Pour exclure une
+énumération au sens bijectif, il suffit donc de traiter les listes
+indexées par $\Nat$.}
+Notons $s_n(m)$ le terme d'indice $m$ de la suite d'indice $n$.
+On peut représenter cette liste par un tableau : $s_n(m)$ occupe
+la ligne d'indice $n$ et la colonne d'indice $m$.\footnote{Note de
+traduction : la première explication de $s_n(m)$ dans l'original
+inverse les rôles de $n$ et de $m$. Nous suivons le tableau et
+l'usage de cette notation dans la suite de la démonstration.}
+\[
+\begin{array}{c|c|c|c|c|c}
+& 0 & 1 & 2 & 3 & \dots \\\hline
+0 & \mathbf{s_{0}(0)} & s_{0}(1) & s_{0}(2) & s_0(3) & \dots \\\hline
+1 & s_{1}(0)& \mathbf{s_{1}(1)} & s_1(2) & s_1(3) & \dots \\\hline
+2 & s_{2}(0)& s_{2}(1) & \mathbf{s_2(2)} & s_2(3) & \dots \\\hline
+3 & s_{3}(0)& s_{3}(1) & s_3(2) & \mathbf{s_3(3)} & \dots \\\hline
+\vdots & \vdots & \vdots & \vdots & \vdots & \mathbf{\ddots}
+\end{array}
+\]
+Construisons une suite infinie $d$ de $0$ et de $1$ qui ne figure
+pas dans cette liste. Pour cela, précisons chacun de ses termes,
+c'est-à-dire $d(n)$ pour tout $n \in \Nat$. Intuitivement, on
+parcourt la diagonale du tableau, d'où le nom de « méthode
+diagonale », puis on remplace chaque $1$ par $0$ et chaque $0$
+par~$1$.\footnote{Note de traduction : l'original répète deux fois
+le remplacement de $1$ par $0$. Le second remplacement est
+corrigé conformément à la définition par cas qui suit.}
+Plus formellement, $d(n)$ vaut $0$ ou $1$ selon que le terme
+diagonal $s_n(n)$ vaut $1$ ou $0$ :
+\[
+d(n) =
+\begin{cases}
+1 & \text{si $s_{n}(n) = 0$}\\
+0 & \text{si $s_{n}(n) = 1$}
+\end{cases}
+\]
+On a bien $d \in \Bin^\omega$, puisque $d$ est une suite infinie
+de $0$ et de $1$. Mais, par construction, $d(n) \neq s_n(n)$
+pour tout $n \in \Nat$ : $d$ diffère de $s_n$ au terme d'indice
+$n$. Ainsi, $d \neq s_n$ pour tout $n\in \Nat$, et $d$ ne
+peut pas figurer dans la liste $s_0$, $s_1$, $s_2$, \dots
+
+Nous avons montré que toute liste d'éléments d'une partie de
+$\Bin^\omega$ omet au moins un élément de $\Bin^\omega$.
+Il n'existe donc aucune énumération de $\Bin^\omega$ : cet
+ensemble est !!{nonenumerable}.
+\end{proof}
+
+\begin{explain}
+Cette méthode de preuve s'appelle « diagonalisation », car elle
+utilise la diagonale du tableau pour définir~$d$. Une diagonalisation
+ne nécessite toutefois pas toujours un tableau. On peut montrer
+qu'un ensemble est !!{nonenumerable} par une idée semblable,
+même sans tableau ni diagonale représentée. Le résultat suivant
+en donne un exemple.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:nonenum-pownat}
+$\Pow{\Nat}$ n'est pas !!{enumerable}.
+\end{thm}
+
+\begin{proof}
+Procédons de la même manière : montrons que toute liste de parties
+de~$\Nat$ omet une partie de $\Nat$. Soit donc une liste
+$N_0, N_1, N_2, \ldots$ de parties de $\Nat$. Définissons
+un ensemble $D$ par la condition $n \in D$ si et seulement si
+$n \notin N_n$ :
+\[
+D = \Setabs{n \in \Nat}{n \notin N_n}
+\]
+On a bien $D\subseteq \Nat$. Pourtant, $D$ ne peut pas figurer
+dans la liste : par construction, $n \in D$ si et seulement si
+$n\notin N_n$, donc $D \neq N_n$ pour tout $n \in \Nat$.
+\end{proof}
+
+\begin{explain}
+La preuve précédente ne mentionne pas de diagonale. On peut
+néanmoins en faire apparaître une en représentant les ensembles
+$N_0$, $N_1$, \dots{} dans un tableau : sur la ligne d'indice $n$,
+on inscrit $m$ dans la colonne d'indice $m$ si et seulement si
+$m \in N_n$. Par exemple, si les quatre premiers ensembles sont
+$\{0,1,2,\dots\}$, $\{1, 3, 5, \dots\}$, $\{0,1,4\}$ et
+$\{2,3,4,\dots\}$, le tableau commence ainsi :
+\[
+\begin{array}{r@{}rrrrrrr}
+  N_0 = \{ & \mathbf{0}, & 1, & 2, & 3, & 4, & 5, & \dots\}\\
+  N_1 = \{ &  & \mathbf{1}, &  & 3, &  & 5, & \dots\}\\
+  N_2 = \{ & 0, & 1, &  &  & 4\phantom{,} &  & \}\\
+  N_3 = \{ &  &  & 2, & \mathbf{3}, & 4, & 5, & \dots\}\\
+  &\vdots & & & & & & \ddots\phantom{\}}
+\end{array}
+\]
+\footnote{Note de traduction : l'original laisse vides les colonnes
+$3$, $4$ et $5$ de la ligne $N_0=\Nat$, ainsi que la colonne $5$
+de la ligne $N_3=\{2,3,4,\dots\}$. Nous rétablissons ces quatre
+valeurs pour respecter la représentation par appartenance annoncée
+dans le texte.}
+On obtient alors $D$ en parcourant la diagonale : on met $n$
+dans $D$ si et seulement si $n$ \emph{ne figure pas} à sa place
+sur la diagonale. Dans cet exemple, on exclut donc $0$ et $1$,
+on inclut~$2$, on exclut~$3$, et ainsi de suite.
+\end{explain}
+
+\begin{prob}
+Montrer par une diagonalisation explicite que l'ensemble de toutes
+les fonctions $f \colon \Nat \to \Nat$ est !!{nonenumerable}.
+Autrement dit, si $f_1$, $f_2$, \dots{} est une liste de fonctions
+avec $f_i\colon \Nat \to \Nat$ pour chaque $i$, montrer qu'il
+existe une fonction $g \colon \Nat \to \Nat$ qui ne figure
+pas dans cette liste.
+\end{prob}
+
+\end{document}

@@ -1,52 +1,51 @@
 {
-  "release_gate": "pass_for_23_unit_three_chapter_reader",
+  "release_gate": "pass_for_37_unit_four_chapter_reader",
   "total_units": 722,
-  "validated_units": 23,
-  "aligned_blocks": 396,
-  "translated_text_blocks": 277,
+  "validated_units": 37,
+  "aligned_blocks": 662,
+  "translated_text_blocks": 464,
+  "full_edition_complete": false,
   "checks": {
-    "structure": "Source/target identities, NFC, environments, labels, references, assets and citations verified for seven new units. Previous16-unit checks preserved.",
-    "semantic_math": "Bounded review of all three chapters, with disclosed corrections. See review and mathematical comparison.",
-    "untranslated_prose": "No missing ordinary prose or placeholders in23 release units; other699 remain unfinished.",
-    "construction": "104 fresh relations blocks and87 functions blocks have contextual construction records, alternatives and explicit limits; no exhaustive per-word claim.",
-    "reader_build": "Three XeLaTeX passes plus BibTeX under continuous global mutex; no fatal warnings.",
-    "visual_QA": "Every changed page visually inspected; unchanged earlier pages reused only on exact raster identity."
+    "structure": "Frozen source bytes, current target identities, NFC and occurrence-linked anchors checked. Fourteen size units integrated once; alternate proofs and source-commented prose included explicitly.",
+    "semantic_math": "Complete bounded review of the 14-unit size chapter and prior chapter reviews, including five Functions manager corrections. Formula changes and source repairs disclosed.",
+    "untranslated_prose": "37 release units complete; 685 others remain unfinished. Conditional forward-looking material retained in sources for subsequent integration.",
+    "construction": "436 editorial decisions; 187 new size prose blocks mapped to consulted canon with contextual alternatives and limitations. No exhaustive per-word or independent human endorsement claimed.",
+    "reader_build": "Three XeLaTeX passes plus BibTeX in each fresh directory; one outer machine-wide mutex held continuously through both builds.",
+    "visual_QA": "All changed pages directly inspected; reuse only on exact SHA256 raster identity. Captured editorial footnotes, reference grammar and isolated heading fixed."
   },
   "pdf": {
-    "filename": "openlogic-fr-ensembles-relations-fonctions.pdf",
-    "bytes": 197911,
-    "sha256": "b4dd8366ea46b69e7e05183bfba40c968609a799ba7e992eeee8247e814602f7",
-    "pages": 31,
-    "exercises": 24
+    "filename": "openlogic-fr-ensembles-relations-fonctions-denombrabilite.pdf",
+    "bytes": 319384,
+    "sha256": "57a59e313e99e62e8f3de1921e8072983c66b23cac0311b56e65ca3a5172d88a",
+    "pages": 55,
+    "exercises": 64
   },
   "reproducibility": {
     "byte_identical": true,
     "source_date_epoch": "1788739200",
     "build_receipts_sha256": [
-      "2501f36b96ffa5873b64d424fa2493e688d29bf4f70521d03ed4fe5df5c40f34",
-      "2da2cb7e413ed81631c08627b168436a91751d00e875f41b1922ea5f23ae6b3b"
-    ]
+      "b244e575f7e5f5578fd329968b707ec7cea577c3b9df2adfbfb7cc7ea66e3a8c",
+      "0817495ba0075c678f23f53be968aa84eba24bdbd28b205be312bedb764428ed"
+    ],
+    "continuous_replay_receipt_sha256": "10dd42e091060b5d04ee47b0a57c60275ed8f3ec7e7b08f633cfb7b1169bd12c"
   },
   "visual": {
     "passed": true,
-    "pdf_sha256": "b4dd8366ea46b69e7e05183bfba40c968609a799ba7e992eeee8247e814602f7",
-    "pdf_bytes": 197911,
-    "pages": 31,
+    "inspected_utc": "2026-09-08T12:46:58.953328+00:00",
+    "pdf_sha256": "57a59e313e99e62e8f3de1921e8072983c66b23cac0311b56e65ca3a5172d88a",
+    "pdf_bytes": 319384,
+    "pages": 55,
     "directly_inspected_pages": [
-      1,
       2,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31
+      41,
+      42,
+      43,
+      44,
+      45,
+      46
     ],
     "unchanged_pages_reused": [
+      1,
       3,
       4,
       5,
@@ -65,235 +64,629 @@
       18,
       19,
       20,
-      21
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
     ],
-    "prior_release_QA_sha256": "d7bc1ad1de82d0d5e2eb63e0f5238933e0dbf25cdbc6fa1f486465b9f47414f8",
-    "findings": "No clipping, overlap, missing glyph, unreadable diagram, broken reference or damaged footnote observed.",
     "page_records": [
       {
         "page": 1,
-        "png_sha256": "500f3f5aaf59a4cdbdf7a624f5e7afafdd349d8d4d904bb77213057be50b9299",
+        "png_sha256": "be9c493f1c1cb3815be13cfcbf6bddded48f466410de04e9b2a1b484a1872d14",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Cover: three chapters, 23/722, attribution and links legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 1,
+          "source": "build-027; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
       },
       {
         "page": 2,
-        "png_sha256": "d857bb4b0b08c58cc2888a8e2f25408617d325c86816e54611758f112ddd83e4",
+        "png_sha256": "246adedf8a8b5a9ffa599ad95e9ebb5a69e605f003c42acd014d8dfc96761a7f",
         "visually_inspected": true,
         "method": "direct visual inspection",
-        "observation": "Contents: twenty sections, exercises and bibliography aligned."
+        "prior": null,
+        "observation": "Contents inspected: 4.7 now points to printed39; aligned page numbers and all chapter entries legible."
       },
       {
         "page": 3,
-        "png_sha256": "ee941c2693256d306b59a4333556cae50f7cbd6cd5dc8e9f00175624dda2ebf5",
+        "png_sha256": "d712f19cc3d3dea1b20e42c7798e1bd2cad48c4444306cde245694dbd05cba47",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 3,
+          "source": "build-027; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
       },
       {
         "page": 4,
-        "png_sha256": "eddb8b37b5cec744fa0b80ef4663cd3cd65c0133f9116d93948c4b9ea88e9220",
+        "png_sha256": "ee941c2693256d306b59a4333556cae50f7cbd6cd5dc8e9f00175624dda2ebf5",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 3,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 5,
-        "png_sha256": "a91757380fde1ea098d34fb652f4263bbd4e5c644e2272636516a43820b0b125",
+        "png_sha256": "eddb8b37b5cec744fa0b80ef4663cd3cd65c0133f9116d93948c4b9ea88e9220",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 4,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 6,
-        "png_sha256": "1e9a0b7fdc3c865dc12052625b8f101d66551be03b4a6e15de1e1423f199f50b",
+        "png_sha256": "a91757380fde1ea098d34fb652f4263bbd4e5c644e2272636516a43820b0b125",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 5,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 7,
-        "png_sha256": "bedc2fc482135856304ac1b64c673bb39fc2b3979b475f55153f8e9844b2831e",
+        "png_sha256": "1e9a0b7fdc3c865dc12052625b8f101d66551be03b4a6e15de1e1423f199f50b",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 6,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 8,
-        "png_sha256": "538a48faf61c6b982bafc8fa3661e087f2f1853ea7ad47f23f39dc89ffe0a340",
+        "png_sha256": "bedc2fc482135856304ac1b64c673bb39fc2b3979b475f55153f8e9844b2831e",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 7,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 9,
-        "png_sha256": "ed9a7fd9154013e0d2d75f278490f9c719b05c474f721ddc66aa605bb1147c67",
+        "png_sha256": "538a48faf61c6b982bafc8fa3661e087f2f1853ea7ad47f23f39dc89ffe0a340",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 8,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 10,
-        "png_sha256": "21028df80cbe03ad8f26d073b73dc9b22ad7d42cc98575db61e440fa85ae2317",
+        "png_sha256": "ed9a7fd9154013e0d2d75f278490f9c719b05c474f721ddc66aa605bb1147c67",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 9,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 11,
-        "png_sha256": "0ab0c9729e12fab3ec56edd178009c4c9962c6058a288dab2df5b57d64d63ccf",
+        "png_sha256": "21028df80cbe03ad8f26d073b73dc9b22ad7d42cc98575db61e440fa85ae2317",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 10,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 12,
-        "png_sha256": "257e87a30548f5b8d55346626990ad7c9b10928334e417cec7e8efab35218616",
+        "png_sha256": "0ab0c9729e12fab3ec56edd178009c4c9962c6058a288dab2df5b57d64d63ccf",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 11,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 13,
-        "png_sha256": "2d743bd55c593b291cf00bd03da0268176764c58c0708cc4274a420c6f1953fe",
+        "png_sha256": "257e87a30548f5b8d55346626990ad7c9b10928334e417cec7e8efab35218616",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 12,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 14,
-        "png_sha256": "1cb13bef3b8bb8faf550750ad40176f5633c8a1d829f67ae8bcbf6ba1060bfd0",
+        "png_sha256": "2d743bd55c593b291cf00bd03da0268176764c58c0708cc4274a420c6f1953fe",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 13,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 15,
-        "png_sha256": "3bec32aa60ba3a0f5a8b378667e625a96528d3866dfafc360d8ecef875681d45",
+        "png_sha256": "1cb13bef3b8bb8faf550750ad40176f5633c8a1d829f67ae8bcbf6ba1060bfd0",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 14,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 16,
-        "png_sha256": "5f43644713f1f4db685e2106e6350fdf35a9f9ac743c4b811ff9813ad9796ce3",
+        "png_sha256": "3bec32aa60ba3a0f5a8b378667e625a96528d3866dfafc360d8ecef875681d45",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 15,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 17,
-        "png_sha256": "122c2f8913974fb983cabcb8613979c6030a356477ba179d67fc4a6ac0989f32",
+        "png_sha256": "5f43644713f1f4db685e2106e6350fdf35a9f9ac743c4b811ff9813ad9796ce3",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 16,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 18,
-        "png_sha256": "c66b9e9b14c86334667931a9e1fcb2faf46e036fe377628829e1266782d32667",
+        "png_sha256": "122c2f8913974fb983cabcb8613979c6030a356477ba179d67fc4a6ac0989f32",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 17,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 19,
-        "png_sha256": "4f9e21d974e201edbfe50bb3d1e4143c479276c6b15cf107c27f76e5600080db",
+        "png_sha256": "c66b9e9b14c86334667931a9e1fcb2faf46e036fe377628829e1266782d32667",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 18,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 20,
-        "png_sha256": "7b599a88ab7bc04f946450db671b596dba2150d6897c4eb8c5cf07040cc4ede7",
+        "png_sha256": "4f9e21d974e201edbfe50bb3d1e4143c479276c6b15cf107c27f76e5600080db",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 19,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 21,
-        "png_sha256": "eb89cd2a145ce8087d601d4c8f1e1ada79479ded5dc9e62b89a3e92ff04cb5c8",
+        "png_sha256": "7b599a88ab7bc04f946450db671b596dba2150d6897c4eb8c5cf07040cc4ede7",
         "visually_inspected": true,
-        "method": "reuse of prior visual inspection on exact raster SHA-256 identity",
-        "observation": "Earlier sets/relations page unchanged."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 20,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 22,
-        "png_sha256": "eccbe6edc50bb101e172bc4643e979d732a0a289fc2e40f41d7fc88bf34632e1",
+        "png_sha256": "eb89cd2a145ce8087d601d4c8f1e1ada79479ded5dc9e62b89a3e92ff04cb5c8",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Chapter opening, definition and figure3.1 legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 21,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 23,
-        "png_sha256": "f542785eeaf58e687a4e73081748f667a44f8a35179323566356042e7eb71e54",
+        "png_sha256": "eccbe6edc50bb101e172bc4643e979d732a0a289fc2e40f41d7fc88bf34632e1",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Examples, piecewise cases and two editorial footnotes legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 22,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 24,
-        "png_sha256": "3a2fe6de3d957054801c0936c7c755be1010b8d2162a2d80d2bf80d93eea0a9c",
+        "png_sha256": "f542785eeaf58e687a4e73081748f667a44f8a35179323566356042e7eb71e54",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Figures3.2/3.3, surjectivity and compatible-overlap note legible; continuation after floats readable."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 23,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 25,
-        "png_sha256": "23dcfd777a6b086b268f47937b1d2ac390fec63d1bc3adc92c82e4ce4071e1dc",
+        "png_sha256": "3a2fe6de3d957054801c0936c7c755be1010b8d2162a2d80d2bf80d93eea0a9c",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Figure3.4, injectivity examples and graph definition legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 24,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 26,
-        "png_sha256": "f6a5dcb6f90574fc576d17cfef90927277b4a6c204a51963f068a367831a9906",
+        "png_sha256": "23dcfd777a6b086b268f47937b1d2ac390fec63d1bc3adc92c82e4ce4071e1dc",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Graph proof, restriction and direct image, corrected restriction note and inverse opening legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 25,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 27,
-        "png_sha256": "58ff1d42391a9db3890a9501855fe3e0e50e263d1ca38adce357f30618c2c87e",
+        "png_sha256": "f6a5dcb6f90574fc576d17cfef90927277b4a6c204a51963f068a367831a9906",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Left/right inverse definitions and proofs, cases formula and empty-domain note legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 26,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 28,
-        "png_sha256": "698beedbd5e8038db12c49902f502009ddfad9e688b30fdff3682b0b70a727b0",
+        "png_sha256": "58ff1d42391a9db3890a9501855fe3e0e50e263d1ca38adce357f30618c2c87e",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Proof continuation, choice-axiom note, uniqueness propositions and composition definition legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 27,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
       },
       {
         "page": 29,
-        "png_sha256": "79dfa74064f29793ba9dc7ca4a913fda14e0183c929786a3d2c25047882a9a94",
+        "png_sha256": "137da8ab10d6dd3b9032a036a821dd7ce925250e3204c840dd734b306a08ae73",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "Figure3.5, composition example, partial function definitions and proof legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 29,
+          "source": "build-027; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
       },
       {
         "page": 30,
-        "png_sha256": "ea5c3756056ba597dcc95a58491bf6461461fccc8ad359b6458623fa5ea0aed4",
+        "png_sha256": "d23e180f6ca362b7ed1b277d76734ea094743cd2a40cf387f3fb4a1d18772db0",
         "visually_inspected": true,
-        "method": "direct visual inspection",
-        "observation": "All eight function exercises, mathematical identities and references legible."
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 30,
+          "source": "build-027; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
       },
       {
         "page": 31,
-        "png_sha256": "2329988388aa4446bd6db2f4c2045f67cf85bc7addc09e606358e5db987d5dfd",
+        "png_sha256": "ea5c3756056ba597dcc95a58491bf6461461fccc8ad359b6458623fa5ea0aed4",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 30,
+          "source": "FUNCTIONS_VISUAL_QA.json",
+          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
+        }
+      },
+      {
+        "page": 32,
+        "png_sha256": "62791756bc9baf55fe6c30e1f8ee16362ac49dd82fc1db48226051e73239c8bf",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 32,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 33,
+        "png_sha256": "0bffa628b96ca29ab4000287435a86aea9c6a24e6c1c719727d1e572c3094d3d",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 33,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 34,
+        "png_sha256": "54640254ec457d2cabe86a418687dc9270dc2be3c6d9473866c3a8c5d5669fde",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 34,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 35,
+        "png_sha256": "54214a240fb8f73f981ccf838a36b9aad5881c2cdf3d07416bb79e42799b319b",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 35,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 36,
+        "png_sha256": "bc03428d0b18f90d1fa0d088d353ec3e13af76f6fe1cedf55fc365fe8e94a589",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 36,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 37,
+        "png_sha256": "639539f3c7a5867c8f0629d9993889e4fe9ef5800548e1ba6a583672e8b07d34",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 37,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 38,
+        "png_sha256": "0276dd0b0a360ee739c3b9c7f8557e943ab8332f9aa5e7f27a1a5c49b588621f",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 38,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 39,
+        "png_sha256": "7b9a7e91c27bdf5943de0e4e0d14f648fd90811a815e553800e837d2313ac37b",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 39,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 40,
+        "png_sha256": "0707ee6035b29029e9163da1f1016537465dbb072532cbb3710ff9ec55edec41",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 40,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 41,
+        "png_sha256": "dfb1b466fcd34b4a7dc9f89feceb830e095f773cdbc0122fac52a60023316f6c",
         "visually_inspected": true,
         "method": "direct visual inspection",
-        "observation": "Bibliographic entry complete and readable."
+        "prior": null,
+        "observation": "Diagonal subset proof and matrix complete; no isolated reduction heading remains at bottom. Formulas and terminal proof marker legible."
+      },
+      {
+        "page": 42,
+        "png_sha256": "cec955b42c2a38f13a6ef71196ddb4034002aaae13673a540a3ff5e2bca31119",
+        "visually_inspected": true,
+        "method": "direct visual inspection",
+        "prior": null,
+        "observation": "Reduction heading begins page with its editorial frame and substantive text. Characteristic-function proof and note11 visible; no clipping or overlap."
+      },
+      {
+        "page": 43,
+        "png_sha256": "d7d7bd43264e375d14030dbb86926e99c3d10a74d3c83c6f66343a0007ea7519",
+        "visually_inspected": true,
+        "method": "direct visual inspection",
+        "prior": null,
+        "observation": "Reduction ends, equipotence begins with Frege quotation; displayed h and notes12–14 visible, formulas and heading spacing legible."
+      },
+      {
+        "page": 44,
+        "png_sha256": "27b03d258fc1473b40d014b9ff72cd58e458f2e7a4d461155510f8c44bf21fca",
+        "visually_inspected": true,
+        "method": "direct visual inspection",
+        "prior": null,
+        "observation": "Both equipotence proofs present, followed by 4.9; notes15–16 visible and cross-references grammatical."
+      },
+      {
+        "page": 45,
+        "png_sha256": "108ce98f8f38a50ec410da6e62bfb8d901b9e12d47cc4435bb37eaede21b38ad",
+        "visually_inspected": true,
+        "method": "direct visual inspection",
+        "prior": null,
+        "observation": "Both Cantor proofs and notes17–18 complete; long displays remain inside text area; no missing glyph or overlapping note."
+      },
+      {
+        "page": 46,
+        "png_sha256": "58b8b2296f32a40298fd56f6054fb881db183a4db484429a3bdb8fb6594e2464",
+        "visually_inspected": true,
+        "method": "direct visual inspection",
+        "prior": null,
+        "observation": "Schröder-Bernstein theorem, discussion and note19 visible. Space after exclamation restored. Editorial six section references have individual articles and no duplicated sections section."
+      },
+      {
+        "page": 47,
+        "png_sha256": "dc4b0d92156c72c26c3b3d72fee4c7f1623c1b431f200315c7a44d5e2230977c",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 47,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 48,
+        "png_sha256": "9a5783311fe6fec0180b665dc3f073c770cf7221261b36c3c59a3c8592988c4e",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 48,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 49,
+        "png_sha256": "7edddc82565a8b9ed01fd9a056e89ba094a9753188f1798a2ff1bbc824327873",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 49,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 50,
+        "png_sha256": "72cf7b4a6781d5a40e74cc149a7a493c5fb028accd1c4c6627d9df687457c365",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 50,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 51,
+        "png_sha256": "b8bc648ee56e2e198fc79b9d8e3ba6353ca8113c61be457f03eaa987d4c55f3b",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 51,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 52,
+        "png_sha256": "d52641576cf79e1a770609c882acea1c5fe047288ad0e7e649d952cb78eca710",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 52,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 53,
+        "png_sha256": "07194e879a785040ce17da0b33de12449b8bf2b906fb6dc83fcf2f9124ce094e",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 53,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 54,
+        "png_sha256": "111a7b3a3bfc3ea311865471f6be4b0ae71bd11b3a9d9310ae7cbe0fb727bb7d",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 54,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
+      },
+      {
+        "page": 55,
+        "png_sha256": "ab9f1e3eb9ff06f8deb11901da944a2244e33193626a0675061e935247ac0e5d",
+        "visually_inspected": true,
+        "method": "reuse on exact raster SHA256 identity",
+        "prior": {
+          "page": 55,
+          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
+          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
+        }
       }
-    ]
+    ],
+    "findings": "All seven changed pages directly inspected; other48 pages have exact raster identity with recorded prior inspections. Two known layout failures repaired. No clipping, overlap, missing glyph, unreadable reference, damaged formula or lost footnote observed.",
+    "limitations": "Visual inspection is not an independent semantic audit. Semantic/math/source corrections are documented separately."
   },
   "nonfatal_warnings": [
     "Package hyperref Warning: Option `bookmarks' has already been used,",
     "LaTeX Warning: You have requested file `',",
     "LaTeX Warning: You have requested file `',",
     "Class memoir Warning: \\addtodef is marked deprecated and will be"
-  ],
-  "independent_review": "No independent human whole-chapter endorsement claimed."
+  ]
 }

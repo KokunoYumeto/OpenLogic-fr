@@ -1,0 +1,217 @@
+{
+  "scope": "OLP0034–0037 drafts only; source and target displays compared, notes excluded for inline review; actual rendering and complete chapter integration pending.",
+  "files": [
+    {
+      "file": "reduction.tex",
+      "source_sha256": "0d6d2e3280698668b837cef6dcf3134b86d2a4b48831ae516e6e33e42898c79a",
+      "target_sha256": "e1be69ef75f68eaa95f0b1eaf35771b85672674338d190bf01be004ee05595e5",
+      "display_blocks": 3,
+      "disclosed_display_changes": [
+        {
+          "index": 2,
+          "source": "\nh(n) = \\underbrace{000\\dots0}_{\\text{$n$ $0$'s}}\n",
+          "target": "\nh(n) = \\underbrace{000\\dots0}_{\\text{$n$ zéros}}111\\dots\n",
+          "adjudication": "Disclosed finite-word/type repair: n zeros followed by infinitely many ones; valid infinite binary sequence, non-surjective."
+        }
+      ],
+      "inline_differences_for_editorial_review": [
+        {
+          "kind": "replace",
+          "source": [
+            "f(Z)",
+            "s_{k}",
+            "s_{k}(n)=1"
+          ],
+          "target": [
+            "Z",
+            "s",
+            "s(n)=1"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "s_k(n)=0"
+          ],
+          "target": [
+            "s(n)=0"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "0"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\{0\\}"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "\\{0,1\\}"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "equinumerous-sets.tex",
+      "source_sha256": "025a3fc368d6873825effcb07631913762edbf2d3f9a0711d57dcd9575361251",
+      "target_sha256": "451b3918f49d60f607d8bfd69d6801f68a9157de9ef828fc838483e9d3d930bd",
+      "display_blocks": 1,
+      "disclosed_display_changes": [],
+      "inline_differences_for_editorial_review": [
+        {
+          "kind": "replace",
+          "source": [
+            "A,B"
+          ],
+          "target": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "g(x)=y"
+          ],
+          "target": [
+            "f(x)=y",
+            "f"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "g(x)=y"
+          ],
+          "target": [
+            "f(x)=y",
+            "f"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "comparing-size.tex",
+      "source_sha256": "075810b1cf1c8b54266518523d4665d3deae4a4937f4e19a66a09cc0e1aaebf7",
+      "target_sha256": "bd0830c69a249cec34ecbf6fcf3b8d61b2b35d05a64245dcb90ff98935b64a67",
+      "display_blocks": 3,
+      "disclosed_display_changes": [],
+      "inline_differences_for_editorial_review": [
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "A"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "A"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "A"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "A"
+          ],
+          "target": []
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "\\overline{A}"
+          ],
+          "target": []
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "x\\in\\overline{A}",
+            "\\overline{A}"
+          ],
+          "target": [
+            "x\\noting(x)"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "x"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "x\\in\\overline{A}",
+            "x\\inA"
+          ]
+        },
+        {
+          "kind": "replace",
+          "source": [
+            "A"
+          ],
+          "target": [
+            "x\\inA"
+          ]
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "n\\in\\Nat"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "n\\in\\Nat"
+          ],
+          "target": []
+        },
+        {
+          "kind": "insert",
+          "source": [],
+          "target": [
+            "A"
+          ]
+        },
+        {
+          "kind": "delete",
+          "source": [
+            "A"
+          ],
+          "target": []
+        }
+      ]
+    },
+    {
+      "file": "schroder-bernstein.tex",
+      "source_sha256": "7b99b3e032e24e425383734ce80ad9a5cc37d018c09205e02f37b927d50bb56a",
+      "target_sha256": "fc61169038e4d3019caaab58f84843d7a1bb7e4803f66bee9ce8a540a65ec404",
+      "display_blocks": 0,
+      "disclosed_display_changes": [],
+      "inline_differences_for_editorial_review": []
+    }
+  ]
+}
