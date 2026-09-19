@@ -1,0 +1,150 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: provability-consistency
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{prv}}
+      {\olfileid[fr]{pl}{seq}{prv}}
+
+\olsection{\usetoken{S}{derivability} et cohérence}
+
+Établissons plusieurs propriétés de la relation de !!{derivability}.
+Outre leur intérêt propre, elles interviendront toutes dans la
+démonstration du théorème de complétude.
+
+\begin{prop}\ollabel{prop:provability-contr}
+Si $\Gamma \Proves !A$ et si $\Gamma \cup \{!A\}$ est incohérent,
+alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Il existe des parties finies $\Gamma_0 \subseteq \Gamma$ et
+$\Gamma_1 \subseteq \Gamma$ telles que $\Log{LK}$ !!{derive}s
+$\Gamma_0 \Sequent !A$ et $!A, \Gamma_1 \Sequent \quad$,
+en ajoutant au besoin $!A$ par affaiblissement dans la seconde.
+Notons $\pi_0$ et $\pi_1$ les !!{derivation}s respectives de ces
+deux séquents dans $\Log{LK}$.\footnote{Note de l'édition française :
+la présentation de $\pi_1$ est uniformisée avec l'arbre qui suit ;
+la source intervertit $!A$ et $\Gamma_1$ à cet endroit.}
+Nous pouvons alors !!{derive} :
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{$\pi_0$}
+\Deduce$ \Gamma_0 \fCenter !A $
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$!A, \Gamma_1 \fCenter $
+\RightLabel{\Cut}
+\BinaryInf$ \Gamma_0,\Gamma_1 \fCenter $
+\end{prooftree}
+
+Comme $\Gamma_0 \subseteq \Gamma$ et $\Gamma_1 \subseteq \Gamma$,
+on a $\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$ ; ainsi,
+$\Gamma$ est incohérent.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:prov-incons}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons d'abord $\Gamma \Proves !A$. Il existe une partie finie
+$\Gamma_0 \subseteq \Gamma$ et une !!{derivation}~$\pi_0$ de
+$\Gamma_0 \Sequent !A$. En ajoutant une inférence $\LeftR{\lnot}$,
+on obtient une !!{derivation} de
+$\lnot !A, \Gamma_0 \Sequent \quad$. L'ensemble
+$\Gamma \cup \{\lnot !A\}$ est donc incohérent.\footnote{Note de
+l'édition française : dans les deux sens de cette démonstration,
+la source emploie directement $\Gamma$ dans les séquents.
+Les témoins finis $\Gamma_0 \subseteq \Gamma$ sont explicités ici,
+car l'ensemble $\Gamma$ peut être infini.}
+
+Réciproquement, si $\Gamma \cup \{\lnot !A\}$ est incohérent,
+il existe une partie finie $\Gamma_0 \subseteq \Gamma$ et une
+!!{derivation}~$\pi_1$ de $\lnot !A, \Gamma_0 \Sequent \quad$,
+en ajoutant au besoin $\lnot !A$ par affaiblissement.
+L'arbre suivant est une !!{derivation} de $\Gamma_0 \Sequent !A$ :
+\begin{prooftree}
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\RightR{\lnot}}
+  \UnaryInf$\fCenter !A, \lnot !A$
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\lnot !A, \Gamma_0 \fCenter$
+  \RightLabel{\Cut}
+  \BinaryInf$\Gamma_0 \fCenter !A$
+\end{prooftree}
+Puisque $\Gamma_0 \subseteq \Gamma$, il en résulte
+$\Gamma \Proves !A$.
+\end{proof}
+
+\begin{prob}
+Démontrer que $\Gamma \Proves \lnot !A$ si et seulement si
+$\Gamma \cup \{!A\}$ est incohérent.
+\end{prob}
+
+\begin{prop}\ollabel{prop:explicit-inc}
+Si $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$, alors
+$\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$.
+Il existe une partie finie $\Gamma_0 \subseteq \Gamma$ et une
+!!{derivation}~$\pi$ du séquent $\Gamma_0 \Sequent !A$.
+Le séquent $\lnot !A, \Gamma_0 \Sequent \quad$ est lui aussi
+!!{derivable} : l'arbre suivant donne son antécédent dans l'ordre
+inverse, que l'on peut rétablir par des échanges.
+  \begin{prooftree}
+    \AxiomC{}
+    \RightLabel{$\pi$}
+    \Deduce$\Gamma_0 \fCenter !A$
+    \Axiom$!A \fCenter !A$
+    \RightLabel{\LeftR{\lnot}}
+    \UnaryInf$\lnot !A, !A \fCenter$
+    \RightLabel{\LeftR{\Exchange}}
+    \UnaryInf$!A, \lnot !A \fCenter$
+    \RightLabel{\Cut}
+    \BinaryInf$\Gamma_0, \lnot !A \fCenter$
+  \end{prooftree}
+Comme $\lnot !A \in \Gamma$ et $\Gamma_0 \subseteq \Gamma$,
+cela montre que $\Gamma$ est incohérent.
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-exhaustive}
+Si $\Gamma \cup \{!A\}$ et $\Gamma \cup \{\lnot !A\}$ sont
+tous deux incohérents, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Il existe des parties finies $\Gamma_0 \subseteq \Gamma$ et
+$\Gamma_1 \subseteq \Gamma$, ainsi que des !!{derivation}s
+$\pi_0$ et $\pi_1$ dans $\Log{LK}$, respectivement de
+$!A, \Gamma_0 \Sequent \quad$ et de
+$\lnot !A, \Gamma_1 \Sequent \quad$.
+On ajoute au besoin l'énoncé distingué par affaiblissement.
+Nous pouvons alors !!{derive} :
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{$\pi_0$}
+\Deduce$ !A, \Gamma_0 \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \Gamma_0 \fCenter \lnot !A$
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\lnot !A, \Gamma_1 \fCenter  $
+\RightLabel{\Cut}
+\BinaryInf$ \Gamma_0, \Gamma_1 \fCenter $
+\end{prooftree}
+Comme $\Gamma_0 \subseteq \Gamma$ et $\Gamma_1 \subseteq \Gamma$,
+on a $\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$.
+Par conséquent, $\Gamma$ est incohérent.
+\end{proof}
+
+\end{document}

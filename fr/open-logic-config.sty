@@ -13,11 +13,23 @@
 \definetoken{a}{valuation}{une}
 \definetoken{A}{valuation}{Une}
 \settexttoken{structure}{structure}{structures}[Structure][Structures]
+\definetoken{a}{structure}{une}
+\definetoken{A}{structure}{Une}
+\settexttoken{identity}{égalité}{égalités}[Égalité][Égalités]
 \settexttoken{conditional}{implication matérielle}{implications matérielles}[Implication matérielle][Implications matérielles]
 \settexttoken{biconditional}{équivalence matérielle}{équivalences matérielles}[Équivalence matérielle][Équivalences matérielles]
 \settexttoken{truth}{vérité}{vérités}[Vérité][Vérités]
 \settexttoken{falsity}{fausseté}{faussetés}[Fausseté][Faussetés]
-\settexttoken{operator}{connecteur}{connecteurs}[Connecteur][Connecteurs]
+% La sélection doit rester différée lors de la définition des jetons par edef.
+\protected\def\FRoperator#1#2{\iftag{FOL}{#1}{#2}}
+\settexttoken{operator}{\FRoperator{opérateur}{connecteur}}{\FRoperator{opérateurs}{connecteurs}}[\FRoperator{Opérateur}{Connecteur}][\FRoperator{Opérateurs}{Connecteurs}]
+\settexttoken{main operator}{opérateur principal}{opérateurs principaux}[Opérateur principal][Opérateurs principaux]
+\settexttoken{constant}{constante}{constantes}[Constante][Constantes]
+\definetoken{a}{constant}{une}
+\definetoken{A}{constant}{Une}
+\settexttoken{variable}{variable}{variables}[Variable][Variables]
+\definetoken{a}{variable}{une}
+\definetoken{A}{variable}{Une}
 \settexttoken{derivation}{dérivation}{dérivations}[Dérivation][Dérivations]
 \definetoken{a}{derivation}{une}
 \definetoken{A}{derivation}{Une}
@@ -27,6 +39,7 @@
 \settexttoken{derive}{dériver}{dérive}[Dériver][Dérive]
 \settexttoken{derivable}{dérivable}{dérivables}[Dérivable][Dérivables]
 \settexttoken{derivability}{dérivabilité}{dérivabilités}[Dérivabilité][Dérivabilités]
+\settexttoken{nonderivability}{non-dérivabilité}{non-dérivabilités}[Non-dérivabilité][Non-dérivabilités]
 \settexttoken{tableau}{tableau}{tableaux}[Tableau][Tableaux]
 \definetoken{a}{tableau}{un}
 \definetoken{A}{tableau}{Un}

@@ -1,0 +1,121 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: quantifier-rules
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{seq}{qrl}
+
+\olsection{Règles pour les quantificateurs}
+
+\subsection{Règles pour $\lforall$}
+
+\begin{defish}
+\Axiom$ !A(t), \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lforall}}
+\UnaryInf$ \lforall[x][!A(x)],\Gamma \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$ \Gamma \fCenter \Delta, !A(a) $
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$ \Gamma \fCenter \Delta, \lforall[x][!A(x)]$
+\DisplayProof
+\end{defish}
+
+Dans \LeftR{\lforall}, $t$ est un terme clos, c'est-à-dire un terme
+sans variable. Dans \RightR{\lforall}, $a$~est !!a{constant} qui ne
+doit figurer nulle part dans le séquent inférieur de la règle
+\RightR{\lforall}. On appelle $a$ l'\emph{eigenvariable} de
+l'inférence \RightR{\forall}.\footnote{On emploie le terme
+« eigenvariable » pour des raisons historiques, bien que $a$ soit
+!!a{constant} dans la règle ci-dessus.}
+
+\subsection{Règles pour $\lexists$}
+
+\begin{defish}
+\Axiom$ !A(a), \Gamma \fCenter \Delta $
+\RightLabel{\LeftR{\lexists}}
+\UnaryInf$ \lexists[x][!A(x)], \Gamma \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$ \Gamma \fCenter \Delta, !A(t) $
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$ \Gamma \fCenter \Delta, \lexists[x][!A(x)]$
+\DisplayProof
+\end{defish}
+
+De même, $t$~est un terme clos et $a$~est !!a{constant} qui ne
+figure pas dans le séquent inférieur de la règle \LeftR{\lexists}.
+On appelle $a$ l'\emph{eigenvariable} de l'inférence
+\LeftR{\lexists}.
+
+La condition selon laquelle une eigenvariable ne doit pas figurer
+dans le séquent inférieur de l'inférence \RightR{\lforall} ou
+\LeftR{\lexists} s'appelle la \emph{condition sur l'eigenvariable}.
+
+\begin{explain}
+Rappelons la convention suivante : lorsque $!A$ est !!a{formula}
+dans laquelle la !!{variable}~$x$ est libre, on l'indique en
+écrivant~$!A(x)$. Dans ce même contexte, $!A(t)$ abrège alors
+$\Subst{!A}{t}{x}$. On pourrait donc aussi écrire la règle
+\RightR{\lexists} sous la forme suivante :
+\begin{prooftree}
+  \Axiom$\Gamma \fCenter \Delta, \Subst{!A}{t}{x}$
+  \RightLabel{\RightR{\lexists}}
+  \UnaryInf$\Gamma \fCenter \Delta, \lexists[x][!A]$
+\end{prooftree}
+Remarquons que $t$ peut déjà figurer dans~$!A$ ; par exemple,
+$!A$~pourrait être~$\Atom{\Obj P}{t,x}$. Ainsi, déduire
+$\Gamma \Sequent \Delta, \lexists[x][\Atom{\Obj P}{t,x}]$
+de~$\Gamma \Sequent \Delta, \Atom{\Obj P}{t,t}$ constitue une
+application correcte de~\RightR{\lexists} : on peut « remplacer »
+une ou plusieurs occurrences de~$t$ dans la prémisse, sans
+nécessairement les remplacer toutes, par la !!{variable} liée~$x$.
+En revanche, les conditions sur l'eigenvariable dans
+\RightR{\lforall} et~\LeftR{\lexists} imposent que la
+!!{constant}~$a$ ne figure pas dans~$!A$. On ne peut donc pas déduire
+correctement $\Gamma \Sequent \Delta, \lforall[x][\Atom{\Obj P}{a,x}]$
+de $\Gamma \Sequent \Delta, \Atom{\Obj P}{a,a}$ à l'aide
+de~$\RightR{\lforall}$.
+\end{explain}
+
+\begin{explain}
+Dans \RightR{\lexists} et \LeftR{\lforall}, aucune autre restriction
+ne porte sur le terme clos~$t$. En revanche, dans les règles
+\LeftR{\lexists} et \RightR{\lforall}, la condition sur
+l'eigenvariable impose en particulier que la !!{constant}~$a$ ne
+figure nulle part en dehors de~$!A(a)$ dans le séquent supérieur.
+Cette condition est nécessaire à la correction du système : elle
+garantit que celui-ci ne !!{derive}s que des séquents valides. Sans
+elle, les inférences suivantes seraient permises :
+\begin{prooftree}
+  \Axiom$!A(a) \fCenter !A(a)$
+  \RightLabel{*\LeftR{\lexists}}
+  \UnaryInf$\lexists[x][!A(x)] \fCenter !A(a)$
+  \RightLabel{\RightR{\lforall}}
+  \UnaryInf$\lexists[x][!A(x)] \fCenter \lforall[x][!A(x)]$
+  \DisplayProof\bottomAlignProof
+  \qquad
+  \Axiom$!A(a) \fCenter !A(a)$
+  \RightLabel{*\RightR{\lforall}}
+  \UnaryInf$!A(a) \fCenter \lforall[x][!A(x)]$
+  \RightLabel{\LeftR{\lexists}}
+  \UnaryInf$\lexists[x][!A(x)] \fCenter \lforall[x][!A(x)]$
+\end{prooftree}
+Or le schéma de séquent
+$\lexists[x][!A(x)] \Sequent \lforall[x][!A(x)]$ n'est pas valide
+en général.
+\begin{editorial}
+  La source dit ici que le terme n'est soumis à aucune restriction ;
+  on rappelle qu'il doit rester clos, conformément aux règles
+  précédentes. L'absence de la constante en dehors de la formule
+  indiquée est une conséquence de la condition sur l'eigenvariable,
+  et non sa formulation complète : elle doit être absente de tout
+  le séquent inférieur. Le dernier séquent n'est pas valide en tant
+  que schéma ; certaines de ses instances peuvent être valides.
+\end{editorial}
+\end{explain}
+
+\end{document}

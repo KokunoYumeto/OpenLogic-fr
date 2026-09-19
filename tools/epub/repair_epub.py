@@ -4,7 +4,7 @@ from lxml import etree
 import collections,copy,hashlib,json,re,zipfile
 E=Path(__file__).resolve().parent
 SOURCE=E/'conversion/source/locale/fr/reader.epub'
-OUTPUT=E/'openlogic-fr-ensembles-logique-propositionnelle.epub'
+OUTPUT=E/'openlogic-fr-ensembles-calcul-des-sequents.epub'
 HTML='http://www.w3.org/1999/xhtml'
 MATH='http://www.w3.org/1998/Math/MathML'
 sha=lambda b:hashlib.sha256(b).hexdigest()
@@ -43,6 +43,7 @@ ALT={
  'reader23x.svg':'Fonction bijective : chaque point de l’ensemble d’arrivée est atteint par exactement une flèche.',
  'reader26x.svg':'Composition : x dans A est envoyé par f sur y dans B, puis par g sur z dans C. La flèche composée de A vers C représente g après f.'
 }
+ALT.update(json.loads((E/'SEQUENT_IMAGE_ALTS.json').read_text('utf-8')))
 report={'input_sha256':sha(SOURCE.read_bytes()),'repairs':[],'documents':[]}
 with zipfile.ZipFile(SOURCE) as z:
  data={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -136,22 +137,29 @@ for name,raw in list(data.items()):
  counts=collections.Counter(r.xpath('//@id'))
  for key,count in counts.items():
   if count<2:continue
-  assert key in {'x121','x221','x421','x511','framed-1'},key
+  assert key in {'x121','x221','x421','x511','framed-1','x911','x921','x931','x941','x951','x961'},key
   for other in data.values():
    assert not re.search(rb'href\s*=\s*["\'][^"\']*#'+re.escape(key.encode())+rb'["\']',other),key
   for i,e in enumerate(r.xpath('//*[@id=$key]',key=key),1):
    if i>1:e.set('id',key+'-'+str(i))
   report['repairs'].append({'document':name,'unreferenced_duplicate_id':key,'occurrences':count})
  title=r.find('{'+HTML+'}head/{'+HTML+'}title')
- if title is not None and name in ['OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml']:
-  title.text={'OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Systèmes de dérivation'}[name]
+ if title is not None and name in ['OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml','OEBPS/readerch9.xhtml']:
+  title.text={'OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Systèmes de dérivation','OEBPS/readerch9.xhtml':'9 Le calcul des séquents'}[name]
  if title is not None and not (title.text or '').strip():
-  title.text='OpenLogic : édition française — Des ensembles à la logique propositionnelle'
+  title.text='OpenLogic : édition française — Des ensembles au calcul des séquents'
  r.set('{http://www.w3.org/XML/1998/namespace}lang','fr')
  assert before_prose==prose(r),name
  for img in r.xpath('//*[local-name()="img"]'):
   assert img.get('src') in ALT
   img.set('alt',ALT[img.get('src')])
+  if name=='OEBPS/readerch9.xhtml':
+   img.set('id','fr-sequent-'+re.search(r'\d+',img.get('src')).group())
+   img.set('class','fr-proof-diagram')
+   wrapper=etree.Element('{'+HTML+'}span',{'class':'fr-proof-scroll'})
+   wrapper.tail=img.tail;img.tail=None;img.getparent().replace(img,wrapper);wrapper.append(img)
+   if img.get('src') in ['reader104x.svg','reader106x.svg','reader108x.svg','reader116x.svg']:
+    img.set('alt',img.get('alt')+' Un carré marque la fin de la démonstration.')
   if img.get('src') in ['reader29x.svg','reader30x.svg','reader62x.svg']:
    img.set('id',{'reader29x.svg':'fr-proof-sequent','reader30x.svg':'fr-proof-nd','reader62x.svg':'fr-proof-tableau'}[img.get('src')])
  data[name]=etree.tostring(r,encoding='utf-8',xml_declaration=True,doctype='<!DOCTYPE html>')
@@ -163,6 +171,8 @@ data['OEBPS/reader.css']+=b'\n/* Wide equations and tables scroll locally on nar
 data['OEBPS/reader.css']+=b'\n/* Scale the Hilbert diagram inside its narrower quotation. */\nblockquote .center img { width: 100%; object-fit: contain; }\n.center p.indent { text-indent: 0; }\n'
 data['OEBPS/reader.css']+=b'\n.fr-truth-table { border-collapse: collapse; }\n.fr-truth-table colgroup + colgroup { border-left: 1px solid currentColor; }\n'
 data['OEBPS/reader.css']+=b'\n#fr-proof-sequent, #fr-proof-nd, #fr-proof-tableau { display: block; margin: 1em auto; }\n'
+data['OEBPS/reader.css']+=b'\n/* Keep sequent diagrams legible; scroll wide groups inside their own block. */\n.fr-proof-scroll { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; text-indent: 0; margin: 1em 0; }\nimg.fr-proof-diagram { display: block; max-width: none !important; width: auto !important; height: auto; margin: 0 auto; }\n'
+report['repairs'].append({'document':'OEBPS/readerch9.xhtml','source_grounded_proof_descriptions':54,'proof_images_at_intrinsic_size_with_local_horizontal_scrolling':54,'observed_qed_squares_described':[104,106,108,116]})
 # TeX4ht carried mathml onto a bibliography document without mathematics.
 opf=etree.fromstring(data["OEBPS/content.opf"])
 for item in opf.xpath('//*[local-name()="manifest"]/*'):

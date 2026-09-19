@@ -9470,3 +9470,1347 @@ Passages de référence : GL02, SCH03.
 **Question de révision :** La différence entre résultats sur les dérivations et preuves à l’intérieur du système est-elle lisible ?
 
 Passages de référence : GL01.
+
+## C669 — OLP-0069-B04
+
+**Choix :** Le calcul des séquents
+
+**Autre formulation envisagée :** Calcul de séquents
+
+**Motif :** L’article et le pluriel reprennent la dénomination attestée dans les deux témoins; le même titre couvre les deux branches du pilote.
+
+**Confiance et limites :** Forte : titre technique directement attesté.
+
+**Question de révision :** Le déterminant convient-il au titre de ce chapitre systématique ?
+
+Passages de référence : SCH04, SAU04.
+
+## C670 — OLP-0069-B05
+
+**Choix :** Calcul usuel et note destinée aux éditeurs
+
+**Autre formulation envisagée :** Calcul standard et consigne au lecteur
+
+**Motif :** La réserve sur le manque d’exemples et la commande de sélection restent une note éditoriale; prfLK est un identifiant inchangé.
+
+**Confiance et limites :** Forte : destinataire et portée de la note source conservés.
+
+**Question de révision :** La note distingue-t-elle clairement le contenu mathématique et le paramétrage ?
+
+Passages de référence : SAU04, GL03.
+
+## C671 — OLP-0070-B05
+
+**Choix :** Règles et dérivations
+
+**Autre formulation envisagée :** Règles et preuves
+
+**Motif :** Le jeton dérivation reste la notion formelle choisie dans le chapitre précédent; la minuscule après et évite une capitale anglaise.
+
+**Confiance et limites :** Forte : usages français et configuration déjà établis.
+
+**Question de révision :** La distinction dérivation/preuve reste-t-elle cohérente ?
+
+Passages de référence : SAU04, SCH02.
+
+## C672 — OLP-0070-B06
+
+**Choix :** Suites finies d’énoncés
+
+**Autre formulation envisagée :** Contextes finis de formules
+
+**Motif :** La source exige des suites; ni les ensembles de GL03 ni les multi-ensembles de SCH04 ne sont importés. L’élision est explicite devant le jeton énoncé.
+
+**Confiance et limites :** Forte : contraste des trois conventions lu et maintenu.
+
+**Question de révision :** La convention ordonnée est-elle assez visible ?
+
+Passages de référence : SCH04, GL03.
+
+## C673 — OLP-0070-B07
+
+**Choix :** Antécédent et conséquent
+
+**Autre formulation envisagée :** Membre gauche et membre droit
+
+**Motif :** Conséquent est attesté pour le côté droit. Les deux noms sont ici définis explicitement pour des suites éventuellement vides, sans réduire le conséquent à une seule formule.
+
+**Confiance et limites :** Provisoire : conséquent est attesté; antécédent appliqué au côté d’un séquent n’est pas attesté dans ces passages précis.
+
+**Question de révision :** Préféreriez-vous succédent à conséquent pour éviter l’homonymie avec une implication ?
+
+Passages de référence : GL03, SCH07.
+
+## C674 — OLP-0070-B08
+
+**Choix :** Vrai dans l’interprétation considérée; valide
+
+**Autre formulation envisagée :** Satisfait; correct
+
+**Motif :** Tous à gauche et au moins un à droite traduisent la sémantique conjonctive/disjonctive. Valide conserve le sens universel, distinct de vrai et de la correction d’un système. Les cas vides sont explicités sans ajouter de formule.
+
+**Confiance et limites :** Forte : directions, quantificateurs et deux cas vides vérifiés contre la source et GL03.
+
+**Question de révision :** La distinction vrai/valide reste-t-elle claire dans le contexte des valuations puis des structures ?
+
+Passages de référence : GL03, SCH03.
+
+## C675 — OLP-0070-B09
+
+**Choix :** Ajouter aux extrémités; concaténation
+
+**Autre formulation envisagée :** Adjoindre un élément; réunion
+
+**Motif :** Réunion effacerait l’ordre et les répétitions. Le pronom son remplace la seconde occurrence de Gamma dans l’extrémité gauche de cette même suite.
+
+**Confiance et limites :** Forte : seule variation des occurrences mathématiques, référent explicitement identifié.
+
+**Question de révision :** Le pronom renvoie-t-il sans ambiguïté à Gamma ?
+
+Passages de référence : SCH04, GL03.
+
+## C676 — OLP-0070-B10
+
+**Choix :** Séquent initial et énoncé quelconque
+
+**Autre formulation envisagée :** Axiome et formule arbitraire
+
+**Motif :** La définition comprend toutes les branches vrai/faux prévues et préserve la liberté du paramètre A; on garde le nom initial plutôt que de fusionner règle et objet.
+
+**Confiance et limites :** Forte : les trois formes et les deux branches de configuration sont identiques.
+
+**Question de révision :** Les formes conditionnelles et le rôle du paramètre A sont-ils nets ?
+
+Passages de référence : GL03, SAU04.
+
+## C677 — OLP-0070-B11
+
+**Choix :** Opérateur principal; versions gauche et droite
+
+**Autre formulation envisagée :** Connecteur principal; règles d’introduction
+
+**Motif :** La source classe les règles par le symbole de la formule du séquent inférieur. Opérateur permet d’inclure les quantificateurs; les côtés restent ceux du séquent, non une direction de lecture de l’arbre.
+
+**Confiance et limites :** Provisoire : composition transparente de la notion source, mais expression exacte non attestée ici; les constructions gauche/droite sont attestées.
+
+**Question de révision :** Opérateur principal est-il préférable à symbole logique principal dans le chapitre du premier ordre ?
+
+Passages de référence : GL03, SAU04, SCH06.
+
+## C678 — OLP-0071-B05
+
+**Choix :** Règles propositionnelles
+
+**Autre formulation envisagée :** Règles du calcul propositionnel
+
+**Motif :** Le titre oppose ce groupe aux règles quantificatrices suivantes sans nommer un nouveau calcul autonome.
+
+**Confiance et limites :** Forte : rôle du titre et distinction des groupes préservés.
+
+**Question de révision :** Le titre rend-il suffisamment cette subdivision ?
+
+Passages de référence : GL03.
+
+## C679 — OLP-0071-B06
+
+**Choix :** Règles pour le symbole de négation
+
+**Autre formulation envisagée :** Règles de négation
+
+**Motif :** Pour garde l’organisation par symbole; le symbole et toutes les inférences qui suivent sont conservés exactement.
+
+**Confiance et limites :** Forte : aucun élargissement ni changement du symbole.
+
+**Question de révision :** L’intitulé bref est-il cohérent avec les règles de quantification suivantes ?
+
+Passages de référence : GL03.
+
+## C680 — OLP-0071-B08
+
+**Choix :** Règles pour le symbole de conjonction
+
+**Autre formulation envisagée :** Règles de conjonction
+
+**Motif :** Pour garde l’organisation par symbole; le symbole et toutes les inférences qui suivent sont conservés exactement.
+
+**Confiance et limites :** Forte : aucun élargissement ni changement du symbole.
+
+**Question de révision :** L’intitulé bref est-il cohérent avec les règles de quantification suivantes ?
+
+Passages de référence : GL03.
+
+## C681 — OLP-0071-B10
+
+**Choix :** Règles pour le symbole de disjonction
+
+**Autre formulation envisagée :** Règles de disjonction
+
+**Motif :** Pour garde l’organisation par symbole; le symbole et toutes les inférences qui suivent sont conservés exactement.
+
+**Confiance et limites :** Forte : aucun élargissement ni changement du symbole.
+
+**Question de révision :** L’intitulé bref est-il cohérent avec les règles de quantification suivantes ?
+
+Passages de référence : GL03.
+
+## C682 — OLP-0071-B12
+
+**Choix :** Règles pour le symbole de implication
+
+**Autre formulation envisagée :** Règles de implication
+
+**Motif :** Pour garde l’organisation par symbole; le symbole et toutes les inférences qui suivent sont conservés exactement.
+
+**Confiance et limites :** Forte : aucun élargissement ni changement du symbole.
+
+**Question de révision :** L’intitulé bref est-il cohérent avec les règles de quantification suivantes ?
+
+Passages de référence : GL03.
+
+## C683 — OLP-0072-B05
+
+**Choix :** Règles pour les quantificateurs
+
+**Autre formulation envisagée :** Règles quantificationnelles
+
+**Motif :** La tournure nominale explicite est plus immédiate et conserve le groupe source.
+
+**Confiance et limites :** Forte : quantificateur est directement attesté.
+
+**Question de révision :** Le titre est-il naturel dans ce manuel ?
+
+Passages de référence : SAU06, SCH06.
+
+## C684 — OLP-0072-B06
+
+**Choix :** Règles pour le quantificateur universel
+
+**Autre formulation envisagée :** Règles du quantificateur universel
+
+**Motif :** L’intitulé conserve le symbole exact et la même construction que les sous-sections propositionnelles.
+
+**Confiance et limites :** Forte : intitulé et symbole correspondent exactement.
+
+**Question de révision :** L’homogénéité des titres sert-elle la comparaison ?
+
+Passages de référence : SAU06.
+
+## C685 — OLP-0072-B09
+
+**Choix :** Règles pour le quantificateur existentiel
+
+**Autre formulation envisagée :** Règles du quantificateur existentiel
+
+**Motif :** L’intitulé conserve le symbole exact et la même construction que les sous-sections propositionnelles.
+
+**Confiance et limites :** Forte : intitulé et symbole correspondent exactement.
+
+**Question de révision :** L’homogénéité des titres sert-elle la comparaison ?
+
+Passages de référence : SAU06.
+
+## C686 — OLP-0072-B08
+
+**Choix :** Terme clos et eigenvariable constante
+
+**Autre formulation envisagée :** Terme fermé et variable propre
+
+**Motif :** Clos est défini comme sans variable; aucune variable n’est permise dans le terme. Eigenvariable est attesté en français et la note conserve explicitement le statut de constante dans OLP.
+
+**Confiance et limites :** Forte sur clos et la condition; choix lexical eigenvariable directement attesté et réversible.
+
+**Question de révision :** Eigenvariable convient-il mieux ici que variable propre, compte tenu du statut de constante ?
+
+Passages de référence : SCH06, SAU06.
+
+## C687 — OLP-0072-B11
+
+**Choix :** De même, terme clos; absence dans le séquent inférieur
+
+**Autre formulation envisagée :** Même restriction sur les variables libres
+
+**Motif :** La reprise garde la même fermeture du terme et la fraîcheur de la constante pour la règle existentielle gauche, sans les remplacer par une restriction aux occurrences libres.
+
+**Confiance et limites :** Forte : quantification sur toutes les occurrences conservée.
+
+**Question de révision :** Les deux présentations parallèles évitent-elles toute confusion entre t et a ?
+
+Passages de référence : SCH06, SAU06.
+
+## C688 — OLP-0072-B12
+
+**Choix :** Condition sur l’eigenvariable
+
+**Autre formulation envisagée :** Condition de variable propre
+
+**Motif :** La préposition sur désigne la restriction imposée au paramètre. La définition exige l’absence dans tout le séquent inférieur dans les deux règles concernées.
+
+**Confiance et limites :** Forte : condition exacte de la source; variante terminologique attestée conservée.
+
+**Question de révision :** La portée de tout le séquent est-elle suffisamment explicite ?
+
+Passages de référence : SAU06.
+
+## C689 — OLP-0072-B13
+
+**Choix :** Une ou plusieurs occurrences, sans nécessairement toutes les remplacer
+
+**Autre formulation envisagée :** Substituer t par x dans la formule
+
+**Motif :** La première formulation garde le choix des occurrences provenant de x et permet que t figure déjà dans A. La seconde pourrait suggérer une substitution globale inverse. Les exemples et la restriction portant aussi sur A sont intacts.
+
+**Confiance et limites :** Forte : les deux exemples formels et leur contraste ont été comparés.
+
+**Question de révision :** La différence entre substitution et remplacement de toutes les occurrences est-elle claire ?
+
+Passages de référence : SCH06, SAU06.
+
+## C690 — OLP-0072-B14
+
+**Choix :** Aucune autre restriction; conséquence partielle de fraîcheur; schéma non valide en général
+
+**Autre formulation envisagée :** Aucune restriction; condition équivalente; toute instance invalide
+
+**Motif :** Ces trois qualifications rétablissent la portée des définitions déjà données. La note éditoriale signale chacune des précisions; les arbres et les étoiles restent ceux de la source.
+
+**Confiance et limites :** Forte : contre-exemples concrets et portée des règles décrits dans SEMANTIC_REVIEW.md.
+
+**Question de révision :** La note permet-elle de distinguer la condition complète, sa conséquence et la portée schématique de l’exemple ?
+
+Passages de référence : SCH06, SAU06, SCH03.
+
+## C691 — OLP-0073-B05
+
+**Choix :** Règles structurelles
+
+**Autre formulation envisagée :** Règles de structure
+
+**Motif :** Le terme adjectival est explicitement attesté; il distingue la gestion des occurrences de celle des connecteurs.
+
+**Confiance et limites :** Forte : dénomination directement attestée.
+
+**Question de révision :** La catégorie est-elle suffisamment distincte des règles logiques ?
+
+Passages de référence : SCH05.
+
+## C692 — OLP-0073-B06
+
+**Choix :** Réordonner, réunir deux occurrences identiques, ajouter de chaque côté
+
+**Autre formulation envisagée :** Permuter, simplifier et compléter les contextes
+
+**Motif :** Les trois opérations sont décrites concrètement et gardent les positions extrêmes exigées par les règles de la source. Réunir ne transforme pas une suite en ensemble.
+
+**Confiance et limites :** Forte : chaque action correspond aux règles immédiatement affichées.
+
+**Question de révision :** Les positions et la multiplicité restent-elles lisibles ?
+
+Passages de référence : SCH05, GL03.
+
+## C693 — OLP-0073-B07
+
+**Choix :** Affaiblissement
+
+**Autre formulation envisagée :** Augmentation du contexte
+
+**Motif :** Le nom technique attesté est retenu; la formulation descriptive envisagée ferait perdre la terminologie commune. La macro symbolique de la règle reste intacte.
+
+**Confiance et limites :** Forte : terme explicitement attesté dans la note marginale de SCH05.
+
+**Question de révision :** Le nom retenu est-il cohérent avec les usages du reste du chapitre ?
+
+Passages de référence : SCH05.
+
+## C694 — OLP-0073-B09
+
+**Choix :** Contraction
+
+**Autre formulation envisagée :** Fusion des répétitions
+
+**Motif :** Le nom technique attesté est retenu; la formulation descriptive envisagée ferait perdre la terminologie commune. La macro symbolique de la règle reste intacte.
+
+**Confiance et limites :** Forte : terme explicitement attesté dans la note marginale de SCH05.
+
+**Question de révision :** Le nom retenu est-il cohérent avec les usages du reste du chapitre ?
+
+Passages de référence : SCH05.
+
+## C695 — OLP-0073-B11
+
+**Choix :** Échange
+
+**Autre formulation envisagée :** Permutation
+
+**Motif :** Le nom technique attesté est retenu; la formulation descriptive envisagée ferait perdre la terminologie commune. La macro symbolique de la règle reste intacte.
+
+**Confiance et limites :** Forte : terme explicitement attesté dans la note marginale de SCH05.
+
+**Question de révision :** Le nom retenu est-il cohérent avec les usages du reste du chapitre ?
+
+Passages de référence : SCH05.
+
+## C696 — OLP-0073-B13
+
+**Choix :** Traits d’inférence doubles
+
+**Autre formulation envisagée :** Deux étapes d’inférence
+
+**Motif :** Le double trait représente une succession de règles structurelles, et non exactement deux étapes. Les trois sortes de règles sont maintenues.
+
+**Confiance et limites :** Forte : convention graphique transmise sans modification.
+
+**Question de révision :** La différence entre signe graphique et nombre d’étapes est-elle claire ?
+
+Passages de référence : SCH05.
+
+## C697 — OLP-0073-B14
+
+**Choix :** Coupure dispensable, facilitant combinaison et réutilisation
+
+**Autre formulation envisagée :** Coupure dérivable ou facultative sans effet
+
+**Motif :** Dispensable n’affirme pas que cette règle soit dérivable dans le système sans coupure. La construction française conserve l’avantage pratique annoncé.
+
+**Confiance et limites :** Forte : distinction consultée chez Saurin, règle OLP intégralement conservée.
+
+**Question de révision :** Le texte évite-t-il de confondre admissibilité et dérivabilité de la règle ?
+
+Passages de référence : SCH05, SAU04, GL03.
+
+## C698 — OLP-0074-B05
+
+**Choix :** Dérivations
+
+**Autre formulation envisagée :** Preuves formelles
+
+**Motif :** Le titre reste le jeton existant, désormais interprété par la configuration française; sa source inchangée ne signifie pas une prose omise.
+
+**Confiance et limites :** Forte : même terme formel que les sections précédentes.
+
+**Question de révision :** Le titre assure-t-il la continuité terminologique ?
+
+Passages de référence : SAU04, SCH02.
+
+## C699 — OLP-0074-B06
+
+**Choix :** Engendrées inductivement
+
+**Autre formulation envisagée :** Construites de proche en proche
+
+**Motif :** Inductivement nomme la définition mathématique; le cas initial isolé et la combinaison d’une ou deux dérivations sont tous explicites.
+
+**Confiance et limites :** Forte : les deux cas de construction sont conservés.
+
+**Question de révision :** L’induction est-elle distinguée d’un simple ordre de présentation ?
+
+Passages de référence : SAU05.
+
+## C700 — OLP-0074-B07
+
+**Choix :** Séquent final; immédiatement sous la prémisse
+
+**Autre formulation envisagée :** Conclusion ultime; sous la prémisse
+
+**Motif :** Final nomme l’objet défini sans suggérer que l’arbre soit infini; immédiatement exprime le voisinage exigé par la source. Finitude, feuilles initiales et exception S sont conservées.
+
+**Confiance et limites :** Forte sur la structure; séquent final est une traduction définie explicitement, sans attestation exacte revendiquée.
+
+**Question de révision :** Séquent final convient-il mieux que séquent conclusion pour le nom end-sequent ?
+
+Passages de référence : SAU04, SAU05.
+
+## C701 — OLP-0074-B08
+
+**Choix :** La prémisse coïncide avec le séquent
+
+**Autre formulation envisagée :** La prémisse implique le séquent
+
+**Motif :** Coïncider impose l’égalité des instances après substitution; impliquer ferait croire qu’une conséquence sémantique suffit. Les paramètres A et D sont distingués.
+
+**Confiance et limites :** Forte : substitutions et arbre correspondant contrôlés.
+
+**Question de révision :** L’exemple distingue-t-il schéma de règle et instance ?
+
+Passages de référence : SAU04, SCH05.
+
+## C702 — OLP-0074-B08
+
+**Choix :** Intervertir deux énoncés; rôles respectifs des paramètres
+
+**Autre formulation envisagée :** Échanger les hypothèses arbitrairement
+
+**Motif :** L’échange porte sur deux positions précises; les contextes vides et l’affectation A=D, B=C sont conservés avant l’inférence suivante.
+
+**Confiance et limites :** Forte : tous les paramètres et leurs positions sont identiques.
+
+**Question de révision :** L’affectation des métavariables est-elle facile à suivre ?
+
+Passages de référence : SAU04, SCH05.
+
+## C703 — OLP-0074-B08
+
+**Choix :** Prémisses coïncidant avec les derniers séquents
+
+**Autre formulation envisagée :** Dérivations ayant les mêmes prémisses
+
+**Motif :** La règle binaire est appliquée aux conclusions des deux sous-arbres; leur contexte commun et leur conséquent vide sont explicités.
+
+**Confiance et limites :** Forte : schéma binaire et ses deux instances comparés.
+
+**Question de révision :** Le mot prémisse désigne-t-il clairement la prémisse de la nouvelle inférence ?
+
+Passages de référence : SAU04, SAU05.
+
+## C704 — OLP-0074-B08
+
+**Choix :** Intervertir les prémisses échange les rôles de C et D
+
+**Autre formulation envisagée :** La conclusion reste inchangée par commutativité
+
+**Motif :** La formule finale passe de C∧D à D∧C; son équivalence sémantique ne rend pas les deux chaînes de symboles identiques. Les deux arbres demeurent distincts.
+
+**Confiance et limites :** Forte : deux arbres et formules finales contrôlés.
+
+**Question de révision :** Le dernier exemple montre-t-il bien une autre conclusion syntaxique ?
+
+Passages de référence : SAU04, SCH05.
+
+## C705 — OLP-0075-R00
+
+**Choix :** Construire une dérivation en partant du séquent final
+
+**Autre formulation envisagée :** Donner une preuve puis en justifier les étapes
+
+**Motif :** La consigne et la recherche de la racine vers les feuilles conservent la progression de l’exemple; le pluriel du titre est en minuscule après de.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La consigne situe-t-elle clairement l’objet à construire ?
+
+Passages de référence : SCH08.
+
+## C706 — OLP-0075-R02
+
+**Choix :** Chercher une inférence à partir de sa conclusion
+
+**Autre formulation envisagée :** Appliquer la règle suivante
+
+**Motif :** Le choix est motivé par le connecteur et son côté; une règle structurelle n’est pas déclarée impossible.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** L’incertitude initiale et la distinction entre règle logique et structurelle sont-elles conservées ?
+
+Passages de référence : SCH08, SCH05.
+
+## C707 — OLP-0075-R04
+
+**Choix :** Deux prémisses possibles; non dérivable en général
+
+**Autre formulation envisagée :** La seconde prémisse est impossible
+
+**Motif :** La qualification en général maintient la portée schématique : A et B peuvent coïncider dans une instance particulière.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La distinction entre schéma et instance est-elle assez claire ?
+
+Passages de référence : SCH08.
+
+## C708 — OLP-0075-R06
+
+**Choix :** Une dérivation correcte dans LK
+
+**Autre formulation envisagée :** Un séquent correct
+
+**Motif :** Correcte qualifie l’arbre obtenu, non la vérité ou la validité du séquent; la deuxième consigne conserve le même mode de construction.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le qualificatif porte-t-il sans ambiguïté sur la dérivation ?
+
+Passages de référence : SCH08.
+
+## C709 — OLP-0075-R08
+
+**Choix :** Différer la séparation en deux branches
+
+**Autre formulation envisagée :** Éviter une règle à deux prémisses
+
+**Motif :** Les deux choix restent possibles. La portée de la négation explique pourquoi elle n’est pas encore un opérateur principal accessible.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La raison du choix est-elle présentée comme une commodité et non une nécessité ?
+
+Passages de référence : SCH08, SCH05.
+
+## C710 — OLP-0075-R10, OLP-0075-R11, OLP-0075-R13, OLP-0075-R15, OLP-0075-R17
+
+**Choix :** Extrémité gauche; échange à gauche
+
+**Autre formulation envisagée :** Extérieur de l’antécédent; échange à droite
+
+**Motif :** La position requise est explicite. Les quatre inférences permutent l’antécédent, donc leur étiquette droite est une erreur locale déclarée.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La note identifie-t-elle exactement les quatre étapes corrigées sans inclure l’échange du conséquent ?
+
+Passages de référence : SCH05, SCH08.
+
+## C711 — OLP-0075-R12
+
+**Choix :** Remonter jusqu’aux séquents initiaux
+
+**Autre formulation envisagée :** Terminer la preuve en descendant
+
+**Motif :** Remonter décrit la recherche; à partir d’un séquent initial décrit la lecture des deux inférences affichées. Les deux orientations ne sont pas confondues.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le passage entre recherche ascendante et vérification descendante est-il lisible ?
+
+Passages de référence : SCH08, SCH05.
+
+## C712 — OLP-0075-R14
+
+**Choix :** Instance de la règle
+
+**Autre formulation envisagée :** Nouvelle règle de négation
+
+**Motif :** L’inférence cherchée instancie une règle déjà définie; on ne présente pas une règle supplémentaire.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le niveau schéma/instance reste-t-il constant ?
+
+Passages de référence : SCH08.
+
+## C713 — OLP-0075-R16
+
+**Choix :** Achever la branche par deux inférences
+
+**Autre formulation envisagée :** Simplifier la branche
+
+**Motif :** Les deux opérations précises sont conservées et renvoient aux étapes du dessin.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La reprise est-elle suffisamment précise sans répéter toute l’explication ?
+
+Passages de référence : SCH05, SCH08.
+
+## C714 — OLP-0075-R18
+
+**Choix :** Au bas de l’arbre
+
+**Autre formulation envisagée :** Au début de la preuve
+
+**Motif :** Bas situe la racine dessinée et évite l’ambiguïté chronologique de début.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le terme arbre conserve-t-il le référent de dérivation ?
+
+Passages de référence : SCH08.
+
+## C715 — OLP-0075-R20
+
+**Choix :** Connecteurs principaux des énoncés
+
+**Autre formulation envisagée :** Connecteurs présents dans le séquent
+
+**Motif :** Seuls les symboles principaux autorisent ces dernières inférences; la conjonction intérieure n’est pas oubliée.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** L’adjectif principaux exprime-t-il bien la restriction ?
+
+Passages de référence : SCH08.
+
+## C716 — OLP-0075-R22
+
+**Choix :** Essayer une branche; négations rétablies
+
+**Autre formulation envisagée :** Appliquer nécessairement la conjonction
+
+**Motif :** L’essai est conservé parce que son échec motive le retour en arrière. Les deux négations manquantes sont restaurées d’après les dessins cohérents et signalées.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le lecteur distingue-t-il cet essai de la dérivation finale ?
+
+Passages de référence : SCH08.
+
+## C717 — OLP-0075-R24
+
+**Choix :** Rencontrer une difficulté
+
+**Autre formulation envisagée :** Obtenir une contradiction
+
+**Motif :** Il s’agit de l’échec d’une stratégie de recherche, non d’une contradiction dérivée dans le calcul.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le mot difficulté évite-t-il la confusion logique ?
+
+Passages de référence : SCH08.
+
+## C718 — OLP-0075-R26
+
+**Choix :** Échec général et retour à l’étape précédente
+
+**Autre formulation envisagée :** Impossibilité absolue de dériver A⇒B
+
+**Motif :** L’ajout en général évite une assertion fausse pour A=B; il conserve la fonction pédagogique du point d’interrogation dans l’arbre source.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La note suffit-elle à expliciter la lecture schématique sans alourdir le raisonnement ?
+
+Passages de référence : SCH08, SCH05.
+
+## C719 — OLP-0075-R28
+
+**Choix :** Achever chaque branche
+
+**Autre formulation envisagée :** Achever une branche quelconque
+
+**Motif :** Chaque impose de résoudre les deux prémisses de la règle binaire.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** L’obligation portant sur les deux branches reste-t-elle visible ?
+
+Passages de référence : SCH08.
+
+## C720 — OLP-0075-R30
+
+**Choix :** Tentatives de dérivation; appliquer à rebours
+
+**Autre formulation envisagée :** Dérivations achevées; inverser la règle
+
+**Motif :** Les arbres incomplets ne satisfont pas encore la définition d’une dérivation. À rebours décrit le raisonnement de recherche sans affirmer une équivalence entre règle et règle inverse.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Tentative rend-il mieux ici le statut des arbres incomplets ?
+
+Passages de référence : SCH08, SCH05.
+
+## C721 — OLP-0075-R32
+
+**Choix :** Deux occurrences réunies en une; conserver une occurrence
+
+**Autre formulation envisagée :** Dupliquer une hypothèse
+
+**Motif :** Il s’agit ici du conséquent, non d’hypothèses. Le sens ascendant de la recherche explique la duplication sans changer la règle descendante de contraction.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La terminologie occurrence permet-elle de suivre le rôle des répétitions ?
+
+Passages de référence : SCH08, SCH05.
+
+## C722 — OLP-0075-R34
+
+**Choix :** Faire apparaître la négation
+
+**Autre formulation envisagée :** Déduire la négation isolément
+
+**Motif :** La négation est introduite dans un conséquent à plusieurs énoncés; elle n’est pas démontrée comme théorème isolé.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La construction française évite-t-elle cette lecture erronée ?
+
+Passages de référence : SCH08, SCH05.
+
+## C723 — OLP-0075-R36
+
+**Choix :** Construire les dérivations; indication de contraction
+
+**Autre formulation envisagée :** Vérifier les séquents; supprimer l’indication
+
+**Motif :** Les24 énoncés d’exercices, leur groupement4/12/8 et l’indication de la source sont intégralement conservés.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** L’indication finale est-elle comprise dans le cadre schématique des exercices ?
+
+Passages de référence : SCH08, SCH05.
+
+## C724 — OLP-0076-R00
+
+**Choix :** Anticiper le même terme et respecter la fraîcheur
+
+**Autre formulation envisagée :** Choisir des constantes arbitraires indépendantes
+
+**Motif :** La source choisit le même terme pour atteindre un axiome. La condition porte sur la constante propre de la règle et la non-dérivabilité n’est pas universelle sur toutes les instances.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** L’ordre de recherche et la portée de en général sont-ils explicites ?
+
+Passages de référence : SAU06, SCH06, SCH08.
+
+## C725 — OLP-0076-R02
+
+**Choix :** Traiter d’abord la règle soumise à la condition
+
+**Autre formulation envisagée :** Appliquer forcément l’existentielle en premier
+
+**Motif :** Le conseil pratique reste distinct d’une obligation logique.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le caractère conseillé du choix ressort-il du contexte ?
+
+Passages de référence : SAU06, SCH08.
+
+## C726 — OLP-0076-R04
+
+**Choix :** Appliquer à rebours
+
+**Autre formulation envisagée :** Utiliser les réciproques des règles
+
+**Motif :** Ce sont les mêmes règles lues depuis leurs conclusions, non de nouvelles règles réciproques.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La direction de construction est-elle claire dans le dessin qui suit ?
+
+Passages de référence : SCH08.
+
+## C727 — OLP-0076-R06
+
+**Choix :** Choisir le terme voulu dans cette règle
+
+**Autre formulation envisagée :** Aucune restriction sur les termes
+
+**Motif :** L’absence de condition d’eigenvariable ne supprime pas la convention des termes clos; le terme choisi est ici une constante.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La formulation conserve-t-elle cette distinction entre les deux restrictions ?
+
+Passages de référence : SAU06, SCH06, SCH08.
+
+## C728 — OLP-0076-R08
+
+**Choix :** Absence dans tout le séquent inférieur
+
+**Autre formulation envisagée :** Absence dans la seule formule quantifiée
+
+**Motif :** La vérification porte sur la conclusion entière, conformément à la règle OLP. Les deux groupes de6et3exercices et leur indication sont intacts.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le mot ici empêche-t-il de généraliser indûment l’identité du séquent inférieur et du séquent final ?
+
+Passages de référence : SAU06, SCH06.
+
+## C729 — OLP-0077-R00
+
+**Choix :** Dérivabilité, cohérence et théorie de la démonstration
+
+**Autre formulation envisagée :** Prouvabilité, consistance et théorie des preuves
+
+**Motif :** Dérivabilité continue la distinction entre l’objet dérivation et la relation. Cohérence s’appuie sur GL02; la définition OLP par séquent vide reste prioritaire. Correction/complétude ne sont ni vérité ni complétude d’une théorie.
+
+**Confiance et limites :** Forte sur les distinctions; théorie de la démonstration est un choix de titre explicatif, sans attestation exacte revendiquée dans ces passages.
+
+**Question de révision :** La dénomination de la discipline et la relation sont-elles homogènes avec les chapitres précédents ?
+
+Passages de référence : SCH03, GL02, SCH05.
+
+## C730 — OLP-0077-R00
+
+**Choix :** Suite énumérant exactement la partie finie, répétitions permises
+
+**Autre formulation envisagée :** Suite quelconque d’éléments de la partie finie
+
+**Motif :** L’ordre et les multiplicités peuvent changer mais le support reste le même. Énumérant n’introduit aucune notion de calculabilité; les contextes sources restent des suites avant la convention.
+
+**Confiance et limites :** Forte : portée et dépendances vérifiées dans la source.
+
+**Question de révision :** Le passage d’une suite à son support fini est-il explicitement justifié ?
+
+Passages de référence : SCH05, SAU06.
+
+## C731 — OLP-0077-R02
+
+**Choix :** Cohérence universellement quantifiée sur les parties finies
+
+**Autre formulation envisagée :** Absence d’une dérivation depuis le contexte entier
+
+**Motif :** Gamma peut être infini : la négation de l’existence du témoin fini devient pour toute partie finie. L’affaiblissement explicite autorise A même quand il n’est pas utilisé dans le témoin de la seconde hypothèse.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La preuve de transitivité couvre-t-elle le cas où A n’intervient pas dans la dérivation de B ?
+
+Passages de référence : GL02, SCH05, SAU04.
+
+## C732 — OLP-0077-R04
+
+**Choix :** Tout énoncé; compacité syntaxique
+
+**Autre formulation envisagée :** Un énoncé quelconque; compacité sémantique
+
+**Motif :** Tout conserve le quantificateur de l’explosion. Les deux clauses de compacité concernent la relation définie, et la seconde preuve est une contraposition. Le renvoi relatif répare la branche propositionnelle sans changer sa cible logique.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le titre compacité est-il clairement rattaché aux notions syntaxiques de la section ?
+
+Passages de référence : GL02, SCH03.
+
+## C733 — OLP-0078-R00
+
+**Choix :** Deux parties finies; coupure sur A
+
+**Autre formulation envisagée :** Un même contexte fini pour les deux preuves
+
+**Motif :** Les témoins peuvent différer; leur réunion fournira le témoin d’incohérence. L’ordre de A et Gamma1 est uniformisé, conformément à la convention structurelle de0077.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Les deux témoins et le rôle éventuel de l’affaiblissement sont-ils explicites ?
+
+Passages de référence : GL02, SCH05, SAU04.
+
+## C734 — OLP-0078-R02, OLP-0078-R03
+
+**Choix :** Témoin fini dans chaque sens de l’équivalence
+
+**Autre formulation envisagée :** Supposer Gamma fini
+
+**Motif :** Le théorème vaut pour tout ensemble Gamma. Les séquents finis ne peuvent avoir un antécédent infini; explicitement choisir Gamma0 répare la preuve sans restreindre l’énoncé. La note distingue cette réparation de la traduction.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Chaque implication produit-elle bien le témoin fini exigé par les définitions ?
+
+Passages de référence : GL02, SCH05, SAU04.
+
+## C735 — OLP-0078-R04
+
+**Choix :** Inclusion du témoin; échange explicité
+
+**Autre formulation envisagée :** Identifier directement les deux ordres
+
+**Motif :** La convention autorise les permutations mais l’arbre imprimé et la phrase ne sont pas littéralement dans le même ordre. L’explication le rend visible; la définition fournit la finitude de Gamma0.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** L’usage de la convention structurelle est-il transparent ?
+
+Passages de référence : GL02, SCH05.
+
+## C736 — OLP-0078-R06
+
+**Choix :** Les deux extensions sont incohérentes
+
+**Autre formulation envisagée :** Une des extensions est incohérente
+
+**Motif :** La conjonction des hypothèses est essentielle. Les deux témoins finis restent indépendants et la coupure porte sur la négation de A.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** La symétrie des hypothèses et leur réunion dans la conclusion sont-elles conservées ?
+
+Passages de référence : GL02, SCH05, SAU04.
+
+## C737 — OLP-0078-R08
+
+**Choix :** Conclusion par la réunion finie
+
+**Autre formulation envisagée :** Conclusion par l’une des parties seulement
+
+**Motif :** Le séquent final utilise les deux contextes; leur réunion finie appartient à Gamma.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le témoin fini final est-il identifiable sans nouvelle notation ?
+
+Passages de référence : GL02.
+
+## C738 — OLP-0079-R00
+
+**Choix :** Propriétés élémentaires de la relation de dérivabilité
+
+**Autre formulation envisagée :** Validités des connecteurs
+
+**Motif :** Ce sont des résultats syntaxiques utilisés pour établir ensuite la complétude; ne pas les justifier ici par cette même complétude. Les accords pluriels des jetons sont explicites.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Les affirmations syntaxiques sont-elles assez distinguées de leurs équivalents sémantiques ?
+
+Passages de référence : SCH03, SCH05.
+
+## C739 — OLP-0079-R02, OLP-0079-R03
+
+**Choix :** Aligner explicitement les antécédents des prémisses
+
+**Autre formulation envisagée :** Appliquer la conjonction aux deux axiomes seuls
+
+**Motif :** La règle OLP partage Gamma entre les prémisses. A⇒A et B⇒B ne peuvent donc être ses prémisses directes ici; affaiblissement et échange construisent exactement le contexte commun.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** L’arbre corrigé respecte-t-il chaque position imposée par les règles structurelles ?
+
+Passages de référence : SCH05, SAU04.
+
+## C740 — OLP-0079-R04
+
+**Choix :** Incohérent; deux introductions de la disjonction
+
+**Autre formulation envisagée :** Faux; disjonction prouvable sans hypothèses
+
+**Motif :** La première assertion concerne un ensemble d’énoncés; chacune des deux autres conserve son hypothèse distincte.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** L’ellipse de l’ensemble dans la liste est-elle claire grâce au contexte des définitions ?
+
+Passages de référence : GL02, SCH05.
+
+## C741 — OLP-0079-R06
+
+**Choix :** Succession de règles structurelles
+
+**Autre formulation envisagée :** Exactement deux inférences
+
+**Motif :** Le trait double est une convention de compression, sans fixer le nombre ni imposer que les trois types apparaissent à chaque fois.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le rappel évite-t-il de prendre le double trait pour deux étapes ?
+
+Passages de référence : SCH05.
+
+## C742 — OLP-0079-R08
+
+**Choix :** Implication matérielle dans les formules; dérivabilité entre contextes
+
+**Autre formulation envisagée :** Une seule notion d’implication
+
+**Motif :** Les macros lif et Proves conservent leurs fonctions distinctes. L’ordre de la première prémisse relève de la convention structurelle déjà donnée.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le texte et le dessin gardent-ils clairement les deux niveaux de relation ?
+
+Passages de référence : SCH03, SCH05.
+
+## C743 — OLP-0079-R10
+
+**Choix :** Tous deux dérivables
+
+**Autre formulation envisagée :** Dérivable au singulier après les séquents
+
+**Motif :** Le pluriel explicite du jeton produit l’accord français sans modifier les formules ni les deux arbres.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Les jetons produisent-ils bien l’accord attendu au rendu ?
+
+Passages de référence : SCH05.
+
+## C744 — OLP-0080-R00
+
+**Choix :** Ni dans Gamma ni dans A(x); terme clos
+
+**Autre formulation envisagée :** Absent de Gamma seulement; terme arbitraire
+
+**Motif :** La généralisation exige les deux absences. Le témoin Gamma0 est fini. L’instanciation rappelle la fermeture du terme imposée dans0072, sans modifier les deux schémas.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Le rappel de terme clos est-il correctement relié à la convention de ce calcul ?
+
+Passages de référence : SAU06, SCH06.
+
+## C745 — OLP-0080-R02
+
+**Choix :** Instance du quantificateur universel
+
+**Autre formulation envisagée :** Généralisation universelle
+
+**Motif :** La règle employée est universelle gauche; le terme clos remplace x dans la formule de la prémisse initiale. Le schéma et la branche taguée sont intacts.
+
+**Confiance et limites :** Forte : comparaison directe de la source et des passages indiqués.
+
+**Question de révision :** Les deux directions de quantification restent-elles distinguées ?
+
+Passages de référence : SCH06, SAU06.
+
+## C746 — OLP-0081-R00
+
+**Choix :** Correction du système; validité des séquents
+
+**Autre formulation envisagée :** Vérité du système; validité d’une inférence isolée
+
+**Motif :** La correction relie dérivabilité et validité. La satisfaction est une disjonction inclusive de deux existences, puis la validité quantifie universellement sur les interprétations appropriées. Le premier résultat concerne la dérivabilité sans hypothèses.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Les trois niveaux satisfaction, validité et correction sont-ils assez distincts ?
+
+Passages de référence : SCH03, SCH10, SCH05.
+
+## C747 — OLP-0081-R00
+
+**Choix :** Récurrence sur le nombre d’inférences; cas structurels et axiomes optionnels
+
+**Autre formulation envisagée :** Récurrence sur la hauteur; omettre les règles structurelles
+
+**Motif :** Le paramètre n de la source est conservé. Les échanges et contractions préservent exactement la satisfaction; les séquents initiaux vrai/faux prévus par0070 sont couverts sous les mêmes étiquettes.
+
+**Confiance et limites :** Forte : conditions exactes vérifiées dans le calcul source.
+
+**Question de révision :** La couverture de toutes les règles est-elle explicite, en laissant aux exercices les cas indiqués par la source ?
+
+Passages de référence : SCH03, SCH05.
+
+## C748 — OLP-0081-R02
+
+**Choix :** Conservation des occurrences pertinentes dans les deux affaiblissements
+
+**Autre formulation envisagée :** Theta=A,Gamma pour les deux règles
+
+**Motif :** L’égalité de la source n’est vraie que du côté gauche. L’argument corrigé distingue les côtés tout en conservant les deux alternatives de satisfaction.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** La justification couvre-t-elle les quatre combinaisons côté/réalisation de la satisfaction ?
+
+Passages de référence : SCH03, SCH05.
+
+## C749 — OLP-0081-R04
+
+**Choix :** L’un au moins des trois cas
+
+**Autre formulation envisagée :** Un seul des trois cas
+
+**Motif :** Les alternatives ne sont pas exclusives. Le passage de A vrai à non-A faux fournit exactement le nouvel élément de l’antécédent, sans inverser la sémantique de satisfaction d’un séquent.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Les négations métalinguistiques et celles des formules restent-elles distinctes ?
+
+Passages de référence : SCH03, SCH10.
+
+## C750 — OLP-0081-R06
+
+**Choix :** La conclusion conserve la conjonction principale
+
+**Autre formulation envisagée :** Conclure que Gamma⇒Delta est valide
+
+**Motif :** Le raisonnement ne prouve pas en général la validité du contexte dépourvu de la conjonction; celle-ci doit rester dans l’antécédent. La correction est déclarée.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Le changement local de formule est-il exactement celui requis par l’argument ?
+
+Passages de référence : SCH03, SCH10.
+
+## C751 — OLP-0081-R08
+
+**Choix :** Un énoncé vrai suffit dans le conséquent
+
+**Autre formulation envisagée :** Tous les énoncés du conséquent sont vrais
+
+**Motif :** La disjonction des cas exprime la satisfaction bilatérale. Le raisonnement symétrique échange A et B sans changer les contextes.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Les quantificateurs existentiels sur C sont-ils conservés dans chaque cas ?
+
+Passages de référence : SCH03, SCH10.
+
+## C752 — OLP-0081-R10
+
+**Choix :** Dans chacun des cas (a) et (b)
+
+**Autre formulation envisagée :** Si (a) et (b) se réalisent ensemble
+
+**Motif :** Chacune des deux conditions suffit à rendre l’implication vraie; leur conjonction n’est pas exigée. Les quatre alternatives sont conservées.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** La coordination française évite-t-elle de renforcer indûment l’hypothèse ?
+
+Passages de référence : SCH03, SCH06, SCH10.
+
+## C753 — OLP-0081-R12
+
+**Choix :** Un terme clos réfutant une instance réfute l’universelle
+
+**Autre formulation envisagée :** Une instance vraie suffit à établir l’universelle
+
+**Motif :** L’argument utilise la contraposée de l’instanciation universelle; le statut clos de t est conservé. La règle universelle droite suivante introduit une condition distincte.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Les deux directions et leurs conditions sont-elles suffisamment contrastées par la preuve elle-même ?
+
+Passages de référence : SCH03, SCH06, SAU06, SCH10.
+
+## C754 — OLP-0081-R14
+
+**Choix :** Valuation des variables; modification de la seule interprétation de a
+
+**Autre formulation envisagée :** Affectation des variables; modifier la valuation s
+
+**Motif :** Valuation est directement attesté pour les variables individuelles chez Schmitz. Le complément des variables distingue son codomaine de celui d’une valuation propositionnelle. La preuve change M en M′, pas s, et utilise la fraîcheur dans Gamma,Delta,A(x).
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Le lecteur distingue-t-il clairement les deux objets M′ et s et les deux usages du mot valuation ?
+
+Passages de référence : SCH03, SCH09, SCH10, SAU06.
+
+## C755 — OLP-0081-R14
+
+**Choix :** s est sa propre variante en x, avec valeur fixée
+
+**Autre formulation envisagée :** Choisir une nouvelle valuation sans relier les autres variables
+
+**Motif :** Le lemme OLP prop:ext-formulas a été lu : remplacer la valeur de x par celle déjà donnée par s ne change pas s. Les citations et égalités de la source suffisent, sans inventer de variable auxiliaire.
+
+**Confiance et limites :** Forte : conditions exactes vérifiées dans le calcul source.
+
+**Question de révision :** L’usage réflexif de varAssign est-il suffisamment compréhensible dans le contexte du lemme cité ?
+
+Passages de référence : SCH09, SCH10.
+
+## C756 — OLP-0081-R16
+
+**Choix :** Satisfaire Pi⇒Lambda
+
+**Autre formulation envisagée :** Satisfaire Pi privé de Lambda
+
+**Motif :** La satisfaction d’un séquent est la notion requise; la différence ensembliste de la source est une coquille, signalée. Le raisonnement sépare A faux et A vrai.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** La correction locale du symbole est-elle entièrement justifiée par les deux prémisses ?
+
+Passages de référence : SCH03, SCH10.
+
+## C757 — OLP-0081-R18
+
+**Choix :** Les deux prémisses forcent séparément A et B
+
+**Autre formulation envisagée :** Une seule prémisse suffit à leur conjonction
+
+**Motif :** Après l’échec du contexte commun Gamma⇒Delta, chacune des prémisses fournit sa propre formule vraie; les deux sont nécessaires pour conclure.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Le contexte partagé est-il bien visible dans l’argument français ?
+
+Passages de référence : SCH03, SCH10.
+
+## C758 — OLP-0081-R20
+
+**Choix :** Contraposition : incohérence implique insatisfaisabilité
+
+**Autre formulation envisagée :** Confondre incohérence et insatisfaisabilité par définition
+
+**Motif :** Le corollaire découle de la correction appliquée à un témoin fini; l’équivalence réciproque n’est pas encore prouvée. Tous les exercices tagués et les trois corollaires sont conservés.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Le raisonnement conserve-t-il la direction prouvée, sans anticiper la complétude ?
+
+Passages de référence : SCH03, SCH10, GL02.
+
+## C759 — OLP-0081-R20
+
+**Choix :** Implication gauche rend l’implication fausse sous l’échec des contextes
+
+**Autre formulation envisagée :** Déduire la fausseté de A ou la vérité de B
+
+**Motif :** Les deux prémisses imposent A vrai et B faux, exactement le cas où l’implication est fausse. La macro Sat/ conserve sa négation dans les trois occurrences pertinentes.
+
+**Confiance et limites :** Forte : conditions exactes vérifiées dans le calcul source.
+
+**Question de révision :** Le passage des prémisses valides à la non-satisfaction de l’implication est-il complet ?
+
+Passages de référence : SCH03, SCH10.
+
+## C760 — OLP-0082-R00
+
+**Choix :** Égalité; termes clos
+
+**Autre formulation envisagée :** Identité; termes quelconques
+
+**Motif :** Égalité est attesté pour la relation logique et ses règles chez Saurin. Le jeton identity reste réutilisable mais sa forme française devient égalité; la réflexion et les deux orientations de substitution OLP sont intactes.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Égalité convient-il partout où le jeton identity désigne cette relation, en conservant identité pour d’autres notions éventuelles ?
+
+Passages de référence : SAU07, SCH06.
+
+## C761 — OLP-0082-R02
+
+**Choix :** Substituabilité des égaux; loi de Leibniz
+
+**Autre formulation envisagée :** Indiscernabilité des identiques
+
+**Motif :** Le texte nomme ici l’usage substitutif montré par l’arbre. La variante philosophique peut suggérer une formulation plus générale; le nom Leibniz de la source est conservé.
+
+**Confiance et limites :** Provisoire sur l’intitulé exact : SAU07 atteste égalité et les substitutions, non le nom complet du principe.
+
+**Question de révision :** Substituabilité des égaux est-il le meilleur intitulé pédagogique de ce principe ?
+
+Passages de référence : SAU07.
+
+## C762 — OLP-0082-R04
+
+**Choix :** Rôle joué par la formule schématique
+
+**Autre formulation envisagée :** Remplacement de toutes les occurrences du terme
+
+**Motif :** Les deux choix de A(x) indiquent exactement les positions substituées; aucune substitution globale inverse n’est suggérée. Les deux exercices sont repris littéralement quant aux formules.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** Les positions de x dans les deux formules suffisent-elles à expliquer symétrie et transitivité ?
+
+Passages de référence : SAU07.
+
+## C763 — OLP-0083-R00
+
+**Choix :** Égalité des valeurs; les deux orientations de la règle
+
+**Autre formulation envisagée :** Remplacer un terme par un autre sans hypothèse d’égalité
+
+**Motif :** La structure satisfait l’égalité des deux termes clos; leurs valeurs sont donc égales, ce qui justifie les deux applications du lemme de substitution. L’autre orientation est couverte explicitement, sans inverser l’antécédent du séquent.
+
+**Confiance et limites :** Forte : source et définitions consultées directement; distinctions vérifiées.
+
+**Question de révision :** La phrase finale couvre-t-elle la seconde règle tout en conservant l’égalité t1=t2 comme hypothèse ?
+
+Passages de référence : SAU07, SCH06, SCH09, SCH10.
+
+## C764 — OLP-0083-R00
+
+**Choix :** Terme clos et satisfaction indépendante de la valuation
+
+**Autre formulation envisagée :** Formule sans aucune variable
+
+**Motif :** L’absence de variables porte sur t; A(t) est un énoncé, dont la satisfaction est indépendante des valuations par le résultat cité. Les deux notions de fermeture ne sont pas confondues.
+
+**Confiance et limites :** Forte : conditions exactes vérifiées dans le calcul source.
+
+**Question de révision :** La preuve distingue-t-elle clairement la fermeture du terme de celle de la formule ?
+
+Passages de référence : SCH06, SCH09, SCH10.

@@ -1,0 +1,57 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+
+\documentclass[../../../include/open-logic-chapter]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olchapter{fol}{seq}{Le calcul des séquents}}
+      {\olchapter{pl}{seq}{Le calcul des séquents}}
+
+\begin{editorial}
+  Ce chapitre présente le calcul des séquents usuel LK de Gentzen pour
+  la logique classique du premier ordre. Il gagnerait à comporter
+  davantage d'exemples et d'exercices. Pour inclure ou exclure le contenu
+  relatif au calcul des séquents en tant que système de preuve,
+  utiliser l'étiquette « prfLK ».
+\end{editorial}
+
+\olimport{rules-and-proofs}
+
+\olimport{propositional-rules}
+
+\iftag{FOL}{%
+  \olimport{quantifier-rules}
+}{}
+
+\olimport{structural-rules}
+
+\olimport{derivations}
+
+\olimport{proving-things}
+
+\iftag{FOL}{%
+  \olimport{proving-things-quant}
+}{}
+
+\olimport{proof-theoretic-notions}
+
+\olimport{provability-consistency}
+
+\olimport{provability-propositional}
+
+\iftag{FOL}{%
+  \olimport{provability-quantifiers}
+}{}
+
+\olimport{soundness}
+
+\iftag{FOL}{%
+  \olimport{identity}
+  \olimport{soundness-identity}
+}{}
+
+\OLEndChapterHook
+
+\end{document}

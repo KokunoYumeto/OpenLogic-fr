@@ -1,0 +1,436 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: soundness.tex
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{sou}}
+      {\olfileid[fr]{pl}{seq}{sou}}
+
+\olsection{Correction}
+
+\begin{explain}
+Un système de !!{derivation}, tel que le calcul des séquents, est
+\emph{correct} s'il ne permet pas de !!{derive} des résultats qui
+ne sont pas effectivement vrais. La correction constitue ainsi une
+garantie pour un système de !!{derivation}. Selon la notion syntaxique
+considérée, nous souhaitons notamment savoir que :
+\begin{enumerate}
+\item tout énoncé~$!A$ !!{derivable} sans hypothèses est
+  \iftag{FOL}{valide}{une tautologie} ;
+\item si !!a{sentence} est !!{derivable} à partir d'autres énoncés,
+  il en est aussi une conséquence logique ;
+\item si un ensemble d'!!{sentence}s est incohérent, il est insatisfaisable.
+\end{enumerate}
+Ces propriétés sont essentielles. Si l'une d'elles échoue, le système
+de !!{derivation} est défectueux : il permet de !!{derive} trop de
+résultats. Il est donc crucial d'établir sa correction.
+
+Toutes ces notions syntaxiques sont définies par la !!{derivability}
+de certains séquents dans le calcul des séquents. Pour démontrer
+(1)--(3), nous devons donc établir une propriété sémantique des
+séquents !!{derivable}s. Nous allons d'abord définir la \emph{validité}
+d'un séquent, puis montrer que tout séquent !!{derivable} est valide.
+Les propriétés (1)--(3) en découleront comme corollaires.
+\end{explain}
+
+\begin{defn}
+\iftag{FOL}{!!^a{structure}~$\Struct M$}{!!^a{valuation}~$\pAssign{v}$}
+\emph{satisfait} un séquent $\Gamma \Sequent \Delta$ si et seulement
+si l'une au moins des conditions suivantes est vérifiée :
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$ pour un certain $!A \in \Gamma$,
+ou $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ pour un certain $!A \in \Delta$.
+
+Un séquent est \emph{valide} si et seulement si toute
+\iftag{FOL}{!!{structure}~$\Struct M$}{!!{valuation}~$\pAssign{v}$}
+le satisfait.
+\end{defn}
+
+\begin{thm}[Correction]
+\ollabel{thm:sequent-soundness}
+Si $\Log{LK}$ !!{derive}s $\Theta \Sequent \Xi$, alors
+$\Theta \Sequent \Xi$ est valide.
+\end{thm}
+
+\begin{proof}
+Soit $\pi$ une !!{derivation} de $\Theta \Sequent \Xi$.
+Procédons par récurrence sur le nombre $n$ d'inférences de $\pi$.
+
+Si ce nombre est nul, $\pi$ se réduit à un séquent initial.
+Tout séquent initial $!A \Sequent !A$ est valide : pour toute
+\iftag{FOL}{$\Struct M$}{$\pAssign{v}$}, on a soit
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$, soit
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+\iftag{prvTrue}{Le séquent initial $\quad \Sequent \ltrue$ est
+également valide, puisque $\ltrue$ est toujours vrai.}{}
+\iftag{prvFalse}{De même, $\lfalse \Sequent \quad$ est valide,
+puisque $\lfalse$ est toujours faux.}{}
+\footnote{Note de l'édition française : les cas des séquents initiaux
+pour les constantes logiques, lorsqu'ils sont présents, ainsi que
+les cas de l'échange et de la contraction ci-dessous, sont explicités ;
+la source ne les traite pas séparément.}
+
+Si le nombre d'inférences est strictement positif, distinguons les cas
+selon la dernière inférence. Par hypothèse de récurrence, ses prémisses
+sont valides, car la !!{derivation} de chacune d'elles contient
+strictement moins de $n$ inférences.
+
+Considérons d'abord les inférences à une seule prémisse. Un échange
+ne modifie que l'ordre des énoncés ; une contraction ne modifie que
+le nombre d'occurrences d'un même énoncé. Dans les deux cas, les
+conditions de satisfaction de la prémisse et de la conclusion sont
+équivalentes. La validité est donc préservée.
+\begin{enumerate}
+\item La dernière inférence est un affaiblissement. Alors
+  $\Theta \Sequent \Xi$ est soit $!A, \Gamma \Sequent \Delta$
+  si l'inférence est \LeftR{\Weakening}, soit
+  $\Gamma \Sequent \Delta, !A$ si elle est \RightR{\Weakening}.
+  La !!{derivation} se termine donc par l'une des formes suivantes :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\Weakening}}
+    \UnaryInf$!A, \Gamma \fCenter \Delta$
+    \DisplayProof\qquad\bottomAlignProof
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta$
+    \RightLabel{\RightR{\Weakening}}
+    \UnaryInf$\Gamma \fCenter \Delta, !A$
+  \end{prooftree}
+  Par hypothèse de récurrence, $\Gamma \Sequent \Delta$ est valide.
+  Pour toute \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$},
+  il existe donc soit $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$, soit $!C \in \Delta$
+  tel que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$.
+
+  Dans le premier cas, $!C \in \Theta$ aussi : l'affaiblissement
+  à gauche ajoute un énoncé à $\Gamma$, tandis que l'affaiblissement
+  à droite conserve cet antécédent. Dans le second cas, $!C \in \Xi$
+  aussi : l'affaiblissement à droite ajoute un énoncé à $\Delta$,
+  tandis que l'affaiblissement à gauche conserve ce conséquent.
+  Nous avons donc soit $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$
+  pour un certain $!C \in \Theta$, soit
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$ pour un certain $!C \in \Xi$.
+  Ainsi, $\Theta \Sequent \Xi$ est valide.\footnote{Note de l'édition
+  française : l'égalité $\Theta = !A, \Gamma$ donnée par la source
+  ne vaut que pour l'affaiblissement à gauche. L'argument est explicité
+  pour les deux règles.}
+\item La dernière inférence est \LeftR{\lnot}. Sa prémisse est
+  $\Gamma \Sequent \Delta, !A$ et sa conclusion est
+  $\lnot !A, \Gamma \Sequent \Delta$. La !!{derivation} se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \RightLabel{\LeftR{\lnot}}
+    \UnaryInf$\lnot !A, \Gamma \fCenter \Delta$
+  \end{prooftree}
+  On a $\Theta = \lnot !A, \Gamma$ et $\Xi = \Delta$.
+
+  Par hypothèse de récurrence, $\Gamma \Sequent \Delta, !A$ est
+  valide. Pour toute \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$},
+  l'un au moins des cas suivants se présente : (a) il existe
+  $!C \in \Gamma$ tel que $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$ ;
+  (b) il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$ ; (c)
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Montrons que $\Theta \Sequent \Xi$ est aussi valide.
+  Soit \iftag{FOL}{une !!{structure}~$\Struct{M}$}{une !!{valuation}~$\pAssign{v}$}.
+  Dans le cas (a), il existe $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$, et $!C \in \Theta$ aussi.
+  Dans le cas (b), il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$, et $!C \in \Xi$ aussi.
+  Enfin, dans le cas (c), $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$,
+  donc $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lnot !A}$.
+  Comme $\lnot !A \in \Theta$, il existe $!C \in \Theta$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+  Ainsi, $\Theta \Sequent \Xi$ est valide.
+\item La dernière inférence est \RightR{\lnot} : cas laissé en exercice.
+\item La dernière inférence est \LeftR{\land}. Il y a deux variantes :
+  on peut introduire $!A \land !B$ à gauche à partir de $!A$ ou
+  de $!B$ placé à gauche dans la prémisse. Dans le premier cas,
+  $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$!A, \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\land}}
+    \UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+  \end{prooftree}
+  On a $\Theta = !A \land !B, \Gamma$ et $\Xi = \Delta$.
+  Considérons \iftag{FOL}{une !!{structure}~$\Struct M$}{une !!{valuation}~$\pAssign{v}$}.
+  La validité de $!A, \Gamma \Sequent \Delta$, donnée par l'hypothèse
+  de récurrence, entraîne l'un au moins des cas suivants :
+  (a) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$ ;
+  (b) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$ pour un certain
+  $!C \in \Gamma$ ; (c) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$
+  pour un certain $!C \in \Delta$.
+  Dans le cas (a), $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \land !B}$.
+  Il existe donc $!C \in \Theta$, à savoir $!A \land !B$, tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+  Dans le cas (b), il existe $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$, et $!C \in \Theta$ aussi.
+  Dans le cas (c), il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$, et $!C \in \Xi$ puisque
+  $\Xi = \Delta$. Dans tous les cas,
+  \iftag{FOL}{$\Struct M$}{$\pAssign{v}$} satisfait donc
+  $!A \land !B, \Gamma \Sequent \Delta$.
+  Puisque \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} était arbitraire,
+  $!A \land !B, \Gamma \Sequent \Delta$ est valide.\footnote{Note de
+  l'édition française : la conclusion de cet argument rétablit
+  la formule principale $!A \land !B$, omise à cet endroit dans la source.}
+  Le cas où $!A \land !B$ est introduit à partir de $!B$ se traite
+  de même, en remplaçant $!A$ par $!B$.
+\item La dernière inférence est \RightR{\lor}. Il y a deux variantes :
+  on peut introduire $!A \lor !B$ à droite à partir de $!A$ ou
+  de $!B$ placé à droite dans la prémisse. Dans le premier cas,
+  $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \RightLabel{\RightR{\lor}}
+    \UnaryInf$\Gamma \fCenter \Delta, !A \lor !B$
+  \end{prooftree}
+  On a $\Theta = \Gamma$ et $\Xi = \Delta, !A \lor !B$.
+  Considérons \iftag{FOL}{une !!{structure}~$\Struct{M}$}{une !!{valuation}~$\pAssign{v}$}.
+  Comme $\Gamma \Sequent \Delta, !A$ est valide, l'un au moins
+  des cas suivants se présente : (a) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ ;
+  (b) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$ pour un certain
+  $!C \in \Gamma$ ; (c) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$
+  pour un certain $!C \in \Delta$.
+  Dans le cas (a), $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$.
+  Dans le cas (b), il existe $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+  Dans le cas (c), il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$.
+  Dans tous les cas, \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}
+  satisfait $\Gamma \Sequent \Delta, !A \lor !B$, c'est-à-dire
+  $\Theta \Sequent \Xi$. Puisque
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} était arbitraire,
+  $\Theta \Sequent \Xi$ est valide. Le cas où $!A \lor !B$
+  est introduit à partir de $!B$ se traite de même, en remplaçant
+  $!A$ par $!B$.
+\item La dernière inférence est \RightR{\lif}. Alors $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$!A, \Gamma \fCenter \Delta, !B$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$\Gamma \fCenter \Delta, !A \lif !B$
+  \end{prooftree}
+  Par hypothèse de récurrence, la prémisse est valide ; montrons que
+  la conclusion l'est aussi. Soit
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} arbitraire.
+  Comme $!A, \Gamma \Sequent \Delta, !B$ est valide, l'un au moins
+  des cas suivants se présente : (a) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$ ;
+  (b) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ ;
+  (c) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$ pour un certain
+  $!C \in \Gamma$ ; (d) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$
+  pour un certain $!C \in \Delta$.
+  Dans chacun des cas (a) et (b),
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lif !B}$ ; il existe donc
+  $!C \in \Delta, !A \lif !B$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$.
+  Dans le cas (c), il existe $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+  Dans le cas (d), il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$.
+  Dans tous les cas, \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}
+  satisfait $\Gamma \Sequent \Delta, !A \lif !B$.
+  Puisque \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} était arbitraire,
+  $\Gamma \Sequent \Delta, !A \lif !B$ est valide.
+  \iftag{FOL}{%
+\item La dernière inférence est \LeftR{\lforall}. Il existe alors
+  une !!{formula}~$!A(x)$ et un terme clos~$t$ tels que $\pi$
+  se termine par :
+\begin{prooftree}
+    \AxiomC{}
+    \Deduce$!A(t), \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\lforall}}
+    \UnaryInf$\lforall[x][!A(x)], \Gamma \fCenter \Delta$
+  \end{prooftree}
+  Montrons que la conclusion $\lforall[x][!A(x)], \Gamma \Sequent \Delta$
+  est valide. Considérons une !!{structure}~$\Struct M$.
+  Puisque la prémisse $!A(t), \Gamma \Sequent \Delta$ est valide,
+  l'un au moins des cas suivants se présente : (a) $\Sat/{M}{!A(t)}$ ;
+  (b) $\Sat/{M}{!C}$ pour un certain $!C \in \Gamma$ ;
+  (c) $\Sat{M}{!C}$ pour un certain $!C \in \Delta$.
+  Dans le cas (a), d'après la \olref[syn][sem]{prop:quant-terms},
+  si $\Sat{M}{\lforall[x][!A(x)]}$, alors $\Sat{M}{!A(t)}$.
+  Comme $\Sat/{M}{!A(t)}$, on a donc
+  $\Sat/{M}{\lforall[x][!A(x)]}$.
+  Dans les cas (b) et (c), $\Struct{M}$ satisfait également
+  $\lforall[x][!A(x)], \Gamma \Sequent \Delta$.
+  Puisque $\Struct M$ était arbitraire,
+  $\lforall[x][!A(x)], \Gamma \Sequent \Delta$ est valide.
+\item La dernière inférence est \RightR{\lexists} : cas laissé en exercice.
+\item La dernière inférence est \RightR{\lforall}. Il existe alors
+  une !!{formula}~$!A(x)$ et une !!{constant}~$a$ telles que $\pi$
+  se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A(a)$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\Gamma \fCenter \Delta, \lforall[x][!A(x)]$
+  \end{prooftree}
+  La condition sur l'eigenvariable est satisfaite : $a$ ne figure ni
+  dans $!A(x)$, ni dans $\Gamma$, ni dans $\Delta$.
+  Par hypothèse de récurrence, la prémisse de la dernière inférence
+  est valide. Montrons que la conclusion l'est aussi : pour toute
+  !!{structure}~$\Struct M$, l'un au moins des cas suivants doit
+  se présenter : (a) $\Sat{M}{\lforall[x][!A(x)]}$ ;
+  (b) $\Sat/{M}{!C}$ pour un certain $!C \in \Gamma$ ;
+  (c) $\Sat{M}{!C}$ pour un certain $!C \in \Delta$.
+
+  Soit $\Struct{M}$ une !!{structure} arbitraire. Si (b) ou (c)
+  est vérifié, nous avons le résultat voulu. Supposons donc que
+  ni l'un ni l'autre ne le soit : pour tout $!C \in \Gamma$,
+  $\Sat{M}{!C}$, et pour tout $!C \in \Delta$, $\Sat/{M}{!C}$.
+  Il reste à établir (a), c'est-à-dire
+  $\Sat{M}{\lforall[x][!A(x)]}$.
+  D'après la \olref[syn][ass]{prop:sat-quant}, il suffit de montrer
+  que $\Sat{M}{!A(x)}[s]$ pour toute valuation des variables~$s$.
+  Soit donc $s$ une valuation des variables arbitraire.
+  Considérons la structure $\Struct{M'}$ qui coïncide avec
+  $\Struct{M}$, sauf que $\Assign{a}{M'} = s(x)$.
+  D'après le \olref[syn][ext]{cor:extensionality-sent}, pour tout
+  $!C \in \Gamma$, on a $\Sat{M'}{!C}$ puisque $a$ ne figure
+  pas dans $\Gamma$ ; de même, pour tout $!C \in \Delta$,
+  on a $\Sat/{M'}{!C}$.
+  La prémisse étant valide, on obtient $\Sat{M'}{!A(a)}$.
+  D'après la \olref[syn][ass]{prop:sentence-sat-true},
+  $\Sat{M'}{!A(a)}[s]$, car $!A(a)$ est un énoncé.
+  Or $\varAssign{s}{s}{x}$ et $s(x) = \Value{a}{M'}[s]$,
+  par la définition même de $\Struct{M'}$.
+  La \olref[syn][ext]{prop:ext-formulas} donne donc
+  $\Sat{M'}{!A(x)}[s]$.
+  Comme $a$ ne figure pas dans $!A(x)$, la
+  \olref[syn][ext]{prop:extensionality} entraîne
+  $\Sat{M}{!A(x)}[s]$. Puisque $s$ était arbitraire, nous avons
+  montré $\Sat{M}{!A(x)}[s]$ pour toute valuation des variables.
+\item La dernière inférence est \LeftR{\lexists} : cas laissé en exercice.
+}{}
+\end{enumerate}
+Considérons maintenant les inférences à deux prémisses.
+\begin{enumerate}
+\item La dernière inférence est une coupure. Alors $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \AxiomC{}
+    \Deduce$!A, \Pi \fCenter \Lambda$
+    \RightLabel{\Cut}
+    \BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda$
+  \end{prooftree}
+  Soit \iftag{FOL}{une !!{structure}~$\Struct{M}$}{une !!{valuation}~$\pAssign{v}$}.
+  Par hypothèse de récurrence, les deux prémisses sont valides ;
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} les satisfait donc toutes deux.
+  Distinguons les cas (a) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$
+  et (b) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Dans le cas (a), pour satisfaire la prémisse de gauche,
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} doit satisfaire
+  $\Gamma \Sequent \Delta$, et satisfait alors aussi la conclusion.
+  Dans le cas (b), pour satisfaire la prémisse de droite,
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} doit satisfaire
+  $\Pi \Sequent \Lambda$.\footnote{Note de l'édition française :
+  le signe de différence ensembliste de la source est remplacé ici
+  par le signe de séquent, conformément au raisonnement.}
+  Là encore, \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} satisfait la conclusion.
+\item La dernière inférence est \RightR{\land}. Alors $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !B$
+    \RightLabel{\RightR{\land}}
+    \BinaryInf$\Gamma \fCenter \Delta, !A \land !B$
+  \end{prooftree}
+  Considérons \iftag{FOL}{une !!{structure}~$\Struct M$}{une !!{valuation}~$\pAssign{v}$}.
+  Si \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} satisfait
+  $\Gamma \Sequent \Delta$, le résultat est acquis.
+  Supposons donc que ce ne soit pas le cas. Puisque
+  $\Gamma \fCenter \Delta, !A$ est valide par hypothèse de récurrence,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  De même, la validité de $\Gamma \Sequent \Delta, !B$ entraîne
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  Il en résulte $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$.
+\item La dernière inférence est \LeftR{\lor} : cas laissé en exercice.
+\item La dernière inférence est \LeftR{\lif}. Alors $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \AxiomC{}
+    \Deduce$!B, \Pi \fCenter \Lambda$
+    \RightLabel{\LeftR{\lif}}
+    \BinaryInf$!A \lif !B, \Gamma, \Pi \fCenter \Delta, \Lambda$
+  \end{prooftree}
+  Considérons de nouveau
+  \iftag{FOL}{une !!{structure}~$\Struct{M}$}{une !!{valuation}~$\pAssign{v}$}
+  et supposons que \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}
+  ne satisfasse pas $\Gamma, \Pi \Sequent \Delta, \Lambda$.
+  Il faut montrer $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$.
+  Si \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} ne satisfait pas
+  $\Gamma, \Pi \Sequent \Delta, \Lambda$, alors
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} ne satisfait ni
+  $\Gamma \Sequent \Delta$ ni $\Pi \Sequent \Lambda$.
+  Puisque $\Gamma \Sequent \Delta, !A$ est valide,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Puisque $!B, \Pi \Sequent \Lambda$ est valide,
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$.
+  On a donc $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$,
+  comme voulu.
+\end{enumerate}
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Compléter la démonstration du \olref[fol][seq][sou]{thm:sequent-soundness}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Compléter la démonstration du \olref[pl][seq][sou]{thm:sequent-soundness}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est \iftag{FOL}{valide}{une tautologie}.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:entailment-soundness}
+Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
+\end{cor}
+
+\begin{proof}
+Si $\Gamma \Proves !A$, il existe une partie finie
+$\Gamma_0 \subseteq \Gamma$ et une !!{derivation} de
+$\Gamma_0 \Sequent !A$. D'après le \olref{thm:sequent-soundness},
+toute \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
+rend faux un certain $!B \in \Gamma_0$ ou rend vrai $!A$.
+Ainsi, si $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ aussi.
+\end{proof}
+
+\begin{cor}
+\ollabel{cor:consistency-soundness}
+Si $\Gamma$ est satisfaisable, alors il est cohérent.
+\end{cor}
+
+\begin{proof}
+Raisonnons par contraposition. Supposons $\Gamma$ incohérent.
+Il existe alors une partie finie $\Gamma_0 \subseteq \Gamma$
+et une !!{derivation} de $\Gamma_0 \Sequent \quad$.
+D'après le \olref{thm:sequent-soundness}, ce séquent est valide.
+Autrement dit, pour toute
+\iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$},
+il existe $!C \in \Gamma_0$ tel que
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+Puisque $\Gamma_0 \subseteq \Gamma$, cet énoncé $!C$ appartient
+aussi à $\Gamma$. Aucune \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}
+ne satisfait donc $\Gamma$, qui est ainsi insatisfaisable.
+\end{proof}
+
+\end{document}

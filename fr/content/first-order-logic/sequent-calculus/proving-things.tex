@@ -1,0 +1,355 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: proving-things
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{pro}}
+      {\olfileid[fr]{pl}{seq}{pro}}
+
+\olsection{Exemples de \usetoken{p}{derivation}}
+
+\begin{ex}
+Construire une !!{derivation} dans $\Log{LK}$ du séquent
+$!A \land !B \Sequent !A$.
+
+Commençons par écrire le séquent final recherché au bas de la
+!!{derivation}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$!A\land !B \fCenter !A$
+\end{prooftree}
+Cherchons ensuite une inférence dont le séquent inférieur pourrait
+avoir cette forme. Une règle structurelle conviendrait peut-être,
+mais il est judicieux de commencer par chercher une règle logique.
+Le seul connecteur logique qui figure dans le séquent inférieur
+est $\land$ : nous cherchons donc une règle pour $\land$.
+Comme ce symbole figure dans l'antécédent, examinons la règle
+\LeftR{\land}.
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A\land !B \fCenter !A$
+\end{prooftree}
+Deux séquents pourraient servir de prémisse à cette inférence
+\LeftR{\land} : $!A \Sequent !A$ ou $!B \Sequent !A$.
+Le premier est un séquent initial, ce qui nous convient, tandis que
+le second n'est pas dérivable en général. Inscrivons donc la prémisse :
+\begin{prooftree}
+\Axiom$!A \fCenter !A$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A\land !B \fCenter !A$
+\end{prooftree}
+Nous avons maintenant une !!{derivation} correcte, dans $\Log{LK}$,
+du séquent $!A \land !B \Sequent !A$.
+\end{ex}
+
+\begin{ex}
+Construire une !!{derivation} dans $\Log{LK}$ du séquent
+$\lnot !A \lor !B \Sequent !A \lif !B$.
+
+Commençons par écrire le séquent final recherché au bas de la
+!!{derivation}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lnot !A \lor !B \fCenter !A \lif !B$
+\end{prooftree}
+Pour trouver une règle logique susceptible de donner ce séquent final,
+examinons les connecteurs qui y figurent : $\lnot$, $\lor$ et $\lif$.
+Pour l'instant, seuls $\lor$ et $\lif$ nous intéressent, car ce sont
+les !!{main operator}s des !!{sentence}s du séquent final.
+Le symbole $\lnot$ se trouve dans la portée d'un autre connecteur :
+nous nous en occuperons donc plus tard. Les règles logiques possibles
+pour la dernière inférence sont ainsi \LeftR{\lor} et \RightR{\lif}.
+L'une ou l'autre conviendrait ; choisissons \RightR{\lif}, ne serait-ce
+que pour différer la séparation en deux branches. D'après le schéma
+de cette règle et le séquent inférieur recherché, l'inférence doit
+avoir la forme suivante :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}} \UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+
+En déplaçant $\lnot !A \lor !B$ à l'extrémité gauche de l'antécédent,
+nous pouvons appliquer \LeftR{\lor}. Le schéma de cette règle nous
+conduit aux deux prémisses suivantes :\footnote{Note de l'édition française :
+dans cet exemple, quatre étapes échangent deux énoncés de l'antécédent.
+Leurs étiquettes $\RightR{\Exchange}$ dans la source sont corrigées
+en $\LeftR{\Exchange}$.}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lnot !A, !A \fCenter !B$
+\AxiomC{}
+\UnaryInf$!B, !A \fCenter !B$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$ \lnot !A \lor !B, !A \fCenter !B $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+Rappelons que nous cherchons à remonter jusqu'à des séquents initiaux.
+Nous en sommes proches : un affaiblissement et un échange suffisent
+à achever la branche de droite à partir d'un séquent initial :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lnot !A, !A \fCenter !B$
+\Axiom$!B \fCenter !B$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!A, !B \fCenter !B$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!B, !A \fCenter !B$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor !B, !A \fCenter !B $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+
+Examinons maintenant la branche de gauche. Le seul connecteur logique
+qui figure dans ses !!{sentence}s est le symbole $\lnot$, dans
+l'antécédent. Nous cherchons donc une instance de \LeftR{\lnot}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ !A \fCenter !B, !A$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A, !A \fCenter !B$
+\Axiom$!B \fCenter !B$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!A, !B \fCenter !B$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!B, !A \fCenter !B$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor !B, !A \fCenter !B $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+Comme pour la branche de droite, un affaiblissement et un échange
+suffisent à achever cette branche.
+\begin{prooftree}
+\Axiom$!A \fCenter !A$
+\RightLabel{\RightR{\Weakening}}
+\UnaryInf$ !A \fCenter !A, !B$
+\RightLabel{\RightR{\Exchange}}
+\UnaryInf$ !A \fCenter !B, !A$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A, !A \fCenter !B$
+\Axiom$!B \fCenter !B$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!A, !B \fCenter !B$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!B, !A \fCenter !B$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor !B, !A \fCenter !B $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+\end{ex}
+
+\begin{ex}
+Construire une !!{derivation} dans $\Log{LK}$ du séquent
+$\lnot !A \lor \lnot !B \Sequent \lnot (!A \land !B)$.
+
+Comme précédemment, commençons par écrire le séquent final recherché
+au bas de l'arbre.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ \lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B) $
+\end{prooftree}
+Les connecteurs principaux des !!{sentence}s du séquent final sont
+$\lor$ et $\lnot$. Les règles \LeftR{\lor} et \RightR{\lnot}
+conviendraient toutes deux ; commençons par \RightR{\lnot} pour
+différer la séparation en deux branches :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+Nous avons maintenant le choix entre \LeftR{\land} et \LeftR{\lor}.
+Essayons \LeftR{\land}. Nous pouvons partir du séquent
+$!A, \lnot !A \lor \lnot !B \Sequent \quad$ ou du séquent
+$!B, \lnot !A \lor \lnot !B \Sequent \quad$.
+La situation étant symétrique en $!A$ et $!B$, choisissons le premier :\footnote{Note
+de l'édition française : les deux prémisses proposées dans la prose source
+omettent la négation devant $!B$ dans la disjonction. Elle est rétablie
+ici, conformément aux arbres de la source.}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$!A, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+En poursuivant la construction de la !!{derivation}, nous rencontrons
+une difficulté :
+\begin{prooftree}
+\Axiom$!A \fCenter !A$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$ \lnot !A, !A \fCenter$
+\AxiomC{}
+\RightLabel{?}
+\UnaryInf$!A \fCenter !B$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$ \lnot !B, !A \fCenter$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor \lnot !B, !A \fCenter $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!A, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+En général, le séquent au sommet de la branche de droite ne peut être
+réduit davantage ni obtenu à partir d'un séquent initial par des
+inférences structurelles. Cette voie ne convient donc pas : nous avons
+appliqué \LeftR{\land} trop tôt. Revenons à l'étape précédente et
+appliquons plutôt \LeftR{\lor} :\footnote{Note de l'édition française :
+l'échec décrit concerne le schéma général. Certaines instances
+particulières de $!A \Sequent !B$, notamment lorsque $!A$ et $!B$
+sont identiques, sont dérivables.}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lnot !A, !A \land !B \fCenter $
+
+\AxiomC{}
+\UnaryInf$\lnot !B, !A \land !B \fCenter $
+
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor \lnot !B, !A \land !B \fCenter $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+En achevant chaque branche comme précédemment, nous obtenons :
+\begin{prooftree}
+\Axiom$ !A \fCenter!A$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B \fCenter !A$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A, !A \land !B \fCenter $
+
+\Axiom$ !B \fCenter !B$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B \fCenter !B$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !B, !A \land !B \fCenter $
+
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor \lnot !B, !A \land !B \fCenter $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+(On aurait aussi pu placer les règles pour $\land$ plus bas que les
+règles pour $\lnot$ dans ces étapes et obtenir une !!{derivation}
+correcte.)
+\end{ex}
+
+\begin{ex}
+Nous n'avons pas encore utilisé la contraction, mais elle est parfois
+nécessaire. En voici un exemple. Supposons que nous voulions démontrer
+$\quad \Sequent !A \lor \lnot !A$. En appliquant
+$\RightR{\lor}$ à rebours, nous obtenons l'une des deux tentatives
+de !!{derivation} suivantes :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ \fCenter !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \fCenter !A \lor \lnot !A$
+\DisplayProof\qquad\bottomAlignProof
+\AxiomC{}
+\UnaryInf$!A \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \fCenter \lnot !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \fCenter !A \lor \lnot !A$
+\end{prooftree}
+Aucune de ces deux tentatives n'aboutit, en général, à un séquent
+initial. L'idée est d'utiliser la contraction, qui réunit deux
+occurrences d'!!a{sentence} en une seule. Lors de la recherche d'une
+preuve, c'est-à-dire en allant du bas vers le haut, nous pouvons donc
+conserver une occurrence de $!A \lor \lnot !A$ dans la prémisse,
+par exemple :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ \fCenter !A \lor \lnot !A, !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \fCenter !A \lor \lnot !A, !A \lor \lnot !A$
+\RightLabel{\RightR{\Contraction}}
+\UnaryInf$ \fCenter !A \lor \lnot !A$
+\end{prooftree}
+Nous pouvons maintenant appliquer $\RightR{\lor}$ une seconde fois,
+en faisant aussi apparaître $\lnot !A$, ce qui donne une
+!!{derivation} complète :
+\begin{prooftree}
+\Axiom$!A \fCenter !A$
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\fCenter !A, \lnot !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$\fCenter !A, !A \lor \lnot !A$
+\RightLabel{\RightR{\Exchange}}
+\UnaryInf$ \fCenter !A \lor \lnot !A, !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \fCenter !A \lor \lnot !A, !A \lor \lnot !A$
+\RightLabel{\RightR{\Contraction}}
+\UnaryInf$ \fCenter !A \lor \lnot !A$
+\end{prooftree}
+\end{ex}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $!A \land (!B \land !C) \Sequent (!A \land !B) \land !C$.
+\item $!A \lor (!B \lor !C) \Sequent (!A \lor !B) \lor !C$.
+\item $!A \lif (!B \lif !C) \Sequent !B \lif (!A \lif !C)$.
+\item $!A \Sequent \lnot\lnot !A$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $(!A \lor !B) \lif !C \Sequent !A \lif !C$.
+\item $(!A \lif !C) \land (!B \lif !C) \Sequent (!A \lor !B) \lif !C$.
+\item $\Sequent \lnot(!A \land \lnot !A)$.
+\item $!B \lif !A \Sequent \lnot !A \lif \lnot !B$.
+\item $\Sequent (!A \lif \lnot !A) \lif \lnot !A$.
+\item $\Sequent \lnot(!A \lif !B) \lif \lnot !B$.
+\item $!A \lif !C \Sequent \lnot (!A \land \lnot !C)$.
+\item $!A \land \lnot !C \Sequent \lnot (!A \lif !C)$.
+\item $!A \lor !B, \lnot !B \Sequent !A$.
+\item $\lnot !A \lor \lnot !B \Sequent \lnot(!A \land !B)$.
+\item $\Sequent (\lnot !A \land \lnot !B) \lif\lnot(!A \lor !B)$.
+\item $\Sequent \lnot(!A \lor !B) \lif (\lnot !A \land \lnot !B)$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $\lnot(!A \lif !B) \Sequent !A$.
+\item $\lnot(!A \land !B) \Sequent \lnot !A \lor \lnot !B$.
+\item $!A \lif !B \Sequent \lnot !A \lor !B$.
+\item $\Sequent \lnot \lnot !A \lif !A$.
+\item $!A \lif !B, \lnot !A \lif !B \Sequent !B$.
+\item $(!A \land !B) \lif !C \Sequent (!A \lif !C) \lor (!B \lif !C)$.
+\item $(!A \lif !B) \lif !A \Sequent !A$.
+\item $\Sequent (!A \lif !B) \lor (!B \lif !C)$.
+\end{enumerate}
+(Tous requièrent la règle $\RightR{\Contraction}$.)
+\end{prob}
+\end{document}

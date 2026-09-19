@@ -1,0 +1,184 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: proof-theoretic-notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\begin{editorial}
+Cette section rassemble les définitions de la relation de
+!!{derivability} et de la cohérence pour le calcul des séquents.
+La mention de la déduction naturelle dans la source est une erreur
+éditoriale corrigée ici.
+\end{editorial}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{ptn}}
+      {\olfileid[fr]{pl}{seq}{ptn}}
+
+\olsection{Notions de théorie de la démonstration}
+
+\begin{explain}
+Nous avons défini plusieurs notions sémantiques importantes : validité,
+conséquence logique et satisfaisabilité. Définissons maintenant les
+\emph{notions de théorie de la démonstration} correspondantes.
+Elles font appel à la !!{derivability} ou à la !!{nonderivability}
+de certains séquents, plutôt qu'à la satisfaction d'!!{sentence}s
+dans des !!{structure}s. La coïncidence de ces notions constitue une
+découverte importante : c'est le contenu des \emph{théorèmes de
+correction et de complétude}.
+\end{explain}
+
+\begin{defn}[Théorèmes]
+!!^a{sentence}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation}, dans $\Log{LK}$, du séquent $\quad \Sequent !A$.
+On écrit $\Proves !A$ si $!A$ est un théorème, et $\Proves/ !A$
+dans le cas contraire.
+\end{defn}
+
+\begin{defn}[!!^{derivability}]
+!!^a{sentence}~$!A$ est \emph{!!{derivable} à partir} d'un ensemble
+d'!!{sentence}s~$\Gamma$, ce que l'on note $\Gamma \Proves !A$,
+si et seulement s'il existe une partie finie $\Gamma_0 \subseteq \Gamma$
+et une suite $\Gamma_0'$ énumérant les !!{sentence}s de $\Gamma_0$,
+avec répétitions éventuelles, telles que $\Log{LK}$ !!{derive}s
+$\Gamma_0' \Sequent !A$. Si $!A$ n'est pas !!{derivable} à partir
+de $\Gamma$, on écrit $\Gamma \Proves/ !A$.
+\end{defn}
+
+Grâce aux règles de contraction, d'affaiblissement et d'échange,
+l'ordre des !!{sentence}s et le nombre de leurs occurrences dans
+$\Gamma_0'$ n'importent pas : si $\Gamma_0' \Sequent !A$ est
+!!{derivable}, alors $\Gamma_0'' \Sequent !A$ l'est aussi pour
+toute suite $\Gamma_0''$ contenant exactement les mêmes
+!!{sentence}s que $\Gamma_0'$. Par exemple, si
+$\Gamma_0 = \{!B, !C\}$, les suites
+$\Gamma_0' = \tuple{!B, !B, !C}$ et
+$\Gamma_0'' = \tuple{!C, !C, !B}$ contiennent toutes deux
+exactement les !!{sentence}s de $\Gamma_0$. Si le séquent ayant
+l'une pour antécédent est !!{derivable}, celui qui a l'autre pour
+antécédent l'est aussi, comme le montre l'exemple suivant :
+\begin{prooftree}
+  \AxiomC{}
+  \Deduce$!B, !B, !C \fCenter !A$
+  \RightLabel{\LeftR{\Contraction}}
+  \UnaryInf$!B, !C \fCenter !A$
+  \RightLabel{\LeftR{\Exchange}}
+  \UnaryInf$!C, !B \fCenter !A$
+  \RightLabel{\LeftR{\Weakening}}
+  \UnaryInf$!C, !C, !B \fCenter !A$
+\end{prooftree}
+Désormais, si $\Gamma_0$ est un ensemble fini d'!!{sentence}s,
+nous noterons $\Gamma_0 \Sequent !A$ un séquent dont l'antécédent
+est une suite énumérant les éléments de $\Gamma_0$, avec répétitions
+éventuelles. Nous laisserons implicites les contractions, échanges
+et affaiblissements nécessaires.
+
+\begin{defn}[Cohérence]
+Un ensemble d'énoncés~$\Gamma$ est \emph{incohérent} s'il existe
+une partie finie $\Gamma_0 \subseteq \Gamma$ telle que $\Log{LK}$
+!!{derive}s $\Gamma_0 \Sequent \quad$. S'il n'est pas incohérent,
+c'est-à-dire si, pour toute partie finie $\Gamma_0 \subseteq \Gamma$,
+$\Log{LK}$ ne permet pas de !!{derive} $\Gamma_0 \Sequent \quad$,
+on dit que $\Gamma$ est \emph{cohérent}.
+\end{defn}
+
+\begin{prop}[Réflexivité]
+\ollabel{prop:reflexivity}
+Si $!A \in \Gamma$, alors $\Gamma \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Le séquent initial $!A \Sequent !A$ est !!{derivable}, et
+$\{!A\} \subseteq \Gamma$.
+\end{proof}
+
+\begin{prop}[Monotonie]
+\ollabel{prop:monotonicity}
+Si $\Gamma \subseteq \Delta$ et $\Gamma \Proves !A$, alors
+$\Delta \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Supposons $\Gamma \Proves !A$. Il existe donc une partie finie
+$\Gamma_0 \subseteq \Gamma$ telle que $\Gamma_0 \Sequent !A$
+soit !!{derivable}. Comme $\Gamma \subseteq \Delta$,
+$\Gamma_0$ est aussi une partie finie de $\Delta$. La
+!!{derivation} de $\Gamma_0 \Sequent !A$ montre donc également
+que $\Delta \Proves !A$.
+\end{proof}
+
+\begin{prop}[Transitivité]
+\ollabel{prop:transitivity}
+Si $\Gamma \Proves !A$ et $\{!A\} \cup \Delta \Proves !B$,
+alors $\Gamma \cup \Delta \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Si $\Gamma \Proves !A$, il existe une partie finie
+$\Gamma_0 \subseteq \Gamma$ et une !!{derivation}~$\pi_0$
+de $\Gamma_0 \Sequent !A$. Si $\{!A\} \cup \Delta \Proves !B$,
+il existe une partie finie $\Delta_0 \subseteq \Delta$ et une
+!!{derivation}~$\pi_1$ de $!A, \Delta_0 \Sequent !B$,
+en ajoutant au besoin $!A$ par affaiblissement. Considérons alors
+la !!{derivation} suivante :
+\begin{prooftree}
+  \AxiomC{}
+  \RightLabel{$\pi_0$}
+  \Deduce$\Gamma_0 \fCenter !A$
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!A, \Delta_0 \fCenter !B$
+  \RightLabel{\Cut}
+  \BinaryInf$\Gamma_0, \Delta_0 \fCenter !B$
+\end{prooftree}
+Comme $\Gamma_0 \cup \Delta_0 \subseteq \Gamma \cup \Delta$,
+on obtient $\Gamma \cup \Delta \Proves !B$.
+\end{proof}
+
+En particulier, si $\Gamma \Proves !A$ et $!A \Proves !B$, alors
+$\Gamma \Proves !B$. Il en résulte aussi que si
+$!A_1, \dots, !A_n \Proves !B$ et $\Gamma \Proves !A_i$
+pour chaque~$i$, alors $\Gamma \Proves !B$.
+
+\begin{prop}
+\ollabel{prop:incons}
+$\Gamma$ est incohérent si et seulement si $\Gamma \Proves {!A}$
+pour tout énoncé~$!A$.
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref{prop:incons}.\footnote{Note de l'édition
+française : le renvoi est relatif à la section courante, afin de
+fonctionner dans les présentations propositionnelle et du premier ordre.}
+\end{prob}
+
+\begin{prop}[Compacité]
+  \ollabel{prop:proves-compact}
+  \begin{enumerate}
+  \item Si $\Gamma \Proves !A$, il existe une partie finie
+    $\Gamma_0 \subseteq \Gamma$ telle que $\Gamma_0 \Proves !A$.
+  \item Si toute partie finie de $\Gamma$ est cohérente,
+    alors $\Gamma$ est cohérent.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Si $\Gamma \Proves !A$, il existe une partie finie
+    $\Gamma_0 \subseteq \Gamma$ telle que le séquent
+    $\Gamma_0 \Sequent !A$ possède une !!{derivation}.
+    Par conséquent, $\Gamma_0 \Proves !A$.
+  \item Si $\Gamma$ est incohérent, il existe une partie finie
+    $\Gamma_0 \subseteq \Gamma$ telle que $\Log{LK}$
+    !!{derive}s $\Gamma_0 \Sequent \quad$. Ainsi, $\Gamma_0$
+    est une partie finie de $\Gamma$ qui est incohérente.
+  \end{enumerate}
+\end{proof}
+
+\end{document}

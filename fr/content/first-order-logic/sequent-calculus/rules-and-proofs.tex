@@ -1,0 +1,80 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: rules-and-proofs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{rul}}
+      {\olfileid[fr]{pl}{seq}{rul}}
+
+\olsection{Règles et \usetoken{p}{derivation}}
+
+Dans ce qui suit, $\Gamma, \Delta, \Pi, \Lambda$ désignent des suites
+finies d'!!{sentence}s.
+
+\begin{defn}[Séquent]
+Un \emph{séquent} est une expression de la forme
+\[
+\Gamma \Sequent \Delta
+\]
+où $\Gamma$ et $\Delta$ sont des suites finies, éventuellement vides,
+d'!!{sentence}s du langage $\Lang L$. On appelle $\Gamma$
+l'\emph{antécédent} et $\Delta$ le \emph{conséquent}.
+\end{defn}
+
+\begin{explain}
+L'idée intuitive d'un séquent est la suivante : si tous les
+!!{sentence}s de l'antécédent sont vrais, alors au moins un des
+!!{sentence}s du conséquent est vrai. Autrement dit, si
+$\Gamma = \tuple{!A_1, \dots, !A_m}$ et
+$\Delta = \tuple{!B_1, \dots, !B_n}$, alors
+$\Gamma \Sequent \Delta$ est vrai si et seulement si
+\[
+(!A_1 \land \cdots \land !A_m) \lif (!B_1 \lor \cdots \lor
+!B_n)
+\]
+est vrai. Deux cas particuliers se présentent : celui où $\Gamma$
+est vide et celui où $\Delta$~est vide. Lorsque $\Gamma$ est vide,
+c'est-à-dire lorsque $m = 0$, $\quad \Sequent \Delta$ est vrai si et
+seulement si $!B_1 \lor \dots \lor !B_n$ est vrai. Lorsque $\Delta$
+est vide, c'est-à-dire lorsque $n = 0$, $\Gamma \Sequent \quad$ est
+vrai si et seulement si $\lnot(!A_1 \land \dots \land !A_m)$ est vrai.
+On dit qu'un séquent est valide si et seulement si l'!!{sentence}
+correspondant est valide.
+\end{explain}
+
+Si $\Gamma$ est une suite d'!!{sentence}s, on note $\Gamma, !A$
+la suite obtenue en ajoutant $!A$ à l'extrémité droite de~$\Gamma$
+(et $!A, \Gamma$ celle obtenue en ajoutant $!A$ à son extrémité
+gauche). Si $\Delta$ est aussi une suite d'!!{sentence}s, alors
+$\Gamma, \Delta$ désigne la concaténation des deux suites.
+
+\Needspace{9\baselineskip}
+\begin{defn}[Séquent initial]
+Soit $!A$ un !!{sentence} quelconque du langage.
+Un \emph{séquent initial} est un séquent
+\iftag{prvFalse,prvTrue}{de l'une des formes suivantes :
+  \begin{enumerate}
+    \item $!A \Sequent !A$.
+    \tagitem{prvTrue}{$\quad \Sequent \ltrue$.}{}
+    \tagitem{prvFalse}{$\lfalse \Sequent \quad$.}{}
+  \end{enumerate}}
+{de la forme $!A \Sequent !A$.}
+\end{defn}
+
+Les !!{derivation}s du calcul des séquents sont certains arbres de
+séquents. Les séquents situés tout en haut sont des séquents initiaux ;
+un séquent placé sous un ou deux autres doit s'en déduire par une
+application correcte d'une règle d'inférence. Les règles de
+$\Log{LK}$ se répartissent en deux grandes catégories : les règles
+\emph{logiques} et les règles \emph{structurelles}. Les règles
+logiques portent le nom de l'!!{main operator} de l'!!{sentence} qui
+contient $!A$ et/ou $!B$ dans le séquent inférieur. Chacune existe
+en deux versions : l'une permet d'obtenir un séquent où
+l'!!{sentence} contenant le !!{operator} figure à gauche, l'autre
+un séquent où cet !!{sentence} figure à droite.
+
+\end{document}

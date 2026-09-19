@@ -1,6 +1,7 @@
-% Édition française OpenLogic : 64 unités sur 722, huit chapitres.
+% Édition française OpenLogic :74unités sur722,neuf chapitres.
 % LaTeX cumulatif contenant tout le texte de cette livraison.
-% Styles, figures, bibliographie et instructions fournis dans le ZIP source.
+% Styles, figures, bibliographie et instructions sont fournis dans le ZIP source.
+% Les cinq importations du premier ordre inactives sont conservées dans le pilote modulaire du ZIP.
 \documentclass[11pt,a4paper,openany]{memoir}
 \usepackage{mathpazo}
 \usepackage{fontspec}
@@ -57,9 +58,10 @@
 \setlength{\emergencystretch}{2em}
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la logique propositionnelle},
+\setlength{\cftbeforechapterskip}{0.65em}
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles au calcul des séquents},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres et logique propositionnelle},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle et calcul des séquents},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -70,15 +72,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\à la logique propositionnelle\par}
+{\sffamily\huge Des ensembles\\au calcul des séquents\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Sixième livraison : huit chapitres\par}
+{\large Septième livraison : neuf chapitres\par}
 \vspace{4mm}
-Cette livraison comprend cinquante-six sections et leurs huit chapitres d’organisation,
-soit 64 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend soixante-cinq sections et leurs neuf chapitres d’organisation,
+soit 74 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -92,6 +94,8 @@ inductive, les valuations et les notions sémantiques fondamentales.
 Le huitième présente les systèmes de preuve, leur correction et leur
 complétude : calcul des séquents, déduction naturelle, tableaux et
 dérivations axiomatiques.
+Le neuvième développe le calcul des séquents propositionnel : règles,
+recherche de preuves, dérivabilité, cohérence et théorème de correction.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -7733,6 +7737,1711 @@ d'y rédiger des preuves.
 
 \endgroup
 % END embedded source: content/first-order-logic/proof-systems/proof-systems.tex
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/sequent-calculus.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{sequent-calculus}
+
+
+\iftag{FOL}
+      {\olchapter{fol}{seq}{Le calcul des séquents}}
+      {\olchapter{pl}{seq}{Le calcul des séquents}}
+
+\begin{editorial}
+  Ce chapitre présente le calcul des séquents usuel LK de Gentzen pour
+  la logique classique du premier ordre. Il gagnerait à comporter
+  davantage d'exemples et d'exercices. Pour inclure ou exclure le contenu
+  relatif au calcul des séquents en tant que système de preuve,
+  utiliser l'étiquette « prfLK ».
+\end{editorial}
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/rules-and-proofs.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{rules-and-proofs}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{rul}}
+      {\olfileid[fr]{pl}{seq}{rul}}
+
+\olsection{Règles et \usetoken{p}{derivation}}
+
+Dans ce qui suit, $\Gamma, \Delta, \Pi, \Lambda$ désignent des suites
+finies d'!!{sentence}s.
+
+\begin{defn}[Séquent]
+Un \emph{séquent} est une expression de la forme
+\[
+\Gamma \Sequent \Delta
+\]
+où $\Gamma$ et $\Delta$ sont des suites finies, éventuellement vides,
+d'!!{sentence}s du langage $\Lang L$. On appelle $\Gamma$
+l'\emph{antécédent} et $\Delta$ le \emph{conséquent}.
+\end{defn}
+
+\begin{explain}
+L'idée intuitive d'un séquent est la suivante : si tous les
+!!{sentence}s de l'antécédent sont vrais, alors au moins un des
+!!{sentence}s du conséquent est vrai. Autrement dit, si
+$\Gamma = \tuple{!A_1, \dots, !A_m}$ et
+$\Delta = \tuple{!B_1, \dots, !B_n}$, alors
+$\Gamma \Sequent \Delta$ est vrai si et seulement si
+\[
+(!A_1 \land \cdots \land !A_m) \lif (!B_1 \lor \cdots \lor
+!B_n)
+\]
+est vrai. Deux cas particuliers se présentent : celui où $\Gamma$
+est vide et celui où $\Delta$~est vide. Lorsque $\Gamma$ est vide,
+c'est-à-dire lorsque $m = 0$, $\quad \Sequent \Delta$ est vrai si et
+seulement si $!B_1 \lor \dots \lor !B_n$ est vrai. Lorsque $\Delta$
+est vide, c'est-à-dire lorsque $n = 0$, $\Gamma \Sequent \quad$ est
+vrai si et seulement si $\lnot(!A_1 \land \dots \land !A_m)$ est vrai.
+On dit qu'un séquent est valide si et seulement si l'!!{sentence}
+correspondant est valide.
+\end{explain}
+
+Si $\Gamma$ est une suite d'!!{sentence}s, on note $\Gamma, !A$
+la suite obtenue en ajoutant $!A$ à l'extrémité droite de~$\Gamma$
+(et $!A, \Gamma$ celle obtenue en ajoutant $!A$ à son extrémité
+gauche). Si $\Delta$ est aussi une suite d'!!{sentence}s, alors
+$\Gamma, \Delta$ désigne la concaténation des deux suites.
+
+\Needspace{9\baselineskip}
+\begin{defn}[Séquent initial]
+Soit $!A$ un !!{sentence} quelconque du langage.
+Un \emph{séquent initial} est un séquent
+\iftag{prvFalse,prvTrue}{de l'une des formes suivantes :
+  \begin{enumerate}
+    \item $!A \Sequent !A$.
+    \tagitem{prvTrue}{$\quad \Sequent \ltrue$.}{}
+    \tagitem{prvFalse}{$\lfalse \Sequent \quad$.}{}
+  \end{enumerate}}
+{de la forme $!A \Sequent !A$.}
+\end{defn}
+
+Les !!{derivation}s du calcul des séquents sont certains arbres de
+séquents. Les séquents situés tout en haut sont des séquents initiaux ;
+un séquent placé sous un ou deux autres doit s'en déduire par une
+application correcte d'une règle d'inférence. Les règles de
+$\Log{LK}$ se répartissent en deux grandes catégories : les règles
+\emph{logiques} et les règles \emph{structurelles}. Les règles
+logiques portent le nom de l'!!{main operator} de l'!!{sentence} qui
+contient $!A$ et/ou $!B$ dans le séquent inférieur. Chacune existe
+en deux versions : l'une permet d'obtenir un séquent où
+l'!!{sentence} contenant le !!{operator} figure à gauche, l'autre
+un séquent où cet !!{sentence} figure à droite.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/rules-and-proofs.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/propositional-rules.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{propositional-rules}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{prl}}
+      {\olfileid[fr]{pl}{seq}{prl}}
+
+\olsection{Règles propositionnelles}
+
+\subsection{Règles pour $\lnot$}
+
+\begin{defish}
+\Axiom$ \Gamma \fCenter \Delta, !A $
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$ \lnot !A, \Gamma \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$!A, \Gamma \fCenter \Delta$
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \Gamma \fCenter \Delta, \lnot !A $
+\DisplayProof
+\end{defish}
+
+\subsection{Règles pour $\land$}
+
+\begin{defish}\noindent
+\begin{tabular}{l}
+\Axiom$ !A, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$ !A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\\[3ex]
+\Axiom$!B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\end{tabular}
+\hfill
+\Axiom$\Gamma \fCenter \Delta, !A$
+\Axiom$ \Gamma \fCenter \Delta, !B$
+\RightLabel{\RightR{\land}}
+\BinaryInf$ \Gamma \fCenter \Delta, !A \land !B $
+\DisplayProof
+\end{defish}
+
+\subsection{Règles pour $\lor$}
+
+\begin{defish}
+\Axiom$!A, \Gamma \fCenter \Delta$
+\Axiom$!B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$!A \lor !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\hfill
+\begin{tabular}{r}
+\Axiom$\Gamma \fCenter \Delta, !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A \lor !B$
+\DisplayProof
+\\[3ex]
+\Axiom$ \Gamma \fCenter \Delta, !B$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A \lor !B$
+\DisplayProof
+\end{tabular}
+\end{defish}
+
+\subsection{Règles pour $\lif$}
+
+\begin{defish}
+\Axiom$ \Gamma \fCenter \Delta, !A$
+\Axiom$ !B, \Pi \fCenter \Lambda$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$ !A \lif !B, \Gamma, \Pi \fCenter \Delta, \Lambda$
+\DisplayProof
+\hfill
+\Axiom$ !A, \Gamma \fCenter \Delta, !B$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A \lif !B $
+\DisplayProof
+\end{defish}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/propositional-rules.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/structural-rules.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{structural-rules}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{srl}}
+      {\olfileid[fr]{pl}{seq}{srl}}
+
+\olsection{Règles structurelles}
+
+Il nous faut aussi quelques règles permettant de réordonner les
+!!{sentence}s dans les membres gauche et droit d'un séquent. Les
+règles logiques exigent que les !!{sentence}s sur lesquels elles
+agissent dans la prémisse se trouvent tout à gauche ou tout à
+droite. Une règle d'« échange » est donc nécessaire pour les amener
+à la position voulue. Il est également parfois important de pouvoir
+réunir deux !!{sentence}s identiques en un seul, ou d'ajouter
+!!a{sentence} de l'un ou l'autre côté.
+
+\subsection{Affaiblissement}
+
+\begin{defish}
+\Axiom$ \Gamma \fCenter \Delta $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !A, \Gamma \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$ \Gamma \fCenter \Delta$
+\RightLabel{\RightR{\Weakening}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A$
+\DisplayProof
+\end{defish}
+
+\subsection{Contraction}
+
+\begin{defish}
+\Axiom$ !A, !A, \Gamma \fCenter \Delta $
+\RightLabel{\LeftR{\Contraction}}
+\UnaryInf$ !A, \Gamma \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$ \Gamma \fCenter \Delta, !A, !A$
+\RightLabel{\RightR{\Contraction}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A$
+\DisplayProof
+\end{defish}
+
+\subsection{Échange}
+
+\begin{defish}
+\Axiom$ \Gamma, !A, !B, \Pi \fCenter \Delta $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ \Gamma, !B, !A, \Pi \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$ \Gamma \fCenter \Delta, !A, !B, \Lambda$
+\RightLabel{\RightR{\Exchange}}
+\UnaryInf$ \Gamma \fCenter \Delta, !B, !A, \Lambda$
+\DisplayProof
+\end{defish}
+
+On indiquera souvent une succession d'inférences d'affaiblissement,
+de contraction et d'échange par des traits d'inférence doubles.
+
+La règle suivante, appelée « coupure », n'est pas à proprement parler
+nécessaire, mais elle facilite beaucoup la réutilisation et la
+combinaison des !!{derivation}s.
+\begin{defish}
+\[
+\Axiom$ \Gamma \fCenter \Delta, !A$
+\Axiom$ !A, \Pi \fCenter \Lambda $
+\RightLabel{\Cut}
+\BinaryInf$ \Gamma, \Pi \fCenter \Delta, \Lambda$
+\DisplayProof
+\]
+\end{defish}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/structural-rules.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/derivations.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{derivations}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{der}}
+      {\olfileid[fr]{pl}{seq}{der}}
+
+\olsection{\usetoken{P}{derivation}}
+
+\begin{explain}
+Nous avons précisé la forme des séquents initiaux et donné les règles
+d'inférence. Les !!{derivation}s du calcul des séquents sont
+engendrées inductivement à partir de ces éléments : toute
+!!{derivation} est soit un séquent initial à lui seul, soit formée
+d'une ou de deux !!{derivation}s suivies d'une inférence.
+\end{explain}
+
+\begin{defn}[\usetoken{S}{derivation} dans $\Log{LK}$]
+Une \emph{!!{derivation} dans $\Log{LK}$} d'un séquent~$S$ est un
+arbre fini de séquents qui satisfait aux conditions suivantes :
+\begin{enumerate}
+\item Les séquents situés tout en haut de l'arbre sont des séquents initiaux.
+\item Le séquent situé tout en bas de l'arbre est~$S$.
+\item Tout séquent de l'arbre autre que $S$ est une prémisse d'une
+  application correcte d'une règle d'inférence dont la conclusion
+  se trouve immédiatement sous ce séquent dans l'arbre.
+\end{enumerate}
+On dit alors que $S$ est le \emph{séquent final} de la
+!!{derivation} et que $S$ est \emph{!!{derivable} dans $\Log{LK}$}
+(ou $\Log{LK}$-!!{derivable}).
+\end{defn}
+
+\begin{ex}
+Tout séquent initial, par exemple $!C \Sequent !C$, est
+!!a{derivation}. On peut en obtenir une nouvelle !!{derivation}
+en appliquant, par exemple, la règle $\LeftR{\Weakening}$,
+\begin{prooftree}
+\Axiom$ \Gamma \fCenter \Delta $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !A, \Gamma \fCenter \Delta$
+\end{prooftree}
+Cette règle est toutefois générale : on peut y remplacer $!A$ par
+n'importe quel !!{sentence}, par exemple par~$!D$. Si la prémisse
+coïncide avec notre séquent initial $!C \Sequent !C$, alors
+$\Gamma$ et $\Delta$ se réduisent tous deux à~$!C$, et la
+conclusion est $!D, !C \Sequent !C$. L'arbre suivant est donc
+!!a{derivation} :
+\begin{prooftree}
+\Axiom$ !C \fCenter !C $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !D, !C \fCenter !C$
+\end{prooftree}
+On peut maintenant appliquer une autre règle, par exemple
+$\LeftR{\Exchange}$, qui permet d'intervertir deux !!{sentence}s
+à gauche. L'arbre suivant est donc lui aussi une !!{derivation}
+correcte :
+\begin{prooftree}
+\Axiom$ !C \fCenter !C $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !D, !C \fCenter !C$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !C, !D \fCenter !C$
+\end{prooftree}
+Dans cette application de la règle, présentée sous la forme
+\begin{prooftree}
+\Axiom$ \Gamma, !A, !B, \Pi \fCenter \Delta $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ \Gamma, !B, !A, \Pi \fCenter \Delta,$
+\end{prooftree}
+$\Gamma$ et $\Pi$ sont tous deux vides, $\Delta$ est $!C$, et
+les rôles de $!A$ et de $!B$ sont joués respectivement par $!D$
+et~$!C$. De façon analogue, on voit aussi que
+\begin{prooftree}
+\Axiom$ !D \fCenter !D $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !C, !D \fCenter !D$
+\end{prooftree}
+est !!a{derivation}. On peut à présent combiner ces deux
+!!{derivation}s au moyen de $\RightR{\land}$. Rappelons cette règle :
+\begin{prooftree}
+\Axiom$\Gamma \fCenter \Delta, !A$
+\Axiom$ \Gamma \fCenter \Delta, !B$
+\RightLabel{\RightR{\land}}
+\BinaryInf$ \Gamma \fCenter \Delta, !A \land !B $
+\end{prooftree}
+Dans notre cas, les prémisses doivent coïncider avec les derniers
+séquents des !!{derivation}s qui s'y terminent. Cela signifie que
+$\Gamma$ est $!C, !D$, que $\Delta$ est vide, que $!A$ est $!C$
+et que $!B$ est $!D$. Pour que l'inférence soit correcte, sa
+conclusion doit donc être $!C, !D \Sequent !C \land !D$.
+\begin{prooftree}
+\Axiom$ !C \fCenter !C $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !D, !C \fCenter !C$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !C, !D \fCenter !C$
+\Axiom$ !D \fCenter !D $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !C, !D \fCenter !D$
+\RightLabel{\RightR{\land}}
+\BinaryInf$ !C, !D \fCenter !C \land !D $
+\end{prooftree}
+On peut bien sûr intervertir les prémisses : $!A$ serait alors
+$!D$ et $!B$ serait~$!C$.
+\begin{prooftree}
+\Axiom$ !D \fCenter !D $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !C, !D \fCenter !D$
+\Axiom$ !C \fCenter !C $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !D, !C \fCenter !C$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !C, !D \fCenter !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$ !C, !D \fCenter !D \land !C $
+\end{prooftree}
+\end{ex}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/derivations.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/proving-things.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proving-things}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{pro}}
+      {\olfileid[fr]{pl}{seq}{pro}}
+
+\olsection{Exemples de \usetoken{p}{derivation}}
+
+\begin{ex}
+Construire une !!{derivation} dans $\Log{LK}$ du séquent
+$!A \land !B \Sequent !A$.
+
+Commençons par écrire le séquent final recherché au bas de la
+!!{derivation}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$!A\land !B \fCenter !A$
+\end{prooftree}
+Cherchons ensuite une inférence dont le séquent inférieur pourrait
+avoir cette forme. Une règle structurelle conviendrait peut-être,
+mais il est judicieux de commencer par chercher une règle logique.
+Le seul connecteur logique qui figure dans le séquent inférieur
+est $\land$ : nous cherchons donc une règle pour $\land$.
+Comme ce symbole figure dans l'antécédent, examinons la règle
+\LeftR{\land}.
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A\land !B \fCenter !A$
+\end{prooftree}
+Deux séquents pourraient servir de prémisse à cette inférence
+\LeftR{\land} : $!A \Sequent !A$ ou $!B \Sequent !A$.
+Le premier est un séquent initial, ce qui nous convient, tandis que
+le second n'est pas dérivable en général. Inscrivons donc la prémisse :
+\begin{prooftree}
+\Axiom$!A \fCenter !A$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A\land !B \fCenter !A$
+\end{prooftree}
+Nous avons maintenant une !!{derivation} correcte, dans $\Log{LK}$,
+du séquent $!A \land !B \Sequent !A$.
+\end{ex}
+
+\begin{ex}
+Construire une !!{derivation} dans $\Log{LK}$ du séquent
+$\lnot !A \lor !B \Sequent !A \lif !B$.
+
+Commençons par écrire le séquent final recherché au bas de la
+!!{derivation}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lnot !A \lor !B \fCenter !A \lif !B$
+\end{prooftree}
+Pour trouver une règle logique susceptible de donner ce séquent final,
+examinons les connecteurs qui y figurent : $\lnot$, $\lor$ et $\lif$.
+Pour l'instant, seuls $\lor$ et $\lif$ nous intéressent, car ce sont
+les !!{main operator}s des !!{sentence}s du séquent final.
+Le symbole $\lnot$ se trouve dans la portée d'un autre connecteur :
+nous nous en occuperons donc plus tard. Les règles logiques possibles
+pour la dernière inférence sont ainsi \LeftR{\lor} et \RightR{\lif}.
+L'une ou l'autre conviendrait ; choisissons \RightR{\lif}, ne serait-ce
+que pour différer la séparation en deux branches. D'après le schéma
+de cette règle et le séquent inférieur recherché, l'inférence doit
+avoir la forme suivante :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}} \UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+
+En déplaçant $\lnot !A \lor !B$ à l'extrémité gauche de l'antécédent,
+nous pouvons appliquer \LeftR{\lor}. Le schéma de cette règle nous
+conduit aux deux prémisses suivantes :\footnote{Note de l'édition française :
+dans cet exemple, quatre étapes échangent deux énoncés de l'antécédent.
+Leurs étiquettes $\RightR{\Exchange}$ dans la source sont corrigées
+en $\LeftR{\Exchange}$.}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lnot !A, !A \fCenter !B$
+\AxiomC{}
+\UnaryInf$!B, !A \fCenter !B$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$ \lnot !A \lor !B, !A \fCenter !B $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+Rappelons que nous cherchons à remonter jusqu'à des séquents initiaux.
+Nous en sommes proches : un affaiblissement et un échange suffisent
+à achever la branche de droite à partir d'un séquent initial :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lnot !A, !A \fCenter !B$
+\Axiom$!B \fCenter !B$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!A, !B \fCenter !B$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!B, !A \fCenter !B$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor !B, !A \fCenter !B $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+
+Examinons maintenant la branche de gauche. Le seul connecteur logique
+qui figure dans ses !!{sentence}s est le symbole $\lnot$, dans
+l'antécédent. Nous cherchons donc une instance de \LeftR{\lnot}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ !A \fCenter !B, !A$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A, !A \fCenter !B$
+\Axiom$!B \fCenter !B$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!A, !B \fCenter !B$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!B, !A \fCenter !B$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor !B, !A \fCenter !B $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+Comme pour la branche de droite, un affaiblissement et un échange
+suffisent à achever cette branche.
+\begin{prooftree}
+\Axiom$!A \fCenter !A$
+\RightLabel{\RightR{\Weakening}}
+\UnaryInf$ !A \fCenter !A, !B$
+\RightLabel{\RightR{\Exchange}}
+\UnaryInf$ !A \fCenter !B, !A$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A, !A \fCenter !B$
+\Axiom$!B \fCenter !B$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!A, !B \fCenter !B$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!B, !A \fCenter !B$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor !B, !A \fCenter !B $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ !A, \lnot !A \lor !B \fCenter !B $
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \lnot !A \lor !B \fCenter !A \lif !B $
+\end{prooftree}
+\end{ex}
+
+\begin{ex}
+Construire une !!{derivation} dans $\Log{LK}$ du séquent
+$\lnot !A \lor \lnot !B \Sequent \lnot (!A \land !B)$.
+
+Comme précédemment, commençons par écrire le séquent final recherché
+au bas de l'arbre.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ \lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B) $
+\end{prooftree}
+Les connecteurs principaux des !!{sentence}s du séquent final sont
+$\lor$ et $\lnot$. Les règles \LeftR{\lor} et \RightR{\lnot}
+conviendraient toutes deux ; commençons par \RightR{\lnot} pour
+différer la séparation en deux branches :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+Nous avons maintenant le choix entre \LeftR{\land} et \LeftR{\lor}.
+Essayons \LeftR{\land}. Nous pouvons partir du séquent
+$!A, \lnot !A \lor \lnot !B \Sequent \quad$ ou du séquent
+$!B, \lnot !A \lor \lnot !B \Sequent \quad$.
+La situation étant symétrique en $!A$ et $!B$, choisissons le premier :\footnote{Note
+de l'édition française : les deux prémisses proposées dans la prose source
+omettent la négation devant $!B$ dans la disjonction. Elle est rétablie
+ici, conformément aux arbres de la source.}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$!A, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+En poursuivant la construction de la !!{derivation}, nous rencontrons
+une difficulté :
+\begin{prooftree}
+\Axiom$!A \fCenter !A$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$ \lnot !A, !A \fCenter$
+\AxiomC{}
+\RightLabel{?}
+\UnaryInf$!A \fCenter !B$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$ \lnot !B, !A \fCenter$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor \lnot !B, !A \fCenter $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!A, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+En général, le séquent au sommet de la branche de droite ne peut être
+réduit davantage ni obtenu à partir d'un séquent initial par des
+inférences structurelles. Cette voie ne convient donc pas : nous avons
+appliqué \LeftR{\land} trop tôt. Revenons à l'étape précédente et
+appliquons plutôt \LeftR{\lor} :\footnote{Note de l'édition française :
+l'échec décrit concerne le schéma général. Certaines instances
+particulières de $!A \Sequent !B$, notamment lorsque $!A$ et $!B$
+sont identiques, sont dérivables.}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lnot !A, !A \land !B \fCenter $
+
+\AxiomC{}
+\UnaryInf$\lnot !B, !A \land !B \fCenter $
+
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor \lnot !B, !A \land !B \fCenter $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+En achevant chaque branche comme précédemment, nous obtenons :
+\begin{prooftree}
+\Axiom$ !A \fCenter!A$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B \fCenter !A$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A, !A \land !B \fCenter $
+
+\Axiom$ !B \fCenter !B$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!A \land !B \fCenter !B$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !B, !A \land !B \fCenter $
+
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$\lnot !A \lor \lnot !B, !A \land !B \fCenter $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$!A \land !B, \lnot !A \lor \lnot !B \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
+\end{prooftree}
+(On aurait aussi pu placer les règles pour $\land$ plus bas que les
+règles pour $\lnot$ dans ces étapes et obtenir une !!{derivation}
+correcte.)
+\end{ex}
+
+\begin{ex}
+Nous n'avons pas encore utilisé la contraction, mais elle est parfois
+nécessaire. En voici un exemple. Supposons que nous voulions démontrer
+$\quad \Sequent !A \lor \lnot !A$. En appliquant
+$\RightR{\lor}$ à rebours, nous obtenons l'une des deux tentatives
+de !!{derivation} suivantes :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ \fCenter !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \fCenter !A \lor \lnot !A$
+\DisplayProof\qquad\bottomAlignProof
+\AxiomC{}
+\UnaryInf$!A \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \fCenter \lnot !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \fCenter !A \lor \lnot !A$
+\end{prooftree}
+Aucune de ces deux tentatives n'aboutit, en général, à un séquent
+initial. L'idée est d'utiliser la contraction, qui réunit deux
+occurrences d'!!a{sentence} en une seule. Lors de la recherche d'une
+preuve, c'est-à-dire en allant du bas vers le haut, nous pouvons donc
+conserver une occurrence de $!A \lor \lnot !A$ dans la prémisse,
+par exemple :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ \fCenter !A \lor \lnot !A, !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \fCenter !A \lor \lnot !A, !A \lor \lnot !A$
+\RightLabel{\RightR{\Contraction}}
+\UnaryInf$ \fCenter !A \lor \lnot !A$
+\end{prooftree}
+Nous pouvons maintenant appliquer $\RightR{\lor}$ une seconde fois,
+en faisant aussi apparaître $\lnot !A$, ce qui donne une
+!!{derivation} complète :
+\begin{prooftree}
+\Axiom$!A \fCenter !A$
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\fCenter !A, \lnot !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$\fCenter !A, !A \lor \lnot !A$
+\RightLabel{\RightR{\Exchange}}
+\UnaryInf$ \fCenter !A \lor \lnot !A, !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \fCenter !A \lor \lnot !A, !A \lor \lnot !A$
+\RightLabel{\RightR{\Contraction}}
+\UnaryInf$ \fCenter !A \lor \lnot !A$
+\end{prooftree}
+\end{ex}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $!A \land (!B \land !C) \Sequent (!A \land !B) \land !C$.
+\item $!A \lor (!B \lor !C) \Sequent (!A \lor !B) \lor !C$.
+\item $!A \lif (!B \lif !C) \Sequent !B \lif (!A \lif !C)$.
+\item $!A \Sequent \lnot\lnot !A$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $(!A \lor !B) \lif !C \Sequent !A \lif !C$.
+\item $(!A \lif !C) \land (!B \lif !C) \Sequent (!A \lor !B) \lif !C$.
+\item $\Sequent \lnot(!A \land \lnot !A)$.
+\item $!B \lif !A \Sequent \lnot !A \lif \lnot !B$.
+\item $\Sequent (!A \lif \lnot !A) \lif \lnot !A$.
+\item $\Sequent \lnot(!A \lif !B) \lif \lnot !B$.
+\item $!A \lif !C \Sequent \lnot (!A \land \lnot !C)$.
+\item $!A \land \lnot !C \Sequent \lnot (!A \lif !C)$.
+\item $!A \lor !B, \lnot !B \Sequent !A$.
+\item $\lnot !A \lor \lnot !B \Sequent \lnot(!A \land !B)$.
+\item $\Sequent (\lnot !A \land \lnot !B) \lif\lnot(!A \lor !B)$.
+\item $\Sequent \lnot(!A \lor !B) \lif (\lnot !A \land \lnot !B)$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $\lnot(!A \lif !B) \Sequent !A$.
+\item $\lnot(!A \land !B) \Sequent \lnot !A \lor \lnot !B$.
+\item $!A \lif !B \Sequent \lnot !A \lor !B$.
+\item $\Sequent \lnot \lnot !A \lif !A$.
+\item $!A \lif !B, \lnot !A \lif !B \Sequent !B$.
+\item $(!A \land !B) \lif !C \Sequent (!A \lif !C) \lor (!B \lif !C)$.
+\item $(!A \lif !B) \lif !A \Sequent !A$.
+\item $\Sequent (!A \lif !B) \lor (!B \lif !C)$.
+\end{enumerate}
+(Tous requièrent la règle $\RightR{\Contraction}$.)
+\end{prob}
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/proving-things.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/proof-theoretic-notions.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proof-theoretic-notions}
+
+
+\begin{editorial}
+Cette section rassemble les définitions de la relation de
+!!{derivability} et de la cohérence pour le calcul des séquents.
+La mention de la déduction naturelle dans la source est une erreur
+éditoriale corrigée ici.
+\end{editorial}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{ptn}}
+      {\olfileid[fr]{pl}{seq}{ptn}}
+
+\olsection{Notions de théorie de la démonstration}
+
+\begin{explain}
+Nous avons défini plusieurs notions sémantiques importantes : validité,
+conséquence logique et satisfaisabilité. Définissons maintenant les
+\emph{notions de théorie de la démonstration} correspondantes.
+Elles font appel à la !!{derivability} ou à la !!{nonderivability}
+de certains séquents, plutôt qu'à la satisfaction d'!!{sentence}s
+dans des !!{structure}s. La coïncidence de ces notions constitue une
+découverte importante : c'est le contenu des \emph{théorèmes de
+correction et de complétude}.
+\end{explain}
+
+\begin{defn}[Théorèmes]
+!!^a{sentence}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation}, dans $\Log{LK}$, du séquent $\quad \Sequent !A$.
+On écrit $\Proves !A$ si $!A$ est un théorème, et $\Proves/ !A$
+dans le cas contraire.
+\end{defn}
+
+\begin{defn}[!!^{derivability}]
+!!^a{sentence}~$!A$ est \emph{!!{derivable} à partir} d'un ensemble
+d'!!{sentence}s~$\Gamma$, ce que l'on note $\Gamma \Proves !A$,
+si et seulement s'il existe une partie finie $\Gamma_0 \subseteq \Gamma$
+et une suite $\Gamma_0'$ énumérant les !!{sentence}s de $\Gamma_0$,
+avec répétitions éventuelles, telles que $\Log{LK}$ !!{derive}s
+$\Gamma_0' \Sequent !A$. Si $!A$ n'est pas !!{derivable} à partir
+de $\Gamma$, on écrit $\Gamma \Proves/ !A$.
+\end{defn}
+
+Grâce aux règles de contraction, d'affaiblissement et d'échange,
+l'ordre des !!{sentence}s et le nombre de leurs occurrences dans
+$\Gamma_0'$ n'importent pas : si $\Gamma_0' \Sequent !A$ est
+!!{derivable}, alors $\Gamma_0'' \Sequent !A$ l'est aussi pour
+toute suite $\Gamma_0''$ contenant exactement les mêmes
+!!{sentence}s que $\Gamma_0'$. Par exemple, si
+$\Gamma_0 = \{!B, !C\}$, les suites
+$\Gamma_0' = \tuple{!B, !B, !C}$ et
+$\Gamma_0'' = \tuple{!C, !C, !B}$ contiennent toutes deux
+exactement les !!{sentence}s de $\Gamma_0$. Si le séquent ayant
+l'une pour antécédent est !!{derivable}, celui qui a l'autre pour
+antécédent l'est aussi, comme le montre l'exemple suivant :
+\begin{prooftree}
+  \AxiomC{}
+  \Deduce$!B, !B, !C \fCenter !A$
+  \RightLabel{\LeftR{\Contraction}}
+  \UnaryInf$!B, !C \fCenter !A$
+  \RightLabel{\LeftR{\Exchange}}
+  \UnaryInf$!C, !B \fCenter !A$
+  \RightLabel{\LeftR{\Weakening}}
+  \UnaryInf$!C, !C, !B \fCenter !A$
+\end{prooftree}
+Désormais, si $\Gamma_0$ est un ensemble fini d'!!{sentence}s,
+nous noterons $\Gamma_0 \Sequent !A$ un séquent dont l'antécédent
+est une suite énumérant les éléments de $\Gamma_0$, avec répétitions
+éventuelles. Nous laisserons implicites les contractions, échanges
+et affaiblissements nécessaires.
+
+\begin{defn}[Cohérence]
+Un ensemble d'énoncés~$\Gamma$ est \emph{incohérent} s'il existe
+une partie finie $\Gamma_0 \subseteq \Gamma$ telle que $\Log{LK}$
+!!{derive}s $\Gamma_0 \Sequent \quad$. S'il n'est pas incohérent,
+c'est-à-dire si, pour toute partie finie $\Gamma_0 \subseteq \Gamma$,
+$\Log{LK}$ ne permet pas de !!{derive} $\Gamma_0 \Sequent \quad$,
+on dit que $\Gamma$ est \emph{cohérent}.
+\end{defn}
+
+\begin{prop}[Réflexivité]
+\ollabel{prop:reflexivity}
+Si $!A \in \Gamma$, alors $\Gamma \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Le séquent initial $!A \Sequent !A$ est !!{derivable}, et
+$\{!A\} \subseteq \Gamma$.
+\end{proof}
+
+\begin{prop}[Monotonie]
+\ollabel{prop:monotonicity}
+Si $\Gamma \subseteq \Delta$ et $\Gamma \Proves !A$, alors
+$\Delta \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Supposons $\Gamma \Proves !A$. Il existe donc une partie finie
+$\Gamma_0 \subseteq \Gamma$ telle que $\Gamma_0 \Sequent !A$
+soit !!{derivable}. Comme $\Gamma \subseteq \Delta$,
+$\Gamma_0$ est aussi une partie finie de $\Delta$. La
+!!{derivation} de $\Gamma_0 \Sequent !A$ montre donc également
+que $\Delta \Proves !A$.
+\end{proof}
+
+\begin{prop}[Transitivité]
+\ollabel{prop:transitivity}
+Si $\Gamma \Proves !A$ et $\{!A\} \cup \Delta \Proves !B$,
+alors $\Gamma \cup \Delta \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Si $\Gamma \Proves !A$, il existe une partie finie
+$\Gamma_0 \subseteq \Gamma$ et une !!{derivation}~$\pi_0$
+de $\Gamma_0 \Sequent !A$. Si $\{!A\} \cup \Delta \Proves !B$,
+il existe une partie finie $\Delta_0 \subseteq \Delta$ et une
+!!{derivation}~$\pi_1$ de $!A, \Delta_0 \Sequent !B$,
+en ajoutant au besoin $!A$ par affaiblissement. Considérons alors
+la !!{derivation} suivante :
+\begin{prooftree}
+  \AxiomC{}
+  \RightLabel{$\pi_0$}
+  \Deduce$\Gamma_0 \fCenter !A$
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!A, \Delta_0 \fCenter !B$
+  \RightLabel{\Cut}
+  \BinaryInf$\Gamma_0, \Delta_0 \fCenter !B$
+\end{prooftree}
+Comme $\Gamma_0 \cup \Delta_0 \subseteq \Gamma \cup \Delta$,
+on obtient $\Gamma \cup \Delta \Proves !B$.
+\end{proof}
+
+En particulier, si $\Gamma \Proves !A$ et $!A \Proves !B$, alors
+$\Gamma \Proves !B$. Il en résulte aussi que si
+$!A_1, \dots, !A_n \Proves !B$ et $\Gamma \Proves !A_i$
+pour chaque~$i$, alors $\Gamma \Proves !B$.
+
+\begin{prop}
+\ollabel{prop:incons}
+$\Gamma$ est incohérent si et seulement si $\Gamma \Proves {!A}$
+pour tout énoncé~$!A$.
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref{prop:incons}.\footnote{Note de l'édition
+française : le renvoi est relatif à la section courante, afin de
+fonctionner dans les présentations propositionnelle et du premier ordre.}
+\end{prob}
+
+\begin{prop}[Compacité]
+  \ollabel{prop:proves-compact}
+  \begin{enumerate}
+  \item Si $\Gamma \Proves !A$, il existe une partie finie
+    $\Gamma_0 \subseteq \Gamma$ telle que $\Gamma_0 \Proves !A$.
+  \item Si toute partie finie de $\Gamma$ est cohérente,
+    alors $\Gamma$ est cohérent.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Si $\Gamma \Proves !A$, il existe une partie finie
+    $\Gamma_0 \subseteq \Gamma$ telle que le séquent
+    $\Gamma_0 \Sequent !A$ possède une !!{derivation}.
+    Par conséquent, $\Gamma_0 \Proves !A$.
+  \item Si $\Gamma$ est incohérent, il existe une partie finie
+    $\Gamma_0 \subseteq \Gamma$ telle que $\Log{LK}$
+    !!{derive}s $\Gamma_0 \Sequent \quad$. Ainsi, $\Gamma_0$
+    est une partie finie de $\Gamma$ qui est incohérente.
+  \end{enumerate}
+\end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/proof-theoretic-notions.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/provability-consistency.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{provability-consistency}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{prv}}
+      {\olfileid[fr]{pl}{seq}{prv}}
+
+\olsection{\usetoken{S}{derivability} et cohérence}
+
+Établissons plusieurs propriétés de la relation de !!{derivability}.
+Outre leur intérêt propre, elles interviendront toutes dans la
+démonstration du théorème de complétude.
+
+\begin{prop}\ollabel{prop:provability-contr}
+Si $\Gamma \Proves !A$ et si $\Gamma \cup \{!A\}$ est incohérent,
+alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Il existe des parties finies $\Gamma_0 \subseteq \Gamma$ et
+$\Gamma_1 \subseteq \Gamma$ telles que $\Log{LK}$ !!{derive}s
+$\Gamma_0 \Sequent !A$ et $!A, \Gamma_1 \Sequent \quad$,
+en ajoutant au besoin $!A$ par affaiblissement dans la seconde.
+Notons $\pi_0$ et $\pi_1$ les !!{derivation}s respectives de ces
+deux séquents dans $\Log{LK}$.\footnote{Note de l'édition française :
+la présentation de $\pi_1$ est uniformisée avec l'arbre qui suit ;
+la source intervertit $!A$ et $\Gamma_1$ à cet endroit.}
+Nous pouvons alors !!{derive} :
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{$\pi_0$}
+\Deduce$ \Gamma_0 \fCenter !A $
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$!A, \Gamma_1 \fCenter $
+\RightLabel{\Cut}
+\BinaryInf$ \Gamma_0,\Gamma_1 \fCenter $
+\end{prooftree}
+
+Comme $\Gamma_0 \subseteq \Gamma$ et $\Gamma_1 \subseteq \Gamma$,
+on a $\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$ ; ainsi,
+$\Gamma$ est incohérent.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:prov-incons}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons d'abord $\Gamma \Proves !A$. Il existe une partie finie
+$\Gamma_0 \subseteq \Gamma$ et une !!{derivation}~$\pi_0$ de
+$\Gamma_0 \Sequent !A$. En ajoutant une inférence $\LeftR{\lnot}$,
+on obtient une !!{derivation} de
+$\lnot !A, \Gamma_0 \Sequent \quad$. L'ensemble
+$\Gamma \cup \{\lnot !A\}$ est donc incohérent.\footnote{Note de
+l'édition française : dans les deux sens de cette démonstration,
+la source emploie directement $\Gamma$ dans les séquents.
+Les témoins finis $\Gamma_0 \subseteq \Gamma$ sont explicités ici,
+car l'ensemble $\Gamma$ peut être infini.}
+
+Réciproquement, si $\Gamma \cup \{\lnot !A\}$ est incohérent,
+il existe une partie finie $\Gamma_0 \subseteq \Gamma$ et une
+!!{derivation}~$\pi_1$ de $\lnot !A, \Gamma_0 \Sequent \quad$,
+en ajoutant au besoin $\lnot !A$ par affaiblissement.
+L'arbre suivant est une !!{derivation} de $\Gamma_0 \Sequent !A$ :
+\begin{prooftree}
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\RightR{\lnot}}
+  \UnaryInf$\fCenter !A, \lnot !A$
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\lnot !A, \Gamma_0 \fCenter$
+  \RightLabel{\Cut}
+  \BinaryInf$\Gamma_0 \fCenter !A$
+\end{prooftree}
+Puisque $\Gamma_0 \subseteq \Gamma$, il en résulte
+$\Gamma \Proves !A$.
+\end{proof}
+
+\begin{prob}
+Démontrer que $\Gamma \Proves \lnot !A$ si et seulement si
+$\Gamma \cup \{!A\}$ est incohérent.
+\end{prob}
+
+\begin{prop}\ollabel{prop:explicit-inc}
+Si $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$, alors
+$\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$.
+Il existe une partie finie $\Gamma_0 \subseteq \Gamma$ et une
+!!{derivation}~$\pi$ du séquent $\Gamma_0 \Sequent !A$.
+Le séquent $\lnot !A, \Gamma_0 \Sequent \quad$ est lui aussi
+!!{derivable} : l'arbre suivant donne son antécédent dans l'ordre
+inverse, que l'on peut rétablir par des échanges.
+  \begin{prooftree}
+    \AxiomC{}
+    \RightLabel{$\pi$}
+    \Deduce$\Gamma_0 \fCenter !A$
+    \Axiom$!A \fCenter !A$
+    \RightLabel{\LeftR{\lnot}}
+    \UnaryInf$\lnot !A, !A \fCenter$
+    \RightLabel{\LeftR{\Exchange}}
+    \UnaryInf$!A, \lnot !A \fCenter$
+    \RightLabel{\Cut}
+    \BinaryInf$\Gamma_0, \lnot !A \fCenter$
+  \end{prooftree}
+Comme $\lnot !A \in \Gamma$ et $\Gamma_0 \subseteq \Gamma$,
+cela montre que $\Gamma$ est incohérent.
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-exhaustive}
+Si $\Gamma \cup \{!A\}$ et $\Gamma \cup \{\lnot !A\}$ sont
+tous deux incohérents, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Il existe des parties finies $\Gamma_0 \subseteq \Gamma$ et
+$\Gamma_1 \subseteq \Gamma$, ainsi que des !!{derivation}s
+$\pi_0$ et $\pi_1$ dans $\Log{LK}$, respectivement de
+$!A, \Gamma_0 \Sequent \quad$ et de
+$\lnot !A, \Gamma_1 \Sequent \quad$.
+On ajoute au besoin l'énoncé distingué par affaiblissement.
+Nous pouvons alors !!{derive} :
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{$\pi_0$}
+\Deduce$ !A, \Gamma_0 \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \Gamma_0 \fCenter \lnot !A$
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\lnot !A, \Gamma_1 \fCenter  $
+\RightLabel{\Cut}
+\BinaryInf$ \Gamma_0, \Gamma_1 \fCenter $
+\end{prooftree}
+Comme $\Gamma_0 \subseteq \Gamma$ et $\Gamma_1 \subseteq \Gamma$,
+on a $\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$.
+Par conséquent, $\Gamma$ est incohérent.
+\end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/provability-consistency.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/provability-propositional.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{provability-propositional}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{ppr}}
+      {\olfileid[fr]{pl}{seq}{ppr}}
+
+\olsection{\usetoken{S}{derivability} et connecteurs propositionnels}
+
+\begin{explain}
+La relation de !!{derivability}~$\Proves$ du calcul des séquents
+permet d'établir certaines propriétés élémentaires des connecteurs
+propositionnels, par exemple $!A \land !B \Proves !A$ et
+$!A, !A \lif !B \Proves !B$ (modus ponens).
+Ces propriétés serviront dans la démonstration du théorème de complétude.
+\end{explain}
+
+\begin{prop}\ollabel{prop:provability-land}
+  \begin{enumerate}
+  \item \ollabel{prop:provability-land-left} On a
+    $!A \land !B \Proves !A$ et $!A \land !B \Proves !B$.
+  \item \ollabel{prop:provability-land-right}
+    $!A, !B \Proves !A \land !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Les séquents $!A \land !B \Sequent !A$ et
+    $!A \land !B \Sequent !B$ sont tous deux !!{derivable}s :
+    \begin{prooftree}
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\LeftR{\land}}
+      \UnaryInf$!A \land !B \fCenter !A$
+      \DisplayProof\qquad\bottomAlignProof
+      \Axiom$!B \fCenter !B$
+      \RightLabel{\LeftR{\land}}
+      \UnaryInf$!A \land !B \fCenter !B$
+    \end{prooftree}
+  \item Voici une !!{derivation} du séquent
+    $!A, !B \Sequent !A \land !B$ :\footnote{Note de l'édition
+    française : les affaiblissements et l'échange ajoutés à cet arbre
+    donnent aux deux prémisses le même antécédent $!A, !B$,
+    comme l'exige la règle $\RightR{\land}$. Ces étapes manquent
+    dans l'arbre de la source.}
+    \begin{prooftree}
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\LeftR{\Weakening}}
+      \UnaryInf$!B, !A \fCenter !A$
+      \RightLabel{\LeftR{\Exchange}}
+      \UnaryInf$!A, !B \fCenter !A$
+      \Axiom$!B \fCenter !B$
+      \RightLabel{\LeftR{\Weakening}}
+      \UnaryInf$!A, !B \fCenter !B$
+      \RightLabel{\RightR{\land}}
+      \BinaryInf$!A, !B \fCenter !A \land !B$
+    \end{prooftree}
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lor}
+  \begin{enumerate}
+  \item $!A \lor !B, \lnot !A, \lnot !B$ est incohérent.
+  \item On a $!A \Proves !A \lor !B$ et $!B \Proves !A \lor !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Voici une !!{derivation} du séquent
+    $!A \lor !B, \lnot !A, \lnot !B \Sequent$ :
+    \begin{prooftree}
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\LeftR{\lnot}}
+      \UnaryInf$\lnot !A, !A \fCenter$
+      \doubleLine
+      \UnaryInf$!A, \lnot !A, \lnot !B \fCenter$
+      \Axiom$!B \fCenter !B$
+      \RightLabel{\LeftR{\lnot}}
+      \UnaryInf$\lnot !B, !B \fCenter$
+      \doubleLine
+      \UnaryInf$!B, \lnot !A, \lnot !B \fCenter$
+      \RightLabel{\LeftR{\lor}}
+      \BinaryInf$ !A \lor !B, \lnot !A, \lnot !B \fCenter $
+    \end{prooftree}
+    (Rappelons qu'un trait d'inférence double représente une succession
+    d'affaiblissements, de contractions et d'échanges.)
+  \item Les deux séquents $!A \Sequent !A \lor !B$ et
+    $!B \Sequent !A \lor !B$ possèdent des !!{derivation}s :
+    \begin{prooftree}
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\RightR{\lor}}
+      \UnaryInf$!A \fCenter !A \lor !B$
+      \DisplayProof\qquad\bottomAlignProof
+      \Axiom$!B \fCenter !B$
+      \RightLabel{\RightR{\lor}}
+      \UnaryInf$!B \fCenter !A \lor !B$
+    \end{prooftree}
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lif}
+  \begin{enumerate}
+  \item \ollabel{prop:provability-lif-left} $!A, !A \lif !B \Proves !B$.
+  \item \ollabel{prop:provability-lif-right}
+    On a $\lnot !A \Proves !A \lif !B$ et $!B \Proves !A \lif !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Le séquent $!A \lif !B, !A \Sequent !B$ est !!{derivable} :
+      \begin{prooftree}
+        \Axiom$!A \fCenter !A$
+        \Axiom$!B \fCenter !B$
+        \RightLabel{\LeftR{\lif}}
+        \BinaryInf$!A \lif !B, !A  \fCenter !B$
+      \end{prooftree}
+  \item Les séquents $\lnot !A \Sequent !A \lif !B$ et
+    $!B \Sequent !A \lif !B$ sont tous deux !!{derivable}s :
+      \begin{prooftree}
+        \Axiom$!A \fCenter !A$
+        \RightLabel{\LeftR{\lnot}}
+        \UnaryInf$\lnot !A, !A \fCenter$
+        \RightLabel{\LeftR{\Exchange}}
+        \UnaryInf$!A, \lnot !A \fCenter$
+        \RightLabel{\RightR{\Weakening}}
+        \UnaryInf$!A, \lnot !A \fCenter !B$
+        \RightLabel{\RightR{\lif}}
+        \UnaryInf$\lnot !A \fCenter !A \lif !B$
+        \DisplayProof\qquad\bottomAlignProof
+        \Axiom$!B \fCenter !B$
+        \RightLabel{\LeftR{\Weakening}}
+        \UnaryInf$!A, !B \fCenter !B$
+        \RightLabel{\RightR{\lif}}
+        \UnaryInf$!B \fCenter !A \lif !B$
+      \end{prooftree}
+  \end{enumerate}
+\end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/provability-propositional.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/sequent-calculus/soundness.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{soundness}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{sou}}
+      {\olfileid[fr]{pl}{seq}{sou}}
+
+\olsection{Correction}
+
+\begin{explain}
+Un système de !!{derivation}, tel que le calcul des séquents, est
+\emph{correct} s'il ne permet pas de !!{derive} des résultats qui
+ne sont pas effectivement vrais. La correction constitue ainsi une
+garantie pour un système de !!{derivation}. Selon la notion syntaxique
+considérée, nous souhaitons notamment savoir que :
+\begin{enumerate}
+\item tout énoncé~$!A$ !!{derivable} sans hypothèses est
+  \iftag{FOL}{valide}{une tautologie} ;
+\item si !!a{sentence} est !!{derivable} à partir d'autres énoncés,
+  il en est aussi une conséquence logique ;
+\item si un ensemble d'!!{sentence}s est incohérent, il est insatisfaisable.
+\end{enumerate}
+Ces propriétés sont essentielles. Si l'une d'elles échoue, le système
+de !!{derivation} est défectueux : il permet de !!{derive} trop de
+résultats. Il est donc crucial d'établir sa correction.
+
+Toutes ces notions syntaxiques sont définies par la !!{derivability}
+de certains séquents dans le calcul des séquents. Pour démontrer
+(1)--(3), nous devons donc établir une propriété sémantique des
+séquents !!{derivable}s. Nous allons d'abord définir la \emph{validité}
+d'un séquent, puis montrer que tout séquent !!{derivable} est valide.
+Les propriétés (1)--(3) en découleront comme corollaires.
+\end{explain}
+
+\begin{defn}
+\iftag{FOL}{!!^a{structure}~$\Struct M$}{!!^a{valuation}~$\pAssign{v}$}
+\emph{satisfait} un séquent $\Gamma \Sequent \Delta$ si et seulement
+si l'une au moins des conditions suivantes est vérifiée :
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$ pour un certain $!A \in \Gamma$,
+ou $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ pour un certain $!A \in \Delta$.
+
+Un séquent est \emph{valide} si et seulement si toute
+\iftag{FOL}{!!{structure}~$\Struct M$}{!!{valuation}~$\pAssign{v}$}
+le satisfait.
+\end{defn}
+
+\begin{thm}[Correction]
+\ollabel{thm:sequent-soundness}
+Si $\Log{LK}$ !!{derive}s $\Theta \Sequent \Xi$, alors
+$\Theta \Sequent \Xi$ est valide.
+\end{thm}
+
+\begin{proof}
+Soit $\pi$ une !!{derivation} de $\Theta \Sequent \Xi$.
+Procédons par récurrence sur le nombre $n$ d'inférences de $\pi$.
+
+Si ce nombre est nul, $\pi$ se réduit à un séquent initial.
+Tout séquent initial $!A \Sequent !A$ est valide : pour toute
+\iftag{FOL}{$\Struct M$}{$\pAssign{v}$}, on a soit
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$, soit
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+\iftag{prvTrue}{Le séquent initial $\quad \Sequent \ltrue$ est
+également valide, puisque $\ltrue$ est toujours vrai.}{}
+\iftag{prvFalse}{De même, $\lfalse \Sequent \quad$ est valide,
+puisque $\lfalse$ est toujours faux.}{}
+\footnote{Note de l'édition française : les cas des séquents initiaux
+pour les constantes logiques, lorsqu'ils sont présents, ainsi que
+les cas de l'échange et de la contraction ci-dessous, sont explicités ;
+la source ne les traite pas séparément.}
+
+Si le nombre d'inférences est strictement positif, distinguons les cas
+selon la dernière inférence. Par hypothèse de récurrence, ses prémisses
+sont valides, car la !!{derivation} de chacune d'elles contient
+strictement moins de $n$ inférences.
+
+Considérons d'abord les inférences à une seule prémisse. Un échange
+ne modifie que l'ordre des énoncés ; une contraction ne modifie que
+le nombre d'occurrences d'un même énoncé. Dans les deux cas, les
+conditions de satisfaction de la prémisse et de la conclusion sont
+équivalentes. La validité est donc préservée.
+\begin{enumerate}
+\item La dernière inférence est un affaiblissement. Alors
+  $\Theta \Sequent \Xi$ est soit $!A, \Gamma \Sequent \Delta$
+  si l'inférence est \LeftR{\Weakening}, soit
+  $\Gamma \Sequent \Delta, !A$ si elle est \RightR{\Weakening}.
+  La !!{derivation} se termine donc par l'une des formes suivantes :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\Weakening}}
+    \UnaryInf$!A, \Gamma \fCenter \Delta$
+    \DisplayProof\qquad\bottomAlignProof
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta$
+    \RightLabel{\RightR{\Weakening}}
+    \UnaryInf$\Gamma \fCenter \Delta, !A$
+  \end{prooftree}
+  Par hypothèse de récurrence, $\Gamma \Sequent \Delta$ est valide.
+  Pour toute \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$},
+  il existe donc soit $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$, soit $!C \in \Delta$
+  tel que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$.
+
+  Dans le premier cas, $!C \in \Theta$ aussi : l'affaiblissement
+  à gauche ajoute un énoncé à $\Gamma$, tandis que l'affaiblissement
+  à droite conserve cet antécédent. Dans le second cas, $!C \in \Xi$
+  aussi : l'affaiblissement à droite ajoute un énoncé à $\Delta$,
+  tandis que l'affaiblissement à gauche conserve ce conséquent.
+  Nous avons donc soit $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$
+  pour un certain $!C \in \Theta$, soit
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$ pour un certain $!C \in \Xi$.
+  Ainsi, $\Theta \Sequent \Xi$ est valide.\footnote{Note de l'édition
+  française : l'égalité $\Theta = !A, \Gamma$ donnée par la source
+  ne vaut que pour l'affaiblissement à gauche. L'argument est explicité
+  pour les deux règles.}
+\item La dernière inférence est \LeftR{\lnot}. Sa prémisse est
+  $\Gamma \Sequent \Delta, !A$ et sa conclusion est
+  $\lnot !A, \Gamma \Sequent \Delta$. La !!{derivation} se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \RightLabel{\LeftR{\lnot}}
+    \UnaryInf$\lnot !A, \Gamma \fCenter \Delta$
+  \end{prooftree}
+  On a $\Theta = \lnot !A, \Gamma$ et $\Xi = \Delta$.
+
+  Par hypothèse de récurrence, $\Gamma \Sequent \Delta, !A$ est
+  valide. Pour toute \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$},
+  l'un au moins des cas suivants se présente : (a) il existe
+  $!C \in \Gamma$ tel que $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$ ;
+  (b) il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$ ; (c)
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Montrons que $\Theta \Sequent \Xi$ est aussi valide.
+  Soit \iftag{FOL}{une !!{structure}~$\Struct{M}$}{une !!{valuation}~$\pAssign{v}$}.
+  Dans le cas (a), il existe $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$, et $!C \in \Theta$ aussi.
+  Dans le cas (b), il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$, et $!C \in \Xi$ aussi.
+  Enfin, dans le cas (c), $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$,
+  donc $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lnot !A}$.
+  Comme $\lnot !A \in \Theta$, il existe $!C \in \Theta$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+  Ainsi, $\Theta \Sequent \Xi$ est valide.
+\item La dernière inférence est \RightR{\lnot} : cas laissé en exercice.
+\item La dernière inférence est \LeftR{\land}. Il y a deux variantes :
+  on peut introduire $!A \land !B$ à gauche à partir de $!A$ ou
+  de $!B$ placé à gauche dans la prémisse. Dans le premier cas,
+  $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$!A, \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\land}}
+    \UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+  \end{prooftree}
+  On a $\Theta = !A \land !B, \Gamma$ et $\Xi = \Delta$.
+  Considérons \iftag{FOL}{une !!{structure}~$\Struct M$}{une !!{valuation}~$\pAssign{v}$}.
+  La validité de $!A, \Gamma \Sequent \Delta$, donnée par l'hypothèse
+  de récurrence, entraîne l'un au moins des cas suivants :
+  (a) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$ ;
+  (b) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$ pour un certain
+  $!C \in \Gamma$ ; (c) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$
+  pour un certain $!C \in \Delta$.
+  Dans le cas (a), $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \land !B}$.
+  Il existe donc $!C \in \Theta$, à savoir $!A \land !B$, tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+  Dans le cas (b), il existe $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$, et $!C \in \Theta$ aussi.
+  Dans le cas (c), il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$, et $!C \in \Xi$ puisque
+  $\Xi = \Delta$. Dans tous les cas,
+  \iftag{FOL}{$\Struct M$}{$\pAssign{v}$} satisfait donc
+  $!A \land !B, \Gamma \Sequent \Delta$.
+  Puisque \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} était arbitraire,
+  $!A \land !B, \Gamma \Sequent \Delta$ est valide.\footnote{Note de
+  l'édition française : la conclusion de cet argument rétablit
+  la formule principale $!A \land !B$, omise à cet endroit dans la source.}
+  Le cas où $!A \land !B$ est introduit à partir de $!B$ se traite
+  de même, en remplaçant $!A$ par $!B$.
+\item La dernière inférence est \RightR{\lor}. Il y a deux variantes :
+  on peut introduire $!A \lor !B$ à droite à partir de $!A$ ou
+  de $!B$ placé à droite dans la prémisse. Dans le premier cas,
+  $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \RightLabel{\RightR{\lor}}
+    \UnaryInf$\Gamma \fCenter \Delta, !A \lor !B$
+  \end{prooftree}
+  On a $\Theta = \Gamma$ et $\Xi = \Delta, !A \lor !B$.
+  Considérons \iftag{FOL}{une !!{structure}~$\Struct{M}$}{une !!{valuation}~$\pAssign{v}$}.
+  Comme $\Gamma \Sequent \Delta, !A$ est valide, l'un au moins
+  des cas suivants se présente : (a) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ ;
+  (b) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$ pour un certain
+  $!C \in \Gamma$ ; (c) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$
+  pour un certain $!C \in \Delta$.
+  Dans le cas (a), $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$.
+  Dans le cas (b), il existe $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+  Dans le cas (c), il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$.
+  Dans tous les cas, \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}
+  satisfait $\Gamma \Sequent \Delta, !A \lor !B$, c'est-à-dire
+  $\Theta \Sequent \Xi$. Puisque
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} était arbitraire,
+  $\Theta \Sequent \Xi$ est valide. Le cas où $!A \lor !B$
+  est introduit à partir de $!B$ se traite de même, en remplaçant
+  $!A$ par $!B$.
+\item La dernière inférence est \RightR{\lif}. Alors $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$!A, \Gamma \fCenter \Delta, !B$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$\Gamma \fCenter \Delta, !A \lif !B$
+  \end{prooftree}
+  Par hypothèse de récurrence, la prémisse est valide ; montrons que
+  la conclusion l'est aussi. Soit
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} arbitraire.
+  Comme $!A, \Gamma \Sequent \Delta, !B$ est valide, l'un au moins
+  des cas suivants se présente : (a) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$ ;
+  (b) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ ;
+  (c) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$ pour un certain
+  $!C \in \Gamma$ ; (d) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$
+  pour un certain $!C \in \Delta$.
+  Dans chacun des cas (a) et (b),
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lif !B}$ ; il existe donc
+  $!C \in \Delta, !A \lif !B$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$.
+  Dans le cas (c), il existe $!C \in \Gamma$ tel que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+  Dans le cas (d), il existe $!C \in \Delta$ tel que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$.
+  Dans tous les cas, \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}
+  satisfait $\Gamma \Sequent \Delta, !A \lif !B$.
+  Puisque \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} était arbitraire,
+  $\Gamma \Sequent \Delta, !A \lif !B$ est valide.
+  \iftag{FOL}{%
+\item La dernière inférence est \LeftR{\lforall}. Il existe alors
+  une !!{formula}~$!A(x)$ et un terme clos~$t$ tels que $\pi$
+  se termine par :
+\begin{prooftree}
+    \AxiomC{}
+    \Deduce$!A(t), \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\lforall}}
+    \UnaryInf$\lforall[x][!A(x)], \Gamma \fCenter \Delta$
+  \end{prooftree}
+  Montrons que la conclusion $\lforall[x][!A(x)], \Gamma \Sequent \Delta$
+  est valide. Considérons une !!{structure}~$\Struct M$.
+  Puisque la prémisse $!A(t), \Gamma \Sequent \Delta$ est valide,
+  l'un au moins des cas suivants se présente : (a) $\Sat/{M}{!A(t)}$ ;
+  (b) $\Sat/{M}{!C}$ pour un certain $!C \in \Gamma$ ;
+  (c) $\Sat{M}{!C}$ pour un certain $!C \in \Delta$.
+  Dans le cas (a), d'après la \olref[syn][sem]{prop:quant-terms},
+  si $\Sat{M}{\lforall[x][!A(x)]}$, alors $\Sat{M}{!A(t)}$.
+  Comme $\Sat/{M}{!A(t)}$, on a donc
+  $\Sat/{M}{\lforall[x][!A(x)]}$.
+  Dans les cas (b) et (c), $\Struct{M}$ satisfait également
+  $\lforall[x][!A(x)], \Gamma \Sequent \Delta$.
+  Puisque $\Struct M$ était arbitraire,
+  $\lforall[x][!A(x)], \Gamma \Sequent \Delta$ est valide.
+\item La dernière inférence est \RightR{\lexists} : cas laissé en exercice.
+\item La dernière inférence est \RightR{\lforall}. Il existe alors
+  une !!{formula}~$!A(x)$ et une !!{constant}~$a$ telles que $\pi$
+  se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A(a)$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\Gamma \fCenter \Delta, \lforall[x][!A(x)]$
+  \end{prooftree}
+  La condition sur l'eigenvariable est satisfaite : $a$ ne figure ni
+  dans $!A(x)$, ni dans $\Gamma$, ni dans $\Delta$.
+  Par hypothèse de récurrence, la prémisse de la dernière inférence
+  est valide. Montrons que la conclusion l'est aussi : pour toute
+  !!{structure}~$\Struct M$, l'un au moins des cas suivants doit
+  se présenter : (a) $\Sat{M}{\lforall[x][!A(x)]}$ ;
+  (b) $\Sat/{M}{!C}$ pour un certain $!C \in \Gamma$ ;
+  (c) $\Sat{M}{!C}$ pour un certain $!C \in \Delta$.
+
+  Soit $\Struct{M}$ une !!{structure} arbitraire. Si (b) ou (c)
+  est vérifié, nous avons le résultat voulu. Supposons donc que
+  ni l'un ni l'autre ne le soit : pour tout $!C \in \Gamma$,
+  $\Sat{M}{!C}$, et pour tout $!C \in \Delta$, $\Sat/{M}{!C}$.
+  Il reste à établir (a), c'est-à-dire
+  $\Sat{M}{\lforall[x][!A(x)]}$.
+  D'après la \olref[syn][ass]{prop:sat-quant}, il suffit de montrer
+  que $\Sat{M}{!A(x)}[s]$ pour toute valuation des variables~$s$.
+  Soit donc $s$ une valuation des variables arbitraire.
+  Considérons la structure $\Struct{M'}$ qui coïncide avec
+  $\Struct{M}$, sauf que $\Assign{a}{M'} = s(x)$.
+  D'après le \olref[syn][ext]{cor:extensionality-sent}, pour tout
+  $!C \in \Gamma$, on a $\Sat{M'}{!C}$ puisque $a$ ne figure
+  pas dans $\Gamma$ ; de même, pour tout $!C \in \Delta$,
+  on a $\Sat/{M'}{!C}$.
+  La prémisse étant valide, on obtient $\Sat{M'}{!A(a)}$.
+  D'après la \olref[syn][ass]{prop:sentence-sat-true},
+  $\Sat{M'}{!A(a)}[s]$, car $!A(a)$ est un énoncé.
+  Or $\varAssign{s}{s}{x}$ et $s(x) = \Value{a}{M'}[s]$,
+  par la définition même de $\Struct{M'}$.
+  La \olref[syn][ext]{prop:ext-formulas} donne donc
+  $\Sat{M'}{!A(x)}[s]$.
+  Comme $a$ ne figure pas dans $!A(x)$, la
+  \olref[syn][ext]{prop:extensionality} entraîne
+  $\Sat{M}{!A(x)}[s]$. Puisque $s$ était arbitraire, nous avons
+  montré $\Sat{M}{!A(x)}[s]$ pour toute valuation des variables.
+\item La dernière inférence est \LeftR{\lexists} : cas laissé en exercice.
+}{}
+\end{enumerate}
+Considérons maintenant les inférences à deux prémisses.
+\begin{enumerate}
+\item La dernière inférence est une coupure. Alors $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \AxiomC{}
+    \Deduce$!A, \Pi \fCenter \Lambda$
+    \RightLabel{\Cut}
+    \BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda$
+  \end{prooftree}
+  Soit \iftag{FOL}{une !!{structure}~$\Struct{M}$}{une !!{valuation}~$\pAssign{v}$}.
+  Par hypothèse de récurrence, les deux prémisses sont valides ;
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} les satisfait donc toutes deux.
+  Distinguons les cas (a) $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$
+  et (b) $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Dans le cas (a), pour satisfaire la prémisse de gauche,
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} doit satisfaire
+  $\Gamma \Sequent \Delta$, et satisfait alors aussi la conclusion.
+  Dans le cas (b), pour satisfaire la prémisse de droite,
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} doit satisfaire
+  $\Pi \Sequent \Lambda$.\footnote{Note de l'édition française :
+  le signe de différence ensembliste de la source est remplacé ici
+  par le signe de séquent, conformément au raisonnement.}
+  Là encore, \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} satisfait la conclusion.
+\item La dernière inférence est \RightR{\land}. Alors $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !B$
+    \RightLabel{\RightR{\land}}
+    \BinaryInf$\Gamma \fCenter \Delta, !A \land !B$
+  \end{prooftree}
+  Considérons \iftag{FOL}{une !!{structure}~$\Struct M$}{une !!{valuation}~$\pAssign{v}$}.
+  Si \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} satisfait
+  $\Gamma \Sequent \Delta$, le résultat est acquis.
+  Supposons donc que ce ne soit pas le cas. Puisque
+  $\Gamma \fCenter \Delta, !A$ est valide par hypothèse de récurrence,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  De même, la validité de $\Gamma \Sequent \Delta, !B$ entraîne
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  Il en résulte $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$.
+\item La dernière inférence est \LeftR{\lor} : cas laissé en exercice.
+\item La dernière inférence est \LeftR{\lif}. Alors $\pi$ se termine par :
+  \begin{prooftree}
+    \AxiomC{}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+    \AxiomC{}
+    \Deduce$!B, \Pi \fCenter \Lambda$
+    \RightLabel{\LeftR{\lif}}
+    \BinaryInf$!A \lif !B, \Gamma, \Pi \fCenter \Delta, \Lambda$
+  \end{prooftree}
+  Considérons de nouveau
+  \iftag{FOL}{une !!{structure}~$\Struct{M}$}{une !!{valuation}~$\pAssign{v}$}
+  et supposons que \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}
+  ne satisfasse pas $\Gamma, \Pi \Sequent \Delta, \Lambda$.
+  Il faut montrer $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$.
+  Si \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} ne satisfait pas
+  $\Gamma, \Pi \Sequent \Delta, \Lambda$, alors
+  \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} ne satisfait ni
+  $\Gamma \Sequent \Delta$ ni $\Pi \Sequent \Lambda$.
+  Puisque $\Gamma \Sequent \Delta, !A$ est valide,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Puisque $!B, \Pi \Sequent \Lambda$ est valide,
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$.
+  On a donc $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$,
+  comme voulu.
+\end{enumerate}
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Compléter la démonstration du \olref[fol][seq][sou]{thm:sequent-soundness}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Compléter la démonstration du \olref[pl][seq][sou]{thm:sequent-soundness}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est \iftag{FOL}{valide}{une tautologie}.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:entailment-soundness}
+Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
+\end{cor}
+
+\begin{proof}
+Si $\Gamma \Proves !A$, il existe une partie finie
+$\Gamma_0 \subseteq \Gamma$ et une !!{derivation} de
+$\Gamma_0 \Sequent !A$. D'après le \olref{thm:sequent-soundness},
+toute \iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
+rend faux un certain $!B \in \Gamma_0$ ou rend vrai $!A$.
+Ainsi, si $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ aussi.
+\end{proof}
+
+\begin{cor}
+\ollabel{cor:consistency-soundness}
+Si $\Gamma$ est satisfaisable, alors il est cohérent.
+\end{cor}
+
+\begin{proof}
+Raisonnons par contraposition. Supposons $\Gamma$ incohérent.
+Il existe alors une partie finie $\Gamma_0 \subseteq \Gamma$
+et une !!{derivation} de $\Gamma_0 \Sequent \quad$.
+D'après le \olref{thm:sequent-soundness}, ce séquent est valide.
+Autrement dit, pour toute
+\iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$},
+il existe $!C \in \Gamma_0$ tel que
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$.
+Puisque $\Gamma_0 \subseteq \Gamma$, cet énoncé $!C$ appartient
+aussi à $\Gamma$. Aucune \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$}
+ne satisfait donc $\Gamma$, qui est ainsi insatisfaisable.
+\end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/soundness.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+\OLEndChapterHook
+
+
+\endgroup
+% END embedded source: content/first-order-logic/sequent-calculus/sequent-calculus.tex
 
 \tagtrue{FOL}
 \backmatter

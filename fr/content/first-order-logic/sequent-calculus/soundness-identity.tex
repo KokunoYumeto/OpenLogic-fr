@@ -1,0 +1,58 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: soundness-identity
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{seq}{sid}
+
+\olsection{Correction en présence de l'\usetoken{s}{identity}}
+
+\begin{prop}
+Le calcul $\Log{LK}$ muni des séquents initiaux et des règles pour
+l'égalité est correct.
+\end{prop}
+
+\begin{proof}
+Les séquents initiaux de la forme ${} \Sequent \eq[t][t]$ sont
+valides : pour toute !!{structure}~$\Struct M$, on a
+$\Sat{M}{\eq[t][t]}$. Le terme $t$ est supposé clos, c'est-à-dire
+sans variable ; les valuations des variables n'interviennent donc pas.
+
+Supposons que la dernière inférence d'une !!{derivation} soit la
+règle $=$ dont la prémisse est
+$\eq[t_1][t_2], \Gamma \Sequent \Delta, !A(t_1)$ et la conclusion
+$\eq[t_1][t_2], \Gamma \Sequent \Delta, !A(t_2)$.
+Considérons une !!{structure}~$\Struct M$.
+Pour établir la validité de la conclusion, il faut montrer que,
+si $\Sat{M}{\eq[t_1][t_2]}$ et $\Sat{M}{\Gamma}$, alors
+$\Sat{M}{!C}$ pour un certain $!C \in \Delta$ ou
+$\Sat{M}{!A(t_2)}$.
+
+Par hypothèse de récurrence, la prémisse est valide.
+Si $\Sat{M}{\eq[t_1][t_2]}$ et $\Sat{M}{\Gamma}$, on a donc
+soit (a) $\Sat{M}{!C}$ pour un certain $!C \in \Delta$,
+soit (b) $\Sat{M}{!A(t_1)}$.
+Le cas (a) donne le résultat voulu. Dans le cas (b), soit $s$
+une valuation des variables telle que $s(x) = \Value{t_1}{M}$.
+D'après la \olref[syn][ass]{prop:sentence-sat-true},
+$\Sat{M}{!A(t_1)}[s]$.
+Comme $\varAssign{s}{s}{x}$, la
+\olref[syn][ext]{prop:ext-formulas} donne $\Sat{M}{!A(x)}[s]$.
+Puisque $\Sat{M}{\eq[t_1][t_2]}$, on a
+$\Value{t_1}{M} = \Value{t_2}{M}$, et donc
+$s(x) = \Value{t_2}{M}$.
+En appliquant de nouveau la \olref[syn][ext]{prop:ext-formulas},
+on obtient $\Sat{M}{!A(t_2)}[s]$.
+Enfin, la \olref[syn][ass]{prop:sentence-sat-true} entraîne
+$\Sat{M}{!A(t_2)}$.
+L'autre règle pour l'égalité se traite de la même façon, en
+intervertissant les rôles de $t_1$ et de $t_2$ dans cet argument :
+l'égalité de leurs valeurs est symétrique.\footnote{Note de l'édition
+française : cette dernière phrase explicite le cas de la seconde
+orientation de la règle, que la source ne développe pas.}
+\end{proof}
+
+\end{document}

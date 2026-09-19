@@ -1,10 +1,10 @@
 # OpenLogic — édition française
 
-Cette sixième livraison française d’OpenLogic réunit huit chapitres, 56 sections et 83 exercices, soit 64 des 722 unités prévues pour l’édition intégrale.
+Cette septième livraison française d’OpenLogic réunit neuf chapitres, 65 sections et 89 exercices, soit 74 des 722 unités prévues pour l’édition intégrale.
 
-Après les ensembles, les relations, les fonctions, la dénombrabilité, la construction des nombres et les ensembles infinis, deux nouveaux chapitres présentent la syntaxe et la sémantique propositionnelles et les systèmes de preuve : calcul des séquents, déduction naturelle, tableaux et dérivations axiomatiques. Les démonstrations, les formules et les exercices sont conservés ; les corrections de la source sont signalées dans le texte.
+Après les ensembles, les relations, les fonctions, la dénombrabilité, la construction des nombres, la logique propositionnelle et la présentation des systèmes de preuve, le nouveau chapitre développe le calcul des séquents propositionnel : règles logiques et structurelles, construction de dérivations, recherche de preuves, cohérence et théorème de correction. Les démonstrations, les formules, les exemples et les exercices sont conservés ; les corrections de la source sont signalées dans le texte.
 
-Le lecteur est proposé en PDF de 94 pages, en LaTeX cumulatif complet directement téléchargeable et en EPUB 3 avec MathML natif et figures décrites. Le ZIP contient les sources modulaires, les styles, les figures, les bibliographies et les outils nécessaires à leur reconstruction.
+Le lecteur est proposé en PDF de 110 pages, en LaTeX cumulatif complet directement téléchargeable et en EPUB 3 avec MathML natif et figures décrites. Le ZIP contient les sources modulaires, les styles, les figures, les bibliographies et les outils nécessaires à leur reconstruction. Six autres unités rédigées, dont les règles du premier ordre, restent hors du lecteur en attendant leurs prérequis ; elles sont conservées dans les sources.
 
 Traduction et révision éditoriale assistées par IA, avec références françaises consultées et décisions documentées. Aucune validation humaine indépendante n’est revendiquée. L’édition intégrale reste en cours. Les livraisons antérieures et leurs sources demeurent publiques.
 
@@ -13,12 +13,12 @@ Traduction et révision éditoriale assistées par IA, avec références frança
 
 ## Lire et télécharger
 
-1. [Lire les huit chapitres en PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.6.0-logique-propositionnelle/00-00-01-openlogic-fr-ensembles-logique-propositionnelle.pdf)
-2. [LaTeX cumulatif complet](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.6.0-logique-propositionnelle/00-00-02-openlogic-fr-ensembles-logique-propositionnelle.tex)
-3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.6.0-logique-propositionnelle/00-00-03-openlogic-fr-ensembles-logique-propositionnelle-sources.zip)
-4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.6.0-logique-propositionnelle/00-00-04-openlogic-fr-ensembles-logique-propositionnelle.epub)
+1. [Lire les neuf chapitres en PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.7.0-calcul-des-sequents/00-00-00-01-openlogic-fr-ensembles-calcul-des-sequents.pdf)
+2. [LaTeX cumulatif complet](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.7.0-calcul-des-sequents/00-00-00-02-openlogic-fr-ensembles-calcul-des-sequents.tex)
+3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.7.0-calcul-des-sequents/00-00-00-03-openlogic-fr-ensembles-calcul-des-sequents-sources.zip)
+4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.7.0-calcul-des-sequents/00-00-00-04-openlogic-fr-ensembles-calcul-des-sequents.epub)
 
-[Cette livraison sur Zenodo](https://doi.org/10.5281/zenodo.22850205) · [Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
+[Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
 
 Les éditions historiques disposent chacune de leur PDF, de leur LaTeX cumulatif complet et de leur ZIP de sources :
 

@@ -24,9 +24,10 @@
 \setlength{\emergencystretch}{2em}
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la logique propositionnelle},
+\setlength{\cftbeforechapterskip}{0.65em}
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles au calcul des séquents},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres et logique propositionnelle},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle et calcul des séquents},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -37,15 +38,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\à la logique propositionnelle\par}
+{\sffamily\huge Des ensembles\\au calcul des séquents\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Sixième livraison : huit chapitres\par}
+{\large Septième livraison : neuf chapitres\par}
 \vspace{4mm}
-Cette livraison comprend cinquante-six sections et leurs huit chapitres d’organisation,
-soit 64 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend soixante-cinq sections et leurs neuf chapitres d’organisation,
+soit 74 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -59,6 +60,8 @@ inductive, les valuations et les notions sémantiques fondamentales.
 Le huitième présente les systèmes de preuve, leur correction et leur
 complétude : calcul des séquents, déduction naturelle, tableaux et
 dérivations axiomatiques.
+Le neuvième développe le calcul des séquents propositionnel : règles,
+recherche de preuves, dérivabilité, cohérence et théorème de correction.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -84,6 +87,7 @@ des traductions d'OpenLogic}
 \tagfalse{FOL}
 \olimport[content/propositional-logic/syntax-and-semantics]{syntax-and-semantics}
 \olimport[content/first-order-logic/proof-systems]{proof-systems}
+\olimport[content/first-order-logic/sequent-calculus]{sequent-calculus}
 \tagtrue{FOL}
 \backmatter
 % La notice Frege1884 cite elle-même cette traduction anglaise.

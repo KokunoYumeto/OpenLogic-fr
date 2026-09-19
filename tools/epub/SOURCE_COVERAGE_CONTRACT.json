@@ -1,10 +1,18 @@
 {
-  "at": "2026-09-19T21:23:29.326244+00:00",
-  "drafted_units": 65,
-  "expected_reader_units": 64,
-  "chapters": 8,
-  "sections": 56,
-  "excluded_part_driver": "OLP-0055 imports further untranslated chapters; not counted as reader-loaded",
+  "at": "2026-09-19T23:12:52.182884+00:00",
+  "drafted_units": 80,
+  "expected_reader_units": 74,
+  "chapters": 9,
+  "sections": 65,
+  "excluded_drafts": [
+    "OLP-0055",
+    "OLP-0072",
+    "OLP-0076",
+    "OLP-0080",
+    "OLP-0082",
+    "OLP-0083"
+  ],
+  "exclusion_reason": "Part driver0055 awaits the remaining shared proof chapters; five FOL-only sections await first-order syntax/semantics and will join the same shared chapter.",
   "units": [
     {
       "unit_id": "OLP-0005",
@@ -325,9 +333,59 @@
       "unit_id": "OLP-0068",
       "path": "content/first-order-logic/proof-systems/axiomatic-deduction.tex",
       "sha256": "de247734f6bdc1ec47919b44be0d4edc65fc7d86ffb5df8da5fe2546566067ef"
+    },
+    {
+      "unit_id": "OLP-0069",
+      "path": "content/first-order-logic/sequent-calculus/sequent-calculus.tex",
+      "sha256": "455b4b395dbba4c9098c0fd7657e75dfd05df979cef796e0d95020ec609ff462"
+    },
+    {
+      "unit_id": "OLP-0070",
+      "path": "content/first-order-logic/sequent-calculus/rules-and-proofs.tex",
+      "sha256": "f85672f8d60e54887f3d5d6f14ccf1b90a194095319b1dec678f557bc35d3dce"
+    },
+    {
+      "unit_id": "OLP-0071",
+      "path": "content/first-order-logic/sequent-calculus/propositional-rules.tex",
+      "sha256": "31204fc7a5d4e77dc905ffcde4c8ae1d033ed978dd803962a39e588a5435b0fd"
+    },
+    {
+      "unit_id": "OLP-0073",
+      "path": "content/first-order-logic/sequent-calculus/structural-rules.tex",
+      "sha256": "c450ba92a3bca900181c97435ee6aeea3df27386bce708b8d330ef71c44c87bf"
+    },
+    {
+      "unit_id": "OLP-0074",
+      "path": "content/first-order-logic/sequent-calculus/derivations.tex",
+      "sha256": "1ab5ba878cee2c5ec4fdc1fdc8367f48b3ac4b34642971aa8920a07e0d996985"
+    },
+    {
+      "unit_id": "OLP-0075",
+      "path": "content/first-order-logic/sequent-calculus/proving-things.tex",
+      "sha256": "3eed2e6a98ea470ff866429a5b538caea0b4e248ab9950c500c1da80dd5593bd"
+    },
+    {
+      "unit_id": "OLP-0077",
+      "path": "content/first-order-logic/sequent-calculus/proof-theoretic-notions.tex",
+      "sha256": "9a935516e38bef6192e29f02a24cf190b8fe7adf7567ed3557ffda2f523ebd33"
+    },
+    {
+      "unit_id": "OLP-0078",
+      "path": "content/first-order-logic/sequent-calculus/provability-consistency.tex",
+      "sha256": "1cac507c3c4f2a83779c59e4a6c36f70d84aa733bbece93c0e307973bc08e459"
+    },
+    {
+      "unit_id": "OLP-0079",
+      "path": "content/first-order-logic/sequent-calculus/provability-propositional.tex",
+      "sha256": "11678f36c00e2d23e5ad43d5a34ee647d8cf49aff69390a37fd1e4815084898e"
+    },
+    {
+      "unit_id": "OLP-0081",
+      "path": "content/first-order-logic/sequent-calculus/soundness.tex",
+      "sha256": "90fb5d898e582fc540a9ed06ad65915b5418ad00af47474d9e504267e5d29072"
     }
   ],
-  "reader_sha256": "f59a73051d5eb142026d300e6be45575b300876bfbaf4fbc800b4d37d00139dc",
-  "config_sha256": "00edb2ea6c20894ede0c086027f8d36b8bcc176e82e1a8cc263dfeea73307ec2",
+  "reader_sha256": "9fbb273113d9b0c4304e894bd68c1ec0170d7c7ce2bb4599459d5597e0216b32",
+  "config_sha256": "6259bffda58d71693700ba12eb7ebae60598a16f7578f24c5e53c6088eb069c8",
   "status": "PREPARED_NOT_BUILT"
 }

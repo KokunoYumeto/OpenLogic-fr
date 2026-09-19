@@ -1,0 +1,65 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: provability-quantifiers
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{seq}{qpr}
+\olsection{\usetoken{S}{derivability} et quantificateurs}
+
+\begin{explain}
+Pour démontrer le théorème de complétude, nous aurons aussi besoin
+des propriétés de $\Proves$ établies dans cette section à l'aide
+des règles du calcul des séquents.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:strong-generalization}
+Si $c$ est une constante qui ne figure ni dans $\Gamma$ ni dans
+$!A(x)$, et si $\Gamma \Proves !A(c)$, alors
+$\Gamma \Proves \lforall[x][!A(x)]$.
+\end{thm}
+
+\begin{proof}
+Soit $\pi_0$ une !!{derivation}, dans $\Log{LK}$, de
+$\Gamma_0 \Sequent !A(c)$, où $\Gamma_0 \subseteq \Gamma$
+est une partie finie. En ajoutant une inférence $\RightR{\lforall}$,
+on obtient une !!{derivation} de
+$\Gamma_0 \Sequent \lforall[x][!A(x)]$ : la constante $c$ ne
+figure ni dans $\Gamma$ ni dans $!A(x)$, de sorte que la condition
+sur l'eigenvariable est satisfaite.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:provability-quantifiers}
+Soit $t$ un terme clos.\footnote{Note de l'édition française :
+la convention sur les termes des règles de quantification est
+rappelée explicitement ; elle reste implicite ici dans la source.}
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{$!A(t) \Proves \lexists[x][!A(x)]$.}{}
+\tagitem{prvAll}{$\lforall[x][!A(x)] \Proves !A(t)$.}{}
+\end{tagenumerate}
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{Le séquent $!A(t) \Sequent \lexists[x][!A(x)]$
+  est !!{derivable} :
+  \begin{prooftree}
+    \Axiom$!A(t) \fCenter !A(t)$
+    \RightLabel{\RightR{\lexists}}
+    \UnaryInf$!A(t) \fCenter \lexists[x][!A(x)]$
+    \end{prooftree}}{}
+\tagitem{prvAll}{Le séquent $\lforall[x][!A(x)] \Sequent !A(t)$
+  est !!{derivable} :
+  \begin{prooftree}
+    \Axiom$!A(t) \fCenter !A(t)$
+    \RightLabel{\LeftR{\lforall}}
+    \UnaryInf$\lforall[x][!A(x)] \fCenter !A(t)$
+    \end{prooftree}}{}
+\end{tagenumerate}
+\end{proof}
+
+\end{document}

@@ -1,0 +1,80 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: equality
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{seq}{ide}
+
+\olsection{\usetoken{P}{derivation} avec l'\usetoken{s}{identity}}
+
+Les !!{derivation}s avec l'!!{identity} nécessitent des séquents
+initiaux et des règles d'inférence supplémentaires.
+
+\begin{defn}[Séquents initiaux pour $\eq$]
+Si $t$ est un terme clos, alors ${} \Sequent \eq[t][t]$ est un
+séquent initial.
+\end{defn}
+
+Les règles pour $\eq$ sont les suivantes, où $t_1$ et $t_2$ sont
+des termes clos :
+
+\begin{defish}
+\Axiom$ \eq[t_1][t_2], \Gamma \fCenter \Delta, !A(t_1) $
+\RightLabel{$\eq$}
+\UnaryInf$\eq[t_1][t_2], \Gamma \fCenter \Delta, !A(t_2)$
+\DisplayProof
+\hfill
+\Axiom$\eq[t_1][t_2], \Gamma \fCenter \Delta, !A(t_2) $
+\RightLabel{$\eq$}
+\UnaryInf$\eq[t_1][t_2], \Gamma  \fCenter \Delta, !A(t_1)$
+\DisplayProof
+\end{defish}
+
+\begin{ex}
+Si $s$ et $t$ sont des termes clos, alors
+$\eq[s][t], !A(s) \Proves !A(t)$ :
+\begin{prooftree}
+\Axiom$ !A(s) \fCenter !A(s)$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$\eq[s][t], !A(s)  \fCenter !A(s)$
+\RightLabel{$\eq$}
+\UnaryInf$\eq[s][t], !A(s)  \fCenter !A(t)$
+\end{prooftree}
+On reconnaît le principe de substituabilité des égaux, également
+appelé loi de Leibniz.
+
+Dans $\Log{LK}$, on démontre que $\eq$ est symétrique et transitive :
+\begin{prooftree}
+\Axiom$ \fCenter \eq[t_1][t_1] $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ \eq[t_1][t_2] \fCenter \eq[t_1][t_1] $
+\RightLabel{$\eq$}
+\UnaryInf$ \eq[t_1][t_2] \fCenter \eq[t_2][t_1]$
+\DisplayProof\qquad\bottomAlignProof
+\Axiom$ \eq[t_1][t_2] \fCenter \eq[t_1][t_2] $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$\eq[t_2][t_3], \eq[t_1][t_2]  \fCenter \eq[t_1][t_2] $
+\RightLabel{$\eq$}
+\UnaryInf$\eq[t_2][t_3], \eq[t_1][t_2]  \fCenter \eq[t_1][t_3]$
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$\eq[t_1][t_2], \eq[t_2][t_3]  \fCenter \eq[t_1][t_3]$
+\end{prooftree}
+Dans la !!{derivation} de gauche, la !!{formula}~$\eq[x][t_1]$
+joue le rôle de $!A(x)$. À droite, nous prenons
+$!A(x)$ égal à $\eq[t_1][x]$.
+\end{ex}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $\Sequent \lforall[x][\lforall[y][((x = y \land !A(x)) \lif !A(y))]]$
+\item $\lexists[x][!A(x)] \land \lforall[y][\lforall[z][((!A(y) \land
+    !A(z)) \lif y = z)]] \Sequent 
+\lexists[x][(!A(x) \land \lforall[y][(!A(y) \lif y = x)])]$
+\end{enumerate}
+\end{prob}
+
+\end{document}

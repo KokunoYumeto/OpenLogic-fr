@@ -1,0 +1,110 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: proving-things-quant
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{seq}{prq}
+
+\olsection{\usetoken{P}{derivation} avec quantificateurs}
+
+\begin{ex}
+Construire une !!{derivation} dans $\Log{LK}$ du séquent
+$\lexists[x][\lnot !A(x)] \Sequent \lnot \lforall[x][!A(x)]$.
+
+Avec les quantificateurs, il faut veiller à respecter la condition
+sur l'eigenvariable, ce qui peut demander d'ajuster l'ordre de certaines
+inférences. En général, il est utile de traiter d'abord, dans la
+recherche, les règles soumises à cette condition : elles figureront
+plus bas dans la preuve achevée. Il est également utile d'anticiper
+la forme du séquent initial. Ici, celui-ci devra être de la forme
+$!A(a) \Sequent !A(a)$. Lorsque nous appliquerons les règles pour
+les quantificateurs à rebours, nous devrons donc choisir le même
+terme, que nous noterons $a$, pour les règles de $\lforall$ et
+de $\lexists$. Avec deux termes différents, nous aboutirions à un
+séquent tel que $!A(a) \Sequent !A(b)$, qui n'est pas dérivable en
+général.\footnote{Note de l'édition française : « en général » précise
+la portée du schéma ; certaines instances particulières sont dérivables.}
+
+Comme d'habitude, commençons par écrire :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lexists[x][\lnot !A(x)] \fCenter \lnot \lforall[x][!A(x)]$
+\end{prooftree}
+Nous pouvons appliquer soit \LeftR{\exists}, soit \RightR{\lnot}.
+Comme \LeftR{\exists} est soumise à la condition sur l'eigenvariable,
+traitons-la d'abord.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$ \lnot !A(a) \fCenter \lnot \lforall[x][!A(x)]$
+\RightLabel{\LeftR{\lexists}}
+\UnaryInf$ \lexists[x][\lnot !A(x)] \fCenter \lnot \lforall[x][!A(x)]$
+\end{prooftree}
+En appliquant à rebours les règles \LeftR{\lnot} et \RightR{\lnot},
+nous obtenons :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInf$\lforall[x][!A(x)] \fCenter !A(a)$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A(a), \lforall[x][!A(x)] \fCenter $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$\lforall[x][!A(x)], \lnot !A(a) \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \lnot !A(a) \fCenter \lnot \lforall[x] !A(x)$
+\RightLabel{\LeftR{\lexists}}
+\UnaryInf$ \lexists[x] \lnot !A(x) \fCenter \lnot \lforall[x] !A(x)$
+\end{prooftree}
+Il nous reste à appliquer \LeftR{\forall}. Cette règle n'est pas
+soumise à la condition sur l'eigenvariable, et nous pouvons donc
+choisir le terme voulu. Puisque nous cherchons un séquent initial
+de la forme $!A(a) \Sequent !A(a)$, choisissons $a$ comme argument
+de $!A$ lors de cette application.
+\begin{prooftree}
+\Axiom$!A(a) \fCenter !A(a)$
+\RightLabel{\LeftR{\lforall}}
+\UnaryInf$\lforall[x][!A(x)] \fCenter !A(a)$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A(a), \lforall[x][!A(x)] \fCenter $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$\lforall[x][!A(x)], \lnot !A(a) \fCenter $
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \lnot !A(a) \fCenter \lnot \lforall[x][!A(x)]$
+\RightLabel{\LeftR{\lexists}}
+\UnaryInf$ \lexists[x][ \lnot !A(x)] \fCenter \lnot \lforall[x][!A(x)]$
+\end{prooftree}
+Vérifions maintenant que la condition sur l'eigenvariable a bien été
+respectée, ce qui est essentiel en présence de quantificateurs.
+La seule règle utilisée qui soit soumise à cette condition est
+\LeftR{\exists}. Or son eigenvariable $a$ ne figure pas dans le
+séquent inférieur de cette inférence, qui est ici le séquent final.
+La !!{derivation} est donc correcte.
+\end{ex}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $\Sequent (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) \lif
+\lforall[z][(!A(z) \land !B(z))]$.
+\item $\Sequent (\lexists[x][!A(x)] \lor \lexists[y][!B(y)]) \lif
+\lexists[z][(!A(z) \lor !B(z))]$.
+\item $\lforall[x][(!A(x) \lif !B)] \Sequent \lexists[y][!A(y)] \lif !B$.
+\item $\lforall[x][\lnot !A(x)] \Sequent \lnot\lexists[x][!A(x)]$.
+\item $\Sequent \lnot\lexists[x][!A(x)] \lif \lforall[x][\lnot !A(x)]$.
+\item $\Sequent \lnot\lexists[x][\lforall[y][((!A(x,y) \lif \lnot
+!A(y,y)) \land (\lnot !A(y,y) \lif !A(x,y)))]]$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Construire des !!{derivation}s des séquents suivants :
+\begin{enumerate}
+\item $\Sequent \lnot\lforall[x][!A(x)] \lif \lexists[x][\lnot!A(x)]$.
+\item $(\lforall[x][!A(x)] \lif !B) \Sequent \lexists[y][(!A(y) \lif !B)]$.
+\item $\Sequent \lexists[x][(!A(x) \lif \lforall[y][!A(y)])]$.
+\end{enumerate}
+(Tous requièrent la règle $\RightR{\Contraction}$.)
+\end{prob}
+
+\end{document}

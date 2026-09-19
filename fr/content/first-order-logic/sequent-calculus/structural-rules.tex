@@ -1,0 +1,82 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: structural-rules
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{srl}}
+      {\olfileid[fr]{pl}{seq}{srl}}
+
+\olsection{Règles structurelles}
+
+Il nous faut aussi quelques règles permettant de réordonner les
+!!{sentence}s dans les membres gauche et droit d'un séquent. Les
+règles logiques exigent que les !!{sentence}s sur lesquels elles
+agissent dans la prémisse se trouvent tout à gauche ou tout à
+droite. Une règle d'« échange » est donc nécessaire pour les amener
+à la position voulue. Il est également parfois important de pouvoir
+réunir deux !!{sentence}s identiques en un seul, ou d'ajouter
+!!a{sentence} de l'un ou l'autre côté.
+
+\subsection{Affaiblissement}
+
+\begin{defish}
+\Axiom$ \Gamma \fCenter \Delta $
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$ !A, \Gamma \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$ \Gamma \fCenter \Delta$
+\RightLabel{\RightR{\Weakening}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A$
+\DisplayProof
+\end{defish}
+
+\subsection{Contraction}
+
+\begin{defish}
+\Axiom$ !A, !A, \Gamma \fCenter \Delta $
+\RightLabel{\LeftR{\Contraction}}
+\UnaryInf$ !A, \Gamma \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$ \Gamma \fCenter \Delta, !A, !A$
+\RightLabel{\RightR{\Contraction}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A$
+\DisplayProof
+\end{defish}
+
+\subsection{Échange}
+
+\begin{defish}
+\Axiom$ \Gamma, !A, !B, \Pi \fCenter \Delta $
+\RightLabel{\LeftR{\Exchange}}
+\UnaryInf$ \Gamma, !B, !A, \Pi \fCenter \Delta$
+\DisplayProof
+\hfill
+\Axiom$ \Gamma \fCenter \Delta, !A, !B, \Lambda$
+\RightLabel{\RightR{\Exchange}}
+\UnaryInf$ \Gamma \fCenter \Delta, !B, !A, \Lambda$
+\DisplayProof
+\end{defish}
+
+On indiquera souvent une succession d'inférences d'affaiblissement,
+de contraction et d'échange par des traits d'inférence doubles.
+
+La règle suivante, appelée « coupure », n'est pas à proprement parler
+nécessaire, mais elle facilite beaucoup la réutilisation et la
+combinaison des !!{derivation}s.
+\begin{defish}
+\[
+\Axiom$ \Gamma \fCenter \Delta, !A$
+\Axiom$ !A, \Pi \fCenter \Lambda $
+\RightLabel{\Cut}
+\BinaryInf$ \Gamma, \Pi \fCenter \Delta, \Lambda$
+\DisplayProof
+\]
+\end{defish}
+
+\end{document}

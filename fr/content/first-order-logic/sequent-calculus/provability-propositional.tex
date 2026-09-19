@@ -1,0 +1,149 @@
+% Part: first-order-logic
+% Chapter: sequent-calculus
+% Section: provability-propositional
+
+% Propriétés de la dérivabilité nécessaires aux ensembles maximalement
+% cohérents dans le chapitre sur la complétude.
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{seq}{ppr}}
+      {\olfileid[fr]{pl}{seq}{ppr}}
+
+\olsection{\usetoken{S}{derivability} et connecteurs propositionnels}
+
+\begin{explain}
+La relation de !!{derivability}~$\Proves$ du calcul des séquents
+permet d'établir certaines propriétés élémentaires des connecteurs
+propositionnels, par exemple $!A \land !B \Proves !A$ et
+$!A, !A \lif !B \Proves !B$ (modus ponens).
+Ces propriétés serviront dans la démonstration du théorème de complétude.
+\end{explain}
+
+\begin{prop}\ollabel{prop:provability-land}
+  \begin{enumerate}
+  \item \ollabel{prop:provability-land-left} On a
+    $!A \land !B \Proves !A$ et $!A \land !B \Proves !B$.
+  \item \ollabel{prop:provability-land-right}
+    $!A, !B \Proves !A \land !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Les séquents $!A \land !B \Sequent !A$ et
+    $!A \land !B \Sequent !B$ sont tous deux !!{derivable}s :
+    \begin{prooftree}
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\LeftR{\land}}
+      \UnaryInf$!A \land !B \fCenter !A$
+      \DisplayProof\qquad\bottomAlignProof
+      \Axiom$!B \fCenter !B$
+      \RightLabel{\LeftR{\land}}
+      \UnaryInf$!A \land !B \fCenter !B$
+    \end{prooftree}
+  \item Voici une !!{derivation} du séquent
+    $!A, !B \Sequent !A \land !B$ :\footnote{Note de l'édition
+    française : les affaiblissements et l'échange ajoutés à cet arbre
+    donnent aux deux prémisses le même antécédent $!A, !B$,
+    comme l'exige la règle $\RightR{\land}$. Ces étapes manquent
+    dans l'arbre de la source.}
+    \begin{prooftree}
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\LeftR{\Weakening}}
+      \UnaryInf$!B, !A \fCenter !A$
+      \RightLabel{\LeftR{\Exchange}}
+      \UnaryInf$!A, !B \fCenter !A$
+      \Axiom$!B \fCenter !B$
+      \RightLabel{\LeftR{\Weakening}}
+      \UnaryInf$!A, !B \fCenter !B$
+      \RightLabel{\RightR{\land}}
+      \BinaryInf$!A, !B \fCenter !A \land !B$
+    \end{prooftree}
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lor}
+  \begin{enumerate}
+  \item $!A \lor !B, \lnot !A, \lnot !B$ est incohérent.
+  \item On a $!A \Proves !A \lor !B$ et $!B \Proves !A \lor !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Voici une !!{derivation} du séquent
+    $!A \lor !B, \lnot !A, \lnot !B \Sequent$ :
+    \begin{prooftree}
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\LeftR{\lnot}}
+      \UnaryInf$\lnot !A, !A \fCenter$
+      \doubleLine
+      \UnaryInf$!A, \lnot !A, \lnot !B \fCenter$
+      \Axiom$!B \fCenter !B$
+      \RightLabel{\LeftR{\lnot}}
+      \UnaryInf$\lnot !B, !B \fCenter$
+      \doubleLine
+      \UnaryInf$!B, \lnot !A, \lnot !B \fCenter$
+      \RightLabel{\LeftR{\lor}}
+      \BinaryInf$ !A \lor !B, \lnot !A, \lnot !B \fCenter $
+    \end{prooftree}
+    (Rappelons qu'un trait d'inférence double représente une succession
+    d'affaiblissements, de contractions et d'échanges.)
+  \item Les deux séquents $!A \Sequent !A \lor !B$ et
+    $!B \Sequent !A \lor !B$ possèdent des !!{derivation}s :
+    \begin{prooftree}
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\RightR{\lor}}
+      \UnaryInf$!A \fCenter !A \lor !B$
+      \DisplayProof\qquad\bottomAlignProof
+      \Axiom$!B \fCenter !B$
+      \RightLabel{\RightR{\lor}}
+      \UnaryInf$!B \fCenter !A \lor !B$
+    \end{prooftree}
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lif}
+  \begin{enumerate}
+  \item \ollabel{prop:provability-lif-left} $!A, !A \lif !B \Proves !B$.
+  \item \ollabel{prop:provability-lif-right}
+    On a $\lnot !A \Proves !A \lif !B$ et $!B \Proves !A \lif !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Le séquent $!A \lif !B, !A \Sequent !B$ est !!{derivable} :
+      \begin{prooftree}
+        \Axiom$!A \fCenter !A$
+        \Axiom$!B \fCenter !B$
+        \RightLabel{\LeftR{\lif}}
+        \BinaryInf$!A \lif !B, !A  \fCenter !B$
+      \end{prooftree}
+  \item Les séquents $\lnot !A \Sequent !A \lif !B$ et
+    $!B \Sequent !A \lif !B$ sont tous deux !!{derivable}s :
+      \begin{prooftree}
+        \Axiom$!A \fCenter !A$
+        \RightLabel{\LeftR{\lnot}}
+        \UnaryInf$\lnot !A, !A \fCenter$
+        \RightLabel{\LeftR{\Exchange}}
+        \UnaryInf$!A, \lnot !A \fCenter$
+        \RightLabel{\RightR{\Weakening}}
+        \UnaryInf$!A, \lnot !A \fCenter !B$
+        \RightLabel{\RightR{\lif}}
+        \UnaryInf$\lnot !A \fCenter !A \lif !B$
+        \DisplayProof\qquad\bottomAlignProof
+        \Axiom$!B \fCenter !B$
+        \RightLabel{\LeftR{\Weakening}}
+        \UnaryInf$!A, !B \fCenter !B$
+        \RightLabel{\RightR{\lif}}
+        \UnaryInf$!B \fCenter !A \lif !B$
+      \end{prooftree}
+  \end{enumerate}
+\end{proof}
+
+\end{document}
