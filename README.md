@@ -18,7 +18,7 @@ Traduction et révision éditoriale assistées par IA, avec références frança
 3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.6.0-logique-propositionnelle/00-00-03-openlogic-fr-ensembles-logique-propositionnelle-sources.zip)
 4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.6.0-logique-propositionnelle/00-00-04-openlogic-fr-ensembles-logique-propositionnelle.epub)
 
-[Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
+[Cette livraison sur Zenodo](https://doi.org/10.5281/zenodo.22850205) · [Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
 
 Les éditions historiques disposent chacune de leur PDF, de leur LaTeX cumulatif complet et de leur ZIP de sources :
 
