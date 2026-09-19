@@ -1,692 +1,702 @@
 {
-  "release_gate": "pass_for_37_unit_four_chapter_reader",
-  "total_units": 722,
-  "validated_units": 37,
-  "aligned_blocks": 662,
-  "translated_text_blocks": 464,
-  "full_edition_complete": false,
-  "checks": {
-    "structure": "Frozen source bytes, current target identities, NFC and occurrence-linked anchors checked. Fourteen size units integrated once; alternate proofs and source-commented prose included explicitly.",
-    "semantic_math": "Complete bounded review of the 14-unit size chapter and prior chapter reviews, including five Functions manager corrections. Formula changes and source repairs disclosed.",
-    "untranslated_prose": "37 release units complete; 685 others remain unfinished. Conditional forward-looking material retained in sources for subsequent integration.",
-    "construction": "436 editorial decisions; 187 new size prose blocks mapped to consulted canon with contextual alternatives and limitations. No exhaustive per-word or independent human endorsement claimed.",
-    "reader_build": "Three XeLaTeX passes plus BibTeX in each fresh directory; one outer machine-wide mutex held continuously through both builds.",
-    "visual_QA": "All changed pages directly inspected; reuse only on exact SHA256 raster identity. Captured editorial footnotes, reference grammar and isolated heading fixed."
-  },
-  "pdf": {
-    "filename": "openlogic-fr-ensembles-relations-fonctions-denombrabilite.pdf",
-    "bytes": 319384,
-    "sha256": "57a59e313e99e62e8f3de1921e8072983c66b23cac0311b56e65ca3a5172d88a",
-    "pages": 55,
-    "exercises": 64
-  },
-  "reproducibility": {
-    "byte_identical": true,
-    "source_date_epoch": "1788739200",
-    "build_receipts_sha256": [
-      "b244e575f7e5f5578fd329968b707ec7cea577c3b9df2adfbfb7cc7ea66e3a8c",
-      "0817495ba0075c678f23f53be968aa84eba24bdbd28b205be312bedb764428ed"
+  "edition": {
+    "source_repository": "https://github.com/OpenLogicProject/OpenLogic",
+    "source_revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
+    "frozen_units": 722,
+    "published_scope_units": 51,
+    "published_ids": [
+      "OLP-0005",
+      "OLP-0007",
+      "OLP-0009",
+      "OLP-0010",
+      "OLP-0004",
+      "OLP-0006",
+      "OLP-0008",
+      "OLP-0013",
+      "OLP-0012",
+      "OLP-0011",
+      "OLP-0015",
+      "OLP-0017",
+      "OLP-0019",
+      "OLP-0016",
+      "OLP-0014",
+      "OLP-0018",
+      "OLP-0021",
+      "OLP-0022",
+      "OLP-0020",
+      "OLP-0023",
+      "OLP-0024",
+      "OLP-0025",
+      "OLP-0026",
+      "OLP-0028",
+      "OLP-0029",
+      "OLP-0030",
+      "OLP-0031",
+      "OLP-0032",
+      "OLP-0033",
+      "OLP-0034",
+      "OLP-0035",
+      "OLP-0036",
+      "OLP-0037",
+      "OLP-0027",
+      "OLP-0038",
+      "OLP-0039",
+      "OLP-0040",
+      "OLP-0042",
+      "OLP-0043",
+      "OLP-0044",
+      "OLP-0045",
+      "OLP-0047",
+      "OLP-0048",
+      "OLP-0041",
+      "OLP-0046",
+      "OLP-0051",
+      "OLP-0052",
+      "OLP-0054",
+      "OLP-0049",
+      "OLP-0050",
+      "OLP-0053"
     ],
-    "continuous_replay_receipt_sha256": "10dd42e091060b5d04ee47b0a57c60275ed8f3ec7e7b08f633cfb7b1169bd12c"
+    "untranslated_units": 671,
+    "full_edition_complete": false,
+    "version": "v0.5.0-construction-des-nombres",
+    "chapters": 6,
+    "sections": 45,
+    "pages": 79,
+    "exercises": 73,
+    "canon_full_pdfs_redistributed": false
   },
-  "visual": {
-    "passed": true,
-    "inspected_utc": "2026-09-08T12:46:58.953328+00:00",
-    "pdf_sha256": "57a59e313e99e62e8f3de1921e8072983c66b23cac0311b56e65ca3a5172d88a",
-    "pdf_bytes": 319384,
-    "pages": 55,
-    "directly_inspected_pages": [
-      2,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46
+  "pdf_and_direct_latex": {
+    "status": "PDF_AND_DIRECT_LATEX_ACCEPTED_EPUB_PENDING",
+    "scope_units": 51,
+    "chapters": 6,
+    "sections": 45,
+    "pages": 79,
+    "exercises": 73,
+    "created_utc": "2026-09-19T18:37:13.184351+00:00",
+    "pdf": {
+      "path": "private-reference/work\\reader-v05\\build-03\\source\\locale\\fr\\reader.pdf",
+      "bytes": 434694,
+      "sha256": "06031d3d8449269c57216306b3a04ff098d3f122eb72c1e601af05df57174816"
+    },
+    "direct_latex": {
+      "path": "private-reference/work\\reader-v05\\openlogic-fr-ensembles-fonctions-construction-des-nombres.tex",
+      "bytes": 273994,
+      "sha256": "f031671e91046375da4672792797e4ed0d09783d79b87623300f9ba122576854",
+      "complete_source_bodies": 51,
+      "independent_pdf_byte_identical": true
+    },
+    "builds": [
+      "reader-03/BUILD_RECEIPT.json",
+      "reader-direct-04/BUILD_RECEIPT.json"
     ],
-    "unchanged_pages_reused": [
-      1,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      32,
-      33,
-      34,
-      35,
-      36,
-      37,
-      38,
-      39,
-      40,
-      47,
-      48,
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55
-    ],
-    "page_records": [
+    "input_identity": "build-03/SOURCE_COVERAGE.json",
+    "visual": {
+      "first_pass_pages": [
+        1,
+        2,
+        3,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ],
+      "final_changed_pages": [
+        58,
+        59,
+        62,
+        63,
+        67,
+        68,
+        73,
+        74
+      ],
+      "final_changed_pages_directly_inspected": true,
+      "other_page_content_streams_byte_identical": true,
+      "observations": "Theorem footnote call correctly attached; ring definition and induction theorem remain with their formulas; diagrams, displays, tables, notes and page transitions legible."
+    },
+    "log": {
+      "undefined_references": 0,
+      "overfull_boxes": 0,
+      "remaining_warnings": "Inherited package naming/deprecation and math delimiters removed from PDF bookmarks. Actual bookmark titles inspected and correct."
+    },
+    "fidelity": "Current 51 target files and 868 block identities checked; 468 new-chapter choice anchors checked. Grammar around expanded references and three layout-only changes recorded. No new translation or independent human endorsement claimed.",
+    "pending": [
+      "Matching reflowable EPUB51 conversion, structural/math/source checks and rendering",
+      "Complete public source package and existing GitHub/Zenodo lineage publication with anonymous readback",
+      "Direct LaTeX for three inherited earlier readers",
+      "Continue 671 untranslated units to full722"
+    ]
+  },
+  "epub": {
+    "status": "ACCEPTED_51_UNIT_EPUB",
+    "created_utc": "2026-09-19T18:48:36.037343+00:00",
+    "scope_units": 51,
+    "chapters": 6,
+    "sections": 45,
+    "total_edition_units": 722,
+    "full_edition_complete": false,
+    "bytes": 188144,
+    "sha256": "7ddc04375fae450a0957b3b6da800c9b2fc0975aae9525e007be332e75058530",
+    "native_mathml_roots": 3245,
+    "figures": 13,
+    "exercises": 73,
+    "footnotes": 76,
+    "noterefs": 76,
+    "epubcheck": {
+      "version": "5.3.0",
+      "errors": 0,
+      "warnings": 0
+    },
+    "runtime": [
       {
-        "page": 1,
-        "png_sha256": "be9c493f1c1cb3815be13cfcbf6bddded48f466410de04e9b2a1b484a1872d14",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 1,
-          "source": "build-027; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
+        "file": "MOBILE_PROBE.json",
+        "samples": 15,
+        "global_overflow": 0,
+        "missing_images": 0
       },
       {
-        "page": 2,
-        "png_sha256": "246adedf8a8b5a9ffa599ad95e9ebb5a69e605f003c42acd014d8dfc96761a7f",
-        "visually_inspected": true,
-        "method": "direct visual inspection",
-        "prior": null,
-        "observation": "Contents inspected: 4.7 now points to printed39; aligned page numbers and all chapter entries legible."
-      },
-      {
-        "page": 3,
-        "png_sha256": "d712f19cc3d3dea1b20e42c7798e1bd2cad48c4444306cde245694dbd05cba47",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 3,
-          "source": "build-027; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 4,
-        "png_sha256": "ee941c2693256d306b59a4333556cae50f7cbd6cd5dc8e9f00175624dda2ebf5",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 3,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 5,
-        "png_sha256": "eddb8b37b5cec744fa0b80ef4663cd3cd65c0133f9116d93948c4b9ea88e9220",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 4,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 6,
-        "png_sha256": "a91757380fde1ea098d34fb652f4263bbd4e5c644e2272636516a43820b0b125",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 5,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 7,
-        "png_sha256": "1e9a0b7fdc3c865dc12052625b8f101d66551be03b4a6e15de1e1423f199f50b",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 6,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 8,
-        "png_sha256": "bedc2fc482135856304ac1b64c673bb39fc2b3979b475f55153f8e9844b2831e",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 7,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 9,
-        "png_sha256": "538a48faf61c6b982bafc8fa3661e087f2f1853ea7ad47f23f39dc89ffe0a340",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 8,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 10,
-        "png_sha256": "ed9a7fd9154013e0d2d75f278490f9c719b05c474f721ddc66aa605bb1147c67",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 9,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 11,
-        "png_sha256": "21028df80cbe03ad8f26d073b73dc9b22ad7d42cc98575db61e440fa85ae2317",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 10,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 12,
-        "png_sha256": "0ab0c9729e12fab3ec56edd178009c4c9962c6058a288dab2df5b57d64d63ccf",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 11,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 13,
-        "png_sha256": "257e87a30548f5b8d55346626990ad7c9b10928334e417cec7e8efab35218616",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 12,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 14,
-        "png_sha256": "2d743bd55c593b291cf00bd03da0268176764c58c0708cc4274a420c6f1953fe",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 13,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 15,
-        "png_sha256": "1cb13bef3b8bb8faf550750ad40176f5633c8a1d829f67ae8bcbf6ba1060bfd0",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 14,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 16,
-        "png_sha256": "3bec32aa60ba3a0f5a8b378667e625a96528d3866dfafc360d8ecef875681d45",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 15,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 17,
-        "png_sha256": "5f43644713f1f4db685e2106e6350fdf35a9f9ac743c4b811ff9813ad9796ce3",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 16,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 18,
-        "png_sha256": "122c2f8913974fb983cabcb8613979c6030a356477ba179d67fc4a6ac0989f32",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 17,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 19,
-        "png_sha256": "c66b9e9b14c86334667931a9e1fcb2faf46e036fe377628829e1266782d32667",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 18,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 20,
-        "png_sha256": "4f9e21d974e201edbfe50bb3d1e4143c479276c6b15cf107c27f76e5600080db",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 19,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 21,
-        "png_sha256": "7b599a88ab7bc04f946450db671b596dba2150d6897c4eb8c5cf07040cc4ede7",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 20,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 22,
-        "png_sha256": "eb89cd2a145ce8087d601d4c8f1e1ada79479ded5dc9e62b89a3e92ff04cb5c8",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 21,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 23,
-        "png_sha256": "eccbe6edc50bb101e172bc4643e979d732a0a289fc2e40f41d7fc88bf34632e1",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 22,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 24,
-        "png_sha256": "f542785eeaf58e687a4e73081748f667a44f8a35179323566356042e7eb71e54",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 23,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 25,
-        "png_sha256": "3a2fe6de3d957054801c0936c7c755be1010b8d2162a2d80d2bf80d93eea0a9c",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 24,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 26,
-        "png_sha256": "23dcfd777a6b086b268f47937b1d2ac390fec63d1bc3adc92c82e4ce4071e1dc",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 25,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 27,
-        "png_sha256": "f6a5dcb6f90574fc576d17cfef90927277b4a6c204a51963f068a367831a9906",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 26,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 28,
-        "png_sha256": "58ff1d42391a9db3890a9501855fe3e0e50e263d1ca38adce357f30618c2c87e",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 27,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 29,
-        "png_sha256": "137da8ab10d6dd3b9032a036a821dd7ce925250e3204c840dd734b306a08ae73",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 29,
-          "source": "build-027; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 30,
-        "png_sha256": "d23e180f6ca362b7ed1b277d76734ea094743cd2a40cf387f3fb4a1d18772db0",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 30,
-          "source": "build-027; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 31,
-        "png_sha256": "ea5c3756056ba597dcc95a58491bf6461461fccc8ad359b6458623fa5ea0aed4",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 30,
-          "source": "FUNCTIONS_VISUAL_QA.json",
-          "source_sha256": "700b827105f7fef3b611504e107f316cbcfd530a8d2c331b6cb4e0a5f4254725"
-        }
-      },
-      {
-        "page": 32,
-        "png_sha256": "62791756bc9baf55fe6c30e1f8ee16362ac49dd82fc1db48226051e73239c8bf",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 32,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 33,
-        "png_sha256": "0bffa628b96ca29ab4000287435a86aea9c6a24e6c1c719727d1e572c3094d3d",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 33,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 34,
-        "png_sha256": "54640254ec457d2cabe86a418687dc9270dc2be3c6d9473866c3a8c5d5669fde",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 34,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 35,
-        "png_sha256": "54214a240fb8f73f981ccf838a36b9aad5881c2cdf3d07416bb79e42799b319b",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 35,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 36,
-        "png_sha256": "bc03428d0b18f90d1fa0d088d353ec3e13af76f6fe1cedf55fc365fe8e94a589",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 36,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 37,
-        "png_sha256": "639539f3c7a5867c8f0629d9993889e4fe9ef5800548e1ba6a583672e8b07d34",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 37,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 38,
-        "png_sha256": "0276dd0b0a360ee739c3b9c7f8557e943ab8332f9aa5e7f27a1a5c49b588621f",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 38,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 39,
-        "png_sha256": "7b9a7e91c27bdf5943de0e4e0d14f648fd90811a815e553800e837d2313ac37b",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 39,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 40,
-        "png_sha256": "0707ee6035b29029e9163da1f1016537465dbb072532cbb3710ff9ec55edec41",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 40,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 41,
-        "png_sha256": "dfb1b466fcd34b4a7dc9f89feceb830e095f773cdbc0122fac52a60023316f6c",
-        "visually_inspected": true,
-        "method": "direct visual inspection",
-        "prior": null,
-        "observation": "Diagonal subset proof and matrix complete; no isolated reduction heading remains at bottom. Formulas and terminal proof marker legible."
-      },
-      {
-        "page": 42,
-        "png_sha256": "cec955b42c2a38f13a6ef71196ddb4034002aaae13673a540a3ff5e2bca31119",
-        "visually_inspected": true,
-        "method": "direct visual inspection",
-        "prior": null,
-        "observation": "Reduction heading begins page with its editorial frame and substantive text. Characteristic-function proof and note11 visible; no clipping or overlap."
-      },
-      {
-        "page": 43,
-        "png_sha256": "d7d7bd43264e375d14030dbb86926e99c3d10a74d3c83c6f66343a0007ea7519",
-        "visually_inspected": true,
-        "method": "direct visual inspection",
-        "prior": null,
-        "observation": "Reduction ends, equipotence begins with Frege quotation; displayed h and notes12–14 visible, formulas and heading spacing legible."
-      },
-      {
-        "page": 44,
-        "png_sha256": "27b03d258fc1473b40d014b9ff72cd58e458f2e7a4d461155510f8c44bf21fca",
-        "visually_inspected": true,
-        "method": "direct visual inspection",
-        "prior": null,
-        "observation": "Both equipotence proofs present, followed by 4.9; notes15–16 visible and cross-references grammatical."
-      },
-      {
-        "page": 45,
-        "png_sha256": "108ce98f8f38a50ec410da6e62bfb8d901b9e12d47cc4435bb37eaede21b38ad",
-        "visually_inspected": true,
-        "method": "direct visual inspection",
-        "prior": null,
-        "observation": "Both Cantor proofs and notes17–18 complete; long displays remain inside text area; no missing glyph or overlapping note."
-      },
-      {
-        "page": 46,
-        "png_sha256": "58b8b2296f32a40298fd56f6054fb881db183a4db484429a3bdb8fb6594e2464",
-        "visually_inspected": true,
-        "method": "direct visual inspection",
-        "prior": null,
-        "observation": "Schröder-Bernstein theorem, discussion and note19 visible. Space after exclamation restored. Editorial six section references have individual articles and no duplicated sections section."
-      },
-      {
-        "page": 47,
-        "png_sha256": "dc4b0d92156c72c26c3b3d72fee4c7f1623c1b431f200315c7a44d5e2230977c",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 47,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 48,
-        "png_sha256": "9a5783311fe6fec0180b665dc3f073c770cf7221261b36c3c59a3c8592988c4e",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 48,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 49,
-        "png_sha256": "7edddc82565a8b9ed01fd9a056e89ba094a9753188f1798a2ff1bbc824327873",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 49,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 50,
-        "png_sha256": "72cf7b4a6781d5a40e74cc149a7a493c5fb028accd1c4c6627d9df687457c365",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 50,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 51,
-        "png_sha256": "b8bc648ee56e2e198fc79b9d8e3ba6353ca8113c61be457f03eaa987d4c55f3b",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 51,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 52,
-        "png_sha256": "d52641576cf79e1a770609c882acea1c5fe047288ad0e7e649d952cb78eca710",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 52,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 53,
-        "png_sha256": "07194e879a785040ce17da0b33de12449b8bf2b906fb6dc83fcf2f9124ce094e",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 53,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 54,
-        "png_sha256": "111a7b3a3bfc3ea311865471f6be4b0ae71bd11b3a9d9310ae7cbe0fb727bb7d",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 54,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
-      },
-      {
-        "page": 55,
-        "png_sha256": "ab9f1e3eb9ff06f8deb11901da944a2244e33193626a0675061e935247ac0e5d",
-        "visually_inspected": true,
-        "method": "reuse on exact raster SHA256 identity",
-        "prior": {
-          "page": 55,
-          "source": "build-031; SIZE_VISUAL_031_REVIEW.md",
-          "source_sha256": "5033a3a38587ded8f2503639b99d876d4dd0d8946af8716a309a60e2d65e3cdc"
-        }
+        "file": "RUNTIME_PROBE.json",
+        "samples": 15,
+        "global_overflow": 0,
+        "missing_images": 0
       }
     ],
-    "findings": "All seven changed pages directly inspected; other48 pages have exact raster identity with recorded prior inspections. Two known layout failures repaired. No clipping, overlap, missing glyph, unreadable reference, damaged formula or lost footnote observed.",
-    "limitations": "Visual inspection is not an independent semantic audit. Semantic/math/source corrections are documented separately."
+    "visual_review": "Representative mobile/light and desktop/dark images directly inspected: real line diagram, ring axioms, Cauchy bounds and quotient arithmetic, Hilbert diagram, induction, Schroeder–Bernstein and exercises. Wide formulas have local scrolling; no global page overflow.",
+    "source_coverage": {
+      "loaded_units": 51,
+      "token_aliases": 409,
+      "single_equivalent_mathbb_exponent_grouping": true,
+      "loaded_sources": [
+        {
+          "unit_id": "OLP-0005",
+          "path": "content/sets-functions-relations/sets/basics.tex",
+          "sha256": "cf7cdc5978e87b1b7bd37823ea0fb3ff4f726631a73792793ea3c476b8dbcb8b",
+          "conversion_sha256": "04c8aee26fc4c627eef9fad20221c498342779138cb833e59854ee161cf8e0d2"
+        },
+        {
+          "unit_id": "OLP-0007",
+          "path": "content/sets-functions-relations/sets/important-sets.tex",
+          "sha256": "e95145921e54fe58e456e517f3689bd0b19dfd689db3e89b670365a230c1d3f1",
+          "conversion_sha256": "109fe330f7a1a2ea71bbeddd913d2c6cf55827866a873c8b22bdc989bcc4e492"
+        },
+        {
+          "unit_id": "OLP-0009",
+          "path": "content/sets-functions-relations/sets/pairs-and-products.tex",
+          "sha256": "eb3c49f1ed857fb99904c4dd85cd31e4b39b7b9af527df7b59fd990859ea6547",
+          "conversion_sha256": "0a3c5fdccf95f65a2693302ab5bf3cf40b5442e014f52f89d9ac0100431a696e"
+        },
+        {
+          "unit_id": "OLP-0010",
+          "path": "content/sets-functions-relations/sets/russells-paradox.tex",
+          "sha256": "c39a9b5e753420ccddc028541c303ad043a161ddca3a2c53e91a0ad4ca5ba036",
+          "conversion_sha256": "acfcff3b3241925dd0096a1dd7e1b7c2fd3091a53e9ede412592134dffa85445"
+        },
+        {
+          "unit_id": "OLP-0004",
+          "path": "content/sets-functions-relations/sets/sets.tex",
+          "sha256": "96eaf83db6070e8e680db7a17c5badad86d7f49c0eef33b1db12f68966cb4f01",
+          "conversion_sha256": "96eaf83db6070e8e680db7a17c5badad86d7f49c0eef33b1db12f68966cb4f01"
+        },
+        {
+          "unit_id": "OLP-0006",
+          "path": "content/sets-functions-relations/sets/subsets.tex",
+          "sha256": "fbf478e6c8a28ec5f08c30ec4f45a5c551cf4751c3fd86ce9ac7fd2dc83d0233",
+          "conversion_sha256": "681ab8510e4f9ce729639045dca49e76c0324366bd7b82fcf5507a544b1a1ee4"
+        },
+        {
+          "unit_id": "OLP-0008",
+          "path": "content/sets-functions-relations/sets/unions-and-intersections.tex",
+          "sha256": "26fe25552ed2e14501ca27a673bca23da855425add40fecfdc3f48e44b90ee3c",
+          "conversion_sha256": "c1002dc4ab34cb8e7eeb1d92dc7d19f9cb6df7fd106e5eaa028fc7edbb0d9cae"
+        },
+        {
+          "unit_id": "OLP-0013",
+          "path": "content/sets-functions-relations/relations/reflections.tex",
+          "sha256": "50a7096e49c1dc7a530d6ca72dfcab3862125467dc0701e67f7dfb433d475844",
+          "conversion_sha256": "50a7096e49c1dc7a530d6ca72dfcab3862125467dc0701e67f7dfb433d475844"
+        },
+        {
+          "unit_id": "OLP-0012",
+          "path": "content/sets-functions-relations/relations/relations-as-sets.tex",
+          "sha256": "1582f2c849470dea9d5d265ea732a45b926f461a603807c2ba047612b5ac8474",
+          "conversion_sha256": "d8abbd1cfc7493b4e57539570811650fb5b5532320aa9fe3c93b04c57c5437c1"
+        },
+        {
+          "unit_id": "OLP-0011",
+          "path": "content/sets-functions-relations/relations/relations-complete.tex",
+          "sha256": "661c2c5caf54df3804ed164bbe4b1d35e5e1dc3cf3ff388eb96fe90c7372dc56",
+          "conversion_sha256": "661c2c5caf54df3804ed164bbe4b1d35e5e1dc3cf3ff388eb96fe90c7372dc56"
+        },
+        {
+          "unit_id": "OLP-0015",
+          "path": "content/sets-functions-relations/relations/equivalence-relations.tex",
+          "sha256": "fcf7c6f6c688a6a33cc36eb41decd94bcd6fff0dc27f02b1b51acd93f56c5302",
+          "conversion_sha256": "c36a88a405350cbf6cf8835f41265e9e4af6e55a9266ec0f31d32e5eb41117ce"
+        },
+        {
+          "unit_id": "OLP-0017",
+          "path": "content/sets-functions-relations/relations/graphs.tex",
+          "sha256": "5d78a190846359f2715c841b1f7f8c26d72fccc5d9b445777520a63453328854",
+          "conversion_sha256": "5d78a190846359f2715c841b1f7f8c26d72fccc5d9b445777520a63453328854"
+        },
+        {
+          "unit_id": "OLP-0019",
+          "path": "content/sets-functions-relations/relations/operations.tex",
+          "sha256": "b1da0beef291b1c7de84e3bfe7f6b80f1bc961d7fedecc570e8c147c0a689b16",
+          "conversion_sha256": "b1da0beef291b1c7de84e3bfe7f6b80f1bc961d7fedecc570e8c147c0a689b16"
+        },
+        {
+          "unit_id": "OLP-0016",
+          "path": "content/sets-functions-relations/relations/orders.tex",
+          "sha256": "aae5a9433c08e3f5249db2e057d386ec850c6d6d2b8401561a826a5bb211b154",
+          "conversion_sha256": "991d2a00df036fa7340658c1388c5fe0de97b74916d1794b3222194b5aa2d0d9"
+        },
+        {
+          "unit_id": "OLP-0014",
+          "path": "content/sets-functions-relations/relations/special-properties.tex",
+          "sha256": "7a834646d2bff3214825f876084998add200a1c87e9f9e46bddfe4a91c28cc2d",
+          "conversion_sha256": "7a834646d2bff3214825f876084998add200a1c87e9f9e46bddfe4a91c28cc2d"
+        },
+        {
+          "unit_id": "OLP-0018",
+          "path": "content/sets-functions-relations/relations/trees.tex",
+          "sha256": "4a3eb1168075d44dc69a9331a91fb3c2bb0a31df536b672a80dc51ebfd77bb81",
+          "conversion_sha256": "a72a132e0fef8e213907af5763ecda6939791800a321502c1e600b4cdd9ab78c"
+        },
+        {
+          "unit_id": "OLP-0021",
+          "path": "content/sets-functions-relations/functions/function-basics.tex",
+          "sha256": "298afb15f4649ec76509090c08c6a90931878f89e725e33677490285fa322ae3",
+          "conversion_sha256": "d3c78e3183364e12289d9f661a4ea1b03c90024d1112d1036c99e3e8e533c221"
+        },
+        {
+          "unit_id": "OLP-0022",
+          "path": "content/sets-functions-relations/functions/function-kinds.tex",
+          "sha256": "66a3831f79c49d7a823eb3e06d38483750db7a48464f09a3832ad8ae41aac8bc",
+          "conversion_sha256": "a306a52e6dfe84a2107dd7247ec4f4f884020f592ff54c84579c7ca254ed8d04"
+        },
+        {
+          "unit_id": "OLP-0020",
+          "path": "content/sets-functions-relations/functions/functions.tex",
+          "sha256": "5500b55f06fba2e5151fe12df4cabf21cb5f06a412a94ce71d18970d10f5abb2",
+          "conversion_sha256": "5500b55f06fba2e5151fe12df4cabf21cb5f06a412a94ce71d18970d10f5abb2"
+        },
+        {
+          "unit_id": "OLP-0023",
+          "path": "content/sets-functions-relations/functions/functions-relations.tex",
+          "sha256": "a0046a763547b63d4249b0ae17c674b5f1608237c5a53bd7bd36af65e401b104",
+          "conversion_sha256": "4ace85975638c37758b2d6ba20cf0549db5dcba358220eae97de9ba7f1a9e776"
+        },
+        {
+          "unit_id": "OLP-0024",
+          "path": "content/sets-functions-relations/functions/inverses.tex",
+          "sha256": "2d4daee5e5884adfd61aee1c06315428a148a287b6e56f652e726b08ce63f841",
+          "conversion_sha256": "69d75b5879c2e794897d2fa952a61eba75dc6876b5a75839ff80ad9d2271ac7c"
+        },
+        {
+          "unit_id": "OLP-0025",
+          "path": "content/sets-functions-relations/functions/composition.tex",
+          "sha256": "89346062ef5fd99955b7c5b8d2c5b3b210a977d55693abc4b01eb914423d396f",
+          "conversion_sha256": "59998d4e9405e08dc42c879909337bca6b530e8bea25bb5a956c7678bf42b998"
+        },
+        {
+          "unit_id": "OLP-0026",
+          "path": "content/sets-functions-relations/functions/partial-functions.tex",
+          "sha256": "5f9509624e10771e33638812851fcb5a4baaeeae7d1aed467b5e11bf17c9b205",
+          "conversion_sha256": "c6e393fab970e522eb1c2f0e4496abb014410628b0f290aa51f7aa35573bc18c"
+        },
+        {
+          "unit_id": "OLP-0028",
+          "path": "content/sets-functions-relations/size-of-sets/introduction.tex",
+          "sha256": "d6066a342c0ee74164ec8c40d2d562a5a28472f8a240cc7e389f4833f82e0fd2",
+          "conversion_sha256": "e459d86e78a504d14e8591023566454292971cee59d91969b2a04c9afbf500f7"
+        },
+        {
+          "unit_id": "OLP-0029",
+          "path": "content/sets-functions-relations/size-of-sets/enumerability.tex",
+          "sha256": "b5aa6b40e204f4e475ce11f8f6e1727aa2371a51252197f699137dbcd86d2bf8",
+          "conversion_sha256": "479d6a4421169286f6cad5067ceb14c3f42775b7d8bc3ac81db6a15b9d97c8cb"
+        },
+        {
+          "unit_id": "OLP-0030",
+          "path": "content/sets-functions-relations/size-of-sets/zig-zag.tex",
+          "sha256": "4ef05b8f9c186136bd76408d397e0c75defd9a3b4fdf42d45a4911f4ebc29538",
+          "conversion_sha256": "b8d6bc8f50800477a08966dfea00077e936a35f3aa68df97ee4f0abb6ecf24fa"
+        },
+        {
+          "unit_id": "OLP-0031",
+          "path": "content/sets-functions-relations/size-of-sets/pairing.tex",
+          "sha256": "4c512eff1cb48d8b8651b84f1e5cb79143612b4b550e5d4347989b987f0808d8",
+          "conversion_sha256": "5d624a766fab3fe9deaa91f093ce7dfe1d10b0cffd1dbe723e267cd163573c86"
+        },
+        {
+          "unit_id": "OLP-0032",
+          "path": "content/sets-functions-relations/size-of-sets/pairing-alt.tex",
+          "sha256": "90ea85c9d84116ee417d68b57749fa55b3f7b2f4bc42817c02596126eea35693",
+          "conversion_sha256": "b2630d66037d21511f76deb61881de79edc9b2057e9d04b06889d84886ef8b78"
+        },
+        {
+          "unit_id": "OLP-0033",
+          "path": "content/sets-functions-relations/size-of-sets/non-enumerability.tex",
+          "sha256": "4a96c433a5586a2498ab2e7f41e60f008f98fac3571bc8f9f6a9b3c3eff1cb00",
+          "conversion_sha256": "46465503be1927904acd622d592bb17da661e849a9510cac99163628c651edcf"
+        },
+        {
+          "unit_id": "OLP-0034",
+          "path": "content/sets-functions-relations/size-of-sets/reduction.tex",
+          "sha256": "e8f7f3def251f82539ad0538b64feaaeb30ddde5ada117a33833e6092886d2ab",
+          "conversion_sha256": "3e62949e011228892f23e2f0262f3b132bfd8f942558db28624c8ee024d2508b"
+        },
+        {
+          "unit_id": "OLP-0035",
+          "path": "content/sets-functions-relations/size-of-sets/equinumerous-sets.tex",
+          "sha256": "4356c49942be4d108e7199c22e671cbb9e1d01c57ce72aff0463afc08f8300f5",
+          "conversion_sha256": "20769b58379d60a7ce3c193ae3a5a47dff0f63aeb4b41e39b08eb6dc447bcfed"
+        },
+        {
+          "unit_id": "OLP-0036",
+          "path": "content/sets-functions-relations/size-of-sets/comparing-size.tex",
+          "sha256": "40a510c6a215bd5364bd521f607423e2023841dfc7b6947fb28fdb31836c40e7",
+          "conversion_sha256": "d3d27b02c00922c23a92eb9b336c0fc40ce9fa7fa78948fbb64ea6b3d448c4dd"
+        },
+        {
+          "unit_id": "OLP-0037",
+          "path": "content/sets-functions-relations/size-of-sets/schroder-bernstein.tex",
+          "sha256": "94c06b1a6331fdec5d470c101ffd35a7ac4ec0e4538325e7b12b5df17787526b",
+          "conversion_sha256": "47002ef91ccfcacc7fbc584febe480120d98d0e4971f22972f06addaff94ca4e"
+        },
+        {
+          "unit_id": "OLP-0027",
+          "path": "content/sets-functions-relations/size-of-sets/size-of-sets-complete.tex",
+          "sha256": "cb336f66f453f0529677462fc879ea32e103ef0edc5b7993ab3ad989e160915e",
+          "conversion_sha256": "cb336f66f453f0529677462fc879ea32e103ef0edc5b7993ab3ad989e160915e"
+        },
+        {
+          "unit_id": "OLP-0038",
+          "path": "content/sets-functions-relations/size-of-sets/enumerability-alt.tex",
+          "sha256": "f0f2410fbbfc851d83793ac28da4c5764f7887c2980180f2b58454fdf424f609",
+          "conversion_sha256": "ad10379a3c3a0622758897845ab630def0e94b87859d0c7d8b5dc0a1d8aeaeb8"
+        },
+        {
+          "unit_id": "OLP-0039",
+          "path": "content/sets-functions-relations/size-of-sets/non-enumerability-alt.tex",
+          "sha256": "4ad1b70e6c9f6b7d21ae11d15593c28fb5ef93ef4bba7fddfa32c30be4a0d64f",
+          "conversion_sha256": "6e187ffde24d6467bfccd1a6884ebecd32295c3d61f6a4891c71e4ce2e75c79a"
+        },
+        {
+          "unit_id": "OLP-0040",
+          "path": "content/sets-functions-relations/size-of-sets/reduction-alt.tex",
+          "sha256": "7dc8b37a290f94faa0a4f5e712ee24294872c6f9ba7005ca9d961c72fd8d7b0a",
+          "conversion_sha256": "e18b865eb850c4951e89eed542cf1086e269bbfda4254ece4a8452423eecff78"
+        },
+        {
+          "unit_id": "OLP-0042",
+          "path": "content/sets-functions-relations/arithmetization/integers.tex",
+          "sha256": "7efbf7ed132a0de6bf53781c88b15f9c1226c1daa423b0bfd9fec5c18d830f37",
+          "conversion_sha256": "7115807505319e0a0560e91900b64d17051f3be4a2d9b14bd8cccd13fdb5178b"
+        },
+        {
+          "unit_id": "OLP-0043",
+          "path": "content/sets-functions-relations/arithmetization/rationals.tex",
+          "sha256": "dda4878756a39aed328bdef2b2025acd0f561e7fa32e45ac8efa031612dae3de",
+          "conversion_sha256": "793cc4f369508fb073a608653ea271ab28b940ec82246e3b2e654ae407535be1"
+        },
+        {
+          "unit_id": "OLP-0044",
+          "path": "content/sets-functions-relations/arithmetization/reals.tex",
+          "sha256": "c702aa28023b6b6fd4c1fe4480ad06b09453994380c08bb58566675850444d05",
+          "conversion_sha256": "6dcf3f5f3a20a1d3a0b86c07806ae3bc17faf78c98f6d5af0d51fe709947b517"
+        },
+        {
+          "unit_id": "OLP-0045",
+          "path": "content/sets-functions-relations/arithmetization/cuts.tex",
+          "sha256": "844a6879241868926acae9ee9e8d95a2e79b598751d487c4bfdfb9abeba82846",
+          "conversion_sha256": "74603f6fcbdb586e93fadf5f4b5382834ebce79080553b1ca1903350144d4761"
+        },
+        {
+          "unit_id": "OLP-0047",
+          "path": "content/sets-functions-relations/arithmetization/checking-details.tex",
+          "sha256": "3143b0d1ab041021adce56ca906c88378ab17b8ac2276cce497fd5c4609189e9",
+          "conversion_sha256": "3143b0d1ab041021adce56ca906c88378ab17b8ac2276cce497fd5c4609189e9"
+        },
+        {
+          "unit_id": "OLP-0048",
+          "path": "content/sets-functions-relations/arithmetization/cauchy.tex",
+          "sha256": "f874ad20bbfd8675edc8a1551bbcfc44abf1f7e405a4d6e38d093df50c20a7af",
+          "conversion_sha256": "824a5a06398a72d5953c896f0b6bf5099bef5d3a061f7610700591071316c908"
+        },
+        {
+          "unit_id": "OLP-0041",
+          "path": "content/sets-functions-relations/arithmetization/arithmetization.tex",
+          "sha256": "3153423a812db8d44f202e0f57ec2cd0f424413e23c0b7e619f3e0cb32c001e4",
+          "conversion_sha256": "3153423a812db8d44f202e0f57ec2cd0f424413e23c0b7e619f3e0cb32c001e4"
+        },
+        {
+          "unit_id": "OLP-0046",
+          "path": "content/sets-functions-relations/arithmetization/reflections.tex",
+          "sha256": "4d08b038160a1ba61554702b991d71ce1d53bbaa6775401ca2246b4e07ba8ae4",
+          "conversion_sha256": "4d08b038160a1ba61554702b991d71ce1d53bbaa6775401ca2246b4e07ba8ae4"
+        },
+        {
+          "unit_id": "OLP-0051",
+          "path": "content/sets-functions-relations/infinite/dedekind-algebra.tex",
+          "sha256": "86eed964936c1d5eecbbc00e1050cbcc3cac5ceb109954687c277749fd68d139",
+          "conversion_sha256": "4b56800002a8f3295bec68fe58bb554f608ca04e70af07822d63ee600a9c6f03"
+        },
+        {
+          "unit_id": "OLP-0052",
+          "path": "content/sets-functions-relations/infinite/dedekind-induction.tex",
+          "sha256": "c848a84cf98aff7e404f3f2396b3b0b658f3e4936890d9c282e402670b166f96",
+          "conversion_sha256": "c848a84cf98aff7e404f3f2396b3b0b658f3e4936890d9c282e402670b166f96"
+        },
+        {
+          "unit_id": "OLP-0054",
+          "path": "content/sets-functions-relations/infinite/card-sb.tex",
+          "sha256": "bb9696cb0f6caa704057a74932405ffef1054a44a8924d113df0b40860fde3e9",
+          "conversion_sha256": "2e564b0ee1617ea10ea1915f6cd106d34c1d89ca38bc444c6cf1c6c3f21a6a38"
+        },
+        {
+          "unit_id": "OLP-0049",
+          "path": "content/sets-functions-relations/infinite/infinite.tex",
+          "sha256": "344a5c7a7f94435805fd1794affc0150a07cd27cbb8feceba17d530b43fd70d5",
+          "conversion_sha256": "344a5c7a7f94435805fd1794affc0150a07cd27cbb8feceba17d530b43fd70d5"
+        },
+        {
+          "unit_id": "OLP-0050",
+          "path": "content/sets-functions-relations/infinite/hilberts-hotel.tex",
+          "sha256": "b474bc59df896f9a32d1690edd2dc0ebb7bf11bce862e7f2bce024cfccc0a02d",
+          "conversion_sha256": "97ae35a50646d8c2c0e86a97092055d4265a9a5080a4e8d36dafb318db43dc69"
+        },
+        {
+          "unit_id": "OLP-0053",
+          "path": "content/sets-functions-relations/infinite/dedekinds-proof.tex",
+          "sha256": "ed0cffb3deb7fe1bd2e73b489125a86bce35615f7997dc3eb50e577c97fdeee8",
+          "conversion_sha256": "88f6b2a867f82a9673305d6725f48423b1848adbd71538468d3a31e83656db1b"
+        }
+      ]
+    },
+    "content_diagnostic": {
+      "prose_windows": 12842,
+      "unmatched_diagnostic_windows": 674,
+      "new_chapter_runs_reviewed": 69,
+      "finding": "New-chapter runs are PDF math-font extraction, line/heading boundaries, and moved notes/figures; no missing prose paragraph observed. Earlier four chapters retain the accepted bodies, with seven exposed tab markers replaced by whitespace. This is not a claim of exact extracted-text equality."
+    },
+    "repairs": [
+      "Native MathML namespaces, double-struck characters, nicefrac and partial-arrow rendering inherited from validated v0.4 export repair",
+      "Unreferenced duplicate IDs and delayed footnote32 target corrected; all internal links resolve",
+      "Eight TeX-serialized tab markers normalized to source whitespace",
+      "Bibliography mathml manifest property matches actual content",
+      "Hilbert diagram fitted to its quotation on a 390px screen"
+    ]
   },
-  "nonfatal_warnings": [
-    "Package hyperref Warning: Option `bookmarks' has already been used,",
-    "LaTeX Warning: You have requested file `',",
-    "LaTeX Warning: You have requested file `',",
-    "Class memoir Warning: \\addtodef is marked deprecated and will be"
-  ]
+  "reference_grammar": {
+    "status": "PREPARED",
+    "scope": "Only observed grammar around expanded cross-references in eight new chapter files; source identifiers and mathematical content preserved.",
+    "evidence": "reader-01 PDF; reader.aux label types; local open-logic-referencing.sty uses cref which already supplies the object type.",
+    "changes": [
+      {
+        "segment": "OLP-0048-B11",
+        "before": "On pourrait alors être tenté de dire qu'un réel \\emph{est} simplement\nune suite de Cauchy. Ce serait toutefois trop naïf, comme dans les\nconstructions de $\\Int$ et de $\\Rat$ : plusieurs suites de Cauchy\ndistinctes peuvent représenter le même réel. Pour le voir, prenons une\nsuite de Cauchy $f$ et définissons $g$ exactement comme $f$, sauf que\n$g(0)\\neq f(0)$. Les deux suites coïncident après le premier terme.\nLe critère de \\olref{def:CauchySequence} est donc satisfait par l'une\ncomme par l'autre, et nous voudrons, au terme de la construction, leur\nattribuer la même limite. Elles doivent ainsi « définir » le même réel\net être identifiées en tant que représentations de ce réel.",
+        "after": "On pourrait alors être tenté de dire qu'un réel \\emph{est} simplement\nune suite de Cauchy. Ce serait toutefois trop naïf, comme dans les\nconstructions de $\\Int$ et de $\\Rat$ : plusieurs suites de Cauchy\ndistinctes peuvent représenter le même réel. Pour le voir, prenons une\nsuite de Cauchy $f$ et définissons $g$ exactement comme $f$, sauf que\n$g(0)\\neq f(0)$. Les deux suites coïncident après le premier terme.\nLe critère de la \\olref{def:CauchySequence} est donc satisfait par l'une\ncomme par l'autre, et nous voudrons, au terme de la construction, leur\nattribuer la même limite. Elles doivent ainsi « définir » le même réel\net être identifiées en tant que représentations de ce réel.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0048-B22",
+        "before": "Montrons d'abord que $\\equivrep{f}{}$ majore $\\mathcal A$,\nc'est-à-dire que\n$(\\forall h\\in S)\\equivrep{h}{}\\leq\\equivrep{f}{}$.\nNous utiliserons \\olref{thm:cauchyorderedfield} au cours du raisonnement.\nSoit $h\\in S$ et supposons, pour obtenir une contradiction, que\n$\\equivrep{f}{}<\\equivrep{h}{}$, donc que\n$0_\\Real<\\equivrep{(h-f)}{}$. La suite $f$ étant de Cauchy et\ndécroissante, il existe $n\\in\\Nat$ tel que\n$\\equivrep{(c_{f(n)}-f)}{}<\\equivrep{(h-f)}{}$.\nEn effet, la positivité de la classe de $h-f$ donne un écart rationnel\n$\\delta>0$ tel que $h(m)-f(m)>\\delta$ à partir d'un certain rang ;\non choisit $n$ assez grand pour que, pour tout $m$ assez grand,\n$|f(n)-f(m)|<\\delta/2$. La suite\n$(h-f)-(c_{f(n)}-f)$ est alors, à partir d'un certain rang,\nstrictement supérieure à $\\delta/2$.\nAinsi :\n\\[\n(f(n))_\\Real=\\equivrep{c_{f(n)}}{}\n<\\equivrep{f}{}+\\equivrep{(h-f)}{}=\\equivrep{h}{},\n\\]\nce qui contredit $\\equivrep{h}{}\\leq(f(n))_\\Real$, vraie par construction.",
+        "after": "Montrons d'abord que $\\equivrep{f}{}$ majore $\\mathcal A$,\nc'est-à-dire que\n$(\\forall h\\in S)\\equivrep{h}{}\\leq\\equivrep{f}{}$.\nNous utiliserons le \\olref{thm:cauchyorderedfield} au cours du raisonnement.\nSoit $h\\in S$ et supposons, pour obtenir une contradiction, que\n$\\equivrep{f}{}<\\equivrep{h}{}$, donc que\n$0_\\Real<\\equivrep{(h-f)}{}$. La suite $f$ étant de Cauchy et\ndécroissante, il existe $n\\in\\Nat$ tel que\n$\\equivrep{(c_{f(n)}-f)}{}<\\equivrep{(h-f)}{}$.\nEn effet, la positivité de la classe de $h-f$ donne un écart rationnel\n$\\delta>0$ tel que $h(m)-f(m)>\\delta$ à partir d'un certain rang ;\non choisit $n$ assez grand pour que, pour tout $m$ assez grand,\n$|f(n)-f(m)|<\\delta/2$. La suite\n$(h-f)-(c_{f(n)}-f)$ est alors, à partir d'un certain rang,\nstrictement supérieure à $\\delta/2$.\nAinsi :\n\\[\n(f(n))_\\Real=\\equivrep{c_{f(n)}}{}\n<\\equivrep{f}{}+\\equivrep{(h-f)}{}=\\equivrep{h}{},\n\\]\nce qui contredit $\\equivrep{h}{}\\leq(f(n))_\\Real$, vraie par construction.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0047-B05",
+        "before": "Dans \\olref[int]{sec}, nous avons défini l'addition et la multiplication\nsur $\\Int$. Nous voulons montrer que ces opérations, telles que nous\nles avons définies, munissent $\\Int$ de la structure attendue.\nIl s'agit, plus précisément, d'une structure d'anneau commutatif.",
+        "after": "Dans la \\olref[int]{sec}, nous avons défini l'addition et la multiplication\nsur $\\Int$. Nous voulons montrer que ces opérations, telles que nous\nles avons définies, munissent $\\Int$ de la structure attendue.\nIl s'agit, plus précisément, d'une structure d'anneau commutatif.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0047-B15",
+        "before": "Le travail n'est toutefois pas terminé. Outre l'addition et la\nmultiplication sur $\\Int$, nous avons défini une relation d'ordre\n$\\leq$ ; il faut vérifier qu'elle aussi a les propriétés attendues.\nPlus précisément, il faut montrer que $\\Int$ est un anneau\n\\emph{ordonné}.\\footnote{Rappelons, d'après\n\\olref[sfr][rel][ord]{def:linearorder}, qu'un ordre total est une\nrelation réflexive, transitive, antisymétrique et connexe. Pour un tel\nordre, la connexité donne la \\emph{trichotomie} de l'ordre strict\nassocié : pour tous $a$ et $b$, exactement l'une des relations\n$a < b$, $a = b$, $a > b$ est vérifiée.\n\\emph{Précision éditoriale :} la source écrit ici\n$a \\leq b \\lor a = b \\lor a \\geq b$ ; cette disjonction est vraie,\nmais ses trois cas ne sont pas exclusifs.}",
+        "after": "Le travail n'est toutefois pas terminé. Outre l'addition et la\nmultiplication sur $\\Int$, nous avons défini une relation d'ordre\n$\\leq$ ; il faut vérifier qu'elle aussi a les propriétés attendues.\nPlus précisément, il faut montrer que $\\Int$ est un anneau\n\\emph{ordonné}.\\footnote{Rappelons, d'après la\n\\olref[sfr][rel][ord]{def:linearorder}, qu'un ordre total est une\nrelation réflexive, transitive, antisymétrique et connexe. Pour un tel\nordre, la connexité donne la \\emph{trichotomie} de l'ordre strict\nassocié : pour tous $a$ et $b$, exactement l'une des relations\n$a < b$, $a = b$, $a > b$ est vérifiée.\n\\emph{Précision éditoriale :} la source écrit ici\n$a \\leq b \\lor a = b \\lor a \\geq b$ ; cette disjonction est vraie,\nmais ses trois cas ne sont pas exclusifs.}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0047-B22",
+        "before": "Après les entiers relatifs et les rationnels, il ne reste que les réels.\nIl faut montrer que $\\Real$ est un corps ordonné \\emph{complet},\nc'est-à-dire un corps ordonné ayant la propriété de la borne supérieure.\nOr, \\olref[cuts]{realcompleteness} établit déjà cette propriété pour\n$\\Real$. Il reste toutefois à effectuer les vérifications, fastidieuses,\nqui montrent que $\\Real$ est un corps ordonné.",
+        "after": "Après les entiers relatifs et les rationnels, il ne reste que les réels.\nIl faut montrer que $\\Real$ est un corps ordonné \\emph{complet},\nc'est-à-dire un corps ordonné ayant la propriété de la borne supérieure.\nOr, le \\olref[cuts]{realcompleteness} établit déjà cette propriété pour\n$\\Real$. Il reste toutefois à effectuer les vérifications, fastidieuses,\nqui montrent que $\\Real$ est un corps ordonné.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0047-B27",
+        "before": "Il reste enfin un petit point à régler. Dans \\olref[cuts]{sec},\nnous proposons de prendre\n$\\sqrt{2}=\\Setabs{p \\in \\Rat}{p < 0 \\text{ ou }p^2 < 2}$.\nIl faut cependant montrer que cet ensemble est une \\emph{coupure}.\nEn voici une démonstration :",
+        "after": "Il reste enfin un petit point à régler. Dans la \\olref[cuts]{sec},\nnous proposons de prendre\n$\\sqrt{2}=\\Setabs{p \\in \\Rat}{p < 0 \\text{ ou }p^2 < 2}$.\nIl faut cependant montrer que cet ensemble est une \\emph{coupure}.\nEn voici une démonstration :",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0044-B05",
+        "before": "Les réels possèdent de nombreuses propriétés communes avec les rationnels.\n(Techniquement, ces deux ensembles sont des \\emph{corps ordonnés} ; voir\nla définition dans la \\olref[check]{orderedfield}.) Si vous avez résolu les\nexercices du \\olref[sfr][siz][]{chap}, vous savez qu'il y a strictement plus\nde réels que de rationnels, c'est-à-dire que $\\cardless{\\Rat}{\\Real}$.\nCantor fut le premier à le démontrer. Mais l'existence de nombres\nirrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue\ndepuis environ deux millénaires et demi. En effet :\n%\\footnote{Le commentaire source affirme que « $\\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}\n\\begin{thm}\\ollabel{root2irrational}\n$\\sqrt{2}$ est irrationnel, c'est-à-dire que $\\sqrt{2} \\notin \\Rat$.\n\\end{thm}\\footnote{Précision éditoriale : $\\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\\sqrt{2}$ et $-\\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}",
+        "after": "Les réels possèdent de nombreuses propriétés communes avec les rationnels.\n(Techniquement, ces deux ensembles sont des \\emph{corps ordonnés} ; voir\nla \\olref[check]{orderedfield}.) Si vous avez résolu les\nexercices du \\olref[sfr][siz][]{chap}, vous savez qu'il y a strictement plus\nde réels que de rationnels, c'est-à-dire que $\\cardless{\\Rat}{\\Real}$.\nCantor fut le premier à le démontrer. Mais l'existence de nombres\nirrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue\ndepuis environ deux millénaires et demi. En effet :\n%\\footnote{Le commentaire source affirme que « $\\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}\n\\begin{thm}\\ollabel{root2irrational}\n$\\sqrt{2}$ est irrationnel, c'est-à-dire que $\\sqrt{2} \\notin \\Rat$.\n\\end{thm}\\footnote{Précision éditoriale : $\\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\\sqrt{2}$ et $-\\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0046-B08",
+        "before": "Premièrement, il n'est pas clair qu'envisager les réels comme des\ncoupures soit \\emph{plus} rigoureux que de les envisager à partir de\nleurs développements décimaux familiers, éventuellement infinis.\nCette dernière « construction » ressemble quelque peu à celle par\nles suites de Cauchy ; pour l'essentiel, elle était en fait connue\ndes mathématiciens dès le début du dix-septième siècle\n(voir \\olref[cauchy]{sec}). Le véritable gain de rigueur est venu de\nla reconnaissance de la propriété de la borne supérieure.\nLa possibilité de construire les réels comme des ensembles particuliers\nn'est peut-être pas, à elle seule, si intéressante.",
+        "after": "Premièrement, il n'est pas clair qu'envisager les réels comme des\ncoupures soit \\emph{plus} rigoureux que de les envisager à partir de\nleurs développements décimaux familiers, éventuellement infinis.\nCette dernière « construction » ressemble quelque peu à celle par\nles suites de Cauchy ; pour l'essentiel, elle était en fait connue\ndes mathématiciens dès le début du dix-septième siècle\n(voir la \\olref[cauchy]{sec}). Le véritable gain de rigueur est venu de\nla reconnaissance de la propriété de la borne supérieure.\nLa possibilité de construire les réels comme des ensembles particuliers\nn'est peut-être pas, à elle seule, si intéressante.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0046-B10",
+        "before": "Plus douteux encore est que ces définitions nous disent ce que\n\\emph{sont} les entiers relatifs, les rationnels ou les réels,\n\\emph{sur le plan métaphysique}. Autrement dit, il est douteux que\nles réels, par exemple, \\emph{soient} certains ensembles\n(d'ensembles d'ensembles\\ldots). Le principal obstacle est que\nla construction aurait pu être menée de bien des façons. Dans le\ncas des réels, il existe des constructions différentes qui présentent\nun réel intérêt (voir \\olref[cauchy]{sec}). Mais voici un moyen\ntout à fait élémentaire d'obtenir d'autres constructions : comme\ndans \\olref[sfr][rel][ref]{sec}, nous aurions pu définir les couples\nordonnés un peu autrement. Avec cette autre définition, nos\nconstructions auraient tout aussi bien fonctionné, mais nous aurions\nobtenu d'autres objets. Il existe donc de nombreuses constructions\nensemblistes concurrentes des entiers relatifs, des rationnels et\ndes réels. Affirmer que les entiers relatifs, par exemple, sont\n\\emph{ces} ensembles plutôt que \\emph{ceux-là} serait alors arbitraire,\net embarrassant. Comme dans \\olref[sfr][rel][ref]{sec}, il s'agit\nd'un cas de l'argument rendu célèbre par \\citealt{Benacerraf1965}.",
+        "after": "Plus douteux encore est que ces définitions nous disent ce que\n\\emph{sont} les entiers relatifs, les rationnels ou les réels,\n\\emph{sur le plan métaphysique}. Autrement dit, il est douteux que\nles réels, par exemple, \\emph{soient} certains ensembles\n(d'ensembles d'ensembles\\ldots). Le principal obstacle est que\nla construction aurait pu être menée de bien des façons. Dans le\ncas des réels, il existe des constructions différentes qui présentent\nun réel intérêt (voir la \\olref[cauchy]{sec}). Mais voici un moyen\ntout à fait élémentaire d'obtenir d'autres constructions : comme\ndans la \\olref[sfr][rel][ref]{sec}, nous aurions pu définir les couples\nordonnés un peu autrement. Avec cette autre définition, nos\nconstructions auraient tout aussi bien fonctionné, mais nous aurions\nobtenu d'autres objets. Il existe donc de nombreuses constructions\nensemblistes concurrentes des entiers relatifs, des rationnels et\ndes réels. Affirmer que les entiers relatifs, par exemple, sont\n\\emph{ces} ensembles plutôt que \\emph{ceux-là} serait alors arbitraire,\net embarrassant. Comme dans la \\olref[sfr][rel][ref]{sec}, il s'agit\nd'un cas de l'argument rendu célèbre par \\citealt{Benacerraf1965}.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0046-B11",
+        "before": "Un autre point mérite d'être soulevé : nos constructions ont quelque\nchose d'assez \\emph{étrange}. Nous sommes partis des nombres naturels.\nNous construisons ensuite les entiers relatifs et le « $0$ des entiers\nrelatifs », c'est-à-dire $\\equivrep{0,0}{\\Intequiv}$.\nOr, dans la réalisation ensembliste usuelle,\n$0\\neq\\equivrep{0,0}{\\Intequiv}$ ; avec ces constructions,\n\\emph{aucun} naturel n'est un entier relatif ainsi construit.\nCela paraît pourtant très contraire à l'intuition.\nDans \\olref[sfr][set][imp]{sec}, nous avons même affirmé,\nsans véritable justification, que $\\Nat\\subseteq\\Rat$.\nSi ces constructions nous disent exactement \\emph{ce que sont}\nles nombres, cette affirmation, prise littéralement dans cette\nréalisation, est manifestement fausse.\n\\begin{editorial}\nLes inégalités et la séparation littérale invoquées ici dépendent du\ncodage des objets. Elles valent, par exemple, si les naturels sont les\nordinaux finis de von Neumann : les classes de couples qui représentent\nles entiers relatifs et les rationnels sont infinies, tandis que chaque\nnaturel est un ensemble fini. La source laisse ce choix de réalisation\nimplicite. En revanche, les plongements déjà définis permettent\nd'identifier chaque système de nombres à son image dans le suivant ;\nils justifient les inclusions usuelles après cette identification.\nLa distinction pertinente est celle entre égalité littérale des objets\net identification au moyen d'un plongement.\n\\end{editorial}",
+        "after": "Un autre point mérite d'être soulevé : nos constructions ont quelque\nchose d'assez \\emph{étrange}. Nous sommes partis des nombres naturels.\nNous construisons ensuite les entiers relatifs et le « $0$ des entiers\nrelatifs », c'est-à-dire $\\equivrep{0,0}{\\Intequiv}$.\nOr, dans la réalisation ensembliste usuelle,\n$0\\neq\\equivrep{0,0}{\\Intequiv}$ ; avec ces constructions,\n\\emph{aucun} naturel n'est un entier relatif ainsi construit.\nCela paraît pourtant très contraire à l'intuition.\nDans la \\olref[sfr][set][imp]{sec}, nous avons même affirmé,\nsans véritable justification, que $\\Nat\\subseteq\\Rat$.\nSi ces constructions nous disent exactement \\emph{ce que sont}\nles nombres, cette affirmation, prise littéralement dans cette\nréalisation, est manifestement fausse.\n\\begin{editorial}\nLes inégalités et la séparation littérale invoquées ici dépendent du\ncodage des objets. Elles valent, par exemple, si les naturels sont les\nordinaux finis de von Neumann : les classes de couples qui représentent\nles entiers relatifs et les rationnels sont infinies, tandis que chaque\nnaturel est un ensemble fini. La source laisse ce choix de réalisation\nimplicite. En revanche, les plongements déjà définis permettent\nd'identifier chaque système de nombres à son image dans le suivant ;\nils justifient les inclusions usuelles après cette identification.\nLa distinction pertinente est celle entre égalité littérale des objets\net identification au moyen d'un plongement.\n\\end{editorial}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0054-B07",
+        "before": "Avec une notation analogue à celle de la définition\n\\olref[sfr][infinite][dedekind]{Closure}, posons, pour une application\n$f\\colon U\\to U$ et une partie $B\\subseteq U$,\n\\[\n\\Closureofunder{f}{B} = \\bigcap \\Setabs{X\\subseteq U}{B \\subseteq X\n\\text{ et }X\\text{ est stable par }f}.\n\\]\nAinsi définie, $\\Closureofunder{f}{B}$ est la plus petite partie de $U$\nstable par $f$ qui contient $B$, au sens suivant.\\footnote{Note de\nl'édition française : comme pour la clôture d'un élément, on fixe\nl'ensemble ambiant et on suppose que l'application le préserve.\nLa famille de parties à intersecter contient $U$ ; elle est donc\nnon vide, y compris lorsque $B$ est vide.}",
+        "after": "Avec une notation analogue à celle de la\n\\olref[sfr][infinite][dedekind]{Closure}, posons, pour une application\n$f\\colon U\\to U$ et une partie $B\\subseteq U$,\n\\[\n\\Closureofunder{f}{B} = \\bigcap \\Setabs{X\\subseteq U}{B \\subseteq X\n\\text{ et }X\\text{ est stable par }f}.\n\\]\nAinsi définie, $\\Closureofunder{f}{B}$ est la plus petite partie de $U$\nstable par $f$ qui contient $B$, au sens suivant.\\footnote{Note de\nl'édition française : comme pour la clôture d'un élément, on fixe\nl'ensemble ambiant et on suppose que l'application le préserve.\nLa famille de parties à intersecter contient $U$ ; elle est donc\nnon vide, y compris lorsque $B$ est vide.}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0054-B09",
+        "before": "\\begin{proof}\nLa preuve est exactement la même que celle du lemme\n\\olref[sfr][infinite][dedekind]{closureproperties}.\n\\end{proof}",
+        "after": "\\begin{proof}\nLa preuve est exactement la même que celle du\n\\olref[sfr][infinite][dedekind]{closureproperties}.\n\\end{proof}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0054-B13",
+        "before": "Montrons d'abord que, si $x\\in F$ et $y\\notin F$, alors\n$g(x)\\neq g(y)$. Supposons le contraire pour obtenir une contradiction :\non aurait $y=g(y)=g(x)=f(x)$. Or $x\\in F$ et $F$ est stable par $f$,\nd'après \\olref{Closureprops}. On aurait donc $y=f(x)\\in F$,\nce qui est contradictoire.",
+        "after": "Montrons d'abord que, si $x\\in F$ et $y\\notin F$, alors\n$g(x)\\neq g(y)$. Supposons le contraire pour obtenir une contradiction :\non aurait $y=g(y)=g(x)=f(x)$. Or $x\\in F$ et $F$ est stable par $f$,\nd'après le \\olref{Closureprops}. On aurait donc $y=f(x)\\in F$,\nce qui est contradictoire.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0054-B15",
+        "before": "Il reste à montrer que $\\ran{g}=B$. Vérifions d'abord que\n$\\ran{g}\\subseteq B$ : si $z\\in F$, alors $g(z)=f(z)\\in A\\subseteq B$ ;\nsi $z\\in C\\setminus F$, alors $z\\notin C\\setminus B$, puisque\n$C\\setminus B\\subseteq F$, donc $g(z)=z\\in B$.\\footnote{Note de\nl'édition française : cette inclusion, implicite dans la source, est\nnécessaire pour établir que $g$ a bien ses valeurs dans $B$.}\nFixons maintenant $x\\in B\\subseteq C$. Si $x\\notin F$, alors $g(x)=x$.\nSi $x\\in F$, il existe $y\\in F$ tel que $x=f(y)$ : sinon\n$F\\setminus\\{x\\}$ serait stable par $f$ et contiendrait $C\\setminus B$.\nEn effet, l'image de chacun de ses éléments serait dans $F$ par stabilité,\net serait différente de $x$ par l'absence supposée d'antécédent dans $F$ ;\nde plus, retirer $x\\in B$ ne retire aucun élément de $C\\setminus B$.\nCela contredirait la minimalité donnée par \\olref{Closureprops}.\nNous avons donc $g(y)=f(y)=x$, ce qui prouve l'inclusion réciproque.\n\\end{proof}",
+        "after": "Il reste à montrer que $\\ran{g}=B$. Vérifions d'abord que\n$\\ran{g}\\subseteq B$ : si $z\\in F$, alors $g(z)=f(z)\\in A\\subseteq B$ ;\nsi $z\\in C\\setminus F$, alors $z\\notin C\\setminus B$, puisque\n$C\\setminus B\\subseteq F$, donc $g(z)=z\\in B$.\\footnote{Note de\nl'édition française : cette inclusion, implicite dans la source, est\nnécessaire pour établir que $g$ a bien ses valeurs dans $B$.}\nFixons maintenant $x\\in B\\subseteq C$. Si $x\\notin F$, alors $g(x)=x$.\nSi $x\\in F$, il existe $y\\in F$ tel que $x=f(y)$ : sinon\n$F\\setminus\\{x\\}$ serait stable par $f$ et contiendrait $C\\setminus B$.\nEn effet, l'image de chacun de ses éléments serait dans $F$ par stabilité,\net serait différente de $x$ par l'absence supposée d'antécédent dans $F$ ;\nde plus, retirer $x\\in B$ ne retire aucun élément de $C\\setminus B$.\nCela contredirait la minimalité donnée par le \\olref{Closureprops}.\nNous avons donc $g(y)=f(y)=x$, ce qui prouve l'inclusion réciproque.\n\\end{proof}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0054-B17",
+        "before": "\\begin{proof}[Preuve du théorème de Schröder--Bernstein]\nSoient $f\\colon A\\to B$ et $g\\colon B\\to A$ des !!{injection}s.\nPuisque $\\funimage{f}{A}\\subseteq B$, nous avons\n$\\funimage{g}{\\funimage{f}{A}}\\subseteq g[B]\\subseteq A$.\nDe plus, $\\comp{f}{g}\\colon A\\to\\funimage{g}{\\funimage{f}{A}}$\nest une !!{injection}, puisque $g$ et $f$ sont toutes deux injectives ;\nc'est même !!a{bijection}, par la définition de son codomaine.\nAinsi, $\\cardeq{\\funimage{g}{\\funimage{f}{A}}}{A}$, et la proposition\n\\olref{sbhelper} fournit donc !!a{bijection}\n$h\\colon A\\to\\funimage{g}{B}$. En outre, $g^{-1}$ est !!a{bijection}\nde $\\funimage{g}{B}$ sur $B$. Par conséquent,\n$\\comp{h}{g^{-1}}\\colon A\\to B$ est !!a{bijection}.\n\\end{proof}",
+        "after": "\\begin{proof}[Preuve du théorème de Schröder--Bernstein]\nSoient $f\\colon A\\to B$ et $g\\colon B\\to A$ des !!{injection}s.\nPuisque $\\funimage{f}{A}\\subseteq B$, nous avons\n$\\funimage{g}{\\funimage{f}{A}}\\subseteq g[B]\\subseteq A$.\nDe plus, $\\comp{f}{g}\\colon A\\to\\funimage{g}{\\funimage{f}{A}}$\nest une !!{injection}, puisque $g$ et $f$ sont toutes deux injectives ;\nc'est même !!a{bijection}, par la définition de son codomaine.\nAinsi, $\\cardeq{\\funimage{g}{\\funimage{f}{A}}}{A}$, et la\n\\olref{sbhelper} fournit donc !!a{bijection}\n$h\\colon A\\to\\funimage{g}{B}$. En outre, $g^{-1}$ est !!a{bijection}\nde $\\funimage{g}{B}$ sur $B$. Par conséquent,\n$\\comp{h}{g^{-1}}\\colon A\\to B$ est !!a{bijection}.\n\\end{proof}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0051-B16",
+        "before": "\\begin{proof}\nSoit $D$ un ensemble infini au sens de Dedekind. Il existe donc une\ninjection $g\\colon D\\to D$ et un élément $o\\in D\\setminus\\ran{g}$.\nPosons $A = \\closureofunder{g}{o}$ ; d'après\n\\olref{closureproperties}, $A$ existe et $o \\in A$.\nPosons $f = \\funrestrictionto{g}{A}$. Comme $A$ est stable par $g$,\n$f$ est une application de $A$ dans $A$. Montrons que le triplet\n$A,f,o$ est une algèbre de Dedekind.",
+        "after": "\\begin{proof}\nSoit $D$ un ensemble infini au sens de Dedekind. Il existe donc une\ninjection $g\\colon D\\to D$ et un élément $o\\in D\\setminus\\ran{g}$.\nPosons $A = \\closureofunder{g}{o}$ ; d'après le\n\\olref{closureproperties}, $A$ existe et $o \\in A$.\nPosons $f = \\funrestrictionto{g}{A}$. Comme $A$ est stable par $g$,\n$f$ est une application de $A$ dans $A$. Montrons que le triplet\n$A,f,o$ est une algèbre de Dedekind.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0051-B19",
+        "before": "Pour la condition \\olref{ded:closure}, le lemme\n\\olref{closureproperties} assure que $A$ est stable par $g$, donc\naussi par $f$. Ainsi, $\\closureofunder{f}{o}\\subseteq A$, d'après\n\\olref{closureproperties}. De plus, $\\closureofunder{f}{o}$ est stable\npar $f$ ; comme c'est une partie de $A$ et que\n$f = \\funrestrictionto{g}{A}$, elle est également stable par $g$.\nPuisqu'elle contient $o$, le lemme \\olref{closureproperties} donne\n$A\\subseteq\\closureofunder{f}{o}$. Les deux inclusions établissent\nl'égalité voulue.\n\\end{proof}",
+        "after": "Pour la condition \\olref{ded:closure}, le\n\\olref{closureproperties} assure que $A$ est stable par $g$, donc\naussi par $f$. Ainsi, $\\closureofunder{f}{o}\\subseteq A$, d'après le\n\\olref{closureproperties}. De plus, $\\closureofunder{f}{o}$ est stable\npar $f$ ; comme c'est une partie de $A$ et que\n$f = \\funrestrictionto{g}{A}$, elle est également stable par $g$.\nPuisqu'elle contient $o$, le \\olref{closureproperties} donne\n$A\\subseteq\\closureofunder{f}{o}$. Les deux inclusions établissent\nl'égalité voulue.\n\\end{proof}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0052-B09",
+        "before": "Certes, le théorème \\olref{thm:dedinfiniteinduction} formule la récurrence\nen termes \\emph{ensemblistes}. Mais nous pouvons aisément donner à ce\nprincipe une formulation peut-être plus familière.",
+        "after": "Certes, le \\olref{thm:dedinfiniteinduction} formule la récurrence\nen termes \\emph{ensemblistes}. Mais nous pouvons aisément donner à ce\nprincipe une formulation peut-être plus familière.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0052-B11",
+        "before": "\\begin{proof}\nPosons $X = \\Setabs{n \\in N}{\\phi(n)}$, puis appliquons le théorème\n\\olref{thm:dedinfiniteinduction}.\n\\end{proof}",
+        "after": "\\begin{proof}\nPosons $X = \\Setabs{n \\in N}{\\phi(n)}$, puis appliquons le\n\\olref{thm:dedinfiniteinduction}.\n\\end{proof}",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0052-B12",
+        "before": "Dans cet énoncé, nous avons parlé d'une formule « avec des paramètres ».\nCela signifie, approximativement, que, pour des objets quelconques\n$c_1,\\ldots,c_k$, nous pouvons travailler avec\n$\\phi(x,c_1,\\ldots,c_k)$. Plus précisément, nous pouvons énoncer le\nrésultat sans parler de « paramètres » : pour toute formule\n$\\phi(x,v_1,\\ldots,v_k)$ dont toutes les variables libres sont\nexplicitement indiquées, nous avons\n\t\\begin{align*}\n\t\t\t\\forall v_1 \\ldots \\forall v_k((&\\phi(o, v_1,\\ldots, v_k) \\land {}\\\\\n\t\t\t&\t(\\forall x \\in N)(\\phi(x,v_1, \\ldots, v_k) \\lif \\phi(s(x), v_1,\\ldots, v_k))) \\lif {}\\\\\n\t\t\t&\\hspace{3em} (\\forall x \\in N)\\phi(x, v_1,\\ldots, v_k))\n\t\\end{align*}\nOn voit que parler de « paramètres » peut rendre les énoncés beaucoup\nplus faciles à lire. Dans \\olref[sth][][]{part}, nous recourrons assez\nsouvent à cette façon de présenter les choses.",
+        "after": "Dans cet énoncé, nous avons parlé d'une formule « avec des paramètres ».\nCela signifie, approximativement, que, pour des objets quelconques\n$c_1,\\ldots,c_k$, nous pouvons travailler avec\n$\\phi(x,c_1,\\ldots,c_k)$. Plus précisément, nous pouvons énoncer le\nrésultat sans parler de « paramètres » : pour toute formule\n$\\phi(x,v_1,\\ldots,v_k)$ dont toutes les variables libres sont\nexplicitement indiquées, nous avons\n\t\\begin{align*}\n\t\t\t\\forall v_1 \\ldots \\forall v_k((&\\phi(o, v_1,\\ldots, v_k) \\land {}\\\\\n\t\t\t&\t(\\forall x \\in N)(\\phi(x,v_1, \\ldots, v_k) \\lif \\phi(s(x), v_1,\\ldots, v_k))) \\lif {}\\\\\n\t\t\t&\\hspace{3em} (\\forall x \\in N)\\phi(x, v_1,\\ldots, v_k))\n\t\\end{align*}\nOn voit que parler de « paramètres » peut rendre les énoncés beaucoup\nplus faciles à lire. Dans la \\olref[sth][][]{part}, nous recourrons assez\nsouvent à cette façon de présenter les choses.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0052-B13",
+        "before": "Revenons aux algèbres de Dedekind. À partir d'une telle algèbre, nous\npouvons aussi définir les opérations arithmétiques usuelles :\nl'addition, la multiplication et l'exponentiation. Ce n'est toutefois\npas immédiat : il faut faire appel à la \\emph{définition par récurrence}.\nNous présenterons et justifierons cette méthode beaucoup plus loin,\ndans un cadre bien plus général. Les lecteurs intéressés pourront\nrevenir sur cette question après \\olref[sth][ord-arithmetic][]{chap},\nou consulter une autre présentation, par exemple\n\\citealt[pp.~95--8]{Potter2004}. Lorsque $N,s,o$ est une algèbre de\nDedekind, nous pourrons donc, le moment venu, poser les équations\nsuivantes :\n\\begin{align*}\n\t{a} + {o} &= {a} & & & {a} \\times {o} &= {o} & & & {a}^{o} &= s(o)\\\\\n{a} + {s}({b}) &= {s}({a}+{b}) &&& {a} \\times {s}({b}) &= ({a}\\times {b}) + {a}  & & & {a}^{{s}({b})} &= {a}^{b} \\times {a}\n\\end{align*}\net montrer que les opérations ainsi définies se comportent comme\non l'attend.",
+        "after": "Revenons aux algèbres de Dedekind. À partir d'une telle algèbre, nous\npouvons aussi définir les opérations arithmétiques usuelles :\nl'addition, la multiplication et l'exponentiation. Ce n'est toutefois\npas immédiat : il faut faire appel à la \\emph{définition par récurrence}.\nNous présenterons et justifierons cette méthode beaucoup plus loin,\ndans un cadre bien plus général. Les lecteurs intéressés pourront\nrevenir sur cette question après le \\olref[sth][ord-arithmetic][]{chap},\nou consulter une autre présentation, par exemple\n\\citealt[pp.~95--8]{Potter2004}. Lorsque $N,s,o$ est une algèbre de\nDedekind, nous pourrons donc, le moment venu, poser les équations\nsuivantes :\n\\begin{align*}\n\t{a} + {o} &= {a} & & & {a} \\times {o} &= {o} & & & {a}^{o} &= s(o)\\\\\n{a} + {s}({b}) &= {s}({a}+{b}) &&& {a} \\times {s}({b}) &= ({a}\\times {b}) + {a}  & & & {a}^{{s}({b})} &= {a}^{b} \\times {a}\n\\end{align*}\net montrer que les opérations ainsi définies se comportent comme\non l'attend.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0053-B05",
+        "before": "Dans ce chapitre, nous avons présenté un traitement ensembliste des\nentiers naturels à l'aide des algèbres de Dedekind. Dans la section\n\\olref[sfr][arith][ref]{sec}, nous avons réfléchi, entre autres,\nà la portée philosophique de l'arithmétisation de l'analyse.\\footnote{Note\nde l'édition française : le renvoi incomplet de la source est rétabli\nvers la section de réflexions philosophiques du chapitre précédent.}\nIl nous faut maintenant réfléchir à la portée de ce que nous avons\naccompli ici.",
+        "after": "Dans ce chapitre, nous avons présenté un traitement ensembliste des\nentiers naturels à l'aide des algèbres de Dedekind. Dans la\n\\olref[sfr][arith][ref]{sec}, nous avons réfléchi, entre autres,\nà la portée philosophique de l'arithmétisation de l'analyse.\\footnote{Note\nde l'édition française : le renvoi incomplet de la source est rétabli\nvers la section de réflexions philosophiques du chapitre précédent.}\nIl nous faut maintenant réfléchir à la portée de ce que nous avons\naccompli ici.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0053-B06",
+        "before": "Tout au long du chapitre \\olref[sfr][arith][]{chap}, nous avons pris\nles entiers naturels comme donnés, puis nous nous en sommes servis pour\nconstruire explicitement les entiers relatifs, les rationnels et les réels.\nDans le présent chapitre, nous n'avons pas donné de construction explicite\ndes entiers naturels. Nous avons seulement montré qu'\\emph{étant donné\nun ensemble infini au sens de Dedekind, quel qu'il soit}, nous pouvons\ndéfinir un ensemble qui se comporte exactement comme nous souhaitons\nque~$\\Nat$ se comporte.",
+        "after": "Tout au long du \\olref[sfr][arith][]{chap}, nous avons pris\nles entiers naturels comme donnés, puis nous nous en sommes servis pour\nconstruire explicitement les entiers relatifs, les rationnels et les réels.\nDans le présent chapitre, nous n'avons pas donné de construction explicite\ndes entiers naturels. Nous avons seulement montré qu'\\emph{étant donné\nun ensemble infini au sens de Dedekind, quel qu'il soit}, nous pouvons\ndéfinir un ensemble qui se comporte exactement comme nous souhaitons\nque~$\\Nat$ se comporte.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0053-B07",
+        "before": "Nous ne pouvons donc manifestement pas prétendre avoir répondu à une\nquestion métaphysique telle que : \\emph{quels objets sont les entiers\nnaturels ?} Mais c'est une bonne chose. Après tout, dans la section\n\\olref[sfr][arith][ref]{sec}, nous avons souligné qu'il serait erroné\nde voir dans la définition de $\\Real$ comme ensemble des coupures de\nDedekind une \\emph{découverte}, plutôt qu'une convention commode.\nL'observation cruciale est que les coupures de Dedekind possèdent les\npropriétés mathématiques essentielles des nombres réels. De même ici,\nl'observation cruciale est que \\emph{toute} algèbre de Dedekind possède\nles propriétés mathématiques essentielles des entiers naturels.\nDedekind a d'ailleurs précisé ce point en prouvant que toutes les algèbres\nde Dedekind sont \\emph{isomorphes}\n(\\citeyear[théorèmes 132--3]{Dedekind1888}). Il n'est donc pas surprenant\nque de nombreux « structuralistes » contemporains voient en lui\nun précurseur.",
+        "after": "Nous ne pouvons donc manifestement pas prétendre avoir répondu à une\nquestion métaphysique telle que : \\emph{quels objets sont les entiers\nnaturels ?} Mais c'est une bonne chose. Après tout, dans la\n\\olref[sfr][arith][ref]{sec}, nous avons souligné qu'il serait erroné\nde voir dans la définition de $\\Real$ comme ensemble des coupures de\nDedekind une \\emph{découverte}, plutôt qu'une convention commode.\nL'observation cruciale est que les coupures de Dedekind possèdent les\npropriétés mathématiques essentielles des nombres réels. De même ici,\nl'observation cruciale est que \\emph{toute} algèbre de Dedekind possède\nles propriétés mathématiques essentielles des entiers naturels.\nDedekind a d'ailleurs précisé ce point en prouvant que toutes les algèbres\nde Dedekind sont \\emph{isomorphes}\n(\\citeyear[théorèmes 132--3]{Dedekind1888}). Il n'est donc pas surprenant\nque de nombreux « structuralistes » contemporains voient en lui\nun précurseur.",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0053-B08",
+        "before": "Nous avons en outre montré comment intégrer la théorie des entiers\nnaturels à une théorie naïve et simple des ensembles. Celle-ci reste\nassez informelle, mais elle ne semble pas présupposer les entiers naturels.\nNous sommes donc peut-être en voie de réaliser l'ambitieux projet de\nDedekind lui-même, qu'il exposait ainsi :\n\\begin{quote}\nEn science, rien de ce qui est susceptible d'être démontré ne devrait\nêtre tenu pour vrai sans démonstration. Si raisonnable que paraisse cette\nexigence, je ne peux considérer qu'elle soit satisfaite, même dans les\nméthodes les plus récentes pour établir les fondements de la science\nla plus simple, à savoir cette partie de la logique qui traite de la\nthéorie des nombres. En parlant de l'arithmétique (de l'algèbre,\nde l'analyse) comme d'une simple partie de la logique, j'entends affirmer\nque je considère le concept de nombre comme entièrement indépendant\ndes notions ou des intuitions de l'espace et du temps ; je le considère\nbien plutôt comme un produit immédiat des lois pures de la pensée.\n\\citep[préface]{Dedekind1888}\n\\end{quote}\nL'idée audacieuse de Dedekind est donc la suivante. Nous venons de montrer\ncomment construire les entiers naturels à l'aide de la seule théorie\nnaïve des ensembles. Dans le chapitre \\olref[sfr][arith][]{chap},\nnous avons vu comment construire les réels à partir des entiers naturels\net d'un peu de théorie des ensembles. Peut-être « l'arithmétique\n(l'algèbre, l'analyse) » s'avère-t-elle donc n'être « qu'une partie\nde la logique », au sens étendu que Dedekind donne au mot « logique ».",
+        "after": "Nous avons en outre montré comment intégrer la théorie des entiers\nnaturels à une théorie naïve et simple des ensembles. Celle-ci reste\nassez informelle, mais elle ne semble pas présupposer les entiers naturels.\nNous sommes donc peut-être en voie de réaliser l'ambitieux projet de\nDedekind lui-même, qu'il exposait ainsi :\n\\begin{quote}\nEn science, rien de ce qui est susceptible d'être démontré ne devrait\nêtre tenu pour vrai sans démonstration. Si raisonnable que paraisse cette\nexigence, je ne peux considérer qu'elle soit satisfaite, même dans les\nméthodes les plus récentes pour établir les fondements de la science\nla plus simple, à savoir cette partie de la logique qui traite de la\nthéorie des nombres. En parlant de l'arithmétique (de l'algèbre,\nde l'analyse) comme d'une simple partie de la logique, j'entends affirmer\nque je considère le concept de nombre comme entièrement indépendant\ndes notions ou des intuitions de l'espace et du temps ; je le considère\nbien plutôt comme un produit immédiat des lois pures de la pensée.\n\\citep[préface]{Dedekind1888}\n\\end{quote}\nL'idée audacieuse de Dedekind est donc la suivante. Nous venons de montrer\ncomment construire les entiers naturels à l'aide de la seule théorie\nnaïve des ensembles. Dans le \\olref[sfr][arith][]{chap},\nnous avons vu comment construire les réels à partir des entiers naturels\net d'un peu de théorie des ensembles. Peut-être « l'arithmétique\n(l'algèbre, l'analyse) » s'avère-t-elle donc n'être « qu'une partie\nde la logique », au sens étendu que Dedekind donne au mot « logique ».",
+        "kind": "rendered_reference_grammar_only"
+      },
+      {
+        "segment": "OLP-0053-B09",
+        "before": "Telle est l'idée. Mais arrêtons-nous un instant. Notre construction\nd'une algèbre de Dedekind, qui nous tient lieu d'ensemble des entiers\nnaturels, est subordonnée à l'existence d'un ensemble infini au sens\nde Dedekind. Il suffit de revenir au théorème\n\\olref[sfr][infinite][dedekind]{thm:DedekindInfiniteAlgebra}\npour le constater. Si l'existence d'un ensemble infini au sens de\nDedekind ne peut être établie par la « logique » ou les « lois pures\nde la pensée », le projet ne peut aboutir.",
+        "after": "Telle est l'idée. Mais arrêtons-nous un instant. Notre construction\nd'une algèbre de Dedekind, qui nous tient lieu d'ensemble des entiers\nnaturels, est subordonnée à l'existence d'un ensemble infini au sens\nde Dedekind. Il suffit de revenir au\n\\olref[sfr][infinite][dedekind]{thm:DedekindInfiniteAlgebra}\npour le constater. Si l'existence d'un ensemble infini au sens de\nDedekind ne peut être établie par la « logique » ou les « lois pures\nde la pensée », le projet ne peut aboutir.",
+        "kind": "rendered_reference_grammar_only"
+      }
+    ]
+  },
+  "layout_repairs": {
+    "status": "PREPARED",
+    "scope": "Footnote call joined to theorem 5.4; keep ring definition and induction statement with their formulas at page breaks.",
+    "evidence": "Actual reader PDF inspection and macro expansion; mathematical content and source reference identifiers preserved.",
+    "changes": [
+      {
+        "segment": "OLP-0044-B05",
+        "before": "Les réels possèdent de nombreuses propriétés communes avec les rationnels.\n(Techniquement, ces deux ensembles sont des \\emph{corps ordonnés} ; voir\nla \\olref[check]{orderedfield}.) Si vous avez résolu les\nexercices du \\olref[sfr][siz][]{chap}, vous savez qu'il y a strictement plus\nde réels que de rationnels, c'est-à-dire que $\\cardless{\\Rat}{\\Real}$.\nCantor fut le premier à le démontrer. Mais l'existence de nombres\nirrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue\ndepuis environ deux millénaires et demi. En effet :\n%\\footnote{Le commentaire source affirme que « $\\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}\n\\begin{thm}\\ollabel{root2irrational}\n$\\sqrt{2}$ est irrationnel, c'est-à-dire que $\\sqrt{2} \\notin \\Rat$.\n\\end{thm}\\footnote{Précision éditoriale : $\\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\\sqrt{2}$ et $-\\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}",
+        "after": "Les réels possèdent de nombreuses propriétés communes avec les rationnels.\n(Techniquement, ces deux ensembles sont des \\emph{corps ordonnés} ; voir\nla \\olref[check]{orderedfield}.) Si vous avez résolu les\nexercices du \\olref[sfr][siz][]{chap}, vous savez qu'il y a strictement plus\nde réels que de rationnels, c'est-à-dire que $\\cardless{\\Rat}{\\Real}$.\nCantor fut le premier à le démontrer. Mais l'existence de nombres\nirrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue\ndepuis environ deux millénaires et demi. En effet :\n%\\footnote{Le commentaire source affirme que « $\\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}\n\\begin{thm}\\ollabel{root2irrational}\n$\\sqrt{2}$ est irrationnel, c'est-à-dire que $\\sqrt{2} \\notin \\Rat$.\n\\footnote{Précision éditoriale : $\\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\\sqrt{2}$ et $-\\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}\\end{thm}",
+        "kind": "layout_only"
+      },
+      {
+        "segment": "OLP-0047-B06",
+        "before": "\\begin{defn}\nUn \\emph{anneau commutatif} est un ensemble $S$ muni de deux éléments\ndistingués $0$ et $1$ et de deux opérations $+$ et $\\times$ de\n$S\\times S$ dans $S$, qui satisfont les huit formules suivantes :\n\\begin{align*}\n  \\emph{Associativité}&&a + (b+ c) & = (a + b) + c \\\\\n  && (a \\times b) \\times c & = a \\times (b\\times c)\\\\\n  \\emph{Commutativité}&&a + b &= b+ a  \\\\\n  && a \\times b&= b\\times a\\\\\n  \\emph{Éléments neutres}&&a + 0 &= a \\\\\n  && a \\times 1 &= a\\\\\n  \\emph{Existence d'un opposé}&&(\\exists b\\in S)0&=a + b\\\\\n  \\emph{Distributivité}&&a \\times (b+ c ) &= (a \\times b) + (a \\times c)\n\\end{align*}\nDans chaque formule, les variables libres sont implicitement quantifiées\nuniversellement sur $S$ ; le $b$ de la formule sur l'opposé est déjà lié\npar son quantificateur existentiel. Les éléments $0$ et~$1$ ne sont pas\nnécessairement les nombres naturels qui portent ces noms.\n\\end{defn}",
+        "after": "\\Needspace{16\\baselineskip}\\begin{defn}\nUn \\emph{anneau commutatif} est un ensemble $S$ muni de deux éléments\ndistingués $0$ et $1$ et de deux opérations $+$ et $\\times$ de\n$S\\times S$ dans $S$, qui satisfont les huit formules suivantes :\n\\begin{align*}\n  \\emph{Associativité}&&a + (b+ c) & = (a + b) + c \\\\\n  && (a \\times b) \\times c & = a \\times (b\\times c)\\\\\n  \\emph{Commutativité}&&a + b &= b+ a  \\\\\n  && a \\times b&= b\\times a\\\\\n  \\emph{Éléments neutres}&&a + 0 &= a \\\\\n  && a \\times 1 &= a\\\\\n  \\emph{Existence d'un opposé}&&(\\exists b\\in S)0&=a + b\\\\\n  \\emph{Distributivité}&&a \\times (b+ c ) &= (a \\times b) + (a \\times c)\n\\end{align*}\nDans chaque formule, les variables libres sont implicitement quantifiées\nuniversellement sur $S$ ; le $b$ de la formule sur l'opposé est déjà lié\npar son quantificateur existentiel. Les éléments $0$ et~$1$ ne sont pas\nnécessairement les nombres naturels qui portent ces noms.\n\\end{defn}",
+        "kind": "layout_only"
+      },
+      {
+        "segment": "OLP-0052-B06",
+        "before": "\\begin{thm}[Récurrence arithmétique]\\ollabel{thm:dedinfiniteinduction}\nSoit $N,s,o$ une algèbre de Dedekind. Pour tout ensemble $X$ :\n\t\\begin{center}\n\t\tsi $o \\in X$ et $(\\forall {n} \\in N \\cap X){s}({n}) \\in X$,\n\t\talors $N \\subseteq X$.\n\t\\end{center}\n\\end{thm}",
+        "after": "\\Needspace{6\\baselineskip}\\begin{thm}[Récurrence arithmétique]\\ollabel{thm:dedinfiniteinduction}\nSoit $N,s,o$ une algèbre de Dedekind. Pour tout ensemble $X$ :\n\t\\begin{center}\n\t\tsi $o \\in X$ et $(\\forall {n} \\in N \\cap X){s}({n}) \\in X$,\n\t\talors $N \\subseteq X$.\n\t\\end{center}\n\\end{thm}",
+        "kind": "layout_only"
+      }
+    ]
+  }
 }

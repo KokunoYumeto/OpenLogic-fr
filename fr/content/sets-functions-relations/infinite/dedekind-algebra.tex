@@ -1,0 +1,154 @@
+% Part: sets-functions-relations
+% Chapter: infinite
+% Section: dedekind
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{infinite}{dedekind}
+\olsection{Algèbres de Dedekind}
+
+Nous ne voulons pas seulement que les entiers naturels soient en nombre
+infini ; nous voulons aussi qu'ils possèdent certaines propriétés
+algébriques : l'addition, la multiplication et les autres opérations
+doivent se comporter comme il convient.
+
+L'idée de Dedekind consiste à prendre pour notion fondamentale la
+\emph{fonction successeur}, puis à caractériser les nombres par les
+propriétés suivantes :
+\begin{enumerate}
+	\item Il existe un nombre, $0$, qui n'est le successeur d'aucun nombre,
+	\\c'est-à-dire $0 \notin \ran{s}$,
+	\\c'est-à-dire $\forall x\ s(x) \neq 0$.
+	\item Des nombres distincts ont des successeurs distincts,
+	\\c'est-à-dire que $s$ est !!a{injection},
+	\\c'est-à-dire $\forall x \forall y (s(x) = s(y) \lif x = y)$.
+	\item\ollabel{repeatedapplication} Tout nombre s'obtient à partir de
+	$0$ par applications répétées de la fonction successeur.
+\end{enumerate}
+Les deux premières conditions s'expriment aisément en logique du premier
+ordre, comme on vient de le voir. Mais la condition
+\olref{repeatedapplication} ne peut pas s'exprimer à l'aide de la seule
+logique du premier ordre dans ce langage arithmétique. L'avancée décisive
+de Dedekind consiste à reformuler la condition
+\olref{repeatedapplication} en termes ensemblistes, de la manière suivante :
+\begin{enumerate}
+	\item[3$'$.] Les entiers naturels forment le plus petit ensemble
+	contenant $0$ et \emph{stable par la fonction successeur} :
+	appliquer $s$ à un !!{element} de cet ensemble donne encore
+	un !!{element} de l'ensemble.
+\end{enumerate}
+Il nous faut toutefois expliciter cette idée pas à pas.\footnote{Note de
+l'édition française : la condition « contenant $0$ », omise dans cette
+reformulation de la source, est nécessaire ; l'ensemble vide est lui aussi
+stable par le successeur. La reformulation ensembliste peut être écrite
+dans le langage du premier ordre de la théorie des ensembles, qui permet
+de quantifier sur les ensembles.}
+
+\begin{defn}\ollabel{Closure}
+	Soit $f\colon A\to A$. Une partie $X\subseteq A$ est
+	\emph{stable par $f$} si et seulement si
+	$(\forall x \in X)f(x) \in X$. Pour tout $o\in A$, on définit la
+	\emph{clôture de $o$ sous $f$} par
+	$$\closureofunder{f}{o} = \bigcap\Setabs{X\subseteq A}{o \in X\text{ et }X
+\text{ est stable par }f}.$$
+\end{defn}
+\noindent\emph{Précision de l'édition française.} Nous fixons ici l'ensemble
+ambiant $A$ et supposons que $f$ est une application de $A$ dans lui-même.
+Ces hypothèses, laissées implicites dans la source, garantissent que la
+famille dont on prend l'intersection est un ensemble non vide.
+
+Ainsi, $\closureofunder{f}{o}$ est l'intersection de toutes les parties
+de $A$ stables par $f$ qui contiennent $o$ comme !!{element}.
+Intuitivement, $\closureofunder{f}{o}$ est donc la \emph{plus petite}
+partie de $A$ stable par $f$ qui contient $o$ comme !!{element}.
+Le résultat suivant donne un sens précis à cette intuition.
+\begin{lem}\ollabel{closureproperties}
+	Pour toute application $f\colon A\to A$ et tout $o \in A$ :
+	\begin{enumerate}
+		\item\ollabel{closurehaselem} $o \in \closureofunder{f}{o}$ ;
+		\item\ollabel{closureclosed} $\closureofunder{f}{o}$ est stable par $f$ ;
+		\item\ollabel{closuresmallest} si $X\subseteq A$ est stable par $f$
+		et si $o \in X$, alors $\closureofunder{f}{o} \subseteq X$.
+	\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Il existe au moins une partie de $A$ stable par $f$ qui contient $o$
+comme !!{element}, à savoir $\ran{f}\cup\{o\}$.
+En effet, $f$ envoie chacun de ses éléments dans $\ran{f}$.
+L'intersection $\closureofunder{f}{o}$ de \emph{toutes} ces parties
+existe donc. Il reste à vérifier les points
+\olref{closurehaselem}--\olref{closuresmallest}.
+
+Pour le point \olref{closurehaselem} :
+$o \in \closureofunder{f}{o}$, car il s'agit de l'intersection
+d'ensembles qui contiennent tous $o$ comme !!{element}.
+
+Pour le point \olref{closureclosed}, supposons que
+$x \in \closureofunder{f}{o}$. Si $X\subseteq A$ contient $o$
+et est stable par $f$, alors $x \in X$ ; on a donc aussi $f(x) \in X$,
+puisque $X$ est stable par $f$. Ainsi,
+$f(x) \in \closureofunder{f}{o}$.
+
+Pour le point \olref{closuresmallest}, on utilise le fait général
+que, si $X \in C$, alors $\bigcap C \subseteq X$.
+\end{proof}
+
+Nous pouvons maintenant donner la définition suivante.
+
+\begin{defn}
+Une \emph{algèbre de Dedekind} est un ensemble $A$ muni d'une application
+$f\colon A\to A$ et d'un élément $o\in A$ tels que :
+	\begin{enumerate}
+		\item \ollabel{ded:proper} $o \notin \ran{f}$ ;
+		\item \ollabel{ded:injection} $f$ est !!a{injection} ;
+		\item \ollabel{ded:closure} $A = \closureofunder{f}{o}$.
+	\end{enumerate}
+\end{defn}
+
+Puisque $A = \closureofunder{f}{o}$, le résultat précédent montre que
+$A$ est la plus petite partie stable par $f$ qui contient $o$ comme
+!!{element}. Une algèbre de Dedekind est manifestement infinie au sens
+de Dedekind : il suffit de regarder les conditions \olref{ded:proper}
+et \olref{ded:injection} de la définition. Mais le fait le plus
+remarquable est que tout ensemble infini au sens de Dedekind permet de
+construire une algèbre de Dedekind.\footnote{Note de l'édition française :
+la construction porte sur une partie de l'ensemble infini donné.
+La formulation de la source pouvait laisser entendre que l'ensemble
+tout entier recevait cette structure ; la preuve établit l'énoncé
+d'existence ci-dessous en extrayant la clôture d'un élément.}
+
+\begin{thm}\ollabel{thm:DedekindInfiniteAlgebra}
+S'il existe un ensemble infini au sens de Dedekind, alors il existe une
+algèbre de Dedekind.
+\end{thm}
+
+\begin{proof}
+Soit $D$ un ensemble infini au sens de Dedekind. Il existe donc une
+injection $g\colon D\to D$ et un élément $o\in D\setminus\ran{g}$.
+Posons $A = \closureofunder{g}{o}$ ; d'après le
+\olref{closureproperties}, $A$ existe et $o \in A$.
+Posons $f = \funrestrictionto{g}{A}$. Comme $A$ est stable par $g$,
+$f$ est une application de $A$ dans $A$. Montrons que le triplet
+$A,f,o$ est une algèbre de Dedekind.
+
+Pour la condition \olref{ded:proper}, on a $o \notin \ran{g}$ et
+$\ran{f} \subseteq \ran{g}$ ; par conséquent, $o\notin\ran{f}$.
+
+Pour la condition \olref{ded:injection}, $g$ est une injection sur $D$ ;
+sa restriction $f \subseteq g$ est donc elle aussi injective.
+
+Pour la condition \olref{ded:closure}, le
+\olref{closureproperties} assure que $A$ est stable par $g$, donc
+aussi par $f$. Ainsi, $\closureofunder{f}{o}\subseteq A$, d'après le
+\olref{closureproperties}. De plus, $\closureofunder{f}{o}$ est stable
+par $f$ ; comme c'est une partie de $A$ et que
+$f = \funrestrictionto{g}{A}$, elle est également stable par $g$.
+Puisqu'elle contient $o$, le \olref{closureproperties} donne
+$A\subseteq\closureofunder{f}{o}$. Les deux inclusions établissent
+l'égalité voulue.
+\end{proof}
+
+\end{document}

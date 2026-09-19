@@ -1,0 +1,77 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: rationals
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{arith}{rat}
+\olsection{De $\Int$ à $\Rat$}
+
+Nous venons de construire les entiers relatifs à partir des nombres naturels
+à l'aide de quelques notions de théorie naïve des ensembles. Nous allons
+maintenant construire les nombres rationnels à partir des entiers relatifs
+par une méthode très semblable. Partons des observations suivantes :
+\begin{enumerate}
+	\item Tout nombre rationnel s'écrit sous la forme $\nicefrac{i}{j}$,
+	où $i$ et $j$ sont des entiers relatifs et où $j$ est non nul.
+	\item L'information contenue dans l'expression $\nicefrac{i}{j}$
+	peut tout aussi bien être représentée par le couple $\tuple{ i, j}$.
+\end{enumerate}
+L'idée la plus directe serait de prendre les nombres rationnels \emph{pour}
+des couples appartenant à $\Int \times (\Int \setminus \{0_\Int\})$.
+Comme précédemment, ce serait un peu trop naïf : nous voulons que
+$\nicefrac{3}{2} = \nicefrac{6}{4}$, alors que $\tuple{ 3, 2}\neq \tuple{ 6,
+4}$. Plus généralement, la propriété recherchée est :
+\[
+	\nicefrac{a}{b} = \nicefrac{c}{d} \liff a \times d = b \times c
+\]
+À cette fin, définissons une {relation d'équivalence} sur $\Int \times
+(\Int \setminus \{0_\Int\})$ par :
+\[
+	\tuple{ a, b }\Ratequiv \tuple{ c, d} \liff a \times d = b \times c
+\]
+Il faut vérifier qu'il s'agit bien d'une relation d'équivalence. La vérification
+est très semblable à celle effectuée pour $\Intequiv$ ; nous la laissons en exercice.
+\begin{prob}
+Montrer que $\Ratequiv$ est une relation d'équivalence.
+\end{prob}
+Nous pouvons alors poser :
+\begin{defn}
+Les nombres rationnels sont les classes d'équivalence, pour $\Ratequiv$, de couples
+d'entiers relatifs dont la seconde composante est non nulle. Autrement dit,
+$\Rat = \equivclass{(\Int \times (\Int\setminus \{0_\Int\}))}{\Ratequiv}$.
+\end{defn}
+
+Comme pour les entiers relatifs, nous voulons définir les opérations usuelles.
+Si $\equivrep{i,j}{\Ratequiv}$ désigne la classe d'équivalence pour
+$\Ratequiv$ qui contient le couple $\tuple{i, j}$ comme !!{element}, posons :
+\begin{align*}
+	\equivrep{a, b}{\Ratequiv} + \equivrep{c, d}{\Ratequiv} &= \equivrep{ad + bc,  bd}{\Ratequiv}\\
+	\equivrep{a, b}{\Ratequiv} \times \equivrep{c, d}{\Ratequiv} &= \equivrep{a  c, b d}{\Ratequiv}.
+\intertext{Pour définir $r \leq s$ sur les rationnels, utilisons le fait que
+$r \le s$ si et seulement si $s - r$ est positif ou nul, c'est-à-dire si
+$s - r$ s'écrit sous la forme $\nicefrac{i}{j}$ avec $i$ positif ou nul
+et $j$ strictement positif :}
+	\equivrep{a, b}{\Ratequiv} \leq \equivrep{c, d}{\Ratequiv} &\liff
+	\equivrep{c, d}{\Ratequiv} - \equivrep{a, b}{\Ratequiv} =
+	\equivrep{i_\Int, j_\Int}{\Ratequiv}
+\end{align*}
+pour certains $i \in \Nat$ et $0 \neq j \in \Nat$.\footnote{Correction éditoriale : le texte anglais écrit ici une fois $r-s$ au lieu de $s-r$. Nous rétablissons $s-r$, conformément au critère de positivité et à la formule qui suit dans l'original. Les dénominateurs des couples représentant un rationnel restent des entiers relatifs non nuls ; seuls les témoins $i$ et $j$ de cette condition d'ordre sont des naturels, avec $j>0$.}
+
+Il faut ensuite vérifier que ces définitions ont bien les propriétés
+\emph{attendues} ; nous reportons ces vérifications à la \olref[check]{sec}.
+Elles les ont effectivement !{} Enfin, nous voulons pouvoir traiter les
+entiers relatifs \emph{comme} des rationnels. Pour chaque $i \in \Int$,
+posons donc $i_\Rat = \equivrep{i, 1_\Int}{\Ratequiv}$. Nous vérifierons
+également dans la \olref[check]{sec} que cette identification respecte
+les opérations et l'ordre.
+
+\begin{prob}
+Montrer que $(i + j)_\Rat = i_\Rat+ j_\Rat$, que $(i \times j)_\Rat =
+i_\Rat \times j_\Rat$ et que $i \leq j \liff i_\Rat \leq j_\Rat$,
+pour tous $i, j \in \Int$.
+\end{prob}
+
+\end{document}

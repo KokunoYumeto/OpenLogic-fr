@@ -1,0 +1,129 @@
+% Part: sets-functions-relations
+% Chapter: infinite
+% Section: dedekinds-proof
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{infinite}{dedekindsproof}
+
+\olsection[La « preuve » de Dedekind]{La « preuve » de Dedekind
+de l'existence d'un ensemble infini}
+
+Dans ce chapitre, nous avons présenté un traitement ensembliste des
+entiers naturels à l'aide des algèbres de Dedekind. Dans la
+\olref[sfr][arith][ref]{sec}, nous avons réfléchi, entre autres,
+à la portée philosophique de l'arithmétisation de l'analyse.\footnote{Note
+de l'édition française : le renvoi incomplet de la source est rétabli
+vers la section de réflexions philosophiques du chapitre précédent.}
+Il nous faut maintenant réfléchir à la portée de ce que nous avons
+accompli ici.
+
+Tout au long du \olref[sfr][arith][]{chap}, nous avons pris
+les entiers naturels comme donnés, puis nous nous en sommes servis pour
+construire explicitement les entiers relatifs, les rationnels et les réels.
+Dans le présent chapitre, nous n'avons pas donné de construction explicite
+des entiers naturels. Nous avons seulement montré qu'\emph{étant donné
+un ensemble infini au sens de Dedekind, quel qu'il soit}, nous pouvons
+définir un ensemble qui se comporte exactement comme nous souhaitons
+que~$\Nat$ se comporte.
+
+Nous ne pouvons donc manifestement pas prétendre avoir répondu à une
+question métaphysique telle que : \emph{quels objets sont les entiers
+naturels ?} Mais c'est une bonne chose. Après tout, dans la
+\olref[sfr][arith][ref]{sec}, nous avons souligné qu'il serait erroné
+de voir dans la définition de $\Real$ comme ensemble des coupures de
+Dedekind une \emph{découverte}, plutôt qu'une convention commode.
+L'observation cruciale est que les coupures de Dedekind possèdent les
+propriétés mathématiques essentielles des nombres réels. De même ici,
+l'observation cruciale est que \emph{toute} algèbre de Dedekind possède
+les propriétés mathématiques essentielles des entiers naturels.
+Dedekind a d'ailleurs précisé ce point en prouvant que toutes les algèbres
+de Dedekind sont \emph{isomorphes}
+(\citeyear[théorèmes 132--3]{Dedekind1888}). Il n'est donc pas surprenant
+que de nombreux « structuralistes » contemporains voient en lui
+un précurseur.
+
+Nous avons en outre montré comment intégrer la théorie des entiers
+naturels à une théorie naïve et simple des ensembles. Celle-ci reste
+assez informelle, mais elle ne semble pas présupposer les entiers naturels.
+Nous sommes donc peut-être en voie de réaliser l'ambitieux projet de
+Dedekind lui-même, qu'il exposait ainsi :
+\begin{quote}
+En science, rien de ce qui est susceptible d'être démontré ne devrait
+être tenu pour vrai sans démonstration. Si raisonnable que paraisse cette
+exigence, je ne peux considérer qu'elle soit satisfaite, même dans les
+méthodes les plus récentes pour établir les fondements de la science
+la plus simple, à savoir cette partie de la logique qui traite de la
+théorie des nombres. En parlant de l'arithmétique (de l'algèbre,
+de l'analyse) comme d'une simple partie de la logique, j'entends affirmer
+que je considère le concept de nombre comme entièrement indépendant
+des notions ou des intuitions de l'espace et du temps ; je le considère
+bien plutôt comme un produit immédiat des lois pures de la pensée.
+\citep[préface]{Dedekind1888}
+\end{quote}
+L'idée audacieuse de Dedekind est donc la suivante. Nous venons de montrer
+comment construire les entiers naturels à l'aide de la seule théorie
+naïve des ensembles. Dans le \olref[sfr][arith][]{chap},
+nous avons vu comment construire les réels à partir des entiers naturels
+et d'un peu de théorie des ensembles. Peut-être « l'arithmétique
+(l'algèbre, l'analyse) » s'avère-t-elle donc n'être « qu'une partie
+de la logique », au sens étendu que Dedekind donne au mot « logique ».
+
+Telle est l'idée. Mais arrêtons-nous un instant. Notre construction
+d'une algèbre de Dedekind, qui nous tient lieu d'ensemble des entiers
+naturels, est subordonnée à l'existence d'un ensemble infini au sens
+de Dedekind. Il suffit de revenir au
+\olref[sfr][infinite][dedekind]{thm:DedekindInfiniteAlgebra}
+pour le constater. Si l'existence d'un ensemble infini au sens de
+Dedekind ne peut être établie par la « logique » ou les « lois pures
+de la pensée », le projet ne peut aboutir.
+
+L'existence d'un ensemble infini au sens de Dedekind \emph{peut-elle}
+donc être établie par les « lois pures de la pensée » ? Voici la
+tentative de Dedekind :
+\begin{quote}
+Mon propre domaine de pensées, c'est-à-dire la totalité $S$ de toutes
+les choses qui peuvent être des objets de ma pensée, est infini.
+En effet, si $s$ désigne un élément de~$S$, la pensée $s'$ selon
+laquelle~$s$ peut être un objet de ma pensée est elle-même un élément
+de~$S$. Si nous la considérons comme une image $\phi(s)$ de
+l'élément~$s$, alors \dots~$S$ est infini [au sens de Dedekind],
+ce qu'il fallait démontrer.
+\citep[\S66]{Dedekind1888}
+\end{quote}
+Il est assez stupéfiant de trouver un tel passage au milieu d'un ouvrage
+composé pour une grande part de démonstrations mathématiques d'une
+grande rigueur. Deux remarques s'imposent.
+
+Premièrement, cette « preuve » n'a guère ce que nous reconnaîtrions
+aujourd'hui comme un caractère « mathématique ». Elle parle d'objets
+psychologiques, les pensées, et encore ne s'agit-il que de pensées
+\emph{possibles}.
+
+Deuxièmement, du moins dans la présentation que nous avons donnée des
+algèbres de Dedekind, cette « preuve » présente une lacune technique
+précise. Si l'argument de Dedekind réussit, il établit seulement qu'il
+existe une infinité de choses, plus précisément une infinité de pensées.
+Mais Dedekind doit aussi nous donner une raison de considérer~$S$ comme
+un seul \emph{ensemble}, ayant une infinité d'!!{element}s, plutôt que
+de penser~$S$ comme \emph{des choses}, au pluriel.
+
+Le fait que Dedekind n'ait pas vu de lacune ici pourrait suggérer que
+son emploi du mot « totalité » ne correspond pas exactement à
+\emph{notre} emploi du mot « ensemble ».\footnote{Nous avons d'ailleurs
+d'autres raisons de le penser ; voir \citet[p.~23]{Potter2004}.}
+Cela n'aurait toutefois rien de très surprenant. Le projet que nous
+avons poursuivi dans les deux derniers chapitres, à savoir une
+« construction » des entiers naturels, puis, à partir de ceux-ci,
+une « construction » des entiers relatifs, des réels et des rationnels,
+a été entièrement mené de manière naïve. Nous nous sommes accordé tel
+ou tel ensemble selon les besoins, sans poser beaucoup de principes
+généraux précisant exactement quels ensembles existent, et dans quels cas.
+Nous savons pourtant que \emph{certains} principes généraux sont
+nécessaires : sans eux, nous retomberons sur le paradoxe de Russell.
+
+Il est temps de dépasser notre naïveté.
+
+\end{document}

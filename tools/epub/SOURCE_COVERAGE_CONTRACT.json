@@ -1,0 +1,265 @@
+{
+  "status": "PASS_INPUT_IDENTITY",
+  "scope_units": 51,
+  "alignment_rows": 868,
+  "new_chapter_choice_anchors_checked": 468,
+  "units": [
+    {
+      "unit_id": "OLP-0005",
+      "path": "content/sets-functions-relations/sets/basics.tex",
+      "sha256": "cf7cdc5978e87b1b7bd37823ea0fb3ff4f726631a73792793ea3c476b8dbcb8b"
+    },
+    {
+      "unit_id": "OLP-0007",
+      "path": "content/sets-functions-relations/sets/important-sets.tex",
+      "sha256": "e95145921e54fe58e456e517f3689bd0b19dfd689db3e89b670365a230c1d3f1"
+    },
+    {
+      "unit_id": "OLP-0009",
+      "path": "content/sets-functions-relations/sets/pairs-and-products.tex",
+      "sha256": "eb3c49f1ed857fb99904c4dd85cd31e4b39b7b9af527df7b59fd990859ea6547"
+    },
+    {
+      "unit_id": "OLP-0010",
+      "path": "content/sets-functions-relations/sets/russells-paradox.tex",
+      "sha256": "c39a9b5e753420ccddc028541c303ad043a161ddca3a2c53e91a0ad4ca5ba036"
+    },
+    {
+      "unit_id": "OLP-0004",
+      "path": "content/sets-functions-relations/sets/sets.tex",
+      "sha256": "96eaf83db6070e8e680db7a17c5badad86d7f49c0eef33b1db12f68966cb4f01"
+    },
+    {
+      "unit_id": "OLP-0006",
+      "path": "content/sets-functions-relations/sets/subsets.tex",
+      "sha256": "fbf478e6c8a28ec5f08c30ec4f45a5c551cf4751c3fd86ce9ac7fd2dc83d0233"
+    },
+    {
+      "unit_id": "OLP-0008",
+      "path": "content/sets-functions-relations/sets/unions-and-intersections.tex",
+      "sha256": "26fe25552ed2e14501ca27a673bca23da855425add40fecfdc3f48e44b90ee3c"
+    },
+    {
+      "unit_id": "OLP-0013",
+      "path": "content/sets-functions-relations/relations/reflections.tex",
+      "sha256": "50a7096e49c1dc7a530d6ca72dfcab3862125467dc0701e67f7dfb433d475844"
+    },
+    {
+      "unit_id": "OLP-0012",
+      "path": "content/sets-functions-relations/relations/relations-as-sets.tex",
+      "sha256": "1582f2c849470dea9d5d265ea732a45b926f461a603807c2ba047612b5ac8474"
+    },
+    {
+      "unit_id": "OLP-0011",
+      "path": "content/sets-functions-relations/relations/relations-complete.tex",
+      "sha256": "661c2c5caf54df3804ed164bbe4b1d35e5e1dc3cf3ff388eb96fe90c7372dc56"
+    },
+    {
+      "unit_id": "OLP-0015",
+      "path": "content/sets-functions-relations/relations/equivalence-relations.tex",
+      "sha256": "fcf7c6f6c688a6a33cc36eb41decd94bcd6fff0dc27f02b1b51acd93f56c5302"
+    },
+    {
+      "unit_id": "OLP-0017",
+      "path": "content/sets-functions-relations/relations/graphs.tex",
+      "sha256": "5d78a190846359f2715c841b1f7f8c26d72fccc5d9b445777520a63453328854"
+    },
+    {
+      "unit_id": "OLP-0019",
+      "path": "content/sets-functions-relations/relations/operations.tex",
+      "sha256": "b1da0beef291b1c7de84e3bfe7f6b80f1bc961d7fedecc570e8c147c0a689b16"
+    },
+    {
+      "unit_id": "OLP-0016",
+      "path": "content/sets-functions-relations/relations/orders.tex",
+      "sha256": "aae5a9433c08e3f5249db2e057d386ec850c6d6d2b8401561a826a5bb211b154"
+    },
+    {
+      "unit_id": "OLP-0014",
+      "path": "content/sets-functions-relations/relations/special-properties.tex",
+      "sha256": "7a834646d2bff3214825f876084998add200a1c87e9f9e46bddfe4a91c28cc2d"
+    },
+    {
+      "unit_id": "OLP-0018",
+      "path": "content/sets-functions-relations/relations/trees.tex",
+      "sha256": "4a3eb1168075d44dc69a9331a91fb3c2bb0a31df536b672a80dc51ebfd77bb81"
+    },
+    {
+      "unit_id": "OLP-0021",
+      "path": "content/sets-functions-relations/functions/function-basics.tex",
+      "sha256": "298afb15f4649ec76509090c08c6a90931878f89e725e33677490285fa322ae3"
+    },
+    {
+      "unit_id": "OLP-0022",
+      "path": "content/sets-functions-relations/functions/function-kinds.tex",
+      "sha256": "66a3831f79c49d7a823eb3e06d38483750db7a48464f09a3832ad8ae41aac8bc"
+    },
+    {
+      "unit_id": "OLP-0020",
+      "path": "content/sets-functions-relations/functions/functions.tex",
+      "sha256": "5500b55f06fba2e5151fe12df4cabf21cb5f06a412a94ce71d18970d10f5abb2"
+    },
+    {
+      "unit_id": "OLP-0023",
+      "path": "content/sets-functions-relations/functions/functions-relations.tex",
+      "sha256": "a0046a763547b63d4249b0ae17c674b5f1608237c5a53bd7bd36af65e401b104"
+    },
+    {
+      "unit_id": "OLP-0024",
+      "path": "content/sets-functions-relations/functions/inverses.tex",
+      "sha256": "2d4daee5e5884adfd61aee1c06315428a148a287b6e56f652e726b08ce63f841"
+    },
+    {
+      "unit_id": "OLP-0025",
+      "path": "content/sets-functions-relations/functions/composition.tex",
+      "sha256": "89346062ef5fd99955b7c5b8d2c5b3b210a977d55693abc4b01eb914423d396f"
+    },
+    {
+      "unit_id": "OLP-0026",
+      "path": "content/sets-functions-relations/functions/partial-functions.tex",
+      "sha256": "5f9509624e10771e33638812851fcb5a4baaeeae7d1aed467b5e11bf17c9b205"
+    },
+    {
+      "unit_id": "OLP-0028",
+      "path": "content/sets-functions-relations/size-of-sets/introduction.tex",
+      "sha256": "d6066a342c0ee74164ec8c40d2d562a5a28472f8a240cc7e389f4833f82e0fd2"
+    },
+    {
+      "unit_id": "OLP-0029",
+      "path": "content/sets-functions-relations/size-of-sets/enumerability.tex",
+      "sha256": "b5aa6b40e204f4e475ce11f8f6e1727aa2371a51252197f699137dbcd86d2bf8"
+    },
+    {
+      "unit_id": "OLP-0030",
+      "path": "content/sets-functions-relations/size-of-sets/zig-zag.tex",
+      "sha256": "4ef05b8f9c186136bd76408d397e0c75defd9a3b4fdf42d45a4911f4ebc29538"
+    },
+    {
+      "unit_id": "OLP-0031",
+      "path": "content/sets-functions-relations/size-of-sets/pairing.tex",
+      "sha256": "4c512eff1cb48d8b8651b84f1e5cb79143612b4b550e5d4347989b987f0808d8"
+    },
+    {
+      "unit_id": "OLP-0032",
+      "path": "content/sets-functions-relations/size-of-sets/pairing-alt.tex",
+      "sha256": "90ea85c9d84116ee417d68b57749fa55b3f7b2f4bc42817c02596126eea35693"
+    },
+    {
+      "unit_id": "OLP-0033",
+      "path": "content/sets-functions-relations/size-of-sets/non-enumerability.tex",
+      "sha256": "4a96c433a5586a2498ab2e7f41e60f008f98fac3571bc8f9f6a9b3c3eff1cb00"
+    },
+    {
+      "unit_id": "OLP-0034",
+      "path": "content/sets-functions-relations/size-of-sets/reduction.tex",
+      "sha256": "e8f7f3def251f82539ad0538b64feaaeb30ddde5ada117a33833e6092886d2ab"
+    },
+    {
+      "unit_id": "OLP-0035",
+      "path": "content/sets-functions-relations/size-of-sets/equinumerous-sets.tex",
+      "sha256": "4356c49942be4d108e7199c22e671cbb9e1d01c57ce72aff0463afc08f8300f5"
+    },
+    {
+      "unit_id": "OLP-0036",
+      "path": "content/sets-functions-relations/size-of-sets/comparing-size.tex",
+      "sha256": "40a510c6a215bd5364bd521f607423e2023841dfc7b6947fb28fdb31836c40e7"
+    },
+    {
+      "unit_id": "OLP-0037",
+      "path": "content/sets-functions-relations/size-of-sets/schroder-bernstein.tex",
+      "sha256": "94c06b1a6331fdec5d470c101ffd35a7ac4ec0e4538325e7b12b5df17787526b"
+    },
+    {
+      "unit_id": "OLP-0027",
+      "path": "content/sets-functions-relations/size-of-sets/size-of-sets-complete.tex",
+      "sha256": "cb336f66f453f0529677462fc879ea32e103ef0edc5b7993ab3ad989e160915e"
+    },
+    {
+      "unit_id": "OLP-0038",
+      "path": "content/sets-functions-relations/size-of-sets/enumerability-alt.tex",
+      "sha256": "f0f2410fbbfc851d83793ac28da4c5764f7887c2980180f2b58454fdf424f609"
+    },
+    {
+      "unit_id": "OLP-0039",
+      "path": "content/sets-functions-relations/size-of-sets/non-enumerability-alt.tex",
+      "sha256": "4ad1b70e6c9f6b7d21ae11d15593c28fb5ef93ef4bba7fddfa32c30be4a0d64f"
+    },
+    {
+      "unit_id": "OLP-0040",
+      "path": "content/sets-functions-relations/size-of-sets/reduction-alt.tex",
+      "sha256": "7dc8b37a290f94faa0a4f5e712ee24294872c6f9ba7005ca9d961c72fd8d7b0a"
+    },
+    {
+      "unit_id": "OLP-0042",
+      "path": "content/sets-functions-relations/arithmetization/integers.tex",
+      "sha256": "7efbf7ed132a0de6bf53781c88b15f9c1226c1daa423b0bfd9fec5c18d830f37"
+    },
+    {
+      "unit_id": "OLP-0043",
+      "path": "content/sets-functions-relations/arithmetization/rationals.tex",
+      "sha256": "dda4878756a39aed328bdef2b2025acd0f561e7fa32e45ac8efa031612dae3de"
+    },
+    {
+      "unit_id": "OLP-0044",
+      "path": "content/sets-functions-relations/arithmetization/reals.tex",
+      "sha256": "c702aa28023b6b6fd4c1fe4480ad06b09453994380c08bb58566675850444d05"
+    },
+    {
+      "unit_id": "OLP-0045",
+      "path": "content/sets-functions-relations/arithmetization/cuts.tex",
+      "sha256": "844a6879241868926acae9ee9e8d95a2e79b598751d487c4bfdfb9abeba82846"
+    },
+    {
+      "unit_id": "OLP-0047",
+      "path": "content/sets-functions-relations/arithmetization/checking-details.tex",
+      "sha256": "3143b0d1ab041021adce56ca906c88378ab17b8ac2276cce497fd5c4609189e9"
+    },
+    {
+      "unit_id": "OLP-0048",
+      "path": "content/sets-functions-relations/arithmetization/cauchy.tex",
+      "sha256": "f874ad20bbfd8675edc8a1551bbcfc44abf1f7e405a4d6e38d093df50c20a7af"
+    },
+    {
+      "unit_id": "OLP-0041",
+      "path": "content/sets-functions-relations/arithmetization/arithmetization.tex",
+      "sha256": "3153423a812db8d44f202e0f57ec2cd0f424413e23c0b7e619f3e0cb32c001e4"
+    },
+    {
+      "unit_id": "OLP-0046",
+      "path": "content/sets-functions-relations/arithmetization/reflections.tex",
+      "sha256": "4d08b038160a1ba61554702b991d71ce1d53bbaa6775401ca2246b4e07ba8ae4"
+    },
+    {
+      "unit_id": "OLP-0051",
+      "path": "content/sets-functions-relations/infinite/dedekind-algebra.tex",
+      "sha256": "86eed964936c1d5eecbbc00e1050cbcc3cac5ceb109954687c277749fd68d139"
+    },
+    {
+      "unit_id": "OLP-0052",
+      "path": "content/sets-functions-relations/infinite/dedekind-induction.tex",
+      "sha256": "c848a84cf98aff7e404f3f2396b3b0b658f3e4936890d9c282e402670b166f96"
+    },
+    {
+      "unit_id": "OLP-0054",
+      "path": "content/sets-functions-relations/infinite/card-sb.tex",
+      "sha256": "bb9696cb0f6caa704057a74932405ffef1054a44a8924d113df0b40860fde3e9"
+    },
+    {
+      "unit_id": "OLP-0049",
+      "path": "content/sets-functions-relations/infinite/infinite.tex",
+      "sha256": "344a5c7a7f94435805fd1794affc0150a07cd27cbb8feceba17d530b43fd70d5"
+    },
+    {
+      "unit_id": "OLP-0050",
+      "path": "content/sets-functions-relations/infinite/hilberts-hotel.tex",
+      "sha256": "b474bc59df896f9a32d1690edd2dc0ebb7bf11bce862e7f2bce024cfccc0a02d"
+    },
+    {
+      "unit_id": "OLP-0053",
+      "path": "content/sets-functions-relations/infinite/dedekinds-proof.tex",
+      "sha256": "ed0cffb3deb7fe1bd2e73b489125a86bce35615f7997dc3eb50e577c97fdeee8"
+    }
+  ],
+  "reader_sha256": "12ca1e18590eca9fd146382def4a98f19904204f9ce652dc082ca1025a9fa9c9",
+  "references_sha256": "b27d3d00dbfa7e15f59c6f61e45fe845b94d7024026d263597f677db4dc849ed"
+}

@@ -1,0 +1,87 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: From N to Z
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+
+\begin{document}
+
+\olfileid[fr]{sfr}{arith}{int}
+\olsection{De $\Nat$ à $\Int$}
+
+Partons de deux observations simples :
+	\begin{enumerate}
+		\item Tout entier relatif s'écrit sous la forme $n - m$, avec $n, m \in\Nat$.
+		\item L'information contenue dans l'expression $n - m$ peut tout aussi bien être représentée par le couple $\tuple{n, m}$.
+	\end{enumerate}
+Nous savons déjà que les couples de nombres naturels sont les !!{element}s de $\Nat^2$, et nous supposons connue la structure de $\Nat$. Ces deux observations suggèrent donc une première idée, un peu naïve : \emph{prendre les entiers relatifs pour des couples de nombres naturels}.
+
+Cette idée est en fait trop naïve. Nous voulons bien entendu que $0- 2 = 4 - 6$. Or $\tuple{0, 2 }\neq \tuple{4, 6}$. Nous ne pouvons donc pas simplement déclarer que $\Nat^2$ est l'ensemble des entiers relatifs.
+
+En généralisant le problème précédent, voici la propriété recherchée :
+	$$a - b = c - d \liff a + d = c + b$$
+(C'est bien ainsi que les entiers relatifs sont \emph{censés} se comporter : il suffit d'ajouter $b$ et $d$ aux deux membres.) Pour garantir cette propriété, définissons sur les couples une relation d'équivalence $\Intequiv$ par :
+$$\tuple{ a, b } \Intequiv \tuple{c, d}\liff a + d = c + b$$
+Il faut maintenant vérifier qu'il s'agit bien d'une relation d'équivalence.
+\begin{prop} $\Intequiv$ est une relation d'équivalence.
+\end{prop}
+	\begin{proof}
+	Nous devons montrer que $\Intequiv$ est réflexive, symétrique et transitive.
+	
+	\emph{Réflexivité :} Nous avons $\tuple{a, b} \Intequiv \tuple{a, b}$ ; en effet, $a + b = b + a$.
+	
+	\emph{Symétrie :} Supposons que $\tuple{a, b} \Intequiv \tuple{c, d}$, c'est-à-dire que $a + d = c + b$. Alors $c + b = a + d$, donc $\tuple{c, d} \Intequiv \tuple{a, b}$.
+	
+	\emph{Transitivité :} Supposons que $\tuple{a, b} \Intequiv \tuple{c, d}\Intequiv \tuple{m, n}$. Nous avons donc $a + d = c + b$ et $c + n = m + d$. Par addition, $a + d + c + n = c + b + m + d$, d'où $a + n = m + b$ par simplification dans $\Nat$. Ainsi, $\tuple{a, b } \Intequiv \tuple{m, n}$.
+\end{proof}
+
+Nous pouvons à présent former les classes d'équivalence pour cette relation :
+
+\begin{defn}
+		Les entiers relatifs sont les classes d'équivalence, pour $\Intequiv$, de couples de nombres naturels ; autrement dit, $\Int = \equivclass{\Nat^2}{\Intequiv}$.
+\end{defn}
+
+Cette définition, posée par convention, peut susciter des réactions \emph{philosophiques} très diverses. Avant de les examiner, poursuivons toutefois l'étude de quelques points techniques.
+
+Après avoir défini les entiers relatifs, nous devons définir les fonctions et les relations usuelles sur cet ensemble. Notons $\equivrep{m, n}{\Intequiv}$ la classe d'équivalence pour $\Intequiv$ qui contient le couple $\tuple{m, n}$ comme !!{element}.\footnote{Avec la notation introduite dans la \olref[sfr][rel][eqv]{def:equivalenceclass}, nous écririons $\equivrep{\tuple{m,n}}{\Intequiv}$ pour désigner le même objet. La notation abrégée est simplement plus lisible.} Ainsi :
+	$$\equivrep{m, n}{\Intequiv} = \Setabs{\tuple{a, b} \in \Nat^2}{\tuple{a, b}\Intequiv \tuple{m, n}}$$
+Posons maintenant :
+	\begin{align*}
+		\equivrep{a, b}{\Intequiv} + \equivrep{c, d}{\Intequiv} &= \equivrep{a + c, b + d}{\Intequiv}\\
+		\equivrep{a, b}{\Intequiv} \times \equivrep{c, d}{\Intequiv} &= \equivrep{a c + b  d, a  d + b c}{\Intequiv}\\
+		\equivrep{a, b}{\Intequiv} \leq \equivrep{c, d}{\Intequiv} &\liff a + d \leq b + c
+	\end{align*}
+(Comme il est d'usage, nous écrivons $ab$ pour $(a \times b)$ afin d'alléger les axiomes.) Il reste à nous assurer que ces définitions ont bien les propriétés \emph{attendues}. Préciser ces propriétés et les vérifier demande un travail assez long ; les détails sont reportés à la \olref[check]{sec}. Retenons pour l'instant que tout fonctionne !{}
+
+Il reste un dernier point. Nous avons construit les entiers relatifs à partir
+des nombres naturels. Dans cette construction, les nombres naturels
+\emph{ne sont pas eux-mêmes des entiers relatifs}.\footnote{Précision éditoriale : il s'agit de distinguer les objets de départ des classes que l'on vient de construire, avant l'identification naturelle décrite ci-dessous ; cette phrase ne pose pas une impossibilité d'inclusion pour toute représentation ensembliste des nombres.}
+Nous reviendrons sur la portée philosophique de cette distinction dans la
+\olref[ref]{sec}. Du point de vue technique, il nous faut cependant un moyen
+de traiter les nombres naturels \emph{comme} des entiers relatifs. L'idée
+est simple : pour chaque $n \in \Nat$, posons
+$n_\Int = \equivrep{n, 0}{\Intequiv}$. Il faut vérifier que cette définition
+respecte les opérations et l'ordre, c'est-à-dire que, pour tous $m, n \in \Nat$,
+\begin{align*}
+	(m + n)_\Int &= m_\Int + n_\Int\\
+	(m \times n)_\Int &= m_\Int \times n_\Int\\
+	m \leq n &\liff m_\Int \leq n_\Int
+\end{align*}
+Ces vérifications sont immédiates. Pour établir la deuxième identité,
+par exemple, il suffit d'utiliser les propriétés des nombres naturels :
+%\begin{proof}
+%	En utilisant les propriétés des nombres naturels, nous avons :
+	\begin{align*}
+%		(m + n)_\Int  = \equivrep{m + n, 0}{\Intequiv} = \equivrep{m + n, 0 + 0}{\Intequiv} = \equivrep{m, 0}{\Intequiv} + \equivrep{n, 0}{\Intequiv} = m_\Int + n_\Int\\
+		(m \times n)_\Int  &= \equivrep{m \times n, 0}{\Intequiv} \\
+		&= \equivrep{m \times n + 0 \times 0, m \times 0 + 0 \times n}{\Intequiv} \\
+		&= \equivrep{m, 0}{\Intequiv} \times \equivrep{n, 0}{\Intequiv} \\
+		&= m_\Int \times n_\Int
+	\end{align*}
+%\end{proof}
+La vérification des deux autres conditions est laissée en exercice.
+\begin{prob}
+	Montrer que $(m + n)_\Int = m_\Int + n_\Int$ et que $m \leq n \liff m_\Int \leq n_\Int$, pour tous $m, n \in \Nat$.
+\end{prob}
+\end{document}

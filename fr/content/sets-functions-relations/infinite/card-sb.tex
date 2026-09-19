@@ -1,0 +1,125 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{infinite}{card-sb}
+
+\olsection{Annexe : une démonstration de Schröder--Bernstein}
+
+Avant de quitter la théorie naïve des ensembles, il nous reste une
+dernière preuve naïve, mais élaborée, à examiner. Il s'agit d'une preuve
+du théorème de Schröder--Bernstein
+(\olref[sfr][siz][sb]{thm:schroder-bernstein}) : si $\cardle{A}{B}$ et
+$\cardle{B}{A}$, alors $\cardeq{A}{B}$. Autrement dit, étant données
+des !!{injection}s $f\colon A\to B$ et $g\colon B\to A$, il existe
+!!a{bijection} $h\colon A\to B$.
+
+Dans ce chapitre, nous avons suivi l'idée de \emph{clôture} de Dedekind.
+Dedekind a justement donné une belle preuve de Schröder--Bernstein
+fondée sur cette notion ; nous allons la présenter ici. Notre preuve
+suit de près celle de \citet[pp.~157--8]{Potter2004}, auquel on pourra
+se reporter pour une présentation un peu différente, mais semblable
+pour l'essentiel. Une brève recherche sur le Web permet aussi de constater
+que ce théorème, tout comme l'irrationalité de $\sqrt{2}$, admet de
+\emph{nombreuses} preuves différentes et intéressantes.
+
+Avec une notation analogue à celle de la
+\olref[sfr][infinite][dedekind]{Closure}, posons, pour une application
+$f\colon U\to U$ et une partie $B\subseteq U$,
+\[
+\Closureofunder{f}{B} = \bigcap \Setabs{X\subseteq U}{B \subseteq X
+\text{ et }X\text{ est stable par }f}.
+\]
+Ainsi définie, $\Closureofunder{f}{B}$ est la plus petite partie de $U$
+stable par $f$ qui contient $B$, au sens suivant.\footnote{Note de
+l'édition française : comme pour la clôture d'un élément, on fixe
+l'ensemble ambiant et on suppose que l'application le préserve.
+La famille de parties à intersecter contient $U$ ; elle est donc
+non vide, y compris lorsque $B$ est vide.}
+
+\begin{lem}\ollabel{Closureprops}
+	Pour toute application $f\colon U\to U$ et toute partie $B\subseteq U$ :
+	\begin{enumerate}
+		\item\ollabel{Closurehaselem} $B \subseteq \Closureofunder{f}{B}$ ;
+		\item\ollabel{Closureclosed} $\Closureofunder{f}{B}$ est stable par $f$ ;
+		\item\ollabel{Closuresmallest} si $X\subseteq U$ est stable par $f$
+		et si $B\subseteq X$, alors $\Closureofunder{f}{B}\subseteq X$.
+	\end{enumerate}
+\end{lem}
+
+\begin{proof}
+La preuve est exactement la même que celle du
+\olref[sfr][infinite][dedekind]{closureproperties}.
+\end{proof}
+
+Un dernier résultat nous permettra d'obtenir le théorème de
+Schröder--Bernstein.
+
+\begin{prop}\ollabel{sbhelper}
+Si $A \subseteq B \subseteq C$ et $A \approx C$, alors
+$\cardeq{\cardeq{A}{B}}{C}$.
+\end{prop}
+
+\begin{proof}
+Étant donnée !!a{bijection} $f\colon C\to A$, considérons-la aussi
+comme une application de $C$ dans $C$, puisque $A\subseteq C$.
+Posons $F=\Closureofunder{f}{C\setminus B}$ et définissons une
+fonction $g$ de domaine $C$ par
+\[
+	g(x) =
+	\begin{cases}
+			f(x) &\text{si $x \in F$},\\
+			x &\text{sinon}.
+		\end{cases}
+\]
+Nous allons montrer que $g$ est !!a{bijection} de $C$ sur $B$.
+Il s'ensuivra que $\comp{f^{-1}}{g}\colon A\to B$ est
+!!a{bijection}, ce qui achèvera la preuve.
+
+Montrons d'abord que, si $x\in F$ et $y\notin F$, alors
+$g(x)\neq g(y)$. Supposons le contraire pour obtenir une contradiction :
+on aurait $y=g(y)=g(x)=f(x)$. Or $x\in F$ et $F$ est stable par $f$,
+d'après le \olref{Closureprops}. On aurait donc $y=f(x)\in F$,
+ce qui est contradictoire.
+
+Supposons maintenant que $g(x)=g(y)$. D'après ce qui précède,
+$x\in F$ si et seulement si $y\in F$. Si $x,y\in F$, alors
+$f(x)=g(x)=g(y)=f(y)$ ; ainsi, $x=y$, puisque $f$ est !!a{bijection}.
+Si $x,y\notin F$, alors $x=g(x)=g(y)=y$. Dans les deux cas, $x=y$ :
+$g$ est donc !!a{injection}.
+
+Il reste à montrer que $\ran{g}=B$. Vérifions d'abord que
+$\ran{g}\subseteq B$ : si $z\in F$, alors $g(z)=f(z)\in A\subseteq B$ ;
+si $z\in C\setminus F$, alors $z\notin C\setminus B$, puisque
+$C\setminus B\subseteq F$, donc $g(z)=z\in B$.\footnote{Note de
+l'édition française : cette inclusion, implicite dans la source, est
+nécessaire pour établir que $g$ a bien ses valeurs dans $B$.}
+Fixons maintenant $x\in B\subseteq C$. Si $x\notin F$, alors $g(x)=x$.
+Si $x\in F$, il existe $y\in F$ tel que $x=f(y)$ : sinon
+$F\setminus\{x\}$ serait stable par $f$ et contiendrait $C\setminus B$.
+En effet, l'image de chacun de ses éléments serait dans $F$ par stabilité,
+et serait différente de $x$ par l'absence supposée d'antécédent dans $F$ ;
+de plus, retirer $x\in B$ ne retire aucun élément de $C\setminus B$.
+Cela contredirait la minimalité donnée par le \olref{Closureprops}.
+Nous avons donc $g(y)=f(y)=x$, ce qui prouve l'inclusion réciproque.
+\end{proof}
+
+Voici enfin la preuve du résultat principal. Rappelons que, pour une
+fonction $h$ et un ensemble $D$ inclus dans son domaine, on définit
+$\funimage{h}{D}=\Setabs{h(x)}{x\in D}$.
+
+\begin{proof}[Preuve du théorème de Schröder--Bernstein]
+Soient $f\colon A\to B$ et $g\colon B\to A$ des !!{injection}s.
+Puisque $\funimage{f}{A}\subseteq B$, nous avons
+$\funimage{g}{\funimage{f}{A}}\subseteq g[B]\subseteq A$.
+De plus, $\comp{f}{g}\colon A\to\funimage{g}{\funimage{f}{A}}$
+est une !!{injection}, puisque $g$ et $f$ sont toutes deux injectives ;
+c'est même !!a{bijection}, par la définition de son codomaine.
+Ainsi, $\cardeq{\funimage{g}{\funimage{f}{A}}}{A}$, et la
+\olref{sbhelper} fournit donc !!a{bijection}
+$h\colon A\to\funimage{g}{B}$. En outre, $g^{-1}$ est !!a{bijection}
+de $\funimage{g}{B}$ sur $B$. Par conséquent,
+$\comp{h}{g^{-1}}\colon A\to B$ est !!a{bijection}.
+\end{proof}
+
+\end{document}

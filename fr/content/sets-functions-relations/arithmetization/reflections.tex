@@ -1,0 +1,133 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: reflections
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{arith}{ref}
+\olsection{Quelques réflexions philosophiques}
+
+Voilà pour les aspects techniques. Mais qu'avons-nous obtenu ?
+
+D'abord, et cela ne prête guère à contestation, de très belles
+mathématiques pures. Nous avons aussi obtenu des résultats conceptuels
+profonds. Comprendre que la propriété de la borne supérieure exprime
+la différence cruciale entre réels et rationnels constitue une avancée
+majeure. De plus, la construction explicite des réels comme coupures de
+Dedekind donne à l'analyse un fondement solide. Nous savons que la
+notion de \emph{corps ordonné complet} est cohérente, puisque les
+coupures forment précisément un tel corps.
+\begin{editorial}
+Cette dernière affirmation est relative au cadre ensembliste dans
+lequel la construction est menée : celle-ci réalise les propriétés
+d'un corps ordonné complet. Elle ne démontre pas, à elle seule,
+la cohérence absolue de la théorie des ensembles employée.
+\end{editorial}
+
+Ces résultats appellent néanmoins quelques réserves.
+
+Premièrement, il n'est pas clair qu'envisager les réels comme des
+coupures soit \emph{plus} rigoureux que de les envisager à partir de
+leurs développements décimaux familiers, éventuellement infinis.
+Cette dernière « construction » ressemble quelque peu à celle par
+les suites de Cauchy ; pour l'essentiel, elle était en fait connue
+des mathématiciens dès le début du dix-septième siècle
+(voir la \olref[cauchy]{sec}). Le véritable gain de rigueur est venu de
+la reconnaissance de la propriété de la borne supérieure.
+La possibilité de construire les réels comme des ensembles particuliers
+n'est peut-être pas, à elle seule, si intéressante.
+
+Il est encore moins clair que l'arithmétisation, beaucoup plus facile,
+des entiers relatifs ou des rationnels accroisse la rigueur dans ces
+domaines. Une observation simple mérite ici d'être faite. Après avoir
+\emph{construit} les entiers relatifs comme classes d'équivalence de
+couples ordonnés de naturels, puis les rationnels comme classes
+d'équivalence de couples ordonnés d'entiers relatifs, puis les réels
+comme ensembles de rationnels, nous \emph{oublions} immédiatement
+ces constructions. En particulier, personne ne voudrait les
+\emph{invoquer} dans une démonstration mathématique, sauf, bien sûr,
+pour démontrer qu'elles ont les propriétés attendues. Il est bien
+plus facile de parler directement d'un réel que d'un ensemble
+d'ensembles d'ensembles d'ensembles d'ensembles d'ensembles d'ensembles
+de naturels.
+% (Les réels ont été construits comme ensembles de rationnels ;
+% ceux-ci ont été construits comme classes d'équivalence de couples
+% ordonnés d'entiers relatifs, c'est-à-dire comme ensembles d'ensembles
+% d'ensembles d'entiers relatifs ; et ainsi de suite.)
+% 2/3 = [2,3]
+% c'est-à-dire {<2,3>, ... }
+% { {{2},{2,3}}, ... }
+%
+% les réels sont
+% des ensembles de rationnels
+%
+% les rationnels sont
+% des ensembles d'ensembles d'ensembles d'entiers relatifs
+%
+% les entiers relatifs sont
+% des ensembles d'ensembles d'ensembles de naturels
+
+Plus douteux encore est que ces définitions nous disent ce que
+\emph{sont} les entiers relatifs, les rationnels ou les réels,
+\emph{sur le plan métaphysique}. Autrement dit, il est douteux que
+les réels, par exemple, \emph{soient} certains ensembles
+(d'ensembles d'ensembles\ldots). Le principal obstacle est que
+la construction aurait pu être menée de bien des façons. Dans le
+cas des réels, il existe des constructions différentes qui présentent
+un réel intérêt (voir la \olref[cauchy]{sec}). Mais voici un moyen
+tout à fait élémentaire d'obtenir d'autres constructions : comme
+dans la \olref[sfr][rel][ref]{sec}, nous aurions pu définir les couples
+ordonnés un peu autrement. Avec cette autre définition, nos
+constructions auraient tout aussi bien fonctionné, mais nous aurions
+obtenu d'autres objets. Il existe donc de nombreuses constructions
+ensemblistes concurrentes des entiers relatifs, des rationnels et
+des réels. Affirmer que les entiers relatifs, par exemple, sont
+\emph{ces} ensembles plutôt que \emph{ceux-là} serait alors arbitraire,
+et embarrassant. Comme dans la \olref[sfr][rel][ref]{sec}, il s'agit
+d'un cas de l'argument rendu célèbre par \citealt{Benacerraf1965}.
+
+Un autre point mérite d'être soulevé : nos constructions ont quelque
+chose d'assez \emph{étrange}. Nous sommes partis des nombres naturels.
+Nous construisons ensuite les entiers relatifs et le « $0$ des entiers
+relatifs », c'est-à-dire $\equivrep{0,0}{\Intequiv}$.
+Or, dans la réalisation ensembliste usuelle,
+$0\neq\equivrep{0,0}{\Intequiv}$ ; avec ces constructions,
+\emph{aucun} naturel n'est un entier relatif ainsi construit.
+Cela paraît pourtant très contraire à l'intuition.
+Dans la \olref[sfr][set][imp]{sec}, nous avons même affirmé,
+sans véritable justification, que $\Nat\subseteq\Rat$.
+Si ces constructions nous disent exactement \emph{ce que sont}
+les nombres, cette affirmation, prise littéralement dans cette
+réalisation, est manifestement fausse.
+\begin{editorial}
+Les inégalités et la séparation littérale invoquées ici dépendent du
+codage des objets. Elles valent, par exemple, si les naturels sont les
+ordinaux finis de von Neumann : les classes de couples qui représentent
+les entiers relatifs et les rationnels sont infinies, tandis que chaque
+naturel est un ensemble fini. La source laisse ce choix de réalisation
+implicite. En revanche, les plongements déjà définis permettent
+d'identifier chaque système de nombres à son image dans le suivant ;
+ils justifient les inclusions usuelles après cette identification.
+La distinction pertinente est celle entre égalité littérale des objets
+et identification au moyen d'un plongement.
+\end{editorial}
+
+Prenons donc du recul. En travaillant dans une théorie naïve des
+ensembles et en nous donnant les naturels, nous pouvons \emph{traiter}
+les entiers relatifs, les rationnels et les réels comme certains
+ensembles. En ce sens, nous pouvons \emph{plonger} les théories de
+ces objets dans une théorie des ensembles. La portée philosophique
+de ce plongement n'est cependant pas si simple à déterminer.
+
+Bien sûr, ce n'est pas le dernier mot !{} Il s'agit seulement de
+souligner ceci : montrer que l'arithmétisation des réels \emph{a}
+une portée philosophique profonde exigerait un argument
+\emph{philosophique} supplémentaire.
+
+% De plus, tout au long de ce chapitre, nous avons tenu les naturels
+% pour simplement donnés. Mais que pouvons-nous faire à leur sujet ?
+% C'est l'objet du chapitre suivant.
+
+\end{document}

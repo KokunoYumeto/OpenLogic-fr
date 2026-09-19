@@ -1,0 +1,129 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: cuts
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{arith}{cuts}
+\olsection{De $\Rat$ à $\Real$}
+
+La propriété de la borne supérieure exprime, pour l'essentiel, la manière
+dont un point $\alpha$ partage la droite réelle sans laisser de lacune :
+il est la borne supérieure des points situés à sa gauche et la borne
+inférieure de ceux situés à sa droite. Pour \emph{construire} les nombres
+réels à partir des rationnels, Dedekind a proposé de prendre pour réels
+les \emph{coupures} qui partagent les rationnels. Nous identifions ainsi
+$\sqrt{2}$ à la \emph{coupure} qui sépare les rationnels
+$< \sqrt{2}$ des rationnels $> \sqrt{2}$.
+
+Précisons cette idée. Lorsque nous partageons les rationnels en deux
+parties, la partie \emph{inférieure} suffit à déterminer la partition.
+Nous adoptons donc la définition suivante :
+
+\begin{defn}[Coupure]
+Une \emph{coupure} $\alpha$ est un segment initial non vide et propre
+de l'ensemble des rationnels, sans plus grand élément. Autrement dit,
+$\alpha$ est une coupure si et seulement si :
+\begin{enumerate}
+	\item \emph{non vide et propre} : $\emptyset \neq \alpha \subsetneq \Rat$ ;
+	\item \emph{segment initial} : pour tous $p,q \in \Rat$, si $p < q \in \alpha$, alors $p \in \alpha$ ;
+	\item \emph{sans plus grand élément} : pour tout $p \in \alpha$, il existe $q \in \alpha$ tel que $p < q$.
+\end{enumerate}
+Nous définissons alors $\Real$ comme l'ensemble des coupures.
+\end{defn}
+
+Nous pouvons maintenant poser $\sqrt{2} = \Setabs{p \in \Rat}{p^2 < 2\text{
+ou }p < 0}$. Bien entendu, il faut vérifier qu'il s'agit \emph{bien}
+d'une coupure ; nous reportons cette vérification à la \olref[check]{sec}.
+
+Comme précédemment, après avoir défini les objets, nous devons définir
+les fonctions et relations usuelles sur leur ensemble. Commençons par
+une relation simple :
+\begin{align*}
+	\alpha \leq \beta \liff \alpha \subseteq \beta.
+\end{align*}
+Cette définition de l'ordre permet d'\emph{énoncer} le résultat central :
+l'ensemble des coupures possède la propriété de la borne supérieure.
+Explicitons l'énoncé. Si $S$ est un ensemble non vide de coupures qui
+admet un majorant, alors il admet un plus petit majorant. Plus précisément,
+il existe une coupure $\lambda$ qui majore $S$, c'est-à-dire que
+$(\forall \alpha \in S)\alpha \subseteq \lambda$, et $\lambda$ est la plus
+petite de ces coupures, c'est-à-dire que
+$(\forall \beta \in \Real)((\forall \alpha \in S)\alpha \subseteq \beta \lif \lambda \subseteq \beta)$.
+Voici la démonstration :
+
+\begin{thm}\ollabel{realcompleteness}
+L'ensemble des coupures possède la propriété de la borne supérieure.
+\end{thm}
+
+\begin{proof}
+Soit $S$ un ensemble non vide de coupures admettant un majorant. Posons
+$\lambda = \bigcup S$.
+%\Setabs{p \in \Rat}{(\exists \alpha \in S)p \in \alpha}$$
+Montrons d'abord que $\lambda$ est une coupure :
+\begin{enumerate}
+\item Puisque $S$ est non vide, il contient au moins une coupure, elle-même
+non vide ; ainsi $\emptyset \neq \lambda$.\footnote{Correction éditoriale : la source déduit à tort l'existence d'une coupure dans $S$ du fait que $S$ admet un majorant. C'est l'hypothèse $S\neq\emptyset$ qui intervient ici. La majoration est utilisée ensuite pour montrer que la réunion est propre.}
+Puisque $S$ est un ensemble de coupures, $\lambda \subseteq \Rat$.
+Comme $S$ admet une coupure majorante, un rationnel $p \in \Rat$
+extérieur à cette coupure n'appartient à aucune coupure $\alpha \in S$.
+Ainsi $p\notin \lambda$, donc $\lambda \subsetneq \Rat$.
+\item Supposons que $p < q \in \lambda$. Il existe alors $\alpha \in S$
+tel que $q \in \alpha$. Comme $\alpha$ est une coupure, $p \in \alpha$,
+donc $p \in \lambda$.
+\item Supposons que $p \in \lambda$. Il existe alors $\alpha \in S$
+tel que $p \in \alpha$. Comme $\alpha$ est une coupure, il existe
+$q \in \alpha$ tel que $p < q$. Nous avons donc aussi $q \in \lambda$.
+\end{enumerate}
+L'affirmation est démontrée. De plus,
+$(\forall \alpha \in S)\alpha \subseteq \bigcup S = \lambda$ :
+$\lambda$ est donc un majorant de $S$. Supposons maintenant que
+$\beta \in \mathbb{R}$ soit un autre majorant, c'est-à-dire que
+$(\forall \alpha \in S)\alpha \subseteq \beta$. Pour tout $p \in \Rat$,
+si $p \in \lambda$, il existe $\alpha \in S$ tel que $p \in \alpha$,
+et donc $p \in \beta$. Nous en déduisons $\lambda \subseteq \beta$.
+Ainsi, $\lambda$ est le \emph{plus petit} majorant de $S$.
+\end{proof}
+
+Nous avons donc construit des objets qui satisfont la propriété de la
+borne supérieure. Nous pouvons exprimer ce résultat en disant que nos
+coupures ne présentent aucune «~lacune~» : former de nouvelles
+«~coupures~» de réels, plutôt que de rationnels, ne fournirait pas
+de nouveaux objets mathématiquement intéressants.
+
+Définissons maintenant les opérations sur les réels. Commençons par
+plonger les rationnels dans les réels en posant
+$p_\Real = \Setabs{q \in \Rat}{q < p}$ pour chaque $p \in \Rat$.
+Définissons ensuite :
+\begin{align*}
+	\alpha + \beta &= \Setabs{p + q}{p \in \alpha \land q \in \beta}\\
+%	\alpha - \beta &\defis \Setabs{p - q}{p \in \alpha \land q \in \Rat \setminus \beta}\\
+	\alpha \times \beta &=
+	\Setabs{p \times q}{0 \leq p \in \alpha \land 0 \leq q \in \beta} \cup 0_\Real & \text{si }\alpha, \beta \geq 0_\Real.
+%	\alpha \div \beta &\defis
+%	\Setabs{\nicefrac{p}{q}}{p \in \alpha \land q \in \Rat \setminus \beta}  & \text{si }\alpha \geq 0_\Real, \beta > 0_\Real
+\end{align*}
+Pour traiter les autres cas du produit, posons d'abord
+$0_\Real \times \alpha = 0_\Real = \alpha \times 0_\Real$ pour toute
+coupure $\alpha$, puis définissons l'opposé :
+% La source suggère en commentaire de poser d'abord l'annulation par la coupure nulle ; cette règle est rendue explicite ci-dessus.
+\begin{align*}
+	-\alpha &= \Setabs{p - q}{p,q \in \Rat \land p < 0 \land q \notin \alpha}.
+\end{align*}
+Posons enfin :
+\begin{align*}
+	\alpha \times \beta &\defis
+	\begin{cases}
+		\mathord{-}\alpha \times \mathord{-}\beta &\text{si }\alpha < 0_\Real\text{ et }\beta < 0_\Real\\
+		\mathord{-}(\mathord{-}\alpha \times \beta) &\text{si }\alpha < 0_\Real \text{ et }\beta > 0_\Real\\
+		\mathord{-}(\alpha \times \mathord{-}\beta) &\text{si }\alpha > 0_\Real \text{ et }\beta < 0_\Real.
+	\end{cases}
+\end{align*}
+Il faut vérifier que chacune de ces définitions produit toujours une
+coupure. Il restera enfin à établir, par une démonstration élémentaire
+mais longue, que les coupures ainsi munies de ces opérations ont toutes
+les propriétés attendues. Nous reportons ces vérifications à la
+\olref[check]{sec}.\footnote{Corrections et précisions éditoriales : la notation $0^\mathbb{R}$ du produit positif est remplacée par $0_\Real$, la coupure nulle déjà définie. Les cas où un facteur est nul et l'autre strictement négatif manquaient dans les définitions actives ; la règle d'annulation, suggérée par un commentaire source, les complète. Dans la définition de l'opposé, les domaines rationnels de $p$ et $q$, implicites dans le contexte original, sont écrits explicitement.}
+\end{document}

@@ -1,0 +1,318 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: cauchy
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{arith}{cauchy}
+
+\olsection{Annexe : les réels construits à partir des suites de Cauchy}
+
+Dans la \olref[cuts]{sec}, nous avons construit les réels comme coupures
+de Dedekind. Nous allons présenter ici une autre construction. Elle
+s'appuie sur la définition, due à Cauchy, de ce que nous appelons
+aujourd'hui une suite de Cauchy. Son emploi pour \emph{construire} les
+réels est toutefois dû à d'autres auteurs du dix-neuvième siècle,
+notamment Weierstrass, Heine, M\'{e}ray et Cantor. Pour un exposé
+historique, voir \citeauthor{OConnorRobertson:RN}
+\citeyear{OConnorRobertson:RN}.
+
+Avant d'aborder le dix-neuvième siècle, arrêtons-nous sur Simon Stevin
+(1548--1620). Pour résumer, Stevin a compris que l'on pouvait envisager
+chaque réel à partir de son développement décimal. Même un nombre
+irrationnel tel que $\sqrt{2}$ possède un développement décimal dont
+le début est :
+\[
+1{,}41421356237\ldots
+\]
+Il est très facile de représenter ces développements en théorie des
+ensembles : il suffit de les considérer comme des fonctions
+$d \colon \Nat \to \Nat$, où $d(n)$ est le chiffre décimal de rang $n$
+qui nous intéresse. Il faut ensuite adapter un peu cette représentation
+pour tenir compte de ce qui précède la virgule, ici simplement $1$.
+Une autre adaptation, au moyen d'une relation d'équivalence, garantit
+par exemple que $0{,}999\ldots=1$. Il n'est cependant pas difficile de
+donner, dans l'esprit de Stevin, une construction parfaitement rigoureuse
+des réels en théorie des ensembles.
+\begin{editorial}
+Les valeurs de $d$ sont des chiffres : elles doivent donc appartenir à
+$\{0,\ldots,9\}$, restriction laissée implicite dans la source. Pour
+représenter tous les réels, il faut également coder le signe et la partie
+entière, puis identifier les deux écritures éventuelles d'un même nombre.
+\end{editorial}
+
+Stevin ne sera pas notre sujet principal ; pour en savoir davantage,
+voir \citealt{KatzKatz2012}. Considérons plutôt une idée très proche.
+Au lieu de traiter directement le développement décimal de $\sqrt{2}$,
+on peut considérer une \emph{suite} d'approximations rationnelles de
+plus en plus précises, obtenues en conservant davantage de chiffres :
+\[
+1;\ 1{,}4;\ 1{,}414;\ 1{,}4142;\ 1{,}41421;\ldots
+\]
+L'idée de représenter les réels par des « approximations de plus en
+plus précises » conduit à une nouvelle série d'observations, analogues
+à celles qui ont guidé la construction de $\Rat$ à partir de $\Int$,
+ou de $\Int$ à partir de $\Nat$ :
+\begin{enumerate}
+\item Tout réel admet un développement décimal, éventuellement infini.
+\item L'information contenue dans un tel développement peut tout aussi
+bien être représentée par une suite de nombres rationnels.
+\item Une suite de rationnels peut être considérée comme une fonction
+de $\Nat$ dans $\Rat$ : il suffit de prendre pour $f(n)$ le rationnel
+de rang $n$ de la suite.
+\end{enumerate}
+Bien entendu, une fonction \emph{quelconque} de $\Nat$ dans $\Rat$
+ne nous donne pas nécessairement un réel. Considérons par exemple :
+\[
+f(n)=\begin{cases}
+1 &\text{si }n\text{ est impair}\\
+0 &\text{si }n\text{ est pair}
+\end{cases}
+\]
+La difficulté est que la suite $0,1,0,1,0,1,0,\ldots$ ne semble
+« se rapprocher » d'aucun réel. Pour retenir des suites qui se rapprochent
+effectivement d'un réel, il faut donc une condition correspondant à
+l'existence d'une \emph{limite}.
+
+Nous avons déjà rencontré la notion de limite dans la
+\olref[his][set][limits]{sec}. Nous ne pouvons pourtant pas reprendre
+exactement la même définition. L'expression « $(\forall\epsilon>0)$ »
+y quantifiait implicitement sur les réels, et nous considérions des
+limites de fonctions définies sur les réels. Invoquer cette définition
+supposerait donc déjà les réels, alors que nous cherchons précisément
+à les \emph{construire}. Heureusement, une notion étroitement liée à
+celle de limite permet de procéder autrement.
+\begin{defn}\ollabel{def:CauchySequence}
+Une fonction $f:\Nat\to\Rat$ est une \emph{suite de Cauchy} si et
+seulement si, pour tout $\epsilon\in\Rat$ strictement positif,
+$(\exists\ell\in\Nat)(\forall m,n>\ell)|f(m)-f(n)|<\epsilon$,
+où $m$ et $n$ parcourent les naturels.
+\end{defn}
+
+L'idée reste celle d'une précision prescrite : pour un degré de
+précision mesuré par $\epsilon$, on trouve un rang $\ell$ au-delà
+duquel les termes sont suffisamment proches les uns des autres.
+Notre suite $1$, $1{,}4$, $1{,}414$, $1{,}4142$, $1{,}41421$\ldots
+illustre cette idée : pour approcher $\sqrt{2}$ avec une erreur
+inférieure à $\nicefrac{1}{10^n}$, il suffit de considérer les termes
+situés après celui de rang $n$.
+\begin{editorial}
+Le langage de la limite réelle reste ici une motivation intuitive,
+ou renvoie au réel déjà construit par coupures. La définition de
+Cauchy n'affirme pas qu'une limite existe dans $\Rat$ : elle compare
+deux termes de la suite. Pour obtenir la condition de Cauchy à partir
+d'approximations d'erreur donnée, on prend chaque erreur inférieure à
+$\epsilon/2$ et on applique l'inégalité triangulaire.
+\end{editorial}
+
+On pourrait alors être tenté de dire qu'un réel \emph{est} simplement
+une suite de Cauchy. Ce serait toutefois trop naïf, comme dans les
+constructions de $\Int$ et de $\Rat$ : plusieurs suites de Cauchy
+distinctes peuvent représenter le même réel. Pour le voir, prenons une
+suite de Cauchy $f$ et définissons $g$ exactement comme $f$, sauf que
+$g(0)\neq f(0)$. Les deux suites coïncident après le premier terme.
+Le critère de la \olref{def:CauchySequence} est donc satisfait par l'une
+comme par l'autre, et nous voudrons, au terme de la construction, leur
+attribuer la même limite. Elles doivent ainsi « définir » le même réel
+et être identifiées en tant que représentations de ce réel.
+
+Il nous faut donc, une nouvelle fois, définir une relation d'équivalence
+sur les suites de Cauchy et identifier les réels à des classes
+d'équivalence. Définissons d'abord ce que signifie tendre vers $0$.
+Pour une fonction $h:\Nat\to\Rat$, on dit que \emph{$h$ tend vers $0$}
+si et seulement si, pour tout $\epsilon\in\Rat$ strictement positif,
+$(\exists\ell\in\Nat)(\forall n>\ell)|h(n)|<\epsilon$, où $n\in\Nat$.
+\footnote{Comparer avec la définition de
+$\lim_{x\mathord{\rightarrow}\infty}f(x)=0$ dans la
+\olref[his][set][limits]{sec}.}
+Pour deux fonctions $f,g:\Nat\to\Rat$, posons en outre
+$(f-g)(n)=f(n)-g(n)$. Définissons alors :
+\[
+f\Realequiv g\quad\text{si et seulement si }(f-g)\text{ tend vers }0.
+\]
+Il faut vérifier que $\Realequiv$ est une relation d'équivalence ;
+c'est bien le cas. On peut alors définir les réels comme les classes,
+pour $\Realequiv$, de toutes les suites de Cauchy de $\Nat$ dans $\Rat$.
+\begin{editorial}
+La source écrit d'abord « relations d'équivalence » là où il faut
+« classes d'équivalence ». De même, ce sont les classes de suites qui
+formeront un corps ordonné dans les énoncés qui suivent. Une suite
+représentante et sa classe sont désormais distinguées partout.
+\end{editorial}
+
+\begin{prob}
+Posons $f(n)=0$ pour tout $n$ et $g(n)=\frac{1}{(n+1)^2}$.
+Montrer que ce sont deux suites de Cauchy et, plus précisément, que
+toutes deux tendent vers $0$, de sorte que $f\sim_\Real g$.
+\end{prob}
+
+Comme d'habitude, nous noterons $\equivrep{f}{\Realequiv}$ la classe
+d'équivalence ayant $f$ pour !!a{element}. Pour alléger la lecture,
+nous omettrons désormais l'indice et écrirons simplement
+$\equivrep{f}{}$. Pour tout $q\in\Rat$, nous posons aussi
+$q_\Real=\equivrep{c_q}{}$, où $c_q$ est la fonction constante définie
+par $c_q(n)=q$ pour tout $n\in\Nat$. Nous définissons alors les
+relations et les opérations de base sur les réels, par exemple :
+\begin{align*}
+\equivrep{f}{}+\equivrep{g}{}&=\equivrep{(f+g)}{}\\
+\equivrep{f}{}\times\equivrep{g}{}&=\equivrep{(f\times g)}{}
+\end{align*}
+où $(f+g)(n)=f(n)+g(n)$ et $(f\times g)(n)=f(n)\times g(n)$.
+Il faut bien sûr vérifier que $(f+g)$, $(f-g)$ et $(f\times g)$ sont
+des suites de Cauchy lorsque $f$ et $g$ en sont ; c'est effectivement
+le cas, et nous vous laissons cette vérification.
+\begin{editorial}
+Il faut également vérifier que les opérations sur les classes ne
+dépendent pas des représentants choisis. La stabilité des suites de
+Cauchy sous les opérations ne suffit pas, à elle seule, à l'établir.
+\end{editorial}
+
+Définissons enfin l'ordre. La classe $\equivrep{f}{}$ est
+\emph{strictement positive} si et seulement si
+$\equivrep{f}{}\neq0_\Real$ et
+$(\exists\ell\in\Nat)(\forall n>\ell)0<f(n)$.
+On pose $\equivrep{f}{}<\equivrep{g}{}$ si et seulement si
+$\equivrep{(g-f)}{}$ est strictement positive. Il faut vérifier que
+cette définition ne dépend pas du choix de la fonction représentante
+dans chaque classe d'équivalence.
+% Variante inactive conservée de la source. Le cas d'égalité des classes
+% est nécessaire : l'inégalité large terme à terme, seule, ne descend
+% pas au quotient.
+%\begin{align*}
+%\equivrep{f}{}\leq\equivrep{g}{}\text{ ssi }&\equivrep{f}{}=\equivrep{g}{}\text{ ou }\\
+%&( \exists \ell\in\Nat)(\forall n\in\Nat)(\ell<n\lif f(n)\leq g(n))
+%\end{align*}
+Une fois cette vérification faite, les propriétés algébriques attendues
+s'établissent assez facilement. Autrement dit :
+\begin{editorial}
+Nous avons corrigé $0_\Rat$ en $0_\Real$ dans la définition de
+positivité. La condition que la classe soit non nulle est essentielle :
+une suite peut être strictement positive à chaque rang et tendre vers
+zéro. Pour justifier l'ordre et les inverses, on utilise le fait
+suivant : si une suite de Cauchy $u$ ne tend pas vers zéro, il existe
+un rationnel $\delta>0$ tel qu'à partir d'un certain rang,
+$|u(n)|>\delta$ et tous les $u(n)$ ont le même signe. En effet, il
+existe $\epsilon_0>0$ rationnel tel que des termes arbitrairement
+tardifs aient une valeur absolue au moins égale à $\epsilon_0$.
+Au-delà d'un rang où les écarts entre termes sont inférieurs à
+$\epsilon_0/2$, tous les termes sont donc du même signe et de valeur
+absolue supérieure à $\epsilon_0/2$. Ce fait montre aussi que le signe
+de la classe ne change pas lorsqu'on remplace $u$ par une suite
+équivalente. Pour une classe non nulle, on peut prendre comme
+représentante de l'inverse la suite égale à $1/u(n)$ à partir de ce
+rang, et à $1$ avant celui-ci. La vérification qu'elle est de Cauchy
+utilise
+$|1/u(m)-1/u(n)|\leq |u(m)-u(n)|/\delta^2$.
+\end{editorial}
+\begin{thm}\ollabel{thm:cauchyorderedfield}
+Les classes d'équivalence de suites de Cauchy forment un corps ordonné.
+\end{thm}
+
+\begin{proof}
+En exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer que les classes d'équivalence de suites de Cauchy forment
+un corps ordonné.
+\end{prob}
+
+La propriété de la borne supérieure est plus difficile à établir pour
+les réels ainsi construits ; nous allons donc en donner la démonstration.
+
+\begin{thm}
+Tout ensemble non vide et majoré de classes d'équivalence de suites
+de Cauchy admet une borne supérieure.
+\end{thm}
+
+\begin{proof}[Esquisse de démonstration]
+Soit $\mathcal A$ un ensemble non vide et majoré de classes de suites
+de Cauchy. Pour conserver les notations de la construction ci-dessous,
+notons $S$ l'ensemble de toutes les suites $h$ telles que
+$\equivrep{h}{}\in\mathcal A$. Les éléments de $S$ sont donc des suites,
+et ceux de $\mathcal A$ des classes. Il existe $p\in\Rat$ tel que
+$p_\Real$ majore $\mathcal A$. Choisissons $r\in S$ ; il existe
+$q\in\Rat$ tel que $q_\Real<\equivrep{r}{}$. Ces bornes rationnelles
+existent parce que toute suite de Cauchy rationnelle est bornée :
+on applique cette observation à une représentante d'un majorant
+de $\mathcal A$, puis à $r$. Si la borne supérieure de $\mathcal A$
+existe, elle se trouve donc entre $q_\Real$ et $p_\Real$, bornes comprises.
+
+Nous allons nous rapprocher de cette borne supérieure simultanément
+par valeurs inférieures et supérieures. Définissons deux fonctions
+$f,g:\Nat\to\Rat$, destinées à l'approcher respectivement par valeurs
+supérieures et inférieures. Posons d'abord :
+\begin{align*}
+f(0)&=p\\
+g(0)&=q
+\end{align*}
+Puis, en posant $a_n=\frac{f(n)+g(n)}2$, définissons :
+\footnote{Il s'agit d'une définition par récurrence. Nous n'avons
+cependant pas encore justifié l'emploi de telles définitions.}
+\begin{align*}
+f(n+1)&=\begin{cases}
+a_n &\text{si }(\forall h\in S)\equivrep{h}{}\leq(a_n)_\Real\\
+f(n)&\text{sinon}
+\end{cases}\\
+g(n+1)&=\begin{cases}
+a_n &\text{si }(\exists h\in S)\equivrep{h}{}\geq(a_n)_\Real\\
+g(n)&\text{sinon}
+\end{cases}
+\end{align*}
+Les suites $f$ et $g$ sont de Cauchy. On peut le vérifier assez
+facilement ; nous laissons le détail de cette vérification en exercice.
+Voici les observations utiles : $f$ est décroissante, $g$ est
+croissante, les intervalles $[g(n),f(n)]$ sont emboîtés et
+\[
+0\leq f(n+1)-g(n+1)\leq\frac{f(n)-g(n)}2.
+\]
+Leur longueur est donc au plus $(p-q)/2^n$. Deux termes suffisamment
+tardifs de l'une ou l'autre suite appartiennent au même intervalle,
+aussi petit que voulu. En particulier, $(f-g)$ tend vers $0$,
+d'où $\equivrep{f}{}=\equivrep{g}{}$.
+\emph{Précision éditoriale :} la source affirme que l'écart est divisé
+exactement par deux à chaque étape. Avec ses deux conditions larges,
+les deux premières branches peuvent s'appliquer simultanément, lorsque
+le milieu est un maximum de $\mathcal A$ ; l'écart devient alors nul.
+L'inégalité ci-dessus couvre aussi ce cas. Par construction, pour
+chaque $n$, $(f(n))_\Real$ majore $\mathcal A$, et il existe
+$h\in S$ tel que $(g(n))_\Real\leq\equivrep{h}{}$.
+
+Montrons d'abord que $\equivrep{f}{}$ majore $\mathcal A$,
+c'est-à-dire que
+$(\forall h\in S)\equivrep{h}{}\leq\equivrep{f}{}$.
+Nous utiliserons le \olref{thm:cauchyorderedfield} au cours du raisonnement.
+Soit $h\in S$ et supposons, pour obtenir une contradiction, que
+$\equivrep{f}{}<\equivrep{h}{}$, donc que
+$0_\Real<\equivrep{(h-f)}{}$. La suite $f$ étant de Cauchy et
+décroissante, il existe $n\in\Nat$ tel que
+$\equivrep{(c_{f(n)}-f)}{}<\equivrep{(h-f)}{}$.
+En effet, la positivité de la classe de $h-f$ donne un écart rationnel
+$\delta>0$ tel que $h(m)-f(m)>\delta$ à partir d'un certain rang ;
+on choisit $n$ assez grand pour que, pour tout $m$ assez grand,
+$|f(n)-f(m)|<\delta/2$. La suite
+$(h-f)-(c_{f(n)}-f)$ est alors, à partir d'un certain rang,
+strictement supérieure à $\delta/2$.
+Ainsi :
+\[
+(f(n))_\Real=\equivrep{c_{f(n)}}{}
+<\equivrep{f}{}+\equivrep{(h-f)}{}=\equivrep{h}{},
+\]
+ce qui contredit $\equivrep{h}{}\leq(f(n))_\Real$, vraie par construction.
+
+Montrons enfin que $\equivrep{f}{}=\equivrep{g}{}$ est le
+\emph{plus petit} majorant de $\mathcal A$. Soit $j$ une suite de
+Cauchy telle que $\equivrep{j}{}<\equivrep{g}{}$.
+Comme ci-dessus, en utilisant cette fois la croissance de $g$,
+il existe $n\in\Nat$ tel que $\equivrep{j}{}<(g(n))_\Real$ :
+on prend un écart strictement positif pour $g-j$, puis un rang
+où les écarts entre termes de $g$ lui sont inférieurs de moitié.
+Or, par construction, il existe $h\in S$ tel que
+$(g(n))_\Real\leq\equivrep{h}{}$. On a donc
+$\equivrep{j}{}<\equivrep{h}{}$, et $\equivrep{j}{}$ ne majore pas
+$\mathcal A$.
+\end{proof}
+
+\end{document}

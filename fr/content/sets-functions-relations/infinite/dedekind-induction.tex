@@ -1,0 +1,94 @@
+% Part: sets-functions-relations
+% Chapter: infinite
+% Section: dedekind-induction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{infinite}{induction}
+\olsection[Récurrence arithmétique]{Algèbres de Dedekind et récurrence arithmétique}
+
+Le point décisif est maintenant qu'une algèbre de Dedekind,
+\emph{quelle qu'elle soit}, peut tenir lieu d'ensemble des entiers
+naturels. Cela découle de la conséquence immédiate suivante.
+
+\Needspace{6\baselineskip}\begin{thm}[Récurrence arithmétique]\ollabel{thm:dedinfiniteinduction}
+Soit $N,s,o$ une algèbre de Dedekind. Pour tout ensemble $X$ :
+	\begin{center}
+		si $o \in X$ et $(\forall {n} \in N \cap X){s}({n}) \in X$,
+		alors $N \subseteq X$.
+	\end{center}
+\end{thm}
+
+\begin{proof}
+Par définition d'une algèbre de Dedekind,
+$N = \closureofunder{s}{o}$. Supposons que $o \in X$ et
+$(\forall {n} \in N)(n \in X \lif {s}({n}) \in X)$.
+La partie $Y=N\cap X$ de $N$ contient alors $o$ et est stable par $s$ :
+si $n\in Y$, alors $s(n)\in X$ par hypothèse, et $s(n)\in N$
+puisque $s\colon N\to N$. La minimalité de la clôture donne donc
+$N=\closureofunder{s}{o}\subseteq Y\subseteq X$.\footnote{Note de
+l'édition française : la preuve de la source est explicitée en appliquant
+la minimalité à $N\cap X$. L'ensemble $X$ lui-même n'est pas supposé
+inclus dans le domaine $N$ de $s$.}
+\end{proof}
+
+Puisque la récurrence caractérise les entiers naturels, voici ce que
+nous avons obtenu : à partir de n'importe quel ensemble infini au sens
+de Dedekind, nous pouvons former une algèbre de Dedekind et utiliser
+cette algèbre pour représenter les entiers naturels.
+
+Certes, le \olref{thm:dedinfiniteinduction} formule la récurrence
+en termes \emph{ensemblistes}. Mais nous pouvons aisément donner à ce
+principe une formulation peut-être plus familière.
+
+\begin{cor}\ollabel{natinductionschema}
+Soit $N,s,o$ une algèbre de Dedekind. Pour toute formule $\phi(x)$,
+éventuellement avec des paramètres :
+\begin{center}
+	si $\phi(o)$ et $(\forall {n} \in N)(\phi(n)\lif
+	\phi({s}({n})))$, alors $(\forall n \in N)\phi(n)$.
+\end{center}
+\end{cor}
+
+\begin{proof}
+Posons $X = \Setabs{n \in N}{\phi(n)}$, puis appliquons le
+\olref{thm:dedinfiniteinduction}.
+\end{proof}
+
+Dans cet énoncé, nous avons parlé d'une formule « avec des paramètres ».
+Cela signifie, approximativement, que, pour des objets quelconques
+$c_1,\ldots,c_k$, nous pouvons travailler avec
+$\phi(x,c_1,\ldots,c_k)$. Plus précisément, nous pouvons énoncer le
+résultat sans parler de « paramètres » : pour toute formule
+$\phi(x,v_1,\ldots,v_k)$ dont toutes les variables libres sont
+explicitement indiquées, nous avons
+	\begin{align*}
+			\forall v_1 \ldots \forall v_k((&\phi(o, v_1,\ldots, v_k) \land {}\\
+			&	(\forall x \in N)(\phi(x,v_1, \ldots, v_k) \lif \phi(s(x), v_1,\ldots, v_k))) \lif {}\\
+			&\hspace{3em} (\forall x \in N)\phi(x, v_1,\ldots, v_k))
+	\end{align*}
+On voit que parler de « paramètres » peut rendre les énoncés beaucoup
+plus faciles à lire. Dans la \olref[sth][][]{part}, nous recourrons assez
+souvent à cette façon de présenter les choses.
+
+Revenons aux algèbres de Dedekind. À partir d'une telle algèbre, nous
+pouvons aussi définir les opérations arithmétiques usuelles :
+l'addition, la multiplication et l'exponentiation. Ce n'est toutefois
+pas immédiat : il faut faire appel à la \emph{définition par récurrence}.
+Nous présenterons et justifierons cette méthode beaucoup plus loin,
+dans un cadre bien plus général. Les lecteurs intéressés pourront
+revenir sur cette question après le \olref[sth][ord-arithmetic][]{chap},
+ou consulter une autre présentation, par exemple
+\citealt[pp.~95--8]{Potter2004}. Lorsque $N,s,o$ est une algèbre de
+Dedekind, nous pourrons donc, le moment venu, poser les équations
+suivantes :
+\begin{align*}
+	{a} + {o} &= {a} & & & {a} \times {o} &= {o} & & & {a}^{o} &= s(o)\\
+{a} + {s}({b}) &= {s}({a}+{b}) &&& {a} \times {s}({b}) &= ({a}\times {b}) + {a}  & & & {a}^{{s}({b})} &= {a}^{b} \times {a}
+\end{align*}
+et montrer que les opérations ainsi définies se comportent comme
+on l'attend.
+
+\end{document}

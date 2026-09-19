@@ -15,6 +15,7 @@
 \usepackage{footnotehyper}
 \makesavenoteenv{editorial}
 \frcompletevariantstrue
+\input{reader-partial-references.tex}
 \problemsperchapter
 \setlrmarginsandblock{28mm}{28mm}{*}
 \setulmarginsandblock{26mm}{28mm}{*}
@@ -23,9 +24,9 @@
 \setlength{\emergencystretch}{2em}
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
-\hypersetup{pdftitle={OpenLogic : édition française — Ensembles, relations, fonctions et dénombrabilité},
+\hypersetup{pdftitle={OpenLogic : édition française — Ensembles, fonctions et construction des nombres},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, énumérations et comparaison des tailles},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres réels et ensembles infinis},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -36,19 +37,23 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Ensembles, relations,\\fonctions et dénombrabilité\par}
+{\sffamily\huge Ensembles, fonctions\\et construction des nombres\par}
 \vspace{5mm}
-{\large Des ensembles et des fonctions\\
-aux énumérations, à Cantor et à Schröder-Bernstein\par}
+{\large Relations, dénombrabilité et arithmétisation :\\
+des premiers ensembles aux nombres réels et à l'infini\par}
 \vfill
-{\large Quatrième livraison : quatre chapitres complets\par}
+{\large Cinquième livraison : six chapitres complets\par}
 \vspace{4mm}
-Cette livraison comprend trente-trois sections et leurs quatre chapitres d’organisation,
-soit 37 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend quarante-cinq sections et leurs six chapitres d’organisation,
+soit 51 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
 sont réunies dans un même chapitre, avec leurs conventions explicites.
+Le cinquième chapitre construit les entiers, les rationnels et les réels,
+par les coupures de Dedekind et les classes de suites de Cauchy.
+Le sixième étudie les ensembles infinis, les algèbres de Dedekind,
+la récurrence et une autre preuve du théorème de Schröder--Bernstein.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -69,6 +74,8 @@ des traductions d'OpenLogic}
 \olimport[content/sets-functions-relations/relations]{relations-complete}
 \olimport[content/sets-functions-relations/functions]{functions}
 \olimport[content/sets-functions-relations/size-of-sets]{size-of-sets-complete}
+\olimport[content/sets-functions-relations/arithmetization]{arithmetization}
+\olimport[content/sets-functions-relations/infinite]{infinite}
 \backmatter
 % La notice Frege1884 cite elle-même cette traduction anglaise.
 \nocite{Frege1953}

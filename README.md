@@ -1,44 +1,58 @@
 # OpenLogic — édition française
 
-Une édition française du manuel ouvert de logique mathématique de l’[Open Logic Project](https://openlogicproject.org/), avec ses démonstrations, exemples, figures et exercices.
+Cette cinquième livraison française d’OpenLogic réunit six chapitres :
+ensembles, relations, fonctions, dénombrabilité, construction des systèmes
+de nombres et ensembles infinis. Elle comprend 45 sections, leurs
+démonstrations et exemples, 73 exercices et 13 figures, soit 51 des
+722 unités prévues pour l’édition intégrale.
 
-**Quatrième livraison : les chapitres « Ensembles », « Relations », « Fonctions » et « La taille des ensembles » sont complets.** Leurs trente-trois sections et quatre fichiers de chapitre représentent **37 des 722 unités** prévues pour l’édition intégrale. Les 685 autres unités restent à achever et à intégrer.
+Les nouveaux chapitres construisent les entiers, les rationnels et les réels
+par les coupures de Dedekind et les suites de Cauchy, puis présentent
+l’hôtel de Hilbert, les algèbres de Dedekind, la récurrence et une autre
+démonstration de Schröder–Bernstein. Les corrections de la source et les
+précisions éditoriales sont signalées dans le texte.
 
-[Lire les quatre chapitres en PDF](https://zenodo.org/records/22848486/files/01-openlogic-fr-ensembles-relations-fonctions-denombrabilite.pdf?download=1) · [LaTeX cumulatif complet](https://zenodo.org/records/22848486/files/02-openlogic-fr-ensembles-relations-fonctions-denombrabilite.tex?download=1) · [Sources et reconstruction PDF/EPUB](https://zenodo.org/records/22848486/files/03-openlogic-fr-complete-sources-pdf-epub.zip?download=1) · [Télécharger l’EPUB](https://zenodo.org/records/22848486/files/04-openlogic-fr-ensembles-relations-fonctions-denombrabilite.epub?download=1)
+Les fichiers principaux sont proposés dans cet ordre : PDF de 79 pages,
+LaTeX cumulatif complet, ZIP de toutes les sources et dépendances du projet,
+puis EPUB 3 redistribuable. Le LaTeX cumulatif reproduit exactement le PDF
+livré. L’EPUB conserve les mathématiques en MathML et les figures en SVG ;
+il passe EPUBCheck 5.3.0 sans erreur ni avertissement.
 
-Version archivée avec DOI : [10.5281/zenodo.22848486](https://doi.org/10.5281/zenodo.22848486). [Miroir GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases/tag/v0.4.0-ensembles-relations-fonctions-denombrabilite) · [Toutes les versions](https://doi.org/10.5281/zenodo.22650157) · [Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/).
+Traduction et révision éditoriale assistées par IA, appuyées sur un corpus
+mathématique français documenté. Aucune validation humaine indépendante
+n’est revendiquée. L’édition intégrale reste en cours.
 
-Le LaTeX cumulatif contient le texte complet de cette livraison et sa compilation reproduit exactement le PDF publié. Le ZIP fournit les sources modulaires, les styles, les figures, la bibliographie et les scripts de reconstruction. L’EPUB3 conserve les quatre chapitres, les 64 exercices, 56 notes et 11 figures décrites, avec 2 468 formules MathML natives. EPUBCheck ne signale ni erreur ni avertissement ; la lecture a été vérifiée sur écran large et étroit. Les fichiers des livraisons antérieures restent disponibles.
+Texte original : [Open Logic Project](https://openlogicproject.org/),
+révision 9620cc73f9c8e0ad003c514a5d3748f29611c4c0.
+Texte et traduction sous licence CC BY 4.0 ; les notices propres aux
+composants sont conservées.
 
-Le lecteur de 55 pages traite des ensembles et de leurs opérations, du paradoxe de Russell, des relations binaires, de leurs interprétations philosophiques, des relations d’équivalence, des ordres, des graphes, des arbres, des opérations sur les relations, des fonctions, de leurs inverses, de leur composition et des fonctions partielles, puis des énumérations, des fonctions de couplage, de la diagonalisation, de l’équipotence et des théorèmes de Cantor et de Schröder-Bernstein. Les soixante-quatre exercices sont réunis à la fin des chapitres. Les figures et les démonstrations sont conservées.
+[Catalogue des traductions d’OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/).
 
-La traduction s’appuie sur des passages précisément repérés de cours universitaires français. Les références documentent la terminologie, certaines formulations et les conventions ; le texte anglais reste l’autorité pour les énoncés traduits. Quatre cent trente-six décisions de rédaction ou de relecture, avec leurs alternatives, motifs et incertitudes, sont consignées dans le dossier de révision. La traduction et sa révision ont été assistées par IA. Aucune validation humaine indépendante des chapitres entiers n’est revendiquée.
 
-Les présentations par surjections et par bijections sont réunies avec leurs conventions explicites. Les variantes de preuve et les passages commentés du chapitre original sont conservés avec leur provenance. Les précisions apportées aux exemples et aux conditions d’existence sont signalées dans le lecteur. Le dossier de provenance distingue ces corrections de la traduction. Les PDF de référence externes ne sont pas redistribués.
+## Lire et télécharger
 
-## Contenu du dépôt
+1. [Lire les six chapitres en PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.5.0-construction-des-nombres/00-01-openlogic-fr-ensembles-fonctions-construction-des-nombres.pdf)
+2. [LaTeX cumulatif complet](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.5.0-construction-des-nombres/00-02-openlogic-fr-ensembles-fonctions-construction-des-nombres.tex)
+3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.5.0-construction-des-nombres/00-03-openlogic-fr-ensembles-fonctions-construction-des-nombres-sources.zip)
+4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.5.0-construction-des-nombres/00-04-openlogic-fr-ensembles-fonctions-construction-des-nombres.epub)
 
-- `fr/` : texte français éditable et fichier maître du lecteur.
-- `reader/` : lecteur PDF vérifié.
-- `upstream/` : source anglaise figée, conservée sans modification, ainsi que les macros, figures et notices de droits nécessaires.
-- `provenance/` : identités des sources, alignement, références consultées et résultats de vérification.
-- `review/` : décisions terminologiques et syntaxiques, précisions éditoriales et échantillons de paraphrase inverse.
-- `tools/` : compilation reproductible du lecteur.
+[Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
 
-Les fichiers anglais dans `upstream/` servent à la provenance et à la compilation ; leur présence ne compte pas comme traduction française.
+## Sources et révision
+
+Le dossier fr/ contient le texte français modulaire et le LaTeX cumulatif. Le dossier upstream/ conserve la source anglaise figée et les composants du projet ; sa présence ne compte pas comme traduction française. Les identités, passages consultés et décisions figurent dans provenance/, et les questions de révision dans review/CHOICES.md. Les choix historiques marqués non vérifiés ne servent pas à justifier cette livraison.
 
 ## Recompiler
 
-Sous Windows, avec PowerShell, MiKTeX ou une distribution compatible fournissant XeLaTeX, les paquets utilisés par OpenLogic et les polices TeX Gyre :
+Voir [les instructions de reconstruction](REBUILD-PDF-EPUB.md). Le ZIP complet comprend également les dépendances de conversion EPUB. La compilation PDF depuis ce dépôt utilise le même garde de processus et le même fichier cumulatif.
 
-```powershell
+~~~powershell
 .\tools\Build-Reader.ps1 -ScratchRoot C:\chemin\vers\un-nouveau-dossier
-```
+~~~
 
-Le dossier doit être nouveau. Le script y assemble une copie des sources et effectue trois passes de XeLaTeX avec BibTeX après la première. Le PDF se trouve ensuite dans `source/locale/fr/reader.pdf`. Le script fixe la date de compilation et utilise le mutex `Global\InterlanguageTeXSlotV1` pendant toutes les passes et la bibliographie. Si le créneau est occupé, aucun moteur TeX n’est lancé.
+Le PDF résultant se trouve dans tools/epub/direct-tex-check/source/locale/fr/reader.pdf sous ce nouveau dossier. Les versions antérieures restent disponibles avec leurs sources dans la lignée de publication.
 
-Deux compilations dans des dossiers distincts ont produit un PDF identique octet pour octet. Les versions et empreintes pertinentes figurent dans `provenance/QA.json`.
+## Licence
 
-## Licence et attribution
-
-Texte original : Open Logic Project. La traduction et les modifications éditoriales sont identifiées comme telles. Le texte original et la traduction sont diffusés sous [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). La [licence originale](upstream/LICENSE.md) et les éventuelles notices propres aux composants sont conservées. Les références universitaires externes conservent leurs droits propres et ne sont pas couvertes par cette licence du dépôt.
+Texte original et traduction : CC BY 4.0. Les [notices originales](upstream/LICENSE.md) et les licences particulières des composants sont conservées. Les PDF universitaires consultés ne sont pas redistribués.

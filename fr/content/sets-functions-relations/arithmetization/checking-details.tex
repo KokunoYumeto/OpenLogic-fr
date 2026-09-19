@@ -1,0 +1,248 @@
+% Part: sets-functions-relations
+% Chapter: arithmetization
+% Section: checking-details
+%
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{arith}{check}
+\olsection{Anneaux et corps ordonnés}
+
+Tout au long de ce chapitre, nous avons affirmé que certaines définitions
+donnaient aux objets construits les propriétés « attendues ». Dans cette
+annexe technique, nous allons préciser ce que nous entendons par là et
+montrer, ou esquisser comment montrer, qu'elles ont bien cet effet.
+
+Dans la \olref[int]{sec}, nous avons défini l'addition et la multiplication
+sur $\Int$. Nous voulons montrer que ces opérations, telles que nous
+les avons définies, munissent $\Int$ de la structure attendue.
+Il s'agit, plus précisément, d'une structure d'anneau commutatif.
+
+\Needspace{16\baselineskip}\begin{defn}
+Un \emph{anneau commutatif} est un ensemble $S$ muni de deux éléments
+distingués $0$ et $1$ et de deux opérations $+$ et $\times$ de
+$S\times S$ dans $S$, qui satisfont les huit formules suivantes :
+\begin{align*}
+  \emph{Associativité}&&a + (b+ c) & = (a + b) + c \\
+  && (a \times b) \times c & = a \times (b\times c)\\
+  \emph{Commutativité}&&a + b &= b+ a  \\
+  && a \times b&= b\times a\\
+  \emph{Éléments neutres}&&a + 0 &= a \\
+  && a \times 1 &= a\\
+  \emph{Existence d'un opposé}&&(\exists b\in S)0&=a + b\\
+  \emph{Distributivité}&&a \times (b+ c ) &= (a \times b) + (a \times c)
+\end{align*}
+Dans chaque formule, les variables libres sont implicitement quantifiées
+universellement sur $S$ ; le $b$ de la formule sur l'opposé est déjà lié
+par son quantificateur existentiel. Les éléments $0$ et~$1$ ne sont pas
+nécessairement les nombres naturels qui portent ces noms.
+\end{defn}
+
+Pour vérifier que les entiers relatifs forment un anneau commutatif, il
+suffit donc de vérifier ces huit conditions. Aucune n'est difficile à
+établir, mais l'ensemble des vérifications est un peu laborieux. Voici,
+par exemple, comment démontrer l'\emph{associativité} de l'addition :
+
+\begin{proof}
+Fixons $i, j, k \in \Int$. Il existe donc
+$a_1, b_1, a_2, b_2, a_3, b_3 \in \Nat$ tels que
+$i = \equivrep{a_1, b_1}{}$, $j = \equivrep{a_2,b_2}{}$ et
+$k = \equivrep{a_3, b_3}{}$. Pour alléger les notations, nous écrivons
+« $\equivrep{x, y}{}$ » au lieu de
+« $\equivrep{x, y}{\Intequiv}$ » dans toute cette section. On a alors :
+\begin{align*}
+  i + (j + k) &= \equivrep{a_1, b_1}{}+(\equivrep{a_2, b_2}{} + \equivrep{a_3, b_3}{}) \\
+  &= \equivrep{a_1, b_1}{} + \equivrep{a_2+a_3, b_2+b_3}{}\\
+  &= \equivrep{a_1 + (a_2 + a_3), b_1 + (b_2 + b_3)}{}\\
+  &= \equivrep{(a_1 + a_2) + a_3, (b_1 + b_2) + b_3}{}\\
+  &= \equivrep{a_1 + a_2, b_1 + b_2}{} + \equivrep{a_3, b_3}{}\\
+  &= (\equivrep{a_1, b_1}{} + \equivrep{a_2, b_2}{}) + \equivrep{a_3, b_3}{}\\
+  &= (i+j) + k
+\end{align*}
+en utilisant librement les propriétés de l'addition dans $\Nat$.
+\end{proof}
+
+De même, voici comment établir l'\emph{existence d'un opposé} :
+
+\begin{proof}
+Fixons $i \in \Int$ ; on a donc $i = \equivrep{a,b}{}$ pour certains
+$a,b \in \Nat$. Posons $j = \equivrep{b,a}{} \in \Int$.
+Les propriétés des naturels donnent $(a+b) + 0 = 0 + (a+b)$.
+Par définition, $\tuple{a+b, b+a} \sim_\Int \tuple{0,0}$, d'où
+$\equivrep{a+b, b+a}{} = \equivrep{0, 0}{} = 0_\Int$.
+Ainsi, $i + j = \equivrep{a,b}{}+\equivrep{b,a}{}
+=\equivrep{a+b, b+a}{}=\equivrep{0,0}{} = 0_\Int$.
+\end{proof}
+
+Voici enfin une démonstration de la \emph{distributivité} :
+
+\begin{proof}
+Comme ci-dessus, fixons $i = \equivrep{a_1, b_1}{}$,
+$j = \equivrep{a_2,b_2}{}$ et $k = \equivrep{a_3, b_3}{}$. Alors :
+\begin{align*}
+  i \times (j + k)
+  &= \equivrep{a_1, b_1}{} \times (\equivrep{a_2,b_2}{} + \equivrep{a_3, b_3}{})\\
+  &= \equivrep{a_1, b_1}{} \times \equivrep{a_2 + a_3,b_2+b_3}{}\\
+  &= \equivrep{a_1 (a_2 + a_3) + b_1 (b_2+b_3), a_1 (b_2 + b_3) + b_1 (a_2 + a_3)}{}\\
+  &= \equivrep{a_1 a_2 + a_1a_3 + b_1 b_2+b_1b_3, a_1 b_2 + a_1b_3 + a_2b_1 + a_3b_1}{}\\
+% Ligne inactive de la source, erronée par répétition du terme b_1b_2 :
+% &= \equivrep{a_1 a_2 + b_1b_2 + a_1a_3 + b_1 b_2+b_1b_3, a_1 b_2 + a_1b_3 + a_2b_1 + a_3b_1}{}\\
+  &= \equivrep{a_1a_2 + b_1b_2, a_1b_2 + a_2b_1}{} + \equivrep{a_1a_3 + b_1b_3, a_1b_3 + a_3b_1}{}\\
+  &= (\equivrep{a_1, b_1}{} \times \equivrep{a_2,b_2}{}) + (\equivrep{a_1, b_1}{} \times \equivrep{a_3, b_3}{})\\
+  &= (i \times j) + (i \times k)
+\end{align*}
+\end{proof}
+
+Nous laissons en exercice la démonstration des cinq autres conditions.
+Une fois ces vérifications faites, nous aurons montré que $\Int$ forme
+un anneau commutatif : l'addition et la multiplication définies plus
+haut ont bien les propriétés attendues.
+
+\begin{prob}
+Démontrer que $\Int$ est un anneau commutatif.
+\end{prob}
+
+Le travail n'est toutefois pas terminé. Outre l'addition et la
+multiplication sur $\Int$, nous avons défini une relation d'ordre
+$\leq$ ; il faut vérifier qu'elle aussi a les propriétés attendues.
+Plus précisément, il faut montrer que $\Int$ est un anneau
+\emph{ordonné}.\footnote{Rappelons, d'après la
+\olref[sfr][rel][ord]{def:linearorder}, qu'un ordre total est une
+relation réflexive, transitive, antisymétrique et connexe. Pour un tel
+ordre, la connexité donne la \emph{trichotomie} de l'ordre strict
+associé : pour tous $a$ et $b$, exactement l'une des relations
+$a < b$, $a = b$, $a > b$ est vérifiée.
+\emph{Précision éditoriale :} la source écrit ici
+$a \leq b \lor a = b \lor a \geq b$ ; cette disjonction est vraie,
+mais ses trois cas ne sont pas exclusifs.}
+
+\begin{defn}
+Un \emph{anneau ordonné} est un anneau commutatif muni d'une relation
+d'ordre total $\leq$ telle que, pour tous $a,b,c\in S$ :
+\begin{align*}
+  a \leq b &\lif a + c \leq b + c\\
+  (a \leq b \land 0 \leq c) &\lif a \times c \leq b \times c
+\end{align*}
+\end{defn}
+
+\begin{prob}
+Démontrer que $\Int$ est un anneau ordonné.
+\end{prob}
+
+Comme précédemment, montrer que $\Int$, tel que nous l'avons construit,
+est un anneau ordonné demande des vérifications laborieuses mais
+usuelles. Nous vous les laissons.
+
+Cela règle le cas des entiers relatifs. Il faut maintenant établir des
+propriétés très semblables pour les rationnels. Plus précisément, nous
+devons montrer qu'avec nos définitions de $+$, $\times$ et $\leq$, les
+rationnels forment un \emph{corps} ordonné :
+\begin{defn}\ollabel{orderedfield}
+Un \emph{corps ordonné} est un anneau ordonné $S$ dans lequel
+$0\neq1$ et qui satisfait en outre :
+\begin{align*}
+  \emph{Existence d'un inverse}& &
+  (\forall a \in S \setminus \{0\})(\exists b \in S) a\times b& = 1
+\end{align*}
+\end{defn}
+\begin{editorial}
+La condition $0\neq1$, omise dans la source, exclut l'anneau réduit à un
+seul élément. Sans elle, la condition sur les éléments non nuls serait
+vide et ne suffirait pas à définir un corps.
+\end{editorial}
+
+Une fois établi que $\Int$ est un anneau ordonné, il est facile, quoique
+laborieux, de montrer que $\Rat$ est un corps ordonné.
+
+\begin{prob}
+Démontrer que $\Rat$ est un corps ordonné.
+\end{prob}
+
+Après les entiers relatifs et les rationnels, il ne reste que les réels.
+Il faut montrer que $\Real$ est un corps ordonné \emph{complet},
+c'est-à-dire un corps ordonné ayant la propriété de la borne supérieure.
+Or, le \olref[cuts]{realcompleteness} établit déjà cette propriété pour
+$\Real$. Il reste toutefois à effectuer les vérifications, fastidieuses,
+qui montrent que $\Real$ est un corps ordonné.
+
+Avant d'entreprendre cet exercice laborieux, il faut vérifier quelques
+faits plus « immédiats ». Par exemple, nous devons nous assurer que
+$\alpha + \beta$, tel que nous l'avons défini, est bien une
+\emph{coupure} dès que $\alpha$ et $\beta$ sont des coupures.
+En voici une démonstration :
+
+\begin{proof}
+Puisque $\alpha$ et $\beta$ sont des coupures,
+$\alpha + \beta = \Setabs{p + q}{p \in \alpha \land q \in \beta}$
+est une partie non vide et propre de $\Rat$. En effet, chacune des
+deux coupures contient un rationnel, dont la somme appartient à
+$\alpha+\beta$. Choisissons aussi $r\in\Rat\setminus\alpha$ et
+$s\in\Rat\setminus\beta$. Tout $p\in\alpha$ vérifie $p<r$ et tout
+$q\in\beta$ vérifie $q<s$, car les coupures sont des segments initiaux.
+Ainsi $p+q<r+s$, et $r+s\notin\alpha+\beta$.
+Supposons maintenant que $x < p + q$ pour certains $p \in \alpha$ et
+$q \in \beta$, avec $x\in\Rat$. Alors $x - p < q$, donc
+$x - p \in \beta$, et $x = p + (x - p) \in \alpha + \beta$.
+La somme est donc un segment initial de $\Rat$.
+Enfin, pour tout $p + q \in \alpha + \beta$, les deux coupures étant
+sans maximum, il existe $p_1 \in \alpha$ et $q_1 \in \beta$ tels que
+$p < p_1$ et $q < q_1$. Ainsi
+$p + q < p_1 + q_1 \in \alpha + \beta$, et $\alpha+\beta$ n'a pas de maximum.
+\end{proof}
+
+Des vérifications analogues permettent de montrer que $\alpha - \beta$,
+$\alpha \times \beta$ et $\alpha \div \beta$ sont des coupures, en
+excluant, dans le dernier cas, celui où $\beta$ est la coupure nulle.
+Là encore, nous vous laissons ces vérifications.
+\begin{editorial}
+La source n'active pas ses définitions de la soustraction et de la
+division des coupures. Pour donner un sens précis à cet exercice,
+on pose $\alpha-\beta=\alpha+(-\beta)$ et
+$\alpha\div\beta=\alpha\times\beta^{-1}$ pour $\beta\neq0_\Real$.
+Si $\beta>0_\Real$, on définit
+\[
+\beta^{-1}=\Setabs{q\in\Rat}{q\leq0\ \lor\
+(\exists r\in\Rat\setminus\beta)(r>0\land q<1/r)}.
+\]
+Si $\beta<0_\Real$, on pose $\beta^{-1}=-((-\beta)^{-1})$.
+Les opposés et les produits sont ceux définis précédemment ; vérifier
+que cette construction donne bien l'inverse fait partie de l'exercice.
+\end{editorial}
+
+\begin{prob}
+Démontrer que $\Real$ est un corps ordonné.
+\end{prob}
+
+Il reste enfin un petit point à régler. Dans la \olref[cuts]{sec},
+nous proposons de prendre
+$\sqrt{2}=\Setabs{p \in \Rat}{p < 0 \text{ ou }p^2 < 2}$.
+Il faut cependant montrer que cet ensemble est une \emph{coupure}.
+En voici une démonstration :
+
+\begin{proof}
+Cet ensemble est un segment initial non vide et propre de $\Rat$ :
+il contient $1$ et ne contient pas $2$ ; si $x<p$ et si $p$ appartient
+à l'ensemble, alors soit $x<0$, soit $0\leq x<p$ et $x^2<p^2<2$.
+Il suffit donc de montrer qu'il n'a pas de maximum. Si $p\leq0$,
+l'élément $1$ lui est supérieur. Il suffit ainsi de traiter le cas
+d'un rationnel strictement positif $p$ tel que $p^2<2$.
+Posons $q=\frac{2p+2}{p+2}$ et montrons que $p<q$ et $q^2<2$.
+Puisque $p+2>0$, la première inégalité résulte du calcul suivant :
+\begin{align*}
+  p^2 &< 2\\
+  p^2 + 2p &< 2 + 2p\\
+  p(p + 2) &< 2 + 2p\\
+  p &< \tfrac{2+2p}{p+2} = q
+\end{align*}
+Pour établir $q^2<2$, il suffit de remarquer que :
+\begin{align*}
+  p^2 &< 2\\
+  2p^2 + 4p + 2 &< p^2 + 4p+ 4\\
+  4p^2 + 8p + 4 &< 2(p^2 + 4p + 4)\\
+  (2p+2)^2 &< 2(p+2)^2\\
+  \tfrac{(2p+2)^2}{(p+2)^2} &< 2\\
+  q^2 &< 2
+\end{align*}
+\end{proof}
+\end{document}
