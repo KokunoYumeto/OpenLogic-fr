@@ -3,7 +3,7 @@
     "source_repository": "https://github.com/OpenLogicProject/OpenLogic",
     "source_revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
     "frozen_units": 722,
-    "published_scope_units": 51,
+    "published_scope_units": 64,
     "published_ids": [
       "OLP-0005",
       "OLP-0007",
@@ -55,113 +55,215 @@
       "OLP-0054",
       "OLP-0049",
       "OLP-0050",
-      "OLP-0053"
+      "OLP-0053",
+      "OLP-0056",
+      "OLP-0057",
+      "OLP-0058",
+      "OLP-0059",
+      "OLP-0060",
+      "OLP-0061",
+      "OLP-0062",
+      "OLP-0063",
+      "OLP-0064",
+      "OLP-0065",
+      "OLP-0066",
+      "OLP-0067",
+      "OLP-0068"
     ],
-    "untranslated_units": 671,
+    "untranslated_units": 657,
+    "drafted_units": 65,
+    "reader_omitted_part_driver": "OLP-0055",
+    "remaining_reader_units": 658,
     "full_edition_complete": false,
-    "version": "v0.5.0-construction-des-nombres",
-    "chapters": 6,
-    "sections": 45,
-    "pages": 79,
-    "exercises": 73,
+    "version": "v0.6.0-logique-propositionnelle",
+    "chapters": 8,
+    "sections": 56,
+    "pages": 94,
+    "exercises": 83,
     "canon_full_pdfs_redistributed": false
   },
   "pdf_and_direct_latex": {
     "status": "PDF_AND_DIRECT_LATEX_ACCEPTED_EPUB_PENDING",
-    "scope_units": 51,
-    "chapters": 6,
-    "sections": 45,
-    "pages": 79,
-    "exercises": 73,
-    "created_utc": "2026-09-19T18:37:13.184351+00:00",
+    "at": "2026-09-19T21:28:08.596943+00:00",
+    "scope_units": 64,
+    "chapters": 8,
+    "sections": 56,
+    "pages": 94,
+    "exercises": 83,
     "pdf": {
-      "path": "private-reference/work\\reader-v05\\build-03\\source\\locale\\fr\\reader.pdf",
-      "bytes": 434694,
-      "sha256": "06031d3d8449269c57216306b3a04ff098d3f122eb72c1e601af05df57174816"
+      "path": "private-reference/work\\proof-systems-v07\\build-04\\source\\locale\\fr\\reader.pdf",
+      "bytes": 501966,
+      "sha256": "d612f63effaa3f1e77f83a2c68744fb7374d225e8311567ceee0d58cfe84a788"
     },
     "direct_latex": {
-      "path": "private-reference/work\\reader-v05\\openlogic-fr-ensembles-fonctions-construction-des-nombres.tex",
-      "bytes": 273994,
-      "sha256": "f031671e91046375da4672792797e4ed0d09783d79b87623300f9ba122576854",
-      "complete_source_bodies": 51,
+      "path": "private-reference/work\\proof-systems-v07\\openlogic-fr-ensembles-logique-propositionnelle.tex",
+      "bytes": 332360,
+      "sha256": "61a7be11e133f2c5b6a0dca8a3d253c5262caefe7e6f7ebe7760131ec14bf1a0",
+      "complete_source_bodies": 64,
       "independent_pdf_byte_identical": true
     },
     "builds": [
-      "reader-03/BUILD_RECEIPT.json",
-      "reader-direct-04/BUILD_RECEIPT.json"
+      "final-06/BUILD_RECEIPT.json",
+      "final-06/BUILD_RECEIPT.json"
     ],
-    "input_identity": "build-03/SOURCE_COVERAGE.json",
-    "visual": {
-      "first_pass_pages": [
+    "visual_review": {
+      "initial_pages": [
         1,
         2,
         3,
-        55,
-        56,
-        57,
-        58,
-        59,
-        60,
-        61,
-        62,
-        63,
-        64,
-        65,
-        66,
-        67,
-        68,
-        69,
-        70,
-        71,
-        72,
-        73,
-        74,
-        75,
-        76,
-        77,
         78,
-        79
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94
       ],
-      "final_changed_pages": [
-        58,
-        59,
-        62,
-        63,
-        67,
-        68,
-        73,
-        74
+      "repaired_pages_inspected": [
+        1,
+        2,
+        3,
+        79,
+        80,
+        81,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92
       ],
-      "final_changed_pages_directly_inspected": true,
-      "other_page_content_streams_byte_identical": true,
-      "observations": "Theorem footnote call correctly attached; ring definition and induction theorem remain with their formulas; diagrams, displays, tables, notes and page transitions legible."
+      "unchanged_images_verified": [
+        1,
+        2,
+        3,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        93,
+        94
+      ],
+      "findings_repaired": [
+        "conditional full stop",
+        "table of contents pagination",
+        "Assumption -> Hypothèse",
+        "explicit elision before énoncé including line break"
+      ],
+      "clipping_or_overlap_observed": false
     },
-    "log": {
-      "undefined_references": 0,
-      "overfull_boxes": 0,
-      "remaining_warnings": "Inherited package naming/deprecation and math delimiters removed from PDF bookmarks. Actual bookmark titles inspected and correct."
-    },
-    "fidelity": "Current 51 target files and 868 block identities checked; 468 new-chapter choice anchors checked. Grammar around expanded references and three layout-only changes recorded. No new translation or independent human endorsement claimed.",
-    "pending": [
-      "Matching reflowable EPUB51 conversion, structural/math/source checks and rendering",
-      "Complete public source package and existing GitHub/Zenodo lineage publication with anonymous readback",
-      "Direct LaTeX for three inherited earlier readers",
-      "Continue 671 untranslated units to full722"
-    ]
+    "inherited_text_pages_identical_to_accepted51": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78
+    ],
+    "full_edition_complete": false
   },
   "epub": {
-    "status": "ACCEPTED_51_UNIT_EPUB",
-    "created_utc": "2026-09-19T18:48:36.037343+00:00",
-    "scope_units": 51,
-    "chapters": 6,
-    "sections": 45,
+    "status": "ACCEPTED_64_UNIT_EPUB",
+    "created_utc": "2026-09-19T21:32:18.071264+00:00",
+    "scope_units": 64,
+    "chapters": 8,
+    "sections": 56,
     "total_edition_units": 722,
     "full_edition_complete": false,
-    "bytes": 188144,
-    "sha256": "7ddc04375fae450a0957b3b6da800c9b2fc0975aae9525e007be332e75058530",
-    "native_mathml_roots": 3245,
-    "figures": 13,
-    "exercises": 73,
+    "bytes": 231640,
+    "sha256": "b15c76cde1f3731f3d228601f1e932d2969b60deb8c7c07469fc7045ce7fb1e5",
+    "native_mathml_roots": 3801,
+    "figures": 16,
+    "exercises": 83,
     "footnotes": 76,
     "noterefs": 76,
     "epubcheck": {
@@ -172,22 +274,20 @@
     "runtime": [
       {
         "file": "MOBILE_PROBE.json",
-        "samples": 15,
+        "samples": 32,
         "global_overflow": 0,
         "missing_images": 0
       },
       {
         "file": "RUNTIME_PROBE.json",
-        "samples": 15,
+        "samples": 32,
         "global_overflow": 0,
         "missing_images": 0
       }
     ],
-    "visual_review": "Representative mobile/light and desktop/dark images directly inspected: real line diagram, ring axioms, Cauchy bounds and quotient arithmetic, Hilbert diagram, induction, Schroeder–Bernstein and exercises. Wide formulas have local scrolling; no global page overflow.",
+    "visual_review": "New-chapter sections, truth tables and three proof diagrams inspected on mobile/light and desktop/dark; all formula rows and proof labels legible, local scrolling for wide mathematics, no global overflow.",
     "source_coverage": {
-      "loaded_units": 51,
-      "token_aliases": 409,
-      "single_equivalent_mathbb_exponent_grouping": true,
+      "loaded_units": 64,
       "loaded_sources": [
         {
           "unit_id": "OLP-0005",
@@ -295,7 +395,7 @@
           "unit_id": "OLP-0022",
           "path": "content/sets-functions-relations/functions/function-kinds.tex",
           "sha256": "66a3831f79c49d7a823eb3e06d38483750db7a48464f09a3832ad8ae41aac8bc",
-          "conversion_sha256": "a306a52e6dfe84a2107dd7247ec4f4f884020f592ff54c84579c7ca254ed8d04"
+          "conversion_sha256": "e12cde9a552d8f5672f3ee90006e7bb270805fafba20cac1f1301d6df1b68ce3"
         },
         {
           "unit_id": "OLP-0020",
@@ -494,209 +594,326 @@
           "path": "content/sets-functions-relations/infinite/dedekinds-proof.tex",
           "sha256": "ed0cffb3deb7fe1bd2e73b489125a86bce35615f7997dc3eb50e577c97fdeee8",
           "conversion_sha256": "88f6b2a867f82a9673305d6725f48423b1848adbd71538468d3a31e83656db1b"
+        },
+        {
+          "unit_id": "OLP-0056",
+          "path": "content/propositional-logic/syntax-and-semantics/syntax-and-semantics.tex",
+          "sha256": "d726e094699dff73471622849a2fd8bac73ab230fb5b20f2e717b980e9e6d255",
+          "conversion_sha256": "d726e094699dff73471622849a2fd8bac73ab230fb5b20f2e717b980e9e6d255"
+        },
+        {
+          "unit_id": "OLP-0057",
+          "path": "content/propositional-logic/syntax-and-semantics/introduction.tex",
+          "sha256": "31973a3dc614a22dff63bc1c27b188e06363e03909ebd6d75dc7cce3ce5d4017",
+          "conversion_sha256": "1ce64e9b5091747e87b9cb70811ded41151fe3747d40a56270bc528dcd9448f4"
+        },
+        {
+          "unit_id": "OLP-0058",
+          "path": "content/propositional-logic/syntax-and-semantics/formulas.tex",
+          "sha256": "9573611c2c47019d7757aec81dfb82ab7b041af7dd2ceff68504a066b1a8a54c",
+          "conversion_sha256": "4014ee607491bcca788cf3f232a44859ff4c271d43dc5c5151641655c9632b53"
+        },
+        {
+          "unit_id": "OLP-0059",
+          "path": "content/propositional-logic/syntax-and-semantics/preliminaries.tex",
+          "sha256": "67d6cbb39a157c56b43860690c70b80f7cd438559f6697b0b119afc379d807d9",
+          "conversion_sha256": "df4e85d647f72eb94de0cb628d43e0a014b0c250a001df3e2a00d8f46abdb725"
+        },
+        {
+          "unit_id": "OLP-0060",
+          "path": "content/propositional-logic/syntax-and-semantics/formation-sequences.tex",
+          "sha256": "e4417f794b06da2ec97824c1f0ffd5ab9f3a69afd7af3c7afa8c04ae541df87b",
+          "conversion_sha256": "af11bb0007edbd3486040b3c10881c16d7fb7c34bba4bb8a8146256af861992b"
+        },
+        {
+          "unit_id": "OLP-0061",
+          "path": "content/propositional-logic/syntax-and-semantics/valuations-sat.tex",
+          "sha256": "ec15eb2884e5f7c108a134e4376000803576bb5c13209b6ac37f621ba1e647bd",
+          "conversion_sha256": "3c7164d9cd7dd9425b689a2ef9f49c9ffef2e2bf3b76a7bcd14709fb2ebbdad1"
+        },
+        {
+          "unit_id": "OLP-0062",
+          "path": "content/propositional-logic/syntax-and-semantics/semantic-notions.tex",
+          "sha256": "257f0bde54124362ac3f98251592da786480e18b4c07c28fc89b672726533721",
+          "conversion_sha256": "c345d4e68beebe47f67dbdced6a5553ee4282e0e39def29a947b5378f0882cba"
+        },
+        {
+          "unit_id": "OLP-0063",
+          "path": "content/first-order-logic/proof-systems/proof-systems.tex",
+          "sha256": "c9443f17ee4636028eb99650061246e26c03e0c03853d642c3dfa95dbdac7bab",
+          "conversion_sha256": "0059e5361b95bd6ca1ab09f08327c7893e30e7c0db5bdf8129fa1e9513e3f196"
+        },
+        {
+          "unit_id": "OLP-0064",
+          "path": "content/first-order-logic/proof-systems/introduction.tex",
+          "sha256": "3ba98db536ff3e4e8abe9c6c1ffa2b3a31a01769bb6176a36258986a77974acb",
+          "conversion_sha256": "761f8bf81e041c3e591a4abed7546ab073e6dd7daff4ab60dd8f4343521925ff"
+        },
+        {
+          "unit_id": "OLP-0065",
+          "path": "content/first-order-logic/proof-systems/sequent-calculus.tex",
+          "sha256": "a1db79d2b20c0886e1a188f37596470c032b637e808866c166ab8613e6ffcb75",
+          "conversion_sha256": "5a89ac891fa10f18468378d48d35ed2dd8922da355908ff542d4a7e6c09cee5a"
+        },
+        {
+          "unit_id": "OLP-0066",
+          "path": "content/first-order-logic/proof-systems/natural-deduction.tex",
+          "sha256": "f7e5d118f49d75385e4f825cf6d029c4b634d50864ba105635cef6fcf0bddc2f",
+          "conversion_sha256": "b548ce0cea8552dee5ffb556b1e10e24c5a4959dbfc7af9375cb23a2553ff855"
+        },
+        {
+          "unit_id": "OLP-0067",
+          "path": "content/first-order-logic/proof-systems/tableaux.tex",
+          "sha256": "3ed9ec32f0ba742c3f9d932418a967fed02d41a4dd93019605a9c719014cf698",
+          "conversion_sha256": "d8081c8008a5921015a91c134836f8a7e48ab1898385192be968afd6334ed5f2"
+        },
+        {
+          "unit_id": "OLP-0068",
+          "path": "content/first-order-logic/proof-systems/axiomatic-deduction.tex",
+          "sha256": "de247734f6bdc1ec47919b44be0d4edc65fc7d86ffb5df8da5fe2546566067ef",
+          "conversion_sha256": "6563a5ba387f4e461e9d8cebddc7b812d4b66a6cf336745eedf1966d54b9fe3a"
         }
-      ]
+      ],
+      "token_aliases": 660,
+      "explicit_uppercase_token_expansions": 2
     },
+    "truth_table_cells_verified": [
+      [
+        [
+          "φ",
+          "¬φ"
+        ],
+        [
+          "𝕋",
+          "𝔽"
+        ],
+        [
+          "𝔽",
+          "𝕋"
+        ]
+      ],
+      [
+        [
+          "φ",
+          "ψ",
+          "φ∧ψ"
+        ],
+        [
+          "𝕋",
+          "𝕋",
+          "𝕋"
+        ],
+        [
+          "𝕋",
+          "𝔽",
+          "𝔽"
+        ],
+        [
+          "𝔽",
+          "𝕋",
+          "𝔽"
+        ],
+        [
+          "𝔽",
+          "𝔽",
+          "𝔽"
+        ]
+      ],
+      [
+        [
+          "φ",
+          "ψ",
+          "φ∨ψ"
+        ],
+        [
+          "𝕋",
+          "𝕋",
+          "𝕋"
+        ],
+        [
+          "𝕋",
+          "𝔽",
+          "𝕋"
+        ],
+        [
+          "𝔽",
+          "𝕋",
+          "𝕋"
+        ],
+        [
+          "𝔽",
+          "𝔽",
+          "𝔽"
+        ]
+      ],
+      [
+        [
+          "φ",
+          "ψ",
+          "φ→ψ"
+        ],
+        [
+          "𝕋",
+          "𝕋",
+          "𝕋"
+        ],
+        [
+          "𝕋",
+          "𝔽",
+          "𝔽"
+        ],
+        [
+          "𝔽",
+          "𝕋",
+          "𝕋"
+        ],
+        [
+          "𝔽",
+          "𝔽",
+          "𝕋"
+        ]
+      ],
+      [
+        [
+          "φ",
+          "ψ",
+          "φ↔ψ"
+        ],
+        [
+          "𝕋",
+          "𝕋",
+          "𝕋"
+        ],
+        [
+          "𝕋",
+          "𝔽",
+          "𝔽"
+        ],
+        [
+          "𝔽",
+          "𝕋",
+          "𝔽"
+        ],
+        [
+          "𝔽",
+          "𝔽",
+          "𝕋"
+        ]
+      ]
+    ],
     "content_diagnostic": {
-      "prose_windows": 12842,
-      "unmatched_diagnostic_windows": 674,
-      "new_chapter_runs_reviewed": 69,
-      "finding": "New-chapter runs are PDF math-font extraction, line/heading boundaries, and moved notes/figures; no missing prose paragraph observed. Earlier four chapters retain the accepted bodies, with seven exposed tab markers replaced by whitespace. This is not a claim of exact extracted-text equality."
+      "prose_windows": 15493,
+      "unmatched_diagnostic_windows": 713,
+      "new_chapter_unmatched_windows_reviewed": 39,
+      "finding": "The new-chapter mismatches are PDF mathematical-font extraction around angle brackets, braces and truth values; the source paragraphs and corresponding EPUB passages were read. Three SVG proofs separately inspected against PDF and given complete text alternatives. Not an exact extracted-text equality claim."
     },
     "repairs": [
-      "Native MathML namespaces, double-struck characters, nicefrac and partial-arrow rendering inherited from validated v0.4 export repair",
-      "Unreferenced duplicate IDs and delayed footnote32 target corrected; all internal links resolve",
-      "Eight TeX-serialized tab markers normalized to source whitespace",
-      "Bibliography mathml manifest property matches actual content",
-      "Hilbert diagram fitted to its quotation on a 390px screen"
+      "Native MathML and prior verified fraction/link/footnote fixes",
+      "Five HTML truth-table rules attributes replaced by equivalent CSS",
+      "Two uppercase token titles explicitly expanded",
+      "Bussproofs wrapper arity and whole-environment capture",
+      "French hypothesis label abbreviated Hyp. in tableau SVG, expanded in alt text",
+      "Empty generated chapter8 exercise heading and XHTML/NCX navigation removed",
+      "Proof diagrams displayed as blocks",
+      "Three source elisions before énoncé corrected in PDF and EPUB"
     ]
   },
   "reference_grammar": {
-    "status": "PREPARED",
-    "scope": "Only observed grammar around expanded cross-references in eight new chapter files; source identifiers and mathematical content preserved.",
-    "evidence": "reader-01 PDF; reader.aux label types; local open-logic-referencing.sty uses cref which already supplies the object type.",
-    "changes": [
-      {
-        "segment": "OLP-0048-B11",
-        "before": "On pourrait alors être tenté de dire qu'un réel \\emph{est} simplement\nune suite de Cauchy. Ce serait toutefois trop naïf, comme dans les\nconstructions de $\\Int$ et de $\\Rat$ : plusieurs suites de Cauchy\ndistinctes peuvent représenter le même réel. Pour le voir, prenons une\nsuite de Cauchy $f$ et définissons $g$ exactement comme $f$, sauf que\n$g(0)\\neq f(0)$. Les deux suites coïncident après le premier terme.\nLe critère de \\olref{def:CauchySequence} est donc satisfait par l'une\ncomme par l'autre, et nous voudrons, au terme de la construction, leur\nattribuer la même limite. Elles doivent ainsi « définir » le même réel\net être identifiées en tant que représentations de ce réel.",
-        "after": "On pourrait alors être tenté de dire qu'un réel \\emph{est} simplement\nune suite de Cauchy. Ce serait toutefois trop naïf, comme dans les\nconstructions de $\\Int$ et de $\\Rat$ : plusieurs suites de Cauchy\ndistinctes peuvent représenter le même réel. Pour le voir, prenons une\nsuite de Cauchy $f$ et définissons $g$ exactement comme $f$, sauf que\n$g(0)\\neq f(0)$. Les deux suites coïncident après le premier terme.\nLe critère de la \\olref{def:CauchySequence} est donc satisfait par l'une\ncomme par l'autre, et nous voudrons, au terme de la construction, leur\nattribuer la même limite. Elles doivent ainsi « définir » le même réel\net être identifiées en tant que représentations de ce réel.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0048-B22",
-        "before": "Montrons d'abord que $\\equivrep{f}{}$ majore $\\mathcal A$,\nc'est-à-dire que\n$(\\forall h\\in S)\\equivrep{h}{}\\leq\\equivrep{f}{}$.\nNous utiliserons \\olref{thm:cauchyorderedfield} au cours du raisonnement.\nSoit $h\\in S$ et supposons, pour obtenir une contradiction, que\n$\\equivrep{f}{}<\\equivrep{h}{}$, donc que\n$0_\\Real<\\equivrep{(h-f)}{}$. La suite $f$ étant de Cauchy et\ndécroissante, il existe $n\\in\\Nat$ tel que\n$\\equivrep{(c_{f(n)}-f)}{}<\\equivrep{(h-f)}{}$.\nEn effet, la positivité de la classe de $h-f$ donne un écart rationnel\n$\\delta>0$ tel que $h(m)-f(m)>\\delta$ à partir d'un certain rang ;\non choisit $n$ assez grand pour que, pour tout $m$ assez grand,\n$|f(n)-f(m)|<\\delta/2$. La suite\n$(h-f)-(c_{f(n)}-f)$ est alors, à partir d'un certain rang,\nstrictement supérieure à $\\delta/2$.\nAinsi :\n\\[\n(f(n))_\\Real=\\equivrep{c_{f(n)}}{}\n<\\equivrep{f}{}+\\equivrep{(h-f)}{}=\\equivrep{h}{},\n\\]\nce qui contredit $\\equivrep{h}{}\\leq(f(n))_\\Real$, vraie par construction.",
-        "after": "Montrons d'abord que $\\equivrep{f}{}$ majore $\\mathcal A$,\nc'est-à-dire que\n$(\\forall h\\in S)\\equivrep{h}{}\\leq\\equivrep{f}{}$.\nNous utiliserons le \\olref{thm:cauchyorderedfield} au cours du raisonnement.\nSoit $h\\in S$ et supposons, pour obtenir une contradiction, que\n$\\equivrep{f}{}<\\equivrep{h}{}$, donc que\n$0_\\Real<\\equivrep{(h-f)}{}$. La suite $f$ étant de Cauchy et\ndécroissante, il existe $n\\in\\Nat$ tel que\n$\\equivrep{(c_{f(n)}-f)}{}<\\equivrep{(h-f)}{}$.\nEn effet, la positivité de la classe de $h-f$ donne un écart rationnel\n$\\delta>0$ tel que $h(m)-f(m)>\\delta$ à partir d'un certain rang ;\non choisit $n$ assez grand pour que, pour tout $m$ assez grand,\n$|f(n)-f(m)|<\\delta/2$. La suite\n$(h-f)-(c_{f(n)}-f)$ est alors, à partir d'un certain rang,\nstrictement supérieure à $\\delta/2$.\nAinsi :\n\\[\n(f(n))_\\Real=\\equivrep{c_{f(n)}}{}\n<\\equivrep{f}{}+\\equivrep{(h-f)}{}=\\equivrep{h}{},\n\\]\nce qui contredit $\\equivrep{h}{}\\leq(f(n))_\\Real$, vraie par construction.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0047-B05",
-        "before": "Dans \\olref[int]{sec}, nous avons défini l'addition et la multiplication\nsur $\\Int$. Nous voulons montrer que ces opérations, telles que nous\nles avons définies, munissent $\\Int$ de la structure attendue.\nIl s'agit, plus précisément, d'une structure d'anneau commutatif.",
-        "after": "Dans la \\olref[int]{sec}, nous avons défini l'addition et la multiplication\nsur $\\Int$. Nous voulons montrer que ces opérations, telles que nous\nles avons définies, munissent $\\Int$ de la structure attendue.\nIl s'agit, plus précisément, d'une structure d'anneau commutatif.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0047-B15",
-        "before": "Le travail n'est toutefois pas terminé. Outre l'addition et la\nmultiplication sur $\\Int$, nous avons défini une relation d'ordre\n$\\leq$ ; il faut vérifier qu'elle aussi a les propriétés attendues.\nPlus précisément, il faut montrer que $\\Int$ est un anneau\n\\emph{ordonné}.\\footnote{Rappelons, d'après\n\\olref[sfr][rel][ord]{def:linearorder}, qu'un ordre total est une\nrelation réflexive, transitive, antisymétrique et connexe. Pour un tel\nordre, la connexité donne la \\emph{trichotomie} de l'ordre strict\nassocié : pour tous $a$ et $b$, exactement l'une des relations\n$a < b$, $a = b$, $a > b$ est vérifiée.\n\\emph{Précision éditoriale :} la source écrit ici\n$a \\leq b \\lor a = b \\lor a \\geq b$ ; cette disjonction est vraie,\nmais ses trois cas ne sont pas exclusifs.}",
-        "after": "Le travail n'est toutefois pas terminé. Outre l'addition et la\nmultiplication sur $\\Int$, nous avons défini une relation d'ordre\n$\\leq$ ; il faut vérifier qu'elle aussi a les propriétés attendues.\nPlus précisément, il faut montrer que $\\Int$ est un anneau\n\\emph{ordonné}.\\footnote{Rappelons, d'après la\n\\olref[sfr][rel][ord]{def:linearorder}, qu'un ordre total est une\nrelation réflexive, transitive, antisymétrique et connexe. Pour un tel\nordre, la connexité donne la \\emph{trichotomie} de l'ordre strict\nassocié : pour tous $a$ et $b$, exactement l'une des relations\n$a < b$, $a = b$, $a > b$ est vérifiée.\n\\emph{Précision éditoriale :} la source écrit ici\n$a \\leq b \\lor a = b \\lor a \\geq b$ ; cette disjonction est vraie,\nmais ses trois cas ne sont pas exclusifs.}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0047-B22",
-        "before": "Après les entiers relatifs et les rationnels, il ne reste que les réels.\nIl faut montrer que $\\Real$ est un corps ordonné \\emph{complet},\nc'est-à-dire un corps ordonné ayant la propriété de la borne supérieure.\nOr, \\olref[cuts]{realcompleteness} établit déjà cette propriété pour\n$\\Real$. Il reste toutefois à effectuer les vérifications, fastidieuses,\nqui montrent que $\\Real$ est un corps ordonné.",
-        "after": "Après les entiers relatifs et les rationnels, il ne reste que les réels.\nIl faut montrer que $\\Real$ est un corps ordonné \\emph{complet},\nc'est-à-dire un corps ordonné ayant la propriété de la borne supérieure.\nOr, le \\olref[cuts]{realcompleteness} établit déjà cette propriété pour\n$\\Real$. Il reste toutefois à effectuer les vérifications, fastidieuses,\nqui montrent que $\\Real$ est un corps ordonné.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0047-B27",
-        "before": "Il reste enfin un petit point à régler. Dans \\olref[cuts]{sec},\nnous proposons de prendre\n$\\sqrt{2}=\\Setabs{p \\in \\Rat}{p < 0 \\text{ ou }p^2 < 2}$.\nIl faut cependant montrer que cet ensemble est une \\emph{coupure}.\nEn voici une démonstration :",
-        "after": "Il reste enfin un petit point à régler. Dans la \\olref[cuts]{sec},\nnous proposons de prendre\n$\\sqrt{2}=\\Setabs{p \\in \\Rat}{p < 0 \\text{ ou }p^2 < 2}$.\nIl faut cependant montrer que cet ensemble est une \\emph{coupure}.\nEn voici une démonstration :",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0044-B05",
-        "before": "Les réels possèdent de nombreuses propriétés communes avec les rationnels.\n(Techniquement, ces deux ensembles sont des \\emph{corps ordonnés} ; voir\nla définition dans la \\olref[check]{orderedfield}.) Si vous avez résolu les\nexercices du \\olref[sfr][siz][]{chap}, vous savez qu'il y a strictement plus\nde réels que de rationnels, c'est-à-dire que $\\cardless{\\Rat}{\\Real}$.\nCantor fut le premier à le démontrer. Mais l'existence de nombres\nirrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue\ndepuis environ deux millénaires et demi. En effet :\n%\\footnote{Le commentaire source affirme que « $\\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}\n\\begin{thm}\\ollabel{root2irrational}\n$\\sqrt{2}$ est irrationnel, c'est-à-dire que $\\sqrt{2} \\notin \\Rat$.\n\\end{thm}\\footnote{Précision éditoriale : $\\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\\sqrt{2}$ et $-\\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}",
-        "after": "Les réels possèdent de nombreuses propriétés communes avec les rationnels.\n(Techniquement, ces deux ensembles sont des \\emph{corps ordonnés} ; voir\nla \\olref[check]{orderedfield}.) Si vous avez résolu les\nexercices du \\olref[sfr][siz][]{chap}, vous savez qu'il y a strictement plus\nde réels que de rationnels, c'est-à-dire que $\\cardless{\\Rat}{\\Real}$.\nCantor fut le premier à le démontrer. Mais l'existence de nombres\nirrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue\ndepuis environ deux millénaires et demi. En effet :\n%\\footnote{Le commentaire source affirme que « $\\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}\n\\begin{thm}\\ollabel{root2irrational}\n$\\sqrt{2}$ est irrationnel, c'est-à-dire que $\\sqrt{2} \\notin \\Rat$.\n\\end{thm}\\footnote{Précision éditoriale : $\\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\\sqrt{2}$ et $-\\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0046-B08",
-        "before": "Premièrement, il n'est pas clair qu'envisager les réels comme des\ncoupures soit \\emph{plus} rigoureux que de les envisager à partir de\nleurs développements décimaux familiers, éventuellement infinis.\nCette dernière « construction » ressemble quelque peu à celle par\nles suites de Cauchy ; pour l'essentiel, elle était en fait connue\ndes mathématiciens dès le début du dix-septième siècle\n(voir \\olref[cauchy]{sec}). Le véritable gain de rigueur est venu de\nla reconnaissance de la propriété de la borne supérieure.\nLa possibilité de construire les réels comme des ensembles particuliers\nn'est peut-être pas, à elle seule, si intéressante.",
-        "after": "Premièrement, il n'est pas clair qu'envisager les réels comme des\ncoupures soit \\emph{plus} rigoureux que de les envisager à partir de\nleurs développements décimaux familiers, éventuellement infinis.\nCette dernière « construction » ressemble quelque peu à celle par\nles suites de Cauchy ; pour l'essentiel, elle était en fait connue\ndes mathématiciens dès le début du dix-septième siècle\n(voir la \\olref[cauchy]{sec}). Le véritable gain de rigueur est venu de\nla reconnaissance de la propriété de la borne supérieure.\nLa possibilité de construire les réels comme des ensembles particuliers\nn'est peut-être pas, à elle seule, si intéressante.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0046-B10",
-        "before": "Plus douteux encore est que ces définitions nous disent ce que\n\\emph{sont} les entiers relatifs, les rationnels ou les réels,\n\\emph{sur le plan métaphysique}. Autrement dit, il est douteux que\nles réels, par exemple, \\emph{soient} certains ensembles\n(d'ensembles d'ensembles\\ldots). Le principal obstacle est que\nla construction aurait pu être menée de bien des façons. Dans le\ncas des réels, il existe des constructions différentes qui présentent\nun réel intérêt (voir \\olref[cauchy]{sec}). Mais voici un moyen\ntout à fait élémentaire d'obtenir d'autres constructions : comme\ndans \\olref[sfr][rel][ref]{sec}, nous aurions pu définir les couples\nordonnés un peu autrement. Avec cette autre définition, nos\nconstructions auraient tout aussi bien fonctionné, mais nous aurions\nobtenu d'autres objets. Il existe donc de nombreuses constructions\nensemblistes concurrentes des entiers relatifs, des rationnels et\ndes réels. Affirmer que les entiers relatifs, par exemple, sont\n\\emph{ces} ensembles plutôt que \\emph{ceux-là} serait alors arbitraire,\net embarrassant. Comme dans \\olref[sfr][rel][ref]{sec}, il s'agit\nd'un cas de l'argument rendu célèbre par \\citealt{Benacerraf1965}.",
-        "after": "Plus douteux encore est que ces définitions nous disent ce que\n\\emph{sont} les entiers relatifs, les rationnels ou les réels,\n\\emph{sur le plan métaphysique}. Autrement dit, il est douteux que\nles réels, par exemple, \\emph{soient} certains ensembles\n(d'ensembles d'ensembles\\ldots). Le principal obstacle est que\nla construction aurait pu être menée de bien des façons. Dans le\ncas des réels, il existe des constructions différentes qui présentent\nun réel intérêt (voir la \\olref[cauchy]{sec}). Mais voici un moyen\ntout à fait élémentaire d'obtenir d'autres constructions : comme\ndans la \\olref[sfr][rel][ref]{sec}, nous aurions pu définir les couples\nordonnés un peu autrement. Avec cette autre définition, nos\nconstructions auraient tout aussi bien fonctionné, mais nous aurions\nobtenu d'autres objets. Il existe donc de nombreuses constructions\nensemblistes concurrentes des entiers relatifs, des rationnels et\ndes réels. Affirmer que les entiers relatifs, par exemple, sont\n\\emph{ces} ensembles plutôt que \\emph{ceux-là} serait alors arbitraire,\net embarrassant. Comme dans la \\olref[sfr][rel][ref]{sec}, il s'agit\nd'un cas de l'argument rendu célèbre par \\citealt{Benacerraf1965}.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0046-B11",
-        "before": "Un autre point mérite d'être soulevé : nos constructions ont quelque\nchose d'assez \\emph{étrange}. Nous sommes partis des nombres naturels.\nNous construisons ensuite les entiers relatifs et le « $0$ des entiers\nrelatifs », c'est-à-dire $\\equivrep{0,0}{\\Intequiv}$.\nOr, dans la réalisation ensembliste usuelle,\n$0\\neq\\equivrep{0,0}{\\Intequiv}$ ; avec ces constructions,\n\\emph{aucun} naturel n'est un entier relatif ainsi construit.\nCela paraît pourtant très contraire à l'intuition.\nDans \\olref[sfr][set][imp]{sec}, nous avons même affirmé,\nsans véritable justification, que $\\Nat\\subseteq\\Rat$.\nSi ces constructions nous disent exactement \\emph{ce que sont}\nles nombres, cette affirmation, prise littéralement dans cette\nréalisation, est manifestement fausse.\n\\begin{editorial}\nLes inégalités et la séparation littérale invoquées ici dépendent du\ncodage des objets. Elles valent, par exemple, si les naturels sont les\nordinaux finis de von Neumann : les classes de couples qui représentent\nles entiers relatifs et les rationnels sont infinies, tandis que chaque\nnaturel est un ensemble fini. La source laisse ce choix de réalisation\nimplicite. En revanche, les plongements déjà définis permettent\nd'identifier chaque système de nombres à son image dans le suivant ;\nils justifient les inclusions usuelles après cette identification.\nLa distinction pertinente est celle entre égalité littérale des objets\net identification au moyen d'un plongement.\n\\end{editorial}",
-        "after": "Un autre point mérite d'être soulevé : nos constructions ont quelque\nchose d'assez \\emph{étrange}. Nous sommes partis des nombres naturels.\nNous construisons ensuite les entiers relatifs et le « $0$ des entiers\nrelatifs », c'est-à-dire $\\equivrep{0,0}{\\Intequiv}$.\nOr, dans la réalisation ensembliste usuelle,\n$0\\neq\\equivrep{0,0}{\\Intequiv}$ ; avec ces constructions,\n\\emph{aucun} naturel n'est un entier relatif ainsi construit.\nCela paraît pourtant très contraire à l'intuition.\nDans la \\olref[sfr][set][imp]{sec}, nous avons même affirmé,\nsans véritable justification, que $\\Nat\\subseteq\\Rat$.\nSi ces constructions nous disent exactement \\emph{ce que sont}\nles nombres, cette affirmation, prise littéralement dans cette\nréalisation, est manifestement fausse.\n\\begin{editorial}\nLes inégalités et la séparation littérale invoquées ici dépendent du\ncodage des objets. Elles valent, par exemple, si les naturels sont les\nordinaux finis de von Neumann : les classes de couples qui représentent\nles entiers relatifs et les rationnels sont infinies, tandis que chaque\nnaturel est un ensemble fini. La source laisse ce choix de réalisation\nimplicite. En revanche, les plongements déjà définis permettent\nd'identifier chaque système de nombres à son image dans le suivant ;\nils justifient les inclusions usuelles après cette identification.\nLa distinction pertinente est celle entre égalité littérale des objets\net identification au moyen d'un plongement.\n\\end{editorial}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0054-B07",
-        "before": "Avec une notation analogue à celle de la définition\n\\olref[sfr][infinite][dedekind]{Closure}, posons, pour une application\n$f\\colon U\\to U$ et une partie $B\\subseteq U$,\n\\[\n\\Closureofunder{f}{B} = \\bigcap \\Setabs{X\\subseteq U}{B \\subseteq X\n\\text{ et }X\\text{ est stable par }f}.\n\\]\nAinsi définie, $\\Closureofunder{f}{B}$ est la plus petite partie de $U$\nstable par $f$ qui contient $B$, au sens suivant.\\footnote{Note de\nl'édition française : comme pour la clôture d'un élément, on fixe\nl'ensemble ambiant et on suppose que l'application le préserve.\nLa famille de parties à intersecter contient $U$ ; elle est donc\nnon vide, y compris lorsque $B$ est vide.}",
-        "after": "Avec une notation analogue à celle de la\n\\olref[sfr][infinite][dedekind]{Closure}, posons, pour une application\n$f\\colon U\\to U$ et une partie $B\\subseteq U$,\n\\[\n\\Closureofunder{f}{B} = \\bigcap \\Setabs{X\\subseteq U}{B \\subseteq X\n\\text{ et }X\\text{ est stable par }f}.\n\\]\nAinsi définie, $\\Closureofunder{f}{B}$ est la plus petite partie de $U$\nstable par $f$ qui contient $B$, au sens suivant.\\footnote{Note de\nl'édition française : comme pour la clôture d'un élément, on fixe\nl'ensemble ambiant et on suppose que l'application le préserve.\nLa famille de parties à intersecter contient $U$ ; elle est donc\nnon vide, y compris lorsque $B$ est vide.}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0054-B09",
-        "before": "\\begin{proof}\nLa preuve est exactement la même que celle du lemme\n\\olref[sfr][infinite][dedekind]{closureproperties}.\n\\end{proof}",
-        "after": "\\begin{proof}\nLa preuve est exactement la même que celle du\n\\olref[sfr][infinite][dedekind]{closureproperties}.\n\\end{proof}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0054-B13",
-        "before": "Montrons d'abord que, si $x\\in F$ et $y\\notin F$, alors\n$g(x)\\neq g(y)$. Supposons le contraire pour obtenir une contradiction :\non aurait $y=g(y)=g(x)=f(x)$. Or $x\\in F$ et $F$ est stable par $f$,\nd'après \\olref{Closureprops}. On aurait donc $y=f(x)\\in F$,\nce qui est contradictoire.",
-        "after": "Montrons d'abord que, si $x\\in F$ et $y\\notin F$, alors\n$g(x)\\neq g(y)$. Supposons le contraire pour obtenir une contradiction :\non aurait $y=g(y)=g(x)=f(x)$. Or $x\\in F$ et $F$ est stable par $f$,\nd'après le \\olref{Closureprops}. On aurait donc $y=f(x)\\in F$,\nce qui est contradictoire.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0054-B15",
-        "before": "Il reste à montrer que $\\ran{g}=B$. Vérifions d'abord que\n$\\ran{g}\\subseteq B$ : si $z\\in F$, alors $g(z)=f(z)\\in A\\subseteq B$ ;\nsi $z\\in C\\setminus F$, alors $z\\notin C\\setminus B$, puisque\n$C\\setminus B\\subseteq F$, donc $g(z)=z\\in B$.\\footnote{Note de\nl'édition française : cette inclusion, implicite dans la source, est\nnécessaire pour établir que $g$ a bien ses valeurs dans $B$.}\nFixons maintenant $x\\in B\\subseteq C$. Si $x\\notin F$, alors $g(x)=x$.\nSi $x\\in F$, il existe $y\\in F$ tel que $x=f(y)$ : sinon\n$F\\setminus\\{x\\}$ serait stable par $f$ et contiendrait $C\\setminus B$.\nEn effet, l'image de chacun de ses éléments serait dans $F$ par stabilité,\net serait différente de $x$ par l'absence supposée d'antécédent dans $F$ ;\nde plus, retirer $x\\in B$ ne retire aucun élément de $C\\setminus B$.\nCela contredirait la minimalité donnée par \\olref{Closureprops}.\nNous avons donc $g(y)=f(y)=x$, ce qui prouve l'inclusion réciproque.\n\\end{proof}",
-        "after": "Il reste à montrer que $\\ran{g}=B$. Vérifions d'abord que\n$\\ran{g}\\subseteq B$ : si $z\\in F$, alors $g(z)=f(z)\\in A\\subseteq B$ ;\nsi $z\\in C\\setminus F$, alors $z\\notin C\\setminus B$, puisque\n$C\\setminus B\\subseteq F$, donc $g(z)=z\\in B$.\\footnote{Note de\nl'édition française : cette inclusion, implicite dans la source, est\nnécessaire pour établir que $g$ a bien ses valeurs dans $B$.}\nFixons maintenant $x\\in B\\subseteq C$. Si $x\\notin F$, alors $g(x)=x$.\nSi $x\\in F$, il existe $y\\in F$ tel que $x=f(y)$ : sinon\n$F\\setminus\\{x\\}$ serait stable par $f$ et contiendrait $C\\setminus B$.\nEn effet, l'image de chacun de ses éléments serait dans $F$ par stabilité,\net serait différente de $x$ par l'absence supposée d'antécédent dans $F$ ;\nde plus, retirer $x\\in B$ ne retire aucun élément de $C\\setminus B$.\nCela contredirait la minimalité donnée par le \\olref{Closureprops}.\nNous avons donc $g(y)=f(y)=x$, ce qui prouve l'inclusion réciproque.\n\\end{proof}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0054-B17",
-        "before": "\\begin{proof}[Preuve du théorème de Schröder--Bernstein]\nSoient $f\\colon A\\to B$ et $g\\colon B\\to A$ des !!{injection}s.\nPuisque $\\funimage{f}{A}\\subseteq B$, nous avons\n$\\funimage{g}{\\funimage{f}{A}}\\subseteq g[B]\\subseteq A$.\nDe plus, $\\comp{f}{g}\\colon A\\to\\funimage{g}{\\funimage{f}{A}}$\nest une !!{injection}, puisque $g$ et $f$ sont toutes deux injectives ;\nc'est même !!a{bijection}, par la définition de son codomaine.\nAinsi, $\\cardeq{\\funimage{g}{\\funimage{f}{A}}}{A}$, et la proposition\n\\olref{sbhelper} fournit donc !!a{bijection}\n$h\\colon A\\to\\funimage{g}{B}$. En outre, $g^{-1}$ est !!a{bijection}\nde $\\funimage{g}{B}$ sur $B$. Par conséquent,\n$\\comp{h}{g^{-1}}\\colon A\\to B$ est !!a{bijection}.\n\\end{proof}",
-        "after": "\\begin{proof}[Preuve du théorème de Schröder--Bernstein]\nSoient $f\\colon A\\to B$ et $g\\colon B\\to A$ des !!{injection}s.\nPuisque $\\funimage{f}{A}\\subseteq B$, nous avons\n$\\funimage{g}{\\funimage{f}{A}}\\subseteq g[B]\\subseteq A$.\nDe plus, $\\comp{f}{g}\\colon A\\to\\funimage{g}{\\funimage{f}{A}}$\nest une !!{injection}, puisque $g$ et $f$ sont toutes deux injectives ;\nc'est même !!a{bijection}, par la définition de son codomaine.\nAinsi, $\\cardeq{\\funimage{g}{\\funimage{f}{A}}}{A}$, et la\n\\olref{sbhelper} fournit donc !!a{bijection}\n$h\\colon A\\to\\funimage{g}{B}$. En outre, $g^{-1}$ est !!a{bijection}\nde $\\funimage{g}{B}$ sur $B$. Par conséquent,\n$\\comp{h}{g^{-1}}\\colon A\\to B$ est !!a{bijection}.\n\\end{proof}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0051-B16",
-        "before": "\\begin{proof}\nSoit $D$ un ensemble infini au sens de Dedekind. Il existe donc une\ninjection $g\\colon D\\to D$ et un élément $o\\in D\\setminus\\ran{g}$.\nPosons $A = \\closureofunder{g}{o}$ ; d'après\n\\olref{closureproperties}, $A$ existe et $o \\in A$.\nPosons $f = \\funrestrictionto{g}{A}$. Comme $A$ est stable par $g$,\n$f$ est une application de $A$ dans $A$. Montrons que le triplet\n$A,f,o$ est une algèbre de Dedekind.",
-        "after": "\\begin{proof}\nSoit $D$ un ensemble infini au sens de Dedekind. Il existe donc une\ninjection $g\\colon D\\to D$ et un élément $o\\in D\\setminus\\ran{g}$.\nPosons $A = \\closureofunder{g}{o}$ ; d'après le\n\\olref{closureproperties}, $A$ existe et $o \\in A$.\nPosons $f = \\funrestrictionto{g}{A}$. Comme $A$ est stable par $g$,\n$f$ est une application de $A$ dans $A$. Montrons que le triplet\n$A,f,o$ est une algèbre de Dedekind.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0051-B19",
-        "before": "Pour la condition \\olref{ded:closure}, le lemme\n\\olref{closureproperties} assure que $A$ est stable par $g$, donc\naussi par $f$. Ainsi, $\\closureofunder{f}{o}\\subseteq A$, d'après\n\\olref{closureproperties}. De plus, $\\closureofunder{f}{o}$ est stable\npar $f$ ; comme c'est une partie de $A$ et que\n$f = \\funrestrictionto{g}{A}$, elle est également stable par $g$.\nPuisqu'elle contient $o$, le lemme \\olref{closureproperties} donne\n$A\\subseteq\\closureofunder{f}{o}$. Les deux inclusions établissent\nl'égalité voulue.\n\\end{proof}",
-        "after": "Pour la condition \\olref{ded:closure}, le\n\\olref{closureproperties} assure que $A$ est stable par $g$, donc\naussi par $f$. Ainsi, $\\closureofunder{f}{o}\\subseteq A$, d'après le\n\\olref{closureproperties}. De plus, $\\closureofunder{f}{o}$ est stable\npar $f$ ; comme c'est une partie de $A$ et que\n$f = \\funrestrictionto{g}{A}$, elle est également stable par $g$.\nPuisqu'elle contient $o$, le \\olref{closureproperties} donne\n$A\\subseteq\\closureofunder{f}{o}$. Les deux inclusions établissent\nl'égalité voulue.\n\\end{proof}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0052-B09",
-        "before": "Certes, le théorème \\olref{thm:dedinfiniteinduction} formule la récurrence\nen termes \\emph{ensemblistes}. Mais nous pouvons aisément donner à ce\nprincipe une formulation peut-être plus familière.",
-        "after": "Certes, le \\olref{thm:dedinfiniteinduction} formule la récurrence\nen termes \\emph{ensemblistes}. Mais nous pouvons aisément donner à ce\nprincipe une formulation peut-être plus familière.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0052-B11",
-        "before": "\\begin{proof}\nPosons $X = \\Setabs{n \\in N}{\\phi(n)}$, puis appliquons le théorème\n\\olref{thm:dedinfiniteinduction}.\n\\end{proof}",
-        "after": "\\begin{proof}\nPosons $X = \\Setabs{n \\in N}{\\phi(n)}$, puis appliquons le\n\\olref{thm:dedinfiniteinduction}.\n\\end{proof}",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0052-B12",
-        "before": "Dans cet énoncé, nous avons parlé d'une formule « avec des paramètres ».\nCela signifie, approximativement, que, pour des objets quelconques\n$c_1,\\ldots,c_k$, nous pouvons travailler avec\n$\\phi(x,c_1,\\ldots,c_k)$. Plus précisément, nous pouvons énoncer le\nrésultat sans parler de « paramètres » : pour toute formule\n$\\phi(x,v_1,\\ldots,v_k)$ dont toutes les variables libres sont\nexplicitement indiquées, nous avons\n\t\\begin{align*}\n\t\t\t\\forall v_1 \\ldots \\forall v_k((&\\phi(o, v_1,\\ldots, v_k) \\land {}\\\\\n\t\t\t&\t(\\forall x \\in N)(\\phi(x,v_1, \\ldots, v_k) \\lif \\phi(s(x), v_1,\\ldots, v_k))) \\lif {}\\\\\n\t\t\t&\\hspace{3em} (\\forall x \\in N)\\phi(x, v_1,\\ldots, v_k))\n\t\\end{align*}\nOn voit que parler de « paramètres » peut rendre les énoncés beaucoup\nplus faciles à lire. Dans \\olref[sth][][]{part}, nous recourrons assez\nsouvent à cette façon de présenter les choses.",
-        "after": "Dans cet énoncé, nous avons parlé d'une formule « avec des paramètres ».\nCela signifie, approximativement, que, pour des objets quelconques\n$c_1,\\ldots,c_k$, nous pouvons travailler avec\n$\\phi(x,c_1,\\ldots,c_k)$. Plus précisément, nous pouvons énoncer le\nrésultat sans parler de « paramètres » : pour toute formule\n$\\phi(x,v_1,\\ldots,v_k)$ dont toutes les variables libres sont\nexplicitement indiquées, nous avons\n\t\\begin{align*}\n\t\t\t\\forall v_1 \\ldots \\forall v_k((&\\phi(o, v_1,\\ldots, v_k) \\land {}\\\\\n\t\t\t&\t(\\forall x \\in N)(\\phi(x,v_1, \\ldots, v_k) \\lif \\phi(s(x), v_1,\\ldots, v_k))) \\lif {}\\\\\n\t\t\t&\\hspace{3em} (\\forall x \\in N)\\phi(x, v_1,\\ldots, v_k))\n\t\\end{align*}\nOn voit que parler de « paramètres » peut rendre les énoncés beaucoup\nplus faciles à lire. Dans la \\olref[sth][][]{part}, nous recourrons assez\nsouvent à cette façon de présenter les choses.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0052-B13",
-        "before": "Revenons aux algèbres de Dedekind. À partir d'une telle algèbre, nous\npouvons aussi définir les opérations arithmétiques usuelles :\nl'addition, la multiplication et l'exponentiation. Ce n'est toutefois\npas immédiat : il faut faire appel à la \\emph{définition par récurrence}.\nNous présenterons et justifierons cette méthode beaucoup plus loin,\ndans un cadre bien plus général. Les lecteurs intéressés pourront\nrevenir sur cette question après \\olref[sth][ord-arithmetic][]{chap},\nou consulter une autre présentation, par exemple\n\\citealt[pp.~95--8]{Potter2004}. Lorsque $N,s,o$ est une algèbre de\nDedekind, nous pourrons donc, le moment venu, poser les équations\nsuivantes :\n\\begin{align*}\n\t{a} + {o} &= {a} & & & {a} \\times {o} &= {o} & & & {a}^{o} &= s(o)\\\\\n{a} + {s}({b}) &= {s}({a}+{b}) &&& {a} \\times {s}({b}) &= ({a}\\times {b}) + {a}  & & & {a}^{{s}({b})} &= {a}^{b} \\times {a}\n\\end{align*}\net montrer que les opérations ainsi définies se comportent comme\non l'attend.",
-        "after": "Revenons aux algèbres de Dedekind. À partir d'une telle algèbre, nous\npouvons aussi définir les opérations arithmétiques usuelles :\nl'addition, la multiplication et l'exponentiation. Ce n'est toutefois\npas immédiat : il faut faire appel à la \\emph{définition par récurrence}.\nNous présenterons et justifierons cette méthode beaucoup plus loin,\ndans un cadre bien plus général. Les lecteurs intéressés pourront\nrevenir sur cette question après le \\olref[sth][ord-arithmetic][]{chap},\nou consulter une autre présentation, par exemple\n\\citealt[pp.~95--8]{Potter2004}. Lorsque $N,s,o$ est une algèbre de\nDedekind, nous pourrons donc, le moment venu, poser les équations\nsuivantes :\n\\begin{align*}\n\t{a} + {o} &= {a} & & & {a} \\times {o} &= {o} & & & {a}^{o} &= s(o)\\\\\n{a} + {s}({b}) &= {s}({a}+{b}) &&& {a} \\times {s}({b}) &= ({a}\\times {b}) + {a}  & & & {a}^{{s}({b})} &= {a}^{b} \\times {a}\n\\end{align*}\net montrer que les opérations ainsi définies se comportent comme\non l'attend.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0053-B05",
-        "before": "Dans ce chapitre, nous avons présenté un traitement ensembliste des\nentiers naturels à l'aide des algèbres de Dedekind. Dans la section\n\\olref[sfr][arith][ref]{sec}, nous avons réfléchi, entre autres,\nà la portée philosophique de l'arithmétisation de l'analyse.\\footnote{Note\nde l'édition française : le renvoi incomplet de la source est rétabli\nvers la section de réflexions philosophiques du chapitre précédent.}\nIl nous faut maintenant réfléchir à la portée de ce que nous avons\naccompli ici.",
-        "after": "Dans ce chapitre, nous avons présenté un traitement ensembliste des\nentiers naturels à l'aide des algèbres de Dedekind. Dans la\n\\olref[sfr][arith][ref]{sec}, nous avons réfléchi, entre autres,\nà la portée philosophique de l'arithmétisation de l'analyse.\\footnote{Note\nde l'édition française : le renvoi incomplet de la source est rétabli\nvers la section de réflexions philosophiques du chapitre précédent.}\nIl nous faut maintenant réfléchir à la portée de ce que nous avons\naccompli ici.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0053-B06",
-        "before": "Tout au long du chapitre \\olref[sfr][arith][]{chap}, nous avons pris\nles entiers naturels comme donnés, puis nous nous en sommes servis pour\nconstruire explicitement les entiers relatifs, les rationnels et les réels.\nDans le présent chapitre, nous n'avons pas donné de construction explicite\ndes entiers naturels. Nous avons seulement montré qu'\\emph{étant donné\nun ensemble infini au sens de Dedekind, quel qu'il soit}, nous pouvons\ndéfinir un ensemble qui se comporte exactement comme nous souhaitons\nque~$\\Nat$ se comporte.",
-        "after": "Tout au long du \\olref[sfr][arith][]{chap}, nous avons pris\nles entiers naturels comme donnés, puis nous nous en sommes servis pour\nconstruire explicitement les entiers relatifs, les rationnels et les réels.\nDans le présent chapitre, nous n'avons pas donné de construction explicite\ndes entiers naturels. Nous avons seulement montré qu'\\emph{étant donné\nun ensemble infini au sens de Dedekind, quel qu'il soit}, nous pouvons\ndéfinir un ensemble qui se comporte exactement comme nous souhaitons\nque~$\\Nat$ se comporte.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0053-B07",
-        "before": "Nous ne pouvons donc manifestement pas prétendre avoir répondu à une\nquestion métaphysique telle que : \\emph{quels objets sont les entiers\nnaturels ?} Mais c'est une bonne chose. Après tout, dans la section\n\\olref[sfr][arith][ref]{sec}, nous avons souligné qu'il serait erroné\nde voir dans la définition de $\\Real$ comme ensemble des coupures de\nDedekind une \\emph{découverte}, plutôt qu'une convention commode.\nL'observation cruciale est que les coupures de Dedekind possèdent les\npropriétés mathématiques essentielles des nombres réels. De même ici,\nl'observation cruciale est que \\emph{toute} algèbre de Dedekind possède\nles propriétés mathématiques essentielles des entiers naturels.\nDedekind a d'ailleurs précisé ce point en prouvant que toutes les algèbres\nde Dedekind sont \\emph{isomorphes}\n(\\citeyear[théorèmes 132--3]{Dedekind1888}). Il n'est donc pas surprenant\nque de nombreux « structuralistes » contemporains voient en lui\nun précurseur.",
-        "after": "Nous ne pouvons donc manifestement pas prétendre avoir répondu à une\nquestion métaphysique telle que : \\emph{quels objets sont les entiers\nnaturels ?} Mais c'est une bonne chose. Après tout, dans la\n\\olref[sfr][arith][ref]{sec}, nous avons souligné qu'il serait erroné\nde voir dans la définition de $\\Real$ comme ensemble des coupures de\nDedekind une \\emph{découverte}, plutôt qu'une convention commode.\nL'observation cruciale est que les coupures de Dedekind possèdent les\npropriétés mathématiques essentielles des nombres réels. De même ici,\nl'observation cruciale est que \\emph{toute} algèbre de Dedekind possède\nles propriétés mathématiques essentielles des entiers naturels.\nDedekind a d'ailleurs précisé ce point en prouvant que toutes les algèbres\nde Dedekind sont \\emph{isomorphes}\n(\\citeyear[théorèmes 132--3]{Dedekind1888}). Il n'est donc pas surprenant\nque de nombreux « structuralistes » contemporains voient en lui\nun précurseur.",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0053-B08",
-        "before": "Nous avons en outre montré comment intégrer la théorie des entiers\nnaturels à une théorie naïve et simple des ensembles. Celle-ci reste\nassez informelle, mais elle ne semble pas présupposer les entiers naturels.\nNous sommes donc peut-être en voie de réaliser l'ambitieux projet de\nDedekind lui-même, qu'il exposait ainsi :\n\\begin{quote}\nEn science, rien de ce qui est susceptible d'être démontré ne devrait\nêtre tenu pour vrai sans démonstration. Si raisonnable que paraisse cette\nexigence, je ne peux considérer qu'elle soit satisfaite, même dans les\nméthodes les plus récentes pour établir les fondements de la science\nla plus simple, à savoir cette partie de la logique qui traite de la\nthéorie des nombres. En parlant de l'arithmétique (de l'algèbre,\nde l'analyse) comme d'une simple partie de la logique, j'entends affirmer\nque je considère le concept de nombre comme entièrement indépendant\ndes notions ou des intuitions de l'espace et du temps ; je le considère\nbien plutôt comme un produit immédiat des lois pures de la pensée.\n\\citep[préface]{Dedekind1888}\n\\end{quote}\nL'idée audacieuse de Dedekind est donc la suivante. Nous venons de montrer\ncomment construire les entiers naturels à l'aide de la seule théorie\nnaïve des ensembles. Dans le chapitre \\olref[sfr][arith][]{chap},\nnous avons vu comment construire les réels à partir des entiers naturels\net d'un peu de théorie des ensembles. Peut-être « l'arithmétique\n(l'algèbre, l'analyse) » s'avère-t-elle donc n'être « qu'une partie\nde la logique », au sens étendu que Dedekind donne au mot « logique ».",
-        "after": "Nous avons en outre montré comment intégrer la théorie des entiers\nnaturels à une théorie naïve et simple des ensembles. Celle-ci reste\nassez informelle, mais elle ne semble pas présupposer les entiers naturels.\nNous sommes donc peut-être en voie de réaliser l'ambitieux projet de\nDedekind lui-même, qu'il exposait ainsi :\n\\begin{quote}\nEn science, rien de ce qui est susceptible d'être démontré ne devrait\nêtre tenu pour vrai sans démonstration. Si raisonnable que paraisse cette\nexigence, je ne peux considérer qu'elle soit satisfaite, même dans les\nméthodes les plus récentes pour établir les fondements de la science\nla plus simple, à savoir cette partie de la logique qui traite de la\nthéorie des nombres. En parlant de l'arithmétique (de l'algèbre,\nde l'analyse) comme d'une simple partie de la logique, j'entends affirmer\nque je considère le concept de nombre comme entièrement indépendant\ndes notions ou des intuitions de l'espace et du temps ; je le considère\nbien plutôt comme un produit immédiat des lois pures de la pensée.\n\\citep[préface]{Dedekind1888}\n\\end{quote}\nL'idée audacieuse de Dedekind est donc la suivante. Nous venons de montrer\ncomment construire les entiers naturels à l'aide de la seule théorie\nnaïve des ensembles. Dans le \\olref[sfr][arith][]{chap},\nnous avons vu comment construire les réels à partir des entiers naturels\net d'un peu de théorie des ensembles. Peut-être « l'arithmétique\n(l'algèbre, l'analyse) » s'avère-t-elle donc n'être « qu'une partie\nde la logique », au sens étendu que Dedekind donne au mot « logique ».",
-        "kind": "rendered_reference_grammar_only"
-      },
-      {
-        "segment": "OLP-0053-B09",
-        "before": "Telle est l'idée. Mais arrêtons-nous un instant. Notre construction\nd'une algèbre de Dedekind, qui nous tient lieu d'ensemble des entiers\nnaturels, est subordonnée à l'existence d'un ensemble infini au sens\nde Dedekind. Il suffit de revenir au théorème\n\\olref[sfr][infinite][dedekind]{thm:DedekindInfiniteAlgebra}\npour le constater. Si l'existence d'un ensemble infini au sens de\nDedekind ne peut être établie par la « logique » ou les « lois pures\nde la pensée », le projet ne peut aboutir.",
-        "after": "Telle est l'idée. Mais arrêtons-nous un instant. Notre construction\nd'une algèbre de Dedekind, qui nous tient lieu d'ensemble des entiers\nnaturels, est subordonnée à l'existence d'un ensemble infini au sens\nde Dedekind. Il suffit de revenir au\n\\olref[sfr][infinite][dedekind]{thm:DedekindInfiniteAlgebra}\npour le constater. Si l'existence d'un ensemble infini au sens de\nDedekind ne peut être établie par la « logique » ou les « lois pures\nde la pensée », le projet ne peut aboutir.",
-        "kind": "rendered_reference_grammar_only"
-      }
-    ]
+    "at": "2026-09-19T21:02:42.052719+00:00",
+    "unit": "OLP-0058",
+    "target_sha256": "9573611c2c47019d7757aec81dfb82ab7b041af7dd2ceff68504a066b1a8a54c",
+    "affected_alignment_rows": 36,
+    "change": "Closing full stop moved into conditional defined-connective paragraph; final inner iftag now has explicit empty false branch.",
+    "source_text_unchanged": true,
+    "substantive_translation_unchanged": true,
+    "pending": "fresh PDF and direct-source replay"
   },
   "layout_repairs": {
-    "status": "PREPARED",
-    "scope": "Footnote call joined to theorem 5.4; keep ring definition and induction statement with their formulas at page breaks.",
-    "evidence": "Actual reader PDF inspection and macro expansion; mathematical content and source reference identifiers preserved.",
-    "changes": [
+    "at": "2026-09-19T20:29:00.123627+00:00",
+    "status": "LANGUAGE_IDENTIFIERS_REPAIRED_REBUILD_REQUIRED",
+    "failed_candidate": "build-01/source/locale/fr/reader.pdf",
+    "failed_candidate_sha256": "5bd77e68e084690ffda459bde2e9a365da690b2039e4ea99f0dcf3522436bb2d",
+    "finding": "Eleven new section files were skipped by OLUnLocalizedHook because olfileid lacked optional fr. An engine exit0 was not content acceptance.",
+    "units": [
       {
-        "segment": "OLP-0044-B05",
-        "before": "Les réels possèdent de nombreuses propriétés communes avec les rationnels.\n(Techniquement, ces deux ensembles sont des \\emph{corps ordonnés} ; voir\nla \\olref[check]{orderedfield}.) Si vous avez résolu les\nexercices du \\olref[sfr][siz][]{chap}, vous savez qu'il y a strictement plus\nde réels que de rationnels, c'est-à-dire que $\\cardless{\\Rat}{\\Real}$.\nCantor fut le premier à le démontrer. Mais l'existence de nombres\nirrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue\ndepuis environ deux millénaires et demi. En effet :\n%\\footnote{Le commentaire source affirme que « $\\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}\n\\begin{thm}\\ollabel{root2irrational}\n$\\sqrt{2}$ est irrationnel, c'est-à-dire que $\\sqrt{2} \\notin \\Rat$.\n\\end{thm}\\footnote{Précision éditoriale : $\\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\\sqrt{2}$ et $-\\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}",
-        "after": "Les réels possèdent de nombreuses propriétés communes avec les rationnels.\n(Techniquement, ces deux ensembles sont des \\emph{corps ordonnés} ; voir\nla \\olref[check]{orderedfield}.) Si vous avez résolu les\nexercices du \\olref[sfr][siz][]{chap}, vous savez qu'il y a strictement plus\nde réels que de rationnels, c'est-à-dire que $\\cardless{\\Rat}{\\Real}$.\nCantor fut le premier à le démontrer. Mais l'existence de nombres\nirrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue\ndepuis environ deux millénaires et demi. En effet :\n%\\footnote{Le commentaire source affirme que « $\\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}\n\\begin{thm}\\ollabel{root2irrational}\n$\\sqrt{2}$ est irrationnel, c'est-à-dire que $\\sqrt{2} \\notin \\Rat$.\n\\footnote{Précision éditoriale : $\\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\\sqrt{2}$ et $-\\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}\\end{thm}",
-        "kind": "layout_only"
+        "unit_id": "OLP-0057",
+        "path": "fr\\content\\propositional-logic\\syntax-and-semantics\\introduction.tex",
+        "previous_sha256": "f0ea32f6c0beb1689e7431d0ddd89f09a9357db199885939d60f5744885cb675",
+        "markers_added": 1,
+        "target_sha256": "31973a3dc614a22dff63bc1c27b188e06363e03909ebd6d75dc7cce3ce5d4017"
       },
       {
-        "segment": "OLP-0047-B06",
-        "before": "\\begin{defn}\nUn \\emph{anneau commutatif} est un ensemble $S$ muni de deux éléments\ndistingués $0$ et $1$ et de deux opérations $+$ et $\\times$ de\n$S\\times S$ dans $S$, qui satisfont les huit formules suivantes :\n\\begin{align*}\n  \\emph{Associativité}&&a + (b+ c) & = (a + b) + c \\\\\n  && (a \\times b) \\times c & = a \\times (b\\times c)\\\\\n  \\emph{Commutativité}&&a + b &= b+ a  \\\\\n  && a \\times b&= b\\times a\\\\\n  \\emph{Éléments neutres}&&a + 0 &= a \\\\\n  && a \\times 1 &= a\\\\\n  \\emph{Existence d'un opposé}&&(\\exists b\\in S)0&=a + b\\\\\n  \\emph{Distributivité}&&a \\times (b+ c ) &= (a \\times b) + (a \\times c)\n\\end{align*}\nDans chaque formule, les variables libres sont implicitement quantifiées\nuniversellement sur $S$ ; le $b$ de la formule sur l'opposé est déjà lié\npar son quantificateur existentiel. Les éléments $0$ et~$1$ ne sont pas\nnécessairement les nombres naturels qui portent ces noms.\n\\end{defn}",
-        "after": "\\Needspace{16\\baselineskip}\\begin{defn}\nUn \\emph{anneau commutatif} est un ensemble $S$ muni de deux éléments\ndistingués $0$ et $1$ et de deux opérations $+$ et $\\times$ de\n$S\\times S$ dans $S$, qui satisfont les huit formules suivantes :\n\\begin{align*}\n  \\emph{Associativité}&&a + (b+ c) & = (a + b) + c \\\\\n  && (a \\times b) \\times c & = a \\times (b\\times c)\\\\\n  \\emph{Commutativité}&&a + b &= b+ a  \\\\\n  && a \\times b&= b\\times a\\\\\n  \\emph{Éléments neutres}&&a + 0 &= a \\\\\n  && a \\times 1 &= a\\\\\n  \\emph{Existence d'un opposé}&&(\\exists b\\in S)0&=a + b\\\\\n  \\emph{Distributivité}&&a \\times (b+ c ) &= (a \\times b) + (a \\times c)\n\\end{align*}\nDans chaque formule, les variables libres sont implicitement quantifiées\nuniversellement sur $S$ ; le $b$ de la formule sur l'opposé est déjà lié\npar son quantificateur existentiel. Les éléments $0$ et~$1$ ne sont pas\nnécessairement les nombres naturels qui portent ces noms.\n\\end{defn}",
-        "kind": "layout_only"
+        "unit_id": "OLP-0058",
+        "path": "fr\\content\\propositional-logic\\syntax-and-semantics\\formulas.tex",
+        "previous_sha256": "635d7bbd48b9e66a465b538a6344593ad65d913341229b550a14e3e53b9b8814",
+        "markers_added": 1,
+        "target_sha256": "d5fb371a712ddf210cd37e3dd0c5a66b98b6742d2ebf323b3f0ac83f8784ae55"
       },
       {
-        "segment": "OLP-0052-B06",
-        "before": "\\begin{thm}[Récurrence arithmétique]\\ollabel{thm:dedinfiniteinduction}\nSoit $N,s,o$ une algèbre de Dedekind. Pour tout ensemble $X$ :\n\t\\begin{center}\n\t\tsi $o \\in X$ et $(\\forall {n} \\in N \\cap X){s}({n}) \\in X$,\n\t\talors $N \\subseteq X$.\n\t\\end{center}\n\\end{thm}",
-        "after": "\\Needspace{6\\baselineskip}\\begin{thm}[Récurrence arithmétique]\\ollabel{thm:dedinfiniteinduction}\nSoit $N,s,o$ une algèbre de Dedekind. Pour tout ensemble $X$ :\n\t\\begin{center}\n\t\tsi $o \\in X$ et $(\\forall {n} \\in N \\cap X){s}({n}) \\in X$,\n\t\talors $N \\subseteq X$.\n\t\\end{center}\n\\end{thm}",
-        "kind": "layout_only"
+        "unit_id": "OLP-0059",
+        "path": "fr\\content\\propositional-logic\\syntax-and-semantics\\preliminaries.tex",
+        "previous_sha256": "524ada1dae60afd6f1d86b37fae4739cd700430cd149523c6b72639cbda19073",
+        "markers_added": 1,
+        "target_sha256": "67d6cbb39a157c56b43860690c70b80f7cd438559f6697b0b119afc379d807d9"
+      },
+      {
+        "unit_id": "OLP-0060",
+        "path": "fr\\content\\propositional-logic\\syntax-and-semantics\\formation-sequences.tex",
+        "previous_sha256": "aee488bf09b2846fae6284cb55dcc9d5526db01aca567eccc63fc3f624c5e246",
+        "markers_added": 1,
+        "target_sha256": "e4417f794b06da2ec97824c1f0ffd5ab9f3a69afd7af3c7afa8c04ae541df87b"
+      },
+      {
+        "unit_id": "OLP-0061",
+        "path": "fr\\content\\propositional-logic\\syntax-and-semantics\\valuations-sat.tex",
+        "previous_sha256": "9d7909dac1d74df4ebd972d58bf8971e67a7e0a548567b62db0bcb432587583e",
+        "markers_added": 1,
+        "target_sha256": "ec15eb2884e5f7c108a134e4376000803576bb5c13209b6ac37f621ba1e647bd"
+      },
+      {
+        "unit_id": "OLP-0062",
+        "path": "fr\\content\\propositional-logic\\syntax-and-semantics\\semantic-notions.tex",
+        "previous_sha256": "eeace91281b81966e46b28bf08cb076cc250b39801fceebdff5a54d0d38ef03c",
+        "markers_added": 1,
+        "target_sha256": "257f0bde54124362ac3f98251592da786480e18b4c07c28fc89b672726533721"
+      },
+      {
+        "unit_id": "OLP-0064",
+        "path": "fr\\content\\first-order-logic\\proof-systems\\introduction.tex",
+        "previous_sha256": "7badf95f8056605afbc5a6f1da93220610089cb2effc19a7841474c97432ecc4",
+        "markers_added": 2,
+        "target_sha256": "3a171cc0b38c3b08e7f851ba1a6f6e9f371f04f9f3433a7c37df708308bc1162"
+      },
+      {
+        "unit_id": "OLP-0065",
+        "path": "fr\\content\\first-order-logic\\proof-systems\\sequent-calculus.tex",
+        "previous_sha256": "160dfb5d95e624edf85a2dab6b46eb426513aabbf411d6c6edd3bbcffa49bc90",
+        "markers_added": 2,
+        "target_sha256": "86583bc8f63cb0914c842c2c44bb15f8d643eb1db345806c2e01e8d696448c23"
+      },
+      {
+        "unit_id": "OLP-0066",
+        "path": "fr\\content\\first-order-logic\\proof-systems\\natural-deduction.tex",
+        "previous_sha256": "0627c7d2e6d703e6c08ba76c3fa9b743f1de5bda73541fa7d5a9509a05855ffc",
+        "markers_added": 2,
+        "target_sha256": "f7e5d118f49d75385e4f825cf6d029c4b634d50864ba105635cef6fcf0bddc2f"
+      },
+      {
+        "unit_id": "OLP-0067",
+        "path": "fr\\content\\first-order-logic\\proof-systems\\tableaux.tex",
+        "previous_sha256": "6defe8d9b733df1f68965c2f239b0a69f618135214d3c599de77d5c98e8e2e92",
+        "markers_added": 2,
+        "target_sha256": "fb739b94354ad918f858a83e61ec83a30621e95b177ba5f7bebd761747cfe43a"
+      },
+      {
+        "unit_id": "OLP-0068",
+        "path": "fr\\content\\first-order-logic\\proof-systems\\axiomatic-deduction.tex",
+        "previous_sha256": "a390d17eb3153a3e0387f25161abbe79b57aaeb227a1e9019b9830e89d58aef7",
+        "markers_added": 2,
+        "target_sha256": "e4db3c10d4638f38ab3c4833b42c76857f0a04f088a1d0f8576548795358c1fd"
       }
-    ]
+    ],
+    "prose_unchanged": true,
+    "next_action": "Rebuild from current files, check all64included units,56sections and every new paragraph in PDF; then layout and reproducibility/EPUB."
   }
 }

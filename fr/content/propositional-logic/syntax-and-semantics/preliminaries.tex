@@ -1,0 +1,122 @@
+% Part: propositional-logic
+% Chapter: propositional-logic
+% Section: preliminaries
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pl}{syn}{pre}
+
+\olsection{Préliminaires}
+
+\begin{thm}[\emph{Principe d'induction sur les !!{formula}s}]
+  \ollabel{thm:induction}
+  Soit $P$ une propriété vérifiée par toutes les !!{formula}s atomiques
+  et telle que :
+  \begin{enumerate}
+    \tagitem{prvNot}{si elle est vérifiée par~$!A$, elle l'est
+      par $\lnot !A$ ;}{}
+    \tagitem{prvAnd}{si elle est vérifiée par $!A$ et~$!B$,
+      elle l'est par $(!A \land !B)$ ;}{}
+    \tagitem{prvOr}{si elle est vérifiée par $!A$ et~$!B$,
+      elle l'est par $(!A \lor !B)$ ;}{}
+    \tagitem{prvIf}{si elle est vérifiée par $!A$ et~$!B$,
+      elle l'est par $(!A \lif !B)$ ;}{}
+    \tagitem{prvIff}{si elle est vérifiée par $!A$ et~$!B$,
+      elle l'est par $(!A \liff !B)$ ;}{}
+  \end{enumerate}
+  Alors $P$ est vérifiée par toutes les !!{formula}s.
+\end{thm}
+
+\begin{proof}
+  Soit $S$ la collection de toutes les !!{formula}s qui vérifient~$P$.
+  On a évidemment $S \subseteq \Frm[L_0]$. De plus, $S$ remplit toutes
+  les conditions de la \olref[fml]{defn:formulas} : il contient toutes
+  les !!{formula}s atomiques et il est stable par les !!{operator}s.
+  Comme $\Frm[L_0]$ est la plus petite classe ayant ces propriétés,
+  $\Frm[L_0] \subseteq S$. Ainsi $\Frm[L_0] = S$, et toute formule
+  vérifie~$P$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:balanced}
+   Toute !!{formula} de~$\Frm[L_0]$ est \emph{équilibrée} :
+   elle comporte autant de parenthèses ouvrantes que de parenthèses
+   fermantes.
+\end{prop}
+
+\begin{prob}
+Démontrer la \olref[pl][syn][pre]{prop:balanced}.
+\end{prob}
+
+\begin{prop}\ollabel{prop:noinit}
+Aucun préfixe propre d'une !!{formula} n'est une !!{formula}.
+\end{prop}
+
+\begin{prob}
+  Démontrer la \olref[pl][syn][pre]{prop:noinit}.
+\end{prob}
+
+\begin{prop}[Lecture unique]
+Toute !!{formula}~$!A$ de $\Frm[L_0]$ se décompose selon exactement
+l'un des cas suivants :
+\begin{enumerate}
+\tagitem{prvFalse}{$\lfalse$.}{}
+
+\tagitem{prvTrue}{$\ltrue$.}{}
+
+\item $\Obj p_n$, pour un certain $\Obj p_n \in \PVar$.
+
+\tagitem{prvNot}{$\lnot !B$, pour une !!{formula}~$!B$.}{}
+
+\tagitem{prvAnd}{$(!B \land !C)$, pour des !!{formula}s $!B$ et~$!C$.}{}
+
+\tagitem{prvOr}{$(!B \lor !C)$, pour des !!{formula}s $!B$ et~$!C$.}{}
+
+\tagitem{prvIf}{$(!B \lif !C)$, pour des !!{formula}s $!B$ et~$!C$.}{}
+
+\tagitem{prvIff}{$(!B \liff !C)$, pour des !!{formula}s $!B$ et~$!C$.}{}
+\end{enumerate}
+De plus, cette décomposition est \emph{unique}.
+\end{prop}
+
+\begin{proof}
+Par induction sur $!A$. Supposons par exemple que $!A$ admette deux
+lectures distinctes, $(!B \lif !C)$ et $(!B' \lif !C')$. Alors $!B$
+et $!B'$ doivent être identiques, sinon l'une serait un préfixe propre
+de l'autre. Si les deux lectures de $!A$ sont distinctes, $!C$ et $!C'$
+doivent donc être deux lectures distinctes de la même chaîne de
+symboles, ce qui contredit l'hypothèse d'induction.
+\end{proof}
+
+\begin{defn}[Substitution uniforme]
+Si $!A$ et $!B$ sont des !!{formula}s et $\Obj p_i$ une
+!!{propositional variable}, on note $\Subst{!A}{!B}{\Obj p_i}$ le
+résultat du remplacement de chaque occurrence de $\Obj p_i$ dans $!A$
+par une occurrence de $!B$. De même, on note
+$\SSubst{!A}{\subst{!B_1}{\Obj p_1},\dots,\subst{!B_n}{\Obj p_n}}$
+la substitution simultanée des !!{formula}s $!B_1$, \dots,~$!B_n$
+aux variables $\Obj p_1$, \dots,~$\Obj p_n$.
+\end{defn}
+
+\begin{prob}
+Pour chacune des cinq !!{formula}s ci-dessous, déterminer si elle
+peut s'écrire comme une substitution \(\Subst{!A}{!B}{\Obj p_i}\)
+où \(!A\) est (i)~\(\Obj p_0\) ; (ii)~\((\lnot \Obj p_0 \land \Obj
+p_1)\) ; (iii)~\(((\lnot \Obj p_0 \lif \Obj p_1) \land \Obj
+p_2)\). Préciser dans chaque cas la substitution correspondante.
+  \begin{enumerate}
+    \item \(\Obj p_1\)
+    \item \((\lnot \Obj p_0 \land \Obj p_0)\)
+    \item \(((\Obj p_0 \lor \Obj p_1) \land \Obj p_2)\)
+    \item \(\lnot ((\Obj p_0 \lif \Obj p_1) \land \Obj p_2)\)
+    \item \(((\lnot (\Obj p_0 \lif \Obj p_1) \lif (\Obj p_0 \lor \Obj p_1)) \land \lnot (\Obj p_0 \land \Obj p_1))\)
+  \end{enumerate}
+\end{prob}
+
+\begin{prob}
+Donner une définition mathématiquement rigoureuse de $\Subst{!A}{!B}{p}$
+par induction.
+\end{prob}
+
+\end{document}

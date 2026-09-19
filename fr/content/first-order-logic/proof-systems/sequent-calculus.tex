@@ -1,0 +1,73 @@
+% Part: first-order-logic
+% Chapter: proof-systems
+% Section: seqeunt-calculus
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{seq}}
+      {\olfileid[fr]{pl}{prf}{seq}}
+
+\olsection{Le calcul des séquents}
+
+Alors que de nombreux systèmes de !!{derivation} manipulent des
+agencements d'!!{sentence}s, le calcul des séquents manipule des
+\emph{séquents}. Un séquent est une expression de la forme
+\[
+!A_1, \dots, !A_m \Sequent !B_1, \dots, !B_n,
+\]
+c'est-à-dire un couple de suites d'!!{sentence}s, séparées par le
+symbole de séquent~$\Sequent$. Chacune des deux suites peut être vide.
+Une !!{derivation} dans le calcul des séquents est un arbre de séquents
+dont ceux qui figurent tout en haut ont une forme particulière (on les
+appelle « séquents initiaux » ou « axiomes »), tandis que tout autre
+séquent se déduit de ceux qui se trouvent immédiatement au-dessus de
+lui par l'une des règles d'inférence. Ces règles manipulent les
+!!{sentence}s des séquents (en les ajoutant, en les supprimant ou en
+les réordonnant, à gauche ou à droite), ou introduisent une !!{formula}
+complexe dans la conclusion de la règle. Par exemple, la règle
+$\LeftR{\land}$ permet de passer de $!A, \Gamma \Sequent \Delta$ à
+$!A \land !B, \Gamma \Sequent \Delta$, et la règle $\RightR{\lif}$
+de $!A, \Gamma \Sequent \Delta, !B$ à
+$\Gamma \Sequent \Delta, !A \lif !B$, quels que soient $\Gamma$,
+$\Delta$, $!A$ et~$!B$. En particulier, $\Gamma$ et~$\Delta$ peuvent
+être vides.
+\begin{editorial}
+Note de l'édition française : dans l'expression générale du séquent,
+l'indice final de la suite de droite est noté $n$ au lieu de $m$ dans
+l'original. Les deux suites ont des longueurs indépendantes.
+\end{editorial}
+
+La relation $\Proves$ fondée sur le calcul des séquents se définit
+ainsi : $\Gamma \Proves !A$ si et seulement s'il existe une suite
+$\Gamma_0$ dont chaque terme $!A$ appartient à~$\Gamma$, et une
+!!{derivation} ayant le séquent~$\Gamma_0 \Sequent !A$ à sa racine.
+$!A$ est un théorème du calcul des séquents si le séquent
+$\Sequent !A$ admet une !!{derivation}. Par exemple, la
+!!{derivation} suivante établit que $\Proves (!A \land !B) \lif !A$ :
+\begin{prooftree}
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!A \land !B \fCenter !A$
+  \RightLabel{\RightR{\lif}}
+  \UnaryInf$\fCenter (!A \land !B) \lif !A$
+\end{prooftree}
+
+Un ensemble $\Gamma$ est incohérent dans le calcul des séquents s'il
+existe une !!{derivation} de $\Gamma_0 \Sequent$, où chaque
+$!A \in \Gamma_0$ appartient à~$\Gamma$ et où le membre droit du
+séquent est vide. La règle \RightR{\Weakening} permet de
+!!{derive} n'importe quel !!{sentence} d'un ensemble incohérent.
+
+Le calcul des séquents a été inventé dans les années 1930 par Gerhard
+Gentzen. Son organisation systématique et symétrique en fait un
+formalisme très utile pour élaborer une théorie des !!{derivation}s.
+Il est relativement facile d'y trouver des !!{derivation}s, mais celles-ci
+sont souvent difficiles à lire, et leur rapport avec les démonstrations
+n'est pas toujours facile à discerner. Le calcul des séquents s'est
+néanmoins révélé une approche très élégante des systèmes de
+!!{derivation}, et de nombreuses logiques possèdent un tel calcul.
+
+\end{document}

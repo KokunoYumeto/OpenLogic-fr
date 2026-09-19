@@ -1,4 +1,4 @@
-% Édition française OpenLogic, livraison v0.5 : 51 unités sur 722.
+% Édition française OpenLogic : 64 unités sur 722, huit chapitres.
 % LaTeX cumulatif contenant tout le texte de cette livraison.
 % Styles, figures, bibliographie et instructions fournis dans le ZIP source.
 \documentclass[11pt,a4paper,openany]{memoir}
@@ -57,9 +57,9 @@
 \setlength{\emergencystretch}{2em}
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
-\hypersetup{pdftitle={OpenLogic : édition française — Ensembles, fonctions et construction des nombres},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la logique propositionnelle},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres réels et ensembles infinis},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres et logique propositionnelle},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -70,15 +70,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Ensembles, fonctions\\et construction des nombres\par}
+{\sffamily\huge Des ensembles\\à la logique propositionnelle\par}
 \vspace{5mm}
-{\large Relations, dénombrabilité et arithmétisation :\\
-des premiers ensembles aux nombres réels et à l'infini\par}
+{\large Relations, fonctions, dénombrabilité et nombres :\\
+syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Cinquième livraison : six chapitres complets\par}
+{\large Sixième livraison : huit chapitres\par}
 \vspace{4mm}
-Cette livraison comprend quarante-cinq sections et leurs six chapitres d’organisation,
-soit 51 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend cinquante-six sections et leurs huit chapitres d’organisation,
+soit 64 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -87,6 +87,11 @@ Le cinquième chapitre construit les entiers, les rationnels et les réels,
 par les coupures de Dedekind et les classes de suites de Cauchy.
 Le sixième étudie les ensembles infinis, les algèbres de Dedekind,
 la récurrence et une autre preuve du théorème de Schröder--Bernstein.
+Le septième présente les formules propositionnelles, leur construction
+inductive, les valuations et les notions sémantiques fondamentales.
+Le huitième présente les systèmes de preuve, leur correction et leur
+complétude : calcul des séquents, déduction naturelle, tableaux et
+dérivations axiomatiques.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -6331,6 +6336,1405 @@ $\comp{h}{g^{-1}}\colon A\to B$ est !!a{bijection}.
 \endgroup
 % END embedded source: content/sets-functions-relations/infinite/infinite.tex
 
+\tagfalse{FOL}
+
+% BEGIN embedded source: content/propositional-logic/syntax-and-semantics/syntax-and-semantics.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{syntax-and-semantics}
+
+
+\olchapter{pl}{syn}{Syntaxe et sémantique}
+
+\begin{editorial}
+Ce chapitre ne donne qu'un aperçu très rapide des définitions. Il
+devrait être développé pour introduire progressivement les
+démonstrations par induction sur les formules, avec bien davantage
+d'exemples.
+\end{editorial}
+
+
+% BEGIN embedded source: content/propositional-logic/syntax-and-semantics/introduction.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{introduction}
+
+
+\olfileid[fr]{pl}{syn}{int}
+
+\olsection{Introduction}
+
+La logique propositionnelle étudie des !!{formula}s construites à partir
+de !!{propositional variable}s au moyen des connecteurs propositionnels
+$\lnot$, $\land$, $\lor$, $\lif$ et $\liff$. Intuitivement,
+!!a{propositional variable}~$p$ représente une phrase ou une proposition
+qui est vraie ou fausse. Dès que les valeurs de vérité des
+!!{propositional variable}s sont fixées, celles de toutes les !!{formula}s
+construites à partir d'elles au moyen de ces connecteurs le sont aussi.
+On dit que la logique propositionnelle est \emph{vérifonctionnelle},
+car sa sémantique est donnée par des fonctions des valeurs de vérité.
+En particulier, on laisse de côté toute autre détermination du vrai
+et du faux : on ne se demande pas si quelque chose est nécessairement
+vrai plutôt que vrai de façon contingente, si l'on sait que c'est vrai,
+ou si c'est vrai maintenant plutôt que dans le passé ou dans l'avenir.
+On ne considère que deux valeurs de vérité, le vrai ($\True$) et le faux
+($\False$), et l'on exclut donc de cette étude la possibilité qu'un
+énoncé ne soit ni vrai ni faux, ou ne soit qu'à moitié vrai. On se
+limite aussi aux connecteurs pour lesquels la valeur de vérité d'une
+!!{formula} composée dépend entièrement des valeurs de vérité de ses
+constituants, et non, par exemple, de leur sens. En particulier, le
+caractère vérifonctionnel des conditionnels de l'anglais, en ce sens,
+est controversé. L'implication matérielle~$\lif$ est vérifonctionnelle ;
+d'autres logiques étudient des conditionnels qui ne le sont pas.
+
+Pour développer la théorie et la métathéorie de la logique
+propositionnelle vérifonctionnelle, il faut d'abord définir la syntaxe
+et la sémantique de ses expressions. Nous présenterons une manière de
+construire des !!{formula}s à partir de !!{propositional variable}s au
+moyen des connecteurs. D'autres définitions sont possibles. D'autres
+systèmes emploient d'autres symboles, prennent d'autres ensembles de
+connecteurs comme primitifs et utilisent autrement les parenthèses,
+voire s'en passent, comme dans la notation dite polonaise. Toutes ces
+approches ont cependant en commun de définir l'ensemble des !!{formula}s
+par des règles de formation \emph{inductives}. Si ces règles sont bien
+conçues, chaque expression ne peut essentiellement être construite que
+d'une seule manière. Cette définition inductive d'expressions à
+\emph{lecture unique} permet de leur attribuer un sens par le même
+procédé : une définition inductive.
+
+L'attribution d'un sens aux expressions relève de la sémantique. En
+logique propositionnelle, la notion centrale est celle de satisfaction
+par une !!{valuation}. Une !!{valuation}~$\pAssign{v}$ attribue les
+valeurs de vérité $\True$, $\False$ aux !!{propositional variable}s.
+Toute !!{valuation} détermine une valeur de vérité $\pValue{v}(!A)$
+pour chaque !!{formula}~$!A$. Une !!{formula} est satisfaite par une
+!!{valuation}~$\pAssign{v}$ si et seulement si
+$\pValue{v}(!A) = \True$ ; on écrit alors $\pSat{v}{!A}$.
+Cette relation peut elle aussi se définir par induction sur la
+structure de~$!A$. Les fonctions de vérité des connecteurs permettent
+par exemple de définir la satisfaction de $!A \land !B$ à partir de
+la satisfaction, ou de la non-satisfaction, de $!A$ et de~$!B$.
+
+À partir de la relation de satisfaction $\pSat{v}{!A}$ pour les
+formules, on définit les notions sémantiques fondamentales de
+tautologie, de conséquence logique et de satisfaisabilité.
+Une !!{formula} est une tautologie, $\Entails !A$, si toute
+!!{valuation} la satisfait, c'est-à-dire si $\pValue{v}(!A) = \True$
+pour toute~$\pAssign{v}$. Elle est conséquence logique d'un ensemble
+de !!{formula}s, $\Gamma \Entails !A$, si toute !!{valuation} qui
+satisfait toutes les !!{formula}s de~$\Gamma$ satisfait également~$!A$.
+Un ensemble de !!{formula}s est satisfaisable s'il existe une
+!!{valuation} qui satisfait simultanément toutes ses !!{formula}s.
+Les !!{formula}s étant définies inductivement, et la satisfaction
+étant à son tour définie par induction sur leur structure, on peut
+utiliser l'induction pour démontrer des propriétés de cette sémantique
+et établir des liens entre les notions ainsi définies.
+
+
+\endgroup
+% END embedded source: content/propositional-logic/syntax-and-semantics/introduction.tex
+
+
+
+% BEGIN embedded source: content/propositional-logic/syntax-and-semantics/formulas.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{formulas}
+
+
+\olfileid[fr]{pl}{syn}{fml}
+
+\olsection{\usetoken{P}{formula} propositionnelles}
+
+Les !!{formula}s de la logique propositionnelle sont construites à
+partir de \emph{!!{propositional variable}s}%
+\iftag{prvFalse}{\iftag{prvTrue}{,}{ et} de la constante
+propositionnelle~$\lfalse$}{}%
+\iftag{prvTrue}{ et de la constante
+propositionnelle~$\ltrue$}{} au moyen de \emph{connecteurs logiques}.
+
+\begin{enumerate}
+\item Un ensemble~$\PVar$ !!{denumerable} de
+  !!{propositional variable}s $\Obj p_0$, $\Obj p_1$, \dots
+\tagitem{prvFalse}{La constante propositionnelle de
+  !!{falsity}~$\lfalse$.}{}
+\tagitem{prvTrue}{La constante propositionnelle de
+  !!{truth}~$\ltrue$.}{}
+\item Les connecteurs logiques :
+  \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}%
+\item Les signes de ponctuation : (, ) et la virgule.
+\end{enumerate}
+
+On note $\Lang L_0$ ce langage de la logique propositionnelle.
+
+\iftag{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}{%
+Outre les connecteurs primitifs ci-dessus, on utilise les symboles
+\emph{définis} suivants :
+\startycommalist
+  \iftag{defNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{defOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{defAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{defIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{defIff}{\ycomma $\liff$ (!!{biconditional})}{}%
+  \iftag{defFalse}{\ycomma $\lfalse$ (!!{falsity})}{}%
+  \iftag{defTrue}{\ycomma $\ltrue$ (!!{truth})}{}.}{}
+
+\begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
+\begin{explain}
+Un symbole défini ne fait pas officiellement partie du langage :
+il est introduit comme abréviation informelle. Il permet d'abréger
+des formules qui deviendraient assez longues si l'on n'utilisait que
+les symboles primitifs. Cet avantage est évident, mais il y en a un
+plus important : les démonstrations deviennent plus courtes. Tout
+symbole primitif doit en effet y être traité séparément. Plus il y a
+de symboles primitifs, plus les démonstrations sont longues.
+\end{explain}
+\end{tagblock}
+
+% Alternate symbols
+
+\begin{intro}
+Vous connaissez peut-être d'autres termes ou symboles que ceux
+employés ci-dessus. Les ouvrages de logique et les enseignants
+utilisent couramment $\sim$, $\neg$ ou~!\ pour la « négation »,
+et $\wedge$, $\cdot$ ou $\&$ pour la « conjonction ».
+Le « conditionnel », ou l'« implication », se note souvent
+$\rightarrow$, $\Rightarrow$ ou $\supset$.
+\iftag{prvIff,defIff}{Le « biconditionnel », la « double implication »
+ou l'« équivalence (matérielle) » se notent $\leftrightarrow$,
+$\Leftrightarrow$ ou $\equiv$.}{}
+\iftag{prvFalse,defFalse}{Le symbole $\lfalse$ est diversement appelé
+« faux », « falsum », « absurdité » ou « bottom » (« bas »).}{}
+\iftag{prvTrue,defTrue}{Le symbole $\ltrue$ est diversement appelé
+« vrai », « verum » ou « top » (« haut »).}{}
+\end{intro}
+
+\begin{defn}[Formule]
+\ollabel{defn:formulas}
+L'ensemble~$\Frm[L_0]$ des \emph{!!{formula}s} de la logique
+propositionnelle est défini inductivement comme suit :
+\begin{enumerate}
+\tagitem{prvFalse}{$\lfalse$ est une !!{formula} atomique.}{}
+
+\tagitem{prvTrue}{$\ltrue$ est une !!{formula} atomique.}{}
+
+\item Toute !!{propositional variable}~$\Obj p_i$ est une
+  !!{formula} atomique.
+
+\tagitem{prvNot}{Si $!A$ est une !!{formula}, alors $\lnot !A$
+  est une !!{formula}.}{}
+
+\tagitem{prvAnd}{Si $!A$ et $!B$ sont des !!{formula}s,
+  alors $(!A \land !B)$ est une !!{formula}.}{}
+
+\tagitem{prvOr}{Si $!A$ et $!B$ sont des !!{formula}s,
+  alors $(!A \lor !B)$ est une !!{formula}.}{}
+
+\tagitem{prvIf}{Si $!A$ et $!B$ sont des !!{formula}s,
+  alors $(!A \lif !B)$ est une !!{formula}.}{}
+
+\tagitem{prvIff}{Si $!A$ et $!B$ sont des !!{formula}s,
+  alors $(!A \liff !B)$ est une !!{formula}.}{}
+
+\tagitem{limitClause}{Rien d'autre n'est une !!{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+La définition des !!{formula}s est une \emph{définition inductive}.
+On construit, en substance, leur ensemble en une infinité d'étapes.
+À l'étape initiale, on déclare que toutes les formules atomiques sont
+des formules. Cela correspond aux premiers cas de la définition,
+c'est-à-dire aux cas
+\iftag{prvTrue}{$\ltrue$, }{}%
+\iftag{prvFalse}{$\lfalse$, }{}%
+$\Obj p_i$. Une « !!{formula} atomique » est donc une !!{formula}
+de l'une de ces formes.
+
+Les autres cas donnent des règles pour construire de nouvelles
+!!{formula}s à partir de celles déjà construites. À la deuxième étape,
+on applique ces règles aux !!{formula}s atomiques. À la troisième,
+on construit de nouvelles formules à partir des formules atomiques
+et de celles obtenues à la deuxième étape, et ainsi de suite.
+Est une !!{formula} tout ce qui finit par être construit à l'une
+de ces étapes, et rien d'autre.
+\end{explain}
+
+Lorsqu'on écrit une formule $(!B \ast !C)$ construite à partir de
+$!B$, $!C$ au moyen d'un connecteur binaire~$\ast$, on omet souvent
+la paire de parenthèses extérieure et l'on écrit simplement~$!B \ast !C$.
+
+\begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
+\begin{defn}
+Les formules construites au moyen des opérateurs définis s'entendent
+comme suit :
+
+\begin{tagenumerate}{defTrue,defFalse,defNot,defOr,defAnd,defIf,defIff,defEx,defAll}
+
+\tagitem{defTrue}{$\ltrue$ abrège
+  \iftag{prvFalse}{$\lnot\lfalse$}{$(!A \lor \lnot !A)$, où
+    l'on fixe une !!{formula} atomique~$!A$}.}{}
+
+\tagitem{defFalse}{$\lfalse$ abrège
+  \iftag{prvTrue}{$\lnot\ltrue$}{$(!A \land \lnot !A)$, où
+    l'on fixe une !!{formula} atomique~$!A$}.}{}
+
+\tagitem{defNot}{$\lnot !A$ abrège $!A \lif \lfalse$.}{}
+
+\tagitem{defOr}{$!A \lor !B$ abrège
+  \iftag{prvAnd}{$\lnot(\lnot !A \land \lnot !B)$}{$\lnot !A \lif
+    !B$}.}{}
+
+\tagitem{defAnd}{$!A \land !B$ abrège
+  \iftag{prvOr}{$\lnot(\lnot !A \lor \lnot !B)$}{$\lnot (!A \lif
+    \lnot !B)$}.}{}
+
+\tagitem{defIf}{$!A \lif !B$ abrège
+  \iftag{prvOr}{$(\lnot !A \lor !B)$}{$\lnot (!A \land \lnot !B)$}.}{}
+
+\tagitem{defIff}{$!A \liff !B$ abrège $(!A \lif !B) \land (!B
+  \lif !A)$.}{}
+\end{tagenumerate}
+\end{defn}
+\begin{editorial}
+Dans la branche où la disjonction est primitive, la source omet la
+parenthèse ouvrante de l'abréviation de l'implication. Elle est rétablie ici.
+\end{editorial}
+\end{tagblock}
+
+\begin{defn}[Identité syntaxique]
+Le symbole $\ident$ exprime l'identité syntaxique de deux chaînes de
+symboles : $!A \ident !B$ si et seulement si $!A$ et $!B$ ont la même
+longueur et comportent le même symbole à chaque position.
+\end{defn}
+
+De part et d'autre du symbole $\ident$, on peut écrire des chaînes
+obtenues par concaténation. Par exemple, $!A \ident (!B \lor !C)$
+signifie que la chaîne~$!A$ est celle obtenue en concaténant, dans cet
+ordre, une parenthèse ouvrante, la chaîne $!B$, le symbole $\lor$,
+la chaîne~$!C$ et une parenthèse fermante. On sait alors que le premier
+symbole de $!A$ est une parenthèse ouvrante, que $!A$ contient $!B$
+comme sous-chaîne à partir du deuxième symbole, que cette sous-chaîne
+est suivie de $\lor$, etc.
+
+
+\endgroup
+% END embedded source: content/propositional-logic/syntax-and-semantics/formulas.tex
+
+
+
+% BEGIN embedded source: content/propositional-logic/syntax-and-semantics/preliminaries.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{preliminaries}
+
+
+\olfileid[fr]{pl}{syn}{pre}
+
+\olsection{Préliminaires}
+
+\begin{thm}[\emph{Principe d'induction sur les !!{formula}s}]
+  \ollabel{thm:induction}
+  Soit $P$ une propriété vérifiée par toutes les !!{formula}s atomiques
+  et telle que :
+  \begin{enumerate}
+    \tagitem{prvNot}{si elle est vérifiée par~$!A$, elle l'est
+      par $\lnot !A$ ;}{}
+    \tagitem{prvAnd}{si elle est vérifiée par $!A$ et~$!B$,
+      elle l'est par $(!A \land !B)$ ;}{}
+    \tagitem{prvOr}{si elle est vérifiée par $!A$ et~$!B$,
+      elle l'est par $(!A \lor !B)$ ;}{}
+    \tagitem{prvIf}{si elle est vérifiée par $!A$ et~$!B$,
+      elle l'est par $(!A \lif !B)$ ;}{}
+    \tagitem{prvIff}{si elle est vérifiée par $!A$ et~$!B$,
+      elle l'est par $(!A \liff !B)$ ;}{}
+  \end{enumerate}
+  Alors $P$ est vérifiée par toutes les !!{formula}s.
+\end{thm}
+
+\begin{proof}
+  Soit $S$ la collection de toutes les !!{formula}s qui vérifient~$P$.
+  On a évidemment $S \subseteq \Frm[L_0]$. De plus, $S$ remplit toutes
+  les conditions de la \olref[fml]{defn:formulas} : il contient toutes
+  les !!{formula}s atomiques et il est stable par les !!{operator}s.
+  Comme $\Frm[L_0]$ est la plus petite classe ayant ces propriétés,
+  $\Frm[L_0] \subseteq S$. Ainsi $\Frm[L_0] = S$, et toute formule
+  vérifie~$P$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:balanced}
+   Toute !!{formula} de~$\Frm[L_0]$ est \emph{équilibrée} :
+   elle comporte autant de parenthèses ouvrantes que de parenthèses
+   fermantes.
+\end{prop}
+
+\begin{prob}
+Démontrer la \olref[pl][syn][pre]{prop:balanced}.
+\end{prob}
+
+\begin{prop}\ollabel{prop:noinit}
+Aucun préfixe propre d'une !!{formula} n'est une !!{formula}.
+\end{prop}
+
+\begin{prob}
+  Démontrer la \olref[pl][syn][pre]{prop:noinit}.
+\end{prob}
+
+\begin{prop}[Lecture unique]
+Toute !!{formula}~$!A$ de $\Frm[L_0]$ se décompose selon exactement
+l'un des cas suivants :
+\begin{enumerate}
+\tagitem{prvFalse}{$\lfalse$.}{}
+
+\tagitem{prvTrue}{$\ltrue$.}{}
+
+\item $\Obj p_n$, pour un certain $\Obj p_n \in \PVar$.
+
+\tagitem{prvNot}{$\lnot !B$, pour une !!{formula}~$!B$.}{}
+
+\tagitem{prvAnd}{$(!B \land !C)$, pour des !!{formula}s $!B$ et~$!C$.}{}
+
+\tagitem{prvOr}{$(!B \lor !C)$, pour des !!{formula}s $!B$ et~$!C$.}{}
+
+\tagitem{prvIf}{$(!B \lif !C)$, pour des !!{formula}s $!B$ et~$!C$.}{}
+
+\tagitem{prvIff}{$(!B \liff !C)$, pour des !!{formula}s $!B$ et~$!C$.}{}
+\end{enumerate}
+De plus, cette décomposition est \emph{unique}.
+\end{prop}
+
+\begin{proof}
+Par induction sur $!A$. Supposons par exemple que $!A$ admette deux
+lectures distinctes, $(!B \lif !C)$ et $(!B' \lif !C')$. Alors $!B$
+et $!B'$ doivent être identiques, sinon l'une serait un préfixe propre
+de l'autre. Si les deux lectures de $!A$ sont distinctes, $!C$ et $!C'$
+doivent donc être deux lectures distinctes de la même chaîne de
+symboles, ce qui contredit l'hypothèse d'induction.
+\end{proof}
+
+\begin{defn}[Substitution uniforme]
+Si $!A$ et $!B$ sont des !!{formula}s et $\Obj p_i$ une
+!!{propositional variable}, on note $\Subst{!A}{!B}{\Obj p_i}$ le
+résultat du remplacement de chaque occurrence de $\Obj p_i$ dans $!A$
+par une occurrence de $!B$. De même, on note
+$\SSubst{!A}{\subst{!B_1}{\Obj p_1},\dots,\subst{!B_n}{\Obj p_n}}$
+la substitution simultanée des !!{formula}s $!B_1$, \dots,~$!B_n$
+aux variables $\Obj p_1$, \dots,~$\Obj p_n$.
+\end{defn}
+
+\begin{prob}
+Pour chacune des cinq !!{formula}s ci-dessous, déterminer si elle
+peut s'écrire comme une substitution \(\Subst{!A}{!B}{\Obj p_i}\)
+où \(!A\) est (i)~\(\Obj p_0\) ; (ii)~\((\lnot \Obj p_0 \land \Obj
+p_1)\) ; (iii)~\(((\lnot \Obj p_0 \lif \Obj p_1) \land \Obj
+p_2)\). Préciser dans chaque cas la substitution correspondante.
+  \begin{enumerate}
+    \item \(\Obj p_1\)
+    \item \((\lnot \Obj p_0 \land \Obj p_0)\)
+    \item \(((\Obj p_0 \lor \Obj p_1) \land \Obj p_2)\)
+    \item \(\lnot ((\Obj p_0 \lif \Obj p_1) \land \Obj p_2)\)
+    \item \(((\lnot (\Obj p_0 \lif \Obj p_1) \lif (\Obj p_0 \lor \Obj p_1)) \land \lnot (\Obj p_0 \land \Obj p_1))\)
+  \end{enumerate}
+\end{prob}
+
+\begin{prob}
+Donner une définition mathématiquement rigoureuse de $\Subst{!A}{!B}{p}$
+par induction.
+\end{prob}
+
+
+\endgroup
+% END embedded source: content/propositional-logic/syntax-and-semantics/preliminaries.tex
+
+
+
+% BEGIN embedded source: content/propositional-logic/syntax-and-semantics/formation-sequences.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{formation-sequences}
+
+
+\olfileid[fr]{pl}{syn}{fseq}
+
+\olsection{Suites de formation}
+
+Définir les !!{formula}s inductivement et démontrer leurs propriétés
+par induction constituent deux démarches complémentaires, élégantes
+et efficaces. Il peut cependant être utile de suivre leur construction
+pas à pas, en partant des éléments les plus simples. C'est ce que
+permet la notion de \emph{suite de formation}.
+
+\begin{defn}[Suites de formation des formules]
+\ollabel{defn:fseq-frm}
+Une suite finie $\tuple{!A_0,\dotsc,!A_n}$ de chaînes de symboles
+du langage~$\Lang L_0$ est une \emph{suite de formation} de $!A$ si
+$!A \ident !A_n$ et si, pour tout $i \leq n$, ou bien $!A_i$ est
+une formule atomique, ou bien il existe $j,k < i$ tels que l'un
+des cas suivants se présente :
+\begin{enumerate}
+    \tagitem{prvNot}{$!A_i \ident \lnot !A_j$.}{}%
+    \tagitem{prvAnd}{$!A_i \ident (!A_j \land !A_k)$.}{}%
+    \tagitem{prvOr}{$!A_i \ident (!A_j \lor !A_k)$.}{}%
+    \tagitem{prvIf}{$!A_i \ident (!A_j \lif !A_k)$.}{}%
+    \tagitem{prvIff}{$!A_i \ident (!A_j \liff !A_k)$.}{}%
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+\[
+\tuple{
+    \Obj p_0,
+    \Obj p_1,
+    (\Obj p_1 \land \Obj p_0),
+    \lnot (\Obj p_1 \land \Obj p_0)
+}
+\]
+est une suite de formation de
+$\lnot (\Obj p_1 \land \Obj p_0)$, tout comme
+\[
+\tuple{
+    \Obj p_0,
+    \Obj p_1,
+    \Obj p_0,
+    (\Obj p_1 \land \Obj p_0),
+    (\Obj p_0 \lif \Obj p_1),
+    \lnot (\Obj p_1 \land \Obj p_0)
+}.
+\]
+%
+Comme le montre le second exemple, une suite de formation peut
+contenir des éléments superflus : des formules redondantes ou
+qui ne contribuent pas à la construction.
+\end{ex}
+
+\begin{prop}
+\ollabel{prop:formed}
+Toute !!{formula}~$!A$ de~$\Frm[L_0]$ admet une suite de formation.
+\end{prop}
+
+\begin{proof}
+Supposons $!A$ atomique. Alors la suite~$\tuple{!A}$ est une suite
+de formation de~$!A$.
+%
+Supposons maintenant que $!B$ et~$!C$ admettent respectivement les
+suites de formation $\tuple{!B_0,\dotsc,!B_n}$ et
+$\tuple{!C_0,\dotsc,!C_m}$.
+%
+\begin{enumerate}
+  \tagitem{prvNot}{Si $!A \ident \lnot !B$,
+      alors $\tuple{!B_0,\dotsc,!B_n,\lnot !B_n}$
+      est une suite de formation de~$!A$.}{}
+  \tagitem{prvAnd}{Si $!A \ident (!B \land !C)$,
+      alors $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \land !C_m)}$
+      est une suite de formation de~$!A$.}{}
+  \tagitem{prvOr}{Si $!A \ident (!B \lor !C)$,
+      alors $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lor !C_m)}$
+      est une suite de formation de~$!A$.}{}
+  \tagitem{prvIf}{Si $!A \ident (!B \lif !C)$,
+      alors $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lif !C_m)}$
+      est une suite de formation de~$!A$.}{}
+  \tagitem{prvIff}{Si $!A \ident (!B \liff !C)$,
+      alors $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \liff !C_m)}$
+      est une suite de formation de~$!A$.}{}
+\end{enumerate}
+Le principe d'induction sur les !!{formula}s permet de conclure que
+toute !!{formula} admet une suite de formation.
+\end{proof}
+
+On peut également démontrer la réciproque. Ce résultat est important :
+il montre que les deux définitions des formules sont équivalentes,
+c'est-à-dire qu'elles donnent le même ensemble. On peut donc aussi
+démontrer des théorèmes sur les formules par récurrence ordinaire
+sur la longueur des suites de formation.
+
+\begin{lem}
+\ollabel{lem:fseq-init}
+Supposons que $\tuple{!A_0,\dotsc,!A_n}$ soit une suite de formation
+de~$!A_n$ et que $k \leq n$. Alors $\tuple{!A_0,\dotsc,!A_k}$ est
+une suite de formation de~$!A_k$.
+\end{lem}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{thm}
+\ollabel{thm:fseq-frm-equiv}
+$\Frm[L_0]$ est l'ensemble de toutes les chaînes de symboles du
+langage~$\Lang L_0$ qui admettent une suite de formation.
+\end{thm}
+
+\begin{proof}
+Soit $F$ l'ensemble des chaînes de symboles du langage~$\Lang L_0$
+qui admettent une suite de formation. La
+\olref[pl][syn][fseq]{prop:formed} donne $\Frm[L_0] \subseteq F$ ;
+il reste à démontrer l'inclusion réciproque.
+
+Supposons que $!A$ admette une suite de formation
+$\tuple{!A_0,\dotsc,!A_n}$. Montrons que $!A \in \Frm[L_0]$ par
+récurrence forte sur le dernier indice~$n$. L'hypothèse de récurrence
+est la suivante : toute chaîne de symboles admettant une suite de
+formation $\tuple{!B_0,\dotsc,!B_m}$ avec $m < n$ appartient à
+$\Frm[L_0]$. Par définition, $!A_n$ est atomique, ou bien il existe
+$j,k < n$ tels que l'un des cas suivants se présente :
+\begin{enumerate}
+    \tagitem{prvNot}{$!A_n \ident \lnot !A_j$.}{}%
+    \tagitem{prvAnd}{$!A_n \ident (!A_j \land !A_k)$.}{}%
+    \tagitem{prvOr}{$!A_n \ident (!A_j \lor !A_k)$.}{}%
+    \tagitem{prvIf}{$!A_n \ident (!A_j \lif !A_k)$.}{}%
+    \tagitem{prvIff}{$!A_n \ident (!A_j \liff !A_k)$.}{}%
+\end{enumerate}
+Raisonnons par cas. Si $!A_n$ est atomique, alors
+$!A_n \in \Frm[L_0]$. Supposons plutôt que
+$!A \ident (!A_j \land !A_k)$. D'après le
+\olref[pl][syn][fseq]{lem:fseq-init},
+$\tuple{!A_0,\dotsc,!A_j}$ et $\tuple{!A_0,\dotsc,!A_k}$
+sont des suites de formation de $!A_j$ et de~$!A_k$ respectivement.
+Ce sont des préfixes propres de la suite de formation de~$!A$ :
+leurs derniers indices $j$ et $k$ sont strictement inférieurs
+à~$n$. L'hypothèse de récurrence donne donc
+$!A_j,!A_k \in \Frm[L_0]$. Par définition d'une !!{formula},
+$(!A_j \land !A_k)$ appartient lui aussi à $\Frm[L_0]$.
+Les autres cas se traitent de la même manière.
+\end{proof}
+\begin{editorial}
+La suite indexée de $0$ à $n$ a $n+1$ termes. La source confond
+par endroits longueur et dernier indice. La preuve ci-dessus
+utilise uniformément le dernier indice pour la récurrence.
+Le symbole isolé $\equiv$ de la source y est également remplacé
+par le symbole d'identité syntaxique $\ident$.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/propositional-logic/syntax-and-semantics/formation-sequences.tex
+
+
+
+% BEGIN embedded source: content/propositional-logic/syntax-and-semantics/valuations-sat.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{valuations-sat}
+
+
+\olfileid[fr]{pl}{syn}{val}
+
+\olsection{\usetoken{P}{valuation} et satisfaction}
+
+\begin{defn}[!!^{valuation}s]
+Soit $\{\True, \False\}$ l'ensemble des deux valeurs de vérité,
+« vrai » et « faux ». Une \emph{!!{valuation}} pour $\Lang{L_0}$
+est une fonction~$\pAssign{v}$ qui attribue à chaque
+!!{propositional variable} du langage soit $\True$, soit $\False$ :
+$\pAssign{v} \colon \PVar \to \{\True, \False\}$.
+\end{defn}
+
+\begin{defn}
+  Étant donnée une !!{valuation}~$\pAssign{v}$, on définit
+  inductivement la fonction d'évaluation
+  $\pValue{v} \colon \Frm[L_0] \to \{\True, \False\}$ par :
+  \begin{align*}
+    \iftag{prvFalse}{\pValue{v}(\lfalse) & = \False; \\}{}
+    \iftag{prvTrue}{\pValue{v}(\ltrue) & = \True; \\}{}
+    \pValue{v}(\Obj p_n) & = \pAssign{v}(\Obj p_n); \\
+    \iftag{prvNot}{\pValue{v}(\lnot !A) & = \begin{cases}
+        \True & \text{si } \pValue{v}(!A) = \False;\\
+        \False & \text{sinon.}
+      \end{cases} \\ }{}
+    \iftag{prvAnd}{\pValue{v}(!A \land !B) & = \begin{cases}
+        \True &
+        \text{si $\pValue{v}(!A) = \True$ et $\pValue{v}(!B) = \True$;}\\
+        \False &
+        \text{si $\pValue{v}(!A) = \False$ ou $\pValue{v}(!B) = \False$}.
+      \end{cases}\\}{}
+    \iftag{prvOr}{\pValue{v}(!A \lor !B) & = \begin{cases}
+        \True &
+        \text{si $\pValue{v}(!A) = \True$ ou $\pValue{v}(!B) = \True$;}\\
+        \False &
+        \text{si $\pValue{v}(!A) = \False$ et $\pValue{v}(!B) = \False$}.
+      \end{cases}\\}{}
+    \iftag{prvIf}{\pValue{v}(!A \lif !B) & = \begin{cases}
+        \True &
+        \text{si $\pValue{v}(!A) = \False$ ou $\pValue{v}(!B) = \True$;}\\
+        \False &
+        \text{si $\pValue{v}(!A) = \True$ et $\pValue{v}(!B) = \False$}.
+      \end{cases}\\}{}
+    \iftag{prvIff}{\pValue{v}(!A \liff !B) & = \begin{cases}
+        \True &
+        \text{si $\pValue{v}(!A) = \pValue{v}(!B)$;}\\
+        \False &
+        \text{si $\pValue{v}(!A) \neq \pValue{v}(!B)$}.
+      \end{cases}}{}
+\end{align*}
+\end{defn}
+
+\begin{explain}
+Ces clauses correspondent aux tables de vérité suivantes :
+\begin{center}
+\iftag{prvNot}{
+  \begin{tabular}{|c||c|} \hline
+    $!A$ & $ \lnot !A$ \\
+    \hline \hline
+    $\True$ & $\False$ \\
+    $\False$ & $\True$ \\
+    \hline
+  \end{tabular}
+}{}
+\iftag{prvAnd}{
+  \begin{tabular}{|cc||c|} \hline
+    $!A$ & $!B$ & $!A \land !B$ \\
+    \hline \hline
+    $\True$ & $\True$ & $\True$ \\
+    $\True$ & $\False$ & $\False$ \\
+    $\False$ & $\True$ & $\False$ \\
+    $\False$ & $\False$ & $\False$ \\
+    \hline
+  \end{tabular}
+}{}
+\iftag{prvOr}{
+  \begin{tabular}{|cc||c|} \hline
+    $!A$ & $!B$ & $!A \lor !B$ \\
+    \hline \hline
+    $\True$ & $\True$ & $\True$ \\
+    $\True$ & $\False$ & $\True$ \\
+    $\False$ & $\True$ & $\True$ \\
+    $\False$ & $\False$ & $\False$ \\
+    \hline
+  \end{tabular}
+}{}%
+\iftag{notprvNot,notprvAnd,notprvOr,notprvIf}{}{\\[1em]}
+\iftag{prvIf}{
+  \begin{tabular}{|cc||c|} \hline
+    $!A$ & $!B$ & $!A \lif !B$ \\
+    \hline \hline
+    $\True$ & $\True$ & $\True$ \\
+    $\True$ & $\False$ & $\False$ \\
+    $\False$ & $\True$ & $\True$ \\
+    $\False$ & $\False$ & $\True$ \\
+    \hline
+  \end{tabular}
+}{}
+\iftag{prvIff}{
+  \begin{tabular}{|cc||c|} \hline
+    $!A$ & $!B$ & $!A \liff !B$ \\
+    \hline \hline
+    $\True$ & $\True$ & $\True$ \\
+    $\True$ & $\False$ & $\False$ \\
+    $\False$ & $\True$ & $\False$ \\
+    $\False$ & $\False$ & $\True$ \\
+    \hline
+  \end{tabular}
+}{}
+\end{center}
+\end{explain}
+
+\begin{prob}
+On ajoute à $\Lang{L_0}$ un connecteur ternaire $\diamondsuit$ dont
+l'évaluation est donnée par
+\begin{gather*}
+  \pValue{v}(\diamondsuit( !A , !B , !C ) ) = \begin{cases}
+    \pValue{v}( !B ) &
+    \text{si $\pValue{v}(!A) = \True$;}\\
+    \pValue{v}( !C ) &
+    \text{si $\pValue{v}(!A) = \False $}.
+  \end{cases}
+\end{gather*}
+Écrire la table de vérité de ce connecteur.
+\end{prob}
+
+\begin{thm}[Détermination locale]
+\ollabel{thm:LocalDetermination}
+Supposons que les !!{valuation}s $\pAssign{v_1}$ et $\pAssign{v_2}$
+coïncident sur les !!{propositional variable}s qui figurent dans
+une !!{formula}~$!A$ : autrement dit,
+$\pAssign{v_1}(\Obj p_n) = \pAssign{v_2}(\Obj p_n)$ dès que
+$\Obj p_n$ figure dans~$!A$. Alors $\pValue{v_1}$ et $\pValue{v_2}$
+coïncident aussi sur~$!A$ :
+$\pValue{v_1}(!A) = \pValue{v_2}(!A)$.
+\end{thm}
+
+\begin{proof}
+Par induction sur $!A$.
+\end{proof}
+
+\begin{defn}[Satisfaction]
+\ollabel{defn:satisfaction}
+On peut définir inductivement la \emph{satisfaction d'une
+!!{formula}~$!A$ par une !!{valuation}~$\pAssign{v}$},
+notée $\pSat{v}{!A}$, de la façon suivante.
+(On écrit $\pSat/{v}{!A}$ pour « non $\pSat{v}{!A}$ ».)
+\begin{enumerate}
+\tagitem{prvFalse}{%
+  \indcase{!A}{\lfalse}{$\pSat/{v}{\indfrm}$.}}{}
+
+\tagitem{prvTrue}{%
+  \indcase{!A}{\ltrue}{$\pSat{v}{\indfrm}$.}}{}
+
+\item \indcase{!A}{\Obj p_i}{$\pSat{v}{\indfrm}$
+  si et seulement si $\pAssign{v}(\Obj p_i) = \True$.}
+
+\tagitem{prvNot}{%
+  \indcase{!A}{\lnot !B}{$\pSat{v}{\indfrm}$ si et seulement si
+    $\pSat/{v}{!B}$.}}{}
+
+\tagitem{prvAnd}{%
+  \indcase{!A}{(!B \land !C)}{$\pSat{v}{\indfrm}$ si et seulement si
+    $\pSat{v}{!B}$ et $\pSat{v}{!C}$.}}{}
+
+\tagitem{prvOr}{%
+  \indcase{!A}{(!B \lor !C)}{$\pSat{v}{\indfrm}$ si et seulement si
+    $\pSat{v}{!B}$ ou $\pSat{v}{!C}$ (éventuellement les deux).}}{}
+
+\tagitem{prvIf}{%
+  \indcase{!A}{(!B \lif !C)}{$\pSat{v}{\indfrm}$ si et seulement si
+    $\pSat/{v}{!B}$ ou $\pSat{v}{!C}$ (éventuellement les deux).}}{}
+
+\tagitem{prvIff}{%
+  \indcase{!A}{(!B \liff !C)}{$\pSat{v}{\indfrm}$ si et seulement si
+    $\pSat{v}{!B}$ et $\pSat{v}{!C}$ sont tous deux vrais, ou tous
+    deux faux.}}{}
+\end{enumerate}
+Si $\Gamma$ est un ensemble de !!{formula}s, $\pSat{v}{\Gamma}$
+si et seulement si $\pSat{v}{!A}$ pour toute~$!A \in \Gamma$.
+\end{defn}
+
+\begin{prop}\ollabel{prop:sat-value}
+  $\pSat{v}{!A}$ si et seulement si $\pValue{v}(!A) = \True$.
+\end{prop}
+
+\begin{proof}
+  Par induction sur~$!A$.
+\end{proof}
+
+\begin{prob}
+  Démontrer la \olref[pl][syn][val]{prop:sat-value}.
+\end{prob}
+
+
+\endgroup
+% END embedded source: content/propositional-logic/syntax-and-semantics/valuations-sat.tex
+
+
+
+% BEGIN embedded source: content/propositional-logic/syntax-and-semantics/semantic-notions.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{semantic-notions}
+
+
+\olfileid[fr]{pl}{syn}{sem}
+
+\olsection{Notions sémantiques}
+
+Définissons les notions sémantiques suivantes :
+
+\begin{defn}
+\begin{enumerate}
+\item Une !!{formula}~$!A$ est \emph{satisfaisable} s'il existe
+  une~$\pAssign{v}$ telle que $\pSat{v}{!A}$ ; elle est
+  \emph{insatisfaisable} s'il n'existe aucune $\pAssign{v}$ telle
+  que $\pSat{v}{!A}$.
+\item Une !!{formula}~$!A$ est une \emph{tautologie} si
+  $\pSat{v}{!A}$ pour toute !!{valuation}~$\pAssign{v}$.
+\item Une !!{formula}~$!A$ est \emph{contingente} si elle est
+  satisfaisable sans être une tautologie.
+\item Si $\Gamma$ est un ensemble de !!{formula}s, on écrit
+  $\Gamma \Entails !A$ (« $!A$ est conséquence logique de $\Gamma$ »)
+  si et seulement si $\pSat{v}{!A}$ pour toute
+  !!{valuation}~$\pAssign{v}$ telle que $\pSat{v}{\Gamma}$.
+\item Si $\Gamma$ est un ensemble de !!{formula}s, $\Gamma$ est
+  \emph{satisfaisable} s'il existe une !!{valuation}~$\pAssign{v}$
+  telle que $\pSat{v}{\Gamma}$ ; il est \emph{insatisfaisable}
+  dans le cas contraire.
+\end{enumerate}
+\end{defn}
+
+\begin{prob}
+Pour chacune des quatre !!{formula}s suivantes, déterminer si elle est
+(a)~satisfaisable, (b)~une tautologie et (c)~contingente.
+\begin{enumerate}
+  \item \((\Obj p_0 \lif (\lnot \Obj p_1 \lif \lnot \Obj p_0))\).
+  \item \(((\Obj p_0 \land \lnot \Obj p_1) \lif (\lnot \Obj p_0 \land \Obj p_2)) \liff ((\Obj p_2 \lif \Obj p_0) \lif (\Obj p_0 \lif \Obj p_1))\).
+  \item \((\Obj p_0 \liff \Obj p_1) \lif (\Obj p_2 \liff \lnot \Obj p_1)\).
+  \item \(((\Obj p_0 \liff (\lnot \Obj p_1 \land \Obj p_2)) \lor (\Obj p_2 \lif (\Obj p_0 \liff \Obj p_1)))\).
+\end{enumerate}
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:semanticalfacts}
+\begin{enumerate}
+\item $!A$ est une tautologie si et seulement si
+  $\emptyset \Entails !A$.
+\item Si $\Gamma \Entails !A$ et $\Gamma \Entails !A \lif !B$,
+  alors $\Gamma \Entails !B$.
+\item Si $\Gamma$ est satisfaisable, chacun de ses sous-ensembles
+  finis l'est aussi.
+\item \ollabel{def:monotonicity} Monotonie : si
+  $\Gamma \subseteq \Delta$ et $\Gamma \Entails !A$, alors
+  $\Delta \Entails !A$.
+\item \ollabel{def:Cut} Transitivité : si $\Gamma \Entails !A$ et
+  $\Delta \cup \{!A\} \Entails !B$, alors
+  $\Gamma \cup \Delta \Entails !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[pl][syn][sem]{prop:semanticalfacts}.
+\end{prob}
+
+\begin{prop}\ollabel{prop:entails-unsat}
+  $\Gamma \Entails !A$ si et seulement si
+  $\Gamma \cup \{\lnot !A\}$ est insatisfaisable.
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[pl][syn][sem]{prop:entails-unsat}.
+\end{prob}
+
+\begin{thm}[Théorème sémantique de déduction]
+  \ollabel{thm:sem-deduction}
+  $\Gamma \Entails !A \lif !B$ si et seulement si
+  $\Gamma \cup \{!A\} \Entails !B$.
+\end{thm}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[pl][syn][sem]{thm:sem-deduction}.
+\end{prob}
+
+
+\endgroup
+% END embedded source: content/propositional-logic/syntax-and-semantics/semantic-notions.tex
+
+
+\OLEndChapterHook
+
+
+\endgroup
+% END embedded source: content/propositional-logic/syntax-and-semantics/syntax-and-semantics.tex
+
+
+% BEGIN embedded source: content/first-order-logic/proof-systems/proof-systems.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proof-systems}
+
+
+\iftag{FOL}
+      {\olchapter{fol}{prf}{Systèmes de \usetoken{s}{derivation}}}
+      {\olchapter{pl}{prf}{Systèmes de \usetoken{s}{derivation}}}
+
+\begin{editorial}
+Ce chapitre rassemble des généralités sur les systèmes de
+!!{derivation}. Un manuel qui utilise un système particulier peut placer
+l'introduction et la section de présentation correspondante au début
+du chapitre consacré à ce système.
+\end{editorial}
+
+
+% BEGIN embedded source: content/first-order-logic/proof-systems/introduction.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{introduction}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{int}}
+      {\olfileid[fr]{pl}{prf}{int}}
+
+\olsection{Introduction}
+
+Une logique comporte généralement une sémantique et un système de
+!!{derivation}. La sémantique porte sur des notions telles que la vérité,
+la satisfaisabilité, la validité et la conséquence logique. Les systèmes
+de !!{derivation} ont pour objet de fournir une méthode purement
+syntaxique pour établir la conséquence logique et la validité. Ils sont
+purement syntaxiques au sens où une !!{derivation} dans un tel système
+est un objet syntaxique fini, généralement une suite (ou un autre
+agencement fini) d'!!{sentence}s ou de !!{formula}s. Un bon système de
+!!{derivation} permet de vérifier mécaniquement si une suite ou un
+agencement donné d'!!{sentence}s ou de !!{formula}s est « correct ».
+
+Les systèmes de !!{derivation} les plus simples, et historiquement les
+premiers, pour la logique du premier ordre étaient \emph{axiomatiques}.
+Une suite de !!{formula}s constitue une !!{derivation} dans un tel
+système si chacune de ses !!{formula}s appartient à un ensemble fixé
+d'« axiomes » ou se déduit de !!{formula}s antérieures de la suite par
+l'une d'un nombre fixé de « règles d'inférence ». On peut vérifier
+mécaniquement si une !!{formula} est un axiome et si elle se déduit
+correctement d'autres !!{formula}s par l'une de ces règles. Les systèmes
+axiomatiques de !!{derivation} sont faciles à décrire et se prêtent bien
+à l'étude métathéorique. Leurs !!{derivation}s sont toutefois difficiles
+à lire, à comprendre et à construire.
+
+D'autres systèmes ont été élaborés pour faciliter la construction des
+!!{derivation}s ou leur compréhension une fois achevées. C'est le cas de
+la déduction naturelle, des arbres de vérité, également appelés preuves
+par tableaux, et du calcul des séquents. Certains systèmes de
+!!{derivation} sont spécialement conçus pour l'automatisation : la méthode
+de résolution, par exemple, est facile à programmer, mais ses
+!!{derivation}s sont pratiquement impossibles à comprendre. La plupart
+de ces autres systèmes représentent les !!{derivation}s par des arbres
+de !!{formula}s plutôt que par des suites. On voit ainsi plus facilement
+de quelles autres parties dépend chaque partie d'une !!{derivation}.
+
+Pour une logique donnée, par exemple celle du premier ordre, les
+différents systèmes de !!{derivation} précisent donc de différentes
+manières ce que signifie être un \emph{théorème} pour un
+!!{sentence}, ou être !!{derivable} à partir d'autres !!{sentence}s.
+Quelle que soit la présentation retenue (!!{derivation}s axiomatiques,
+déductions naturelles, !!{derivation}s en calcul des séquents, arbres de
+vérité ou réfutations par résolution), nous voulons que ces relations
+correspondent aux notions sémantiques de validité et de conséquence
+logique. Écrivons $\Proves !A$ pour « $!A$ est un théorème » et
+« $\Gamma \Proves !A$ » pour « $!A$ est !!{derivable} à partir
+de~$\Gamma$ ». Quelle que soit la définition de~$\Proves$, nous voulons
+qu'elle corresponde à~$\Entails$, c'est-à-dire :
+\begin{enumerate}
+\item $\Proves !A$ si et seulement si $\Entails !A$ ;
+\item $\Gamma \Proves !A$ si et seulement si $\Gamma \Entails !A$.
+\end{enumerate}
+Le sens « seulement si » de ces équivalences s'appelle la
+\emph{correction}. Un système de !!{derivation} est correct si la
+!!{derivability} garantit la conséquence logique (ou la validité).
+Tout système de !!{derivation} digne de ce nom doit être correct ; un
+système incorrect ne sert à rien. En effet, une !!{derivation} a
+précisément pour fonction de donner une garantie syntaxique de validité
+ou de conséquence logique. Nous démontrerons la correction des systèmes
+de !!{derivation} que nous présenterons.
+
+Le sens réciproque, « si », est lui aussi important : il s'appelle la
+\emph{complétude}. Un système de !!{derivation} complet est assez
+puissant pour établir que $!A$ est un théorème dès que $!A$ est valide,
+et que $\Gamma \Proves !A$ dès que $\Gamma \Entails !A$.
+La complétude est plus difficile à établir, et certaines logiques
+n'admettent aucun système de !!{derivation} complet. La logique du
+premier ordre en admet. Kurt G\"odel fut le premier à démontrer la
+complétude d'un système de !!{derivation} pour la logique du premier
+ordre, dans sa thèse de 1929.
+
+Une autre notion liée aux systèmes de !!{derivation} est celle de
+\emph{cohérence}. Un ensemble d'!!{sentence}s est dit incohérent si
+l'on peut en !!{derive} n'importe quel !!{sentence}, et cohérent dans
+le cas contraire. L'incohérence est le pendant syntaxique de
+l'insatisfaisabilité : comme les ensembles insatisfaisables, les
+ensembles incohérents d'!!{sentence}s ne constituent pas de bonnes
+théories ; ils présentent un défaut fondamental. Les ensembles cohérents
+d'!!{sentence}s ne sont pas nécessairement vrais ni utiles, mais ils
+satisfont au moins cette condition minimale d'utilité logique. La
+définition précise de la cohérence d'un ensemble d'!!{sentence}s peut
+varier selon le système de !!{derivation}. Comme pour~$\Proves$, nous
+voulons cependant qu'elle coïncide avec son pendant sémantique, la
+satisfaisabilité : $\Gamma$ doit être cohérent si et seulement s'il est
+satisfaisable. Ici, le sens « seulement si » correspond à la complétude
+(la cohérence garantit la satisfaisabilité), et le sens « si » à la
+correction (la satisfaisabilité garantit la cohérence). En logique
+classique du premier ordre, les deux versions de la correction et de
+la complétude sont en fait équivalentes.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/proof-systems/introduction.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/proof-systems/sequent-calculus.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{sequent-calculus}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{seq}}
+      {\olfileid[fr]{pl}{prf}{seq}}
+
+\olsection{Le calcul des séquents}
+
+Alors que de nombreux systèmes de !!{derivation} manipulent des
+agencements d'!!{sentence}s, le calcul des séquents manipule des
+\emph{séquents}. Un séquent est une expression de la forme
+\[
+!A_1, \dots, !A_m \Sequent !B_1, \dots, !B_n,
+\]
+c'est-à-dire un couple de suites d'!!{sentence}s, séparées par le
+symbole de séquent~$\Sequent$. Chacune des deux suites peut être vide.
+Une !!{derivation} dans le calcul des séquents est un arbre de séquents
+dont ceux qui figurent tout en haut ont une forme particulière (on les
+appelle « séquents initiaux » ou « axiomes »), tandis que tout autre
+séquent se déduit de ceux qui se trouvent immédiatement au-dessus de
+lui par l'une des règles d'inférence. Ces règles manipulent les
+!!{sentence}s des séquents (en les ajoutant, en les supprimant ou en
+les réordonnant, à gauche ou à droite), ou introduisent une !!{formula}
+complexe dans la conclusion de la règle. Par exemple, la règle
+$\LeftR{\land}$ permet de passer de $!A, \Gamma \Sequent \Delta$ à
+$!A \land !B, \Gamma \Sequent \Delta$, et la règle $\RightR{\lif}$
+de $!A, \Gamma \Sequent \Delta, !B$ à
+$\Gamma \Sequent \Delta, !A \lif !B$, quels que soient $\Gamma$,
+$\Delta$, $!A$ et~$!B$. En particulier, $\Gamma$ et~$\Delta$ peuvent
+être vides.
+\begin{editorial}
+Note de l'édition française : dans l'expression générale du séquent,
+l'indice final de la suite de droite est noté $n$ au lieu de $m$ dans
+l'original. Les deux suites ont des longueurs indépendantes.
+\end{editorial}
+
+La relation $\Proves$ fondée sur le calcul des séquents se définit
+ainsi : $\Gamma \Proves !A$ si et seulement s'il existe une suite
+$\Gamma_0$ dont chaque terme $!A$ appartient à~$\Gamma$, et une
+!!{derivation} ayant le séquent~$\Gamma_0 \Sequent !A$ à sa racine.
+$!A$ est un théorème du calcul des séquents si le séquent
+$\Sequent !A$ admet une !!{derivation}. Par exemple, la
+!!{derivation} suivante établit que $\Proves (!A \land !B) \lif !A$ :
+\begin{prooftree}
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!A \land !B \fCenter !A$
+  \RightLabel{\RightR{\lif}}
+  \UnaryInf$\fCenter (!A \land !B) \lif !A$
+\end{prooftree}
+
+Un ensemble $\Gamma$ est incohérent dans le calcul des séquents s'il
+existe une !!{derivation} de $\Gamma_0 \Sequent$, où chaque
+$!A \in \Gamma_0$ appartient à~$\Gamma$ et où le membre droit du
+séquent est vide. La règle \RightR{\Weakening} permet de
+!!{derive} n'importe quel !!{sentence} d'un ensemble incohérent.
+
+Le calcul des séquents a été inventé dans les années 1930 par Gerhard
+Gentzen. Son organisation systématique et symétrique en fait un
+formalisme très utile pour élaborer une théorie des !!{derivation}s.
+Il est relativement facile d'y trouver des !!{derivation}s, mais celles-ci
+sont souvent difficiles à lire, et leur rapport avec les démonstrations
+n'est pas toujours facile à discerner. Le calcul des séquents s'est
+néanmoins révélé une approche très élégante des systèmes de
+!!{derivation}, et de nombreuses logiques possèdent un tel calcul.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/proof-systems/sequent-calculus.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/proof-systems/natural-deduction.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{natural-deduction}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{ntd}}
+      {\olfileid[fr]{pl}{prf}{ntd}}
+
+\olsection{La déduction naturelle}
+
+La déduction naturelle est un système de !!{derivation} qui vise à
+refléter le raisonnement effectif, en particulier le raisonnement
+discipliné des mathématiciens. Celui-ci suit divers schémas « naturels ».
+Par exemple, le raisonnement par cas permet d'établir une conclusion à
+partir d'une prémisse disjonctive en montrant que cette conclusion se
+déduit de chacun des deux termes de la disjonction. Le raisonnement par
+l'absurde permet d'établir une conclusion en montrant que sa négation
+mène à une contradiction. Pour démontrer une implication « si \dots
+alors \dots », on montre que le conséquent se déduit de l'antécédent.
+La déduction naturelle formalise certaines de ces inférences naturelles.
+À chaque connecteur logique et à chaque quantificateur sont associées
+deux règles, l'une d'introduction et l'autre d'élimination, qui
+correspondent chacune à un tel schéma d'inférence. Ainsi,
+$\Intro{\lif}$ correspond à la démonstration d'une implication, et
+$\Elim{\lor}$ au raisonnement par cas. La règle $\Elim{\land}$ est
+particulièrement simple : elle permet de passer de $!A \land !B$ à~$!A$
+(ou à~$!B$).
+
+La déduction naturelle se distingue notamment des autres systèmes de
+!!{derivation} par son usage des hypothèses. Une !!{derivation} en
+déduction naturelle est un arbre de !!{formula}s. Une seule !!{formula}
+figure à la racine de cet arbre ; ses « feuilles » sont des !!{formula}s
+à partir desquelles la conclusion est dérivée. En déduction naturelle,
+certaines !!{formula}s situées aux feuilles jouent un rôle au cours de la
+!!{derivation}, mais ne sont plus requises lorsque l'on atteint la
+conclusion. Cela correspond à la pratique qui consiste, dans un
+raisonnement effectif, à introduire des hypothèses qui ne restent en
+vigueur que temporairement. Par exemple, dans un raisonnement par cas,
+on suppose successivement vrai chacun des termes de la disjonction ;
+pour démontrer une implication, on suppose vrai l'antécédent ; dans un
+raisonnement par l'absurde, on suppose vraie la négation de la conclusion.
+Introduire ainsi des hypothèses temporaires, puis s'en défaire pour
+établir une étape intermédiaire, est caractéristique de la déduction
+naturelle. Les formules situées aux feuilles d'une !!{derivation} en
+déduction naturelle s'appellent des hypothèses, et certaines règles
+d'inférence permettent de les « !!{discharge} ». Par exemple, si une
+!!{derivation} établit~$!B$ à partir d'hypothèses parmi lesquelles
+figure~$!A$, la règle $\Intro{\lif}$ permet d'inférer~$!A \lif !B$ et
+de décharger toute hypothèse choisie de la forme~$!A$. Pour indiquer quelle
+inférence décharge quelles hypothèses, on marque cette inférence et
+les hypothèses qu'elle décharge d'un même numéro. Les hypothèses encore
+!!{undischarged}s à la fin de la !!{derivation} suffisent ensemble à
+garantir la vérité de la conclusion. Une !!{derivation} établit donc
+que sa conclusion est une conséquence logique de ses hypothèses
+!!{undischarged}s.
+
+La relation $\Gamma \Proves !A$ fondée sur la déduction naturelle est
+vérifiée si et seulement s'il existe une !!{derivation} dont le dernier
+!!{sentence} est~$!A$ et dont toute feuille !!{undischarged} appartient
+à~$\Gamma$. $!A$ est un théorème en déduction naturelle si et seulement
+s'il existe une !!{derivation} dont le dernier !!{sentence} est~$!A$
+et dont toutes les hypothèses sont !!{discharged}s. Par exemple, la
+!!{derivation} suivante établit que $\Proves (!A \land !B) \lif !A$ :
+\begin{prooftree}
+  \AxiomC{$\Discharge{!A \land !B}{1}$}
+  \RightLabel{\Elim{\land}}
+  \UnaryInfC{$!A$}
+  \DischargeRule{\Intro{\lif}}{1}
+  \UnaryInfC{$(!A \land !B) \lif !A$}
+\end{prooftree}
+Le numéro~$1$ indique que l'hypothèse $!A \land !B$ est
+!!{discharged} lors de l'inférence \Intro{\lif}.
+
+Un ensemble~$\Gamma$ est incohérent si et seulement si
+$\Gamma \Proves \lfalse$ en déduction naturelle. La règle \FalseInt{}
+permet de !!{derive} n'importe quel !!{sentence} d'un ensemble incohérent.
+
+Les systèmes de déduction naturelle ont été élaborés par Gerhard Gentzen
+et Stanis\l{}aw Ja\'skowski dans les années 1930, puis développés
+par Dag Prawitz et Frederic Fitch. Comme leurs inférences reflètent
+des méthodes naturelles de démonstration, ils ont la faveur des
+philosophes. Les versions de Fitch sont souvent utilisées dans les
+manuels d'introduction à la logique. En philosophie de la logique,
+on a parfois considéré que les règles de la déduction naturelle donnent
+le sens des opérateurs logiques : c'est la « sémantique fondée sur la
+théorie de la démonstration ».
+
+
+\endgroup
+% END embedded source: content/first-order-logic/proof-systems/natural-deduction.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/proof-systems/tableaux.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{tableaux}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{tab}}
+      {\olfileid[fr]{pl}{prf}{tab}}
+
+\olsection{\usetoken{P}{tableau}}
+
+Alors que de nombreux systèmes de !!{derivation} manipulent des
+agencements d'!!{sentence}s, les !!{tableau}s manipulent des
+!!{signed formula}s. Une !!{signed formula} est un couple formé d'un
+signe de valeur de vérité ($\True$ ou $\False$) et d'un !!{sentence} :
+\[
+\sFmla{\True}{!A} \text{ ou } \sFmla{\False}{!A}.
+\]
+Un !!{tableau} est constitué de !!{signed formula}s disposées dans un
+arbre qui se ramifie vers le bas. Il commence par un certain nombre
+d'\emph{hypothèses}, puis se poursuit par des !!{signed formula}s
+obtenues à partir de l'une des !!{signed formula}s situées au-dessus,
+par application d'une règle d'inférence. Chaque règle permet d'ajouter
+une ou plusieurs !!{signed formula}s à l'extrémité d'une branche,
+ou deux !!{signed formula}s côte à côte. Dans ce dernier cas, la branche
+se divise en deux, et les deux formules ajoutées constituent les
+extrémités des deux nouvelles branches.
+
+Les règles de décomposition propositionnelles, appliquées à une
+!!{signed formula} complexe, ajoutent des !!{signed formula}s dont les
+formules sont des sous-!!{formula}s immédiates. Elles vont par paires,
+une règle pour chacun des deux signes. Par exemple, la règle
+$\TRule{\True}{\land}$ s'applique à $\sFmla{\True}{!A \land !B}$ et
+permet d'ajouter les deux !!{signed formula}s $\sFmla{\True}{!A}$
+et~$\sFmla{\True}{!B}$ à l'extrémité de toute branche contenant
+$\sFmla{\True}{!A \land !B}$. La règle $\TRule{\False}{\land}$
+permet quant à elle de diviser une branche en ajoutant côte à côte
+$\sFmla{\False}{!A}$ et $\sFmla{\False}{!B}$.
+Un !!{tableau} est fermé si chacune de ses branches contient une paire
+de !!{signed formula}s $\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$
+portant sur la même formule.
+\begin{editorial}
+Note de l'édition française : la description par sous-formules est
+limitée ici aux règles de décomposition propositionnelles. La coupure,
+présentée plus loin dans l'original, n'est pas une telle règle.
+Le nom de la règle de conjonction fausse est corrigé : l'original
+y place toute la formule au lieu du seul connecteur. Dans le tableau
+ci-dessous, les deux dernières étapes portent également le nom de la
+règle de conjonction vraie, et non celui de l'implication vraie.
+\end{editorial}
+
+La relation $\Proves$ fondée sur les !!{tableau}s se définit ainsi :
+$\Gamma \Proves !A$ si et seulement s'il existe un ensemble fini
+$\Gamma_0 = \{!B_1, \dots, !B_n\} \subseteq \Gamma$ pour lequel il
+existe un !!{tableau} fermé ayant pour hypothèses
+\[
+\{\sFmla{\False}{!A}, \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}.
+\]
+Voici, par exemple, un !!{tableau} fermé qui établit que
+$\Proves (!A \land !B) \lif !A$ :
+\begin{oltableau}
+  [\sFmla{\False}{(\formula{A} \land \formula{B}) \lif \formula{A}}, just = \TAss
+    [\sFmla{\True}{\formula{A} \land \formula{B}}, just = {\TRule{\False}{\lif}[1]}
+      [\sFmla{\False}{\formula{A}}, just = {\TRule{\False}{\lif}[1]}
+        [\sFmla{\True}{\formula{A}}, just = {\TRule{\True}{\land}[2]}
+          [\sFmla{\True}{\formula{B}}, just = {\TRule{\True}{\land}[2]}, close]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+
+Un ensemble $\Gamma$ est incohérent dans le calcul des !!{tableau}s
+s'il existe un !!{tableau} fermé ayant pour hypothèses
+\[
+\{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
+\]
+pour certains $!B_i \in \Gamma$.
+
+Les !!{tableau}s ont été inventés indépendamment dans les années 1950
+par Evert Beth et Jaakko Hintikka, puis simplifiés et popularisés par
+Raymond Smullyan. Ils sont très faciles à utiliser, car leur construction
+suit une procédure très systématique. Cette propriété les rend aussi
+faciles à mettre en œuvre sur ordinateur. Toutefois, un !!{tableau}
+est souvent difficile à lire, et son rapport avec une démonstration
+n'est pas toujours facile à discerner. La méthode est par ailleurs très
+générale : de nombreuses logiques différentes possèdent des systèmes de
+!!{tableau}s. Ceux-ci aident aussi à trouver des !!{structure}s qui
+satisfont des !!{sentence}s donnés, ou des ensembles d'!!{sentence}s.
+Si l'ensemble est satisfaisable, il n'admet aucun !!{tableau} fermé :
+tout !!{tableau} possède donc une branche ouverte. On peut « lire »
+sur une branche ouverte une !!{structure} qui satisfait l'ensemble,
+à condition que toutes les règles susceptibles d'être appliquées sur
+cette branche l'aient été. Le lien avec le calcul des séquents est
+également très étroit : pour l'essentiel, un !!{tableau} fermé est une
+!!{derivation} condensée du calcul des séquents, écrite dans l'autre sens.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/proof-systems/tableaux.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/proof-systems/axiomatic-deduction.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{axiomatic-deduction}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{axd}}
+      {\olfileid[fr]{pl}{prf}{axd}}
+
+\olsection{\usetoken{P}{derivation} axiomatiques}
+
+Les systèmes de !!{derivation} axiomatiques sont les plus anciens et
+les plus simples des systèmes logiques de !!{derivation}. Leurs
+!!{derivation}s sont de simples suites d'!!{sentence}s. Une telle
+suite est une !!{derivation} correcte si chacun de ses !!{sentence}s
+$!A$ satisfait l'une des conditions suivantes :
+\begin{enumerate}
+\item $!A$ est un axiome ; ou
+\item $!A$ est un !!{element} d'un ensemble donné~$\Gamma$ d'%
+  !!{sentence}s ; ou
+\item $!A$ est justifié par une règle d'inférence.
+\end{enumerate}
+Pour être un axiome, $!A$ doit avoir la forme de l'un de plusieurs
+schémas fixés d'!!{sentence}s. De nombreux ensembles de schémas
+d'axiomes donnent un système de !!{derivation} satisfaisant, c'est-à-dire
+correct et complet, pour la logique du premier ordre. Certains sont
+organisés selon les connecteurs qu'ils régissent. Ainsi, les schémas
+\[
+!A \lif (!B \lif !A) \qquad !B \lif (!B \lor !C) \qquad (!B \land !C) \lif !B
+\]
+sont des axiomes usuels pour $\lif$, $\lor$ et~$\land$.
+Certains systèmes axiomatiques cherchent à réduire au minimum le nombre
+d'axiomes. Selon les connecteurs choisis comme primitifs, il est même
+possible de trouver des systèmes qui ne comportent qu'un seul axiome.
+
+Une règle d'inférence est un énoncé conditionnel qui donne une condition
+suffisante pour qu'un !!{sentence} d'une !!{derivation} soit justifié.
+Le modus ponens est une règle très courante : si $!A$ et $!A \lif !B$
+sont déjà justifiés, alors $!B$ l'est aussi. Autrement dit, une ligne
+d'une !!{derivation} contenant l'!!{sentence}~$!B$ est justifiée
+lorsque $!A$ et $!A \lif !B$, pour un certain !!{sentence}~$!A$,
+figurent tous deux avant~$!B$ dans cette !!{derivation}.
+
+La relation $\Proves$ fondée sur les !!{derivation}s axiomatiques se
+définit ainsi : $\Gamma \Proves !A$ si et seulement s'il existe une
+!!{derivation} dont la dernière formule est l'!!{sentence}~$!A$,
+tous les !!{sentence}s justifiés par la condition~(2) ci-dessus étant
+pris dans~$\Gamma$. $!A$ est un théorème s'il admet une
+!!{derivation} où $\Gamma$ est vide, c'est-à-dire où chaque
+!!{sentence} est justifié par~(1) ou par~(3). Voici, par exemple,
+une !!{derivation} qui établit que
+$\Proves !A \lif (!B \lif (!B \lor !A))$ :
+\begin{derivation}
+  1. & $!B \lif (!B \lor !A)$ \\
+  2. & $(!B \lif (!B \lor !A)) \lif (!A  \lif (!B \lif (!B \lor !A)))$\\
+  3. & $!A  \lif (!B \lif (!B \lor !A))$
+\end{derivation}
+L'!!{sentence} de la ligne~1 a la forme de l'axiome
+$!A \lif (!A \lor !B)$, les rôles de $!A$ et de $!B$ étant intervertis.
+Celui de la ligne~2 a la forme de l'axiome $!A \lif (!B \lif !A)$.
+Les deux lignes sont donc justifiées. La ligne~3 est justifiée par
+modus ponens : si on l'abrège par $!D$, la ligne~2 a la forme
+$!C \lif !D$, où $!C$ est $!B \lif (!B \lor !A)$, c'est-à-dire la
+ligne~1.
+\begin{editorial}
+Note de l'édition française : l'original identifie ici $\Gamma$
+exactement aux prémisses effectivement utilisées. Nous précisons que
+ces prémisses appartiennent à $\Gamma$, conformément à la définition
+formelle donnée plus loin dans l'original. Le contexte peut ainsi
+contenir des hypothèses inutilisées, y compris être infini, tandis
+qu'une dérivation reste finie.
+\end{editorial}
+
+Un ensemble $\Gamma$ est incohérent si $\Gamma \Proves \lfalse$.
+Un système axiomatique complet démontre aussi $\lfalse \lif !A$ pour
+tout~$!A$. Si $\Gamma$ est incohérent, on a donc
+$\Gamma \Proves !A$ pour tout~$!A$.
+
+Les premiers systèmes de !!{derivation} axiomatiques pour la logique
+ont été donnés par Gottlob Frege dans sa \emph{Begriffsschrift} de 1879,
+souvent considérée, pour cette raison, comme le premier ouvrage de
+logique moderne. Ils ont été perfectionnés dans les
+\emph{Principia Mathematica} d'Alfred North Whitehead et de Bertrand
+Russell, puis par David Hilbert et ses élèves dans les années 1920.
+On les appelle donc souvent « systèmes de Frege » ou « systèmes de
+Hilbert ». Ils sont très polyvalents : il est souvent facile de trouver
+un système axiomatique pour une logique donnée. Comme leurs
+!!{derivation}s ont une structure très simple et ne font appel qu'à
+une ou deux règles d'inférence, il est aussi relativement facile de
+démontrer des résultats \emph{à leur sujet}. Ils sont cependant très
+difficiles à utiliser en pratique : il est difficile d'y trouver et
+d'y rédiger des preuves.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/proof-systems/axiomatic-deduction.tex
+
+
+\OLEndChapterHook
+
+
+\endgroup
+% END embedded source: content/first-order-logic/proof-systems/proof-systems.tex
+
+\tagtrue{FOL}
 \backmatter
 % La notice Frege1884 cite elle-même cette traduction anglaise.
 \nocite{Frege1953}

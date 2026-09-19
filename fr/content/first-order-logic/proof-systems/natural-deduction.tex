@@ -1,0 +1,92 @@
+% Part: first-order-logic
+% Chapter: proof-systems
+% Section: natural-deduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{ntd}}
+      {\olfileid[fr]{pl}{prf}{ntd}}
+
+\olsection{La déduction naturelle}
+
+La déduction naturelle est un système de !!{derivation} qui vise à
+refléter le raisonnement effectif, en particulier le raisonnement
+discipliné des mathématiciens. Celui-ci suit divers schémas « naturels ».
+Par exemple, le raisonnement par cas permet d'établir une conclusion à
+partir d'une prémisse disjonctive en montrant que cette conclusion se
+déduit de chacun des deux termes de la disjonction. Le raisonnement par
+l'absurde permet d'établir une conclusion en montrant que sa négation
+mène à une contradiction. Pour démontrer une implication « si \dots
+alors \dots », on montre que le conséquent se déduit de l'antécédent.
+La déduction naturelle formalise certaines de ces inférences naturelles.
+À chaque connecteur logique et à chaque quantificateur sont associées
+deux règles, l'une d'introduction et l'autre d'élimination, qui
+correspondent chacune à un tel schéma d'inférence. Ainsi,
+$\Intro{\lif}$ correspond à la démonstration d'une implication, et
+$\Elim{\lor}$ au raisonnement par cas. La règle $\Elim{\land}$ est
+particulièrement simple : elle permet de passer de $!A \land !B$ à~$!A$
+(ou à~$!B$).
+
+La déduction naturelle se distingue notamment des autres systèmes de
+!!{derivation} par son usage des hypothèses. Une !!{derivation} en
+déduction naturelle est un arbre de !!{formula}s. Une seule !!{formula}
+figure à la racine de cet arbre ; ses « feuilles » sont des !!{formula}s
+à partir desquelles la conclusion est dérivée. En déduction naturelle,
+certaines !!{formula}s situées aux feuilles jouent un rôle au cours de la
+!!{derivation}, mais ne sont plus requises lorsque l'on atteint la
+conclusion. Cela correspond à la pratique qui consiste, dans un
+raisonnement effectif, à introduire des hypothèses qui ne restent en
+vigueur que temporairement. Par exemple, dans un raisonnement par cas,
+on suppose successivement vrai chacun des termes de la disjonction ;
+pour démontrer une implication, on suppose vrai l'antécédent ; dans un
+raisonnement par l'absurde, on suppose vraie la négation de la conclusion.
+Introduire ainsi des hypothèses temporaires, puis s'en défaire pour
+établir une étape intermédiaire, est caractéristique de la déduction
+naturelle. Les formules situées aux feuilles d'une !!{derivation} en
+déduction naturelle s'appellent des hypothèses, et certaines règles
+d'inférence permettent de les « !!{discharge} ». Par exemple, si une
+!!{derivation} établit~$!B$ à partir d'hypothèses parmi lesquelles
+figure~$!A$, la règle $\Intro{\lif}$ permet d'inférer~$!A \lif !B$ et
+de décharger toute hypothèse choisie de la forme~$!A$. Pour indiquer quelle
+inférence décharge quelles hypothèses, on marque cette inférence et
+les hypothèses qu'elle décharge d'un même numéro. Les hypothèses encore
+!!{undischarged}s à la fin de la !!{derivation} suffisent ensemble à
+garantir la vérité de la conclusion. Une !!{derivation} établit donc
+que sa conclusion est une conséquence logique de ses hypothèses
+!!{undischarged}s.
+
+La relation $\Gamma \Proves !A$ fondée sur la déduction naturelle est
+vérifiée si et seulement s'il existe une !!{derivation} dont le dernier
+!!{sentence} est~$!A$ et dont toute feuille !!{undischarged} appartient
+à~$\Gamma$. $!A$ est un théorème en déduction naturelle si et seulement
+s'il existe une !!{derivation} dont le dernier !!{sentence} est~$!A$
+et dont toutes les hypothèses sont !!{discharged}s. Par exemple, la
+!!{derivation} suivante établit que $\Proves (!A \land !B) \lif !A$ :
+\begin{prooftree}
+  \AxiomC{$\Discharge{!A \land !B}{1}$}
+  \RightLabel{\Elim{\land}}
+  \UnaryInfC{$!A$}
+  \DischargeRule{\Intro{\lif}}{1}
+  \UnaryInfC{$(!A \land !B) \lif !A$}
+\end{prooftree}
+Le numéro~$1$ indique que l'hypothèse $!A \land !B$ est
+!!{discharged} lors de l'inférence \Intro{\lif}.
+
+Un ensemble~$\Gamma$ est incohérent si et seulement si
+$\Gamma \Proves \lfalse$ en déduction naturelle. La règle \FalseInt{}
+permet de !!{derive} n'importe quel !!{sentence} d'un ensemble incohérent.
+
+Les systèmes de déduction naturelle ont été élaborés par Gerhard Gentzen
+et Stanis\l{}aw Ja\'skowski dans les années 1930, puis développés
+par Dag Prawitz et Frederic Fitch. Comme leurs inférences reflètent
+des méthodes naturelles de démonstration, ils ont la faveur des
+philosophes. Les versions de Fitch sont souvent utilisées dans les
+manuels d'introduction à la logique. En philosophie de la logique,
+on a parfois considéré que les règles de la déduction naturelle donnent
+le sens des opérateurs logiques : c'est la « sémantique fondée sur la
+théorie de la démonstration ».
+
+\end{document}

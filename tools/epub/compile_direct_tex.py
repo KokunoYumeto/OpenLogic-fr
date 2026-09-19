@@ -13,6 +13,7 @@ commands=[
  ['xelatex.exe','-disable-installer','-recorder','-interaction=nonstopmode','-halt-on-error','reader.tex'],
  ['xelatex.exe','-disable-installer','-recorder','-interaction=nonstopmode','-halt-on-error','reader.tex']
 ]
+commands.append(commands[-1].copy())
 for i,cmd in enumerate(commands,1):
  cmd[0]=shutil.which(cmd[0]);assert cmd[0]
  with open(D/('pass-'+str(i)+'.log'),'wb') as f:

@@ -1,0 +1,103 @@
+% Part: first-order-logic
+% Chapter: proof-systems
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{int}}
+      {\olfileid[fr]{pl}{prf}{int}}
+
+\olsection{Introduction}
+
+Une logique comporte généralement une sémantique et un système de
+!!{derivation}. La sémantique porte sur des notions telles que la vérité,
+la satisfaisabilité, la validité et la conséquence logique. Les systèmes
+de !!{derivation} ont pour objet de fournir une méthode purement
+syntaxique pour établir la conséquence logique et la validité. Ils sont
+purement syntaxiques au sens où une !!{derivation} dans un tel système
+est un objet syntaxique fini, généralement une suite (ou un autre
+agencement fini) d'!!{sentence}s ou de !!{formula}s. Un bon système de
+!!{derivation} permet de vérifier mécaniquement si une suite ou un
+agencement donné d'!!{sentence}s ou de !!{formula}s est « correct ».
+
+Les systèmes de !!{derivation} les plus simples, et historiquement les
+premiers, pour la logique du premier ordre étaient \emph{axiomatiques}.
+Une suite de !!{formula}s constitue une !!{derivation} dans un tel
+système si chacune de ses !!{formula}s appartient à un ensemble fixé
+d'« axiomes » ou se déduit de !!{formula}s antérieures de la suite par
+l'une d'un nombre fixé de « règles d'inférence ». On peut vérifier
+mécaniquement si une !!{formula} est un axiome et si elle se déduit
+correctement d'autres !!{formula}s par l'une de ces règles. Les systèmes
+axiomatiques de !!{derivation} sont faciles à décrire et se prêtent bien
+à l'étude métathéorique. Leurs !!{derivation}s sont toutefois difficiles
+à lire, à comprendre et à construire.
+
+D'autres systèmes ont été élaborés pour faciliter la construction des
+!!{derivation}s ou leur compréhension une fois achevées. C'est le cas de
+la déduction naturelle, des arbres de vérité, également appelés preuves
+par tableaux, et du calcul des séquents. Certains systèmes de
+!!{derivation} sont spécialement conçus pour l'automatisation : la méthode
+de résolution, par exemple, est facile à programmer, mais ses
+!!{derivation}s sont pratiquement impossibles à comprendre. La plupart
+de ces autres systèmes représentent les !!{derivation}s par des arbres
+de !!{formula}s plutôt que par des suites. On voit ainsi plus facilement
+de quelles autres parties dépend chaque partie d'une !!{derivation}.
+
+Pour une logique donnée, par exemple celle du premier ordre, les
+différents systèmes de !!{derivation} précisent donc de différentes
+manières ce que signifie être un \emph{théorème} pour un
+!!{sentence}, ou être !!{derivable} à partir d'autres !!{sentence}s.
+Quelle que soit la présentation retenue (!!{derivation}s axiomatiques,
+déductions naturelles, !!{derivation}s en calcul des séquents, arbres de
+vérité ou réfutations par résolution), nous voulons que ces relations
+correspondent aux notions sémantiques de validité et de conséquence
+logique. Écrivons $\Proves !A$ pour « $!A$ est un théorème » et
+« $\Gamma \Proves !A$ » pour « $!A$ est !!{derivable} à partir
+de~$\Gamma$ ». Quelle que soit la définition de~$\Proves$, nous voulons
+qu'elle corresponde à~$\Entails$, c'est-à-dire :
+\begin{enumerate}
+\item $\Proves !A$ si et seulement si $\Entails !A$ ;
+\item $\Gamma \Proves !A$ si et seulement si $\Gamma \Entails !A$.
+\end{enumerate}
+Le sens « seulement si » de ces équivalences s'appelle la
+\emph{correction}. Un système de !!{derivation} est correct si la
+!!{derivability} garantit la conséquence logique (ou la validité).
+Tout système de !!{derivation} digne de ce nom doit être correct ; un
+système incorrect ne sert à rien. En effet, une !!{derivation} a
+précisément pour fonction de donner une garantie syntaxique de validité
+ou de conséquence logique. Nous démontrerons la correction des systèmes
+de !!{derivation} que nous présenterons.
+
+Le sens réciproque, « si », est lui aussi important : il s'appelle la
+\emph{complétude}. Un système de !!{derivation} complet est assez
+puissant pour établir que $!A$ est un théorème dès que $!A$ est valide,
+et que $\Gamma \Proves !A$ dès que $\Gamma \Entails !A$.
+La complétude est plus difficile à établir, et certaines logiques
+n'admettent aucun système de !!{derivation} complet. La logique du
+premier ordre en admet. Kurt G\"odel fut le premier à démontrer la
+complétude d'un système de !!{derivation} pour la logique du premier
+ordre, dans sa thèse de 1929.
+
+Une autre notion liée aux systèmes de !!{derivation} est celle de
+\emph{cohérence}. Un ensemble d'!!{sentence}s est dit incohérent si
+l'on peut en !!{derive} n'importe quel !!{sentence}, et cohérent dans
+le cas contraire. L'incohérence est le pendant syntaxique de
+l'insatisfaisabilité : comme les ensembles insatisfaisables, les
+ensembles incohérents d'!!{sentence}s ne constituent pas de bonnes
+théories ; ils présentent un défaut fondamental. Les ensembles cohérents
+d'!!{sentence}s ne sont pas nécessairement vrais ni utiles, mais ils
+satisfont au moins cette condition minimale d'utilité logique. La
+définition précise de la cohérence d'un ensemble d'!!{sentence}s peut
+varier selon le système de !!{derivation}. Comme pour~$\Proves$, nous
+voulons cependant qu'elle coïncide avec son pendant sémantique, la
+satisfaisabilité : $\Gamma$ doit être cohérent si et seulement s'il est
+satisfaisable. Ici, le sens « seulement si » correspond à la complétude
+(la cohérence garantit la satisfaisabilité), et le sens « si » à la
+correction (la satisfaisabilité garantit la cohérence). En logique
+classique du premier ordre, les deux versions de la correction et de
+la complétude sont en fait équivalentes.
+
+\end{document}

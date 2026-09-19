@@ -1,0 +1,160 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: formation-sequences
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pl}{syn}{fseq}
+
+\olsection{Suites de formation}
+
+Définir les !!{formula}s inductivement et démontrer leurs propriétés
+par induction constituent deux démarches complémentaires, élégantes
+et efficaces. Il peut cependant être utile de suivre leur construction
+pas à pas, en partant des éléments les plus simples. C'est ce que
+permet la notion de \emph{suite de formation}.
+
+\begin{defn}[Suites de formation des formules]
+\ollabel{defn:fseq-frm}
+Une suite finie $\tuple{!A_0,\dotsc,!A_n}$ de chaînes de symboles
+du langage~$\Lang L_0$ est une \emph{suite de formation} de $!A$ si
+$!A \ident !A_n$ et si, pour tout $i \leq n$, ou bien $!A_i$ est
+une formule atomique, ou bien il existe $j,k < i$ tels que l'un
+des cas suivants se présente :
+\begin{enumerate}
+    \tagitem{prvNot}{$!A_i \ident \lnot !A_j$.}{}%
+    \tagitem{prvAnd}{$!A_i \ident (!A_j \land !A_k)$.}{}%
+    \tagitem{prvOr}{$!A_i \ident (!A_j \lor !A_k)$.}{}%
+    \tagitem{prvIf}{$!A_i \ident (!A_j \lif !A_k)$.}{}%
+    \tagitem{prvIff}{$!A_i \ident (!A_j \liff !A_k)$.}{}%
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+\[
+\tuple{
+    \Obj p_0,
+    \Obj p_1,
+    (\Obj p_1 \land \Obj p_0),
+    \lnot (\Obj p_1 \land \Obj p_0)
+}
+\]
+est une suite de formation de
+$\lnot (\Obj p_1 \land \Obj p_0)$, tout comme
+\[
+\tuple{
+    \Obj p_0,
+    \Obj p_1,
+    \Obj p_0,
+    (\Obj p_1 \land \Obj p_0),
+    (\Obj p_0 \lif \Obj p_1),
+    \lnot (\Obj p_1 \land \Obj p_0)
+}.
+\]
+%
+Comme le montre le second exemple, une suite de formation peut
+contenir des éléments superflus : des formules redondantes ou
+qui ne contribuent pas à la construction.
+\end{ex}
+
+\begin{prop}
+\ollabel{prop:formed}
+Toute !!{formula}~$!A$ de~$\Frm[L_0]$ admet une suite de formation.
+\end{prop}
+
+\begin{proof}
+Supposons $!A$ atomique. Alors la suite~$\tuple{!A}$ est une suite
+de formation de~$!A$.
+%
+Supposons maintenant que $!B$ et~$!C$ admettent respectivement les
+suites de formation $\tuple{!B_0,\dotsc,!B_n}$ et
+$\tuple{!C_0,\dotsc,!C_m}$.
+%
+\begin{enumerate}
+  \tagitem{prvNot}{Si $!A \ident \lnot !B$,
+      alors $\tuple{!B_0,\dotsc,!B_n,\lnot !B_n}$
+      est une suite de formation de~$!A$.}{}
+  \tagitem{prvAnd}{Si $!A \ident (!B \land !C)$,
+      alors $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \land !C_m)}$
+      est une suite de formation de~$!A$.}{}
+  \tagitem{prvOr}{Si $!A \ident (!B \lor !C)$,
+      alors $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lor !C_m)}$
+      est une suite de formation de~$!A$.}{}
+  \tagitem{prvIf}{Si $!A \ident (!B \lif !C)$,
+      alors $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lif !C_m)}$
+      est une suite de formation de~$!A$.}{}
+  \tagitem{prvIff}{Si $!A \ident (!B \liff !C)$,
+      alors $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \liff !C_m)}$
+      est une suite de formation de~$!A$.}{}
+\end{enumerate}
+Le principe d'induction sur les !!{formula}s permet de conclure que
+toute !!{formula} admet une suite de formation.
+\end{proof}
+
+On peut également démontrer la réciproque. Ce résultat est important :
+il montre que les deux définitions des formules sont équivalentes,
+c'est-à-dire qu'elles donnent le même ensemble. On peut donc aussi
+démontrer des théorèmes sur les formules par récurrence ordinaire
+sur la longueur des suites de formation.
+
+\begin{lem}
+\ollabel{lem:fseq-init}
+Supposons que $\tuple{!A_0,\dotsc,!A_n}$ soit une suite de formation
+de~$!A_n$ et que $k \leq n$. Alors $\tuple{!A_0,\dotsc,!A_k}$ est
+une suite de formation de~$!A_k$.
+\end{lem}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{thm}
+\ollabel{thm:fseq-frm-equiv}
+$\Frm[L_0]$ est l'ensemble de toutes les chaînes de symboles du
+langage~$\Lang L_0$ qui admettent une suite de formation.
+\end{thm}
+
+\begin{proof}
+Soit $F$ l'ensemble des chaînes de symboles du langage~$\Lang L_0$
+qui admettent une suite de formation. La
+\olref[pl][syn][fseq]{prop:formed} donne $\Frm[L_0] \subseteq F$ ;
+il reste à démontrer l'inclusion réciproque.
+
+Supposons que $!A$ admette une suite de formation
+$\tuple{!A_0,\dotsc,!A_n}$. Montrons que $!A \in \Frm[L_0]$ par
+récurrence forte sur le dernier indice~$n$. L'hypothèse de récurrence
+est la suivante : toute chaîne de symboles admettant une suite de
+formation $\tuple{!B_0,\dotsc,!B_m}$ avec $m < n$ appartient à
+$\Frm[L_0]$. Par définition, $!A_n$ est atomique, ou bien il existe
+$j,k < n$ tels que l'un des cas suivants se présente :
+\begin{enumerate}
+    \tagitem{prvNot}{$!A_n \ident \lnot !A_j$.}{}%
+    \tagitem{prvAnd}{$!A_n \ident (!A_j \land !A_k)$.}{}%
+    \tagitem{prvOr}{$!A_n \ident (!A_j \lor !A_k)$.}{}%
+    \tagitem{prvIf}{$!A_n \ident (!A_j \lif !A_k)$.}{}%
+    \tagitem{prvIff}{$!A_n \ident (!A_j \liff !A_k)$.}{}%
+\end{enumerate}
+Raisonnons par cas. Si $!A_n$ est atomique, alors
+$!A_n \in \Frm[L_0]$. Supposons plutôt que
+$!A \ident (!A_j \land !A_k)$. D'après le
+\olref[pl][syn][fseq]{lem:fseq-init},
+$\tuple{!A_0,\dotsc,!A_j}$ et $\tuple{!A_0,\dotsc,!A_k}$
+sont des suites de formation de $!A_j$ et de~$!A_k$ respectivement.
+Ce sont des préfixes propres de la suite de formation de~$!A$ :
+leurs derniers indices $j$ et $k$ sont strictement inférieurs
+à~$n$. L'hypothèse de récurrence donne donc
+$!A_j,!A_k \in \Frm[L_0]$. Par définition d'une !!{formula},
+$(!A_j \land !A_k)$ appartient lui aussi à $\Frm[L_0]$.
+Les autres cas se traitent de la même manière.
+\end{proof}
+\begin{editorial}
+La suite indexée de $0$ à $n$ a $n+1$ termes. La source confond
+par endroits longueur et dernier indice. La preuve ci-dessus
+utilise uniformément le dernier indice pour la récurrence.
+Le symbole isolé $\equiv$ de la source y est également remplacé
+par le symbole d'identité syntaxique $\ident$.
+\end{editorial}
+
+\end{document}

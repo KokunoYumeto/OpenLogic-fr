@@ -4,7 +4,7 @@ from lxml import etree
 import collections,copy,hashlib,json,re,zipfile
 E=Path(__file__).resolve().parent
 SOURCE=E/'conversion/source/locale/fr/reader.epub'
-OUTPUT=E/'openlogic-fr-ensembles-fonctions-construction-des-nombres.epub'
+OUTPUT=E/'openlogic-fr-ensembles-logique-propositionnelle.epub'
 HTML='http://www.w3.org/1999/xhtml'
 MATH='http://www.w3.org/1998/Math/MathML'
 sha=lambda b:hashlib.sha256(b).hexdigest()
@@ -26,6 +26,9 @@ def clone_math(e,root=False):
  for c in e:n.append(clone_math(c))
  return n
 ALT={
+ 'reader29x.svg':'Calcul des séquents. Axiome : φ ⇒ φ. Par la règle ∧L : φ ∧ ψ ⇒ φ. Par la règle →R : ⇒ (φ ∧ ψ) → φ.',
+ 'reader30x.svg':'Déduction naturelle. Hypothèse φ ∧ ψ, repérée par 1. L’élimination de la conjonction donne φ. L’introduction de l’implication, qui décharge l’hypothèse 1, donne (φ ∧ ψ) → φ.',
+ 'reader62x.svg':'Tableau fermé. Ligne 1 : 𝔽 ((φ ∧ ψ) → φ), hypothèse. Ligne 2 : 𝕋 (φ ∧ ψ), règle →𝔽 appliquée à 1. Ligne 3 : 𝔽 φ, même règle appliquée à 1. Ligne 4 : 𝕋 φ, règle ∧𝕋 appliquée à 2. Ligne 5 : 𝕋 ψ, même règle appliquée à 2. La branche est fermée par 𝔽 φ et 𝕋 φ.',
  'reader27x.svg':'Deux carrés de côté n, décalés dans un carré de côté m, se recouvrent en un carré orange. Deux carrés blancs occupent les coins opposés. Le dessin illustre la réduction géométrique utilisée pour démontrer l’irrationalité de la racine carrée de 2.',
  'reader28x.svg':'L’hôtel de Hilbert : pour chaque entier k supérieur ou égal à 1, une flèche envoie le client de la chambre k vers la chambre k + 1. La chambre 1, entourée, devient libre.',
  'reader2x.svg':'Réunion de deux ensembles A et B : toute la région appartenant à A ou à B, y compris leur intersection, est colorée.',
@@ -46,6 +49,18 @@ with zipfile.ZipFile(SOURCE) as z:
 for name,raw in list(data.items()):
  if not name.endswith('.xhtml'):continue
  r=etree.fromstring(raw)
+ # The deferred-exercise hook emits an empty chapter8 heading and TOC item.
+ # No exercise is present after this heading; retain no misleading section.
+ if name=='OEBPS/readerch8.xhtml':
+  h=r.xpath('//*[@id="exercices12"]');assert len(h)==1 and ''.join(h[0].itertext()).strip()=='Exercices'
+  following=list(h[0].itersiblings());assert not ''.join(''.join(e.itertext()) for e in following).strip()
+  parent=h[0].getparent();parent.remove(h[0])
+  for e in following:parent.remove(e)
+  report['repairs'].append({'document':name,'empty_generated_exercise_heading_removed':True,'actual_exercises_removed':0})
+ if name=='OEBPS/readerli1.xhtml':
+  links=r.xpath('//*[local-name()="a" and @href="readerch8.xhtml#exercices13"]');assert len(links)==1
+  li=links[0].getparent();assert local(li)=='li';li.getparent().remove(li)
+  report['repairs'].append({'document':name,'empty_chapter8_exercise_navigation_removed':True})
  before=bodytext(r)
  before_prose=prose(r)
  # A tab in a deferred exercise was serialized literally by TeX as ^^I.
@@ -58,6 +73,10 @@ for name,raw in list(data.items()):
   report["repairs"].append({"document":name,"serialized_tab_replaced_by_space":tab_count})
   before_prose=before_prose.replace("^^I"," ")
  mm=r.xpath('//*[local-name()="math"]')
+ for table in r.xpath('//*[local-name()="table" and @rules]'):
+  assert name=='OEBPS/readerch7.xhtml' and table.get('rules')=='groups'
+  del table.attrib['rules'];table.set('class',table.get('class','')+' fr-truth-table')
+  report['repairs'].append({'document':name,'table':table.get('id'),'obsolete_rules_groups_replaced_by_css':True})
  oldmath=[mathshape(m) for m in mm]
  changed=[]
  for index,m in enumerate(mm):
@@ -65,7 +84,7 @@ for name,raw in list(data.items()):
   fresh=clone_math(m,True);m.getparent().replace(m,fresh);mm[index]=fresh
   m=fresh
   for mi in m.xpath('.//*[@mathvariant="double-struck"]//*[local-name()="mi"]'):
-   mapping={'N':'ℕ','Z':'ℤ','Q':'ℚ','R':'ℝ','𝔹':'𝔹'}
+   mapping={'N':'ℕ','Z':'ℤ','Q':'ℚ','R':'ℝ','T':'𝕋','F':'𝔽','𝕋':'𝕋','𝔽':'𝔽','𝔹':'𝔹'}
    assert mi.text in mapping,mi.text
    mi.text=mapping[mi.text]
    changed.append({'math_index':index,'repair':'explicit Unicode double-struck character from source mathbb style'})
@@ -124,13 +143,17 @@ for name,raw in list(data.items()):
    if i>1:e.set('id',key+'-'+str(i))
   report['repairs'].append({'document':name,'unreferenced_duplicate_id':key,'occurrences':count})
  title=r.find('{'+HTML+'}head/{'+HTML+'}title')
+ if title is not None and name in ['OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml']:
+  title.text={'OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Systèmes de dérivation'}[name]
  if title is not None and not (title.text or '').strip():
-  title.text='OpenLogic : édition française — Ensembles, fonctions et construction des nombres'
+  title.text='OpenLogic : édition française — Des ensembles à la logique propositionnelle'
  r.set('{http://www.w3.org/XML/1998/namespace}lang','fr')
  assert before_prose==prose(r),name
  for img in r.xpath('//*[local-name()="img"]'):
   assert img.get('src') in ALT
   img.set('alt',ALT[img.get('src')])
+  if img.get('src') in ['reader29x.svg','reader30x.svg','reader62x.svg']:
+   img.set('id',{'reader29x.svg':'fr-proof-sequent','reader30x.svg':'fr-proof-nd','reader62x.svg':'fr-proof-tableau'}[img.get('src')])
  data[name]=etree.tostring(r,encoding='utf-8',xml_declaration=True,doctype='<!DOCTYPE html>')
  report['documents'].append({'path':name,'prose_sha256_before_and_after':sha(before_prose.encode()),'body_text_before_sha256':sha(before.encode()),'body_text_after_sha256':sha(bodytext(r).encode()),'math_roots':len(mm),'explicit_math_repairs':changed})
 # epub.js rewrites image URLs to blob URLs, defeating the generated src-prefix
@@ -138,6 +161,8 @@ for name,raw in list(data.items()):
 data['OEBPS/reader.css']+=b'\n/* Preserve diagram contrast in readers that replace asset URLs. */\nimg { background-color: white; filter: none !important; max-width: 100% !important; height: auto; }\nfigure.figure { margin-left: 0; margin-right: 0; max-width: 100%; }\n'
 data['OEBPS/reader.css']+=b'\n/* Wide equations and tables scroll locally on narrow reading screens. */\nmath { max-width: 100%; overflow-x: auto; overflow-y: hidden; }\nmath[display="block"] { display: block; }\ntable.equation-star { display: block; max-width: 100%; overflow-x: auto; }\ntable.equation-star tbody { display: table; width: 100%; }\ndiv.tabular, div.longtable { max-width: 100%; overflow-x: auto; }\n'
 data['OEBPS/reader.css']+=b'\n/* Scale the Hilbert diagram inside its narrower quotation. */\nblockquote .center img { width: 100%; object-fit: contain; }\n.center p.indent { text-indent: 0; }\n'
+data['OEBPS/reader.css']+=b'\n.fr-truth-table { border-collapse: collapse; }\n.fr-truth-table colgroup + colgroup { border-left: 1px solid currentColor; }\n'
+data['OEBPS/reader.css']+=b'\n#fr-proof-sequent, #fr-proof-nd, #fr-proof-tableau { display: block; margin: 1em auto; }\n'
 # TeX4ht carried mathml onto a bibliography document without mathematics.
 opf=etree.fromstring(data["OEBPS/content.opf"])
 for item in opf.xpath('//*[local-name()="manifest"]/*'):
@@ -151,6 +176,14 @@ for item in opf.xpath('//*[local-name()="manifest"]/*'):
   elif "properties" in item.attrib:del item.attrib["properties"]
   report["repairs"].append({"document":document,"mathml_manifest_property":has_math})
 data["OEBPS/content.opf"]=etree.tostring(opf,encoding="utf-8",xml_declaration=True)
+ncx=etree.fromstring(data['OEBPS/reader.ncx'])
+empty_nav=ncx.xpath('//*[local-name()="content" and (@src="readerch8.xhtml#x10-72000" or @src="readerch8.xhtml#Q1-10-87")]')
+assert len(empty_nav)==2
+for content in empty_nav:
+ point=content.getparent();assert local(point)=='navPoint';point.getparent().remove(point)
+for i,point in enumerate(ncx.xpath('//*[local-name()="navPoint"]'),1):point.set('playOrder',str(i))
+data['OEBPS/reader.ncx']=etree.tostring(ncx,encoding='utf-8',xml_declaration=True)
+report['repairs'].append({'document':'OEBPS/reader.ncx','empty_chapter8_exercise_navigation_removed':2})
 with zipfile.ZipFile(OUTPUT,'w') as z:
  for name in ['mimetype']+sorted(set(data)-{'mimetype'}):
   i=zipfile.ZipInfo(name,(2026,9,6,0,0,0))

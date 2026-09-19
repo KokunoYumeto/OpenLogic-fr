@@ -1,0 +1,189 @@
+% Part: propositional-logic
+% Chapter: syntax-and-semantics
+% Section: formulas
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pl}{syn}{fml}
+
+\olsection{\usetoken{P}{formula} propositionnelles}
+
+Les !!{formula}s de la logique propositionnelle sont construites à
+partir de \emph{!!{propositional variable}s}%
+\iftag{prvFalse}{\iftag{prvTrue}{,}{ et} de la constante
+propositionnelle~$\lfalse$}{}%
+\iftag{prvTrue}{ et de la constante
+propositionnelle~$\ltrue$}{} au moyen de \emph{connecteurs logiques}.
+
+\begin{enumerate}
+\item Un ensemble~$\PVar$ !!{denumerable} de
+  !!{propositional variable}s $\Obj p_0$, $\Obj p_1$, \dots
+\tagitem{prvFalse}{La constante propositionnelle de
+  !!{falsity}~$\lfalse$.}{}
+\tagitem{prvTrue}{La constante propositionnelle de
+  !!{truth}~$\ltrue$.}{}
+\item Les connecteurs logiques :
+  \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}%
+\item Les signes de ponctuation : (, ) et la virgule.
+\end{enumerate}
+
+On note $\Lang L_0$ ce langage de la logique propositionnelle.
+
+\iftag{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}{%
+Outre les connecteurs primitifs ci-dessus, on utilise les symboles
+\emph{définis} suivants :
+\startycommalist
+  \iftag{defNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{defOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{defAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{defIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{defIff}{\ycomma $\liff$ (!!{biconditional})}{}%
+  \iftag{defFalse}{\ycomma $\lfalse$ (!!{falsity})}{}%
+  \iftag{defTrue}{\ycomma $\ltrue$ (!!{truth})}{}.}{}
+
+\begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
+\begin{explain}
+Un symbole défini ne fait pas officiellement partie du langage :
+il est introduit comme abréviation informelle. Il permet d'abréger
+des formules qui deviendraient assez longues si l'on n'utilisait que
+les symboles primitifs. Cet avantage est évident, mais il y en a un
+plus important : les démonstrations deviennent plus courtes. Tout
+symbole primitif doit en effet y être traité séparément. Plus il y a
+de symboles primitifs, plus les démonstrations sont longues.
+\end{explain}
+\end{tagblock}
+
+% Alternate symbols
+
+\begin{intro}
+Vous connaissez peut-être d'autres termes ou symboles que ceux
+employés ci-dessus. Les ouvrages de logique et les enseignants
+utilisent couramment $\sim$, $\neg$ ou~!\ pour la « négation »,
+et $\wedge$, $\cdot$ ou $\&$ pour la « conjonction ».
+Le « conditionnel », ou l'« implication », se note souvent
+$\rightarrow$, $\Rightarrow$ ou $\supset$.
+\iftag{prvIff,defIff}{Le « biconditionnel », la « double implication »
+ou l'« équivalence (matérielle) » se notent $\leftrightarrow$,
+$\Leftrightarrow$ ou $\equiv$.}{}
+\iftag{prvFalse,defFalse}{Le symbole $\lfalse$ est diversement appelé
+« faux », « falsum », « absurdité » ou « bottom » (« bas »).}{}
+\iftag{prvTrue,defTrue}{Le symbole $\ltrue$ est diversement appelé
+« vrai », « verum » ou « top » (« haut »).}{}
+\end{intro}
+
+\begin{defn}[Formule]
+\ollabel{defn:formulas}
+L'ensemble~$\Frm[L_0]$ des \emph{!!{formula}s} de la logique
+propositionnelle est défini inductivement comme suit :
+\begin{enumerate}
+\tagitem{prvFalse}{$\lfalse$ est une !!{formula} atomique.}{}
+
+\tagitem{prvTrue}{$\ltrue$ est une !!{formula} atomique.}{}
+
+\item Toute !!{propositional variable}~$\Obj p_i$ est une
+  !!{formula} atomique.
+
+\tagitem{prvNot}{Si $!A$ est une !!{formula}, alors $\lnot !A$
+  est une !!{formula}.}{}
+
+\tagitem{prvAnd}{Si $!A$ et $!B$ sont des !!{formula}s,
+  alors $(!A \land !B)$ est une !!{formula}.}{}
+
+\tagitem{prvOr}{Si $!A$ et $!B$ sont des !!{formula}s,
+  alors $(!A \lor !B)$ est une !!{formula}.}{}
+
+\tagitem{prvIf}{Si $!A$ et $!B$ sont des !!{formula}s,
+  alors $(!A \lif !B)$ est une !!{formula}.}{}
+
+\tagitem{prvIff}{Si $!A$ et $!B$ sont des !!{formula}s,
+  alors $(!A \liff !B)$ est une !!{formula}.}{}
+
+\tagitem{limitClause}{Rien d'autre n'est une !!{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+La définition des !!{formula}s est une \emph{définition inductive}.
+On construit, en substance, leur ensemble en une infinité d'étapes.
+À l'étape initiale, on déclare que toutes les formules atomiques sont
+des formules. Cela correspond aux premiers cas de la définition,
+c'est-à-dire aux cas
+\iftag{prvTrue}{$\ltrue$, }{}%
+\iftag{prvFalse}{$\lfalse$, }{}%
+$\Obj p_i$. Une « !!{formula} atomique » est donc une !!{formula}
+de l'une de ces formes.
+
+Les autres cas donnent des règles pour construire de nouvelles
+!!{formula}s à partir de celles déjà construites. À la deuxième étape,
+on applique ces règles aux !!{formula}s atomiques. À la troisième,
+on construit de nouvelles formules à partir des formules atomiques
+et de celles obtenues à la deuxième étape, et ainsi de suite.
+Est une !!{formula} tout ce qui finit par être construit à l'une
+de ces étapes, et rien d'autre.
+\end{explain}
+
+Lorsqu'on écrit une formule $(!B \ast !C)$ construite à partir de
+$!B$, $!C$ au moyen d'un connecteur binaire~$\ast$, on omet souvent
+la paire de parenthèses extérieure et l'on écrit simplement~$!B \ast !C$.
+
+\begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
+\begin{defn}
+Les formules construites au moyen des opérateurs définis s'entendent
+comme suit :
+
+\begin{tagenumerate}{defTrue,defFalse,defNot,defOr,defAnd,defIf,defIff,defEx,defAll}
+
+\tagitem{defTrue}{$\ltrue$ abrège
+  \iftag{prvFalse}{$\lnot\lfalse$}{$(!A \lor \lnot !A)$, où
+    l'on fixe une !!{formula} atomique~$!A$}.}{}
+
+\tagitem{defFalse}{$\lfalse$ abrège
+  \iftag{prvTrue}{$\lnot\ltrue$}{$(!A \land \lnot !A)$, où
+    l'on fixe une !!{formula} atomique~$!A$}.}{}
+
+\tagitem{defNot}{$\lnot !A$ abrège $!A \lif \lfalse$.}{}
+
+\tagitem{defOr}{$!A \lor !B$ abrège
+  \iftag{prvAnd}{$\lnot(\lnot !A \land \lnot !B)$}{$\lnot !A \lif
+    !B$}.}{}
+
+\tagitem{defAnd}{$!A \land !B$ abrège
+  \iftag{prvOr}{$\lnot(\lnot !A \lor \lnot !B)$}{$\lnot (!A \lif
+    \lnot !B)$}.}{}
+
+\tagitem{defIf}{$!A \lif !B$ abrège
+  \iftag{prvOr}{$(\lnot !A \lor !B)$}{$\lnot (!A \land \lnot !B)$}.}{}
+
+\tagitem{defIff}{$!A \liff !B$ abrège $(!A \lif !B) \land (!B
+  \lif !A)$.}{}
+\end{tagenumerate}
+\end{defn}
+\begin{editorial}
+Dans la branche où la disjonction est primitive, la source omet la
+parenthèse ouvrante de l'abréviation de l'implication. Elle est rétablie ici.
+\end{editorial}
+\end{tagblock}
+
+\begin{defn}[Identité syntaxique]
+Le symbole $\ident$ exprime l'identité syntaxique de deux chaînes de
+symboles : $!A \ident !B$ si et seulement si $!A$ et $!B$ ont la même
+longueur et comportent le même symbole à chaque position.
+\end{defn}
+
+De part et d'autre du symbole $\ident$, on peut écrire des chaînes
+obtenues par concaténation. Par exemple, $!A \ident (!B \lor !C)$
+signifie que la chaîne~$!A$ est celle obtenue en concaténant, dans cet
+ordre, une parenthèse ouvrante, la chaîne $!B$, le symbole $\lor$,
+la chaîne~$!C$ et une parenthèse fermante. On sait alors que le premier
+symbole de $!A$ est une parenthèse ouvrante, que $!A$ contient $!B$
+comme sous-chaîne à partir du deuxième symbole, que cette sous-chaîne
+est suivie de $\lor$, etc.
+
+\end{document}

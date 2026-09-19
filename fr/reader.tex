@@ -24,9 +24,9 @@
 \setlength{\emergencystretch}{2em}
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
-\hypersetup{pdftitle={OpenLogic : édition française — Ensembles, fonctions et construction des nombres},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la logique propositionnelle},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres réels et ensembles infinis},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres et logique propositionnelle},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -37,15 +37,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Ensembles, fonctions\\et construction des nombres\par}
+{\sffamily\huge Des ensembles\\à la logique propositionnelle\par}
 \vspace{5mm}
-{\large Relations, dénombrabilité et arithmétisation :\\
-des premiers ensembles aux nombres réels et à l'infini\par}
+{\large Relations, fonctions, dénombrabilité et nombres :\\
+syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Cinquième livraison : six chapitres complets\par}
+{\large Sixième livraison : huit chapitres\par}
 \vspace{4mm}
-Cette livraison comprend quarante-cinq sections et leurs six chapitres d’organisation,
-soit 51 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend cinquante-six sections et leurs huit chapitres d’organisation,
+soit 64 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -54,6 +54,11 @@ Le cinquième chapitre construit les entiers, les rationnels et les réels,
 par les coupures de Dedekind et les classes de suites de Cauchy.
 Le sixième étudie les ensembles infinis, les algèbres de Dedekind,
 la récurrence et une autre preuve du théorème de Schröder--Bernstein.
+Le septième présente les formules propositionnelles, leur construction
+inductive, les valuations et les notions sémantiques fondamentales.
+Le huitième présente les systèmes de preuve, leur correction et leur
+complétude : calcul des séquents, déduction naturelle, tableaux et
+dérivations axiomatiques.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -76,6 +81,10 @@ des traductions d'OpenLogic}
 \olimport[content/sets-functions-relations/size-of-sets]{size-of-sets-complete}
 \olimport[content/sets-functions-relations/arithmetization]{arithmetization}
 \olimport[content/sets-functions-relations/infinite]{infinite}
+\tagfalse{FOL}
+\olimport[content/propositional-logic/syntax-and-semantics]{syntax-and-semantics}
+\olimport[content/first-order-logic/proof-systems]{proof-systems}
+\tagtrue{FOL}
 \backmatter
 % La notice Frege1884 cite elle-même cette traduction anglaise.
 \nocite{Frege1953}

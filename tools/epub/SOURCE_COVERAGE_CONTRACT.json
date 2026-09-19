@@ -1,8 +1,10 @@
 {
-  "status": "PASS_INPUT_IDENTITY",
-  "scope_units": 51,
-  "alignment_rows": 868,
-  "new_chapter_choice_anchors_checked": 468,
+  "at": "2026-09-19T21:23:29.326244+00:00",
+  "drafted_units": 65,
+  "expected_reader_units": 64,
+  "chapters": 8,
+  "sections": 56,
+  "excluded_part_driver": "OLP-0055 imports further untranslated chapters; not counted as reader-loaded",
   "units": [
     {
       "unit_id": "OLP-0005",
@@ -258,8 +260,74 @@
       "unit_id": "OLP-0053",
       "path": "content/sets-functions-relations/infinite/dedekinds-proof.tex",
       "sha256": "ed0cffb3deb7fe1bd2e73b489125a86bce35615f7997dc3eb50e577c97fdeee8"
+    },
+    {
+      "unit_id": "OLP-0056",
+      "path": "content/propositional-logic/syntax-and-semantics/syntax-and-semantics.tex",
+      "sha256": "d726e094699dff73471622849a2fd8bac73ab230fb5b20f2e717b980e9e6d255"
+    },
+    {
+      "unit_id": "OLP-0057",
+      "path": "content/propositional-logic/syntax-and-semantics/introduction.tex",
+      "sha256": "31973a3dc614a22dff63bc1c27b188e06363e03909ebd6d75dc7cce3ce5d4017"
+    },
+    {
+      "unit_id": "OLP-0058",
+      "path": "content/propositional-logic/syntax-and-semantics/formulas.tex",
+      "sha256": "9573611c2c47019d7757aec81dfb82ab7b041af7dd2ceff68504a066b1a8a54c"
+    },
+    {
+      "unit_id": "OLP-0059",
+      "path": "content/propositional-logic/syntax-and-semantics/preliminaries.tex",
+      "sha256": "67d6cbb39a157c56b43860690c70b80f7cd438559f6697b0b119afc379d807d9"
+    },
+    {
+      "unit_id": "OLP-0060",
+      "path": "content/propositional-logic/syntax-and-semantics/formation-sequences.tex",
+      "sha256": "e4417f794b06da2ec97824c1f0ffd5ab9f3a69afd7af3c7afa8c04ae541df87b"
+    },
+    {
+      "unit_id": "OLP-0061",
+      "path": "content/propositional-logic/syntax-and-semantics/valuations-sat.tex",
+      "sha256": "ec15eb2884e5f7c108a134e4376000803576bb5c13209b6ac37f621ba1e647bd"
+    },
+    {
+      "unit_id": "OLP-0062",
+      "path": "content/propositional-logic/syntax-and-semantics/semantic-notions.tex",
+      "sha256": "257f0bde54124362ac3f98251592da786480e18b4c07c28fc89b672726533721"
+    },
+    {
+      "unit_id": "OLP-0063",
+      "path": "content/first-order-logic/proof-systems/proof-systems.tex",
+      "sha256": "c9443f17ee4636028eb99650061246e26c03e0c03853d642c3dfa95dbdac7bab"
+    },
+    {
+      "unit_id": "OLP-0064",
+      "path": "content/first-order-logic/proof-systems/introduction.tex",
+      "sha256": "3ba98db536ff3e4e8abe9c6c1ffa2b3a31a01769bb6176a36258986a77974acb"
+    },
+    {
+      "unit_id": "OLP-0065",
+      "path": "content/first-order-logic/proof-systems/sequent-calculus.tex",
+      "sha256": "a1db79d2b20c0886e1a188f37596470c032b637e808866c166ab8613e6ffcb75"
+    },
+    {
+      "unit_id": "OLP-0066",
+      "path": "content/first-order-logic/proof-systems/natural-deduction.tex",
+      "sha256": "f7e5d118f49d75385e4f825cf6d029c4b634d50864ba105635cef6fcf0bddc2f"
+    },
+    {
+      "unit_id": "OLP-0067",
+      "path": "content/first-order-logic/proof-systems/tableaux.tex",
+      "sha256": "3ed9ec32f0ba742c3f9d932418a967fed02d41a4dd93019605a9c719014cf698"
+    },
+    {
+      "unit_id": "OLP-0068",
+      "path": "content/first-order-logic/proof-systems/axiomatic-deduction.tex",
+      "sha256": "de247734f6bdc1ec47919b44be0d4edc65fc7d86ffb5df8da5fe2546566067ef"
     }
   ],
-  "reader_sha256": "12ca1e18590eca9fd146382def4a98f19904204f9ce652dc082ca1025a9fa9c9",
-  "references_sha256": "b27d3d00dbfa7e15f59c6f61e45fe845b94d7024026d263597f677db4dc849ed"
+  "reader_sha256": "f59a73051d5eb142026d300e6be45575b300876bfbaf4fbc800b4d37d00139dc",
+  "config_sha256": "00edb2ea6c20894ede0c086027f8d36b8bcc176e82e1a8cc263dfeea73307ec2",
+  "status": "PREPARED_NOT_BUILT"
 }

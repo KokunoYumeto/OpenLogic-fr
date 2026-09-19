@@ -12,7 +12,7 @@ for unit in contract["units"]:
  p=C/unit["path"];raw=p.read_bytes()
  assert hashlib.sha256(raw).hexdigest()==unit["sha256"]
  if mode=="epub":
-  text=raw.decode("utf-8").replace("!!",r"\OLToken ").replace(r"0^\mathbb{R}",r"0^{\mathbb{R}}")
+  text=raw.decode("utf-8").replace("!!",r"\OLToken ").replace(r"0^\mathbb{R}",r"0^{\mathbb{R}}").replace(r"\OLToken ^{valuation}s",r"\usetoken{P}{valuation}").replace(r"\OLToken ^{bijection}",r"\usetoken{S}{bijection}")
   p.write_bytes(text.encode("utf-8"))
 if mode=="epub":
  for name in ["french-epub.cfg","reader.mk4"]:shutil.copyfile(E/name,C/name)

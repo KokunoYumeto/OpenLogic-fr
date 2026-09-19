@@ -1,0 +1,79 @@
+% Part: propositional-logic
+% Chapter: syntax-and-semantics
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pl}{syn}{int}
+
+\olsection{Introduction}
+
+La logique propositionnelle étudie des !!{formula}s construites à partir
+de !!{propositional variable}s au moyen des connecteurs propositionnels
+$\lnot$, $\land$, $\lor$, $\lif$ et $\liff$. Intuitivement,
+!!a{propositional variable}~$p$ représente une phrase ou une proposition
+qui est vraie ou fausse. Dès que les valeurs de vérité des
+!!{propositional variable}s sont fixées, celles de toutes les !!{formula}s
+construites à partir d'elles au moyen de ces connecteurs le sont aussi.
+On dit que la logique propositionnelle est \emph{vérifonctionnelle},
+car sa sémantique est donnée par des fonctions des valeurs de vérité.
+En particulier, on laisse de côté toute autre détermination du vrai
+et du faux : on ne se demande pas si quelque chose est nécessairement
+vrai plutôt que vrai de façon contingente, si l'on sait que c'est vrai,
+ou si c'est vrai maintenant plutôt que dans le passé ou dans l'avenir.
+On ne considère que deux valeurs de vérité, le vrai ($\True$) et le faux
+($\False$), et l'on exclut donc de cette étude la possibilité qu'un
+énoncé ne soit ni vrai ni faux, ou ne soit qu'à moitié vrai. On se
+limite aussi aux connecteurs pour lesquels la valeur de vérité d'une
+!!{formula} composée dépend entièrement des valeurs de vérité de ses
+constituants, et non, par exemple, de leur sens. En particulier, le
+caractère vérifonctionnel des conditionnels de l'anglais, en ce sens,
+est controversé. L'implication matérielle~$\lif$ est vérifonctionnelle ;
+d'autres logiques étudient des conditionnels qui ne le sont pas.
+
+Pour développer la théorie et la métathéorie de la logique
+propositionnelle vérifonctionnelle, il faut d'abord définir la syntaxe
+et la sémantique de ses expressions. Nous présenterons une manière de
+construire des !!{formula}s à partir de !!{propositional variable}s au
+moyen des connecteurs. D'autres définitions sont possibles. D'autres
+systèmes emploient d'autres symboles, prennent d'autres ensembles de
+connecteurs comme primitifs et utilisent autrement les parenthèses,
+voire s'en passent, comme dans la notation dite polonaise. Toutes ces
+approches ont cependant en commun de définir l'ensemble des !!{formula}s
+par des règles de formation \emph{inductives}. Si ces règles sont bien
+conçues, chaque expression ne peut essentiellement être construite que
+d'une seule manière. Cette définition inductive d'expressions à
+\emph{lecture unique} permet de leur attribuer un sens par le même
+procédé : une définition inductive.
+
+L'attribution d'un sens aux expressions relève de la sémantique. En
+logique propositionnelle, la notion centrale est celle de satisfaction
+par une !!{valuation}. Une !!{valuation}~$\pAssign{v}$ attribue les
+valeurs de vérité $\True$, $\False$ aux !!{propositional variable}s.
+Toute !!{valuation} détermine une valeur de vérité $\pValue{v}(!A)$
+pour chaque !!{formula}~$!A$. Une !!{formula} est satisfaite par une
+!!{valuation}~$\pAssign{v}$ si et seulement si
+$\pValue{v}(!A) = \True$ ; on écrit alors $\pSat{v}{!A}$.
+Cette relation peut elle aussi se définir par induction sur la
+structure de~$!A$. Les fonctions de vérité des connecteurs permettent
+par exemple de définir la satisfaction de $!A \land !B$ à partir de
+la satisfaction, ou de la non-satisfaction, de $!A$ et de~$!B$.
+
+À partir de la relation de satisfaction $\pSat{v}{!A}$ pour les
+formules, on définit les notions sémantiques fondamentales de
+tautologie, de conséquence logique et de satisfaisabilité.
+Une !!{formula} est une tautologie, $\Entails !A$, si toute
+!!{valuation} la satisfait, c'est-à-dire si $\pValue{v}(!A) = \True$
+pour toute~$\pAssign{v}$. Elle est conséquence logique d'un ensemble
+de !!{formula}s, $\Gamma \Entails !A$, si toute !!{valuation} qui
+satisfait toutes les !!{formula}s de~$\Gamma$ satisfait également~$!A$.
+Un ensemble de !!{formula}s est satisfaisable s'il existe une
+!!{valuation} qui satisfait simultanément toutes ses !!{formula}s.
+Les !!{formula}s étant définies inductivement, et la satisfaction
+étant à son tour définie par induction sur leur structure, on peut
+utiliser l'induction pour démontrer des propriétés de cette sémantique
+et établir des liens entre les notions ainsi définies.
+
+\end{document}

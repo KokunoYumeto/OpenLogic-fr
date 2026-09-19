@@ -6,9 +6,36 @@
 \settexttoken{formula}{formule}{formules}[Formule][Formules]
 \definetoken{a}{formula}{une}
 \definetoken{A}{formula}{Une}
+\settexttoken{propositional variable}{variable propositionnelle}{variables propositionnelles}[Variable propositionnelle][Variables propositionnelles]
+\definetoken{a}{propositional variable}{une}
+\definetoken{A}{propositional variable}{Une}
+\settexttoken{valuation}{valuation}{valuations}[Valuation][Valuations]
+\definetoken{a}{valuation}{une}
+\definetoken{A}{valuation}{Une}
+\settexttoken{structure}{structure}{structures}[Structure][Structures]
+\settexttoken{conditional}{implication matérielle}{implications matérielles}[Implication matérielle][Implications matérielles]
+\settexttoken{biconditional}{équivalence matérielle}{équivalences matérielles}[Équivalence matérielle][Équivalences matérielles]
+\settexttoken{truth}{vérité}{vérités}[Vérité][Vérités]
+\settexttoken{falsity}{fausseté}{faussetés}[Fausseté][Faussetés]
+\settexttoken{operator}{connecteur}{connecteurs}[Connecteur][Connecteurs]
 \settexttoken{derivation}{dérivation}{dérivations}[Dérivation][Dérivations]
 \definetoken{a}{derivation}{une}
 \definetoken{A}{derivation}{Une}
+\settexttoken{sentence}{énoncé}{énoncés}[Énoncé][Énoncés]
+\definetoken{a}{sentence}{un}
+\definetoken{A}{sentence}{Un}
+\settexttoken{derive}{dériver}{dérive}[Dériver][Dérive]
+\settexttoken{derivable}{dérivable}{dérivables}[Dérivable][Dérivables]
+\settexttoken{derivability}{dérivabilité}{dérivabilités}[Dérivabilité][Dérivabilités]
+\settexttoken{tableau}{tableau}{tableaux}[Tableau][Tableaux]
+\definetoken{a}{tableau}{un}
+\definetoken{A}{tableau}{Un}
+\settexttoken{signed formula}{formule signée}{formules signées}[Formule signée][Formules signées]
+\definetoken{a}{signed formula}{une}
+\definetoken{A}{signed formula}{Une}
+\settexttoken{discharge}{décharger}{décharge}[Décharger][Décharge]
+\settexttoken{discharged}{déchargée}{déchargées}[Déchargée][Déchargées]
+\settexttoken{undischarged}{non déchargée}{non déchargées}[Non déchargée][Non déchargées]
 \settexttoken{injective}{injective}{injectives}[Injective][Injectives]
 \settexttoken{surjective}{surjective}{surjectives}[Surjective][Surjectives]
 \settexttoken{bijective}{bijective}{bijectives}[Bijective][Bijectives]
@@ -33,3 +60,4 @@
     \par\medskip\noindent\emph{#1}\par\nobreak #4%
     \par\medskip\noindent\emph{#2}\par\nobreak #5%
   \else\oliflabeldef{#3}{#4}{#5}\fi}
+\renewcommand{\TAss}{Hypothèse}

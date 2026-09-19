@@ -1,0 +1,97 @@
+% Part: first-order-logic
+% Chapter: proof-systems
+% Section: axiomatic-deduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{axd}}
+      {\olfileid[fr]{pl}{prf}{axd}}
+
+\olsection{\usetoken{P}{derivation} axiomatiques}
+
+Les systèmes de !!{derivation} axiomatiques sont les plus anciens et
+les plus simples des systèmes logiques de !!{derivation}. Leurs
+!!{derivation}s sont de simples suites d'!!{sentence}s. Une telle
+suite est une !!{derivation} correcte si chacun de ses !!{sentence}s
+$!A$ satisfait l'une des conditions suivantes :
+\begin{enumerate}
+\item $!A$ est un axiome ; ou
+\item $!A$ est un !!{element} d'un ensemble donné~$\Gamma$ d'%
+  !!{sentence}s ; ou
+\item $!A$ est justifié par une règle d'inférence.
+\end{enumerate}
+Pour être un axiome, $!A$ doit avoir la forme de l'un de plusieurs
+schémas fixés d'!!{sentence}s. De nombreux ensembles de schémas
+d'axiomes donnent un système de !!{derivation} satisfaisant, c'est-à-dire
+correct et complet, pour la logique du premier ordre. Certains sont
+organisés selon les connecteurs qu'ils régissent. Ainsi, les schémas
+\[
+!A \lif (!B \lif !A) \qquad !B \lif (!B \lor !C) \qquad (!B \land !C) \lif !B
+\]
+sont des axiomes usuels pour $\lif$, $\lor$ et~$\land$.
+Certains systèmes axiomatiques cherchent à réduire au minimum le nombre
+d'axiomes. Selon les connecteurs choisis comme primitifs, il est même
+possible de trouver des systèmes qui ne comportent qu'un seul axiome.
+
+Une règle d'inférence est un énoncé conditionnel qui donne une condition
+suffisante pour qu'un !!{sentence} d'une !!{derivation} soit justifié.
+Le modus ponens est une règle très courante : si $!A$ et $!A \lif !B$
+sont déjà justifiés, alors $!B$ l'est aussi. Autrement dit, une ligne
+d'une !!{derivation} contenant l'!!{sentence}~$!B$ est justifiée
+lorsque $!A$ et $!A \lif !B$, pour un certain !!{sentence}~$!A$,
+figurent tous deux avant~$!B$ dans cette !!{derivation}.
+
+La relation $\Proves$ fondée sur les !!{derivation}s axiomatiques se
+définit ainsi : $\Gamma \Proves !A$ si et seulement s'il existe une
+!!{derivation} dont la dernière formule est l'!!{sentence}~$!A$,
+tous les !!{sentence}s justifiés par la condition~(2) ci-dessus étant
+pris dans~$\Gamma$. $!A$ est un théorème s'il admet une
+!!{derivation} où $\Gamma$ est vide, c'est-à-dire où chaque
+!!{sentence} est justifié par~(1) ou par~(3). Voici, par exemple,
+une !!{derivation} qui établit que
+$\Proves !A \lif (!B \lif (!B \lor !A))$ :
+\begin{derivation}
+  1. & $!B \lif (!B \lor !A)$ \\
+  2. & $(!B \lif (!B \lor !A)) \lif (!A  \lif (!B \lif (!B \lor !A)))$\\
+  3. & $!A  \lif (!B \lif (!B \lor !A))$
+\end{derivation}
+L'!!{sentence} de la ligne~1 a la forme de l'axiome
+$!A \lif (!A \lor !B)$, les rôles de $!A$ et de $!B$ étant intervertis.
+Celui de la ligne~2 a la forme de l'axiome $!A \lif (!B \lif !A)$.
+Les deux lignes sont donc justifiées. La ligne~3 est justifiée par
+modus ponens : si on l'abrège par $!D$, la ligne~2 a la forme
+$!C \lif !D$, où $!C$ est $!B \lif (!B \lor !A)$, c'est-à-dire la
+ligne~1.
+\begin{editorial}
+Note de l'édition française : l'original identifie ici $\Gamma$
+exactement aux prémisses effectivement utilisées. Nous précisons que
+ces prémisses appartiennent à $\Gamma$, conformément à la définition
+formelle donnée plus loin dans l'original. Le contexte peut ainsi
+contenir des hypothèses inutilisées, y compris être infini, tandis
+qu'une dérivation reste finie.
+\end{editorial}
+
+Un ensemble $\Gamma$ est incohérent si $\Gamma \Proves \lfalse$.
+Un système axiomatique complet démontre aussi $\lfalse \lif !A$ pour
+tout~$!A$. Si $\Gamma$ est incohérent, on a donc
+$\Gamma \Proves !A$ pour tout~$!A$.
+
+Les premiers systèmes de !!{derivation} axiomatiques pour la logique
+ont été donnés par Gottlob Frege dans sa \emph{Begriffsschrift} de 1879,
+souvent considérée, pour cette raison, comme le premier ouvrage de
+logique moderne. Ils ont été perfectionnés dans les
+\emph{Principia Mathematica} d'Alfred North Whitehead et de Bertrand
+Russell, puis par David Hilbert et ses élèves dans les années 1920.
+On les appelle donc souvent « systèmes de Frege » ou « systèmes de
+Hilbert ». Ils sont très polyvalents : il est souvent facile de trouver
+un système axiomatique pour une logique donnée. Comme leurs
+!!{derivation}s ont une structure très simple et ne font appel qu'à
+une ou deux règles d'inférence, il est aussi relativement facile de
+démontrer des résultats \emph{à leur sujet}. Ils sont cependant très
+difficiles à utiliser en pratique : il est difficile d'y trouver et
+d'y rédiger des preuves.
+
+\end{document}

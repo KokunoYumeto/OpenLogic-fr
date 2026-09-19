@@ -8434,3 +8434,1039 @@ Passages de référence : Pt03, R01, R02.
 **Question de révision :** La transition reste-t-elle naturelle vers le prochain chapitre axiomaticien ?
 
 Passages de référence : R02.
+
+## C595 — OLP-0055-B04
+
+**Choix :** Logique propositionnelle
+
+**Autre formulation envisagée :** Calcul propositionnel
+
+**Motif :** Le titre désigne la discipline; les deux formulations sont attestées dans le corpus. La première maintient la correspondance avec le titre de partie OLP.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Logique propositionnelle » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H22.
+
+## C596 — OLP-0055-B05
+
+**Choix :** Balise FOL désactivée et changement de domaine
+
+**Autre formulation envisagée :** Version propositionnelle obtenue en supprimant les quantificateurs
+
+**Motif :** La formulation complète garde les prédicats, termes et structures également supprimés; les imports et deux changements de balise sont identiques. Les témoins gouvernent seulement les termes propositionnels.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Balise FOL désactivée et changement de domaine » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H22, PLX02.
+
+## C597 — OLP-0055-B06
+
+**Choix :** Complétude fonctionnelle des connecteurs
+
+**Autre formulation envisagée :** Complétude vérifonctionnelle
+
+**Motif :** Le projet annoncé porte sur les fonctions de vérité exprimables, distinctes du théorème de complétude des systèmes de preuve. Aucun résultat supplémentaire n’est ajouté.
+
+**Confiance et limites :** L’expression exacte complétude fonctionnelle n’est pas attestée dans les passages consultés; choix descriptif à confirmer lors du chapitre consacré à l’expressivité.
+
+**Question de révision :** Le choix « Complétude fonctionnelle des connecteurs » conserve-t-il au mieux cette distinction et le registre du passage ? L’expression exacte complétude fonctionnelle n’est pas attestée dans les passages consultés; choix descriptif à confirmer lors du chapitre consacré à l’expressivité.
+
+Passages de référence : H19, CB01.
+
+## C598 — OLP-0056-B04, OLP-0056-B05
+
+**Choix :** Syntaxe et sémantique; introduction progressive
+
+**Autre formulation envisagée :** Syntaxe et interprétation; introduction élémentaire
+
+**Motif :** Le titre conserve les deux domaines. Progressive rend gentle sans abaisser le niveau; la note annonce plus d’exemples et reste une note de l’original.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Syntaxe et sémantique; introduction progressive » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22.
+
+## C599 — OLP-0057-B05
+
+**Choix :** Introduction
+
+**Autre formulation envisagée :** Présentation
+
+**Motif :** Titre courant conservé; le bloc est du texte, pas un pilote formel.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Introduction » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H22.
+
+## C600 — OLP-0057-B06
+
+**Choix :** Vérifonctionnelle; implication matérielle
+
+**Autre formulation envisagée :** Fonctionnelle quant à la vérité; conditionnel matériel
+
+**Motif :** Le passage Beyssade distingue les fonctions de valeurs et le sens naturel. Les restrictions modale, épistémique et temporelle restent toutes présentes. La controverse concerne explicitement les conditionnels anglais, sans généralisation silencieuse au français.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Vérifonctionnelle; implication matérielle » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : CB01, H19, PLX02.
+
+## C601 — OLP-0057-B07
+
+**Choix :** Lecture unique; définition inductive
+
+**Autre formulation envisagée :** Décomposition non ambiguë; définition par récurrence
+
+**Motif :** Le témoin Polytechnique lie le parenthésage à l’unicité. La traduction conserve les variantes de symboles, primitifs et notation polonaise; la définition sémantique n’est légitimée qu’après cette unicité.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Lecture unique; définition inductive » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22, PLX01.
+
+## C602 — OLP-0057-B08
+
+**Choix :** Satisfaction par une valuation
+
+**Autre formulation envisagée :** Vérité dans une interprétation
+
+**Motif :** Valuation distingue l’attribution aux variables de son prolongement aux formules. Le biconditionnel et la notation de satisfaction demeurent explicites; par privilégie l’agent de satisfait, comme chez les deux témoins.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Satisfaction par une valuation » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H23, PLX02.
+
+## C603 — OLP-0057-B09
+
+**Choix :** Conséquence logique et satisfaisabilité
+
+**Autre formulation envisagée :** Entraînement sémantique et possibilité de satisfaction
+
+**Motif :** Chaque quantificateur est conservé : toute valuation pour tautologie et conséquence, une même valuation pour toutes les formules d’un ensemble satisfaisable. Sentences est rendu ici par formules, objets déjà définis en logique propositionnelle.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Conséquence logique et satisfaisabilité » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H24, H25, PLX03.
+
+## C604 — OLP-0058-B05, OLP-0058-B06
+
+**Choix :** Formules propositionnelles construites à partir de variables et constantes
+
+**Autre formulation envisagée :** Expressions propositionnelles obtenues avec des lettres et constantes
+
+**Motif :** Formule et variable suivent Polytechnique; les quatre combinaisons de présence des constantes ont été lues. La conjonction et est réparée lorsque seule la constante vraie est primitive.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Formules propositionnelles construites à partir de variables et constantes » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H22, PLX02.
+
+## C605 — OLP-0058-B07, OLP-0058-B08, OLP-0058-B09
+
+**Choix :** Ensemble infini dénombrable; symboles primitifs et définis
+
+**Autre formulation envisagée :** Suite de variables; connecteurs de base et abréviations
+
+**Motif :** Denumerable garde la convention infinie de l’édition. Les cinq connecteurs, deux constantes, ponctuation et nom du langage restent énumérés; on déplace l’adjectif après ensemble pour éviter un article anglais. Le témoin ne remplace pas les choix de primitifs OLP.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Ensemble infini dénombrable; symboles primitifs et définis » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H22, PLX02.
+
+## C606 — OLP-0058-B10
+
+**Choix :** Avantage des symboles définis pour la longueur des preuves
+
+**Autre formulation envisagée :** Les abréviations simplifient les démonstrations
+
+**Motif :** La version développée garde les deux avantages distincts et la raison : chaque primitif exige un cas de preuve. Ce raisonnement vient d’OLP; le canon ne fournit que le registre inductif.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Avantage des symboles définis pour la longueur des preuves » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22.
+
+## C607 — OLP-0058-B12
+
+**Choix :** Conditionnel, double implication, falsum et verum
+
+**Autre formulation envisagée :** Implication, équivalence, faux et vrai seuls
+
+**Motif :** La liste de synonymes et tous les signes sont conservés. Bottom et top restent visibles avec une glose française, plutôt que d’effacer les noms que des lecteurs peuvent rencontrer.
+
+**Confiance et limites :** Les appellations bas/haut sont des gloses explicatives d’anglais, pas des attestations revendiquées du corpus.
+
+**Question de révision :** Le choix « Conditionnel, double implication, falsum et verum » conserve-t-il au mieux cette distinction et le registre du passage ? Les appellations bas/haut sont des gloses explicatives d’anglais, pas des attestations revendiquées du corpus.
+
+Passages de référence : PLX02, CB01.
+
+## C608 — OLP-0058-B13, OLP-0058-B14, OLP-0058-B15, OLP-0058-B16, OLP-0058-B17, OLP-0058-B18, OLP-0058-B19, OLP-0058-B20, OLP-0058-B21
+
+**Choix :** Définition inductive et clause de clôture
+
+**Autre formulation envisagée :** Règles de construction des formules
+
+**Motif :** Toutes les clauses conditionnelles sont conservées, y compris les constantes atomiques et Rien d’autre sous limitClause. La terminologie ne modifie ni les parenthèses ni l’arité des connecteurs.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Définition inductive et clause de clôture » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H22, PLX01.
+
+## C609 — OLP-0058-B22, OLP-0058-B23
+
+**Choix :** Construction en une infinité d’étapes; finit par être construit
+
+**Autre formulation envisagée :** Construction progressive par niveaux
+
+**Motif :** La suite d’étapes est infinie mais chaque formule apparaît à une étape finie; cette distinction est portée par finit par. Le tableau des constantes actives reste balisé.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Construction en une infinité d’étapes; finit par être construit » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22.
+
+## C610 — OLP-0058-B24
+
+**Choix :** Paire de parenthèses extérieure
+
+**Autre formulation envisagée :** Parenthèses principales
+
+**Motif :** Extérieure décrit exactement l’omission permise; aucune associativité ni priorité supplémentaire n’est introduite.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Paire de parenthèses extérieure » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : PLX01.
+
+## C611 — OLP-0058-B25, OLP-0058-B27, OLP-0058-B28, OLP-0058-B29, OLP-0058-B30, OLP-0058-B31, OLP-0058-B32, OLP-0058-B33
+
+**Choix :** Abrège; formule atomique fixée
+
+**Autre formulation envisagée :** Est défini comme; une formule atomique quelconque
+
+**Motif :** Les abréviations n’appartiennent pas officiellement au langage; fixée garde le choix constant de A. Chaque branche conserve sa formule. La parenthèse ouvrante manquante de defIf/prvOr est rétablie et signalée dans une note éditoriale.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Abrège; formule atomique fixée » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H22, PLX02.
+
+## C612 — OLP-0058-B34, OLP-0058-B35
+
+**Choix :** Identité syntaxique; chaîne et sous-chaîne
+
+**Autre formulation envisagée :** Égalité de mots; facteur d’un mot
+
+**Motif :** La définition compare longueur et position des signes, pas valeur de vérité. Le canon aide à distinguer syntaxe et équivalence; OLP gouverne la signification du symbole ident et l’ordre de concaténation.
+
+**Confiance et limites :** Identité syntaxique n’est pas cité comme formule exacte de ces passages; sa définition explicite justifie ce choix réversible.
+
+**Question de révision :** Le choix « Identité syntaxique; chaîne et sous-chaîne » conserve-t-il au mieux cette distinction et le registre du passage ? Identité syntaxique n’est pas cité comme formule exacte de ces passages; sa définition explicite justifie ce choix réversible.
+
+Passages de référence : PLX01, PLX03.
+
+## C613 — OLP-0059-B05, OLP-0059-B06
+
+**Choix :** Principe d’induction sur les formules
+
+**Autre formulation envisagée :** Principe de récurrence structurelle
+
+**Motif :** La base couvre toutes les formules atomiques; chaque connecteur actif a sa clause de transmission. Induction structurelle reste distincte de la récurrence sur un entier.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Principe d’induction sur les formules » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22.
+
+## C614 — OLP-0059-B07
+
+**Choix :** Stable par les connecteurs; plus petite classe
+
+**Autre formulation envisagée :** Fermée sous les opérations; classe minimale
+
+**Motif :** Stable par est la tournure française retenue; minimalité par inclusion donne bien les deux inclusions, et non une simple propriété de clôture.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Stable par les connecteurs; plus petite classe » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22.
+
+## C615 — OLP-0059-B08, OLP-0059-B09, OLP-0059-B10, OLP-0059-B11
+
+**Choix :** Parenthèses ouvrantes et fermantes; préfixe propre
+
+**Autre formulation envisagée :** Parenthèses gauches et droites; segment initial strict
+
+**Motif :** Le témoin atteste précisément le parenthésage et le préfixe propre. Propre exclut la formule entière. Les demandes de preuve restent des exercices avec les références originales.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Parenthèses ouvrantes et fermantes; préfixe propre » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : PLX01.
+
+## C616 — OLP-0059-B12, OLP-0059-B13, OLP-0059-B14, OLP-0059-B15, OLP-0059-B16, OLP-0059-B17, OLP-0059-B18, OLP-0059-B19
+
+**Choix :** Lecture unique; décomposition
+
+**Autre formulation envisagée :** Analyse syntaxique unique
+
+**Motif :** Le résultat exige à la fois un cas unique et des constituants uniques. Les clauses atomiques, négatives et binaires restent dans leur ordre, avec leurs balises.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Lecture unique; décomposition » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : PLX01.
+
+## C617 — OLP-0059-B20
+
+**Choix :** Lectures distinctes de la même chaîne
+
+**Autre formulation envisagée :** Analyses différentes d’une même expression
+
+**Motif :** L’argument de préfixe propre identifie B et B′; seul le suffixe peut alors différer, contradiction par induction. Il s’agit d’identité de chaînes, sans recours aux valeurs de vérité.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Lectures distinctes de la même chaîne » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : PLX01.
+
+## C618 — OLP-0059-B21
+
+**Choix :** Substitution uniforme et simultanée
+
+**Autre formulation envisagée :** Remplacement systématique et substitution parallèle
+
+**Motif :** Chaque occurrence est remplacée; simultanée interdit de réappliquer séquentiellement un remplacement aux formules déjà insérées. Les indices et l’ordre des arguments Subst/SSubst sont conservés.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Substitution uniforme et simultanée » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : PLX04, H25.
+
+## C619 — OLP-0059-B22, OLP-0059-B23
+
+**Choix :** Déterminer si elle peut s’écrire comme une substitution
+
+**Autre formulation envisagée :** Trouver une substitution lorsqu’elle existe
+
+**Motif :** Les cinq formules, trois choix de A et la possibilité de non-existence sont préservés. La dernière demande demeure une définition rigoureuse par induction, pas une preuve déjà fournie.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Déterminer si elle peut s’écrire comme une substitution » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : PLX04.
+
+## C620 — OLP-0060-B05, OLP-0060-B06, OLP-0060-B07
+
+**Choix :** Suite de formation
+
+**Autre formulation envisagée :** Suite de construction
+
+**Motif :** L’objet est une suite finie de chaînes; chaque terme provient d’étapes antérieures. La terminologie décrit la formation syntaxique sans prétendre attester ce syntagme exact. Les indices j,k peuvent coïncider et k est inutilisé dans le cas unaire.
+
+**Confiance et limites :** Aucune occurrence française de suite de formation n’a été trouvée dans les témoins consultés; définition OLP intégralement conservée.
+
+**Question de révision :** Le choix « Suite de formation » conserve-t-il au mieux cette distinction et le registre du passage ? Aucune occurrence française de suite de formation n’a été trouvée dans les témoins consultés; définition OLP intégralement conservée.
+
+Passages de référence : H21, PLX01.
+
+## C621 — OLP-0060-B08
+
+**Choix :** Éléments superflus
+
+**Autre formulation envisagée :** Formules inutiles à la construction
+
+**Motif :** La glose conserve les deux possibilités : répétition redondante et formule non utilisée. Les deux suites, leur ordre et tous leurs termes sont inchangés.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Éléments superflus » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22.
+
+## C622 — OLP-0060-B09, OLP-0060-B10
+
+**Choix :** Admet une suite de formation
+
+**Autre formulation envisagée :** Possède une construction finie
+
+**Motif :** La preuve conserve le cas atomique, la concaténation des deux suites et l’ajout du connecteur final; aucune obligation d’utiliser tous les termes n’est ajoutée.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Admet une suite de formation » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22.
+
+## C623 — OLP-0060-B11, OLP-0060-B12
+
+**Choix :** Réciproque et préfixes de suites
+
+**Autre formulation envisagée :** Équivalence des descriptions et suites initiales
+
+**Motif :** L’équivalence concerne les ensembles obtenus, pas l’unicité des suites de formation. Le lemme autorise k=n; les préfixes sont dits propres seulement dans la preuve ultérieure.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Réciproque et préfixes de suites » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, PLX01.
+
+## C624 — OLP-0060-B13
+
+**Choix :** Démonstration laissée en exercice
+
+**Autre formulation envisagée :** À démontrer
+
+**Motif :** La formulation dit explicitement ce qui est laissé au lecteur; aucune preuve absente n’est inventée.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Démonstration laissée en exercice » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21.
+
+## C625 — OLP-0060-B14, OLP-0060-B15
+
+**Choix :** Ensemble des chaînes admettant une suite
+
+**Autre formulation envisagée :** Ensemble constructible
+
+**Motif :** La double inclusion garde la classe de toutes les chaînes du langage, avant de conclure qu’elles sont des formules. Le renvoi prop:formed est inchangé.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Ensemble des chaînes admettant une suite » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H21, H22.
+
+## C626 — OLP-0060-B16
+
+**Choix :** Récurrence forte sur le dernier indice
+
+**Autre formulation envisagée :** Récurrence forte sur la longueur n+1
+
+**Motif :** Choisir uniformément l’indice final rend l’hypothèse applicable à j,k<n, y compris j=n−1. La source disait longueurs<n alors que ces préfixes peuvent avoir n termes. La note divulgue ce correctif et l’harmonisation equiv vers ident.
+
+**Confiance et limites :** Correction mathématique directement justifiée par les indices de la source; aucun théorème externe n’est importé.
+
+**Question de révision :** Le choix « Récurrence forte sur le dernier indice » conserve-t-il au mieux cette distinction et le registre du passage ? Correction mathématique directement justifiée par les indices de la source; aucun théorème externe n’est importé.
+
+Passages de référence : H21, PLX01.
+
+## C627 — OLP-0061-B05, OLP-0061-B06, OLP-0061-B07
+
+**Choix :** Valuation et fonction d’évaluation
+
+**Autre formulation envisagée :** Interprétation et prolongement aux formules
+
+**Motif :** La première fonction a pour domaine PVar, la seconde Frm. Les deux constantes et les cinq cas de connecteurs conservent valeurs, conditions et quantificateurs; et/ou sont traduits dans les textes des systèmes par cas.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Valuation et fonction d’évaluation » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : PLX02, H19.
+
+## C628 — OLP-0061-B08, OLP-0061-B09
+
+**Choix :** Tables de vérité; connecteur ternaire
+
+**Autre formulation envisagée :** Tableaux de vérité; opérateur à trois arguments
+
+**Motif :** Les cinq tables sont reprises exactement, ainsi que le choix de B ou C selon A dans l’exercice ternaire. Le texte donne une consigne et ne fournit pas la solution.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Tables de vérité; connecteur ternaire » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H20, PLX02.
+
+## C629 — OLP-0061-B10, OLP-0061-B11
+
+**Choix :** Détermination locale; coïncident sur les variables présentes
+
+**Autre formulation envisagée :** Dépendance des variables qui figurent dans la formule
+
+**Motif :** A est fixé dans l’énoncé. L’expression source some formula A n’introduit pas une nouvelle formule existentielle. La conclusion compare les évaluations de ce même A et la preuve demeure une induction.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Détermination locale; coïncident sur les variables présentes » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : PLX04.
+
+## C630 — OLP-0061-B12, OLP-0061-B14, OLP-0061-B15, OLP-0061-B16, OLP-0061-B17, OLP-0061-B18, OLP-0061-B19
+
+**Choix :** Satisfaction définie inductivement; éventuellement les deux
+
+**Autre formulation envisagée :** Vérité relative; ou inclusif
+
+**Motif :** Chaque biconditionnel, négation et conjonction est conservé. La disjonction et l’implication gardent l’inclusivité; le biconditionnel exige que les deux satisfactions aient le même statut. L’ensemble Γ est satisfait dans une valuation commune.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Satisfaction définie inductivement; éventuellement les deux » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H23, PLX02.
+
+## C631 — OLP-0061-B20, OLP-0061-B21, OLP-0061-B22
+
+**Choix :** Satisfaction équivalente à la valeur vraie
+
+**Autre formulation envisagée :** La satisfaction se lit dans l’évaluation
+
+**Motif :** Le résultat est un si et seulement si et conserve deux présentations indépendantes, leur preuve par induction et l’exercice référencé.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Satisfaction équivalente à la valeur vraie » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H23, PLX02.
+
+## C632 — OLP-0062-B05, OLP-0062-B06, OLP-0062-B07
+
+**Choix :** Satisfaisable, tautologie, contingente, conséquence logique
+
+**Autre formulation envisagée :** Réalisable, valide, non nécessaire, implication sémantique
+
+**Motif :** Les quantificateurs existentiels/universels et leur négation restent distincts. Contingente signifie ici satisfaisable et non tautologique, sans introduire une modalité. Conséquence logique désigne Entails, distinct du connecteur lif.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Satisfaisable, tautologie, contingente, conséquence logique » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H24, H25, PLX03.
+
+## C633 — OLP-0062-B08
+
+**Choix :** Trois propriétés à examiner pour chacune des quatre formules
+
+**Autre formulation envisagée :** Classer chaque formule dans un seul cas
+
+**Motif :** Les propriétés se recouvrent; on ne propose pas une partition artificielle. Vérification directe : les quatre formules originales sont équilibrées et sont conservées sans correction. Une note initialement supposée nécessaire a été retirée avant enregistrement.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Trois propriétés à examiner pour chacune des quatre formules » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H24, PLX03.
+
+## C634 — OLP-0062-B09, OLP-0062-B10, OLP-0062-B11
+
+**Choix :** Monotonie et transitivité de la conséquence
+
+**Autre formulation envisagée :** Affaiblissement et coupure
+
+**Motif :** Les titres source restent lisibles sans importer un système de preuve. Toutes les inclusions, unions et prémisses sont conservées; la propriété de satisfaisabilité ne donne que le sens global vers sous-ensembles finis.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Monotonie et transitivité de la conséquence » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H25.
+
+## C635 — OLP-0062-B12, OLP-0062-B13, OLP-0062-B14
+
+**Choix :** Conséquence et insatisfaisabilité de Γ avec la négation
+
+**Autre formulation envisagée :** Réfutation par ajout de la négation
+
+**Motif :** L’ajout de non-A est dans le même ensemble que Γ; l’équivalence est bidirectionnelle et la preuve reste à faire en exercice.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Conséquence et insatisfaisabilité de Γ avec la négation » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H24, H25.
+
+## C636 — OLP-0062-B15, OLP-0062-B16, OLP-0062-B17
+
+**Choix :** Théorème sémantique de déduction
+
+**Autre formulation envisagée :** Théorème de déduction pour la conséquence logique
+
+**Motif :** Le titre évite de confondre ce résultat avec un théorème syntaxique de dérivabilité. La formule avec lif et l’ensemble augmenté de A restent inchangés.
+
+**Confiance et limites :** Source clauses compared with the explicitly named French passages; no human endorsement or calibrated probability.
+
+**Question de révision :** Le choix « Théorème sémantique de déduction » conserve-t-il au mieux cette distinction et le registre du passage ?
+
+Passages de référence : H25, PLX02.
+
+## C637 — OLP-0063-B04
+
+**Choix :** Systèmes de dérivation
+
+**Autre formulation envisagée :** Systèmes de preuve
+
+**Motif :** Dérivation conserve le terme paramétrable de la source; le chapitre étudie les objets formels. La minuscule après de est intentionnelle.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le titre distingue-t-il suffisamment l’objet formel de la démonstration mathématique ?
+
+Passages de référence : SCH02, GL01.
+
+## C638 — OLP-0063-B05
+
+**Choix :** Présentation générale réutilisable
+
+**Autre formulation envisagée :** Panorama autonome des systèmes
+
+**Motif :** La note éditoriale conserve la possibilité de réutiliser seulement introduction et survol correspondant, sans imposer le chapitre entier.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** L’instruction de réutilisation conserve-t-elle les deux sections requises ?
+
+Passages de référence : SCH02, GL01.
+
+## C639 — OLP-0064-B05
+
+**Choix :** Introduction
+
+**Autre formulation envisagée :** Présentation générale
+
+**Motif :** Titre court conservé, sans ajouter une promesse pédagogique.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le titre convient-il à ce survol commun aux deux logiques ?
+
+Passages de référence : SCH02.
+
+## C640 — OLP-0064-B06
+
+**Choix :** Objet syntaxique fini; vérification mécanique
+
+**Autre formulation envisagée :** Preuve finie; contrôle algorithmique
+
+**Motif :** La vérification concerne un objet donné, non la décision de l’existence d’une preuve. Énoncé et formule restent distincts dans le premier ordre; énoncé est aussi utilisable propositionnellement.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La distinction vérification/recherche est-elle explicite sans élargir la thèse source ?
+
+Passages de référence : SCH02, GL01.
+
+## C641 — OLP-0064-B07
+
+**Choix :** Systèmes axiomatiques; étude métathéorique
+
+**Autre formulation envisagée :** Calculs de Hilbert; étude des preuves
+
+**Motif :** Le passage distingue facilité de description et difficulté pratique. Ensemble fixé et nombre fixé de règles sont tous deux maintenus.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La vérifiabilité des instances d’axiomes et des applications de règles reste-t-elle clairement séparée ?
+
+Passages de référence : GL01.
+
+## C642 — OLP-0064-B08
+
+**Choix :** Arbres de vérité et automatisation
+
+**Autre formulation envisagée :** Arbres sémantiques et mécanisation
+
+**Motif :** Les synonymes de la source et le jugement fort sur la résolution sont préservés. La structure arborescente rend les dépendances lisibles.
+
+**Confiance et limites :** Le syntagme exact arbres de vérité n’est pas attesté dans ces passages; tableaux et arbres le sont. Glose de la source conservée provisoirement.
+
+**Question de révision :** Arbres de vérité convient-il comme glose du synonyme anglais dans ce survol ?
+
+Passages de référence : SAU01, EYT01, SCH04.
+
+## C643 — OLP-0064-B09
+
+**Choix :** Dérivabilité, conséquence logique et correction
+
+**Autre formulation envisagée :** Démontrabilité, conséquence sémantique et validité du calcul
+
+**Motif :** Les deux équivalences sont identiques, et seulement si est expliqué dans le sens syntaxe vers sémantique. La conséquence reste distincte du connecteur implication.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Les deux sens de Proves et Entails sont-ils immédiatement identifiables ?
+
+Passages de référence : SCH03, GL02.
+
+## C644 — OLP-0064-B10
+
+**Choix :** Complétude du système
+
+**Autre formulation envisagée :** Exhaustivité du calcul
+
+**Motif :** Le terme attesté concerne la production de toutes les conséquences valides, sans prétendre qu’une théorie décide toute formule. La thèse de1929 est conservée selon OLP.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La complétude du calcul est-elle nettement distincte de la complétude d’une théorie ?
+
+Passages de référence : SCH03, GL02.
+
+## C645 — OLP-0064-B11
+
+**Choix :** Cohérent et incohérent
+
+**Autre formulation envisagée :** Consistant et inconsistant
+
+**Motif :** Les deux variantes sont attestées. Cohérent est retenu avec définition explicite de non-trivialité; le sens des implications cohérence/satisfaisabilité est préservé, inverse de l’ordre du paragraphe précédent.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La définition en termes de toute formule écarte-t-elle une lecture simplement informelle de cohérent ?
+
+Passages de référence : GL02, EYT02, SCH03.
+
+## C646 — OLP-0065-B05
+
+**Choix :** Calcul des séquents
+
+**Autre formulation envisagée :** Calcul de séquents
+
+**Motif :** Le déterminant reprend l’usage du témoin et le titre source.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le titre reste-t-il cohérent avec les autres mentions du calcul ?
+
+Passages de référence : SCH04.
+
+## C647 — OLP-0065-B06
+
+**Choix :** Couple de suites; séquents initiaux
+
+**Autre formulation envisagée :** Couple de contextes; axiomes initiaux
+
+**Motif :** OLP impose des suites, et non les multi-ensembles du témoin. Les deux côtés peuvent être vides et leurs longueurs sont indépendantes; m/m devient m/n avec note.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La correction d’indice et la convention de suites sont-elles assez explicites ?
+
+Passages de référence : SCH04, GL01.
+
+## C648 — OLP-0065-B07
+
+**Choix :** Contexte utilisé inclus dans Γ
+
+**Autre formulation envisagée :** Contexte égal aux hypothèses utilisées
+
+**Motif :** Chaque terme de Γ₀ appartient à Γ; la relative remplace seulement une répétition de Γ₀. L’arbre exemple et les règles sont identiques.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La relative dont chaque terme renvoie-t-elle sans ambiguïté à Γ₀ ?
+
+Passages de référence : SCH04, SAU03.
+
+## C649 — OLP-0065-B08
+
+**Choix :** Incohérence et membre droit vide
+
+**Autre formulation envisagée :** Réfutation du contexte
+
+**Motif :** Le membre droit est vide, le gauche extrait de Γ; l’affaiblissement droit permet ensuite une conclusion arbitraire.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le rôle précis du côté vide et de l’affaiblissement droit est-il conservé ?
+
+Passages de référence : GL02, SCH04.
+
+## C650 — OLP-0065-B09
+
+**Choix :** Théorie des dérivations; rapport aux démonstrations
+
+**Autre formulation envisagée :** Théorie des preuves; lecture des preuves
+
+**Motif :** Le paragraphe distingue formalisation et démonstration usuelle, conserve les jugements et l’attribution de la source; les témoins gouvernent seulement le registre.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Démonstration distingue-t-il bien la preuve usuelle de l’objet formel ici ?
+
+Passages de référence : SCH04, SAU01.
+
+## C651 — OLP-0066-B05
+
+**Choix :** Déduction naturelle
+
+**Autre formulation envisagée :** Calcul de déduction naturelle
+
+**Motif :** Le titre attesté est conservé sans ajout de calcul.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le titre suffit-il à identifier le système introduit ?
+
+Passages de référence : SAU01, SCH02.
+
+## C652 — OLP-0066-B06
+
+**Choix :** Raisonnement par cas, par l’absurde, démonstration d’une implication
+
+**Autre formulation envisagée :** Preuve conditionnelle et preuve indirecte
+
+**Motif :** Le témoin fournit des tournures françaises complètes. Les deux termes de la disjonction sont traités séparément; antécédent et conséquent gardent leurs rôles.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Les trois schémas correspondent-ils sans confusion aux règles nommées ?
+
+Passages de référence : SAU01, SCH02.
+
+## C653 — OLP-0066-B07
+
+**Choix :** Hypothèses temporaires puis déchargées
+
+**Autre formulation envisagée :** Hypothèses auxiliaires ensuite annulées
+
+**Motif :** Décharger suit la définition attestée. Toute hypothèse choisie préserve la sélection des occurrences; non déchargées sont conjointement suffisantes, pas individuellement.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le choix des occurrences déchargées et la portée collective des hypothèses restantes sont-ils clairs ?
+
+Passages de référence : SAU01, SAU02.
+
+## C654 — OLP-0066-B08
+
+**Choix :** Feuilles non déchargées dans Γ; théorème sans hypothèse ouverte
+
+**Autre formulation envisagée :** Toutes les hypothèses égales à Γ
+
+**Motif :** L’appartenance laisse Γ plus grand que l’ensemble utilisé. Pour un théorème, toutes les hypothèses sont déchargées; numéro1 et arbre exacts.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** L’opposition certaines feuilles dans Γ/toutes déchargées est-elle conservée ?
+
+Passages de référence : SAU02, SAU03.
+
+## C655 — OLP-0066-B09
+
+**Choix :** Absurdité intuitionniste et explosion
+
+**Autre formulation envisagée :** Introduction de faux
+
+**Motif :** FalseInt désigne bot_I dans la configuration originale; ce n’est pas une règle d’introduction. La macro est conservée, sans fausse correction.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le renvoi symbolique suffit-il lorsque les règles seront présentées en détail ?
+
+Passages de référence : GL02, SCH02.
+
+## C656 — OLP-0066-B10
+
+**Choix :** Sémantique fondée sur la théorie de la démonstration
+
+**Autre formulation envisagée :** Sémantique preuve-théorique
+
+**Motif :** Une périphrase transparente rend proof-theoretic semantics et garde le lien des règles au sens. Les attributions historiques viennent d’OLP, pas d’une nouvelle vérification exhaustive.
+
+**Confiance et limites :** Pas d’attestation exacte de cette périphrase dans le corpus consulté; choix explicatif, réversible.
+
+**Question de révision :** La périphrase conserve-t-elle la portée de l’appellation philosophique ?
+
+Passages de référence : SAU01, SCH02.
+
+## C657 — OLP-0067-B05
+
+**Choix :** Tableaux
+
+**Autre formulation envisagée :** Arbres sémantiques
+
+**Motif :** Le nom bref du système est attesté et reste paramétrable.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le titre se distingue-t-il assez des tables de vérité du chapitre précédent ?
+
+Passages de référence : EYT01.
+
+## C658 — OLP-0067-B06
+
+**Choix :** Formule signée; arbre se ramifiant vers le bas
+
+**Autre formulation envisagée :** Formule étiquetée; arbre descendant
+
+**Motif :** Signée désigne exactement le couple signe/formule, sans interpréter le signe comme une vérité déjà établie. Ajout linéaire et bifurcation restent distincts.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le rôle du signe et la différence entre ajout et bifurcation sont-ils nets ?
+
+Passages de référence : EYT01, EYT02.
+
+## C659 — OLP-0067-B07
+
+**Choix :** Décomposition propositionnelle; tableau fermé
+
+**Autre formulation envisagée :** Toute règle décompose; tableau clos
+
+**Motif :** Fermé est retenu face à clos attesté, pour l’opposition ouvert/fermé. Les étiquettes sont corrigées contre les règles formelles OLP; la coupure justifie la restriction explicitée.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La note expose-t-elle suffisamment la restriction aux règles propositionnelles et les étiquettes corrigées ?
+
+Passages de référence : EYT01, EYT02.
+
+## C660 — OLP-0067-B08
+
+**Choix :** Sous-ensemble fini et conclusion signée fausse
+
+**Autre formulation envisagée :** Prémisses vraies et négation de la conclusion
+
+**Motif :** La seconde tournure risquerait de remplacer un signe par un connecteur. Les signes, Γ₀ inclus dans Γ et le tableau exact sont maintenus.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La réfutation signée évite-t-elle de confondre F avec la négation interne ?
+
+Passages de référence : EYT01, EYT02.
+
+## C661 — OLP-0067-B09
+
+**Choix :** Incohérence par tableau fermé des prémisses
+
+**Autre formulation envisagée :** Insatisfaisabilité des prémisses
+
+**Motif :** Le passage définit une notion syntaxique, distincte de son équivalent sémantique. Aucun signe F supplémentaire n’est ajouté.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** L’absence de conclusion signée fausse dans ce critère d’incohérence est-elle visible ?
+
+Passages de référence : EYT02, GL02.
+
+## C662 — OLP-0067-B10
+
+**Choix :** Branche ouverte saturée par les règles; structure satisfaisante
+
+**Autre formulation envisagée :** Contre-modèle lu dans toute branche ouverte
+
+**Motif :** La condition d’application des règles est conservée; une branche simplement ouverte ne suffit pas. Les attributions et jugements restent ceux d’OLP.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La condition finale empêche-t-elle d’affirmer qu’une branche incomplète détermine déjà un modèle ?
+
+Passages de référence : EYT01, EYT02, SCH04.
+
+## C663 — OLP-0068-B05
+
+**Choix :** Dérivations axiomatiques
+
+**Autre formulation envisagée :** Déduction axiomatique
+
+**Motif :** Le pluriel et le jeton du titre source sont conservés, avec l’adjectif après le nom.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Ce titre annonce-t-il bien les objets formels présentés ?
+
+Passages de référence : GL01.
+
+## C664 — OLP-0068-B06
+
+**Choix :** Schémas d’axiomes et trois modes de justification
+
+**Autre formulation envisagée :** Axiomes et démonstrations admissibles
+
+**Motif :** Chaque ligne satisfait au moins un des trois cas. Les schémas, connecteurs primitifs et possibilité d’un seul axiome sont préservés.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La différence entre schéma et instance reste-t-elle compréhensible sans ajout de contenu ?
+
+Passages de référence : GL01, GL02.
+
+## C665 — OLP-0068-B07
+
+**Choix :** Modus ponens; les deux lignes antérieures
+
+**Autre formulation envisagée :** Détachement; deux prémisses disponibles
+
+**Motif :** Les deux formules doivent figurer avant la conclusion; le mot suffisant n’est pas remplacé par nécessaire.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La chronologie des deux prémisses et la portée de pour un certain A sont-elles intactes ?
+
+Passages de référence : GL01, SAU01.
+
+## C666 — OLP-0068-B08
+
+**Choix :** Prémisses prises dans Γ
+
+**Autre formulation envisagée :** Γ exactement égal aux prémisses utilisées
+
+**Motif :** Le survol source contredit sa définition formelle ultérieure si Γ est infini. La correction par inclusion est signalée; les trois lignes de preuve et substitutions sont identiques.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La note justifie-t-elle précisément cette correction contre le texte formel d’OLP ?
+
+Passages de référence : GL01, SAU03.
+
+## C667 — OLP-0068-B09
+
+**Choix :** Complétude et explosion
+
+**Autre formulation envisagée :** Incohérence sémantique
+
+**Motif :** La conclusion arbitraire est obtenue par la formule faux implique A et modus ponens; le quantificateur tout A est conservé.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** Le rôle de la complétude dans cette phrase introductive reste-t-il correctement limité ?
+
+Passages de référence : GL02, SCH03.
+
+## C668 — OLP-0068-B10
+
+**Choix :** Étudier les dérivations et les utiliser
+
+**Autre formulation envisagée :** Prouver des métathéorèmes et trouver des preuves
+
+**Motif :** La distinction méta/objet et les deux difficultés pratiques sont gardées. Les titres, auteurs et dates sont transmis selon OLP.
+
+**Confiance et limites :** Source scope and the named French passage compared; no calibrated probability or human endorsement.
+
+**Question de révision :** La différence entre résultats sur les dérivations et preuves à l’intérieur du système est-elle lisible ?
+
+Passages de référence : GL01.

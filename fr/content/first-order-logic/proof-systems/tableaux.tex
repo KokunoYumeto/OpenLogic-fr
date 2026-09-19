@@ -1,0 +1,101 @@
+% Part: first-order-logic
+% Chapter: proof-systems
+% Section: tableaux
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{prf}{tab}}
+      {\olfileid[fr]{pl}{prf}{tab}}
+
+\olsection{\usetoken{P}{tableau}}
+
+Alors que de nombreux systèmes de !!{derivation} manipulent des
+agencements d'!!{sentence}s, les !!{tableau}s manipulent des
+!!{signed formula}s. Une !!{signed formula} est un couple formé d'un
+signe de valeur de vérité ($\True$ ou $\False$) et d'un !!{sentence} :
+\[
+\sFmla{\True}{!A} \text{ ou } \sFmla{\False}{!A}.
+\]
+Un !!{tableau} est constitué de !!{signed formula}s disposées dans un
+arbre qui se ramifie vers le bas. Il commence par un certain nombre
+d'\emph{hypothèses}, puis se poursuit par des !!{signed formula}s
+obtenues à partir de l'une des !!{signed formula}s situées au-dessus,
+par application d'une règle d'inférence. Chaque règle permet d'ajouter
+une ou plusieurs !!{signed formula}s à l'extrémité d'une branche,
+ou deux !!{signed formula}s côte à côte. Dans ce dernier cas, la branche
+se divise en deux, et les deux formules ajoutées constituent les
+extrémités des deux nouvelles branches.
+
+Les règles de décomposition propositionnelles, appliquées à une
+!!{signed formula} complexe, ajoutent des !!{signed formula}s dont les
+formules sont des sous-!!{formula}s immédiates. Elles vont par paires,
+une règle pour chacun des deux signes. Par exemple, la règle
+$\TRule{\True}{\land}$ s'applique à $\sFmla{\True}{!A \land !B}$ et
+permet d'ajouter les deux !!{signed formula}s $\sFmla{\True}{!A}$
+et~$\sFmla{\True}{!B}$ à l'extrémité de toute branche contenant
+$\sFmla{\True}{!A \land !B}$. La règle $\TRule{\False}{\land}$
+permet quant à elle de diviser une branche en ajoutant côte à côte
+$\sFmla{\False}{!A}$ et $\sFmla{\False}{!B}$.
+Un !!{tableau} est fermé si chacune de ses branches contient une paire
+de !!{signed formula}s $\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$
+portant sur la même formule.
+\begin{editorial}
+Note de l'édition française : la description par sous-formules est
+limitée ici aux règles de décomposition propositionnelles. La coupure,
+présentée plus loin dans l'original, n'est pas une telle règle.
+Le nom de la règle de conjonction fausse est corrigé : l'original
+y place toute la formule au lieu du seul connecteur. Dans le tableau
+ci-dessous, les deux dernières étapes portent également le nom de la
+règle de conjonction vraie, et non celui de l'implication vraie.
+\end{editorial}
+
+La relation $\Proves$ fondée sur les !!{tableau}s se définit ainsi :
+$\Gamma \Proves !A$ si et seulement s'il existe un ensemble fini
+$\Gamma_0 = \{!B_1, \dots, !B_n\} \subseteq \Gamma$ pour lequel il
+existe un !!{tableau} fermé ayant pour hypothèses
+\[
+\{\sFmla{\False}{!A}, \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}.
+\]
+Voici, par exemple, un !!{tableau} fermé qui établit que
+$\Proves (!A \land !B) \lif !A$ :
+\begin{oltableau}
+  [\sFmla{\False}{(\formula{A} \land \formula{B}) \lif \formula{A}}, just = \TAss
+    [\sFmla{\True}{\formula{A} \land \formula{B}}, just = {\TRule{\False}{\lif}[1]}
+      [\sFmla{\False}{\formula{A}}, just = {\TRule{\False}{\lif}[1]}
+        [\sFmla{\True}{\formula{A}}, just = {\TRule{\True}{\land}[2]}
+          [\sFmla{\True}{\formula{B}}, just = {\TRule{\True}{\land}[2]}, close]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+
+Un ensemble $\Gamma$ est incohérent dans le calcul des !!{tableau}s
+s'il existe un !!{tableau} fermé ayant pour hypothèses
+\[
+\{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
+\]
+pour certains $!B_i \in \Gamma$.
+
+Les !!{tableau}s ont été inventés indépendamment dans les années 1950
+par Evert Beth et Jaakko Hintikka, puis simplifiés et popularisés par
+Raymond Smullyan. Ils sont très faciles à utiliser, car leur construction
+suit une procédure très systématique. Cette propriété les rend aussi
+faciles à mettre en œuvre sur ordinateur. Toutefois, un !!{tableau}
+est souvent difficile à lire, et son rapport avec une démonstration
+n'est pas toujours facile à discerner. La méthode est par ailleurs très
+générale : de nombreuses logiques différentes possèdent des systèmes de
+!!{tableau}s. Ceux-ci aident aussi à trouver des !!{structure}s qui
+satisfont des !!{sentence}s donnés, ou des ensembles d'!!{sentence}s.
+Si l'ensemble est satisfaisable, il n'admet aucun !!{tableau} fermé :
+tout !!{tableau} possède donc une branche ouverte. On peut « lire »
+sur une branche ouverte une !!{structure} qui satisfait l'ensemble,
+à condition que toutes les règles susceptibles d'être appliquées sur
+cette branche l'aient été. Le lien avec le calcul des séquents est
+également très étroit : pour l'essentiel, un !!{tableau} fermé est une
+!!{derivation} condensée du calcul des séquents, écrite dans l'autre sens.
+
+\end{document}

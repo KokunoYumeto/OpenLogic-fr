@@ -1,0 +1,100 @@
+% Part: propositional-logic
+% Chapter: syntax-and-semantics
+% Section: semantic-notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pl}{syn}{sem}
+
+\olsection{Notions sémantiques}
+
+Définissons les notions sémantiques suivantes :
+
+\begin{defn}
+\begin{enumerate}
+\item Une !!{formula}~$!A$ est \emph{satisfaisable} s'il existe
+  une~$\pAssign{v}$ telle que $\pSat{v}{!A}$ ; elle est
+  \emph{insatisfaisable} s'il n'existe aucune $\pAssign{v}$ telle
+  que $\pSat{v}{!A}$.
+\item Une !!{formula}~$!A$ est une \emph{tautologie} si
+  $\pSat{v}{!A}$ pour toute !!{valuation}~$\pAssign{v}$.
+\item Une !!{formula}~$!A$ est \emph{contingente} si elle est
+  satisfaisable sans être une tautologie.
+\item Si $\Gamma$ est un ensemble de !!{formula}s, on écrit
+  $\Gamma \Entails !A$ (« $!A$ est conséquence logique de $\Gamma$ »)
+  si et seulement si $\pSat{v}{!A}$ pour toute
+  !!{valuation}~$\pAssign{v}$ telle que $\pSat{v}{\Gamma}$.
+\item Si $\Gamma$ est un ensemble de !!{formula}s, $\Gamma$ est
+  \emph{satisfaisable} s'il existe une !!{valuation}~$\pAssign{v}$
+  telle que $\pSat{v}{\Gamma}$ ; il est \emph{insatisfaisable}
+  dans le cas contraire.
+\end{enumerate}
+\end{defn}
+
+\begin{prob}
+Pour chacune des quatre !!{formula}s suivantes, déterminer si elle est
+(a)~satisfaisable, (b)~une tautologie et (c)~contingente.
+\begin{enumerate}
+  \item \((\Obj p_0 \lif (\lnot \Obj p_1 \lif \lnot \Obj p_0))\).
+  \item \(((\Obj p_0 \land \lnot \Obj p_1) \lif (\lnot \Obj p_0 \land \Obj p_2)) \liff ((\Obj p_2 \lif \Obj p_0) \lif (\Obj p_0 \lif \Obj p_1))\).
+  \item \((\Obj p_0 \liff \Obj p_1) \lif (\Obj p_2 \liff \lnot \Obj p_1)\).
+  \item \(((\Obj p_0 \liff (\lnot \Obj p_1 \land \Obj p_2)) \lor (\Obj p_2 \lif (\Obj p_0 \liff \Obj p_1)))\).
+\end{enumerate}
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:semanticalfacts}
+\begin{enumerate}
+\item $!A$ est une tautologie si et seulement si
+  $\emptyset \Entails !A$.
+\item Si $\Gamma \Entails !A$ et $\Gamma \Entails !A \lif !B$,
+  alors $\Gamma \Entails !B$.
+\item Si $\Gamma$ est satisfaisable, chacun de ses sous-ensembles
+  finis l'est aussi.
+\item \ollabel{def:monotonicity} Monotonie : si
+  $\Gamma \subseteq \Delta$ et $\Gamma \Entails !A$, alors
+  $\Delta \Entails !A$.
+\item \ollabel{def:Cut} Transitivité : si $\Gamma \Entails !A$ et
+  $\Delta \cup \{!A\} \Entails !B$, alors
+  $\Gamma \cup \Delta \Entails !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[pl][syn][sem]{prop:semanticalfacts}.
+\end{prob}
+
+\begin{prop}\ollabel{prop:entails-unsat}
+  $\Gamma \Entails !A$ si et seulement si
+  $\Gamma \cup \{\lnot !A\}$ est insatisfaisable.
+\end{prop}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[pl][syn][sem]{prop:entails-unsat}.
+\end{prob}
+
+\begin{thm}[Théorème sémantique de déduction]
+  \ollabel{thm:sem-deduction}
+  $\Gamma \Entails !A \lif !B$ si et seulement si
+  $\Gamma \cup \{!A\} \Entails !B$.
+\end{thm}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[pl][syn][sem]{thm:sem-deduction}.
+\end{prob}
+
+\end{document}
