@@ -37,7 +37,7 @@ composants sont conservées.
 3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.5.0-construction-des-nombres/00-03-openlogic-fr-ensembles-fonctions-construction-des-nombres-sources.zip)
 4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.5.0-construction-des-nombres/00-04-openlogic-fr-ensembles-fonctions-construction-des-nombres.epub)
 
-[Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
+Version archivée avec DOI : [10.5281/zenodo.22848937](https://doi.org/10.5281/zenodo.22848937). [Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
 
 ## Sources et révision
 
