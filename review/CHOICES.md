@@ -10814,3 +10814,1697 @@ Passages de référence : SAU07, SCH06, SCH09, SCH10.
 **Question de révision :** La preuve distingue-t-elle clairement la fermeture du terme de celle de la formule ?
 
 Passages de référence : SCH06, SCH09, SCH10.
+
+## C765 — OLP-0084-R00
+
+**Choix :** Déduction naturelle; style de Gentzen et de Prawitz
+
+**Autre formulation envisagée :** Démonstration naturelle; méthode Gentzen-Prawitz
+
+**Motif :** Déduction naturelle est la dénomination attestée; le style qualifie la présentation du système, sans attribuer un théorème ou une variante supplémentaire aux deux auteurs. Les deux titres conditionnels concordent.
+
+**Confiance et limites :** Forte : dénomination et structure directement comparées.
+
+**Question de révision :** La distinction entre nom du système et style de présentation est-elle nette ?
+
+Passages de référence : SAU01, SAU02.
+
+## C766 — OLP-0084-R00
+
+**Choix :** Développements relatifs au système; tag prfND
+
+**Autre formulation envisagée :** Preuves utilisant la déduction naturelle; mot-clé traduit
+
+**Motif :** La note vise le choix éditorial du contenu. Le tag est un identifiant exécutable, conservé; elle ne demande pas au lecteur de choisir une règle mathématique.
+
+**Confiance et limites :** Forte : fonction de la note et chaîne de commande inchangées.
+
+**Question de révision :** Le destinataire éditorial est-il assez explicite ?
+
+Passages de référence : SAU01.
+
+## C767 — OLP-0085-R00
+
+**Choix :** Règles et dérivations; raisonnement informel des démonstrations
+
+**Autre formulation envisagée :** Règles et démonstrations; raisonnement intuitif
+
+**Motif :** Dérivation désigne l’arbre formel, démonstration la pratique mathématique imitée. Informel n’ajoute pas un jugement de validité ou de facilité. La minuscule après et suit la syntaxe du titre français.
+
+**Confiance et limites :** Forte sur la distinction; formulation éditoriale motivée par les exemples de SAU01.
+
+**Question de révision :** Les deux emplois preuve/démonstration et dérivation restent-ils distincts ?
+
+Passages de référence : SAU01, SAU08.
+
+## C768 — OLP-0085-R00
+
+**Choix :** Décharger des hypothèses; même étiquette
+
+**Autre formulation envisagée :** Supprimer les hypothèses; numéro de ligne
+
+**Motif :** Décharger retire une dépendance, pas un nœud de l’arbre. L’étiquette relie une hypothèse à l’inférence qui la décharge. FalseCl est inclus conformément à son schéma; la correction est déclarée.
+
+**Confiance et limites :** Forte : SAU02 et le schéma OLP attestent directement cette relation.
+
+**Question de révision :** Le lecteur comprend-il que l’hypothèse reste visible dans l’arbre ?
+
+Passages de référence : SAU01, SAU02.
+
+## C769 — OLP-0085-R00
+
+**Choix :** Hypothèse en position la plus haute d’une branche
+
+**Autre formulation envisagée :** Axiome; prémisse quelconque
+
+**Motif :** Une hypothèse est une feuille; une prémisse intermédiaire peut résulter d’une autre inférence. L’adjectif topmost ne doit donc pas disparaître.
+
+**Confiance et limites :** Forte : définition OLP et arbres de SAU08 concordants.
+
+**Question de révision :** La définition distingue-t-elle feuille et prémisse intermédiaire ?
+
+Passages de référence : SAU02, SAU08.
+
+## C770 — OLP-0085-R00
+
+**Choix :** Arbres d’énoncés; une, deux ou trois prémisses
+
+**Autre formulation envisagée :** Arbres de séquents; succession linéaire
+
+**Motif :** Les objets du système sont les énoncés du langage retenu. La correction de sequents est justifiée par les arbres et la définition0088; l’arité trois de l’élimination de la disjonction est préservée.
+
+**Confiance et limites :** Forte : comparaison des schémas; correction déclarée.
+
+**Question de révision :** Les positions des prémisses et de la conclusion sont-elles sans ambiguïté ?
+
+Passages de référence : SAU02, SAU08.
+
+## C771 — OLP-0085-R00
+
+**Choix :** Introduction et élimination; attribution d’une étiquette commune
+
+**Autre formulation envisagée :** Ajout et suppression des connecteurs; étiquettes indépendantes
+
+**Motif :** La paire est le vocabulaire technique attesté. L’étiquette commune porte sur une décharge précise. La réserve éditoriale sur les règles de false évite d’imposer une fausse paire à ces deux règles.
+
+**Confiance et limites :** Forte sur les règles; emplacement de la réserve révisable.
+
+**Question de révision :** La réserve sur false est-elle assez visible sans interrompre l’introduction ?
+
+Passages de référence : SAU01, SAU02.
+
+## C772 — OLP-0085-R00
+
+**Choix :** Connecteurs éventuellement définis à partir des autres
+
+**Autre formulation envisagée :** Connecteurs seulement primitifs
+
+**Motif :** La branche optionnelle concerne des connecteurs déjà définis; elle ne doit pas les exclure des règles. Le commentaire de sélection est traduit et les noms des tags restent inchangés.
+
+**Confiance et limites :** Forte : qualification source et condition TeX préservées.
+
+**Question de révision :** La relation entre définition d’un symbole et disponibilité de ses règles est-elle claire ?
+
+Passages de référence : SAU01.
+
+## C773 — OLP-0086-R00
+
+**Choix :** Règles propositionnelles; règles pour la conjonction
+
+**Autre formulation envisagée :** Calcul propositionnel; définition de la conjonction
+
+**Motif :** Il s’agit d’un groupe de règles dans le même système, pas d’un nouveau calcul ou d’une définition du symbole. Le titre et le premier sous-titre gardent ce niveau hiérarchique.
+
+**Confiance et limites :** Forte : titres et diagrammes source comparés.
+
+**Question de révision :** La hiérarchie groupe/règle est-elle lisible ?
+
+Passages de référence : SAU01.
+
+## C774 — OLP-0086-R02
+
+**Choix :** Règles pour le symbole de disjonction
+
+**Autre formulation envisagée :** Définition de disjonction
+
+**Motif :** Pour présente les schémas d’inférence associés au symbole, sans prétendre définir ce symbole. Le diagramme suivant est conservé intégralement.
+
+**Confiance et limites :** Forte : symbole et position dans la série inchangés.
+
+**Question de révision :** Le titre exprime-t-il correctement le rôle des schémas affichés ?
+
+Passages de référence : SAU01.
+
+## C775 — OLP-0086-R04
+
+**Choix :** Règles pour le symbole de implication
+
+**Autre formulation envisagée :** Définition de implication
+
+**Motif :** Pour présente les schémas d’inférence associés au symbole, sans prétendre définir ce symbole. Le diagramme suivant est conservé intégralement.
+
+**Confiance et limites :** Forte : symbole et position dans la série inchangés.
+
+**Question de révision :** Le titre exprime-t-il correctement le rôle des schémas affichés ?
+
+Passages de référence : SAU01.
+
+## C776 — OLP-0086-R06
+
+**Choix :** Règles pour le symbole de négation
+
+**Autre formulation envisagée :** Définition de négation
+
+**Motif :** Pour présente les schémas d’inférence associés au symbole, sans prétendre définir ce symbole. Le diagramme suivant est conservé intégralement.
+
+**Confiance et limites :** Forte : symbole et position dans la série inchangés.
+
+**Question de révision :** Le titre exprime-t-il correctement le rôle des schémas affichés ?
+
+Passages de référence : SAU01.
+
+## C777 — OLP-0086-R08
+
+**Choix :** Règles pour le symbole de absurde
+
+**Autre formulation envisagée :** Définition de absurde
+
+**Motif :** Pour présente les schémas d’inférence associés au symbole, sans prétendre définir ce symbole. Le diagramme suivant est conservé intégralement.
+
+**Confiance et limites :** Forte : symbole et position dans la série inchangés.
+
+**Question de révision :** Le titre exprime-t-il correctement le rôle des schémas affichés ?
+
+Passages de référence : SAU01.
+
+## C778 — OLP-0086-R10
+
+**Choix :** A sans lui ajouter de négation
+
+**Autre formulation envisagée :** A positif ou sans négation
+
+**Motif :** Le paramètre A peut lui-même commencer par une négation. La distinction est celle des deux schémas, non une restriction syntaxique sur A. La première/la seconde renvoient aux noms de règles immédiatement précédents.
+
+**Confiance et limites :** Forte : substitution d’une formule niée à A permise par la règle; note déclarée.
+
+**Question de révision :** La paraphrase écarte-t-elle clairement une lecture restrictive de positif ?
+
+Passages de référence : SAU01.
+
+## C779 — OLP-0086-R10
+
+**Choix :** Nombre quelconque d’hypothèses, y compris zéro
+
+**Autre formulation envisagée :** Une ou plusieurs hypothèses
+
+**Motif :** Zéro est essentiel au cas de décharge vide. La décharge est autorisée, non imposée; le contexte de la dérivation de B est explicitement maintenu.
+
+**Confiance et limites :** Forte : OLP et la notation0/1/plusieurs de SAU08 concordent.
+
+**Question de révision :** Le nombre concerne-t-il clairement des occurrences d’hypothèses dans l’arbre ?
+
+Passages de référence : SAU08.
+
+## C780 — OLP-0087-R00
+
+**Choix :** Règles pour les quantificateurs
+
+**Autre formulation envisagée :** Règles quantificationnelles
+
+**Motif :** Le nom explicite désigne les deux quantificateurs et garde la même construction que les titres des règles propositionnelles.
+
+**Confiance et limites :** Forte : termes et symboles attestés.
+
+**Question de révision :** Les sous-titres facilitent-ils la comparaison des deux quantificateurs ?
+
+Passages de référence : SAU06, SCH06.
+
+## C781 — OLP-0087-R02
+
+**Choix :** Terme clos; eigenvariable qui est une constante
+
+**Autre formulation envisagée :** Terme fermé; variable propre nécessairement variable
+
+**Motif :** Clos signifie sans aucune variable dans le terme. La graphie eigenvariable est attestée; la note historique évite d’en déduire que a soit une variable de la syntaxe OLP.
+
+**Confiance et limites :** Forte sur le sens; préférence lexicale réversible et attestée.
+
+**Question de révision :** Préféreriez-vous variable propre malgré la convention explicite de constante ?
+
+Passages de référence : SCH06, SAU06.
+
+## C782 — OLP-0087-R02
+
+**Choix :** Absente de la conclusion et des hypothèses non déchargées
+
+**Autre formulation envisagée :** Absente de toute la dérivation
+
+**Motif :** L’interdiction ne porte pas sur la prémisse A(a) ni sur les hypothèses déjà déchargées. Le relatif rattache exactement les hypothèses à la dérivation qui se termine par cette prémisse.
+
+**Confiance et limites :** Forte : restrictions de la règle OLP comparées une à une.
+
+**Question de révision :** La distinction entre hypothèses encore ouvertes et déjà déchargées est-elle nette ?
+
+Passages de référence : SAU06, SAU02.
+
+## C783 — OLP-0087-R04
+
+**Choix :** Exception des hypothèses A(a), conformément à OLP
+
+**Autre formulation envisagée :** Exception limitée aux occurrences effectivement déchargées
+
+**Motif :** OLP permet une décharge facultative et formule son exception sans cette limitation supplémentaire. La formulation française préserve donc la portée littérale et les deux sous-dérivations; le témoin français avec variables ne remplace pas la convention source avec constantes.
+
+**Confiance et limites :** Forte sur la fidélité à la condition explicite; différence de présentation documentée.
+
+**Question de révision :** L’exception et la possibilité d’une décharge partielle sont-elles suffisamment claires ?
+
+Passages de référence : SAU06, SAU02.
+
+## C784 — OLP-0087-R04
+
+**Choix :** Condition sur l’eigenvariable : renvoi aux restrictions précises
+
+**Autre formulation envisagée :** Interdiction de l’eigenvariable dans toutes les prémisses
+
+**Motif :** Le résumé anglais contredit A(a). Le renvoi conserve le nom de la condition et les deux règles sans donner un nouveau résumé faux. Le paramètre a est nommé explicitement.
+
+**Confiance et limites :** Forte : contradiction locale démontrée par les schémas.
+
+**Question de révision :** Le renvoi est-il assez précis pour retrouver les deux conditions ?
+
+Passages de référence : SAU06.
+
+## C785 — OLP-0087-R04
+
+**Choix :** Dans ce même contexte, A(t) abrège la substitution
+
+**Autre formulation envisagée :** A(t) est une application fonctionnelle
+
+**Motif :** Le texte rappelle une convention de notation des formules, pas une fonction sémantique. La variable libre et le sens du remplacement sont conservés.
+
+**Confiance et limites :** Forte : formule Subst et paramètre libre inchangés.
+
+**Question de révision :** La convention est-elle distinguée de la substitution inverse ?
+
+Passages de référence : SCH06, SAU06.
+
+## C786 — OLP-0087-R06
+
+**Choix :** Une ou plusieurs occurrences, pas nécessairement toutes
+
+**Autre formulation envisagée :** Remplacer t par x partout
+
+**Motif :** Le terme peut déjà figurer dans A; seuls les emplacements provenant de x sont concernés. Les exemples P(t,t) et P(a,a) rendent visible la différence entre les règles avec et sans eigenvariable.
+
+**Confiance et limites :** Forte : exemples et restrictions contrôlés directement.
+
+**Question de révision :** Le lecteur voit-il pourquoi le second exemple est interdit ?
+
+Passages de référence : SCH06, SAU06.
+
+## C787 — OLP-0087-R06
+
+**Choix :** Aucune autre restriction sur le terme clos; renvoi aux conditions
+
+**Autre formulation envisagée :** Aucune restriction sur un terme quelconque; résumé sans exception
+
+**Motif :** La fermeture du terme demeure requise. Le renvoi préserve les conditions complètes, notamment l’exception A(a) de la règle existentielle; il évite de leur substituer la restriction plus forte du rappel source.
+
+**Confiance et limites :** Forte : comparaison avec les définitions explicites du début de la section.
+
+**Question de révision :** Le renvoi permet-il de retrouver aisément l’exception existentielle ?
+
+Passages de référence : SAU06, SCH06.
+
+## C788 — OLP-0087-R06
+
+**Choix :** Correction du système et conséquence des hypothèses ouvertes
+
+**Autre formulation envisagée :** Vérité du système; implication syntaxique
+
+**Motif :** Correction relie dérivation et conséquence sémantique. Les hypothèses encore non déchargées déterminent cette conséquence, sans exiger qu’elles soient toutes vraies dans toute interprétation.
+
+**Confiance et limites :** Forte : remarque2.5 et arbre interdit directement comparés.
+
+**Question de révision :** La distinction entre correction et vérité d’un énoncé est-elle nette ?
+
+Passages de référence : SAU06.
+
+## C789 — OLP-0087-R08
+
+**Choix :** Non-conséquence en général; toutes les règles de quantification
+
+**Autre formulation envisagée :** Toute instance invalide; seules les éliminations
+
+**Motif :** Une instance A constamment vraie est valide; le schéma ne l’est pas en général. Le dernier argument utilise les termes clos dans l’ensemble des règles, y compris l’introduction existentielle. Les précisions sont déclarées.
+
+**Confiance et limites :** Forte : contre-modèle à deux éléments et règles OLP contrôlés.
+
+**Question de révision :** La généralité schématique et la fermeture des formules sont-elles distinguées ?
+
+Passages de référence : SAU06, SCH06.
+
+## C790 — OLP-0088-R00
+
+**Choix :** Engendrées inductivement; hypothèse isolée
+
+**Autre formulation envisagée :** Construites successivement; hypothèse initiale seulement
+
+**Motif :** La définition précise une construction inductive avec un cas de base et une combinaison d’une à trois dérivations. Une feuille seule est déjà une dérivation.
+
+**Confiance et limites :** Forte : SAU08 et définition OLP concordants.
+
+**Question de révision :** Le statut du cas de base est-il explicite ?
+
+Passages de référence : SAU08.
+
+## C791 — OLP-0088-R00
+
+**Choix :** Arbre fini; contexte contenant les hypothèses ouvertes
+
+**Autre formulation envisagée :** Arbre quelconque; ensemble exact des feuilles ouvertes
+
+**Motif :** La finitude, la position basse de la conclusion et le voisinage immédiat des inférences restent obligatoires. Gamma peut contenir des hypothèses inutilisées; le contexte est donc un contenant, pas un relevé exact des occurrences.
+
+**Confiance et limites :** Forte : condition d’appartenance dans la définition source et SAU03.
+
+**Question de révision :** La précision sur Gamma prévient-elle une exigence d’utilisation de chaque hypothèse ?
+
+Passages de référence : SAU02, SAU03, SAU08.
+
+## C792 — OLP-0088-R00
+
+**Choix :** Dérivable à partir de Gamma; toutes les hypothèses déchargées
+
+**Autre formulation envisagée :** Démontrable absolument; dérivable à partir d’un ensemble vide seulement
+
+**Motif :** La notation avec contexte exprime une dépendance permise; l’absence de contexte exige une dérivation sans hypothèse ouverte. La seconde phrase ne confond pas ensemble vide et absence de feuilles.
+
+**Confiance et limites :** Forte : deux notations et quantification existentielle conservées.
+
+**Question de révision :** La possibilité de feuilles déchargées dans une preuve sans hypothèses est-elle claire ?
+
+Passages de référence : SAU03, SAU08.
+
+## C793 — OLP-0088-R02
+
+**Choix :** Remplacement des paramètres par des énoncés quelconques
+
+**Autre formulation envisagée :** Remplacement par des lettres propositionnelles seulement
+
+**Motif :** Le schéma s’applique aux énoncés composés comme aux atomiques. Les quatre paramètres et leur ordre sont conservés.
+
+**Confiance et limites :** Forte : aucune restriction ajoutée.
+
+**Question de révision :** Quelconques fait-il suffisamment apparaître la généralité du schéma ?
+
+Passages de référence : SAU08.
+
+## C794 — OLP-0088-R04
+
+**Choix :** Intervertir les hypothèses et leurs rôles
+
+**Autre formulation envisagée :** Conserver la conclusion par commutativité
+
+**Motif :** L’ordre de C et D dans la formule finale change, même si les deux conjonctions sont équivalentes. La phrase suit les positions exactes de l’arbre.
+
+**Confiance et limites :** Forte : formule finale du diagramme comparée.
+
+**Question de révision :** Le changement syntaxique de conclusion reste-t-il visible ?
+
+Passages de référence : SAU08.
+
+## C795 — OLP-0088-R06
+
+**Choix :** Conclure une implication; décharger l’antécédent
+
+**Autre formulation envisagée :** Conclure une condition; supprimer toute prémisse
+
+**Motif :** Implication est le nom du connecteur, antécédent identifie la formule qui peut être déchargée. Le choix reste une permission portant sur les hypothèses identiques.
+
+**Confiance et limites :** Forte : exemple SAU01 et deux arbres OLP comparés.
+
+**Question de révision :** La décharge est-elle bien limitée aux occurrences de l’antécédent ?
+
+Passages de référence : SAU01, SAU02.
+
+## C796 — OLP-0088-R08
+
+**Choix :** Décharge permise même sans hypothèse correspondante
+
+**Autre formulation envisagée :** Application interdite si l’hypothèse est absente
+
+**Motif :** L’inférence de B à A implique B utilise zéro occurrence de A. Les deux conséquences précédentes restent distinctes et sont présentées dans leur ordre.
+
+**Confiance et limites :** Forte : exemple source et notation SAU08 concordants.
+
+**Question de révision :** Le lien entre décharge facultative et absence d’une hypothèse est-il explicite ?
+
+Passages de référence : SAU08.
+
+## C797 — OLP-0088-R10
+
+**Choix :** Note déclarant la précision sur Gamma
+
+**Autre formulation envisagée :** Modification silencieuse du sens de contexte
+
+**Motif :** La note permet de repérer l’ajout explicatif et son appui dans la condition source d’appartenance. Elle n’attribue pas au canon une nouvelle convention OLP.
+
+**Confiance et limites :** Forte : ajout séparé et réversible.
+
+**Question de révision :** Le lecteur peut-il reconnaître la précision éditoriale ?
+
+Passages de référence : SAU03.
+
+## C798 — OLP-0089-R00
+
+**Choix :** Construisons; conclusion recherchée en bas
+
+**Autre formulation envisagée :** Établissez; conclusion au début
+
+**Motif :** Le nous conserve la démonstration guidée de la source et distingue cet exemple des exercices à résoudre. Le sens spatial de bottom est conservé.
+
+**Confiance et limites :** Forte sur la fonction; choix de registre éditorial motivé.
+
+**Question de révision :** Le registre guide-t-il sans transformer l’exemple en consigne d’exercice ?
+
+Passages de référence : SAU01, SAU08.
+
+## C799 — OLP-0089-R02
+
+**Choix :** Opérateur principal; étiqueter au fur et à mesure
+
+**Autre formulation envisagée :** Premier symbole; étiqueter à la fin
+
+**Motif :** La règle est choisie par le symbole qui gouverne toute la formule, pas par le premier caractère imprimé. Les étiquettes servent à contrôler toutes les décharges.
+
+**Confiance et limites :** Provisoire sur la dénomination exacte, non attestée dans ces passages; notion source inchangée.
+
+**Question de révision :** Opérateur principal est-il préférable à connecteur principal dans le chapitre partagé ?
+
+Passages de référence : SAU01, SAU02.
+
+## C800 — OLP-0089-R04
+
+**Choix :** Sa règle d’élimination
+
+**Autre formulation envisagée :** Répétition du symbole and à chaque mention
+
+**Motif :** Le possessif renvoie immédiatement à la conjonction, seul connecteur traité. Il évite une répétition sans changer la règle appliquée ni son symbole dans le diagramme.
+
+**Confiance et limites :** Forte : seul antécédent possible et arbre conservé.
+
+**Question de révision :** Le renvoi possessif est-il univoque ?
+
+Passages de référence : SAU01.
+
+## C801 — OLP-0089-R06
+
+**Choix :** Transition vers une seconde construction
+
+**Autre formulation envisagée :** Fusion des deux exemples
+
+**Motif :** L’achèvement du premier exemple et l’annonce du second restent deux étapes distinctes; les deux formules et la méthode de départ sont conservées.
+
+**Confiance et limites :** Forte : frontières des exemples et formules comparées.
+
+**Question de révision :** La transition rend-elle visible le changement de conclusion ?
+
+Passages de référence : SAU01, SAU08.
+
+## C802 — OLP-0089-R08
+
+**Choix :** Énoncé final et portée d’un connecteur
+
+**Autre formulation envisagée :** Séquent final; simple ordre des symboles
+
+**Motif :** Il n’y a pas de séquent dans ces arbres. La première implication est principale par la structure de la formule; les autres symboles sont dans sa portée. La correction est déclarée.
+
+**Confiance et limites :** Forte : parenthésage et définition du système concordants.
+
+**Question de révision :** La portée explique-t-elle suffisamment le choix de la règle ?
+
+Passages de référence : SAU01.
+
+## C803 — OLP-0089-R10
+
+**Choix :** De bas en haut ou de haut en bas; deux cas de même conclusion
+
+**Autre formulation envisagée :** En avant/en arrière sans direction; conclusions équivalentes
+
+**Motif :** Les directions spatiales sont explicites. Elim(or) exige des conclusions identiques, pas seulement équivalentes, obtenues sous chacun des membres de la disjonction.
+
+**Confiance et limites :** Forte : analyse de cas SAU01 et schéma OLP comparés.
+
+**Question de révision :** La distinction entre les deux hypothèses supplémentaires et la conclusion commune est-elle claire ?
+
+Passages de référence : SAU01, SAU02.
+
+## C804 — OLP-0089-R12
+
+**Choix :** Dans chacune des deux branches de droite
+
+**Autre formulation envisagée :** Dans la branche de droite seulement
+
+**Motif :** Chaque cas nécessite une implication, donc une application propre de sa règle d’introduction. Le pluriel et la portée de chacune empêchent d’en omettre une.
+
+**Confiance et limites :** Forte : les deux sous-arbres sont présents.
+
+**Question de révision :** Les deux obligations de preuve sont-elles clairement séparées ?
+
+Passages de référence : SAU01.
+
+## C805 — OLP-0089-R14
+
+**Choix :** Au milieu et à droite
+
+**Autre formulation envisagée :** Au milieu et à gauche
+
+**Motif :** La source localise mal la seconde branche. Le texte français suit l’arbre affiché; les prémisses non-A,A du milieu sont conservées.
+
+**Confiance et limites :** Forte : position directement observable, correction déclarée.
+
+**Question de révision :** La correction de localisation suffit-elle pour suivre l’arbre ?
+
+Passages de référence : SAU01, SAU02.
+
+## C806 — OLP-0089-R16, OLP-0089-R17
+
+**Choix :** Achever la branche par FalseInt; Elim(not) pour obtenir false
+
+**Autre formulation envisagée :** Intro(false) pour obtenir false
+
+**Motif :** Le nom de la règle intermédiaire source ne correspond pas au schéma défini. La correction de son étiquette accompagne la même explication, sans toucher aux prémisses, conclusion ou étiquettes de décharge.
+
+**Confiance et limites :** Forte : règle0086 et arbres voisins concordants.
+
+**Question de révision :** La note signale-t-elle assez précisément le diagramme corrigé ?
+
+Passages de référence : SAU01.
+
+## C807 — OLP-0089-R18
+
+**Choix :** Une hypothèse inutilisée peut être omise; B seul suffit
+
+**Autre formulation envisagée :** Toute hypothèse postulée doit être utilisée
+
+**Motif :** La dérivation de B sous B n’exige aucune inférence. Omettre A laisse une introduction de l’implication à décharge vide. Les deux emphases permission/obligation sont conservées.
+
+**Confiance et limites :** Forte : arbre final et convention de décharge vide comparés.
+
+**Question de révision :** Le passage distingue-t-il absence d’usage et suppression d’une dépendance effective ?
+
+Passages de référence : SAU08.
+
+## C808 — OLP-0089-R20
+
+**Choix :** Seule FalseInt parmi les deux règles; impossibilité en général
+
+**Autre formulation envisagée :** Seule règle intuitionniste; impossibilité pour tout A
+
+**Motif :** La restriction concerne le couple de règles de l’absurde, pas tout le système. Le paramètre A reste arbitraire; certaines instances sont démontrables, d’où la qualification. FalseInt est un cas de FalseCl avec zéro occurrence à décharger.
+
+**Confiance et limites :** Forte sur les restrictions; explication du dernier recours conserve la stratégie source.
+
+**Question de révision :** La portée de seule et en général est-elle suffisamment explicite ?
+
+Passages de référence : SAU01, SAU08.
+
+## C809 — OLP-0089-R22
+
+**Choix :** Chercher false sous la négation de la conclusion
+
+**Autre formulation envisagée :** Affirmer directement la conclusion par contradiction
+
+**Motif :** Il reste une véritable obligation : dériver false. La règle d’élimination de la négation est essayée, sans prétendre que les branches incomplètes soient déjà des preuves.
+
+**Confiance et limites :** Forte : structure de l’arbre incomplet conservée.
+
+**Question de révision :** Le statut des pointillés comme étapes à compléter reste-t-il clair ?
+
+Passages de référence : SAU01.
+
+## C810 — OLP-0089-R24
+
+**Choix :** Introduire la négation pour dériver non-A
+
+**Autre formulation envisagée :** Utiliser à nouveau immédiatement FalseCl
+
+**Motif :** La stratégie source ouvre l’hypothèse A puis cherche false; elle n’invoque pas encore l’absurde classique dans cette branche.
+
+**Confiance et limites :** Forte : règle et étiquette2 du diagramme conservées.
+
+**Question de révision :** Les règles des deux branches se distinguent-elles nettement ?
+
+Passages de référence : SAU01.
+
+## C811 — OLP-0089-R26
+
+**Choix :** La nouvelle hypothèse A donne la disjonction
+
+**Autre formulation envisagée :** La disjonction est une hypothèse supplémentaire
+
+**Motif :** La disjonction est dérivée par introduction à partir de A, puis contredit l’hypothèse extérieure. Le texte garde cette dépendance.
+
+**Confiance et limites :** Forte : deux inférences comparées au diagramme.
+
+**Question de révision :** Le pronom qui renvoie-t-il sans ambiguïté à la disjonction ?
+
+Passages de référence : SAU01, SAU02.
+
+## C812 — OLP-0089-R28
+
+**Choix :** Même stratégie, mais A obtenu par FalseCl
+
+**Autre formulation envisagée :** Même règle dans les deux branches
+
+**Motif :** Le parallélisme porte sur la construction de la contradiction; la règle finale de la branche droite diffère et reste nommée.
+
+**Confiance et limites :** Forte : arbre final et étiquette3 comparés.
+
+**Question de révision :** La différence entre les règles finales est-elle suffisamment saillante ?
+
+Passages de référence : SAU01.
+
+## C813 — OLP-0089-R30
+
+**Choix :** Donner des dérivations établissant les résultats
+
+**Autre formulation envisagée :** Vérifier que les formules sont vraies
+
+**Motif :** Les trois consignes demandent des objets syntaxiques, pas une table de vérité. Les24items restent inchangés; le dernier groupe exige la règle classique pour les schémas arbitraires. La note rassemble les corrections de localisation, nom d’objet, étiquette et généralité.
+
+**Confiance et limites :** Forte : trois exercices et tous leurs items contrôlés.
+
+**Question de révision :** Les consignes distinguent-elles construction d’une dérivation et vérification sémantique ?
+
+Passages de référence : SAU08, SAU01.
+
+## C814 — OLP-0090-R00
+
+**Choix :** Préparer d’abord les règles soumises à une condition
+
+**Autre formulation envisagée :** Exécuter ces inférences en premier dans la preuve achevée
+
+**Motif :** La recherche procède ici depuis la conclusion. Les inférences préparées d’abord seront en bas de l’arbre final; on ne renverse pas l’ordre logique des prémisses. Le titre conserve dérivations.
+
+**Confiance et limites :** Forte : position des cinq premiers arbres et avertissement source comparés.
+
+**Question de révision :** La distinction entre ordre de recherche et ordre de justification est-elle explicite ?
+
+Passages de référence : SAU06, SAU08.
+
+## C815 — OLP-0090-R02
+
+**Choix :** Justifier la dernière étape par introduction de l’implication
+
+**Autre formulation envisagée :** Déduire directement la conclusion
+
+**Motif :** L’arbre qui suit demeure partiel : il indique une hypothèse à décharger et une sous-preuve à construire. La phrase ne prétend pas que la preuve soit achevée.
+
+**Confiance et limites :** Forte : obligation intermédiaire conservée.
+
+**Question de révision :** Le statut d’ébauche de l’arbre reste-t-il clair ?
+
+Passages de référence : SAU08.
+
+## C816 — OLP-0090-R04
+
+**Choix :** Constante absente des formules concernées; absence conditionnelle
+
+**Autre formulation envisagée :** Toute constante convient puisque A(x) ne contient aucune constante
+
+**Motif :** A(x) est une formule arbitraire et peut déjà contenir des constantes. La prémisse est exists non-A(x), comme dans l’arbre, et la conclusion entre aussi dans la restriction. La correction est déclarée.
+
+**Confiance et limites :** Forte : comparaison des règles0087 et de tous les arbres de cet exemple.
+
+**Question de révision :** Les trois emplacements interdits sont-ils assez visibles ?
+
+Passages de référence : SAU06, SCH06.
+
+## C817 — OLP-0090-R06
+
+**Choix :** Hypothèse supplémentaire éventuellement utilisée
+
+**Autre formulation envisagée :** Hypothèse supplémentaire nécessairement utilisée
+
+**Motif :** L’introduction de la négation permet une décharge vide. La contradiction peut aussi dépendre de non-A(a), dont la décharge relève d’une autre inférence, l’élimination existentielle.
+
+**Confiance et limites :** Forte : correspondance des étiquettes2 et3 contrôlée.
+
+**Question de révision :** Les deux étiquettes de décharge ont-elles des portées nettement distinctes ?
+
+Passages de référence : SAU02, SAU08.
+
+## C818 — OLP-0090-R08
+
+**Choix :** N’importe quel terme clos; utiliser encore a
+
+**Autre formulation envisagée :** N’importe quel terme; choisir un autre témoin
+
+**Motif :** L’élimination universelle n’a pas de condition sur l’eigenvariable, mais exige un terme clos dans OLP. Réutiliser a produit A(a) face à non-A(a).
+
+**Confiance et limites :** Forte : rôle de la même constante et convention de fermeture comparés.
+
+**Question de révision :** La différence entre absence de condition de fraîcheur et absence de toute restriction est-elle claire ?
+
+Passages de référence : SAU06, SCH06.
+
+## C819 — OLP-0090-R10
+
+**Choix :** Vérifier tous les emplacements; suivre les hypothèses ouvertes
+
+**Autre formulation envisagée :** Vérifier uniquement les hypothèses; oublier le contexte une fois le but fixé
+
+**Motif :** La fraîcheur concerne aussi prémisse existentielle et conclusion. La transition vers l’exemple2 explique que des hypothèses peuvent rester ouvertes et conserve les deux hypothèses données.
+
+**Confiance et limites :** Forte : règles et nouvelles données comparées.
+
+**Question de révision :** Le rappel de la condition complète facilite-t-il le passage à un contexte non vide ?
+
+Passages de référence : SAU06, SAU03.
+
+## C820 — OLP-0090-R12
+
+**Choix :** Exploiter la première hypothèse avec l’aide de la seconde
+
+**Autre formulation envisagée :** Dériver la conclusion de la seule première hypothèse
+
+**Motif :** L’existence de A et B ne fournit pas C sans l’implication de la seconde hypothèse. Les deux demeurent disponibles. Le choix de a exclut b et toutes les constantes déjà présentes dans les formules pertinentes.
+
+**Confiance et limites :** Forte : l’arbre achevé utilise explicitement les deux hypothèses.
+
+**Question de révision :** L’ordre de construction est-il distingué d’une réduction injustifiée du contexte ?
+
+Passages de référence : SAU06, SAU03.
+
+## C821 — OLP-0090-R14, OLP-0090-R15
+
+**Choix :** Obtenir B(a) par élimination de la conjonction
+
+**Autre formulation envisagée :** Séparer des prédicats B indépendants
+
+**Motif :** Le symbole commun B permet d’exploiter la conjonction au même témoin a. La parenthèse mal placée de la prémisse existentielle du diagramme suivant est corrigée, sans modifier la formule attendue.
+
+**Confiance et limites :** Forte : schéma identique dans les arbres immédiatement voisins.
+
+**Question de révision :** La correction du parenthésage est-elle décrite avec assez de précision ?
+
+Passages de référence : SAU08.
+
+## C822 — OLP-0090-R16
+
+**Choix :** Instancier x par la constante a
+
+**Autre formulation envisagée :** Instancier par une variable nouvelle
+
+**Motif :** a est un terme clos; le même témoin est utilisé dans B(a) et B(a) implique C(a,b). Le paramètre b reste inchangé.
+
+**Confiance et limites :** Forte : les deux prémisses de l’élimination de l’implication coïncident.
+
+**Question de révision :** Le statut distinct de a et b reste-t-il visible ?
+
+Passages de référence : SAU06, SCH06.
+
+## C823 — OLP-0090-R18
+
+**Choix :** Une application de l’introduction existentielle
+
+**Autre formulation envisagée :** Nouveau choix d’une eigenvariable
+
+**Motif :** Cette règle ne requiert pas une constante fraîche. La conclusion masque l’occurrence choisie de a et conserve b. La phrase garde la dernière étape guidée sans exclamation familière.
+
+**Confiance et limites :** Forte sur le sens; sobriété du registre éditoriale.
+
+**Question de révision :** La dernière règle paraît-elle suffisamment motivée par la forme de la conclusion ?
+
+Passages de référence : SAU06.
+
+## C824 — OLP-0090-R20
+
+**Choix :** Dérivation correcte puis nouvelle construction guidée
+
+**Autre formulation envisagée :** Fusionner les exemples ou en faire un exercice non résolu
+
+**Motif :** La fin du deuxième exemple et l’annonce du troisième restent séparées. Le troisième fournit une preuve guidée complète; construire rend son impératif naturel dans ce contexte.
+
+**Confiance et limites :** Forte : environnements et formules conservés.
+
+**Question de révision :** Les frontières entre exemples et exercices sont-elles nettes ?
+
+Passages de référence : SAU06, SAU08.
+
+## C825 — OLP-0090-R22
+
+**Choix :** Chercher une contradiction pour introduire la négation
+
+**Autre formulation envisagée :** Déclarer la négation vraie sans sous-preuve
+
+**Motif :** La conclusion négative conduit à une règle syntaxique et à une nouvelle obligation, sans invoquer d’emblée un résultat sémantique.
+
+**Confiance et limites :** Forte : arbre incomplet et conclusion intermédiaire conservés.
+
+**Question de révision :** La stratégie garde-t-elle une portée opératoire sans masquer l’obligation de preuve ?
+
+Passages de référence : SAU01, SAU08.
+
+## C826 — OLP-0090-R24
+
+**Choix :** Utiliser plutôt l’hypothèse conditionnelle
+
+**Autre formulation envisagée :** Éliminer forcément le quantificateur rencontré
+
+**Motif :** L’ordre de recherche n’est pas dicté par tout symbole visible. Le texte conserve l’hésitation source et choisit l’implication dont l’antécédent est disponible.
+
+**Confiance et limites :** Forte : forme de l’élimination de l’implication contrôlée.
+
+**Question de révision :** Le rôle de l’hypothèse conditionnelle est-il clair ?
+
+Passages de référence : SAU01.
+
+## C827 — OLP-0090-R26
+
+**Choix :** Exploiter la dernière hypothèse pour la contradiction
+
+**Autre formulation envisagée :** Décharger la dernière hypothèse
+
+**Motif :** La négation existentielle demeure une hypothèse ouverte du contexte; c’est l’hypothèse universelle temporaire qui est déchargée ensuite.
+
+**Confiance et limites :** Forte : étiquette1 et contexte final comparés.
+
+**Question de révision :** Le lecteur distingue-t-il hypothèse utilisée et hypothèse déchargée ?
+
+Passages de référence : SAU01.
+
+## C828 — OLP-0090-R28
+
+**Choix :** Donner des dérivations; dernier groupe classique
+
+**Autre formulation envisagée :** Vérifier la validité des formules; toute instance impose FalseCl
+
+**Motif :** Les exercices demandent des arbres. La remarque sur FalseCl concerne les schémas arbitraires; les neuf items sont inchangés. Les précisions des exemples sont déclarées séparément.
+
+**Confiance et limites :** Forte : inventaire complet des items et notes comparé.
+
+**Question de révision :** La consigne garde-t-elle sa nature syntaxique et son niveau mathématique ?
+
+Passages de référence : SAU06, SAU08.
+
+## C829 — OLP-0091-R00
+
+**Choix :** Notions de théorie de la démonstration; correspondance par correction et complétude
+
+**Autre formulation envisagée :** Notions de vérité; synonymie immédiate des deux registres
+
+**Motif :** La coïncidence est un résultat mathématique, pas une définition lexicale. Les valuations remplacent les structures uniquement dans la branche propositionnelle, avec note éditoriale.
+
+**Confiance et limites :** Forte : directions des théorèmes relues dans SCH03 et GL02.
+
+**Question de révision :** La distinction entre définitions et théorèmes de correspondance est-elle explicite ?
+
+Passages de référence : SCH03, GL02.
+
+## C830 — OLP-0091-R00
+
+**Choix :** Théorème : toutes les hypothèses déchargées
+
+**Autre formulation envisagée :** Théorème : arbre sans hypothèses ni feuilles
+
+**Motif :** Une preuve sans hypothèses ouvertes peut contenir des feuilles déchargées. Les notations positive et négative de théorème sont conservées.
+
+**Confiance et limites :** Forte : définition et notation du canon concordantes.
+
+**Question de révision :** Sans hypothèses ouvertes est-il compris sans exclure les décharges ?
+
+Passages de référence : SAU03, SAU08.
+
+## C831 — OLP-0091-R00
+
+**Choix :** Dérivable à partir d’un ensemble; appartenance des hypothèses
+
+**Autre formulation envisagée :** Utiliser exactement tous les éléments de Gamma
+
+**Motif :** La définition autorise les hypothèses inutilisées. Les deux signes de dérivabilité et non-dérivabilité ne deviennent pas des relations sémantiques.
+
+**Confiance et limites :** Forte : quantification sur chaque hypothèse conservée.
+
+**Question de révision :** L’appartenance plutôt que l’égalité du contexte est-elle nette ?
+
+Passages de référence : SAU03.
+
+## C832 — OLP-0091-R00
+
+**Choix :** Cohérent, défini par non-dérivabilité de false
+
+**Autre formulation envisagée :** Consistant, défini par existence immédiate d’un modèle
+
+**Motif :** Cohérence est attesté et déjà employé. La définition reste syntaxique; la caractérisation sémantique viendra par les théorèmes. Il remplace Gamma dans la seconde phrase avec un antécédent unique.
+
+**Confiance et limites :** Forte sur la distinction et la définition; variante consistant possible mais non retenue.
+
+**Question de révision :** Le terme cohérent reste-t-il distinct de satisfaisable ?
+
+Passages de référence : GL02.
+
+## C833 — OLP-0091-R00
+
+**Choix :** Réflexivité : l’hypothèse seule est une dérivation
+
+**Autre formulation envisagée :** Réflexivité de l’égalité des formules
+
+**Motif :** La propriété porte sur la relation de dérivabilité. Le cas de base fournit la preuve sans règle supplémentaire; le mot seule ne signifie pas absence d’hypothèse.
+
+**Confiance et limites :** Forte : énoncé et preuve définissent explicitement la relation concernée.
+
+**Question de révision :** Le titre risque-t-il une confusion avec l’égalité ?
+
+Passages de référence : SAU08, SAU03.
+
+## C834 — OLP-0091-R00
+
+**Choix :** Monotonie par inclusion des contextes
+
+**Autre formulation envisagée :** Monotonie par ajout d’une nouvelle inférence
+
+**Motif :** La même dérivation suffit lorsque Gamma est inclus dans Delta. Rien ne requiert de reconstruire l’arbre ou d’utiliser les nouveaux éléments.
+
+**Confiance et limites :** Forte : preuve source conservée.
+
+**Question de révision :** La réutilisation de la dérivation est-elle suffisamment claire ?
+
+Passages de référence : SAU03.
+
+## C835 — OLP-0091-R00
+
+**Choix :** Transitivité par introduction puis élimination de l’implication
+
+**Autre formulation envisagée :** Greffer naïvement les sous-arbres
+
+**Motif :** L’arbre source évite une greffe pouvant imposer des renommages d’eigenvariables. Les deux preuves delta0/delta1 et leurs contextes sont distincts; le montage source est intégralement conservé.
+
+**Confiance et limites :** Forte : schéma et contextes vérifiés.
+
+**Question de révision :** Les rôles des deux sous-dérivations sont-ils faciles à suivre ?
+
+Passages de référence : SAU02, SAU08.
+
+## C836 — OLP-0091-R02
+
+**Choix :** Hypothèses toutes parmi l’union; notation abrégée pour un ensemble fini
+
+**Autre formulation envisagée :** Hypothèses égales à l’union; restriction de tous les contextes à des ensembles finis
+
+**Motif :** La conclusion du montage est une appartenance. La finitude est requise pour afficher la liste abrégée, pas pour définir la dérivabilité en général.
+
+**Confiance et limites :** Forte : qualifications et notations comparées.
+
+**Question de révision :** La portée locale de la finitude est-elle explicite ?
+
+Passages de référence : SAU03, SAU08.
+
+## C837 — OLP-0091-R02
+
+**Choix :** Tout énoncé; au moins un énoncé avec sa négation
+
+**Autre formulation envisagée :** Un énoncé quelconque dans les deux clauses
+
+**Motif :** Les deuxième et troisième caractérisations ont des quantificateurs différents. L’équivalence est un résultat à démontrer, pas trois définitions interchangeables sans preuve.
+
+**Confiance et limites :** Forte : les deux quantificateurs et leurs conjonctions sont conservés.
+
+**Question de révision :** L’opposition tout/au moins un est-elle visible ?
+
+Passages de référence : GL02.
+
+## C838 — OLP-0091-R02
+
+**Choix :** Compacité : partie finie suffisante et contraposée
+
+**Autre formulation envisagée :** Finitude de Gamma; compacité topologique directement utilisée
+
+**Motif :** Le terme compacité est attesté; la preuve OLP repose sur la finitude syntaxique d’une dérivation. Le témoin sémantique français éclaire les quantificateurs, sans remplacer la preuve.
+
+**Confiance et limites :** Forte : finitude de l’arbre et portée de Gamma vérifiées.
+
+**Question de révision :** La compacité syntaxique est-elle distinguée de sa version sémantique ?
+
+Passages de référence : SCH11, SAU08.
+
+## C839 — OLP-0091-R02
+
+**Choix :** Ensemble des hypothèses non déchargées de cette dérivation
+
+**Autre formulation envisagée :** Ensemble de toutes les hypothèses du système
+
+**Motif :** Gamma0 est extrait d’un arbre particulier, donc fini. La contraposée de la première clause s’applique exactement à la non-dérivabilité de false.
+
+**Confiance et limites :** Forte : ordre des quantificateurs et négations relus.
+
+**Question de révision :** Le référent cette dérivation et la spécialisation à false sont-ils clairs ?
+
+Passages de référence : SAU08, SCH11.
+
+## C840 — OLP-0092-R00
+
+**Choix :** Propriétés de dérivabilité utiles à la complétude
+
+**Autre formulation envisagée :** Propriétés de validité suffisantes à elles seules pour la complétude
+
+**Motif :** Les propriétés sont syntaxiques et interviendront toutes dans une démonstration ultérieure; on ne prétend pas avoir déjà établi la complétude. Les deux dérivations delta1 et delta2 ont des conclusions différentes.
+
+**Confiance et limites :** Forte : portée de chaque affirmation conservée.
+
+**Question de révision :** La place de ces lemmes dans l’argument ultérieur est-elle bien indiquée ?
+
+Passages de référence : GL02, SAU03.
+
+## C841 — OLP-0092-R02
+
+**Choix :** Occurrences indiquées déchargées; hypothèses restantes dans Gamma
+
+**Autre formulation envisagée :** Suppression de la formule A de Gamma
+
+**Motif :** La décharge agit sur les occurrences marquées dans l’arbre. Une formule identique peut déjà appartenir à Gamma. La suite annonce une équivalence, puis en traite d’abord la direction issue de Gamma prouve A.
+
+**Confiance et limites :** Forte : règle de décharge et inclusion des hypothèses comparées.
+
+**Question de révision :** Le contexte est-il préservé même si A appartient déjà à Gamma ?
+
+Passages de référence : SAU02, SAU03.
+
+## C842 — OLP-0092-R04
+
+**Choix :** Retour par FalseCl à partir de l’incohérence
+
+**Autre formulation envisagée :** Retour par introduction de la négation seulement
+
+**Motif :** La conclusion cherchée est A, non sa double négation. Le système est classique; le rôle de FalseCl est indispensable à cette direction telle qu’elle est formulée.
+
+**Confiance et limites :** Forte : arbre et conclusion source inchangés.
+
+**Question de révision :** L’asymétrie des deux directions est-elle suffisamment visible ?
+
+Passages de référence : GL02, SAU08.
+
+## C843 — OLP-0092-R06
+
+**Choix :** Incohérence sous une négation déjà dans Gamma
+
+**Autre formulation envisagée :** Ajouter une nouvelle hypothèse extérieure à Gamma
+
+**Motif :** L’appartenance non-A dans Gamma garantit que l’élimination de la négation ne change pas le contexte autorisé. L’exercice précédent garde son équivalence avec Gamma union A.
+
+**Confiance et limites :** Forte : hypothèse du lemme et preuve comparées.
+
+**Question de révision :** L’appartenance est-elle clairement ce qui justifie le contexte final ?
+
+Passages de référence : GL02, SAU03.
+
+## C844 — OLP-0092-R08
+
+**Choix :** Deux contextes incohérents; deux preuves distinctes
+
+**Autre formulation envisagée :** Une seule preuve utilisable sous l’une ou l’autre hypothèse
+
+**Motif :** Delta1 vient de Gamma union A, delta2 de Gamma union non-A. Respectivement conserve leur affectation et la construction combine les négations obtenues.
+
+**Confiance et limites :** Forte : deux sous-arbres contrôlés.
+
+**Question de révision :** Les indices et les contextes se correspondent-ils nettement ?
+
+Passages de référence : SAU02, SAU08.
+
+## C845 — OLP-0092-R10
+
+**Choix :** Hypothèses restantes appartenant à Gamma
+
+**Autre formulation envisagée :** Exactement Gamma comme ensemble des feuilles ouvertes
+
+**Motif :** La dernière phrase explicite l’inclusion suffisante et ajoute une occurrence de Gamma dans la prose. Aucune obligation d’utiliser tous les éléments n’est introduite.
+
+**Confiance et limites :** Forte : contexte et occurrence supplémentaire adjugés.
+
+**Question de révision :** La qualification indiquées aide-t-elle à comprendre la décharge ?
+
+Passages de référence : SAU03, SAU02.
+
+## C846 — OLP-0093-R00
+
+**Choix :** Faits élémentaires de dérivabilité; deux conséquences de la conjonction
+
+**Autre formulation envisagée :** Lois sémantiques simplement citées
+
+**Motif :** La section construit les dérivations nécessaires au théorème de complétude. À la fois maintient les deux conséquences distinctes du premier item; leurs deux arbres sont conservés.
+
+**Confiance et limites :** Forte : toutes les formules et les labels sont intacts.
+
+**Question de révision :** L’annonce distingue-t-elle résultat syntaxique et tautologie sémantique ?
+
+Passages de référence : SCH03, SAU08.
+
+## C847 — OLP-0093-R02
+
+**Choix :** La dérivation suivante
+
+**Autre formulation envisagée :** La preuve de la réciproque
+
+**Motif :** Le second item est une introduction de conjonction à partir de deux hypothèses, pas l’inversion d’une même inférence uniaire.
+
+**Confiance et limites :** Forte : arité binaire et conclusion intactes.
+
+**Question de révision :** La phrase reste-t-elle assez explicite au regard de l’arbre ?
+
+Passages de référence : SAU08.
+
+## C848 — OLP-0093-R04
+
+**Choix :** Le triplet est incohérent; considérer la dérivation
+
+**Autre formulation envisagée :** La disjonction est contradictoire à elle seule
+
+**Motif :** L’incohérence porte sur l’ensemble des trois hypothèses. L’élimination par cas décharge A et B mais conserve leurs négations et la disjonction.
+
+**Confiance et limites :** Forte : trois hypothèses et deux étiquettes1 comparées.
+
+**Question de révision :** Le sujet de incohérent est-il sans ambiguïté ?
+
+Passages de référence : GL02, SAU02.
+
+## C849 — OLP-0093-R06
+
+**Choix :** Les trois hypothèses non déchargées; deux introductions
+
+**Autre formulation envisagée :** Toutes les feuilles demeurent ouvertes
+
+**Motif :** Les hypothèses de cas sont déchargées dans l’arbre précédent. Le second item expose séparément les deux introductions de la disjonction.
+
+**Confiance et limites :** Forte : contexte final et deux arbres vérifiés.
+
+**Question de révision :** La transition conserve-t-elle la différence entre hypothèses de cas et contexte ?
+
+Passages de référence : SAU03, SAU08.
+
+## C850 — OLP-0093-R08
+
+**Choix :** Modus ponens puis deux voies vers une implication
+
+**Autre formulation envisagée :** Une seule équivalence entre hypothèses
+
+**Motif :** Les items ont des contextes différents. Les conjonctions linguistiques ne changent pas les signes de dérivabilité ni l’ordre des formules.
+
+**Confiance et limites :** Forte : inventaire mathématique strictement conservé.
+
+**Question de révision :** Les deux propriétés de l’implication sont-elles distinctes ?
+
+Passages de référence : SAU01, SAU08.
+
+## C851 — OLP-0093-R10
+
+**Choix :** Les deux dérivations établissent le résultat
+
+**Autre formulation envisagée :** Une dérivation unique avec les deux contextes réunis
+
+**Motif :** Les arbres juxtaposés sont deux preuves indépendantes, l’une sous non-A, l’autre sous B.
+
+**Confiance et limites :** Forte : source et disposition formelle conservées.
+
+**Question de révision :** La pluralité des preuves reste-t-elle visible ?
+
+Passages de référence : SAU08.
+
+## C852 — OLP-0093-R12
+
+**Choix :** Décharger A sans l’exiger
+
+**Autre formulation envisagée :** Décharger obligatoirement une occurrence
+
+**Motif :** L’arbre de droite ne contient aucune occurrence de A. La même règle reste applicable avec une décharge vide.
+
+**Confiance et limites :** Forte : cas zéro de SAU08 et diagramme OLP concordants.
+
+**Question de révision :** La permission est-elle liée clairement à cet exemple précis ?
+
+Passages de référence : SAU08.
+
+## C853 — OLP-0094-R00
+
+**Choix :** Si c ne figure ni dans Gamma ni dans A(x)
+
+**Autre formulation envisagée :** Choisir toujours c absent de Gamma
+
+**Motif :** Le théorème suppose une constante satisfaisant la condition; il ne garantit pas ce choix pour un contexte infini arbitraire. La preuve ajoute une introduction universelle.
+
+**Confiance et limites :** Forte : portée conditionnelle préservée.
+
+**Question de révision :** La fraîcheur est-elle clairement une hypothèse et non un résultat ?
+
+Passages de référence : SAU06, SAU03.
+
+## C854 — OLP-0094-R00
+
+**Choix :** Pour tout terme clos t
+
+**Autre formulation envisagée :** Pour tout terme sans restriction
+
+**Motif :** La convention des règles quantificatrices exige la fermeture. L’énoncé l’explicite et la note déclare cet ajout; les deux branches de sélection restent inchangées.
+
+**Confiance et limites :** Forte : règle0087 et définition française de terme clos concordantes.
+
+**Question de révision :** Le rappel de fermeture est-il placé assez près des deux schémas ?
+
+Passages de référence : SCH06, SAU06.
+
+## C855 — OLP-0094-R02
+
+**Choix :** Dérivation de A(t) à partir de la formule universelle
+
+**Autre formulation envisagée :** Substitution d’une variable libre arbitraire
+
+**Motif :** Le terme est celui, clos, fixé par la proposition. Le texte conserve la direction de l’élimination et les fermetures des branches conditionnelles.
+
+**Confiance et limites :** Forte : arbre inchangé et convention locale explicite.
+
+**Question de révision :** La direction de l’inférence est-elle lisible sans développer la macro ?
+
+Passages de référence : SAU06, SCH06.
+
+## C856 — OLP-0094-R04
+
+**Choix :** Note déclarant la fermeture du terme
+
+**Autre formulation envisagée :** Restriction introduite sans signalement
+
+**Motif :** La note identifie précisément l’ajout éditorial et son fondement dans les règles précédentes. Elle ne présente pas une règle nouvelle.
+
+**Confiance et limites :** Forte : ajout local et réversible.
+
+**Question de révision :** La distinction entre rappel de convention et hypothèse nouvelle est-elle nette ?
+
+Passages de référence : SCH06.
+
+## C857 — OLP-0095-R00
+
+**Choix :** Correction du système
+
+**Autre formulation envisagée :** Complétude ou sûreté
+
+**Motif :** Correction exprime le passage de la dérivation à la conséquence; complétude inverse ce sens. Sûreté évoquerait une propriété opérationnelle distincte.
+
+**Confiance et limites :** Forte : sens du théorème et usage de SCH03 concordent.
+
+**Question de révision :** Le sens syntaxe vers sémantique demeure-t-il visible dès le titre ?
+
+Passages de référence : SCH03.
+
+## C858 — OLP-0095-R00
+
+**Choix :** Dérivable sans hypothèses; valide ou tautologique
+
+**Autre formulation envisagée :** Tout énoncé dérivable sous des hypothèses est valide
+
+**Motif :** La restriction absente du premier item source est nécessaire. Les deux branches conservent le vocabulaire approprié à leur sémantique; la note signale la précision.
+
+**Confiance et limites :** Forte : contre-exemple immédiat A dérivable sous A et corollaire sans hypothèse.
+
+**Question de révision :** La précision exclut-elle clairement la dérivabilité sous une hypothèse arbitraire ?
+
+Passages de référence : SCH03, SCH10.
+
+## C859 — OLP-0095-R00
+
+**Choix :** Hypothèses appartenant au contexte; récurrence sur les inférences
+
+**Autre formulation envisagée :** Contexte exactement égal aux feuilles; récurrence sur les formules
+
+**Motif :** Le théorème porte sur un contexte contenant les hypothèses ouvertes. La mesure inductive est le nombre total d’inférences et non la complexité des formules. La feuille seule donne le cas zéro.
+
+**Confiance et limites :** Forte : base et sous-arbres strictement plus petits conservés.
+
+**Question de révision :** Les deux rôles du contexte et de la mesure inductive sont-ils distincts ?
+
+Passages de référence : SAU03, SAU08, SCH03.
+
+## C860 — OLP-0095-R02
+
+**Choix :** Raisonnement par l’absurde sur la satisfaction
+
+**Autre formulation envisagée :** Règle syntaxique d’absurdité appliquée dans l’arbre
+
+**Motif :** La preuve métathéorique suppose le contexte satisfait et la négation non satisfaite; elle contredit alors l’impossibilité de satisfaire faux. Ce raisonnement justifie la règle et ne la présuppose pas comme vérité sémantique.
+
+**Confiance et limites :** Forte : toutes les hypothèses sémantiques sont conservées.
+
+**Question de révision :** Le niveau métathéorique du raisonnement reste-t-il clair ?
+
+Passages de référence : SCH03, SAU02.
+
+## C861 — OLP-0095-R04
+
+**Choix :** Structure dans FOL, valuation dans PL
+
+**Autre formulation envisagée :** Structure dans les deux branches
+
+**Motif :** La source garde par erreur le nom structure dans la branche propositionnelle. Les symboles et prédicats de satisfaction déterminent leur type.
+
+**Confiance et limites :** Forte : alternance M/v inchangée.
+
+**Question de révision :** La distinction de types est-elle cohérente avec les chapitres sémantiques ?
+
+Passages de référence : SCH03, SCH09.
+
+## C862 — OLP-0095-R04
+
+**Choix :** Cette dernière condition équivaut à deux satisfactions
+
+**Autre formulation envisagée :** Répéter la même satisfaction composée
+
+**Motif :** Le démonstratif reprend immédiatement la satisfaction de la conjonction, sans changer l’équivalence ni ses deux composantes. Les deux variantes de la règle restent mentionnées.
+
+**Confiance et limites :** Forte sur le sens; choix de fluidité éditorial.
+
+**Question de révision :** L’antécédent du démonstratif est-il univoque ?
+
+Passages de référence : SCH03.
+
+## C863 — OLP-0095-R06
+
+**Choix :** Deux introductions possibles; hypothèses éventuellement déchargées
+
+**Autre formulation envisagée :** Décharge obligatoire de A
+
+**Motif :** La satisfaction d’un disjoint suffit. L’annonce du cas suivant conserve la possibilité de décharger zéro occurrence, admise par les règles OLP.
+
+**Confiance et limites :** Forte : les deux variantes et la décharge vide sont reconnues par les règles.
+
+**Question de révision :** Le passage de la disjonction à l’implication garde-t-il leurs opérations distinctes ?
+
+Passages de référence : SCH03, SAU08.
+
+## C864 — OLP-0095-R08
+
+**Choix :** Occurrences indiquées déchargées; contexte conservé
+
+**Autre formulation envisagée :** Retirer toute formule A du contexte
+
+**Motif :** La décharge est une opération sur certaines occurrences. Une occurrence différente de A peut rester ouverte dans Gamma. La preuve sémantique utilise Gamma union A et ne soustrait pas A.
+
+**Confiance et limites :** Forte : étiquettes de l’arbre et implication sémantique concordent.
+
+**Question de révision :** La distinction occurrence/formule est-elle assez explicite ?
+
+Passages de référence : SAU02, SAU03, SCH03.
+
+## C865 — OLP-0095-R10
+
+**Choix :** Aucune structure ou valuation ne satisfait faux
+
+**Autre formulation envisagée :** Faux est seulement non démontrable
+
+**Motif :** L’explosion est justifiée par l’absence de modèle du contexte, pas par une assertion sur la démontrabilité de faux. Le cas classique demeure un exercice.
+
+**Confiance et limites :** Forte : contradiction avec Gamma entraîne faux conservée.
+
+**Question de révision :** Le raisonnement sémantique évite-t-il toute circularité apparente ?
+
+Passages de référence : SCH03.
+
+## C866 — OLP-0095-R12
+
+**Choix :** Modifier l’interprétation de a, garder s
+
+**Autre formulation envisagée :** Modifier l’affectation de a comme si a était une variable
+
+**Motif :** a est une constante. Sa valeur est changée dans M′, tandis que s(x) fixe la nouvelle valeur et que s reste la même affectation.
+
+**Confiance et limites :** Forte : assignation de constante et renvois OLP préservés.
+
+**Question de révision :** M′ et s sont-ils nettement distingués ?
+
+Passages de référence : SCH09, SCH10, SAU06.
+
+## C867 — OLP-0095-R12
+
+**Choix :** Absence de a dans le contexte puis dans A(x)
+
+**Autre formulation envisagée :** Absence de la variable x dans tout le contexte
+
+**Motif :** Les deux applications d’extensionalité utilisent la fraîcheur de la constante. La quantification porte sur chaque affectation s; l’énoncé A(a) est clos.
+
+**Confiance et limites :** Forte : chaîne complète des satisfactions et six renvois source comparés.
+
+**Question de révision :** Les deux usages de fraîcheur sont-ils correctement localisés ?
+
+Passages de référence : SCH10, SAU06.
+
+## C868 — OLP-0095-R12
+
+**Choix :** Nom logique homogène et liste complète des règles à plusieurs prémisses
+
+**Autre formulation envisagée :** Garder forall et omettre l’élimination de la négation
+
+**Motif :** La commande lforall harmonise l’affichage de la règle. L’élimination de la négation figure déjà dans les cas proposés en exercice; l’énumération initiale est mise en accord avec eux.
+
+**Confiance et limites :** Forte : les cas réellement traités et laissés au lecteur ne changent pas.
+
+**Question de révision :** La note identifie-t-elle ces normalisations sans les présenter comme nouveaux théorèmes ?
+
+Passages de référence : SAU08, SCH03.
+
+## C869 — OLP-0095-R14
+
+**Choix :** Réunion des contextes pour la conjonction
+
+**Autre formulation envisagée :** Intersection des contextes
+
+**Motif :** Une structure satisfaisant la réunion satisfait chaque contexte; les deux hypothèses de récurrence fournissent alors les deux conjoints. Les sous-preuves n’ont pas à partager leurs hypothèses.
+
+**Confiance et limites :** Forte : deux arbres d’origine et conséquence finale concordent.
+
+**Question de révision :** La réunion exprime-t-elle clairement l’usage des deux sous-preuves ?
+
+Passages de référence : SCH03, SAU03.
+
+## C870 — OLP-0095-R16
+
+**Choix :** Application sémantique de l’implication
+
+**Autre formulation envisagée :** Affirmer B sans utiliser la satisfaction de A
+
+**Motif :** Les deux prémisses sont nécessaires : implication vraie et antécédent vrai. Le texte conserve aussi l’argument développé par contradiction.
+
+**Confiance et limites :** Forte : ordre de dépendance et formules conservés.
+
+**Question de révision :** L’argument détaillé justifie-t-il clairement la dernière satisfaction ?
+
+Passages de référence : SCH03.
+
+## C871 — OLP-0095-R16
+
+**Choix :** Compléter les cas restés en exercice
+
+**Autre formulation envisagée :** Ajouter leurs solutions dans le texte
+
+**Motif :** OLP invite le lecteur à compléter la preuve; les deux références conditionnelles FOL/PL sont conservées sans fournir de solution nouvelle.
+
+**Confiance et limites :** Forte : deux environnements d’exercice et leurs références conservés.
+
+**Question de révision :** Le caractère partiellement guidé de la preuve reste-t-il apparent ?
+
+Passages de référence : SCH03.
+
+## C872 — OLP-0095-R16
+
+**Choix :** Satisfaisabilité implique cohérence par contraposition
+
+**Autre formulation envisagée :** Équivalence immédiate entre cohérence et satisfaisabilité
+
+**Motif :** La correction établit cette seule direction. Supposer l’incohérence entraîne l’insatisfaisabilité; la réciproque relève d’un résultat supplémentaire.
+
+**Confiance et limites :** Forte : sens du corollaire et négations de sa contraposition comparés.
+
+**Question de révision :** Le texte évite-t-il d’attribuer une complétude encore non établie ?
+
+Passages de référence : SCH03, SCH10.
+
+## C873 — OLP-0096-R00
+
+**Choix :** Dérivations avec égalité
+
+**Autre formulation envisagée :** Dérivations avec identité au sens philosophique
+
+**Motif :** Égalité nomme ici le symbole binaire et ses règles. Les trois schémas, dont les deux orientations d’élimination, sont tous conservés.
+
+**Confiance et limites :** Forte : SAU07 atteste le terme et les trois schémas.
+
+**Question de révision :** Le titre suit-il assez clairement le vocabulaire des règles ?
+
+Passages de référence : SAU07.
+
+## C874 — OLP-0096-R02
+
+**Choix :** Termes clos; réflexivité sans hypothèse
+
+**Autre formulation envisagée :** Termes arbitraires avec variables; axiome sous hypothèse
+
+**Motif :** La fermeture exige l’absence de toute variable dans les termes. La règle de réflexivité a zéro prémisse; l’exemple d’élimination conserve ses deux hypothèses.
+
+**Confiance et limites :** Forte : source et règles explicites concordent.
+
+**Question de révision :** La portée de la restriction de fermeture est-elle claire pour les trois termes ?
+
+Passages de référence : SAU07, SCH06.
+
+## C875 — OLP-0096-R04
+
+**Choix :** Substituabilité des égaux; loi de Leibniz
+
+**Autre formulation envisagée :** Identité des indiscernables
+
+**Motif :** Le principe remplace des termes égaux et ne déduit pas leur égalité d’un ensemble de propriétés. Les deux appellations françaises exactes ne sont pas attestées dans les passages consultés; elles traduisent descriptivement l’appellation OLP.
+
+**Confiance et limites :** Confiance moyenne sur l’appellation non attestée; forte sur la direction logique.
+
+**Question de révision :** Une attestation française exacte permettrait-elle de préférer une autre dénomination ?
+
+Passages de référence : SAU07.
+
+## C876 — OLP-0096-R04
+
+**Choix :** Argument complet du troisième quantificateur
+
+**Autre formulation envisagée :** Conserver les crochets manquants
+
+**Motif :** L’exercice doit exprimer la transitivité universellement quantifiée. Les crochets manquants du troisième quantificateur empêchent la macro d’englober son argument; les rétablir conserve le contenu attendu.
+
+**Confiance et limites :** Forte : symétrie, transitivité annoncée et macro source identifient la formule.
+
+**Question de révision :** La correction éditoriale est-elle assez précisément localisée ?
+
+Passages de référence : SAU07.
+
+## C877 — OLP-0096-R04
+
+**Choix :** Trois constantes fraîches distinctes; remonter depuis la conclusion
+
+**Autre formulation envisagée :** Trois constantes quelconques; conclure à l’existence d’un A
+
+**Motif :** Le raisonnement prouve au plus un A à partir d’un objet auquel tous les A sont égaux. La construction ascendante et la fraîcheur assurent les éliminations et introductions quantifiées.
+
+**Confiance et limites :** Forte : formules de départ et conclusion conservées.
+
+**Question de révision :** Le texte laisse-t-il intacte la possibilité qu’aucun objet ne vérifie A ?
+
+Passages de référence : SAU06, SAU08.
+
+## C878 — OLP-0096-R06, OLP-0096-R07
+
+**Choix :** Élimination existentielle vers la conclusion intermédiaire
+
+**Autre formulation envisagée :** Instanciation existentielle sans condition
+
+**Motif :** La branche temporaire emploie c et décharge son hypothèse universelle. La parenthèse du schéma suivant est replacée dans l’argument du quantificateur.
+
+**Confiance et limites :** Forte : l’hypothèse et l’étiquette2 sont conservées.
+
+**Question de révision :** La condition de fraîcheur déjà annoncée reste-t-elle disponible au lecteur ?
+
+Passages de référence : SAU06, SAU08.
+
+## C879 — OLP-0096-R08, OLP-0096-R09
+
+**Choix :** Deux sous-dérivations; une seule détaillée
+
+**Autre formulation envisagée :** Confondre a=c et b=c en une même formule
+
+**Motif :** Les deux égalités sont obtenues séparément; le texte détaille seulement la première, comme OLP. Sa prémisse universelle reçoit la même correction de parenthèse que l’arbre précédent.
+
+**Confiance et limites :** Forte : deux conclusions annoncées et un arbre détaillé conservés.
+
+**Question de révision :** L’analogie requise pour la seconde sous-preuve reste-t-elle proportionnée ?
+
+Passages de référence : SAU07, SAU08.
+
+## C880 — OLP-0096-R10
+
+**Choix :** Déduire a=b de a=c et b=c
+
+**Autre formulation envisagée :** Conclure a=b en remplaçant c par b sans règle
+
+**Motif :** La deuxième orientation de l’élimination de l’égalité, appliquée à b=c et à la formule a=c, justifie la dernière étape. Il n’est pas nécessaire d’ajouter un axiome de transitivité.
+
+**Confiance et limites :** Forte : instanciation exacte du schéma d’égalité vérifiée.
+
+**Question de révision :** Le lien avec la deuxième orientation est-il assez facile à reconstruire ?
+
+Passages de référence : SAU07.
+
+## C881 — OLP-0096-R10
+
+**Choix :** Exercices conservés avec leur existence explicite
+
+**Autre formulation envisagée :** Lire le deuxième exercice comme simple unicité
+
+**Motif :** Le deuxième exercice possède une hypothèse existentielle supplémentaire. Le premier exemple ne l’avait pas. Les formules d’exercice restent toutes identiques hors réparation déclarée de la transitivité.
+
+**Confiance et limites :** Forte : inventaire mathématique des deux items strictement comparé.
+
+**Question de révision :** La distinction existence/unicité reste-t-elle stable dans toute la section ?
+
+Passages de référence : SAU07, SAU06.
+
+## C882 — OLP-0097-R00
+
+**Choix :** Validité de la réflexivité pour tout terme clos
+
+**Autre formulation envisagée :** Satisfaction dans une seule structure
+
+**Motif :** La fermeture dispense de varier l’affectation pour évaluer le terme. La validité quantifie toujours sur toutes les structures.
+
+**Confiance et limites :** Forte : deux quantifications et restriction source conservées.
+
+**Question de révision :** La fermeture du terme est-elle distinguée de la validité de la formule ?
+
+Passages de référence : SAU07, SCH06, SCH10.
+
+## C883 — OLP-0097-R02
+
+**Choix :** Même dénotation et affectation s[m/x]
+
+**Autre formulation envisagée :** Remplacer la structure ou réinterpréter une constante
+
+**Motif :** L’équivalence intermédiaire change la valeur assignée à x, pas la structure. Le même élément m est la dénotation des deux termes.
+
+**Confiance et limites :** Forte : chaîne de trois satisfactions et renvoi intacts.
+
+**Question de révision :** Le changement d’affectation est-il distinct du changement de structure de0095 ?
+
+Passages de référence : SCH09, SCH10.
+
+## C884 — OLP-0097-R02
+
+**Choix :** Couvrir aussi l’autre orientation par symétrie
+
+**Autre formulation envisagée :** La première orientation suffirait sans explication
+
+**Motif :** La section précédente présente deux orientations. Échanger t1 et t2 et utiliser la symétrie de l’égalité des dénotations donne exactement l’autre cas. L’ajout est déclaré.
+
+**Confiance et limites :** Forte : échange des deux termes et mêmes conditions de règle.
+
+**Question de révision :** L’explication est-elle suffisante sans répéter tout le raisonnement ?
+
+Passages de référence : SAU07, SCH03.
+
+## C885 — OLP-0097-R02
+
+**Choix :** Réunion des hypothèses des deux prémisses
+
+**Autre formulation envisagée :** Supposer que les deux prémisses sont des théorèmes
+
+**Motif :** La correction de chaque sous-preuve vaut sous son propre contexte. La réunion permet de les satisfaire simultanément; aucune prémisse n’est transformée en théorème sans hypothèse.
+
+**Confiance et limites :** Forte : Gamma1 et Gamma2 conservés avec leurs rôles respectifs.
+
+**Question de révision :** L’usage des deux contextes reste-t-il explicite ?
+
+Passages de référence : SCH03, SAU03.

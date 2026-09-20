@@ -25,9 +25,9 @@
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
 \setlength{\cftbeforechapterskip}{0.65em}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles au calcul des séquents},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la déduction naturelle},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle et calcul des séquents},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents et déduction naturelle},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -38,30 +38,27 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\au calcul des séquents\par}
+{\sffamily\huge Des ensembles\\à la déduction naturelle\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Septième livraison : neuf chapitres\par}
+{\large Huitième livraison : dix chapitres\par}
 \vspace{4mm}
-Cette livraison comprend soixante-cinq sections et leurs neuf chapitres d’organisation,
-soit 74 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend soixante-treize sections et leurs dix chapitres d’organisation,
+soit 83 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
 sont réunies dans un même chapitre, avec leurs conventions explicites.
-Le cinquième chapitre construit les entiers, les rationnels et les réels,
-par les coupures de Dedekind et les classes de suites de Cauchy.
-Le sixième étudie les ensembles infinis, les algèbres de Dedekind,
-la récurrence et une autre preuve du théorème de Schröder--Bernstein.
-Le septième présente les formules propositionnelles, leur construction
-inductive, les valuations et les notions sémantiques fondamentales.
-Le huitième présente les systèmes de preuve, leur correction et leur
-complétude : calcul des séquents, déduction naturelle, tableaux et
-dérivations axiomatiques.
-Le neuvième développe le calcul des séquents propositionnel : règles,
-recherche de preuves, dérivabilité, cohérence et théorème de correction.
+Les six premiers chapitres vont des ensembles aux nombres et à l’infini :
+coupures de Dedekind, suites de Cauchy, récurrence et théorème de
+Schröder--Bernstein. Le septième introduit la syntaxe et la sémantique
+propositionnelles; le huitième présente les systèmes de preuve,
+leur correction et leur complétude. Le neuvième développe le calcul
+des séquents propositionnel. Le dixième expose la déduction naturelle :
+règles, décharge des hypothèses, construction de dérivations,
+cohérence et théorème de correction.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -88,6 +85,8 @@ des traductions d'OpenLogic}
 \olimport[content/propositional-logic/syntax-and-semantics]{syntax-and-semantics}
 \olimport[content/first-order-logic/proof-systems]{proof-systems}
 \olimport[content/first-order-logic/sequent-calculus]{sequent-calculus}
+\addtocontents{toc}{\protect\Needspace{4\baselineskip}}
+\olimport[content/first-order-logic/natural-deduction]{natural-deduction}
 \tagtrue{FOL}
 \backmatter
 % La notice Frege1884 cite elle-même cette traduction anglaise.

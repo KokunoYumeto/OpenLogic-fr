@@ -1,0 +1,357 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: soundness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{sou}}
+      {\olfileid[fr]{pl}{ntd}{sou}}
+      
+\olsection{Correction}
+
+\begin{explain}
+Un système de !!{derivation}, tel que la déduction naturelle, est
+\emph{correct} s'il ne permet de !!{derive} que ce qui résulte
+effectivement des hypothèses. La correction garantit ainsi la
+fiabilité du système. Selon la propriété de théorie de la
+démonstration considérée, nous voulons par exemple savoir que :
+\begin{enumerate}
+\item tout !!{sentence} !!{derivable} sans hypothèses est
+  \iftag{FOL}{valide}{une tautologie};
+\item tout !!{sentence} !!{derivable} à partir d'autres est
+  aussi une conséquence de ceux-ci;
+\item tout ensemble incohérent d'!!{sentence}s est insatisfaisable.
+\end{enumerate}
+Ces propriétés sont essentielles pour un système de !!{derivation}.
+Si l'une d'elles était en défaut, le système permettrait de dériver
+trop d'!!{sentence}s. Il est donc primordial d'en établir la
+correction.
+\end{explain}
+
+\begin{thm}[Correction]
+\ollabel{thm:soundness}
+Si $!A$ est !!{derivable} à partir d'hypothèses
+!!{undischarged}s appartenant à $\Gamma$, alors $\Gamma \Entails !A$.
+\end{thm}
+
+\begin{proof}
+Soit $\delta$ une !!{derivation} de $!A$. Nous procédons par
+récurrence sur le nombre d'inférences de~$\delta$.
+
+Pour le cas de base, supposons ce nombre égal à~$0$. La
+!!{derivation}~$\delta$ se réduit alors à un seul !!{sentence}~$!A$,
+c'est-à-dire à une hypothèse. Celle-ci est !!{undischarged},
+puisqu'une hypothèse ne peut être déchargée que par une inférence
+et qu'il n'y en a aucune. Ainsi, toute
+\iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
+qui satisfait toutes les hypothèses !!{undischarged}s de la preuve
+satisfait aussi~$!A$.
+
+Passons à l'étape de récurrence. Supposons que $\delta$ comporte~$n$
+inférences. Les prémisses de l'inférence la plus basse sont dérivées
+par des sous-!!{derivation}s comportant chacune moins de~$n$
+inférences. Par hypothèse de récurrence, ces prémisses sont des
+conséquences des hypothèses !!{undischarged}s des
+sous-!!{derivation}s correspondantes. Il faut montrer que la
+conclusion~$!A$ est une conséquence des hypothèses
+!!{undischarged}s de la preuve entière.
+
+Distinguons les cas selon la dernière inférence. Commençons par
+les inférences à une seule prémisse.
+
+\begin{enumerate}
+\item Supposons que la dernière inférence soit \Intro{\lnot}.
+  La !!{derivation} a la forme suivante :
+\begin{prooftree}
+    \AxiomC{$\Gamma, \Discharge{!A}{n}$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$\lfalse$}
+    \DischargeRule{\Intro{\lnot}}{n}
+    \UnaryInfC{$\lnot !A$}
+  \end{prooftree}
+Par hypothèse de récurrence, $\lfalse$ est une conséquence des
+  hypothèses !!{undischarged}s de~$\delta_1$, contenues dans
+  $\Gamma \cup \{!A\}$. Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Il faut montrer que, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !A}$.
+  Supposons par l'absurde que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, mais que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lnot !A}$, c'est-à-dire que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$. Nous aurions alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma \cup \{!A\}}$, ce qui
+  contredit l'hypothèse de récurrence, puisque $\lfalse$ ne peut
+  être satisfait. Donc
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !A}$.
+
+\item La dernière inférence est \Elim{\land}. Il y a deux
+  variantes : la prémisse $!A \land !B$ permet de conclure $!A$
+  ou $!B$. Dans le premier cas, la !!{derivation}~$\delta$ a la forme :
+\begin{prooftree}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A \land !B$}
+    \RightLabel{\Elim{\land}}
+    \UnaryInfC{$!A$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!A \land !B$ est une conséquence
+  des hypothèses !!{undischarged}s~$\Gamma$ de~$\delta_1$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Il faut montrer que, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Supposons $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$.
+  Par hypothèse de récurrence, $\Gamma \Entails !A \land !B$;
+  nous avons donc $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$.
+  Par définition, cette dernière condition équivaut à
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ et
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  Le cas où l'on conclut $!B$ à partir de $!A \land !B$ se traite
+  de la même façon.
+
+\item La dernière inférence est \Intro{\lor}. On peut conclure
+  $!A \lor !B$ à partir de~$!A$ ou à partir de~$!B$.
+  Dans le premier cas, la !!{derivation} a la forme suivante :
+\begin{prooftree}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A$}
+    \RightLabel{\Intro{\lor}}
+    \UnaryInfC{$!A \lor !B$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!A$ est une conséquence des
+  hypothèses !!{undischarged}s~$\Gamma$ de~$\delta_1$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Il faut montrer que, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$.
+  Supposons $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$.
+  Comme $\Gamma \Entails !A$ par hypothèse de récurrence,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, d'où
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$.
+  Le cas où l'on conclut $!A \lor !B$ à partir de~$!B$ est analogue.
+
+\item La dernière inférence est \Intro{\lif}. L'!!{sentence}
+  $!A \lif !B$ est dérivé d'une sous-preuve de conclusion~$!B$
+  comportant éventuellement des hypothèses~$!A$ à décharger :
+\begin{prooftree}
+    \AxiomC{$\Gamma, \Discharge{!A}{n}$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!B$}
+    \DischargeRule{\Intro{\lif}}{n}
+    \UnaryInfC{$!A \lif !B$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!B$ est une conséquence des
+  hypothèses !!{undischarged}s de~$\delta_1$; ainsi,
+  $\Gamma \cup \{!A\} \Entails !B$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Les occurrences indiquées de~$!A$ étant déchargées par la
+  dernière inférence, les hypothèses !!{undischarged}s de~$\delta$
+  appartiennent à~$\Gamma$. Il faut donc montrer
+  $\Gamma \Entails !A \lif !B$.
+  Supposons par l'absurde qu'il existe
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
+  telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ et
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$.
+  Alors $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ et
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$.
+  Mais $!B$ est une conséquence de $\Gamma \cup \{!A\}$, donc
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$, contradiction.
+  Par conséquent, $\Gamma \Entails !A \lif !B$.
+
+\item La dernière inférence est \FalseInt. La !!{derivation}~$\delta$
+  se termine alors ainsi :
+\begin{prooftree}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$\lfalse$}
+    \RightLabel{\FalseInt}
+    \UnaryInfC{$!A$}
+  \end{prooftree}
+Par hypothèse de récurrence, $\Gamma \Entails \lfalse$.
+  Il faut montrer que $\Gamma \Entails !A$.
+  Sinon, il existerait
+  \iftag{FOL}{une structure~$\Struct{M}$}{une valuation~$\pAssign{v}$}
+  telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ et
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$.
+  Or $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$ dans tous les
+  cas; on aurait donc $\Gamma \Entails/ \lfalse$, contrairement
+  à l'hypothèse de récurrence.
+
+\item La dernière inférence est \FalseCl : exercice.
+
+\iftag{FOL}{
+\item La dernière inférence est \Intro{\lforall}. La
+  !!{derivation}~$\delta$ a alors la forme suivante :
+\begin{prooftree}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A(a)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x)]$}
+  \end{prooftree}
+Par hypothèse de récurrence, la prémisse $!A(a)$ est une
+  conséquence des hypothèses !!{undischarged}s~$\Gamma$.
+  Considérons une structure~$\Struct{M}$ telle que
+  $\Sat{M}{\Gamma}$. Il faut montrer que
+  $\Sat{M}{\lforall[x][!A(x)]}$.
+  Puisque $\lforall[x][!A(x)]$ est un !!{sentence}, cela revient
+  à montrer que $\Sat{M}{!A(x)}[s]$ pour toute affectation de
+  variables~$s$ (\olref[syn][ass]{prop:sat-quant}).
+  L'ensemble $\Gamma$ ne contient que des énoncés; nous avons donc
+  $\Sat{M}{!B}[s]$ pour tout $!B \in \Gamma$, par la
+  \olref[syn][sat]{defn:satisfaction}.
+  Soit $\Struct{M'}$ la structure qui ne diffère de $\Struct{M}$
+  que par l'interprétation de $a$, fixée à $\Assign{a}{M'} = s(x)$.
+  Puisque $a$ ne figure pas dans~$\Gamma$, on a
+  $\Sat{M'}{\Gamma}$ par le
+  \olref[syn][ext]{cor:extensionality-sent}.
+  Comme $\Gamma \Entails !A(a)$, il vient $\Sat{M'}{!A(a)}$.
+  L'!!{sentence} $!A(a)$ étant clos, nous avons aussi
+  $\Sat{M'}{!A(a)}[s]$, par la
+  \olref[syn][ass]{prop:sentence-sat-true}.
+  Par la \olref[syn][ext]{prop:ext-formulas},
+  $\Sat{M'}{!A(x)}[s]$ si et seulement si $\Sat{M'}{!A(a)}$
+  (rappelons que $!A(a)$ abrège $\Subst{!A(x)}{a}{x}$).
+  Donc $\Sat{M'}{!A(x)}[s]$.
+  Puisque $a$ ne figure pas dans~$!A(x)$,
+  la \olref[syn][ext]{prop:extensionality} donne $\Sat{M}{!A(x)}[s]$.
+  L'affectation~$s$ étant arbitraire, on obtient
+  $\Sat{M}{\lforall[x][!A(x)]}$.
+
+\item La dernière inférence est \Intro{\lexists} : exercice.
+
+\item La dernière inférence est \Elim{\lforall} : exercice.
+}{}
+\end{enumerate}
+
+Considérons maintenant les inférences à plusieurs prémisses :
+\Elim{\lor}, \Intro{\land}, \Elim{\lnot},
+\iftag{FOL}{\Elim{\lif} et \Elim{\lexists}}{\Elim{\lif}}.
+\begin{enumerate}
+
+\item La dernière inférence est \Intro{\land}. On dérive
+  $!A \land !B$ des prémisses $!A$ et $!B$, et $\delta$ a la forme :
+\begin{prooftree}
+    \AxiomC{$\Gamma_1$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A$}
+    \AxiomC{$\Gamma_2$}
+    \RightLabel{$\delta_2$}
+    \DeduceC{$!B$}
+    \RightLabel{\Intro{\land}}
+    \BinaryInfC{$!A \land !B$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!A$ est une conséquence des
+  hypothèses !!{undischarged}s~$\Gamma_1$ de~$\delta_1$, et
+  $!B$ une conséquence des hypothèses
+  !!{undischarged}s~$\Gamma_2$ de~$\delta_2$.
+  Les hypothèses !!{undischarged}s de~$\delta$ sont dans
+  $\Gamma_1 \cup \Gamma_2$; il faut donc montrer que
+  $\Gamma_1 \cup \Gamma_2 \Entails !A \land !B$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
+  telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$.
+  Comme $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1}$ et
+  $\Gamma_1 \Entails !A$, nous avons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  De même, $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_2}$ et
+  $\Gamma_2 \Entails !B$ donnent
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  Ainsi, $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$.
+
+\item La dernière inférence est \Elim{\lor} : exercice.
+
+\item La dernière inférence est \Elim{\lif}. On dérive $!B$
+  des prémisses $!A \lif !B$ et~$!A$. La !!{derivation}~$\delta$
+  a la forme suivante :
+\begin{prooftree}
+    \AxiomC{$\Gamma_1$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A \lif !B$}
+    \AxiomC{$\Gamma_2$}
+    \RightLabel{$\delta_2$}
+    \DeduceC{$!A$}
+    \RightLabel{\Elim{\lif}}
+    \BinaryInfC{$!B$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!A \lif !B$ est une conséquence
+  des hypothèses !!{undischarged}s~$\Gamma_1$ de~$\delta_1$, et
+  $!A$ une conséquence des hypothèses
+  !!{undischarged}s~$\Gamma_2$ de~$\delta_2$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Il faut montrer que, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  Supposons $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$.
+  Comme $\Gamma_1 \Entails !A \lif !B$, nous avons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lif !B}$.
+  Comme $\Gamma_2 \Entails !A$, nous avons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Il en résulte $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  En effet, si $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ entraînerait
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$, en contradiction
+  avec $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lif !B}$.
+
+\item La dernière inférence est \Elim{\lnot} : exercice.
+
+\tagitem{FOL}{La dernière inférence est \Elim{\lexists} : exercice.}{}
+\end{enumerate}
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Compléter la démonstration du \olref[fol][ntd][sou]{thm:soundness}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Compléter la démonstration du \olref[pl][ntd][sou]{thm:soundness}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est \iftag{FOL}{valide}{une tautologie}.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:consistency-soundness}
+Si $\Gamma$ est satisfaisable, alors $\Gamma$ est cohérent.
+\end{cor}
+
+\begin{proof}
+Raisonnons par contraposition. Supposons $\Gamma$ incohérent.
+Alors $\Gamma \Proves \lfalse$ : il existe une !!{derivation}
+de $\lfalse$ dont les hypothèses !!{undischarged}s appartiennent
+à~$\Gamma$. Par le \olref{thm:soundness}, toute
+\iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
+qui satisfait $\Gamma$ satisfait aussi $\lfalse$.
+Or $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$ pour toute
+\iftag{FOL}{structure~$\Struct{M}$}{valuation~$\pAssign{v}$}.
+Aucune \iftag{FOL}{structure~$\Struct{M}$}{valuation~$\pAssign{v}$}
+ne satisfait donc $\Gamma$; cet ensemble est insatisfaisable.
+\end{proof}
+
+\begin{editorial}
+La première propriété de l'introduction concerne explicitement
+la dérivabilité sans hypothèses. Dans le cas de l'élimination de
+la conjonction, « structure » est adapté en « valuation » pour la
+branche propositionnelle. Le nom de la règle d'élimination
+universelle utilise la même commande logique que les autres règles.
+L'élimination de la négation, traitée ensuite, est ajoutée à la
+liste initiale des règles à plusieurs prémisses. Les cas proposés
+en exercice restent à compléter par le lecteur.
+\end{editorial}
+
+\end{document}

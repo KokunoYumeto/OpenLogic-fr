@@ -1,0 +1,73 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: provability-quantifiers
+
+% Vérification des propriétés de dérivabilité utilisées pour les ensembles
+% maximalement cohérents dans le chapitre sur la complétude.
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{ntd}{qpr}
+
+\olsection{\usetoken{S}{derivability} et quantificateurs}
+
+\begin{explain}
+La démonstration du théorème de complétude exige aussi que les
+règles de déduction naturelle donnent les propriétés de~$\Proves$
+établies dans cette section.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:strong-generalization} Si $c$ est une constante qui ne
+figure ni dans $\Gamma$ ni dans $!A(x)$ et si $\Gamma \Proves !A(c)$,
+alors $\Gamma \Proves \lforall[x][!A(x)]$.
+\end{thm}
+
+\begin{proof}
+Soit $\delta$ une !!{derivation} de $!A(c)$ à partir de $\Gamma$.
+En ajoutant une inférence \Intro{\lforall}, on obtient une
+!!{derivation} de $\lforall[x][!A(x)]$. Puisque $c$ ne figure ni
+dans $\Gamma$ ni dans $!A(x)$, la condition sur l'eigenvariable
+est satisfaite.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:provability-quantifiers}
+Pour tout terme clos~$t$, on a :
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{$!A(t) \Proves \lexists[x][!A(x)]$.}{}
+
+\tagitem{prvAll}{$\lforall[x][!A(x)] \Proves !A(t)$.}{}
+\end{tagenumerate}
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{Voici une !!{derivation}
+  de~$\lexists[x][!A(x)]$ à partir de~$!A(t)$ :
+\begin{prooftree}
+\AxiomC{$!A(t)$}
+\RightLabel{\Intro{\lexists}}
+\UnaryInfC{$\lexists[x][!A(x)]$}
+\end{prooftree}
+}{}
+
+\tagitem{prvAll}{Voici une !!{derivation} de~$!A(t)$
+  à partir de~$\lforall[x][!A(x)]$ :
+\begin{prooftree}
+\AxiomC{$\lforall[x][!A(x)]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!A(t)$}
+\end{prooftree}
+}{}
+\end{tagenumerate}
+\end{proof}
+
+\begin{editorial}
+La fermeture du terme~$t$, requise par les règles de ce système,
+est rappelée explicitement dans l'énoncé de la proposition.
+\end{editorial}
+
+\end{document}

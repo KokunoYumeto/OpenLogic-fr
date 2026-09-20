@@ -3,7 +3,7 @@
     "source_repository": "https://github.com/OpenLogicProject/OpenLogic",
     "source_revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
     "frozen_units": 722,
-    "published_scope_units": 74,
+    "published_scope_units": 83,
     "published_ids": [
       "OLP-0005",
       "OLP-0007",
@@ -78,239 +78,135 @@
       "OLP-0077",
       "OLP-0078",
       "OLP-0079",
-      "OLP-0081"
+      "OLP-0081",
+      "OLP-0084",
+      "OLP-0085",
+      "OLP-0086",
+      "OLP-0088",
+      "OLP-0089",
+      "OLP-0091",
+      "OLP-0092",
+      "OLP-0093",
+      "OLP-0095"
     ],
-    "untranslated_units": 642,
-    "drafted_units": 80,
+    "untranslated_units": 628,
+    "drafted_units": 94,
     "reader_excluded_drafts": [
       "OLP-0055",
       "OLP-0072",
       "OLP-0076",
       "OLP-0080",
       "OLP-0082",
-      "OLP-0083"
+      "OLP-0083",
+      "OLP-0087",
+      "OLP-0090",
+      "OLP-0094",
+      "OLP-0096",
+      "OLP-0097"
     ],
-    "remaining_reader_units": 648,
+    "remaining_reader_units": 639,
     "full_edition_complete": false,
-    "version": "v0.7.0-calcul-des-sequents",
-    "chapters": 9,
-    "sections": 65,
-    "pages": 110,
-    "exercises": 89,
+    "version": "v0.8.0-deduction-naturelle",
+    "chapters": 10,
+    "sections": 73,
+    "pages": 126,
+    "exercises": 95,
     "canon_full_pdfs_redistributed": false
   },
   "pdf_and_direct_latex": {
     "status": "PDF_AND_DIRECT_LATEX_ACCEPTED_EPUB_PENDING",
-    "at": "2026-09-19T23:17:49.068866+00:00",
-    "scope_units": 74,
-    "chapters": 9,
-    "sections": 65,
-    "pages": 110,
-    "exercises": 89,
+    "at": "2026-09-20T00:57:16.224004+00:00",
+    "scope_units": 83,
+    "chapters": 10,
+    "sections": 73,
+    "pages": 126,
+    "exercises": 95,
     "pdf": {
-      "path": "private-reference/work\\sequent-calculus-v08\\build-04\\source\\locale\\fr\\reader.pdf",
-      "bytes": 560509,
-      "sha256": "53c88240b2612bd91cd53714427137f349b5d446e411e69cd0872756a0de2eea"
+      "path": "private-reference/work\\natural-deduction-v09\\build-02\\source\\locale\\fr\\reader.pdf",
+      "bytes": 610743,
+      "sha256": "585084b2a05eaa2647397dde295495bc2c15c803cc1aca7bffd63487723f6415"
     },
     "direct_latex": {
-      "path": "private-reference/work\\sequent-calculus-v08\\openlogic-fr-ensembles-calcul-des-sequents.tex",
-      "bytes": 396692,
-      "sha256": "fe3b07f0f213ab0cd303d7a3dc68269e2ced22ffd3a54c7801ff62882cc1eefe",
-      "complete_source_bodies": 74,
+      "path": "private-reference/work\\natural-deduction-v09\\openlogic-fr-ensembles-deduction-naturelle.tex",
+      "bytes": 448786,
+      "sha256": "8b9000b029487e857160d68f7a84235ad5abcbfb84d026995b2557abe2bc2abe",
+      "complete_source_bodies": 83,
       "independent_pdf_byte_identical": true
     },
-    "build_receipt": "pdf-pair-01/BUILD_RECEIPT.json",
+    "build_receipts": [
+      "pdf-01/BUILD_RECEIPT.json",
+      "pdf-03/BUILD_RECEIPT.json",
+      "direct-pdf-01/BUILD_RECEIPT.json"
+    ],
     "visual_review": {
-      "initial_build02_pages": [
+      "initial_pages": [
         1,
         2,
         3,
         4,
-        95,
-        96,
-        97,
-        98,
-        99,
-        100,
-        101,
-        102,
-        103,
-        104,
-        105,
-        106,
-        107,
-        108,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126
+      ],
+      "repaired_pages": [
+        3,
+        4,
+        111,
+        112,
+        113,
+        114,
+        117,
+        118,
+        124,
+        125
+      ],
+      "unchanged_rendered_pages": [
+        1,
+        2,
         109,
         110,
-        111
-      ],
-      "build03_pages": [
-        2,
-        3,
-        94,
-        95,
-        96
-      ],
-      "build04_pages": [
-        1,
-        95,
-        97
-      ],
-      "unchanged_new_pages_from_reviewed_build02": [
-        98,
-        99,
-        100,
-        101,
-        102,
-        103,
-        104,
-        105,
-        106,
-        107,
-        108,
-        109,
-        110
-      ],
-      "unchanged_intermediate_pages": [
-        1,
-        2,
-        3,
-        4,
-        93,
-        94,
-        96,
-        97,
-        98,
-        99,
-        100,
-        101,
-        102,
-        103,
-        104,
-        105,
-        106,
-        107,
-        108,
-        109,
-        110
-      ],
-      "findings_repaired": [
-        "Accented bookmark",
-        "Contents on two pages",
-        "Initial-sequent definition kept together",
-        "Stops attached to list items",
-        "Elision de l’opérateur"
+        115,
+        116,
+        119,
+        120,
+        121,
+        122,
+        123,
+        126
       ],
       "clipping_or_overlap_observed": false
     },
-    "inherited_text_pages_identical_to_accepted64": [
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      32,
-      33,
-      34,
-      35,
-      36,
-      37,
-      38,
-      39,
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46,
-      47,
-      48,
-      49,
-      50,
-      51,
-      52,
-      53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62,
-      63,
-      64,
-      65,
-      66,
-      67,
-      68,
-      69,
-      70,
-      71,
-      72,
-      73,
-      74,
-      75,
-      76,
-      77,
-      78,
-      79,
-      80,
-      81,
-      82,
-      83,
-      84,
-      85,
-      86,
-      87,
-      88,
-      89,
-      90,
-      91,
-      92,
-      93
-    ],
+    "inherited_body_text_pages_identical": 106,
+    "bibliography_identical_except_page_number": true,
     "full_edition_complete": false
   },
   "epub": {
-    "status": "ACCEPTED_74_UNIT_EPUB",
-    "at": "2026-09-19T23:27:37.003170+00:00",
-    "scope_units": 74,
-    "chapters": 9,
-    "sections": 65,
+    "status": "ACCEPTED_83_UNIT_EPUB",
+    "at": "2026-09-20T01:10:44.375084+00:00",
+    "scope_units": 83,
+    "chapters": 10,
+    "sections": 73,
     "total_edition_units": 722,
     "full_edition_complete": false,
-    "bytes": 471843,
-    "sha256": "13e907e999b68745c5f712c8b86a28f901b6d9ad78ce1fe71224bc4aa289dea4",
-    "native_mathml_roots": 4358,
-    "figures": 70,
-    "new_diagrams": 54,
-    "exercises": 89,
+    "bytes": 696286,
+    "sha256": "92607683c69ebb49dfcbcbb9ff7d2971de320c758c20c725933e584caad8f21e",
+    "native_mathml_roots": 4826,
+    "figures": 114,
+    "new_diagrams": 44,
+    "exercises": 95,
     "footnotes": 87,
     "noterefs": 87,
     "epubcheck": {
@@ -321,25 +217,25 @@
     "runtime": [
       {
         "file": "MOBILE_PROBE.json",
-        "samples": 21,
+        "samples": 20,
         "missing_images": 0,
         "global_overflow": 0
       },
       {
         "file": "RUNTIME_PROBE.json",
-        "samples": 21,
+        "samples": 20,
         "missing_images": 0,
         "global_overflow": 0
       },
       {
         "file": "PAN_PROBE.json",
-        "samples": 3,
+        "samples": 4,
         "missing_images": 0,
         "global_overflow": 0
       }
     ],
     "source_coverage": {
-      "loaded_units": 74,
+      "loaded_units": 83,
       "loaded_sources": [
         {
           "unit_id": "OLP-0005",
@@ -710,14 +606,60 @@
           "unit_id": "OLP-0081",
           "path": "content/first-order-logic/sequent-calculus/soundness.tex",
           "sha256": "90fb5d898e582fc540a9ed06ad65915b5418ad00af47474d9e504267e5d29072"
+        },
+        {
+          "unit_id": "OLP-0084",
+          "path": "content/first-order-logic/natural-deduction/natural-deduction.tex",
+          "sha256": "dd013cb35b97e3351635a3f4b5c044f890fd8659a6e63e71e0510d1a6ad9be2a"
+        },
+        {
+          "unit_id": "OLP-0085",
+          "path": "content/first-order-logic/natural-deduction/rules-and-proofs.tex",
+          "sha256": "d5966d2438dcd0323a4cda68fea526819ab58786e9c652cd7f525a7b2a43c691"
+        },
+        {
+          "unit_id": "OLP-0086",
+          "path": "content/first-order-logic/natural-deduction/propositional-rules.tex",
+          "sha256": "26f71ae0a08a1413f717ea4969770a765d90df97ce6350c7e0637a85c65f5d69"
+        },
+        {
+          "unit_id": "OLP-0088",
+          "path": "content/first-order-logic/natural-deduction/derivations.tex",
+          "sha256": "fb1197149a803d9bde97f47703c6a30776adcf0019ae5dbdaba8100cefaca915"
+        },
+        {
+          "unit_id": "OLP-0089",
+          "path": "content/first-order-logic/natural-deduction/proving-things.tex",
+          "sha256": "0b0750ae57958e2f08c3f5bc026e4f0424cf32c2d5fc13851c27772a184149d3"
+        },
+        {
+          "unit_id": "OLP-0091",
+          "path": "content/first-order-logic/natural-deduction/proof-theoretic-notions.tex",
+          "sha256": "133a8f11293aed417581d465e61d94e68360b905399d4aff200c96521e326e25"
+        },
+        {
+          "unit_id": "OLP-0092",
+          "path": "content/first-order-logic/natural-deduction/provability-consistency.tex",
+          "sha256": "03442b8fbb2bbcac9ab51ab5a3325dd591bca9dcdd33ba65d0d35e7202bc1590"
+        },
+        {
+          "unit_id": "OLP-0093",
+          "path": "content/first-order-logic/natural-deduction/provability-propositional.tex",
+          "sha256": "0bf27f4885d2993f80a944d8da04499f96fed1ba2e1d5e00c71b6fc774645ddb"
+        },
+        {
+          "unit_id": "OLP-0095",
+          "path": "content/first-order-logic/natural-deduction/soundness.tex",
+          "sha256": "91a3e8bfed0157703ee7509139802b491958b1b1d0fb926e8cc17c7b2d950243"
         }
       ],
-      "token_aliases": 809,
-      "uppercase_expansions": 7
+      "token_aliases": 999,
+      "uppercase_expansions": 11
     },
     "inherited_byte_identical": {
       "chapter_documents": 8,
-      "svg_images": 16
+      "svg_images": 70,
+      "chapter9_same_content": true
     },
     "visual_review": {
       "proof_contact_sheets": [
@@ -728,109 +670,115 @@
         5,
         6,
         7,
-        8,
-        9
+        8
       ],
-      "new_diagrams_inspected": 54,
+      "new_diagrams_inspected": 44,
       "mobile_screens": [
         3,
-        4,
+        5,
         8,
         11,
-        13,
+        14,
         15,
-        19
+        16
       ],
       "desktop_screens": [
-        13,
-        20
+        3,
+        16,
+        18
       ],
       "horizontal_pan_screens": [
         0,
         1,
-        2
+        2,
+        3
       ],
-      "finding": "All source rule/premise/conclusion groups preserved, including incomplete examples, question mark, dotted subderivations, double structural lines, corrected left exchanges, finite witnesses and four end-of-proof squares. Intrinsic diagram size prevents tiny mobile text; local panning exposes the right branch.",
+      "finding": "All44 source diagrams inspected on eight contact sheets: five rule panels, derivations, incomplete examples, discharge labels1–4, contexts, paired trees and four end-of-proof squares. The corrected negation-elimination label is preserved. Intrinsic diagram size prevents tiny mobile text; local panning exposes the right branch.",
       "clipping_or_overlap_observed": false
     },
     "content_diagnostic": {
-      "compared_prose_windows": 16850,
-      "unmatched_diagnostic_windows": 826,
-      "new_chapter_windows_reviewed": 113,
-      "finding": "The113 new mismatches occur at PDF mathematical-font extraction (notably Delta/braces), SVG boundaries, relocated footnotes or page/heading boundaries. Compared source prose, rendered paragraphs and54 proof images; no lost paragraph found. This is not a claim of exact extracted-text equality."
+      "compared_prose_windows": 18113,
+      "unmatched_diagnostic_windows": 877,
+      "new_chapter_windows_reviewed": 51,
+      "finding": "The51 new mismatches occur at PDF mathematical-font extraction (notably Delta/braces and phi), SVG boundaries, ligatures or heading boundaries. Compared source prose, rendered paragraphs and44 proof images; no lost paragraph found. This is not a claim of exact extracted-text equality."
     },
     "repairs": [
       "Inherited verified native MathML/link/footnote/namespace repairs",
-      "54 source-grounded descriptions with explicit incomplete branches",
+      "44 source-grounded descriptions with explicit incomplete branches",
       "Four captured end-of-proof squares described",
       "New proof images displayed as blocks at intrinsic size with local horizontal scrolling",
       "Accented headings and explicit uppercase token expansions"
     ]
   },
   "reference_grammar": {
-    "at": "2026-09-19T22:56:35.236763+00:00",
-    "status": "REPAIRS_APPLIED_REBUILD_PENDING",
-    "unit": "OLP-0070",
-    "old_target_sha256": "b533f7b64d0b6f58ccace17d1768036cacd911aa51f5ee09ca88f77a8c39971c",
-    "target_sha256": "89051018262f5e2117e51e0189733a308e0875763a5e483ea82420360aaf04e4",
-    "reader_sha256": "9fbb273113d9b0c4304e894bd68c1ec0170d7c7ce2bb4599459d5597e0216b32",
-    "config_sha256": "6259bffda58d71693700ba12eb7ebae60598a16f7578f24c5e53c6088eb069c8",
-    "visual_pages_inspected": [
+    "at": "2026-09-20T00:51:22.862926+00:00",
+    "status": "LOCAL_RENDER_REPAIRS_APPLIED_REBUILD_PENDING",
+    "units": [
+      {
+        "unit_id": "OLP-0085",
+        "previous_target_sha256": "1e731958e0f97c13445a91d69095582a4601e04ebaf1ca1bc83392c136cd4ac5",
+        "target_sha256": "d5966d2438dcd0323a4cda68fea526819ab58786e9c652cd7f525a7b2a43c691",
+        "formal_blocks_and_inline_math_identical": true
+      },
+      {
+        "unit_id": "OLP-0086",
+        "previous_target_sha256": "0a8bba5af6e12ae35aab995e64d766902f480fc5f5e5ef80907d5225a382ec5f",
+        "target_sha256": "26f71ae0a08a1413f717ea4969770a765d90df97ce6350c7e0637a85c65f5d69",
+        "formal_blocks_and_inline_math_identical": true
+      },
+      {
+        "unit_id": "OLP-0091",
+        "previous_target_sha256": "691467693a6ef162697f3b9ab70d6f452491043feed44b222cb0996e1baae3ae",
+        "target_sha256": "133a8f11293aed417581d465e61d94e68360b905399d4aff200c96521e326e25",
+        "formal_blocks_and_inline_math_identical": true
+      },
+      {
+        "unit_id": "OLP-0095",
+        "previous_target_sha256": "607023e198efb6147b3b8ff35498fb6e0013ced8254d8adfba403868bb5268b8",
+        "target_sha256": "91a3e8bfed0157703ee7509139802b491958b1b1d0fb926e8cc17c7b2d950243",
+        "formal_blocks_and_inline_math_identical": true
+      },
+      {
+        "unit_id": "OLP-0097",
+        "previous_target_sha256": "d0ec58c1e8a54c7c16d95b1f1c4b8f6aba308ff9b2d7d013a1d39f7203a3e836",
+        "target_sha256": "aa4123c565aa09cc28971b0ba79d0c6342b3261763b645b5a7908db2bd9fb702",
+        "formal_blocks_and_inline_math_identical": true
+      }
+    ],
+    "reader_sha256": "bd63f94e6e638ba619ca2de8c4b12ed47aed9e4bc400ff12b835119dd398c0a2",
+    "initial_pdf_sha256": "ac36e2eeec81a0a34154405f629f19aa37ba52d93c965c6779853867855c7159",
+    "initial_pdf_pages": 126,
+    "inspected_pages": [
       1,
       2,
       3,
       4,
-      95,
-      96,
-      97,
-      98,
-      99,
-      100,
-      101,
-      102,
-      103,
-      104,
-      105,
-      106,
-      107,
-      108,
-      109,
-      110,
-      111
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126
     ],
-    "previous_pdf_pages": 111,
-    "previous_pdf_sha256": "f11ecf3434ae858c75b05bbc322418821f578dc1ae68931c6e67fcf47caf0965",
-    "findings": [
-      "One bookmark had unaccented derivations; explicit localized plural fixes the serialization.",
-      "Short initial-sequent definition split after item2; Needspace and preceding A qualification keep list and punctuation coherent.",
-      "Contents page4 had only Exercises and Bibliography; chapter spacing adjusted from default to0.65em."
+    "repairs": [
+      "Keep chapter10 TOC entry with its following sections.",
+      "Keep the short editorial note and rule headings with their content.",
+      "Keep section10.5 with its introductory frame.",
+      "Restore the word space after FalseCl and keep French closing quotation mark attached.",
+      "Supply French articles before proposition, theorem, definition and corollary references; exact label targets unchanged."
     ],
-    "proofs_math_and_exercises_unchanged": true,
-    "new_render_accepted": false
-  },
-  "layout_repairs": {
-    "at": "2026-09-19T23:10:51.703072+00:00",
-    "status": "SOURCE_CORRECTED_REBUILD_PENDING",
-    "unit": "OLP-0070",
-    "old_target_sha256": "89051018262f5e2117e51e0189733a308e0875763a5e483ea82420360aaf04e4",
-    "target_sha256": "f85672f8d60e54887f3d5d6f14ccf1b90a194095319b1dec678f557bc35d3dce",
-    "reviewed_current_pdf_sha256": "a30c9e208b933e60519957a1781b258b3641103674faaeb7b9e44ae8bbd5b094",
-    "reviewed_pages": [
-      2,
-      3,
-      94,
-      95,
-      96
-    ],
-    "confirmed_repairs": [
-      "Contents now two pages",
-      "Accented bookmark",
-      "Initial sequent list together"
-    ],
-    "remaining_repairs": [
-      "Full stop isolated after enumerate",
-      "French elision before opérateur"
-    ],
-    "mathematical_content_unchanged": true
+    "semantic_change": false,
+    "proofs_formulas_and_exercises_unchanged": true,
+    "full_edition_complete": false
   }
 }

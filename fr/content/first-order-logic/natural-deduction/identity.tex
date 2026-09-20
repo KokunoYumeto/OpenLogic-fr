@@ -1,0 +1,137 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: identity
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{ntd}{ide}
+
+\olsection{\usetoken{P}{derivation} avec égalité}
+
+Les !!{derivation}s avec !!{identity} nécessitent des règles
+d'inférence supplémentaires.
+\begin{defish}
+\AxiomC{}
+\RightLabel{\Intro{\eq}}
+\UnaryInfC{$\eq[t][t]$}
+\DisplayProof
+\hfill
+\begin{tabular}{r}
+\AxiomC{$\eq[t_1][t_2]$}
+\AxiomC{$!A(t_1)$}
+\RightLabel{\Elim{\eq}}
+\BinaryInfC{$!A(t_2)$}
+\DisplayProof
+\\[3ex]
+\AxiomC{$\eq[t_1][t_2]$}
+\AxiomC{$!A(t_2)$}
+\RightLabel{\Elim{\eq}}
+\BinaryInfC{$!A(t_1)$}
+\DisplayProof
+\end{tabular}
+\end{defish}
+Dans ces règles, $t$, $t_1$ et $t_2$ sont des termes clos.
+La règle \Intro{\eq} permet de !!{derive} directement tout énoncé
+d'égalité de la forme $\eq[t][t]$, sans aucune hypothèse.
+
+\begin{ex}
+Si $s$ et $t$ sont des termes clos, alors
+$!A(s), \eq[s][t] \Proves !A(t)$ :
+\begin{prooftree}
+\AxiomC{$\eq[s][t]$}
+\AxiomC{$!A(s)$}
+\RightLabel{$\Elim{\eq}$}
+\BinaryInfC{$!A(t)$}
+\end{prooftree}
+On connaît aussi ce principe sous le nom de « substituabilité
+des égaux », ou loi de Leibniz.
+\end{ex}
+
+\begin{prob}
+Démontrer que $=$ est symétrique et transitif : donner des
+!!{derivation}s de $\lforall[x][\lforall[y][(\eq[x][y] \lif
+    \eq[y][x])]]$ et de $\lforall[x][\lforall[y][\lforall[z][((\eq[x][y]
+    \land \eq[y][z]) \lif \eq[x][z])]]]$.
+\end{prob}
+
+\begin{ex}
+Nous allons !!{derive} l'!!{sentence}
+\begin{align*}
+& \lforall[x][\lforall[y][((!A(x) \land !A(y)) \lif \eq[x][y])]]
+\intertext{à partir de l'!!{sentence}}
+& \lexists[x][\lforall[y][(!A(y) \lif \eq[y][x])]]
+\end{align*}
+Choisissons des constantes $a$, $b$ et $c$ deux à deux distinctes
+qui ne figurent pas dans cette hypothèse, puis construisons la
+!!{derivation} en remontant depuis sa conclusion :
+\begin{prooftree}
+\AxiomC{$\lexists[x][\lforall[y][(!A(y) \lif \eq[y][x])]]
+\quad \Discharge{!A(a) \land !A(b)}{1}$}
+\DeduceC{$\eq[a][b]$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$((!A(a) \land !A(b)) \lif \eq[a][b])$}
+\RightLabel{\Intro{\lforall}}
+\UnaryInfC{$\lforall[y][((!A(a) \land !A(y)) \lif \eq[a][y])]$}
+\RightLabel{\Intro{\lforall}}
+\UnaryInfC{$\lforall[x][\lforall[y][((!A(x) \land !A(y)) \lif \eq[x][y])]]$}
+\end{prooftree}
+Il faut maintenant utiliser l'hypothèse principale. Comme c'est
+une !!{formula} existentielle, nous appliquons \Elim{\lexists}
+pour !!{derive} la conclusion intermédiaire $\eq[a][b]$.
+\begin{prooftree}
+\AxiomC{$\lexists[x][\lforall[y][(!A(y) \lif \eq[y][x])]]$}
+\AxiomC{$\Discharge{\lforall[y][(!A(y) \lif \eq[y][c])]}{2}$}
+\noLine
+\UnaryInfC{$\Discharge{!A(a) \land !A(b)}{1}$}
+\DeduceC{$\eq[a][b]$}
+\DischargeRule{\Elim{\lexists}}{2}
+\BinaryInfC{$\eq[a][b]$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$((!A(a) \land !A(b)) \lif \eq[a][b])$}
+\RightLabel{\Intro{\lforall}}
+\UnaryInfC{$\lforall[y][((!A(a) \land !A(y)) \lif \eq[a][y])]$}
+\RightLabel{\Intro{\lforall}}
+\UnaryInfC{$\lforall[x][\lforall[y][((!A(x) \land !A(y)) \lif \eq[x][y])]]$}
+\end{prooftree}
+Pour compléter la sous-!!{derivation} en haut à droite, on
+utilise ses hypothèses afin d'établir $\eq[a][c]$ et $\eq[b][c]$.
+Il faut deux !!{derivation}s distinctes. Celle de $\eq[a][c]$
+est la suivante :
+\begin{prooftree}
+\AxiomC{$\Discharge{\lforall[y][(!A(y) \lif \eq[y][c])]}{2}$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!A(a) \lif \eq[a][c]$}
+\AxiomC{$\Discharge{!A(a) \land !A(b)}{1}$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!A(a)$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$\eq[a][c]$}
+\end{prooftree}
+À partir de $\eq[a][c]$ et $\eq[b][c]$, on !!{derive}
+$\eq[a][b]$ par \Elim{\eq}.
+\end{ex}
+
+\begin{prob}
+Donner des !!{derivation}s des !!{formula}s suivantes :
+\begin{enumerate}
+\item $\lforall[x][\lforall[y][((\eq[x][y] \land !A(x)) \lif !A(y))]]$
+\item $\lexists[x][!A(x)] \land \lforall[y][\lforall[z][((!A(y) \land
+    !A(z)) \lif \eq[y][z])]] \lif \lexists[x][(!A(x) \land
+  \lforall[y][(!A(y) \lif \eq[y][x])])]$
+\end{enumerate}
+\end{prob}
+
+\begin{editorial}
+Dans l'exercice sur la transitivité, le troisième quantificateur
+de la source n'encadre pas correctement son argument; les crochets
+sont rétablis. Dans deux arbres du deuxième exemple, la parenthèse
+de l'hypothèse universelle est replacée à l'intérieur de l'argument
+du quantificateur. Le choix de trois constantes fraîches et
+distinctes, nécessaire aux conditions sur les eigenvariables,
+est explicité. Les deux orientations de l'élimination de l'égalité
+sont conservées.
+\end{editorial}
+
+\end{document}

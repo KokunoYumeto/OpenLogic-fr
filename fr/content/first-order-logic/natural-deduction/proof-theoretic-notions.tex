@@ -1,0 +1,175 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: proof-theoretic-notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{ptn}}
+      {\olfileid[fr]{pl}{ntd}{ptn}}
+
+\Needspace{9\baselineskip}
+\olsection{Notions de théorie de la démonstration}
+
+\begin{editorial}
+Cette section rassemble les définitions de la relation de
+!!{derivability} et de la cohérence pour la déduction naturelle.
+\end{editorial}
+
+\begin{explain}
+Nous avons défini plusieurs notions sémantiques importantes :
+validité, conséquence logique et satisfaisabilité. Définissons
+maintenant les \emph{notions de théorie de la démonstration}
+correspondantes. Elles ne font pas appel à la satisfaction
+d'!!{sentence}s dans des \iftag{FOL}{!!{structure}s}{!!{valuation}s},
+mais à la !!{derivability} ou à la !!{nonderivability} de certains
+!!{sentence}s à partir d'autres. La coïncidence de ces notions
+constitue une découverte importante : c'est le contenu des
+\emph{théorèmes de correction et de complétude}.
+\end{explain}
+
+\begin{defn}[Théorèmes]
+!!^a{sentence}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation} de~$!A$ en déduction naturelle dans laquelle toutes
+les hypothèses sont !!{discharged}s. On écrit $\Proves !A$ si
+$!A$ est un théorème, et $\Proves/ !A$ dans le cas contraire.
+\end{defn}
+
+\begin{defn}[!!^{derivability}]
+!!^a{sentence}~$!A$ est \emph{!!{derivable} à partir} d'un ensemble
+d'!!{sentence}s~$\Gamma$, ce que l'on note $\Gamma \Proves !A$,
+s'il existe une !!{derivation} de conclusion~$!A$ dont chaque
+hypothèse est soit !!{discharged}, soit un élément de~$\Gamma$.
+Si $!A$ n'est pas !!{derivable} à partir de $\Gamma$, on écrit
+$\Gamma \Proves/ !A$.
+\end{defn}
+
+\begin{defn}[Cohérence]
+Un ensemble d'!!{sentence}s~$\Gamma$ est \emph{incohérent} si et
+seulement si $\Gamma \Proves \lfalse$. S'il n'est pas incohérent,
+c'est-à-dire si $\Gamma \Proves/ \lfalse$, on dit qu'il est
+\emph{cohérent}.
+\end{defn}
+
+\begin{prop}[Réflexivité]
+\ollabel{prop:reflexivity}
+Si $!A \in \Gamma$, alors $\Gamma \Proves !A$.
+\end{prop}
+
+\begin{proof}
+L'hypothèse $!A$ seule constitue une !!{derivation} de~$!A$ dont
+toutes les hypothèses !!{undischarged}s, en l'occurrence $!A$,
+appartiennent à~$\Gamma$.
+\end{proof}
+
+\begin{prop}[Monotonie]
+\ollabel{prop:monotonicity}
+Si $\Gamma \subseteq \Delta$ et $\Gamma \Proves !A$, alors
+$\Delta \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Toute !!{derivation} de $!A$ à partir de $\Gamma$ est aussi une
+!!{derivation} de $!A$ à partir de~$\Delta$.
+\end{proof}
+
+\begin{prop}[Transitivité]
+\ollabel{prop:transitivity}
+Si $\Gamma \Proves !A$ et $\{!A\} \cup \Delta \Proves !B$,
+alors $\Gamma \cup \Delta \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Si $\Gamma \Proves !A$, il existe une !!{derivation}~$\delta_0$
+de~$!A$ dont toutes les hypothèses !!{undischarged}s appartiennent
+à~$\Gamma$. Si $\{!A\} \cup \Delta \Proves !B$, il existe une
+!!{derivation}~$\delta_1$ de~$!B$ dont toutes les hypothèses
+!!{undischarged}s appartiennent à~$\{!A\} \cup \Delta$.
+Considérons alors l'arbre suivant :
+\begin{prooftree}
+  \AxiomC{$\Delta, \Discharge{!A}{1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!B$}
+  \DischargeRule{\Intro{\lif}}{1}
+  \UnaryInfC{$!A \lif !B$}
+  \AxiomC{$\Gamma$}
+  \RightLabel{$\delta_0$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lif}}
+  \BinaryInfC{$!B$}
+\end{prooftree}
+Toutes les hypothèses !!{undischarged}s appartiennent maintenant
+à $\Gamma \cup \Delta$; nous avons donc
+$\Gamma \cup \Delta \Proves !B$.
+\end{proof}
+
+Lorsque $\Gamma = \{!A_1, !A_2, \ldots, !A_k\}$ est fini, on peut
+abréger $\Gamma \Proves !B$ en
+$!A_1,!A_2,\ldots,!A_k \Proves !B$. En particulier,
+$!A \Proves !B$ signifie $\{!A\} \Proves !B$.
+
+Remarquons que, si $\Gamma \Proves !A$ et $!A \Proves !B$, alors
+$\Gamma \Proves !B$. Il en résulte aussi que, si
+$!A_1, \dots, !A_n \Proves !B$ et $\Gamma \Proves !A_i$ pour
+chaque~$i$, alors $\Gamma \Proves !B$.
+
+\begin{prop}
+\ollabel{prop:incons}
+Les conditions suivantes sont équivalentes :
+    \begin{enumerate}
+      \item \( \Gamma \) est incohérent.
+      \item \( \Gamma \Proves {!A} \) pour tout !!{sentence}~\( {!A} \).
+      \item \( \Gamma \Proves {!A} \) et \( \Gamma \Proves \lnot {!A} \) pour au moins un !!{sentence}~\( {!A} \).
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][ntd][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][ntd][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\begin{prop}[Compacité]
+  \ollabel{prop:proves-compact}
+  \begin{enumerate}
+  \item Si $\Gamma \Proves !A$, il existe une partie finie
+    $\Gamma_0 \subseteq \Gamma$ telle que $\Gamma_0 \Proves !A$.
+  \item Si toute partie finie de~$\Gamma$ est cohérente,
+    alors $\Gamma$ est cohérent.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Si $\Gamma \Proves !A$, il existe une
+      !!{derivation}~$\delta$ de~$!A$ à partir de~$\Gamma$.
+      Soit $\Gamma_0$ l'ensemble des hypothèses
+      !!{undischarged}s de~$\delta$. Toute !!{derivation} étant
+      finie, $\Gamma_0$ ne contient qu'un nombre fini
+      d'!!{sentence}s. Ainsi, $\delta$ est une !!{derivation}
+      de~$!A$ à partir d'une partie finie~$\Gamma_0 \subseteq \Gamma$.
+    \item C'est la contraposée de (1) dans le cas particulier
+      $!A \ident \lfalse$.
+  \end{enumerate}
+\end{proof}
+
+\begin{editorial}
+Dans le paragraphe introductif, la mention des structures de la
+source est adaptée en valuations pour la version propositionnelle.
+Les contextes d'hypothèses restent des ensembles éventuellement
+infinis; seule chaque dérivation particulière est finie.
+\end{editorial}
+
+\end{document}

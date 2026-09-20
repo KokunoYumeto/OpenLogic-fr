@@ -1,0 +1,129 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: quantifier-rules
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{ntd}{qrl}
+
+\olsection{Règles pour les quantificateurs}
+
+\subsection{Règles pour $\lforall$}
+
+\begin{defish}
+\AxiomC{$!A(a)$}
+\RightLabel{\Intro{\lforall}}
+\UnaryInfC{$\lforall[x][\Atom{!A}{x}]$}
+\DisplayProof
+\hfill
+\AxiomC{$\lforall[x][\Atom{!A}{x}]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!A(t)$}
+\DisplayProof
+\end{defish}
+
+Dans les règles pour~$\lforall$, $t$ est un terme clos, c'est-à-dire
+un terme sans variable, et $a$~est !!a{constant} qui ne figure ni
+dans la conclusion~$\lforall[x][!A(x)]$, ni dans une hypothèse
+!!{undischarged} de la !!{derivation} dont la conclusion est la
+prémisse~$!A(a)$. On appelle $a$ l'\emph{eigenvariable} de
+l'inférence \Intro{\lforall}.\footnote{On emploie le terme
+« eigenvariable » pour des raisons historiques, bien que $a$ soit
+une constante dans la règle ci-dessus.}
+
+\subsection{Règles pour $\lexists$}
+
+\begin{defish}
+\AxiomC{$\Atom{!A}{t}$}
+\RightLabel{\Intro{\lexists}}
+\UnaryInfC{$\lexists[x][\Atom{!A}{x}]$}
+\DisplayProof
+\hfill
+\AxiomC{$\lexists[x][\Atom{!A}{x}]$}
+\AxiomC{[$\Atom{!A}{a}$]$^n$}
+\DeduceC{$!C$}
+\DischargeRule{\Elim{\lexists}}{n}
+\BinaryInfC{$!C$}
+\DisplayProof
+\end{defish}
+
+De même, $t$ est un terme clos et $a$ est !!a{constant} qui ne
+figure ni dans la prémisse $\lexists[x][!A(x)]$, ni dans la
+conclusion~$!C$, ni dans une hypothèse !!{undischarged} des
+!!{derivation}s dont les conclusions sont les deux prémisses,
+à l'exception des hypothèses $!A(a)$.
+On appelle $a$ l'\emph{eigenvariable} de l'inférence
+\Elim{\lexists}.
+
+Les restrictions que l'on vient d'imposer aux occurrences de la
+constante~$a$, pour chacune des règles \Intro{\lforall} et
+\Elim{\lexists}, constituent la \emph{condition sur l'eigenvariable}.
+
+\begin{explain}
+Rappelons la convention suivante : lorsque $!A$ est !!a{formula}
+dans laquelle la !!{variable}~$x$ est libre, on l'indique en
+écrivant~$!A(x)$. Dans ce même contexte, $!A(t)$ abrège alors
+$\Subst{!A}{t}{x}$. On pourrait donc aussi écrire la règle
+$\Intro\lexists$ sous la forme suivante :
+\begin{prooftree}
+\AxiomC{$\Subst{!A}{t}{x}$}
+\RightLabel{\Intro{\lexists}}
+\UnaryInfC{$\lexists[x][!A]$}
+\end{prooftree}
+Remarquons que $t$ peut déjà figurer dans~$!A$; par exemple,
+$!A$~pourrait être~$\Atom{\Obj P}{t,x}$. Ainsi, déduire
+$\lexists[x][\Atom{\Obj P}{t,x}]$ de~$\Atom{\Obj P}{t,t}$ constitue
+une application correcte de~$\Intro\lexists$ : on peut « remplacer »
+une ou plusieurs occurrences de~$t$ dans la prémisse, sans
+nécessairement les remplacer toutes, par la !!{variable} liée~$x$.
+En revanche, les conditions sur l'eigenvariable dans
+$\Intro\lforall$ et~$\Elim\lexists$ imposent que la
+!!{constant}~$a$ ne figure pas dans~$!A$. On ne peut donc pas
+déduire correctement $\lforall[x][\Atom{\Obj P}{a,x}]$ de
+$\Atom{\Obj P}{a,a}$ à l'aide de~$\Intro\lforall$.
+\end{explain}
+
+\begin{explain}
+Dans \Intro{\lexists} et \Elim{\lforall}, aucune autre restriction
+ne porte sur le terme clos~$t$. En revanche, dans les règles
+\Elim{\lexists} et \Intro{\lforall}, la condition sur
+l'eigenvariable impose les restrictions énoncées plus haut aux
+occurrences de la !!{constant}~$a$ dans la conclusion et les
+hypothèses !!{undischarged}s. Cette condition est nécessaire
+à la correction du système : elle garantit que tout !!{sentence}
+dérivé est une conséquence des hypothèses !!{undischarged}s.
+Sans cette condition, la dérivation suivante serait permise :
+\begin{prooftree}
+  \AxiomC{$\lexists[x][!A(x)]$}
+  \AxiomC{$\Discharge{!A(a)}{1}$}
+  \RightLabel{*\Intro{\lforall}}
+  \UnaryInfC{$\lforall[x][!A(x)]$}
+  \RightLabel{\Elim{\lexists}}
+  \BinaryInfC{$\lforall[x][!A(x)]$}
+\end{prooftree}
+Or, en général, $\lexists[x][!A(x)] \Entails/ \lforall[x][!A(x)]$.
+
+Puisque les règles pour les quantificateurs n'autorisent à
+substituer aux !!{variable}s que des termes clos (en particulier
+des constantes), toute !!{formula} dérivable à partir d'un ensemble
+d'!!{sentence}s est elle-même !!a{sentence}.
+\end{explain}
+
+\begin{editorial}
+Le résumé de la source interdit à tort toute occurrence de
+l'eigenvariable dans les prémisses. On renvoie ici aux conditions
+précises données avec chaque règle : $a$ peut notamment figurer
+dans $!A(a)$. L'exception concernant les hypothèses $!A(a)$ dans
+l'élimination existentielle est conservée telle que la source
+l'énonce; elle ne doit pas disparaître dans le rappel ultérieur.
+Le terme~$t$
+reste clos, même lorsque la source le dit sans restriction. La
+condition est donc rappelée par un renvoi à sa formulation complète.
+Enfin, la non-conséquence affichée vaut en général, non
+pour toute instance de~$!A$, et la dernière explication porte sur
+toutes les règles quantificatrices, pas seulement celles d'élimination.
+\end{editorial}
+
+\end{document}

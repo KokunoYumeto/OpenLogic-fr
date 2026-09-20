@@ -1,0 +1,137 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: provability-consistency
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{prv}}
+      {\olfileid[fr]{pl}{ntd}{prv}}
+      
+\olsection{\usetoken{S}{derivability} et cohérence}
+
+Établissons plusieurs propriétés de la relation de
+!!{derivability}. Outre leur intérêt propre, elles interviendront
+toutes dans la démonstration du théorème de complétude.
+
+\begin{prop}\ollabel{prop:provability-contr}
+  Si $\Gamma \Proves !A$ et si $\Gamma \cup \{!A\}$ est
+  incohérent, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Soient $\delta_1$ une !!{derivation} de~$!A$ à partir de~$\Gamma$
+et $\delta_2$ une !!{derivation} de~$\lfalse$ à partir de
+$\Gamma \cup \{!A\}$. Nous obtenons alors la !!{derivation}
+suivante :
+\begin{prooftree}
+\AxiomC{$\Gamma, \Discharge{!A}{1}$}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{1}
+\UnaryInfC{$\lnot !A$}
+\AxiomC{$\Gamma$}
+\RightLabel{$\delta_1$}
+\DeduceC{$!A$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\end{prooftree}
+Dans cette nouvelle !!{derivation}, les occurrences de
+l'hypothèse~$!A$ indiquées sont !!{discharged}s. Toutes les
+hypothèses qui restent non déchargées appartiennent donc à~$\Gamma$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:prov-incons}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons d'abord $\Gamma \Proves !A$. Il existe donc une
+!!{derivation}~$\delta_0$ de~$!A$ dont les hypothèses
+!!{undischarged}s appartiennent à~$\Gamma$. Nous obtenons une
+!!{derivation} de $\lfalse$ à partir de
+$\Gamma \cup \{\lnot !A\}$ comme suit :
+\begin{prooftree}
+  \AxiomC{$\lnot !A$}
+  \AxiomC{$\Gamma$}
+  \RightLabel{$\delta_0$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+\end{prooftree}
+Supposons maintenant que $\Gamma \cup \{\lnot !A\}$ soit
+incohérent. Soit $\delta_1$ une !!{derivation} de~$\lfalse$ dont
+les hypothèses !!{undischarged}s appartiennent à
+$\Gamma \cup \{\lnot !A\}$. La règle~$\FalseCl$ donne une
+!!{derivation} de~$!A$ à partir de~$\Gamma$ seulement :
+\begin{prooftree}
+  \AxiomC{$\Gamma, \Discharge{\lnot !A}{1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$\lfalse$}
+  \RightLabel{\FalseCl}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A$}
+\end{prooftree}
+\end{proof}
+
+\begin{prob}
+Démontrer que $\Gamma \Proves \lnot !A$ si et seulement si
+$\Gamma \cup \{!A\}$ est incohérent.
+\end{prob}
+
+\begin{prop}\ollabel{prop:explicit-inc}
+  Si $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$, alors
+  $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+  Supposons $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$.
+  Il existe une !!{derivation}~$\delta$ de~$!A$ à partir de~$\Gamma$.
+  Considérons cette application immédiate de $\Elim{\lnot}$ :
+\begin{prooftree}
+    \AxiomC{$\lnot !A$}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta$}
+    \DeduceC{$!A$}
+    \RightLabel{\Elim{\lnot}}
+    \BinaryInfC{$\lfalse$}
+  \end{prooftree}
+Puisque $\lnot !A \in \Gamma$, toutes les hypothèses
+  !!{undischarged}s appartiennent à~$\Gamma$. Cela établit
+  $\Gamma \Proves \lfalse$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-exhaustive}
+  Si $\Gamma \cup \{!A\}$ et $\Gamma \cup \{\lnot !A\}$
+  sont tous deux incohérents, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Il existe des !!{derivation}s $\delta_1$ et $\delta_2$ de~$\lfalse$
+à partir de $\Gamma \cup \{ !A \}$ et de $\lfalse$ à partir de
+$\Gamma \cup \{ \lnot !A \}$, respectivement. Nous obtenons alors :
+\begin{prooftree}
+\AxiomC{$\Gamma, \Discharge{\lnot !A}{2}$}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{2}
+\UnaryInfC{$\lnot \lnot !A$}
+\AxiomC{$\Gamma, \Discharge{!A}{1}$}
+\RightLabel{$\delta_1$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{1}
+\UnaryInfC{$\lnot !A$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\end{prooftree}
+Les hypothèses $!A$ et $\lnot !A$ indiquées étant
+!!{discharged}s, les hypothèses encore non déchargées appartiennent
+à~$\Gamma$. Nous avons donc une !!{derivation} de~$\lfalse$ à
+partir de~$\Gamma$ seulement. Ainsi, $\Gamma$ est incohérent.
+\end{proof}
+
+\end{document}

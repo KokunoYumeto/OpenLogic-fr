@@ -1,0 +1,325 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: proving-things
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{pro}}
+      {\olfileid[fr]{pl}{ntd}{pro}}
+
+\olsection{Exemples de \usetoken{p}{derivation}}
+
+\begin{ex}
+Construisons une !!{derivation} de l'!!{sentence} $(!A \land !B) \lif !A$.
+
+Commençons par écrire la conclusion recherchée tout en bas de la
+!!{derivation}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$(!A\land !B) \lif !A$}
+\end{prooftree}
+
+Il faut ensuite déterminer quel type d'inférence pourrait avoir
+pour conclusion un !!{sentence} de cette forme. L'!!{main operator}
+de la conclusion est $\lif$; essayons donc d'y parvenir par la règle
+\Intro{\lif}. Il est préférable d'écrire les hypothèses utilisées
+et d'étiqueter les règles d'inférence au fur et à mesure : on verra
+ainsi facilement si toutes les hypothèses ont été !!{discharged}s
+à la fin de la preuve.
+\begin{prooftree}
+\AxiomC{$\Discharge{!A \land !B}{1}$}
+\DeduceC{$!A$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(!A\land !B) \lif !A$}
+\end{prooftree}
+
+Il reste à compléter les étapes qui conduisent de l'hypothèse
+$!A \land !B$ à $!A$. Le seul connecteur à traiter étant $\land$,
+nous utilisons sa règle d'élimination. On obtient la preuve suivante :
+\begin{prooftree}
+\AxiomC{$\Discharge{!A \land !B}{1}$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!A$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(!A\land !B) \lif !A$}
+\end{prooftree}
+Nous avons maintenant une !!{derivation} correcte de
+$(!A \land !B) \lif !A$.
+\end{ex}
+
+\begin{ex}
+Construisons maintenant une !!{derivation} de
+$(\lnot !A \lor !B) \lif (!A \lif !B)$.
+
+Commençons par écrire la conclusion recherchée tout en bas de la
+!!{derivation}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+Pour trouver une règle logique qui puisse donner cette conclusion,
+examinons les connecteurs qui y figurent : $\lnot$, $\lor$ et
+$\lif$. Seule la première occurrence de $\lif$ nous intéresse pour
+l'instant, car elle est l'!!{main operator} de l'!!{sentence}
+final. Les connecteurs $\lnot$, $\lor$ et la seconde occurrence de
+$\lif$ sont dans la portée d'un autre connecteur; nous les traiterons
+donc plus tard. Commençons par la règle \Intro{\lif}. Une
+application correcte doit avoir la forme suivante :
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\DeduceC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+Deux possibilités s'offrent alors à nous. Nous pouvons poursuivre
+de bas en haut en cherchant une autre application de \Intro{\lif},
+ou travailler de haut en bas en appliquant \Elim{\lor}. Choisissons
+la seconde possibilité. L'hypothèse $\lnot !A \lor !B$ sera la
+prémisse la plus à gauche de \Elim{\lor}. Pour que l'application
+soit correcte, les deux autres prémisses doivent être identiques
+à la conclusion $!A \lif !B$. Chacune peut cependant être dérivée
+à partir d'une hypothèse supplémentaire : l'un des deux membres de
+la disjonction $\lnot !A \lor !B$. Notre !!{derivation} aura donc
+la forme suivante :
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\AxiomC{$\Discharge{\lnot !A}{2}$}
+\DeduceC{$!A \lif !B$}
+\AxiomC{$\Discharge{!B}{2}$}
+\DeduceC{$!A \lif !B$}
+\DischargeRule{\Elim{\lor}}{2}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+
+Dans chacune des deux branches de droite, nous voulons
+!!{derive} $!A \lif !B$. La règle \Intro{\lif} est tout indiquée :
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\AxiomC{$\Discharge{\lnot !A}{2}, \Discharge{!A}{3}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{3}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{$\Discharge{!B}{2}, \Discharge{!A}{4}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{4}
+\UnaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lor}}{2}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+
+Pour compléter les deux parties manquantes, il nous faut dériver
+$!B$ à partir de $\lnot !A$ et $!A$ au milieu, et à partir de
+$!A$ et $!B$ à droite. Commençons par la branche du milieu :
+$\lnot !A$ et $!A$ sont les deux prémisses de \Elim{\lnot}.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A}{2}$}
+\AxiomC{$\Discharge{!A}{3}$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\DeduceC{$!B$}
+\end{prooftree}
+La règle \FalseInt{} permet alors d'obtenir la conclusion $!B$
+et d'achever cette branche.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\AxiomC{$\Discharge{\lnot !A}{2}$}
+\AxiomC{$\Discharge{!A}{3}$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B$}
+\DischargeRule{\Intro{\lif}}{3}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{$\Discharge{!B}{2}, \Discharge{!A}{4}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{4}
+\UnaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lor}}{2}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+
+Passons à la branche la plus à droite. Il faut ici se rappeler que
+la définition d'une !!{derivation} \emph{permet de décharger des
+hypothèses}, sans \emph{l'imposer}. Autrement dit, il est permis
+de dériver $!B$ à partir d'une seule des hypothèses $!A$ et $!B$,
+sans utiliser l'autre. Or dériver $!B$ à partir de~$!B$ est
+immédiat : $!B$ seul constitue une telle !!{derivation}, sans
+aucune inférence. Nous pouvons donc supprimer l'hypothèse~$!A$.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\AxiomC{$\Discharge{\lnot !A}{2}$}
+\AxiomC{$\Discharge{!A}{3}$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B$}
+\DischargeRule{\Intro{\lif}}{3}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{$\Discharge{!B}{2}$}
+\RightLabel{\Intro{\lif}}
+\UnaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lor}}{2}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+Dans la !!{derivation} achevée, l'inférence \Intro{\lif} la plus
+à droite ne décharge donc aucune hypothèse.
+\end{ex}
+
+\begin{ex}
+Jusqu'ici, nous n'avons pas eu besoin de la règle \FalseCl{}.
+Sa particularité est de permettre la décharge d'une hypothèse
+qui n'est pas une sous-!!{formula} de la conclusion de la règle.
+Elle est étroitement liée à \FalseInt{} : cette dernière en est
+un cas particulier. Il existe une logique, appelée « logique
+intuitionniste », dans laquelle seule \FalseInt{} est admise parmi
+ces deux règles. On recourt à \FalseCl{} en dernier ressort,
+lorsque les autres tentatives échouent. Supposons par exemple
+que nous voulions !!{derive} $!A \lor \lnot !A$. Notre stratégie
+habituelle consisterait à essayer de !!{derive} $!A \lor \lnot !A$
+par $\Intro{\lor}$. Il faudrait alors !!{derive} soit $!A$, soit
+$\lnot !A$, sans aucune hypothèse, ce qui n'est pas possible
+en général. La règle \FalseCl{} permet de sortir de cette impasse :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+Nous cherchons maintenant une !!{derivation} de $\lfalse$ à partir
+de $\lnot(!A \lor \lnot !A)$. Puisque $\lfalse$ est la conclusion
+de $\Elim{\lnot}$, essayons cette règle :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$\lnot !A$}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+Pour trouver une !!{derivation} de~$\lnot !A$, notre stratégie
+nous conduit à appliquer~$\Intro{\lnot}$ :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}, \Discharge{!A}{2}$}
+  \DeduceC{$\lfalse$}
+  \DischargeRule{\Intro{\lnot}}{2}
+  \UnaryInfC{$\lnot !A$}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+On obtient ici facilement $\lfalse$ en appliquant $\Elim{\lnot}$
+à l'hypothèse $\lnot(!A \lor \lnot !A)$ et à $!A \lor \lnot !A$,
+qui résulte de notre nouvelle hypothèse $!A$ par~$\Intro{\lor}$ :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \AxiomC{$\Discharge{!A}{2}$}
+  \RightLabel{\Intro{\lor}}
+  \UnaryInfC{$!A \lor \lnot !A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\Intro{\lnot}}{2}
+  \UnaryInfC{$\lnot !A$}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+À droite, on suit la même stratégie, mais on obtient $!A$ par~\FalseCl :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \AxiomC{$\Discharge{!A}{2}$}
+  \RightLabel{\Intro{\lor}}
+  \UnaryInfC{$!A \lor \lnot !A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\Intro{\lnot}}{2}
+  \UnaryInfC{$\lnot !A$}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \AxiomC{$\Discharge{\lnot !A}{3}$}
+  \RightLabel{\Intro{\lor}}
+  \UnaryInfC{$!A \lor \lnot !A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{3}
+  \UnaryInfC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+\end{ex}
+
+\begin{prob}
+Donner des !!{derivation}s établissant les résultats suivants :
+\begin{enumerate}
+\item $!A \land (!B \land !C) \Proves (!A \land !B) \land !C$.
+\item $!A \lor (!B \lor !C) \Proves (!A \lor !B) \lor !C$.
+\item $!A \lif (!B \lif !C) \Proves !B \lif (!A \lif !C)$.
+\item $!A \Proves \lnot\lnot !A$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Donner des !!{derivation}s établissant les résultats suivants :
+\begin{enumerate}
+\item $(!A \lor !B) \lif !C \Proves !A \lif !C$.
+\item $(!A \lif !C) \land (!B \lif !C) \Proves (!A \lor !B) \lif !C$.
+\item $\Proves \lnot(!A \land \lnot !A)$.
+\item $!B \lif !A \Proves \lnot !A \lif \lnot !B$.
+\item $\Proves (!A \lif \lnot !A) \lif \lnot !A$.
+\item $\Proves \lnot(!A \lif !B) \lif \lnot !B$.
+\item $!A \lif !C \Proves \lnot (!A \land \lnot !C)$.
+\item $!A \land \lnot !C \Proves \lnot (!A \lif !C)$.
+\item $!A \lor !B, \lnot !B \Proves !A$.
+\item $\lnot !A \lor \lnot !B \Proves \lnot(!A \land !B)$.
+\item $\Proves (\lnot !A \land \lnot !B) \lif\lnot(!A \lor !B)$.
+\item $\Proves \lnot(!A \lor !B) \lif (\lnot !A \land \lnot !B)$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Donner des !!{derivation}s établissant les résultats suivants :
+\begin{enumerate}
+\item $\lnot(!A \lif !B) \Proves !A$.
+\item $\lnot(!A \land !B) \Proves \lnot !A \lor \lnot !B$.
+\item $!A \lif !B \Proves \lnot !A \lor !B$.
+\item $\Proves \lnot \lnot !A \lif !A$.
+\item $!A \lif !B, \lnot !A \lif !B \Proves !B$.
+\item $(!A \land !B) \lif !C \Proves (!A \lif !C) \lor (!B \lif !C)$.
+\item $(!A \lif !B) \lif !A \Proves !A$.
+\item $\Proves (!A \lif !B) \lor (!B \lif !C)$.
+\end{enumerate}
+(Tous ces résultats nécessitent la règle~$\FalseCl$.)
+\end{prob}
+
+\begin{editorial}
+Dans le deuxième exemple, la source parle improprement de séquent
+final et situe à gauche la branche issue de $!A$ et $!B$, qui est
+à droite. Dans l'arbre intermédiaire suivant l'emploi de \FalseInt,
+l'étiquette \Intro{\lfalse} a été corrigée en \Elim{\lnot},
+conformément aux prémisses et à l'explication. Enfin, l'impossibilité
+de dériver $!A$ ou $\lnot !A$ sans hypothèse est une affirmation
+générale sur le schéma : certaines instances particulières sont
+démontrables. Les exercices restent des schémas pour des énoncés
+arbitraires.
+\end{editorial}
+
+\end{document}

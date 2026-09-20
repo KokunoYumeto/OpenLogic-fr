@@ -1,7 +1,7 @@
-% Édition française OpenLogic :74unités sur722,neuf chapitres.
+% Édition française OpenLogic :83unités sur722,dix chapitres.
 % LaTeX cumulatif contenant tout le texte de cette livraison.
 % Styles, figures, bibliographie et instructions sont fournis dans le ZIP source.
-% Les cinq importations du premier ordre inactives sont conservées dans le pilote modulaire du ZIP.
+% Les dix importations du premier ordre inactives sont conservées dans le pilote modulaire du ZIP.
 \documentclass[11pt,a4paper,openany]{memoir}
 \usepackage{mathpazo}
 \usepackage{fontspec}
@@ -59,9 +59,9 @@
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
 \setlength{\cftbeforechapterskip}{0.65em}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles au calcul des séquents},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la déduction naturelle},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle et calcul des séquents},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents et déduction naturelle},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -72,30 +72,27 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\au calcul des séquents\par}
+{\sffamily\huge Des ensembles\\à la déduction naturelle\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Septième livraison : neuf chapitres\par}
+{\large Huitième livraison : dix chapitres\par}
 \vspace{4mm}
-Cette livraison comprend soixante-cinq sections et leurs neuf chapitres d’organisation,
-soit 74 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend soixante-treize sections et leurs dix chapitres d’organisation,
+soit 83 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
 sont réunies dans un même chapitre, avec leurs conventions explicites.
-Le cinquième chapitre construit les entiers, les rationnels et les réels,
-par les coupures de Dedekind et les classes de suites de Cauchy.
-Le sixième étudie les ensembles infinis, les algèbres de Dedekind,
-la récurrence et une autre preuve du théorème de Schröder--Bernstein.
-Le septième présente les formules propositionnelles, leur construction
-inductive, les valuations et les notions sémantiques fondamentales.
-Le huitième présente les systèmes de preuve, leur correction et leur
-complétude : calcul des séquents, déduction naturelle, tableaux et
-dérivations axiomatiques.
-Le neuvième développe le calcul des séquents propositionnel : règles,
-recherche de preuves, dérivabilité, cohérence et théorème de correction.
+Les six premiers chapitres vont des ensembles aux nombres et à l’infini :
+coupures de Dedekind, suites de Cauchy, récurrence et théorème de
+Schröder--Bernstein. Le septième introduit la syntaxe et la sémantique
+propositionnelles; le huitième présente les systèmes de preuve,
+leur correction et leur complétude. Le neuvième développe le calcul
+des séquents propositionnel. Le dixième expose la déduction naturelle :
+règles, décharge des hypothèses, construction de dérivations,
+cohérence et théorème de correction.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -9442,6 +9439,1503 @@ ne satisfait donc $\Gamma$, qui est ainsi insatisfaisable.
 
 \endgroup
 % END embedded source: content/first-order-logic/sequent-calculus/sequent-calculus.tex
+
+\addtocontents{toc}{\protect\Needspace{4\baselineskip}}
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/natural-deduction.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{natural-deduction}
+
+
+\iftag{FOL}
+      {\olchapter{fol}{ntd}{Déduction naturelle}}
+      {\olchapter{pl}{ntd}{Déduction naturelle}}
+
+\begin{editorial}
+Ce chapitre présente un système de déduction naturelle dans le style
+de Gentzen et de Prawitz.
+  
+Pour inclure ou exclure les développements relatifs à la déduction
+naturelle en tant que système de preuve, utiliser le tag « prfND ».
+\end{editorial}
+
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/rules-and-proofs.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{rules-and-proofs}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{rul}}
+      {\olfileid[fr]{pl}{ntd}{rul}}
+
+\olsection{Règles et \usetoken{p}{derivation}}
+
+\begin{explain}
+Les systèmes de déduction naturelle visent à reproduire au plus près
+le raisonnement informel des démonstrations mathématiques, d'où leur
+caractère « naturel ». Les preuves en déduction naturelle commencent
+par des hypothèses, auxquelles on applique ensuite des règles
+d'inférence. Les règles \Intro{\lnot}, \Intro{\lif},
+\iftag{FOL}{\Elim{\lor}, \Elim{\lexists}}{\Elim{\lor}} et \FalseCl{}
+permettent de « !!{discharge} » des hypothèses. Pour indiquer
+clairement quelle inférence décharge une hypothèse, on place à côté
+de l'inférence l'étiquette de cette hypothèse.
+\end{explain}
+
+\begin{defn}[Hypothèse]
+Une \emph{hypothèse} est !!a{sentence} qui occupe la position
+la plus haute d'une branche de l'arbre.
+\end{defn}
+
+Les !!{derivation}s en déduction naturelle sont certains arbres
+d'!!{sentence}s. Les !!{sentence}s situés tout en haut sont les
+hypothèses; si !!a{sentence} se trouve sous un, deux ou trois autres
+!!{sentence}s, il doit en résulter par une application correcte d'une
+règle d'inférence. Les !!{sentence}s au-dessus du trait d'inférence
+sont les \emph{prémisses}, et l'!!{sentence} situé en dessous est la
+\emph{conclusion} de l'inférence. Les règles vont par paires : une
+règle d'introduction et une règle d'élimination pour chaque
+!!{operator}. Elles introduisent un !!{operator} dans la conclusion
+ou retirent un !!{operator} d'une prémisse. Certaines règles
+permettent de \emph{!!{discharge}} une hypothèse d'un type donné.
+Pour indiquer quelle inférence décharge quelle hypothèse, on attribue
+une même étiquette à l'hypothèse et à l'inférence. On écrit alors
+l'hypothèse sous la forme «~$\Discharge{!A}{n}$~».
+
+% N'inclure cette phrase que si l'un des symboles land, lor, lif ou lnot est défini.
+
+\iftag{notprvNot,notprvAnd,notprvOr,notprvIf}{}%
+    {On considère habituellement des règles pour tous les !!{operator}s $\land$, $\lor$, $\lif$, $\lnot$ et $\lfalse$, même si certains d'entre eux sont définis à partir des autres.}
+
+\Needspace{7\baselineskip}
+\begin{editorial}
+La liste initiale de la source omet \FalseCl, qui permet pourtant
+de décharger une hypothèse, comme le montre sa règle ci-dessous.
+Dans la description des arbres, « séquents » a été corrigé en
+« énoncés », conformément aux objets de ce système. L'organisation
+en introduction et élimination décrit les connecteurs usuels;
+les deux règles particulières pour $\lfalse$ sont présentées
+séparément dans la section suivante.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/rules-and-proofs.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/propositional-rules.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{propositional-rules}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{prl}}
+      {\olfileid[fr]{pl}{ntd}{prl}}
+
+\olsection{Règles propositionnelles}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\land$}
+
+\begin{defish}
+\AxiomC{$!A$}
+\AxiomC{$!B$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!A \land !B$}
+\DisplayProof
+\hfill
+\begin{tabular}{r}
+\AxiomC{$!A \land !B$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!A$}
+\DisplayProof
+\\[3ex]
+\AxiomC{$!A \land !B$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!B$}
+\DisplayProof
+\end{tabular}
+\end{defish}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\lor$}
+
+\begin{defish}
+\begin{tabular}{r}
+\AxiomC{$!A$}
+\RightLabel{\Intro{\lor}}
+\UnaryInfC{$!A \lor !B$}
+\DisplayProof
+\\[3ex]
+\AxiomC{$!B$}
+\RightLabel{\Intro{\lor}}
+\UnaryInfC{$!A \lor !B$}
+\DisplayProof
+\end{tabular}
+\hfill
+\AxiomC{$!A \lor !B$}
+\AxiomC{$\Discharge{!A}{n}$}
+\DeduceC{$!C$}
+\AxiomC{$\Discharge{!B}{n}$}
+\DeduceC{$!C$}
+\DischargeRule{\Elim{\lor}}{n}
+\TrinaryInfC{$!C$}
+\DisplayProof
+\end{defish}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\lif$}
+
+\begin{defish}
+\AxiomC{$\Discharge{!A}{n}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{n}
+\UnaryInfC{$!A \lif !B$}
+\DisplayProof
+\hfill
+\AxiomC{$!A \lif !B$}
+\AxiomC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\end{defish}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\lnot$}
+
+\begin{defish}
+\AxiomC{$\Discharge{!A}{n}$}
+\noLine
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{n}
+\UnaryInfC{$\lnot !A$}
+\DisplayProof
+\hfill
+\AxiomC{$\lnot !A$}
+\AxiomC{$!A$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\DisplayProof
+\end{defish}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\lfalse$}
+
+\begin{defish}
+\AxiomC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!A$}
+\DisplayProof
+\hfill
+\AxiomC{$\Discharge{\lnot !A}{n}$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\FalseCl}{n}
+\UnaryInfC{$!A$}
+\DisplayProof
+\end{defish}
+
+Les règles $\Intro{\lnot}$ et $\FalseCl$ sont très proches : la
+première permet de dériver l'!!{sentence} nié~$\lnot !A$, tandis que
+la seconde permet de dériver~$!A$, sans lui ajouter de négation.
+
+Lorsqu'une règle indique que l'on peut décharger une hypothèse,
+il s'agit d'une possibilité, et non d'une obligation. Par exemple,
+la règle $\Intro{\lif}$ permet de décharger un nombre quelconque
+d'hypothèses de la forme~$!A$ dans la !!{derivation} de la
+prémisse~$!B$, y compris zéro.
+
+\begin{editorial}
+La source qualifie ici $!A$ de « positif ». Ce mot signifie seulement
+que la règle n'ajoute pas de négation devant $!A$ : le schéma n'exige
+pas que $!A$ soit lui-même dépourvu de négation.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/propositional-rules.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/derivations.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{derivations}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{der}}
+      {\olfileid[fr]{pl}{ntd}{der}}
+
+\olsection{\usetoken{P}{derivation}}
+
+\begin{explain}
+Nous avons défini les hypothèses et donné les règles d'inférence.
+Les !!{derivation}s en déduction naturelle sont engendrées
+inductivement à partir de ces éléments : chaque !!{derivation}
+est soit une hypothèse isolée, soit constituée d'une, de deux ou de
+trois !!{derivation}s suivies d'une inférence correcte.
+\end{explain}
+
+\begin{defn}[!!^{derivation}]
+\Article{derivation} \emph{!!{derivation}} d'un !!{sentence}~$!A$
+à partir d'un ensemble d'hypothèses~$\Gamma$ est un arbre fini
+d'!!{sentence}s qui satisfait les conditions suivantes :
+\begin{enumerate}
+\item Les !!{sentence}s situés tout en haut de l'arbre appartiennent
+  à $\Gamma$ ou sont déchargés par une inférence de l'arbre.
+\item L'!!{sentence} situé tout en bas de l'arbre est~$!A$.
+\item Chaque !!{sentence} de l'arbre, à l'exception de
+  l'!!{sentence}~$!A$ situé tout en bas, est une prémisse d'une
+  application correcte d'une règle d'inférence dont la conclusion
+  se trouve immédiatement en dessous de cet !!{sentence}.
+\end{enumerate}
+On dit alors que $!A$ est la \emph{conclusion} de la !!{derivation}
+et que $\Gamma$ est son contexte d'hypothèses !!{undischarged}s.
+Les hypothèses effectivement non déchargées doivent appartenir à
+$\Gamma$, sans nécessairement épuiser cet ensemble.
+
+S'il existe une !!{derivation} de $!A$ à partir de~$\Gamma$,
+on dit que $!A$ est \emph{!!{derivable}} à partir de~$\Gamma$,
+ce que l'on note $\Gamma \Proves !A$. S'il existe une
+!!{derivation} de~$!A$ dans laquelle toutes les hypothèses sont
+!!{discharged}s, on écrit~$\Proves !A$.
+\end{defn}
+
+\begin{ex}
+Toute hypothèse isolée est une !!{derivation}. Ainsi, $!A$ seul
+constitue une !!{derivation}, et il en va de même pour $!B$ seul.
+On peut en obtenir une nouvelle !!{derivation} en appliquant,
+par exemple, la règle $\Intro{\land}$ :
+\begin{prooftree}
+\AxiomC{$!A$}
+\AxiomC{$!B$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!A \land !B$}
+\end{prooftree}
+Ces règles sont générales : on peut y remplacer $!A$ et~$!B$
+par des !!{sentence}s quelconques, par exemple $!C$ et~$!D$.
+La conclusion est alors $!C \land !D$, et l'arbre
+\begin{prooftree}
+\AxiomC{$!C$}
+\AxiomC{$!D$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!C \land !D$}
+\end{prooftree}
+est une !!{derivation} correcte. On peut aussi intervertir les
+hypothèses, de sorte que $!D$ joue le rôle de~$!A$, et $!C$ celui
+de~$!B$. L'arbre
+\begin{prooftree}
+\AxiomC{$!D$}
+\AxiomC{$!C$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!D \land !C$}
+\end{prooftree}
+est donc lui aussi une !!{derivation} correcte.
+
+On peut maintenant appliquer une autre règle, par exemple
+$\Intro{\lif}$. Elle permet de conclure une implication et de
+!!{discharge} toute hypothèse identique à l'antécédent de cette
+implication. Les deux !!{derivation}s suivantes sont donc correctes :
+\begin{prooftree}
+\AxiomC{$\Discharge{!C}{1}$}
+\AxiomC{$!D$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!C \land !D$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$!C \lif (!C \land !D)$}
+\DisplayProof\bottomAlignProof
+\AxiomC{$!C$}
+\AxiomC{$\Discharge{!D}{1}$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!C \land !D$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$!D \lif (!C \land !D)$}
+\end{prooftree}
+Elles montrent respectivement que $!D \Proves !C \lif (!C \land !D)$
+et que $!C \Proves !D \lif (!C \land !D)$.
+
+Rappelons que la décharge d'hypothèses est permise, mais non
+obligatoire. En particulier, une règle reste applicable même si
+les hypothèses qu'elle permet de décharger ne figurent pas dans
+la !!{derivation}. L'inférence suivante est ainsi correcte,
+bien qu'il n'y ait aucune hypothèse~$!A$ à !!{discharge} :
+\begin{prooftree}
+  \AxiomC{$!B$}
+  \DischargeRule{\Intro{\lif}}{1}
+  \UnaryInfC{$!A \lif !B$}
+\end{prooftree}
+\end{ex}
+
+\begin{editorial}
+La source appelle $\Gamma$ les hypothèses non déchargées. La
+précision sur le contexte explicite sa propre définition, qui exige
+seulement que les hypothèses non déchargées appartiennent à
+$\Gamma$, sans imposer que tous ses éléments soient utilisés.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/derivations.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/proving-things.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proving-things}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{pro}}
+      {\olfileid[fr]{pl}{ntd}{pro}}
+
+\olsection{Exemples de \usetoken{p}{derivation}}
+
+\begin{ex}
+Construisons une !!{derivation} de l'!!{sentence} $(!A \land !B) \lif !A$.
+
+Commençons par écrire la conclusion recherchée tout en bas de la
+!!{derivation}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$(!A\land !B) \lif !A$}
+\end{prooftree}
+
+Il faut ensuite déterminer quel type d'inférence pourrait avoir
+pour conclusion un !!{sentence} de cette forme. L'!!{main operator}
+de la conclusion est $\lif$; essayons donc d'y parvenir par la règle
+\Intro{\lif}. Il est préférable d'écrire les hypothèses utilisées
+et d'étiqueter les règles d'inférence au fur et à mesure : on verra
+ainsi facilement si toutes les hypothèses ont été !!{discharged}s
+à la fin de la preuve.
+\begin{prooftree}
+\AxiomC{$\Discharge{!A \land !B}{1}$}
+\DeduceC{$!A$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(!A\land !B) \lif !A$}
+\end{prooftree}
+
+Il reste à compléter les étapes qui conduisent de l'hypothèse
+$!A \land !B$ à $!A$. Le seul connecteur à traiter étant $\land$,
+nous utilisons sa règle d'élimination. On obtient la preuve suivante :
+\begin{prooftree}
+\AxiomC{$\Discharge{!A \land !B}{1}$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!A$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(!A\land !B) \lif !A$}
+\end{prooftree}
+Nous avons maintenant une !!{derivation} correcte de
+$(!A \land !B) \lif !A$.
+\end{ex}
+
+\begin{ex}
+Construisons maintenant une !!{derivation} de
+$(\lnot !A \lor !B) \lif (!A \lif !B)$.
+
+Commençons par écrire la conclusion recherchée tout en bas de la
+!!{derivation}.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+Pour trouver une règle logique qui puisse donner cette conclusion,
+examinons les connecteurs qui y figurent : $\lnot$, $\lor$ et
+$\lif$. Seule la première occurrence de $\lif$ nous intéresse pour
+l'instant, car elle est l'!!{main operator} de l'!!{sentence}
+final. Les connecteurs $\lnot$, $\lor$ et la seconde occurrence de
+$\lif$ sont dans la portée d'un autre connecteur; nous les traiterons
+donc plus tard. Commençons par la règle \Intro{\lif}. Une
+application correcte doit avoir la forme suivante :
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\DeduceC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+Deux possibilités s'offrent alors à nous. Nous pouvons poursuivre
+de bas en haut en cherchant une autre application de \Intro{\lif},
+ou travailler de haut en bas en appliquant \Elim{\lor}. Choisissons
+la seconde possibilité. L'hypothèse $\lnot !A \lor !B$ sera la
+prémisse la plus à gauche de \Elim{\lor}. Pour que l'application
+soit correcte, les deux autres prémisses doivent être identiques
+à la conclusion $!A \lif !B$. Chacune peut cependant être dérivée
+à partir d'une hypothèse supplémentaire : l'un des deux membres de
+la disjonction $\lnot !A \lor !B$. Notre !!{derivation} aura donc
+la forme suivante :
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\AxiomC{$\Discharge{\lnot !A}{2}$}
+\DeduceC{$!A \lif !B$}
+\AxiomC{$\Discharge{!B}{2}$}
+\DeduceC{$!A \lif !B$}
+\DischargeRule{\Elim{\lor}}{2}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+
+Dans chacune des deux branches de droite, nous voulons
+!!{derive} $!A \lif !B$. La règle \Intro{\lif} est tout indiquée :
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\AxiomC{$\Discharge{\lnot !A}{2}, \Discharge{!A}{3}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{3}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{$\Discharge{!B}{2}, \Discharge{!A}{4}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{4}
+\UnaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lor}}{2}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+
+Pour compléter les deux parties manquantes, il nous faut dériver
+$!B$ à partir de $\lnot !A$ et $!A$ au milieu, et à partir de
+$!A$ et $!B$ à droite. Commençons par la branche du milieu :
+$\lnot !A$ et $!A$ sont les deux prémisses de \Elim{\lnot}.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A}{2}$}
+\AxiomC{$\Discharge{!A}{3}$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\DeduceC{$!B$}
+\end{prooftree}
+La règle \FalseInt{} permet alors d'obtenir la conclusion $!B$
+et d'achever cette branche.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\AxiomC{$\Discharge{\lnot !A}{2}$}
+\AxiomC{$\Discharge{!A}{3}$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B$}
+\DischargeRule{\Intro{\lif}}{3}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{$\Discharge{!B}{2}, \Discharge{!A}{4}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{4}
+\UnaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lor}}{2}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+
+Passons à la branche la plus à droite. Il faut ici se rappeler que
+la définition d'une !!{derivation} \emph{permet de décharger des
+hypothèses}, sans \emph{l'imposer}. Autrement dit, il est permis
+de dériver $!B$ à partir d'une seule des hypothèses $!A$ et $!B$,
+sans utiliser l'autre. Or dériver $!B$ à partir de~$!B$ est
+immédiat : $!B$ seul constitue une telle !!{derivation}, sans
+aucune inférence. Nous pouvons donc supprimer l'hypothèse~$!A$.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lnot !A \lor !B}{1}$}
+\AxiomC{$\Discharge{\lnot !A}{2}$}
+\AxiomC{$\Discharge{!A}{3}$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B$}
+\DischargeRule{\Intro{\lif}}{3}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{$\Discharge{!B}{2}$}
+\RightLabel{\Intro{\lif}}
+\UnaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lor}}{2}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$(\lnot !A \lor !B) \lif (!A \lif !B)$}
+\end{prooftree}
+Dans la !!{derivation} achevée, l'inférence \Intro{\lif} la plus
+à droite ne décharge donc aucune hypothèse.
+\end{ex}
+
+\begin{ex}
+Jusqu'ici, nous n'avons pas eu besoin de la règle \FalseCl{}.
+Sa particularité est de permettre la décharge d'une hypothèse
+qui n'est pas une sous-!!{formula} de la conclusion de la règle.
+Elle est étroitement liée à \FalseInt{} : cette dernière en est
+un cas particulier. Il existe une logique, appelée « logique
+intuitionniste », dans laquelle seule \FalseInt{} est admise parmi
+ces deux règles. On recourt à \FalseCl{} en dernier ressort,
+lorsque les autres tentatives échouent. Supposons par exemple
+que nous voulions !!{derive} $!A \lor \lnot !A$. Notre stratégie
+habituelle consisterait à essayer de !!{derive} $!A \lor \lnot !A$
+par $\Intro{\lor}$. Il faudrait alors !!{derive} soit $!A$, soit
+$\lnot !A$, sans aucune hypothèse, ce qui n'est pas possible
+en général. La règle \FalseCl{} permet de sortir de cette impasse :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+Nous cherchons maintenant une !!{derivation} de $\lfalse$ à partir
+de $\lnot(!A \lor \lnot !A)$. Puisque $\lfalse$ est la conclusion
+de $\Elim{\lnot}$, essayons cette règle :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$\lnot !A$}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+Pour trouver une !!{derivation} de~$\lnot !A$, notre stratégie
+nous conduit à appliquer~$\Intro{\lnot}$ :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}, \Discharge{!A}{2}$}
+  \DeduceC{$\lfalse$}
+  \DischargeRule{\Intro{\lnot}}{2}
+  \UnaryInfC{$\lnot !A$}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+On obtient ici facilement $\lfalse$ en appliquant $\Elim{\lnot}$
+à l'hypothèse $\lnot(!A \lor \lnot !A)$ et à $!A \lor \lnot !A$,
+qui résulte de notre nouvelle hypothèse $!A$ par~$\Intro{\lor}$ :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \AxiomC{$\Discharge{!A}{2}$}
+  \RightLabel{\Intro{\lor}}
+  \UnaryInfC{$!A \lor \lnot !A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\Intro{\lnot}}{2}
+  \UnaryInfC{$\lnot !A$}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+À droite, on suit la même stratégie, mais on obtient $!A$ par~\FalseCl :
+\begin{prooftree}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \AxiomC{$\Discharge{!A}{2}$}
+  \RightLabel{\Intro{\lor}}
+  \UnaryInfC{$!A \lor \lnot !A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\Intro{\lnot}}{2}
+  \UnaryInfC{$\lnot !A$}
+  \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
+  \AxiomC{$\Discharge{\lnot !A}{3}$}
+  \RightLabel{\Intro{\lor}}
+  \UnaryInfC{$!A \lor \lnot !A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{3}
+  \UnaryInfC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A \lor \lnot !A$}
+\end{prooftree}
+\end{ex}
+
+\begin{prob}
+Donner des !!{derivation}s établissant les résultats suivants :
+\begin{enumerate}
+\item $!A \land (!B \land !C) \Proves (!A \land !B) \land !C$.
+\item $!A \lor (!B \lor !C) \Proves (!A \lor !B) \lor !C$.
+\item $!A \lif (!B \lif !C) \Proves !B \lif (!A \lif !C)$.
+\item $!A \Proves \lnot\lnot !A$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Donner des !!{derivation}s établissant les résultats suivants :
+\begin{enumerate}
+\item $(!A \lor !B) \lif !C \Proves !A \lif !C$.
+\item $(!A \lif !C) \land (!B \lif !C) \Proves (!A \lor !B) \lif !C$.
+\item $\Proves \lnot(!A \land \lnot !A)$.
+\item $!B \lif !A \Proves \lnot !A \lif \lnot !B$.
+\item $\Proves (!A \lif \lnot !A) \lif \lnot !A$.
+\item $\Proves \lnot(!A \lif !B) \lif \lnot !B$.
+\item $!A \lif !C \Proves \lnot (!A \land \lnot !C)$.
+\item $!A \land \lnot !C \Proves \lnot (!A \lif !C)$.
+\item $!A \lor !B, \lnot !B \Proves !A$.
+\item $\lnot !A \lor \lnot !B \Proves \lnot(!A \land !B)$.
+\item $\Proves (\lnot !A \land \lnot !B) \lif\lnot(!A \lor !B)$.
+\item $\Proves \lnot(!A \lor !B) \lif (\lnot !A \land \lnot !B)$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Donner des !!{derivation}s établissant les résultats suivants :
+\begin{enumerate}
+\item $\lnot(!A \lif !B) \Proves !A$.
+\item $\lnot(!A \land !B) \Proves \lnot !A \lor \lnot !B$.
+\item $!A \lif !B \Proves \lnot !A \lor !B$.
+\item $\Proves \lnot \lnot !A \lif !A$.
+\item $!A \lif !B, \lnot !A \lif !B \Proves !B$.
+\item $(!A \land !B) \lif !C \Proves (!A \lif !C) \lor (!B \lif !C)$.
+\item $(!A \lif !B) \lif !A \Proves !A$.
+\item $\Proves (!A \lif !B) \lor (!B \lif !C)$.
+\end{enumerate}
+(Tous ces résultats nécessitent la règle~$\FalseCl$.)
+\end{prob}
+
+\begin{editorial}
+Dans le deuxième exemple, la source parle improprement de séquent
+final et situe à gauche la branche issue de $!A$ et $!B$, qui est
+à droite. Dans l'arbre intermédiaire suivant l'emploi de \FalseInt,
+l'étiquette \Intro{\lfalse} a été corrigée en \Elim{\lnot},
+conformément aux prémisses et à l'explication. Enfin, l'impossibilité
+de dériver $!A$ ou $\lnot !A$ sans hypothèse est une affirmation
+générale sur le schéma : certaines instances particulières sont
+démontrables. Les exercices restent des schémas pour des énoncés
+arbitraires.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/proving-things.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/proof-theoretic-notions.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proof-theoretic-notions}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{ptn}}
+      {\olfileid[fr]{pl}{ntd}{ptn}}
+
+\Needspace{9\baselineskip}
+\olsection{Notions de théorie de la démonstration}
+
+\begin{editorial}
+Cette section rassemble les définitions de la relation de
+!!{derivability} et de la cohérence pour la déduction naturelle.
+\end{editorial}
+
+\begin{explain}
+Nous avons défini plusieurs notions sémantiques importantes :
+validité, conséquence logique et satisfaisabilité. Définissons
+maintenant les \emph{notions de théorie de la démonstration}
+correspondantes. Elles ne font pas appel à la satisfaction
+d'!!{sentence}s dans des \iftag{FOL}{!!{structure}s}{!!{valuation}s},
+mais à la !!{derivability} ou à la !!{nonderivability} de certains
+!!{sentence}s à partir d'autres. La coïncidence de ces notions
+constitue une découverte importante : c'est le contenu des
+\emph{théorèmes de correction et de complétude}.
+\end{explain}
+
+\begin{defn}[Théorèmes]
+!!^a{sentence}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation} de~$!A$ en déduction naturelle dans laquelle toutes
+les hypothèses sont !!{discharged}s. On écrit $\Proves !A$ si
+$!A$ est un théorème, et $\Proves/ !A$ dans le cas contraire.
+\end{defn}
+
+\begin{defn}[!!^{derivability}]
+!!^a{sentence}~$!A$ est \emph{!!{derivable} à partir} d'un ensemble
+d'!!{sentence}s~$\Gamma$, ce que l'on note $\Gamma \Proves !A$,
+s'il existe une !!{derivation} de conclusion~$!A$ dont chaque
+hypothèse est soit !!{discharged}, soit un élément de~$\Gamma$.
+Si $!A$ n'est pas !!{derivable} à partir de $\Gamma$, on écrit
+$\Gamma \Proves/ !A$.
+\end{defn}
+
+\begin{defn}[Cohérence]
+Un ensemble d'!!{sentence}s~$\Gamma$ est \emph{incohérent} si et
+seulement si $\Gamma \Proves \lfalse$. S'il n'est pas incohérent,
+c'est-à-dire si $\Gamma \Proves/ \lfalse$, on dit qu'il est
+\emph{cohérent}.
+\end{defn}
+
+\begin{prop}[Réflexivité]
+\ollabel{prop:reflexivity}
+Si $!A \in \Gamma$, alors $\Gamma \Proves !A$.
+\end{prop}
+
+\begin{proof}
+L'hypothèse $!A$ seule constitue une !!{derivation} de~$!A$ dont
+toutes les hypothèses !!{undischarged}s, en l'occurrence $!A$,
+appartiennent à~$\Gamma$.
+\end{proof}
+
+\begin{prop}[Monotonie]
+\ollabel{prop:monotonicity}
+Si $\Gamma \subseteq \Delta$ et $\Gamma \Proves !A$, alors
+$\Delta \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Toute !!{derivation} de $!A$ à partir de $\Gamma$ est aussi une
+!!{derivation} de $!A$ à partir de~$\Delta$.
+\end{proof}
+
+\begin{prop}[Transitivité]
+\ollabel{prop:transitivity}
+Si $\Gamma \Proves !A$ et $\{!A\} \cup \Delta \Proves !B$,
+alors $\Gamma \cup \Delta \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Si $\Gamma \Proves !A$, il existe une !!{derivation}~$\delta_0$
+de~$!A$ dont toutes les hypothèses !!{undischarged}s appartiennent
+à~$\Gamma$. Si $\{!A\} \cup \Delta \Proves !B$, il existe une
+!!{derivation}~$\delta_1$ de~$!B$ dont toutes les hypothèses
+!!{undischarged}s appartiennent à~$\{!A\} \cup \Delta$.
+Considérons alors l'arbre suivant :
+\begin{prooftree}
+  \AxiomC{$\Delta, \Discharge{!A}{1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!B$}
+  \DischargeRule{\Intro{\lif}}{1}
+  \UnaryInfC{$!A \lif !B$}
+  \AxiomC{$\Gamma$}
+  \RightLabel{$\delta_0$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lif}}
+  \BinaryInfC{$!B$}
+\end{prooftree}
+Toutes les hypothèses !!{undischarged}s appartiennent maintenant
+à $\Gamma \cup \Delta$; nous avons donc
+$\Gamma \cup \Delta \Proves !B$.
+\end{proof}
+
+Lorsque $\Gamma = \{!A_1, !A_2, \ldots, !A_k\}$ est fini, on peut
+abréger $\Gamma \Proves !B$ en
+$!A_1,!A_2,\ldots,!A_k \Proves !B$. En particulier,
+$!A \Proves !B$ signifie $\{!A\} \Proves !B$.
+
+Remarquons que, si $\Gamma \Proves !A$ et $!A \Proves !B$, alors
+$\Gamma \Proves !B$. Il en résulte aussi que, si
+$!A_1, \dots, !A_n \Proves !B$ et $\Gamma \Proves !A_i$ pour
+chaque~$i$, alors $\Gamma \Proves !B$.
+
+\begin{prop}
+\ollabel{prop:incons}
+Les conditions suivantes sont équivalentes :
+    \begin{enumerate}
+      \item \( \Gamma \) est incohérent.
+      \item \( \Gamma \Proves {!A} \) pour tout !!{sentence}~\( {!A} \).
+      \item \( \Gamma \Proves {!A} \) et \( \Gamma \Proves \lnot {!A} \) pour au moins un !!{sentence}~\( {!A} \).
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][ntd][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][ntd][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\begin{prop}[Compacité]
+  \ollabel{prop:proves-compact}
+  \begin{enumerate}
+  \item Si $\Gamma \Proves !A$, il existe une partie finie
+    $\Gamma_0 \subseteq \Gamma$ telle que $\Gamma_0 \Proves !A$.
+  \item Si toute partie finie de~$\Gamma$ est cohérente,
+    alors $\Gamma$ est cohérent.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Si $\Gamma \Proves !A$, il existe une
+      !!{derivation}~$\delta$ de~$!A$ à partir de~$\Gamma$.
+      Soit $\Gamma_0$ l'ensemble des hypothèses
+      !!{undischarged}s de~$\delta$. Toute !!{derivation} étant
+      finie, $\Gamma_0$ ne contient qu'un nombre fini
+      d'!!{sentence}s. Ainsi, $\delta$ est une !!{derivation}
+      de~$!A$ à partir d'une partie finie~$\Gamma_0 \subseteq \Gamma$.
+    \item C'est la contraposée de (1) dans le cas particulier
+      $!A \ident \lfalse$.
+  \end{enumerate}
+\end{proof}
+
+\begin{editorial}
+Dans le paragraphe introductif, la mention des structures de la
+source est adaptée en valuations pour la version propositionnelle.
+Les contextes d'hypothèses restent des ensembles éventuellement
+infinis; seule chaque dérivation particulière est finie.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/proof-theoretic-notions.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/provability-consistency.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{provability-consistency}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{prv}}
+      {\olfileid[fr]{pl}{ntd}{prv}}
+      
+\olsection{\usetoken{S}{derivability} et cohérence}
+
+Établissons plusieurs propriétés de la relation de
+!!{derivability}. Outre leur intérêt propre, elles interviendront
+toutes dans la démonstration du théorème de complétude.
+
+\begin{prop}\ollabel{prop:provability-contr}
+  Si $\Gamma \Proves !A$ et si $\Gamma \cup \{!A\}$ est
+  incohérent, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Soient $\delta_1$ une !!{derivation} de~$!A$ à partir de~$\Gamma$
+et $\delta_2$ une !!{derivation} de~$\lfalse$ à partir de
+$\Gamma \cup \{!A\}$. Nous obtenons alors la !!{derivation}
+suivante :
+\begin{prooftree}
+\AxiomC{$\Gamma, \Discharge{!A}{1}$}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{1}
+\UnaryInfC{$\lnot !A$}
+\AxiomC{$\Gamma$}
+\RightLabel{$\delta_1$}
+\DeduceC{$!A$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\end{prooftree}
+Dans cette nouvelle !!{derivation}, les occurrences de
+l'hypothèse~$!A$ indiquées sont !!{discharged}s. Toutes les
+hypothèses qui restent non déchargées appartiennent donc à~$\Gamma$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:prov-incons}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons d'abord $\Gamma \Proves !A$. Il existe donc une
+!!{derivation}~$\delta_0$ de~$!A$ dont les hypothèses
+!!{undischarged}s appartiennent à~$\Gamma$. Nous obtenons une
+!!{derivation} de $\lfalse$ à partir de
+$\Gamma \cup \{\lnot !A\}$ comme suit :
+\begin{prooftree}
+  \AxiomC{$\lnot !A$}
+  \AxiomC{$\Gamma$}
+  \RightLabel{$\delta_0$}
+  \DeduceC{$!A$}
+  \RightLabel{\Elim{\lnot}}
+  \BinaryInfC{$\lfalse$}
+\end{prooftree}
+Supposons maintenant que $\Gamma \cup \{\lnot !A\}$ soit
+incohérent. Soit $\delta_1$ une !!{derivation} de~$\lfalse$ dont
+les hypothèses !!{undischarged}s appartiennent à
+$\Gamma \cup \{\lnot !A\}$. La règle~$\FalseCl$ donne une
+!!{derivation} de~$!A$ à partir de~$\Gamma$ seulement :
+\begin{prooftree}
+  \AxiomC{$\Gamma, \Discharge{\lnot !A}{1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$\lfalse$}
+  \RightLabel{\FalseCl}
+  \DischargeRule{\FalseCl}{1}
+  \UnaryInfC{$!A$}
+\end{prooftree}
+\end{proof}
+
+\begin{prob}
+Démontrer que $\Gamma \Proves \lnot !A$ si et seulement si
+$\Gamma \cup \{!A\}$ est incohérent.
+\end{prob}
+
+\begin{prop}\ollabel{prop:explicit-inc}
+  Si $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$, alors
+  $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+  Supposons $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$.
+  Il existe une !!{derivation}~$\delta$ de~$!A$ à partir de~$\Gamma$.
+  Considérons cette application immédiate de $\Elim{\lnot}$ :
+\begin{prooftree}
+    \AxiomC{$\lnot !A$}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta$}
+    \DeduceC{$!A$}
+    \RightLabel{\Elim{\lnot}}
+    \BinaryInfC{$\lfalse$}
+  \end{prooftree}
+Puisque $\lnot !A \in \Gamma$, toutes les hypothèses
+  !!{undischarged}s appartiennent à~$\Gamma$. Cela établit
+  $\Gamma \Proves \lfalse$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-exhaustive}
+  Si $\Gamma \cup \{!A\}$ et $\Gamma \cup \{\lnot !A\}$
+  sont tous deux incohérents, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Il existe des !!{derivation}s $\delta_1$ et $\delta_2$ de~$\lfalse$
+à partir de $\Gamma \cup \{ !A \}$ et de $\lfalse$ à partir de
+$\Gamma \cup \{ \lnot !A \}$, respectivement. Nous obtenons alors :
+\begin{prooftree}
+\AxiomC{$\Gamma, \Discharge{\lnot !A}{2}$}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{2}
+\UnaryInfC{$\lnot \lnot !A$}
+\AxiomC{$\Gamma, \Discharge{!A}{1}$}
+\RightLabel{$\delta_1$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{1}
+\UnaryInfC{$\lnot !A$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\end{prooftree}
+Les hypothèses $!A$ et $\lnot !A$ indiquées étant
+!!{discharged}s, les hypothèses encore non déchargées appartiennent
+à~$\Gamma$. Nous avons donc une !!{derivation} de~$\lfalse$ à
+partir de~$\Gamma$ seulement. Ainsi, $\Gamma$ est incohérent.
+\end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/provability-consistency.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/provability-propositional.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{provability-propositional}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{ppr}}
+      {\olfileid[fr]{pl}{ntd}{ppr}}
+
+\olsection{\usetoken{S}{derivability} et connecteurs propositionnels}
+
+\begin{explain}
+Nous montrons que la relation de !!{derivability}~$\Proves$ en
+déduction naturelle permet d'établir quelques faits élémentaires
+concernant les connecteurs propositionnels, notamment
+$!A \land !B \Proves !A$ et $!A, !A \lif !B \Proves !B$
+(modus ponens). Ces faits seront utilisés dans la démonstration
+du théorème de complétude.
+\end{explain}
+
+\begin{prop}\ollabel{prop:provability-land}
+  \begin{enumerate}
+  \item \ollabel{prop:provability-land-left} On a à la fois
+    $!A \land !B \Proves !A$ et $!A \land !B \Proves !B$.
+  \item \ollabel{prop:provability-land-right} $!A, !B \Proves !A \land !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Voici les deux !!{derivation}s :
+\begin{prooftree}
+      \AxiomC{$!A \land !B$}
+      \RightLabel{\Elim{\land}}
+      \UnaryInfC{$!A$}
+      \DisplayProof\qquad\bottomAlignProof
+      \AxiomC{$!A \land !B$}
+      \RightLabel{\Elim{\land}}
+      \UnaryInfC{$!B$}
+    \end{prooftree}
+\item Nous avons la !!{derivation} suivante :
+\begin{prooftree}
+      \AxiomC{$!A$}
+      \AxiomC{$!B$}
+      \RightLabel{\Intro{\land}}
+      \BinaryInfC{$!A \land !B$}
+    \end{prooftree}
+\end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lor}
+  \begin{enumerate}
+  \item $!A \lor !B, \lnot !A, \lnot !B$ est incohérent.
+  \item On a à la fois $!A \Proves !A \lor !B$ et
+    $!B \Proves !A \lor !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Considérons la !!{derivation} suivante :
+\begin{prooftree}
+      \AxiomC{$!A \lor !B$}
+      \AxiomC{$\lnot !A$}
+      \AxiomC{$\Discharge{!A}{1}$}
+      \RightLabel{\Elim{\lnot}}
+      \BinaryInfC{$\lfalse$}
+      \AxiomC{$\lnot !B$}
+      \AxiomC{$\Discharge{!B}{1}$}
+      \RightLabel{\Elim{\lnot}}
+      \BinaryInfC{$\lfalse$}
+      \DischargeRule{\Elim{\lor}}{1}
+      \TrinaryInfC{$\lfalse$}
+    \end{prooftree}
+C'est une !!{derivation} de~$\lfalse$ dont les hypothèses
+    !!{undischarged}s sont $!A \lor !B$, $\lnot !A$ et $\lnot !B$.
+  \item Voici les deux !!{derivation}s :
+\begin{prooftree}
+      \AxiomC{$!A$}
+      \RightLabel{\Intro{\lor}}
+      \UnaryInfC{$!A \lor !B$}
+      \DisplayProof\qquad\bottomAlignProof
+      \AxiomC{$!B$}
+      \RightLabel{\Intro{\lor}}
+      \UnaryInfC{$!A \lor !B$}
+    \end{prooftree}
+\end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lif}
+  \begin{enumerate}
+  \item \ollabel{prop:provability-lif-left} $!A, !A \lif !B \Proves !B$.
+  \item \ollabel{prop:provability-lif-right}
+    On a à la fois $\lnot !A \Proves !A \lif !B$ et
+    $!B \Proves !A \lif !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Nous avons la !!{derivation} suivante :
+\begin{prooftree}
+      \AxiomC{$!A \lif !B$}
+      \AxiomC{$!A$}
+      \RightLabel{\Elim{\lif}}
+      \BinaryInfC{$!B$}
+    \end{prooftree}
+\item Les deux !!{derivation}s suivantes établissent le résultat :
+\begin{prooftree}
+      \AxiomC{$\lnot !A$}
+      \AxiomC{$\Discharge{!A}{1}$}
+      \RightLabel{\Elim{\lnot}}
+      \BinaryInfC{$\lfalse$}
+      \RightLabel{\FalseInt}
+      \UnaryInfC{$!B$}
+      \DischargeRule{\Intro{\lif}}{1}
+      \UnaryInfC{$!A \lif !B$}
+      \DisplayProof\qquad\bottomAlignProof
+      \AxiomC{$!B$}
+      \RightLabel{\Intro{\lif}}
+      \UnaryInfC{$!A \lif !B$}
+    \end{prooftree}
+Remarquons que $\Intro{\lif}$ permet de !!{discharge}
+    l'hypothèse~$!A$, sans l'exiger.
+  \end{enumerate}
+\end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/provability-propositional.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/natural-deduction/soundness.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{soundness}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{sou}}
+      {\olfileid[fr]{pl}{ntd}{sou}}
+      
+\olsection{Correction}
+
+\begin{explain}
+Un système de !!{derivation}, tel que la déduction naturelle, est
+\emph{correct} s'il ne permet de !!{derive} que ce qui résulte
+effectivement des hypothèses. La correction garantit ainsi la
+fiabilité du système. Selon la propriété de théorie de la
+démonstration considérée, nous voulons par exemple savoir que :
+\begin{enumerate}
+\item tout !!{sentence} !!{derivable} sans hypothèses est
+  \iftag{FOL}{valide}{une tautologie};
+\item tout !!{sentence} !!{derivable} à partir d'autres est
+  aussi une conséquence de ceux-ci;
+\item tout ensemble incohérent d'!!{sentence}s est insatisfaisable.
+\end{enumerate}
+Ces propriétés sont essentielles pour un système de !!{derivation}.
+Si l'une d'elles était en défaut, le système permettrait de dériver
+trop d'!!{sentence}s. Il est donc primordial d'en établir la
+correction.
+\end{explain}
+
+\begin{thm}[Correction]
+\ollabel{thm:soundness}
+Si $!A$ est !!{derivable} à partir d'hypothèses
+!!{undischarged}s appartenant à $\Gamma$, alors $\Gamma \Entails !A$.
+\end{thm}
+
+\begin{proof}
+Soit $\delta$ une !!{derivation} de $!A$. Nous procédons par
+récurrence sur le nombre d'inférences de~$\delta$.
+
+Pour le cas de base, supposons ce nombre égal à~$0$. La
+!!{derivation}~$\delta$ se réduit alors à un seul !!{sentence}~$!A$,
+c'est-à-dire à une hypothèse. Celle-ci est !!{undischarged},
+puisqu'une hypothèse ne peut être déchargée que par une inférence
+et qu'il n'y en a aucune. Ainsi, toute
+\iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
+qui satisfait toutes les hypothèses !!{undischarged}s de la preuve
+satisfait aussi~$!A$.
+
+Passons à l'étape de récurrence. Supposons que $\delta$ comporte~$n$
+inférences. Les prémisses de l'inférence la plus basse sont dérivées
+par des sous-!!{derivation}s comportant chacune moins de~$n$
+inférences. Par hypothèse de récurrence, ces prémisses sont des
+conséquences des hypothèses !!{undischarged}s des
+sous-!!{derivation}s correspondantes. Il faut montrer que la
+conclusion~$!A$ est une conséquence des hypothèses
+!!{undischarged}s de la preuve entière.
+
+Distinguons les cas selon la dernière inférence. Commençons par
+les inférences à une seule prémisse.
+
+\begin{enumerate}
+\item Supposons que la dernière inférence soit \Intro{\lnot}.
+  La !!{derivation} a la forme suivante :
+\begin{prooftree}
+    \AxiomC{$\Gamma, \Discharge{!A}{n}$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$\lfalse$}
+    \DischargeRule{\Intro{\lnot}}{n}
+    \UnaryInfC{$\lnot !A$}
+  \end{prooftree}
+Par hypothèse de récurrence, $\lfalse$ est une conséquence des
+  hypothèses !!{undischarged}s de~$\delta_1$, contenues dans
+  $\Gamma \cup \{!A\}$. Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Il faut montrer que, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !A}$.
+  Supposons par l'absurde que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, mais que
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lnot !A}$, c'est-à-dire que
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$. Nous aurions alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma \cup \{!A\}}$, ce qui
+  contredit l'hypothèse de récurrence, puisque $\lfalse$ ne peut
+  être satisfait. Donc
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !A}$.
+
+\item La dernière inférence est \Elim{\land}. Il y a deux
+  variantes : la prémisse $!A \land !B$ permet de conclure $!A$
+  ou $!B$. Dans le premier cas, la !!{derivation}~$\delta$ a la forme :
+\begin{prooftree}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A \land !B$}
+    \RightLabel{\Elim{\land}}
+    \UnaryInfC{$!A$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!A \land !B$ est une conséquence
+  des hypothèses !!{undischarged}s~$\Gamma$ de~$\delta_1$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Il faut montrer que, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Supposons $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$.
+  Par hypothèse de récurrence, $\Gamma \Entails !A \land !B$;
+  nous avons donc $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$.
+  Par définition, cette dernière condition équivaut à
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ et
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  Le cas où l'on conclut $!B$ à partir de $!A \land !B$ se traite
+  de la même façon.
+
+\item La dernière inférence est \Intro{\lor}. On peut conclure
+  $!A \lor !B$ à partir de~$!A$ ou à partir de~$!B$.
+  Dans le premier cas, la !!{derivation} a la forme suivante :
+\begin{prooftree}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A$}
+    \RightLabel{\Intro{\lor}}
+    \UnaryInfC{$!A \lor !B$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!A$ est une conséquence des
+  hypothèses !!{undischarged}s~$\Gamma$ de~$\delta_1$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Il faut montrer que, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$.
+  Supposons $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$.
+  Comme $\Gamma \Entails !A$ par hypothèse de récurrence,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, d'où
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lor !B}$.
+  Le cas où l'on conclut $!A \lor !B$ à partir de~$!B$ est analogue.
+
+\item La dernière inférence est \Intro{\lif}. L'!!{sentence}
+  $!A \lif !B$ est dérivé d'une sous-preuve de conclusion~$!B$
+  comportant éventuellement des hypothèses~$!A$ à décharger :
+\begin{prooftree}
+    \AxiomC{$\Gamma, \Discharge{!A}{n}$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!B$}
+    \DischargeRule{\Intro{\lif}}{n}
+    \UnaryInfC{$!A \lif !B$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!B$ est une conséquence des
+  hypothèses !!{undischarged}s de~$\delta_1$; ainsi,
+  $\Gamma \cup \{!A\} \Entails !B$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Les occurrences indiquées de~$!A$ étant déchargées par la
+  dernière inférence, les hypothèses !!{undischarged}s de~$\delta$
+  appartiennent à~$\Gamma$. Il faut donc montrer
+  $\Gamma \Entails !A \lif !B$.
+  Supposons par l'absurde qu'il existe
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
+  telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ et
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$.
+  Alors $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ et
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$.
+  Mais $!B$ est une conséquence de $\Gamma \cup \{!A\}$, donc
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$, contradiction.
+  Par conséquent, $\Gamma \Entails !A \lif !B$.
+
+\item La dernière inférence est \FalseInt. La !!{derivation}~$\delta$
+  se termine alors ainsi :
+\begin{prooftree}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$\lfalse$}
+    \RightLabel{\FalseInt}
+    \UnaryInfC{$!A$}
+  \end{prooftree}
+Par hypothèse de récurrence, $\Gamma \Entails \lfalse$.
+  Il faut montrer que $\Gamma \Entails !A$.
+  Sinon, il existerait
+  \iftag{FOL}{une structure~$\Struct{M}$}{une valuation~$\pAssign{v}$}
+  telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ et
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$.
+  Or $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$ dans tous les
+  cas; on aurait donc $\Gamma \Entails/ \lfalse$, contrairement
+  à l'hypothèse de récurrence.
+
+\item La dernière inférence est \FalseCl : exercice.
+
+\iftag{FOL}{
+\item La dernière inférence est \Intro{\lforall}. La
+  !!{derivation}~$\delta$ a alors la forme suivante :
+\begin{prooftree}
+    \AxiomC{$\Gamma$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A(a)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x)]$}
+  \end{prooftree}
+Par hypothèse de récurrence, la prémisse $!A(a)$ est une
+  conséquence des hypothèses !!{undischarged}s~$\Gamma$.
+  Considérons une structure~$\Struct{M}$ telle que
+  $\Sat{M}{\Gamma}$. Il faut montrer que
+  $\Sat{M}{\lforall[x][!A(x)]}$.
+  Puisque $\lforall[x][!A(x)]$ est un !!{sentence}, cela revient
+  à montrer que $\Sat{M}{!A(x)}[s]$ pour toute affectation de
+  variables~$s$ (\olref[syn][ass]{prop:sat-quant}).
+  L'ensemble $\Gamma$ ne contient que des énoncés; nous avons donc
+  $\Sat{M}{!B}[s]$ pour tout $!B \in \Gamma$, par la
+  \olref[syn][sat]{defn:satisfaction}.
+  Soit $\Struct{M'}$ la structure qui ne diffère de $\Struct{M}$
+  que par l'interprétation de $a$, fixée à $\Assign{a}{M'} = s(x)$.
+  Puisque $a$ ne figure pas dans~$\Gamma$, on a
+  $\Sat{M'}{\Gamma}$ par le
+  \olref[syn][ext]{cor:extensionality-sent}.
+  Comme $\Gamma \Entails !A(a)$, il vient $\Sat{M'}{!A(a)}$.
+  L'!!{sentence} $!A(a)$ étant clos, nous avons aussi
+  $\Sat{M'}{!A(a)}[s]$, par la
+  \olref[syn][ass]{prop:sentence-sat-true}.
+  Par la \olref[syn][ext]{prop:ext-formulas},
+  $\Sat{M'}{!A(x)}[s]$ si et seulement si $\Sat{M'}{!A(a)}$
+  (rappelons que $!A(a)$ abrège $\Subst{!A(x)}{a}{x}$).
+  Donc $\Sat{M'}{!A(x)}[s]$.
+  Puisque $a$ ne figure pas dans~$!A(x)$,
+  la \olref[syn][ext]{prop:extensionality} donne $\Sat{M}{!A(x)}[s]$.
+  L'affectation~$s$ étant arbitraire, on obtient
+  $\Sat{M}{\lforall[x][!A(x)]}$.
+
+\item La dernière inférence est \Intro{\lexists} : exercice.
+
+\item La dernière inférence est \Elim{\lforall} : exercice.
+}{}
+\end{enumerate}
+
+Considérons maintenant les inférences à plusieurs prémisses :
+\Elim{\lor}, \Intro{\land}, \Elim{\lnot},
+\iftag{FOL}{\Elim{\lif} et \Elim{\lexists}}{\Elim{\lif}}.
+\begin{enumerate}
+
+\item La dernière inférence est \Intro{\land}. On dérive
+  $!A \land !B$ des prémisses $!A$ et $!B$, et $\delta$ a la forme :
+\begin{prooftree}
+    \AxiomC{$\Gamma_1$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A$}
+    \AxiomC{$\Gamma_2$}
+    \RightLabel{$\delta_2$}
+    \DeduceC{$!B$}
+    \RightLabel{\Intro{\land}}
+    \BinaryInfC{$!A \land !B$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!A$ est une conséquence des
+  hypothèses !!{undischarged}s~$\Gamma_1$ de~$\delta_1$, et
+  $!B$ une conséquence des hypothèses
+  !!{undischarged}s~$\Gamma_2$ de~$\delta_2$.
+  Les hypothèses !!{undischarged}s de~$\delta$ sont dans
+  $\Gamma_1 \cup \Gamma_2$; il faut donc montrer que
+  $\Gamma_1 \cup \Gamma_2 \Entails !A \land !B$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
+  telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$.
+  Comme $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1}$ et
+  $\Gamma_1 \Entails !A$, nous avons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  De même, $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_2}$ et
+  $\Gamma_2 \Entails !B$ donnent
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  Ainsi, $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \land !B}$.
+
+\item La dernière inférence est \Elim{\lor} : exercice.
+
+\item La dernière inférence est \Elim{\lif}. On dérive $!B$
+  des prémisses $!A \lif !B$ et~$!A$. La !!{derivation}~$\delta$
+  a la forme suivante :
+\begin{prooftree}
+    \AxiomC{$\Gamma_1$}
+    \RightLabel{$\delta_1$}
+    \DeduceC{$!A \lif !B$}
+    \AxiomC{$\Gamma_2$}
+    \RightLabel{$\delta_2$}
+    \DeduceC{$!A$}
+    \RightLabel{\Elim{\lif}}
+    \BinaryInfC{$!B$}
+  \end{prooftree}
+Par hypothèse de récurrence, $!A \lif !B$ est une conséquence
+  des hypothèses !!{undischarged}s~$\Gamma_1$ de~$\delta_1$, et
+  $!A$ une conséquence des hypothèses
+  !!{undischarged}s~$\Gamma_2$ de~$\delta_2$.
+  Considérons
+  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  Il faut montrer que, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  Supposons $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma_1 \cup \Gamma_2}$.
+  Comme $\Gamma_1 \Entails !A \lif !B$, nous avons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lif !B}$.
+  Comme $\Gamma_2 \Entails !A$, nous avons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+  Il en résulte $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$.
+  En effet, si $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ entraînerait
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$, en contradiction
+  avec $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A \lif !B}$.
+
+\item La dernière inférence est \Elim{\lnot} : exercice.
+
+\tagitem{FOL}{La dernière inférence est \Elim{\lexists} : exercice.}{}
+\end{enumerate}
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Compléter la démonstration du \olref[fol][ntd][sou]{thm:soundness}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Compléter la démonstration du \olref[pl][ntd][sou]{thm:soundness}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est \iftag{FOL}{valide}{une tautologie}.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:consistency-soundness}
+Si $\Gamma$ est satisfaisable, alors $\Gamma$ est cohérent.
+\end{cor}
+
+\begin{proof}
+Raisonnons par contraposition. Supposons $\Gamma$ incohérent.
+Alors $\Gamma \Proves \lfalse$ : il existe une !!{derivation}
+de $\lfalse$ dont les hypothèses !!{undischarged}s appartiennent
+à~$\Gamma$. Par le \olref{thm:soundness}, toute
+\iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
+qui satisfait $\Gamma$ satisfait aussi $\lfalse$.
+Or $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$ pour toute
+\iftag{FOL}{structure~$\Struct{M}$}{valuation~$\pAssign{v}$}.
+Aucune \iftag{FOL}{structure~$\Struct{M}$}{valuation~$\pAssign{v}$}
+ne satisfait donc $\Gamma$; cet ensemble est insatisfaisable.
+\end{proof}
+
+\begin{editorial}
+La première propriété de l'introduction concerne explicitement
+la dérivabilité sans hypothèses. Dans le cas de l'élimination de
+la conjonction, « structure » est adapté en « valuation » pour la
+branche propositionnelle. Le nom de la règle d'élimination
+universelle utilise la même commande logique que les autres règles.
+L'élimination de la négation, traitée ensuite, est ajoutée à la
+liste initiale des règles à plusieurs prémisses. Les cas proposés
+en exercice restent à compléter par le lecteur.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/soundness.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+\OLEndChapterHook
+
+
+\endgroup
+% END embedded source: content/first-order-logic/natural-deduction/natural-deduction.tex
 
 \tagtrue{FOL}
 \backmatter

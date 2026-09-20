@@ -1,18 +1,23 @@
 {
-  "at": "2026-09-19T23:12:52.182884+00:00",
-  "drafted_units": 80,
-  "expected_reader_units": 74,
-  "chapters": 9,
-  "sections": 65,
+  "at": "2026-09-20T00:51:54.385137+00:00",
+  "drafted_units": 94,
+  "expected_reader_units": 83,
+  "chapters": 10,
+  "sections": 73,
   "excluded_drafts": [
     "OLP-0055",
     "OLP-0072",
     "OLP-0076",
     "OLP-0080",
     "OLP-0082",
-    "OLP-0083"
+    "OLP-0083",
+    "OLP-0087",
+    "OLP-0090",
+    "OLP-0094",
+    "OLP-0096",
+    "OLP-0097"
   ],
-  "exclusion_reason": "Part driver0055 awaits the remaining shared proof chapters; five FOL-only sections await first-order syntax/semantics and will join the same shared chapter.",
+  "exclusion_reason": "Part driver0055 awaits the remaining shared proof chapters; ten FOL-only sections await first-order syntax/semantics and will join their existing shared chapters.",
   "units": [
     {
       "unit_id": "OLP-0005",
@@ -383,9 +388,54 @@
       "unit_id": "OLP-0081",
       "path": "content/first-order-logic/sequent-calculus/soundness.tex",
       "sha256": "90fb5d898e582fc540a9ed06ad65915b5418ad00af47474d9e504267e5d29072"
+    },
+    {
+      "unit_id": "OLP-0084",
+      "path": "content/first-order-logic/natural-deduction/natural-deduction.tex",
+      "sha256": "dd013cb35b97e3351635a3f4b5c044f890fd8659a6e63e71e0510d1a6ad9be2a"
+    },
+    {
+      "unit_id": "OLP-0085",
+      "path": "content/first-order-logic/natural-deduction/rules-and-proofs.tex",
+      "sha256": "d5966d2438dcd0323a4cda68fea526819ab58786e9c652cd7f525a7b2a43c691"
+    },
+    {
+      "unit_id": "OLP-0086",
+      "path": "content/first-order-logic/natural-deduction/propositional-rules.tex",
+      "sha256": "26f71ae0a08a1413f717ea4969770a765d90df97ce6350c7e0637a85c65f5d69"
+    },
+    {
+      "unit_id": "OLP-0088",
+      "path": "content/first-order-logic/natural-deduction/derivations.tex",
+      "sha256": "fb1197149a803d9bde97f47703c6a30776adcf0019ae5dbdaba8100cefaca915"
+    },
+    {
+      "unit_id": "OLP-0089",
+      "path": "content/first-order-logic/natural-deduction/proving-things.tex",
+      "sha256": "0b0750ae57958e2f08c3f5bc026e4f0424cf32c2d5fc13851c27772a184149d3"
+    },
+    {
+      "unit_id": "OLP-0091",
+      "path": "content/first-order-logic/natural-deduction/proof-theoretic-notions.tex",
+      "sha256": "133a8f11293aed417581d465e61d94e68360b905399d4aff200c96521e326e25"
+    },
+    {
+      "unit_id": "OLP-0092",
+      "path": "content/first-order-logic/natural-deduction/provability-consistency.tex",
+      "sha256": "03442b8fbb2bbcac9ab51ab5a3325dd591bca9dcdd33ba65d0d35e7202bc1590"
+    },
+    {
+      "unit_id": "OLP-0093",
+      "path": "content/first-order-logic/natural-deduction/provability-propositional.tex",
+      "sha256": "0bf27f4885d2993f80a944d8da04499f96fed1ba2e1d5e00c71b6fc774645ddb"
+    },
+    {
+      "unit_id": "OLP-0095",
+      "path": "content/first-order-logic/natural-deduction/soundness.tex",
+      "sha256": "91a3e8bfed0157703ee7509139802b491958b1b1d0fb926e8cc17c7b2d950243"
     }
   ],
-  "reader_sha256": "9fbb273113d9b0c4304e894bd68c1ec0170d7c7ce2bb4599459d5597e0216b32",
+  "reader_sha256": "bd63f94e6e638ba619ca2de8c4b12ed47aed9e4bc400ff12b835119dd398c0a2",
   "config_sha256": "6259bffda58d71693700ba12eb7ebae60598a16f7578f24c5e53c6088eb069c8",
   "status": "PREPARED_NOT_BUILT"
 }

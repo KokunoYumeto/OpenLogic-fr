@@ -1,0 +1,120 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: derivations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{der}}
+      {\olfileid[fr]{pl}{ntd}{der}}
+
+\olsection{\usetoken{P}{derivation}}
+
+\begin{explain}
+Nous avons défini les hypothèses et donné les règles d'inférence.
+Les !!{derivation}s en déduction naturelle sont engendrées
+inductivement à partir de ces éléments : chaque !!{derivation}
+est soit une hypothèse isolée, soit constituée d'une, de deux ou de
+trois !!{derivation}s suivies d'une inférence correcte.
+\end{explain}
+
+\begin{defn}[!!^{derivation}]
+\Article{derivation} \emph{!!{derivation}} d'un !!{sentence}~$!A$
+à partir d'un ensemble d'hypothèses~$\Gamma$ est un arbre fini
+d'!!{sentence}s qui satisfait les conditions suivantes :
+\begin{enumerate}
+\item Les !!{sentence}s situés tout en haut de l'arbre appartiennent
+  à $\Gamma$ ou sont déchargés par une inférence de l'arbre.
+\item L'!!{sentence} situé tout en bas de l'arbre est~$!A$.
+\item Chaque !!{sentence} de l'arbre, à l'exception de
+  l'!!{sentence}~$!A$ situé tout en bas, est une prémisse d'une
+  application correcte d'une règle d'inférence dont la conclusion
+  se trouve immédiatement en dessous de cet !!{sentence}.
+\end{enumerate}
+On dit alors que $!A$ est la \emph{conclusion} de la !!{derivation}
+et que $\Gamma$ est son contexte d'hypothèses !!{undischarged}s.
+Les hypothèses effectivement non déchargées doivent appartenir à
+$\Gamma$, sans nécessairement épuiser cet ensemble.
+
+S'il existe une !!{derivation} de $!A$ à partir de~$\Gamma$,
+on dit que $!A$ est \emph{!!{derivable}} à partir de~$\Gamma$,
+ce que l'on note $\Gamma \Proves !A$. S'il existe une
+!!{derivation} de~$!A$ dans laquelle toutes les hypothèses sont
+!!{discharged}s, on écrit~$\Proves !A$.
+\end{defn}
+
+\begin{ex}
+Toute hypothèse isolée est une !!{derivation}. Ainsi, $!A$ seul
+constitue une !!{derivation}, et il en va de même pour $!B$ seul.
+On peut en obtenir une nouvelle !!{derivation} en appliquant,
+par exemple, la règle $\Intro{\land}$ :
+\begin{prooftree}
+\AxiomC{$!A$}
+\AxiomC{$!B$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!A \land !B$}
+\end{prooftree}
+Ces règles sont générales : on peut y remplacer $!A$ et~$!B$
+par des !!{sentence}s quelconques, par exemple $!C$ et~$!D$.
+La conclusion est alors $!C \land !D$, et l'arbre
+\begin{prooftree}
+\AxiomC{$!C$}
+\AxiomC{$!D$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!C \land !D$}
+\end{prooftree}
+est une !!{derivation} correcte. On peut aussi intervertir les
+hypothèses, de sorte que $!D$ joue le rôle de~$!A$, et $!C$ celui
+de~$!B$. L'arbre
+\begin{prooftree}
+\AxiomC{$!D$}
+\AxiomC{$!C$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!D \land !C$}
+\end{prooftree}
+est donc lui aussi une !!{derivation} correcte.
+
+On peut maintenant appliquer une autre règle, par exemple
+$\Intro{\lif}$. Elle permet de conclure une implication et de
+!!{discharge} toute hypothèse identique à l'antécédent de cette
+implication. Les deux !!{derivation}s suivantes sont donc correctes :
+\begin{prooftree}
+\AxiomC{$\Discharge{!C}{1}$}
+\AxiomC{$!D$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!C \land !D$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$!C \lif (!C \land !D)$}
+\DisplayProof\bottomAlignProof
+\AxiomC{$!C$}
+\AxiomC{$\Discharge{!D}{1}$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!C \land !D$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$!D \lif (!C \land !D)$}
+\end{prooftree}
+Elles montrent respectivement que $!D \Proves !C \lif (!C \land !D)$
+et que $!C \Proves !D \lif (!C \land !D)$.
+
+Rappelons que la décharge d'hypothèses est permise, mais non
+obligatoire. En particulier, une règle reste applicable même si
+les hypothèses qu'elle permet de décharger ne figurent pas dans
+la !!{derivation}. L'inférence suivante est ainsi correcte,
+bien qu'il n'y ait aucune hypothèse~$!A$ à !!{discharge} :
+\begin{prooftree}
+  \AxiomC{$!B$}
+  \DischargeRule{\Intro{\lif}}{1}
+  \UnaryInfC{$!A \lif !B$}
+\end{prooftree}
+\end{ex}
+
+\begin{editorial}
+La source appelle $\Gamma$ les hypothèses non déchargées. La
+précision sur le contexte explicite sa propre définition, qui exige
+seulement que les hypothèses non déchargées appartiennent à
+$\Gamma$, sans imposer que tous ses éléments soient utilisés.
+\end{editorial}
+
+\end{document}

@@ -1,0 +1,63 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: rules-and-proofs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{rul}}
+      {\olfileid[fr]{pl}{ntd}{rul}}
+
+\olsection{Règles et \usetoken{p}{derivation}}
+
+\begin{explain}
+Les systèmes de déduction naturelle visent à reproduire au plus près
+le raisonnement informel des démonstrations mathématiques, d'où leur
+caractère « naturel ». Les preuves en déduction naturelle commencent
+par des hypothèses, auxquelles on applique ensuite des règles
+d'inférence. Les règles \Intro{\lnot}, \Intro{\lif},
+\iftag{FOL}{\Elim{\lor}, \Elim{\lexists}}{\Elim{\lor}} et \FalseCl{}
+permettent de « !!{discharge} » des hypothèses. Pour indiquer
+clairement quelle inférence décharge une hypothèse, on place à côté
+de l'inférence l'étiquette de cette hypothèse.
+\end{explain}
+
+\begin{defn}[Hypothèse]
+Une \emph{hypothèse} est !!a{sentence} qui occupe la position
+la plus haute d'une branche de l'arbre.
+\end{defn}
+
+Les !!{derivation}s en déduction naturelle sont certains arbres
+d'!!{sentence}s. Les !!{sentence}s situés tout en haut sont les
+hypothèses; si !!a{sentence} se trouve sous un, deux ou trois autres
+!!{sentence}s, il doit en résulter par une application correcte d'une
+règle d'inférence. Les !!{sentence}s au-dessus du trait d'inférence
+sont les \emph{prémisses}, et l'!!{sentence} situé en dessous est la
+\emph{conclusion} de l'inférence. Les règles vont par paires : une
+règle d'introduction et une règle d'élimination pour chaque
+!!{operator}. Elles introduisent un !!{operator} dans la conclusion
+ou retirent un !!{operator} d'une prémisse. Certaines règles
+permettent de \emph{!!{discharge}} une hypothèse d'un type donné.
+Pour indiquer quelle inférence décharge quelle hypothèse, on attribue
+une même étiquette à l'hypothèse et à l'inférence. On écrit alors
+l'hypothèse sous la forme «~$\Discharge{!A}{n}$~».
+
+% N'inclure cette phrase que si l'un des symboles land, lor, lif ou lnot est défini.
+
+\iftag{notprvNot,notprvAnd,notprvOr,notprvIf}{}%
+    {On considère habituellement des règles pour tous les !!{operator}s $\land$, $\lor$, $\lif$, $\lnot$ et $\lfalse$, même si certains d'entre eux sont définis à partir des autres.}
+
+\Needspace{7\baselineskip}
+\begin{editorial}
+La liste initiale de la source omet \FalseCl, qui permet pourtant
+de décharger une hypothèse, comme le montre sa règle ci-dessous.
+Dans la description des arbres, « séquents » a été corrigé en
+« énoncés », conformément aux objets de ce système. L'organisation
+en introduction et élimination décrit les connecteurs usuels;
+les deux règles particulières pour $\lfalse$ sont présentées
+séparément dans la section suivante.
+\end{editorial}
+
+\end{document}

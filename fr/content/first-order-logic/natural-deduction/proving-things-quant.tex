@@ -1,0 +1,275 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: proving-things-quant
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{ntd}{prq}
+
+\olsection{\usetoken{P}{derivation} avec quantificateurs}
+
+\begin{ex}
+Avec les quantificateurs, il faut veiller à respecter la condition
+sur l'eigenvariable. Cela oblige parfois à modifier l'ordre de
+certaines inférences. En général, il est utile de préparer d'abord
+les règles soumises à cette condition : elles se trouveront plus
+bas dans la preuve achevée.
+
+Construisons une !!{derivation} de la !!{formula}
+$\lexists[x][\lnot !A(x)] \lif \lnot \lforall[x][!A(x)]$.
+Comme d'habitude, nous commençons par écrire :
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\lexists[x][\lnot !A(x)]\lif \lnot \lforall[x][!A(x)]$}
+\end{prooftree}
+Précisons d'abord ce qu'il faudrait pour justifier la dernière
+étape par la règle \Intro{\lif}.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lexists[x][\lnot !A(x)]}{1}$}
+\DeduceC{$\lnot \lforall[x][!A(x)]$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$\lexists[x][\lnot !A(x)]\lif \lnot \lforall[x][!A(x)]$}
+\end{prooftree}
+Aucune règle à appliquer à $\lnot \lforall[x][!A(x)]$ ne
+s'impose immédiatement; préparons donc la !!{derivation} de façon
+à utiliser \Elim{\lexists}. Il faut ici respecter la condition
+sur l'eigenvariable : choisissons une constante absente de
+$\lexists[x][\lnot !A(x)]$, de la conclusion
+$\lnot \lforall[x][!A(x)]$ et des autres hypothèses dont dépend
+l'inférence. Si aucune constante ne figure dans les formules
+concernées, toute constante convient; sinon, nous en choisissons
+une qui n'y figure pas.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lexists[x][\lnot !A(x)]}{1}$}
+\AxiomC{$\Discharge{\lnot !A(a)}{2}$}
+\DeduceC{$\lnot \lforall[x][!A(x)]$}
+\DischargeRule{\Elim{\lexists}}{2}
+\BinaryInfC{$\lnot \lforall[x][!A(x)]$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$\lexists[x][\lnot !A(x)] \lif \lnot \lforall[x][!A(x)]$}
+\end{prooftree}
+Pour dériver $\lnot \lforall[x][!A(x)]$, essayons la règle
+\Intro{\lnot}. Il faut dériver une contradiction, en utilisant
+éventuellement $\lforall[x][!A(x)]$ comme hypothèse supplémentaire.
+Cette contradiction peut bien sûr dépendre de l'hypothèse
+$\lnot !A(a)$, qui sera déchargée par l'inférence
+\Elim{\lexists}. On peut organiser la construction ainsi :
+\begin{prooftree}
+\AxiomC{$\Discharge{\lexists[x][\lnot !A(x)]}{1}$}
+\AxiomC{$\Discharge{\lnot !A(a)}{2}, \Discharge{\lforall[x][!A(x)]}{3}$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{3}
+\UnaryInfC{$\lnot \lforall[x][!A(x)]$}
+\DischargeRule{\Elim{\lexists}}{2}
+\BinaryInfC{$\lnot \lforall[x][!A(x)]$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$\lexists[x][\lnot !A(x)]\lif \lnot \lforall[x][!A(x)]$}
+\end{prooftree}
+Nous sommes près d'obtenir une contradiction. La règle la plus
+simple à appliquer est \Elim{\lforall}, qui n'impose aucune
+condition sur une eigenvariable. Nous pouvons remplacer la
+variable universellement quantifiée~$x$ par n'importe quel terme
+clos. Il est donc judicieux d'utiliser encore~$a$ pour obtenir
+la contradiction recherchée.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lexists[x][\lnot !A(x)]}{1}$}
+\AxiomC{$\Discharge{\lnot !A(a)}{2}$}
+\AxiomC{$\Discharge{\lforall[x][!A(x)]}{3}$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!A(a)$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{3}
+\UnaryInfC{$\lnot \lforall[x][!A(x)]$}
+\DischargeRule{\Elim{\lexists}}{2}
+\BinaryInfC{$\lnot \lforall[x][!A(x)]$}
+\DischargeRule{\Intro{\lif}}{1}
+\UnaryInfC{$\lexists[x][\lnot !A(x)]\lif \lnot \lforall[x][!A(x)]$}
+\end{prooftree}
+Il faut maintenant vérifier, surtout en présence de quantificateurs,
+qu'aucune condition sur une eigenvariable n'a été enfreinte. La
+seule règle appliquée qui impose une telle condition est
+\Elim{\lexists}. La constante~$a$ choisie n'apparaît ni dans sa
+prémisse existentielle, ni dans sa conclusion, ni dans les autres
+hypothèses concernées. La !!{derivation} est donc correcte.
+\end{ex}
+
+\begin{ex}
+Il arrive que nous dérivions une !!{formula} à partir d'autres
+!!{formula}s. Certaines hypothèses peuvent alors rester non
+déchargées. Il faut donc suivre les hypothèses utilisées aussi
+soigneusement que la conclusion recherchée.
+
+Construisons une !!{derivation} de la !!{formula}
+$\lexists[x][!C(x,b)]$ à partir des hypothèses
+$\lexists[x][(!A(x) \land !B(x))]$ et
+$\lforall[x][(!B(x) \lif !C(x,b))]$.
+Comme d'habitude, écrivons la conclusion tout en bas.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\lexists[x][!C(x,b)]$}
+\end{prooftree}
+Nous disposons de deux hypothèses. Pour exploiter la première,
+c'est-à-dire chercher une !!{derivation} de
+$\lexists[x][!C(x, b)]$ en exploitant l'hypothèse
+$\lexists[x][(!A(x) \land !B(x))]$, avec l'aide de la seconde
+hypothèse, nous utilisons
+\Elim{\lexists}. Cette règle étant soumise à une condition sur
+l'eigenvariable, préparons d'abord son application. Nous choisissons
+une constante~$a$ distincte de~$b$ et absente des hypothèses ainsi
+que de la conclusion. Nous obtenons :
+\begin{prooftree}
+\AxiomC{$\lexists[x][(!A(x) \land !B(x))]$}
+\AxiomC{$\Discharge{!A(a) \land !B(a)}{1}$}
+\DeduceC{$\lexists[x][!C(x,b)]$}
+\DischargeRule{\Elim{\lexists}}{1}
+\BinaryInfC{$\lexists[x][!C(x,b)]$}
+\end{prooftree}
+Les deux hypothèses de départ font intervenir~$!B$. Il peut être
+utile d'appliquer maintenant \Elim{\land} pour obtenir~$!B(a)$.
+\begin{prooftree}
+\AxiomC{$\lexists[x][(!A(x) \land !B(x))]$}
+\AxiomC{$\Discharge{!A(a) 
+\land !B(a)}{1}$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!B(a)$}
+\DeduceC{$\lexists[x][!C(x,b)]$}
+\DischargeRule{\Elim{\lexists}}{1}
+\BinaryInfC{$\lexists[x][!C(x,b)]$}
+\end{prooftree}
+La seconde hypothèse dont nous disposons est
+$\lforall[x][(!B(x) \lif !C(x,b))]$. La règle \Elim{\lforall}
+ne comporte pas de condition sur une eigenvariable : nous pouvons
+instancier $x$ par la !!{constant}~$a$ et obtenir
+$!B(a) \lif !C(a, b)$. Nous avons alors à la fois
+$!B(a) \lif !C(a,b)$ et $!B(a)$. L'étape suivante est une
+application directe de \Elim{\lif}.
+\begin{prooftree}
+\AxiomC{$\lexists[x][(!A(x) \land !B(x))]$}
+\AxiomC{$\lforall[x][(!B(x) \lif !C(x,b))]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!B(a) \lif !C(a,b)$}
+\AxiomC{$\Discharge{!A(a) 
+\land !B(a)}{1}$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!B(a)$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C(a,b)$}
+\DeduceC{$\lexists[x][!C(x,b)]$}
+\DischargeRule{\Elim{\lexists}}{1}
+\insertBetweenHyps{\hspace{-5em}}
+\BinaryInfC{$\lexists[x][!C(x,b)]$}
+\end{prooftree}
+Il ne reste qu'une application de \Intro{\lexists} pour atteindre
+notre but.
+\begin{prooftree}
+\AxiomC{$\lexists[x][(!A(x) \land !B(x))]$}
+\AxiomC{$\lforall[x][(!B(x) \lif !C(x,b))]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!B(a) \lif !C(a,b)$}
+\AxiomC{$\Discharge{!A(a) 
+\land !B(a)}{1}$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!B(a)$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C(a,b)$}
+\RightLabel{\Intro{\lexists}}
+\UnaryInfC{$\lexists[x][!C(x,b)]$}
+\DischargeRule{\Elim{\lexists}}{1}
+\insertBetweenHyps{\hspace{-5em}}
+\BinaryInfC{$\lexists[x][!C(x,b)]$}
+\end{prooftree}
+Nous avons veillé à chaque étape à respecter les conditions sur
+les eigenvariables. La !!{derivation} obtenue est donc correcte.
+\end{ex}
+
+\begin{ex}
+Construisons une !!{derivation} de la !!{formula}
+$\lnot\lforall[x][!A(x)]$ à partir des hypothèses
+$\lforall[x][!A(x)] \lif \lexists[y][!B(y)]$ et
+$\lnot\lexists[y][!B(y)]$.
+Comme d'habitude, écrivons la !!{formula} recherchée tout en bas.
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\lnot\lforall[x][!A(x)]$}
+\end{prooftree}
+La dernière ligne de la !!{derivation} est une négation : essayons
+donc \Intro{\lnot}. Il faudra trouver comment !!{derive} une
+contradiction.
+\begin{prooftree}
+\AxiomC{$\Discharge{\lforall[x][!A(x)]}{1}$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{1}
+\UnaryInfC{$\lnot\lforall[x][!A(x)]$}
+\end{prooftree}
+La construction est bien engagée. Nous pourrions appliquer
+\Elim{\lforall}, mais il n'est pas évident que cela nous rapproche
+du but. Utilisons plutôt l'une de nos hypothèses :
+$\lforall[x][!A(x)] \lif \lexists[y][!B(y)]$, jointe à
+$\lforall[x][!A(x)]$, permet d'appliquer \Elim{\lif}.
+\begin{prooftree}
+\AxiomC{$\lforall[x][!A(x)] \lif \lexists[y][!B(y)]$}
+\AxiomC{$\Discharge{\lforall[x][!A(x)]}{1}$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$\lexists[y][!B(y)]$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{1}
+\UnaryInfC{$\lnot\lforall[x][!A(x)]$}
+\end{prooftree}
+Il nous reste une hypothèse à exploiter; elle permet d'obtenir
+une contradiction par \Elim{\lnot}.
+\begin{prooftree}
+\AxiomC{$\lnot\lexists[y][!B(y)]$}
+\AxiomC{$\lforall[x][!A(x)] \lif \lexists[y][!B(y)]$}
+\AxiomC{$\Discharge{\lforall[x][!A(x)]}{1}$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$\lexists[y][!B(y)]$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{1}
+\UnaryInfC{$\lnot\lforall[x][!A(x)]$}
+\end{prooftree}
+\end{ex}
+
+\begin{prob}
+Donner des !!{derivation}s établissant les résultats suivants :
+\begin{enumerate}
+\item $\Proves (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) \lif
+\lforall[z][(!A(z) \land !B(z))]$.
+\item $\Proves (\lexists[x][!A(x)] \lor \lexists[y][!B(y)]) \lif
+\lexists[z][(!A(z) \lor !B(z))]$.
+\item $\lforall[x][(!A(x) \lif !B)] \Proves \lexists[y][!A(y)] \lif !B$.
+\item $\lforall[x][\lnot !A(x)] \Proves \lnot\lexists[x][!A(x)]$.
+\item $\Proves \lnot\lexists[x][!A(x)] \lif \lforall[x][\lnot !A(x)]$.
+\item $\Proves \lnot\lexists[x][\lforall[y][((!A(x,y) \lif \lnot
+!A(y,y)) \land (\lnot !A(y,y) \lif !A(x,y)))]]$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Donner des !!{derivation}s établissant les résultats suivants :
+\begin{enumerate}
+\item $\Proves \lnot\lforall[x][!A(x)] \lif \lexists[x][\lnot!A(x)]$.
+\item $(\lforall[x][!A(x)] \lif !B) \Proves \lexists[y][(!A(y) \lif !B)]$.
+\item $\Proves \lexists[x][(!A(x) \lif \lforall[y][!A(y)])]$.
+\end{enumerate}
+(Tous ces résultats nécessitent la règle~$\FalseCl$.)
+\end{prob}
+
+\begin{editorial}
+Dans le premier exemple, la source suppose qu'aucune constante ne
+figure dans les formules; pour une formule schématique arbitraire,
+il faut plutôt choisir une constante fraîche. La prémisse
+existentielle est écrite ici avec sa négation, conformément à
+l'arbre, et le rappel de la condition inclut la conclusion.
+Tout terme utilisé pour l'élimination universelle reste clos.
+Dans le deuxième exemple, la fraîcheur de $a$, notamment par
+rapport à $b$, est explicitée; les deux hypothèses de départ
+restent disponibles pendant la construction. Une parenthèse mal placée dans
+la prémisse existentielle du troisième arbre de cet exemple est
+rétablie avant le crochet fermant l'argument du quantificateur.
+\end{editorial}
+
+\end{document}

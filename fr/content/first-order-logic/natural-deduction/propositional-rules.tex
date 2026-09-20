@@ -1,0 +1,131 @@
+% Part: first-order-logic
+% Chapter: natural-deduction
+% Section: propositional-rules
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{ntd}{prl}}
+      {\olfileid[fr]{pl}{ntd}{prl}}
+
+\olsection{Règles propositionnelles}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\land$}
+
+\begin{defish}
+\AxiomC{$!A$}
+\AxiomC{$!B$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!A \land !B$}
+\DisplayProof
+\hfill
+\begin{tabular}{r}
+\AxiomC{$!A \land !B$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!A$}
+\DisplayProof
+\\[3ex]
+\AxiomC{$!A \land !B$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!B$}
+\DisplayProof
+\end{tabular}
+\end{defish}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\lor$}
+
+\begin{defish}
+\begin{tabular}{r}
+\AxiomC{$!A$}
+\RightLabel{\Intro{\lor}}
+\UnaryInfC{$!A \lor !B$}
+\DisplayProof
+\\[3ex]
+\AxiomC{$!B$}
+\RightLabel{\Intro{\lor}}
+\UnaryInfC{$!A \lor !B$}
+\DisplayProof
+\end{tabular}
+\hfill
+\AxiomC{$!A \lor !B$}
+\AxiomC{$\Discharge{!A}{n}$}
+\DeduceC{$!C$}
+\AxiomC{$\Discharge{!B}{n}$}
+\DeduceC{$!C$}
+\DischargeRule{\Elim{\lor}}{n}
+\TrinaryInfC{$!C$}
+\DisplayProof
+\end{defish}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\lif$}
+
+\begin{defish}
+\AxiomC{$\Discharge{!A}{n}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{n}
+\UnaryInfC{$!A \lif !B$}
+\DisplayProof
+\hfill
+\AxiomC{$!A \lif !B$}
+\AxiomC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\end{defish}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\lnot$}
+
+\begin{defish}
+\AxiomC{$\Discharge{!A}{n}$}
+\noLine
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{n}
+\UnaryInfC{$\lnot !A$}
+\DisplayProof
+\hfill
+\AxiomC{$\lnot !A$}
+\AxiomC{$!A$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\DisplayProof
+\end{defish}
+
+\Needspace{11\baselineskip}
+\subsection{Règles pour $\lfalse$}
+
+\begin{defish}
+\AxiomC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!A$}
+\DisplayProof
+\hfill
+\AxiomC{$\Discharge{\lnot !A}{n}$}
+\DeduceC{$\lfalse$}
+\DischargeRule{\FalseCl}{n}
+\UnaryInfC{$!A$}
+\DisplayProof
+\end{defish}
+
+Les règles $\Intro{\lnot}$ et $\FalseCl$ sont très proches : la
+première permet de dériver l'!!{sentence} nié~$\lnot !A$, tandis que
+la seconde permet de dériver~$!A$, sans lui ajouter de négation.
+
+Lorsqu'une règle indique que l'on peut décharger une hypothèse,
+il s'agit d'une possibilité, et non d'une obligation. Par exemple,
+la règle $\Intro{\lif}$ permet de décharger un nombre quelconque
+d'hypothèses de la forme~$!A$ dans la !!{derivation} de la
+prémisse~$!B$, y compris zéro.
+
+\begin{editorial}
+La source qualifie ici $!A$ de « positif ». Ce mot signifie seulement
+que la règle n'ajoute pas de négation devant $!A$ : le schéma n'exige
+pas que $!A$ soit lui-même dépourvu de négation.
+\end{editorial}
+
+\end{document}
