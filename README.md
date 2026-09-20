@@ -18,6 +18,8 @@ Le PDF est accompagné du LaTeX cumulatif, d’une archive des sources modulaire
 3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.10.0-axiomatic-deduction/00-00-00-00-03-openlogic-fr-ensembles-derivations-axiomatiques-sources.zip)
 4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.10.0-axiomatic-deduction/00-00-00-00-04-openlogic-fr-ensembles-derivations-axiomatiques.epub)
 
+[Livraison sur Zenodo](https://zenodo.org/records/22864995) · [DOI de cette version](https://doi.org/10.5281/zenodo.22864995).
+
 [Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
 
 Les éditions historiques disposent chacune de leur PDF, de leur LaTeX cumulatif complet et de leur ZIP de sources :
