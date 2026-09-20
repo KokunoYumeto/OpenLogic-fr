@@ -22,12 +22,13 @@
 \checkandfixthelayout
 \linespread{1.05}
 \setlength{\emergencystretch}{2em}
+\hfuzz=3pt
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
 \setlength{\cftbeforechapterskip}{0.65em}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la déduction naturelle},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles aux tableaux},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents et déduction naturelle},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents, déduction naturelle et tableaux},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -38,15 +39,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\à la déduction naturelle\par}
+{\sffamily\huge Des ensembles\\aux tableaux\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Huitième livraison : dix chapitres\par}
+{\large Neuvième livraison : onze chapitres\par}
 \vspace{4mm}
-Cette livraison comprend soixante-treize sections et leurs dix chapitres d’organisation,
-soit 83 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend quatre-vingt-une sections et leurs onze chapitres d’organisation,
+soit 92 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -58,7 +59,9 @@ propositionnelles; le huitième présente les systèmes de preuve,
 leur correction et leur complétude. Le neuvième développe le calcul
 des séquents propositionnel. Le dixième expose la déduction naturelle :
 règles, décharge des hypothèses, construction de dérivations,
-cohérence et théorème de correction.
+cohérence et théorème de correction. Le onzième présente les tableaux
+analytiques signés : règles, construction, dérivabilité, cohérence et
+correction.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -87,6 +90,8 @@ des traductions d'OpenLogic}
 \olimport[content/first-order-logic/sequent-calculus]{sequent-calculus}
 \addtocontents{toc}{\protect\Needspace{4\baselineskip}}
 \olimport[content/first-order-logic/natural-deduction]{natural-deduction}
+\addtocontents{toc}{\protect\Needspace{4\baselineskip}}
+\olimport[content/first-order-logic/tableaux]{tableaux}
 \tagtrue{FOL}
 \backmatter
 % La notice Frege1884 cite elle-même cette traduction anglaise.

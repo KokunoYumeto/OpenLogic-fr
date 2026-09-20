@@ -12508,3 +12508,984 @@ Passages de référence : SAU07, SCH03.
 **Question de révision :** L’usage des deux contextes reste-t-il explicite ?
 
 Passages de référence : SCH03, SAU03.
+
+## C886 — OLP-0098-R00
+
+**Choix :** système de tableaux analytiques signés; tableaux devant prfTab
+
+**Autre formulation envisagée :** conserver la mention source de la déduction naturelle
+
+**Motif :** Le titre, les treize imports et l'étiquette prfTab portent tous sur les tableaux; la mention de la déduction naturelle est une copie fautive du pilote voisin. « Tableaux » et « signés » sont attestés par le canon.
+
+**Confiance et limites :** Forte : contradiction interne de la source et canon direct.
+
+**Question de révision :** La note rend-elle la correction du pilote assez visible sans alourdir l'ouverture du chapitre ?
+
+Passages de référence : EYT01, R03.
+
+## C887 — OLP-0099-R00
+
+**Choix :** exploration systématique des possibilités de vérité
+
+**Autre formulation envisagée :** recensement systématique ou examen exhaustif
+
+**Motif :** Exploration garde le caractère méthodique sans promettre une énumération finie; R03–R04 décrivent précisément la construction systématique d'un tableau ou d'un contre-exemple.
+
+**Confiance et limites :** Forte : le mécanisme et sa portée sont explicitement attestés.
+
+**Question de révision :** « Exploration systématique » exprime-t-elle assez nettement le survey anglais ?
+
+Passages de référence : R03, R04.
+
+## C888 — OLP-0099-R00
+
+**Choix :** formule signée
+
+**Autre formulation envisagée :** formule avec signe ou formule marquée
+
+**Motif :** EYT01 emploie directement « formule signée » avec les signes T et F; le couple valeur de vérité–énoncé reste explicite.
+
+**Confiance et limites :** Forte : attestation française directe et structure source conservée.
+
+**Question de révision :** Faut-il conserver « signe de valeur de vérité » à chaque rappel ou « signe » suffit-il après la définition ?
+
+Passages de référence : EYT01.
+
+## C889 — OLP-0099-R00
+
+**Choix :** branche fermée; tableau fermé; possibilité éliminée
+
+**Autre formulation envisagée :** branche close; tableau clos
+
+**Motif :** R03 atteste « tableau clos », tandis que l'édition emploie déjà « fermé » pour les arbres et branches. Le choix maintient cette cohérence tout en conservant la paire de signes opposés et l'interprétation de R04.
+
+**Confiance et limites :** Forte sur le concept; éditoriale sur le choix entre deux termes attestés.
+
+**Question de révision :** Un réviseur préfère-t-il « clos » dans ce seul chapitre malgré l'usage établi de « fermé » dans l'édition ?
+
+Passages de référence : EYT02, R03, R04.
+
+## C890 — OLP-0099-R00
+
+**Choix :** tableau fermé pour A, de racine F A
+
+**Autre formulation envisagée :** tableau de réfutation de non-A
+
+**Motif :** La formulation source définit l'objet par sa racine et conclut à la vérité de A dans toute structure; l'alternative importerait une négation qui n'est pas écrite dans la racine.
+
+**Confiance et limites :** Forte : racine et conclusion universelle comparées directement.
+
+**Question de révision :** « Tableau fermé pour A » reste-t-il naturel une fois la condition de racine donnée immédiatement ?
+
+Passages de référence : R03, R04.
+
+## C891 — OLP-0100-R10
+
+**Choix :** règle de coupure facultative qui facilite la combinaison
+
+**Autre formulation envisagée :** règle cut ou règle de séparation
+
+**Motif :** SCH05 atteste « coupure ». La traduction garde séparées l'admissibilité annoncée et l'utilité pratique de combiner des tableaux.
+
+**Confiance et limites :** Forte : terme attesté et deux propositions source conservées.
+
+**Question de révision :** Le passage de l'incise anglaise à deux phrases françaises conserve-t-il assez clairement le contraste ?
+
+Passages de référence : SCH05, R03.
+
+## C892 — OLP-0101-R02
+
+**Choix :** terme clos, c'est-à-dire sans variables
+
+**Autre formulation envisagée :** terme fermé ou terme sans variable libre
+
+**Motif :** SCH06 distingue le terme clos, qui ne contient aucune variable, de la formule close, qui n'a aucune variable libre. La parenthèse source est conservée sans affaiblissement.
+
+**Confiance et limites :** Forte : définition française directe et portée exacte.
+
+**Question de révision :** La répétition de « terme clos » à la règle existentielle est-elle utile pour prévenir la confusion ultérieure de la source ?
+
+Passages de référence : SCH06, SAU06.
+
+## C893 — OLP-0101-R02
+
+**Choix :** eigenvariable bien que a soit une constante
+
+**Autre formulation envisagée :** variable propre ou constante propre
+
+**Motif :** SAU06 atteste « eigenvariable »; la note historique conserve expressément l'écart entre le nom et la catégorie syntaxique de a.
+
+**Confiance et limites :** Forte : attestation française et note source explicite.
+
+**Question de révision :** L'emprunt « eigenvariable » doit-il rester inchangé dans tout le volume plutôt que d'être doublé de « variable propre » ?
+
+Passages de référence : SAU06.
+
+## C894 — OLP-0101-R04
+
+**Choix :** condition sur l'eigenvariable, portant sur toute la branche antérieure
+
+**Autre formulation envisagée :** fraîcheur limitée à la formule quantifiée
+
+**Motif :** La règle OLP exige l'absence de a partout dans la branche située au-dessus. La formulation plus faible ne suffirait pas à l'exemple de correction donné ensuite.
+
+**Confiance et limites :** Forte : domaine de la condition lu directement dans les deux règles.
+
+**Question de révision :** « Branche au-dessus de l'inférence » localise-t-il sans ambiguïté toutes les occurrences interdites ?
+
+Passages de référence : SAU06.
+
+## C895 — OLP-0101-R04
+
+**Choix :** A(t) comme abréviation de la substitution de t à x
+
+**Autre formulation envisagée :** A appliquée au terme t
+
+**Motif :** La source fixe explicitement une convention de notation par substitution. Parler d'application ferait de A un symbole fonctionnel et changerait la catégorie syntaxique.
+
+**Confiance et limites :** Forte : égalité notationnelle explicite dans la source.
+
+**Question de révision :** Le rappel distingue-t-il assez la notation métalinguistique A(x) d'un prédicat du langage objet ?
+
+Passages de référence : SCH06.
+
+## C896 — OLP-0101-R06
+
+**Choix :** t peut déjà figurer dans A; la constante propre a ne le peut pas
+
+**Autre formulation envisagée :** imposer la fraîcheur à t comme à a
+
+**Motif :** Les deux familles de règles ont des contraintes différentes. L'exemple P(t,x) établit que la présence antérieure de t est permise, tandis que la fraîcheur de a porte sur toute la branche.
+
+**Confiance et limites :** Forte : exemple et contre-exemple source conservés.
+
+**Question de révision :** « Imposent notamment » indique-t-il assez que l'absence dans A est une conséquence d'une condition plus large ?
+
+Passages de référence : SAU06, SCH06.
+
+## C897 — OLP-0101-R06
+
+**Choix :** aucune restriction supplémentaire pour t, qui doit rester clos
+
+**Autre formulation envisagée :** aucune restriction sur t, formulation littérale contradictoire
+
+**Motif :** La source exige la fermeture aux lignes 27 et 49 puis la nie littéralement à la ligne 81. La précision conserve la condition formelle déjà énoncée et supprime la contradiction sans ajouter de nouvelle restriction.
+
+**Confiance et limites :** Forte : contradiction textuelle locale et définition canonique du terme clos.
+
+**Question de révision :** La note éditoriale documente-t-elle assez précisément cette réparation de portée ?
+
+Passages de référence : SCH06, SAU06.
+
+## C898 — OLP-0101-R06
+
+**Choix :** correction du système
+
+**Autre formulation envisagée :** solidité ou validité du système
+
+**Motif :** SCH03 atteste « correction » pour la direction dérivabilité vers conséquence logique. L'exemple montre exactement qu'en supprimant la fraîcheur on fermerait un tableau pour une formule non valide.
+
+**Confiance et limites :** Forte : direction métalogique et exemple source concordent.
+
+**Question de révision :** Le mot « correction » est-il immédiatement lisible ici avant la preuve formelle du chapitre ?
+
+Passages de référence : SCH03, SAU06.
+
+## C899 — OLP-0102-R00
+
+**Choix :** engendrés inductivement à partir des hypothèses et des règles
+
+**Autre formulation envisagée :** construits récursivement ou obtenus mécaniquement
+
+**Motif :** « Engendrés inductivement » conserve la définition du plus petit ensemble d'arbres obtenu par les deux clauses; R03 soutient le vocabulaire de construction réglée sans imposer « mécanique ».
+
+**Confiance et limites :** Forte : les deux clauses inductives et l'arbre fini restent explicites.
+
+**Question de révision :** La phrase d'introduction prépare-t-elle suffisamment la définition formelle qui suit ?
+
+Passages de référence : R03, EYT01.
+
+## C900 — OLP-0102-R00
+
+**Choix :** branche fermée si et seulement si elle contient les deux signes; ouverte sinon
+
+**Autre formulation envisagée :** branche close; ouverte seulement après saturation
+
+**Motif :** La définition syntaxique de fermeture dépend uniquement de la paire opposée. La saturation intervient plus tard pour lire un modèle, pas dans la définition actuelle d'une branche ouverte.
+
+**Confiance et limites :** Forte : biconditionnel et négation définitionnelle conservés.
+
+**Question de révision :** La distinction entre ouverture syntaxique et saturation sémantique devra-t-elle être rappelée dans les unités suivantes ?
+
+Passages de référence : EYT02, R04.
+
+## C901 — OLP-0102-R04
+
+**Choix :** indiquer à droite la règle et la ligne auxquelles chaque formule doit son apparition
+
+**Autre formulation envisagée :** numéroter seulement les nœuds sans justification
+
+**Motif :** La notation de droite enregistre à la fois le schéma appliqué et l'occurrence source. Cette information est nécessaire pour reconstruire la construction pas à pas du tableau.
+
+**Confiance et limites :** Forte : notation et dépendance de ligne conservées à l'identique.
+
+**Question de révision :** L'exemple de la ligne 1 suffit-il à expliquer la convention pour les tableaux ramifiés ?
+
+Passages de référence : R03, EYT01.
+
+## C902 — OLP-0103-R00
+
+**Choix :** Exemples de tableaux; tableau fermé
+
+**Autre formulation envisagée :** tableau clos ou arbre de réfutation
+
+**Motif :** EYT01 atteste le système des tableaux signés; R03 atteste le tableau clos. L'édition emploie déjà « fermé » pour les branches et tableaux, ce qui garde visible la même notion dans tout le chapitre.
+
+**Confiance et limites :** Forte : terme canonique et usage interne contrôlés.
+
+**Question de révision :** Le choix uniforme de « fermé » est-il préférable à l'alternance avec le « clos » du canon ?
+
+Passages de référence : EYT01, R03.
+
+## C903 — OLP-0103-R02
+
+**Choix :** une seule règle au plus pour un signe et un connecteur principal donnés
+
+**Autre formulation envisagée :** présenter la règle comme un choix de recherche parmi plusieurs
+
+**Motif :** Le passage explique une propriété locale des règles signées, avant les vrais choix d'ordre. La traduction conserve « au plus » et n'affirme pas qu'une règle existe toujours.
+
+**Confiance et limites :** Forte : quantificateur et dépendance au signe conservés.
+
+**Question de révision :** La portée de « au plus une » reste-t-elle évidente avant l'introduction des quantificateurs ?
+
+Passages de référence : EYT01.
+
+## C904 — OLP-0103-R04
+
+**Choix :** coche seulement après traitement sur toutes les branches ouvertes
+
+**Autre formulation envisagée :** cocher dès la première application de la règle
+
+**Motif :** La coche mémorise que l'occurrence n'a plus à être revisitée. La condition portant sur toutes les branches ouvertes est indispensable après une ramification.
+
+**Confiance et limites :** Forte : condition et réserve syntaxique traduites explicitement.
+
+**Question de révision :** La phrase distingue-t-elle assez la convention pratique de la syntaxe officielle du tableau ?
+
+Passages de référence : EYT01, R03.
+
+## C905 — OLP-0103-R10
+
+**Choix :** ordre des règles indifférent sous obligation de traiter chaque branche
+
+**Autre formulation envisagée :** imposer un ordre fixe de développement
+
+**Motif :** L'exemple autorise les deux choix et formule seulement l'obligation d'appliquer finalement chaque règle sur chaque branche concernée.
+
+**Confiance et limites :** Forte : les deux choix et la condition source sont présents.
+
+**Question de révision :** « L'ordre choisi est indifférent » risque-t-il d'être lu comme une affirmation d'efficacité plutôt que de correction ?
+
+Passages de référence : EYT01, R03.
+
+## C906 — OLP-0103-R12
+
+**Choix :** appliquer une règle au bout de chaque branche contenant l'occurrence visée
+
+**Autre formulation envisagée :** recopier la formule signée plus bas avant chaque application
+
+**Motif :** La formulation conserve la stratégie graphique : les conclusions sont placées à l'extrémité de chaque branche, ce qui permet de cocher l'occurrence commune.
+
+**Confiance et limites :** Forte : mécanisme graphique lu avec les tableaux inchangés.
+
+**Question de révision :** « À l'extrémité » décrit-il sans ambiguïté le point d'attache des nouvelles conclusions ?
+
+Passages de référence : EYT01, R03.
+
+## C907 — OLP-0103-R16
+
+**Choix :** nombre quelconque d'hypothèses et de branches
+
+**Autre formulation envisagée :** nombre arbitraire, susceptible d'être compris comme infini dans un tableau fini
+
+**Motif :** « Nombre quelconque » rend l'absence de borne fixée sans contredire la définition précédente d'un arbre fini. R03–R04 soutiennent la construction systématique.
+
+**Confiance et limites :** Forte sur la portée; la finitude est déjà définie dans OLP-0102.
+
+**Question de révision :** Faut-il rappeler ici que chaque tableau particulier demeure fini ?
+
+Passages de référence : EYT01, R03, R04.
+
+## C908 — OLP-0103-R24
+
+**Choix :** déplacer graphiquement le résultat sans changer sa justification
+
+**Autre formulation envisagée :** présenter le déplacement comme une nouvelle inférence
+
+**Motif :** Le texte source explique uniquement la mise en page de deux applications identiques. La traduction préserve la distinction entre emplacement visuel et dépendance logique.
+
+**Confiance et limites :** Forte : justification et ordre du tableau sont inchangés.
+
+**Question de révision :** La mention des justifications identiques suffit-elle à exclure une différence logique ?
+
+Passages de référence : EYT01.
+
+## C909 — OLP-0103-R28
+
+**Choix :** deux formules signées vraies distinctes pour A ou B et non-B
+
+**Autre formulation envisagée :** conserver l'argument mal formé contenant deux énoncés séparés par une virgule
+
+**Motif :** La commande source ne représente alors aucune formule signée bien formée. Les exercices parallèles donnent explicitement les deux prémisses distinctes et la conclusion A.
+
+**Confiance et limites :** Forte : défaut syntaxique et témoins parallèles concordants.
+
+**Question de révision :** La note cite-t-elle assez précisément la nature et la preuve de la correction ?
+
+Passages de référence : EYT01.
+
+## C910 — OLP-0104-R00
+
+**Choix :** condition sur l'eigenvariable et ordre de recherche conseillé
+
+**Autre formulation envisagée :** transformer la priorité en obligation formelle du calcul
+
+**Motif :** SAU06 atteste « eigenvariable » et relie la fraîcheur à la correction. Dans la source, l'ordre annoncé règle la recherche et la hauteur finale, non l'applicabilité des règles.
+
+**Confiance et limites :** Forte : condition formelle et stratégie sont séparées dans les exemples.
+
+**Question de révision :** Le passage de « always » à un conseil méthodique rend-il fidèlement le statut de cette priorité ?
+
+Passages de référence : SAU06, SCH06.
+
+## C911 — OLP-0104-R04
+
+**Choix :** nouvelle constante choisie fraîche sur la branche
+
+**Autre formulation envisagée :** nouvelle variable libre
+
+**Motif :** Le calcul OpenLogic introduit syntaxiquement une constante, même si la tradition la nomme eigenvariable. La traduction ne remplace pas cette catégorie par celle du témoin canonique.
+
+**Confiance et limites :** Forte : catégorie syntaxique et exemple a conservés.
+
+**Question de révision :** Le lecteur comprend-il que « nouvelle » renvoie à la condition de fraîcheur détaillée dans la section précédente ?
+
+Passages de référence : SAU06.
+
+## C912 — OLP-0104-R12
+
+**Choix :** appliquer d'abord la règle à eigenvariable comme stratégie de recherche
+
+**Autre formulation envisagée :** énoncer une règle de formation supplémentaire
+
+**Motif :** La priorité évite qu'une constante déjà introduite interdise le choix souhaité; elle n'appartient pas aux schémas de règles. La formulation « dans cette recherche » préserve ce statut.
+
+**Confiance et limites :** Forte : l'exemple et la condition de fraîcheur donnent le mécanisme.
+
+**Question de révision :** L'avantage pratique de la priorité devrait-il être expliqué plus explicitement dans une édition pédagogique ?
+
+Passages de référence : SAU06, R03.
+
+## C913 — OLP-0104-R14
+
+**Choix :** tout terme clos, sans condition supplémentaire d'eigenvariable
+
+**Autre formulation envisagée :** n'importe quel terme, y compris avec variable
+
+**Motif :** OLP-0101 exige expressément la fermeture de t dans les règles T-pour-tout et F-il-existe; SCH06 atteste la distinction entre terme clos et formule close.
+
+**Confiance et limites :** Forte : schémas formels et canon concordants.
+
+**Question de révision :** La note éditoriale rend-elle assez visible que « clos » répare une contradiction interne de la source ?
+
+Passages de référence : SCH06, SAU06.
+
+## C914 — OLP-0104-R16
+
+**Choix :** ne pas cocher les règles quantifiées réutilisables
+
+**Autre formulation envisagée :** cocher après une première instanciation
+
+**Motif :** Ces occurrences peuvent devoir être instanciées plusieurs fois. Les laisser non cochées conserve la possibilité de nouvelles applications avec d'autres termes.
+
+**Confiance et limites :** Forte : l'explication source est conservée avec les lignes 1 et 3.
+
+**Question de révision :** Le lien entre absence de coche et réapplication est-il suffisamment immédiat ?
+
+Passages de référence : EYT01, R03.
+
+## C915 — OLP-0104-R22
+
+**Choix :** différer les quantificateurs sans fraîcheur et les ramifications jusqu'au besoin
+
+**Autre formulation envisagée :** interdire leur application précoce
+
+**Motif :** La source donne deux heuristiques de construction. « Différer » conserve leur statut de conseil et ne modifie aucune règle d'inférence.
+
+**Confiance et limites :** Forte : statut et deux conseils sont explicités.
+
+**Question de révision :** Les guillemets autour du conseil évitent-ils clairement une lecture normative ?
+
+Passages de référence : SAU06, R03.
+
+## C916 — OLP-0104-R28
+
+**Choix :** termes clos appropriés b et c, respectivement
+
+**Autre formulation envisagée :** termes quelconques ou ordre inversé c puis b
+
+**Motif :** Les deux tableaux de branches montrent exactement les substitutions avec b puis c. « Respectivement » conserve l'appariement des lignes 1 et 3.
+
+**Confiance et limites :** Forte : blocs formels identiques vérifiés.
+
+**Question de révision :** L'appariement des deux règles avec b et c reste-t-il lisible malgré le retour à la ligne ?
+
+Passages de référence : SCH06, SAU06.
+
+## C917 — OLP-0104-R30
+
+**Choix :** note explicite sur le rétablissement de la fermeture du terme
+
+**Autre formulation envisagée :** corriger silencieusement les deux occurrences
+
+**Motif :** La correction touche le domaine des substitutions admissibles; elle est donc déclarée au lecteur et reliée aux règles immédiatement antérieures.
+
+**Confiance et limites :** Forte : les deux occurrences et leur autorité formelle sont identifiées.
+
+**Question de révision :** La note suffit-elle sans répéter les numéros des deux règles ?
+
+Passages de référence : SCH06, SAU06.
+
+## C918 — OLP-0105-R00
+
+**Choix :** notions de théorie de la démonstration
+
+**Autre formulation envisagée :** notions syntaxiques ou notions de théorie de la preuve
+
+**Motif :** Cette expression est déjà retenue dans les chapitres français de déduction naturelle et de calcul des séquents. Elle couvre dérivabilité et cohérence sans réduire le passage à la seule syntaxe.
+
+**Confiance et limites :** Forte : choix interchapitres contrôlé.
+
+**Question de révision :** Un réviseur préfère-t-il « théorie de la preuve », plus bref, malgré la cohérence éditoriale actuelle ?
+
+Passages de référence : SCH03, GL02.
+
+## C919 — OLP-0105-R00
+
+**Choix :** théorèmes de correction et de complétude
+
+**Autre formulation envisagée :** théorèmes de solidité et de complétude
+
+**Motif :** SCH03 et GL02 attestent « correction » pour le sens preuve vers sémantique et « complétude » pour le sens réciproque.
+
+**Confiance et limites :** Forte : directions métalogiques directement attestées.
+
+**Question de révision :** Le terme « correction » demeure-t-il assez transparent pour le lectorat visé ?
+
+Passages de référence : SCH03, GL02.
+
+## C920 — OLP-0105-R00
+
+**Choix :** théorème défini par un tableau fermé pour F A
+
+**Autre formulation envisagée :** théorème défini directement par validité sémantique
+
+**Motif :** La section définit précisément les notions de preuve avant d'invoquer correction et complétude. Le signe faux à la racine est conservé.
+
+**Confiance et limites :** Forte : signe, fermeture et biconditionnel notationnel conservés.
+
+**Question de révision :** « Tableau fermé pour F A » rappelle-t-il suffisamment la convention de racine ?
+
+Passages de référence : R03, SCH03.
+
+## C921 — OLP-0105-R00
+
+**Choix :** dérivabilité depuis un sous-ensemble fini de Gamma
+
+**Autre formulation envisagée :** exiger un tableau portant sur tout Gamma, même infini
+
+**Motif :** La définition source utilise explicitement un témoin fini B1,...,Bn. La traduction conserve la finitude et chacun des signes F A et T Bi.
+
+**Confiance et limites :** Forte : ensemble témoin et tableau signés contrôlés.
+
+**Question de révision :** Le rôle de la partie finie est-il assez visible avant la proposition de compacité ?
+
+Passages de référence : SCH03, R03.
+
+## C922 — OLP-0105-R00
+
+**Choix :** incohérent s'il existe un tableau fermé pour un témoin fini vrai
+
+**Autre formulation envisagée :** définir la cohérence seulement par absence de A et non-A
+
+**Motif :** EYT02 et GL02 éclairent le vocabulaire, mais la définition OpenLogic par tableau fermé reste intacte. L'équivalence avec l'explosion est ensuite proposée.
+
+**Confiance et limites :** Forte sur la définition; choix lexical cohérent avec l'édition.
+
+**Question de révision :** Le terme « cohérent » doit-il être rappelé avec « consistant » en note terminologique ?
+
+Passages de référence : EYT02, GL02.
+
+## C923 — OLP-0105-R02
+
+**Choix :** appliquer la coupure à A puis greffer les deux tableaux fermés
+
+**Autre formulation envisagée :** affirmer la transitivité sans construire le tableau combiné
+
+**Motif :** SCH05 atteste « coupure ». La traduction conserve les deux branches T A et F A et l'attachement du tableau fermé correspondant à chacune.
+
+**Confiance et limites :** Forte : construction et ensembles d'hypothèses comparés formule par formule.
+
+**Question de révision :** « Greffer » décrit-il clairement l'attachement d'un tableau complet à une branche ?
+
+Passages de référence : SCH05, R03.
+
+## C924 — OLP-0105-R02
+
+**Choix :** {D1,...,Dm} sous-ensemble de Gamma
+
+**Autre formulation envisagée :** D1,...,Dm sous-ensemble de Gamma, syntaxe source impossible
+
+**Motif :** Les Di sont des énoncés individuels; seule la collection finie peut être un sous-ensemble de Gamma. La définition immédiatement précédente impose exactement cette collection.
+
+**Confiance et limites :** Forte : correction typée et exigence définitionnelle directes.
+
+**Question de révision :** La note localise-t-elle assez l'erreur sans interrompre la preuve ?
+
+Passages de référence : SCH03, R03.
+
+## C925 — OLP-0105-R02
+
+**Choix :** compacité de la dérivabilité et de la cohérence par témoins finis
+
+**Autre formulation envisagée :** importer ici le théorème sémantique de compacité
+
+**Motif :** Les deux assertions suivent directement des définitions proof-théoriques et ne font pas appel à un modèle. La traduction garde ce niveau et les deux preuves finitaires.
+
+**Confiance et limites :** Forte : deux clauses et témoins finis conservés.
+
+**Question de révision :** Le titre « Compacité » risque-t-il de masquer qu'il s'agit ici de la relation de dérivabilité ?
+
+Passages de référence : SCH03, GL02, R03.
+
+## C926 — OLP-0106-R00
+
+**Choix :** dérivabilité et cohérence
+
+**Autre formulation envisagée :** provabilité et consistance
+
+**Motif :** Le couple lexical est déjà fixé dans les chapitres français de théorie de la démonstration. SCH03 et GL02 attestent correction, complétude et cohérence dans les mêmes directions métalogiques.
+
+**Confiance et limites :** Forte : choix canonique et cohérence éditoriale vérifiés.
+
+**Question de révision :** La continuité interchapitres rend-elle immédiatement la portée syntaxique de la dérivabilité ?
+
+Passages de référence : SCH03, GL02.
+
+## C927 — OLP-0106-R00
+
+**Choix :** réunir deux témoins finis par coupure et greffe
+
+**Autre formulation envisagée :** raisonner directement sur tout Gamma
+
+**Motif :** La dérivabilité et l'incohérence ont été définies par témoins finis. La preuve conserve les deux ensembles, applique la coupure à A et ne conclut qu'après leur réunion.
+
+**Confiance et limites :** Forte : témoins, inclusions et coupure sont explicites.
+
+**Question de révision :** La traduction rend-elle assez visible que la finitude est utilisée deux fois ?
+
+Passages de référence : R03, SCH05.
+
+## C928 — OLP-0106-R00
+
+**Choix :** équivalence entre dériver A et rendre Gamma avec non-A incohérent
+
+**Autre formulation envisagée :** présenter une seule implication par réfutation
+
+**Motif :** Les deux transformations de tableaux sont conservées. La réciproque traite séparément la fermeture par F A et celle par la paire T non-A/F non-A.
+
+**Confiance et limites :** Forte : signes et cas contrôlés formule par formule.
+
+**Question de révision :** Les deux mécanismes de fermeture de la réciproque restent-ils distincts à la lecture ?
+
+Passages de référence : EYT01, EYT02, R03.
+
+## C929 — OLP-0106-R00
+
+**Choix :** renvoi corrigé de la ligne 1 vers la ligne n+2
+
+**Autre formulation envisagée :** conserver n+1 comme dans la source
+
+**Motif :** Le nouveau tableau commence par n+1 hypothèses. La conclusion ajoutée est donc la ligne n+2; c'est elle qui remplace l'ancienne première ligne dans les justifications.
+
+**Confiance et limites :** Forte : comptage direct et règle de négation concordants.
+
+**Question de révision :** La note éditoriale distingue-t-elle clairement nombre d'hypothèses et numéro de ligne ?
+
+Passages de référence : EYT01, R03.
+
+## C930 — OLP-0106-R00
+
+**Choix :** preuve exhaustive par deux branches de coupure et deux greffes
+
+**Autre formulation envisagée :** invoquer seulement une loi du tiers exclu
+
+**Motif :** La source construit un tableau fermé. La traduction conserve la branche T A, la branche F A, la suppression des dérivés de T non-A et le traitement du cas de fermeture perdu.
+
+**Confiance et limites :** Forte : chaque branche et chaque formule de fermeture sont nommées.
+
+**Question de révision :** La greffe droite explicite-t-elle assez pourquoi F A reste disponible ?
+
+Passages de référence : R03, SCH05.
+
+## C931 — OLP-0107-R00
+
+**Choix :** dérivabilité et connecteurs propositionnels
+
+**Autre formulation envisagée :** conséquences des règles propositionnelles
+
+**Motif :** Le titre relie explicitement les propriétés suivantes à la relation de preuve déjà définie, sans les présenter comme des équivalences sémantiques.
+
+**Confiance et limites :** Forte : portée annoncée dans l'explication immédiatement suivante.
+
+**Question de révision :** Le titre situe-t-il assez ces lemmes comme préparation à la complétude ?
+
+Passages de référence : EYT01, R03.
+
+## C932 — OLP-0107-R00
+
+**Choix :** deux projections et une introduction de la conjonction
+
+**Autre formulation envisagée :** résumer les trois relations comme règles usuelles
+
+**Motif :** Les trois relations de dérivabilité sont conservées séparément et chacune possède son tableau fermé témoin.
+
+**Confiance et limites :** Forte : énoncés et trois tableaux concordent.
+
+**Question de révision :** La formulation « on a à la fois » conserve-t-elle nettement les deux projections ?
+
+Passages de référence : EYT01, R03.
+
+## C933 — OLP-0107-R05
+
+**Choix :** incohérence des deux négations et deux introductions de la disjonction
+
+**Autre formulation envisagée :** fusionner les trois faits en une propriété sémantique
+
+**Motif :** Le premier item est une incohérence proof-théorique; les deux autres sont des dérivabilités. La traduction conserve cette différence de statut.
+
+**Confiance et limites :** Forte : formes logiques et témoins signés contrôlés.
+
+**Question de révision :** La distinction entre ensemble incohérent et dérivabilité reste-t-elle évidente ?
+
+Passages de référence : EYT01, EYT02, R03.
+
+## C934 — OLP-0107-R10
+
+**Choix :** modus ponens et deux voies d'établissement de l'implication
+
+**Autre formulation envisagée :** nommer toutes les clauses comme introductions ou éliminations
+
+**Motif :** La première clause est explicitement le modus ponens; les deux suivantes montrent séparément que non-A et B suffisent à dériver A implique B.
+
+**Confiance et limites :** Forte : trois relations et trois tableaux inchangés.
+
+**Question de révision :** La parenthèse « modus ponens » suffit-elle pour relier l'énoncé au tableau ?
+
+Passages de référence : EYT01, R03.
+
+## C935 — OLP-0107-R15
+
+**Choix :** rétablir les deux arguments signe et formule de huit appels
+
+**Autre formulation envisagée :** reproduire les commandes mal formées
+
+**Motif :** La notation des formules signées exige un signe et une formule. Les réparations conservent exactement les signes, les formules, les nœuds et les justifications des tableaux.
+
+**Confiance et limites :** Forte : les neuf blocs concordent après la normalisation déclarée.
+
+**Question de révision :** La note explique-t-elle la réparation sans exposer inutilement l'implémentation TeX ?
+
+Passages de référence : EYT01.
+
+## C936 — OLP-0108-R00
+
+**Choix :** généralisation forte avec constante fraîche hors Gamma et A(x)
+
+**Autre formulation envisagée :** généralisation sans condition de fraîcheur
+
+**Motif :** La constante c doit pouvoir servir d'eigenvariable au point d'insertion. La traduction conserve les deux exclusions explicites et la dérivabilité de A(c).
+
+**Confiance et limites :** Forte : condition et usage dans la preuve concordent.
+
+**Question de révision :** La condition de fraîcheur est-elle lisible comme hypothèse du théorème plutôt que comme conseil de recherche ?
+
+Passages de référence : SAU06, R03.
+
+## C937 — OLP-0108-R04
+
+**Choix :** insérer F A(c) après les hypothèses par la règle universelle fausse
+
+**Autre formulation envisagée :** réutiliser l'ancienne première hypothèse sans justifier l'inférence
+
+**Motif :** La nouvelle racine est F forall x A(x); la règle exige une constante absente au-dessus de la ligne, condition vérifiée sur toutes les hypothèses.
+
+**Confiance et limites :** Forte : les deux schémas formels sont identiques à la source.
+
+**Question de révision :** La preuve distingue-t-elle assez l'ancien tableau du nouveau tableau transformé ?
+
+Passages de référence : SAU06, R03.
+
+## C938 — OLP-0108-R04
+
+**Choix :** restreindre explicitement t aux termes clos
+
+**Autre formulation envisagée :** conserver l'énoncé source sans domaine de t
+
+**Motif :** Les règles T-pour-tout et F-il-existe du même chapitre exigent un terme clos. Le canon confirme la distinction, déjà appliquée dans les chapitres parallèles.
+
+**Confiance et limites :** Forte : restriction interne et canon convergents.
+
+**Question de révision :** La note éditoriale rend-elle assez claire l'autorité des règles formelles ?
+
+Passages de référence : SCH06, SAU06.
+
+## C939 — OLP-0108-R08
+
+**Choix :** déclarer l'ajout de la condition de fermeture
+
+**Autre formulation envisagée :** corriger silencieusement l'énoncé
+
+**Motif :** La restriction touche le domaine des substitutions admissibles. Elle est donc signalée sans modifier les deux tableaux qui utilisent le même terme t.
+
+**Confiance et limites :** Forte : portée et justification sont locales.
+
+**Question de révision :** La note reste-t-elle assez concise pour ne pas interrompre les deux preuves ?
+
+Passages de référence : SCH06, SAU06.
+
+## C940 — OLP-0109-R00
+
+**Choix :** correction
+
+**Autre formulation envisagée :** solidité
+
+**Motif :** SCH03 et GL02 attestent « correction » pour le sens allant des preuves à la sémantique. Le titre concorde avec les chapitres français précédents.
+
+**Confiance et limites :** Forte : terme canonique et définition explicite.
+
+**Question de révision :** Le terme reste-t-il transparent une fois défini dans le paragraphe initial ?
+
+Passages de référence : SCH03, GL02.
+
+## C941 — OLP-0109-R00
+
+**Choix :** présenter correction par validité, conséquence et cohérence
+
+**Autre formulation envisagée :** ne donner que la validité des théorèmes
+
+**Motif :** Le chapitre doit fournir trois corollaires distincts. L'explication conserve leur dépendance commune à l'insatisfaisabilité des hypothèses d'un tableau fermé.
+
+**Confiance et limites :** Forte : chaque point réapparaît comme corollaire.
+
+**Question de révision :** La liste annonce-t-elle clairement les trois formes exactes de correction ?
+
+Passages de référence : SCH03, SCH10.
+
+## C942 — OLP-0109-R00
+
+**Choix :** satisfaction des formules signées et des ensembles
+
+**Autre formulation envisagée :** définir seulement la satisfaction des branches
+
+**Motif :** La définition donne séparément les cas vrai et faux, puis l'ensemble et l'existence d'une structure ou valuation. Elle fournit exactement le langage de l'invariant de preuve.
+
+**Confiance et limites :** Forte : définitions sémantiques et signes concordent.
+
+**Question de révision :** Le passage conditionnel structure/valuation préserve-t-il les deux lectures compilées ?
+
+Passages de référence : EYT01, SCH09, SCH10.
+
+## C943 — OLP-0109-R00
+
+**Choix :** invariant de préservation d'au moins une branche satisfaisable
+
+**Autre formulation envisagée :** prouver directement qu'aucun tableau fermé n'est satisfaisable
+
+**Motif :** L'induction locale sur les applications de règles demande seulement qu'une branche satisfaisable survive. La fermeture contredit ensuite la présence d'une telle branche.
+
+**Confiance et limites :** Forte : hypothèse, étape et conclusion sont toutes formulées.
+
+**Question de révision :** L'enchaînement invariant puis contradiction est-il suffisamment explicite ?
+
+Passages de référence : EYT02, R03, SCH03.
+
+## C944 — OLP-0109-R00
+
+**Choix :** modifier seulement l'interprétation de la constante fraîche dans le cas F-pour-tout
+
+**Autre formulation envisagée :** conserver la structure sans expliquer l'existence du contre-exemple nommé
+
+**Motif :** La structure M' interprète a par la valeur choisie pour x. La fraîcheur de a garantit que les formules de Gamma gardent leur satisfaction.
+
+**Confiance et limites :** Forte : assignation, valeur du terme et fraîcheur sont conservées.
+
+**Question de révision :** Les appels à l'extensionalité suffisent-ils à justifier les deux transports successifs ?
+
+Passages de référence : SAU06, SCH09, SCH10.
+
+## C945 — OLP-0109-R00
+
+**Choix :** choisir une branche satisfaisable selon la sémantique du connecteur ou de la coupure
+
+**Autre formulation envisagée :** exiger que les deux branches restent satisfaisables
+
+**Motif :** Une règle ramifiée ne préserve que l'existence d'une branche satisfaisable. Les cas F-conjonction, T-disjonction, T-implication et coupure ont exactement cette forme.
+
+**Confiance et limites :** Forte : invariant et cas F-conjonction/Cut sont développés.
+
+**Question de révision :** Le quantificateur existentiel « au moins une » reste-t-il visible dans les cas ?
+
+Passages de référence : EYT01, SCH09, SCH10.
+
+## C946 — OLP-0109-R00
+
+**Choix :** uniformiser A(x) dans les deux cas universels et adapter structure/valuation
+
+**Autre formulation envisagée :** conserver B(x) dans les prémisses malgré les calculs en A(x)
+
+**Motif :** Chaque application de règle et son argument sémantique doivent porter sur la même formule. L'adaptation conditionnelle évite d'attribuer des structures de premier ordre à la version propositionnelle.
+
+**Confiance et limites :** Forte : deux écarts distincts sont explicitement décrits.
+
+**Question de révision :** La note sépare-t-elle assez la correction de variable et l'adaptation de contexte ?
+
+Passages de référence : SAU06, SCH09.
+
+## C947 — OLP-0109-R00
+
+**Choix :** de Gamma dérive A à Gamma entraîne A
+
+**Autre formulation envisagée :** conclure seulement à la validité de A
+
+**Motif :** Le témoin fini de dérivabilité contient F A et les T B_i. Son insatisfaisabilité dit exactement que toute structure ou valuation satisfaisant Gamma satisfait A.
+
+**Confiance et limites :** Forte : les B_i appartiennent explicitement à Gamma.
+
+**Question de révision :** La preuve fait-elle assez clairement le passage du témoin fini à tout Gamma ?
+
+Passages de référence : SCH03, SCH10.
+
+## C948 — OLP-0109-R00
+
+**Choix :** satisfaisabilité implique cohérence par contraposée
+
+**Autre formulation envisagée :** affirmer directement cohérence implique satisfaisabilité
+
+**Motif :** L'incohérence fournit un tableau fermé pour un témoin fini vrai; la correction interdit qu'une même structure ou valuation satisfasse tous ses membres.
+
+**Confiance et limites :** Forte : hypothèse et conclusion restent dans le sens de la correction.
+
+**Question de révision :** La direction contraposée évite-t-elle toute confusion avec la complétude ?
+
+Passages de référence : EYT02, GL02, SCH10.
+
+## C949 — OLP-0110-R00
+
+**Choix :** tableaux avec identité
+
+**Autre formulation envisagée :** tableaux avec égalité
+
+**Motif :** Le jeton éditorial `identity` est conservé et SAU07 atteste le traitement de l'identité par réflexivité et remplacement. Le symbole employé reste celui de l'égalité.
+
+**Confiance et limites :** Forte sur la fidélité au jeton; choix terminologique révisable globalement.
+
+**Question de révision :** Faut-il harmoniser ultérieurement le nom de chapitre avec d'autres occurrences d'« égalité » ?
+
+Passages de référence : SAU07.
+
+## C950 — OLP-0110-R02
+
+**Choix :** deux formules signées déjà présentes pour les règles de remplacement
+
+**Autre formulation envisagée :** présenter l'égalité comme une règle unaire ordinaire
+
+**Motif :** Les règles combinent T(t1=t2) avec S A(t1). La traduction met en relief cette arité exceptionnelle sans changer les schémas formels.
+
+**Confiance et limites :** Forte : schéma et explication concordent.
+
+**Question de révision :** La phrase identifie-t-elle sans ambiguïté les deux prémisses de branche ?
+
+Passages de référence : EYT01, SAU07.
+
+## C951 — OLP-0110-R04
+
+**Choix :** principe de substituabilité des identiques, ou loi de Leibniz
+
+**Autre formulation envisagée :** principe d'indiscernabilité sans nommer Leibniz
+
+**Motif :** SAU07 atteste la substitution des identiques; la double désignation française aide à relier le tableau au principe logique traditionnel.
+
+**Confiance et limites :** Forte : mécanisme exact et terminologie standard.
+
+**Question de révision :** La double désignation demeure-t-elle sobre dans ce contexte introductif ?
+
+Passages de référence : SAU07.
+
+## C952 — OLP-0110-R08
+
+**Choix :** corriger A(s1) pour la symétrie et s1=s2 pour la transitivité
+
+**Autre formulation envisagée :** reproduire les deux identifications source incompatibles avec les lignes citées
+
+**Motif :** Les substitutions A(x)=x=s1 et A(x)=s1=x déterminent respectivement ces deux instances. Les arbres formels eux-mêmes confirment les lignes 3 et 2.
+
+**Confiance et limites :** Forte : instances et numéros de ligne sont déterminés mécaniquement.
+
+**Question de révision :** La note donne-t-elle assez d'information pour vérifier les deux substitutions sans refaire les tableaux ?
+
+Passages de référence : SAU07, EYT01.
+
+## C953 — OLP-0111-R00
+
+**Choix :** correction avec identité
+
+**Autre formulation envisagée :** validité des règles d'égalité
+
+**Motif :** La proposition étend l'invariant de correction du chapitre aux trois règles supplémentaires, et non à une seule équation isolée.
+
+**Confiance et limites :** Forte : portée annoncée par la proposition.
+
+**Question de révision :** Le titre rattache-t-il assez nettement la section au théorème précédent ?
+
+Passages de référence : SAU07, SCH03.
+
+## C954 — OLP-0111-R00
+
+**Choix :** préserver la satisfaisabilité après chaque règle d'identité
+
+**Autre formulation envisagée :** répéter toute la preuve globale de correction
+
+**Motif :** La preuve réutilise l'invariant déjà établi et vérifie seulement réflexivité et transport par égalité de valeurs. Cela conserve exactement la dépendance logique source.
+
+**Confiance et limites :** Forte : l'invariant est reformulé dans la même phrase.
+
+**Question de révision :** Le renvoi « comme précédemment » demeure-t-il assez précis après la séparation en section ?
+
+Passages de référence : SAU07, SCH03, SCH09.
+
+## C955 — OLP-0111-R00
+
+**Choix :** rétablir le signe vrai de la conclusion A(t2)
+
+**Autre formulation envisagée :** garder le signe générique S de la source
+
+**Motif :** Le cas développé part de deux formules vraies et prouve la satisfaction de A(t2). Le cas faux est annoncé séparément; employer S confondrait les deux règles.
+
+**Confiance et limites :** Forte : schéma de règle et preuve sémantique concordent.
+
+**Question de révision :** La note rend-elle évidente la raison pour laquelle le signe ne peut pas rester générique ?
+
+Passages de référence : SAU07, SCH09.
+

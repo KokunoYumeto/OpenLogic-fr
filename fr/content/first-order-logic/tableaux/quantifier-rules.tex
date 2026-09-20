@@ -1,0 +1,121 @@
+% Part: first-order-logic
+% Chapter: tableaux
+% Section: quantifier-rules
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{tab}{qrl}
+
+\olsection{Règles pour les quantificateurs}
+
+\subsection{Règles pour $\lforall$}
+
+\begin{defish}
+\AxiomC{\sFmla{\True}{\lforall[x][!A(x)]}}
+\RightLabel{\TRule{\True}{\forall}}
+\UnaryInfC{\sFmla{\True}{!A(t)}}
+\DisplayProof
+\hfill
+\AxiomC{\sFmla{\False}{\lforall[x][!A(x)]}}
+\RightLabel{\TRule{\False}{\lforall}}
+\UnaryInfC{\sFmla{\False}{!A(a)}}
+\DisplayProof
+\end{defish}
+
+Dans \TRule{\True}{\lforall}, $t$ est un terme clos, c'est-à-dire
+sans variables. Dans \TRule{\False}{\lforall}, $a$ est
+!!a{constant} qui ne doit figurer nulle part dans la branche au-dessus
+de l'application de la règle. On appelle $a$ l'\emph{eigenvariable}
+de l'inférence \TRule{\False}{\forall}.\footnote{Nous employons le
+terme « eigenvariable » bien que $a$ soit !!a{constant} dans la
+règle ci-dessus, pour des raisons historiques.}
+
+\subsection{Règles pour $\lexists$}
+
+\begin{defish}
+\AxiomC{\sFmla{\True}{\lexists[x][!A(x)]}}
+\RightLabel{\TRule{\True}{\lexists}}
+\UnaryInfC{\sFmla{\True}{!A(a)}}
+\DisplayProof
+\hfill
+\AxiomC{\sFmla{\False}{\lexists[x][!A(x)]}}
+\RightLabel{\TRule{\False}{\lexists}}
+\UnaryInfC{\sFmla{\False}{!A(t)}}
+\DisplayProof
+\end{defish}
+
+Ici encore, $t$ est un terme clos, et $a$ est !!a{constant} qui ne
+figure pas dans la branche au-dessus de l'application de la règle
+\TRule{\True}{\lexists}. On appelle $a$ l'\emph{eigenvariable} de
+l'inférence \TRule{\True}{\lexists}.
+
+La condition selon laquelle une eigenvariable ne doit pas figurer
+dans la branche au-dessus d'une inférence \TRule{\False}{\lforall}
+ou \TRule{\True}{\lexists} s'appelle la \emph{condition sur
+l'eigenvariable}.
+
+\begin{explain}
+Rappelons notre convention : lorsque $!A$ est !!a{formula} dans
+laquelle la !!{variable}~$x$ est libre, nous l'indiquons en écrivant
+$!A(x)$. Dans ce contexte, $!A(t)$ abrège alors~$\Subst{!A}{t}{x}$.
+On pourrait donc aussi écrire la règle \TRule{\False}{\lexists}
+comme suit :
+\begin{prooftree}
+  \AxiomC{\sFmla{\False}{\lexists[x][!A]}}
+  \RightLabel{\TRule{\False}{\lexists}}
+  \UnaryInfC{\sFmla{\False}{\Subst{!A}{t}{x}}}
+\end{prooftree}
+Le terme $t$ peut déjà figurer dans~$!A$ ; par exemple, $!A$ peut
+être~$\Atom{\Obj P}{t,x}$. Inférer
+$\sFmla{\False}{\Atom{\Obj P}{t,t}}$ de
+$\sFmla{\False}{\lexists[x][\Atom{\Obj P}{t,x}]}$ constitue donc
+une application correcte de~\TRule{\False}{\lexists}. En revanche,
+les conditions sur l'eigenvariable dans \TRule{\False}{\lforall}
+et~\TRule{\True}{\lexists} imposent notamment que la
+!!{constant}~$a$ ne figure pas dans~$!A$. On ne peut donc pas inférer
+correctement $\sFmla{\False}{\Atom{\Obj P}{a,a}}$ de
+$\sFmla{\False}{\lforall[x][\Atom{\Obj P}{a,x}]}$ au moyen
+de~$\TRule{\False}{\lforall}$.
+\end{explain}
+
+\begin{explain}
+Dans \TRule{\True}{\lforall} et \TRule{\False}{\lexists}, le terme
+$t$ n'est soumis à aucune restriction supplémentaire : il doit
+seulement être clos. En revanche, dans les règles
+\TRule{\True}{\lexists} et \TRule{\False}{\lforall}, la condition
+sur l'eigenvariable exige que la !!{constant}~$a$ ne figure nulle part
+dans la branche au-dessus de l'inférence correspondante. Cette
+condition est nécessaire à la correction du système. Sans elle, le
+tableau suivant serait un !!{tableau} fermé pour
+$\lexists[x][\formula{A}(x)] \lif \lforall[x][\formula{A}(x)]$ :
+\begin{center}
+\begin{tableau}{}
+  [\sFmla{\False}{\lexists[x][\formula{A}(x)] \lif \lforall[x][\formula{A}(x)]}, just=\TAss
+    [\sFmla{\True}{\lexists[x][\formula{A}(x)]},
+      just={\TRule{\False}{\lif}[1]}
+      [\sFmla{\False}{\lforall[x][\formula{A}(x)]},
+        just={\TRule{\False}{\lif}[1]}
+        [\sFmla{\True}{\formula{A}(a)},
+          just={\TRule{\True}{\lexists}[2]}
+          [\sFmla{\False}{\formula{A}(a)},
+            just={\TRule{\False}{\lforall}[3]}, close]
+        ]
+      ]
+    ]
+  ]
+\end{tableau}
+\end{center}
+Or $\lexists[x][\formula{A}(x)] \lif
+\lforall[x][\formula{A}(x)]$ n'est pas valide.
+\end{explain}
+
+\begin{editorial}
+Note de l'édition française : l'original exige d'abord que $t$ soit
+clos, puis affirme qu'il n'est soumis à aucune restriction. La seconde
+occurrence est précisée ici : il n'existe aucune restriction
+supplémentaire à l'exigence de fermeture.
+\end{editorial}
+
+\end{document}

@@ -1,0 +1,97 @@
+% Part: first-order-logic
+% Chapter: tableaux
+% Section: provability-quantifiers
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{tab}{qpr}
+\olsection{\usetoken{S}{derivability} et quantificateurs}
+
+\begin{explain}
+La démonstration du théorème de complétude exige aussi que les règles
+des tableaux donnent les propriétés de~$\Proves$ établies dans cette
+section.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:strong-generalization} Si $c$ est une constante qui ne
+figure ni dans $\Gamma$ ni dans~$!A(x)$ et si $\Gamma \Proves !A(c)$,
+alors $\Gamma \Proves \lforall[x][!A(x)]$.
+\end{thm}
+
+\begin{proof}
+Supposons que $\Gamma \Proves !A(c)$. Il existe donc
+$!B_1, \dots, !B_n \in \Gamma$ et un !!{tableau} fermé pour
+\begin{align*}
+\{ \sFmla{\False}{!A(c)}, &
+\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n} \}.
+\intertext{Il faut montrer qu'il existe aussi un !!{tableau} fermé pour}
+\{ \sFmla{\False}{\lforall[x][!A(x)]}, &
+\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n} \}.
+\end{align*}
+Dans le !!{tableau} fermé donné, remplaçons la première hypothèse par
+$\sFmla{\False}{\lforall[x][!A(x)]}$, puis insérons
+$\sFmla{\False}{!A(c)}$ après les hypothèses.
+\begin{center}
+\begin{tableau}{not line numbering}
+  [\sFmla{\False}{\formula{A}(c)}
+    [\sFmla{\True}{\formula{B}_1}
+      [\vdots
+      [\sFmla{\True}{\formula{B}_n}, 
+        [][][]]]]]
+\end{tableau}\qquad
+\begin{tableau}{not line numbering}
+  [\sFmla{\False}{\lforall[x][\formula{A}(x)]}
+    [\sFmla{\True}{\formula{B}_1}
+      [\vdots
+        [\sFmla{\True}{\formula{B}_n},
+          [\sFmla{\False}{\formula{A}(c)}
+        [][][]]]]]]
+\end{tableau}
+\end{center}
+Le tableau demeure fermé, puisque tous les !!{sentence}s qui figuraient
+auparavant parmi les hypothèses sont encore disponibles en haut du
+!!{tableau}. La ligne insérée résulte d'une application correcte de
+$\TRule{\False}{\lforall}$ : la !!{constant}~$c$ ne figure ni dans
+$!B_1$, \dots, $!B_n$, ni dans $\lforall[x][!A(x)]$, donc elle ne
+figure nulle part au-dessus de la ligne insérée dans le nouveau
+!!{tableau}.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:provability-quantifiers}
+Pour tout terme clos~$t$, on a :
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{$!A(t) \Proves \lexists[x][!A(x)]$.}{}
+\tagitem{prvAll}{$\lforall[x][!A(x)] \Proves !A(t)$.}{}
+\end{tagenumerate}
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{Voici un !!{tableau} fermé pour
+  $\sFmla{\False}{\lexists[x][!A(x)]}, \sFmla{\True}{!A(t)}$ :
+  \begin{oltableau}
+    [\sFmla{\False}{\lexists[x][\formula{A}(x)]}, just = \TAss
+      [\sFmla{\True}{\formula{A}(t)}, just = \TAss
+        [\sFmla{\False}{\formula{A}(t)}, just = {\TRule{\False}{\lexists}[1]}, close]]]
+    \end{oltableau}}{}
+\tagitem{prvAll}{Voici un !!{tableau} fermé pour
+  $\sFmla{\False}{\formula{A}(t)},
+  \sFmla{\True}{\lforall[x][!A(x)]}$ :
+  \begin{oltableau}
+    [\sFmla{\False}{\formula{A}(t)}, just = \TAss
+      [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just = \TAss
+        [\sFmla{\True}{\formula{A}(t)}, just = {\TRule{\True}{\lforall}[2]}, close]]]
+    \end{oltableau}}{}
+\end{tagenumerate}
+\end{proof}
+
+\begin{editorial}
+La fermeture du terme~$t$, exigée par les règles de quantification de
+ce système, est rappelée explicitement dans l'énoncé de la proposition.
+\end{editorial}
+
+\end{document}

@@ -1,22 +1,22 @@
 # OpenLogic — édition française
 
-Cette huitième livraison de l’édition française d’OpenLogic réunit dix chapitres, des ensembles à la déduction naturelle : ensembles, relations, fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, systèmes de dérivation, calcul des séquents et déduction naturelle. Elle conserve les démonstrations, exemples et exercices du projet original et signale les corrections apportées aux erreurs locales de la source.
+Cette neuvième livraison de l’édition française d’OpenLogic réunit onze chapitres, des ensembles aux tableaux : ensembles, relations, fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, systèmes de dérivation, calcul des séquents, déduction naturelle et tableaux analytiques signés. Le nouveau chapitre expose les règles propositionnelles, la construction des arbres, la dérivabilité, la cohérence et le théorème de correction. Les démonstrations, exemples et exercices du projet original sont conservés; les corrections locales de la source sont signalées.
 
-Le volume comprend 126 pages, 73 sections et 95 exercices. Il intègre 83 des 722 unités TeX de la révision `9620cc73f9c8e0ad003c514a5d3748f29611c4c0` d’OpenLogic. Au total, 94 unités sont rédigées; onze restent hors de ce volume, notamment les sections propres au premier ordre dont les prérequis ne sont pas encore intégrés. Il reste 628 unités à traduire et 639 à intégrer au lecteur. L’édition complète est en cours.
+Le volume comprend 141 pages, 81 sections et 101 exercices. Il intègre 92 des 722 unités TeX de la révision `9620cc73f9c8e0ad003c514a5d3748f29611c4c0` d’OpenLogic. Au total, 108 unités sont rédigées; seize restent hors du volume jusqu’à l’intégration de leurs prérequis. Il reste 614 unités à traduire et 630 à intégrer au lecteur. L’édition complète est en cours.
 
-Le PDF est accompagné du LaTeX cumulatif directement téléchargeable, d’une archive des sources modulaires et des dépendances de reconstruction, ainsi que d’un EPUB à texte redistribuable avec formules MathML et descriptions des diagrammes. Les références françaises effectivement consultées, les décisions de traduction et les questions de révision sont documentées dans l’archive. La traduction est assistée par IA; les contrôles éditoriaux et techniques ne constituent pas une validation humaine indépendante.
+Avant cette livraison, trois chapitres ont fait l’objet d’un réaudit ciblé de trois pages chacun, soit neuf pages et 3 916 mots comparés aux sources anglaises. Aucun défaut majeur, mathématique, logique, d’omission ou de rendu n’a été relevé; cinq corrections mineures ont été intégrées. Ce contrôle est un échantillon demandé, et non une nouvelle collation ligne à ligne de chaque page.
+
+Le PDF est accompagné du LaTeX cumulatif, d’une archive des sources modulaires et des dépendances de reconstruction, ainsi que d’un EPUB redistribuable. Celui-ci contient 5 230 expressions MathML natives, 146 figures SVG décrites, 101 exercices et 87 notes; EPUBCheck 5.3.0 ne signale aucune erreur ni aucun avertissement. Les références françaises effectivement consultées, les décisions de traduction et les questions de révision sont documentées dans l’archive. La traduction est assistée par IA; les contrôles éditoriaux et techniques ne constituent pas une validation humaine indépendante.
 
 [Projet OpenLogic](https://openlogicproject.org/) · [Collection des traductions](https://kokunoyumeto.github.io/OpenLogic-translations/).
 
 
 ## Lire et télécharger
 
-1. [Lire les dix chapitres en PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.8.0-deduction-naturelle/00-00-00-00-01-openlogic-fr-ensembles-deduction-naturelle.pdf)
-2. [LaTeX cumulatif complet](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.8.0-deduction-naturelle/00-00-00-00-02-openlogic-fr-ensembles-deduction-naturelle.tex)
-3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.8.0-deduction-naturelle/00-00-00-00-03-openlogic-fr-ensembles-deduction-naturelle-sources.zip)
-4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.8.0-deduction-naturelle/00-00-00-00-04-openlogic-fr-ensembles-deduction-naturelle.epub)
-
-[Livraison sur Zenodo](https://zenodo.org/records/22851625) · [DOI de cette version](https://doi.org/10.5281/zenodo.22851625).
+1. [Lire les onze chapitres en PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.9.0-tableaux/00-00-00-00-01-openlogic-fr-ensembles-tableaux.pdf)
+2. [LaTeX cumulatif complet](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.9.0-tableaux/00-00-00-00-02-openlogic-fr-ensembles-tableaux.tex)
+3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.9.0-tableaux/00-00-00-00-03-openlogic-fr-ensembles-tableaux-sources.zip)
+4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.9.0-tableaux/00-00-00-00-04-openlogic-fr-ensembles-tableaux.epub)
 
 [Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
 

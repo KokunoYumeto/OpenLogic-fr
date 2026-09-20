@@ -1,0 +1,117 @@
+% Part: first-order-logic
+% Chapter: tableaux
+% Section: identity
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{tab}{ide}
+
+\olsection{\usetoken{P}{tableau} avec \usetoken{S}{identity}}
+
+Les !!^{tableau}s avec !!{identity} exigent des règles d'inférence
+supplémentaires. Les règles de~$\eq$ sont les suivantes, où $t$,
+$t_1$ et $t_2$ sont des termes clos :
+
+\begin{defish}
+\AxiomC{}
+\RightLabel{$\eq$}
+\UnaryInfC{\sFmla{\True}{\eq[t][t]}}
+\DisplayProof
+\hfill
+\AxiomC{\sFmla{\True}{\eq[t_1][t_2]}}
+\noLine
+\UnaryInfC{\sFmla{\True}{!A(t_1)}}
+\RightLabel{$\TRule{\True}{\eq}$}
+\UnaryInfC{\sFmla{\True}{!A(t_2)}}
+\DisplayProof
+\hfill
+\AxiomC{\sFmla{\True}{\eq[t_1][t_2]}}
+\noLine
+\UnaryInfC{\sFmla{\False}{!A(t_1)}}
+\RightLabel{$\TRule{\False}{\eq}$}
+\UnaryInfC{\sFmla{\False}{!A(t_2)}}
+\DisplayProof
+\end{defish}
+Contrairement à toutes les autres règles, $\TRule{\True}{\eq}$ et
+$\TRule{\False}{\eq}$ exigent que \emph{deux} !!{signed formula}s
+figurent déjà sur la branche, à savoir
+$\sFmla{\True}{\eq[t_1][t_2]}$ et $\sFmla{S}{!A(t_1)}$.
+
+\begin{ex}
+Si $s$ et $t$ sont des termes clos, alors
+$\eq[s][t], !A(s) \Proves !A(t)$ :
+\begin{oltableau}
+  [\sFmla{\False}{\formula{A}(t)}, just = \TAss
+    [\sFmla{\True}{\eq[s][t]}, just = \TAss
+      [\sFmla{\True}{\formula{A}(s)}, just = \TAss
+        [\sFmla{\True}{\formula{A}(t)}, just={\TRule{\True}{\eq}[2, 3]}, close]
+      ]
+    ]
+  ]
+\end{oltableau}
+On reconnaît ici le principe de substituabilité des identiques,
+ou loi de Leibniz.
+
+Les !!^{tableau}s montrent aussi que $\eq$ est symétrique, c'est-à-dire
+que $\eq[s_1][s_2] \Proves \eq[s_2][s_1]$ :
+\begin{oltableau}
+  [\sFmla{\False}{\eq[s_2][s_1]}, just = \TAss
+    [\sFmla{\True}{\eq[s_1][s_2]}, just = \TAss
+      [\sFmla{\True}{\eq[s_1][s_1]}, just = {$\eq$}
+        [\sFmla{\True}{\eq[s_2][s_1]}, just = {\TRule{\True}{\eq}[2, 3]}, close]
+      ]
+    ]
+  ]
+\end{oltableau}
+Ici, la ligne~$2$ fournit la première !!{formula} requise par
+$\TRule{\True}{\eq}$, à savoir
+$\sFmla{\True}{\eq[s_1][s_2]}$. La ligne~$3$ fournit la seconde, de la
+forme $\sFmla{\True}{!A(s_1)}$. Il suffit de prendre $!A(x)$ pour
+$\eq[x][s_1]$ : $!A(s_1)$ est alors $\eq[s_1][s_1]$, et $!A(s_2)$
+est $\eq[s_2][s_1]$.
+
+Ils montrent également que $\eq$ est transitive, c'est-à-dire que
+$\eq[s_1][s_2], \eq[s_2][s_3] \Proves \eq[s_1][s_3]$ :
+\begin{oltableau}
+  [\sFmla{\False}{\eq[s_1][s_3]}, just = \TAss
+    [\sFmla{\True}{\eq[s_1][s_2]}, just = \TAss
+      [\sFmla{\True}{\eq[s_2][s_3]}, just = \TAss
+        [\sFmla{\True}{\eq[s_1][s_3]}, just = {\TRule{\True}{\eq}[3, 2]}, close]
+      ]
+    ]
+  ]
+\end{oltableau}
+Dans ce !!{tableau}, la première !!{formula} requise par
+$\TRule{\True}{\eq}$ est la ligne~$3$,
+$\sFmla{\True}{\eq[s_2][s_3]}$ : $s_2$ joue le rôle de~$t_1$ et
+$s_3$ celui de~$t_2$. La seconde, de la forme
+$\sFmla{\True}{!A(s_2)}$, est la ligne~$2$. Prenons ici $!A(x)$ pour
+$\eq[s_1][x]$ : $!A(s_2)$ devient $\eq[s_1][s_2]$, c'est-à-dire la
+ligne~$2$, et $!A(s_3)$ devient la !!{formula}~$\eq[s_1][s_3]$ de la
+conclusion.
+\end{ex}
+
+\begin{editorial}
+Dans l'explication de la symétrie, la source donne par erreur la forme
+$\sFmla{\True}{!A(s_2)}$ à la seconde formule requise de la ligne~$3$;
+il s'agit de $\sFmla{\True}{!A(s_1)}$. Dans l'explication de la
+transitivité, $!A(s_2)$ est rétabli comme $\eq[s_1][s_2]$, conformément
+à la ligne~$2$, plutôt que comme l'égalité générique
+$\eq[t_1][t_2]$ qui désigne ici la ligne~$3$.
+\end{editorial}
+
+\begin{prob}
+Construire un !!{tableau} fermé pour chacun des ensembles suivants :
+\begin{enumerate}
+\item $\sFmla{\False}{\lforall[x][\lforall[y][((x = y \land !A(x))
+      \lif !A(y))]]}$
+\item $\sFmla{\False}{\lexists[x][(!A(x) \land
+    \lforall[y][(!A(y) \lif y = x)])]}$,\\
+  $\sFmla{\True}{\lexists[x][!A(x)] \land
+    \lforall[y][\lforall[z][((!A(y) \land !A(z)) \lif y = z)]]}$
+\end{enumerate}
+\end{prob}
+
+\end{document}

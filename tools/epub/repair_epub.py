@@ -4,7 +4,7 @@ from lxml import etree
 import collections,copy,hashlib,json,re,zipfile
 E=Path(__file__).resolve().parent
 SOURCE=E/'conversion/source/locale/fr/reader.epub'
-OUTPUT=E/'openlogic-fr-ensembles-deduction-naturelle.epub'
+OUTPUT=E/'openlogic-fr-ensembles-tableaux.epub'
 HTML='http://www.w3.org/1999/xhtml'
 MATH='http://www.w3.org/1998/Math/MathML'
 sha=lambda b:hashlib.sha256(b).hexdigest()
@@ -45,6 +45,7 @@ ALT={
 }
 ALT.update(json.loads((E/'SEQUENT_IMAGE_ALTS.json').read_text('utf-8')))
 ALT.update(json.loads((E/'NATURAL_IMAGE_ALTS.json').read_text('utf-8')))
+ALT.update(json.loads((E/'TABLEAUX_IMAGE_ALTS.json').read_text('utf-8')))
 report={'input_sha256':sha(SOURCE.read_bytes()),'repairs':[],'documents':[]}
 with zipfile.ZipFile(SOURCE) as z:
  data={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -138,17 +139,17 @@ for name,raw in list(data.items()):
  counts=collections.Counter(r.xpath('//@id'))
  for key,count in counts.items():
   if count<2:continue
-  assert key in {'x121','x221','x421','x511','framed-1','x911','x921','x931','x941','x951','x961'},key
+  assert key in {'x121','x221','x421','x511','framed-1','x911','x921','x931','x941','x951','x961','x1121'},key
   for other in data.values():
    assert not re.search(rb'href\s*=\s*["\'][^"\']*#'+re.escape(key.encode())+rb'["\']',other),key
   for i,e in enumerate(r.xpath('//*[@id=$key]',key=key),1):
    if i>1:e.set('id',key+'-'+str(i))
   report['repairs'].append({'document':name,'unreferenced_duplicate_id':key,'occurrences':count})
  title=r.find('{'+HTML+'}head/{'+HTML+'}title')
- if title is not None and name in ['OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml','OEBPS/readerch9.xhtml','OEBPS/readerch10.xhtml']:
-  title.text={'OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Systèmes de dérivation','OEBPS/readerch9.xhtml':'9 Le calcul des séquents','OEBPS/readerch10.xhtml':'10 Déduction naturelle'}[name]
+ if title is not None and name in ['OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml','OEBPS/readerch9.xhtml','OEBPS/readerch10.xhtml','OEBPS/readerch11.xhtml']:
+  title.text={'OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Systèmes de dérivation','OEBPS/readerch9.xhtml':'9 Le calcul des séquents','OEBPS/readerch10.xhtml':'10 Déduction naturelle','OEBPS/readerch11.xhtml':'11 Tableaux'}[name]
  if title is not None and not (title.text or '').strip():
-  title.text='OpenLogic : édition française — Des ensembles à la déduction naturelle'
+  title.text='OpenLogic : édition française — Des ensembles aux tableaux'
  r.set('{http://www.w3.org/XML/1998/namespace}lang','fr')
  assert before_prose==prose(r),name
  for img in r.xpath('//*[local-name()="img"]'):
@@ -163,6 +164,11 @@ for name,raw in list(data.items()):
     img.set('alt',img.get('alt')+' Un carré marque la fin de la démonstration.')
   if img.get('src') in ['reader29x.svg','reader30x.svg','reader62x.svg']:
    img.set('id',{'reader29x.svg':'fr-proof-sequent','reader30x.svg':'fr-proof-nd','reader62x.svg':'fr-proof-tableau'}[img.get('src')])
+  if name == 'OEBPS/readerch11.xhtml':
+   img.set('id','fr-tableau-'+re.search(r'\d+',img.get('src')).group())
+   img.set('class','fr-tableau-diagram')
+   wrapper=etree.Element('{'+HTML+'}span',{'class':'fr-tableau-scroll'})
+   wrapper.tail=img.tail;img.tail=None;img.getparent().replace(img,wrapper);wrapper.append(img)
  data[name]=etree.tostring(r,encoding='utf-8',xml_declaration=True,doctype='<!DOCTYPE html>')
  report['documents'].append({'path':name,'prose_sha256_before_and_after':sha(before_prose.encode()),'body_text_before_sha256':sha(before.encode()),'body_text_after_sha256':sha(bodytext(r).encode()),'math_roots':len(mm),'explicit_math_repairs':changed})
 # epub.js rewrites image URLs to blob URLs, defeating the generated src-prefix
@@ -173,10 +179,26 @@ data['OEBPS/reader.css']+=b'\n/* Scale the Hilbert diagram inside its narrower q
 data['OEBPS/reader.css']+=b'\n.fr-truth-table { border-collapse: collapse; }\n.fr-truth-table colgroup + colgroup { border-left: 1px solid currentColor; }\n'
 data['OEBPS/reader.css']+=b'\n#fr-proof-sequent, #fr-proof-nd, #fr-proof-tableau { display: block; margin: 1em auto; }\n'
 data['OEBPS/reader.css']+=b'\n/* Keep sequent diagrams legible; scroll wide groups inside their own block. */\n.fr-proof-scroll { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; text-indent: 0; margin: 1em 0; }\nimg.fr-proof-diagram { display: block; max-width: none !important; width: auto !important; height: auto; margin: 0 auto; }\n'
+data['OEBPS/reader.css']+=b'\n/* Keep tableau rules and trees legible; scroll wide diagrams locally. */\n.fr-tableau-scroll { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; text-indent: 0; margin: 1em 0; }\nimg.fr-tableau-diagram { display: block; max-width: none !important; width: auto !important; height: auto; margin: 0 auto; }\n'
 report['repairs'].append({'document':'OEBPS/readerch10.xhtml','source_grounded_proof_descriptions':44,'proof_images_at_intrinsic_size_with_local_horizontal_scrolling':44,'observed_qed_squares_described':[149,151,153,160]})
 report['repairs'].append({'document':'OEBPS/readerch9.xhtml','source_grounded_proof_descriptions':54,'proof_images_at_intrinsic_size_with_local_horizontal_scrolling':54,'observed_qed_squares_described':[104,106,108,116]})
+report['repairs'].append({'document':'OEBPS/readerch11.xhtml','source_grounded_tableau_descriptions':32,'rule_frames':5,'tableau_trees':27,'tableau_images_at_intrinsic_size_with_local_horizontal_scrolling':32})
 # TeX4ht carried mathml onto a bibliography document without mathematics.
 opf=etree.fromstring(data["OEBPS/content.opf"])
+metadata={
+ 'title':'OpenLogic : édition française — Des ensembles aux tableaux',
+ 'description':'Édition française partielle : ensembles, relations, fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, systèmes de dérivation, calcul des séquents, déduction naturelle et tableaux. Onze chapitres, 92 unités sur 722, avec démonstrations, exemples et exercices. Texte correspondant à la neuvième livraison.',
+ 'identifier':'https://github.com/KokunoYumeto/OpenLogic-fr/releases/tag/v0.9.0-tableaux',
+ 'date':'2026-09-20T00:00:00Z',
+}
+for key,value in metadata.items():
+ elements=opf.xpath('//*[local-name()=$key]',key=key)
+ assert len(elements)==1,(key,len(elements))
+ elements[0].text=value
+modified=opf.xpath('//*[local-name()="meta" and @property="dcterms:modified"]')
+assert len(modified)==1
+modified[0].text=metadata['date']
+report['repairs'].append({'document':'OEBPS/content.opf','release_metadata':metadata})
 for item in opf.xpath('//*[local-name()="manifest"]/*'):
  if item.get("media-type")!="application/xhtml+xml":continue
  document="OEBPS/"+item.get("href")
@@ -189,6 +211,12 @@ for item in opf.xpath('//*[local-name()="manifest"]/*'):
   report["repairs"].append({"document":document,"mathml_manifest_property":has_math})
 data["OEBPS/content.opf"]=etree.tostring(opf,encoding="utf-8",xml_declaration=True)
 ncx=etree.fromstring(data['OEBPS/reader.ncx'])
+doc_titles=ncx.xpath('//*[local-name()="docTitle"]/*[local-name()="text"]')
+assert len(doc_titles)==1
+doc_titles[0].text=metadata['title']
+uids=ncx.xpath('//*[local-name()="meta" and @name="dtb:uid"]')
+assert len(uids)==1
+uids[0].set('content',metadata['identifier'])
 empty_nav=ncx.xpath('//*[local-name()="content" and (@src="readerch8.xhtml#x10-72000" or @src="readerch8.xhtml#Q1-10-87")]')
 assert len(empty_nav)==2
 for content in empty_nav:
@@ -196,6 +224,7 @@ for content in empty_nav:
 for i,point in enumerate(ncx.xpath('//*[local-name()="navPoint"]'),1):point.set('playOrder',str(i))
 data['OEBPS/reader.ncx']=etree.tostring(ncx,encoding='utf-8',xml_declaration=True)
 report['repairs'].append({'document':'OEBPS/reader.ncx','empty_chapter8_exercise_navigation_removed':2})
+report['repairs'].append({'document':'OEBPS/reader.ncx','release_title':metadata['title'],'release_identifier':metadata['identifier']})
 with zipfile.ZipFile(OUTPUT,'w') as z:
  for name in ['mimetype']+sorted(set(data)-{'mimetype'}):
   i=zipfile.ZipInfo(name,(2026,9,6,0,0,0))

@@ -1,7 +1,7 @@
-% Édition française OpenLogic :83unités sur722,dix chapitres.
+% Édition française OpenLogic : 92 unités sur 722, onze chapitres.
 % LaTeX cumulatif contenant tout le texte de cette livraison.
 % Styles, figures, bibliographie et instructions sont fournis dans le ZIP source.
-% Les dix importations du premier ordre inactives sont conservées dans le pilote modulaire du ZIP.
+% Les quinze importations du premier ordre inactives sont conservées dans les pilotes modulaires du ZIP.
 \documentclass[11pt,a4paper,openany]{memoir}
 \usepackage{mathpazo}
 \usepackage{fontspec}
@@ -56,12 +56,13 @@
 \checkandfixthelayout
 \linespread{1.05}
 \setlength{\emergencystretch}{2em}
+\hfuzz=3pt
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
 \setlength{\cftbeforechapterskip}{0.65em}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la déduction naturelle},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles aux tableaux},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents et déduction naturelle},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents, déduction naturelle et tableaux},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -72,15 +73,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\à la déduction naturelle\par}
+{\sffamily\huge Des ensembles\\aux tableaux\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Huitième livraison : dix chapitres\par}
+{\large Neuvième livraison : onze chapitres\par}
 \vspace{4mm}
-Cette livraison comprend soixante-treize sections et leurs dix chapitres d’organisation,
-soit 83 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend quatre-vingt-une sections et leurs onze chapitres d’organisation,
+soit 92 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -92,7 +93,9 @@ propositionnelles; le huitième présente les systèmes de preuve,
 leur correction et leur complétude. Le neuvième développe le calcul
 des séquents propositionnel. Le dixième expose la déduction naturelle :
 règles, décharge des hypothèses, construction de dérivations,
-cohérence et théorème de correction.
+cohérence et théorème de correction. Le onzième présente les tableaux
+analytiques signés : règles, construction, dérivabilité, cohérence et
+correction.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -7276,8 +7279,8 @@ Les systèmes de !!{derivation} les plus simples, et historiquement les
 premiers, pour la logique du premier ordre étaient \emph{axiomatiques}.
 Une suite de !!{formula}s constitue une !!{derivation} dans un tel
 système si chacune de ses !!{formula}s appartient à un ensemble fixé
-d'« axiomes » ou se déduit de !!{formula}s antérieures de la suite par
-l'une d'un nombre fixé de « règles d'inférence ». On peut vérifier
+d'«~axiomes~» ou se déduit de !!{formula}s antérieures de la suite par
+l'une d'un nombre fixé de «~règles d'inférence~». On peut vérifier
 mécaniquement si une !!{formula} est un axiome et si elle se déduit
 correctement d'autres !!{formula}s par l'une de ces règles. Les systèmes
 axiomatiques de !!{derivation} sont faciles à décrire et se prêtent bien
@@ -7296,9 +7299,9 @@ de !!{formula}s plutôt que par des suites. On voit ainsi plus facilement
 de quelles autres parties dépend chaque partie d'une !!{derivation}.
 
 Pour une logique donnée, par exemple celle du premier ordre, les
-différents systèmes de !!{derivation} précisent donc de différentes
-manières ce que signifie être un \emph{théorème} pour un
-!!{sentence}, ou être !!{derivable} à partir d'autres !!{sentence}s.
+différents systèmes de !!{derivation} définissent donc différemment la
+notion de \emph{théorème} et la relation qui exprime qu'un !!{sentence}
+est !!{derivable} à partir d'autres !!{sentence}s.
 Quelle que soit la présentation retenue (!!{derivation}s axiomatiques,
 déductions naturelles, !!{derivation}s en calcul des séquents, arbres de
 vérité ou réfutations par résolution), nous voulons que ces relations
@@ -7483,10 +7486,10 @@ d'inférence permettent de les « !!{discharge} ». Par exemple, si une
 figure~$!A$, la règle $\Intro{\lif}$ permet d'inférer~$!A \lif !B$ et
 de décharger toute hypothèse choisie de la forme~$!A$. Pour indiquer quelle
 inférence décharge quelles hypothèses, on marque cette inférence et
-les hypothèses qu'elle décharge d'un même numéro. Les hypothèses encore
-!!{undischarged}s à la fin de la !!{derivation} suffisent ensemble à
-garantir la vérité de la conclusion. Une !!{derivation} établit donc
-que sa conclusion est une conséquence logique de ses hypothèses
+les hypothèses qu'elle décharge d'un même numéro. Si les hypothèses qui
+restent !!{undischarged}s à la fin de la !!{derivation} sont vraies, la
+conclusion l'est également. Une !!{derivation} établit donc que sa
+conclusion est une conséquence logique de ses hypothèses
 !!{undischarged}s.
 
 La relation $\Gamma \Proves !A$ fondée sur la déduction naturelle est
@@ -9457,7 +9460,7 @@ Ce chapitre présente un système de déduction naturelle dans le style
 de Gentzen et de Prawitz.
   
 Pour inclure ou exclure les développements relatifs à la déduction
-naturelle en tant que système de preuve, utiliser le tag « prfND ».
+naturelle en tant que système de preuve, utiliser l'étiquette « prfND ».
 \end{editorial}
 
 
@@ -10917,8 +10920,8 @@ ne satisfait donc $\Gamma$; cet ensemble est insatisfaisable.
 La première propriété de l'introduction concerne explicitement
 la dérivabilité sans hypothèses. Dans le cas de l'élimination de
 la conjonction, « structure » est adapté en « valuation » pour la
-branche propositionnelle. Le nom de la règle d'élimination
-universelle utilise la même commande logique que les autres règles.
+branche propositionnelle. La règle d'élimination universelle est
+désignée de manière uniforme avec les autres règles.
 L'élimination de la négation, traitée ensuite, est ajoutée à la
 liste initiale des règles à plusieurs prémisses. Les cas proposés
 en exercice restent à compléter par le lecteur.
@@ -10936,6 +10939,1626 @@ en exercice restent à compléter par le lecteur.
 
 \endgroup
 % END embedded source: content/first-order-logic/natural-deduction/natural-deduction.tex
+
+\addtocontents{toc}{\protect\Needspace{4\baselineskip}}
+
+% BEGIN embedded source: content/first-order-logic/tableaux/tableaux.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{tableaux}
+
+
+\iftag{FOL}
+      {\olchapter{fol}{tab}{Tableaux}}
+      {\olchapter{pl}{tab}{Tableaux}}
+
+\begin{editorial}
+Ce chapitre présente un système de tableaux analytiques signés.
+  
+Pour inclure ou exclure les développements relatifs aux tableaux en
+tant que système de preuve, utiliser l'étiquette « prfTab ».
+
+Note de l'édition française : l'original mentionne ici par erreur
+la déduction naturelle ; l'étiquette et le contenu du chapitre montrent
+qu'il s'agit des tableaux.
+\end{editorial}
+
+
+% BEGIN embedded source: content/first-order-logic/tableaux/rules-and-proofs.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{rules-and-proofs}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{rul}}
+      {\olfileid[fr]{pl}{tab}{rul}}
+
+\olsection{Règles et \usetoken{p}{tableau}}
+
+!!^a{tableau} constitue une exploration systématique des différentes
+manières dont !!a{sentence} peut être vraie ou fausse dans
+!!a{structure}. Ses éléments de base sont des !!{signed formula}s :
+des !!{sentence}s munis d'un « signe » de valeur de vérité, soit
+$\True$, soit~$\False$. Ces !!{formula}s signées sont disposées dans
+un arbre qui croît vers le bas.
+
+\begin{defn}
+  Une \emph{!!{signed formula}} est un couple formé d'une valeur de
+  vérité et d'!!a{sentence}, autrement dit :
+  \[
+  \sFmla{\True}{!A} \text{ ou } \sFmla{\False}{!A}.
+  \]
+\end{defn}
+
+Intuitivement, on peut lire $\sFmla{\True}{!A}$ comme « $!A$ pourrait
+être vraie » et $\sFmla{\False}{!A}$ comme « $!A$ pourrait être
+fausse » dans une !!{structure}.
+
+Chaque !!{signed formula} de l'arbre est soit une \emph{hypothèse}
+(les hypothèses sont placées tout en haut de l'arbre), soit obtenue
+d'!!a{signed formula} située plus haut par l'une des règles d'inférence.
+Deux règles correspondent à chaque !!{main operator} possible de la
+!!{formula} précédente : l'une lorsque le signe est~$\True$, l'autre
+lorsqu'il est~$\False$. Certaines règles ramifient l'arbre ; d'autres
+se contentent d'ajouter des !!{signed formula}s à la branche.
+Une règle peut, et doit souvent, être appliquée non à la !!{signed formula}
+qui précède immédiatement, mais à n'importe quelle !!{signed formula}
+qui figure sur la branche, entre la racine et le point d'application.
+
+Une branche est \emph{fermée} lorsqu'elle contient à la fois
+$\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$. Un !!{tableau} est fermé
+lorsque toutes ses branches le sont. Selon l'interprétation intuitive,
+chaque branche décrit une possibilité conjointe, mais
+$\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$ y sont incompatibles.
+Une branche fermée élimine donc la possibilité qu'elle
+décrit. En particulier, un !!{tableau} fermé élimine toute possibilité
+de rendre vraies toutes les hypothèses de la forme
+$\sFmla{\True}{!A}$ et fausses toutes celles de la forme
+$\sFmla{\False}{!A}$.
+
+Un !!{tableau} fermé \emph{pour $!A$} est un !!{tableau} fermé dont la
+racine est~$\sFmla{\False}{!A}$. S'il existe un tel !!{tableau}, toutes
+les possibilités où $!A$ serait fausse sont éliminées ; $!A$ doit donc
+être vraie dans toute !!{structure}.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/rules-and-proofs.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/tableaux/propositional-rules.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{propositional-rules}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{prl}}
+      {\olfileid[fr]{pl}{tab}{prl}}
+
+\olsection{Règles propositionnelles}
+
+\subsection{Règles pour $\lnot$}
+
+\begin{defish}
+\AxiomC{\sFmla{\True}{\lnot !A}}
+\RightLabel{\TRule{\True}{\lnot}}
+\UnaryInfC{\sFmla{\False}{!A}}
+\DisplayProof
+\hfill
+\AxiomC{\sFmla{\False}{\lnot !A}}
+\RightLabel{\TRule{\False}{\lnot}}
+\UnaryInfC{\sFmla{\True}{!A}}
+\DisplayProof
+\end{defish}
+
+\subsection{Règles pour $\land$}
+
+\begin{defish}\noindent
+\AxiomC{\sFmla{\True}{!A \land !B}}
+\RightLabel{\TRule{\True}{\land}}
+\UnaryInfC{\sFmla{\True}{!A}}
+\noLine
+\UnaryInfC{\sFmla{\True}{!B}}
+\DisplayProof
+\hfill
+\AxiomC{\sFmla{\False}{!A \land !B}}
+\RightLabel{\TRule{\False}{\land}}
+\UnaryInfC{$\sFmla{\False}{!A} \quad \mid \quad \sFmla{\False}{!B}$}
+\DisplayProof
+\end{defish}
+
+\subsection{Règles pour $\lor$}
+
+\begin{defish}
+\AxiomC{\sFmla{\True}{!A \lor !B}}
+\RightLabel{\TRule{\True}{\lor}}
+\UnaryInfC{$\sFmla{\True}{!A} \quad \mid \quad \sFmla{\True}{!B}$}
+\DisplayProof
+\hfill
+\AxiomC{\sFmla{\False}{!A \lor !B}}
+\RightLabel{\TRule{\False}{\lor}}
+\UnaryInfC{\sFmla{\False}{!A}}
+\noLine
+\UnaryInfC{\sFmla{\False}{!B}}
+\DisplayProof
+\end{defish}
+
+\subsection{Règles pour $\lif$}
+
+\begin{defish}
+\AxiomC{\sFmla{\True}{!A \lif !B}}
+\RightLabel{\TRule{\True}{\lif}}
+\UnaryInfC{$\sFmla{\False}{!A} \quad \mid \quad \sFmla{\True}{!B}$}
+\DisplayProof
+\hfill
+\AxiomC{\sFmla{\False}{!A \lif !B}}
+\RightLabel{\TRule{\False}{\lif}}
+\UnaryInfC{\sFmla{\True}{!A}}
+\noLine
+\UnaryInfC{\sFmla{\False}{!B}}
+\DisplayProof
+\end{defish}
+
+\subsection{La règle de coupure}
+
+\begin{defish}
+\AxiomC{}
+\RightLabel{\Cut}
+\UnaryInfC{$\sFmla{\True}{!A} \quad \mid \quad \sFmla{\False}{!A}$}
+\DisplayProof
+\end{defish}
+
+La règle \Cut{} ne s'applique pas « à » une !!{signed formula}
+antérieure. Elle permet plutôt de scinder chaque branche d'!!a{tableau}
+en deux : l'une contient $\sFmla{\True}{!A}$, l'autre
+$\sFmla{\False}{!A}$. Elle n'est pas nécessaire : tout ensemble de
+!!{signed formula}s qui possède un !!{tableau} fermé en possède un sans
+\Cut. Elle permet toutefois de combiner commodément des !!{tableau}s.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/propositional-rules.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/tableaux/derivations.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{derivations}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{der}}
+      {\olfileid[fr]{pl}{tab}{der}}
+
+\olsection{\usetoken{P}{tableau}}
+
+\begin{explain}
+Nous avons défini les hypothèses et donné les règles d'inférence.
+Les !!{tableau}s sont engendrés inductivement à partir d'elles :
+chaque !!{tableau} est soit une branche unique formée d'une ou plusieurs
+hypothèses, soit le résultat de l'application d'une règle d'inférence
+à une branche d'!!a{tableau}.
+\end{explain}
+
+\begin{defn}[!!^{tableau}]
+!!^a{tableau} pour les hypothèses $\sFmla{S_1}{!A_1}$, \dots,
+$\sFmla{S_n}{!A_n}$, où chaque $S_i$ vaut $\True$ ou~$\False$, est un
+arbre fini de !!{signed formula}s qui vérifie les conditions suivantes :
+\begin{enumerate}
+\item Les $n$ !!{signed formula}s placées tout en haut de l'arbre sont
+  $\sFmla{S_i}{!A_i}$, l'une au-dessous de l'autre.
+\item Toute !!{signed formula} de l'arbre qui n'est pas une hypothèse
+  résulte de l'application correcte d'une règle d'inférence à
+  !!a{signed formula} située plus haut sur sa branche.
+\end{enumerate}
+Une branche d'!!a{tableau} est \emph{fermée} si et seulement si elle
+contient à la fois $\sFmla{\True}{!A}$ et~$\sFmla{\False}{!A}$ ; elle
+est \emph{ouverte} dans le cas contraire. !!^a{tableau} dont toutes les
+branches sont fermées est un \emph{!!{tableau} fermé} pour son ensemble
+d'hypothèses. Si !!a{tableau} n'est pas fermé, c'est-à-dire s'il contient
+au moins une branche ouverte, il est \emph{ouvert}.
+\end{defn}
+
+\begin{ex}
+  Tout ensemble d'hypothèses constitue à lui seul !!a{tableau}, mais
+  celui-ci n'est généralement pas fermé. Il ne l'est manifestement que
+  si les hypothèses contiennent déjà une paire de !!{signed formula}s
+  $\sFmla{\True}{!A}$ et~$\sFmla{\False}{!A}$.
+
+  À partir d'!!a{tableau}, ouvert ou fermé, on peut en obtenir un nouveau,
+  plus grand, en appliquant l'une des règles d'inférence à
+  !!a{signed formula} qui y figure et dont la formule est~$!A$. La règle ajoute une ou plusieurs
+  !!{signed formula}s à l'extrémité de toute branche qui contient
+  l'occurrence de~$!A$ à laquelle elle est appliquée.
+
+  Considérons par exemple l'hypothèse $\sFmla{\True}{!A \land \lnot
+    !A}$. Voici le !!{tableau} ouvert qui ne contient que cette hypothèse :
+  \begin{center}
+    \begin{tableau}{}
+      [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss]
+    \end{tableau}{}
+  \end{center}
+  On en obtient un nouveau !!{tableau} en appliquant la règle
+  $\TRule{\True}{\land}$ à l'hypothèse. Cette règle permet d'ajouter
+  deux lignes au !!{tableau}, $\sFmla{\True}{!A}$ et
+  $\sFmla{\True}{\lnot !A}$ :
+  \begin{center}
+    \begin{tableau}{}
+      [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss
+        [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\land}[1]},
+          [\sFmla{\True}{\lnot \formula{A}}, just={\TRule{\True}{\land}[1]}
+          ]
+        ]
+      ]
+    \end{tableau}{}
+  \end{center}
+  Lorsque nous écrivons des !!{tableau}s, nous indiquons à droite les
+  règles appliquées. Ainsi, $\TRule{\True}{\land} 1$ signifie que la
+  !!{signed formula} de cette ligne résulte de l'application de la règle
+  $\TRule{\True}{\land}$ à la !!{signed formula} de la ligne~$1$.
+  Ce nouveau !!{tableau} contient maintenant d'autres
+  !!{signed formula}s, mais une seule d'entre elles,
+  $\sFmla{\True}{\lnot !A}$, permet encore l'application d'une règle,
+  en l'occurrence $\TRule{\True}{\lnot}$. On obtient ainsi le
+  !!{tableau} fermé suivant :
+  \begin{center}
+    \begin{tableau}{}
+      [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss
+        [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\land}[1]}
+          [\sFmla{\True}{\lnot \formula{A}}, just={\TRule{\True}{\land}[1]}
+            [\sFmla{\False}{\formula{A}}, just={\TRule{\True}{\lnot}[3]}, close]
+          ]
+        ]
+      ]
+    \end{tableau}{}
+  \end{center}
+\end{ex}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/derivations.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/tableaux/proving-things.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proving-things}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{pro}}
+      {\olfileid[fr]{pl}{tab}{pro}}
+
+\olsection{Exemples de \usetoken{p}{tableau}}
+
+\begin{ex}
+Cherchons un !!{tableau} fermé pour l'!!{sentence}
+$(!A \land !B) \lif !A$.
+
+Commençons par inscrire l'hypothèse correspondante en haut du
+!!{tableau}.
+\begin{oltableau}
+  [\sFmla{\False}{(\formula{A} \land \formula{B}) \lif \formula{A}},
+    just = \TAss]
+\end{oltableau}
+
+Il n'y a qu'une hypothèse, donc qu'une seule !!{signed formula} à
+laquelle appliquer une règle. Pour toute !!{signed formula}, il existe
+toujours au plus une règle applicable : celle qui correspond au signe
+et au !!{main operator} de l'!!{sentence}. Dans le cas présent, il faut
+donc appliquer $\TRule{\False}{\lif}$.
+\begin{oltableau}
+  [\sFmla{\False}{(\formula{A} \land \formula{B}) \lif \formula{A}},
+    checked, just = \TAss
+    [\sFmla{\True}{\formula{A} \land \formula{B}},
+      just={\TRule{\False}{\lif}[1]}
+      [\sFmla{\False}{\formula{A}}, just={\TRule{\False}{\lif}[1]}]
+    ]
+  ]
+\end{oltableau}
+Pour repérer les !!{signed formula}s auxquelles nous avons appliqué la
+règle correspondante, nous plaçons une coche à côté de l'énoncé. Il ne
+faut cependant placer cette coche que si la règle a été appliquée sur
+toutes les branches ouvertes. Dès que la règle correspondante à
+!!a{signed formula} a été appliquée sur chacune d'elles, il n'est plus
+nécessaire de revenir à cette formule pour appliquer de nouveau la
+règle. Il n'y a ici qu'une branche ; une seule application suffit donc.
+Les coches ne sont qu'un moyen pratique de construire les tableaux et
+ne font pas officiellement partie de leur syntaxe.
+
+Une nouvelle !!{signed formula} permet l'application d'une règle :
+$\sFmla{\True}{!A \land !B}$ à la ligne~$2$. L'application de
+$\TRule{\True}{\land}$ donne :
+\begin{oltableau}
+  [\sFmla{\False}{(\formula{A} \land \formula{B}) \lif \formula{A}},
+    checked, just = \TAss
+    [\sFmla{\True}{\formula{A} \land \formula{B}},
+      just={\TRule{\False}{\lif}[1]}, checked
+      [\sFmla{\False}{\formula{A}}, just={\TRule{\False}{\lif}[1]}
+        [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\land}[2]}
+          [\sFmla{\True}{\formula{B}}, just={\TRule{\True}{\land}[2]}, close
+          ]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+La branche contient maintenant $\sFmla{\True}{!A}$ à la ligne~$4$ et
+$\sFmla{\False}{!A}$ à la ligne~$3$ ; elle est donc fermée. Comme c'est
+la seule branche, le !!{tableau} est fermé. Nous avons ainsi trouvé un
+!!{tableau} fermé pour~$(!A \land !B) \lif !A$.
+\end{ex}
+
+\begin{ex}
+Cherchons maintenant un !!{tableau} fermé pour
+$(\lnot !A \lor !B) \lif (!A \lif !B)$.
+
+Commençons par l'hypothèse correspondante :
+\begin{oltableau}
+  [\sFmla{\False}{(\lnot \formula{A} \lor \formula{B}) \lif
+      (\formula{A} \lif \formula{B})}, just=\TAss]
+\end{oltableau}
+L'unique !!{signed formula} de ce !!{tableau} a pour
+!!{main operator}~$\lif$ et pour signe~$\False$. L'application de
+$\TRule{\False}{\lif}$ donne :
+\begin{oltableau}
+  [\sFmla{\False}{(\lnot \formula{A} \lor \formula{B})
+      \lif (\formula{A} \lif \formula{B})}, just=\TAss, checked
+    [\sFmla{\True}{\lnot \formula{A} \lor \formula{B}},
+      just={\TRule{\False}{\lif}[1]}
+      [\sFmla{\False}{(\formula{A} \lif \formula{B})},
+        just={\TRule{\False}{\lif}[1]}
+      ]
+    ]
+  ]
+\end{oltableau}
+Nous pouvons maintenant appliquer soit~$\TRule{\True}{\lor}$ à la
+ligne~$2$, soit $\TRule{\False}{\lif}$ à la ligne~$3$. L'ordre choisi
+est indifférent, pourvu que la règle correspondant à chaque
+!!{signed formula} soit appliquée sur toutes les branches. Prenons la
+première. La règle $\TRule{\True}{\lor}$ ramifie le !!{tableau} ; ses
+deux conclusions deviennent les nouvelles !!{signed formula}s ajoutées
+aux deux branches ainsi créées. On obtient :
+\begin{oltableau}
+  [\sFmla{\False}{(\lnot \formula{A} \lor \formula{B}) \lif
+      (\formula{A} \lif \formula{B})}, just=\TAss, checked
+    [\sFmla{\True}{\lnot \formula{A} \lor \formula{B}},
+      just={\TRule{\False}{\lif}[1]}, checked
+      [\sFmla{\False}{(\formula{A} \lif \formula{B})},
+        just={\TRule{\False}{\lif}[1]}
+        [\sFmla{\True}{\lnot \formula{A}}, just={\TRule{\True}{\lor}[2]}]
+        [\sFmla{\True}{\formula{B}}, just={\TRule{\True}{\lor}[2]}]
+      ]
+    ]
+  ]
+\end{oltableau}
+Nous n'avons pas encore appliqué $\TRule{\False}{\lif}$ à la ligne~$3$ ;
+faisons-le maintenant sur les deux branches. Rappelons que nous ne
+cochons !!a{signed formula} qu'après avoir appliqué la règle
+correspondante sur toutes les branches ouvertes. Il est donc utile
+d'appliquer une règle à l'extrémité de chaque branche contenant la
+!!{signed formula} visée. Nous n'aurons ainsi pas à revenir à cette
+!!{signed formula} plus bas sur les différentes branches.
+\begin{oltableau}
+  [\sFmla{\False}{(\lnot \formula{A} \lor \formula{B}) \lif
+      (\formula{A} \lif \formula{B})}, just=\TAss, checked
+    [\sFmla{\True}{\lnot \formula{A} \lor \formula{B}},
+      just={\TRule{\False}{\lif}[1]}, checked
+      [\sFmla{\False}{(\formula{A} \lif \formula{B})},
+        just={\TRule{\False}{\lif}[1]}, checked
+        [\sFmla{\True}{\lnot \formula{A}}, just={\TRule{\True}{\lor}[2]}
+          [\sFmla{\True}{\formula{A}}, just={\TRule{\False}{\lif}[3]}
+            [\sFmla{\False}{\formula{B}}, just={\TRule{\False}{\lif}[3]}]
+          ]
+        ]
+        [\sFmla{\True}{\formula{B}}, just={\TRule{\True}{\lor}[2]}
+          [\sFmla{\True}{\formula{A}}, just={\TRule{\False}{\lif}[3]}
+            [\sFmla{\False}{\formula{B}}, just={\TRule{\False}{\lif}[3]}, close]
+          ]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+La branche de droite est maintenant fermée. Sur celle de gauche, nous
+pouvons encore appliquer $\TRule{\True}{\lnot}$ à la ligne~$4$. On
+obtient alors~$\sFmla{\False}{!A}$, ce qui ferme la branche gauche :
+\begin{oltableau}
+  [\sFmla{\False}{(\lnot \formula{A} \lor \formula{B}) \lif
+      (\formula{A} \lif \formula{B})}, just=\TAss, checked
+    [\sFmla{\True}{\lnot \formula{A} \lor \formula{B}},
+      just={\TRule{\False}{\lif}[1]}, checked
+      [\sFmla{\False}{(\formula{A} \lif \formula{B})},
+        just={\TRule{\False}{\lif}[1]}, checked
+        [\sFmla{\True}{\lnot \formula{A}}, just={\TRule{\True}{\lor}[2]}
+          [\sFmla{\True}{\formula{A}}, just={\TRule{\False}{\lif}[3]}
+            [\sFmla{\False}{\formula{B}}, just={\TRule{\False}{\lif}[3]}
+              [\sFmla{\False}{\formula{A}},
+                just={\TRule{\True}{\lnot}[4]}, close]
+            ]
+          ]
+        ]
+        [\sFmla{\True}{\formula{B}}, just={\TRule{\True}{\lor}[2]}
+          [\sFmla{\True}{\formula{A}}, just={\TRule{\False}{\lif}[3]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lif}[3]}, close]
+          ]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+\end{ex}
+
+\begin{ex}
+On peut construire des !!{tableau}s ayant un nombre quelconque de
+!!{signed formula}s pour hypothèses. Il faut souvent appliquer plusieurs
+règles qui produisent des ramifications, et !!a{tableau} peut en général
+comporter un nombre quelconque de branches. Considérons par exemple
+!!a{tableau} pour
+$\{\sFmla{\True}{!A \lor (!B \land !C)}, \sFmla{\False}{(!A \lor !B) \land (!A
+  \lor !C)}\}$. Commençons par appliquer $\TRule{\True}{\lor}$ à la
+première hypothèse :
+\begin{oltableau}
+  [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
+    just=\TAss, checked
+    [\sFmla{\False}{(\formula{A} \lor \formula{B}) \land
+        (\formula{A} \lor \formula{C})}, just=\TAss
+      [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\lor}[1]}]
+      [\sFmla{\True}{\formula{B} \land \formula{C}},
+        just={\TRule{\True}{\lor}[1]}]
+    ]
+  ]
+\end{oltableau}
+Nous pouvons maintenant appliquer $\TRule{\False}{\land}$ à la
+ligne~$2$. Faisons-le simultanément sur les deux branches ; nous pouvons
+donc cocher la ligne~$2$ :
+\begin{oltableau}
+  [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
+    just=\TAss, checked
+    [\sFmla{\False}{(\formula{A} \lor \formula{B}) \land
+        (\formula{A} \lor \formula{C})}, just=\TAss, checked
+      [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}]
+      ]
+      [\sFmla{\True}{\formula{B} \land \formula{C}},
+        just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}]
+      ]
+    ]
+  ]
+\end{oltableau}
+Appliquons ensuite $\TRule{\False}{\lor}$ sur toutes les branches qui
+contiennent $!A \lor !B$ :
+\begin{oltableau}
+  [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
+    just=\TAss, checked
+    [\sFmla{\False}{(\formula{A} \lor \formula{B}) \land
+        (\formula{A} \lor \formula{C})}, just=\TAss, checked
+      [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}}, just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}]
+      ]
+      [\sFmla{\True}{\formula{B} \land \formula{C}},
+        just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}}, just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lor}[4]}]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}]
+      ]
+    ]
+  ]
+\end{oltableau}
+La branche située tout à gauche est désormais fermée. Appliquons
+maintenant $\TRule{\False}{\lor}$ à $!A \lor !C$ :
+\begin{oltableau}
+  [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
+    just=\TAss, checked
+    [\sFmla{\False}{(\formula{A} \lor \formula{B}) \land
+        (\formula{A} \lor \formula{C})}, just=\TAss, checked
+      [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}, move by=2
+            [\sFmla{\False}{\formula{C}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+      ]
+      [\sFmla{\True}{\formula{B} \land \formula{C}},
+        just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lor}[4]}
+            ]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}, move by=2
+            [\sFmla{\False}{\formula{C}},
+              just={\TRule{\False}{\lor}[4]}]
+          ]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+Pour plus de clarté, nous avons placé plus bas le résultat de la seconde
+application de $\TRule{\False}{\lor}$. Ce déplacement n'était pas
+nécessaire ici, puisque les justifications auraient été identiques.
+
+Deux branches restent ouvertes, et $\sFmla{\True}{!B \land !C}$ à la
+ligne~$3$ n'est toujours pas cochée. Appliquons-lui
+$\TRule{\True}{\land}$ pour obtenir un !!{tableau} fermé :
+\begin{oltableau}
+  [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
+    just=\TAss, checked
+    [\sFmla{\False}{(\formula{A} \lor \formula{B}) \land
+        (\formula{A} \lor \formula{C})}, just=\TAss, checked
+      [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{C}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+      ]
+      [\sFmla{\True}{\formula{B} \land \formula{C}},
+        just={\TRule{\True}{\lor}[1]}, checked
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lor}[4]}
+              [\sFmla{\True}{\formula{B}},
+                just={\TRule{\True}{\land}[3]}
+                [\sFmla{\True}{\formula{C}},
+                  just={\TRule{\True}{\land}[3]},close
+                ]
+              ]
+            ]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{C}},
+              just={\TRule{\False}{\lor}[4]}
+              [\sFmla{\True}{\formula{B}},
+                just={\TRule{\True}{\land}[3]}
+                [\sFmla{\True}{\formula{C}},
+                  just={\TRule{\True}{\land}[3]},close
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+
+À titre de comparaison, voici un !!{tableau} fermé pour le même ensemble
+d'hypothèses, dans lequel les règles sont appliquées dans un autre ordre :
+\begin{oltableau}
+  [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
+    just=\TAss, checked
+    [\sFmla{\False}{(\formula{A} \lor \formula{B}) \land
+        (\formula{A} \lor \formula{C})}, just=\TAss, checked
+      [\sFmla{\False}{\formula{A} \lor \formula{B}},
+        just={\TRule{\False}{\land}[2]}, checked
+        [\sFmla{\False}{\formula{A}},
+          just={\TRule{\False}{\lor}[3]}
+          [\sFmla{\False}{\formula{B}},
+            just={\TRule{\False}{\lor}[3]}
+            [\sFmla{\True}{\formula{A}},
+              just={\TRule{\True}{\lor}[1]},close
+            ]
+            [\sFmla{\True}{\formula{B} \land \formula{C}},
+              just={\TRule{\True}{\lor}[1]}, checked
+              [\sFmla{\True}{\formula{B}},
+                just={\TRule{\True}{\land}[6]}
+                [\sFmla{\True}{\formula{C}},
+                  just={\TRule{\True}{\land}[6]},close
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+      [\sFmla{\False}{\formula{A} \lor \formula{C}},
+        just={\TRule{\False}{\land}[2]}, checked
+        [\sFmla{\False}{\formula{A}},
+          just={\TRule{\False}{\lor}[3]}
+          [\sFmla{\False}{\formula{C}},
+            just={\TRule{\False}{\lor}[3]}
+            [\sFmla{\True}{\formula{A}},
+              just={\TRule{\True}{\lor}[1]},close
+            ]
+            [\sFmla{\True}{\formula{B} \land \formula{C}},
+              just={\TRule{\True}{\lor}[1]}, checked
+              [\sFmla{\True}{\formula{B}},
+                just={\TRule{\True}{\land}[6]}
+                [\sFmla{\True}{\formula{C}},
+                  just={\TRule{\True}{\land}[6]},close
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+\end{ex}
+
+\begin{prob}
+Construire un !!{tableau} fermé pour chacun des ensembles suivants :
+\begin{enumerate}
+\item $\sFmla{\True}{!A \land (!B \land !C)}, \sFmla{\False}{(!A \land !B) \land !C}$.
+\item $\sFmla{\True}{!A \lor (!B \lor !C)}, \sFmla{\False}{(!A \lor !B) \lor !C}$.
+\item $\sFmla{\True}{!A \lif (!B \lif !C)}, \sFmla{\False}{!B \lif (!A \lif !C)}$.
+\item $\sFmla{\True}{!A}, \sFmla{\False}{\lnot\lnot !A}$.
+\end{enumerate}
+\end{prob}
+
+\begin{prob}
+Construire un !!{tableau} fermé pour chacun des ensembles suivants :
+\begin{enumerate}
+\item $\sFmla{\True}{(!A \lor !B) \lif !C}, \sFmla{\False}{!A \lif !C}$.
+\item $\sFmla{\True}{(!A \lif !C) \land (!B \lif !C)}, \sFmla{\False}{(!A \lor !B) \lif !C}$.
+\item $\sFmla{\False}{\lnot(!A \land \lnot !A)}$.
+\item $\sFmla{\True}{!B \lif !A}, \sFmla{\False}{\lnot !A \lif \lnot !B}$.
+\item $\sFmla{\False}{(!A \lif \lnot !A) \lif \lnot !A}$.
+\item $\sFmla{\False}{\lnot(!A \lif !B) \lif \lnot !B}$.
+\item $\sFmla{\True}{!A \lif !C}, \sFmla{\False}{\lnot (!A \land \lnot !C)}$.
+\item $\sFmla{\True}{!A \land \lnot !C}, \sFmla{\False}{\lnot (!A \lif !C)}$.
+\item $\sFmla{\True}{!A \lor !B}, \sFmla{\True}{\lnot !B},
+  \sFmla{\False}{!A}$.
+\item $\sFmla{\True}{\lnot !A \lor \lnot !B}, \sFmla{\False}{\lnot(!A \land !B)}$.
+\item $\sFmla{\False}{(\lnot !A \land \lnot !B) \lif\lnot(!A \lor !B)}$.
+\item $\sFmla{\False}{\lnot(!A \lor !B) \lif (\lnot !A \land \lnot !B)}$.
+\end{enumerate}
+\end{prob}
+
+\begin{editorial}
+Note de l'édition française : dans le neuvième item du groupe précédent,
+l'original regroupe par erreur $!A \lor !B$ et $\lnot !B$ sous un seul
+signe~$\True$. Ils sont rétablis comme deux formules signées distinctes,
+conformément aux exercices parallèles de déduction naturelle et de
+calcul des séquents.
+\end{editorial}
+
+\begin{prob}
+Construire un !!{tableau} fermé pour chacun des ensembles suivants :
+\begin{enumerate}
+\item $\sFmla{\True}{\lnot(!A \lif !B)}, \sFmla{\False}{!A}$.
+\item $\sFmla{\True}{\lnot(!A \land !B)}, \sFmla{\False}{\lnot !A \lor \lnot !B}$.
+\item $\sFmla{\True}{!A \lif !B}, \sFmla{\False}{\lnot !A \lor !B}$.
+\item $\sFmla{\False}{\lnot \lnot !A \lif !A}$.
+\item $\sFmla{\True}{!A \lif !B}, \sFmla{\True}{\lnot !A \lif !B}, \sFmla{\False}{!B}$.
+\item $\sFmla{\True}{(!A \land !B) \lif !C}, \sFmla{\False}{(!A \lif !C) \lor (!B \lif !C)}$.
+\item $\sFmla{\True}{(!A \lif !B) \lif !A}, \sFmla{\False}{!A}$.
+\item $\sFmla{\False}{(!A \lif !B) \lor (!B \lif !C)}$.
+\end{enumerate}
+\end{prob}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/proving-things.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/tableaux/proof-theoretic-notions.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proof-theoretic-notions}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{ptn}}
+      {\olfileid[fr]{pl}{tab}{ptn}}
+      
+\olsection{Notions de théorie de la démonstration}
+
+\begin{editorial}
+Cette section rassemble les définitions de la relation de
+!!{derivability} et de la cohérence pour les tableaux.
+\end{editorial}
+
+\begin{explain}
+Nous avons défini plusieurs notions sémantiques importantes : validité,
+conséquence logique et satisfaisabilité. Définissons maintenant les
+\emph{notions de théorie de la démonstration} correspondantes. Elles ne
+font pas appel à la satisfaction d'!!{sentence}s dans des
+\iftag{FOL}{!!{structure}s}{!!{valuation}s}, mais à l'existence de
+certains !!{tableau}x fermés. La coïncidence de ces
+notions constitue une découverte importante : c'est le contenu des
+\emph{théorèmes de correction et de complétude}.
+\end{explain}
+
+
+\begin{defn}[Théorèmes]
+Un !!{sentence}~$!A$ est un \emph{théorème} s'il existe un
+!!{tableau} fermé pour~$\sFmla{\False}{!A}$. On écrit $\Proves !A$
+si $!A$ est un théorème, et $\Proves/ !A$ dans le cas contraire.
+\end{defn}
+
+\begin{defn}[!!^{derivability}]
+!!^a{sentence}~$!A$ est \emph{!!{derivable} à partir} d'un ensemble
+d'!!{sentence}s~$\Gamma$, ce que l'on note $\Gamma \Proves !A$,
+si et seulement s'il existe une partie finie
+$\{!B_1, \dots, !B_n\} \subseteq \Gamma$ et un !!{tableau} fermé
+pour l'ensemble
+\[
+\{
+  \sFmla{\False}{!A},
+  \sFmla{\True}{!B_1}, \dots,
+  \sFmla{\True}{!B_n}
+\}.
+\]
+Si $!A$ n'est pas !!{derivable} à partir de $\Gamma$, on écrit
+$\Gamma \Proves/ !A$.
+\end{defn}
+
+\begin{defn}[Cohérence]
+Un ensemble d'!!{sentence}s~$\Gamma$ est \emph{incohérent} si et
+seulement s'il existe une partie finie
+$\{!B_1, \dots, !B_n\} \subseteq \Gamma$ et un !!{tableau} fermé
+pour l'ensemble
+\[
+\{
+  \sFmla{\True}{!B_1}, \dots,
+  \sFmla{\True}{!B_n}  
+\}.
+\]
+Si $\Gamma$ n'est pas incohérent, on dit qu'il est \emph{cohérent}.
+\end{defn}
+
+\begin{prop}[Réflexivité]
+\ollabel{prop:reflexivity}
+Si $!A \in \Gamma$, alors $\Gamma \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Si $!A \in \Gamma$, alors $\{!A\}$ est une partie finie de~$\Gamma$
+et le !!{tableau}
+\begin{oltableau}
+  [\sFmla{\False}{\formula{A}}, just = \TAss
+    [\sFmla{\True}{\formula{A}}, just = \TAss,close]
+  ]
+\end{oltableau}
+est fermé.
+\end{proof}
+  
+
+\begin{prop}[Monotonie]
+\ollabel{prop:monotonicity}
+Si $\Gamma \subseteq \Delta$ et $\Gamma \Proves !A$, alors
+$\Delta \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Toute partie finie de~$\Gamma$ est aussi une partie finie de~$\Delta$.
+\end{proof}
+
+\begin{prop}[Transitivité]
+\ollabel{prop:transitivity}
+Si $\Gamma \Proves !A$ et $\{!A\} \cup
+\Delta \Proves !B$, alors $\Gamma \cup \Delta \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Si $\{!A\} \cup \Delta \Proves !B$, il existe une partie finie
+$\Delta_0 = \{!C_1, \dots, !C_n\} \subseteq \Delta$ telle que
+\begin{align*}
+\{\sFmla{\False}{!B}, & \sFmla{\True}{!A}, \sFmla{\True}{!C_1},
+\dots, \sFmla{\True}{!C_n}\}
+\intertext{possède un !!{tableau} fermé. Si $\Gamma \Proves !A$,
+  il existe une partie finie
+  $\{!D_1, \dots, !D_m\} \subseteq \Gamma$ telle que}
+\{\sFmla{\False}{!A}, & \sFmla{\True}{!D_1},
+\dots, \sFmla{\True}{!D_m}\}
+\end{align*}
+possède un !!{tableau} fermé.
+
+Considérons maintenant le !!{tableau} ayant pour hypothèses
+\[
+\sFmla{\False}{!B},
+\sFmla{\True}{!C_1}, \dots, \sFmla{\True}{!C_n},
+\sFmla{\True}{!D_1}, \dots, \sFmla{\True}{!D_m}.
+\]
+Appliquons la règle \Cut{} à~$!A$. Elle produit deux branches : l'une
+contient $\sFmla{\True}{!A}$, l'autre $\sFmla{\False}{!A}$. Sur la
+première branche, toutes les formules de
+\[
+\{\sFmla{\False}{!B}, \sFmla{\True}{!A},
+\sFmla{\True}{!C_1}, \dots, \sFmla{\True}{!C_n}\}
+\]
+sont disponibles. Puisqu'il existe un !!{tableau} fermé pour ces
+hypothèses, nous pouvons le greffer à cette branche; toute branche qui
+passe par $\sFmla{\True}{!A}$ se ferme. Sur l'autre branche, toutes les
+formules de
+\[
+\{\sFmla{\False}{!A}, \sFmla{\True}{!D_1}, \dots,
+\sFmla{\True}{!D_m}\}
+\]
+sont disponibles; nous pouvons donc compléter cette branche elle aussi
+et obtenir un !!{tableau} fermé. Cela montre que
+$\Gamma \cup \Delta \Proves !B$.
+\end{proof}
+
+\begin{editorial}
+Dans le paragraphe introductif, la mention des structures dans la
+source est adaptée en valuations pour la présentation propositionnelle.
+Dans la preuve de transitivité, la source écrit par erreur
+$!D_1, \dots, !D_m \subseteq \Gamma$. Les accolades rétablissent la
+partie finie $\{!D_1, \dots, !D_m\} \subseteq \Gamma$ exigée par la
+définition de la dérivabilité.
+\end{editorial}
+
+Remarquons que cela signifie en particulier que, si
+$\Gamma \Proves !A$ et $!A \Proves !B$, alors $\Gamma \Proves !B$.
+Il en résulte aussi que, si $!A_1, \dots, !A_n \Proves !B$ et
+$\Gamma \Proves !A_i$ pour chaque~$i$, alors $\Gamma \Proves !B$.
+
+\begin{prop}
+\ollabel{prop:incons}
+$\Gamma$ est incohérent si et seulement si $\Gamma \Proves !A$
+pour tout !!{sentence}~$!A$.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][tab][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][tab][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\begin{prop}[Compacité]
+  \ollabel{prop:proves-compact}
+  \begin{enumerate}
+  \item Si $\Gamma \Proves !A$, il existe une partie finie $\Gamma_0
+    \subseteq \Gamma$ telle que $\Gamma_0 \Proves !A$.
+  \item Si toute partie finie de~$\Gamma$ est cohérente,
+    alors $\Gamma$ est cohérent.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Si $\Gamma \Proves !A$, il existe une partie finie
+      de~$\Gamma$, notée
+      $\Gamma_0 = \{!B_1, \dots, !B_n\}$, et un !!{tableau} fermé pour
+      \[
+      \{\sFmla{\False}{!A}, \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
+      \]
+      Ce !!{tableau} montre aussi que $\Gamma_0 \Proves !A$.
+    \item Si $\Gamma$ est incohérent, il existe une partie finie
+      de~$\Gamma$, notée
+      $\Gamma_0 = \{!B_1, \dots, !B_n\}$, et un !!{tableau} fermé pour
+      \[
+      \{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
+      \]
+      Ce !!{tableau} fermé montre que $\Gamma_0$ est incohérent.
+  \end{enumerate}
+\end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/proof-theoretic-notions.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/tableaux/provability-consistency.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{provability-consistency}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{prv}}
+      {\olfileid[fr]{pl}{tab}{prv}}
+
+\olsection{\usetoken{S}{derivability} et cohérence}
+
+Établissons plusieurs propriétés de la relation de !!{derivability}.
+Outre leur intérêt propre, elles interviendront toutes dans la
+démonstration du théorème de complétude.
+
+\begin{prop}\ollabel{prop:provability-contr}
+  Si $\Gamma \Proves !A$ et si $\Gamma \cup \{!A\}$ est
+  incohérent, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Il existe deux parties finies de~$\Gamma$,
+$\Gamma_0 = \{!B_1, \dots, !B_n\}$ et
+$\Gamma_1 = \{!C_1, \dots, !C_m\}$, telles que les deux ensembles
+  \begin{align*}
+    \{\sFmla{\False}{!A}, &
+    \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\} \\
+    \{\sFmla{\True}{!A}, &
+    \sFmla{\True}{!C_1}, \dots, \sFmla{\True}{!C_m}\}
+  \end{align*}
+possèdent des !!{tableau}s fermés. En appliquant la règle \Cut{} à
+$!A$, nous pouvons les combiner en un seul !!{tableau} fermé, qui
+montre que $\Gamma_0 \cup \Gamma_1$ est incohérent. Comme
+$\Gamma_0 \subseteq \Gamma$ et $\Gamma_1 \subseteq \Gamma$, on a
+$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$; par conséquent,
+$\Gamma$ est incohérent.
+\end{proof}
+
+\begin{editorial}
+Dans cette preuve, la source définit $\Gamma_1$ au moyen de
+$!C_1,\dots,!C_n$, puis emploie $!C_m$. L'indice~$m$ est rétabli dans
+la définition de $\Gamma_1$.
+\end{editorial}
+
+\begin{prop}
+\ollabel{prop:prov-incons}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons d'abord que $\Gamma \Proves !A$. Il existe donc des
+$!B_1,\dots,!B_n \in \Gamma$ et un !!{tableau} fermé pour
+\[
+\{\sFmla{\False}{!A},
+\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
+\]
+Remplaçons l'hypothèse $\sFmla{\False}{!A}$ par
+$\sFmla{\True}{\lnot !A}$ et appliquons la règle
+$\TRule{\True}{\lnot}$, dont la conclusion est précisément
+$\sFmla{\False}{!A}$. On obtient ainsi un !!{tableau} fermé pour
+\[
+\{\sFmla{\True}{\lnot !A},
+\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}.
+\]
+
+Réciproquement, supposons qu'il existe un !!{tableau} fermé pour ce
+dernier ensemble. Supprimons l'hypothèse
+$\sFmla{\True}{\lnot !A}$ ainsi que toute formule obtenue en lui
+appliquant $\TRule{\True}{\lnot}$, puis ajoutons l'hypothèse
+$\sFmla{\False}{!A}$. Si une branche se fermait parce qu'elle contenait
+la conclusion de $\TRule{\True}{\lnot}$ appliquée à
+$\sFmla{\True}{\lnot !A}$, c'est-à-dire
+$\sFmla{\False}{!A}$, la branche correspondante du nouveau
+!!{tableau} est encore fermée. Si une branche de l'ancien tableau se
+fermait parce qu'elle contenait à la fois l'hypothèse
+$\sFmla{\True}{\lnot !A}$ et $\sFmla{\False}{\lnot !A}$, appliquons
+$\TRule{\False}{\lnot}$ à cette dernière formule. Nous obtenons
+$\sFmla{\True}{!A}$, qui ferme la branche avec la nouvelle hypothèse
+$\sFmla{\False}{!A}$.
+\end{proof}
+
+\begin{prob}
+Démontrer que $\Gamma \Proves \lnot !A$ si et seulement si
+$\Gamma \cup \{!A\}$ est incohérent.
+\end{prob}
+
+\begin{prop}\ollabel{prop:explicit-inc}
+  Si $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$, alors
+  $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+  Supposons que $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$.
+  Il existe alors $!B_1, \dots, !B_n \in \Gamma$ tels que
+  \[
+  \{\sFmla{\False}{!A}, \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
+  \]
+  possède un !!{tableau} fermé. Remplaçons l'hypothèse
+  \sFmla{\False}{!A} par \sFmla{\True}{\lnot !A}, puis insérons,
+  après les $n+1$ hypothèses, la conclusion de
+  \TRule{\True}{\lnot} appliquée à \sFmla{\True}{\lnot !A}, à savoir
+  \sFmla{\False}{!A}. Tout !!{sentence} du !!{tableau} dont la
+  justification renvoyait à la ligne~$1$ de l'ancien !!{tableau}
+  renvoie maintenant à la ligne~$n+2$. Si l'ancien !!{tableau} était
+  fermé, le nouveau l'est donc aussi. Comme toutes ses hypothèses
+  appartiennent à~$\Gamma$, il montre que $\Gamma$ est incohérent.
+\end{proof}
+
+\begin{editorial}
+La source applique ici par erreur $\TRule{\True}{\lnot}$ à
+$\sFmla{\False}{!A}$ et renvoie ensuite à la ligne~$n+1$. La règle
+s'applique à $\sFmla{\True}{\lnot !A}$; sa conclusion, placée après
+les $n+1$ hypothèses, occupe la ligne~$n+2$.
+\end{editorial}
+
+\begin{prop}\ollabel{prop:provability-exhaustive}
+  Si $\Gamma \cup \{!A\}$ et $\Gamma \cup \{\lnot !A\}$ sont tous
+  deux incohérents, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+  Supposons qu'il existe $!B_1, \dots, !B_n \in \Gamma$ et
+  $!C_1, \dots, !C_m \in \Gamma$ tels que les deux ensembles
+  \begin{align*}
+    \{\sFmla{\True}{!A}, &
+    \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\} \text{ et}\\
+    \{\sFmla{\True}{\lnot !A}, &
+    \sFmla{\True}{!C_1}, \dots, \sFmla{\True}{!C_m}\}
+  \end{align*}
+  possèdent chacun un !!{tableau} fermé. Construisons un unique
+  !!{tableau} combiné ayant pour hypothèses
+  $\sFmla{\True}{!B_1}$, \dots, $\sFmla{\True}{!B_n}$ ainsi que
+  $\sFmla{\True}{!C_1}$, \dots, $\sFmla{\True}{!C_m}$, puis appliquons
+  la règle \Cut{}. Nous obtenons deux branches : la première commence
+  par $\sFmla{\True}{!A}$, la seconde par $\sFmla{\False}{!A}$.
+  
+  Sur la branche de gauche, greffons la partie du premier !!{tableau}
+  située sous ses hypothèses. Chaque application de règle y demeure
+  correcte, puisque toutes les hypothèses du premier !!{tableau}, y
+  compris $\sFmla{\True}{!A}$, sont disponibles. Toutes les branches
+  issues de $\sFmla{\True}{!A}$ se ferment donc.
+  
+  Sur la branche de droite, greffons la partie du second !!{tableau}
+  située sous ses hypothèses, après avoir supprimé les résultats des
+  applications de~$\TRule{\True}{\lnot}$ à
+  $\sFmla{\True}{\lnot !A}$. La conclusion de
+  $\TRule{\True}{\lnot}$ est
+  $\sFmla{\False}{!A}$, qui reste disponible puisqu'elle est la
+  conclusion droite de la règle \Cut{} dans le !!{tableau} combiné.
+
+  Si une branche du second tableau se fermait parce qu'elle contenait
+  l'hypothèse $\sFmla{\True}{\lnot !A}$, désormais absente du
+  !!{tableau} combiné, ainsi que $\sFmla{\False}{\lnot !A}$, appliquons
+  $\TRule{\False}{\lnot}$ à cette dernière formule. On obtient
+  $\sFmla{\True}{!A}$; la branche correspondante du !!{tableau}
+  combiné se ferme alors avec la conclusion droite de \Cut{},
+  $\sFmla{\False}{!A}$. Si une branche du second !!{tableau} se fermait
+  pour une autre raison, la branche correspondante du !!{tableau}
+  combiné se ferme elle aussi, puisque toutes les !!{signed formula}s
+  de l'ancienne branche autres que $\sFmla{\True}{\lnot !A}$ figurent
+  encore sur la branche correspondante du !!{tableau} combiné.
+  \end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/provability-consistency.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/tableaux/provability-propositional.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{provability-propositional}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{ppr}}
+      {\olfileid[fr]{pl}{tab}{ppr}}
+
+\olsection{\usetoken{S}{derivability} et connecteurs propositionnels}
+
+\begin{explain}
+Nous montrons que la relation de !!{derivability}~$\Proves$ des
+tableaux permet d'établir certaines propriétés élémentaires des
+connecteurs propositionnels, par exemple $!A \land !B \Proves !A$ et
+$!A, !A \lif !B \Proves !B$ (modus ponens). Ces propriétés serviront
+dans la démonstration du théorème de complétude.
+\end{explain}
+
+\begin{prop}\ollabel{prop:provability-land}
+  \begin{enumerate}
+  \item \ollabel{prop:provability-land-left} On a à la fois
+    $!A \land !B \Proves !A$ et $!A \land !B \Proves !B$.
+  \item \ollabel{prop:provability-land-right} $!A, !B \Proves !A \land
+    !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Les deux ensembles
+    $\{\sFmla{\False}{!A}, \sFmla{\True}{!A \land !B}\}$ et
+    $\{\sFmla{\False}{!B}, \sFmla{\True}{!A \land !B}\}$ possèdent
+    des !!{tableau}s fermés :
+    \begin{oltableau}{}
+      [\sFmla{\False}{\formula{A}}, just=\TAss
+        [\sFmla{\True}{\formula{A} \land \formula{B}}, just=\TAss
+          [\sFmla{\True}{\formula{A}},just={\TRule{\True}{\land}[2]}
+            [\sFmla{\True}{\formula{B}},just={\TRule{\True}{\land}[2]}, close
+            ]
+          ]
+        ]
+      ]
+    \end{oltableau}
+    \begin{oltableau}{}
+      [\sFmla{\False}{\formula{B}}, just=\TAss
+        [\sFmla{\True}{\formula{A} \land \formula{B}}, just=\TAss
+          [\sFmla{\True}{\formula{A}},just={\TRule{\True}{\land}[2]}
+            [\sFmla{\True}{\formula{B}},just={\TRule{\True}{\land}[2]}, close
+            ]
+          ]
+        ]
+      ]
+    \end{oltableau}
+    \item Voici un !!{tableau} fermé pour $\{\sFmla{\True}{!A},
+      \sFmla{\True}{!B}, \sFmla{\False}{!A \land !B}\}$ :
+      \begin{oltableau}
+        [\sFmla{\False}{\formula{A} \land \formula{B}}, just = \TAss
+          [\sFmla{\True}{\formula{A}}, just = \TAss
+            [\sFmla{\True}{\formula{B}}, just=\TAss
+              [\sFmla{\False}{\formula{A}}, just = {\TRule{\False}{\land}[1]}, close]
+              [\sFmla{\False}{\formula{B}}, just = {\TRule{\False}{\land}[1]}, close]
+            ]
+          ]
+        ]
+      \end{oltableau}     
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lor}
+  \begin{enumerate}
+  \item $\{!A \lor !B, \lnot !A, \lnot !B\}$ est incohérent.
+  \item On a à la fois $!A \Proves !A \lor !B$ et
+    $!B \Proves !A \lor !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Voici un !!{tableau} fermé pour
+    $\{\sFmla{\True}{!A \lor !B}, \sFmla{\True}{\lnot !A},
+    \sFmla{\True}{\lnot !B}\}$ :
+    \begin{oltableau}
+      [\sFmla{\True}{\formula{A} \lor \formula{B}}, just = \TAss
+        [\sFmla{\True}{\lnot \formula{A}}, just = \TAss
+          [\sFmla{\True}{\lnot \formula{B}}, just = \TAss
+            [\sFmla{\False}{\formula{A}}, just = {\TRule{\True}{\lnot}[2]}
+              [\sFmla{\False}{\formula{B}}, just = {\TRule{\True}{\lnot}[3]}
+                [\sFmla{\True}{\formula{A}}, just = {\TRule{\True}{\lor}[1]}, close]
+                [\sFmla{\True}{\formula{B}}, just = {\TRule{\True}{\lor}[1]}, close]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{oltableau}
+  \item Les deux ensembles $\{\sFmla{\False}{!A \lor !B},
+    \sFmla{\True}{!A}\}$ et $\{\sFmla{\False}{!A \lor !B},
+    \sFmla{\True}{!B}\}$ possèdent des !!{tableau}s fermés :
+    \begin{oltableau}{}
+      [\sFmla{\False}{\formula{A} \lor \formula{B}}, just=\TAss
+        [\sFmla{\True}{\formula{A}}, just=\TAss
+          [\sFmla{\False}{\formula{A}},just={\TRule{\False}{\lor}[1]}
+            [\sFmla{\False}{\formula{B}},just={\TRule{\False}{\lor}[1]}, close
+            ]
+          ]
+        ]
+      ]
+    \end{oltableau}
+    \begin{oltableau}{}
+      [\sFmla{\False}{\formula{A} \lor \formula{B}}, just=\TAss
+        [\sFmla{\True}{\formula{B}}, just=\TAss
+          [\sFmla{\False}{\formula{A}},just={\TRule{\False}{\lor}[1]}
+            [\sFmla{\False}{\formula{B}},just={\TRule{\False}{\lor}[1]}, close
+            ]
+          ]
+        ]
+      ]
+    \end{oltableau}
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lif}
+  \begin{enumerate}
+  \item \ollabel{prop:provability-lif-left}  $!A, !A \lif !B \Proves !B$.
+  \item \ollabel{prop:provability-lif-right}
+    On a à la fois $\lnot !A \Proves !A \lif !B$ et
+    $!B \Proves !A \lif !B$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+    \item L'ensemble $\{\sFmla{\False}{!B},
+      \sFmla{\True}{!A \lif !B}, \sFmla{\True}{!A}\}$ possède un
+      !!{tableau} fermé :
+      \begin{oltableau}
+        [\sFmla{\False}{\formula{B}}, just=\TAss
+          [\sFmla{\True}{\formula{A} \lif \formula{B}}, just=\TAss
+            [\sFmla{\True}{\formula{A}}, just=\TAss
+              [\sFmla{\False}{\formula{A}}, just = {\TRule{\True}{\lif}[2]}, close]
+              [\sFmla{\True}{\formula{B}}, just = {\TRule{\True}{\lif}[2]}, close]
+            ]
+          ]
+        ]
+      \end{oltableau}
+    \item Les deux ensembles $\{\sFmla{\False}{!A \lif !B},
+      \sFmla{\True}{\lnot !A}\}$ et $\{\sFmla{\False}{!A \lif !B},
+      \sFmla{\True}{!B}\}$ possèdent des !!{tableau}s fermés :
+      \begin{oltableau}
+        [\sFmla{\False}{\formula{A} \lif \formula{B}}, just = \TAss
+          [\sFmla{\True}{\lnot \formula{A}}, just = \TAss
+            [\sFmla{\True}{\formula{A}}, just = {\TRule{\False}{\lif}[1]}
+              [\sFmla{\False}{\formula{B}}, just = {\TRule{\False}{\lif}[1]}
+                [\sFmla{\False}{\formula{A}}, just = {\TRule{\True}{\lnot}[2]}, close]
+              ]
+            ]
+          ]
+        ]
+      \end{oltableau}
+      \begin{oltableau}
+        [\sFmla{\False}{\formula{A} \lif \formula{B}}, just = \TAss
+          [\sFmla{\True}{\formula{B}}, just = \TAss
+            [\sFmla{\True}{\formula{A}}, just = {\TRule{\False}{\lif}[1]}
+              [\sFmla{\False}{\formula{B}}, just = {\TRule{\False}{\lif}[1]},close
+              ]
+            ]
+          ]
+        ]
+      \end{oltableau}
+  \end{enumerate}
+\end{proof}
+
+\begin{editorial}
+Dans quatre tableaux de la source, huit formules signées font porter la
+formule elle-même par le signe et omettent ainsi la seconde composante
+de la notation. Les écritures $\sFmla{\True}{!A}$,
+$\sFmla{\True}{!B}$, $\sFmla{\False}{!A}$ et
+$\sFmla{\False}{!B}$ sont rétablies; les signes, les formules et toutes
+les applications de règle restent inchangés.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/provability-propositional.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/tableaux/soundness.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{soundness}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{sou}}
+      {\olfileid[fr]{pl}{tab}{sou}}
+      
+\olsection{Correction}
+
+\begin{explain}
+Un système de !!{derivation}, tel que celui des tableaux, est
+\emph{correct} s'il ne permet pas de !!{derive} des résultats qui ne
+valent pas réellement. La correction constitue ainsi une garantie de
+fiabilité pour les systèmes de !!{derivation}. Selon la propriété de
+théorie de la démonstration considérée, nous voulons notamment savoir
+que :
+\begin{enumerate}
+\item tout $!A$ !!{derivable} est \iftag{FOL}{valide}{une tautologie};
+\item si !!a{sentence} est !!{derivable} à partir d'autres, il en est
+  aussi une conséquence;
+\item si un ensemble d'!!{sentence}s est incohérent, il est
+  insatisfaisable.
+\end{enumerate}
+Ces propriétés sont essentielles pour un système de !!{derivation}.
+Si l'une d'elles était en défaut, le système serait défectueux : il
+permettrait de !!{derive} trop de résultats. Il est donc primordial
+d'en établir la correction.
+
+Comme toutes ces propriétés de théorie de la démonstration sont
+définies au moyen de !!{tableau}s fermés, la preuve de (1)--(3) exige
+une propriété sémantique de ces tableaux. Nous définirons d'abord ce
+que signifie, pour une \iftag{FOL}{structure}{valuation}, satisfaire
+!!a{signed formula}, puis nous montrerons que, si !!a{tableau} est
+fermé, aucune \iftag{FOL}{structure}{valuation} ne satisfait toutes ses
+hypothèses. Les propriétés (1)--(3) en découleront comme corollaires.
+\end{explain}
+
+\begin{defn}
+\iftag{FOL}{!!^a{structure}}{!!^a{valuation}}~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
+\emph{satisfait} !!a{signed formula} $\sFmla{\True}{!A}$ si et seulement si
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, et satisfait
+$\sFmla{\False}{!A}$ si et seulement si
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$. $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
+satisfait un ensemble d'!!{signed formula}s~$\Gamma$ si et seulement
+s'il satisfait chaque $\sFmla{S}{!A} \in \Gamma$. L'ensemble
+$\Gamma$ est \emph{satisfaisable} s'il existe
+\iftag{FOL}{!!a{structure}}{!!a{valuation}} qui le satisfait, et
+\emph{insatisfaisable} dans le cas contraire.
+\end{defn}
+
+\begin{thm}[Correction]
+  \ollabel{thm:tableau-soundness}
+  Si $\Gamma$ possède un !!{tableau} fermé, alors $\Gamma$ est
+  insatisfaisable.
+\end{thm}
+
+\begin{proof}
+Disons qu'une branche d'!!a{tableau} est satisfaisable si et seulement
+si l'ensemble des !!{signed formula}s qui y figurent est satisfaisable,
+et qu'!!a{tableau} est satisfaisable s'il contient au moins une branche
+satisfaisable.
+
+Montrons que toute extension d'!!a{tableau} satisfaisable par une règle
+d'inférence donne encore un !!{tableau} satisfaisable. Le théorème en
+découlera : tout !!{tableau} fermé s'obtient en appliquant des règles
+d'inférence au !!{tableau} qui ne contient que les hypothèses de
+$\Gamma$. Si $\Gamma$ était satisfaisable, tout !!{tableau} pour
+$\Gamma$ le serait donc aussi. Or un !!{tableau} fermé ne peut être
+satisfaisable : chaque branche contient à la fois
+$\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$, et aucune
+\iftag{FOL}{structure}{valuation} ne peut à la fois satisfaire et ne
+pas satisfaire~$!A$.
+
+Supposons donné un !!{tableau} satisfaisable, c'est-à-dire un
+!!{tableau} qui possède au moins une branche satisfaisable. L'application
+d'une règle d'inférence ajoute des !!{signed formula}s à une branche,
+ou bien ramifie une branche en deux. Si le !!{tableau} possède une
+branche satisfaisable qui n'est pas prolongée par l'application
+considérée, cette branche demeure satisfaisable dans le !!{tableau}
+prolongé; celui-ci est donc satisfaisable. Il suffit par conséquent
+d'examiner le cas où la règle est appliquée à une branche satisfaisable.
+
+Soit $\Gamma$ l'ensemble des !!{signed formula}s de cette branche, et
+soit $\sFmla{S}{!A} \in \Gamma$ la !!{signed formula} à laquelle la
+règle est appliquée. Si la règle ne provoque pas de ramification, il
+faut montrer que la branche prolongée, c'est-à-dire $\Gamma$ avec les
+conclusions de la règle, demeure satisfaisable. Si la règle provoque
+une ramification, il faut montrer qu'au moins l'une des deux branches
+obtenues est satisfaisable.
+  
+Considérons d'abord les inférences qui ne provoquent pas de ramification.
+\begin{enumerate}
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lnot}$ à
+  $\sFmla{\True}{\lnot !B} \in \Gamma$. La branche prolongée contient
+  alors les !!{signed formula}s de
+  $\Gamma \cup \{\sFmla{\False}{!B}\}$. Supposons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$. En particulier,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !B}$. Par conséquent,
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, c'est-à-dire que
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait
+  $\sFmla{\False}{!B}$.
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lnot}$ à
+  $\sFmla{\False}{\lnot !B} \in \Gamma$ : exercice.
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\land}$ à
+  $\sFmla{\True}{!B \land !C} \in \Gamma$. Deux nouvelles
+  !!{signed formula}s apparaissent sur la branche :
+  $\sFmla{\True}{!B}$ et $\sFmla{\True}{!C}$. Supposons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, et en particulier
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B \land !C}$. Alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ et
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$. Ainsi,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait à la fois
+  $\sFmla{\True}{!B}$ et $\sFmla{\True}{!C}$.
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lor}$ à
+  $\sFmla{\False}{!B \lor !C} \in \Gamma$ : exercice.
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lif}$ à
+  $\sFmla{\False}{!B \lif !C} \in \Gamma$. Deux nouvelles
+  !!{signed formula}s apparaissent sur la branche :
+  $\sFmla{\True}{!B}$ et $\sFmla{\False}{!C}$. Supposons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, et en particulier
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B \lif !C}$. Alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ et
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$. Ainsi,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait à la fois
+  $\sFmla{\True}{!B}$ et $\sFmla{\False}{!C}$.
+
+\iftag{FOL}{%
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lforall}$ à
+  $\sFmla{\True}{\lforall[x][!A(x)]} \in \Gamma$. La nouvelle
+  !!{signed formula}~$\sFmla{\True}{!A(t)}$ est ajoutée à la branche.
+  Supposons $\Sat{M}{\Gamma}$, et en particulier
+  $\Sat{M}{\lforall[x][!A(x)]}$. D'après
+  \olref[syn][sem]{prop:quant-terms}, $\Sat{M}{!A(t)}$. Par conséquent,
+  $\Struct{M}$ satisfait $\sFmla{\True}{!A(t)}$.
+
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lforall}$ à
+  $\sFmla{\False}{\lforall[x][!A(x)]} \in \Gamma$. On ajoute la
+  !!{signed formula}~$\sFmla{\False}{!A(a)}$, où $a$ est une
+  !!{constant} qui ne figure pas dans~$\Gamma$. Comme $\Gamma$ est
+  satisfaisable, il existe une $\Struct{M}$ telle que
+  $\Sat{M}{\Gamma}$, et en particulier
+  $\Sat/{M}{\lforall[x][!A(x)]}$. Il faut montrer que
+  $\Gamma \cup \{\sFmla{\False}{!A(a)}\}$ est satisfaisable. Pour ce
+  faire, définissons une structure appropriée~$\Struct{M'}$.
+
+  D'après \olref[syn][ass]{prop:sat-quant},
+  $\Sat/{M}{\lforall[x][!A(x)]}$ si et seulement s'il existe une
+  assignation~$s$ telle que $\Sat/{M}{!A(x)}[s]$. Soit maintenant
+  $\Struct{M'}$ la structure identique à $\Struct{M}$, sauf que
+  $\Assign{a}{M'} = s(x)$. D'après
+  \olref[syn][ext]{cor:extensionality-sent}, pour toute
+  $\sFmla{\True}{!C} \in \Gamma$, on a $\Sat{M'}{!C}$, et pour toute
+  $\sFmla{\False}{!C} \in \Gamma$, on a $\Sat/{M'}{!C}$, puisque $a$
+  ne figure pas dans~$\Gamma$.
+
+  D'après \olref[syn][ext]{prop:extensionality},
+  $\Sat/{M'}{!A(x)}[s]$. Puis
+  \olref[syn][ext]{prop:ext-formulas} donne
+  $\Sat/{M'}{!A(a)}[s]$. Comme $!A(a)$ est !!a{sentence},
+  \olref[syn][ass]{prop:sentence-sat-true} entraîne
+  $\Sat/{M'}{!A(a)}$. Autrement dit, $\Struct{M'}$ satisfait
+  $\sFmla{\False}{!A(a)}$.
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lexists}$ à
+  $\sFmla{\True}{\lexists[x][!B(x)]} \in \Gamma$ : exercice.
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lexists}$ à
+  $\sFmla{\False}{\lexists[x][!B(x)]} \in \Gamma$ : exercice.}{}
+\end{enumerate}
+Considérons maintenant les inférences qui provoquent une ramification.
+\begin{enumerate}
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\land}$ à
+  $\sFmla{\False}{!B \land !C} \in \Gamma$. Elle se ramifie en une
+  branche gauche qui se poursuit par $\sFmla{\False}{!B}$ et une
+  branche droite qui se poursuit par $\sFmla{\False}{!C}$. Supposons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, et en particulier
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B \land !C}$. Alors
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$ ou
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$. Dans le premier cas,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait
+  $\sFmla{\False}{!B}$, donc toutes les formules de la branche gauche.
+  Dans le second,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait
+  $\sFmla{\False}{!C}$, donc toutes les formules de la branche droite.
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lor}$ à
+  $\sFmla{\True}{!B \lor !C} \in \Gamma$ : exercice.
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lif}$ à
+  $\sFmla{\True}{!B \lif !C} \in \Gamma$ : exercice.
+\item La branche est prolongée au moyen de \Cut{}. On obtient deux
+  branches, dont l'une contient $\sFmla{\True}{!B}$ et l'autre
+  $\sFmla{\False}{!B}$. Comme
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ et que l'on a soit
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$, soit
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait la branche gauche
+  ou la branche droite.
+\end{enumerate}
+\end{proof}
+
+\begin{editorial}
+Dans les deux cas consacrés à $\lforall$, la source commence avec
+$!B(x)$, puis poursuit le même argument avec $!A(x)$ et ses instances.
+La lettre~$A$ est rétablie dans les prémisses afin que chaque règle et
+chaque calcul sémantique portent sur une seule formule. Dans le passage
+commun aux présentations propositionnelle et du premier ordre,
+« structure » est adapté en « valuation » pour la première.
+\end{editorial}
+
+\tagprob{FOL}
+\begin{prob}
+Achever la démonstration de
+\olref[fol][tab][sou]{thm:tableau-soundness}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Achever la démonstration de
+\olref[pl][tab][sou]{thm:tableau-soundness}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est \iftag{FOL}{valide}{une tautologie}.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:entailment-soundness}
+Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
+\end{cor}
+
+\begin{proof}
+  Si $\Gamma \Proves !A$, il existe $!B_1$, \dots, $!B_n \in
+  \Gamma$ tels que $\{\sFmla{\False}{!A},
+  \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$ possède un
+  !!{tableau} fermé. D'après
+  \olref{thm:tableau-soundness}, toute
+  \iftag{FOL}{!!{structure}}{!!{valuation}}~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
+  rend faux au moins un $!B_i$, ou rend vrai $!A$. Par conséquent, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+\end{proof}
+
+\begin{cor}
+\ollabel{cor:consistency-soundness}
+Si $\Gamma$ est satisfaisable, alors il est cohérent.
+\end{cor}
+
+\begin{proof}
+Nous démontrons la contraposée. Supposons que $\Gamma$ soit
+incohérent. Il existe alors $!B_1$, \dots, $!B_n \in \Gamma$ et un
+!!{tableau} fermé pour
+$\{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$. D'après
+\olref{thm:tableau-soundness}, il n'existe aucune
+$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ telle que
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B_i}$ pour tout
+$i=1$, \dots,~$n$. L'ensemble $\Gamma$ n'est donc pas satisfaisable.
+\end{proof}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/soundness.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+\OLEndChapterHook
+
+
+\endgroup
+% END embedded source: content/first-order-logic/tableaux/tableaux.tex
 
 \tagtrue{FOL}
 \backmatter

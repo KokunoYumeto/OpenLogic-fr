@@ -1,0 +1,56 @@
+% Part: first-order-logic
+% Chapter: tableaux
+% Section: soundness-identity
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{tab}{sid}
+
+\olsection{Correction avec \usetoken{S}{identity}}
+
+\begin{prop}
+Les !!^{tableau}s munis des règles de l'identité sont corrects : aucun
+!!{tableau} fermé n'est satisfaisable.
+\end{prop}
+
+\begin{proof}
+Comme précédemment, il suffit de montrer que, si !!a{tableau} possède
+une branche satisfaisable, la branche obtenue en appliquant à celle-ci
+l'une des règles de~$\eq$ est encore satisfaisable. Soit $\Gamma$
+l'ensemble des !!{signed formula}s de cette branche, et soit $\Struct{M}$
+!!a{structure} qui satisfait~$\Gamma$.
+
+Supposons que la branche soit prolongée au moyen de~$\eq$, c'est-à-dire
+par l'ajout de la !!{formula} signée
+$\sFmla{\True}{\eq[t][t]}$. On a trivialement
+$\Sat{M}{\eq[t][t]}$; par conséquent, $\Struct{M}$ satisfait aussi
+$\Gamma \cup \{\sFmla{\True}{\eq[t][t]}\}$.
+
+Si la branche est prolongée au moyen de $\TRule{\True}{\eq}$, nous
+ajoutons la !!{formula} signée $\sFmla{\True}{!A(t_2)}$, tandis que
+$\Gamma$ contient déjà $\sFmla{\True}{\eq[t_1][t_2]}$ et
+$\sFmla{\True}{!A(t_1)}$. Nous avons donc
+$\Sat{M}{\eq[t_1][t_2]}$ et $\Sat{M}{!A(t_1)}$. Soit $s$ une
+assignation de variables telle que $s(x) = \Value{t_1}{M}$. D'après
+\olref[syn][ass]{prop:sentence-sat-true}, $\Sat{M}{!A(t_1)}[s]$.
+Comme $\varAssign{s}{s}{x}$, la
+\olref[syn][ext]{prop:ext-formulas} donne $\Sat{M}{!A(x)}[s]$.
+Puisque $\Sat{M}{\eq[t_1][t_2]}$, on a
+$\Value{t_1}{M} = \Value{t_2}{M}$, et donc
+$s(x) = \Value{t_2}{M}$. Une nouvelle application de
+\olref[syn][ext]{prop:ext-formulas} donne alors
+$\Sat{M}{!A(t_2)}[s]$. Enfin,
+\olref[syn][ass]{prop:sentence-sat-true} entraîne
+$\Sat{M}{!A(t_2)}$. Le cas de $\TRule{\False}{\eq}$ se traite de la
+même manière.
+\end{proof}
+
+\begin{editorial}
+Dans le cas de $\TRule{\True}{\eq}$, la source donne le signe
+générique~$S$ à la conclusion. Le signe~$\True$ exigé par la règle est
+rétabli; le cas du signe~$\False$ reste traité séparément par analogie.
+\end{editorial}
+
+\end{document}

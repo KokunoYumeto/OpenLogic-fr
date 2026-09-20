@@ -2,7 +2,7 @@
   "source_repository": "https://github.com/OpenLogicProject/OpenLogic",
   "source_revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
   "frozen_units": 722,
-  "published_scope_units": 83,
+  "published_scope_units": 92,
   "published_ids": [
     "OLP-0005",
     "OLP-0007",
@@ -86,10 +86,19 @@
     "OLP-0091",
     "OLP-0092",
     "OLP-0093",
-    "OLP-0095"
+    "OLP-0095",
+    "OLP-0098",
+    "OLP-0099",
+    "OLP-0100",
+    "OLP-0102",
+    "OLP-0103",
+    "OLP-0105",
+    "OLP-0106",
+    "OLP-0107",
+    "OLP-0109"
   ],
-  "untranslated_units": 628,
-  "drafted_units": 94,
+  "untranslated_units": 614,
+  "drafted_units": 108,
   "reader_excluded_drafts": [
     "OLP-0055",
     "OLP-0072",
@@ -101,14 +110,19 @@
     "OLP-0090",
     "OLP-0094",
     "OLP-0096",
-    "OLP-0097"
+    "OLP-0097",
+    "OLP-0101",
+    "OLP-0104",
+    "OLP-0108",
+    "OLP-0110",
+    "OLP-0111"
   ],
-  "remaining_reader_units": 639,
+  "remaining_reader_units": 630,
   "full_edition_complete": false,
-  "version": "v0.8.0-deduction-naturelle",
-  "chapters": 10,
-  "sections": 73,
-  "pages": 126,
-  "exercises": 95,
+  "version": "v0.9.0-tableaux",
+  "chapters": 11,
+  "sections": 81,
+  "pages": 141,
+  "exercises": 101,
   "canon_full_pdfs_redistributed": false
 }

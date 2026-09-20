@@ -1,0 +1,276 @@
+% Part: first-order-logic
+% Chapter: tableaux
+% Section: soundness.tex
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{sou}}
+      {\olfileid[fr]{pl}{tab}{sou}}
+      
+\olsection{Correction}
+
+\begin{explain}
+Un système de !!{derivation}, tel que celui des tableaux, est
+\emph{correct} s'il ne permet pas de !!{derive} des résultats qui ne
+valent pas réellement. La correction constitue ainsi une garantie de
+fiabilité pour les systèmes de !!{derivation}. Selon la propriété de
+théorie de la démonstration considérée, nous voulons notamment savoir
+que :
+\begin{enumerate}
+\item tout $!A$ !!{derivable} est \iftag{FOL}{valide}{une tautologie};
+\item si !!a{sentence} est !!{derivable} à partir d'autres, il en est
+  aussi une conséquence;
+\item si un ensemble d'!!{sentence}s est incohérent, il est
+  insatisfaisable.
+\end{enumerate}
+Ces propriétés sont essentielles pour un système de !!{derivation}.
+Si l'une d'elles était en défaut, le système serait défectueux : il
+permettrait de !!{derive} trop de résultats. Il est donc primordial
+d'en établir la correction.
+
+Comme toutes ces propriétés de théorie de la démonstration sont
+définies au moyen de !!{tableau}s fermés, la preuve de (1)--(3) exige
+une propriété sémantique de ces tableaux. Nous définirons d'abord ce
+que signifie, pour une \iftag{FOL}{structure}{valuation}, satisfaire
+!!a{signed formula}, puis nous montrerons que, si !!a{tableau} est
+fermé, aucune \iftag{FOL}{structure}{valuation} ne satisfait toutes ses
+hypothèses. Les propriétés (1)--(3) en découleront comme corollaires.
+\end{explain}
+
+\begin{defn}
+\iftag{FOL}{!!^a{structure}}{!!^a{valuation}}~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
+\emph{satisfait} !!a{signed formula} $\sFmla{\True}{!A}$ si et seulement si
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, et satisfait
+$\sFmla{\False}{!A}$ si et seulement si
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$. $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
+satisfait un ensemble d'!!{signed formula}s~$\Gamma$ si et seulement
+s'il satisfait chaque $\sFmla{S}{!A} \in \Gamma$. L'ensemble
+$\Gamma$ est \emph{satisfaisable} s'il existe
+\iftag{FOL}{!!a{structure}}{!!a{valuation}} qui le satisfait, et
+\emph{insatisfaisable} dans le cas contraire.
+\end{defn}
+
+\begin{thm}[Correction]
+  \ollabel{thm:tableau-soundness}
+  Si $\Gamma$ possède un !!{tableau} fermé, alors $\Gamma$ est
+  insatisfaisable.
+\end{thm}
+
+\begin{proof}
+Disons qu'une branche d'!!a{tableau} est satisfaisable si et seulement
+si l'ensemble des !!{signed formula}s qui y figurent est satisfaisable,
+et qu'!!a{tableau} est satisfaisable s'il contient au moins une branche
+satisfaisable.
+
+Montrons que toute extension d'!!a{tableau} satisfaisable par une règle
+d'inférence donne encore un !!{tableau} satisfaisable. Le théorème en
+découlera : tout !!{tableau} fermé s'obtient en appliquant des règles
+d'inférence au !!{tableau} qui ne contient que les hypothèses de
+$\Gamma$. Si $\Gamma$ était satisfaisable, tout !!{tableau} pour
+$\Gamma$ le serait donc aussi. Or un !!{tableau} fermé ne peut être
+satisfaisable : chaque branche contient à la fois
+$\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$, et aucune
+\iftag{FOL}{structure}{valuation} ne peut à la fois satisfaire et ne
+pas satisfaire~$!A$.
+
+Supposons donné un !!{tableau} satisfaisable, c'est-à-dire un
+!!{tableau} qui possède au moins une branche satisfaisable. L'application
+d'une règle d'inférence ajoute des !!{signed formula}s à une branche,
+ou bien ramifie une branche en deux. Si le !!{tableau} possède une
+branche satisfaisable qui n'est pas prolongée par l'application
+considérée, cette branche demeure satisfaisable dans le !!{tableau}
+prolongé; celui-ci est donc satisfaisable. Il suffit par conséquent
+d'examiner le cas où la règle est appliquée à une branche satisfaisable.
+
+Soit $\Gamma$ l'ensemble des !!{signed formula}s de cette branche, et
+soit $\sFmla{S}{!A} \in \Gamma$ la !!{signed formula} à laquelle la
+règle est appliquée. Si la règle ne provoque pas de ramification, il
+faut montrer que la branche prolongée, c'est-à-dire $\Gamma$ avec les
+conclusions de la règle, demeure satisfaisable. Si la règle provoque
+une ramification, il faut montrer qu'au moins l'une des deux branches
+obtenues est satisfaisable.
+  
+Considérons d'abord les inférences qui ne provoquent pas de ramification.
+\begin{enumerate}
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lnot}$ à
+  $\sFmla{\True}{\lnot !B} \in \Gamma$. La branche prolongée contient
+  alors les !!{signed formula}s de
+  $\Gamma \cup \{\sFmla{\False}{!B}\}$. Supposons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$. En particulier,
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !B}$. Par conséquent,
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, c'est-à-dire que
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait
+  $\sFmla{\False}{!B}$.
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lnot}$ à
+  $\sFmla{\False}{\lnot !B} \in \Gamma$ : exercice.
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\land}$ à
+  $\sFmla{\True}{!B \land !C} \in \Gamma$. Deux nouvelles
+  !!{signed formula}s apparaissent sur la branche :
+  $\sFmla{\True}{!B}$ et $\sFmla{\True}{!C}$. Supposons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, et en particulier
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B \land !C}$. Alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ et
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$. Ainsi,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait à la fois
+  $\sFmla{\True}{!B}$ et $\sFmla{\True}{!C}$.
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lor}$ à
+  $\sFmla{\False}{!B \lor !C} \in \Gamma$ : exercice.
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lif}$ à
+  $\sFmla{\False}{!B \lif !C} \in \Gamma$. Deux nouvelles
+  !!{signed formula}s apparaissent sur la branche :
+  $\sFmla{\True}{!B}$ et $\sFmla{\False}{!C}$. Supposons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, et en particulier
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B \lif !C}$. Alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$ et
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$. Ainsi,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait à la fois
+  $\sFmla{\True}{!B}$ et $\sFmla{\False}{!C}$.
+
+\iftag{FOL}{%
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lforall}$ à
+  $\sFmla{\True}{\lforall[x][!A(x)]} \in \Gamma$. La nouvelle
+  !!{signed formula}~$\sFmla{\True}{!A(t)}$ est ajoutée à la branche.
+  Supposons $\Sat{M}{\Gamma}$, et en particulier
+  $\Sat{M}{\lforall[x][!A(x)]}$. D'après
+  \olref[syn][sem]{prop:quant-terms}, $\Sat{M}{!A(t)}$. Par conséquent,
+  $\Struct{M}$ satisfait $\sFmla{\True}{!A(t)}$.
+
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lforall}$ à
+  $\sFmla{\False}{\lforall[x][!A(x)]} \in \Gamma$. On ajoute la
+  !!{signed formula}~$\sFmla{\False}{!A(a)}$, où $a$ est une
+  !!{constant} qui ne figure pas dans~$\Gamma$. Comme $\Gamma$ est
+  satisfaisable, il existe une $\Struct{M}$ telle que
+  $\Sat{M}{\Gamma}$, et en particulier
+  $\Sat/{M}{\lforall[x][!A(x)]}$. Il faut montrer que
+  $\Gamma \cup \{\sFmla{\False}{!A(a)}\}$ est satisfaisable. Pour ce
+  faire, définissons une structure appropriée~$\Struct{M'}$.
+
+  D'après \olref[syn][ass]{prop:sat-quant},
+  $\Sat/{M}{\lforall[x][!A(x)]}$ si et seulement s'il existe une
+  assignation~$s$ telle que $\Sat/{M}{!A(x)}[s]$. Soit maintenant
+  $\Struct{M'}$ la structure identique à $\Struct{M}$, sauf que
+  $\Assign{a}{M'} = s(x)$. D'après
+  \olref[syn][ext]{cor:extensionality-sent}, pour toute
+  $\sFmla{\True}{!C} \in \Gamma$, on a $\Sat{M'}{!C}$, et pour toute
+  $\sFmla{\False}{!C} \in \Gamma$, on a $\Sat/{M'}{!C}$, puisque $a$
+  ne figure pas dans~$\Gamma$.
+
+  D'après \olref[syn][ext]{prop:extensionality},
+  $\Sat/{M'}{!A(x)}[s]$. Puis
+  \olref[syn][ext]{prop:ext-formulas} donne
+  $\Sat/{M'}{!A(a)}[s]$. Comme $!A(a)$ est !!a{sentence},
+  \olref[syn][ass]{prop:sentence-sat-true} entraîne
+  $\Sat/{M'}{!A(a)}$. Autrement dit, $\Struct{M'}$ satisfait
+  $\sFmla{\False}{!A(a)}$.
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lexists}$ à
+  $\sFmla{\True}{\lexists[x][!B(x)]} \in \Gamma$ : exercice.
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\lexists}$ à
+  $\sFmla{\False}{\lexists[x][!B(x)]} \in \Gamma$ : exercice.}{}
+\end{enumerate}
+Considérons maintenant les inférences qui provoquent une ramification.
+\begin{enumerate}
+\item La branche est prolongée par l'application de
+  $\TRule{\False}{\land}$ à
+  $\sFmla{\False}{!B \land !C} \in \Gamma$. Elle se ramifie en une
+  branche gauche qui se poursuit par $\sFmla{\False}{!B}$ et une
+  branche droite qui se poursuit par $\sFmla{\False}{!C}$. Supposons
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, et en particulier
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B \land !C}$. Alors
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$ ou
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$. Dans le premier cas,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait
+  $\sFmla{\False}{!B}$, donc toutes les formules de la branche gauche.
+  Dans le second,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait
+  $\sFmla{\False}{!C}$, donc toutes les formules de la branche droite.
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lor}$ à
+  $\sFmla{\True}{!B \lor !C} \in \Gamma$ : exercice.
+\item La branche est prolongée par l'application de
+  $\TRule{\True}{\lif}$ à
+  $\sFmla{\True}{!B \lif !C} \in \Gamma$ : exercice.
+\item La branche est prolongée au moyen de \Cut{}. On obtient deux
+  branches, dont l'une contient $\sFmla{\True}{!B}$ et l'autre
+  $\sFmla{\False}{!B}$. Comme
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ et que l'on a soit
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B}$, soit
+  $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$,
+  $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ satisfait la branche gauche
+  ou la branche droite.
+\end{enumerate}
+\end{proof}
+
+\begin{editorial}
+Dans les deux cas consacrés à $\lforall$, la source commence avec
+$!B(x)$, puis poursuit le même argument avec $!A(x)$ et ses instances.
+La lettre~$A$ est rétablie dans les prémisses afin que chaque règle et
+chaque calcul sémantique portent sur une seule formule. Dans le passage
+commun aux présentations propositionnelle et du premier ordre,
+« structure » est adapté en « valuation » pour la première.
+\end{editorial}
+
+\tagprob{FOL}
+\begin{prob}
+Achever la démonstration de
+\olref[fol][tab][sou]{thm:tableau-soundness}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Achever la démonstration de
+\olref[pl][tab][sou]{thm:tableau-soundness}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est \iftag{FOL}{valide}{une tautologie}.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:entailment-soundness}
+Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
+\end{cor}
+
+\begin{proof}
+  Si $\Gamma \Proves !A$, il existe $!B_1$, \dots, $!B_n \in
+  \Gamma$ tels que $\{\sFmla{\False}{!A},
+  \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$ possède un
+  !!{tableau} fermé. D'après
+  \olref{thm:tableau-soundness}, toute
+  \iftag{FOL}{!!{structure}}{!!{valuation}}~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
+  rend faux au moins un $!B_i$, ou rend vrai $!A$. Par conséquent, si
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$, alors
+  $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
+\end{proof}
+
+\begin{cor}
+\ollabel{cor:consistency-soundness}
+Si $\Gamma$ est satisfaisable, alors il est cohérent.
+\end{cor}
+
+\begin{proof}
+Nous démontrons la contraposée. Supposons que $\Gamma$ soit
+incohérent. Il existe alors $!B_1$, \dots, $!B_n \in \Gamma$ et un
+!!{tableau} fermé pour
+$\{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$. D'après
+\olref{thm:tableau-soundness}, il n'existe aucune
+$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ telle que
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B_i}$ pour tout
+$i=1$, \dots,~$n$. L'ensemble $\Gamma$ n'est donc pas satisfaisable.
+\end{proof}
+
+\end{document}

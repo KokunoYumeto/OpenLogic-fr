@@ -3,7 +3,7 @@
     "source_repository": "https://github.com/OpenLogicProject/OpenLogic",
     "source_revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
     "frozen_units": 722,
-    "published_scope_units": 83,
+    "published_scope_units": 92,
     "published_ids": [
       "OLP-0005",
       "OLP-0007",
@@ -87,10 +87,19 @@
       "OLP-0091",
       "OLP-0092",
       "OLP-0093",
-      "OLP-0095"
+      "OLP-0095",
+      "OLP-0098",
+      "OLP-0099",
+      "OLP-0100",
+      "OLP-0102",
+      "OLP-0103",
+      "OLP-0105",
+      "OLP-0106",
+      "OLP-0107",
+      "OLP-0109"
     ],
-    "untranslated_units": 628,
-    "drafted_units": 94,
+    "untranslated_units": 614,
+    "drafted_units": 108,
     "reader_excluded_drafts": [
       "OLP-0055",
       "OLP-0072",
@@ -102,115 +111,241 @@
       "OLP-0090",
       "OLP-0094",
       "OLP-0096",
-      "OLP-0097"
+      "OLP-0097",
+      "OLP-0101",
+      "OLP-0104",
+      "OLP-0108",
+      "OLP-0110",
+      "OLP-0111"
     ],
-    "remaining_reader_units": 639,
+    "remaining_reader_units": 630,
     "full_edition_complete": false,
-    "version": "v0.8.0-deduction-naturelle",
-    "chapters": 10,
-    "sections": 73,
-    "pages": 126,
-    "exercises": 95,
+    "version": "v0.9.0-tableaux",
+    "chapters": 11,
+    "sections": 81,
+    "pages": 141,
+    "exercises": 101,
     "canon_full_pdfs_redistributed": false
   },
   "pdf_and_direct_latex": {
-    "status": "PDF_AND_DIRECT_LATEX_ACCEPTED_EPUB_PENDING",
-    "at": "2026-09-20T00:57:16.224004+00:00",
-    "scope_units": 83,
-    "chapters": 10,
-    "sections": 73,
-    "pages": 126,
-    "exercises": 95,
+    "status": "PASS_COMPLETE_TEXT_LOAD_VISUAL_AND_DIRECT_SOURCE_REPRODUCTION",
+    "at": "2026-09-20T03:59:53.911753+00:00",
     "pdf": {
-      "path": "private-reference/work\\natural-deduction-v09\\build-02\\source\\locale\\fr\\reader.pdf",
-      "bytes": 610743,
-      "sha256": "585084b2a05eaa2647397dde295495bc2c15c803cc1aca7bffd63487723f6415"
+      "path": "private-reference/work\\tableaux-v10\\build-04\\source\\locale\\fr\\reader.pdf",
+      "bytes": 661803,
+      "sha256": "6a7330a90f1539185476c16e690e68abc0577cd48988eb3c417355a527c7511f",
+      "pages": 141,
+      "exercises": 101
     },
-    "direct_latex": {
-      "path": "private-reference/work\\natural-deduction-v09\\openlogic-fr-ensembles-deduction-naturelle.tex",
-      "bytes": 448786,
-      "sha256": "8b9000b029487e857160d68f7a84235ad5abcbfb84d026995b2557abe2bc2abe",
-      "complete_source_bodies": 83,
-      "independent_pdf_byte_identical": true
+    "scope": {
+      "reader_units": 92,
+      "chapters": 11,
+      "sections": 81,
+      "tableaux_physical_pages": [
+        126,
+        141
+      ]
     },
-    "build_receipts": [
-      "pdf-01/BUILD_RECEIPT.json",
-      "pdf-03/BUILD_RECEIPT.json",
-      "direct-pdf-01/BUILD_RECEIPT.json"
-    ],
+    "technical_checks": {
+      "loaded_contract_units": 92,
+      "unresolved_references": false,
+      "overfull_boxes": false,
+      "unexpanded_token_markers": false,
+      "duplicate_exercise_numbers": false
+    },
     "visual_review": {
-      "initial_pages": [
+      "inspected_physical_pages": [
         1,
         2,
         3,
         4,
+        88,
+        91,
         111,
-        112,
-        113,
-        114,
-        115,
-        116,
-        117,
-        118,
-        119,
-        120,
-        121,
-        122,
-        123,
         124,
-        125,
-        126
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141
       ],
-      "repaired_pages": [
-        3,
-        4,
-        111,
-        112,
-        113,
-        114,
-        117,
-        118,
-        124,
-        125
-      ],
-      "unchanged_rendered_pages": [
-        1,
-        2,
-        109,
-        110,
-        115,
-        116,
-        119,
-        120,
-        121,
-        122,
-        123,
-        126
-      ],
-      "clipping_or_overlap_observed": false
+      "front_matter": "Pages 1–4: title and complete contents remain legible and within the page area.",
+      "prior_audit_repairs": "Pages 88, 91, 111 and 124: all four accepted nine-page-audit repairs render cleanly.",
+      "tableaux": "Pages 126–141: headings, prose, rule frames, proof trees, correction notes, exercises and bibliography have no clipping, overlap, margin breach or unreadable object.",
+      "repair_confirmation": "Page 128 now renders the sentence-internal noun as lowercase: 'Les tableaux sont engendrés inductivement'.",
+      "fresh_render_comparison": "All inspected rasters except repaired page 128 are byte-identical to the prior inspected render.",
+      "raster_comparisons": [
+        {
+          "page": 1,
+          "identical": true,
+          "sha256": "af13c38b9dafa43d15efa4cb8a2ecba7bb2a932887602f37b13c982aa15787e1"
+        },
+        {
+          "page": 2,
+          "identical": true,
+          "sha256": "48b742de5b0043fb05a3f0ba03cc4b304a4b14d05396e1af8a2c44489e72b08f"
+        },
+        {
+          "page": 3,
+          "identical": true,
+          "sha256": "7df4a680b9d46e3d34b288e992e7ef8e5c7d762da9a0e0fa53dcbbb196f074f4"
+        },
+        {
+          "page": 4,
+          "identical": true,
+          "sha256": "819730411950113cacda7b76ca4547e3554a528fb98d3bbabb5ccfb343e831e0"
+        },
+        {
+          "page": 88,
+          "identical": true,
+          "sha256": "b82b6cb1c1bc1b517999e84f89c05a960fac6f12d2aa3f61f5d53c4c0428cfa9"
+        },
+        {
+          "page": 91,
+          "identical": true,
+          "sha256": "074af6ee282b4865ce3aaedeb29a822f4effa26d06f9ca30bd9cb22deb5af89d"
+        },
+        {
+          "page": 111,
+          "identical": true,
+          "sha256": "c9ccb3aef4327d8a7621dd5d8ed5d4eda618e37f789635c29e48b79e512804ed"
+        },
+        {
+          "page": 124,
+          "identical": true,
+          "sha256": "9ab6fac187439cf45d5991c3f46bda2e810d82b16757fa0825c064e2c20b7714"
+        },
+        {
+          "page": 126,
+          "identical": true,
+          "sha256": "230ba7d2ff70579d812d9897aba80279aca8762bb8e11eb5e2e613af90095956"
+        },
+        {
+          "page": 127,
+          "identical": true,
+          "sha256": "6ac7b7da6bd75747ccb2e3596f8260c9c22745ac74ffcee736c035fcd79ca17b"
+        },
+        {
+          "page": 128,
+          "identical": false,
+          "sha256": "2257063116ad18329e7cb7740d54565f0da9fb4244c45ec562d22208bc6fec15"
+        },
+        {
+          "page": 129,
+          "identical": true,
+          "sha256": "3569f95af05b931c94246eb34640880afdc4fb8863d115312987f922039b1c48"
+        },
+        {
+          "page": 130,
+          "identical": true,
+          "sha256": "0b201c72fc4ec5ad17e8e0bc2e7c543ffdf612224841c03c545e7939c6481e64"
+        },
+        {
+          "page": 131,
+          "identical": true,
+          "sha256": "a27b2ad543db023bfc14dfcdd092d805bfada23a530519dec32789a8bbd3731d"
+        },
+        {
+          "page": 132,
+          "identical": true,
+          "sha256": "e4d511658a9a85ebb122047e4213b8a4e3cba8e7351cc5860d634efeff0e3c08"
+        },
+        {
+          "page": 133,
+          "identical": true,
+          "sha256": "c0b506454f0f68fb687a468b6378d5c5868792a53b71c7d795ec571133e7b7ff"
+        },
+        {
+          "page": 134,
+          "identical": true,
+          "sha256": "9e88dcf8162c63fa2ea6981254e3a870bf25ad0487d24157e14b25311fc42d95"
+        },
+        {
+          "page": 135,
+          "identical": true,
+          "sha256": "23ab20e0c7f8412c7ec002c8bc5c01474cc0f0e14b09847a8a94a7fd6b3d385b"
+        },
+        {
+          "page": 136,
+          "identical": true,
+          "sha256": "3feba93dcc656ad9898a4551337ee2c175c4debdc991c1cc9516bfe81521c50e"
+        },
+        {
+          "page": 137,
+          "identical": true,
+          "sha256": "51c94807a3e76d5724935993fa886c9aa75ffb87b59cb5a94303c2eb6c3e9e18"
+        },
+        {
+          "page": 138,
+          "identical": true,
+          "sha256": "d79631a47dd85256f872ef3c21c2208814347f92b9f28305c01d4cd7ad226280"
+        },
+        {
+          "page": 139,
+          "identical": true,
+          "sha256": "00b54c44d70c64a85cff8997593dee86bbbbdf748aab328a623205989859649d"
+        },
+        {
+          "page": 140,
+          "identical": true,
+          "sha256": "4977f6a46bd0d79d61b574c3fb2fb8ffe82ab517408085c1ea827710e7fb52e1"
+        },
+        {
+          "page": 141,
+          "identical": true,
+          "sha256": "322971ef0aae876de3a0cd0700d778eca9f77a82dd5cd340f7d1f55538ec004b"
+        }
+      ]
     },
-    "inherited_body_text_pages_identical": 106,
-    "bibliography_identical_except_page_number": true,
+    "reproducibility": {
+      "modular_pdf_sha256": "6a7330a90f1539185476c16e690e68abc0577cd48988eb3c417355a527c7511f",
+      "cumulative_pdf_sha256": "6a7330a90f1539185476c16e690e68abc0577cd48988eb3c417355a527c7511f",
+      "byte_identical": true,
+      "source_date_epoch": "1788739200",
+      "mutex": "Global\\InterlanguageTeXSlotV1",
+      "guarded_passes_each": [
+        "x1",
+        "bibtex",
+        "x2",
+        "x3",
+        "final"
+      ],
+      "all_passes_confirmed_zero_active_processes_before_mutex_release": true
+    },
     "full_edition_complete": false
   },
   "epub": {
-    "status": "ACCEPTED_83_UNIT_EPUB",
-    "at": "2026-09-20T01:10:44.375084+00:00",
-    "scope_units": 83,
-    "chapters": 10,
-    "sections": 73,
+    "status": "ACCEPTED_92_UNIT_EPUB",
+    "at": "2026-09-20T15:22:47.279874+00:00",
+    "scope_units": 92,
+    "chapters": 11,
+    "sections": 81,
     "total_edition_units": 722,
     "full_edition_complete": false,
-    "bytes": 696286,
-    "sha256": "92607683c69ebb49dfcbcbb9ff7d2971de320c758c20c725933e584caad8f21e",
-    "native_mathml_roots": 4826,
-    "figures": 114,
-    "new_diagrams": 44,
-    "exercises": 95,
+    "bytes": 918582,
+    "sha256": "8a328d2d0e869fe15122cf0c5f14761832e56999def3d3e69608b05e606acd55",
+    "native_mathml_roots": 5230,
+    "figures": 146,
+    "new_tableaux_diagrams": 32,
+    "tableaux_rule_frames": 5,
+    "tableaux_trees": 27,
+    "exercises": 101,
     "footnotes": 87,
     "noterefs": 87,
     "epubcheck": {
       "version": "5.3.0",
+      "fatal": 0,
       "errors": 0,
       "warnings": 0
     },
@@ -218,24 +353,24 @@
       {
         "file": "MOBILE_PROBE.json",
         "samples": 20,
-        "missing_images": 0,
+        "missing_or_undescribed_images": 0,
         "global_overflow": 0
       },
       {
         "file": "RUNTIME_PROBE.json",
         "samples": 20,
-        "missing_images": 0,
+        "missing_or_undescribed_images": 0,
         "global_overflow": 0
       },
       {
         "file": "PAN_PROBE.json",
         "samples": 4,
-        "missing_images": 0,
+        "missing_or_undescribed_images": 0,
         "global_overflow": 0
       }
     ],
     "source_coverage": {
-      "loaded_units": 83,
+      "loaded_units": 92,
       "loaded_sources": [
         {
           "unit_id": "OLP-0005",
@@ -535,7 +670,7 @@
         {
           "unit_id": "OLP-0064",
           "path": "content/first-order-logic/proof-systems/introduction.tex",
-          "sha256": "3ba98db536ff3e4e8abe9c6c1ffa2b3a31a01769bb6176a36258986a77974acb"
+          "sha256": "69a7b63b4988d598f744c55f82d827510058652e55239bd554703a04607627e1"
         },
         {
           "unit_id": "OLP-0065",
@@ -545,7 +680,7 @@
         {
           "unit_id": "OLP-0066",
           "path": "content/first-order-logic/proof-systems/natural-deduction.tex",
-          "sha256": "f7e5d118f49d75385e4f825cf6d029c4b634d50864ba105635cef6fcf0bddc2f"
+          "sha256": "3dbb5d00ff9d424ae637a7be3a9825fd9f7e19e06123d2463504ea1d9f91b42c"
         },
         {
           "unit_id": "OLP-0067",
@@ -610,7 +745,7 @@
         {
           "unit_id": "OLP-0084",
           "path": "content/first-order-logic/natural-deduction/natural-deduction.tex",
-          "sha256": "dd013cb35b97e3351635a3f4b5c044f890fd8659a6e63e71e0510d1a6ad9be2a"
+          "sha256": "86fa812a3faa078916bb69926227cce7c9ca2a0334f6f0bd23376cf32993625f"
         },
         {
           "unit_id": "OLP-0085",
@@ -650,19 +785,68 @@
         {
           "unit_id": "OLP-0095",
           "path": "content/first-order-logic/natural-deduction/soundness.tex",
-          "sha256": "91a3e8bfed0157703ee7509139802b491958b1b1d0fb926e8cc17c7b2d950243"
+          "sha256": "efaef5f0749b9cd7c79d56c06e5cecf872ea752a98557b4f4f5afcc475e4125c"
+        },
+        {
+          "unit_id": "OLP-0098",
+          "path": "content/first-order-logic/tableaux/tableaux.tex",
+          "sha256": "5f2fa66eb80db0dac41fd05ac0b93bdb0a435c4f62a35eee7d3d2e9a60619536"
+        },
+        {
+          "unit_id": "OLP-0099",
+          "path": "content/first-order-logic/tableaux/rules-and-proofs.tex",
+          "sha256": "ef90c3980ee4271411d678f15c8f080ddf3142d2982d5d59d1ee70710f195c5b"
+        },
+        {
+          "unit_id": "OLP-0100",
+          "path": "content/first-order-logic/tableaux/propositional-rules.tex",
+          "sha256": "4923d08ac792a1574c55685c8d6f710e3405586a632b4c91c65875720449aeb1"
+        },
+        {
+          "unit_id": "OLP-0102",
+          "path": "content/first-order-logic/tableaux/derivations.tex",
+          "sha256": "e13b3e88aab38aaa7dbea57f9a4186c99f938e1220a52f4e1e50dc20b5de1a9c"
+        },
+        {
+          "unit_id": "OLP-0103",
+          "path": "content/first-order-logic/tableaux/proving-things.tex",
+          "sha256": "26891044844ed238a3d9585441b12a1f1c8cd2773d4bab96ca7f4323674d3ac6"
+        },
+        {
+          "unit_id": "OLP-0105",
+          "path": "content/first-order-logic/tableaux/proof-theoretic-notions.tex",
+          "sha256": "ea72fff1e359cc3f5a77766052fb6132f85552ac354c9ae37ea73f4f7279d061"
+        },
+        {
+          "unit_id": "OLP-0106",
+          "path": "content/first-order-logic/tableaux/provability-consistency.tex",
+          "sha256": "9eb5391c2edcbb63dc2e1417f93ad94ef67d7aaf112903fd907969648fe873af"
+        },
+        {
+          "unit_id": "OLP-0107",
+          "path": "content/first-order-logic/tableaux/provability-propositional.tex",
+          "sha256": "72eb7fadf4eacffeec53e4c8013e55ca85145e608022b0f1b2842c43319b1076"
+        },
+        {
+          "unit_id": "OLP-0109",
+          "path": "content/first-order-logic/tableaux/soundness.tex",
+          "sha256": "ae0e15ef0a173b2f5b4c9ab0dab50f647e988a3ce3a28e2cc25e01f0250f33d6"
         }
       ],
-      "token_aliases": 999,
-      "uppercase_expansions": 11
+      "token_aliases": 1187,
+      "uppercase_expansions": 19
     },
-    "inherited_byte_identical": {
-      "chapter_documents": 8,
-      "svg_images": 70,
-      "chapter9_same_content": true
+    "inherited_content": {
+      "svg_images_byte_identical": 114,
+      "changed_prior_xhtml_documents": [
+        "OEBPS/reader.xhtml",
+        "OEBPS/readerch10.xhtml",
+        "OEBPS/readerch8.xhtml",
+        "OEBPS/readerli1.xhtml"
+      ]
     },
     "visual_review": {
-      "proof_contact_sheets": [
+      "tableaux_contact_sheets": [
         1,
         2,
         3,
@@ -672,113 +856,2112 @@
         7,
         8
       ],
-      "new_diagrams_inspected": 44,
-      "mobile_screens": [
-        3,
-        5,
-        8,
+      "new_diagrams_inspected": 32,
+      "current_mobile_screens": [
+        2,
+        7,
         11,
-        14,
-        15,
-        16
-      ],
-      "desktop_screens": [
-        3,
-        16,
+        12,
+        13,
         18
       ],
-      "horizontal_pan_screens": [
+      "desktop_screens_inspected_before_metadata_only_date_repair": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11,
+        12,
+        13,
+        16,
+        18,
+        19
+      ],
+      "current_horizontal_pan_screens": [
         0,
         1,
         2,
         3
       ],
-      "finding": "All44 source diagrams inspected on eight contact sheets: five rule panels, derivations, incomplete examples, discharge labels1–4, contexts, paired trees and four end-of-proof squares. The corrected negation-elimination label is preserved. Intrinsic diagram size prevents tiny mobile text; local panning exposes the right branch.",
+      "finding": "All 32 source diagrams were inspected on eight contact sheets. Rule labels, signed formulas, branching, checked formulas and closed branches are legible. Mobile prose and formula layouts do not overlap or clip. Four wide tableaux reach their rightmost branch through local horizontal panning.",
       "clipping_or_overlap_observed": false
     },
     "content_diagnostic": {
-      "compared_prose_windows": 18113,
-      "unmatched_diagnostic_windows": 877,
-      "new_chapter_windows_reviewed": 51,
-      "finding": "The51 new mismatches occur at PDF mathematical-font extraction (notably Delta/braces and phi), SVG boundaries, ligatures or heading boundaries. Compared source prose, rendered paragraphs and44 proof images; no lost paragraph found. This is not a claim of exact extracted-text equality."
+      "compared_prose_windows": 19645,
+      "unmatched_diagnostic_windows": 941,
+      "new_chapter_windows_reviewed": 69,
+      "finding": "All 69 chapter-11 mismatches cross mathematical/SVG/page boundaries or reflect PDF mathematical-font extraction. Source prose, rendered paragraphs and all 32 diagrams were compared; no lost paragraph was found. This diagnostic does not claim exact extracted-text equality."
     },
     "repairs": [
-      "Inherited verified native MathML/link/footnote/namespace repairs",
-      "44 source-grounded descriptions with explicit incomplete branches",
-      "Four captured end-of-proof squares described",
-      "New proof images displayed as blocks at intrinsic size with local horizontal scrolling",
+      "Inherited verified MathML, link, footnote, namespace and duplicate-ID repairs",
+      "Thirty-two source-grounded tableau descriptions",
+      "Intrinsic-size tableau diagrams with local horizontal scrolling",
+      "Release and modified dates both set to 2026-09-20",
       "Accented headings and explicit uppercase token expansions"
     ]
   },
-  "reference_grammar": {
-    "at": "2026-09-20T00:51:22.862926+00:00",
-    "status": "LOCAL_RENDER_REPAIRS_APPLIED_REBUILD_PENDING",
-    "units": [
+  "quality_reaudit": {
+    "at": "2026-09-20T02:03:04.9823354+00:00",
+    "model": "GPT-5",
+    "status": "PASS_RETAIN_AND_REPAIR_COMPLETE",
+    "decision": "retain_and_repair",
+    "restart_required": false,
+    "chapters_audited": 3,
+    "pages_per_chapter": 3,
+    "pages_total": 9,
+    "words_audited": 3916,
+    "audited_physical_pages": [
+      88,
+      91,
+      93,
+      95,
+      103,
+      109,
+      111,
+      119,
+      124
+    ],
+    "audited_printed_pages": [
+      84,
+      87,
+      89,
+      91,
+      99,
+      105,
+      107,
+      115,
+      120
+    ],
+    "critical_defects": 0,
+    "major_defects": 0,
+    "mathematical_or_logical_discrepancies": 0,
+    "omissions": 0,
+    "render_defects": 0,
+    "local_repairs": 5,
+    "repaired_units": [
+      "OLP-0064",
+      "OLP-0066",
+      "OLP-0084",
+      "OLP-0095"
+    ],
+    "source_pdf": "private-reference/work\\natural-deduction-v09\\build-02\\source\\locale\\fr\\reader.pdf",
+    "source_pdf_sha256": "585084b2a05eaa2647397dde295495bc2c15c803cc1aca7bffd63487723f6415",
+    "rebuild_pdf": "private-reference/work\\natural-deduction-v09\\quality-audit-build-01\\source\\locale\\fr\\reader.pdf",
+    "rebuild_pdf_sha256": "54d43d89074a4969ee4f08474eca30517df42a32a1133afcbcec923e14737388",
+    "rebuild_pages": 126,
+    "changed_physical_pages": [
+      88,
+      91,
+      111,
+      124
+    ],
+    "changed_pages_visually_inspected": true,
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "missing_language_marks": 0,
+    "semantic_or_formal_change": false,
+    "formulas_proof_trees_labels_and_citations_unchanged": true,
+    "forward_work_gate": "CLEARED",
+    "sample_limit": "Nine sampled pages as requested; not a fresh line-by-line audit of every page in the three chapters."
+  },
+  "tableaux_diagrams": {
+    "status": "SOURCE_AND_IMAGE_ORDER_MATCHED_VISUAL_REVIEW_PENDING",
+    "images": [
       {
-        "unit_id": "OLP-0085",
-        "previous_target_sha256": "1e731958e0f97c13445a91d69095582a4601e04ebaf1ca1bc83392c136cd4ac5",
-        "target_sha256": "d5966d2438dcd0323a4cda68fea526819ab58786e9c652cd7f525a7b2a43c691",
-        "formal_blocks_and_inline_math_identical": true
+        "unit_id": "OLP-0100",
+        "path": "fr\\content\\first-order-logic\\tableaux\\propositional-rules.tex",
+        "environment": "defish",
+        "environment_number": 1,
+        "source_block": "\\begin{defish}\n\\AxiomC{\\sFmla{\\True}{\\lnot !A}}\n\\RightLabel{\\TRule{\\True}{\\lnot}}\n\\UnaryInfC{\\sFmla{\\False}{!A}}\n\\DisplayProof\n\\hfill\n\\AxiomC{\\sFmla{\\False}{\\lnot !A}}\n\\RightLabel{\\TRule{\\False}{\\lnot}}\n\\UnaryInfC{\\sFmla{\\True}{!A}}\n\\DisplayProof\n\\end{defish}",
+        "source_block_sha256": "277599626e48c16fd2d936d0531ab6283f1d86f58f5f238ec118ed686ff0433f",
+        "image": "reader161x.svg",
+        "svg_sha256": "3e27e6ef48e0f5505c2626d8fc7621577320e33b3be31a044848566d81e34751",
+        "alt": "Deux règles de tableau pour la négation. À gauche, de 𝕋 ¬φ on déduit 𝔽 φ par la règle ¬𝕋. À droite, de 𝔽 ¬φ on déduit 𝕋 φ par la règle ¬𝔽.",
+        "tree": null,
+        "leaf_count": null
       },
       {
-        "unit_id": "OLP-0086",
-        "previous_target_sha256": "0a8bba5af6e12ae35aab995e64d766902f480fc5f5e5ef80907d5225a382ec5f",
-        "target_sha256": "26f71ae0a08a1413f717ea4969770a765d90df97ce6350c7e0637a85c65f5d69",
-        "formal_blocks_and_inline_math_identical": true
+        "unit_id": "OLP-0100",
+        "path": "fr\\content\\first-order-logic\\tableaux\\propositional-rules.tex",
+        "environment": "defish",
+        "environment_number": 2,
+        "source_block": "\\begin{defish}\\noindent\n\\AxiomC{\\sFmla{\\True}{!A \\land !B}}\n\\RightLabel{\\TRule{\\True}{\\land}}\n\\UnaryInfC{\\sFmla{\\True}{!A}}\n\\noLine\n\\UnaryInfC{\\sFmla{\\True}{!B}}\n\\DisplayProof\n\\hfill\n\\AxiomC{\\sFmla{\\False}{!A \\land !B}}\n\\RightLabel{\\TRule{\\False}{\\land}}\n\\UnaryInfC{$\\sFmla{\\False}{!A} \\quad \\mid \\quad \\sFmla{\\False}{!B}$}\n\\DisplayProof\n\\end{defish}",
+        "source_block_sha256": "c429334bbeb7f7f7c64dbdeddf05f5fb2d3d8f10d38dda6e750addae5da8139c",
+        "image": "reader162x.svg",
+        "svg_sha256": "701d3963a3b260001551a937730151c7e689ade533e7d5a48feb861f4a184b82",
+        "alt": "Deux règles de tableau pour la conjonction. À gauche, de 𝕋 (φ ∧ ψ) on inscrit successivement 𝕋 φ puis 𝕋 ψ sur la même branche. À droite, 𝔽 (φ ∧ ψ) ramifie le tableau : une branche reçoit 𝔽 φ et l’autre 𝔽 ψ.",
+        "tree": null,
+        "leaf_count": null
       },
       {
-        "unit_id": "OLP-0091",
-        "previous_target_sha256": "691467693a6ef162697f3b9ab70d6f452491043feed44b222cb0996e1baae3ae",
-        "target_sha256": "133a8f11293aed417581d465e61d94e68360b905399d4aff200c96521e326e25",
-        "formal_blocks_and_inline_math_identical": true
+        "unit_id": "OLP-0100",
+        "path": "fr\\content\\first-order-logic\\tableaux\\propositional-rules.tex",
+        "environment": "defish",
+        "environment_number": 3,
+        "source_block": "\\begin{defish}\n\\AxiomC{\\sFmla{\\True}{!A \\lor !B}}\n\\RightLabel{\\TRule{\\True}{\\lor}}\n\\UnaryInfC{$\\sFmla{\\True}{!A} \\quad \\mid \\quad \\sFmla{\\True}{!B}$}\n\\DisplayProof\n\\hfill\n\\AxiomC{\\sFmla{\\False}{!A \\lor !B}}\n\\RightLabel{\\TRule{\\False}{\\lor}}\n\\UnaryInfC{\\sFmla{\\False}{!A}}\n\\noLine\n\\UnaryInfC{\\sFmla{\\False}{!B}}\n\\DisplayProof\n\\end{defish}",
+        "source_block_sha256": "f44e8918baaa28e4ca70836cae579bc44166771c034895db43ef3fe67127b0eb",
+        "image": "reader163x.svg",
+        "svg_sha256": "ac5b117f06e26f44175a3333b737a2ad3a15c8445a712e12d4059797be177bab",
+        "alt": "Deux règles de tableau pour la disjonction. À gauche, 𝕋 (φ ∨ ψ) ramifie le tableau : une branche reçoit 𝕋 φ et l’autre 𝕋 ψ. À droite, de 𝔽 (φ ∨ ψ) on inscrit successivement 𝔽 φ puis 𝔽 ψ sur la même branche.",
+        "tree": null,
+        "leaf_count": null
       },
       {
-        "unit_id": "OLP-0095",
-        "previous_target_sha256": "607023e198efb6147b3b8ff35498fb6e0013ced8254d8adfba403868bb5268b8",
-        "target_sha256": "91a3e8bfed0157703ee7509139802b491958b1b1d0fb926e8cc17c7b2d950243",
-        "formal_blocks_and_inline_math_identical": true
+        "unit_id": "OLP-0100",
+        "path": "fr\\content\\first-order-logic\\tableaux\\propositional-rules.tex",
+        "environment": "defish",
+        "environment_number": 4,
+        "source_block": "\\begin{defish}\n\\AxiomC{\\sFmla{\\True}{!A \\lif !B}}\n\\RightLabel{\\TRule{\\True}{\\lif}}\n\\UnaryInfC{$\\sFmla{\\False}{!A} \\quad \\mid \\quad \\sFmla{\\True}{!B}$}\n\\DisplayProof\n\\hfill\n\\AxiomC{\\sFmla{\\False}{!A \\lif !B}}\n\\RightLabel{\\TRule{\\False}{\\lif}}\n\\UnaryInfC{\\sFmla{\\True}{!A}}\n\\noLine\n\\UnaryInfC{\\sFmla{\\False}{!B}}\n\\DisplayProof\n\\end{defish}",
+        "source_block_sha256": "d685b731ddfe71cc565733d509567b7a98671cf827a1f19304b843a94e39b4d8",
+        "image": "reader164x.svg",
+        "svg_sha256": "affeeaf7cabc4ecbfa092c1c9207f7864822a3c9700317eaf5b520f318aa14d3",
+        "alt": "Deux règles de tableau pour l’implication. À gauche, 𝕋 (φ → ψ) ramifie le tableau : une branche reçoit 𝔽 φ et l’autre 𝕋 ψ. À droite, de 𝔽 (φ → ψ) on inscrit successivement 𝕋 φ puis 𝔽 ψ sur la même branche.",
+        "tree": null,
+        "leaf_count": null
       },
       {
-        "unit_id": "OLP-0097",
-        "previous_target_sha256": "d0ec58c1e8a54c7c16d95b1f1c4b8f6aba308ff9b2d7d013a1d39f7203a3e836",
-        "target_sha256": "aa4123c565aa09cc28971b0ba79d0c6342b3261763b645b5a7908db2bd9fb702",
-        "formal_blocks_and_inline_math_identical": true
+        "unit_id": "OLP-0100",
+        "path": "fr\\content\\first-order-logic\\tableaux\\propositional-rules.tex",
+        "environment": "defish",
+        "environment_number": 5,
+        "source_block": "\\begin{defish}\n\\AxiomC{}\n\\RightLabel{\\Cut}\n\\UnaryInfC{$\\sFmla{\\True}{!A} \\quad \\mid \\quad \\sFmla{\\False}{!A}$}\n\\DisplayProof\n\\end{defish}",
+        "source_block_sha256": "476776efb87d46a76f089c9243edad23cd0bfba593c319cbe50d941af80fe339",
+        "image": "reader165x.svg",
+        "svg_sha256": "696dc639d0d6595754798d8c218f1fd4c3030c8effd532020e2bec1cfccdc27d",
+        "alt": "Règle de coupure. Chaque branche est divisée en deux : la première reçoit 𝕋 φ et la seconde 𝔽 φ.",
+        "tree": null,
+        "leaf_count": null
+      },
+      {
+        "unit_id": "OLP-0102",
+        "path": "fr\\content\\first-order-logic\\tableaux\\derivations.tex",
+        "environment": "tableau",
+        "environment_number": 1,
+        "source_block": "\\begin{tableau}{}\n      [\\sFmla{\\True}{\\formula{A} \\land \\lnot \\formula{A}}, just=\\TAss]\n    \\end{tableau}",
+        "source_block_sha256": "28b7b7bd774a74dcd2a5a0f9601776fcf5566321ca0b2fc4fbffb422027af528",
+        "image": "reader175x.svg",
+        "svg_sha256": "7d6e61478de0c2f505b476d2a799794e74a0c390ddeb212e2415e6632c45c665",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∧ ¬ φ (hypothèse). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\land \\lnot \\formula{A}}",
+          "formula": "𝕋 φ ∧ ¬ φ",
+          "checked": false,
+          "closed": false,
+          "children": [],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0102",
+        "path": "fr\\content\\first-order-logic\\tableaux\\derivations.tex",
+        "environment": "tableau",
+        "environment_number": 2,
+        "source_block": "\\begin{tableau}{}\n      [\\sFmla{\\True}{\\formula{A} \\land \\lnot \\formula{A}}, just=\\TAss\n        [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\True}{\\land}[1]},\n          [\\sFmla{\\True}{\\lnot \\formula{A}}, just={\\TRule{\\True}{\\land}[1]}\n          ]\n        ]\n      ]\n    \\end{tableau}",
+        "source_block_sha256": "65e506c18fd3a5c8f40db8b174a135f75e151fc74f1ab4abcc9ca2d7791be675",
+        "image": "reader195x.svg",
+        "svg_sha256": "1c19722d5fc047624ed960c54d263b24b569002e5499193f8f667c56a500b8f3",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∧ ¬ φ (hypothèse). Puis 𝕋 φ (règle ∧𝕋 appliquée à la ligne 1). Puis 𝕋 ¬ φ (règle ∧𝕋 appliquée à la ligne 1). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\land \\lnot \\formula{A}}",
+          "formula": "𝕋 φ ∧ ¬ φ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A}}",
+              "formula": "𝕋 φ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\lnot \\formula{A}}",
+                  "formula": "𝕋 ¬ φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [],
+                  "justification_source": "{\\TRule{\\True}{\\land}[1]}",
+                  "justification": "règle ∧𝕋 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "{\\TRule{\\True}{\\land}[1]}",
+              "justification": "règle ∧𝕋 appliquée à la ligne 1"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0102",
+        "path": "fr\\content\\first-order-logic\\tableaux\\derivations.tex",
+        "environment": "tableau",
+        "environment_number": 3,
+        "source_block": "\\begin{tableau}{}\n      [\\sFmla{\\True}{\\formula{A} \\land \\lnot \\formula{A}}, just=\\TAss\n        [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\True}{\\land}[1]}\n          [\\sFmla{\\True}{\\lnot \\formula{A}}, just={\\TRule{\\True}{\\land}[1]}\n            [\\sFmla{\\False}{\\formula{A}}, just={\\TRule{\\True}{\\lnot}[3]}, close]\n          ]\n        ]\n      ]\n    \\end{tableau}",
+        "source_block_sha256": "3245c519e9c3b733f1d2f3c60c77cc9139d474fbab1e86caa8e1705b9b3471f4",
+        "image": "reader222x.svg",
+        "svg_sha256": "65353a936a2bbdd3f3892b99d3a7589876a6c55c457b30784dbd772e27d4d78d",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∧ ¬ φ (hypothèse). Puis 𝕋 φ (règle ∧𝕋 appliquée à la ligne 1). Puis 𝕋 ¬ φ (règle ∧𝕋 appliquée à la ligne 1). Puis 𝔽 φ (règle ¬𝕋 appliquée à la ligne 3, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\land \\lnot \\formula{A}}",
+          "formula": "𝕋 φ ∧ ¬ φ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A}}",
+              "formula": "𝕋 φ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\lnot \\formula{A}}",
+                  "formula": "𝕋 ¬ φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A}}",
+                      "formula": "𝔽 φ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\True}{\\lnot}[3]}",
+                      "justification": "règle ¬𝕋 appliquée à la ligne 3"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\land}[1]}",
+                  "justification": "règle ∧𝕋 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "{\\TRule{\\True}{\\land}[1]}",
+              "justification": "règle ∧𝕋 appliquée à la ligne 1"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 1,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{(\\formula{A} \\land \\formula{B}) \\lif \\formula{A}},\n    just = \\TAss]\n\\end{oltableau}",
+        "source_block_sha256": "a60fa0b5b382029f3e35e03fb96a1ac9123b39c2c0c12e587a488b079c396a01",
+        "image": "reader232x.svg",
+        "svg_sha256": "64eef6b6b72d9198e97e0928118246db69e6a6029d172f612e2c1ac1c52d9598",
+        "alt": "Tableau analytique signé. Racine : 𝔽 (φ ∧ ψ) → φ (hypothèse). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\False}{(\\formula{A} \\land \\formula{B}) \\lif \\formula{A}}",
+          "formula": "𝔽 (φ ∧ ψ) → φ",
+          "checked": false,
+          "closed": false,
+          "children": [],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 2,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{(\\formula{A} \\land \\formula{B}) \\lif \\formula{A}},\n    checked, just = \\TAss\n    [\\sFmla{\\True}{\\formula{A} \\land \\formula{B}},\n      just={\\TRule{\\False}{\\lif}[1]}\n      [\\sFmla{\\False}{\\formula{A}}, just={\\TRule{\\False}{\\lif}[1]}]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "9fbff1cc8c09416e8926ed7b819e8e4bb10f57489b5ee71f65cf963293f02e6d",
+        "image": "reader252x.svg",
+        "svg_sha256": "b7d0c286668775fef78ef1547fee19fad1e39b40bf47a18ef475292535756cca",
+        "alt": "Tableau analytique signé. Racine : 𝔽 (φ ∧ ψ) → φ (hypothèse, marquée comme développée). Puis 𝕋 φ ∧ ψ (règle →𝔽 appliquée à la ligne 1). Puis 𝔽 φ (règle →𝔽 appliquée à la ligne 1). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\False}{(\\formula{A} \\land \\formula{B}) \\lif \\formula{A}}",
+          "formula": "𝔽 (φ ∧ ψ) → φ",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A} \\land \\formula{B}}",
+              "formula": "𝕋 φ ∧ ψ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{\\formula{A}}",
+                  "formula": "𝔽 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [],
+                  "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                  "justification": "règle →𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+              "justification": "règle →𝔽 appliquée à la ligne 1"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 3,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{(\\formula{A} \\land \\formula{B}) \\lif \\formula{A}},\n    checked, just = \\TAss\n    [\\sFmla{\\True}{\\formula{A} \\land \\formula{B}},\n      just={\\TRule{\\False}{\\lif}[1]}, checked\n      [\\sFmla{\\False}{\\formula{A}}, just={\\TRule{\\False}{\\lif}[1]}\n        [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\True}{\\land}[2]}\n          [\\sFmla{\\True}{\\formula{B}}, just={\\TRule{\\True}{\\land}[2]}, close\n          ]\n        ]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "c58ef75cb03c332da27f3d4781b4e66402212c8640e08d632dbdd8edd8de949c",
+        "image": "reader284x.svg",
+        "svg_sha256": "735b6365844fdba9190401de11d709535b48e18ae9d690cfb9c81b88ff73d56b",
+        "alt": "Tableau analytique signé. Racine : 𝔽 (φ ∧ ψ) → φ (hypothèse, marquée comme développée). Puis 𝕋 φ ∧ ψ (règle →𝔽 appliquée à la ligne 1, marquée comme développée). Puis 𝔽 φ (règle →𝔽 appliquée à la ligne 1). Puis 𝕋 φ (règle ∧𝕋 appliquée à la ligne 2). Puis 𝕋 ψ (règle ∧𝕋 appliquée à la ligne 2, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{(\\formula{A} \\land \\formula{B}) \\lif \\formula{A}}",
+          "formula": "𝔽 (φ ∧ ψ) → φ",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A} \\land \\formula{B}}",
+              "formula": "𝕋 φ ∧ ψ",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{\\formula{A}}",
+                  "formula": "𝔽 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\True}{\\formula{A}}",
+                      "formula": "𝕋 φ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\True}{\\formula{B}}",
+                          "formula": "𝕋 ψ",
+                          "checked": false,
+                          "closed": true,
+                          "children": [],
+                          "justification_source": "{\\TRule{\\True}{\\land}[2]}",
+                          "justification": "règle ∧𝕋 appliquée à la ligne 2"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\True}{\\land}[2]}",
+                      "justification": "règle ∧𝕋 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                  "justification": "règle →𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+              "justification": "règle →𝔽 appliquée à la ligne 1"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 4,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B}) \\lif\n      (\\formula{A} \\lif \\formula{B})}, just=\\TAss]\n\\end{oltableau}",
+        "source_block_sha256": "4c1e755296582eea1c9903b9dac2cf165cd61dc4a6264512e94c39de15225158",
+        "image": "reader294x.svg",
+        "svg_sha256": "460cad0b9fcbf57bd14c4a23a69671a14628449f185e6315a5a8ea6c5fbeaf62",
+        "alt": "Tableau analytique signé. Racine : 𝔽 (¬ φ ∨ ψ) → (φ → ψ) (hypothèse). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B}) \\lif\n      (\\formula{A} \\lif \\formula{B})}",
+          "formula": "𝔽 (¬ φ ∨ ψ) → (φ → ψ)",
+          "checked": false,
+          "closed": false,
+          "children": [],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 5,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B})\n      \\lif (\\formula{A} \\lif \\formula{B})}, just=\\TAss, checked\n    [\\sFmla{\\True}{\\lnot \\formula{A} \\lor \\formula{B}},\n      just={\\TRule{\\False}{\\lif}[1]}\n      [\\sFmla{\\False}{(\\formula{A} \\lif \\formula{B})},\n        just={\\TRule{\\False}{\\lif}[1]}\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "bd5294153fa2aaeed689e2779d58130a3356ef8a4ab7d5d42a41232692843555",
+        "image": "reader314x.svg",
+        "svg_sha256": "04fd38eca7ec4327a042c83f57a83a35efcdc83cb89dc77f5ed690ac1c515710",
+        "alt": "Tableau analytique signé. Racine : 𝔽 (¬ φ ∨ ψ) → (φ → ψ) (hypothèse, marquée comme développée). Puis 𝕋 ¬ φ ∨ ψ (règle →𝔽 appliquée à la ligne 1). Puis 𝔽 (φ → ψ) (règle →𝔽 appliquée à la ligne 1). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B})\n      \\lif (\\formula{A} \\lif \\formula{B})}",
+          "formula": "𝔽 (¬ φ ∨ ψ) → (φ → ψ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\lnot \\formula{A} \\lor \\formula{B}}",
+              "formula": "𝕋 ¬ φ ∨ ψ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{(\\formula{A} \\lif \\formula{B})}",
+                  "formula": "𝔽 (φ → ψ)",
+                  "checked": false,
+                  "closed": false,
+                  "children": [],
+                  "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                  "justification": "règle →𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+              "justification": "règle →𝔽 appliquée à la ligne 1"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 6,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B}) \\lif\n      (\\formula{A} \\lif \\formula{B})}, just=\\TAss, checked\n    [\\sFmla{\\True}{\\lnot \\formula{A} \\lor \\formula{B}},\n      just={\\TRule{\\False}{\\lif}[1]}, checked\n      [\\sFmla{\\False}{(\\formula{A} \\lif \\formula{B})},\n        just={\\TRule{\\False}{\\lif}[1]}\n        [\\sFmla{\\True}{\\lnot \\formula{A}}, just={\\TRule{\\True}{\\lor}[2]}]\n        [\\sFmla{\\True}{\\formula{B}}, just={\\TRule{\\True}{\\lor}[2]}]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "bd1cf11ea1e636de0c92217f2ba496532bb9bb0fcc805d714e1cce00d68e7536",
+        "image": "reader342x.svg",
+        "svg_sha256": "51e017d1743fc0d7f4aa511acfdc5f013fee89ff7b0a37a1c3fb860abc5c9dd5",
+        "alt": "Tableau analytique signé. Racine : 𝔽 (¬ φ ∨ ψ) → (φ → ψ) (hypothèse, marquée comme développée). Puis 𝕋 ¬ φ ∨ ψ (règle →𝔽 appliquée à la ligne 1, marquée comme développée). Puis 𝔽 (φ → ψ) (règle →𝔽 appliquée à la ligne 1). Ramification en 2 branches. Branche 1 : 𝕋 ¬ φ (règle ∨𝕋 appliquée à la ligne 2). Branche 2 : 𝕋 ψ (règle ∨𝕋 appliquée à la ligne 2). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B}) \\lif\n      (\\formula{A} \\lif \\formula{B})}",
+          "formula": "𝔽 (¬ φ ∨ ψ) → (φ → ψ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\lnot \\formula{A} \\lor \\formula{B}}",
+              "formula": "𝕋 ¬ φ ∨ ψ",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{(\\formula{A} \\lif \\formula{B})}",
+                  "formula": "𝔽 (φ → ψ)",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\True}{\\lnot \\formula{A}}",
+                      "formula": "𝕋 ¬ φ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\True}{\\lor}[2]}",
+                      "justification": "règle ∨𝕋 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\True}{\\formula{B}}",
+                      "formula": "𝕋 ψ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\True}{\\lor}[2]}",
+                      "justification": "règle ∨𝕋 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                  "justification": "règle →𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+              "justification": "règle →𝔽 appliquée à la ligne 1"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 2
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 7,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B}) \\lif\n      (\\formula{A} \\lif \\formula{B})}, just=\\TAss, checked\n    [\\sFmla{\\True}{\\lnot \\formula{A} \\lor \\formula{B}},\n      just={\\TRule{\\False}{\\lif}[1]}, checked\n      [\\sFmla{\\False}{(\\formula{A} \\lif \\formula{B})},\n        just={\\TRule{\\False}{\\lif}[1]}, checked\n        [\\sFmla{\\True}{\\lnot \\formula{A}}, just={\\TRule{\\True}{\\lor}[2]}\n          [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\False}{\\lif}[3]}\n            [\\sFmla{\\False}{\\formula{B}}, just={\\TRule{\\False}{\\lif}[3]}]\n          ]\n        ]\n        [\\sFmla{\\True}{\\formula{B}}, just={\\TRule{\\True}{\\lor}[2]}\n          [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\False}{\\lif}[3]}\n            [\\sFmla{\\False}{\\formula{B}}, just={\\TRule{\\False}{\\lif}[3]}, close]\n          ]\n        ]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "016c45e992be26e4a6a448f8fdbec99476a4a7935f2a3fa8fda7374da356b84e",
+        "image": "reader400x.svg",
+        "svg_sha256": "09690fcfbec32d51208f957ad9911042e76f7d159aa80e97f977bc7455d33815",
+        "alt": "Tableau analytique signé. Racine : 𝔽 (¬ φ ∨ ψ) → (φ → ψ) (hypothèse, marquée comme développée). Puis 𝕋 ¬ φ ∨ ψ (règle →𝔽 appliquée à la ligne 1, marquée comme développée). Puis 𝔽 (φ → ψ) (règle →𝔽 appliquée à la ligne 1, marquée comme développée). Ramification en 2 branches. Branche 1 : 𝕋 ¬ φ (règle ∨𝕋 appliquée à la ligne 2). Puis 𝕋 φ (règle →𝔽 appliquée à la ligne 3). Puis 𝔽 ψ (règle →𝔽 appliquée à la ligne 3). Branche 2 : 𝕋 ψ (règle ∨𝕋 appliquée à la ligne 2). Puis 𝕋 φ (règle →𝔽 appliquée à la ligne 3). Puis 𝔽 ψ (règle →𝔽 appliquée à la ligne 3, fermeture de cette branche). 1 branche fermée sur 2.",
+        "tree": {
+          "source": "\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B}) \\lif\n      (\\formula{A} \\lif \\formula{B})}",
+          "formula": "𝔽 (¬ φ ∨ ψ) → (φ → ψ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\lnot \\formula{A} \\lor \\formula{B}}",
+              "formula": "𝕋 ¬ φ ∨ ψ",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{(\\formula{A} \\lif \\formula{B})}",
+                  "formula": "𝔽 (φ → ψ)",
+                  "checked": true,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\True}{\\lnot \\formula{A}}",
+                      "formula": "𝕋 ¬ φ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\True}{\\formula{A}}",
+                          "formula": "𝕋 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": false,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lif}[3]}",
+                              "justification": "règle →𝔽 appliquée à la ligne 3"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lif}[3]}",
+                          "justification": "règle →𝔽 appliquée à la ligne 3"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\True}{\\lor}[2]}",
+                      "justification": "règle ∨𝕋 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\True}{\\formula{B}}",
+                      "formula": "𝕋 ψ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\True}{\\formula{A}}",
+                          "formula": "𝕋 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lif}[3]}",
+                              "justification": "règle →𝔽 appliquée à la ligne 3"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lif}[3]}",
+                          "justification": "règle →𝔽 appliquée à la ligne 3"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\True}{\\lor}[2]}",
+                      "justification": "règle ∨𝕋 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                  "justification": "règle →𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+              "justification": "règle →𝔽 appliquée à la ligne 1"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 2
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 8,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B}) \\lif\n      (\\formula{A} \\lif \\formula{B})}, just=\\TAss, checked\n    [\\sFmla{\\True}{\\lnot \\formula{A} \\lor \\formula{B}},\n      just={\\TRule{\\False}{\\lif}[1]}, checked\n      [\\sFmla{\\False}{(\\formula{A} \\lif \\formula{B})},\n        just={\\TRule{\\False}{\\lif}[1]}, checked\n        [\\sFmla{\\True}{\\lnot \\formula{A}}, just={\\TRule{\\True}{\\lor}[2]}\n          [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\False}{\\lif}[3]}\n            [\\sFmla{\\False}{\\formula{B}}, just={\\TRule{\\False}{\\lif}[3]}\n              [\\sFmla{\\False}{\\formula{A}},\n                just={\\TRule{\\True}{\\lnot}[4]}, close]\n            ]\n          ]\n        ]\n        [\\sFmla{\\True}{\\formula{B}}, just={\\TRule{\\True}{\\lor}[2]}\n          [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\False}{\\lif}[3]}\n            [\\sFmla{\\False}{\\formula{B}},\n              just={\\TRule{\\False}{\\lif}[3]}, close]\n          ]\n        ]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "81e11db3a690cec2f365935067625be1911996dcc8f2c34378eebd6329c24dd1",
+        "image": "reader471x.svg",
+        "svg_sha256": "ddd4e6db618e41628c56f52c46fefabf8a35e28418cd5a9bf2a6ac855a60d627",
+        "alt": "Tableau analytique signé. Racine : 𝔽 (¬ φ ∨ ψ) → (φ → ψ) (hypothèse, marquée comme développée). Puis 𝕋 ¬ φ ∨ ψ (règle →𝔽 appliquée à la ligne 1, marquée comme développée). Puis 𝔽 (φ → ψ) (règle →𝔽 appliquée à la ligne 1, marquée comme développée). Ramification en 2 branches. Branche 1 : 𝕋 ¬ φ (règle ∨𝕋 appliquée à la ligne 2). Puis 𝕋 φ (règle →𝔽 appliquée à la ligne 3). Puis 𝔽 ψ (règle →𝔽 appliquée à la ligne 3). Puis 𝔽 φ (règle ¬𝕋 appliquée à la ligne 4, fermeture de cette branche). Branche 2 : 𝕋 ψ (règle ∨𝕋 appliquée à la ligne 2). Puis 𝕋 φ (règle →𝔽 appliquée à la ligne 3). Puis 𝔽 ψ (règle →𝔽 appliquée à la ligne 3, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{(\\lnot \\formula{A} \\lor \\formula{B}) \\lif\n      (\\formula{A} \\lif \\formula{B})}",
+          "formula": "𝔽 (¬ φ ∨ ψ) → (φ → ψ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\lnot \\formula{A} \\lor \\formula{B}}",
+              "formula": "𝕋 ¬ φ ∨ ψ",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{(\\formula{A} \\lif \\formula{B})}",
+                  "formula": "𝔽 (φ → ψ)",
+                  "checked": true,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\True}{\\lnot \\formula{A}}",
+                      "formula": "𝕋 ¬ φ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\True}{\\formula{A}}",
+                          "formula": "𝕋 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": false,
+                              "children": [
+                                {
+                                  "source": "\\sFmla{\\False}{\\formula{A}}",
+                                  "formula": "𝔽 φ",
+                                  "checked": false,
+                                  "closed": true,
+                                  "children": [],
+                                  "justification_source": "{\\TRule{\\True}{\\lnot}[4]}",
+                                  "justification": "règle ¬𝕋 appliquée à la ligne 4"
+                                }
+                              ],
+                              "justification_source": "{\\TRule{\\False}{\\lif}[3]}",
+                              "justification": "règle →𝔽 appliquée à la ligne 3"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lif}[3]}",
+                          "justification": "règle →𝔽 appliquée à la ligne 3"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\True}{\\lor}[2]}",
+                      "justification": "règle ∨𝕋 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\True}{\\formula{B}}",
+                      "formula": "𝕋 ψ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\True}{\\formula{A}}",
+                          "formula": "𝕋 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lif}[3]}",
+                              "justification": "règle →𝔽 appliquée à la ligne 3"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lif}[3]}",
+                          "justification": "règle →𝔽 appliquée à la ligne 3"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\True}{\\lor}[2]}",
+                      "justification": "règle ∨𝕋 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                  "justification": "règle →𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+              "justification": "règle →𝔽 appliquée à la ligne 1"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 2
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 9,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})},\n    just=\\TAss, checked\n    [\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}, just=\\TAss\n      [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\True}{\\lor}[1]}]\n      [\\sFmla{\\True}{\\formula{B} \\land \\formula{C}},\n        just={\\TRule{\\True}{\\lor}[1]}]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "7318dffd83f37937da2ca84d3038eef0d487c7cb4ad31dff61fead06cd2d5bf5",
+        "image": "reader494x.svg",
+        "svg_sha256": "50363622755c724e6efaacdd1a399c0c55463a56aa59c5f03762a0be9a931932",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∨ (ψ ∧ χ) (hypothèse, marquée comme développée). Puis 𝔽 (φ ∨ ψ) ∧ (φ ∨ χ) (hypothèse). Ramification en 2 branches. Branche 1 : 𝕋 φ (règle ∨𝕋 appliquée à la ligne 1). Branche 2 : 𝕋 ψ ∧ χ (règle ∨𝕋 appliquée à la ligne 1). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})}",
+          "formula": "𝕋 φ ∨ (ψ ∧ χ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}",
+              "formula": "𝔽 (φ ∨ ψ) ∧ (φ ∨ χ)",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                },
+                {
+                  "source": "\\sFmla{\\True}{\\formula{B} \\land \\formula{C}}",
+                  "formula": "𝕋 ψ ∧ χ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 2
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 10,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})},\n    just=\\TAss, checked\n    [\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}, just=\\TAss, checked\n      [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\True}{\\lor}[1]}\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n          just={\\TRule{\\False}{\\land}[2]}]\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n          just={\\TRule{\\False}{\\land}[2]}]\n      ]\n      [\\sFmla{\\True}{\\formula{B} \\land \\formula{C}},\n        just={\\TRule{\\True}{\\lor}[1]}\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n          just={\\TRule{\\False}{\\land}[2]}]\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n          just={\\TRule{\\False}{\\land}[2]}]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "e3f772408ac3d03614a8a75723679db3ecd605e47312e9aa8b7993886102414d",
+        "image": "reader543x.svg",
+        "svg_sha256": "15a6c1fcbec7de4e367eda8ad93414a619ed28752bae5b903bceda48f4191b9c",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∨ (ψ ∧ χ) (hypothèse, marquée comme développée). Puis 𝔽 (φ ∨ ψ) ∧ (φ ∨ χ) (hypothèse, marquée comme développée). Ramification en 2 branches. Branche 1 : 𝕋 φ (règle ∨𝕋 appliquée à la ligne 1). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2). Branche 2 : 𝕋 ψ ∧ χ (règle ∨𝕋 appliquée à la ligne 1). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2). Aucune fermeture n’est encore indiquée.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})}",
+          "formula": "𝕋 φ ∨ (ψ ∧ χ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}",
+              "formula": "𝔽 (φ ∨ ψ) ∧ (φ ∨ χ)",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                      "formula": "𝔽 φ ∨ ψ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                      "formula": "𝔽 φ ∨ χ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                },
+                {
+                  "source": "\\sFmla{\\True}{\\formula{B} \\land \\formula{C}}",
+                  "formula": "𝕋 ψ ∧ χ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                      "formula": "𝔽 φ ∨ ψ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                      "formula": "𝔽 φ ∨ χ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 4
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 11,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})},\n    just=\\TAss, checked\n    [\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}, just=\\TAss, checked\n      [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\True}{\\lor}[1]}\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}}, just={\\TRule{\\False}{\\lor}[4]}\n            [\\sFmla{\\False}{\\formula{B}},\n              just={\\TRule{\\False}{\\lor}[4]}, close]\n          ]\n        ]\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n          just={\\TRule{\\False}{\\land}[2]}]\n      ]\n      [\\sFmla{\\True}{\\formula{B} \\land \\formula{C}},\n        just={\\TRule{\\True}{\\lor}[1]}\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}}, just={\\TRule{\\False}{\\lor}[4]}\n            [\\sFmla{\\False}{\\formula{B}},\n              just={\\TRule{\\False}{\\lor}[4]}]\n          ]\n        ]\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n          just={\\TRule{\\False}{\\land}[2]}]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "2c2309c3e6364970541811f1cbe05060b402feca7550e3d84d12ecc2dd601f58",
+        "image": "reader622x.svg",
+        "svg_sha256": "cd95e3c4722eb639eb18e3784bcf90fbdb1bf5ef470852e3ad672328ec679c7b",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∨ (ψ ∧ χ) (hypothèse, marquée comme développée). Puis 𝔽 (φ ∨ ψ) ∧ (φ ∨ χ) (hypothèse, marquée comme développée). Ramification en 2 branches. Branche 1 : 𝕋 φ (règle ∨𝕋 appliquée à la ligne 1). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 4, fermeture de cette branche). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2). Branche 2 : 𝕋 ψ ∧ χ (règle ∨𝕋 appliquée à la ligne 1). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 4). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2). 1 branche fermée sur 4.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})}",
+          "formula": "𝕋 φ ∨ (ψ ∧ χ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}",
+              "formula": "𝔽 (φ ∨ ψ) ∧ (φ ∨ χ)",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                      "formula": "𝔽 φ ∨ ψ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                      "formula": "𝔽 φ ∨ χ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                },
+                {
+                  "source": "\\sFmla{\\True}{\\formula{B} \\land \\formula{C}}",
+                  "formula": "𝕋 ψ ∧ χ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                      "formula": "𝔽 φ ∨ ψ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": false,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                      "formula": "𝔽 φ ∨ χ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 4
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 12,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})},\n    just=\\TAss, checked\n    [\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}, just=\\TAss, checked\n      [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\True}{\\lor}[1]}\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}},\n            just={\\TRule{\\False}{\\lor}[4]}\n            [\\sFmla{\\False}{\\formula{B}},\n              just={\\TRule{\\False}{\\lor}[4]}, close]\n          ]\n        ]\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}},\n            just={\\TRule{\\False}{\\lor}[4]}, move by=2\n            [\\sFmla{\\False}{\\formula{C}},\n              just={\\TRule{\\False}{\\lor}[4]}, close]\n          ]\n        ]\n      ]\n      [\\sFmla{\\True}{\\formula{B} \\land \\formula{C}},\n        just={\\TRule{\\True}{\\lor}[1]}\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}},\n            just={\\TRule{\\False}{\\lor}[4]}\n            [\\sFmla{\\False}{\\formula{B}},\n              just={\\TRule{\\False}{\\lor}[4]}\n            ]\n          ]\n        ]\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}},\n            just={\\TRule{\\False}{\\lor}[4]}, move by=2\n            [\\sFmla{\\False}{\\formula{C}},\n              just={\\TRule{\\False}{\\lor}[4]}]\n          ]\n        ]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "9bf74f3c5b0090a3a68fe321ccf4e63ad97dd0bf848d78d1727027b77909770e",
+        "image": "reader751x.svg",
+        "svg_sha256": "a53b3d4b5a1b30e67a15ae85a924dbf83d6cde2344ceb6c3afec761f7f97726d",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∨ (ψ ∧ χ) (hypothèse, marquée comme développée). Puis 𝔽 (φ ∨ ψ) ∧ (φ ∨ χ) (hypothèse, marquée comme développée). Ramification en 2 branches. Branche 1 : 𝕋 φ (règle ∨𝕋 appliquée à la ligne 1). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 4, fermeture de cette branche). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 χ (règle ∨𝔽 appliquée à la ligne 4, fermeture de cette branche). Branche 2 : 𝕋 ψ ∧ χ (règle ∨𝕋 appliquée à la ligne 1). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 4). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 χ (règle ∨𝔽 appliquée à la ligne 4). 2 branches fermées sur 4.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})}",
+          "formula": "𝕋 φ ∨ (ψ ∧ χ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}",
+              "formula": "𝔽 (φ ∨ ψ) ∧ (φ ∨ χ)",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                      "formula": "𝔽 φ ∨ ψ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                      "formula": "𝔽 φ ∨ χ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{C}}",
+                              "formula": "𝔽 χ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                },
+                {
+                  "source": "\\sFmla{\\True}{\\formula{B} \\land \\formula{C}}",
+                  "formula": "𝕋 ψ ∧ χ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                      "formula": "𝔽 φ ∨ ψ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": false,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                      "formula": "𝔽 φ ∨ χ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{C}}",
+                              "formula": "𝔽 χ",
+                              "checked": false,
+                              "closed": false,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 4
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 13,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})},\n    just=\\TAss, checked\n    [\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}, just=\\TAss, checked\n      [\\sFmla{\\True}{\\formula{A}}, just={\\TRule{\\True}{\\lor}[1]}\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}},\n            just={\\TRule{\\False}{\\lor}[4]}\n            [\\sFmla{\\False}{\\formula{B}},\n              just={\\TRule{\\False}{\\lor}[4]}, close]\n          ]\n        ]\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}},\n            just={\\TRule{\\False}{\\lor}[4]}\n            [\\sFmla{\\False}{\\formula{C}},\n              just={\\TRule{\\False}{\\lor}[4]}, close]\n          ]\n        ]\n      ]\n      [\\sFmla{\\True}{\\formula{B} \\land \\formula{C}},\n        just={\\TRule{\\True}{\\lor}[1]}, checked\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}},\n            just={\\TRule{\\False}{\\lor}[4]}\n            [\\sFmla{\\False}{\\formula{B}},\n              just={\\TRule{\\False}{\\lor}[4]}\n              [\\sFmla{\\True}{\\formula{B}},\n                just={\\TRule{\\True}{\\land}[3]}\n                [\\sFmla{\\True}{\\formula{C}},\n                  just={\\TRule{\\True}{\\land}[3]},close\n                ]\n              ]\n            ]\n          ]\n        ]\n        [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n          just={\\TRule{\\False}{\\land}[2]}, checked\n          [\\sFmla{\\False}{\\formula{A}},\n            just={\\TRule{\\False}{\\lor}[4]}\n            [\\sFmla{\\False}{\\formula{C}},\n              just={\\TRule{\\False}{\\lor}[4]}\n              [\\sFmla{\\True}{\\formula{B}},\n                just={\\TRule{\\True}{\\land}[3]}\n                [\\sFmla{\\True}{\\formula{C}},\n                  just={\\TRule{\\True}{\\land}[3]},close\n                ]\n              ]\n            ]\n          ]\n        ]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "bd7dd254b8aeaabafae3d36e5b739d277aa00a87d4389371f34decdad56e0dcd",
+        "image": "reader892x.svg",
+        "svg_sha256": "9451b99ddf66a04279d06a72ddc81d22a825ac5bbe0395269df3b38229180484",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∨ (ψ ∧ χ) (hypothèse, marquée comme développée). Puis 𝔽 (φ ∨ ψ) ∧ (φ ∨ χ) (hypothèse, marquée comme développée). Ramification en 2 branches. Branche 1 : 𝕋 φ (règle ∨𝕋 appliquée à la ligne 1). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 4, fermeture de cette branche). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 χ (règle ∨𝔽 appliquée à la ligne 4, fermeture de cette branche). Branche 2 : 𝕋 ψ ∧ χ (règle ∨𝕋 appliquée à la ligne 1, marquée comme développée). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝕋 ψ (règle ∧𝕋 appliquée à la ligne 3). Puis 𝕋 χ (règle ∧𝕋 appliquée à la ligne 3, fermeture de cette branche). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝔽 χ (règle ∨𝔽 appliquée à la ligne 4). Puis 𝕋 ψ (règle ∧𝕋 appliquée à la ligne 3). Puis 𝕋 χ (règle ∧𝕋 appliquée à la ligne 3, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})}",
+          "formula": "𝕋 φ ∨ (ψ ∧ χ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}",
+              "formula": "𝔽 (φ ∨ ψ) ∧ (φ ∨ χ)",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                      "formula": "𝔽 φ ∨ ψ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                      "formula": "𝔽 φ ∨ χ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{C}}",
+                              "formula": "𝔽 χ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                },
+                {
+                  "source": "\\sFmla{\\True}{\\formula{B} \\land \\formula{C}}",
+                  "formula": "𝕋 ψ ∧ χ",
+                  "checked": true,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                      "formula": "𝔽 φ ∨ ψ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{B}}",
+                              "formula": "𝔽 ψ",
+                              "checked": false,
+                              "closed": false,
+                              "children": [
+                                {
+                                  "source": "\\sFmla{\\True}{\\formula{B}}",
+                                  "formula": "𝕋 ψ",
+                                  "checked": false,
+                                  "closed": false,
+                                  "children": [
+                                    {
+                                      "source": "\\sFmla{\\True}{\\formula{C}}",
+                                      "formula": "𝕋 χ",
+                                      "checked": false,
+                                      "closed": true,
+                                      "children": [],
+                                      "justification_source": "{\\TRule{\\True}{\\land}[3]}",
+                                      "justification": "règle ∧𝕋 appliquée à la ligne 3"
+                                    }
+                                  ],
+                                  "justification_source": "{\\TRule{\\True}{\\land}[3]}",
+                                  "justification": "règle ∧𝕋 appliquée à la ligne 3"
+                                }
+                              ],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                      "formula": "𝔽 φ ∨ χ",
+                      "checked": true,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\False}{\\formula{C}}",
+                              "formula": "𝔽 χ",
+                              "checked": false,
+                              "closed": false,
+                              "children": [
+                                {
+                                  "source": "\\sFmla{\\True}{\\formula{B}}",
+                                  "formula": "𝕋 ψ",
+                                  "checked": false,
+                                  "closed": false,
+                                  "children": [
+                                    {
+                                      "source": "\\sFmla{\\True}{\\formula{C}}",
+                                      "formula": "𝕋 χ",
+                                      "checked": false,
+                                      "closed": true,
+                                      "children": [],
+                                      "justification_source": "{\\TRule{\\True}{\\land}[3]}",
+                                      "justification": "règle ∧𝕋 appliquée à la ligne 3"
+                                    }
+                                  ],
+                                  "justification_source": "{\\TRule{\\True}{\\land}[3]}",
+                                  "justification": "règle ∧𝕋 appliquée à la ligne 3"
+                                }
+                              ],
+                              "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                              "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[4]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 4"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                  "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 4
+      },
+      {
+        "unit_id": "OLP-0103",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proving-things.tex",
+        "environment": "oltableau",
+        "environment_number": 14,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})},\n    just=\\TAss, checked\n    [\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}, just=\\TAss, checked\n      [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}},\n        just={\\TRule{\\False}{\\land}[2]}, checked\n        [\\sFmla{\\False}{\\formula{A}},\n          just={\\TRule{\\False}{\\lor}[3]}\n          [\\sFmla{\\False}{\\formula{B}},\n            just={\\TRule{\\False}{\\lor}[3]}\n            [\\sFmla{\\True}{\\formula{A}},\n              just={\\TRule{\\True}{\\lor}[1]},close\n            ]\n            [\\sFmla{\\True}{\\formula{B} \\land \\formula{C}},\n              just={\\TRule{\\True}{\\lor}[1]}, checked\n              [\\sFmla{\\True}{\\formula{B}},\n                just={\\TRule{\\True}{\\land}[6]}\n                [\\sFmla{\\True}{\\formula{C}},\n                  just={\\TRule{\\True}{\\land}[6]},close\n                ]\n              ]\n            ]\n          ]\n        ]\n      ]\n      [\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}},\n        just={\\TRule{\\False}{\\land}[2]}, checked\n        [\\sFmla{\\False}{\\formula{A}},\n          just={\\TRule{\\False}{\\lor}[3]}\n          [\\sFmla{\\False}{\\formula{C}},\n            just={\\TRule{\\False}{\\lor}[3]}\n            [\\sFmla{\\True}{\\formula{A}},\n              just={\\TRule{\\True}{\\lor}[1]},close\n            ]\n            [\\sFmla{\\True}{\\formula{B} \\land \\formula{C}},\n              just={\\TRule{\\True}{\\lor}[1]}, checked\n              [\\sFmla{\\True}{\\formula{B}},\n                just={\\TRule{\\True}{\\land}[6]}\n                [\\sFmla{\\True}{\\formula{C}},\n                  just={\\TRule{\\True}{\\land}[6]},close\n                ]\n              ]\n            ]\n          ]\n        ]\n      ]\n    ]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "5663474e3263a413897ce683dba507f328b2f3b991ff6566576a21a3cb72fb13",
+        "image": "reader1013x.svg",
+        "svg_sha256": "e673ba26c1b25345cf69f359ffe8160fda34d545b7aa010d55bea5d42fd5262c",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∨ (ψ ∧ χ) (hypothèse, marquée comme développée). Puis 𝔽 (φ ∨ ψ) ∧ (φ ∨ χ) (hypothèse, marquée comme développée). Ramification en 2 branches. Branche 1 : 𝔽 φ ∨ ψ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 3). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 3). Ramification en 2 branches. Branche 1 : 𝕋 φ (règle ∨𝕋 appliquée à la ligne 1, fermeture de cette branche). Branche 2 : 𝕋 ψ ∧ χ (règle ∨𝕋 appliquée à la ligne 1, marquée comme développée). Puis 𝕋 ψ (règle ∧𝕋 appliquée à la ligne 6). Puis 𝕋 χ (règle ∧𝕋 appliquée à la ligne 6, fermeture de cette branche). Branche 2 : 𝔽 φ ∨ χ (règle ∧𝔽 appliquée à la ligne 2, marquée comme développée). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 3). Puis 𝔽 χ (règle ∨𝔽 appliquée à la ligne 3). Ramification en 2 branches. Branche 1 : 𝕋 φ (règle ∨𝕋 appliquée à la ligne 1, fermeture de cette branche). Branche 2 : 𝕋 ψ ∧ χ (règle ∨𝕋 appliquée à la ligne 1, marquée comme développée). Puis 𝕋 ψ (règle ∧𝕋 appliquée à la ligne 6). Puis 𝕋 χ (règle ∧𝕋 appliquée à la ligne 6, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\lor (\\formula{B} \\land \\formula{C})}",
+          "formula": "𝕋 φ ∨ (ψ ∧ χ)",
+          "checked": true,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\False}{(\\formula{A} \\lor \\formula{B}) \\land\n        (\\formula{A} \\lor \\formula{C})}",
+              "formula": "𝔽 (φ ∨ ψ) ∧ (φ ∨ χ)",
+              "checked": true,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+                  "formula": "𝔽 φ ∨ ψ",
+                  "checked": true,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A}}",
+                      "formula": "𝔽 φ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{B}}",
+                          "formula": "𝔽 ψ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\True}{\\formula{A}}",
+                              "formula": "𝕋 φ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                              "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                            },
+                            {
+                              "source": "\\sFmla{\\True}{\\formula{B} \\land \\formula{C}}",
+                              "formula": "𝕋 ψ ∧ χ",
+                              "checked": true,
+                              "closed": false,
+                              "children": [
+                                {
+                                  "source": "\\sFmla{\\True}{\\formula{B}}",
+                                  "formula": "𝕋 ψ",
+                                  "checked": false,
+                                  "closed": false,
+                                  "children": [
+                                    {
+                                      "source": "\\sFmla{\\True}{\\formula{C}}",
+                                      "formula": "𝕋 χ",
+                                      "checked": false,
+                                      "closed": true,
+                                      "children": [],
+                                      "justification_source": "{\\TRule{\\True}{\\land}[6]}",
+                                      "justification": "règle ∧𝕋 appliquée à la ligne 6"
+                                    }
+                                  ],
+                                  "justification_source": "{\\TRule{\\True}{\\land}[6]}",
+                                  "justification": "règle ∧𝕋 appliquée à la ligne 6"
+                                }
+                              ],
+                              "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                              "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[3]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 3"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\lor}[3]}",
+                      "justification": "règle ∨𝔽 appliquée à la ligne 3"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                  "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                },
+                {
+                  "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{C}}",
+                  "formula": "𝔽 φ ∨ χ",
+                  "checked": true,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A}}",
+                      "formula": "𝔽 φ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{C}}",
+                          "formula": "𝔽 χ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\True}{\\formula{A}}",
+                              "formula": "𝕋 φ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                              "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                            },
+                            {
+                              "source": "\\sFmla{\\True}{\\formula{B} \\land \\formula{C}}",
+                              "formula": "𝕋 ψ ∧ χ",
+                              "checked": true,
+                              "closed": false,
+                              "children": [
+                                {
+                                  "source": "\\sFmla{\\True}{\\formula{B}}",
+                                  "formula": "𝕋 ψ",
+                                  "checked": false,
+                                  "closed": false,
+                                  "children": [
+                                    {
+                                      "source": "\\sFmla{\\True}{\\formula{C}}",
+                                      "formula": "𝕋 χ",
+                                      "checked": false,
+                                      "closed": true,
+                                      "children": [],
+                                      "justification_source": "{\\TRule{\\True}{\\land}[6]}",
+                                      "justification": "règle ∧𝕋 appliquée à la ligne 6"
+                                    }
+                                  ],
+                                  "justification_source": "{\\TRule{\\True}{\\land}[6]}",
+                                  "justification": "règle ∧𝕋 appliquée à la ligne 6"
+                                }
+                              ],
+                              "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                              "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\False}{\\lor}[3]}",
+                          "justification": "règle ∨𝔽 appliquée à la ligne 3"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\lor}[3]}",
+                      "justification": "règle ∨𝔽 appliquée à la ligne 3"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\land}[2]}",
+                  "justification": "règle ∧𝔽 appliquée à la ligne 2"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 4
+      },
+      {
+        "unit_id": "OLP-0105",
+        "path": "fr\\content\\first-order-logic\\tableaux\\proof-theoretic-notions.tex",
+        "environment": "oltableau",
+        "environment_number": 1,
+        "source_block": "\\begin{oltableau}\n  [\\sFmla{\\False}{\\formula{A}}, just = \\TAss\n    [\\sFmla{\\True}{\\formula{A}}, just = \\TAss,close]\n  ]\n\\end{oltableau}",
+        "source_block_sha256": "8d2721a35aa5608905d2a9504eff0a2ca3770e84d9bcb7d625e53ef07a578249",
+        "image": "reader1030x.svg",
+        "svg_sha256": "2b9ec69c0f5127bb3f52cb91332018ec203b2bcb9097e32a4f7f92b256139a9a",
+        "alt": "Tableau analytique signé. Racine : 𝔽 φ (hypothèse). Puis 𝕋 φ (hypothèse, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{A}}",
+          "formula": "𝔽 φ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A}}",
+              "formula": "𝕋 φ",
+              "checked": false,
+              "closed": true,
+              "children": [],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 1,
+        "source_block": "\\begin{oltableau}{}\n      [\\sFmla{\\False}{\\formula{A}}, just=\\TAss\n        [\\sFmla{\\True}{\\formula{A} \\land \\formula{B}}, just=\\TAss\n          [\\sFmla{\\True}{\\formula{A}},just={\\TRule{\\True}{\\land}[2]}\n            [\\sFmla{\\True}{\\formula{B}},just={\\TRule{\\True}{\\land}[2]}, close\n            ]\n          ]\n        ]\n      ]\n    \\end{oltableau}",
+        "source_block_sha256": "e3bd2b376a5cd40650da71b6667a6f86cdb40ccd4b823b294bb381a25197f1f7",
+        "image": "reader1057x.svg",
+        "svg_sha256": "b05e2a7b18359a6fa85e8d38e20d71d2f3222c886f72eab76eb62a799b24f665",
+        "alt": "Tableau analytique signé. Racine : 𝔽 φ (hypothèse). Puis 𝕋 φ ∧ ψ (hypothèse). Puis 𝕋 φ (règle ∧𝕋 appliquée à la ligne 2). Puis 𝕋 ψ (règle ∧𝕋 appliquée à la ligne 2, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{A}}",
+          "formula": "𝔽 φ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A} \\land \\formula{B}}",
+              "formula": "𝕋 φ ∧ ψ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\True}{\\formula{B}}",
+                      "formula": "𝕋 ψ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\True}{\\land}[2]}",
+                      "justification": "règle ∧𝕋 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\land}[2]}",
+                  "justification": "règle ∧𝕋 appliquée à la ligne 2"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 2,
+        "source_block": "\\begin{oltableau}{}\n      [\\sFmla{\\False}{\\formula{B}}, just=\\TAss\n        [\\sFmla{\\True}{\\formula{A} \\land \\formula{B}}, just=\\TAss\n          [\\sFmla{\\True}{\\formula{A}},just={\\TRule{\\True}{\\land}[2]}\n            [\\sFmla{\\True}{\\formula{B}},just={\\TRule{\\True}{\\land}[2]}, close\n            ]\n          ]\n        ]\n      ]\n    \\end{oltableau}",
+        "source_block_sha256": "56e695892b7e6d620cdf83cb891cfd89de98b2b9bb21df12d07e3eb876819eb3",
+        "image": "reader1084x.svg",
+        "svg_sha256": "c367880745ce3d58e0763660e9f8b059d1eaa078e089fe46b25273d21aa913b5",
+        "alt": "Tableau analytique signé. Racine : 𝔽 ψ (hypothèse). Puis 𝕋 φ ∧ ψ (hypothèse). Puis 𝕋 φ (règle ∧𝕋 appliquée à la ligne 2). Puis 𝕋 ψ (règle ∧𝕋 appliquée à la ligne 2, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{B}}",
+          "formula": "𝔽 ψ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A} \\land \\formula{B}}",
+              "formula": "𝕋 φ ∧ ψ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\True}{\\formula{B}}",
+                      "formula": "𝕋 ψ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\True}{\\land}[2]}",
+                      "justification": "règle ∧𝕋 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\True}{\\land}[2]}",
+                  "justification": "règle ∧𝕋 appliquée à la ligne 2"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 3,
+        "source_block": "\\begin{oltableau}\n        [\\sFmla{\\False}{\\formula{A} \\land \\formula{B}}, just = \\TAss\n          [\\sFmla{\\True}{\\formula{A}}, just = \\TAss\n            [\\sFmla{\\True}{\\formula{B}}, just=\\TAss\n              [\\sFmla{\\False}{\\formula{A}}, just = {\\TRule{\\False}{\\land}[1]}, close]\n              [\\sFmla{\\False}{\\formula{B}}, just = {\\TRule{\\False}{\\land}[1]}, close]\n            ]\n          ]\n        ]\n      \\end{oltableau}",
+        "source_block_sha256": "525e65509e0ce1060da622dd17c888fcd9c4cfb6c041ac3c79320faa09cd6044",
+        "image": "reader1124x.svg",
+        "svg_sha256": "99c0f97699ae8d91607cc72a4ccebe69ad1dd83158288e1be16380b1de5e31a2",
+        "alt": "Tableau analytique signé. Racine : 𝔽 φ ∧ ψ (hypothèse). Puis 𝕋 φ (hypothèse). Puis 𝕋 ψ (hypothèse). Ramification en 2 branches. Branche 1 : 𝔽 φ (règle ∧𝔽 appliquée à la ligne 1, fermeture de cette branche). Branche 2 : 𝔽 ψ (règle ∧𝔽 appliquée à la ligne 1, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{A} \\land \\formula{B}}",
+          "formula": "𝔽 φ ∧ ψ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A}}",
+              "formula": "𝕋 φ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{B}}",
+                  "formula": "𝕋 ψ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A}}",
+                      "formula": "𝔽 φ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\land}[1]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 1"
+                    },
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{B}}",
+                      "formula": "𝔽 ψ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\land}[1]}",
+                      "justification": "règle ∧𝔽 appliquée à la ligne 1"
+                    }
+                  ],
+                  "justification_source": "\\TAss",
+                  "justification": "hypothèse"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 2
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 4,
+        "source_block": "\\begin{oltableau}\n      [\\sFmla{\\True}{\\formula{A} \\lor \\formula{B}}, just = \\TAss\n        [\\sFmla{\\True}{\\lnot \\formula{A}}, just = \\TAss\n          [\\sFmla{\\True}{\\lnot \\formula{B}}, just = \\TAss\n            [\\sFmla{\\False}{\\formula{A}}, just = {\\TRule{\\True}{\\lnot}[2]}\n              [\\sFmla{\\False}{\\formula{B}}, just = {\\TRule{\\True}{\\lnot}[3]}\n                [\\sFmla{\\True}{\\formula{A}}, just = {\\TRule{\\True}{\\lor}[1]}, close]\n                [\\sFmla{\\True}{\\formula{B}}, just = {\\TRule{\\True}{\\lor}[1]}, close]\n              ]\n            ]\n          ]\n        ]\n      ]\n    \\end{oltableau}",
+        "source_block_sha256": "746ebcbe99040d04744cfb3409fe707494dac3cd2a1eecdef86671a25c781c70",
+        "image": "reader1174x.svg",
+        "svg_sha256": "1b09a7734238e2fd9a7498a96d42aecb51ac28f6a9c6e7bd59f03b654bbb5787",
+        "alt": "Tableau analytique signé. Racine : 𝕋 φ ∨ ψ (hypothèse). Puis 𝕋 ¬ φ (hypothèse). Puis 𝕋 ¬ ψ (hypothèse). Puis 𝔽 φ (règle ¬𝕋 appliquée à la ligne 2). Puis 𝔽 ψ (règle ¬𝕋 appliquée à la ligne 3). Ramification en 2 branches. Branche 1 : 𝕋 φ (règle ∨𝕋 appliquée à la ligne 1, fermeture de cette branche). Branche 2 : 𝕋 ψ (règle ∨𝕋 appliquée à la ligne 1, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\True}{\\formula{A} \\lor \\formula{B}}",
+          "formula": "𝕋 φ ∨ ψ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\lnot \\formula{A}}",
+              "formula": "𝕋 ¬ φ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\lnot \\formula{B}}",
+                  "formula": "𝕋 ¬ ψ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A}}",
+                      "formula": "𝔽 φ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{B}}",
+                          "formula": "𝔽 ψ",
+                          "checked": false,
+                          "closed": false,
+                          "children": [
+                            {
+                              "source": "\\sFmla{\\True}{\\formula{A}}",
+                              "formula": "𝕋 φ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                              "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                            },
+                            {
+                              "source": "\\sFmla{\\True}{\\formula{B}}",
+                              "formula": "𝕋 ψ",
+                              "checked": false,
+                              "closed": true,
+                              "children": [],
+                              "justification_source": "{\\TRule{\\True}{\\lor}[1]}",
+                              "justification": "règle ∨𝕋 appliquée à la ligne 1"
+                            }
+                          ],
+                          "justification_source": "{\\TRule{\\True}{\\lnot}[3]}",
+                          "justification": "règle ¬𝕋 appliquée à la ligne 3"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\True}{\\lnot}[2]}",
+                      "justification": "règle ¬𝕋 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "\\TAss",
+                  "justification": "hypothèse"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 2
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 5,
+        "source_block": "\\begin{oltableau}{}\n      [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}, just=\\TAss\n        [\\sFmla{\\True}{\\formula{A}}, just=\\TAss\n          [\\sFmla{\\False}{\\formula{A}},just={\\TRule{\\False}{\\lor}[1]}\n            [\\sFmla{\\False}{\\formula{B}},just={\\TRule{\\False}{\\lor}[1]}, close\n            ]\n          ]\n        ]\n      ]\n    \\end{oltableau}",
+        "source_block_sha256": "ed13d65dbfb646826e26021dfc060ef00de8928c4915a8ef18c82d6649dbc7a1",
+        "image": "reader1201x.svg",
+        "svg_sha256": "2c43410d5949729cb42a1190786e6a691dd279d868b56563399347bf194069d5",
+        "alt": "Tableau analytique signé. Racine : 𝔽 φ ∨ ψ (hypothèse). Puis 𝕋 φ (hypothèse). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 1). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 1, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+          "formula": "𝔽 φ ∨ ψ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A}}",
+              "formula": "𝕋 φ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{\\formula{A}}",
+                  "formula": "𝔽 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{B}}",
+                      "formula": "𝔽 ψ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\lor}[1]}",
+                      "justification": "règle ∨𝔽 appliquée à la ligne 1"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\lor}[1]}",
+                  "justification": "règle ∨𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 6,
+        "source_block": "\\begin{oltableau}{}\n      [\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}, just=\\TAss\n        [\\sFmla{\\True}{\\formula{B}}, just=\\TAss\n          [\\sFmla{\\False}{\\formula{A}},just={\\TRule{\\False}{\\lor}[1]}\n            [\\sFmla{\\False}{\\formula{B}},just={\\TRule{\\False}{\\lor}[1]}, close\n            ]\n          ]\n        ]\n      ]\n    \\end{oltableau}",
+        "source_block_sha256": "47691871c98ec8985c450cf269e357df4a6571e944efd865ad9e54a1bdb45cae",
+        "image": "reader1228x.svg",
+        "svg_sha256": "8c48b2dd5de099ab9badca1a67142d0f72cf5a9900410bce101147ef74dc4b52",
+        "alt": "Tableau analytique signé. Racine : 𝔽 φ ∨ ψ (hypothèse). Puis 𝕋 ψ (hypothèse). Puis 𝔽 φ (règle ∨𝔽 appliquée à la ligne 1). Puis 𝔽 ψ (règle ∨𝔽 appliquée à la ligne 1, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{A} \\lor \\formula{B}}",
+          "formula": "𝔽 φ ∨ ψ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{B}}",
+              "formula": "𝕋 ψ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\False}{\\formula{A}}",
+                  "formula": "𝔽 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{B}}",
+                      "formula": "𝔽 ψ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\lor}[1]}",
+                      "justification": "règle ∨𝔽 appliquée à la ligne 1"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\lor}[1]}",
+                  "justification": "règle ∨𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 7,
+        "source_block": "\\begin{oltableau}\n        [\\sFmla{\\False}{\\formula{B}}, just=\\TAss\n          [\\sFmla{\\True}{\\formula{A} \\lif \\formula{B}}, just=\\TAss\n            [\\sFmla{\\True}{\\formula{A}}, just=\\TAss\n              [\\sFmla{\\False}{\\formula{A}}, just = {\\TRule{\\True}{\\lif}[2]}, close]\n              [\\sFmla{\\True}{\\formula{B}}, just = {\\TRule{\\True}{\\lif}[2]}, close]\n            ]\n          ]\n        ]\n      \\end{oltableau}",
+        "source_block_sha256": "f8f6d4c44046208edf5ffb47c29b3ed971e1e08818ce9611cbf65078aa655d17",
+        "image": "reader1268x.svg",
+        "svg_sha256": "cbdf465a24e4a6310fbf7dcc2a53088511e1882e466a7cb4dc7b352661436140",
+        "alt": "Tableau analytique signé. Racine : 𝔽 ψ (hypothèse). Puis 𝕋 φ → ψ (hypothèse). Puis 𝕋 φ (hypothèse). Ramification en 2 branches. Branche 1 : 𝔽 φ (règle →𝕋 appliquée à la ligne 2, fermeture de cette branche). Branche 2 : 𝕋 ψ (règle →𝕋 appliquée à la ligne 2, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{B}}",
+          "formula": "𝔽 ψ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{A} \\lif \\formula{B}}",
+              "formula": "𝕋 φ → ψ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{A}}",
+                      "formula": "𝔽 φ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\True}{\\lif}[2]}",
+                      "justification": "règle →𝕋 appliquée à la ligne 2"
+                    },
+                    {
+                      "source": "\\sFmla{\\True}{\\formula{B}}",
+                      "formula": "𝕋 ψ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\True}{\\lif}[2]}",
+                      "justification": "règle →𝕋 appliquée à la ligne 2"
+                    }
+                  ],
+                  "justification_source": "\\TAss",
+                  "justification": "hypothèse"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 2
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 8,
+        "source_block": "\\begin{oltableau}\n        [\\sFmla{\\False}{\\formula{A} \\lif \\formula{B}}, just = \\TAss\n          [\\sFmla{\\True}{\\lnot \\formula{A}}, just = \\TAss\n            [\\sFmla{\\True}{\\formula{A}}, just = {\\TRule{\\False}{\\lif}[1]}\n              [\\sFmla{\\False}{\\formula{B}}, just = {\\TRule{\\False}{\\lif}[1]}\n                [\\sFmla{\\False}{\\formula{A}}, just = {\\TRule{\\True}{\\lnot}[2]}, close]\n              ]\n            ]\n          ]\n        ]\n      \\end{oltableau}",
+        "source_block_sha256": "3037537420002617f8b6ecb41192577296fb5bdd739faef5196e274f9ceec5d0",
+        "image": "reader1300x.svg",
+        "svg_sha256": "8b389e2153e5eb436f926ab20ef95cb1575bf05a6576238a66a0866063560eeb",
+        "alt": "Tableau analytique signé. Racine : 𝔽 φ → ψ (hypothèse). Puis 𝕋 ¬ φ (hypothèse). Puis 𝕋 φ (règle →𝔽 appliquée à la ligne 1). Puis 𝔽 ψ (règle →𝔽 appliquée à la ligne 1). Puis 𝔽 φ (règle ¬𝕋 appliquée à la ligne 2, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{A} \\lif \\formula{B}}",
+          "formula": "𝔽 φ → ψ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\lnot \\formula{A}}",
+              "formula": "𝕋 ¬ φ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{B}}",
+                      "formula": "𝔽 ψ",
+                      "checked": false,
+                      "closed": false,
+                      "children": [
+                        {
+                          "source": "\\sFmla{\\False}{\\formula{A}}",
+                          "formula": "𝔽 φ",
+                          "checked": false,
+                          "closed": true,
+                          "children": [],
+                          "justification_source": "{\\TRule{\\True}{\\lnot}[2]}",
+                          "justification": "règle ¬𝕋 appliquée à la ligne 2"
+                        }
+                      ],
+                      "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                      "justification": "règle →𝔽 appliquée à la ligne 1"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                  "justification": "règle →𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
+      },
+      {
+        "unit_id": "OLP-0107",
+        "path": "fr\\content\\first-order-logic\\tableaux\\provability-propositional.tex",
+        "environment": "oltableau",
+        "environment_number": 9,
+        "source_block": "\\begin{oltableau}\n        [\\sFmla{\\False}{\\formula{A} \\lif \\formula{B}}, just = \\TAss\n          [\\sFmla{\\True}{\\formula{B}}, just = \\TAss\n            [\\sFmla{\\True}{\\formula{A}}, just = {\\TRule{\\False}{\\lif}[1]}\n              [\\sFmla{\\False}{\\formula{B}}, just = {\\TRule{\\False}{\\lif}[1]},close\n              ]\n            ]\n          ]\n        ]\n      \\end{oltableau}",
+        "source_block_sha256": "7706659c4d2e838f424f7e5465d9511d0219937f7811f3631c960eb4e443d662",
+        "image": "reader1327x.svg",
+        "svg_sha256": "a22a144c5064e9815f2aac3d02c1079dd1803f71833b3dedb0b615d321946a59",
+        "alt": "Tableau analytique signé. Racine : 𝔽 φ → ψ (hypothèse). Puis 𝕋 ψ (hypothèse). Puis 𝕋 φ (règle →𝔽 appliquée à la ligne 1). Puis 𝔽 ψ (règle →𝔽 appliquée à la ligne 1, fermeture de cette branche). Toutes les branches sont fermées.",
+        "tree": {
+          "source": "\\sFmla{\\False}{\\formula{A} \\lif \\formula{B}}",
+          "formula": "𝔽 φ → ψ",
+          "checked": false,
+          "closed": false,
+          "children": [
+            {
+              "source": "\\sFmla{\\True}{\\formula{B}}",
+              "formula": "𝕋 ψ",
+              "checked": false,
+              "closed": false,
+              "children": [
+                {
+                  "source": "\\sFmla{\\True}{\\formula{A}}",
+                  "formula": "𝕋 φ",
+                  "checked": false,
+                  "closed": false,
+                  "children": [
+                    {
+                      "source": "\\sFmla{\\False}{\\formula{B}}",
+                      "formula": "𝔽 ψ",
+                      "checked": false,
+                      "closed": true,
+                      "children": [],
+                      "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                      "justification": "règle →𝔽 appliquée à la ligne 1"
+                    }
+                  ],
+                  "justification_source": "{\\TRule{\\False}{\\lif}[1]}",
+                  "justification": "règle →𝔽 appliquée à la ligne 1"
+                }
+              ],
+              "justification_source": "\\TAss",
+              "justification": "hypothèse"
+            }
+          ],
+          "justification_source": "\\TAss",
+          "justification": "hypothèse"
+        },
+        "leaf_count": 1
       }
     ],
-    "reader_sha256": "bd63f94e6e638ba619ca2de8c4b12ed47aed9e4bc400ff12b835119dd398c0a2",
-    "initial_pdf_sha256": "ac36e2eeec81a0a34154405f629f19aa37ba52d93c965c6779853867855c7159",
-    "initial_pdf_pages": 126,
-    "inspected_pages": [
-      1,
-      2,
-      3,
-      4,
-      111,
-      112,
-      113,
-      114,
-      115,
-      116,
-      117,
-      118,
-      119,
-      120,
-      121,
-      122,
-      123,
-      124,
-      125,
-      126
-    ],
-    "repairs": [
-      "Keep chapter10 TOC entry with its following sections.",
-      "Keep the short editorial note and rule headings with their content.",
-      "Keep section10.5 with its introductory frame.",
-      "Restore the word space after FalseCl and keep French closing quotation mark attached.",
-      "Supply French articles before proposition, theorem, definition and corollary references; exact label targets unchanged."
-    ],
-    "semantic_change": false,
-    "proofs_formulas_and_exercises_unchanged": true,
-    "full_edition_complete": false
+    "rule_frames": 5,
+    "tableau_trees": 27
   }
 }

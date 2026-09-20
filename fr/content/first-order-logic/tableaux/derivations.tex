@@ -1,0 +1,97 @@
+% Part: first-order-logic
+% Chapter: tableaux
+% Section: derivations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{der}}
+      {\olfileid[fr]{pl}{tab}{der}}
+
+\olsection{\usetoken{P}{tableau}}
+
+\begin{explain}
+Nous avons défini les hypothèses et donné les règles d'inférence.
+Les !!{tableau}s sont engendrés inductivement à partir d'elles :
+chaque !!{tableau} est soit une branche unique formée d'une ou plusieurs
+hypothèses, soit le résultat de l'application d'une règle d'inférence
+à une branche d'!!a{tableau}.
+\end{explain}
+
+\begin{defn}[!!^{tableau}]
+!!^a{tableau} pour les hypothèses $\sFmla{S_1}{!A_1}$, \dots,
+$\sFmla{S_n}{!A_n}$, où chaque $S_i$ vaut $\True$ ou~$\False$, est un
+arbre fini de !!{signed formula}s qui vérifie les conditions suivantes :
+\begin{enumerate}
+\item Les $n$ !!{signed formula}s placées tout en haut de l'arbre sont
+  $\sFmla{S_i}{!A_i}$, l'une au-dessous de l'autre.
+\item Toute !!{signed formula} de l'arbre qui n'est pas une hypothèse
+  résulte de l'application correcte d'une règle d'inférence à
+  !!a{signed formula} située plus haut sur sa branche.
+\end{enumerate}
+Une branche d'!!a{tableau} est \emph{fermée} si et seulement si elle
+contient à la fois $\sFmla{\True}{!A}$ et~$\sFmla{\False}{!A}$ ; elle
+est \emph{ouverte} dans le cas contraire. !!^a{tableau} dont toutes les
+branches sont fermées est un \emph{!!{tableau} fermé} pour son ensemble
+d'hypothèses. Si !!a{tableau} n'est pas fermé, c'est-à-dire s'il contient
+au moins une branche ouverte, il est \emph{ouvert}.
+\end{defn}
+
+\begin{ex}
+  Tout ensemble d'hypothèses constitue à lui seul !!a{tableau}, mais
+  celui-ci n'est généralement pas fermé. Il ne l'est manifestement que
+  si les hypothèses contiennent déjà une paire de !!{signed formula}s
+  $\sFmla{\True}{!A}$ et~$\sFmla{\False}{!A}$.
+
+  À partir d'!!a{tableau}, ouvert ou fermé, on peut en obtenir un nouveau,
+  plus grand, en appliquant l'une des règles d'inférence à
+  !!a{signed formula} qui y figure et dont la formule est~$!A$. La règle ajoute une ou plusieurs
+  !!{signed formula}s à l'extrémité de toute branche qui contient
+  l'occurrence de~$!A$ à laquelle elle est appliquée.
+
+  Considérons par exemple l'hypothèse $\sFmla{\True}{!A \land \lnot
+    !A}$. Voici le !!{tableau} ouvert qui ne contient que cette hypothèse :
+  \begin{center}
+    \begin{tableau}{}
+      [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss]
+    \end{tableau}{}
+  \end{center}
+  On en obtient un nouveau !!{tableau} en appliquant la règle
+  $\TRule{\True}{\land}$ à l'hypothèse. Cette règle permet d'ajouter
+  deux lignes au !!{tableau}, $\sFmla{\True}{!A}$ et
+  $\sFmla{\True}{\lnot !A}$ :
+  \begin{center}
+    \begin{tableau}{}
+      [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss
+        [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\land}[1]},
+          [\sFmla{\True}{\lnot \formula{A}}, just={\TRule{\True}{\land}[1]}
+          ]
+        ]
+      ]
+    \end{tableau}{}
+  \end{center}
+  Lorsque nous écrivons des !!{tableau}s, nous indiquons à droite les
+  règles appliquées. Ainsi, $\TRule{\True}{\land} 1$ signifie que la
+  !!{signed formula} de cette ligne résulte de l'application de la règle
+  $\TRule{\True}{\land}$ à la !!{signed formula} de la ligne~$1$.
+  Ce nouveau !!{tableau} contient maintenant d'autres
+  !!{signed formula}s, mais une seule d'entre elles,
+  $\sFmla{\True}{\lnot !A}$, permet encore l'application d'une règle,
+  en l'occurrence $\TRule{\True}{\lnot}$. On obtient ainsi le
+  !!{tableau} fermé suivant :
+  \begin{center}
+    \begin{tableau}{}
+      [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss
+        [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\land}[1]}
+          [\sFmla{\True}{\lnot \formula{A}}, just={\TRule{\True}{\land}[1]}
+            [\sFmla{\False}{\formula{A}}, just={\TRule{\True}{\lnot}[3]}, close]
+          ]
+        ]
+      ]
+    \end{tableau}{}
+  \end{center}
+\end{ex}
+
+\end{document}

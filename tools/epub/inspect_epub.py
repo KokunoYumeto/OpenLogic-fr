@@ -55,7 +55,6 @@ with zipfile.ZipFile(epub) as z:
  if maths==0:errors.append(["no_native_mathml"])
  nav=[x for x in items.values() if "nav" in x.get("properties","").split()]
  if len(nav)!=1:errors.append(["nav_count",len(nav)])
- report=dict(epub=epub.name,bytes=epub.stat().st_size,sha256=sha(epub.read_bytes()),documents=len(documents),spine=spine,native_mathml_roots=maths,figures=figures,internal_links=links,external_links=sorted(set(external)),missing_math=missing_math,errors=errors,status="PASS_STRUCTURE_ONLY" if not errors and not missing_math else "FAIL",semantic_source_coverage_inferred=False,source_scope_units=83,total_edition_units=722,full_edition_complete=False)
+ report=dict(epub=epub.name,bytes=epub.stat().st_size,sha256=sha(epub.read_bytes()),documents=len(documents),spine=spine,native_mathml_roots=maths,figures=figures,internal_links=links,external_links=sorted(set(external)),missing_math=missing_math,errors=errors,status="PASS_STRUCTURE_ONLY" if not errors and not missing_math else "FAIL",semantic_source_coverage_inferred=False,source_scope_units=92,total_edition_units=722,full_edition_complete=False)
  print(json.dumps(report,ensure_ascii=True,indent=2))
 sys.exit(bool(errors or missing_math))
-

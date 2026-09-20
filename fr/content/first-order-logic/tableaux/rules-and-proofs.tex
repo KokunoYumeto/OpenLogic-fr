@@ -1,0 +1,61 @@
+% Part: first-order-logic
+% Chapter: tableaux
+% Section: rules-and-proofs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{rul}}
+      {\olfileid[fr]{pl}{tab}{rul}}
+
+\olsection{Règles et \usetoken{p}{tableau}}
+
+!!^a{tableau} constitue une exploration systématique des différentes
+manières dont !!a{sentence} peut être vraie ou fausse dans
+!!a{structure}. Ses éléments de base sont des !!{signed formula}s :
+des !!{sentence}s munis d'un « signe » de valeur de vérité, soit
+$\True$, soit~$\False$. Ces !!{formula}s signées sont disposées dans
+un arbre qui croît vers le bas.
+
+\begin{defn}
+  Une \emph{!!{signed formula}} est un couple formé d'une valeur de
+  vérité et d'!!a{sentence}, autrement dit :
+  \[
+  \sFmla{\True}{!A} \text{ ou } \sFmla{\False}{!A}.
+  \]
+\end{defn}
+
+Intuitivement, on peut lire $\sFmla{\True}{!A}$ comme « $!A$ pourrait
+être vraie » et $\sFmla{\False}{!A}$ comme « $!A$ pourrait être
+fausse » dans une !!{structure}.
+
+Chaque !!{signed formula} de l'arbre est soit une \emph{hypothèse}
+(les hypothèses sont placées tout en haut de l'arbre), soit obtenue
+d'!!a{signed formula} située plus haut par l'une des règles d'inférence.
+Deux règles correspondent à chaque !!{main operator} possible de la
+!!{formula} précédente : l'une lorsque le signe est~$\True$, l'autre
+lorsqu'il est~$\False$. Certaines règles ramifient l'arbre ; d'autres
+se contentent d'ajouter des !!{signed formula}s à la branche.
+Une règle peut, et doit souvent, être appliquée non à la !!{signed formula}
+qui précède immédiatement, mais à n'importe quelle !!{signed formula}
+qui figure sur la branche, entre la racine et le point d'application.
+
+Une branche est \emph{fermée} lorsqu'elle contient à la fois
+$\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$. Un !!{tableau} est fermé
+lorsque toutes ses branches le sont. Selon l'interprétation intuitive,
+chaque branche décrit une possibilité conjointe, mais
+$\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$ y sont incompatibles.
+Une branche fermée élimine donc la possibilité qu'elle
+décrit. En particulier, un !!{tableau} fermé élimine toute possibilité
+de rendre vraies toutes les hypothèses de la forme
+$\sFmla{\True}{!A}$ et fausses toutes celles de la forme
+$\sFmla{\False}{!A}$.
+
+Un !!{tableau} fermé \emph{pour $!A$} est un !!{tableau} fermé dont la
+racine est~$\sFmla{\False}{!A}$. S'il existe un tel !!{tableau}, toutes
+les possibilités où $!A$ serait fausse sont éliminées ; $!A$ doit donc
+être vraie dans toute !!{structure}.
+
+\end{document}

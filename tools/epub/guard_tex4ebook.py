@@ -34,10 +34,10 @@ def check(ok):
 def counts(job):
  a=Accounting();check(QueryJob(job,1,c.byref(a),c.sizeof(a),None));return a
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
-def run(attempt,mode="convert",source_scope_units=83,worker_script=None):
+def run(attempt,mode="convert",source_scope_units=92,worker_script=None):
  if not attempt.replace("-","").isalnum():raise ValueError("Invalid attempt name")
  capture=E/attempt;capture.mkdir(exist_ok=False)
- limit=180 if mode in ("convert","pdf-compare") else (25 if mode=="diagnostic" else (1 if mode=="test-timeout" else 10))
+ limit=600 if mode=="convert" else (180 if mode=="pdf-compare" else (25 if mode=="diagnostic" else (1 if mode=="test-timeout" else 10)))
  r=dict(mutex="Global\\InterlanguageTeXSlotV1",timeout_ms=45000,whole_tree_timeout_seconds=limit,status="pending",acquired=False,abandoned_recovery=False,source_scope_units=source_scope_units,mode=mode,job_kill_on_close=True,created_suspended=True)
  mutex=job=ph=th=None;assigned=False;empty=True;streams=[]
  try:

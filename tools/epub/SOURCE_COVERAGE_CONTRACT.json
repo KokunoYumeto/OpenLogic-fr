@@ -1,9 +1,9 @@
 {
-  "at": "2026-09-20T00:51:54.385137+00:00",
-  "drafted_units": 94,
-  "expected_reader_units": 83,
-  "chapters": 10,
-  "sections": 73,
+  "at": "2026-09-20T03:52:24.852745+00:00",
+  "drafted_units": 108,
+  "expected_reader_units": 92,
+  "chapters": 11,
+  "sections": 81,
   "excluded_drafts": [
     "OLP-0055",
     "OLP-0072",
@@ -15,9 +15,14 @@
     "OLP-0090",
     "OLP-0094",
     "OLP-0096",
-    "OLP-0097"
+    "OLP-0097",
+    "OLP-0101",
+    "OLP-0104",
+    "OLP-0108",
+    "OLP-0110",
+    "OLP-0111"
   ],
-  "exclusion_reason": "Part driver0055 awaits the remaining shared proof chapters; ten FOL-only sections await first-order syntax/semantics and will join their existing shared chapters.",
+  "exclusion_reason": "The part driver OLP-0055 awaits the remaining shared proof chapters; fifteen FOL-only sections await first-order syntax and semantics and will join their existing shared chapters.",
   "units": [
     {
       "unit_id": "OLP-0005",
@@ -317,7 +322,7 @@
     {
       "unit_id": "OLP-0064",
       "path": "content/first-order-logic/proof-systems/introduction.tex",
-      "sha256": "3ba98db536ff3e4e8abe9c6c1ffa2b3a31a01769bb6176a36258986a77974acb"
+      "sha256": "69a7b63b4988d598f744c55f82d827510058652e55239bd554703a04607627e1"
     },
     {
       "unit_id": "OLP-0065",
@@ -327,7 +332,7 @@
     {
       "unit_id": "OLP-0066",
       "path": "content/first-order-logic/proof-systems/natural-deduction.tex",
-      "sha256": "f7e5d118f49d75385e4f825cf6d029c4b634d50864ba105635cef6fcf0bddc2f"
+      "sha256": "3dbb5d00ff9d424ae637a7be3a9825fd9f7e19e06123d2463504ea1d9f91b42c"
     },
     {
       "unit_id": "OLP-0067",
@@ -392,7 +397,7 @@
     {
       "unit_id": "OLP-0084",
       "path": "content/first-order-logic/natural-deduction/natural-deduction.tex",
-      "sha256": "dd013cb35b97e3351635a3f4b5c044f890fd8659a6e63e71e0510d1a6ad9be2a"
+      "sha256": "86fa812a3faa078916bb69926227cce7c9ca2a0334f6f0bd23376cf32993625f"
     },
     {
       "unit_id": "OLP-0085",
@@ -432,10 +437,55 @@
     {
       "unit_id": "OLP-0095",
       "path": "content/first-order-logic/natural-deduction/soundness.tex",
-      "sha256": "91a3e8bfed0157703ee7509139802b491958b1b1d0fb926e8cc17c7b2d950243"
+      "sha256": "efaef5f0749b9cd7c79d56c06e5cecf872ea752a98557b4f4f5afcc475e4125c"
+    },
+    {
+      "unit_id": "OLP-0098",
+      "path": "content/first-order-logic/tableaux/tableaux.tex",
+      "sha256": "5f2fa66eb80db0dac41fd05ac0b93bdb0a435c4f62a35eee7d3d2e9a60619536"
+    },
+    {
+      "unit_id": "OLP-0099",
+      "path": "content/first-order-logic/tableaux/rules-and-proofs.tex",
+      "sha256": "ef90c3980ee4271411d678f15c8f080ddf3142d2982d5d59d1ee70710f195c5b"
+    },
+    {
+      "unit_id": "OLP-0100",
+      "path": "content/first-order-logic/tableaux/propositional-rules.tex",
+      "sha256": "4923d08ac792a1574c55685c8d6f710e3405586a632b4c91c65875720449aeb1"
+    },
+    {
+      "unit_id": "OLP-0102",
+      "path": "content/first-order-logic/tableaux/derivations.tex",
+      "sha256": "e13b3e88aab38aaa7dbea57f9a4186c99f938e1220a52f4e1e50dc20b5de1a9c"
+    },
+    {
+      "unit_id": "OLP-0103",
+      "path": "content/first-order-logic/tableaux/proving-things.tex",
+      "sha256": "26891044844ed238a3d9585441b12a1f1c8cd2773d4bab96ca7f4323674d3ac6"
+    },
+    {
+      "unit_id": "OLP-0105",
+      "path": "content/first-order-logic/tableaux/proof-theoretic-notions.tex",
+      "sha256": "ea72fff1e359cc3f5a77766052fb6132f85552ac354c9ae37ea73f4f7279d061"
+    },
+    {
+      "unit_id": "OLP-0106",
+      "path": "content/first-order-logic/tableaux/provability-consistency.tex",
+      "sha256": "9eb5391c2edcbb63dc2e1417f93ad94ef67d7aaf112903fd907969648fe873af"
+    },
+    {
+      "unit_id": "OLP-0107",
+      "path": "content/first-order-logic/tableaux/provability-propositional.tex",
+      "sha256": "72eb7fadf4eacffeec53e4c8013e55ca85145e608022b0f1b2842c43319b1076"
+    },
+    {
+      "unit_id": "OLP-0109",
+      "path": "content/first-order-logic/tableaux/soundness.tex",
+      "sha256": "ae0e15ef0a173b2f5b4c9ab0dab50f647e988a3ce3a28e2cc25e01f0250f33d6"
     }
   ],
-  "reader_sha256": "bd63f94e6e638ba619ca2de8c4b12ed47aed9e4bc400ff12b835119dd398c0a2",
+  "reader_sha256": "29d26f85abc297ce4f54ba9973548885b66e77598337c04c90e4600043fbd005",
   "config_sha256": "6259bffda58d71693700ba12eb7ebae60598a16f7578f24c5e53c6088eb069c8",
   "status": "PREPARED_NOT_BUILT"
 }

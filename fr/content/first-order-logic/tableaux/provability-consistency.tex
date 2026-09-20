@@ -1,0 +1,168 @@
+% Part: first-order-logic
+% Chapter: tableaux
+% Section: provability-consistency
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{tab}{prv}}
+      {\olfileid[fr]{pl}{tab}{prv}}
+
+\olsection{\usetoken{S}{derivability} et cohérence}
+
+Établissons plusieurs propriétés de la relation de !!{derivability}.
+Outre leur intérêt propre, elles interviendront toutes dans la
+démonstration du théorème de complétude.
+
+\begin{prop}\ollabel{prop:provability-contr}
+  Si $\Gamma \Proves !A$ et si $\Gamma \cup \{!A\}$ est
+  incohérent, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Il existe deux parties finies de~$\Gamma$,
+$\Gamma_0 = \{!B_1, \dots, !B_n\}$ et
+$\Gamma_1 = \{!C_1, \dots, !C_m\}$, telles que les deux ensembles
+  \begin{align*}
+    \{\sFmla{\False}{!A}, &
+    \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\} \\
+    \{\sFmla{\True}{!A}, &
+    \sFmla{\True}{!C_1}, \dots, \sFmla{\True}{!C_m}\}
+  \end{align*}
+possèdent des !!{tableau}s fermés. En appliquant la règle \Cut{} à
+$!A$, nous pouvons les combiner en un seul !!{tableau} fermé, qui
+montre que $\Gamma_0 \cup \Gamma_1$ est incohérent. Comme
+$\Gamma_0 \subseteq \Gamma$ et $\Gamma_1 \subseteq \Gamma$, on a
+$\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$; par conséquent,
+$\Gamma$ est incohérent.
+\end{proof}
+
+\begin{editorial}
+Dans cette preuve, la source définit $\Gamma_1$ au moyen de
+$!C_1,\dots,!C_n$, puis emploie $!C_m$. L'indice~$m$ est rétabli dans
+la définition de $\Gamma_1$.
+\end{editorial}
+
+\begin{prop}
+\ollabel{prop:prov-incons}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons d'abord que $\Gamma \Proves !A$. Il existe donc des
+$!B_1,\dots,!B_n \in \Gamma$ et un !!{tableau} fermé pour
+\[
+\{\sFmla{\False}{!A},
+\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
+\]
+Remplaçons l'hypothèse $\sFmla{\False}{!A}$ par
+$\sFmla{\True}{\lnot !A}$ et appliquons la règle
+$\TRule{\True}{\lnot}$, dont la conclusion est précisément
+$\sFmla{\False}{!A}$. On obtient ainsi un !!{tableau} fermé pour
+\[
+\{\sFmla{\True}{\lnot !A},
+\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}.
+\]
+
+Réciproquement, supposons qu'il existe un !!{tableau} fermé pour ce
+dernier ensemble. Supprimons l'hypothèse
+$\sFmla{\True}{\lnot !A}$ ainsi que toute formule obtenue en lui
+appliquant $\TRule{\True}{\lnot}$, puis ajoutons l'hypothèse
+$\sFmla{\False}{!A}$. Si une branche se fermait parce qu'elle contenait
+la conclusion de $\TRule{\True}{\lnot}$ appliquée à
+$\sFmla{\True}{\lnot !A}$, c'est-à-dire
+$\sFmla{\False}{!A}$, la branche correspondante du nouveau
+!!{tableau} est encore fermée. Si une branche de l'ancien tableau se
+fermait parce qu'elle contenait à la fois l'hypothèse
+$\sFmla{\True}{\lnot !A}$ et $\sFmla{\False}{\lnot !A}$, appliquons
+$\TRule{\False}{\lnot}$ à cette dernière formule. Nous obtenons
+$\sFmla{\True}{!A}$, qui ferme la branche avec la nouvelle hypothèse
+$\sFmla{\False}{!A}$.
+\end{proof}
+
+\begin{prob}
+Démontrer que $\Gamma \Proves \lnot !A$ si et seulement si
+$\Gamma \cup \{!A\}$ est incohérent.
+\end{prob}
+
+\begin{prop}\ollabel{prop:explicit-inc}
+  Si $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$, alors
+  $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+  Supposons que $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$.
+  Il existe alors $!B_1, \dots, !B_n \in \Gamma$ tels que
+  \[
+  \{\sFmla{\False}{!A}, \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}
+  \]
+  possède un !!{tableau} fermé. Remplaçons l'hypothèse
+  \sFmla{\False}{!A} par \sFmla{\True}{\lnot !A}, puis insérons,
+  après les $n+1$ hypothèses, la conclusion de
+  \TRule{\True}{\lnot} appliquée à \sFmla{\True}{\lnot !A}, à savoir
+  \sFmla{\False}{!A}. Tout !!{sentence} du !!{tableau} dont la
+  justification renvoyait à la ligne~$1$ de l'ancien !!{tableau}
+  renvoie maintenant à la ligne~$n+2$. Si l'ancien !!{tableau} était
+  fermé, le nouveau l'est donc aussi. Comme toutes ses hypothèses
+  appartiennent à~$\Gamma$, il montre que $\Gamma$ est incohérent.
+\end{proof}
+
+\begin{editorial}
+La source applique ici par erreur $\TRule{\True}{\lnot}$ à
+$\sFmla{\False}{!A}$ et renvoie ensuite à la ligne~$n+1$. La règle
+s'applique à $\sFmla{\True}{\lnot !A}$; sa conclusion, placée après
+les $n+1$ hypothèses, occupe la ligne~$n+2$.
+\end{editorial}
+
+\begin{prop}\ollabel{prop:provability-exhaustive}
+  Si $\Gamma \cup \{!A\}$ et $\Gamma \cup \{\lnot !A\}$ sont tous
+  deux incohérents, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+  Supposons qu'il existe $!B_1, \dots, !B_n \in \Gamma$ et
+  $!C_1, \dots, !C_m \in \Gamma$ tels que les deux ensembles
+  \begin{align*}
+    \{\sFmla{\True}{!A}, &
+    \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\} \text{ et}\\
+    \{\sFmla{\True}{\lnot !A}, &
+    \sFmla{\True}{!C_1}, \dots, \sFmla{\True}{!C_m}\}
+  \end{align*}
+  possèdent chacun un !!{tableau} fermé. Construisons un unique
+  !!{tableau} combiné ayant pour hypothèses
+  $\sFmla{\True}{!B_1}$, \dots, $\sFmla{\True}{!B_n}$ ainsi que
+  $\sFmla{\True}{!C_1}$, \dots, $\sFmla{\True}{!C_m}$, puis appliquons
+  la règle \Cut{}. Nous obtenons deux branches : la première commence
+  par $\sFmla{\True}{!A}$, la seconde par $\sFmla{\False}{!A}$.
+  
+  Sur la branche de gauche, greffons la partie du premier !!{tableau}
+  située sous ses hypothèses. Chaque application de règle y demeure
+  correcte, puisque toutes les hypothèses du premier !!{tableau}, y
+  compris $\sFmla{\True}{!A}$, sont disponibles. Toutes les branches
+  issues de $\sFmla{\True}{!A}$ se ferment donc.
+  
+  Sur la branche de droite, greffons la partie du second !!{tableau}
+  située sous ses hypothèses, après avoir supprimé les résultats des
+  applications de~$\TRule{\True}{\lnot}$ à
+  $\sFmla{\True}{\lnot !A}$. La conclusion de
+  $\TRule{\True}{\lnot}$ est
+  $\sFmla{\False}{!A}$, qui reste disponible puisqu'elle est la
+  conclusion droite de la règle \Cut{} dans le !!{tableau} combiné.
+
+  Si une branche du second tableau se fermait parce qu'elle contenait
+  l'hypothèse $\sFmla{\True}{\lnot !A}$, désormais absente du
+  !!{tableau} combiné, ainsi que $\sFmla{\False}{\lnot !A}$, appliquons
+  $\TRule{\False}{\lnot}$ à cette dernière formule. On obtient
+  $\sFmla{\True}{!A}$; la branche correspondante du !!{tableau}
+  combiné se ferme alors avec la conclusion droite de \Cut{},
+  $\sFmla{\False}{!A}$. Si une branche du second !!{tableau} se fermait
+  pour une autre raison, la branche correspondante du !!{tableau}
+  combiné se ferme elle aussi, puisque toutes les !!{signed formula}s
+  de l'ancienne branche autres que $\sFmla{\True}{\lnot !A}$ figurent
+  encore sur la branche correspondante du !!{tableau} combiné.
+  \end{proof}
+
+\end{document}
