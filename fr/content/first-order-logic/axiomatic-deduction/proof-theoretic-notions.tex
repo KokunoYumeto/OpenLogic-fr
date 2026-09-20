@@ -1,0 +1,150 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: proof-theoretic-notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{ptn}}
+      {\olfileid[fr]{pl}{axd}{ptn}}
+
+\olsection{Notions de théorie de la démonstration}
+
+\begin{explain}
+De même que nous avons défini plusieurs notions sémantiques importantes
+(\iftag{FOL}{validité}{tautologie}, conséquence logique et
+satisfaisabilité), nous définissons maintenant les \emph{notions de
+théorie de la démonstration} correspondantes. Celles-ci ne font pas
+appel à la satisfaction d'!!{sentence}s dans des !!{structure}s, mais
+à la !!{derivability} ou à la non-!!{derivability} de certaines
+!!{formula}s. La coïncidence de ces notions constitue une découverte
+importante : c'est le contenu des \emph{théorèmes de correction et de
+complétude}.
+\end{explain}
+
+\begin{defn}[!!^{derivability}]
+!!^a{formula}~$!A$ est \emph{!!{derivable} à partir de~$\Gamma$}, ce
+que l'on note $\Gamma \Proves !A$, s'il existe une !!{derivation} à
+partir de~$\Gamma$ qui se termine par~$!A$.
+\end{defn}
+
+\begin{defn}[Théorèmes]
+!!^a{formula}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation} de~$!A$ à partir de l'ensemble vide. On écrit
+$\Proves !A$ si $!A$ est un théorème, et $\Proves/ !A$ dans le cas
+contraire.
+\end{defn}
+
+\begin{defn}[Cohérence]
+Un ensemble~$\Gamma$ de !!{formula}s est \emph{cohérent} si et seulement
+si $\Gamma \Proves/ \lfalse$; il est \emph{incohérent} dans le cas
+contraire.
+\end{defn}
+
+\begin{prop}[Réflexivité]
+\ollabel{prop:reflexivity}
+Si $!A \in \Gamma$, alors $\Gamma \Proves !A$.
+\end{prop}
+
+\begin{proof}
+La !!{formula}~$!A$ constitue à elle seule une !!{derivation} de~$!A$
+à partir de~$\Gamma$.
+\end{proof}
+
+\begin{prop}[Monotonie]
+\ollabel{prop:monotonicity}
+Si $\Gamma \subseteq \Delta$ et $\Gamma \Proves !A$, alors
+$\Delta \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Toute !!{derivation} de~$!A$ à partir de~$\Gamma$ est aussi une
+!!{derivation} de~$!A$ à partir de~$\Delta$.
+\end{proof}
+
+\begin{prop}[Transitivité]
+\ollabel{prop:transitivity}
+Si $\Gamma \Proves !A$ et $\{!A\} \cup \Delta \Proves !B$, alors
+$\Gamma \cup \Delta \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Supposons $\{!A\} \cup \Delta \Proves !B$. Il existe alors une
+!!{derivation} $!B_1$, \dots, $!B_l = !B$ à partir de
+$\{!A\} \cup \Delta$. Certaines étapes de cette !!{derivation} sont
+correctes parce qu'une règle renvoie à une ligne antérieure
+$!B_i = !A$. Par hypothèse, il existe une !!{derivation} de~$!A$ à
+partir de~$\Gamma$, c'est-à-dire une !!{derivation} $!A_1$, \dots,
+$!A_k = !A$ dans laquelle chaque $!A_i$ est un axiome, !!a{element}
+de~$\Gamma$, ou une étape correcte d'après une règle d'inférence.
+Considérons maintenant la suite
+\[
+!A_1, \dots, !A_k = !A, !B_1, \dots, !B_l = !B.
+\]
+C'est une !!{derivation} correcte de~$!B$ à partir de
+$\Gamma \cup \Delta$ : toute ligne $!B_i = !A$ peut désormais recevoir
+la même justification que la ligne~$!A_k = !A$.
+\end{proof}
+
+En particulier, si $\Gamma \Proves !A$ et $!A \Proves !B$, alors
+$\Gamma \Proves !B$. Il s'ensuit également que, si
+$!A_1, \dots, !A_n \Proves !B$ et si $\Gamma \Proves !A_i$ pour
+chaque~$i$, alors $\Gamma \Proves !B$.
+
+\begin{prop}
+\ollabel{prop:incons}
+$\Gamma$ est incohérent si et seulement si
+$\Gamma \Proves !A$ pour toute !!{formula}~$!A$.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][axd][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][axd][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\begin{prop}[Compacité]
+\ollabel{prop:proves-compact}
+\begin{enumerate}
+\item Si $\Gamma \Proves !A$, alors il existe une partie finie
+  $\Gamma_0 \subseteq \Gamma$ telle que $\Gamma_0 \Proves !A$.
+\item Si toute partie finie de~$\Gamma$ est cohérente, alors
+  $\Gamma$ est cohérent.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item Si $\Gamma \Proves !A$, il existe une suite finie de !!{formula}s
+  $!A_1$, \dots,~$!A_n$ telle que $!A \ident !A_n$ et que chaque
+  $!A_i$ soit un axiome logique, !!a{element} de~$\Gamma$, ou découle
+  de !!{formula}s antérieures
+  \iftag{FOL}{par une règle d'inférence}{par modus ponens}. Prenons pour
+  $\Gamma_0$ l'ensemble des $!A_i$ qui appartiennent à~$\Gamma$.
+  La même !!{derivation} est alors une !!{derivation} à partir de
+  $\Gamma_0$, et donc $\Gamma_0 \Proves !A$.
+\item C'est la contraposée de~(1) dans le cas particulier où
+  $!A \ident \lfalse$.
+\end{enumerate}
+\end{proof}
+
+\iftag{FOL}{\begin{editorial}
+Dans la preuve de compacité, la source ne mentionne que les étapes
+obtenues par modus ponens. La version avec la balise FOL admet aussi
+les règles~\QR. La formulation « par une règle d'inférence » rétablit
+la portée commune de la preuve; son argument de finitude est inchangé.
+\end{editorial}}{}
+
+\end{document}

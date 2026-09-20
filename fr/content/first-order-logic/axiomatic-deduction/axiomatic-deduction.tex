@@ -1,0 +1,59 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+
+\documentclass[../../../include/open-logic-chapter]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olchapter{fol}{axd}{\usetoken{P}{derivation} axiomatiques}}
+      {\olchapter{pl}{axd}{\usetoken{P}{derivation} axiomatiques}}
+
+\begin{editorial}
+  Aucun effort n'a encore été fait pour garantir que le contenu de ce
+  chapitre respecte les différentes balises qui indiquent quels
+  connecteurs et quantificateurs sont primitifs ou définis : tous sont
+  supposés primitifs, à l'exception de~$\liff$, qui est supposé défini.
+  Si la balise FOL est active, le chapitre comprend les quantificateurs;
+  sinon, il les omet.
+\end{editorial}
+
+\olimport{rules-and-proofs}
+
+\olimport{axioms-rules-propositional}
+
+\iftag{FOL}{%
+  \olimport{axioms-rules-quantifiers}
+}{}
+
+\olimport{proving-things}
+
+\iftag{FOL}{%
+  \olimport{proving-things-quant}
+}{}
+
+\olimport{proof-theoretic-notions}
+
+\olimport{deduction-theorem}
+
+\iftag{FOL}{%
+  \olimport{deduction-theorem-quantifiers}
+}{}
+
+\olimport{provability-consistency}
+
+\olimport{provability-propositional}
+
+\iftag{FOL}{%
+  \olimport{provability-quantifiers}
+}{}
+
+\olimport{soundness}
+
+\iftag{FOL}{
+  \olimport{identity}
+}{}
+
+\OLEndChapterHook
+
+\end{document}

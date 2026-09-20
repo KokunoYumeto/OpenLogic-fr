@@ -1,0 +1,150 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: deduction-theorem
+
+% verification of properties of provability needed for maximally
+% consistent sets in the completeness chapter.
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{ded}}
+      {\olfileid[fr]{pl}{axd}{ded}}
+
+\olsection{Le théorème de la déduction}
+
+Comme nous l'avons vu, donner des !!{derivation}s dans un système
+axiomatique est laborieux, et celles-ci peuvent être difficiles à
+trouver. Plutôt que d'écrire effectivement de longues listes
+de !!{formula}s, il est généralement plus facile d'établir l'existence
+de ces !!{derivation}s au moyen de quelques résultats simples. Nous en
+avons déjà démontré trois. La \olref[ptn]{prop:reflexivity} permet
+toujours d'affirmer $\Gamma \Proves !A$ lorsque $!A \in \Gamma$.
+La \olref[ptn]{prop:monotonicity} affirme que, si
+$\Gamma \Proves !A$, alors $\Gamma \cup \{!B\} \Proves !A$.
+Enfin, la \olref[ptn]{prop:transitivity} entraîne que, si
+$\Gamma \Proves !A$ et $!A \Proves !B$, alors
+$\Gamma \Proves !B$. Voici un autre résultat simple, une version
+« méta » du modus ponens :
+
+\begin{prop}
+\ollabel{prop:mp}
+Si $\Gamma \Proves !A$ et $\Gamma \Proves !A \lif !B$, alors
+$\Gamma \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Nous avons $\{!A, !A \lif !B\} \Proves !B$ :
+\begin{derivation}
+  1. & $!A$ & \Hyp\\
+  2. & $!A \lif !B$ & \Hyp\\
+  3. & $!B$ & 1, 2, \MP
+\end{derivation}
+La \olref[ptn]{prop:transitivity} donne alors
+$\Gamma \Proves !B$.
+\end{proof}
+
+Le résultat le plus important que nous utiliserons dans ce contexte
+est le théorème de la déduction.
+
+\begin{thm}[Théorème de la déduction]
+\ollabel{thm:deduction-thm}
+$\Gamma \cup \{!A\} \Proves !B$ si et seulement si
+$\Gamma \Proves !A \lif !B$.
+\end{thm}
+
+\begin{proof}
+Le sens « si » est immédiat. Si $\Gamma \Proves !A \lif !B$, alors
+$\Gamma \cup \{!A\} \Proves !A \lif !B$ par la
+\olref[ptn]{prop:monotonicity}. En outre,
+$\Gamma \cup \{!A\} \Proves !A$ par la
+\olref[ptn]{prop:reflexivity}. La \olref{prop:mp} donne donc
+$\Gamma \cup \{!A\} \Proves !B$.
+
+Pour le sens « seulement si », procédons par récurrence sur la longueur
+de la !!{derivation} de~$!B$ à partir de $\Gamma \cup \{!A\}$.
+
+Dans le cas de base, démontrons l'assertion pour toute !!{derivation}
+de longueur~$1$. Une telle !!{derivation} de~$!B$ à partir de
+$\Gamma \cup \{!A\}$ se réduit à $!B$; si elle est correcte, alors
+$!B \in \Gamma \cup \{!A\}$ ou bien $!B$ est un axiome. Si
+$!B \in \Gamma$ ou si $!B$ est un axiome, alors
+$\Gamma \Proves !B$. Nous avons aussi
+$\Gamma \Proves !B \lif (!A \lif !B)$ d'après
+l'\olref[prp]{ax:lif1}; la \olref{prop:mp} donne donc
+$\Gamma \Proves !A \lif !B$. Si $!B \in \{!A\}$, alors
+$\Gamma \Proves !A \lif !B$, car $!A \lif !B$ est dans ce cas le
+même !!{sentence} que $!A \lif !A$, dont nous avons donné une
+!!{derivation} dans l'\olref[pro]{ex:identity}.
+
+Pour l'étape de récurrence, supposons qu'une !!{derivation} de~$!B$ à
+partir de $\Gamma \cup \{!A\}$ se termine par une étape~$!B$ justifiée
+par modus ponens. Si ce n'est pas le cas, alors $!B \in \Gamma$,
+$!B \ident !A$, ou $!B$ est un axiome, et le raisonnement du cas de
+base s'applique. Dans le cas du modus ponens, des étapes antérieures de
+la !!{derivation} sont $!C \lif !B$ et $!C$, pour une certaine
+!!{formula}~$!C$. Ainsi,
+$\Gamma \cup \{!A\} \Proves !C \lif !B$ et
+$\Gamma \cup \{!A\} \Proves !C$. Les !!{derivation}s correspondantes
+sont plus courtes; l'hypothèse de récurrence leur est donc applicable.
+Nous obtenons :
+\begin{align*}
+  & \Gamma \Proves !A \lif (!C \lif !B); \\
+  & \Gamma \Proves !A \lif !C.
+\end{align*}
+Mais nous avons également
+\[
+\Gamma \Proves (!A \lif (!C \lif !B)) \lif
+((!A \lif !C) \lif (!A \lif !B))
+\]
+d'après l'\olref[prp]{ax:lif2}. Deux applications de la
+\olref{prop:mp} donnent donc $\Gamma \Proves !A \lif !B$, comme il
+fallait le démontrer.
+\end{proof}
+
+Remarquons que les deux schémas d'axiomes correspondants,
+l'\olref[prp]{ax:lif1} et l'\olref[prp]{ax:lif2}, ont été choisis
+précisément de façon que le théorème de la déduction soit valable.
+
+Les faits suivants sur la !!{derivability} sont utiles; nous les
+laissons en exercices.
+
+\begin{prop}
+\ollabel{prop:derivfacts}
+\begin{enumerate}
+\item $\Proves (!A \lif !B) \lif ((!B \lif !C)
+  \lif (!A \lif !C))$; \ollabel{derivfacts:a}
+\item Si $\Gamma \cup \{\lnot !A\} \Proves \lnot !B$, alors
+  $\Gamma \cup \{!B\} \Proves !A$ (contraposition);
+  \ollabel{derivfacts:b}
+\item $\{!A, \lnot !A\} \Proves !B$ (\emph{ex falso quodlibet},
+  explosion); \ollabel{derivfacts:c}
+\item $\{\lnot\lnot !A\} \Proves !A$ (élimination de la double
+  négation); \ollabel{derivfacts:d}
+\item Si $\Gamma \Proves \lnot\lnot !A$, alors
+  $\Gamma \Proves !A$; \ollabel{derivfacts:e}
+\end{enumerate}
+\end{prop}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][axd][ded]{prop:derivfacts}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][axd][ded]{prop:derivfacts}.
+\end{prob}
+\tagendprob
+
+\begin{editorial}
+Dans le premier item de la proposition précédente, la source omet la
+parenthèse fermante du conséquent. Elle a été rétablie.
+\iftag{FOL}{En présence des quantificateurs, l'étape supplémentaire
+qui traite les règles~\QR{} est donnée dans la section suivante.}{}
+\end{editorial}
+
+\end{document}

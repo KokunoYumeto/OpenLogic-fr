@@ -75,3 +75,15 @@ Voir SIZE_REDUCTION_CANTOR_SOURCE_OBSERVATIONS.json pour les identités source/c
 OLP0039 non-enumerability-alt.tex : le tableau annonce N0=Nat et N3={2,3,4,…}, mais omet N0 aux colonnes3/4/5 et N3 en colonne5. Quatre cellules rétablies avec note ; diagonale inchangée. Le renvoi conditionnel à card-opps omet une fermeture d’argument après la note : son troisième argument consomme end, malgré l’équilibre global des accolades. La structure cible est réparée. Les inversions d’indices s_n(m) et du second échange diagonal sont signalées dans le lecteur.
 
 OLP0040 reduction-alt.tex : transfert par surjection complété par suppression des répétitions pour la définition bijective ; injectivité de l’application caractéristique vérifiée explicitement. Les commentaires conservés sont traduits et visibles avec provenance ; h(n), mot fini mal typé, est complété par une queue infinie de1 avec note. Le label red:prob:nat-nat en doublon reçoit red-alt dans cette seule variante. Voir la revue sémantique et les décisions C386–C436 pour les hypothèses, indices et autres précisions.
+
+## Dérivations axiomatiques (OLP-0112–OLP-0125)
+
+- OLP-0115: Two source list items outside any list environment are enclosed in an enumerate environment; formulas and order are unchanged.
+- OLP-0118: The compactness proof says only modus ponens although the FOL presentation also admits QR; the conditional wording now says inference rule for FOL and modus ponens for PL.
+- OLP-0119: A missing closing parenthesis in the first displayed derivability fact is restored.
+- OLP-0120: A missing closing parenthesis is restored, and the source conclusion Gamma proves B is corrected to Gamma proves A implies B, which is the conclusion established by its calculation.
+- OLP-0122: The duplicated left-projection citation is corrected to the right projection, and the displayed negation formulas are cited to ax:lnot2 rather than ax:lnot1.
+- OLP-0123: The final strong-generalization step uses the top axiom and modus ponens instead of a second, inapplicable invocation of the deduction theorem.
+- OLP-0124: The missing formula marker is restored before two occurrences of B in the quantified soundness argument.
+- OLP-0125: The two derived identity propositions are restricted to closed terms, matching the axiom schemata immediately above them.
+- OLP-0109: articles français ajoutés devant huit renvois nommés; deux invites d'exercice emploient désormais « du ». Aucune référence ni formule n'est modifiée.

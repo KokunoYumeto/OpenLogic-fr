@@ -1,0 +1,101 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: provability-consistency
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{prv}}
+      {\olfileid[fr]{pl}{axd}{prv}}
+
+\olsection{\usetoken{S}{derivability} et cohérence}
+
+Nous allons maintenant établir plusieurs propriétés de la relation de
+!!{derivability}. Elles présentent un intérêt propre, et chacune
+jouera un rôle dans la preuve du théorème de complétude.
+
+\begin{prop}\ollabel{prop:provability-contr}
+Si $\Gamma \Proves !A$ et si $\Gamma \cup \{!A\}$ est incohérent,
+alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Si $\Gamma \cup \{!A\}$ est incohérent, alors
+$\Gamma \cup \{!A\} \Proves \lfalse$. D'après la
+\olref[ptn]{prop:reflexivity}, $\Gamma \Proves !B$ pour tout
+$!B \in \Gamma$. Comme $\Gamma \Proves !A$ par hypothèse, nous avons
+donc $\Gamma \Proves !B$ pour tout
+$!B \in \Gamma \cup \{!A\}$. La \olref[ptn]{prop:transitivity} donne
+alors $\Gamma \Proves \lfalse$, c'est-à-dire que $\Gamma$ est
+incohérent.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:prov-incons}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons d'abord $\Gamma \Proves !A$. Par la
+\olref[ptn]{prop:monotonicity},
+$\Gamma \cup \{\lnot !A\} \Proves !A$. Par la
+\olref[ptn]{prop:reflexivity},
+$\Gamma \cup \{\lnot !A\} \Proves \lnot !A$. Nous avons également
+$\Proves \lnot !A \lif (!A \lif \lfalse)$ d'après
+l'\olref[prp]{ax:lnot2}. Deux applications de la
+\olref[ded]{prop:mp} donnent donc
+$\Gamma \cup \{\lnot !A\} \Proves \lfalse$.
+
+Supposons maintenant que $\Gamma \cup \{\lnot !A\}$ soit incohérent,
+c'est-à-dire que
+$\Gamma \cup \{\lnot !A\} \Proves \lfalse$. D'après le théorème de
+la déduction, $\Gamma \Proves \lnot !A \lif \lfalse$. En outre,
+$\Gamma \Proves (\lnot !A \lif \lfalse) \lif \lnot\lnot !A$ d'après
+l'\olref[prp]{ax:lfalse2}; ainsi,
+$\Gamma \Proves \lnot\lnot !A$ par la \olref[ded]{prop:mp}. Enfin,
+comme $\Gamma \Proves \lnot\lnot !A \lif !A$ d'après
+l'\olref[prp]{ax:dne}, une nouvelle application de la
+\olref[ded]{prop:mp} donne $\Gamma \Proves !A$.
+\end{proof}
+
+\begin{prob}
+Démontrer que $\Gamma \Proves \lnot !A$ si et seulement si
+$\Gamma \cup \{!A\}$ est incohérent.
+\end{prob}
+
+\begin{prop}\ollabel{prop:explicit-inc}
+Si $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$, alors $\Gamma$ est
+incohérent.
+\end{prop}
+
+\begin{proof}
+D'après l'\olref[prp]{ax:lnot2},
+$\Gamma \Proves \lnot !A \lif (!A \lif \lfalse)$. Deux applications
+de la \olref[ded]{prop:mp} donnent $\Gamma \Proves \lfalse$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-exhaustive}
+Si $\Gamma \cup \{!A\}$ et $\Gamma \cup \{\lnot !A\}$ sont tous deux
+incohérents, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][axd][prv]{prop:provability-exhaustive}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][axd][prv]{prop:provability-exhaustive}.
+\end{prob}
+\tagendprob
+
+\end{document}

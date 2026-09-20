@@ -7,6 +7,7 @@ if ($dest.StartsWith($root+[IO.Path]::DirectorySeparatorChar,[StringComparison]:
 New-Item -ItemType Directory -Path $dest | Out-Null
 foreach ($folder in @('upstream','fr','tools')) { Copy-Item -LiteralPath (Join-Path $root $folder) -Destination (Join-Path $dest $folder) -Recurse }
 $kit=Join-Path $dest 'tools\epub'
+$env:INTERLANGUAGE_PDF_COMPARE_TIMEOUT='420'
 & python (Join-Path $kit 'prepare_inputs.py') pdf
 if ($LASTEXITCODE -ne 0) { throw 'Input preparation failed.' }
 & python (Join-Path $kit 'guard_tex4ebook.py') pdf-build pdf-compare

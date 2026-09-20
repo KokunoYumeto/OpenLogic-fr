@@ -4,7 +4,7 @@ from lxml import etree
 import collections,copy,hashlib,json,re,zipfile
 E=Path(__file__).resolve().parent
 SOURCE=E/'conversion/source/locale/fr/reader.epub'
-OUTPUT=E/'openlogic-fr-ensembles-tableaux.epub'
+OUTPUT=E/'openlogic-fr-ensembles-derivations-axiomatiques.epub'
 HTML='http://www.w3.org/1999/xhtml'
 MATH='http://www.w3.org/1998/Math/MathML'
 sha=lambda b:hashlib.sha256(b).hexdigest()
@@ -146,10 +146,10 @@ for name,raw in list(data.items()):
    if i>1:e.set('id',key+'-'+str(i))
   report['repairs'].append({'document':name,'unreferenced_duplicate_id':key,'occurrences':count})
  title=r.find('{'+HTML+'}head/{'+HTML+'}title')
- if title is not None and name in ['OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml','OEBPS/readerch9.xhtml','OEBPS/readerch10.xhtml','OEBPS/readerch11.xhtml']:
-  title.text={'OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Systèmes de dérivation','OEBPS/readerch9.xhtml':'9 Le calcul des séquents','OEBPS/readerch10.xhtml':'10 Déduction naturelle','OEBPS/readerch11.xhtml':'11 Tableaux'}[name]
+ if title is not None and name in ['OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml','OEBPS/readerch9.xhtml','OEBPS/readerch10.xhtml','OEBPS/readerch11.xhtml','OEBPS/readerch12.xhtml']:
+  title.text={'OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Systèmes de dérivation','OEBPS/readerch9.xhtml':'9 Le calcul des séquents','OEBPS/readerch10.xhtml':'10 Déduction naturelle','OEBPS/readerch11.xhtml':'11 Tableaux','OEBPS/readerch12.xhtml':'12 Dérivations axiomatiques'}[name]
  if title is not None and not (title.text or '').strip():
-  title.text='OpenLogic : édition française — Des ensembles aux tableaux'
+  title.text='OpenLogic : édition française — Des ensembles aux dérivations axiomatiques'
  r.set('{http://www.w3.org/XML/1998/namespace}lang','fr')
  assert before_prose==prose(r),name
  for img in r.xpath('//*[local-name()="img"]'):
@@ -186,9 +186,9 @@ report['repairs'].append({'document':'OEBPS/readerch11.xhtml','source_grounded_t
 # TeX4ht carried mathml onto a bibliography document without mathematics.
 opf=etree.fromstring(data["OEBPS/content.opf"])
 metadata={
- 'title':'OpenLogic : édition française — Des ensembles aux tableaux',
- 'description':'Édition française partielle : ensembles, relations, fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, systèmes de dérivation, calcul des séquents, déduction naturelle et tableaux. Onze chapitres, 92 unités sur 722, avec démonstrations, exemples et exercices. Texte correspondant à la neuvième livraison.',
- 'identifier':'https://github.com/KokunoYumeto/OpenLogic-fr/releases/tag/v0.9.0-tableaux',
+ 'title':'OpenLogic : édition française — Des ensembles aux dérivations axiomatiques',
+ 'description':'Édition française partielle : ensembles, relations, fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, systèmes de dérivation, calcul des séquents, déduction naturelle, tableaux et dérivations axiomatiques. Douze chapitres, 101 unités sur 722, avec démonstrations, exemples et exercices. Texte correspondant à la dixième livraison.',
+ 'identifier':'https://github.com/KokunoYumeto/OpenLogic-fr/releases/tag/v0.10.0-axiomatic-deduction',
  'date':'2026-09-20T00:00:00Z',
 }
 for key,value in metadata.items():

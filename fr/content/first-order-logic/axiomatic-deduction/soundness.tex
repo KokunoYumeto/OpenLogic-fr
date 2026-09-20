@@ -1,0 +1,164 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: soundness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{sou}}
+      {\olfileid[fr]{pl}{axd}{sou}}
+
+\olsection{Correction}
+
+\begin{explain}
+Un système de !!{derivation}, tel que la déduction axiomatique, est
+\emph{correct} s'il ne permet pas de !!{derive} des résultats qui ne
+valent pas réellement. La correction constitue ainsi une garantie de
+fiabilité pour les systèmes de !!{derivation}. Selon la propriété de
+théorie de la démonstration considérée, nous voulons notamment savoir
+que :
+\begin{enumerate}
+\item toute !!{formula}~$!A$ !!{derivable} est valide;
+\item si $!A$ est !!{derivable} à partir d'autres !!{formula}s~$\Gamma$,
+  elle en est également une conséquence;
+\item si un ensemble de !!{formula}s~$\Gamma$ est incohérent, il est
+  insatisfaisable.
+\end{enumerate}
+Ces propriétés sont essentielles pour un système de !!{derivation}.
+Si l'une d'elles était en défaut, le système serait défectueux : il
+permettrait de !!{derive} trop de résultats. Il est donc primordial
+d'établir la correction d'un système de !!{derivation}.
+\end{explain}
+
+\begin{prop}
+Si $!A$ est un axiome, alors
+\iftag{FOL}
+  {$\Sat{M}{!A}[s]$ pour toute !!{structure}~$\Struct{M}$ et toute
+    assignation~$s$.}
+  {$\pSat{v}{!A}$ pour toute !!{valuation}~$\pAssign{v}$.}
+\end{prop}
+
+\begin{proof}
+\iftag{FOL}{Il faut vérifier que tous les axiomes sont valides.
+  Traitons, par exemple, le cas de l'\olref[qua]{ax:q1}. Supposons que
+  $t$ soit !!{free for} $x$ dans~$!A$ et que
+  $\Sat{M}{\lforall[x][!A]}[s]$. Par définition de la satisfaction,
+  $\Sat{M}{!A}[s']$ pour toute $\varAssign{s'}{s}{x}$, et en
+  particulier lorsque $s'(x) = \Value{t}{M}[s]$. D'après
+  la \olref[syn][ext]{prop:ext-formulas},
+  $\Sat{M}{\Subst{!A}{t}{x}}[s]$. Ainsi,
+  $\Sat{M}{(\lforall[x][!A] \lif \Subst{!A}{t}{x})}[s]$.
+  L'\olref[qua]{ax:q2} se vérifie de la même façon, et les
+  axiomes propositionnels au moyen de leurs tables de vérité.}
+  {Pour chaque axiome, sa table de vérité vérifie qu'il s'agit d'une
+  tautologie.}
+\end{proof}
+
+\begin{thm}[Correction]
+\ollabel{thm:soundness}
+Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
+\end{thm}
+
+\begin{proof}
+Procédons par récurrence sur la longueur de la !!{derivation} de~$!A$
+à partir de~$\Gamma$. S'il n'y a aucune étape justifiée par une
+inférence, toutes les !!{formula}s de la !!{derivation} sont soit des
+instances d'axiomes, soit des éléments de~$\Gamma$. D'après la
+proposition précédente, tous les axiomes sont
+\iftag{FOL}{valides}{des tautologies}; si $!A$ est un axiome, alors
+$\Gamma \Entails !A$. Si $!A \in \Gamma$, alors
+$\Gamma \Entails !A$ trivialement.
+
+Si la dernière étape de la !!{derivation} de~$!A$ est justifiée par
+modus ponens, il existe dans la !!{derivation} des !!{formula}s $!B$
+et $!B \lif !A$. L'hypothèse de récurrence s'applique aux parties de
+la !!{derivation} qui se terminent par ces !!{formula}s, puisqu'elles
+comportent au moins une étape d'inférence de moins. Nous avons donc
+$\Gamma \Entails !B$ et $\Gamma \Entails !B \lif !A$. Il s'ensuit
+$\Gamma \Entails !A$ d'après
+\iftag{FOL}
+  {le \olref[syn][sem]{thm:sem-deduction}}
+  {le \olref[pl][syn][sem]{thm:sem-deduction}}.
+
+\iftag{FOL}{Supposons maintenant que la dernière étape soit justifiée
+par~\QR. Cette étape est de la forme
+$!C \lif \lforall[x][!B(x)]$, et une étape antérieure est
+$!C \lif !B(c)$, où $c$ ne figure ni dans~$\Gamma$, ni dans~$!C$,
+ni dans~$\lforall[x][!B(x)]$. Par hypothèse de récurrence,
+$\Gamma \Entails !C \lif !B(c)$. D'après
+le \olref[syn][sem]{thm:sem-deduction},
+$\Gamma \cup \{!C\} \Entails !B(c)$.
+
+Considérons une structure~$\Struct{M}$ telle que
+$\Sat{M}{\Gamma \cup \{!C\}}$. Il faut montrer
+$\Sat{M}{\lforall[x][!B(x)]}$. Puisque
+$\lforall[x][!B(x)]$ est !!a{sentence}, il suffit de montrer que
+$\Sat{M}{!B(x)}[s]$ pour toute assignation de variables~$s$, d'après
+la \olref[syn][ass]{prop:sat-quant}. Comme
+$\Gamma \cup \{!C\}$ ne contient que des énoncés,
+$\Sat{M}{!D}[s]$ pour tout $!D \in \Gamma$, par la
+\olref[syn][sat]{defn:satisfaction}. Soit $\Struct{M'}$ la structure
+identique à~$\Struct{M}$, sauf que
+$\Assign{c}{M'} = s(x)$. Puisque $c$ ne figure ni dans~$\Gamma$ ni
+dans~$!C$, le \olref[syn][ext]{cor:extensionality-sent} donne
+$\Sat{M'}{\Gamma \cup \{!C\}}$. Comme
+$\Gamma \cup \{!C\} \Entails !B(c)$, nous avons
+$\Sat{M'}{!B(c)}$. Puisque $!B(c)$ est !!a{sentence}, la
+\olref[syn][ass]{prop:sentence-sat-true} donne
+$\Sat{M'}{!B(c)}[s]$. D'après
+la \olref[syn][ext]{prop:ext-formulas},
+$\Sat{M'}{!B(x)}[s]$ si et seulement si
+$\Sat{M'}{!B(c)}[s]$; rappelons que $!B(c)$ abrège
+$\Subst{!B(x)}{c}{x}$. Ainsi, $\Sat{M'}{!B(x)}[s]$. Comme $c$ ne
+figure pas dans~$!B(x)$, la \olref[syn][ext]{prop:extensionality}
+donne $\Sat{M}{!B(x)}[s]$. L'assignation~$s$ étant arbitraire,
+$\Sat{M}{\lforall[x][!B(x)]}$. Par conséquent,
+$\Gamma \cup \{!C\} \Entails \lforall[x][!B(x)]$, puis
+$\Gamma \Entails !C \lif \lforall[x][!B(x)]$ d'après
+le \olref[syn][sem]{thm:sem-deduction}.
+
+Nous laissons en exercice le cas où $!A$ est justifiée par~\QR, mais
+est de la forme $\lexists[x][!B(x)] \lif !C$.}{}
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Achever la preuve du \olref[fol][axd][sou]{thm:soundness}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est
+\iftag{FOL}{valide}{une tautologie}.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:consistency-soundness}
+Si $\Gamma$ est satisfaisable, alors il est cohérent.
+\end{cor}
+
+\begin{proof}
+Démontrons la contraposée. Supposons que $\Gamma$ ne soit pas
+cohérent. Alors $\Gamma \Proves \lfalse$, c'est-à-dire qu'il existe
+une !!{derivation} de~$\lfalse$ à partir de~$\Gamma$. D'après
+le \olref{thm:soundness}, toute
+\iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
+qui satisfait~$\Gamma$ doit satisfaire~$\lfalse$. Or
+\iftag{FOL}{$\Sat/{M}{\lfalse}$ pour toute
+  !!{structure}~$\Struct{M}$}{$\pSat/{v}{\lfalse}$ pour toute
+  !!{valuation}~$\pAssign{v}$}. Aucune
+\iftag{FOL}{structure~$\Struct{M}$}{valuation~$\pAssign{v}$} ne peut
+donc satisfaire~$\Gamma$; ainsi, $\Gamma$ n'est pas satisfaisable.
+\end{proof}
+
+\iftag{FOL}{\begin{editorial}
+Dans le cas de la règle~\QR, la source omet le marqueur de formule
+devant deux occurrences de~$B$. Il a été rétabli dans
+$\lforall[x][!B(x)]$ et $!B(c)$; aucune formule mathématique n'est
+modifiée.
+\end{editorial}}{}
+
+\end{document}

@@ -1,0 +1,99 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: rules-and-proofs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{rul}}
+      {\olfileid[fr]{pl}{axd}{rul}}
+
+\olsection{Règles et \usetoken{p}{derivation}}
+
+\begin{explain}
+Les !!{derivation}s axiomatiques constituent peut-être le système de
+!!{derivation} le plus simple pour la logique. !!^a{derivation} n'est
+qu'une suite de !!{formula}s. Pour être une !!{derivation}, chaque
+!!{formula} de la suite doit soit être une instance d'un axiome, soit
+découler, par une règle d'inférence, d'une ou de plusieurs !!{formula}s
+qui la précèdent dans la suite. La dernière !!{formula}
+d'!!a{derivation} est celle qu'elle permet de !!{derive}.
+\end{explain}
+
+\begin{defn}[!!^{derivability}]
+Si $\Gamma$ est un ensemble de !!{formula}s de $\Lang L$, une
+\emph{!!{derivation} à partir de~$\Gamma$} est une suite finie
+$!A_1$, \dots,~$!A_n$ de !!{formula}s telle que, pour chaque
+$i \le n$, l'une des conditions suivantes soit satisfaite :
+\begin{enumerate}
+\item $!A_i \in \Gamma$;
+\item $!A_i$ est un axiome;
+\item $!A_i$ découle, par une règle d'inférence, d'une formule~$!A_j$
+  (et d'une formule~$!A_k$) telles que $j < i$ (et $k < i$).
+\end{enumerate}
+\end{defn}
+
+Ce qui constitue une !!{derivation} correcte dépend des règles
+d'inférence que nous admettons, ainsi, bien entendu, que des axiomes
+que nous choisissons. Une règle d'inférence est un énoncé conditionnel
+qui indique sous quelles conditions une étape~$!A_i$ d'!!a{derivation}
+est une étape d'inférence correcte.
+
+\begin{defn}[Règle d'inférence]
+Une \emph{règle d'inférence} donne une condition suffisante pour
+qu'une étape d'!!a{derivation} à partir de~$\Gamma$ soit une étape
+d'inférence correcte.
+\end{defn}
+
+Par exemple, toute suite à un seul terme~$!A$ telle que
+$!A \in \Gamma$ est trivialement une !!{derivation}. On pourrait donc
+formuler la règle d'inférence très simple suivante :
+\begin{quote}
+  Si $!A \in \Gamma$, alors $!A$ est toujours une étape d'inférence
+  correcte dans toute !!{derivation} à partir de~$\Gamma$.
+\end{quote}
+De même, si $!A$ est l'un des axiomes, alors $!A$ constitue à lui seul
+une !!{derivation}; ceci donne également une règle d'inférence :
+\begin{quote}
+  Si $!A$ est un axiome, alors $!A$ est une étape d'inférence correcte.
+\end{quote}
+Les règles qui font appel à des !!{formula}s antérieures à l'étape
+considérée sont plus intéressantes. La règle suivante s'appelle le
+\emph{modus ponens} :
+\begin{quote}
+  Si $!B \lif !A$ et $!B$ figurent plus haut dans la !!{derivation},
+  alors~$!A$ est une étape d'inférence correcte.
+\end{quote}
+Si le modus ponens est la seule règle d'inférence, la définition
+précédente revient à dire que $!A_1$, \dots,~$!A_n$ est une
+!!{derivation} si et seulement si, pour chaque $i \le n$, l'une des
+conditions suivantes est satisfaite :
+\begin{enumerate}
+\item $!A_i \in \Gamma$;
+\item $!A_i$ est un axiome;
+\item pour un certain $j < i$, $!A_j$ est $!B \lif !A_i$, et, pour un
+  certain $k < i$, $!A_k$ est~$!B$.
+\end{enumerate}
+La dernière clause affirme que $!A_i$ découle de~$!A_j$
+($!B \lif !A_i$) et de~$!A_k$ ($!B$) par modus ponens. Si nous pouvons
+parcourir les indices de~$1$ à~$n$ et constater, à chaque étape, que
+la !!{formula}~$!A_i$ appartient à~$\Gamma$, est un axiome, ou satisfait
+une règle d'inférence, alors la suite entière est une !!{derivation}
+correcte.
+
+\begin{defn}[!!^{derivability}]
+Une !!{formula}~$!A$ est \emph{!!{derivable} à partir de~$\Gamma$}, ce
+que l'on note $\Gamma \Proves !A$, s'il existe une !!{derivation} à
+partir de~$\Gamma$ qui se termine par~$!A$.
+\end{defn}
+
+\begin{defn}[Théorèmes]
+!!^a{formula}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation} de~$!A$ à partir de l'ensemble vide. On écrit
+$\Proves !A$ si $!A$ est un théorème, et $\Proves/ !A$ dans le cas
+contraire.
+\end{defn}
+
+\end{document}

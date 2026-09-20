@@ -1,0 +1,100 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: provability-propositional
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{ppr}}
+      {\olfileid[fr]{pl}{axd}{ppr}}
+
+\olsection{\usetoken{S}{derivability} et connecteurs propositionnels}
+
+\begin{explain}
+Nous établissons que la relation de !!{derivability}~$\Proves$ de la
+déduction axiomatique est assez puissante pour démontrer certains faits
+élémentaires sur les connecteurs propositionnels, par exemple
+$!A \land !B \Proves !A$ et
+$!A, !A \lif !B \Proves !B$ (modus ponens). Ces faits seront
+nécessaires à la preuve du théorème de complétude.
+\end{explain}
+
+\begin{prop}\ollabel{prop:provability-land}
+\begin{enumerate}
+\item \ollabel{prop:provability-land-left}
+  $!A \land !B \Proves !A$ et $!A \land !B \Proves !B$;
+\item \ollabel{prop:provability-land-right}
+  $!A, !B \Proves !A \land !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item Ces deux résultats découlent respectivement de
+  l'\olref[prp]{ax:land1} et de l'\olref[prp]{ax:land2} par modus ponens.
+\item Le résultat découle de l'\olref[prp]{ax:land3} par deux
+  applications du modus ponens.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lor}
+\begin{enumerate}
+\item $!A \lor !B, \lnot !A, \lnot !B$ est incohérent.
+\item $!A \Proves !A \lor !B$ et $!B \Proves !A \lor !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item D'après l'\olref[prp]{ax:lnot2}, nous avons
+  $\Proves \lnot !A \lif (!A \lif \lfalse)$ et
+  $\Proves \lnot !B \lif (!B \lif \lfalse)$. Le théorème de la
+  déduction donne donc
+  $\{\lnot !A\} \Proves !A \lif \lfalse$ et
+  $\{\lnot !B\} \Proves !B \lif \lfalse$. À partir de
+  l'\olref[prp]{ax:lor3}, nous obtenons
+  $\{\lnot !A, \lnot !B\} \Proves (!A \lor !B) \lif \lfalse$.
+  Le théorème de la déduction donne alors
+  $\{!A \lor !B, \lnot !A, \lnot !B\} \Proves \lfalse$.
+\item Le premier résultat découle de l'\olref[prp]{ax:lor1}; le second,
+  de l'\olref[prp]{ax:lor2}. Dans les deux cas, on applique le modus
+  ponens.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lif}
+\begin{enumerate}
+\item \ollabel{prop:provability-lif-left}
+  $!A, !A \lif !B \Proves !B$.
+\item \ollabel{prop:provability-lif-right}
+  $\lnot !A \Proves !A \lif !B$ et $!B \Proves !A \lif !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item Nous pouvons donner la !!{derivation} suivante :
+  \begin{derivation}
+    1. & $!A$ & \Hyp\\
+    2. & $!A \lif !B$ & \Hyp\\
+    3. & $!B$ & 1, 2, \MP
+  \end{derivation}
+
+\item Le premier résultat découle de l'\olref[prp]{ax:lnot2}; le second,
+  de l'\olref[prp]{ax:lif1}. Dans les deux cas, on emploie le théorème
+  de la déduction.
+\end{enumerate}
+\end{proof}
+
+\begin{editorial}
+Dans la preuve de la première proposition, la source renvoie deux fois à
+l'\olref[prp]{ax:land1}; le second renvoi doit viser
+l'\olref[prp]{ax:land2}. Dans celle de la disjonction, elle cite
+l'\olref[prp]{ax:lnot1}, alors que les deux formules affichées sont des
+instances de l'\olref[prp]{ax:lnot2}. Nous avons rectifié ces renvois sans
+modifier les formules ni les conclusions.
+\end{editorial}
+
+\end{document}

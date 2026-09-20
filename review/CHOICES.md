@@ -1,5 +1,145 @@
 # Décisions et questions de révision
 
+## C956 — OLP-0112-R00
+
+**Choix :** dérivations axiomatiques
+
+**Autre formulation envisagée :** déductions axiomatiques
+
+**Motif :** Le chapitre définit des suites formelles ligne par ligne; « dérivation » conserve le jeton éditorial et s'accorde avec l'usage hilbertien attesté par GL01.
+
+**Confiance et limites :** Forte : le terme et la structure sont déjà établis dans les chapitres précédents.
+
+**Question de révision :** Le titre doit-il garder partout le pluriel commandé par le jeton ?
+
+Passages de référence : GL01.
+
+## C957 — OLP-0113-R00
+
+**Choix :** suite finie
+
+**Autre formulation envisagée :** séquence finie
+
+**Motif :** GL01 emploie « suite finie » pour l'objet hilbertien; ce choix évite un anglicisme sans changer l'ordre des lignes.
+
+**Confiance et limites :** Forte : attestation directe dans le passage consulté.
+
+**Question de révision :** « Suite finie » reste-t-il le terme privilégié dans toute l'édition ?
+
+Passages de référence : GL01.
+
+## C958 — OLP-0113-R00
+
+**Choix :** modus ponens
+
+**Autre formulation envisagée :** règle de détachement
+
+**Motif :** Le nom latin est celui du chapitre source, de GL01 et des chapitres français antérieurs; la paraphrase française risquerait de masquer les étiquettes MP.
+
+**Confiance et limites :** Forte : terminologie stable et macro MP conservée.
+
+**Question de révision :** Une mention ponctuelle de « détachement » apporterait-elle quelque chose au lecteur ?
+
+Passages de référence : GL01.
+
+## C959 — OLP-0113-R00
+
+**Choix :** dérivable à partir de Γ
+
+**Autre formulation envisagée :** déductible de Γ
+
+**Motif :** La tournure garde distinctes la relation syntaxique de dérivabilité et la conséquence logique sémantique, distinction centrale pour la correction.
+
+**Confiance et limites :** Forte : elle préserve exactement l'opposition syntaxe/sémantique.
+
+**Question de révision :** La périphrase reste-t-elle naturelle dans toutes les définitions répétées ?
+
+Passages de référence : GL01, GL02.
+
+## C960 — OLP-0118-R00
+
+**Choix :** notions de théorie de la démonstration
+
+**Autre formulation envisagée :** notions preuve-théoriques
+
+**Motif :** La forme développée est idiomatique en français savant et rend immédiatement visible l'opposition aux notions sémantiques énumérées ensuite.
+
+**Confiance et limites :** Forte : la forme développée est claire et cohérente avec GL02.
+
+**Question de révision :** La forme adjectivale serait-elle préférable dans un index très compact ?
+
+Passages de référence : GL02.
+
+## C961 — OLP-0118-R00
+
+**Choix :** cohérence / incohérence
+
+**Autre formulation envisagée :** consistance / inconsistance
+
+**Motif :** GL02 atteste « cohérence » et distingue ses sens; OpenLogic fixe ici la non-dérivabilité de l'absurde, définition conservée sans glissement.
+
+**Confiance et limites :** Forte : attestation directe et définition formelle explicite.
+
+**Question de révision :** Faut-il ajouter un renvoi terminologique depuis « consistance » dans l'index ?
+
+Passages de référence : GL02.
+
+## C962 — OLP-0119-R00
+
+**Choix :** théorème de la déduction
+
+**Autre formulation envisagée :** théorème de déduction
+
+**Motif :** GL04 atteste explicitement la forme avec article et la même équivalence entre ajout d'une hypothèse et implication.
+
+**Confiance et limites :** Forte : locution directement attestée dans le passage consulté.
+
+**Question de révision :** L'article doit-il être conservé aussi dans les renvois abrégés ?
+
+Passages de référence : GL04.
+
+## C963 — OLP-0119-R00
+
+**Choix :** laborieux et difficiles à trouver
+
+**Autre formulation envisagée :** encombrant et difficile à découvrir
+
+**Motif :** GL04 décrit la faible lisibilité des preuves hilbertiennes; la formulation française garde ce jugement pédagogique sans calquer « cumbersome ».
+
+**Confiance et limites :** Forte sur le registre; nuance stylistique révisable.
+
+**Question de révision :** « Laborieux » rend-il assez nettement le coût de construction sans déprécier la méthode ?
+
+Passages de référence : GL04.
+
+## C964 — OLP-0121-R00
+
+**Choix :** dérivabilité et cohérence
+
+**Autre formulation envisagée :** prouvabilité et consistance
+
+**Motif :** Le titre reprend les deux relations déjà définies et évite de confondre une formule dérivable avec une assertion informelle prouvable.
+
+**Confiance et limites :** Forte : cohérence terminologique interne et appui de GL02.
+
+**Question de révision :** Le jeton rendu « dérivabilité » reste-t-il suffisamment transparent dans le titre ?
+
+Passages de référence : GL02.
+
+## C965 — OLP-0124-R00
+
+**Choix :** correction
+
+**Autre formulation envisagée :** solidité
+
+**Motif :** GL02 atteste « correction » pour la propriété reliant dérivabilité et validité; « solidité » serait un calque moins établi ici.
+
+**Confiance et limites :** Forte : terme français standard directement attesté.
+
+**Question de révision :** Le couple correction/complétude est-il uniformément maintenu dans les index et métadonnées ?
+
+Passages de référence : GL02.
+
 Ces choix documentent la traduction assistée par IA ; ils ne constituent pas une validation humaine indépendante. Les anciens choix explicitement non vérifiés sont conservés uniquement dans le registre historique JSONL.
 
 ## C01 — OLP-0005-B04, OLP-0005-B05, OLP-0005-B06
@@ -13488,4 +13628,3 @@ Passages de référence : SAU07, SCH03, SCH09.
 **Question de révision :** La note rend-elle évidente la raison pour laquelle le signe ne peut pas rester générique ?
 
 Passages de référence : SAU07, SCH09.
-

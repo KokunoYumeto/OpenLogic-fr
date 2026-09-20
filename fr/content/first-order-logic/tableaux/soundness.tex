@@ -140,7 +140,7 @@ Considérons d'abord les inférences qui ne provoquent pas de ramification.
   $\sFmla{\True}{\lforall[x][!A(x)]} \in \Gamma$. La nouvelle
   !!{signed formula}~$\sFmla{\True}{!A(t)}$ est ajoutée à la branche.
   Supposons $\Sat{M}{\Gamma}$, et en particulier
-  $\Sat{M}{\lforall[x][!A(x)]}$. D'après
+  $\Sat{M}{\lforall[x][!A(x)]}$. D'après la
   \olref[syn][sem]{prop:quant-terms}, $\Sat{M}{!A(t)}$. Par conséquent,
   $\Struct{M}$ satisfait $\sFmla{\True}{!A(t)}$.
 
@@ -155,17 +155,17 @@ Considérons d'abord les inférences qui ne provoquent pas de ramification.
   $\Gamma \cup \{\sFmla{\False}{!A(a)}\}$ est satisfaisable. Pour ce
   faire, définissons une structure appropriée~$\Struct{M'}$.
 
-  D'après \olref[syn][ass]{prop:sat-quant},
+  D'après la \olref[syn][ass]{prop:sat-quant},
   $\Sat/{M}{\lforall[x][!A(x)]}$ si et seulement s'il existe une
   assignation~$s$ telle que $\Sat/{M}{!A(x)}[s]$. Soit maintenant
   $\Struct{M'}$ la structure identique à $\Struct{M}$, sauf que
-  $\Assign{a}{M'} = s(x)$. D'après
+  $\Assign{a}{M'} = s(x)$. D'après le
   \olref[syn][ext]{cor:extensionality-sent}, pour toute
   $\sFmla{\True}{!C} \in \Gamma$, on a $\Sat{M'}{!C}$, et pour toute
   $\sFmla{\False}{!C} \in \Gamma$, on a $\Sat/{M'}{!C}$, puisque $a$
   ne figure pas dans~$\Gamma$.
 
-  D'après \olref[syn][ext]{prop:extensionality},
+  D'après la \olref[syn][ext]{prop:extensionality},
   $\Sat/{M'}{!A(x)}[s]$. Puis
   \olref[syn][ext]{prop:ext-formulas} donne
   $\Sat/{M'}{!A(a)}[s]$. Comme $!A(a)$ est !!a{sentence},
@@ -223,14 +223,14 @@ commun aux présentations propositionnelle et du premier ordre,
 
 \tagprob{FOL}
 \begin{prob}
-Achever la démonstration de
+Achever la démonstration du
 \olref[fol][tab][sou]{thm:tableau-soundness}.
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Achever la démonstration de
+Achever la démonstration du
 \olref[pl][tab][sou]{thm:tableau-soundness}.
 \end{prob}
 \tagendprob
@@ -249,7 +249,7 @@ Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
   Si $\Gamma \Proves !A$, il existe $!B_1$, \dots, $!B_n \in
   \Gamma$ tels que $\{\sFmla{\False}{!A},
   \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$ possède un
-  !!{tableau} fermé. D'après
+  !!{tableau} fermé. D'après le
   \olref{thm:tableau-soundness}, toute
   \iftag{FOL}{!!{structure}}{!!{valuation}}~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
   rend faux au moins un $!B_i$, ou rend vrai $!A$. Par conséquent, si
@@ -266,7 +266,7 @@ Si $\Gamma$ est satisfaisable, alors il est cohérent.
 Nous démontrons la contraposée. Supposons que $\Gamma$ soit
 incohérent. Il existe alors $!B_1$, \dots, $!B_n \in \Gamma$ et un
 !!{tableau} fermé pour
-$\{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$. D'après
+$\{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$. D'après le
 \olref{thm:tableau-soundness}, il n'existe aucune
 $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ telle que
 $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B_i}$ pour tout

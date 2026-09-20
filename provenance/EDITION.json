@@ -2,7 +2,7 @@
   "source_repository": "https://github.com/OpenLogicProject/OpenLogic",
   "source_revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
   "frozen_units": 722,
-  "published_scope_units": 92,
+  "published_scope_units": 101,
   "published_ids": [
     "OLP-0005",
     "OLP-0007",
@@ -95,10 +95,19 @@
     "OLP-0105",
     "OLP-0106",
     "OLP-0107",
-    "OLP-0109"
+    "OLP-0109",
+    "OLP-0112",
+    "OLP-0113",
+    "OLP-0114",
+    "OLP-0116",
+    "OLP-0118",
+    "OLP-0119",
+    "OLP-0121",
+    "OLP-0122",
+    "OLP-0124"
   ],
-  "untranslated_units": 614,
-  "drafted_units": 108,
+  "untranslated_units": 600,
+  "drafted_units": 122,
   "reader_excluded_drafts": [
     "OLP-0055",
     "OLP-0072",
@@ -115,14 +124,19 @@
     "OLP-0104",
     "OLP-0108",
     "OLP-0110",
-    "OLP-0111"
+    "OLP-0111",
+    "OLP-0115",
+    "OLP-0117",
+    "OLP-0120",
+    "OLP-0123",
+    "OLP-0125"
   ],
-  "remaining_reader_units": 630,
+  "remaining_reader_units": 621,
   "full_edition_complete": false,
-  "version": "v0.9.0-tableaux",
-  "chapters": 11,
-  "sections": 81,
-  "pages": 141,
-  "exercises": 101,
+  "version": "v0.10.0-axiomatic-deduction",
+  "chapters": 12,
+  "sections": 89,
+  "pages": 150,
+  "exercises": 106,
   "canon_full_pdfs_redistributed": false
 }

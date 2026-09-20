@@ -1,0 +1,43 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: axioms-rules-quantifiers
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{axd}{qua}
+
+\olsection{Axiomes et règles pour les quantificateurs}
+
+\begin{defn}[Axiomes des quantificateurs]
+Les \emph{axiomes} qui régissent les quantificateurs sont toutes les
+instances des schémas suivants :
+\begin{align}
+\ollabel{ax:q1} & \lforall[x][!B] \lif !B(t), \\
+\ollabel{ax:q2} & !B(t) \lif \lexists[x][!B].
+\end{align}
+où $t$ est un terme clos quelconque.
+\end{defn}
+
+\begin{defn}[Règles des quantificateurs]
+\begin{enumerate}
+\item Si $!B \lif !A(a)$ figure déjà dans la !!{derivation} et si $a$
+  ne figure ni dans~$\Gamma$ ni dans~$!B$, alors
+  $!B \lif \lforall[x][!A(x)]$ est une étape d'inférence correcte.
+\item Si $!A(a) \lif !B$ figure déjà dans la !!{derivation} et si $a$
+  ne figure ni dans~$\Gamma$ ni dans~$!B$, alors
+  $\lexists[x][!A(x)] \lif !B$ est une étape d'inférence correcte.
+\end{enumerate}
+\end{defn}
+
+Nous abrégerons chacune de ces deux règles par « \QR ».
+
+\begin{editorial}
+Dans la source, les deux clauses de la définition précédente sont des
+commandes \texttt{\string\item} placées hors de tout environnement de
+liste. L'énumération attendue a été rétablie; les deux règles et leurs
+conditions de fraîcheur sont inchangées.
+\end{editorial}
+
+\end{document}

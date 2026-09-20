@@ -1,0 +1,69 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: deduction-theorem-quantifiers
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{axd}{ddq}
+
+\olsection{Le théorème de la déduction avec quantificateurs}
+
+\begin{thm}[Théorème de la déduction]
+\ollabel{thm:deduction-thm-q}
+Si $\Gamma \cup \{!A\} \Proves !B$, alors
+$\Gamma \Proves !A \lif !B$.
+\end{thm}
+
+\begin{proof}
+Nous procédons de nouveau par récurrence sur la longueur de la
+!!{derivation} de~$!B$ à partir de $\Gamma \cup \{!A\}$.
+
+Le cas de base est identique à celui de la preuve du
+\olref[ded]{thm:deduction-thm}.
+
+Pour l'étape de récurrence, supposons de nouveau que la !!{derivation}
+de~$!B$ à partir de $\Gamma \cup \{!A\}$ se termine par une étape~$!B$
+justifiée par une règle d'inférence. Si cette règle est le modus
+ponens, nous raisonnons comme dans la preuve du
+\olref[ded]{thm:deduction-thm}. Si la règle est~\QR, supposons que
+$!B \ident !C \lif \lforall[x][!D(x)]$ et qu'une !!{formula} de la
+forme $!C \lif !D(a)$ figure plus tôt dans la !!{derivation}, où $a$
+ne figure ni dans~$!C$, ni dans~$!A$, ni dans~$\Gamma$. Nous avons donc
+\begin{align*}
+  \Gamma \cup \{!A\} & \Proves !C \lif !D(a),\\
+  \intertext{et l'hypothèse de récurrence s'applique; ainsi,}
+    \Gamma & \Proves !A \lif (!C \lif !D(a)).\\
+  \intertext{Or}
+  & \Proves (!A \lif (!C \lif !D(a))) \lif ((!A \land !C) \lif !D(a));\\
+  \intertext{le modus ponens donne donc}
+  \Gamma & \Proves (!A \land !C) \lif !D(a).\\
+  \intertext{Comme la condition de fraîcheur de l'eigenvariable reste satisfaite, nous pouvons ajouter une étape justifiée par~\QR{} et obtenir}
+    \Gamma & \Proves (!A \land !C) \lif \lforall[x][!D(x)].\\
+  \intertext{Nous avons aussi}
+  & \Proves ((!A \land !C) \lif \lforall[x][!D(x)])
+    \lif (!A \lif (!C \lif \lforall[x][!D(x)])),\\
+  \intertext{et par modus ponens,}
+    \Gamma & \Proves !A \lif (!C \lif \lforall[x][!D(x)]).
+\end{align*}
+Autrement dit, $\Gamma \Proves !A \lif !B$.
+
+Nous laissons en exercice le cas où $!B$ est justifiée par~\QR, mais
+est de la forme $\lexists[x][!D(x)] \lif !C$.
+\end{proof}
+
+\begin{prob}
+Achever la preuve du
+\olref[fol][axd][ddq]{thm:deduction-thm-q}.
+\end{prob}
+
+\begin{editorial}
+Dans la source, l'avant-dernière formule affichée manque d'une
+parenthèse fermante. Surtout, la phrase qui suit le calcul conclut
+$\Gamma \Proves !B$, alors que le calcul établit
+$\Gamma \Proves !A \lif !B$, qui est précisément la conclusion du
+théorème. La parenthèse et la conclusion ont été rétablies.
+\end{editorial}
+
+\end{document}

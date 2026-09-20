@@ -1,0 +1,64 @@
+% Part: first-order-logic
+% Chapter: axiomatic-deduction
+% Section: provability-quantifiers
+
+% verification of properties of provability needed for maximally
+% consistent sets in the completeness chapter.
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{axd}{qpr}
+
+\olsection{\usetoken{S}{derivability} et quantificateurs}
+
+\begin{explain}
+La preuve du théorème de complétude exige également que les
+!!{derivation}s axiomatiques établissent les propriétés de~$\Proves$
+présentées dans cette section.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:strong-generalization}
+Si $c$ est !!a{constant} qui ne figure ni dans~$\Gamma$ ni dans
+$!A(x)$, et si $\Gamma \Proves !A(c)$, alors
+$\Gamma \Proves \lforall[x][!A(x)]$.
+\end{thm}
+
+\begin{proof}
+Par le théorème de la déduction,
+$\Gamma \Proves \ltrue \lif !A(c)$. Comme $c$ ne figure ni dans
+$\Gamma$ ni dans~$\ltrue$, la règle~\QR{} donne
+$\Gamma \Proves \ltrue \lif \lforall[x][!A(x)]$. Enfin,
+$\Gamma \Proves \ltrue$ puisque $\ltrue$ est un axiome; le modus
+ponens entraîne donc $\Gamma \Proves \lforall[x][!A(x)]$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:provability-quantifiers}
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{$!A(t) \Proves \lexists[x][!A(x)]$.}{}
+
+\tagitem{prvAll}{$\lforall[x][!A(x)] \Proves !A(t)$.}{}
+\end{tagenumerate}
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{D'après l'\olref[qua]{ax:q2} et le théorème de la
+déduction.}{}
+\tagitem{prvAll}{D'après l'\olref[qua]{ax:q1} et le théorème de la
+déduction.}{}
+\end{tagenumerate}
+\end{proof}
+
+\begin{editorial}
+À la fin de la première preuve, la source invoque une seconde fois le
+théorème de la déduction pour passer de
+$\Gamma \Proves \ltrue \lif \lforall[x][!A(x)]$ à
+$\Gamma \Proves \lforall[x][!A(x)]$. Ce passage requiert en réalité
+l'axiome~$\ltrue$ et le modus ponens; ces deux étapes sont explicitées.
+\end{editorial}
+
+\end{document}

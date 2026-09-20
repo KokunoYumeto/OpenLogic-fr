@@ -1,7 +1,7 @@
-% Édition française OpenLogic : 92 unités sur 722, onze chapitres.
+% Édition française OpenLogic : 101 unités sur 722, douze chapitres.
 % LaTeX cumulatif contenant tout le texte de cette livraison.
 % Styles, figures, bibliographie et instructions sont fournis dans le ZIP source.
-% Les quinze importations du premier ordre inactives sont conservées dans les pilotes modulaires du ZIP.
+% Les vingt importations du premier ordre inactives sont conservées dans les pilotes modulaires du ZIP.
 \documentclass[11pt,a4paper,openany]{memoir}
 \usepackage{mathpazo}
 \usepackage{fontspec}
@@ -60,9 +60,9 @@
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
 \setlength{\cftbeforechapterskip}{0.65em}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles aux tableaux},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles aux dérivations axiomatiques},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents, déduction naturelle et tableaux},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents, déduction naturelle, tableaux et déduction axiomatique},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -73,15 +73,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\aux tableaux\par}
+{\sffamily\huge Des ensembles\\aux dérivations axiomatiques\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Neuvième livraison : onze chapitres\par}
+{\large Dixième livraison : douze chapitres\par}
 \vspace{4mm}
-Cette livraison comprend quatre-vingt-une sections et leurs onze chapitres d’organisation,
-soit 92 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend quatre-vingt-neuf sections et leurs douze chapitres d’organisation,
+soit 101 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -95,7 +95,9 @@ des séquents propositionnel. Le dixième expose la déduction naturelle :
 règles, décharge des hypothèses, construction de dérivations,
 cohérence et théorème de correction. Le onzième présente les tableaux
 analytiques signés : règles, construction, dérivabilité, cohérence et
-correction.
+correction. Le douzième développe les dérivations axiomatiques :
+schémas d’axiomes, modus ponens, théorème de la déduction, cohérence
+et correction.
 \vspace{7mm}
 \par\small
 Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
@@ -12414,7 +12416,7 @@ Considérons d'abord les inférences qui ne provoquent pas de ramification.
   $\sFmla{\True}{\lforall[x][!A(x)]} \in \Gamma$. La nouvelle
   !!{signed formula}~$\sFmla{\True}{!A(t)}$ est ajoutée à la branche.
   Supposons $\Sat{M}{\Gamma}$, et en particulier
-  $\Sat{M}{\lforall[x][!A(x)]}$. D'après
+  $\Sat{M}{\lforall[x][!A(x)]}$. D'après la
   \olref[syn][sem]{prop:quant-terms}, $\Sat{M}{!A(t)}$. Par conséquent,
   $\Struct{M}$ satisfait $\sFmla{\True}{!A(t)}$.
 
@@ -12429,17 +12431,17 @@ Considérons d'abord les inférences qui ne provoquent pas de ramification.
   $\Gamma \cup \{\sFmla{\False}{!A(a)}\}$ est satisfaisable. Pour ce
   faire, définissons une structure appropriée~$\Struct{M'}$.
 
-  D'après \olref[syn][ass]{prop:sat-quant},
+  D'après la \olref[syn][ass]{prop:sat-quant},
   $\Sat/{M}{\lforall[x][!A(x)]}$ si et seulement s'il existe une
   assignation~$s$ telle que $\Sat/{M}{!A(x)}[s]$. Soit maintenant
   $\Struct{M'}$ la structure identique à $\Struct{M}$, sauf que
-  $\Assign{a}{M'} = s(x)$. D'après
+  $\Assign{a}{M'} = s(x)$. D'après le
   \olref[syn][ext]{cor:extensionality-sent}, pour toute
   $\sFmla{\True}{!C} \in \Gamma$, on a $\Sat{M'}{!C}$, et pour toute
   $\sFmla{\False}{!C} \in \Gamma$, on a $\Sat/{M'}{!C}$, puisque $a$
   ne figure pas dans~$\Gamma$.
 
-  D'après \olref[syn][ext]{prop:extensionality},
+  D'après la \olref[syn][ext]{prop:extensionality},
   $\Sat/{M'}{!A(x)}[s]$. Puis
   \olref[syn][ext]{prop:ext-formulas} donne
   $\Sat/{M'}{!A(a)}[s]$. Comme $!A(a)$ est !!a{sentence},
@@ -12497,14 +12499,14 @@ commun aux présentations propositionnelle et du premier ordre,
 
 \tagprob{FOL}
 \begin{prob}
-Achever la démonstration de
+Achever la démonstration du
 \olref[fol][tab][sou]{thm:tableau-soundness}.
 \end{prob}
 \tagendprob
 
 \tagprob{notFOL}
 \begin{prob}
-Achever la démonstration de
+Achever la démonstration du
 \olref[pl][tab][sou]{thm:tableau-soundness}.
 \end{prob}
 \tagendprob
@@ -12523,7 +12525,7 @@ Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
   Si $\Gamma \Proves !A$, il existe $!B_1$, \dots, $!B_n \in
   \Gamma$ tels que $\{\sFmla{\False}{!A},
   \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$ possède un
-  !!{tableau} fermé. D'après
+  !!{tableau} fermé. D'après le
   \olref{thm:tableau-soundness}, toute
   \iftag{FOL}{!!{structure}}{!!{valuation}}~$\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
   rend faux au moins un $!B_i$, ou rend vrai $!A$. Par conséquent, si
@@ -12540,7 +12542,7 @@ Si $\Gamma$ est satisfaisable, alors il est cohérent.
 Nous démontrons la contraposée. Supposons que $\Gamma$ soit
 incohérent. Il existe alors $!B_1$, \dots, $!B_n \in \Gamma$ et un
 !!{tableau} fermé pour
-$\{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$. D'après
+$\{\sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}$. D'après le
 \olref{thm:tableau-soundness}, il n'existe aucune
 $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ telle que
 $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!B_i}$ pour tout
@@ -12559,6 +12561,1007 @@ $i=1$, \dots,~$n$. L'ensemble $\Gamma$ n'est donc pas satisfaisable.
 
 \endgroup
 % END embedded source: content/first-order-logic/tableaux/tableaux.tex
+
+\addtocontents{toc}{\protect\Needspace{4\baselineskip}}
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/axiomatic-deduction.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{axiomatic-deduction}
+
+
+\iftag{FOL}
+      {\olchapter{fol}{axd}{\usetoken{P}{derivation} axiomatiques}}
+      {\olchapter{pl}{axd}{\usetoken{P}{derivation} axiomatiques}}
+
+\begin{editorial}
+  Aucun effort n'a encore été fait pour garantir que le contenu de ce
+  chapitre respecte les différentes balises qui indiquent quels
+  connecteurs et quantificateurs sont primitifs ou définis : tous sont
+  supposés primitifs, à l'exception de~$\liff$, qui est supposé défini.
+  Si la balise FOL est active, le chapitre comprend les quantificateurs;
+  sinon, il les omet.
+\end{editorial}
+
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/rules-and-proofs.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{rules-and-proofs}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{rul}}
+      {\olfileid[fr]{pl}{axd}{rul}}
+
+\olsection{Règles et \usetoken{p}{derivation}}
+
+\begin{explain}
+Les !!{derivation}s axiomatiques constituent peut-être le système de
+!!{derivation} le plus simple pour la logique. !!^a{derivation} n'est
+qu'une suite de !!{formula}s. Pour être une !!{derivation}, chaque
+!!{formula} de la suite doit soit être une instance d'un axiome, soit
+découler, par une règle d'inférence, d'une ou de plusieurs !!{formula}s
+qui la précèdent dans la suite. La dernière !!{formula}
+d'!!a{derivation} est celle qu'elle permet de !!{derive}.
+\end{explain}
+
+\begin{defn}[!!^{derivability}]
+Si $\Gamma$ est un ensemble de !!{formula}s de $\Lang L$, une
+\emph{!!{derivation} à partir de~$\Gamma$} est une suite finie
+$!A_1$, \dots,~$!A_n$ de !!{formula}s telle que, pour chaque
+$i \le n$, l'une des conditions suivantes soit satisfaite :
+\begin{enumerate}
+\item $!A_i \in \Gamma$;
+\item $!A_i$ est un axiome;
+\item $!A_i$ découle, par une règle d'inférence, d'une formule~$!A_j$
+  (et d'une formule~$!A_k$) telles que $j < i$ (et $k < i$).
+\end{enumerate}
+\end{defn}
+
+Ce qui constitue une !!{derivation} correcte dépend des règles
+d'inférence que nous admettons, ainsi, bien entendu, que des axiomes
+que nous choisissons. Une règle d'inférence est un énoncé conditionnel
+qui indique sous quelles conditions une étape~$!A_i$ d'!!a{derivation}
+est une étape d'inférence correcte.
+
+\begin{defn}[Règle d'inférence]
+Une \emph{règle d'inférence} donne une condition suffisante pour
+qu'une étape d'!!a{derivation} à partir de~$\Gamma$ soit une étape
+d'inférence correcte.
+\end{defn}
+
+Par exemple, toute suite à un seul terme~$!A$ telle que
+$!A \in \Gamma$ est trivialement une !!{derivation}. On pourrait donc
+formuler la règle d'inférence très simple suivante :
+\begin{quote}
+  Si $!A \in \Gamma$, alors $!A$ est toujours une étape d'inférence
+  correcte dans toute !!{derivation} à partir de~$\Gamma$.
+\end{quote}
+De même, si $!A$ est l'un des axiomes, alors $!A$ constitue à lui seul
+une !!{derivation}; ceci donne également une règle d'inférence :
+\begin{quote}
+  Si $!A$ est un axiome, alors $!A$ est une étape d'inférence correcte.
+\end{quote}
+Les règles qui font appel à des !!{formula}s antérieures à l'étape
+considérée sont plus intéressantes. La règle suivante s'appelle le
+\emph{modus ponens} :
+\begin{quote}
+  Si $!B \lif !A$ et $!B$ figurent plus haut dans la !!{derivation},
+  alors~$!A$ est une étape d'inférence correcte.
+\end{quote}
+Si le modus ponens est la seule règle d'inférence, la définition
+précédente revient à dire que $!A_1$, \dots,~$!A_n$ est une
+!!{derivation} si et seulement si, pour chaque $i \le n$, l'une des
+conditions suivantes est satisfaite :
+\begin{enumerate}
+\item $!A_i \in \Gamma$;
+\item $!A_i$ est un axiome;
+\item pour un certain $j < i$, $!A_j$ est $!B \lif !A_i$, et, pour un
+  certain $k < i$, $!A_k$ est~$!B$.
+\end{enumerate}
+La dernière clause affirme que $!A_i$ découle de~$!A_j$
+($!B \lif !A_i$) et de~$!A_k$ ($!B$) par modus ponens. Si nous pouvons
+parcourir les indices de~$1$ à~$n$ et constater, à chaque étape, que
+la !!{formula}~$!A_i$ appartient à~$\Gamma$, est un axiome, ou satisfait
+une règle d'inférence, alors la suite entière est une !!{derivation}
+correcte.
+
+\begin{defn}[!!^{derivability}]
+Une !!{formula}~$!A$ est \emph{!!{derivable} à partir de~$\Gamma$}, ce
+que l'on note $\Gamma \Proves !A$, s'il existe une !!{derivation} à
+partir de~$\Gamma$ qui se termine par~$!A$.
+\end{defn}
+
+\begin{defn}[Théorèmes]
+!!^a{formula}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation} de~$!A$ à partir de l'ensemble vide. On écrit
+$\Proves !A$ si $!A$ est un théorème, et $\Proves/ !A$ dans le cas
+contraire.
+\end{defn}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/rules-and-proofs.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/axioms-rules-propositional.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{axioms-rules-propositional}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{prp}}
+      {\olfileid[fr]{pl}{axd}{prp}}
+
+\olsection{Axiomes et règles pour les connecteurs propositionnels}
+
+\begin{defn}[Axiomes]
+L'ensemble~$\PAx$ des \emph{axiomes} pour les connecteurs
+propositionnels comprend toutes les !!{formula}s des formes suivantes :
+\begin{align}
+  & (!A \land !B) \lif !A \ollabel{ax:land1}\\
+  & (!A \land !B) \lif !B \ollabel{ax:land2}\\
+  & !A \lif (!B \lif (!A \land !B)) \ollabel{ax:land3}\\
+  & !A \lif (!A \lor !B) \ollabel{ax:lor1}\\
+  & !A \lif (!B \lor !A) \ollabel{ax:lor2}\\
+  & (!A \lif !C) \lif ((!B \lif !C) \lif ((!A \lor !B) \lif !C)) \ollabel{ax:lor3}\\
+  & !A \lif (!B \lif !A) \ollabel{ax:lif1}\\
+  & (!A \lif (!B \lif !C)) \lif ((!A \lif !B) \lif (!A \lif !C)) \ollabel{ax:lif2}\\
+  & (!A \lif !B) \lif ((!A \lif \lnot !B) \lif \lnot !A) \ollabel{ax:lnot1}\\
+  & \lnot !A \lif (!A \lif !B) \ollabel{ax:lnot2}\\
+  & \ltrue \ollabel{ax:ltrue}\\
+  & \lfalse \lif !A \ollabel{ax:lfalse1}\\
+  & (!A \lif \lfalse) \lif \lnot !A \ollabel{ax:lfalse2}\\
+  & \lnot\lnot !A \lif !A \ollabel{ax:dne}
+\end{align}
+\end{defn}
+
+\begin{defn}[Modus ponens]
+  Si $!B$ et $!B \lif !A$ figurent déjà dans une !!{derivation}, alors
+  $!A$ est une étape d'inférence correcte.
+\end{defn}
+
+Nous abrégerons la règle du modus ponens par « \MP{} ».
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/axioms-rules-propositional.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/proving-things.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proving-things}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{pro}}
+      {\olfileid[fr]{pl}{axd}{pro}}
+
+\olsection{Exemples de \usetoken{p}{derivation}}
+
+\begin{ex}
+Supposons que nous voulions démontrer
+$(\lnot !D \lor !E) \lif (!D \lif !E)$. Cette formule n'est
+manifestement une instance d'aucun de nos axiomes; il faut donc la
+!!{derive} au moyen de la règle~\MP. Notre seule règle est le modus
+ponens : à partir de $!A$ et de $!A \lif !B$, il permet de justifier
+$!B$. Une stratégie consiste à employer l'\olref[prp]{ax:lor3} en
+prenant $!A$ pour $\lnot !D$, $!B$ pour $!E$ et $!C$ pour
+$!D \lif !E$, c'est-à-dire l'instance
+\[
+(\lnot !D \lif (!D \lif !E)) \lif ((!E \lif (!D \lif !E)) \lif ((\lnot
+!D \lor !E) \lif (!D \lif !E))).
+\]
+Pourquoi ce choix? Deux applications de~\MP{} donnent la dernière
+partie, précisément celle que nous cherchons. Or
+$\lnot !D \lif (!D \lif !E)$ est manifestement une instance de
+l'\olref[prp]{ax:lnot2}, et $!E \lif (!D \lif !E)$ une instance de
+l'\olref[prp]{ax:lif1}. Nous obtenons donc la !!{derivation} suivante :
+\begin{derivation}
+  1. &  $\lnot !D \lif (!D \lif !E)$ & \olref[prp]{ax:lnot2} \\
+  2. & $(\lnot !D \lif (!D \lif !E)) \lif {}$\\
+  &\qquad $((!E \lif (!D \lif !E)) \lif ((\lnot !D \lor !E) \lif (!D \lif !E)))$ & \olref[prp]{ax:lor3}\\
+  3. & $(!E \lif (!D \lif !E)) \lif ((\lnot !D \lor !E) \lif (!D \lif !E))$ & 1, 2, \MP\\
+  4. & $!E \lif (!D \lif !E)$ & \olref[prp]{ax:lif1}\\
+  5. & $(\lnot !D \lor !E) \lif (!D \lif !E)$ & 3, 4, \MP
+\end{derivation}
+\end{ex}
+
+\begin{ex}\ollabel{ex:identity}
+Cherchons maintenant une !!{derivation} de $!D \lif !D$. Cette
+formule n'est pas une instance d'un axiome; il faut donc la !!{derive}
+au moyen de~\MP. L'\olref[prp]{ax:lif1} est un axiome de la forme
+$!A \lif !B$, à laquelle nous pourrions appliquer~\MP. Pour que cette
+application soit utile, le $!B$ que \MP{} permettrait de justifier
+devrait être~$!D \lif !D$, puisque c'est la formule recherchée.
+Il faudrait alors que $!A$ soit également $!D$. Nous pourrions donc
+considérer l'instance suivante de l'\olref[prp]{ax:lif1} :
+\[
+!D \lif (!D \lif !D).
+\]
+Pour appliquer~\MP, il faudrait aussi justifier la seconde prémisse
+correspondante, à savoir~$!A$. Dans notre cas, ce serait~$!D$, que nous
+ne pourrons pas !!{derive} isolément. Il nous faut donc une autre
+stratégie.
+
+L'autre axiome qui ne fait intervenir que~$\lif$ est donné par
+l'\olref[prp]{ax:lif2}, c'est-à-dire
+\[
+(!A \lif (!B \lif !C)) \lif ((!A \lif !B) \lif (!A \lif !C)).
+\]
+Deux applications de~\MP{} pourraient nous conduire au dernier
+conditionnel emboîté. Nous cherchons donc une instance de
+l'\olref[prp]{ax:lif2} dans laquelle $!A \lif !C$ soit la formule visée
+$!D \lif !D$. Ainsi, $!A$ et $!C$ doivent tous deux être~$!D$.
+Comment choisir~$!B$ de sorte que $!A \lif (!B \lif !C)$ et
+$!A \lif !B$, c'est-à-dire ici $!D \lif (!B \lif !D)$ et
+$!D \lif !B$, soient eux aussi !!{derivable}s? La première de ces
+formules est déjà une instance de l'\olref[prp]{ax:lif1}, quel que soit
+le choix de~$!B$. La seconde, $!D \lif !B$, serait également une
+instance de l'\olref[prp]{ax:lif1} si $!B$ était $(!D \lif !D)$.
+Nous obtenons donc :
+\begin{derivation}
+  1. & $!D \lif ((!D \lif !D) \lif !D)$ & \olref[prp]{ax:lif1}\\
+  2. & $(!D \lif ((!D \lif !D) \lif !D)) \lif {}$\\
+  & \qquad $((!D \lif (!D \lif !D)) \lif (!D \lif !D))$ & \olref[prp]{ax:lif2}\\
+  3. & $(!D \lif (!D \lif !D)) \lif (!D \lif !D)$ & 1, 2, \MP\\
+  4. & $!D \lif (!D \lif !D)$ & \olref[prp]{ax:lif1}\\
+  5. & $!D \lif !D$ & 3, 4, \MP
+\end{derivation}
+\end{ex}
+
+\begin{ex}\ollabel{ex:chain}
+Nous voulons parfois montrer qu'une !!{formula} possède une
+!!{derivation} à partir d'autres !!{formula}s~$\Gamma$. Montrons, par
+exemple, que $!A \lif !C$ est !!{derivable} à partir de
+$\Gamma = \{!A \lif !B, !B \lif !C\}$.
+\begin{derivation}
+  1. & $!A \lif !B$ & \Hyp\\
+  2. & $!B \lif !C$ & \Hyp\\
+  3. & $(!B \lif !C) \lif (!A \lif (!B \lif !C))$ & \olref[prp]{ax:lif1} \\
+  4. & $!A \lif (!B \lif !C)$ & 2, 3, \MP\\
+  5. & $(!A \lif (!B \lif !C)) \lif {}$\\
+  & \qquad $((!A \lif !B) \lif (!A \lif !C))$ & \olref[prp]{ax:lif2}\\
+  6. & $((!A \lif !B) \lif (!A \lif !C))$ & 4, 5, \MP\\
+  7. & $!A \lif !C$ & 1, 6, \MP
+\end{derivation}
+Les lignes marquées « \Hyp{} » (pour « hypothèse ») indiquent que
+la !!{formula} qui y figure est !!a{element} de~$\Gamma$.
+\end{ex}
+
+\begin{prop}
+  \ollabel{prop:chain} Si $\Gamma \Proves !A \lif !B$ et
+  $\Gamma \Proves !B \lif !C$, alors
+  $\Gamma \Proves !A \lif !C$.
+\end{prop}
+
+\begin{proof}
+Supposons $\Gamma \Proves !A \lif !B$ et
+$\Gamma \Proves !B \lif !C$. Il existe alors une !!{derivation} de
+$!A \lif !B$ à partir de~$\Gamma$, ainsi qu'une !!{derivation} de
+$!B \lif !C$ à partir de~$\Gamma$. Réunissons-les en une seule
+!!{derivation} en les concaténant, puis ajoutons les lignes~3 à~7 de
+la !!{derivation} de l'exemple précédent. La suite ainsi obtenue est
+une !!{derivation} de $!A \lif !C$ à partir de~$\Gamma$, puisque cette
+formule en est la dernière ligne. Les justifications des lignes~4
+et~7 restent valables : on remplace la référence à la ligne~1 par une
+référence à la dernière ligne de la !!{derivation} de $!A \lif !B$,
+et la référence à la ligne~2 par une référence à la dernière ligne de
+la !!{derivation} de $!B \lif !C$.
+\end{proof}
+
+\begin{prob}
+Montrer les résultats suivants en donnant des !!{derivation}s à partir
+des axiomes :
+\begin{enumerate}
+\item $(!A \land !B) \lif (!B \land !A)$;
+\item $((!A \land !B) \lif !C) \lif (!A \lif (!B \lif !C))$;
+\item $\lnot(!A \lor !B) \lif \lnot !A$.
+\end{enumerate}
+\end{prob}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/proving-things.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/proof-theoretic-notions.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{proof-theoretic-notions}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{ptn}}
+      {\olfileid[fr]{pl}{axd}{ptn}}
+
+\olsection{Notions de théorie de la démonstration}
+
+\begin{explain}
+De même que nous avons défini plusieurs notions sémantiques importantes
+(\iftag{FOL}{validité}{tautologie}, conséquence logique et
+satisfaisabilité), nous définissons maintenant les \emph{notions de
+théorie de la démonstration} correspondantes. Celles-ci ne font pas
+appel à la satisfaction d'!!{sentence}s dans des !!{structure}s, mais
+à la !!{derivability} ou à la non-!!{derivability} de certaines
+!!{formula}s. La coïncidence de ces notions constitue une découverte
+importante : c'est le contenu des \emph{théorèmes de correction et de
+complétude}.
+\end{explain}
+
+\begin{defn}[!!^{derivability}]
+!!^a{formula}~$!A$ est \emph{!!{derivable} à partir de~$\Gamma$}, ce
+que l'on note $\Gamma \Proves !A$, s'il existe une !!{derivation} à
+partir de~$\Gamma$ qui se termine par~$!A$.
+\end{defn}
+
+\begin{defn}[Théorèmes]
+!!^a{formula}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation} de~$!A$ à partir de l'ensemble vide. On écrit
+$\Proves !A$ si $!A$ est un théorème, et $\Proves/ !A$ dans le cas
+contraire.
+\end{defn}
+
+\begin{defn}[Cohérence]
+Un ensemble~$\Gamma$ de !!{formula}s est \emph{cohérent} si et seulement
+si $\Gamma \Proves/ \lfalse$; il est \emph{incohérent} dans le cas
+contraire.
+\end{defn}
+
+\begin{prop}[Réflexivité]
+\ollabel{prop:reflexivity}
+Si $!A \in \Gamma$, alors $\Gamma \Proves !A$.
+\end{prop}
+
+\begin{proof}
+La !!{formula}~$!A$ constitue à elle seule une !!{derivation} de~$!A$
+à partir de~$\Gamma$.
+\end{proof}
+
+\begin{prop}[Monotonie]
+\ollabel{prop:monotonicity}
+Si $\Gamma \subseteq \Delta$ et $\Gamma \Proves !A$, alors
+$\Delta \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Toute !!{derivation} de~$!A$ à partir de~$\Gamma$ est aussi une
+!!{derivation} de~$!A$ à partir de~$\Delta$.
+\end{proof}
+
+\begin{prop}[Transitivité]
+\ollabel{prop:transitivity}
+Si $\Gamma \Proves !A$ et $\{!A\} \cup \Delta \Proves !B$, alors
+$\Gamma \cup \Delta \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Supposons $\{!A\} \cup \Delta \Proves !B$. Il existe alors une
+!!{derivation} $!B_1$, \dots, $!B_l = !B$ à partir de
+$\{!A\} \cup \Delta$. Certaines étapes de cette !!{derivation} sont
+correctes parce qu'une règle renvoie à une ligne antérieure
+$!B_i = !A$. Par hypothèse, il existe une !!{derivation} de~$!A$ à
+partir de~$\Gamma$, c'est-à-dire une !!{derivation} $!A_1$, \dots,
+$!A_k = !A$ dans laquelle chaque $!A_i$ est un axiome, !!a{element}
+de~$\Gamma$, ou une étape correcte d'après une règle d'inférence.
+Considérons maintenant la suite
+\[
+!A_1, \dots, !A_k = !A, !B_1, \dots, !B_l = !B.
+\]
+C'est une !!{derivation} correcte de~$!B$ à partir de
+$\Gamma \cup \Delta$ : toute ligne $!B_i = !A$ peut désormais recevoir
+la même justification que la ligne~$!A_k = !A$.
+\end{proof}
+
+En particulier, si $\Gamma \Proves !A$ et $!A \Proves !B$, alors
+$\Gamma \Proves !B$. Il s'ensuit également que, si
+$!A_1, \dots, !A_n \Proves !B$ et si $\Gamma \Proves !A_i$ pour
+chaque~$i$, alors $\Gamma \Proves !B$.
+
+\begin{prop}
+\ollabel{prop:incons}
+$\Gamma$ est incohérent si et seulement si
+$\Gamma \Proves !A$ pour toute !!{formula}~$!A$.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][axd][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][axd][ptn]{prop:incons}.
+\end{prob}
+\tagendprob
+
+\begin{prop}[Compacité]
+\ollabel{prop:proves-compact}
+\begin{enumerate}
+\item Si $\Gamma \Proves !A$, alors il existe une partie finie
+  $\Gamma_0 \subseteq \Gamma$ telle que $\Gamma_0 \Proves !A$.
+\item Si toute partie finie de~$\Gamma$ est cohérente, alors
+  $\Gamma$ est cohérent.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item Si $\Gamma \Proves !A$, il existe une suite finie de !!{formula}s
+  $!A_1$, \dots,~$!A_n$ telle que $!A \ident !A_n$ et que chaque
+  $!A_i$ soit un axiome logique, !!a{element} de~$\Gamma$, ou découle
+  de !!{formula}s antérieures
+  \iftag{FOL}{par une règle d'inférence}{par modus ponens}. Prenons pour
+  $\Gamma_0$ l'ensemble des $!A_i$ qui appartiennent à~$\Gamma$.
+  La même !!{derivation} est alors une !!{derivation} à partir de
+  $\Gamma_0$, et donc $\Gamma_0 \Proves !A$.
+\item C'est la contraposée de~(1) dans le cas particulier où
+  $!A \ident \lfalse$.
+\end{enumerate}
+\end{proof}
+
+\iftag{FOL}{\begin{editorial}
+Dans la preuve de compacité, la source ne mentionne que les étapes
+obtenues par modus ponens. La version avec la balise FOL admet aussi
+les règles~\QR. La formulation « par une règle d'inférence » rétablit
+la portée commune de la preuve; son argument de finitude est inchangé.
+\end{editorial}}{}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/proof-theoretic-notions.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/deduction-theorem.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{deduction-theorem}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{ded}}
+      {\olfileid[fr]{pl}{axd}{ded}}
+
+\olsection{Le théorème de la déduction}
+
+Comme nous l'avons vu, donner des !!{derivation}s dans un système
+axiomatique est laborieux, et celles-ci peuvent être difficiles à
+trouver. Plutôt que d'écrire effectivement de longues listes
+de !!{formula}s, il est généralement plus facile d'établir l'existence
+de ces !!{derivation}s au moyen de quelques résultats simples. Nous en
+avons déjà démontré trois. La \olref[ptn]{prop:reflexivity} permet
+toujours d'affirmer $\Gamma \Proves !A$ lorsque $!A \in \Gamma$.
+La \olref[ptn]{prop:monotonicity} affirme que, si
+$\Gamma \Proves !A$, alors $\Gamma \cup \{!B\} \Proves !A$.
+Enfin, la \olref[ptn]{prop:transitivity} entraîne que, si
+$\Gamma \Proves !A$ et $!A \Proves !B$, alors
+$\Gamma \Proves !B$. Voici un autre résultat simple, une version
+« méta » du modus ponens :
+
+\begin{prop}
+\ollabel{prop:mp}
+Si $\Gamma \Proves !A$ et $\Gamma \Proves !A \lif !B$, alors
+$\Gamma \Proves !B$.
+\end{prop}
+
+\begin{proof}
+Nous avons $\{!A, !A \lif !B\} \Proves !B$ :
+\begin{derivation}
+  1. & $!A$ & \Hyp\\
+  2. & $!A \lif !B$ & \Hyp\\
+  3. & $!B$ & 1, 2, \MP
+\end{derivation}
+La \olref[ptn]{prop:transitivity} donne alors
+$\Gamma \Proves !B$.
+\end{proof}
+
+Le résultat le plus important que nous utiliserons dans ce contexte
+est le théorème de la déduction.
+
+\begin{thm}[Théorème de la déduction]
+\ollabel{thm:deduction-thm}
+$\Gamma \cup \{!A\} \Proves !B$ si et seulement si
+$\Gamma \Proves !A \lif !B$.
+\end{thm}
+
+\begin{proof}
+Le sens « si » est immédiat. Si $\Gamma \Proves !A \lif !B$, alors
+$\Gamma \cup \{!A\} \Proves !A \lif !B$ par la
+\olref[ptn]{prop:monotonicity}. En outre,
+$\Gamma \cup \{!A\} \Proves !A$ par la
+\olref[ptn]{prop:reflexivity}. La \olref{prop:mp} donne donc
+$\Gamma \cup \{!A\} \Proves !B$.
+
+Pour le sens « seulement si », procédons par récurrence sur la longueur
+de la !!{derivation} de~$!B$ à partir de $\Gamma \cup \{!A\}$.
+
+Dans le cas de base, démontrons l'assertion pour toute !!{derivation}
+de longueur~$1$. Une telle !!{derivation} de~$!B$ à partir de
+$\Gamma \cup \{!A\}$ se réduit à $!B$; si elle est correcte, alors
+$!B \in \Gamma \cup \{!A\}$ ou bien $!B$ est un axiome. Si
+$!B \in \Gamma$ ou si $!B$ est un axiome, alors
+$\Gamma \Proves !B$. Nous avons aussi
+$\Gamma \Proves !B \lif (!A \lif !B)$ d'après
+l'\olref[prp]{ax:lif1}; la \olref{prop:mp} donne donc
+$\Gamma \Proves !A \lif !B$. Si $!B \in \{!A\}$, alors
+$\Gamma \Proves !A \lif !B$, car $!A \lif !B$ est dans ce cas le
+même !!{sentence} que $!A \lif !A$, dont nous avons donné une
+!!{derivation} dans l'\olref[pro]{ex:identity}.
+
+Pour l'étape de récurrence, supposons qu'une !!{derivation} de~$!B$ à
+partir de $\Gamma \cup \{!A\}$ se termine par une étape~$!B$ justifiée
+par modus ponens. Si ce n'est pas le cas, alors $!B \in \Gamma$,
+$!B \ident !A$, ou $!B$ est un axiome, et le raisonnement du cas de
+base s'applique. Dans le cas du modus ponens, des étapes antérieures de
+la !!{derivation} sont $!C \lif !B$ et $!C$, pour une certaine
+!!{formula}~$!C$. Ainsi,
+$\Gamma \cup \{!A\} \Proves !C \lif !B$ et
+$\Gamma \cup \{!A\} \Proves !C$. Les !!{derivation}s correspondantes
+sont plus courtes; l'hypothèse de récurrence leur est donc applicable.
+Nous obtenons :
+\begin{align*}
+  & \Gamma \Proves !A \lif (!C \lif !B); \\
+  & \Gamma \Proves !A \lif !C.
+\end{align*}
+Mais nous avons également
+\[
+\Gamma \Proves (!A \lif (!C \lif !B)) \lif
+((!A \lif !C) \lif (!A \lif !B))
+\]
+d'après l'\olref[prp]{ax:lif2}. Deux applications de la
+\olref{prop:mp} donnent donc $\Gamma \Proves !A \lif !B$, comme il
+fallait le démontrer.
+\end{proof}
+
+Remarquons que les deux schémas d'axiomes correspondants,
+l'\olref[prp]{ax:lif1} et l'\olref[prp]{ax:lif2}, ont été choisis
+précisément de façon que le théorème de la déduction soit valable.
+
+Les faits suivants sur la !!{derivability} sont utiles; nous les
+laissons en exercices.
+
+\begin{prop}
+\ollabel{prop:derivfacts}
+\begin{enumerate}
+\item $\Proves (!A \lif !B) \lif ((!B \lif !C)
+  \lif (!A \lif !C))$; \ollabel{derivfacts:a}
+\item Si $\Gamma \cup \{\lnot !A\} \Proves \lnot !B$, alors
+  $\Gamma \cup \{!B\} \Proves !A$ (contraposition);
+  \ollabel{derivfacts:b}
+\item $\{!A, \lnot !A\} \Proves !B$ (\emph{ex falso quodlibet},
+  explosion); \ollabel{derivfacts:c}
+\item $\{\lnot\lnot !A\} \Proves !A$ (élimination de la double
+  négation); \ollabel{derivfacts:d}
+\item Si $\Gamma \Proves \lnot\lnot !A$, alors
+  $\Gamma \Proves !A$; \ollabel{derivfacts:e}
+\end{enumerate}
+\end{prop}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][axd][ded]{prop:derivfacts}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][axd][ded]{prop:derivfacts}.
+\end{prob}
+\tagendprob
+
+\begin{editorial}
+Dans le premier item de la proposition précédente, la source omet la
+parenthèse fermante du conséquent. Elle a été rétablie.
+\iftag{FOL}{En présence des quantificateurs, l'étape supplémentaire
+qui traite les règles~\QR{} est donnée dans la section suivante.}{}
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/deduction-theorem.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/provability-consistency.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{provability-consistency}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{prv}}
+      {\olfileid[fr]{pl}{axd}{prv}}
+
+\olsection{\usetoken{S}{derivability} et cohérence}
+
+Nous allons maintenant établir plusieurs propriétés de la relation de
+!!{derivability}. Elles présentent un intérêt propre, et chacune
+jouera un rôle dans la preuve du théorème de complétude.
+
+\begin{prop}\ollabel{prop:provability-contr}
+Si $\Gamma \Proves !A$ et si $\Gamma \cup \{!A\}$ est incohérent,
+alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Si $\Gamma \cup \{!A\}$ est incohérent, alors
+$\Gamma \cup \{!A\} \Proves \lfalse$. D'après la
+\olref[ptn]{prop:reflexivity}, $\Gamma \Proves !B$ pour tout
+$!B \in \Gamma$. Comme $\Gamma \Proves !A$ par hypothèse, nous avons
+donc $\Gamma \Proves !B$ pour tout
+$!B \in \Gamma \cup \{!A\}$. La \olref[ptn]{prop:transitivity} donne
+alors $\Gamma \Proves \lfalse$, c'est-à-dire que $\Gamma$ est
+incohérent.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:prov-incons}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Supposons d'abord $\Gamma \Proves !A$. Par la
+\olref[ptn]{prop:monotonicity},
+$\Gamma \cup \{\lnot !A\} \Proves !A$. Par la
+\olref[ptn]{prop:reflexivity},
+$\Gamma \cup \{\lnot !A\} \Proves \lnot !A$. Nous avons également
+$\Proves \lnot !A \lif (!A \lif \lfalse)$ d'après
+l'\olref[prp]{ax:lnot2}. Deux applications de la
+\olref[ded]{prop:mp} donnent donc
+$\Gamma \cup \{\lnot !A\} \Proves \lfalse$.
+
+Supposons maintenant que $\Gamma \cup \{\lnot !A\}$ soit incohérent,
+c'est-à-dire que
+$\Gamma \cup \{\lnot !A\} \Proves \lfalse$. D'après le théorème de
+la déduction, $\Gamma \Proves \lnot !A \lif \lfalse$. En outre,
+$\Gamma \Proves (\lnot !A \lif \lfalse) \lif \lnot\lnot !A$ d'après
+l'\olref[prp]{ax:lfalse2}; ainsi,
+$\Gamma \Proves \lnot\lnot !A$ par la \olref[ded]{prop:mp}. Enfin,
+comme $\Gamma \Proves \lnot\lnot !A \lif !A$ d'après
+l'\olref[prp]{ax:dne}, une nouvelle application de la
+\olref[ded]{prop:mp} donne $\Gamma \Proves !A$.
+\end{proof}
+
+\begin{prob}
+Démontrer que $\Gamma \Proves \lnot !A$ si et seulement si
+$\Gamma \cup \{!A\}$ est incohérent.
+\end{prob}
+
+\begin{prop}\ollabel{prop:explicit-inc}
+Si $\Gamma \Proves !A$ et $\lnot !A \in \Gamma$, alors $\Gamma$ est
+incohérent.
+\end{prop}
+
+\begin{proof}
+D'après l'\olref[prp]{ax:lnot2},
+$\Gamma \Proves \lnot !A \lif (!A \lif \lfalse)$. Deux applications
+de la \olref[ded]{prop:mp} donnent $\Gamma \Proves \lfalse$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-exhaustive}
+Si $\Gamma \cup \{!A\}$ et $\Gamma \cup \{\lnot !A\}$ sont tous deux
+incohérents, alors $\Gamma$ est incohérent.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrer la \olref[fol][axd][prv]{prop:provability-exhaustive}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrer la \olref[pl][axd][prv]{prop:provability-exhaustive}.
+\end{prob}
+\tagendprob
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/provability-consistency.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/provability-propositional.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{provability-propositional}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{ppr}}
+      {\olfileid[fr]{pl}{axd}{ppr}}
+
+\olsection{\usetoken{S}{derivability} et connecteurs propositionnels}
+
+\begin{explain}
+Nous établissons que la relation de !!{derivability}~$\Proves$ de la
+déduction axiomatique est assez puissante pour démontrer certains faits
+élémentaires sur les connecteurs propositionnels, par exemple
+$!A \land !B \Proves !A$ et
+$!A, !A \lif !B \Proves !B$ (modus ponens). Ces faits seront
+nécessaires à la preuve du théorème de complétude.
+\end{explain}
+
+\begin{prop}\ollabel{prop:provability-land}
+\begin{enumerate}
+\item \ollabel{prop:provability-land-left}
+  $!A \land !B \Proves !A$ et $!A \land !B \Proves !B$;
+\item \ollabel{prop:provability-land-right}
+  $!A, !B \Proves !A \land !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item Ces deux résultats découlent respectivement de
+  l'\olref[prp]{ax:land1} et de l'\olref[prp]{ax:land2} par modus ponens.
+\item Le résultat découle de l'\olref[prp]{ax:land3} par deux
+  applications du modus ponens.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lor}
+\begin{enumerate}
+\item $!A \lor !B, \lnot !A, \lnot !B$ est incohérent.
+\item $!A \Proves !A \lor !B$ et $!B \Proves !A \lor !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item D'après l'\olref[prp]{ax:lnot2}, nous avons
+  $\Proves \lnot !A \lif (!A \lif \lfalse)$ et
+  $\Proves \lnot !B \lif (!B \lif \lfalse)$. Le théorème de la
+  déduction donne donc
+  $\{\lnot !A\} \Proves !A \lif \lfalse$ et
+  $\{\lnot !B\} \Proves !B \lif \lfalse$. À partir de
+  l'\olref[prp]{ax:lor3}, nous obtenons
+  $\{\lnot !A, \lnot !B\} \Proves (!A \lor !B) \lif \lfalse$.
+  Le théorème de la déduction donne alors
+  $\{!A \lor !B, \lnot !A, \lnot !B\} \Proves \lfalse$.
+\item Le premier résultat découle de l'\olref[prp]{ax:lor1}; le second,
+  de l'\olref[prp]{ax:lor2}. Dans les deux cas, on applique le modus
+  ponens.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability-lif}
+\begin{enumerate}
+\item \ollabel{prop:provability-lif-left}
+  $!A, !A \lif !B \Proves !B$.
+\item \ollabel{prop:provability-lif-right}
+  $\lnot !A \Proves !A \lif !B$ et $!B \Proves !A \lif !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item Nous pouvons donner la !!{derivation} suivante :
+  \begin{derivation}
+    1. & $!A$ & \Hyp\\
+    2. & $!A \lif !B$ & \Hyp\\
+    3. & $!B$ & 1, 2, \MP
+  \end{derivation}
+
+\item Le premier résultat découle de l'\olref[prp]{ax:lnot2}; le second,
+  de l'\olref[prp]{ax:lif1}. Dans les deux cas, on emploie le théorème
+  de la déduction.
+\end{enumerate}
+\end{proof}
+
+\begin{editorial}
+Dans la preuve de la première proposition, la source renvoie deux fois à
+l'\olref[prp]{ax:land1}; le second renvoi doit viser
+l'\olref[prp]{ax:land2}. Dans celle de la disjonction, elle cite
+l'\olref[prp]{ax:lnot1}, alors que les deux formules affichées sont des
+instances de l'\olref[prp]{ax:lnot2}. Nous avons rectifié ces renvois sans
+modifier les formules ni les conclusions.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/provability-propositional.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+
+% BEGIN embedded source: content/first-order-logic/axiomatic-deduction/soundness.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{soundness}
+
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{sou}}
+      {\olfileid[fr]{pl}{axd}{sou}}
+
+\olsection{Correction}
+
+\begin{explain}
+Un système de !!{derivation}, tel que la déduction axiomatique, est
+\emph{correct} s'il ne permet pas de !!{derive} des résultats qui ne
+valent pas réellement. La correction constitue ainsi une garantie de
+fiabilité pour les systèmes de !!{derivation}. Selon la propriété de
+théorie de la démonstration considérée, nous voulons notamment savoir
+que :
+\begin{enumerate}
+\item toute !!{formula}~$!A$ !!{derivable} est valide;
+\item si $!A$ est !!{derivable} à partir d'autres !!{formula}s~$\Gamma$,
+  elle en est également une conséquence;
+\item si un ensemble de !!{formula}s~$\Gamma$ est incohérent, il est
+  insatisfaisable.
+\end{enumerate}
+Ces propriétés sont essentielles pour un système de !!{derivation}.
+Si l'une d'elles était en défaut, le système serait défectueux : il
+permettrait de !!{derive} trop de résultats. Il est donc primordial
+d'établir la correction d'un système de !!{derivation}.
+\end{explain}
+
+\begin{prop}
+Si $!A$ est un axiome, alors
+\iftag{FOL}
+  {$\Sat{M}{!A}[s]$ pour toute !!{structure}~$\Struct{M}$ et toute
+    assignation~$s$.}
+  {$\pSat{v}{!A}$ pour toute !!{valuation}~$\pAssign{v}$.}
+\end{prop}
+
+\begin{proof}
+\iftag{FOL}{Il faut vérifier que tous les axiomes sont valides.
+  Traitons, par exemple, le cas de l'\olref[qua]{ax:q1}. Supposons que
+  $t$ soit !!{free for} $x$ dans~$!A$ et que
+  $\Sat{M}{\lforall[x][!A]}[s]$. Par définition de la satisfaction,
+  $\Sat{M}{!A}[s']$ pour toute $\varAssign{s'}{s}{x}$, et en
+  particulier lorsque $s'(x) = \Value{t}{M}[s]$. D'après
+  la \olref[syn][ext]{prop:ext-formulas},
+  $\Sat{M}{\Subst{!A}{t}{x}}[s]$. Ainsi,
+  $\Sat{M}{(\lforall[x][!A] \lif \Subst{!A}{t}{x})}[s]$.
+  L'\olref[qua]{ax:q2} se vérifie de la même façon, et les
+  axiomes propositionnels au moyen de leurs tables de vérité.}
+  {Pour chaque axiome, sa table de vérité vérifie qu'il s'agit d'une
+  tautologie.}
+\end{proof}
+
+\begin{thm}[Correction]
+\ollabel{thm:soundness}
+Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
+\end{thm}
+
+\begin{proof}
+Procédons par récurrence sur la longueur de la !!{derivation} de~$!A$
+à partir de~$\Gamma$. S'il n'y a aucune étape justifiée par une
+inférence, toutes les !!{formula}s de la !!{derivation} sont soit des
+instances d'axiomes, soit des éléments de~$\Gamma$. D'après la
+proposition précédente, tous les axiomes sont
+\iftag{FOL}{valides}{des tautologies}; si $!A$ est un axiome, alors
+$\Gamma \Entails !A$. Si $!A \in \Gamma$, alors
+$\Gamma \Entails !A$ trivialement.
+
+Si la dernière étape de la !!{derivation} de~$!A$ est justifiée par
+modus ponens, il existe dans la !!{derivation} des !!{formula}s $!B$
+et $!B \lif !A$. L'hypothèse de récurrence s'applique aux parties de
+la !!{derivation} qui se terminent par ces !!{formula}s, puisqu'elles
+comportent au moins une étape d'inférence de moins. Nous avons donc
+$\Gamma \Entails !B$ et $\Gamma \Entails !B \lif !A$. Il s'ensuit
+$\Gamma \Entails !A$ d'après
+\iftag{FOL}
+  {le \olref[syn][sem]{thm:sem-deduction}}
+  {le \olref[pl][syn][sem]{thm:sem-deduction}}.
+
+\iftag{FOL}{Supposons maintenant que la dernière étape soit justifiée
+par~\QR. Cette étape est de la forme
+$!C \lif \lforall[x][!B(x)]$, et une étape antérieure est
+$!C \lif !B(c)$, où $c$ ne figure ni dans~$\Gamma$, ni dans~$!C$,
+ni dans~$\lforall[x][!B(x)]$. Par hypothèse de récurrence,
+$\Gamma \Entails !C \lif !B(c)$. D'après
+le \olref[syn][sem]{thm:sem-deduction},
+$\Gamma \cup \{!C\} \Entails !B(c)$.
+
+Considérons une structure~$\Struct{M}$ telle que
+$\Sat{M}{\Gamma \cup \{!C\}}$. Il faut montrer
+$\Sat{M}{\lforall[x][!B(x)]}$. Puisque
+$\lforall[x][!B(x)]$ est !!a{sentence}, il suffit de montrer que
+$\Sat{M}{!B(x)}[s]$ pour toute assignation de variables~$s$, d'après
+la \olref[syn][ass]{prop:sat-quant}. Comme
+$\Gamma \cup \{!C\}$ ne contient que des énoncés,
+$\Sat{M}{!D}[s]$ pour tout $!D \in \Gamma$, par la
+\olref[syn][sat]{defn:satisfaction}. Soit $\Struct{M'}$ la structure
+identique à~$\Struct{M}$, sauf que
+$\Assign{c}{M'} = s(x)$. Puisque $c$ ne figure ni dans~$\Gamma$ ni
+dans~$!C$, le \olref[syn][ext]{cor:extensionality-sent} donne
+$\Sat{M'}{\Gamma \cup \{!C\}}$. Comme
+$\Gamma \cup \{!C\} \Entails !B(c)$, nous avons
+$\Sat{M'}{!B(c)}$. Puisque $!B(c)$ est !!a{sentence}, la
+\olref[syn][ass]{prop:sentence-sat-true} donne
+$\Sat{M'}{!B(c)}[s]$. D'après
+la \olref[syn][ext]{prop:ext-formulas},
+$\Sat{M'}{!B(x)}[s]$ si et seulement si
+$\Sat{M'}{!B(c)}[s]$; rappelons que $!B(c)$ abrège
+$\Subst{!B(x)}{c}{x}$. Ainsi, $\Sat{M'}{!B(x)}[s]$. Comme $c$ ne
+figure pas dans~$!B(x)$, la \olref[syn][ext]{prop:extensionality}
+donne $\Sat{M}{!B(x)}[s]$. L'assignation~$s$ étant arbitraire,
+$\Sat{M}{\lforall[x][!B(x)]}$. Par conséquent,
+$\Gamma \cup \{!C\} \Entails \lforall[x][!B(x)]$, puis
+$\Gamma \Entails !C \lif \lforall[x][!B(x)]$ d'après
+le \olref[syn][sem]{thm:sem-deduction}.
+
+Nous laissons en exercice le cas où $!A$ est justifiée par~\QR, mais
+est de la forme $\lexists[x][!B(x)] \lif !C$.}{}
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Achever la preuve du \olref[fol][axd][sou]{thm:soundness}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est
+\iftag{FOL}{valide}{une tautologie}.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:consistency-soundness}
+Si $\Gamma$ est satisfaisable, alors il est cohérent.
+\end{cor}
+
+\begin{proof}
+Démontrons la contraposée. Supposons que $\Gamma$ ne soit pas
+cohérent. Alors $\Gamma \Proves \lfalse$, c'est-à-dire qu'il existe
+une !!{derivation} de~$\lfalse$ à partir de~$\Gamma$. D'après
+le \olref{thm:soundness}, toute
+\iftag{FOL}{!!{structure}~$\Struct{M}$}{!!{valuation}~$\pAssign{v}$}
+qui satisfait~$\Gamma$ doit satisfaire~$\lfalse$. Or
+\iftag{FOL}{$\Sat/{M}{\lfalse}$ pour toute
+  !!{structure}~$\Struct{M}$}{$\pSat/{v}{\lfalse}$ pour toute
+  !!{valuation}~$\pAssign{v}$}. Aucune
+\iftag{FOL}{structure~$\Struct{M}$}{valuation~$\pAssign{v}$} ne peut
+donc satisfaire~$\Gamma$; ainsi, $\Gamma$ n'est pas satisfaisable.
+\end{proof}
+
+\iftag{FOL}{\begin{editorial}
+Dans le cas de la règle~\QR, la source omet le marqueur de formule
+devant deux occurrences de~$B$. Il a été rétabli dans
+$\lforall[x][!B(x)]$ et $!B(c)$; aucune formule mathématique n'est
+modifiée.
+\end{editorial}}{}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/soundness.tex
+
+
+% Importations du premier ordre inactives dans cette livraison propositionnelle.
+
+\OLEndChapterHook
+
+
+\endgroup
+% END embedded source: content/first-order-logic/axiomatic-deduction/axiomatic-deduction.tex
 
 \tagtrue{FOL}
 \backmatter
