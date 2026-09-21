@@ -18,7 +18,7 @@ Le PDF est accompagné du LaTeX cumulatif, d’une archive des sources modulaire
 3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-03-openlogic-fr-ensembles-logique-premier-ordre-sources.zip)
 4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-04-openlogic-fr-ensembles-logique-premier-ordre.epub)
 
-[Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
+[Archive pérenne v0.11](https://doi.org/10.5281/zenodo.22866000) · [Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
 
 Les éditions historiques disposent chacune de leur PDF, de leur LaTeX cumulatif complet et de leur ZIP de sources :
 
