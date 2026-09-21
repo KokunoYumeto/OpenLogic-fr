@@ -4,7 +4,7 @@ from lxml import etree
 import collections,copy,hashlib,json,re,zipfile
 E=Path(__file__).resolve().parent
 SOURCE=E/'conversion/source/locale/fr/reader.epub'
-OUTPUT=E/'openlogic-fr-ensembles-derivations-axiomatiques.epub'
+OUTPUT=E/'openlogic-fr-ensembles-logique-premier-ordre.epub'
 HTML='http://www.w3.org/1999/xhtml'
 MATH='http://www.w3.org/1998/Math/MathML'
 sha=lambda b:hashlib.sha256(b).hexdigest()
@@ -52,18 +52,21 @@ with zipfile.ZipFile(SOURCE) as z:
 for name,raw in list(data.items()):
  if not name.endswith('.xhtml'):continue
  r=etree.fromstring(raw)
- # The deferred-exercise hook emits an empty chapter8 heading and TOC item.
- # No exercise is present after this heading; retain no misleading section.
- if name=='OEBPS/readerch8.xhtml':
-  h=r.xpath('//*[@id="exercices12"]');assert len(h)==1 and ''.join(h[0].itertext()).strip()=='Exercices'
+ # Neither the new introductory chapter nor the general proof-system chapter has exercises.
+ # TeX4ht nevertheless emits empty headings and navigation entries for both.
+ if name in {'OEBPS/readerch8.xhtml','OEBPS/readerch9.xhtml'}:
+  expected_id={'OEBPS/readerch8.xhtml':'exercices12','OEBPS/readerch9.xhtml':'exercices14'}[name]
+  h=r.xpath('//*[@id=$identifier]',identifier=expected_id);assert len(h)==1 and ''.join(h[0].itertext()).strip()=='Exercices'
   following=list(h[0].itersiblings());assert not ''.join(''.join(e.itertext()) for e in following).strip()
   parent=h[0].getparent();parent.remove(h[0])
   for e in following:parent.remove(e)
   report['repairs'].append({'document':name,'empty_generated_exercise_heading_removed':True,'actual_exercises_removed':0})
  if name=='OEBPS/readerli1.xhtml':
-  links=r.xpath('//*[local-name()="a" and @href="readerch8.xhtml#exercices13"]');assert len(links)==1
-  li=links[0].getparent();assert local(li)=='li';li.getparent().remove(li)
-  report['repairs'].append({'document':name,'empty_chapter8_exercise_navigation_removed':True})
+  targets={'readerch8.xhtml#exercices13','readerch9.xhtml#exercices15'}
+  links=[e for e in r.xpath('//*[local-name()="a"]') if e.get('href') in targets];assert len(links)==2
+  for link in links:
+   li=link.getparent();assert local(li)=='li';li.getparent().remove(li)
+  report['repairs'].append({'document':name,'empty_chapter_exercise_navigation_removed':sorted(targets)})
  before=bodytext(r)
  before_prose=prose(r)
  # A tab in a deferred exercise was serialized literally by TeX as ^^I.
@@ -146,17 +149,17 @@ for name,raw in list(data.items()):
    if i>1:e.set('id',key+'-'+str(i))
   report['repairs'].append({'document':name,'unreferenced_duplicate_id':key,'occurrences':count})
  title=r.find('{'+HTML+'}head/{'+HTML+'}title')
- if title is not None and name in ['OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml','OEBPS/readerch9.xhtml','OEBPS/readerch10.xhtml','OEBPS/readerch11.xhtml','OEBPS/readerch12.xhtml']:
-  title.text={'OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Systèmes de dérivation','OEBPS/readerch9.xhtml':'9 Le calcul des séquents','OEBPS/readerch10.xhtml':'10 Déduction naturelle','OEBPS/readerch11.xhtml':'11 Tableaux','OEBPS/readerch12.xhtml':'12 Dérivations axiomatiques'}[name]
+ if title is not None and name in ['OEBPS/readerch5.xhtml','OEBPS/readerch7.xhtml','OEBPS/readerch8.xhtml','OEBPS/readerch9.xhtml','OEBPS/readerch10.xhtml','OEBPS/readerch11.xhtml','OEBPS/readerch12.xhtml','OEBPS/readerch13.xhtml']:
+  title.text={'OEBPS/readerch5.xhtml':'5 Arithmétisation','OEBPS/readerch7.xhtml':'7 Syntaxe et sémantique','OEBPS/readerch8.xhtml':'8 Introduction à la logique du premier ordre','OEBPS/readerch9.xhtml':'9 Systèmes de dérivation','OEBPS/readerch10.xhtml':'10 Le calcul des séquents','OEBPS/readerch11.xhtml':'11 Déduction naturelle','OEBPS/readerch12.xhtml':'12 Tableaux','OEBPS/readerch13.xhtml':'13 Dérivations axiomatiques'}[name]
  if title is not None and not (title.text or '').strip():
-  title.text='OpenLogic : édition française — Des ensembles aux dérivations axiomatiques'
+  title.text='OpenLogic : édition française — Des ensembles à la logique du premier ordre'
  r.set('{http://www.w3.org/XML/1998/namespace}lang','fr')
  assert before_prose==prose(r),name
  for img in r.xpath('//*[local-name()="img"]'):
   assert img.get('src') in ALT
   img.set('alt',ALT[img.get('src')])
-  if name in ['OEBPS/readerch9.xhtml','OEBPS/readerch10.xhtml']:
-   img.set('id',('fr-sequent-' if name.endswith('readerch9.xhtml') else 'fr-natural-')+re.search(r'\d+',img.get('src')).group())
+  if name in ['OEBPS/readerch10.xhtml','OEBPS/readerch11.xhtml']:
+   img.set('id',('fr-sequent-' if name.endswith('readerch10.xhtml') else 'fr-natural-')+re.search(r'\d+',img.get('src')).group())
    img.set('class','fr-proof-diagram')
    wrapper=etree.Element('{'+HTML+'}span',{'class':'fr-proof-scroll'})
    wrapper.tail=img.tail;img.tail=None;img.getparent().replace(img,wrapper);wrapper.append(img)
@@ -164,7 +167,7 @@ for name,raw in list(data.items()):
     img.set('alt',img.get('alt')+' Un carré marque la fin de la démonstration.')
   if img.get('src') in ['reader29x.svg','reader30x.svg','reader62x.svg']:
    img.set('id',{'reader29x.svg':'fr-proof-sequent','reader30x.svg':'fr-proof-nd','reader62x.svg':'fr-proof-tableau'}[img.get('src')])
-  if name == 'OEBPS/readerch11.xhtml':
+  if name == 'OEBPS/readerch12.xhtml':
    img.set('id','fr-tableau-'+re.search(r'\d+',img.get('src')).group())
    img.set('class','fr-tableau-diagram')
    wrapper=etree.Element('{'+HTML+'}span',{'class':'fr-tableau-scroll'})
@@ -180,16 +183,16 @@ data['OEBPS/reader.css']+=b'\n.fr-truth-table { border-collapse: collapse; }\n.f
 data['OEBPS/reader.css']+=b'\n#fr-proof-sequent, #fr-proof-nd, #fr-proof-tableau { display: block; margin: 1em auto; }\n'
 data['OEBPS/reader.css']+=b'\n/* Keep sequent diagrams legible; scroll wide groups inside their own block. */\n.fr-proof-scroll { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; text-indent: 0; margin: 1em 0; }\nimg.fr-proof-diagram { display: block; max-width: none !important; width: auto !important; height: auto; margin: 0 auto; }\n'
 data['OEBPS/reader.css']+=b'\n/* Keep tableau rules and trees legible; scroll wide diagrams locally. */\n.fr-tableau-scroll { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; text-indent: 0; margin: 1em 0; }\nimg.fr-tableau-diagram { display: block; max-width: none !important; width: auto !important; height: auto; margin: 0 auto; }\n'
-report['repairs'].append({'document':'OEBPS/readerch10.xhtml','source_grounded_proof_descriptions':44,'proof_images_at_intrinsic_size_with_local_horizontal_scrolling':44,'observed_qed_squares_described':[149,151,153,160]})
-report['repairs'].append({'document':'OEBPS/readerch9.xhtml','source_grounded_proof_descriptions':54,'proof_images_at_intrinsic_size_with_local_horizontal_scrolling':54,'observed_qed_squares_described':[104,106,108,116]})
-report['repairs'].append({'document':'OEBPS/readerch11.xhtml','source_grounded_tableau_descriptions':32,'rule_frames':5,'tableau_trees':27,'tableau_images_at_intrinsic_size_with_local_horizontal_scrolling':32})
+report['repairs'].append({'document':'OEBPS/readerch11.xhtml','source_grounded_proof_descriptions':44,'proof_images_at_intrinsic_size_with_local_horizontal_scrolling':44,'observed_qed_squares_described':[149,151,153,160]})
+report['repairs'].append({'document':'OEBPS/readerch10.xhtml','source_grounded_proof_descriptions':54,'proof_images_at_intrinsic_size_with_local_horizontal_scrolling':54,'observed_qed_squares_described':[104,106,108,116]})
+report['repairs'].append({'document':'OEBPS/readerch12.xhtml','source_grounded_tableau_descriptions':32,'rule_frames':5,'tableau_trees':27,'tableau_images_at_intrinsic_size_with_local_horizontal_scrolling':32})
 # TeX4ht carried mathml onto a bibliography document without mathematics.
 opf=etree.fromstring(data["OEBPS/content.opf"])
 metadata={
- 'title':'OpenLogic : édition française — Des ensembles aux dérivations axiomatiques',
- 'description':'Édition française partielle : ensembles, relations, fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, systèmes de dérivation, calcul des séquents, déduction naturelle, tableaux et dérivations axiomatiques. Douze chapitres, 101 unités sur 722, avec démonstrations, exemples et exercices. Texte correspondant à la dixième livraison.',
- 'identifier':'https://github.com/KokunoYumeto/OpenLogic-fr/releases/tag/v0.10.0-axiomatic-deduction',
- 'date':'2026-09-20T00:00:00Z',
+ 'title':'OpenLogic : édition française — Des ensembles à la logique du premier ordre',
+ 'description':'Édition française partielle : ensembles, relations, fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, introduction à la logique du premier ordre, systèmes de dérivation, calcul des séquents, déduction naturelle, tableaux et dérivations axiomatiques. Treize chapitres, 111 unités sur 722, avec démonstrations, exemples et exercices. Texte correspondant à la onzième livraison.',
+ 'identifier':'https://github.com/KokunoYumeto/OpenLogic-fr/releases/tag/v0.11.0-first-order-introduction',
+ 'date':'2026-09-21T00:00:00Z',
 }
 for key,value in metadata.items():
  elements=opf.xpath('//*[local-name()=$key]',key=key)
@@ -217,17 +220,17 @@ doc_titles[0].text=metadata['title']
 uids=ncx.xpath('//*[local-name()="meta" and @name="dtb:uid"]')
 assert len(uids)==1
 uids[0].set('content',metadata['identifier'])
-empty_nav=ncx.xpath('//*[local-name()="content" and (@src="readerch8.xhtml#x10-72000" or @src="readerch8.xhtml#Q1-10-87")]')
-assert len(empty_nav)==2
+empty_nav=ncx.xpath('//*[local-name()="content" and (@src="readerch8.xhtml#x10-76000" or @src="readerch8.xhtml#Q1-10-91" or @src="readerch9.xhtml#x11-83000" or @src="readerch9.xhtml#Q1-11-99")]')
+assert len(empty_nav)==4
 for content in empty_nav:
  point=content.getparent();assert local(point)=='navPoint';point.getparent().remove(point)
 for i,point in enumerate(ncx.xpath('//*[local-name()="navPoint"]'),1):point.set('playOrder',str(i))
 data['OEBPS/reader.ncx']=etree.tostring(ncx,encoding='utf-8',xml_declaration=True)
-report['repairs'].append({'document':'OEBPS/reader.ncx','empty_chapter8_exercise_navigation_removed':2})
+report['repairs'].append({'document':'OEBPS/reader.ncx','empty_chapter_exercise_navigation_removed':4})
 report['repairs'].append({'document':'OEBPS/reader.ncx','release_title':metadata['title'],'release_identifier':metadata['identifier']})
 with zipfile.ZipFile(OUTPUT,'w') as z:
  for name in ['mimetype']+sorted(set(data)-{'mimetype'}):
-  i=zipfile.ZipInfo(name,(2026,9,6,0,0,0))
+  i=zipfile.ZipInfo(name,(2026,9,21,0,0,0))
   i.compress_type=zipfile.ZIP_STORED if name=='mimetype' else zipfile.ZIP_DEFLATED
   i.create_system=3;i.external_attr=0o100644<<16
   z.writestr(i,data[name],compresslevel=9)

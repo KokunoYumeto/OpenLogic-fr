@@ -34,7 +34,7 @@ def check(ok):
 def counts(job):
  a=Accounting();check(QueryJob(job,1,c.byref(a),c.sizeof(a),None));return a
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
-def run(attempt,mode="convert",source_scope_units=101,worker_script=None):
+def run(attempt,mode="convert",source_scope_units=111,worker_script=None):
  if not attempt.replace("-","").isalnum():raise ValueError("Invalid attempt name")
  capture=E/attempt;capture.mkdir(exist_ok=False)
  pdf_limit=int(os.environ.get("INTERLANGUAGE_PDF_COMPARE_TIMEOUT", "420"))

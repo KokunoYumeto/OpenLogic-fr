@@ -1,0 +1,60 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: substitution
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{sub}
+
+\olsection{Substitution}
+
+Examinons un exemple qui montrera comment les différentes notions
+s'articulent et comment l'élaboration de la syntaxe et de la sémantique
+prépare les études plus avancées qui suivront. Nos systèmes de
+!!{derivation} doivent nous permettre de !!{derive}
+$\Atom{\Obj P}{\Obj a}$ à partir de
+$\lforall[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$. Nous pourrions même
+vouloir présenter cela comme une règle d'inférence. Pour le faire, il
+faut toutefois l'énoncer dans toute sa généralité : non pas seulement
+pour $\Obj P$, $\Obj a$ et $\Obj v_0$, mais pour une
+!!{formula}~$!A$, un terme~$t$ et une !!{variable}~$x$ quelconques.
+Rappelons que les !!{constant}s sont des termes; nous considérerons
+aussi des termes plus complexes construits à partir de !!{constant}s
+et de !!{function}s. Nous voulons donc pouvoir dire quelque chose
+comme : « Chaque fois que l'on a dérivé
+$\lforall[x][!A(x)]$, on est fondé à inférer~$!A(t)$, résultat obtenu
+en supprimant $\lforall[x]$ et en remplaçant~$x$ par~$t$. » Mais que
+signifie exactement « remplacer $x$ par~$t$ » ? Quelle relation y
+a-t-il entre $!A(x)$ et~$!A(t)$ ? Cette opération est-elle toujours
+licite ?
+
+Pour rendre cette idée précise, nous définissons l'opération de
+\emph{substitution}. La substitution est en réalité délicate : nous ne
+pouvons pas simplement remplacer tous les~$x$ de~$!A$ par~$t$, et
+on ne peut pas toujours substituer n'importe quel terme~$t$ à
+n'importe quelle variable~$x$. Nous traiterons encore ces difficultés
+au moyen de définitions inductives. Une fois ces définitions données,
+la règle « inférer $!A(t)$ de $\lforall[x][!A(x)]$ » sera définie avec
+précision. Nous pourrons en outre montrer que cette règle d'inférence
+est correcte, au sens où $\lforall[x][!A(x)]$ entraîne~$!A(t)$. Pour le
+démontrer, il faudra encore établir un résultat dont l'utilité peut
+d'abord sembler obscure. Le fait que $\lforall[x][!A(x)]$
+entraîne~$!A(t)$ repose sur la propriété suivante : savoir si
+$\Sat{M}{!A(t)}$ vaut ne dépend que de la valeur du terme~$t$. Si $m$
+est l'!!{element} de~$\Domain{M}$
+désigné par~$t$, alors
+$\Sat{M}{!A(t)}[s]$ si et seulement si
+$\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$. Ce résultat reste vrai lorsque $t$
+contient des !!{variable}s, mais il faudra l'énoncer avec soin.
+
+\begin{editorial}
+Dans la première formule de la source, les arguments de
+$\Atom{\Obj P}{\Obj v_0}$ et de
+$\lforall[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$ sont délimités de façon
+incompatible avec les macros employées. Les limites correspondant à la
+formule universelle décrite par la phrase sont rétablies.
+\end{editorial}
+
+\end{document}

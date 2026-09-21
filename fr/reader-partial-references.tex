@@ -4,6 +4,9 @@
 \newcommand{\FRoriginalsection}[2]{%
   section « \href{https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/history/set-theory/#1.tex}{#2} »\space
   (dans l'original anglais, hors de cette livraison)}
+\newcommand{\FRoriginalmethodsection}[2]{%
+  section « \href{https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/methods/induction/#1.tex}{#2} »\space
+  (dans l'original anglais, hors de cette livraison)}
 \csdef{FRexternal@his:set:mythology:sec}{%
   \FRoriginalsection{mythology}{More Myth than History?}}
 \csdef{FRexternal@his:set:limits:sec}{%
@@ -14,6 +17,10 @@
 \csdef{FRexternal@sth:ord-arithmetic::chap}{%
   chapitre « \href{https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/set-theory/ord-arithmetic/ord-arithmetic.tex}{Ordinal Arithmetic} »\space
   (dans l'original anglais, hors de cette livraison)}
+\csdef{FRexternal@mth:ind:idf:sec}{%
+  \FRoriginalmethodsection{inductive-definitions}{Inductive Definitions}}
+\csdef{FRexternal@mth:ind:sti:sec}{%
+  \FRoriginalmethodsection{structural-induction}{Structural Induction}}
 \RenewDocumentCommand \olref { o o o m } {%
   \begingroup
   \edef\FRrefkey{%

@@ -1,0 +1,105 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: first-order-logic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{fol}
+
+\olsection{Logique du premier ordre}
+
+Vous connaissez probablement déjà la logique du premier ordre grâce à
+votre première initiation à la logique formelle.\footnote{À vrai dire,
+nous le supposons plus ou moins !{} Si ce n'est pas le cas, vous pouvez
+consulter un manuel plus élémentaire, tel que \emph{forall x}
+\citep{Magnus2021}.} Vous la connaissez peut-être sous le nom de
+« logique quantifiée » ou de « logique des prédicats ». La logique du
+premier ordre est d'abord un langage formel. Elle possède donc un
+vocabulaire déterminé, et ses expressions sont des chaînes formées à
+partir de ce vocabulaire. Toutes les chaînes ne sont cependant pas
+admises. Il existe plusieurs sortes d'expressions admises : des termes,
+des !!{formula}s et des !!{sentence}s. Ce sont surtout les
+!!{sentence}s de la logique du premier ordre qui nous intéressent : ils
+fournissent un analogue formel des phrases déclaratives de la langue
+courante; à leur sujet, nous pouvons poser les questions qui intéressent
+habituellement les logiciens. Par exemple :
+\begin{itemize}
+    \item L'!!{sentence}~$!B$ découle-t-il logiquement de~$!A$ ?
+    \item L'!!{sentence}~$!A$ est-il logiquement vrai, logiquement faux
+      ou contingent ?
+    \item Les !!{sentence}s~$!A$ et~$!B$ sont-ils équivalents ?
+\end{itemize}
+
+Ces questions portent avant tout sur la « signification » des
+!!{sentence}s de la logique du premier ordre. Un philosophe analyserait
+par exemple la question de savoir si $!B$ découle logiquement de~$!A$ de
+la manière suivante : existe-t-il un cas où $!A$ est vrai et~$!B$ faux
+($!B$ ne découle pas de~$!A$), ou bien tout cas qui rend $!A$ vrai
+rend-il aussi~$!B$ vrai ($!B$ découle alors de~$!A$) ? Mais on ne nous a
+pas encore dit ce qu'est un « cas » : c'est précisément le rôle de la
+\emph{sémantique}. La sémantique de la logique du premier ordre fournit
+un modèle mathématiquement précis de l'idée intuitive de « cas » et,
+point essentiel, de ce que signifie pour !!a{sentence}~$!A$ d'être
+\emph{vrai dans} un cas. Nous appellerons !!a{structure} le modèle
+mathématiquement précis que nous allons élaborer. La relation qui rend
+précise l'expression « vrai dans » s'appelle la relation de
+\emph{satisfaction}. Nous définirons donc « $!A$ est satisfait
+dans~$\Struct{M}$ » (en symboles : $\Sat{M}{!A}$) pour des
+!!{sentence}s~$!A$ et des !!{structure}s~$\Struct{M}$. Cela fait, nous
+pourrons également définir avec précision d'autres termes sémantiques,
+comme « découle de » ou « est logiquement vrai ». Ces définitions
+permettront de décider, toujours avec une précision mathématique, si,
+par exemple,
+\[
+  \lforall[x][(!A(x) \lif !B(x))],\,
+  \lexists[x][!A(x)] \Entails \lexists[x][!B(x)].
+\]
+La réponse sera évidemment affirmative. Si vous avez déjà appris à
+symboliser des phrases de la langue courante en logique du premier
+ordre, vous reconnaîtrez ici, par exemple, la symbolisation de
+« Toutes les fourmis sont des insectes ; il existe des fourmis ; donc
+il existe des insectes ». Cet argument est manifestement valide : notre
+modèle mathématique de « découle de » pour le langage formel doit donc
+donner la même réponse.
+
+Vous vous souvenez probablement aussi, depuis votre première initiation
+à la logique formelle, qu'il existe des \emph{!!{derivation}s}. Si vous
+avez suivi un premier cours de logique formelle, on vous aura fait
+chercher de telles !!{derivation}s, peut-être même une
+!!{derivation} montrant que la conséquence logique ci-dessus vaut. Il
+existe de nombreuses manières de présenter des !!{derivation}s : vous
+avez peut-être pratiqué ce qu'on appelle la « déduction naturelle » ou
+les « arbres de vérité », mais il en existe bien d'autres. Les systèmes
+de !!{derivation} visent à fournir des outils qui permettent de répondre
+aux questions des logiciens énumérées plus haut. Ainsi, une
+!!{derivation} de déduction naturelle dont
+$\lforall[x][(!A(x) \lif !B(x))]$ et $\lexists[x][!A(x)]$ sont les
+prémisses, et $\lexists[x][!B(x)]$ la conclusion (la dernière ligne),
+\emph{établit} que $\lexists[x][!B(x)]$ découle logiquement de
+$\lforall[x][(!A(x) \lif !B(x))]$ et de $\lexists[x][!A(x)]$.
+
+Mais pourquoi ? À première vue, les systèmes de !!{derivation} n'ont
+rien à voir avec la sémantique : produire une !!{derivation} formelle
+consiste seulement à disposer des symboles d'une certaine manière,
+conformément à des règles ; ni les « cas » ni l'expression « vrai dans »
+n'y figurent. Le lien entre les systèmes de !!{derivation} et la
+sémantique doit être établi par une étude métalogique. Il faut notamment
+une démonstration mathématique du fait qu'une !!{derivation} formelle de
+$\lexists[x][!B(x)]$ à partir des prémisses
+$\lforall[x][(!A(x) \lif !B(x))]$ et $\lexists[x][!A(x)]$ est possible
+si et seulement si $\lforall[x][(!A(x) \lif !B(x))]$ et
+$\lexists[x][!A(x)]$ entraînent ensemble $\lexists[x][!B(x)]$. Avant
+d'y parvenir, il faut toutefois accomplir un travail minutieux pour
+définir correctement la syntaxe et la sémantique.
+
+\begin{editorial}
+Dans trois formules de la source, le second argument de
+$\lforall[x]$ se ferme après la conséquence logique entière, au lieu de
+se fermer après $(!A(x) \lif !B(x))$ ; une seconde fermeture apparaît
+alors à la fin. Les limites d'arguments voulues sont rétablies dans les
+trois occurrences.
+\end{editorial}
+
+\end{document}

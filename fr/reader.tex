@@ -26,9 +26,9 @@
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
 \setlength{\cftbeforechapterskip}{0.65em}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles aux dérivations axiomatiques},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la logique du premier ordre},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents, déduction naturelle, tableaux et déduction axiomatique},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle et logique du premier ordre, séquents, déduction naturelle, tableaux et déduction axiomatique},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -39,15 +39,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\aux dérivations axiomatiques\par}
+{\sffamily\huge Des ensembles\\à la logique du premier ordre\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Dixième livraison : douze chapitres\par}
+{\large Onzième livraison : treize chapitres\par}
 \vspace{4mm}
-Cette livraison comprend quatre-vingt-neuf sections et leurs douze chapitres d’organisation,
-soit 101 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend quatre-vingt-dix-huit sections et leurs treize chapitres d’organisation,
+soit 111 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -55,13 +55,15 @@ sont réunies dans un même chapitre, avec leurs conventions explicites.
 Les six premiers chapitres vont des ensembles aux nombres et à l’infini :
 coupures de Dedekind, suites de Cauchy, récurrence et théorème de
 Schröder--Bernstein. Le septième introduit la syntaxe et la sémantique
-propositionnelles; le huitième présente les systèmes de preuve,
-leur correction et leur complétude. Le neuvième développe le calcul
-des séquents propositionnel. Le dixième expose la déduction naturelle :
+propositionnelles. Le huitième introduit la logique du premier ordre :
+formules, structures, satisfaction, énoncés, substitution, modèles,
+correction et complétude. Le neuvième présente les systèmes de preuve,
+leur correction et leur complétude. Le dixième développe le calcul
+des séquents propositionnel. Le onzième expose la déduction naturelle :
 règles, décharge des hypothèses, construction de dérivations,
-cohérence et théorème de correction. Le onzième présente les tableaux
+cohérence et théorème de correction. Le douzième présente les tableaux
 analytiques signés : règles, construction, dérivabilité, cohérence et
-correction. Le douzième développe les dérivations axiomatiques :
+correction. Le treizième développe les dérivations axiomatiques :
 schémas d’axiomes, modus ponens, théorème de la déduction, cohérence
 et correction.
 \vspace{7mm}
@@ -88,6 +90,9 @@ des traductions d'OpenLogic}
 \olimport[content/sets-functions-relations/infinite]{infinite}
 \tagfalse{FOL}
 \olimport[content/propositional-logic/syntax-and-semantics]{syntax-and-semantics}
+\tagtrue{FOL}
+\olimport[content/first-order-logic/introduction]{introduction}
+\tagfalse{FOL}
 \olimport[content/first-order-logic/proof-systems]{proof-systems}
 \olimport[content/first-order-logic/sequent-calculus]{sequent-calculus}
 \addtocontents{toc}{\protect\Needspace{4\baselineskip}}
@@ -96,7 +101,6 @@ des traductions d'OpenLogic}
 \olimport[content/first-order-logic/tableaux]{tableaux}
 \addtocontents{toc}{\protect\Needspace{4\baselineskip}}
 \olimport[content/first-order-logic/axiomatic-deduction]{axiomatic-deduction}
-\tagtrue{FOL}
 \backmatter
 % La notice Frege1884 cite elle-même cette traduction anglaise.
 \nocite{Frege1953}

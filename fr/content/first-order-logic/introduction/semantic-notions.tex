@@ -1,0 +1,55 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: semantic-notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{sem}
+
+\olsection{Notions sémantiques}
+
+Nous avons indiqué plus haut que, lorsque nous examinons si
+$\Sat{M}{!A}[s]$ vaut, nous convenons par commodité que~$s$ attribue
+des valeurs à toutes les !!{variable}s, mais que seules les valeurs
+attribuées aux !!{variable}s qui figurent dans~$!A$ sont utilisées. En
+réalité, seules comptent les valeurs des !!{variable}s \emph{libres}
+dans~$!A$. Comme nous veillons à tout justifier, nous démontrerons ce
+fait. Puisque les !!{sentence}s n'ont aucune variable libre, le choix
+de~$s$ ne joue aucun rôle dans leur satisfaction par
+!!a{structure}. Lorsque $!A$ est !!a{sentence}, nous pouvons donc
+définir $\Sat{M}{!A}$ comme signifiant que
+« $\Sat{M}{!A}[s]$ vaut pour toute assignation~$s$ ». Or cette
+condition équivaut à l'existence d'au moins une assignation~$s$ telle
+que $\Sat{M}{!A}[s]$. Nous devons introduire les assignations de
+!!{variable}s pour obtenir une définition convenable de la satisfaction
+des !!{formula}s; pour les !!{sentence}s, en revanche, la satisfaction
+est indépendante de ces assignations.
+
+Une fois $\Sat{M}{!A}$ défini, nous savons ce que signifient « cas » et
+« vrai dans » pour les !!{sentence}s de la logique du premier ordre.
+À partir de la définition de $\Sat{M}{!A}$ pour les !!{sentence}s, nous
+pouvons alors définir les notions sémantiques fondamentales de
+validité, de conséquence logique et de satisfaisabilité.
+!!^a{sentence} est \emph{valide}, $\Entails !A$, si toute
+!!{structure} le satisfait. L'!!{sentence}~$!A$ est une
+\emph{conséquence logique} d'un ensemble d'!!{sentence}s,
+$\Gamma \Entails !A$, si toute !!{structure} qui satisfait tous les
+!!{sentence}s de~$\Gamma$ satisfait aussi~$!A$. Enfin, un ensemble
+d'!!{sentence}s est \emph{satisfaisable} s'il existe
+!!a{structure} qui satisfait simultanément tous ses !!{sentence}s.
+
+Les !!{formula}s étant définies inductivement, et leur satisfaction
+étant à son tour définie par induction sur leur structure, nous pouvons
+recourir à l'induction pour démontrer des propriétés de notre
+sémantique et relier entre elles les notions sémantiques que nous
+venons de définir. Nous rassemblerons et démontrerons certaines de ces
+propriétés, en partie parce qu'elles sont intéressantes en elles-mêmes,
+mais surtout parce que beaucoup nous seront utiles lorsque nous
+étudierons la relation entre la sémantique et les systèmes de
+!!{derivation}. Pour cela, nous devrons aussi définir avec précision,
+c'est-à-dire par induction, plusieurs notions et opérations syntaxiques
+que nous n'avons pas encore mentionnées.
+
+\end{document}

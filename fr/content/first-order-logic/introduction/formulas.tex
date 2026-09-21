@@ -1,0 +1,94 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: formulas
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{fml}
+
+\section{\usetoken{P}{formula}}
+
+Voici la méthode que nous suivrons pour définir rigoureusement les
+!!{sentence}s de la logique du premier ordre et traiter les difficultés
+liées à l'emploi des !!{variable}s. Nous commençons par définir un
+ensemble \emph{différent} d'expressions : les !!{formula}s. Nous
+pourrons ensuite examiner le rôle qu'y jouent les !!{variable}s et, à
+partir des notions de !!{variable} « libre » et « liée », définir ce
+qu'est !!a{sentence}, à savoir !!a{formula} sans !!{variable} libre.
+Cette démarche ne rend pas seulement la définition d'« !!{sentence} »
+plus maniable : elle sera aussi essentielle à notre définition de la
+notion sémantique de satisfaction.
+
+Définissons « !!{formula} » pour un langage du premier ordre simple,
+qui ne contient qu'!!a{predicate}~$\Obj P$, !!a{constant}~$\Obj a$ et
+les seuls symboles logiques $\lnot$, $\land$ et~$\lexists$. Nos
+définitions complètes seront beaucoup plus générales : elles
+autoriseront une infinité de !!{predicate}s et de !!{constant}s. Nous
+considérerons aussi des !!{function}s qui, combinés avec des
+!!{constant}s et des !!{variable}s, forment des « termes ». Pour
+l'instant, $\Obj a$ et les variables seront nos seuls termes. Il nous
+faut une infinité de !!{variable}s. Nous prendrons officiellement pour
+variables les symboles $\Obj v_0$, $\Obj v_1$, \dots.
+
+\begin{defn}
+L'ensemble des \emph{!!{formula}s}~$\Frm$ est défini comme suit :
+\begin{enumerate}
+\item\ollabel{fmls-atom} $\Atom{\Obj P}{\Obj a}$ et
+  $\Atom{\Obj P}{\Obj v_i}$ sont des !!{formula}s ($i \in \Nat$).
+
+\tagitem{prvNot}{\ollabel{fmls-not}Si $!A$ est !!a{formula}, alors
+  $\lnot !A$ est !!a{formula}.}{}
+
+\tagitem{prvAnd}{Si $!A$ et $!B$ sont des !!{formula}s, alors
+  $(!A \land !B)$ est !!a{formula}.}{}
+
+\tagitem{prvEx}{\ollabel{fmls-ex}Si $!A$ est !!a{formula} et si $x$
+  est !!a{variable}, alors $\lexists[x][!A]$ est !!a{formula}.}{}
+
+\tagitem{limitClause}{\ollabel{fmls-limit}Rien d'autre n'est
+  !!a{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+La clause~\olref{fmls-atom} nous dit que $\Atom{\Obj P}{\Obj a}$ et
+$\Atom{\Obj P}{\Obj v_i}$ sont des !!{formula}s pour tout
+$i \in \Nat$. Ce sont les !!{formula}s dites \emph{atomiques}; elles
+fournissent notre point de départ. Les autres clauses donnent des
+moyens de former de nouvelles !!{formula}s à partir de celles qui sont
+déjà formées. Ainsi, la clause~\olref{fmls-not} montre que
+$\lnot \Atom{\Obj P}{\Obj v_2}$ est !!a{formula}, puisque
+$\Atom{\Obj P}{\Obj v_2}$ est déjà !!a{formula} d'après la
+clause~\olref{fmls-atom}. La clause~\olref{fmls-ex} montre ensuite que
+$\lexists[\Obj v_2][\lnot \Atom{\Obj P}{\Obj v_2}]$ est une autre
+!!{formula}, et ainsi de suite. La clause~\olref{fmls-limit} affirme que
+\emph{seules} les chaînes obtenues de cette manière sont des
+!!{formula}s. En particulier,
+$\lexists[\Obj v_0][\Atom{\Obj P}{\Obj a}]$ et
+$\lexists[\Obj v_0][\lexists[\Obj v_0][\Atom{\Obj P}{\Obj a}]]$
+\emph{sont} des !!{formula}s, tandis que
+$(\lnot \Atom{\Obj P}{\Obj a})$ n'en est pas une, à cause des
+parenthèses extérieures superflues.
+
+Cette manière de définir les !!{formula}s s'appelle une
+\emph{définition inductive}; elle permet de démontrer des propriétés des
+!!{formula}s au moyen d'une variante du raisonnement par induction
+appelée \emph{induction structurelle}. Ces deux notions sont présentées
+de façon générale dans les \olref[mth][ind][idf]{sec} et
+\olref[mth][ind][sti]{sec}, qu'il convient de revoir avant d'aborder
+les démonstrations ultérieures. L'idée est la suivante. Pour montrer
+qu'une propriété vaut pour toutes les !!{formula}s, on commence par
+montrer qu'elle vaut pour les !!{formula}s atomiques. On montre ensuite
+que, \emph{si} elle vaut pour une !!{formula}~$!A$ (et pour~$!B$),
+elle vaut \emph{aussi} pour $\lnot !A$, $(!A \land !B)$ et
+$\lexists[x][!A]$. Cela établit par exemple la propriété pour
+$\lexists[\Obj v_2][\lnot \Atom{\Obj P}{\Obj v_2}]$ : la première
+étape la donne pour la !!{formula} atomique
+$\Atom{\Obj P}{\Obj v_2}$; la deuxième la transmet à
+$\lnot \Atom{\Obj P}{\Obj v_2}$, puis à
+$\lexists[\Obj v_2][\lnot \Atom{\Obj P}{\Obj v_2}]$ elle-même.
+Puisque toutes les !!{formula}s sont engendrées inductivement à partir
+des !!{formula}s atomiques, le raisonnement vaut pour chacune d'elles.
+
+\end{document}

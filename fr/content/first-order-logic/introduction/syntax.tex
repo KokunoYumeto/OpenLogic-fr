@@ -1,0 +1,61 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: syntax
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{syn}
+
+\olsection{Syntaxe}
+
+Nous devons d'abord préciser quelles chaînes de symboles sont des
+!!{sentence}s de la logique du premier ordre. Nous le ferons plus loin ;
+pour l'instant, procédons seulement par l'exemple. Les éléments de
+base --- le vocabulaire --- de la logique du premier ordre se divisent
+en deux parties. La première comprend les symboles qui servent à
+désigner des choses particulières ou à en dire quelque chose. Nous
+désignons des choses à l'aide de !!{constant}s, et nous parlons des
+choses ainsi désignées à l'aide de !!{predicate}s. Nous pouvons par
+exemple employer $\Obj a$ comme !!a{constant} pour désigner une chose
+unique, puis en dire quelque chose au moyen de
+l'!!{sentence}~$\Atom{\Obj P}{\Obj a}$. Si vous avez en tête une
+signification pour « $\Obj a$ » et « $\Obj P$ », vous pouvez lire
+$\Atom{\Obj P}{\Obj a}$ comme une phrase de la langue courante (et vous
+l'avez probablement déjà fait lors de votre première initiation à la
+logique formelle). À partir de tels !!{sentence}s simples de la logique
+du premier ordre, on peut en construire de plus complexes à l'aide de
+la seconde partie du vocabulaire : les symboles logiques, c'est-à-dire
+les connecteurs et les quantificateurs. On peut ainsi former des
+expressions comme $(\Atom{\Obj P}{\Obj a} \land
+\Atom{\Obj Q}{\Obj b})$ ou~$\lexists[\Obj x][\Atom{\Obj P}{\Obj x}]$.
+
+Pour donner les définitions précises de la sémantique et des règles de
+nos systèmes de !!{derivation}, indispensables à une étude métalogique
+rigoureuse, il faut d'abord définir exactement ce qui constitue
+!!a{sentence} de la logique du premier ordre. L'idée générale est assez
+simple. Certains !!{sentence}s élémentaires, comme
+$\Atom{\Obj P}{\Obj a}$, ne font intervenir que des !!{predicate}s et
+des !!{constant}s ; on en forme ensuite de plus complexes au moyen des
+connecteurs et des quantificateurs. Mais quelles sont exactement les
+règles qui autorisent la formation de ces !!{sentence}s plus
+complexes ? Il faut les énoncer, faute de quoi l'expression
+« !!{sentence} de la logique du premier ordre » ne serait pas définie
+avec assez de précision. Plusieurs difficultés se présentent. Il faut
+d'abord déterminer exactement quelles chaînes sont des !!{sentence}s. Il
+faut ensuite le faire d'une manière qui permette de démontrer des
+résultats mathématiques sur \emph{tous} les !!{sentence}s. Enfin, il
+faudra définir précisément quelques opérations élémentaires sur les
+!!{sentence}s, telles que « remplacer chaque $\Obj x$ de~$!A$
+par~$\Obj b$ ». Les quantificateurs et les !!{variable}s de la logique
+du premier ordre rendent la bonne définition de cette opération moins
+évidente qu'il n'y paraît. Par exemple,
+$\lexists[\Obj x][\Atom{\Obj P}{\Obj a}]$ doit-il être considéré comme
+!!a{sentence} ? Qu'en est-il de
+$\lexists[\Obj x][\lexists[\Obj x][\Atom{\Obj P}{\Obj x}]]$ ? Et quel
+doit être le résultat de « remplacer $\Obj x$ par~$\Obj b$ dans
+$(\Atom{\Obj P}{\Obj x} \land
+\lexists[\Obj x][\Atom{\Obj P}{\Obj x}])$ » ?
+
+\end{document}

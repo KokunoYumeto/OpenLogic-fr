@@ -1,0 +1,74 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: soundness-completeness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{scp}
+
+\olsection{Correction et complétude}
+
+Nous présenterons aussi des systèmes de !!{derivation} pour la logique
+du premier ordre. Les logiciens en ont élaboré de nombreux, mais tous
+définissent la même relation de !!{derivability} entre
+!!{sentence}s. Nous disons que $!A$ est \emph{!!{derivable} à partir
+de~$\Gamma$}, et nous écrivons $\Gamma \Proves !A$, s'il existe une
+!!{derivation} d'un type défini avec précision. Les
+!!{derivation}s sont toujours des agencements finis de symboles :
+parfois des listes d'!!{sentence}s, parfois des structures plus
+complexes. Les systèmes de !!{derivation} doivent fournir un outil qui
+permet de déterminer si !!a{sentence} est entraîné par un
+ensemble~$\Gamma$. Pour qu'ils remplissent cette fonction, il faut que
+$\Gamma \Entails !A$ si et seulement si $\Gamma \Proves !A$.
+
+Si $\Gamma \Proves !A$ mais non $\Gamma \Entails !A$, notre système de
+!!{derivation} est trop fort : il démontre trop de choses. La propriété
+selon laquelle $\Gamma \Proves !A$ entraîne
+$\Gamma \Entails !A$ s'appelle la \emph{correction}; c'est une exigence
+minimale pour tout bon système de !!{derivation}. Inversement, si
+$\Gamma \Entails !A$ mais non $\Gamma \Proves !A$, notre système de
+!!{derivation} est trop faible : il ne démontre pas assez de choses. La
+propriété selon laquelle $\Gamma \Entails !A$ entraîne
+$\Gamma \Proves !A$ s'appelle la \emph{complétude}. La correction se
+démontre généralement assez facilement, par induction sur la structure
+des !!{derivation}s, elles-mêmes définies inductivement. La complétude
+est plus difficile à établir.
+
+La correction et la complétude ont plusieurs conséquences importantes.
+Si l'on peut !!{derive} une contradiction, telle que
+$!A \land \lnot !A$, d'un ensemble d'!!{sentence}s~$\Gamma$, celui-ci
+est dit \emph{incohérent}. Un ensemble incohérent~$\Gamma$ ne possède
+aucun modèle : il est insatisfaisable. La complétude donne la réciproque :
+tout ensemble~$\Gamma$ qui n'est pas incohérent, autrement dit qui est
+\emph{cohérent}, possède un modèle. Cette affirmation est en fait
+équivalente à la complétude, et c'est sous cette forme que nous
+démontrerons celle-ci. Le résultat est profond et peut paraître
+surprenant : le seul fait qu'on ne puisse pas !!{derive}
+$!A \land \lnot !A$ de~$\Gamma$ garantit l'existence
+d'!!a{structure} conforme à la description donnée par~$\Gamma$. La
+complétude répond donc à la question suivante : quels ensembles
+d'!!{sentence}s possèdent des modèles ? Exactement les ensembles
+cohérents.
+
+Les théorèmes de correction et de complétude ont deux conséquences
+majeures : les théorèmes de compacité et de L\"owenheim--Skolem. Ce sont
+des résultats importants de la théorie des modèles, qui servent à en
+établir beaucoup d'autres. Nous en avons déjà mentionné deux : la
+logique du premier ordre ne peut exprimer ni que le !!{domain}
+d'!!a{structure} est fini, ni qu'il est !!{nonenumerable}.
+
+Historiquement, il a fallu beaucoup de temps pour comprendre et mettre
+au point tout cet édifice : la définition de la syntaxe et de la
+sémantique de la logique du premier ordre, la définition de bons
+systèmes de !!{derivation}, la preuve de leur correction et de leur
+complétude, et la détermination de ce qui peut ou ne peut pas s'exprimer
+dans les langages du premier ordre. Nous savons aujourd'hui comment
+procéder, mais l'examen de tous les détails peut encore être déroutant
+et laborieux. Il est aussi essentiel, car les méthodes élaborées ici
+pour le langage formel de la logique du premier ordre sont employées
+partout en logique, en informatique et en linguistique. L'effort
+consacré aux détails finit donc par porter ses fruits.
+
+\end{document}

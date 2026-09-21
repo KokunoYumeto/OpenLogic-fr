@@ -87,3 +87,9 @@ OLP0040 reduction-alt.tex : transfert par surjection complété par suppression 
 - OLP-0124: The missing formula marker is restored before two occurrences of B in the quantified soundness argument.
 - OLP-0125: The two derived identity propositions are restricted to closed terms, matching the axiom schemata immediately above them.
 - OLP-0109: articles français ajoutés devant huit renvois nommés; deux invites d'exercice emploient désormais « du ». Aucune référence ni formule n'est modifiée.
+
+## Introduction à la logique du premier ordre (OLP-0139–OLP-0148)
+
+- OLP-0140 : limites de corps quantifié rétablies dans trois formules.
+- OLP-0143 : arité attribuée aux prédicats plutôt qu'aux constantes; valeurs de l'assignation rétablies dans le domaine `{0,1,2}`.
+- OLP-0146 : limites des arguments de `\Atom` et `\lforall` rétablies dans la formule universelle initiale.

@@ -1,4 +1,4 @@
-% Édition française OpenLogic : 101 unités sur 722, douze chapitres.
+% Édition française OpenLogic : 111 unités sur 722, treize chapitres.
 % LaTeX cumulatif contenant tout le texte de cette livraison.
 % Styles, figures, bibliographie et instructions sont fournis dans le ZIP source.
 % Les vingt importations du premier ordre inactives sont conservées dans les pilotes modulaires du ZIP.
@@ -25,6 +25,9 @@
 \newcommand{\FRoriginalsection}[2]{%
   section « \href{https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/history/set-theory/#1.tex}{#2} »\space
   (dans l'original anglais, hors de cette livraison)}
+\newcommand{\FRoriginalmethodsection}[2]{%
+  section « \href{https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/methods/induction/#1.tex}{#2} »\space
+  (dans l'original anglais, hors de cette livraison)}
 \csdef{FRexternal@his:set:mythology:sec}{%
   \FRoriginalsection{mythology}{More Myth than History?}}
 \csdef{FRexternal@his:set:limits:sec}{%
@@ -35,6 +38,10 @@
 \csdef{FRexternal@sth:ord-arithmetic::chap}{%
   chapitre « \href{https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/set-theory/ord-arithmetic/ord-arithmetic.tex}{Ordinal Arithmetic} »\space
   (dans l'original anglais, hors de cette livraison)}
+\csdef{FRexternal@mth:ind:idf:sec}{%
+  \FRoriginalmethodsection{inductive-definitions}{Inductive Definitions}}
+\csdef{FRexternal@mth:ind:sti:sec}{%
+  \FRoriginalmethodsection{structural-induction}{Structural Induction}}
 \RenewDocumentCommand \olref { o o o m } {%
   \begingroup
   \edef\FRrefkey{%
@@ -60,9 +67,9 @@
 \let\cleardoublepage\clearpage
 \pagestyle{plain}
 \setlength{\cftbeforechapterskip}{0.65em}
-\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles aux dérivations axiomatiques},
+\hypersetup{pdftitle={OpenLogic : édition française — Des ensembles à la logique du premier ordre},
 pdfauthor={Open Logic Project ; traduction française assistée par IA},
-pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle, séquents, déduction naturelle, tableaux et déduction axiomatique},
+pdfsubject={Ensembles, relations, fonctions, dénombrabilité, nombres, logique propositionnelle et logique du premier ordre, séquents, déduction naturelle, tableaux et déduction axiomatique},
 linkcolor=black,citecolor=black,urlcolor=blue}
 \begin{document}
 \frontmatter
@@ -73,15 +80,15 @@ linkcolor=black,citecolor=black,urlcolor=blue}
 \vspace{6mm}
 {\sffamily\LARGE Édition française\par}
 \vspace{14mm}
-{\sffamily\huge Des ensembles\\aux dérivations axiomatiques\par}
+{\sffamily\huge Des ensembles\\à la logique du premier ordre\par}
 \vspace{5mm}
 {\large Relations, fonctions, dénombrabilité et nombres :\\
 syntaxe, sémantique et systèmes de preuve\par}
 \vfill
-{\large Dixième livraison : douze chapitres\par}
+{\large Onzième livraison : treize chapitres\par}
 \vspace{4mm}
-Cette livraison comprend quatre-vingt-neuf sections et leurs douze chapitres d’organisation,
-soit 101 des 722 unités de contenu prévues pour l’édition intégrale.
+Cette livraison comprend quatre-vingt-dix-huit sections et leurs treize chapitres d’organisation,
+soit 111 des 722 unités de contenu prévues pour l’édition intégrale.
 Elle conserve les démonstrations, exemples, figures et exercices
 des chapitres originaux. Les précisions éditoriales sont signalées
 dans le texte. Les présentations alternatives de la dénombrabilité
@@ -89,13 +96,15 @@ sont réunies dans un même chapitre, avec leurs conventions explicites.
 Les six premiers chapitres vont des ensembles aux nombres et à l’infini :
 coupures de Dedekind, suites de Cauchy, récurrence et théorème de
 Schröder--Bernstein. Le septième introduit la syntaxe et la sémantique
-propositionnelles; le huitième présente les systèmes de preuve,
-leur correction et leur complétude. Le neuvième développe le calcul
-des séquents propositionnel. Le dixième expose la déduction naturelle :
+propositionnelles. Le huitième introduit la logique du premier ordre :
+formules, structures, satisfaction, énoncés, substitution, modèles,
+correction et complétude. Le neuvième présente les systèmes de preuve,
+leur correction et leur complétude. Le dixième développe le calcul
+des séquents propositionnel. Le onzième expose la déduction naturelle :
 règles, décharge des hypothèses, construction de dérivations,
-cohérence et théorème de correction. Le onzième présente les tableaux
+cohérence et théorème de correction. Le douzième présente les tableaux
 analytiques signés : règles, construction, dérivabilité, cohérence et
-correction. Le douzième développe les dérivations axiomatiques :
+correction. Le treizième développe les dérivations axiomatiques :
 schémas d’axiomes, modus ponens, théorème de la déduction, cohérence
 et correction.
 \vspace{7mm}
@@ -7235,6 +7244,780 @@ Démontrer le \olref[pl][syn][sem]{thm:sem-deduction}.
 \endgroup
 % END embedded source: content/propositional-logic/syntax-and-semantics/syntax-and-semantics.tex
 
+\tagtrue{FOL}
+
+% BEGIN embedded source: content/first-order-logic/introduction/introduction.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{introduction}
+
+
+\olchapter{fol}{int}{Introduction à la logique du premier ordre}
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/first-order-logic.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{first-order-logic}
+
+
+\olfileid[fr]{fol}{int}{fol}
+
+\olsection{Logique du premier ordre}
+
+Vous connaissez probablement déjà la logique du premier ordre grâce à
+votre première initiation à la logique formelle.\footnote{À vrai dire,
+nous le supposons plus ou moins !{} Si ce n'est pas le cas, vous pouvez
+consulter un manuel plus élémentaire, tel que \emph{forall x}
+\citep{Magnus2021}.} Vous la connaissez peut-être sous le nom de
+« logique quantifiée » ou de « logique des prédicats ». La logique du
+premier ordre est d'abord un langage formel. Elle possède donc un
+vocabulaire déterminé, et ses expressions sont des chaînes formées à
+partir de ce vocabulaire. Toutes les chaînes ne sont cependant pas
+admises. Il existe plusieurs sortes d'expressions admises : des termes,
+des !!{formula}s et des !!{sentence}s. Ce sont surtout les
+!!{sentence}s de la logique du premier ordre qui nous intéressent : ils
+fournissent un analogue formel des phrases déclaratives de la langue
+courante; à leur sujet, nous pouvons poser les questions qui intéressent
+habituellement les logiciens. Par exemple :
+\begin{itemize}
+    \item L'!!{sentence}~$!B$ découle-t-il logiquement de~$!A$ ?
+    \item L'!!{sentence}~$!A$ est-il logiquement vrai, logiquement faux
+      ou contingent ?
+    \item Les !!{sentence}s~$!A$ et~$!B$ sont-ils équivalents ?
+\end{itemize}
+
+Ces questions portent avant tout sur la « signification » des
+!!{sentence}s de la logique du premier ordre. Un philosophe analyserait
+par exemple la question de savoir si $!B$ découle logiquement de~$!A$ de
+la manière suivante : existe-t-il un cas où $!A$ est vrai et~$!B$ faux
+($!B$ ne découle pas de~$!A$), ou bien tout cas qui rend $!A$ vrai
+rend-il aussi~$!B$ vrai ($!B$ découle alors de~$!A$) ? Mais on ne nous a
+pas encore dit ce qu'est un « cas » : c'est précisément le rôle de la
+\emph{sémantique}. La sémantique de la logique du premier ordre fournit
+un modèle mathématiquement précis de l'idée intuitive de « cas » et,
+point essentiel, de ce que signifie pour !!a{sentence}~$!A$ d'être
+\emph{vrai dans} un cas. Nous appellerons !!a{structure} le modèle
+mathématiquement précis que nous allons élaborer. La relation qui rend
+précise l'expression « vrai dans » s'appelle la relation de
+\emph{satisfaction}. Nous définirons donc « $!A$ est satisfait
+dans~$\Struct{M}$ » (en symboles : $\Sat{M}{!A}$) pour des
+!!{sentence}s~$!A$ et des !!{structure}s~$\Struct{M}$. Cela fait, nous
+pourrons également définir avec précision d'autres termes sémantiques,
+comme « découle de » ou « est logiquement vrai ». Ces définitions
+permettront de décider, toujours avec une précision mathématique, si,
+par exemple,
+\[
+  \lforall[x][(!A(x) \lif !B(x))],\,
+  \lexists[x][!A(x)] \Entails \lexists[x][!B(x)].
+\]
+La réponse sera évidemment affirmative. Si vous avez déjà appris à
+symboliser des phrases de la langue courante en logique du premier
+ordre, vous reconnaîtrez ici, par exemple, la symbolisation de
+« Toutes les fourmis sont des insectes ; il existe des fourmis ; donc
+il existe des insectes ». Cet argument est manifestement valide : notre
+modèle mathématique de « découle de » pour le langage formel doit donc
+donner la même réponse.
+
+Vous vous souvenez probablement aussi, depuis votre première initiation
+à la logique formelle, qu'il existe des \emph{!!{derivation}s}. Si vous
+avez suivi un premier cours de logique formelle, on vous aura fait
+chercher de telles !!{derivation}s, peut-être même une
+!!{derivation} montrant que la conséquence logique ci-dessus vaut. Il
+existe de nombreuses manières de présenter des !!{derivation}s : vous
+avez peut-être pratiqué ce qu'on appelle la « déduction naturelle » ou
+les « arbres de vérité », mais il en existe bien d'autres. Les systèmes
+de !!{derivation} visent à fournir des outils qui permettent de répondre
+aux questions des logiciens énumérées plus haut. Ainsi, une
+!!{derivation} de déduction naturelle dont
+$\lforall[x][(!A(x) \lif !B(x))]$ et $\lexists[x][!A(x)]$ sont les
+prémisses, et $\lexists[x][!B(x)]$ la conclusion (la dernière ligne),
+\emph{établit} que $\lexists[x][!B(x)]$ découle logiquement de
+$\lforall[x][(!A(x) \lif !B(x))]$ et de $\lexists[x][!A(x)]$.
+
+Mais pourquoi ? À première vue, les systèmes de !!{derivation} n'ont
+rien à voir avec la sémantique : produire une !!{derivation} formelle
+consiste seulement à disposer des symboles d'une certaine manière,
+conformément à des règles ; ni les « cas » ni l'expression « vrai dans »
+n'y figurent. Le lien entre les systèmes de !!{derivation} et la
+sémantique doit être établi par une étude métalogique. Il faut notamment
+une démonstration mathématique du fait qu'une !!{derivation} formelle de
+$\lexists[x][!B(x)]$ à partir des prémisses
+$\lforall[x][(!A(x) \lif !B(x))]$ et $\lexists[x][!A(x)]$ est possible
+si et seulement si $\lforall[x][(!A(x) \lif !B(x))]$ et
+$\lexists[x][!A(x)]$ entraînent ensemble $\lexists[x][!B(x)]$. Avant
+d'y parvenir, il faut toutefois accomplir un travail minutieux pour
+définir correctement la syntaxe et la sémantique.
+
+\begin{editorial}
+Dans trois formules de la source, le second argument de
+$\lforall[x]$ se ferme après la conséquence logique entière, au lieu de
+se fermer après $(!A(x) \lif !B(x))$ ; une seconde fermeture apparaît
+alors à la fin. Les limites d'arguments voulues sont rétablies dans les
+trois occurrences.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/first-order-logic.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/syntax.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{syntax}
+
+
+\olfileid[fr]{fol}{int}{syn}
+
+\olsection{Syntaxe}
+
+Nous devons d'abord préciser quelles chaînes de symboles sont des
+!!{sentence}s de la logique du premier ordre. Nous le ferons plus loin ;
+pour l'instant, procédons seulement par l'exemple. Les éléments de
+base --- le vocabulaire --- de la logique du premier ordre se divisent
+en deux parties. La première comprend les symboles qui servent à
+désigner des choses particulières ou à en dire quelque chose. Nous
+désignons des choses à l'aide de !!{constant}s, et nous parlons des
+choses ainsi désignées à l'aide de !!{predicate}s. Nous pouvons par
+exemple employer $\Obj a$ comme !!a{constant} pour désigner une chose
+unique, puis en dire quelque chose au moyen de
+l'!!{sentence}~$\Atom{\Obj P}{\Obj a}$. Si vous avez en tête une
+signification pour « $\Obj a$ » et « $\Obj P$ », vous pouvez lire
+$\Atom{\Obj P}{\Obj a}$ comme une phrase de la langue courante (et vous
+l'avez probablement déjà fait lors de votre première initiation à la
+logique formelle). À partir de tels !!{sentence}s simples de la logique
+du premier ordre, on peut en construire de plus complexes à l'aide de
+la seconde partie du vocabulaire : les symboles logiques, c'est-à-dire
+les connecteurs et les quantificateurs. On peut ainsi former des
+expressions comme $(\Atom{\Obj P}{\Obj a} \land
+\Atom{\Obj Q}{\Obj b})$ ou~$\lexists[\Obj x][\Atom{\Obj P}{\Obj x}]$.
+
+Pour donner les définitions précises de la sémantique et des règles de
+nos systèmes de !!{derivation}, indispensables à une étude métalogique
+rigoureuse, il faut d'abord définir exactement ce qui constitue
+!!a{sentence} de la logique du premier ordre. L'idée générale est assez
+simple. Certains !!{sentence}s élémentaires, comme
+$\Atom{\Obj P}{\Obj a}$, ne font intervenir que des !!{predicate}s et
+des !!{constant}s ; on en forme ensuite de plus complexes au moyen des
+connecteurs et des quantificateurs. Mais quelles sont exactement les
+règles qui autorisent la formation de ces !!{sentence}s plus
+complexes ? Il faut les énoncer, faute de quoi l'expression
+« !!{sentence} de la logique du premier ordre » ne serait pas définie
+avec assez de précision. Plusieurs difficultés se présentent. Il faut
+d'abord déterminer exactement quelles chaînes sont des !!{sentence}s. Il
+faut ensuite le faire d'une manière qui permette de démontrer des
+résultats mathématiques sur \emph{tous} les !!{sentence}s. Enfin, il
+faudra définir précisément quelques opérations élémentaires sur les
+!!{sentence}s, telles que « remplacer chaque $\Obj x$ de~$!A$
+par~$\Obj b$ ». Les quantificateurs et les !!{variable}s de la logique
+du premier ordre rendent la bonne définition de cette opération moins
+évidente qu'il n'y paraît. Par exemple,
+$\lexists[\Obj x][\Atom{\Obj P}{\Obj a}]$ doit-il être considéré comme
+!!a{sentence} ? Qu'en est-il de
+$\lexists[\Obj x][\lexists[\Obj x][\Atom{\Obj P}{\Obj x}]]$ ? Et quel
+doit être le résultat de « remplacer $\Obj x$ par~$\Obj b$ dans
+$(\Atom{\Obj P}{\Obj x} \land
+\lexists[\Obj x][\Atom{\Obj P}{\Obj x}])$ » ?
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/syntax.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/formulas.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{formulas}
+
+
+\olfileid[fr]{fol}{int}{fml}
+
+\section{\usetoken{P}{formula}}
+
+Voici la méthode que nous suivrons pour définir rigoureusement les
+!!{sentence}s de la logique du premier ordre et traiter les difficultés
+liées à l'emploi des !!{variable}s. Nous commençons par définir un
+ensemble \emph{différent} d'expressions : les !!{formula}s. Nous
+pourrons ensuite examiner le rôle qu'y jouent les !!{variable}s et, à
+partir des notions de !!{variable} « libre » et « liée », définir ce
+qu'est !!a{sentence}, à savoir !!a{formula} sans !!{variable} libre.
+Cette démarche ne rend pas seulement la définition d'« !!{sentence} »
+plus maniable : elle sera aussi essentielle à notre définition de la
+notion sémantique de satisfaction.
+
+Définissons « !!{formula} » pour un langage du premier ordre simple,
+qui ne contient qu'!!a{predicate}~$\Obj P$, !!a{constant}~$\Obj a$ et
+les seuls symboles logiques $\lnot$, $\land$ et~$\lexists$. Nos
+définitions complètes seront beaucoup plus générales : elles
+autoriseront une infinité de !!{predicate}s et de !!{constant}s. Nous
+considérerons aussi des !!{function}s qui, combinés avec des
+!!{constant}s et des !!{variable}s, forment des « termes ». Pour
+l'instant, $\Obj a$ et les variables seront nos seuls termes. Il nous
+faut une infinité de !!{variable}s. Nous prendrons officiellement pour
+variables les symboles $\Obj v_0$, $\Obj v_1$, \dots.
+
+\begin{defn}
+L'ensemble des \emph{!!{formula}s}~$\Frm$ est défini comme suit :
+\begin{enumerate}
+\item\ollabel{fmls-atom} $\Atom{\Obj P}{\Obj a}$ et
+  $\Atom{\Obj P}{\Obj v_i}$ sont des !!{formula}s ($i \in \Nat$).
+
+\tagitem{prvNot}{\ollabel{fmls-not}Si $!A$ est !!a{formula}, alors
+  $\lnot !A$ est !!a{formula}.}{}
+
+\tagitem{prvAnd}{Si $!A$ et $!B$ sont des !!{formula}s, alors
+  $(!A \land !B)$ est !!a{formula}.}{}
+
+\tagitem{prvEx}{\ollabel{fmls-ex}Si $!A$ est !!a{formula} et si $x$
+  est !!a{variable}, alors $\lexists[x][!A]$ est !!a{formula}.}{}
+
+\tagitem{limitClause}{\ollabel{fmls-limit}Rien d'autre n'est
+  !!a{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+La clause~\olref{fmls-atom} nous dit que $\Atom{\Obj P}{\Obj a}$ et
+$\Atom{\Obj P}{\Obj v_i}$ sont des !!{formula}s pour tout
+$i \in \Nat$. Ce sont les !!{formula}s dites \emph{atomiques}; elles
+fournissent notre point de départ. Les autres clauses donnent des
+moyens de former de nouvelles !!{formula}s à partir de celles qui sont
+déjà formées. Ainsi, la clause~\olref{fmls-not} montre que
+$\lnot \Atom{\Obj P}{\Obj v_2}$ est !!a{formula}, puisque
+$\Atom{\Obj P}{\Obj v_2}$ est déjà !!a{formula} d'après la
+clause~\olref{fmls-atom}. La clause~\olref{fmls-ex} montre ensuite que
+$\lexists[\Obj v_2][\lnot \Atom{\Obj P}{\Obj v_2}]$ est une autre
+!!{formula}, et ainsi de suite. La clause~\olref{fmls-limit} affirme que
+\emph{seules} les chaînes obtenues de cette manière sont des
+!!{formula}s. En particulier,
+$\lexists[\Obj v_0][\Atom{\Obj P}{\Obj a}]$ et
+$\lexists[\Obj v_0][\lexists[\Obj v_0][\Atom{\Obj P}{\Obj a}]]$
+\emph{sont} des !!{formula}s, tandis que
+$(\lnot \Atom{\Obj P}{\Obj a})$ n'en est pas une, à cause des
+parenthèses extérieures superflues.
+
+Cette manière de définir les !!{formula}s s'appelle une
+\emph{définition inductive}; elle permet de démontrer des propriétés des
+!!{formula}s au moyen d'une variante du raisonnement par induction
+appelée \emph{induction structurelle}. Ces deux notions sont présentées
+de façon générale dans les \olref[mth][ind][idf]{sec} et
+\olref[mth][ind][sti]{sec}, qu'il convient de revoir avant d'aborder
+les démonstrations ultérieures. L'idée est la suivante. Pour montrer
+qu'une propriété vaut pour toutes les !!{formula}s, on commence par
+montrer qu'elle vaut pour les !!{formula}s atomiques. On montre ensuite
+que, \emph{si} elle vaut pour une !!{formula}~$!A$ (et pour~$!B$),
+elle vaut \emph{aussi} pour $\lnot !A$, $(!A \land !B)$ et
+$\lexists[x][!A]$. Cela établit par exemple la propriété pour
+$\lexists[\Obj v_2][\lnot \Atom{\Obj P}{\Obj v_2}]$ : la première
+étape la donne pour la !!{formula} atomique
+$\Atom{\Obj P}{\Obj v_2}$; la deuxième la transmet à
+$\lnot \Atom{\Obj P}{\Obj v_2}$, puis à
+$\lexists[\Obj v_2][\lnot \Atom{\Obj P}{\Obj v_2}]$ elle-même.
+Puisque toutes les !!{formula}s sont engendrées inductivement à partir
+des !!{formula}s atomiques, le raisonnement vaut pour chacune d'elles.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/formulas.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/satisfaction.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{satisfaction}
+
+
+\olfileid[fr]{fol}{int}{sat}
+
+\olsection{Satisfaction}
+
+Dès que nous savons ce que sont les !!{formula}s, nous pouvons déjà
+passer à la sémantique de la logique du premier ordre. La notion
+fondamentale est alors celle d'!!a{structure}. Pour notre langage
+simple, !!a{structure}~$\Struct M$ ne possède que trois composantes :
+un ensemble non vide $\Domain{M}$ appelé le \emph{!!{domain}}, l'objet
+que $\Obj a$ désigne dans~$\Struct M$, et l'ensemble des objets auxquels
+$\Obj P$ s'applique dans~$\Struct M$. L'objet désigné par~$\Obj a$ est
+noté~$\Assign{\Obj a}{M}$, et l'ensemble des objets auxquels $\Obj P$
+s'applique,~$\Assign{\Obj P}{M}$. !!^a{structure}~$\Struct{M}$ est donc
+constituée exactement de ces trois éléments :
+$\Domain{M}$, $\Assign{\Obj a}{M} \in \Domain{M}$ et
+$\Assign{\Obj P}{M} \subseteq \Domain{M}$. Le cas général sera plus
+complexe, puisqu'il y aura de nombreux !!{predicate}s et de nombreuses
+!!{constant}s, que les !!{predicate}s pourront avoir plusieurs places
+et que le langage comportera aussi des !!{function}s.
+
+Cela suffit pour définir la satisfaction des !!{formula}s qui ne
+contiennent pas de !!{variable}. L'idée consiste à donner une définition
+inductive qui reproduit la manière dont nous avons défini les
+!!{formula}s. Nous indiquons quand une formule atomique est satisfaite
+dans~$\Struct{M}$, puis, par exemple, quand $\lnot !A$ est satisfaite
+dans~$\Struct{M}$ en fonction de la satisfaction de~$!A$
+dans~$\Struct{M}$. Nous
+pourrions ainsi poser :
+\begin{enumerate}
+  \item $\Atom{\Obj P}{\Obj a}$ est satisfaite dans~$\Struct{M}$ si et
+  seulement si $\Assign{\Obj a}{M} \in \Assign{\Obj P}{M}$.
+  \item $\lnot !A$ est satisfaite dans~$\Struct{M}$ si et seulement si
+  $!A$ n'est pas satisfaite dans~$\Struct{M}$.
+  \item $(!A \land !B)$ est satisfaite dans~$\Struct{M}$ si et
+  seulement si $!A$ est satisfaite dans~$\Struct{M}$ et si $!B$ est
+  elle aussi satisfaite dans~$\Struct{M}$.
+\end{enumerate}
+Posons $\Domain{M} = \{0, 1, 2\}$,
+$\Assign{\Obj a}{M} = 1$ et
+$\Assign{\Obj P}{M} = \{1, 2\}$. Cette définition nous apprend que
+$\Atom{\Obj P}{\Obj a}$ est satisfaite dans~$\Struct{M}$, puisque
+$\Assign{\Obj a}{M} = 1 \in \{1,2\} = \Assign{\Obj P}{M}$. Elle nous
+apprend ensuite que $\lnot \Atom{\Obj P}{\Obj a}$ n'est pas satisfaite
+dans~$\Struct{M}$, que
+$\lnot\lnot \Atom{\Obj P}{\Obj a}$ l'est, et que
+$(\lnot \Atom{\Obj P}{\Obj a} \land \Atom{\Obj P}{\Obj a})$ ne l'est
+pas, et ainsi de suite.
+
+La difficulté apparaît lorsqu'il faut définir le cas des
+quantificateurs. Nous voudrions écrire quelque chose comme :
+« $\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$ est satisfaite si et
+seulement si $\Atom{\Obj P}{\Obj v_0}$ est satisfaite. » Mais la
+!!{structure}~$\Struct{M}$ ne nous dit pas comment traiter les
+!!{variable}s. Ce que nous voulons réellement dire, c'est que
+$\Atom{\Obj P}{\Obj v_0}$ est satisfaite \emph{pour une certaine valeur
+de~$\Obj v_0$}. Pour rendre cette idée précise, il nous faut un moyen
+d'associer des !!{element}s de~$\Domain{M}$ non seulement à $\Obj a$,
+mais aussi à~$\Obj v_0$. Nous introduisons à cette fin les
+\emph{assignations} de !!{variable}s. Une assignation de
+!!{variable}s est simplement une fonction~$s$ qui associe à chaque
+!!{variable} un !!{element} de~$\Domain{M}$, donc, dans notre exemple,
+l'un des
+éléments $0$, $1$ ou~$2$. Comme nous ne savons pas à l'avance quelles
+!!{variable}s pourront figurer dans !!a{formula}, nous ne pouvons pas
+restreindre les !!{variable}s auxquelles $s$ attribue une valeur. La
+solution la plus simple consiste à exiger que $s$ attribue une valeur à
+\emph{toutes} les !!{variable}s $\Obj v_0$, $\Obj v_1$, \dots\@; nous
+n'utiliserons que celles dont nous avons besoin.
+
+Au lieu de définir la satisfaction des !!{formula}s relativement à une
+seule !!{structure}, nous la définirons relativement à
+!!a{structure}~$\Struct{M}$ \emph{et} à une assignation de
+!!{variable}s~$s$, et nous écrirons en abrégé $\Sat{M}{!A}[s]$. Notre
+définition comportera désormais une clause supplémentaire pour les
+!!{formula}s atomiques contenant des !!{variable}s :
+\begin{enumerate}
+  \item $\Sat{M}{\Atom{\Obj P}{\Obj a}}[s]$ si et seulement si
+  $\Assign{\Obj a}{M} \in \Assign{\Obj P}{M}$.
+  \item $\Sat{M}{\Atom{\Obj P}{\Obj v_i}}[s]$ si et seulement si
+  $s(\Obj v_i) \in \Assign{\Obj P}{M}$.
+  \item $\Sat{M}{\lnot !A}[s]$ si et seulement si
+  $\Sat{M}{!A}[s]$ ne vaut pas.
+  \item $\Sat{M}{(!A \land !B)}[s]$ si et seulement si
+  $\Sat{M}{!A}[s]$ et $\Sat{M}{!B}[s]$.
+\end{enumerate}
+Une première difficulté est ainsi résolue : nous pouvons dire quand
+$\Struct{M}$ satisfait $\Atom{\Obj P}{\Obj v_0}$ pour la
+valeur~$s(\Obj v_0)$. Pour définir correctement la satisfaction de
+$\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$, une étape supplémentaire
+est nécessaire. Nous voulons que
+$\Sat{M}{\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]}[s]$ vaille si et
+seulement si
+$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[s']$ vaut pour \emph{une certaine}
+assignation~$s'$ qui attribue une valeur à~$\Obj v_0$. Cette valeur
+attribuée à~$\Obj v_0$ ne doit toutefois pas nécessairement
+être~$s(\Obj v_0)$. Introduisons la
+notation suivante : si $m \in \Domain{M}$,
+$\Subst{s}{m}{\Obj v_0}$ désigne l'assignation qui coïncide avec~$s$
+sur toutes les !!{variable}s autres que~$\Obj v_0$, et qui associe
+$m$ à~$\Obj v_0$. Nous pouvons alors ajouter la clause :
+\begin{enumerate}\setcounter{enumi}{4}
+  \item $\Sat{M}{\lexists[\Obj v_i][!A]}[s]$ si et seulement si
+  $\Sat{M}{!A}[\Subst{s}{m}{\Obj v_i}]$ pour un certain
+  $m \in \Domain{M}$.
+\end{enumerate}
+Cette définition donne-t-elle le résultat attendu ? Supposons que
+$s(\Obj v_i) = 0$ pour tout~$i \in \Nat$.
+$\Sat{M}{\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]}[s]$ vaut si et
+seulement s'il existe $m \in \Domain{M}$ tel que
+$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[\Subst{s}{m}{\Obj v_0}]$.
+Un tel $m$ existe : nous pouvons choisir $m = 1$ ou $m = 2$. Remarquons
+que l'énoncé est vrai même si la valeur~$s(\Obj v_0)$ que $s$
+elle-même attribue à~$\Obj v_0$, ici $0$, ne convient pas. Nous avons
+$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[\Subst{s}{1}{\Obj v_0}]$, mais non
+$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[s]$.
+
+Si tout cela paraît déroutant et lourd, c'est parce que cela l'est. La
+complexité supplémentaire est toutefois nécessaire pour donner une
+définition inductive précise de la satisfaction de toutes les
+!!{formula}s, et il nous faut une définition de ce genre pour rendre
+précises les notions sémantiques. D'autres méthodes existent, mais elles
+sont toutes aussi peu élégantes.
+
+\begin{editorial}
+Deux lapsus de la source sont corrigés. Dans la description du cas
+général, ce sont les prédicats, et non les constantes, qui peuvent
+avoir plusieurs places. Plus loin, l'assignation prend ses valeurs dans
+le domaine $\{0,1,2\}$ déjà fixé, et non dans l'ensemble
+$\{1,2,3\}$ indiqué par erreur.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/satisfaction.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/sentences.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{sentences}
+
+
+\olfileid[fr]{fol}{int}{snt}
+
+\olsection{\usetoken{P}{sentence}}
+
+Nous disposons maintenant d'une ébauche de définition de la
+satisfaction, c'est-à-dire de « vrai dans », pour les !!{structure}s et
+les !!{formula}s. Cette définition fait toutefois intervenir un
+élément supplémentaire, une assignation de !!{variable}s, alors que
+nous voulions définir les !!{sentence}s. Comment nous débarrasser des
+assignations, et que sont les !!{sentence}s ?
+
+Vous vous souvenez probablement, depuis votre première initiation à la
+logique formelle, d'une discussion sur la relation entre
+!!{variable}s et quantificateurs. Un quantificateur est toujours suivi
+d'!!a{variable}; dans la partie de l'!!{sentence} sur laquelle porte ce
+quantificateur, sa « portée », nous considérons que la !!{variable} est
+« liée » par ce quantificateur. La définition des !!{formula}s
+n'exigeait pas que chaque !!{variable} possède un quantificateur
+correspondant; les !!{variable}s dépourvues d'un tel quantificateur
+sont « libres » ou « non liées ». Nous appellerons !!{sentence}s toutes
+les !!{formula}s qui ne contiennent aucune !!{variable} libre.
+
+L'idée intuitive qui permet de reconnaître si une occurrence
+d'!!a{variable} dans !!a{formula}~$!A$ est liée ou libre, et quel
+quantificateur la lie, n'est guère difficile à saisir. Vous avez
+peut-être appris une méthode de vérification qui fait intervenir le
+comptage des parenthèses. Nous devons néanmoins exiger une définition
+précise. Comme nous avons défini les !!{formula}s par induction, nous
+pouvons également définir par induction les occurrences libres et
+liées d'!!a{variable}~$x$ dans !!a{formula}~$!A$. Pour notre langage
+simplifié, la définition pourrait prendre la forme suivante :
+\begin{enumerate}
+  \item Si $!A$ est atomique, toutes les occurrences de $x$ qui y
+  figurent sont libres; l'occurrence de $x$ dans~$\Atom{\Obj P}{x}$ est
+  donc libre.
+  \item Si $!A$ est de la forme $\lnot !B$, une occurrence de~$x$ dans
+  $\lnot !B$ est libre si et seulement si l'occurrence correspondante
+  de~$x$ est libre dans~$!B$; autrement dit, les occurrences libres de
+  variables dans~$!B$ sont exactement les occurrences correspondantes
+  dans~$\lnot !B$.
+  \item Si $!A$ est de la forme $(!B \land !C)$, une occurrence de~$x$
+  dans $(!B \land !C)$ est libre si et seulement si l'occurrence
+  correspondante de~$x$ est libre dans~$!B$ ou dans~$!C$.
+  \item Si $!A$ est de la forme $\lexists[x][!B]$, aucune occurrence
+  de~$x$ dans~$!A$ n'est libre. Si $!A$ est de la forme
+  $\lexists[y][!B]$, où $y$ est !!a{variable} différente de~$x$, une
+  occurrence de~$x$ dans $\lexists[y][!B]$ est libre si et seulement
+  si l'occurrence correspondante de~$x$ est libre dans~$!B$.
+\end{enumerate}
+
+Une fois les occurrences libres et liées des variables définies avec
+précision, il suffit de poser qu'!!a{sentence} est !!a{formula} sans
+occurrence libre d'!!a{variable}.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/sentences.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/semantic-notions.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{semantic-notions}
+
+
+\olfileid[fr]{fol}{int}{sem}
+
+\olsection{Notions sémantiques}
+
+Nous avons indiqué plus haut que, lorsque nous examinons si
+$\Sat{M}{!A}[s]$ vaut, nous convenons par commodité que~$s$ attribue
+des valeurs à toutes les !!{variable}s, mais que seules les valeurs
+attribuées aux !!{variable}s qui figurent dans~$!A$ sont utilisées. En
+réalité, seules comptent les valeurs des !!{variable}s \emph{libres}
+dans~$!A$. Comme nous veillons à tout justifier, nous démontrerons ce
+fait. Puisque les !!{sentence}s n'ont aucune variable libre, le choix
+de~$s$ ne joue aucun rôle dans leur satisfaction par
+!!a{structure}. Lorsque $!A$ est !!a{sentence}, nous pouvons donc
+définir $\Sat{M}{!A}$ comme signifiant que
+« $\Sat{M}{!A}[s]$ vaut pour toute assignation~$s$ ». Or cette
+condition équivaut à l'existence d'au moins une assignation~$s$ telle
+que $\Sat{M}{!A}[s]$. Nous devons introduire les assignations de
+!!{variable}s pour obtenir une définition convenable de la satisfaction
+des !!{formula}s; pour les !!{sentence}s, en revanche, la satisfaction
+est indépendante de ces assignations.
+
+Une fois $\Sat{M}{!A}$ défini, nous savons ce que signifient « cas » et
+« vrai dans » pour les !!{sentence}s de la logique du premier ordre.
+À partir de la définition de $\Sat{M}{!A}$ pour les !!{sentence}s, nous
+pouvons alors définir les notions sémantiques fondamentales de
+validité, de conséquence logique et de satisfaisabilité.
+!!^a{sentence} est \emph{valide}, $\Entails !A$, si toute
+!!{structure} le satisfait. L'!!{sentence}~$!A$ est une
+\emph{conséquence logique} d'un ensemble d'!!{sentence}s,
+$\Gamma \Entails !A$, si toute !!{structure} qui satisfait tous les
+!!{sentence}s de~$\Gamma$ satisfait aussi~$!A$. Enfin, un ensemble
+d'!!{sentence}s est \emph{satisfaisable} s'il existe
+!!a{structure} qui satisfait simultanément tous ses !!{sentence}s.
+
+Les !!{formula}s étant définies inductivement, et leur satisfaction
+étant à son tour définie par induction sur leur structure, nous pouvons
+recourir à l'induction pour démontrer des propriétés de notre
+sémantique et relier entre elles les notions sémantiques que nous
+venons de définir. Nous rassemblerons et démontrerons certaines de ces
+propriétés, en partie parce qu'elles sont intéressantes en elles-mêmes,
+mais surtout parce que beaucoup nous seront utiles lorsque nous
+étudierons la relation entre la sémantique et les systèmes de
+!!{derivation}. Pour cela, nous devrons aussi définir avec précision,
+c'est-à-dire par induction, plusieurs notions et opérations syntaxiques
+que nous n'avons pas encore mentionnées.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/semantic-notions.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/substitution.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{substitution}
+
+
+\olfileid[fr]{fol}{int}{sub}
+
+\olsection{Substitution}
+
+Examinons un exemple qui montrera comment les différentes notions
+s'articulent et comment l'élaboration de la syntaxe et de la sémantique
+prépare les études plus avancées qui suivront. Nos systèmes de
+!!{derivation} doivent nous permettre de !!{derive}
+$\Atom{\Obj P}{\Obj a}$ à partir de
+$\lforall[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$. Nous pourrions même
+vouloir présenter cela comme une règle d'inférence. Pour le faire, il
+faut toutefois l'énoncer dans toute sa généralité : non pas seulement
+pour $\Obj P$, $\Obj a$ et $\Obj v_0$, mais pour une
+!!{formula}~$!A$, un terme~$t$ et une !!{variable}~$x$ quelconques.
+Rappelons que les !!{constant}s sont des termes; nous considérerons
+aussi des termes plus complexes construits à partir de !!{constant}s
+et de !!{function}s. Nous voulons donc pouvoir dire quelque chose
+comme : « Chaque fois que l'on a dérivé
+$\lforall[x][!A(x)]$, on est fondé à inférer~$!A(t)$, résultat obtenu
+en supprimant $\lforall[x]$ et en remplaçant~$x$ par~$t$. » Mais que
+signifie exactement « remplacer $x$ par~$t$ » ? Quelle relation y
+a-t-il entre $!A(x)$ et~$!A(t)$ ? Cette opération est-elle toujours
+licite ?
+
+Pour rendre cette idée précise, nous définissons l'opération de
+\emph{substitution}. La substitution est en réalité délicate : nous ne
+pouvons pas simplement remplacer tous les~$x$ de~$!A$ par~$t$, et
+on ne peut pas toujours substituer n'importe quel terme~$t$ à
+n'importe quelle variable~$x$. Nous traiterons encore ces difficultés
+au moyen de définitions inductives. Une fois ces définitions données,
+la règle « inférer $!A(t)$ de $\lforall[x][!A(x)]$ » sera définie avec
+précision. Nous pourrons en outre montrer que cette règle d'inférence
+est correcte, au sens où $\lforall[x][!A(x)]$ entraîne~$!A(t)$. Pour le
+démontrer, il faudra encore établir un résultat dont l'utilité peut
+d'abord sembler obscure. Le fait que $\lforall[x][!A(x)]$
+entraîne~$!A(t)$ repose sur la propriété suivante : savoir si
+$\Sat{M}{!A(t)}$ vaut ne dépend que de la valeur du terme~$t$. Si $m$
+est l'!!{element} de~$\Domain{M}$
+désigné par~$t$, alors
+$\Sat{M}{!A(t)}[s]$ si et seulement si
+$\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$. Ce résultat reste vrai lorsque $t$
+contient des !!{variable}s, mais il faudra l'énoncer avec soin.
+
+\begin{editorial}
+Dans la première formule de la source, les arguments de
+$\Atom{\Obj P}{\Obj v_0}$ et de
+$\lforall[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$ sont délimités de façon
+incompatible avec les macros employées. Les limites correspondant à la
+formule universelle décrite par la phrase sont rétablies.
+\end{editorial}
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/substitution.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/models-theories.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{models-theories}
+
+
+\olfileid[fr]{fol}{int}{mod}
+
+\olsection{Modèles et théories}
+
+Une fois la syntaxe et la sémantique de la logique du premier ordre
+définies, nous pouvons étudier les propriétés des !!{structure}s et des
+notions sémantiques. Nous pouvons aussi définir des systèmes de
+!!{derivation} et les étudier. Étant donné un ensemble
+d'!!{sentence}s, nous pouvons demander quelles !!{structure}s rendent
+vrais tous les !!{sentence}s de cet ensemble. Si $\Gamma$ est un
+ensemble d'!!{sentence}s, toute !!{structure}~$\Struct{M}$ qui les
+satisfait est appelée un \emph{modèle de~$\Gamma$}. Nous pouvons partir
+de~$\Gamma$ et chercher ses modèles : quelle forme ont-ils ? Quelle
+taille minimale ou maximale peuvent-ils avoir ? Nous pouvons aussi
+partir d'une seule !!{structure}, ou d'une collection de
+!!{structure}s, et demander quels !!{sentence}s y sont vrais.
+Existe-t-il des !!{sentence}s qui \emph{caractérisent} ces
+!!{structure}s, au sens où ils sont vrais dans ces structures, et dans
+elles seules ? Ces questions relèvent de la \emph{théorie des
+modèles}. Elles sous-tendent également la \emph{méthode axiomatique},
+qui décrit une collection de !!{structure}s au moyen d'un ensemble
+d'!!{sentence}s, les axiomes d'une théorie. Cette méthode repose sur
+l'observation que les !!{sentence}s entraînés en logique du premier
+ordre par les axiomes sont exactement ceux qui sont vrais dans tous les
+modèles de ces axiomes.
+
+Prenons comme exemple très simple les préordres. Un préordre est une
+relation~$R$ sur un ensemble~$A$ qui est à la fois réflexive et
+transitive. Un ensemble~$A$ muni d'une relation binaire
+$R \subseteq A \times A$ fournit exactement les données nécessaires à
+!!a{structure} d'un langage du premier ordre ne possédant qu'un seul
+symbole de relation binaire~$\Obj P$ : nous posons
+$\Domain{M} = A$ et $\Assign{\Obj P}{M} = R$. Puisque $R$ est un
+préordre, elle est réflexive et transitive, et nous pouvons trouver un
+ensemble~$\Gamma$ d'!!{sentence}s de la logique du premier ordre qui
+expriment ces deux propriétés :
+\begin{align*}
+  & \lforall[\Obj v_0][\Atom{\Obj P}{\Obj v_0,\Obj v_0}]\\
+  & \lforall[\Obj v_0][\lforall[\Obj v_1][\lforall[\Obj v_2]
+    [((\Atom{\Obj P}{\Obj v_0,\Obj v_1} \land
+       \Atom{\Obj P}{\Obj v_1,\Obj v_2})
+      \lif \Atom{\Obj P}{\Obj v_0,\Obj v_2})]]]
+\end{align*}
+Ces !!{sentence}s symbolisent respectivement « pour tout~$x$, $Rxx$ »
+($R$ est réflexive) et « si $Rxy$ et $Ryz$, alors $Rxz$ » ($R$ est
+transitive). Nous voyons qu'!!a{structure}~$\Struct{M}$ est un modèle
+de ces deux !!{sentence}s~$\Gamma$ si et seulement si $R$, c'est-à-dire
+$\Assign{\Obj P}{M}$, est un préordre sur~$A$, c'est-à-dire sur
+$\Domain{M}$. Autrement dit, les modèles de~$\Gamma$ sont exactement
+les préordres. Toute propriété commune à tous les préordres qui peut
+s'exprimer dans le langage du premier ordre dont~$\Obj P$ est le seul
+!!{predicate}, comme la réflexivité et la transitivité ci-dessus, est
+entraînée par les deux !!{sentence}s de~$\Gamma$, et réciproquement.
+Tout résultat démontré au sujet des modèles de~$\Gamma$ vaut donc pour
+tous les préordres.
+
+Pour chaque théorie et chaque classe de modèles particulières, comme
+$\Gamma$ et la classe de tous les préordres, des questions intéressantes
+se posent sur ce qui peut et ne peut pas s'exprimer dans le langage du
+premier ordre correspondant. Certaines propriétés des !!{structure}s
+présentent un intérêt pour tous les langages et toutes les classes de
+modèles, notamment celles qui concernent la taille du !!{domain}. Pour
+tout~$n \in \PosInt$, on peut toujours exprimer que le !!{domain}
+contient exactement $n$~!!{element}s. On peut aussi exprimer, au moyen
+d'un ensemble infini d'!!{sentence}s, que le !!{domain} est infini. En
+revanche, on ne peut exprimer ni que le domaine est fini, ni qu'il est
+!!{nonenumerable}. Ces limitations des langages du premier ordre
+découlent des théorèmes de compacité et de L\"owenheim--Skolem.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/models-theories.tex
+
+
+
+% BEGIN embedded source: content/first-order-logic/introduction/soundness-completeness.tex
+\begingroup
+\expandafter\def\csname ol@sectioncs\endcsname{section}
+\def\olfilename{soundness-completeness}
+
+
+\olfileid[fr]{fol}{int}{scp}
+
+\olsection{Correction et complétude}
+
+Nous présenterons aussi des systèmes de !!{derivation} pour la logique
+du premier ordre. Les logiciens en ont élaboré de nombreux, mais tous
+définissent la même relation de !!{derivability} entre
+!!{sentence}s. Nous disons que $!A$ est \emph{!!{derivable} à partir
+de~$\Gamma$}, et nous écrivons $\Gamma \Proves !A$, s'il existe une
+!!{derivation} d'un type défini avec précision. Les
+!!{derivation}s sont toujours des agencements finis de symboles :
+parfois des listes d'!!{sentence}s, parfois des structures plus
+complexes. Les systèmes de !!{derivation} doivent fournir un outil qui
+permet de déterminer si !!a{sentence} est entraîné par un
+ensemble~$\Gamma$. Pour qu'ils remplissent cette fonction, il faut que
+$\Gamma \Entails !A$ si et seulement si $\Gamma \Proves !A$.
+
+Si $\Gamma \Proves !A$ mais non $\Gamma \Entails !A$, notre système de
+!!{derivation} est trop fort : il démontre trop de choses. La propriété
+selon laquelle $\Gamma \Proves !A$ entraîne
+$\Gamma \Entails !A$ s'appelle la \emph{correction}; c'est une exigence
+minimale pour tout bon système de !!{derivation}. Inversement, si
+$\Gamma \Entails !A$ mais non $\Gamma \Proves !A$, notre système de
+!!{derivation} est trop faible : il ne démontre pas assez de choses. La
+propriété selon laquelle $\Gamma \Entails !A$ entraîne
+$\Gamma \Proves !A$ s'appelle la \emph{complétude}. La correction se
+démontre généralement assez facilement, par induction sur la structure
+des !!{derivation}s, elles-mêmes définies inductivement. La complétude
+est plus difficile à établir.
+
+La correction et la complétude ont plusieurs conséquences importantes.
+Si l'on peut !!{derive} une contradiction, telle que
+$!A \land \lnot !A$, d'un ensemble d'!!{sentence}s~$\Gamma$, celui-ci
+est dit \emph{incohérent}. Un ensemble incohérent~$\Gamma$ ne possède
+aucun modèle : il est insatisfaisable. La complétude donne la réciproque :
+tout ensemble~$\Gamma$ qui n'est pas incohérent, autrement dit qui est
+\emph{cohérent}, possède un modèle. Cette affirmation est en fait
+équivalente à la complétude, et c'est sous cette forme que nous
+démontrerons celle-ci. Le résultat est profond et peut paraître
+surprenant : le seul fait qu'on ne puisse pas !!{derive}
+$!A \land \lnot !A$ de~$\Gamma$ garantit l'existence
+d'!!a{structure} conforme à la description donnée par~$\Gamma$. La
+complétude répond donc à la question suivante : quels ensembles
+d'!!{sentence}s possèdent des modèles ? Exactement les ensembles
+cohérents.
+
+Les théorèmes de correction et de complétude ont deux conséquences
+majeures : les théorèmes de compacité et de L\"owenheim--Skolem. Ce sont
+des résultats importants de la théorie des modèles, qui servent à en
+établir beaucoup d'autres. Nous en avons déjà mentionné deux : la
+logique du premier ordre ne peut exprimer ni que le !!{domain}
+d'!!a{structure} est fini, ni qu'il est !!{nonenumerable}.
+
+Historiquement, il a fallu beaucoup de temps pour comprendre et mettre
+au point tout cet édifice : la définition de la syntaxe et de la
+sémantique de la logique du premier ordre, la définition de bons
+systèmes de !!{derivation}, la preuve de leur correction et de leur
+complétude, et la détermination de ce qui peut ou ne peut pas s'exprimer
+dans les langages du premier ordre. Nous savons aujourd'hui comment
+procéder, mais l'examen de tous les détails peut encore être déroutant
+et laborieux. Il est aussi essentiel, car les méthodes élaborées ici
+pour le langage formel de la logique du premier ordre sont employées
+partout en logique, en informatique et en linguistique. L'effort
+consacré aux détails finit donc par porter ses fruits.
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/soundness-completeness.tex
+
+
+\OLEndChapterHook
+
+
+\endgroup
+% END embedded source: content/first-order-logic/introduction/introduction.tex
+
+\tagfalse{FOL}
 
 % BEGIN embedded source: content/first-order-logic/proof-systems/proof-systems.tex
 \begingroup
@@ -7933,7 +8716,7 @@ un séquent où cet !!{sentence} figure à droite.
 % END embedded source: content/first-order-logic/sequent-calculus/propositional-rules.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/sequent-calculus/structural-rules.tex
@@ -8505,7 +9288,7 @@ Construire des !!{derivation}s des séquents suivants :
 % END embedded source: content/first-order-logic/sequent-calculus/proving-things.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/sequent-calculus/proof-theoretic-notions.tex
@@ -8996,7 +9779,7 @@ Ces propriétés serviront dans la démonstration du théorème de complétude.
 % END embedded source: content/first-order-logic/sequent-calculus/provability-propositional.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/sequent-calculus/soundness.tex
@@ -9437,7 +10220,7 @@ ne satisfait donc $\Gamma$, qui est ainsi insatisfaisable.
 % END embedded source: content/first-order-logic/sequent-calculus/soundness.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 \OLEndChapterHook
 
@@ -9665,7 +10448,7 @@ pas que $!A$ soit lui-même dépourvu de négation.
 % END embedded source: content/first-order-logic/natural-deduction/propositional-rules.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/natural-deduction/derivations.tex
@@ -10118,7 +10901,7 @@ arbitraires.
 % END embedded source: content/first-order-logic/natural-deduction/proving-things.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/natural-deduction/proof-theoretic-notions.tex
@@ -10572,7 +11355,7 @@ Remarquons que $\Intro{\lif}$ permet de !!{discharge}
 % END embedded source: content/first-order-logic/natural-deduction/provability-propositional.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/natural-deduction/soundness.tex
@@ -10934,7 +11717,7 @@ en exercice restent à compléter par le lecteur.
 % END embedded source: content/first-order-logic/natural-deduction/soundness.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 \OLEndChapterHook
 
@@ -11125,7 +11908,7 @@ $\sFmla{\False}{!A}$. Elle n'est pas nécessaire : tout ensemble de
 % END embedded source: content/first-order-logic/tableaux/propositional-rules.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/tableaux/derivations.tex
@@ -11701,7 +12484,7 @@ Construire un !!{tableau} fermé pour chacun des ensembles suivants :
 % END embedded source: content/first-order-logic/tableaux/proving-things.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/tableaux/proof-theoretic-notions.tex
@@ -12273,7 +13056,7 @@ les applications de règle restent inchangés.
 % END embedded source: content/first-order-logic/tableaux/provability-propositional.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/tableaux/soundness.tex
@@ -12554,7 +13337,7 @@ $i=1$, \dots,~$n$. L'ensemble $\Gamma$ n'est donc pas satisfaisable.
 % END embedded source: content/first-order-logic/tableaux/soundness.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 \OLEndChapterHook
 
@@ -12731,7 +13514,7 @@ Nous abrégerons la règle du modus ponens par « \MP{} ».
 % END embedded source: content/first-order-logic/axiomatic-deduction/axioms-rules-propositional.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/axiomatic-deduction/proving-things.tex
@@ -12872,7 +13655,7 @@ des axiomes :
 % END embedded source: content/first-order-logic/axiomatic-deduction/proving-things.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/axiomatic-deduction/proof-theoretic-notions.tex
@@ -13177,7 +13960,7 @@ qui traite les règles~\QR{} est donnée dans la section suivante.}{}
 % END embedded source: content/first-order-logic/axiomatic-deduction/deduction-theorem.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/axiomatic-deduction/provability-consistency.tex
@@ -13386,7 +14169,7 @@ modifier les formules ni les conclusions.
 % END embedded source: content/first-order-logic/axiomatic-deduction/provability-propositional.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 
 % BEGIN embedded source: content/first-order-logic/axiomatic-deduction/soundness.tex
@@ -13555,7 +14338,7 @@ modifiée.
 % END embedded source: content/first-order-logic/axiomatic-deduction/soundness.tex
 
 
-% Importations du premier ordre inactives dans cette livraison propositionnelle.
+% Importations du premier ordre inactives dans cette livraison.
 
 \OLEndChapterHook
 
@@ -13563,7 +14346,6 @@ modifiée.
 \endgroup
 % END embedded source: content/first-order-logic/axiomatic-deduction/axiomatic-deduction.tex
 
-\tagtrue{FOL}
 \backmatter
 % La notice Frege1884 cite elle-même cette traduction anglaise.
 \nocite{Frege1953}

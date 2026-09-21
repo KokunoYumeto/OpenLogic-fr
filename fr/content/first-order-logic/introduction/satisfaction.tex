@@ -1,0 +1,140 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: satisfaction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{sat}
+
+\olsection{Satisfaction}
+
+Dès que nous savons ce que sont les !!{formula}s, nous pouvons déjà
+passer à la sémantique de la logique du premier ordre. La notion
+fondamentale est alors celle d'!!a{structure}. Pour notre langage
+simple, !!a{structure}~$\Struct M$ ne possède que trois composantes :
+un ensemble non vide $\Domain{M}$ appelé le \emph{!!{domain}}, l'objet
+que $\Obj a$ désigne dans~$\Struct M$, et l'ensemble des objets auxquels
+$\Obj P$ s'applique dans~$\Struct M$. L'objet désigné par~$\Obj a$ est
+noté~$\Assign{\Obj a}{M}$, et l'ensemble des objets auxquels $\Obj P$
+s'applique,~$\Assign{\Obj P}{M}$. !!^a{structure}~$\Struct{M}$ est donc
+constituée exactement de ces trois éléments :
+$\Domain{M}$, $\Assign{\Obj a}{M} \in \Domain{M}$ et
+$\Assign{\Obj P}{M} \subseteq \Domain{M}$. Le cas général sera plus
+complexe, puisqu'il y aura de nombreux !!{predicate}s et de nombreuses
+!!{constant}s, que les !!{predicate}s pourront avoir plusieurs places
+et que le langage comportera aussi des !!{function}s.
+
+Cela suffit pour définir la satisfaction des !!{formula}s qui ne
+contiennent pas de !!{variable}. L'idée consiste à donner une définition
+inductive qui reproduit la manière dont nous avons défini les
+!!{formula}s. Nous indiquons quand une formule atomique est satisfaite
+dans~$\Struct{M}$, puis, par exemple, quand $\lnot !A$ est satisfaite
+dans~$\Struct{M}$ en fonction de la satisfaction de~$!A$
+dans~$\Struct{M}$. Nous
+pourrions ainsi poser :
+\begin{enumerate}
+  \item $\Atom{\Obj P}{\Obj a}$ est satisfaite dans~$\Struct{M}$ si et
+  seulement si $\Assign{\Obj a}{M} \in \Assign{\Obj P}{M}$.
+  \item $\lnot !A$ est satisfaite dans~$\Struct{M}$ si et seulement si
+  $!A$ n'est pas satisfaite dans~$\Struct{M}$.
+  \item $(!A \land !B)$ est satisfaite dans~$\Struct{M}$ si et
+  seulement si $!A$ est satisfaite dans~$\Struct{M}$ et si $!B$ est
+  elle aussi satisfaite dans~$\Struct{M}$.
+\end{enumerate}
+Posons $\Domain{M} = \{0, 1, 2\}$,
+$\Assign{\Obj a}{M} = 1$ et
+$\Assign{\Obj P}{M} = \{1, 2\}$. Cette définition nous apprend que
+$\Atom{\Obj P}{\Obj a}$ est satisfaite dans~$\Struct{M}$, puisque
+$\Assign{\Obj a}{M} = 1 \in \{1,2\} = \Assign{\Obj P}{M}$. Elle nous
+apprend ensuite que $\lnot \Atom{\Obj P}{\Obj a}$ n'est pas satisfaite
+dans~$\Struct{M}$, que
+$\lnot\lnot \Atom{\Obj P}{\Obj a}$ l'est, et que
+$(\lnot \Atom{\Obj P}{\Obj a} \land \Atom{\Obj P}{\Obj a})$ ne l'est
+pas, et ainsi de suite.
+
+La difficulté apparaît lorsqu'il faut définir le cas des
+quantificateurs. Nous voudrions écrire quelque chose comme :
+« $\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$ est satisfaite si et
+seulement si $\Atom{\Obj P}{\Obj v_0}$ est satisfaite. » Mais la
+!!{structure}~$\Struct{M}$ ne nous dit pas comment traiter les
+!!{variable}s. Ce que nous voulons réellement dire, c'est que
+$\Atom{\Obj P}{\Obj v_0}$ est satisfaite \emph{pour une certaine valeur
+de~$\Obj v_0$}. Pour rendre cette idée précise, il nous faut un moyen
+d'associer des !!{element}s de~$\Domain{M}$ non seulement à $\Obj a$,
+mais aussi à~$\Obj v_0$. Nous introduisons à cette fin les
+\emph{assignations} de !!{variable}s. Une assignation de
+!!{variable}s est simplement une fonction~$s$ qui associe à chaque
+!!{variable} un !!{element} de~$\Domain{M}$, donc, dans notre exemple,
+l'un des
+éléments $0$, $1$ ou~$2$. Comme nous ne savons pas à l'avance quelles
+!!{variable}s pourront figurer dans !!a{formula}, nous ne pouvons pas
+restreindre les !!{variable}s auxquelles $s$ attribue une valeur. La
+solution la plus simple consiste à exiger que $s$ attribue une valeur à
+\emph{toutes} les !!{variable}s $\Obj v_0$, $\Obj v_1$, \dots\@; nous
+n'utiliserons que celles dont nous avons besoin.
+
+Au lieu de définir la satisfaction des !!{formula}s relativement à une
+seule !!{structure}, nous la définirons relativement à
+!!a{structure}~$\Struct{M}$ \emph{et} à une assignation de
+!!{variable}s~$s$, et nous écrirons en abrégé $\Sat{M}{!A}[s]$. Notre
+définition comportera désormais une clause supplémentaire pour les
+!!{formula}s atomiques contenant des !!{variable}s :
+\begin{enumerate}
+  \item $\Sat{M}{\Atom{\Obj P}{\Obj a}}[s]$ si et seulement si
+  $\Assign{\Obj a}{M} \in \Assign{\Obj P}{M}$.
+  \item $\Sat{M}{\Atom{\Obj P}{\Obj v_i}}[s]$ si et seulement si
+  $s(\Obj v_i) \in \Assign{\Obj P}{M}$.
+  \item $\Sat{M}{\lnot !A}[s]$ si et seulement si
+  $\Sat{M}{!A}[s]$ ne vaut pas.
+  \item $\Sat{M}{(!A \land !B)}[s]$ si et seulement si
+  $\Sat{M}{!A}[s]$ et $\Sat{M}{!B}[s]$.
+\end{enumerate}
+Une première difficulté est ainsi résolue : nous pouvons dire quand
+$\Struct{M}$ satisfait $\Atom{\Obj P}{\Obj v_0}$ pour la
+valeur~$s(\Obj v_0)$. Pour définir correctement la satisfaction de
+$\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$, une étape supplémentaire
+est nécessaire. Nous voulons que
+$\Sat{M}{\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]}[s]$ vaille si et
+seulement si
+$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[s']$ vaut pour \emph{une certaine}
+assignation~$s'$ qui attribue une valeur à~$\Obj v_0$. Cette valeur
+attribuée à~$\Obj v_0$ ne doit toutefois pas nécessairement
+être~$s(\Obj v_0)$. Introduisons la
+notation suivante : si $m \in \Domain{M}$,
+$\Subst{s}{m}{\Obj v_0}$ désigne l'assignation qui coïncide avec~$s$
+sur toutes les !!{variable}s autres que~$\Obj v_0$, et qui associe
+$m$ à~$\Obj v_0$. Nous pouvons alors ajouter la clause :
+\begin{enumerate}\setcounter{enumi}{4}
+  \item $\Sat{M}{\lexists[\Obj v_i][!A]}[s]$ si et seulement si
+  $\Sat{M}{!A}[\Subst{s}{m}{\Obj v_i}]$ pour un certain
+  $m \in \Domain{M}$.
+\end{enumerate}
+Cette définition donne-t-elle le résultat attendu ? Supposons que
+$s(\Obj v_i) = 0$ pour tout~$i \in \Nat$.
+$\Sat{M}{\lexists[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]}[s]$ vaut si et
+seulement s'il existe $m \in \Domain{M}$ tel que
+$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[\Subst{s}{m}{\Obj v_0}]$.
+Un tel $m$ existe : nous pouvons choisir $m = 1$ ou $m = 2$. Remarquons
+que l'énoncé est vrai même si la valeur~$s(\Obj v_0)$ que $s$
+elle-même attribue à~$\Obj v_0$, ici $0$, ne convient pas. Nous avons
+$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[\Subst{s}{1}{\Obj v_0}]$, mais non
+$\Sat{M}{\Atom{\Obj P}{\Obj v_0}}[s]$.
+
+Si tout cela paraît déroutant et lourd, c'est parce que cela l'est. La
+complexité supplémentaire est toutefois nécessaire pour donner une
+définition inductive précise de la satisfaction de toutes les
+!!{formula}s, et il nous faut une définition de ce genre pour rendre
+précises les notions sémantiques. D'autres méthodes existent, mais elles
+sont toutes aussi peu élégantes.
+
+\begin{editorial}
+Deux lapsus de la source sont corrigés. Dans la description du cas
+général, ce sont les prédicats, et non les constantes, qui peuvent
+avoir plusieurs places. Plus loin, l'assignation prend ses valeurs dans
+le domaine $\{0,1,2\}$ déjà fixé, et non dans l'ensemble
+$\{1,2,3\}$ indiqué par erreur.
+\end{editorial}
+
+\end{document}

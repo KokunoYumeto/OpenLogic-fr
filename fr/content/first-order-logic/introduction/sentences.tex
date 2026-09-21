@@ -1,0 +1,63 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: sentences
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{snt}
+
+\olsection{\usetoken{P}{sentence}}
+
+Nous disposons maintenant d'une ébauche de définition de la
+satisfaction, c'est-à-dire de « vrai dans », pour les !!{structure}s et
+les !!{formula}s. Cette définition fait toutefois intervenir un
+élément supplémentaire, une assignation de !!{variable}s, alors que
+nous voulions définir les !!{sentence}s. Comment nous débarrasser des
+assignations, et que sont les !!{sentence}s ?
+
+Vous vous souvenez probablement, depuis votre première initiation à la
+logique formelle, d'une discussion sur la relation entre
+!!{variable}s et quantificateurs. Un quantificateur est toujours suivi
+d'!!a{variable}; dans la partie de l'!!{sentence} sur laquelle porte ce
+quantificateur, sa « portée », nous considérons que la !!{variable} est
+« liée » par ce quantificateur. La définition des !!{formula}s
+n'exigeait pas que chaque !!{variable} possède un quantificateur
+correspondant; les !!{variable}s dépourvues d'un tel quantificateur
+sont « libres » ou « non liées ». Nous appellerons !!{sentence}s toutes
+les !!{formula}s qui ne contiennent aucune !!{variable} libre.
+
+L'idée intuitive qui permet de reconnaître si une occurrence
+d'!!a{variable} dans !!a{formula}~$!A$ est liée ou libre, et quel
+quantificateur la lie, n'est guère difficile à saisir. Vous avez
+peut-être appris une méthode de vérification qui fait intervenir le
+comptage des parenthèses. Nous devons néanmoins exiger une définition
+précise. Comme nous avons défini les !!{formula}s par induction, nous
+pouvons également définir par induction les occurrences libres et
+liées d'!!a{variable}~$x$ dans !!a{formula}~$!A$. Pour notre langage
+simplifié, la définition pourrait prendre la forme suivante :
+\begin{enumerate}
+  \item Si $!A$ est atomique, toutes les occurrences de $x$ qui y
+  figurent sont libres; l'occurrence de $x$ dans~$\Atom{\Obj P}{x}$ est
+  donc libre.
+  \item Si $!A$ est de la forme $\lnot !B$, une occurrence de~$x$ dans
+  $\lnot !B$ est libre si et seulement si l'occurrence correspondante
+  de~$x$ est libre dans~$!B$; autrement dit, les occurrences libres de
+  variables dans~$!B$ sont exactement les occurrences correspondantes
+  dans~$\lnot !B$.
+  \item Si $!A$ est de la forme $(!B \land !C)$, une occurrence de~$x$
+  dans $(!B \land !C)$ est libre si et seulement si l'occurrence
+  correspondante de~$x$ est libre dans~$!B$ ou dans~$!C$.
+  \item Si $!A$ est de la forme $\lexists[x][!B]$, aucune occurrence
+  de~$x$ dans~$!A$ n'est libre. Si $!A$ est de la forme
+  $\lexists[y][!B]$, où $y$ est !!a{variable} différente de~$x$, une
+  occurrence de~$x$ dans $\lexists[y][!B]$ est libre si et seulement
+  si l'occurrence correspondante de~$x$ est libre dans~$!B$.
+\end{enumerate}
+
+Une fois les occurrences libres et liées des variables définies avec
+précision, il suffit de poser qu'!!a{sentence} est !!a{formula} sans
+occurrence libre d'!!a{variable}.
+
+\end{document}

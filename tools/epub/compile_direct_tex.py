@@ -1,10 +1,12 @@
 """Invoked only inside the already assigned guarded worker."""
+from __future__ import annotations
+
 from pathlib import Path
+import hashlib
+import json
 import os
 import shutil
 import subprocess
-import json
-import hashlib
 
 
 HERE = Path(__file__).resolve().parent
@@ -30,7 +32,8 @@ for index, command in enumerate(commands, 1):
     print("Completed pass", index, flush=True)
 log = (SOURCE / "reader.log").read_text(encoding="utf-8", errors="replace")
 findings = [
-    line for line in log.splitlines()
+    line
+    for line in log.splitlines()
     if any(marker in line for marker in ["Warning", "Overfull", "Undefined", "undefined references"])
 ]
 pdf = SOURCE / "reader.pdf"

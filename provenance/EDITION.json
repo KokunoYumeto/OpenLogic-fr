@@ -2,7 +2,7 @@
   "source_repository": "https://github.com/OpenLogicProject/OpenLogic",
   "source_revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
   "frozen_units": 722,
-  "published_scope_units": 101,
+  "published_scope_units": 111,
   "published_ids": [
     "OLP-0005",
     "OLP-0007",
@@ -104,10 +104,20 @@
     "OLP-0119",
     "OLP-0121",
     "OLP-0122",
-    "OLP-0124"
+    "OLP-0124",
+    "OLP-0139",
+    "OLP-0140",
+    "OLP-0141",
+    "OLP-0142",
+    "OLP-0143",
+    "OLP-0144",
+    "OLP-0145",
+    "OLP-0146",
+    "OLP-0147",
+    "OLP-0148"
   ],
-  "untranslated_units": 600,
-  "drafted_units": 122,
+  "untranslated_units": 590,
+  "drafted_units": 132,
   "reader_excluded_drafts": [
     "OLP-0055",
     "OLP-0072",
@@ -131,12 +141,12 @@
     "OLP-0123",
     "OLP-0125"
   ],
-  "remaining_reader_units": 621,
+  "remaining_reader_units": 611,
   "full_edition_complete": false,
-  "version": "v0.10.0-axiomatic-deduction",
-  "chapters": 12,
-  "sections": 89,
-  "pages": 150,
+  "version": "v0.11.0-first-order-introduction",
+  "chapters": 13,
+  "sections": 98,
+  "pages": 159,
   "exercises": 106,
   "canon_full_pdfs_redistributed": false
 }

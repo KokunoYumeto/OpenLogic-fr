@@ -1,0 +1,78 @@
+% Part: first-order-logic
+% Chapter: introduction
+% Section: models-theories
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{int}{mod}
+
+\olsection{Modèles et théories}
+
+Une fois la syntaxe et la sémantique de la logique du premier ordre
+définies, nous pouvons étudier les propriétés des !!{structure}s et des
+notions sémantiques. Nous pouvons aussi définir des systèmes de
+!!{derivation} et les étudier. Étant donné un ensemble
+d'!!{sentence}s, nous pouvons demander quelles !!{structure}s rendent
+vrais tous les !!{sentence}s de cet ensemble. Si $\Gamma$ est un
+ensemble d'!!{sentence}s, toute !!{structure}~$\Struct{M}$ qui les
+satisfait est appelée un \emph{modèle de~$\Gamma$}. Nous pouvons partir
+de~$\Gamma$ et chercher ses modèles : quelle forme ont-ils ? Quelle
+taille minimale ou maximale peuvent-ils avoir ? Nous pouvons aussi
+partir d'une seule !!{structure}, ou d'une collection de
+!!{structure}s, et demander quels !!{sentence}s y sont vrais.
+Existe-t-il des !!{sentence}s qui \emph{caractérisent} ces
+!!{structure}s, au sens où ils sont vrais dans ces structures, et dans
+elles seules ? Ces questions relèvent de la \emph{théorie des
+modèles}. Elles sous-tendent également la \emph{méthode axiomatique},
+qui décrit une collection de !!{structure}s au moyen d'un ensemble
+d'!!{sentence}s, les axiomes d'une théorie. Cette méthode repose sur
+l'observation que les !!{sentence}s entraînés en logique du premier
+ordre par les axiomes sont exactement ceux qui sont vrais dans tous les
+modèles de ces axiomes.
+
+Prenons comme exemple très simple les préordres. Un préordre est une
+relation~$R$ sur un ensemble~$A$ qui est à la fois réflexive et
+transitive. Un ensemble~$A$ muni d'une relation binaire
+$R \subseteq A \times A$ fournit exactement les données nécessaires à
+!!a{structure} d'un langage du premier ordre ne possédant qu'un seul
+symbole de relation binaire~$\Obj P$ : nous posons
+$\Domain{M} = A$ et $\Assign{\Obj P}{M} = R$. Puisque $R$ est un
+préordre, elle est réflexive et transitive, et nous pouvons trouver un
+ensemble~$\Gamma$ d'!!{sentence}s de la logique du premier ordre qui
+expriment ces deux propriétés :
+\begin{align*}
+  & \lforall[\Obj v_0][\Atom{\Obj P}{\Obj v_0,\Obj v_0}]\\
+  & \lforall[\Obj v_0][\lforall[\Obj v_1][\lforall[\Obj v_2]
+    [((\Atom{\Obj P}{\Obj v_0,\Obj v_1} \land
+       \Atom{\Obj P}{\Obj v_1,\Obj v_2})
+      \lif \Atom{\Obj P}{\Obj v_0,\Obj v_2})]]]
+\end{align*}
+Ces !!{sentence}s symbolisent respectivement « pour tout~$x$, $Rxx$ »
+($R$ est réflexive) et « si $Rxy$ et $Ryz$, alors $Rxz$ » ($R$ est
+transitive). Nous voyons qu'!!a{structure}~$\Struct{M}$ est un modèle
+de ces deux !!{sentence}s~$\Gamma$ si et seulement si $R$, c'est-à-dire
+$\Assign{\Obj P}{M}$, est un préordre sur~$A$, c'est-à-dire sur
+$\Domain{M}$. Autrement dit, les modèles de~$\Gamma$ sont exactement
+les préordres. Toute propriété commune à tous les préordres qui peut
+s'exprimer dans le langage du premier ordre dont~$\Obj P$ est le seul
+!!{predicate}, comme la réflexivité et la transitivité ci-dessus, est
+entraînée par les deux !!{sentence}s de~$\Gamma$, et réciproquement.
+Tout résultat démontré au sujet des modèles de~$\Gamma$ vaut donc pour
+tous les préordres.
+
+Pour chaque théorie et chaque classe de modèles particulières, comme
+$\Gamma$ et la classe de tous les préordres, des questions intéressantes
+se posent sur ce qui peut et ne peut pas s'exprimer dans le langage du
+premier ordre correspondant. Certaines propriétés des !!{structure}s
+présentent un intérêt pour tous les langages et toutes les classes de
+modèles, notamment celles qui concernent la taille du !!{domain}. Pour
+tout~$n \in \PosInt$, on peut toujours exprimer que le !!{domain}
+contient exactement $n$~!!{element}s. On peut aussi exprimer, au moyen
+d'un ensemble infini d'!!{sentence}s, que le !!{domain} est infini. En
+revanche, on ne peut exprimer ni que le domaine est fini, ni qu'il est
+!!{nonenumerable}. Ces limitations des langages du premier ordre
+découlent des théorèmes de compacité et de L\"owenheim--Skolem.
+
+\end{document}
