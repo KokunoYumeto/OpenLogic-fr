@@ -1,24 +1,39 @@
-# OpenLogic — édition française
+# OpenLogic : édition française
 
-Cette onzième livraison de l’édition française d’OpenLogic réunit treize chapitres, des ensembles à la logique du premier ordre : ensembles, relations, fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, introduction à la logique du premier ordre, systèmes de dérivation, calcul des séquents, déduction naturelle, tableaux analytiques signés et déduction axiomatique. Le nouveau chapitre présente le langage du premier ordre, les formules, la satisfaction, les énoncés, les notions sémantiques, la substitution, les modèles et théories, ainsi que la correction et la complétude. Les démonstrations, exemples et exercices du projet original sont conservés ; quatre défauts locaux de la source sont corrigés et signalés.
+Traduction française, en cours, du manuel de logique mathématique *Open Logic Text* (The Open Logic Project). La onzième
+livraison (v0.11.0) réunit treize chapitres, des ensembles à la logique du premier ordre : ensembles, relations,
+fonctions, dénombrabilité, nombres, ensembles infinis, logique propositionnelle, introduction à la logique du premier
+ordre, systèmes de dérivation, calcul des séquents, déduction naturelle, tableaux analytiques signés et déduction
+axiomatique. Le volume compte 159 pages, 98 sections et 106 exercices.
 
-Le volume comprend 159 pages, 98 sections et 106 exercices. Il intègre 111 des 722 unités TeX de la révision `9620cc73f9c8e0ad003c514a5d3748f29611c4c0` d’OpenLogic. Au total, 132 unités sont rédigées ; vingt et une restent hors du volume, dont vingt sections de systèmes de preuve qui attendent leurs dépendances complètes de syntaxe et de sémantique du premier ordre. Il reste 590 unités à traduire et 611 à intégrer au lecteur. L’édition complète est en cours.
+[Lire le PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-01-openlogic-fr-ensembles-logique-premier-ordre.pdf) ·
+[EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-04-openlogic-fr-ensembles-logique-premier-ordre.epub) ·
+[Toutes les livraisons](https://github.com/KokunoYumeto/OpenLogic-fr/releases)
 
-Avant la poursuite du travail, trois chapitres ont fait l’objet d’un réaudit ciblé de trois pages chacun, soit neuf pages et 3 916 mots comparés aux sources anglaises. Aucun défaut majeur, mathématique, logique, d’omission ou de rendu n’a été relevé ; cinq corrections mineures ont été intégrées. Ce contrôle est l’échantillon demandé, et non une nouvelle collation ligne à ligne de chaque page des trois chapitres.
+## Réalisation
 
-Le PDF est accompagné du LaTeX cumulatif, d’une archive des sources modulaires et des dépendances de reconstruction, ainsi que d’un EPUB redistribuable. Celui-ci contient 5 935 expressions MathML natives, 146 figures SVG décrites, 106 exercices et 88 notes ; EPUBCheck 5.3.0 ne signale aucune erreur ni aucun avertissement. Les références françaises effectivement consultées, les décisions de traduction et les questions de révision sont documentées dans l’archive. La traduction est assistée par IA ; les contrôles éditoriaux et techniques ne constituent pas une validation humaine indépendante.
+La traduction est réalisée par IA ; les contrôles éditoriaux et techniques ne constituent pas une validation humaine
+indépendante. Les démonstrations, exemples et exercices du projet original sont conservés ; quatre défauts locaux de la
+source sont corrigés et signalés. Un réaudit ciblé de trois chapitres (neuf pages, 3 916 mots comparés aux sources
+anglaises) n’a relevé aucun défaut majeur, mathématique, logique, d’omission ou de rendu ; cinq corrections mineures
+ont été intégrées. L’EPUB contient 5 935 expressions MathML natives, 146 figures SVG décrites, 106 exercices et 88
+notes ; EPUBCheck 5.3.0 ne signale aucune erreur ni aucun avertissement. Les références françaises consultées et les
+décisions de traduction sont dans `provenance/`, les questions de révision dans `review/`.
 
-[Projet OpenLogic](https://openlogicproject.org/) · [Collection des traductions](https://kokunoyumeto.github.io/OpenLogic-translations/).
+## État
 
+Le volume intègre 111 des 722 unités TeX de la révision `9620cc73f9c8e0ad003c514a5d3748f29611c4c0` d’OpenLogic.
+132 unités sont rédigées ; vingt et une restent hors du volume, dont vingt sections de systèmes de preuve qui attendent
+leurs dépendances de syntaxe et de sémantique du premier ordre. Il reste 590 unités à traduire et 611 à intégrer au
+lecteur.
 
-## Lire et télécharger
+## Contenu
 
-1. [Lire les treize chapitres en PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-01-openlogic-fr-ensembles-logique-premier-ordre.pdf)
-2. [LaTeX cumulatif complet](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-02-openlogic-fr-ensembles-logique-premier-ordre.tex)
-3. [Sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-03-openlogic-fr-ensembles-logique-premier-ordre-sources.zip)
-4. [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-04-openlogic-fr-ensembles-logique-premier-ordre.epub)
-
-[Archive pérenne v0.11](https://doi.org/10.5281/zenodo.22866000) · [Lignée Zenodo](https://doi.org/10.5281/zenodo.22650157) · [Toutes les livraisons GitHub](https://github.com/KokunoYumeto/OpenLogic-fr/releases).
+Livraison [v0.11.0-first-order-introduction](https://github.com/KokunoYumeto/OpenLogic-fr/releases/tag/v0.11.0-first-order-introduction) :
+[PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-01-openlogic-fr-ensembles-logique-premier-ordre.pdf),
+[LaTeX cumulatif complet](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-02-openlogic-fr-ensembles-logique-premier-ordre.tex),
+[sources et reconstruction PDF/EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-03-openlogic-fr-ensembles-logique-premier-ordre-sources.zip),
+[EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v0.11.0-first-order-introduction/00-00-00-00-04-openlogic-fr-ensembles-logique-premier-ordre.epub).
 
 Les éditions historiques disposent chacune de leur PDF, de leur LaTeX cumulatif complet et de leur ZIP de sources :
 
@@ -30,11 +45,10 @@ Les éditions historiques disposent chacune de leur PDF, de leur LaTeX cumulatif
 
 Chaque LaTeX cumulatif contient tout le texte de sa livraison et reproduit exactement le PDF correspondant, avec les dépendances de son ZIP. Les fichiers et liens historiques restent publics.
 
-## Sources et révision
+Le dossier `fr/` contient le texte français modulaire et le LaTeX cumulatif ; `upstream/` conserve la source anglaise
+figée et les composants du projet (sa présence ne compte pas comme traduction).
 
-Le dossier fr/ contient le texte français modulaire et le LaTeX cumulatif. Le dossier upstream/ conserve la source anglaise figée et les composants du projet ; sa présence ne compte pas comme traduction française. Les identités, passages consultés et décisions figurent dans provenance/, et les questions de révision dans review/. Les choix historiques marqués non vérifiés ne servent pas à justifier cette livraison.
-
-## Recompiler
+### Recompiler
 
 Voir [les instructions de reconstruction](REBUILD-PDF-EPUB.md). Le ZIP complet comprend également les dépendances de conversion EPUB. La compilation PDF depuis ce dépôt utilise le même garde de processus et le même fichier cumulatif.
 
@@ -44,6 +58,13 @@ Voir [les instructions de reconstruction](REBUILD-PDF-EPUB.md). Le ZIP complet c
 
 Le PDF résultant se trouve dans tools/epub/direct-tex-check/source/locale/fr/reader.pdf sous ce nouveau dossier. Les versions antérieures restent disponibles avec leurs sources dans la lignée de publication.
 
+## Sources et crédits
+
+- [The Open Logic Project](https://openlogicproject.org/), révision
+  [`9620cc73`](https://github.com/OpenLogicProject/OpenLogic/tree/9620cc73f9c8e0ad003c514a5d3748f29611c4c0).
+- [Collection des traductions OpenLogic](https://kokunoyumeto.github.io/OpenLogic-translations/).
+
 ## Licence
 
-Texte original et traduction : CC BY 4.0. Les [notices originales](upstream/LICENSE.md) et les licences particulières des composants sont conservées. Les PDF universitaires consultés ne sont pas redistribués.
+Texte original et traduction : CC BY 4.0. Les [notices originales](upstream/LICENSE.md) et les licences particulières des
+composants sont conservées. Les PDF universitaires consultés ne sont pas redistribués.
