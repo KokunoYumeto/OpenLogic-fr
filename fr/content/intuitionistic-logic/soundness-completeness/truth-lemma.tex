@@ -1,0 +1,103 @@
+% Partie : intuitionistic-logic
+% Chapitre : soundness-completeness
+% Section : truth-lemma
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sc}{tru}
+
+\olsection{Lemme de vérité}
+
+Le lemme suivant relie la vérité d'une !!{formula} au monde~$\sigma$
+du modèle canonique à sa !!{derivability} à partir de l'ensemble
+premier~$\Delta(\sigma)$.
+
+\begin{lem}\ollabel{lem:truth}
+  Si $\Delta$ est premier, alors, pour tout monde~$\sigma$ de
+  $\mModel{M(\Delta)}$ et toute !!{formula}~$!A$, on a
+  $\mSat{M(\Delta)}{!A}[\sigma]$ si et seulement si
+  $\Delta(\sigma) \Proves !A$.
+\end{lem}
+
+\begin{proof}
+  Raisonnons par induction sur~$!A$, en établissant l'équivalence
+  simultanément pour tous les mondes~$\sigma$.
+  \begin{enumerate}
+    \item \indcase{!A}{\lfalse}{Puisque $\Delta(\sigma)$ est premier,
+      il est cohérent, donc $\Delta(\sigma) \Proves/ \indfrm$.
+      Par définition, $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}
+    \item \indcase{!A}{p}{Par définition de $\mSat{{}}{}$,
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$ si et seulement si
+      $\sigma \in V(p)$, c'est-à-dire si $p\in\Delta(\sigma)$.
+      Cela équivaut à $\Delta(\sigma) \Proves \indfrm$, par la
+      règle des hypothèses et la clôture de $\Delta(\sigma)$
+      par déduction.}
+    \item \indcase{!A}{\lnot !B}{Supposons
+      $\Delta(\sigma) \Proves \lnot !B$. Pour tout $\sigma'$ tel que
+      $R\sigma\sigma'$, on a $\Delta(\sigma)\subseteq\Delta(\sigma')$.
+      Si $\Delta(\sigma')$ démontrait aussi $!B$, l'élimination
+      de la négation contredirait sa cohérence. Par hypothèse
+      d'induction, aucun de ces mondes ne satisfait $!B$, donc
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
+
+      Si $\Delta(\sigma) \Proves/ \lnot !B$, alors
+      $\Delta(\sigma)\cup\{!B\} \Proves/ \lfalse$, par la règle
+      d'introduction de la négation. Soit $n$ l'indice du couple
+      $\tuple{!B,\lfalse}$. Par construction,
+      $\Delta(\sigma.n)$ contient~$!B$ ; par hypothèse
+      d'induction, $\mSat{M(\Delta)}{!B}[\sigma.n]$.
+      Comme $R\sigma(\sigma.n)$, la clause de satisfaction de la
+      négation donne $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}
+    \item \indcase{!A}{!B \land
+      !C}{$\mSat{M(\Delta)}{\indfrm}[\sigma]$ si et seulement si
+      $\mSat{M(\Delta)}{!B}[\sigma]$ et
+      $\mSat{M(\Delta)}{!C}[\sigma]$. Par hypothèse d'induction,
+      $\mSat{M(\Delta)}{!B}[\sigma]$ si et seulement si
+      $\Delta(\sigma) \Proves !B$, et de même pour~$!C$.
+      Mais $\Delta(\sigma) \Proves !B$ et
+      $\Delta(\sigma) \Proves !C$ si et seulement si
+      $\Delta(\sigma) \Proves \indfrm$.}
+    \item \indcase{!A}{!B \lor
+      !C}{$\mSat{M(\Delta)}{\indfrm}[\sigma]$ si et seulement si
+      $\mSat{M(\Delta)}{!B}[\sigma]$ ou
+      $\mSat{M(\Delta)}{!C}[\sigma]$. Par hypothèse d'induction,
+      cela équivaut à $\Delta(\sigma) \Proves !B$ ou
+      $\Delta(\sigma) \Proves !C$. Il reste à montrer que cette
+      condition équivaut à $\Delta(\sigma) \Proves \indfrm$.
+      Le sens direct résulte de l'introduction de la disjonction.
+      Réciproquement, si $\Delta(\sigma) \Proves \indfrm$, alors
+      $\indfrm \in \Delta(\sigma)$ par clôture par déduction.
+      Comme $\Delta(\sigma)$ est premier, il contient $!B$ ou~$!C$.
+      Dans l'un et l'autre cas, la formule qu'il contient est
+      déductible par la règle des hypothèses.}
+    \item \indcase{!A}{!B \lif !C}{D'abord, prouvons la contraposée
+      du sens direct. Supposons $\Delta(\sigma) \Proves/ !B
+      \lif !C$. Alors $\Delta(\sigma) \cup \{!B\} \Proves/
+      !C$. Comme $\tuple{!B, !C}$ est $\tuple{!B_n, !C_n}$ pour
+      un certain~$n$, nous avons
+      $\Delta(\sigma.n) = (\Delta(\sigma) \cup \{!B\})^*$,
+      ainsi que $\Delta(\sigma.n) \Proves !B$ mais
+      $\Delta(\sigma.n) \Proves/ !C$. Par hypothèse d'induction,
+      $\mSat{M(\Delta)}{!B}[\sigma.n]$ et
+      $\mSat/{M(\Delta)}{!C}[\sigma.n]$. Puisque
+      $R\sigma(\sigma.n)$, il s'ensuit que
+      $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.
+
+      Supposons maintenant $\Delta(\sigma) \Proves !B \lif !C$ et
+      soit $\sigma'$ tel que $R\sigma\sigma'$. Puisque
+      $\Delta(\sigma) \subseteq \Delta(\sigma')$, si
+      $\Delta(\sigma') \Proves !B$, alors
+      $\Delta(\sigma') \Proves !C$. Autrement dit, pour tout
+      $\sigma'$ tel que $R\sigma\sigma'$, on a soit
+      $\Delta(\sigma') \Proves/ !B$, soit
+      $\Delta(\sigma') \Proves !C$. Par hypothèse d'induction,
+      cela signifie que si $R\sigma\sigma'$, alors
+      $\mSat/{M(\Delta)}{!B}[\sigma']$ ou
+      $\mSat{M(\Delta)}{!C}[\sigma']$, c'est-à-dire
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$.}
+  \end{enumerate}
+\end{proof}
+
+\end{document}

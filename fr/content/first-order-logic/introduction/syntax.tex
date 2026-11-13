@@ -15,12 +15,12 @@ Nous devons d'abord préciser quelles chaînes de symboles sont des
 pour l'instant, procédons seulement par l'exemple. Les éléments de
 base --- le vocabulaire --- de la logique du premier ordre se divisent
 en deux parties. La première comprend les symboles qui servent à
-désigner des choses particulières ou à en dire quelque chose. Nous
-désignons des choses à l'aide de !!{constant}s, et nous parlons des
-choses ainsi désignées à l'aide de !!{predicate}s. Nous pouvons par
-exemple employer $\Obj a$ comme !!a{constant} pour désigner une chose
-unique, puis en dire quelque chose au moyen de
-l'!!{sentence}~$\Atom{\Obj P}{\Obj a}$. Si vous avez en tête une
+désigner des choses particulières ou à en dire quelque chose. Les
+!!{constant}s désignent des objets et les !!{predicate}s expriment
+des propriétés ou des relations. Prenons comme exemple une
+!!{constant}~$\Obj a$ et un !!{predicate} unaire~$\Obj P$.
+L'!!{sentence}~$\Atom{\Obj P}{\Obj a}$ attribue à l'objet désigné
+par~$\Obj a$ la propriété exprimée par~$\Obj P$. Si vous avez en tête une
 signification pour « $\Obj a$ » et « $\Obj P$ », vous pouvez lire
 $\Atom{\Obj P}{\Obj a}$ comme une phrase de la langue courante (et vous
 l'avez probablement déjà fait lors de votre première initiation à la
@@ -47,7 +47,7 @@ d'abord déterminer exactement quelles chaînes sont des !!{sentence}s. Il
 faut ensuite le faire d'une manière qui permette de démontrer des
 résultats mathématiques sur \emph{tous} les !!{sentence}s. Enfin, il
 faudra définir précisément quelques opérations élémentaires sur les
-!!{sentence}s, telles que « remplacer chaque $\Obj x$ de~$!A$
+!!{formula}s, telles que « remplacer chaque $\Obj x$ de~$!A$
 par~$\Obj b$ ». Les quantificateurs et les !!{variable}s de la logique
 du premier ordre rendent la bonne définition de cette opération moins
 évidente qu'il n'y paraît. Par exemple,

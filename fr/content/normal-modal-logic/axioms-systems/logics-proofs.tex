@@ -1,0 +1,104 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: logics-proofs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{prf}
+
+\olsection{\usetoken{P}{derivation} et systèmes modaux}
+
+Commençons par définir ce qu'est une !!{derivation} pour les logiques
+modales normales. Schématiquement, il s'agit d'une suite de
+!!{formula}s dont chaque !!{element} est soit une instance par
+substitution de l'un des \emph{axiomes}, soit une conséquence des
+!!{element}s précédents par quelques règles d'inférence. Dans les
+logiques modales normales, toutes les instances des
+tautologies\iftag{prvDiamond}{, de \Ax{K} et de~\Dual{}}{ et de~\Ax{K}}
+comptent comme axiomes. On obtient ainsi le système modal~$\Log{K}$,
+la plus petite logique modale normale. On peut ajouter d'autres
+axiomes pour obtenir d'autres systèmes. Les règles restent toujours
+le modus ponens~\MP{} et la nécessitation~\Nec.
+
+\begin{defn}
+  Étant donné un système modal $\Log{K} !A_1 \dots !A_n$ et une
+  !!{formula}~$!B$, nous disons que $!B$ est
+  \emph{!!{derivable}} dans $\Log{K} !A_1 \dots !A_n$, ce que nous
+  notons $\Log{K} !A_1 \dots !A_n \Proves !B$, si et seulement s'il
+  existe des !!{formula}s $!C_1$, \dots, $!C_k$ telles que
+  $!C_k = !B$ et que chaque $!C_i$ est une instance tautologique,
+  une instance de l'un des axiomes $\Ax{K}$,\iftag{prvDiamond}{
+  $\Dual$,}{} $!A_1$, \dots, $!A_n$, ou découle de !!{formula}s
+  précédentes par les règles \MP{} ou~\Nec.
+\end{defn}
+
+La proposition suivante permet de montrer que $!B \in \Sigma$ en
+exhibant une !!{derivation} de~$!B$ dans~$\Sigma$.
+
+\begin{prop}
+  $\Log{K} !A_1 \dots !A_n = \Setabs{!B}{\Log{K} !A_1 \dots !A_n \Proves !B}$.
+\end{prop}
+
+\begin{proof}
+  Par récurrence sur la longueur des !!{derivation}s, montrons que
+  $\Setabs{!B}{\Log{K} !A_1 \dots !A_n \Proves !B} \subseteq
+  \Log{K} !A_1 \dots !A_n$.
+
+  Si la !!{derivation} de~$!B$ a la longueur~$1$, elle ne contient
+  qu'une !!{formula}. Celle-ci ne peut découler de formules
+  précédentes par \MP{} ou \Nec; elle est donc une instance
+  tautologique, une instance de \Ax{K},\iftag{prvDiamond}{ de~\Dual{},}{}
+  ou une instance de l'un de $!A_1$, \dots,~$!A_n$. Or
+  $\Log{K}!A_1\dots!A_n$ contient aussi ces instances; ainsi
+  $!B \in \Log{K}!A_1 \dots !A_n$.
+
+  Si la !!{derivation} de $!B$ a une longueur~$> 1$, et si sa
+  dernière ligne est un axiome, le raisonnement précédent s'applique.
+  Sinon, cette ligne découle par \MP{} ou~\Nec{} de lignes
+  antérieures. Si $!B$ découle de $!C$ et de
+  $!C \lif !B$ par \MP, l'hypothèse de récurrence donne
+  $!C$ et $!C \lif !B \in \Log{K}!A_1 \dots !A_n$. Toute logique
+  modale étant close par modus ponens,
+  $!B \in \Log{K}!A_1 \dots !A_n$. Si $!B \equiv \Box !C$ découle de
+  $!C$ par \Nec, l'hypothèse de récurrence donne
+  $!C \in \Log{K}!A_1 \dots !A_n$. Toute logique modale normale
+  étant close par \Nec, nous avons aussi
+  $!B \in \Log{K}!A_1\dots!A_n$.
+
+  Pour l'inclusion réciproque, montrons que
+  $\Sigma = \Setabs{!B}{\Log{K} !A_1 \dots !A_n \Proves !B }$ est une
+  logique modale normale contenant toutes les instances de $!A_1$,
+  \dots, $!A_n$. Chacune de ces instances a, par définition, une
+  !!{derivation} d'une seule ligne. Le système $\Log{K} !A_1
+  \dots !A_n$ est la plus petite de ces logiques.
+  \begin{enumerate}
+    \item Toute tautologie~$!B$ est une instance tautologique; donc
+      $\Log{K}!A_1\dots!A_n \Proves !B$ et $\Sigma$ contient toutes
+      les tautologies.
+    \item Si $\Log{K}!A_1\dots!A_n \Proves !C$ et
+      $\Log{K}!A_1\dots!A_n \Proves !C \lif !B$, alors
+      $\Log{K}!A_1\dots!A_n \Proves !B$ : il suffit de réunir la
+      !!{derivation} de $!C$ et celle de $!C \lif !B$, puis d'ajouter
+      la ligne~$!B$, justifiée par \MP{}. Ainsi, $\Sigma$ est clos
+      par modus ponens.
+    \item Si $!B$ possède une !!{derivation}, chacune de ses instances
+      par substitution en possède aussi une : appliquons la
+      substitution à chaque !!{formula} de la !!{derivation}.
+      (Exercice : démontrer par récurrence sur la longueur des
+      !!{derivation}s que le résultat est encore une !!{derivation}
+      correcte.) Ainsi, $\Sigma$ est clos par substitution uniforme.
+      (Nous avons établi toutes les conditions pour que $\Sigma$
+      soit une logique modale.)
+    \item Toute instance de \Ax{K} est un axiome, donc elle appartient
+      à~$\Sigma$.
+    \tagitem{prvDiamond}{Toute instance de \Dual{} est également un
+      axiome, donc elle appartient à~$\Sigma$.}{}
+    \item Si $\Log{K}!A_1\dots!A_n \Proves !C$, la ligne
+      supplémentaire~$\Box !C$ est justifiée par~\Nec. Par
+      conséquent, $\Sigma$ est clos par~\Nec, donc normal.
+  \end{enumerate}
+\end{proof}
+
+\end{document}

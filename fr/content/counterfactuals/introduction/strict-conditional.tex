@@ -1,0 +1,118 @@
+% Partie : counterfactuals
+% Chapitre : introduction
+% Section : strict-conditional
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{int}{str}
+
+\olsection{Le conditionnel strict}
+
+Lewis introduisit le \emph{conditionnel strict}~$\strictif$ et soutint
+que c'est lui, plutôt que le conditionnel matériel, qui correspond à
+l'implication. En logique modale aléthique, on peut définir
+$!A \strictif !B$ par $\Box(!A \lif !B)$. Un conditionnel strict est
+donc vrai en un monde si et seulement si le conditionnel matériel
+correspondant y est nécessaire.
+
+Que devient le conditionnel strict face aux paradoxes du conditionnel
+matériel ? Un conditionnel strict dont l'antécédent est faux, ou dont
+le conséquent est vrai, peut être vrai comme il peut être faux. De
+plus, $(!A \strictif !B) \lor (!B \strictif !A)$ n'est pas valide. Le
+conditionnel strict $!A \strictif !B$ n'est pas non plus équivalent à
+$\lnot !A \lor !B$ : sa valeur de vérité ne dépend pas seulement des
+valeurs de vérité de l'antécédent et du conséquent au monde considéré.
+
+Dans \Log{S5}, on a les relations suivantes :
+\begin{align}
+  !A \strictif !B & \Entails \lnot !A \lor !B
+  \text{ mais :}\\
+  \lnot !A \lor !B & \Entails/ !A \strictif !B\\
+  !B & \Entails/ !A \strictif !B\\
+  \lnot !A & \Entails/ !A \strictif !B\\
+  \lnot(!A \strictif !B) & \Entails/ !A \land \lnot !B
+  \text{ mais :}\\
+  !A \land \lnot !B & \Entails \lnot(!A \strictif !B)
+  \intertext{Le conditionnel strict admet néanmoins le modus ponens :}
+  !A, !A \strictif !B & \Entails !B
+  \intertext{Il permet de regrouper les conséquents :}
+  !A \strictif !B,  !A \strictif !C & \Entails !A \strictif (!B \land !C)
+  \intertext{Le renforcement de l'antécédent reste valable :}
+  !A \strictif !B & \Entails (!A \land !C) \strictif !B
+  \intertext{Le conditionnel strict est également transitif :}
+  !A \strictif !B, !B \strictif !C & \Entails !A \strictif !C
+  \intertext{Enfin, il est équivalent à sa contraposée :}
+  !A \strictif !B & \Entails \lnot !B \strictif \lnot !A\\
+  \lnot !B \strictif \lnot !A & \Entails !A \strictif !B
+\end{align}
+
+La non-conséquence portant sur la négation tient à la possibilité
+d'un contre-exemple dans un autre monde. Prenons deux mondes
+$w,v$ et la relation d'accessibilité universelle. Que $p$ soit
+vrai seulement en~$v$ et que $q$ soit faux aux deux mondes.
+En~$w$, $\lnot(p\strictif q)$ est vrai, car $p$ est vrai et $q$
+faux en~$v$. Pourtant $p\land\lnot q$ est faux en~$w$.
+
+\begin{prob}
+  Donnez des contre-exemples dans \Log{S5} aux relations de conséquence
+  qui ne valent pas pour le conditionnel strict, à savoir :
+  \begin{enumerate}
+  \item $\lnot p \Entails/ \Box(p \lif q)$
+  \item $q \Entails/ \Box(p \lif q)$
+  \item $\lnot\Box(p \lif q) \Entails/ p \land \lnot q$
+  \item $\Entails/ \Box(p \lif q) \lor \Box(q \lif p)$
+  \end{enumerate}
+\end{prob}
+
+\begin{prob}
+  Montrez que les relations de conséquence valides valent pour le
+  conditionnel strict en donnant des démonstrations dans \Log{S5} de :
+  \begin{enumerate}
+  \item $\Box(!A \lif !B) \Entails \lnot !A \lor !B$
+  \item $!A \land \lnot !B \Entails \lnot\Box(!A \lif !B)$
+  \item $!A, \Box(!A \lif !B) \Entails !B$
+  \item $\Box(!A \lif !B), \Box(!A \lif !C) \Entails \Box(!A \lif (!B
+    \land !C))$
+  \item $\Box(!A \lif !B) \Entails \Box((!A \land !C) \lif !B)$
+  \item $\Box(!A \lif !B), \Box(!B \lif !C) \Entails \Box(!A
+    \lif !C)$
+  \item $\Box(!A \lif !B) \Entails \Box(\lnot !B \lif \lnot !A)$
+  \item $\Box(\lnot !B \lif \lnot !A) \Entails \Box(!A \lif !B)$
+  \end{enumerate}
+\end{prob}
+
+Le conditionnel strict a pourtant ses propres « paradoxes ». De même
+qu'un conditionnel matériel est vrai si son antécédent est faux ou son
+conséquent vrai, un conditionnel strict est vrai si son antécédent est
+\emph{nécessairement} faux ou son conséquent nécessairement vrai. En
+outre, dans \Log{S5}, tout conditionnel strict vrai est nécessairement
+vrai, et tout conditionnel strict faux est nécessairement faux. On a
+donc :
+\begin{align}
+  \Box \lnot !A & \Entails !A \strictif !B\\
+  \Box !B & \Entails !A \strictif !B\\
+  !A \strictif !B& \Entails \Box(!A \strictif !B)\\
+  \lnot(!A \strictif !B) & \Entails \Box\lnot(!A \strictif !B)
+\end{align}
+Ces résultats ne posent pas problème si l'on comprend $\strictif$
+comme « implique » : les relations de conséquence logique sont, après
+tout, des faits mathématiques et ne peuvent donc pas être
+contingentes. Ils soulèvent en revanche une difficulté si l'on veut
+que $\strictif$ soit un connecteur logique exprimant « si \dots,
+alors \dots », surtout dans les deux derniers cas. Il existe
+assurément des énoncés de cette forme qui sont vrais ou faux de façon
+contingente : en général, ils ne sont ni nécessaires ni impossibles.
+
+\begin{prob}
+  \begin{samepage}Donnez des démonstrations dans \Log{S5} de :
+  \begin{enumerate}
+    \item $\Box \lnot !A \Entails !A \strictif !B$
+    \item $!A \strictif !B \Entails \Box(!A \strictif !B)$
+    \item $\lnot(!A \strictif !B)  \Entails \Box\lnot(!A \strictif !B)$
+  \end{enumerate}
+  Utilisez pour cela la définition de $\strictif$.\end{samepage}
+\end{prob}
+
+\end{document}

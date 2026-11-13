@@ -10,23 +10,19 @@
 
 \olsection{\usetoken{P}{sentence}}
 
-Nous disposons maintenant d'une ébauche de définition de la
-satisfaction, c'est-à-dire de « vrai dans », pour les !!{structure}s et
-les !!{formula}s. Cette définition fait toutefois intervenir un
-élément supplémentaire, une assignation de !!{variable}s, alors que
-nous voulions définir les !!{sentence}s. Comment nous débarrasser des
-assignations, et que sont les !!{sentence}s ?
+Nous avons esquissé une définition de la satisfaction des !!{formula}s
+dans une !!{structure} sous une assignation de !!{variable}s. Pour
+comprendre quand la satisfaction est indépendante de l'assignation,
+nous allons d'abord définir les !!{sentence}s.
 
-Vous vous souvenez probablement, depuis votre première initiation à la
-logique formelle, d'une discussion sur la relation entre
-!!{variable}s et quantificateurs. Un quantificateur est toujours suivi
-d'!!a{variable}; dans la partie de l'!!{sentence} sur laquelle porte ce
-quantificateur, sa « portée », nous considérons que la !!{variable} est
-« liée » par ce quantificateur. La définition des !!{formula}s
-n'exigeait pas que chaque !!{variable} possède un quantificateur
-correspondant; les !!{variable}s dépourvues d'un tel quantificateur
-sont « libres » ou « non liées ». Nous appellerons !!{sentence}s toutes
-les !!{formula}s qui ne contiennent aucune !!{variable} libre.
+Revenons à la relation entre !!{variable}s et quantificateurs,
+que l'on rencontre dès l'initiation à la logique formelle. Un
+quantificateur est suivi d'!!a{variable} et porte sur une partie de
+la !!{formula}, appelée sa \emph{portée}. Une occurrence de cette
+!!{variable} dans la portée est liée par ce quantificateur si aucun
+quantificateur plus intérieur ne la lie. Une occurrence qu'aucun
+quantificateur ne lie est dite \emph{libre}. Les !!{sentence}s sont
+les !!{formula}s sans occurrence libre d'!!a{variable}.
 
 L'idée intuitive qui permet de reconnaître si une occurrence
 d'!!a{variable} dans !!a{formula}~$!A$ est liée ou libre, et quel

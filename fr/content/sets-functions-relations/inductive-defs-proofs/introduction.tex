@@ -1,0 +1,147 @@
+% Part: sets-functions-relations
+% Chapter: induction
+% Section: induction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{ind}{int}
+
+\olsection{Introduction}
+
+\begin{explain}
+La récurrence est une technique de démonstration courante en
+mathématiques et en logique. Vous connaissez peut-être la récurrence
+sur les entiers naturels. Mais bien d'autres ensembles d'objets
+mathématiques ou logiques se prêtent à ce type de démonstration.
+
+En général, une preuve par récurrence établit un énoncé universel :
+elle montre que tous les objets d'une certaine sorte possèdent une
+propriété donnée. Elle est particulièrement utile lorsque la
+démonstration directe d'un énoncé universel serait trop compliquée.
+Elle s'applique aux objets engendrés à partir d'objets de base par des
+règles de construction : chaque objet doit pouvoir s'obtenir en un
+nombre fini d'étapes de construction. Précisons cette idée.
+\end{explain}
+
+\begin{defn}
+Un ensemble $S$ est \emph{stable par} une fonction $f$, définie sur
+les éléments de $S$, si et seulement si, pour tout $x\in S$, on a
+$f(x)\in S$.
+\end{defn}
+
+\begin{explain}
+Par exemple, l'ensemble des entiers naturels ($\mathbb{N}$) est stable
+par la fonction successeur $f(x)=x+1$ : si $x$ est un entier naturel,
+$x+1$ en est également un. En revanche, $\mathbb{N}$ n'est pas stable
+par la fonction prédécesseur $f(x)=x-1$, considérée sur les entiers
+relatifs : $0$ est naturel, mais $-1$ ne l'est pas.
+\end{explain}
+
+\begin{defn}
+Une propriété $P$ est dite \emph{préservée par} une fonction $f$ si,
+pour tout objet $a$ du domaine de $f$, $P(a)$ entraîne $P(f(a))$ :
+si $a$ possède $P$, alors $f(a)$ la possède aussi.
+\end{defn}
+
+\begin{explain}
+La propriété « être un nombre pair » est préservée par la fonction
+$f(x)=x+2$ : si $x$ est pair, $x+2$ l'est aussi. Elle n'est pas
+préservée par la fonction successeur, puisque $x+1$ est impair quand
+$x$ est pair.
+
+La récurrence s'applique aux entiers naturels parce que chacun d'eux
+s'obtient à partir de~$0$ par un nombre fini d'applications de la
+fonction successeur. On procède de façon analogue pour tout ensemble
+engendré à partir d'objets de base par des opérations de construction.
+\end{explain}
+
+\begin{defn}[Récurrence sur $\Nat$]
+Si $0$ possède une propriété $P$ et si $P$ est préservée par la
+fonction successeur, alors tout entier naturel possède $P$.
+\end{defn}
+
+\begin{ex}
+La somme des entiers naturels de $0$ à $n$ est
+$\frac{n(n+1)}{2}$.\\
+
+\textbf{Cas de base.} Pour $n=0$, la somme se réduit à $0$, et
+$0=\frac{0\cdot 1}{2}$.\\
+
+\textbf{Étape de récurrence.} Supposons la propriété vraie pour $k$
+et montrons-la pour $k+1$. L'hypothèse $P(k)$ s'écrit
+\[ 0 + 1 + \ldots + k = \frac{k(k+1)}{2}. \]
+Il faut en déduire $P(k+1)$, à savoir
+\[ 0 + 1 + \ldots + k + (k+1) = \frac{(k+1)(k+2)}{2}. \]
+En utilisant l'hypothèse de récurrence, on obtient
+\begin{align*}
+0 + 1 + \ldots + k &= \frac{k(k+1)}{2} \tag{Hypothèse} \\
+0 + 1 + \ldots + k + (k+1) &= \frac{k(k+1)}{2} + (k+1)
+\tag{Ajout de $k+1$ aux deux membres} \\
+&= \frac{k(k+1) + 2(k+1)}{2} \\
+&= \frac{k^2+3k+2}{2} \\
+&= \frac{(k+1)(k+2)}{2}.
+\end{align*}
+L'étape de récurrence est donc établie, ce qui démontre l'énoncé.\footnote{Note
+de l'édition française : une ligne intermédiaire du calcul dans la
+source développe incorrectement le numérateur. L'égalité correcte
+est $k(k+1)+2(k+1)=k^2+3k+2$.}
+\end{ex}
+
+\begin{explain}
+Pour les !!{formula}s, les objets de base sont les !!{formula}s
+atomiques, auxquels s'ajoutent les éventuelles constantes
+propositionnelles primitives. Les !!{formula}s plus complexes sont
+construites à partir de !!{formula}s moins complexes au moyen
+d'opérateurs. Chaque opérateur correspond ainsi à une opération de
+construction : la négation prend une !!{formula}, un connecteur
+binaire en prend deux, et un quantificateur construit une !!{formula}
+à partir d'une !!{formula} et d'une variable. Par exemple, l'opération
+qui réunit $!A$ et $!B$ dans une conjonction s'écrit
+$\mathcal E_\land(!A,!B)=!A\land !B$. Appelons ces opérations
+des \emph{opérations de formation des formules}. L'ensemble des
+!!{formula}s est stable par elles : si $!A$ et $!B$ sont des
+!!{formula}s, alors $\lnot !A$, $!A\land !B$, etc., sont aussi
+des !!{formula}s.
+\end{explain}
+
+\begin{defn}[Récurrence sur les !!{formula}s]
+Si toutes les !!{formula}s atomiques, ainsi que les éventuelles
+constantes primitives, possèdent la propriété $P$, et si $P$ est
+préservée par les opérations de formation des formules, alors toute
+!!{formula} possède $P$.
+\end{defn}
+
+\begin{explain}
+Ce principe donne une méthode pour prouver par récurrence
+qu'une propriété $P$ vaut pour toutes les !!{formula}s. On traite les
+cas suivants, selon les constructeurs primitifs du langage considéré.\\
+
+\textbf{Cas de base.} Soit $!A$ une !!{formula} atomique.
+[\ldots] Donc $!A$ possède $P$. On vérifie de même les éventuelles
+constantes primitives.
+
+\textbf{Étape de récurrence.} Soient $!A$ et $!B$ des !!{formula}s
+ayant la propriété $P$. Pour les opérations unaires, seule
+l'hypothèse portant sur $!A$ est nécessaire.
+
+Cas $\lnot$ : [\ldots] Donc $\lnot !A$ possède $P$.
+
+Cas $\land$ : [\ldots] Donc $!A\land !B$ possède $P$.
+
+Cas $\lor$ : [\ldots] Donc $!A\lor !B$ possède $P$.
+
+Cas $\lif$ : [\ldots] Donc $!A\lif !B$ possède $P$.
+
+Cas $\liff$ : [\ldots] Donc $!A\liff !B$ possède $P$.
+
+Cas $\lforall[]$ : [\ldots] Donc $\lforall[x] !A$ possède $P$.
+
+Cas $\lexists[]$ : [\ldots] Donc $\lexists[x] !A$ possède $P$.\\
+
+Les cas correspondant aux opérations primitives étant vérifiés,
+toute !!{formula} possède $P$.
+\end{explain}
+
+\end{document}

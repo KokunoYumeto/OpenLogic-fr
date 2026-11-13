@@ -1,0 +1,85 @@
+% Part: model-theory
+% Chapter: models-of-arithmetic
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{mar}{int}
+\section{Introduction}
+
+Le \emph{modèle standard} de l'arithmétique est la
+!!{structure}~$\Struct{N}$ de domaine $\Domain{N}=\Nat$, où
+$\Obj{0}$, $\prime$, $+$, $\times$ et $<$ ont leur interprétation
+habituelle. En particulier, $\Obj{0}$ désigne $0$, $\prime$
+la fonction successeur, $+$ l'addition et $\times$ la
+multiplication sur~$\Nat$ :
+\begin{align*}
+  \Assign{\Obj{0}}{N} & = 0\\
+  \Assign{\prime}{N}(n) & = n+1\\
+  \Assign{+}{N}(n,m) & = n+m\\
+  \Assign{\times}{N}(n,m) & = nm.
+\end{align*}
+
+Il existe bien sûr des !!{structure}s pour $\Lang{L_A}$ dont
+le domaine n'est pas~$\Nat$. Prenons, par exemple, la
+!!{structure}~$\Struct{M}$ de domaine
+$\Domain{M}=\{a\}^*$, l'ensemble des mots finis formés avec
+la seule lettre~$a$ : $\emptyset$, $a$, $aa$, $aaa$, \dots.
+Pour des mots $s,t\in\{a\}^*$, posons
+\begin{align*}
+  \Assign{\Obj{0}}{M} & = \emptyset\\
+  \Assign{\prime}{M}(s) & = s\concat a\\
+  \Assign{+}{M}(s,t) & = s\concat t\\
+  \Assign{\times}{M}(s,t) & = a^{|s||t|},
+\end{align*}
+et définissons $\Assign{<}{M}$ par
+$\tuple{s,t}\in\Assign{<}{M}$ si et seulement
+si $|s|<|t|$.\footnote{Précision éditoriale : la source écrit les arguments de l'addition et de la multiplication comme des entiers alors que le domaine est un ensemble de mots, et omet l'interprétation de $<$. Nous explicitons les opérations sur les mots et l'ordre de leurs longueurs.}
+Cette écriture précise que l'addition et la multiplication
+portent sur des mots, et que l'ordre compare leurs longueurs.
+Les deux !!{structure}s sont « essentiellement les mêmes » :
+leurs !!{element}s diffèrent, mais non les relations établies
+entre eux par les interprétations des symboles. On les dit
+\emph{isomorphes} : l'application $n\mapsto a^n$ est un
+isomorphisme de $\Struct{N}$ sur~$\Struct{M}$.
+
+Le théorème de compacité implique facilement que toute théorie
+vraie dans~$\Struct{N}$ possède également des modèles qui ne
+lui sont pas isomorphes. On appelle ces !!{structure}s
+\emph{non standard}. Dans un modèle standard, c'est-à-dire
+dans $\Struct{N}$ ou dans toute !!{structure} qui lui est
+isomorphe, les valeurs des numéraux standards~$\num{n}$
+épuisent le domaine :
+\[
+  \Domain{N}=\Setabs{\Value{\num{n}}{N}}{n\in\Nat}.
+\]
+Dans un modèle non standard d'une théorie arithmétique telle
+que $\Th{Q}$, il existe au contraire au moins un
+$x\in\Domain{M}$ distinct de
+$\Value{\num{n}}{M}$ pour chaque~$n$.\footnote{Précision éditoriale : l'affirmation est restreinte ici aux modèles de $\Th{Q}$. Pour une structure arithmétique arbitraire, tous les éléments peuvent être nommés par des numéraux sans qu'elle soit standard, comme le montre l'exercice de la section suivante.}
+
+On peut considérer ces !!{element}s non standards comme des
+« entiers naturels infinis ». Leur existence éclaire aussi,
+en un sens, les phénomènes d'incomplétude. Considérons
+l'énoncé de cohérence de l'arithmétique de Peano
+$\OCon[\Th{PA}]$, c'est-à-dire
+$\lnot\lexists[x][\OPrf[\Th{PA}](x,\gn{\lfalse})]$.
+Dans le cadre métathéorique où $\Th{PA}$ est vraie dans $\Struct{N}$, elle ne démontre ni cet énoncé ni sa
+négation; chacun peut donc lui être adjoint de façon
+cohérente.\footnote{La cohérence de $\Th{PA}$ découle ici de son modèle standard. Le second théorème d'incomplétude exclut la démonstration de son énoncé de cohérence ; la vérité dans $\Struct{N}$ exclut celle de sa négation. La seule cohérence d'une théorie arbitraire ne suffirait pas à cette seconde conclusion.} Comme $\Th{PA}$ est cohérente et vraie dans le
+modèle standard, $\Sat{N}{\OCon[\Th{PA}]}$, donc
+$\Sat/{N}{\lnot\OCon[\Th{PA}]}$. Ainsi, $\Struct{N}$
+n'est pas un modèle de
+$\Th{PA}\cup\{\lnot\OCon[\Th{PA}]\}$; tous les modèles
+de cette théorie sont non standards. Dans chacun d'eux,
+un !!{element} témoigne de
+$\lexists[x][\OPrf[\Th{PA}](x,\gn{\lfalse})]$ :
+le modèle le traite comme le numéro de Gödel d'une
+!!{derivation} d'une contradiction à partir de~$\Th{PA}$.
+Ce témoin ne peut être standard, puisque, pour tout~$n$,
+$\Th{PA}\Proves
+\lnot\OPrf[\Th{PA}](\num{n},\gn{\lfalse})$.\footnote{Correction éditoriale : nous rétablissons l'argument $x$ omis dans le second affichage existentiel de la source. Le témoin est un code de preuve au sens interne du modèle ; il n'est pas le code d'une véritable démonstration finie d'une contradiction.}
+
+\end{document}

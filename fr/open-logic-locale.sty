@@ -1,4 +1,6 @@
 % Noms français. Les identifiants techniques de l'amont sont conservés.
+% L'étiquette de la flèche initiale des diagrammes d'automates est du texte.
+\tikzset{initial text={départ}}
 \setlocalecaption{french}{photocredits}{Crédits photographiques}
 \setlocalecaption{french}{history}{Remarques historiques}
 \setlocalecaption{french}{reading}{Lectures complémentaires}
@@ -27,21 +29,27 @@
 \addto\extrasfrench{%
 \crefname{section}{section}{sections}%
 \crefname{chapter}{chapitre}{chapitres}%
+\crefname{part}{partie}{parties}%
 \crefname{thm}{théorème}{théorèmes}%
 \crefname{ex}{exemple}{exemples}%
 \crefname{defn}{définition}{définitions}%
 \crefname{lem}{lemme}{lemmes}%
 \crefname{prop}{proposition}{propositions}%
 \crefname{prob}{exercice}{exercices}%
+\crefname{probd}{exercice}{exercices}%
+\crefname{rem}{remarque}{remarques}%
 \crefname{figure}{figure}{figures}%
 \crefname{table}{tableau}{tableaux}%
+\crefname{equation}{équation}{équations}%
 \Crefname{page}{p.}{p.}%
+\Crefname{part}{Partie}{Parties}%
 \Crefname{thm}{Théorème}{Théorèmes}%
 \Crefname{ex}{Exemple}{Exemples}%
 \Crefname{defn}{Définition}{Définitions}%
 \Crefname{lem}{Lemme}{Lemmes}%
 \Crefname{prop}{Proposition}{Propositions}%
 \Crefname{prob}{Exercice}{Exercices}%
+\Crefname{probd}{Exercice}{Exercices}%
 \Crefname{rem}{Remarque}{Remarques}%
 \Crefname{cor}{Corollaire}{Corollaires}%
 \Crefname{axiom}{Axiome}{Axiomes}%
@@ -50,6 +58,7 @@
 \Crefname{conv}{Convention}{Conventions}%
 \Crefname{figure}{Figure}{Figures}%
 \Crefname{table}{Tableau}{Tableaux}%
+\Crefname{equation}{Équation}{Équations}%
 }
 \renewcommand*{\ollicensetext}[3]{\textit{#1}, par #2, est diffusé sous #3.}
 \renewcommand*{\oluselicensetext}{Cette édition est fondée sur

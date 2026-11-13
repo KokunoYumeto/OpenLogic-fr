@@ -1,0 +1,37 @@
+% Part: normal-modal-logic
+% Chapter: completeness
+% Section: canonical-models
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{com}{cmd}
+
+\olsection{Modèles canoniques}
+
+Pour un système modal cohérent~$\Sigma$, le \emph{modèle canonique} est un modèle
+particulier~$\mModel{M^\Sigma}$ dont les mondes sont tous les
+ensembles $\Sigma$-cohérents complets. Sa relation
+d'accessibilité~$R^\Sigma$ et sa valuation $V^\Sigma$ sont définies de
+façon que les !!{formula}s vraies en un monde~$\Delta$ soient
+exactement les !!{formula}s qui composent~$\Delta$.
+
+\begin{defn}
+  Soit $\Sigma$ une logique modale normale et cohérente. Le \emph{modèle canonique}
+  de $\Sigma$ est $\mModel{M}^\Sigma = \tuple{W^\Sigma, R^\Sigma,
+    V^\Sigma}$, où :
+  \begin{enumerate}
+  \item $W^\Sigma = \Setabs{ \Delta }{\Delta \text{
+      est $\Sigma$-cohérent complet} }$.
+  \item $R^\Sigma \Delta\Delta'$ vaut si et seulement si
+    \iftag{prvBox}{$\Box^{-1}\Delta \subseteq
+      \Delta'$}{$\Diamond\Delta' \subseteq \Delta$}.
+  \item $V^\Sigma(p) = \Setabs{\Delta}{p \in \Delta}$.
+  \end{enumerate}
+\end{defn}
+
+L'ensemble vide est $\Sigma$-cohérent. La
+\olref[lin]{thm:lindenbaum} lui donne une extension $\Sigma$-cohérente
+complète. Ainsi, $W^\Sigma$ contient au moins un monde.
+\end{document}

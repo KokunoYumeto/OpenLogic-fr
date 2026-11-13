@@ -1,0 +1,45 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: general-recursive-functions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{gen}
+\olsection{Fonctions récursives générales}
+
+Il existe une autre manière de définir une classe de fonctions
+totales. Une fonction totale $f(x,\vec z)$ est dite
+\emph{régulière} si, pour tout tuple d'entiers naturels
+$\vec z$, il existe un~$x$ tel que $f(x,\vec z)=0$.
+Les fonctions régulières sont donc précisément celles
+auxquelles la recherche non bornée peut être appliquée
+pour obtenir une fonction totale. On peut restreindre
+la recherche non bornée à ces seules fonctions :
+
+\begin{defn}
+\ollabel{defn:general-recursive}
+La classe des \emph{fonctions récursives générales}
+est la plus petite classe de fonctions d'arités quelconques,
+des entiers naturels dans les entiers naturels, qui contient
+la fonction nulle, le successeur et les projections, et
+qui est close par composition, récurrence primitive et
+recherche non bornée appliquée aux fonctions
+\emph{régulières}.
+\end{defn}
+
+Il est clair que toute fonction récursive générale est
+totale. La différence entre la
+\olref{defn:general-recursive} et la
+\olref[par]{defn:recursive-fn} tient au fait que la seconde
+définition autorise l'emploi de fonctions récursives
+partielles aux étapes intermédiaires : seule la fonction
+obtenue à la fin doit être totale. L'adjectif « générale »
+est donc un héritage historique trompeur; en apparence,
+la \olref{defn:general-recursive} est \emph{moins} générale
+que la \olref[par]{defn:recursive-fn}. Heureusement, cette
+différence n'est qu'apparente : les deux définitions
+déterminent la même classe de fonctions.\footnote{Complément explicatif : si $f$ est récursive partielle et totale, sa forme normale fournit un indice $e$ tel que, pour tout $x$, il existe $s$ vérifiant $T(e,x,s)$. La fonction récursive primitive $1\tsub\Char{T}(e,x,s)$ est donc régulière lorsqu'on cherche en $s$. Sa minimisation, puis la composition avec $U$, définissent $f$ sans fonction partielle intermédiaire. L'inclusion inverse découle des opérations de clôture.}
+
+\end{document}

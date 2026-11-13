@@ -1,0 +1,193 @@
+% Partie : logique du premier ordre
+% Chapitre : complétude
+% Section : démonstration directe de la compacité
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{com}{cpd}}
+      {\olfileid[fr]{pl}{com}{cpd}}
+
+\olsection{Une démonstration directe du théorème de compacité}
+
+Nous pouvons démontrer directement le théorème de compacité, sans
+invoquer celui de complétude, en reprenant les idées de la
+démonstration de ce dernier. Nous étions partis d'un ensemble
+cohérent~$\Gamma$ \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}, l'avions étendu en un ensemble
+$\Gamma^*$ cohérent\iftag{FOL}{,
+saturé}{} et !!{complete}, puis avions montré que
+\iftag{FOL}{le modèle des termes~$\Struct{M(\Gamma^*)}$ satisfait
+les !!{sentence}s de~$\Gamma$ sans égalité, tandis que le modèle
+quotient permet de traiter les ensembles d'énoncés avec égalité}{la !!{valuation}~
+$\pAssign{v(\Gamma^*)}$ satisfait toutes les !!{formula}s
+de~$\Gamma$}. Ainsi, $\Gamma$ est satisfaisable.
+
+La même méthode permet de montrer qu'un ensemble \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}
+finiment satisfaisable est satisfaisable. Il suffit de démontrer les
+versions correspondantes des résultats menant au lemme de vérité, en
+remplaçant « cohérent » par « finiment satisfaisable ».
+
+\begin{prop}
+\ollabel{prop:fsat-ccs}
+Supposons $\Gamma$ !!{complete} et finiment satisfaisable. Alors :
+\begin{enumerate}
+\tagitem{prvAnd}{$(!A\land !B)\in\Gamma$ si et seulement si
+  $!A\in\Gamma$ et $!B\in\Gamma$.}{}
+
+\tagitem{prvOr}{$(!A\lor !B)\in\Gamma$ si et seulement si
+  $!A\in\Gamma$ ou $!B\in\Gamma$.}{}
+
+\tagitem{prvIf}{$(!A\lif !B)\in\Gamma$ si et seulement si
+  $!A\notin\Gamma$ ou $!B\in\Gamma$.}{}
+\end{enumerate}
+\end{prop}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrez la \olref[fol][com][cpd]{prop:fsat-ccs} sans utiliser~$\Proves$.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrez la \olref[pl][com][cpd]{prop:fsat-ccs} sans utiliser~$\Proves$.
+\end{prob}
+\tagendprob
+
+\iftag{FOL}{%
+\begin{lem}
+\ollabel{lem:fsat-henkin}
+Tout ensemble~$\Gamma$ finiment satisfaisable peut être étendu en un
+ensemble~$\Gamma'$ saturé et finiment satisfaisable.
+\end{lem}
+}{}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrez le \olref[fol][com][cpd]{lem:fsat-henkin}. (Indication :
+l'étape décisive consiste à montrer que, si $\Gamma_n$ est finiment
+satisfaisable, $\Gamma_n\cup\{!D_n\}$ l'est aussi, sans invoquer les
+!!{derivation}s ni la cohérence.)
+\end{prob}
+\tagendprob
+
+\iftag{FOL}{
+\begin{prop}\ollabel{prop:fsat-instances}
+Supposons $\Gamma$ complet, finiment satisfaisable et saturé, et
+supposons que les variables libres de~$!A(x)$ appartiennent à~$\{x\}$.
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{$\lexists[x][!A(x)]\in\Gamma$ si et seulement si
+  $!A(t)\in\Gamma$ pour au moins un terme clos~$t$.}{}
+\tagitem{prvAll}{$\lforall[x][!A(x)]\in\Gamma$ si et seulement si
+  $!A(t)\in\Gamma$ pour tout terme clos~$t$.}{}
+\end{tagenumerate}
+\end{prop}
+}{}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrez la \olref[fol][com][cpd]{prop:fsat-instances}.
+\end{prob}
+\tagendprob
+
+\begin{lem}
+\ollabel{lem:fsat-lindenbaum}
+Tout ensemble~$\Gamma$ finiment satisfaisable peut être étendu en un
+ensemble~$\Gamma^*$ complet et finiment satisfaisable.
+\end{lem}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrez le \olref[fol][com][cpd]{lem:fsat-lindenbaum}. (Indication :
+l'étape décisive consiste à montrer que, si $\Gamma_n$ est finiment
+satisfaisable, alors $\Gamma_n\cup\{!A_n\}$ ou
+$\Gamma_n\cup\{\lnot !A_n\}$ est finiment satisfaisable.)
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrez le \olref[pl][com][cpd]{lem:fsat-lindenbaum}. (Indication :
+l'étape décisive consiste à montrer que, si $\Gamma_n$ est finiment
+satisfaisable, alors $\Gamma_n\cup\{!A_n\}$ ou
+$\Gamma_n\cup\{\lnot !A_n\}$ est finiment satisfaisable.)
+\end{prob}
+\tagendprob
+
+\begin{thm}[Compacité]
+\ollabel{thm:compactness-direct}
+$\Gamma$ est satisfaisable si et seulement s'il est finiment
+satisfaisable.
+\end{thm}
+
+\begin{proof}
+Si $\Gamma$ est satisfaisable, il existe
+\iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
+telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ pour \iftag{FOL}{tout !!{sentence}}{toute !!{formula}}
+$!A\in\Gamma$. Cette
+\iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} satisfait évidemment aussi
+chaque sous-ensemble fini de~$\Gamma$ ; $\Gamma$ est donc finiment
+satisfaisable.
+
+Supposons maintenant $\Gamma$ finiment satisfaisable.\iftag{FOL}{
+D'après le \olref{lem:fsat-henkin}, il existe un ensemble saturé et
+finiment satisfaisable $\Gamma'\supseteq\Gamma$.}{} D'après le
+\olref{lem:fsat-lindenbaum}, on peut étendre
+$\iftag{FOL}{\Gamma'}{\Gamma}$ en un ensemble~$\Gamma^*$ complet
+et finiment satisfaisable\iftag{FOL}{, qui reste saturé}{}.
+Les clauses de la \olref[mod]{defn:termmodel} définissent
+\iftag{FOL}{le modèle des termes~$\Struct{M(\Gamma^*)}$}
+{la !!{valuation}~$\pAssign{v(\Gamma^*)}$}.
+\iftag{FOL}{Le langage enrichi contient des constantes. Le modèle
+des termes est couvert, et la \olref[mod]{prop:quant-termmodel}
+s'applique à ses instances closes.}{}
+
+Si une partie finie de~$\Gamma^*$ entraîne $!A$, alors $!A$ appartient
+à~$\Gamma^*$. En effet, si $!A$ en était absent, la complétude de
+l'ensemble donnerait $\lnot !A\in\Gamma^*$, en contradiction avec
+la satisfaisabilité de cette partie finie augmentée de~$\lnot !A$.
+Ainsi, les vérités logiques appartiennent à~$\Gamma^*$ et la
+satisfaisabilité de ses parties finies exclut l'absurde. Pour chaque
+formule décidée par~$\Gamma^*$, la formule et sa négation ne peuvent
+appartenir toutes deux à l'ensemble.
+La démonstration du lemme de vérité
+(\olref[mod]{lem:truth}) se transpose en remplaçant la
+\olref[ccs]{prop:ccs} par la \olref{prop:fsat-ccs}\iftag{FOL}{, et la
+\olref[hen]{prop:saturated-instances} par la
+\olref{prop:fsat-instances}}{}.
+\iftag{FOL}{Pour les énoncés contenant~$\eq$, il faut en outre
+passer au quotient du modèle des termes comme dans la section sur
+l'égalité. La relation $t\approx t'$ définie par
+$\eq[t][t']\in\Gamma^*$ est une congruence : la complétude et la
+satisfaisabilité finie excluent chaque violation des lois d'égalité
+ou de substitution. Par exemple, deux égalités $\eq[t][t']$ et
+$\eq[t'][t'']$ entraînent $\eq[t][t'']$, qui appartient donc à~$\Gamma^*$.
+La même propriété de conséquence finie s'applique à la réflexivité,
+à la symétrie et au remplacement dans les fonctions et les prédicats.
+Dans le quotient, le cas de l'égalité du lemme de vérité revient à
+comparer les classes des deux termes clos. Les autres cas utilisent
+les mêmes propriétés que dans le modèle des termes. On obtient ainsi,
+avec ou sans égalité, une structure dont le réduit au langage initial
+satisfait~$\Gamma$.}{Ainsi la valuation satisfait toutes les formules
+de~$\Gamma$.}
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Rédigez la démonstration complète de la version du lemme de vérité
+(\olref[fol][com][mod]{lem:truth}) nécessaire à la démonstration du
+\olref[fol][com][cpd]{thm:compactness-direct}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Rédigez la démonstration complète de la version du lemme de vérité
+(\olref[pl][com][mod]{lem:truth}) nécessaire à la démonstration du
+\olref[pl][com][cpd]{thm:compactness-direct}.
+\end{prob}
+\tagendprob
+
+\end{document}

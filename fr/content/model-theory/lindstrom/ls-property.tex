@@ -1,0 +1,204 @@
+% Part: model-theory
+% Chapter: lindstrom
+% Section: ls-property
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{lin}{lsp}
+
+\olsection{Propriétés de compacité et de Löwenheim--Skolem}
+
+Étendons aux logiques abstraites les
+propriétés de compacité et de
+Löwenheim--Skolem.
+
+\begin{defn}
+Une logique abstraite
+$\tuple{L,\models_L}$ a la
+\emph{propriété de compacité} si,
+pour tout langage~$\Lang{L}$ et tout
+ensemble $\Gamma\subseteq L(\Lang{L})$,
+la satisfaisabilité de chaque
+sous-ensemble fini de~$\Gamma$
+entraîne celle de~$\Gamma$.
+\end{defn}
+
+\begin{defn}
+$\tuple{L,\models_L}$ a la
+\emph{propriété de Löwenheim--Skolem
+descendante dénombrable} si, dans tout
+langage au plus dénombrable, chaque
+ensemble au plus dénombrable et
+satisfaisable d'énoncés de
+$L(\Lang{L})$ possède un modèle
+au plus dénombrable.\footnote{Précision éditoriale : la source demande un modèle dénombrable pour tout ensemble satisfaisable, sans restriction de langage. Cette propriété est ici formulée pour les théories dénombrables en langage dénombrable, comme le requiert le codage utilisé. Elle porte sur une théorie entière, et non sur un seul énoncé ; certaines présentations nomment cette hypothèse « propriété de Skolem dénombrable ».}
+\end{defn}
+
+La notion d'isomorphisme partiel de la
+\olref[bas][pis]{defn:partialisom}
+est algébrique : elle porte sur les
+interprétations des symboles, non
+sur la forme des énoncés. Elle
+s'applique donc aux structures
+des logiques abstraites. Pour les
+structures relationnelles sans
+constantes, le
+\olref[bas][pis]{thm:p-isom2}
+montre que l'isomorphisme partiel
+entraîne l'équivalence élémentaire
+au premier ordre; le même raisonnement
+tient compte des constantes en
+préservant leurs interprétations.
+Cette récurrence sur les !!{formula}s
+du premier ordre ne s'étend pas
+automatiquement à un énoncé
+arbitraire~$!E\in L(\Lang{L})$.
+La propriété de Löwenheim--Skolem
+permet néanmoins de conclure.
+
+\begin{thm}
+\ollabel{thm:abstract-p-isom}
+Soit $\tuple{L,\models_L}$ une
+logique normale ayant la propriété
+de Löwenheim--Skolem descendante
+dénombrable. Deux !!{structure}s
+partiellement isomorphes sont alors
+élémentairement équivalentes dans
+$\tuple{L,\models_L}$.
+\end{thm}
+
+\begin{proof}
+Supposons $\Struct{M}\simeq_p\Struct{N}$,
+mais $\Struct{M}\models_L !E$ et
+$\Struct{N}\not\models_L !E$ pour
+un énoncé~$!E$. Par la propriété
+de dépendance finie, on peut
+remplacer~$!E$ par un représentant
+dans un langage relationnel
+\emph{fini} et réduire les deux
+structures à ce langage. Les
+réduits restent partiellement
+isomorphes. L'invariance par
+isomorphisme permet en outre
+d'en prendre des copies de
+domaines disjoints.\footnote{Compléments éditoriaux : la relativisation de $!E$ produit des énoncés de la logique abstraite, que la source appelle à tort des énoncés du premier ordre. Nous développons le codage du va-et-vient en une théorie dénombrable, avec une relation par longueur de tuple, au lieu de la construction condensée par suites de la source. La figure est adaptée à ce codage.}
+
+Formons un langage auxiliaire
+au plus dénombrable. Il contient
+deux copies des symboles du
+langage fini, deux !!{predicate}s
+unaires $U,V$ et, pour chaque
+$k\geq1$, un !!{predicate}~$I_k$
+à $2k$ places. Dans une structure
+de ce langage, $U$ et~$V$
+découpent deux sous-structures
+$\Struct{M}_U$ et~$\Struct{N}_V$;
+les constantes de chaque copie
+appartiennent au côté correspondant.
+Par renommage et relativisation,
+on obtient des énoncés abstraits
+$!E_U$ et~$!E_V$ qui expriment
+respectivement que
+$\Struct{M}_U\models_L !E$ et
+$\Struct{N}_V\models_L !E$.
+
+Ajoutons un ensemble dénombrable
+$\Theta$ d'énoncés \emph{du premier
+ordre}, représentés dans la logique
+normale par les équivalents de la
+remarque précédente. Ils décrivent
+une famille de
+va-et-vient. Cet ensemble impose que $U,V$
+soient disjoints et non vides.
+Pour chaque~$k$, $I_k(\mathbf a,
+\mathbf b)$ ne vaut que pour des
+$k$-uplets des deux côtés et
+entraîne qu'ils définissent un
+isomorphisme partiel : mêmes
+égalités, mêmes rapports aux
+constantes et mêmes formules
+atomiques du langage fini.
+L'instance vide impose, pour
+chaque $a\in U$, un $b\in V$
+avec $I_1(a,b)$, et réciproquement.
+Pour tout $k\geq1$, les clauses
+de va-et-vient imposent
+\[
+\begin{aligned}
+I_k(\mathbf a,\mathbf b)
+&\Longrightarrow
+  (\forall a\in U)(\exists b\in V)
+  I_{k+1}(\mathbf a a,\mathbf b b),\\
+I_k(\mathbf a,\mathbf b)
+&\Longrightarrow
+  (\forall b\in V)(\exists a\in U)
+  I_{k+1}(\mathbf a a,\mathbf b b).
+\end{aligned}
+\]
+Comme le langage de départ est
+fini, chaque condition atomique
+pour une longueur~$k$ se formule
+par un nombre fini d'axiomes
+du premier ordre; l'ensemble de
+toutes ces clauses est dénombrable.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[node distance=2cm, auto, thick, >=stealth']
+    \draw [rounded corners] (0,0) -- (8,0) -- (8,4) -- (0,4) -- cycle;
+    \draw (2,2) circle (1.1cm);
+    \draw (6,2) circle (1.1cm);
+    \path node at (0.75,3.5) {\large $\Struct{C}$};
+    \path node at (2,2) {\large $\Struct{M}_U$};
+    \path node at (6,2) {\large $\Struct{N}_V$};
+    \node (Idom) at (3.1,2) {};
+    \node (Irng) at (4.9,2) {};
+    \draw[<->, bend left] (Idom) to node {\large $I_k$} (Irng);
+  \end{tikzpicture}
+  \caption{Dans la structure auxiliaire $\Struct{C}$,
+    les relations $I_k$ codent le va-et-vient entre
+    les deux sous-structures.}
+\end{figure}
+
+La théorie dénombrable
+$\Theta\cup\{!E_U,\lnot !E_V\}$
+est satisfaisable. En effet,
+prenons la réunion disjointe des
+copies de~$\Struct{M}$ et
+$\Struct{N}$; interprétons les
+$I_k$ par les couples de $k$-uplets, avec
+répétitions permises, dont la correspondance est une
+restriction d'un membre de la famille de va-et-vient
+contenant les valeurs de toutes les constantes.
+Ces restrictions forment encore une famille
+de va-et-vient et incluent la fonction vide.
+En effet, on peut prolonger tout membre
+pour lui adjoindre les valeurs des constantes,
+en nombre fini, puis le prolonger encore
+pour traiter un élément supplémentaire.
+Les restrictions ainsi obtenues préservent aussi
+les formules atomiques contenant ces constantes. Les conditions de~$\Theta$
+et les deux énoncés relativisés
+sont vérifiés.
+
+Par Löwenheim--Skolem, cette
+théorie a un modèle au plus
+dénombrable~$\Struct{C}_0$.
+Ses côtés $\Struct{M}_0$ et
+$\Struct{N}_0$ restent séparés
+par~$!E$, tandis que les
+relations $I_k$ y fournissent
+une famille non vide
+d'isomorphismes partiels avec
+va-et-vient. Ces côtés sont donc
+partiellement isomorphes et au
+plus dénombrables. Le
+\olref[bas][pis]{thm:p-isom1}
+les rend isomorphes, en
+contradiction avec l'invariance
+de~$!E$ par isomorphisme.
+\end{proof}
+
+\end{document}

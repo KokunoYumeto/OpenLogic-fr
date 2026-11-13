@@ -21,10 +21,10 @@ de réels que de rationnels, c'est-à-dire que $\cardless{\Rat}{\Real}$.
 Cantor fut le premier à le démontrer. Mais l'existence de nombres
 irrationnels, c'est-à-dire de réels qui ne sont pas rationnels, est connue
 depuis environ deux millénaires et demi. En effet :
-%\footnote{Le commentaire source affirme que « $\sqrt{2}$ » désigne aussi bien la racine positive que la racine négative, puis annonce qu'il ne considérera que la racine positive dans les pages suivantes. Cette affirmation sur la notation est corrigée dans la note éditoriale ci-dessous.}
+% Nous considérons la racine carrée positive.
 \begin{thm}\ollabel{root2irrational}
 $\sqrt{2}$ est irrationnel, c'est-à-dire que $\sqrt{2} \notin \Rat$.
-\footnote{Précision éditoriale : $\sqrt{2}$ désigne la racine carrée positive de $2$ ; les deux racines de l'équation $x^2=2$ sont $\sqrt{2}$ et $-\sqrt{2}$. Cette précision corrige une note laissée en commentaire dans la source, qui attribuait les deux sens au même symbole.}\end{thm}
+\footnote{Le symbole $\sqrt{2}$ désigne la racine carrée positive de $2$. Les deux racines de $x^2=2$ sont $\sqrt{2}$ et $-\sqrt{2}$.}\end{thm}
 
 \begin{proof}
 Supposons, pour raisonner par l'absurde, que $\sqrt{2}$ soit rationnel.
@@ -52,10 +52,10 @@ recouvrent a la même aire que la région qu'aucun des deux ne couvre :
 l'aire du carré orange est donc égale à la somme des aires des deux
 carrés non colorés. Si le carré orange a pour côté $p$ et chacun des
 carrés non colorés pour côté $q$, alors $p^2 = 2q^2$. Ainsi,
-$\sqrt{2} = \nicefrac{p}{q}$, avec $p < m$, $q < n$ et $p, q \in
-\Nat$.\footnote{Précision éditoriale : $p=2n-m$ et $q=m-n$. L'égalité $m^2=2n^2$, avec $m,n>0$, donne $n<m<2n$ ; ainsi $p,q>0$, $p<m$ et $q<n$. Les longueurs sont donc bien des naturels strictement positifs. Ces expressions des côtés sont explicites dans la présentation de Conway.}
-Cela contredit la minimalité de $m$ et de $n$, assurée par le choix
-d'une fraction irréductible.
+$\sqrt{2} = \nicefrac{p}{q}$. Le dessin donne $p=2n-m$ et $q=m-n$.
+De $m^2=2n^2$ et de $m,n>0$, on déduit $n<m<2n$. Ainsi $p$ et $q$
+sont des entiers strictement positifs, avec $p<m$ et $q<n$.
+Or $n$ divise $q$, puisque $\nicefrac{m}{n}$ est irréductible. Cela contredit $0<q<n$.
 
 \emph{Deuxièmement, par un raisonnement algébrique.} Comme
 $m^{2} = 2n^{2}$, $m$ est pair. (On montre aisément que, si $x$ est
@@ -91,14 +91,14 @@ strictement inférieurs à $\sqrt{2}$, c'est-à-dire :
 \[
 	\Setabs{p \in \Rat}{p^2 < 2 \text{ ou }p < 0}
 \]
-Cet ensemble admet un majorant rationnel : tous ses !!{element}s sont,
-par exemple, strictement inférieurs à $3$. Mais quel serait son plus
-petit majorant ? Nous voudrions répondre «~$\sqrt{2}$~» ; or nous venons
-de voir que $\sqrt{2}$ n'est \emph{pas} rationnel. Et il n'existe pas
-de \emph{plus petit} rationnel strictement supérieur à $\sqrt{2}$.
-Cet ensemble admet donc un majorant rationnel, mais pas de plus petit
-majorant rationnel. Les rationnels ne possèdent ainsi pas la propriété
-de la borne supérieure.\footnote{Correction typographique : un signe $<$ parasite suivait le marqueur désignant les éléments dans la source. Il est retiré ; la comparaison avec $3$ reste inchangée.}
+Cet ensemble admet un majorant rationnel. Tous ses !!{element}s sont,
+par exemple, strictement inférieurs à $3$. Par densité des rationnels,
+tout rationnel inférieur à $\sqrt{2}$ est dépassé par un élément de
+l’ensemble. Ses majorants rationnels sont donc les rationnels
+strictement supérieurs à $\sqrt{2}$, qui est irrationnel.
+Par densité, tout tel majorant est précédé d’un autre majorant rationnel.
+Cet ensemble admet donc des majorants mais aucun plus petit
+majorant rationnel.
 
 En revanche, la propriété de la borne supérieure répond à ce que nous
 attendons intuitivement du continu. Nous ne voulons pas seulement que

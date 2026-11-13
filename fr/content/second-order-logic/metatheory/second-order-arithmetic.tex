@@ -1,0 +1,170 @@
+% Part: second-order-logic
+% Chapter: metatheory
+% Section: second-order-arithmetic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{met}{spa}
+
+\olsection{L'arithmétique du second ordre}
+
+Rappelons que la théorie $\Th{PA}$ de l'arithmétique
+de Peano comprend les huit axiomes de~$\Th{Q}$ :
+\begin{align*}
+& \lforall[x][\eq/[x'][\Obj 0]]\\
+& \lforall[x][\lforall[y][(\eq[x'][y'] \lif \eq[x][y])]]\\
+& \lforall[x][(\eq[x][\Obj 0] \lor \lexists[y][\eq[x][y']])]\\
+& \lforall[x][\eq[(x + \Obj 0)][x]]\\
+& \lforall[x][\lforall[y][\eq[(x + y')][(x + y)']]]\\
+& \lforall[x][\eq[(x \times \Obj 0)][\Obj 0]]\\
+& \lforall[x][\lforall[y][\eq[(x \times y')][((x \times y) + x)]]]\\
+& \lforall[x][\lforall[y][(x < y \liff \lexists[z][\eq[(z' + x)][y]])]]\\
+\intertext{ainsi que la clôture universelle sur les paramètres libres de chaque instance de la forme}
+& (!A(\Obj 0) \land \lforall[x][(!A(x) \lif !A(x'))]) \lif \lforall[x][!A(x)].
+\end{align*}
+Cette dernière expression est un \emph{schéma} :
+elle engendre une infinité d'!!{sentence}s du
+langage arithmétique, un pour chaque
+!!{formula}~$!A(x)$. On l'appelle le
+\emph{schéma d'axiomes d'induction} du premier
+ordre.
+Dans l'arithmétique de Peano \emph{du second ordre}
+$\Th{PA^2}$, l'induction peut s'exprimer par
+un seul !!{sentence}. Cette théorie comprend
+les huit axiomes ci-dessus et l'\emph{axiome
+d'induction} du second ordre :
+\[
+\lforall[X][((X(\Obj 0) \land \lforall[x][(X(x) \lif X(x'))]) \lif \lforall[x][X(x)])].
+\]
+L'axiome dit que tout sous-ensemble~$X$ du
+!!{domain} qui contient $\Assign{\Obj{0}}{M}$
+et qui, avec chaque $x\in\Domain{M}$,
+contient aussi $\Assign{\prime}{M}(x)$
+(autrement dit, qui est \emph{clos par successeur})
+contient tout le !!{domain} : $X=\Domain{M}$.
+
+Sous la sémantique standard, cet axiome garantit
+qu'une !!{structure} qui le satisfait ne possède
+que les !!{element}s imposés par les axiomes,
+c'est-à-dire les valeurs des numéraux~$\num n$
+pour $n\in\Nat$. Un modèle de~$\Th{PA^2}$
+ne contient aucun nombre non standard.
+
+\begin{thm}
+\ollabel{thm:sol-pa-standard}
+Si $\Sat{M}{\Th{PA^2}}$, alors
+$\Domain{M}=\Setabs{\Value{\num{n}}{M}}{n\in\Nat}$.
+\end{thm}
+
+\begin{proof}
+Posons
+$N=\Setabs{\Value{\num{n}}{M}}{n\in\Nat}$
+et supposons $\Sat{M}{\Th{PA^2}}$. Pour chaque
+$n\in\Nat$, la valeur $\Value{\num{n}}{M}$
+appartient au !!{domain}; donc
+$N\subseteq\Domain{M}$.
+
+Montrons l'inclusion inverse. Considérons une
+assignation~$s$ telle que $s(X)=N$. Par hypothèse,
+\begin{align*}
+\Sat{M}{\lforall[X][((X(\Obj 0) \land \lforall[x][(X(x)
+      \lif X(x'))]) \lif \lforall[x][X(x)])]}, & \text{ donc}\\
+\Sat{M}{(X(\Obj 0) \land \lforall[x][(X(x) \lif X(x'))]) \lif
+  \lforall[x][X(x)]}[s]. &
+\end{align*}
+L'antécédent de cette implication est satisfait.
+En effet, $\Value{\Obj{0}}{M}\in N$, d'où
+$\Sat{M}{X(\Obj{0})}[s]$. Le second conjoint,
+$\lforall[x][(X(x)\lif X(x'))]$, l'est aussi :
+si $x\in N$, alors, pour un certain~$n$,
+$x=\Value{\num{n}}{M}$, et par conséquent
+$\Assign{\prime}{M}(x)=
+\Value{\num{n+1}}{M}\in N$.
+Nous avons donc
+$\Sat{M}{X(\Obj 0) \land
+\lforall[x][(X(x) \lif X(x'))]}[s]$,
+puis $\Sat{M}{\lforall[x][X(x)]}[s]$.
+Ainsi, tout $x\in\Domain{M}$ appartient à
+$s(X)=N$, ce qui donne $\Domain{M}\subseteq N$.
+\end{proof}
+
+\begin{cor}
+\ollabel{cor:sol-pa-categorical}
+Deux modèles quelconques de~$\Th{PA^2}$ sont
+isomorphes.
+\end{cor}
+
+\begin{proof}
+D'après le \olref{thm:sol-pa-standard}, le !!{domain}
+de tout modèle de~$\Th{PA^2}$ est épuisé par
+les valeurs $\Value{\num{n}}{M}$. Un tel modèle
+satisfait aussi~$\Th{Q}$. Par la
+\olref[mod][mar][stm]{prop:thq-standard}, il est
+standard, donc isomorphe à~$\Struct{N}$.
+\end{proof}
+
+Nous avons défini $\Th{PA^2}$ au moyen des huit
+axiomes arithmétiques et de l'axiome d'induction
+du second ordre. Grâce à la puissance expressive
+de cette logique, les \emph{deux premiers} axiomes
+arithmétiques, joints à l'induction, suffisent
+en réalité pour l'arithmétique de Peano du second
+ordre.
+
+\begin{prop}\ollabel{prop:sol-pa-definable}
+Soit $\Th{PA^{2\dagger}}$ la théorie du second ordre
+dans le langage réduit au zéro et au successeur, constituée des deux premiers axiomes arithmétiques
+(ceux du successeur) et de l'axiome d'induction
+du second ordre. Les relations et opérations
+$\le$, $+$ et $\times$ y sont définissables.
+\end{prop}
+
+\begin{proof}
+Pour définir $\le$, cherchons une !!{formula}
+$!A_\le(x,y)$ telle que
+$\Sat{N}{!A_\le(\num n,\num m)}$ si et seulement
+si $n\le m$. Considérons
+\[
+!B(x,Y) \ident Y(x) \land \lforall[y][(Y(y) \lif Y(y'))].
+\]
+Tout ensemble $Y\subseteq\Nat$ qui satisfait~$!B(\num n,Y)$
+contient $\Setabs{m}{n\le m}$; réciproquement,
+ce dernier ensemble satisfait lui-même cette !!{formula}.
+Nous pouvons donc poser
+$!A_\le(x,y)\ident
+\lforall[Y][(!B(x,Y)\lif Y(y))]$.
+
+Pour l'addition, observons que $k+l=m$ si et
+seulement s'il existe une fonction~$u$ telle que
+$u(0)=k$, $u(n')=u(n)'$ pour tout~$n$ et
+$u(l)=m$. Cette équivalence permet de définir
+l'addition dans~$\Th{PA^{2\dagger}}$ par :
+\[
+!A_+(x,y,z) \ident \lexists[u][(u(\Obj 0)=x \land
+\lforall[w][u(w')=u(w)'] \land u(y)=z)].
+\]
+Il en résulte que
+$\Sat{N}{!A_+(\num k,\num l,\num m)}$
+si et seulement si $k+l=m$.
+\end{proof}
+
+\begin{editorial}
+La formule de l'addition dans la source quantifie
+$w$ mais écrit $u(x')=u(x)'$ dans la clause
+récursive. Nous y remplaçons $x$ par $w$ : la
+clause exprime alors bien la récurrence pour
+tout~$w$. Les conclusions de catégoricité et
+de définissabilité utilisent la sémantique
+standard du second ordre, où $X$ parcourt tous
+les sous-ensembles et $u$ toutes les fonctions
+du domaine concerné.
+\end{editorial}
+
+\begin{prob}
+Complétez la preuve de la
+\olref[sol][met][spa]{prop:sol-pa-definable}.
+\end{prob}
+
+\end{document}

@@ -1,0 +1,242 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{card-arithmetic}{fix}
+\olsection{Points fixes de la fonction \texorpdfstring{$\aleph$}{ℵ}}
+
+Dans le \olref[spine][]{chap}, nous avons suggéré
+que le remplacement demande une justification,
+car il impose à la hiérarchie d'atteindre une
+hauteur considérable. Maintenant que nous
+disposons de quelques résultats d'arithmétique
+cardinale, nous pouvons en donner une illustration.
+
+Il est clair que $0 < \aleph_0$, que
+$1 < \aleph_1$, que $2 < \aleph_2$\ldots
+et, de fait, l'écart de taille devient
+\emph{plus grand} à chaque étape.
+Il est donc tentant de conjecturer que
+$\kappa< \aleph_\kappa$ pour tout ordinal
+$\kappa$.
+
+Mais cette conjecture est \emph{fausse}
+dans $\ZFC$. Nous pouvons en effet démontrer
+qu'il existe des \emph{points fixes de la
+fonction $\aleph$}, c'est-à-dire des cardinaux
+$\kappa$ tels que $\kappa=\aleph_\kappa$.
+
+\begin{prop}\ollabel{alephfixed}
+Il existe un point fixe de la fonction $\aleph$.
+\end{prop}
+
+\begin{proof}
+Définissons par récurrence :
+\begin{align*}
+	\kappa_0 &= 0\\
+	\kappa_{n+1} &= \aleph_{\kappa_n}\\
+	\kappa&= \bigcup_{n < \omega}\kappa_n
+\end{align*}
+Alors $\kappa$ est un cardinal par la
+\olref[cardinals][classing]{unioncardinalscardinal}.
+Mais :
+\[
+	\kappa= \bigcup_{n < \omega} \kappa_{n+1} =
+	\bigcup_{n < \omega}\aleph_{\kappa_n} =
+	\bigcup_{\alpha < \kappa}\aleph_\alpha
+	= \aleph_\kappa.
+\]
+% Par construction, kappa est le plus petit cardinal dépassant
+% chacun des kappa_n ; le même raisonnement s'applique aux alephs.
+\end{proof}
+
+Boolos a consacré un article précisément au
+point fixe de la fonction $\aleph$ que nous
+venons de construire. Après avoir constaté
+l'existence de $\kappa$, il écrivait au début
+de cet article :
+\begin{quote}
+	[$\kappa$ est] un nombre \emph{assez grand}
+	aux yeux de ceux qui n'ont jamais étudié
+	la théorie des ensembles, si grand, me
+	semble-t-il, qu'il conduit à mettre en
+	question la vérité de toute théorie qui
+	affirme qu'il existe au moins $\kappa$
+	objets.
+	\citep[p.~257]{Boolos2000}
+\end{quote}
+Il terminait finalement son article
+par cette question :
+\begin{quote}
+	Ne soupçonnons-nous pas que, quelle
+	qu'ait été la situation au début de
+	l'histoire, lorsque nous en sommes arrivés
+	si loin, les roues tournent à vide et
+	nous n'écoutons plus une description de
+	quoi que ce soit qui soit le cas ?
+	\citep[p.~268]{Boolos2000}
+\end{quote}
+Si nous avons effectivement dépassé
+«~quoi que ce soit qui soit le cas~»,
+c'est directement au remplacement qu'il faut
+en imputer la responsabilité. C'est en effet
+cet axiome qui rend possible notre démonstration.
+Dans ce cas, on peut supposer que Boolos
+devrait revenir sur son affirmation,
+formulée quelques décennies plus tôt,
+selon laquelle le remplacement n'a
+«~aucune conséquence indésirable~»
+(voir la \olref[replacement][extrinsic]{sec}).
+
+Mais l'existence de $\kappa$ est-elle si
+inquiétante ? Le \emph{paradoxe de Tristram
+Shandy}, dû à Russell, peut nous aider à
+y réfléchir. Tristram Shandy tient le journal
+de sa vie, mais il lui faut une année pour
+raconter une seule journée. Chaque année,
+il prend davantage de retard : au bout
+d'un an, il n'a raconté qu'un jour et
+en a vécu 364 autres dont il n'a rien écrit ;
+au bout de deux ans, il n'en a raconté
+que deux et en a vécu 728 autres sans
+les raconter ; au bout de trois ans,
+il n'en a raconté que trois et en a
+vécu 1092 autres sans les raconter
+\dots\footnote{En négligeant les années
+bissextiles.} Pourtant, si Tristram est
+\emph{immortel}, il finira par raconter
+chaque journée, puisqu'il racontera
+la $n$-ième journée pendant la $n$-ième
+année de sa vie. Ainsi, «~à la fin
+des temps~», son journal sera complet.
+
+Pourquoi cette idée serait-elle si différente
+de celle selon laquelle $\alpha$ est plus
+petit que $\aleph_\alpha$ — et même de
+plus en plus désespérément plus petit —
+jusqu'à $\kappa$, où l'écart se résorbe
+et où $\kappa = \aleph_\kappa$ ?
+
+Laissons cette question de côté. En supposant
+que nous acceptions $\ZFC$, terminons par
+quelques autres constructions de points fixes.
+Les trois résultats suivants établissent,
+intuitivement, qu'il existe un point non trivial
+où la hiérarchie est aussi large que haute :
+
+\begin{prop}\ollabel{bethfixed}
+Il existe un point fixe de la fonction
+$\beth$, c'est-à-dire un $\kappa$ tel que
+$\kappa = \beth_\kappa$.
+\end{prop}
+
+\begin{proof}
+On procède comme dans la \olref{alephfixed},
+en remplaçant «~$\aleph$~» par
+«~$\beth$~».
+\end{proof}
+
+\begin{prop}\ollabel{stagesize}
+$\card{V_{\omega+\alpha}} = \beth_{\alpha}$.
+Si $\omega \ordtimes \omega \leq \alpha$,
+alors $\card{V_\alpha} = \beth_\alpha$.
+\end{prop}
+
+\begin{proof}
+La première assertion se démontre par une
+récurrence transfinie simple. La seconde
+en découle, car
+$\omega \ordtimes \omega \leq \alpha$
+implique $\omega + \alpha = \alpha$.
+Pour l'établir, utilisons les propriétés
+de l'arithmétique ordinale démontrées dans le
+\olref[ord-arithmetic][]{chap}.
+Remarquons d'abord que
+$\omega \ordtimes \omega
+= \omega \ordtimes (1 \ordplus \omega)
+= (\omega \ordtimes 1)
+\ordplus (\omega\ordtimes\omega)
+= \omega \ordplus (\omega \ordtimes \omega)$.
+Si $\omega \ordtimes \omega \leq \alpha$,
+c'est-à-dire si
+$\alpha = (\omega\ordtimes\omega)
+\ordplus \beta$ pour un certain $\beta$,
+alors
+$\omega \ordplus \alpha
+= \omega \ordplus
+((\omega \ordtimes \omega) \ordplus \beta)
+= (\omega \ordplus (\omega
+\ordtimes \omega)) \ordplus \beta
+= (\omega \ordtimes \omega)
+\ordplus \beta = \alpha$.
+\end{proof}
+
+\begin{cor}
+Il existe un $\kappa$ tel que
+$\card{V_\kappa} = \kappa$.
+\end{cor}
+
+\begin{proof}
+Soit $\kappa$ un point fixe de la fonction
+$\beth$, donné par la \olref{bethfixed}.
+Il est clair que
+$\omega \ordtimes \omega < \kappa$.
+Ainsi,
+$\card{V_\kappa}
+= \beth_\kappa = \kappa$
+par la \olref{stagesize}.
+\end{proof}
+
+Il y a autant d'étapes avant $V_\kappa$
+que d'!!{element}s de $V_\kappa$.
+Intuitivement, la hiérarchie jusqu'à
+$V_\kappa$ est donc aussi large que haute.
+Cela rappelle
+l'histoire de Tristram Shandy : nous
+passons d'une étape à la suivante
+en formant l'\emph{ensemble des parties},
+ce qui rend chaque fois la hiérarchie
+\emph{beaucoup} plus vaste. Pourtant,
+«~à la fin~», c'est-à-dire à l'étape
+$\kappa$, sa largeur rattrape sa hauteur.
+
+On peut se demander : \emph{à quelle
+fréquence la largeur de la hiérarchie
+égale-t-elle sa hauteur ?}
+La réponse est : \emph{aussi souvent
+qu'il y a d'ordinaux}. Mais cela
+demande quelques explications.
+
+Définissons un terme $\tau$ comme suit.
+Pour tout $A$, posons :\footnote{Note de l'édition française : l'original initialise $\tau_0(A)=\card{A}$ ; si $\card{A}$ est déjà un point fixe de $\beth$, la suite est constante et $\tau(A)=\card{A}$, de sorte que $W$ ne progresse plus. Le successeur ordinal $\card{A}\ordplus1$ garantit ici $\card{A}<\tau(A)$.}
+\begin{align*}
+	\tau_0(A) & \defis \card{A}\ordplus 1\\
+	\tau_{n+1}(A) & \defis \beth_{\tau_n(A)}\\
+	\tau(A) & \defis \bigcup_{n < \omega}\tau_n(A)
+\intertext{Comme dans la \olref{bethfixed},
+$\tau(A)$ est un point fixe de la fonction
+$\beth$ pour tout $A$, et il est clair que
+$\card{A} < \tau(A)$. Considérons alors
+la définition récursive suivante :}
+	W_0 &\defis 0\\
+	W_{\alpha + 1} & \defis \tau(W_\alpha)\\
+	W_\alpha & \defis \bigcup_{\beta < \alpha} W_\beta
+	\text{, si $\alpha$ est un ordinal limite}
+\end{align*}
+Cette construction est définie pour tous
+les ordinaux. Intuitivement, $W$ est donc
+une «~!!a{injection}~» des ordinaux
+non nuls dans les points fixes de la
+fonction $\beth$.\footnote{Note de l'édition
+française : l'original inclut implicitement
+$W_0=0$ parmi les points fixes de la fonction
+$\beth$ ; or $\beth_0=\omega\neq0$.
+Seuls les $W_\alpha$ d'indice non nul
+appartiennent à cette classe.}
+Et, exactement comme auparavant,
+la hiérarchie jusqu'à $V_{W_\alpha}$
+est aussi large que haute pour tout
+$\alpha$ ; le cas $\alpha=0$
+est l'égalité triviale $\card{V_0}=0$.
+
+\end{document}

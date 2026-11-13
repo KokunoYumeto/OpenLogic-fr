@@ -1,0 +1,72 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: turing-machines
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{tur}
+\olsection{Machines de Turing}
+
+\begin{explain}
+La définition formelle d'une machine de Turing
+peut sembler abstraite; elle est pourtant simple.
+Elle rassemble en une seule structure mathématique
+toutes les données nécessaires à la description
+du fonctionnement de la machine : (1) les états
+dans lesquels elle peut se trouver, (2) les
+symboles qui peuvent figurer sur le ruban,
+(3) l'état dans lequel elle démarre et
+(4) son ensemble d'instructions.
+\end{explain}
+
+\begin{defn}[Machine de Turing]
+Une \emph{machine de Turing}~$M$ est un quadruplet
+$\langle Q,\Sigma,q_0,\delta\rangle$ formé de :
+\begin{enumerate}
+\item un ensemble fini d'\emph{états}~$Q$;
+\item un \emph{alphabet} fini~$\Sigma$ qui contient
+  $\TMendtape$ et~$\TMblank$;
+\item un \emph{état initial}~$q_0\in Q$;
+\item un \emph{ensemble fini d'instructions}
+  $\delta\colon Q\times\Sigma
+  \pto Q\times\Sigma\times
+  \{\TMleft,\TMright,\TMstay\}$.
+\end{enumerate}
+La fonction partielle~$\delta$ s'appelle aussi la
+\emph{fonction de transition} de~$M$.
+\end{defn}
+
+\begin{explain}
+Nous supposons que le ruban est infini dans une
+seule direction. Il est donc utile de réserver
+un symbole spécial~$\TMendtape$ pour marquer son
+extrémité gauche : le programme peut ainsi
+détecter qu'il risque de sortir du ruban. On
+pourrait imposer que ce symbole ne soit jamais
+écrasé, c'est-à-dire que, si
+$\delta(q,\TMendtape)$ est définie, alors
+$\delta(q,\TMendtape)=\tuple{q',\TMendtape,x}$.
+Certains manuels font cette hypothèse; nous ne
+la faisons pas. Pour construire une machine qui
+préserve le marqueur~$\TMendtape$, il suffit de
+prendre les précautions nécessaires. Autoriser
+son écrasement offre aussi, dans certains cas,
+une souplesse utile.
+\end{explain}
+
+\begin{ex}
+\emph{Machine paire} : formellement, cette machine
+est le quadruplet $\tuple{Q,\Sigma,q_0,\delta}$,
+où
+\begin{align*}
+Q & = \{ q_0, q_1 \} \\
+\Sigma & = \{ \TMendtape, \TMblank, \TMstroke \}, \\
+\delta(q_0, \TMstroke) & = \tuple{q_1, \TMstroke, \TMright},\\
+\delta(q_1, \TMstroke) & = \tuple{q_0, \TMstroke, \TMright},\\
+\delta(q_1, \TMblank)  & = \tuple{q_1, \TMblank, \TMright}.
+\end{align*}
+\end{ex}
+
+\end{document}

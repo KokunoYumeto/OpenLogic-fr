@@ -1,0 +1,169 @@
+% Partie : set-theory
+% Chapitre : spine
+% Section : recursion
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{spine}{recursion}
+\olsection{Les théorèmes de récursion transfinie}
+
+Il nous faut d'abord confirmer que la \olref[valpha]{defValphas} est une
+définition valable. Plus généralement, nous devons démontrer que
+toute tentative de définition par récursion transfinie aboutit. Tel
+est le but de cette section.
+
+\emph{Attention : ce qui suit est délicat.} L'idée générale est
+néanmoins assez simple : la récurrence transfinie et le remplacement
+garantissent la légitimité de plusieurs formes de récursion
+transfinie.\footnote{Rappelons que les formules et les termes peuvent
+contenir des paramètres, sauf indication contraire explicite.}
+
+\begin{defn}
+Soient $\tau(x)$ un terme, $f$ une fonction et $\alpha$ un ordinal.
+Nous disons que $f$ est une \emph{approximation jusqu'à $\alpha$} de
+$\tau$ si et seulement si $\dom{f} = \alpha$ et
+$(\forall \beta \in \alpha)f(\beta) =
+\tau(\funrestrictionto{f}{\beta})$.
+\end{defn}
+
+\begin{lem}[Récursion bornée]\ollabel{transrecursionfun}
+Pour tout terme $\tau(x)$ et tout ordinal $\alpha$, il existe une
+unique approximation jusqu'à $\alpha$ de $\tau$.
+\end{lem}
+\begin{proof}
+Nous allons montrer que, pour tout $\gamma \leq \alpha$, il existe
+une unique approximation jusqu'à $\gamma$.
+
+Établissons d'abord l'unicité. Soient $g$ et $h$ des approximations
+respectivement jusqu'à $\gamma$ et jusqu'à $\delta$. Une récurrence
+transfinie sur leurs arguments montre que
+$g(\beta) = h(\beta)$ pour tout
+$\beta \in \dom{g} \cap \dom{h} = \gamma \cap \delta =
+\min(\gamma, \delta)$. Ainsi, les approximations sont uniques
+lorsqu'elles existent et coïncident sur leur domaine commun.
+
+Pour établir l'existence, appliquons maintenant la récurrence
+transfinie simple (\olref[ordinals][opps]{simpletransrecursion}) aux
+ordinaux $\delta \leq \alpha$.
+
+La fonction vide est manifestement une approximation jusqu'à
+$\emptyset$.
+
+Si $g$ est une approximation jusqu'à $\gamma$, alors
+$g \cup \{\tuple{\gamma, \tau(g)}\}$ est une approximation jusqu'à
+$\ordsucc{\gamma}$.
+
+Si $\gamma$ est un ordinal limite et si $g_\delta$ est une
+approximation jusqu'à $\delta$ pour tout $\delta < \gamma$, posons
+$g = \bigcup_{\delta \in \gamma} g_\delta$. C'est une fonction,
+puisque les divers $g_\delta$ coïncident partout où leurs domaines se
+recoupent. Si $\delta \in \gamma$, alors
+$g(\delta) = g_{\ordsucc{\delta}}(\delta) =
+\tau(\funrestrictionto{g_{\ordsucc{\delta}}}{\delta}) =
+\tau(\funrestrictionto{g}{\delta})$.
+
+Cela achève la démonstration par récurrence transfinie.
+\end{proof}
+
+Si nous nous autorisons à définir un \emph{terme} plutôt qu'une
+fonction, nous pouvons lever la borne $\alpha$ du résultat précédent.
+Dans l'énoncé et la démonstration qui suivent, lorsque $\sigma$ est
+un terme, nous posons
+$\funrestrictionto{\sigma}{\alpha} =
+\Setabs{\tuple{\beta, \sigma(\beta)}}{\beta \in \alpha}$.
+
+\begin{thm}[Récursion générale]\ollabel{transrecursionschema}
+Pour tout terme $\tau(x)$, nous pouvons définir explicitement un
+terme $\sigma(x)$ tel que
+$\sigma(\alpha) = \tau(\funrestrictionto{\sigma}{\alpha})$ pour
+tout ordinal~$\alpha$.
+\end{thm}
+
+\begin{proof}
+Pour chaque $\alpha$, le \olref{transrecursionfun} fournit une unique
+approximation jusqu'à $\alpha$, notée $f_\alpha$, de~$\tau$.
+Définissons $\sigma(\alpha)$ par
+$f_{\ordsucc{\alpha}}(\alpha)$. Alors :
+\begin{align*}
+	\sigma(\alpha) &=
+	f_{\ordsucc{\alpha}}(\alpha) \\&=
+	\tau(\funrestrictionto{f_{\ordsucc{\alpha}}}{\alpha}) \\&=
+	\tau(\Setabs{\tuple{\beta, f_{\ordsucc{\alpha}}(\beta)}}{\beta \in \alpha}) \\&=
+	\tau(\Setabs{\tuple{\beta, f_{\ordsucc{\beta}}(\beta)}}{\beta \in \alpha})\\&=
+	\tau(\funrestrictionto{\sigma}{\alpha})
+\end{align*}
+car $f_{\ordsucc{\beta}}(\beta) =
+f_{\ordsucc{\alpha}}(\beta)$ pour tout $\beta < \alpha$, comme
+dans le \olref{transrecursionfun}.
+\end{proof}
+\noindent
+Notons que le \olref{transrecursionschema} est un \emph{schéma}. Il ne
+faut surtout pas s'attendre à ce que $\sigma$ définisse une
+fonction, c'est-à-dire une certaine sorte d'\emph{ensemble} : son
+domaine $\dom{\sigma}$ serait alors l'ensemble de tous les
+ordinaux, en contradiction avec le paradoxe de Burali-Forti
+(\olref[ordinals][basic]{buraliforti}).
+
+Il reste toutefois à montrer que le \olref{transrecursionschema}
+justifie bien notre définition des $V_\alpha$. Cela ne saute pas
+nécessairement aux yeux, mais deviendra clair avec une dernière
+version, simple, de la récursion transfinie.
+
+\begin{thm}[Récursion simple]\ollabel{simplerecursionschema}
+Pour tous termes $\tau(x)$ et $\theta(x)$, et pour tout ensemble
+$A$, nous pouvons définir explicitement un terme $\sigma(x)$ tel que :
+\begin{align*}
+	\sigma(\emptyset) &= A\\
+	\sigma(\ordsucc{\alpha}) &= \tau(\sigma(\alpha)) &&
+		\text{pour tout ordinal }\alpha\\
+	\sigma(\alpha) &= \theta(\ran{\funrestrictionto{\sigma}{\alpha}})&&
+	\text{si }\alpha\text{ est un ordinal limite}
+\end{align*}
+\end{thm}
+
+\begin{proof}
+Commençons par définir un terme $\xi(x)$ de la manière suivante :
+% t \xi(x) = A si x n'est pas une fonction de domaine ordinal ;
+% sinon, posons :
+\[
+	\xi(x) =
+	\begin{cases}
+			A &\text{si $x$ n'est pas une fonction de domaine ordinal,}\\
+			&\hspace{1em}\text{ou si $\dom{x}=\emptyset$ ; sinon :}\\
+			\tau(x(\alpha)) & \text{si $\dom{x} = \ordsucc{\alpha}$}\\
+			\theta(\ran{x}) & \text{si $\dom{x}$ est un ordinal limite}
+	\end{cases}
+\]
+\footnote{Note de l'édition française : dans l'original, le premier
+cas ne vise que les objets qui ne sont pas des fonctions de domaine
+ordinal. La fonction vide, dont le domaine est l'ordinal
+$\emptyset$, n'y entre donc pas, alors que la preuve utilise
+$\xi(\emptyset)=A$. Nous avons ajouté explicitement ce cas de base.}
+Par le \olref{transrecursionschema}, il existe un terme $\sigma(x)$ tel
+que $\sigma(\alpha) =
+\xi(\funrestrictionto{\sigma}{\alpha})$ pour tout ordinal
+$\alpha$ ; de plus, $\funrestrictionto{\sigma}{\alpha}$ est une
+fonction de domaine $\alpha$. Nous montrons que $\sigma$ possède les
+propriétés requises par récurrence transfinie simple
+(\olref[ordinals][opps]{simpletransrecursion}).
+
+D'abord, $\sigma(\emptyset) = \xi(\emptyset) = A$.
+
+Ensuite, $\sigma(\ordsucc{\alpha}) =
+\xi(\funrestrictionto{\sigma}{\ordsucc{\alpha}}) =
+\tau(\funrestrictionto{\sigma}{\ordsucc{\alpha}}(\alpha)) =
+\tau(\sigma(\alpha))$.
+
+Enfin, lorsque $\alpha$ est un ordinal limite,
+$\sigma(\alpha) = \xi(\funrestrictionto{\sigma}{\alpha}) =
+\theta(\ran{\funrestrictionto{\sigma}{\alpha}})$.
+\end{proof}
+\noindent
+Pour justifier la \olref[valpha]{defValphas}, il suffit maintenant de
+prendre $A = \emptyset$, $\tau(x) = \Pow{x}$ et
+$\theta(x) = \bigcup x$. Nous avons enfin légitimé la définition des
+$V_\alpha$ !{}
+
+\end{document}

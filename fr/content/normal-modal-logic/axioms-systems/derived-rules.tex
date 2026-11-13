@@ -1,0 +1,172 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: derived-rules
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{der}
+
+\olsection{Règles dérivées}
+
+Trouver et rédiger des !!{derivation}s est souvent laborieux et
+répétitif. Par exemple, on veut fréquemment passer de $!A \lif !B$ à
+$\Box !A \lif \Box !B$, c'est-à-dire appliquer la règle~\RK. Il faut
+pour cela appliquer \Nec, écrire l'instance appropriée de~\Ax{K},
+puis appliquer~\MP. Pour passer de $!A \lif !B$ et $!B \lif !C$ à
+$!A \lif !C$, il faut écrire l'instance (longue) de la tautologie
+\[
+(!A \lif !B) \lif ((!B \lif !C) \lif (!A \lif !C))
+\]
+et appliquer \MP{} deux fois. On veut aussi souvent remplacer une
+sous-!!{formula} par une !!{formula} dont on connaît l'équivalence :
+\iftag{prvDiamond}{$\Diamond !A$ par $\lnot\Box\lnot !A$}{$\Box !A$
+  par $\lnot\Diamond\lnot !A$}, par exemple, ou bien
+$\lnot\lnot !A$ par $!A$. Au lieu de rédiger chaque !!{derivation}
+en entier, il est donc plus commode d'indiquer pourquoi les étapes
+intermédiaires sont !!{derivable}. Rassemblons à cette fin quelques
+résultats sur la !!{derivability}.
+
+\begin{prop}
+  Si $\Log{K} \Proves !A_1$, \dots, $\Log{K} \Proves !A_n$, et si $!B$
+  découle de $!A_1$, \dots, $!A_n$ par la logique propositionnelle,
+  alors $\Log{K} \Proves !B$.
+\end{prop}
+
+\begin{proof}
+  Si $!B$ découle de $!A_1$, \dots,~$!A_n$ par la logique
+  propositionnelle, alors
+  \[
+  !A_1 \lif (!A_2 \lif \cdots (!A_n \lif !B)\dots)
+  \]
+  est une instance de tautologie. En appliquant \MP{} $n$ fois, on
+  obtient une !!{derivation} de~$!B$.
+\end{proof}
+
+Nous noterons l'emploi de cette proposition par~\PL.
+
+\begin{prop}
+  Si $\Log{K} \Proves !A_1 \lif (!A_2 \lif \cdots (!A_{n-1} \lif
+  !A_n)\dots)$, alors $\Log{K} \Proves \Box !A_1 \lif (\Box !A_2 \lif
+  \cdots (\Box !A_{n-1} \lif \Box !A_n)\dots)$.
+\end{prop}
+
+\begin{proof}
+  Par récurrence sur $n$, comme dans la démonstration de la
+  \olref[nor]{prop:rk}.
+\end{proof}
+
+Nous noterons l'emploi de cette proposition par~\RK. Voyons comment
+ces résultats facilitent l'établissement de la !!{derivability}.
+
+\begin{prop}
+  $\Log{K} \Proves (\Box!A \land \Box!B) \lif \Box (!A \land !B)$
+\end{prop}
+
+\begin{proof}
+  \begin{derivation}
+    1. & $\Log{K} \Proves !A \lif (!B \lif (!A \land !B))$ & \Taut \\
+    2. & $\Log{K} \Proves \Box!A \lif (\Box !B \lif \Box(!A \land !B))$ & \RK, 1\\
+    3. & $\Log{K} \Proves (\Box!A \land \Box!B) \lif \Box(!A \land !B)$ & \PL, 2
+  \end{derivation}
+\end{proof}
+
+\begin{prop}\ollabel{prop:rewriting}
+  Si $\Log{K} \Proves !A \liff !B$ et $\Log{K} \Proves
+  \Subst{!C}{!A}{q}$, alors $\Log{K} \Proves \Subst{!C}{!B}{q}$.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrer la \olref[nml][prf][der]{prop:rewriting} en montrant, par
+  récurrence sur la complexité de~$!C$, que si
+  $\Log{K} \Proves !A \liff !B$, alors
+  $\Log{K} \Proves \Subst{!C}{!A}{q} \liff \Subst{!C}{!B}{q}$.
+\end{prob}
+
+Cette proposition est particulièrement utile pour exprimer $\Diamond$
+au moyen de $\Box$ (ou inversement), ou pour éliminer les doubles
+négations à l'intérieur d'une !!{formula}. Dans la suite, nous
+signalerons les applications de la \olref{prop:rewriting} par
+« $!B$ à la place de $!A$ » lorsque nous remplaçons
+$!C(!A)$ par~$!C(!B)$. Autrement dit, « $!B$ à la place de $!A$ »
+abrège :
+  \begin{derivation}
+    & $\Proves !C(!A)$ \\
+    & $\Proves !A \liff !B$\\
+    & $\Proves !C(!B)$ & par la \olref{prop:rewriting}
+  \end{derivation}
+Par exemple :
+
+\begin{prop}
+  $\Log{K} \Proves \lnot\Box p \lif \Diamond \lnot p$
+\end{prop}
+
+\begin{proof}
+  \iftag{prvDiamond}{% Diamond est primitif
+  \begin{derivation}
+    1. & $\Log{K} \Proves \Diamond \lnot p \liff \lnot\Box\lnot\lnot p$ &
+    \Dual\\
+    2. & $\Log{K} \Proves \lnot \Box \lnot\lnot p \lif \Diamond \lnot p$ & \PL, 1\\
+    3. & $\Log{K} \Proves \lnot\Box p \lif \Diamond \lnot p$ & $p$ à la place de $\lnot\lnot p$\\
+  \end{derivation}
+  }{% Diamond est défini
+  \begin{derivation}
+    1. & $\Log{K} \Proves \lnot \Box \lnot\lnot p \lif \Diamond \lnot p$ & \Taut\\
+    2. & $\Log{K} \Proves \lnot\Box p \lif \Diamond \lnot p$ & $p$ à la place de $\lnot\lnot p$\\
+  \end{derivation}
+  La !!{formula} de la ligne~$1$ est une instance de
+  $\lnot q \lif \lnot q$, obtenue en substituant
+  $\Box\lnot\lnot p$ à~$q$. Les expressions $\Diamond\lnot p$ et
+  $\lnot\Box\lnot\lnot p$ sont identiques, puisque $\Diamond$ est
+  défini par~$\lnot\Box\lnot$.}
+\end{proof}
+
+Dans la !!{derivation} précédente, la dernière étape, « $p$ à la
+place de $\lnot\lnot p$ », abrège
+  \begin{derivation}
+    & $\Log{K} \Proves \lnot \Box \lnot\lnot p \lif \Diamond \lnot
+    p$\\
+    & $\Log{K} \Proves \lnot\lnot p \liff p$ & \Taut\\
+    & $\Log{K} \Proves \lnot\Box p \lif \Diamond \lnot p$ & par la \olref{prop:rewriting}
+  \end{derivation}
+Les rôles de $!C(q)$, $!A$ et $!B$ dans la \olref{prop:rewriting} sont
+joués ici respectivement par $\lnot \Box q \lif \Diamond \lnot p$,
+$\lnot\lnot p$ et~$p$.
+
+Lorsqu'une !!{formula} contient une sous-!!{formula}
+$\lnot\Diamond !A$, on peut la remplacer par $\Box\lnot !A$ au moyen
+de la \olref{prop:rewriting}, puisque
+$\Log{K} \Proves \lnot\Diamond !A \liff \Box\lnot !A$. Nous
+indiquerons ce remplacement, et les remplacements analogues,
+simplement par « $\Box\lnot$ à la place de $\lnot\Diamond$ ».
+
+La proposition suivante justifie les démonstrations schématiques de
+!!{derivability}. La proposition précédente, par exemple, n'établit
+pas seulement $\Log{K} \Proves \lnot\Box p \lif \Diamond \lnot p$,
+mais aussi $\Log{K} \Proves \lnot\Box !A \lif \Diamond\lnot !A$
+pour toute !!{formula}~$!A$.
+
+\begin{prop}
+  Si $!A$ est une instance de substitution de $!B$ et si
+  $\Log{K} \Proves !B$, alors $\Log{K} \Proves !A$.
+\end{prop}
+
+\begin{proof}
+  Il est fastidieux, mais élémentaire, de vérifier par récurrence sur
+  la longueur de la !!{derivation} de~$!B$ qu'une substitution
+  appliquée à toute cette !!{derivation} donne encore une
+  !!{derivation} correcte. Plus précisément, les instances de
+  substitution d'instances de tautologies sont encore des instances
+  de tautologies, celles des instances de~\iftag{prvDiamond}{\Dual{}
+    et de~}{}\Ax{K} sont encore des instances de~\iftag{prvDiamond}{\Dual{}
+    et de~}{}\Ax{K}, et les applications de \MP{} et de~\Nec{} restent
+  correctes lorsque l'on substitue des !!{formula}s aux variables
+  propositionnelles dans les prémisses et la conclusion.
+\end{proof}
+
+\end{document}

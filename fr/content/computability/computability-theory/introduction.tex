@@ -1,0 +1,76 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{int}
+\olsection{Introduction}
+
+La branche de la logique appelée \emph{théorie de la calculabilité}
+étudie la calculabilité des fonctions et des ensembles, ainsi que
+leur calculabilité relative. Témoignage de l'influence de Kleene,
+elle portait autrefois le nom de \emph{théorie de la récursion};
+les deux appellations restent aujourd'hui en usage.
+
+Appelons une fonction $f\colon\Nat\pto\Nat$
+\emph{partielle calculable} lorsqu'elle peut être calculée
+dans un modèle usuel de calcul, par exemple celui des machines de Turing. Si $f$ est totale, nous dirons
+simplement qu'elle est \emph{calculable}. Une relation~$R$
+dont la fonction caractéristique $\Char{R}$ est calculable
+est également dite calculable. Pour des fonctions partielles
+$f$ et~$g$, nous écrirons $f(x) \fdefined$ si $f$ est
+définie en~$x$, autrement dit si $x$ appartient à son
+domaine, et $f(x) \fundefined$ dans le cas contraire.
+La notation $f(x) \simeq g(x)$ signifie que les deux
+valeurs sont indéfinies ou qu'elles sont toutes deux
+définies et égales.
+
+On peut développer la théorie de la calculabilité sans
+se référer constamment à un modèle de calcul particulier.
+À cette fin, on montre qu'il existe une fonction partielle
+calculable universelle~$\fn{Un}(k,x)$. Elle permet
+d'énumérer les fonctions partielles calculables. Nous
+noterons $\cfind{k}$ la $k$-ième fonction partielle
+calculable unaire, définie par
+$\cfind{k}(x) \simeq \fn{Un}(k,x)$. (Kleene employait
+pour cela la notation $\{ k \}$, moins usitée de nos
+jours.) Plus généralement, on peut énumérer uniformément
+les fonctions partielles calculables de toutes les arités;
+$\cfind{k}[n]$ désignera la $k$-ième fonction partielle
+récursive à $n$~arguments.
+
+Si $f(\vec x,y)$ est une fonction totale ou partielle,
+$\umin{y}{f (\vec x,y)}$ est la fonction de~$\vec x$
+qui renvoie le plus petit~$y$ tel que $f(\vec x,y)=0$,
+à condition que toutes les valeurs $f(\vec x,0),\dots,
+f(\vec x,y-1)$ soient définies. S'il n'existe pas de
+tel~$y$, $\umin{y}{f (\vec x,y)}$ est indéfini.
+Pour une relation $R(\vec x,y)$, la notation
+$\umin{y}{R(\vec x,y)}$ désigne le plus petit~$y$
+tel que $R(\vec x,y)$ soit vraie, c'est-à-dire le
+plus petit~$y$ tel que
+$1 \tsub \Char{R}(\vec x,y)=0$.
+
+Pour montrer qu'une fonction est calculable, on peut
+procéder de deux manières :
+\begin{enumerate}
+\item De façon formelle : décrire explicitement une
+  machine de Turing ou une fonction récursive partielle,
+  puis montrer qu'elle calcule la fonction voulue.
+\item De façon informelle : décrire un algorithme qui
+  la calcule et invoquer la thèse de Church.
+\end{enumerate}
+La frontière entre ces deux démarches n'est pas nette.
+Une description assez détaillée de l'algorithme doit
+permettre de voir comment construire, en principe, la
+machine de Turing ou la suite de définitions récursives
+partielles appropriée. Des définitions entièrement formelles
+seraient rarement éclairantes; nous chercherons donc un
+juste milieu, en donnant des preuves intuitives mais
+assez précises pour que l'on puisse en tirer des
+définitions rigoureuses.
+
+\end{document}

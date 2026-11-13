@@ -178,18 +178,18 @@ Dans la !!{derivation} achevée, l'inférence \Intro{\lif} la plus
 
 \begin{ex}
 Jusqu'ici, nous n'avons pas eu besoin de la règle \FalseCl{}.
-Sa particularité est de permettre la décharge d'une hypothèse
-qui n'est pas une sous-!!{formula} de la conclusion de la règle.
-Elle est étroitement liée à \FalseInt{} : cette dernière en est
-un cas particulier. Il existe une logique, appelée « logique
-intuitionniste », dans laquelle seule \FalseInt{} est admise parmi
-ces deux règles. On recourt à \FalseCl{} en dernier ressort,
-lorsque les autres tentatives échouent. Supposons par exemple
-que nous voulions !!{derive} $!A \lor \lnot !A$. Notre stratégie
-habituelle consisterait à essayer de !!{derive} $!A \lor \lnot !A$
-par $\Intro{\lor}$. Il faudrait alors !!{derive} soit $!A$, soit
-$\lnot !A$, sans aucune hypothèse, ce qui n'est pas possible
-en général. La règle \FalseCl{} permet de sortir de cette impasse :
+Cette règle permet de décharger la négation de sa conclusion,
+qui n'est pas une sous-!!{formula} de celle-ci. Avec une décharge
+vide, \FalseCl{} se réduit à \FalseInt{}. De ces deux règles,
+seule \FalseInt{} est admise en logique intuitionniste.
+On recourt à \FalseCl{} lorsque les autres tentatives échouent.
+Supposons par exemple que nous voulions !!{derive} $!A \lor \lnot !A$.
+Notre stratégie habituelle consisterait à essayer de !!{derive}
+$!A \lor \lnot !A$ par $\Intro{\lor}$. Il faudrait alors !!{derive}
+soit $!A$, soit $\lnot !A$, sans aucune hypothèse. Cette méthode
+ne donne pas de dérivation pour un énoncé~$!A$ arbitraire.
+Essayons la règle \FalseCl{}.
+%
 \begin{prooftree}
   \AxiomC{$\Discharge{\lnot(!A \lor \lnot !A)}{1}$}
   \DeduceC{$\lfalse$}
@@ -307,19 +307,19 @@ Donner des !!{derivation}s établissant les résultats suivants :
 \item $(!A \lif !B) \lif !A \Proves !A$.
 \item $\Proves (!A \lif !B) \lor (!B \lif !C)$.
 \end{enumerate}
-(Tous ces résultats nécessitent la règle~$\FalseCl$.)
+(Dans ce système, une dérivation uniforme de chacun de ces
+schémas exige la règle~$\FalseCl$.)
 \end{prob}
-
-\begin{editorial}
-Dans le deuxième exemple, la source parle improprement de séquent
-final et situe à gauche la branche issue de $!A$ et $!B$, qui est
-à droite. Dans l'arbre intermédiaire suivant l'emploi de \FalseInt,
-l'étiquette \Intro{\lfalse} a été corrigée en \Elim{\lnot},
-conformément aux prémisses et à l'explication. Enfin, l'impossibilité
-de dériver $!A$ ou $\lnot !A$ sans hypothèse est une affirmation
-générale sur le schéma : certaines instances particulières sont
-démontrables. Les exercices restent des schémas pour des énoncés
-arbitraires.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
 
 \end{document}

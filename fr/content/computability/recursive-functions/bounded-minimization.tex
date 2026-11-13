@@ -1,0 +1,75 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: bounded-minimization
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{bmi}
+\olsection{Minimisation bornée}
+
+\begin{explain}
+Il est souvent utile de définir une fonction par le plus petit
+nombre qui satisfait une propriété ou une relation~$P$. Si
+$P$ est décidable, on peut chercher ce nombre en testant
+successivement $0$, $1$, $2$, $\dots$, jusqu'à trouver le
+premier qui satisfait~$P$. Sans témoin, cette recherche ne termine pas ;
+elle ne garantit pas, en général, une fonction récursive primitive.
+Mais si l'on ne cherche que le plus petit nombre
+\emph{inférieur à une borne donnée indépendamment}, on reste
+dans ce cadre. Plus généralement, supposons que $R(x,z)$
+soit une relation récursive primitive. Considérons la
+fonction qui associe à $x$ et~$y$ le plus petit $z<y$
+tel que $R(x,z)$. On peut la calculer en testant
+$R(x,0)$, $R(x,1)$, $\dots$, $R(x,y-1)$.
+Pourquoi est-elle elle-même récursive primitive ?
+\end{explain}
+
+\begin{prop}
+Si $R(\vec x,z)$ est récursive primitive, il en va de même
+de la fonction $m_R(\vec{x},y)$ qui renvoie le plus petit
+$z<y$ tel que $R(\vec x,z)$, s'il en existe un, et
+la borne~$y$ sinon. Nous noterons cette fonction~$m_R$ :
+\[
+\bmin{z < y}{R(\vec{x}, z)},
+\]
+\end{prop}
+
+\begin{proof}
+Il n'existe aucun $z<0$; en particulier, aucun tel
+$z$ ne satisfait $R(\vec x,z)$. On a donc
+$m_R(\vec x,0)=0$.
+
+Pour une borne de la forme $y+1$, distinguons trois cas :
+\begin{enumerate}
+\item Il existe $z<y$ tel que $R(\vec x,z)$.
+Alors $m_R(\vec x,y+1)=m_R(\vec x,y)$.
+\item Aucun $z<y$ ne convient, mais $R(\vec x,y)$
+vaut. Alors $m_R(\vec x,y+1)=y$.
+\item Aucun $z<y+1$ ne convient. Alors
+$m_R(\vec x,y+1)=y+1$.\footnote{Correction éditoriale : le tuple de paramètres reste $\vec x$, là où ce troisième cas de la source écrit $\vec z$ sans le définir.}
+\end{enumerate}
+On peut donc définir $m_R$ par récurrence primitive :
+\begin{align*}
+m_R(\vec{x}, 0) & = 0\\
+m_R(\vec{x}, y+1) & =
+\begin{cases}
+m_R(\vec{x}, y) & \text{si $m_R(\vec x,y)\neq y$}\\
+y & \text{si $m_R(\vec x,y)=y$ et $R(\vec{x},y)$}\\
+y+1 & \text{sinon.}
+\end{cases}
+\end{align*}
+Notons qu'il existe un $z<y$ tel que $R(\vec x,z)$
+si et seulement si $m_R(\vec x,y)\neq y$.
+\end{proof}
+
+\begin{prob}
+Supposons $R(\vec x,z)$ récursive primitive. Définir
+par récurrence primitive, à partir de~$\Char{R}$,
+la fonction $m'_R(\vec{x},y)$ qui renvoie le plus
+petit $z<y$ tel que $R(\vec x,z)$, s'il en existe un,
+et~$0$ sinon.
+\end{prob}
+
+\end{document}

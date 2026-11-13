@@ -1,0 +1,124 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{int}
+\olsection{Introduction}
+
+À première vue, le lambda-calcul n'est qu'un
+calcul très abstrait d'expressions qui
+représentent des fonctions et leurs applications
+à d'autres fonctions. Sa syntaxe ne suggère
+aucune espèce particulière d'objets auxquels
+ces fonctions s'appliqueraient; elle ne
+mentionne notamment pas les nombres naturels.
+Ses opérations fondamentales, l'application
+et l'abstraction lambda, concernent toute
+fonction, pas seulement celles qui portent
+sur les nombres naturels.
+
+Avec un peu d'ingéniosité, on peut néanmoins
+définir dans le lambda-calcul des fonctions
+arithmétiques, c'est-à-dire des fonctions
+sur les nombres naturels. Pour cela, on
+associe à chaque entier naturel
+$n\in\Nat$ un lambda-terme particulier
+$\num{n}$, le \emph{numéral de Church}
+de~$n$, nommé d'après Alonzo Church.
+
+\begin{defn}
+Pour $n\in\Nat$, le \emph{numéral de Church}
+$\num{n}$ représente~$n$ :
+\[
+  \num{n} \ident \lambd[fx][f^n(x)].
+\]
+Ici, $f^n(x)$ désigne le résultat de
+l'application de~$f$ à~$x$, $n$ fois.
+Par exemple, $\num{0}$ est
+$\lambd[fx][x]$ et $\num{3}$ est
+$\lambd[fx][f(f(f\,x))]$.
+\end{defn}
+
+Le numéral $\num{n}$ représente ainsi
+une fonction de deux arguments, $f$ et
+$x$, qui renvoie $f^n(x)$. Les numéraux
+de Church sont manifestement en forme
+normale.
+
+Cette représentation des nombres naturels
+n'est utile que si elle permet de calculer.
+Calculer avec les numéraux de Church
+consiste à appliquer un lambda-terme~$F$
+à un numéral~$\num{n}$, puis à réduire
+$F\,\num{n}$ jusqu'à une forme normale.
+Si, pour chaque~$n$, cette forme normale
+existe et est un numéral~$\num{m}$,
+on peut considérer~$m$ comme le résultat
+du calcul et~$F$ comme la définition
+d'une fonction $f\colon\Nat\to\Nat$ :
+$f(n)=m$ si et seulement si
+$F\,\num{n}\red\num{m}$. Par la
+propriété de Church--Rosser, une forme
+normale, si elle existe, est unique.
+Ainsi, lorsque $F\,\num{n}\red\num{m}$,
+ce terme ne peut se réduire à aucune
+autre forme normale, notamment à aucun
+autre numéral de Church.
+
+Inversement, pour une fonction
+$f\colon\Nat\to\Nat$ donnée, on peut
+demander s'il existe un terme~$F$ qui
+la définit ainsi. On dit alors que~$F$
+\emph{$\lambda$-définit}~$f$ et que~$f$
+est \emph{$\lambda$-définissable}.
+Cette notion s'étend aux fonctions à
+plusieurs arguments et aux fonctions
+partielles.
+
+\begin{defn}
+Soit $f$ une fonction partielle de
+$\Nat^k$ dans~$\Nat$. Un lambda-terme~$F$
+\emph{$\lambda$-définit}~$f$ si, pour
+tous $n_0$, \dots,~$n_{k-1}$,
+\[
+  F\,\num{n_0}\,\num{n_1}\dots\num{n_{k-1}}
+  \red \num{f(n_0,n_1,\dots,n_{k-1})}
+\]
+lorsque $f(n_0,\dots,n_{k-1})$ est définie;
+si cette valeur est indéfinie, le terme
+$F\,\num{n_0}\,\num{n_1}\dots\num{n_{k-1}}$
+n'a pas de forme normale.
+\end{defn}
+
+Les fonctions constantes fournissent
+un exemple simple. Le terme
+$C_k\ident\lambd[x][\num{k}]$
+$\lambda$-définit la fonction
+$c_k\colon\Nat\to\Nat$ telle que
+$c_k(n)=k$. En effet, pour tout~$n$,
+\[
+  C_k\,\num{n}
+  \ident(\lambd[x][\num{k}])\num{n}
+  \redone\num{k}.
+\]
+La fonction identité est
+$\lambda$-définie par $\lambd[x][x]$.
+Définir des fonctions plus complexes
+demande souvent davantage d'ingéniosité.
+Il peut donc sembler surprenant que
+toute fonction calculable soit
+$\lambda$-définissable. La réciproque
+vaut aussi : toute fonction
+$\lambda$-définissable est calculable.
+
+Pour une fonction partielle, la condition sur les entrées
+sans valeur porte sur toutes les suites de réduction. Une
+suite infinie peut partir d'un terme qui possède aussi une
+forme normale. Une entrée sans valeur doit donner un terme
+dont aucune suite de réductions n'atteint une forme normale.
+
+\end{document}

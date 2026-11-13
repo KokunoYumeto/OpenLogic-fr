@@ -1,0 +1,552 @@
+% Partie : théorie de la démonstration
+% Chapitre : normalisation
+% Section : correspondance des preuves normales et des séquents
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nor}{tr}
+
+\olsection{Correspondance entre les \usetoken{p}{proof} normales de \Log{N2i} et \Log{G2i}}
+
+Les preuves de \Log{N2i} et celles de \Log{G2i}
+peuvent être traduites les unes dans les autres.
+En particulier, une preuve \emph{sans coupure}
+de \Log{G2i} donne une preuve normale de
+\Log{N2i}.
+
+Rappelons la correspondance des contextes.
+Un ensemble~$\Gamma'$ de formules étiquetées
+\emph{correspond} à un multiensemble~$\Gamma$
+de formules sans étiquette si, pour chaque
+formule~$!A$, le nombre d'éléments de
+$\Gamma'$ de la forme $x : !A$ est inférieur
+ou égal à la multiplicité de~$!A$ dans~$\Gamma$.
+
+\begin{cor}
+Si $\Gamma \Sequent \Delta$ admet une preuve
+sans coupure dans \Log{G2i}, sa traduction
+est une preuve normale~$\delta$ de
+$\Gamma' \Sequent !C$ dans \Log{N2i}.
+Le contexte~$\Gamma'$ correspond au
+multiensemble~$\Gamma$. Si le conséquent
+est un singleton, sa formule est~$!C$.
+Si le conséquent est vide, $!C$ est l'absurde.
+Chaque formule~$!A$ a dans~$\Gamma'$ au plus
+autant de classes étiquetées que
+d'occurrences dans~$\Gamma$.
+\end{cor}
+
+\begin{proof}
+Examinons la traduction de la
+\olref[nat][tgi]{prop:G2i-to-N2i}.
+Les introductions sont ajoutées à la fin
+des sous-preuves. Les prémisses majeures
+des éliminations proviennent des axiomes
+des classes désignées, y compris lorsque
+l'élimination réunit des branches déjà
+traduites. Renommer ou fusionner des
+classes ne change pas les inférences.
+Ainsi, sans traduction de \Cut, aucune
+élimination ne prend pour majeure la
+conclusion d'une introduction, de~\FalseInt,
+ni la dernière occurrence d'un segment
+de longueur supérieure à un.
+\end{proof}
+
+La traduction de \Cut{} dans la
+\olref[nat][tgi]{prop:G2i-to-N2i} peut,
+en revanche, créer une coupure dans
+la preuve~$\delta$ de \Log{N2i}.
+Si une preuve de \Log{G2i} se termine par
+une coupure dont les sous-preuves
+$\pi_1$ et~$\pi_2$ concluent
+$\Gamma_1 \Sequent !A$ et
+$!A, \Gamma_2 \Sequent \Delta_2$,
+on greffe la traduction~$\delta_1$
+de~$\pi_1$ aux axiomes
+$x:!A \Sequent !A$ de la classe
+désignée dans la traduction~$\delta_2$
+de~$\pi_2$. Si~$\delta_1$ se termine
+par une introduction de formule
+principale~$!A$, et si l'axiome
+$x:!A \Sequent !A$ est une prémisse
+majeure d'élimination, le greffage
+crée un détour.
+Les étiquettes et les constantes propres
+sont préalablement rendues fraîches.
+
+Dans l'autre sens, la traduction générale
+de \Log{N2i} vers \Log{G2i} donnée dans la
+\olref[nat][tni]{prop:N2-to-G2} emploie
+des coupures pour \Elim{\land},
+\Elim{\lif}, \Elim{\lnot} et
+\Elim{\lforall}. Si la preuve initiale
+est normale, on peut les éviter.
+
+Une \emph{branche} d'une preuve~$\delta$
+de \Log{N2i} est une suite $S_1$, \dots,
+$S_n$ d'occurrences de séquents,
+commençant par un axiome, telle que
+chaque $S_i$, avant le dernier, est
+une prémisse majeure d'une inférence
+dont $S_{i+1}$ est la conclusion.
+La branche s'arrête lorsqu'elle atteint
+une prémisse mineure d'élimination.
+Elle est \emph{principale} si $S_n$
+est le séquent final.
+Toute preuve~$\delta$ possède au moins
+une branche principale : chaque règle
+a une prémisse majeure, et seule
+\Intro{\land} en a deux.
+
+\begin{prop}\ollabel{prop:normal-N2i-to-G2i}
+Si $\delta$ est une preuve normale
+de $\Log{N2c}$ ou de $\Log{N2i}$
+de~$\Gamma \Sequent !A$, il existe,
+respectivement, une preuve sans coupure
+de $\Log{G2c}$ ou de $\Log{G2i}$
+de~$\Gamma' \Sequent \Delta$.
+Le multiensemble~$\Gamma'$ est obtenu
+en effaçant les étiquettes de~$\Gamma$,
+avec une copie par classe d'hypothèses.
+On prend $\Delta = \{!A\}$ si~$!A$
+n'est pas~$\lfalse$, et
+$\Delta = \emptyset$ sinon.
+\end{prop}
+
+\begin{proof}
+Nous donnons d'abord la transformation
+directe pour la version intuitionniste.
+La récurrence porte sur le nombre
+d'inférences de la preuve~$\delta$
+de~$\Gamma \Sequent !A$.
+Sans inférence, celle-ci est un axiome
+$x:!A \Sequent !A$. Sa traduction~$\pi$
+est $!A \Sequent !A$, ou
+$\lfalse \Sequent \ $ si
+$!A \ident \lfalse$.
+
+Dans les constructions qui suivent,
+le conséquent final reste vide lorsque
+la conclusion naturelle est l'absurde.
+On rétablit une formule $\lfalse$ à
+droite par \RightR{\Weakening} seulement
+si une prémisse logique l'exige.
+On n'a jamais besoin de \Cut{} pour
+retirer un absurde du conséquent final.
+Les contextes naturels sont des ensembles
+de classes ; les contextes des séquents
+sont des multiensembles. Lorsque deux
+prémisses utilisent la même classe
+ouverte, leurs traductions donnent deux
+copies de sa formule : on les contracte
+pour en garder une par classe.
+Des classes distinctes de même formule
+demeurent, elles, des copies distinctes.
+
+Supposons que la dernière inférence
+soit une règle~$R$.
+\begin{enumerate}
+  \item Si $R$ est une introduction
+  ou~\FalseInt, la traduction suit celle de la
+  \olref[nat][tni]{prop:N2-to-G2},
+  sans coupure. Une décharge vacante
+  demande, au besoin, un affaiblissement
+  gauche. Pour une introduction dont
+  une prémisse est l'absurde, on rétablit
+  cette formule à droite si le schéma
+  l'exige. L'introduction de négation
+  utilise directement le conséquent vide.
+  Pour~\FalseInt, on conserve ce
+  conséquent vide si la conclusion est
+  encore l'absurde ; sinon, on applique
+  l'affaiblissement droit avec la formule
+  finale. Les contextes communs sont
+  contractés comme indiqué.
+
+  Si $R$ est une élimination, nous
+  utiliserons les observations suivantes.
+  \begin{enumerate}
+    \item Aucune branche principale
+    ne contient d'introduction ni
+    de~\FalseInt : une telle règle,
+    suivie sur cette branche d'une
+    élimination, formerait un segment
+    de coupure.
+    \item La branche principale est
+    donc unique. Une bifurcation de
+    branches principales ne pourrait
+    provenir que de \Intro{\land}.
+    \item Si elle passe par la prémisse
+    majeure de \Elim{\lor} ou de
+    \Elim{\lexists}, cette règle est
+    nécessairement la dernière, donc~$R$.
+    Sinon, sa conclusion finirait par
+    servir de prémisse majeure d'une
+    autre élimination et formerait un
+    segment de coupure.
+    \item Les éliminations autres que
+    \Elim{\lor} et \Elim{\lexists}
+    ne déchargent aucune hypothèse.
+    Ces deux règles ne déchargent que
+    des classes de leurs prémisses
+    mineures. Si~$S_i$ sur la branche
+    principale a pour contexte~$\Gamma_1$,
+    le contexte de~$S_{i+1}$
+    contient donc celui-ci :
+    $\Gamma_1' \supseteq \Gamma_1$.
+    \item Si l'axiome initial~$S_1$
+    est $x: !C \Sequent !C$,
+    son hypothèse reste ouverte ;
+    en particulier, $x:!C \in \Gamma$.
+  \end{enumerate}
+  Nous distinguons maintenant la forme
+  de~$!C$, prémisse majeure de la première
+  élimination.
+
+  Avant de remplacer cet axiome, nous
+  isolons son occurrence par une étiquette
+  fraîche, notée~\emph{x} dans les dessins.
+  Les autres occurrences de sa classe
+  initiale, si elles existent dans des
+  branches mineures, gardent une autre
+  étiquette. Cette séparation conserve
+  la validité et le nombre d'inférences,
+  puisque l'occurrence principale ne
+  sera déchargée par aucune règle.
+  Après la traduction, une contraction
+  réunit les copies issues de cette même
+  classe initiale. Lors d'un remplacement,
+  tous les contextes de la continuation
+  sont recalculés à partir des feuilles :
+  une dépendance encore utilisée dans
+  une autre branche n'est pas supprimée.
+
+  \item Si $!C \ident !D \land !E$,
+  la preuve a, pour la première projection,
+  la forme
+\[
+  \Axiom$x:!D \land !E \fCenter !D \land !E$
+  \RightLabel{\Elim{\land}[1]}
+  \UnaryInf$x:!D \land !E \fCenter !D$
+  \Deduce$x:!D \land !E, \Gamma_1 \fCenter !A$
+  \DisplayProof
+  \]
+  Sur la branche principale, l'hypothèse
+  $x:!D \land !E$ reste ouverte.
+  Le séquent $x:!D \land !E \Sequent !D$
+  se trouve sur cette branche. La nouvelle
+  classe~$x:!D$ remplacera seulement
+  l'occurrence principale isolée.
+  Nous remplaçons la sous-preuve se
+  terminant par cette projection par
+  l'axiome $x:!D \Sequent !D$,
+  et recalculons les contextes dans
+  la continuation. Le contexte résiduel
+  contient toute dépendance des autres
+  branches, y compris une éventuelle
+  autre occurrence de la classe initiale.
+  Schématiquement, nous transformons
+\[
+  \bottomAlignProof
+  \Axiom$x:!D \land !E \fCenter !D \land !E$
+  \RightLabel{\Elim{\land}[1]}
+  \UnaryInf$x:!D \land !E \fCenter !D$
+  \Deduce$x:!D \land !E, \Gamma_1 \fCenter !A$
+  \DisplayProof
+  \quad\text{ en }\quad
+  \bottomAlignProof
+  \Axiom$x:!D \fCenter !D$
+  \Deduce$x:!D, \Gamma_1 \fCenter !A$
+  \DisplayProof
+  \]
+  La nouvelle preuve~$\delta_1$ est
+  normale et possède une inférence
+  de moins que~$\delta$.
+  L'hypothèse de récurrence donne
+  une preuve~$\pi_1$ sans coupure,
+  de $!D, \Gamma_1' \Sequent !A$
+  lorsque la conclusion n'est pas l'absurde.
+  On applique \LeftR{\land} :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!D, \Gamma_1' \fCenter !A$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!D \land !E, \Gamma_1' \fCenter !A$
+  \DisplayProof
+  \]
+  Si $!A \ident \lfalse$, on garde
+  le conséquent vide :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!D, \Gamma_1' \fCenter $
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!D \land !E, \Gamma_1' \fCenter $
+  \DisplayProof
+  \]
+  Les éventuelles copies de la même
+  classe initiale sont ensuite contractées.
+  La seconde projection se traite avec
+  l'autre règle \LeftR{\land}.
+
+  \item Si $!C \ident !D \lor !E$,
+  l'axiome initial est la prémisse majeure
+  de $\Elim{\lor}$, qui est la dernière
+  règle~$R$. La preuve a la forme
+\[
+  \Axiom$x:!D \lor !E \fCenter !D \lor !E$
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$y:!D, \Gamma_1 \fCenter!A$
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \Deduce$z:!E, \Gamma_2 \fCenter !A$
+  \RightLabel{\Elim{\lor}}
+  \TrinaryInf$x:!D \lor !E, \Gamma_1, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \]
+  La récurrence s'applique aux deux
+  branches~$\delta_1$ et~$\delta_2$.
+  Les contextes résiduels $\Gamma_1$ et~$\Gamma_2$
+  s'obtiennent après la décharge éventuelle
+  de $y:!D$ et de $z:!E$, respectivement.
+  Les traductions~$\pi_1$
+  et~$\pi_2$ sont combinées par la règle
+  intuitionniste $\LeftR{\lor}$ à
+  \emph{conséquent partagé} :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!D, \Gamma_1' \fCenter !A$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$!E, \Gamma_2' \fCenter !A$
+  \RightLabel{\LeftR{\lor}}
+  \BinaryInf$!D \lor !E, \Gamma_1', \Gamma_2' \fCenter !A$
+  \DisplayProof
+  \]
+  Si une classe désignée n'est pas utilisée,
+  un affaiblissement gauche ajoute le
+  disjoint correspondant. Lorsque~$!A$
+  est l'absurde, les deux conséquents
+  partagés sont vides. Par exemple,
+  si les deux décharges sont vacantes :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma_1' \fCenter $
+  \RightLabel{\LeftR{\Weakening}}
+  \UnaryInf$!D, \Gamma_1' \fCenter $
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$\Gamma_2' \fCenter $
+  \RightLabel{\LeftR{\Weakening}}
+  \UnaryInf$!E, \Gamma_2' \fCenter $
+  \RightLabel{\LeftR{\lor}}
+  \BinaryInf$!D \lor !E, \Gamma_1', \Gamma_2' \fCenter $
+  \DisplayProof
+  \]
+  Aucun affaiblissement droit final
+  n'est ajouté. On contracte ensuite
+  seulement les copies issues d'une
+  même classe ouverte.
+
+  \item Si $!C \ident !D \lif !E$,
+  la première élimination donne
+\[
+  \Axiom$x:!D \lif !E \fCenter !D \lif !E$
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$\Gamma_1 \fCenter!D$
+  \RightLabel{\Elim{\lif}}
+  \BinaryInf$x:!D \lif !E, \Gamma_1 \fCenter !E$
+  \RightLabel{$\delta_2$}
+  \Deduce$x:!D \lif !E, \Gamma_1, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \]
+  Le séquent
+  $x:!D \lif !E, \Gamma_1 \Sequent !E$
+  se trouve sur la branche principale ;
+  son contexte est $x:!D \lif !E, \Gamma_1$.
+  Nous conservons la preuve~$\delta_1$
+  de l'argument et remplaçons la
+  sous-preuve concluant l'élimination
+  par un axiome frais $x:!E \Sequent !E$.
+  La nouvelle classe~$x:!E$ ne porte
+  pas l'étiquette d'une hypothèse
+  conservée dans une autre branche.
+  Dans la continuation, notée
+  $\delta_2'$, les contextes sont
+  recalculés. Le contexte résiduel
+  conserve toutes les
+  hypothèses encore employées par ses
+  autres branches, même si elles
+  figuraient aussi dans~$\Gamma_1$.
+  Le changement est schématisé par
+\[
+  \bottomAlignProof
+  \Axiom$x:!D \lif !E, \Gamma_1 \fCenter !E$
+  \RightLabel{$\delta_2$}
+  \Deduce$x:!D \lif !E, \Gamma_1, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \quad\text{ en }\quad
+  \bottomAlignProof
+  \Axiom$x:!E \fCenter !E$
+  \RightLabel{$\delta_2'$}
+  \Deduce$x:!E, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \]
+  Les deux nouvelles preuves sont
+  normales et plus petites. Le nombre
+  d'inférences de~$\delta$ est la somme
+  de ceux de~$\delta_1$ et de
+  $\delta_2'$, plus~$1$ pour l'élimination
+  supprimée. Si cette élimination était
+  déjà la dernière règle~$R$,
+  c'est~$\delta_2'$ qui contient
+  $0$ inférence ; la preuve de
+  l'argument peut être non triviale.
+
+  Les traductions~$\pi_1$ et~$\pi_2$
+  concluent $\Gamma_1' \Sequent !D$
+  et $!E, \Gamma_2' \Sequent !A$
+  lorsque ces formules ne sont pas
+  l'absurde. Elles sont combinées par
+  \LeftR{\lif} :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma_1' \fCenter !D$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$!E, \Gamma_2' \fCenter !A$
+  \RightLabel{\LeftR{\lif}}
+  \BinaryInf$!D \lif !E, \Gamma_1', \Gamma_2' \fCenter !A$
+  \DisplayProof
+  \]
+  Si $!D$ est l'absurde, on rétablit
+  cette formule à droite de la première
+  prémisse. Si $!A \ident \lfalse$,
+  la seconde prémisse et la conclusion
+  gardent un conséquent vide.
+  Ainsi, lorsque les deux sont l'absurde :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma_1' \fCenter $
+  \RightLabel{\RightR{\Weakening}}
+  \UnaryInf$\Gamma_1' \fCenter !D$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$!E, \Gamma_2' \fCenter $
+  \RightLabel{\LeftR{\lif}}
+  \BinaryInf$!D \lif !E, \Gamma_1', \Gamma_2' \fCenter $
+  \DisplayProof
+  \]
+  Des contractions rétablissent une
+  copie par classe du contexte initial.
+\end{enumerate}
+
+Les autres éliminations se traitent de
+la même manière. Pour la négation,
+la première règle est \Elim{\lnot} :
+on traduit sa prémisse mineure, en
+rétablissant l'absurde à droite si
+l'argument est lui-même l'absurde,
+puis on applique \LeftR{\lnot}.
+La conclusion a un conséquent vide.
+Pour l'universelle, on remplace la
+première élimination par l'axiome
+sur son instance, traduit la continuation,
+puis applique \LeftR{\lforall} avec
+le même terme fermé.
+Pour l'existentielle, la première règle
+est aussi la dernière : on traduit sa
+branche mineure, ajoute l'hypothèse
+instanciée par affaiblissement gauche
+en cas de décharge vacante, puis applique
+\LeftR{\lexists}. La régularité et les
+conditions d'élimination garantissent
+la fraîcheur de sa constante propre.
+Les éventuels contextes communs sont
+contractés dans tous ces cas.
+Ces constructions n'emploient aucune
+coupure.
+
+La partie classique de l'énoncé ne
+découle pas de cette analyse de branche,
+car~\FalseCl{} peut décharger une
+hypothèse sur la branche principale.
+Elle s'obtient séparément en combinant
+la traduction générale de \Log{N2c}
+vers \Log{G2c} avec coupures et le
+théorème classique d'élimination des
+coupures. Cette voie donne le séquent
+requis sans exiger la normalité de la
+preuve initiale ; elle n'affirme pas
+que chaque formule de cette preuve
+survit dans la preuve finale.
+\end{proof}
+
+\begin{cor}
+Dans une preuve normale de \Log{N1i} ou
+de \Log{N2i}, toute formule autre que
+$\lfalse$ est une sous-formule de la
+conclusion ou d'une hypothèse ouverte,
+au sens qui admet les instances de
+termes pour les sous-formules quantifiées.
+\end{cor}
+
+\begin{proof}
+Par la \olref{prop:normal-N2i-to-G2i}, une
+preuve normale de \Log{N2i} se traduit
+en une preuve sans coupure de \Log{G2i}.
+La transformation directe conserve les
+formules de la preuve naturelle, à
+l'exception éventuelle de l'absurde,
+que le conséquent vide peut représenter.
+La propriété de la sous-formule du calcul
+sans coupure s'applique aux autres
+formules, avec les instances requises
+par les règles quantifiées.
+Le passage de \Log{N1i} à \Log{N2i}
+conserve les occurrences de formules
+et explicite leurs hypothèses ouvertes.
+\end{proof}
+
+L'exception est nécessaire lorsque la
+négation est primitive. À partir de
+$!A$ et de $\lnot !A$, on obtient
+$\lfalse$ par élimination de la négation,
+puis un atome $!B$ distinct de~$!A$ par
+\FalseInt. Pour $!A$ atomique, cette
+preuve est normale et $\lfalse$ n'est
+une sous-formule ni de ses hypothèses
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+ni de sa conclusion.
+
+\end{document}

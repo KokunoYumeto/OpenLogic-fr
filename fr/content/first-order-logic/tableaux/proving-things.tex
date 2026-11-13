@@ -23,11 +23,11 @@ Commençons par inscrire l'hypothèse correspondante en haut du
     just = \TAss]
 \end{oltableau}
 
-Il n'y a qu'une hypothèse, donc qu'une seule !!{signed formula} à
-laquelle appliquer une règle. Pour toute !!{signed formula}, il existe
-toujours au plus une règle applicable : celle qui correspond au signe
-et au !!{main operator} de l'!!{sentence}. Dans le cas présent, il faut
-donc appliquer $\TRule{\False}{\lif}$.
+Il n'y a qu'une hypothèse. Pour décomposer cette !!{signed formula},
+on choisit la règle propositionnelle indiquée par le signe et par
+l'!!{main operator} de l'!!{sentence}. Ici, on applique
+$\TRule{\False}{\lif}$.
+%
 \begin{oltableau}
   [\sFmla{\False}{(\formula{A} \land \formula{B}) \lif \formula{A}},
     checked, just = \TAss
@@ -37,15 +37,15 @@ donc appliquer $\TRule{\False}{\lif}$.
     ]
   ]
 \end{oltableau}
-Pour repérer les !!{signed formula}s auxquelles nous avons appliqué la
-règle correspondante, nous plaçons une coche à côté de l'énoncé. Il ne
-faut cependant placer cette coche que si la règle a été appliquée sur
-toutes les branches ouvertes. Dès que la règle correspondante à
-!!a{signed formula} a été appliquée sur chacune d'elles, il n'est plus
-nécessaire de revenir à cette formule pour appliquer de nouveau la
-règle. Il n'y a ici qu'une branche ; une seule application suffit donc.
-Les coches ne sont qu'un moyen pratique de construire les tableaux et
-ne font pas officiellement partie de leur syntaxe.
+Nous plaçons une coche à côté d'une !!{signed formula} dès que
+sa règle de décomposition propositionnelle a été appliquée sur
+toutes les branches ouvertes qui la contiennent. Nous pouvons
+alors poursuivre la construction sans la décomposer à nouveau.
+Il n'y a ici qu'une branche. Une application suffit donc.
+Les coches servent à suivre la construction du !!{tableau}.
+Sa syntaxe est indépendante de ces marques.
+%
+%
 
 Une nouvelle !!{signed formula} permet l'application d'une règle :
 $\sFmla{\True}{!A \land !B}$ à la ligne~$2$. L'application de
@@ -172,10 +172,10 @@ obtient alors~$\sFmla{\False}{!A}$, ce qui ferme la branche gauche :
 \end{ex}
 
 \begin{ex}
-On peut construire des !!{tableau}s ayant un nombre quelconque de
-!!{signed formula}s pour hypothèses. Il faut souvent appliquer plusieurs
-règles qui produisent des ramifications, et !!a{tableau} peut en général
-comporter un nombre quelconque de branches. Considérons par exemple
+On peut construire des !!{tableau}s pour toute liste finie non
+vide de !!{signed formula}s. Il faut parfois appliquer plusieurs
+règles de ramification, de sorte qu'un !!{tableau} peut avoir
+un nombre quelconque de branches. Considérons par exemple
 !!a{tableau} pour
 $\{\sFmla{\True}{!A \lor (!B \land !C)}, \sFmla{\False}{(!A \lor !B) \land (!A
   \lor !C)}\}$. Commençons par appliquer $\TRule{\True}{\lor}$ à la
@@ -215,8 +215,8 @@ donc cocher la ligne~$2$ :
     ]
   ]
 \end{oltableau}
-Appliquons ensuite $\TRule{\False}{\lor}$ sur toutes les branches qui
-contiennent $!A \lor !B$ :
+Appliquons ensuite $\TRule{\False}{\lor}$ sur les deux branches
+qui contiennent $\sFmla{\False}{!A \lor !B}$ :
 \begin{oltableau}
   [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
     just=\TAss, checked
@@ -248,8 +248,8 @@ contiennent $!A \lor !B$ :
     ]
   ]
 \end{oltableau}
-La branche située tout à gauche est désormais fermée. Appliquons
-maintenant $\TRule{\False}{\lor}$ à $!A \lor !C$ :
+La branche située tout à gauche est fermée. Sur les deux branches
+où figure $\sFmla{\False}{!A \lor !C}$, appliquons $\TRule{\False}{\lor}$ :
 \begin{oltableau}
   [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
     just=\TAss, checked
@@ -446,13 +446,13 @@ Construire un !!{tableau} fermé pour chacun des ensembles suivants :
 \end{enumerate}
 \end{prob}
 
-\begin{editorial}
-Note de l'édition française : dans le neuvième item du groupe précédent,
-l'original regroupe par erreur $!A \lor !B$ et $\lnot !B$ sous un seul
-signe~$\True$. Ils sont rétablis comme deux formules signées distinctes,
-conformément aux exercices parallèles de déduction naturelle et de
-calcul des séquents.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
 
 \begin{prob}
 Construire un !!{tableau} fermé pour chacun des ensembles suivants :

@@ -1,0 +1,429 @@
+% Partie : logique du premier ordre
+% Chapitre : déduction axiomatique
+% Section : propriétés de la déductibilité
+% Propriétés nécessaires aux ensembles maximalement cohérents.
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{axd}{pva}}
+      {\olfileid[fr]{pl}{axd}{pva}}
+
+\olsection{Propriétés de la \usetoken{s}{derivability}}
+
+\begin{editorial}
+Cette section présente une formulation plus ancienne du calcul
+axiomatique. Ses désignations \textbf{Ax0} à \textbf{Ax3} renvoient
+aux schémas suivants, ainsi qu'à leurs clôtures universelles :
+\textbf{Ax0}, les instances des tautologies propositionnelles ;
+\textbf{Ax1}, $\lforall[x][!B]\lif !B(t)$, lorsque $t$ est libre
+pour $x$ dans $!B$ ;
+\textbf{Ax2},
+$\lforall[x][(!B\lif !C)]\lif
+(\lforall[x][!B]\lif\lforall[x][!C])$ ;
+\textbf{Ax3}, $!B\lif\lforall[x][!B]$, lorsque $x$ n'est pas
+libre dans $!B$. La règle de construction des démonstrations est
+le modus ponens. Si le quantificateur existentiel est primitif,
+on suppose aussi le schéma dual
+$!B(t)\lif\lexists[x][!B]$, sous la même condition de
+substitution ; s'il est défini par la négation et le quantificateur
+universel, ce schéma en découle. Ces conventions explicitent
+les schémas invoqués
+par la source ; elles ne sont pas les règles de quantification
+présentées dans la formulation principale du chapitre.
+\end{editorial}
+
+\begin{prop}[Monotonie]
+Si $\Gamma \subseteq \Delta$ et $\Gamma \Proves !A$, alors
+$\Delta \Proves !A$.
+\end{prop}
+
+\begin{proof}
+Tout sous-ensemble fini $\Gamma_0 \subseteq \Gamma$ est aussi un
+sous-ensemble fini de~$\Delta$. Une !!{derivation} de
+$\Gamma_0 \Proves !A$ établit donc également
+$\Delta \Proves !A$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:provability}
+$\Gamma \Proves !A$ si et seulement si
+$\Gamma\cup \{\lnot!A \}$ est incohérent.
+\end{prop}
+
+\begin{prop}
+\begin{enumerate}
+\item \ollabel{prop:provability-contr}
+Si $\Gamma \Proves !A$ et
+$\Gamma \cup \{!A\} \Proves \lfalse$, alors $\Gamma$ est incohérent.
+
+\item \ollabel{prop:provability-lnot}
+Si $\Gamma \cup \{!A\} \Proves \lfalse$, alors
+$\Gamma \Proves \lnot !A$.
+
+\item \ollabel{prop:provability-exhaustive}
+Si $\Gamma \cup \{!A\} \Proves \lfalse$ et
+$\Gamma \cup \{\lnot !A\} \Proves \lfalse$, alors
+$\Gamma \Proves \lfalse$.
+
+\tagitem{prvOr}{\ollabel{prop:provability-lor-left}
+Si $\Gamma \cup \{!A\} \Proves \lfalse$ et
+$\Gamma \cup \{!B\} \Proves \lfalse$, alors
+$\Gamma \cup \{!A \lor !B\} \Proves \lfalse$.}{}
+
+\tagitem{prvOr}{\ollabel{prop:provability-lor-right}
+Si $\Gamma \Proves !A$ ou $\Gamma \Proves !B$, alors
+$\Gamma \Proves !A \lor !B$.}{}
+
+\tagitem{prvAnd}{\ollabel{prop:provability-land-left}
+Si $\Gamma \Proves !A \land !B$, alors
+$\Gamma \Proves !A$ et $\Gamma \Proves !B$.}{}
+
+\tagitem{prvAnd}{\ollabel{prop:provability-land-right}
+Si $\Gamma \Proves !A$ et $\Gamma \Proves !B$, alors
+$\Gamma \Proves !A \land !B$.}{}
+
+\tagitem{prvIf}{\ollabel{prop:provability-mp}
+Si $\Gamma \Proves !A$ et $\Gamma \Proves !A \lif !B$,
+alors $\Gamma \Proves !B$.}{}
+
+\tagitem{prvIf}{\ollabel{prop:provability-lif}
+Si $\Gamma \Proves \lnot !A$ ou $\Gamma \Proves !B$, alors
+$\Gamma \Proves !A \lif !B$.}{}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Dans chaque cas, choisissons les sous-ensembles finis de~$\Gamma$
+qui contiennent les hypothèses effectivement utilisées.
+\begin{enumerate}
+\item Supposons que $\Gamma_0 \cup \{!A\} \Proves \lfalse$
+et que $\Gamma_1 \Proves !A$.
+
+\begin{derivation}
+1. & $\Gamma_0 \cup \{!A\} \Proves \lfalse$ & hyp. \\
+2. & $\Gamma_1 \Proves !A$ & hyp. \\
+3. & $\Gamma_0 \cup \Gamma_1 \Proves \lfalse$ & coupure \\
+\end{derivation}
+
+Comme $\Gamma_0 \subseteq \Gamma$ et $\Gamma_1 \subseteq \Gamma$,
+on a $\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$, d'où
+$\Gamma \Proves \lfalse$.
+
+\item Supposons que $\Gamma_0 \cup\{!A\} \Proves \lfalse$.\footnote{
+Correction de l'édition française : la source suppose ici
+la contradiction à partir de $\lnot !A$ et conclut $!A$,
+alors que l'énoncé demande de partir de $!A$ et de conclure
+$\lnot !A$. Les quatre lignes sont rétablies dans ce sens.}
+
+\begin{derivation}
+1. & $\Gamma_0 \cup\{!A\} \Proves \lfalse$ & hyp. \\
+2. & $\Gamma_0 \Proves !A \lif \lfalse$ & théorème de la déduction \\
+3. & $\Gamma_0 \Proves (!A \lif \lfalse) \lif \lnot !A$ & Ax0 \\
+4. & $\Gamma_0 \Proves \lnot !A$ & MP 2, 3 \\
+\end{derivation}
+
+La monotonie donne $\Gamma \Proves \lnot !A$.
+
+\item Supposons que $\Gamma_0 \cup \{!A\} \Proves \lfalse$
+et que $\Gamma_1 \cup \{\lnot !A\} \Proves \lfalse$.
+
+\begin{derivation}
+1. & $\Gamma_0 \cup\{!A\} \Proves \lfalse$ & hyp. \\
+2. & $\Gamma_0 \Proves !A \lif \lfalse$ & théorème de la déduction \\
+3. & $\Gamma_1 \cup \{\lnot !A\} \Proves \lfalse$ & hyp. \\
+4. & $\Gamma_0 \Proves (!A \lif \lfalse) \lif \lnot !A$ & Ax0 \\
+5. & $\Gamma_0 \Proves \lnot !A$ & MP 2, 4 \\
+6. & $\Gamma_0 \cup \Gamma_1 \Proves \lfalse$ & coupure 3, 5 \\
+\end{derivation}
+
+Comme $\Gamma_0 \subseteq \Gamma$ et $\Gamma_1 \subseteq \Gamma$,
+on a $\Gamma_0 \cup \Gamma_1 \subseteq \Gamma$. Ainsi,
+$\Gamma \Proves \lfalse$.
+
+% prop:provability-lor-left
+\tagitem{defOr}{}{
+\iftag{probOr}{Exercice.}{Exercice.}}
+
+% prop:provability-lor-right
+\tagitem{defOr}{}{\iftag{probOr}{Exercice.}{
+Supposons que $\Gamma_0 \Proves !A$.
+
+\begin{derivation}
+1. & $\Gamma_0 \Proves !A$ & hyp. \\
+2. & $\Gamma_0 \Proves !A \lif (!A \lor !B)$ & Ax0 \\
+3. & $\Gamma_0 \Proves !A \lor !B$ & MP 1, 2 \\
+\end{derivation}
+
+Donc $\Gamma \Proves !A \lor !B$. Le cas où
+$\Gamma \Proves !B$ se traite de la même façon.}}
+
+% prop:provability-land-left
+\tagitem{defAnd}{}{\iftag{probAnd}{Exercice.}{
+Supposons que $\Gamma_0 \Proves !A \land !B$.
+
+\begin{derivation}
+1. & $\Gamma_0 \Proves !A \land !B$ & hyp. \\
+2. & $\Gamma_0 \Proves (!A\land !B) \lif !A$ & Ax0 \\
+3. & $\Gamma_0 \Proves !A$ & MP 1, 2 \\
+\end{derivation}
+
+La monotonie donne $\Gamma \Proves !A$. Une !!{derivation}
+analogue établit $\Gamma \Proves !B$.\footnote{Correction de
+l'édition française : la troisième ligne de la source conclut
+à tort $!A\lor !B$ au lieu de $!A$.}}}
+
+% prop:provability-land-right
+\tagitem{defAnd}{}{\iftag{probAnd}{Exercice.}{Exercice.}}
+
+% prop:provability-mp
+\tagitem{defIf}{}{\iftag{probIf}{Exercice.}{
+Supposons que $\Gamma_0 \Proves !A$ et
+$\Gamma_0 \Proves !A \lif !B$.
+
+\begin{derivation}
+1. & $\Gamma_0 \Proves !A$ & hyp. \\
+2. & $\Gamma_0 \Proves !A \lif !B$ & hyp. \\
+3. & $\Gamma_0 \Proves !B$ & MP 1, 2 \\
+\end{derivation}
+
+Comme $\Gamma_0 \subseteq \Gamma$, nous obtenons
+$\Gamma \Proves !B$.}}
+
+% prop:provability-lif
+\tagitem{defIf}{}{\iftag{probIf}{Exercice.}{
+Supposons d'abord que $\Gamma \Proves \lnot !A$.
+
+\begin{derivation}
+1. & $\Gamma_0 \Proves \lnot !A$ & hyp. \\
+2. & $\Gamma_0 \Proves \lnot !A \lif (!A \lif !B)$ & Ax0 \\
+3. & $\Gamma_0 \Proves !A \lif !B$ & MP 1, 2 \\
+\end{derivation}
+
+Le cas $\Gamma \Proves !B$ est analogue :
+
+\begin{derivation}
+1. & $\Gamma_0 \Proves !B$ & hyp. \\
+2. & $\Gamma_0 \Proves !B \lif (!A \lif !B)$ & Ax0 \\
+3. & $\Gamma_0 \Proves !A \lif !B$ & MP 1, 2 \\
+\end{derivation}}}
+
+\end{enumerate}
+\end{proof}
+
+\begin{probtag}{probOr,probAnd,probIf}
+Achever la démonstration de la
+\olref[fol][axd][pva]{prop:provability}.
+\end{probtag}
+
+\begin{thm}[Généralisation]\ollabel{thm:Generalization}
+Si $\Gamma \Proves !A$ et si $x$ n'est libre dans aucune
+!!{formula} de $\Gamma$, alors
+$\Gamma \Proves \lforall[x][!A]$.
+\end{thm}
+
+\begin{proof}
+Procédons par récurrence sur la construction de
+$\mathsf{Thm}_\Gamma$, l'ensemble des formules déductibles
+de~$\Gamma$. Si $!A$ est un axiome, sa clôture
+$\lforall[x][!A]$ est également un axiome. Si $!A\in\Gamma$,
+alors $x$ n'est pas libre dans $!A$ ; par \textbf{Ax3},
+$!A\lif\lforall[x][!A]$ est un axiome, et le modus ponens
+donne $\Gamma\Proves\lforall[x][!A]$.
+
+Supposons maintenant que $!A$ s'obtienne par modus ponens à
+partir de $\Gamma\Proves !B$ et de
+$\Gamma\Proves !B\lif !A$. Par hypothèse de récurrence,
+$\Gamma\Proves\lforall[x][!B]$ et
+$\Gamma\Proves\lforall[x][(!B\lif !A)]$. Mais
+\textbf{Ax2} donne aussi
+\[
+\Gamma\Proves
+\lforall[x][(!B\lif !A)]
+\lif(\lforall[x][!B]\lif\lforall[x][!A]).
+\]
+Deux applications du modus ponens donnent donc
+$\Gamma\Proves\lforall[x][!A]$, comme souhaité.
+\end{proof}
+
+\begin{thm}\ollabel{thm:WeakGen}
+(\emph{Généralisation faible sur les constantes})
+Si $\Gamma\Proves !A$ et si $c$ est !!a{constant} qui
+ne figure pas dans $\Gamma$, alors il existe une variable
+$x$ ne figurant pas dans $!A$ telle que
+$\Gamma\Proves\lforall[x][\Subst{!A}{x}{c}]$ ; la
+démonstration ne fait pas intervenir $c$.
+\end{thm}
+
+\begin{proof}
+Soit $!A_1,\ldots,!A_n$ une démonstration de $!A$ à partir
+de $\Gamma$, avec $!A=!A_n$. Choisissons une variable $x$
+ne figurant dans aucune des formules $!A_1,\ldots,!A_n$,
+et considérons la nouvelle suite
+$\Subst{!A_1}{x}{c},\ldots,\Subst{!A_n}{x}{c}$.
+Elle démontre $\Subst{!A}{x}{c}$ à partir de $\Gamma$.
+En effet, pour chaque $i=1,\ldots,n$ :
+\begin{itemize}
+\item si $!A_i$ est un axiome, alors
+$\Subst{!A_i}{x}{c}$ en est un également ;
+\item si $!A_i\in\Gamma$, alors $c$ n'y figure pas, donc
+$\Subst{!A_i}{x}{c}=!A_i\in\Gamma$ ;
+\item si $!A_i$ s'obtient par modus ponens à partir de
+$!A_j$ et de $!A_j\lif !A_i$, alors
+$\Subst{!A_i}{x}{c}$ s'obtient par modus ponens à partir de
+$\Subst{!A_j}{x}{c}$ et de
+$\Subst{(!A_j\lif !A_i)}{x}{c}
+=\Subst{!A_j}{x}{c}\lif\Subst{!A_i}{x}{c}$.
+\end{itemize}
+La !!{constant} $c$ ne figure plus dans cette nouvelle
+suite. Soit $\Gamma'$ l'ensemble des !!{formula}s de
+$\Gamma$ qui apparaissent dans la !!{derivation} de
+$\Subst{!A}{x}{c}$. La variable $x$ n'est libre dans aucune
+!!{formula} de $\Gamma'$, et
+$\Gamma'\Proves\Subst{!A}{x}{c}$. La généralisation
+(\olref{thm:Generalization}) donne
+$\Gamma'\Proves\lforall[x][\Subst{!A}{x}{c}]$ ; la
+monotonie permet donc de conclure
+$\Gamma\Proves\lforall[x][\Subst{!A}{x}{c}]$.
+\end{proof}
+
+\begin{explain}
+Nous voulons remplacer, dans le \olref{thm:WeakGen}, l'exigence
+que $x$ ne figure pas du tout dans $!A$ par deux conditions
+plus faibles : $x$ n'est pas libre dans $!A$ et est
+!!{free for} $c$ dans $!A$. Un changement de variable liée
+permet d'y parvenir ; nous allons donc d'abord démontrer
+ce résultat.
+\end{explain}
+
+\begin{lem}\ollabel{lem:free-for}
+Si $x$ est libre pour $c$ dans $!A$ et si $y$ n'est pas
+libre dans $!A$, alors $x$ est !!{free for} $y$ dans
+$\Subst{!A}{y}{c}$.
+\end{lem}
+
+\begin{proof}
+Si $x$ n'était pas !!{free for} $y$ dans
+$\Subst{!A}{y}{c}$, une occurrence libre de $y$ dans
+$\Subst{!A}{y}{c}$ se trouverait dans la portée d'un
+quantificateur liant $x$. Or, par hypothèse, $y$ n'est
+pas libre dans $!A$ : toutes ces occurrences proviennent
+donc de la substitution $\Subst{}{y}{c}$. Une occurrence
+de $c$ dans $!A$ se trouve alors dans la portée de ce
+quantificateur, ce qui contredit le fait que $x$ est
+!!{free for} $c$ dans $!A$.\footnote{Correction de l'édition
+française : la première substitution de la preuve anglaise
+remplace à tort $x$ au lieu de $c$. Le même opérande $c$
+est rétabli dans toute la preuve.}
+\end{proof}
+
+\begin{lem}[Changement de variable liée]
+\ollabel{lem:ChangeBdVar}
+Si $x$ et $y$ ne sont pas libres dans $!A$ et sont tous deux
+!!{free for} $c$ dans $!A$, alors
+$\Proves\lforall[x][\Subst{!A}{x}{c}]
+\equiv\lforall[y][\Subst{!A}{y}{c}]$ ; la démonstration
+ne fait pas intervenir $c$.
+\end{lem}
+
+\begin{proof}
+Par hypothèse, $y$ est !!{free for} $c$ dans $!A$ et
+$x$ n'est pas libre dans $!A$. Le lemme précédent,
+\olref{lem:free-for}, montre donc que $y$ est !!{free for}
+$x$ dans $\Subst{!A}{x}{c}$. Par \textbf{Ax1},
+\[
+\lforall[x][\Subst{!A}{x}{c}]
+\lif\Subst{!A}{x}{c}\Subst{}{y}{x}
+\]
+est un axiome.\footnote{Correction de l'édition française :
+la source place l'implication entière sous le quantificateur
+universel. L'axiome d'instanciation quantifie seulement son
+antécédent, comme ici.}
+Puisque $x$ n'est pas libre dans $!A$,
+$\Subst{!A}{x}{c}\Subst{}{y}{x}=\Subst{!A}{y}{c}$.
+Ainsi,
+\[
+\Proves\lforall[x][\Subst{!A}{x}{c}]
+\lif\Subst{!A}{y}{c}.
+\]
+En ajoutant l'antécédent comme hypothèse et en appliquant le
+modus ponens, on obtient
+$\lforall[x][\Subst{!A}{x}{c}]\Proves\Subst{!A}{y}{c}$.
+Comme $y$ n'est pas libre dans $!A$, il n'est pas non plus
+libre dans $\lforall[x][\Subst{!A}{x}{c}]$.
+La généralisation donne
+$\lforall[x][\Subst{!A}{x}{c}]
+\Proves\lforall[y][\Subst{!A}{y}{c}]$,
+puis le théorème de la déduction donne
+$\Proves\lforall[x][\Subst{!A}{x}{c}]
+\lif\lforall[y][\Subst{!A}{y}{c}]$.
+La démonstration de l'implication inverse,
+$\Proves\lforall[y][\Subst{!A}{y}{c}]
+\lif\lforall[x][\Subst{!A}{x}{c}]$,
+est symétrique ; la règle Taut permet donc de conclure.
+\end{proof}
+
+\begin{thm}[Généralisation forte sur les constantes]
+\ollabel{thm:StrongGen}
+Si $\Gamma\Proves !A$, si la !!{constant} $c$ ne figure pas
+dans $\Gamma$ et si $x$ n'est pas libre dans $!A$, mais est
+!!{free for} $c$ dans $!A$, alors
+$\Gamma\Proves\lforall[x][\Subst{!A}{x}{c}]$.
+\end{thm}
+
+\begin{proof}
+Puisque $\Gamma\Proves !A$ et que $c$ ne figure pas dans
+$\Gamma$, la généralisation faible donne !!a{variable} $y$
+ne figurant pas dans $!A$ telle que
+$\Gamma\Proves\lforall[y][\Subst{!A}{y}{c}]$.
+La variable $y$ n'est donc pas libre dans $!A$ et est aussi
+!!{free for} $c$ dans $!A$. Par hypothèse, $x$ satisfait ces
+mêmes conditions. Le lemme de changement de variable liée
+s'applique, et donne
+$\Proves\lforall[x][\Subst{!A}{x}{c}]
+\equiv\lforall[y][\Subst{!A}{y}{c}]$.
+On en déduit $\Gamma\Proves\lforall[x][\Subst{!A}{x}{c}]$.
+\end{proof}
+
+\begin{thm}\ollabel{thm:provability-quantifiers}
+On suppose que $t$ est libre pour $x$ dans $!A(x)$.\footnote{
+Précision de l'édition française : la source omet cette
+condition, qui empêche la capture de variables lors des
+instanciations ci-dessous.}
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{Si $\Gamma\Proves !A(t)$, alors
+$\Gamma\Proves\lexists[x][!A(x)]$.}{}
+\tagitem{prvAll}{Si $\Gamma\Proves\lforall[x][!A(x)]$,
+alors $\Gamma\Proves !A(t)$.}{}
+\end{tagenumerate}
+\end{thm}
+
+\begin{proof}
+\begin{tagenumerate}{prvEx,prvAll}
+% La source laisse le cas existentiel en exercice.
+\tagitem{prvEx}{Exercice.}{}
+\tagitem{prvAll}{Supposons que
+$\Gamma_0\Proves\lforall[x][!A(x)]$.
+
+\begin{derivation}
+1. & $\Gamma_0\Proves\lforall[x][!A(x)]$ & hyp. \\
+2. & $\Gamma_0\Proves\lforall[x][!A(x)]\lif\Subst{!A}{t}{x}$ & Ax1 \\
+3. & $\Gamma_0\Proves\Subst{!A}{t}{x}$ & MP 1, 2 \\
+\end{derivation}
+La monotonie permet de conclure pour~$\Gamma$.}{}
+\end{tagenumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

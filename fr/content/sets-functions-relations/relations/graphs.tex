@@ -31,13 +31,13 @@ Selon notre définition, un graphe est simplement un ensemble muni d’une
 relation sur cet ensemble. Il est bien sûr naturel d’en attendre une
 représentation graphique : on peut le dessiner en traçant une flèche du
 sommet~$v_1$ vers le sommet $v_2$ si et seulement si
-$\tuple{v_1, v_2} \in E$. La seule différence entre une relation considérée
-en elle-même et un graphe est que le graphe précise l’ensemble des sommets ;
-il peut donc comporter des sommets isolés. Le point essentiel est que
-toute relation~$R$ sur un ensemble~$X$ peut être considérée comme un graphe
-orienté $\tuple{X, R}$ et que, réciproquement, un graphe
-orienté~$\tuple{V, E}$ peut être considéré comme une relation
-$E \subseteq V^2$ dont l’ensemble $V$ est explicitement indiqué.
+$\tuple{v_1, v_2} \in E$. L’ensemble des arêtes $E$ ne permet pas à lui
+seul de retrouver les sommets isolés. C’est l’ensemble $V$ qui fixe
+tous les sommets. Ainsi, toute relation~$R$ sur un ensemble~$X$
+peut être considérée comme le graphe orienté $\tuple{X, R}$ et,
+réciproquement, un graphe orienté~$\tuple{V, E}$ peut être considéré
+comme une relation $E \subseteq V^2$ dont l’ensemble $V$ est
+explicitement indiqué.
 \end{explain}
 
 \begin{ex}

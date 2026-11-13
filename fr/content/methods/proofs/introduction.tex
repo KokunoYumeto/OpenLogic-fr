@@ -1,0 +1,131 @@
+% Partie : méthodes
+% Chapitre : démonstrations
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mth}{prf}{int}
+
+\olsection{Introduction}
+
+Votre expérience de la logique élémentaire
+vous a peut-être familiarisé avec un système
+de !!{derivation}, probablement en
+déduction naturelle, en notation de Fitch
+ou sous une autre forme, ou peut-être
+avec des arbres de preuve. Vous vous souvenez
+sans doute avoir construit des démonstrations
+dans ces systèmes, soit pour établir
+!!a{formula}, soit pour montrer la validité
+d'un argument. Pour y parvenir, vous
+appliquiez les règles du système jusqu'à
+obtenir le résultat voulu. Lorsque nous
+raisonnons \emph{sur} la logique, nous
+démontrons aussi des énoncés, mais,
+le plus souvent, sans utiliser de
+système de !!{derivation}. En effet,
+la plupart des démonstrations que nous
+étudierons sont rédigées en langue
+ordinaire, éventuellement avec quelques
+symboles, plutôt qu'entièrement dans
+le langage de la logique du premier ordre.
+Au début, construire une telle démonstration
+peut vous laisser perplexe : comment
+démontrer quelque chose sans système
+de !!{derivation} ? Par où commencer ?
+Comment savoir si votre démonstration
+est correcte ?
+
+Avant de tenter une démonstration, il
+importe de savoir ce qu'elle est et
+comment la construire. Comme son nom
+l'indique, une \emph{démonstration}
+sert à établir la vérité d'une
+affirmation. Imaginez un dialogue :
+quelqu'un vous demande, par exemple,
+si tout nombre premier autre que
+deux est impair. Répondre «~oui~»
+ne suffit pas ; cette personne
+pourrait vous demander \emph{pourquoi}.
+Vous lui donneriez alors une
+démonstration.
+
+Dans la conversation courante,
+une réponse esquissée ou incomplète
+peut suffire. En logique et en
+mathématiques, nous voulons toutefois
+une démonstration rigoureuse :
+nous voulons établir une affirmation
+sans laisser place au \emph{moindre}
+doute. Chaque étape doit donc être
+justifiée, et sa justification
+doit être convaincante. Par exemple,
+une hypothèse invoquée doit bien
+figurer parmi celles de l'énoncé
+à démontrer ; les définitions
+doivent être appliquées correctement ;
+les inférences utilisées doivent
+être valides.
+
+En général, nous démontrons un
+énoncé. Les énoncés à démontrer
+portent divers noms : propositions,
+théorèmes, lemmes ou corollaires.
+Une proposition est un énoncé
+qui mérite d'être démontré et
+consigné, sans être nécessairement
+profond ni souvent utilisé.
+Un théorème est une proposition
+importante. Sa démonstration
+se décompose souvent en plusieurs
+étapes. Il porte parfois le nom
+de la personne qui l'a démontré
+la première, comme le théorème
+de Cantor ou celui de
+L\"owenheim--Skolem. Il peut
+aussi être nommé d'après le
+fait qu'il établit, comme
+le théorème de complétude.
+Un lemme est une proposition
+ou un théorème utilisé pour
+démontrer un résultat plus
+important. Il arrive cependant
+que des lemmes soient importants
+en eux-mêmes et portent aussi
+le nom de leur auteur, comme
+le lemme de Zorn. Un corollaire
+est un résultat qui découle
+facilement d'un autre.
+
+Un énoncé à démontrer comporte
+souvent des suppositions qui
+précisent les objets dont il
+est question. Il peut commencer
+par «~Soit $!A$ !!a{formula}
+de la forme $!B \lif !C$~»
+ou «~Supposons
+$\Gamma \Proves !A$~»,
+par exemple. Ce sont les
+\emph{hypothèses} de la
+proposition, du théorème
+ou du lemme ; vous pouvez
+les tenir pour vraies dans
+votre démonstration. Elles
+délimitent ce que nous
+démontrons et nomment
+certains objets du raisonnement.
+Ainsi, si votre proposition
+commence par «~Soit $!A$
+!!a{formula} de la forme
+$!B \lif !C$~», elle ne
+porte que sur les formules
+d'un certain type, à savoir
+les implications. On comprend
+que $!B \lif !C$ désigne
+une implication quelconque
+sur laquelle portera la
+démonstration.
+
+\end{document}

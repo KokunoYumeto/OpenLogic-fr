@@ -1,0 +1,75 @@
+% Part: first-order-logic
+% Chapter: models-theories
+% Section: size-of-structures
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{mat}{siz}
+
+\olsection{Exprimer la taille des structures}
+
+\begin{explain}
+Certaines propriétés des structures s'expriment sans même recourir
+aux symboles non logiques du langage. Il existe, par exemple, des
+!!{sentence}s qui sont vrais dans !!a{structure} si et seulement si
+le !!{domain} de cette !!{structure} possède au moins, au plus ou
+exactement un certain nombre~$n$ d'!!{element}s.\footnote{Précision éditoriale : les affichages avec des points de suspension indiquent les comparaisons entre toutes les paires d'indices distincts. Pour un seul indice, la conjonction sans comparaison vaut vrai : on peut prendre $!A_{\ge 1}\ident\lexists[x][\eq[x][x]]$ et $!A_{=1}\ident\lexists[x][\lforall[y][\eq[y][x]]]$. Pour zéro, $!A_{\ge0}$ est toujours vrai et $!A_{=0}$ toujours faux, puisque les domaines sont non vides.}
+\end{explain}
+
+\begin{prop}
+L'!!{sentence}
+\begin{multline*}
+  !A_{\ge n} \ident \lexists[x_1][\lexists[x_2][\dots\lexists[x_n][{}]]]\\
+  \begin{aligned}
+  (\eq/[x_1][x_2] \land {}
+  \eq/[x_1][x_3] \land \eq/[x_1][x_4] \land \dots \land \eq/[x_1][x_n] \land {}\\
+\eq/[x_2][x_3] \land \eq/[x_2][x_4] \land \dots \land {} \eq/[x_2][x_n] \land {} \\
+\vdots\\
+\eq/[x_{n-1}][x_n])
+\end{aligned}
+\end{multline*}
+est vrai dans !!a{structure}~$\Struct M$ si et seulement si
+$\Domain M$ contient au moins $n$~!!{element}s. Par conséquent,
+$\Sat{M}{\lnot !A_{\ge n+1}}$ si et seulement si $\Domain M$
+contient au plus~$n$~!!{element}s.
+
+\end{prop}
+
+\begin{prop}
+L'!!{sentence}
+\begin{multline*}
+!A_{= n} \ident \lexists[x_1][\lexists[x_2][\dots\lexists[x_n][{}]]] \\
+\begin{aligned}
+  (\eq/[x_1][x_2] \land {}
+  \eq/[x_1][x_3] \land \eq/[x_1][x_4] \land \dots \land \eq/[x_1][x_n] \land {}\\
+\eq/[x_2][x_3] \land \eq/[x_2][x_4] \land \dots \land {} \eq/[x_2][x_n] \land {} \\
+\vdots\\
+\eq/[x_{n-1}][x_n] \land {} \\
+\lforall[y][(\eq[y][x_1] \lor \dots \lor \eq[y][x_n]]))
+\end{aligned}
+\end{multline*}
+est vrai dans !!a{structure}~$\Struct M$ si et seulement si
+$\Domain M$ contient exactement $n$~!!{element}s.
+\end{prop}
+
+\begin{prop}
+Une !!{structure} est infinie si et seulement si elle est un modèle
+de
+\[
+\{!A_{\ge 1}, !A_{\ge 2}, !A_{\ge 3}, \dots \}.
+\]
+\end{prop}
+
+Aucun énoncé purement logique ne peut être vrai dans~$\Struct M$ si
+et seulement si $\Domain M$ est infini. En revanche, il existe des
+!!{sentence}s comportant des !!{predicate}s non logiques qui
+n'admettent que des modèles infinis, sans que toute !!{structure}
+infinie en soit nécessairement un modèle. La propriété d'être une
+structure finie et celle d'être une structure !!{nonenumerable} ne
+peuvent pas même être exprimées par un ensemble infini
+d'!!{sentence}s. Ces faits découlent des théorèmes de compacité et
+de Löwenheim--Skolem.
+
+\end{document}

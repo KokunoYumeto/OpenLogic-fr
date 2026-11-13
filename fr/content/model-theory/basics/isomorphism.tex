@@ -1,0 +1,134 @@
+% Part: first-order-logic
+% Chapter: model-theory
+% Section: isomorphism
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{bas}{iso}
+\olsection{Structures isomorphes}
+
+Deux !!{structure}s du premier ordre peuvent se ressembler de deux
+manières. Elles peuvent, d'abord, rendre vrais les mêmes !!{sentence}s.
+On les dit alors \emph{élémentairement équivalentes}. Mais deux
+structures peuvent être très différentes tout en rendant vrais les
+mêmes !!{sentence}s : l'une peut, par exemple, être !!{enumerable}
+et l'autre non. Certaines propriétés d'!!a{structure} ne sont en effet
+pas exprimables dans un langage du premier ordre, soit parce que le
+langage n'est pas assez riche, soit en raison de limites fondamentales
+de la logique du premier ordre, comme le théorème de
+L\"owenheim--Skolem. Il existe donc une manière plus exigeante de
+dire que deux !!{structure}s se ressemblent : elles ne diffèrent que
+par les objets qui les composent, sans différer par leurs propriétés
+structurelles. La notion d'\emph{isomorphisme} précise cette idée.
+
+\begin{defn}
+\ollabel{defn:elem-equiv}
+Soient deux !!{structure}s $\Struct{M}$ et $\Struct M'$ pour un même
+!!{language}~$\Lang{L}$. On dit que $\Struct{M}$ et $\Struct M'$ sont
+\emph{élémentairement équivalentes}, ce que l'on note
+$\Struct{M} \equiv \Struct M'$, si, pour tout !!{sentence}~$!A$
+de~$\Lang{L}$, $\Sat{M}{!A}$ si et seulement si $\Sat{M'}{!A}$.
+\end{defn}
+
+\begin{defn}
+\ollabel{defn:isomorphism} Soient deux !!{structure}s $\Struct{M}$ et
+$\Struct M'$ pour un même !!{language}~$\Lang L$. On dit que
+$\Struct{M}$ et $\Struct M'$ sont \emph{isomorphes}, ce que l'on note
+$\Struct{M} \simeq \Struct M'$, s'il existe une application
+$h \colon \Domain{M} \to \Domain{M'}$ telle que :
+\begin{enumerate}
+\item $h$ est !!{injective} : si $h(x) =
+  h(y)$, alors $x = y$;
+\item $h$ est !!{surjective} : pour tout $y \in \Domain{M'}$, il
+  existe $x \in \Domain{M}$ tel que $h(x) = y$;
+\item \ollabel{defn:iso-const}pour chaque !!{constant} $c$ :
+  $h(\Assign{c}{M}) = \Assign{c}{M'}$;
+\item \ollabel{defn:iso-pred}pour chaque !!{predicate} $n$-aire~$P$ :
+  \[
+  \tuple{a_1, \dots, a_n}\in \Assign{P}{M} \quad\text{si et seulement si}\quad
+  \tuple{h(a_1), \dots, h(a_n)} \in \Assign{P}{M'};
+  \]
+\item \ollabel{defn:iso-func}pour chaque !!{function} $n$-aire $f$ :
+  \[
+  h(\Assign{f}{M}(a_1, \dots, a_n)) =
+  \Assign{f}{M'}(h(a_1), \dots, h(a_n)).
+  \]
+\end{enumerate}
+\end{defn}
+
+\begin{thm}
+\ollabel{thm:isom}
+Si $\Struct{M} \iso \Struct M'$, alors $\Struct{M} \elemequiv
+\Struct{M'}$.
+\end{thm}
+
+\begin{proof}
+Soit $h$ un isomorphisme de $\Struct{M}$ sur $\Struct M'$. Pour toute
+assignation~$s$, $h \circ s$ est la composée de $h$ et de $s$,
+c'est-à-dire l'assignation dans $\Struct{M'}$ telle que
+$(h \circ s)(x) = h(s(x))$. Une induction sur $t$ et $!A$ permet de
+prouver les assertions plus fortes suivantes :
+\begin{enumerate}
+  \item[a.] $h(\Value{t}{M}[s]) = \Value{t}{M'}[h\circ s]$.
+  \item[b.] $\Sat{M}{!A}[s]$ si et seulement si $\Sat{M'}{!A}[h \circ s]$.
+\end{enumerate}
+La première se démontre par induction sur la complexité de~$t$.
+\begin{enumerate}
+\item Si $t \ident c$, alors $\Value{c}{M}[s] = \Assign{c}{M}$ et
+  $\Value{c}{M'}[h \circ s] = \Assign{c}{M'}$. Donc
+  $h(\Value{t}{M}[s]) = h(\Assign{c}{M}) = \Assign{c}{M'}$ (par
+  \olref{defn:iso-const} de la \olref{defn:isomorphism}) $=
+  \Value{t}{M'}[h \circ s]$.
+\item Si $t \ident x$, alors $\Value{x}{M}[s] = s(x)$ et
+  $\Value{x}{M'}[h \circ s] = h(s(x))$. Donc
+  $h(\Value{x}{M}[s]) = h(s(x)) = \Value{x}{M'}[h \circ s]$.
+\item Si $t \ident f(t_1, \dots, t_n)$, alors
+  \begin{align*}
+    \Value{t}{M}[s] & = \Assign{f}{M}(\Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s]) \quad\text{et}\\
+  \Value{t}{M'}[h \circ s] & = \Assign{f}{M'}(\Value{t_1}{M'}[h \circ
+    s], \dots, \Value{t_n}{M'}[h \circ s]).
+  \end{align*}
+  L'hypothèse d'induction donne, pour chaque $i$,
+  $h(\Value{t_i}{M}[s]) = \Value{t_i}{M'}[h\circ s]$. Ainsi,
+  \begin{align}
+    h(\Value{t}{M}[s])
+    & = h(\Assign{f}{M}(\Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s])) \notag\\
+    & = \Assign{f}{M'}(h(\Value{t_1}{M}[s]), \dots,
+    h(\Value{t_n}{M}[s])) \ollabel{iso-1}\\
+    & = \Assign{f}{M'}(\Value{t_1}{M'}[h \circ s], \dots,
+    \Value{t_n}{M'}[h \circ s]) \ollabel{iso-2}\\
+    & = \Value{t}{M'}[h\circ s] \notag
+  \end{align}
+  L'égalité \olref{iso-1} résulte de \olref{defn:iso-func}
+  dans la \olref{defn:isomorphism}, et \olref{iso-2} résulte de
+  l'hypothèse d'induction.
+\end{enumerate}
+La démonstration de (b) est laissée en exercice.\footnote{Correction éditoriale : dans le cas du terme composé, sa valeur dans $\Struct{M'}$ est calculée avec $\Assign{f}{M'}$, et non avec $\Assign{f}{M}$ comme dans l'affichage de la source. Nous rétablissons aussi la parenthèse qui ferme l'application extérieure de $h$ dans la première ligne de la chaîne d'égalités.}
+
+Si $!A$ est un énoncé, les assignations~$s$ et $h \circ s$ sont
+sans effet sur sa valeur de vérité; on a donc $\Sat{M}{!A}$
+si et seulement si $\Sat{M'}{!A}$.
+\end{proof}
+
+\begin{prob}
+Démontrer en détail l'assertion (b) du
+\olref[mod][bas][iso]{thm:isom}. Préciser où intervient chacune
+des cinq propriétés qui caractérisent les isomorphismes dans la
+\olref[mod][bas][iso]{defn:isomorphism}.
+\end{prob}
+
+\begin{defn}
+Un \emph{automorphisme} d'!!a{structure}~$\Struct{M}$ est un
+isomorphisme de $\Struct{M}$ sur elle-même.
+\end{defn}
+
+\begin{prob}
+Montrer que, pour toute !!{structure}~$\Struct{M}$, si $X$ est une
+partie définissable sans paramètres de $\Struct{M}$ et si $h$ est un automorphisme de
+$\Struct{M}$, alors $X = \Setabs{h(x)}{x \in X}$ (autrement dit,
+$X$ est invariant par $h$).\footnote{Précision éditoriale : nous ajoutons « sans paramètres », absent de la source. Pour une définition avec paramètres, la même conclusion est garantie si l'automorphisme fixe ces paramètres ; sans cette condition, un singleton défini avec son élément comme paramètre fournit un contre-exemple.}
+\end{prob}
+
+\end{document}

@@ -1,0 +1,134 @@
+% Part: normal-modal-logic
+% Chapter: sequent-calculus
+% Section: rules-for-K
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{seq}{rul}
+
+\olsection{Règles pour \Log{K}}
+
+Les règles des connecteurs propositionnels usuels sont les mêmes que
+dans le calcul des séquents usuel~$\Log{LK}$. Les axiomes sont également
+les mêmes : tout séquent de la forme~$!A \Sequent !A$ est un axiome.
+
+Pour \iftag{notprvBox,notprvDiamond}{l’opérateur modal}{les opérateurs modaux}
+\iftag{prvBox}{\iftag{prvDiamond}{$\Box$ et }{$\Box$}}{}%
+\iftag{prvDiamond}{$\Diamond$}{}, nous ajoutons
+\iftag{notprvBox,notprvDiamond}{la règle suivante}{les règles suivantes} :
+\[
+  \iftag{prvBox}{\iftag{prvDiamond}{% <> and [] primitive
+    \Axiom$\Gamma \fCenter \Delta, !A$
+    \RightLabel{$\Box$}
+    \UnaryInf$\Box\Gamma \fCenter \Diamond\Delta, \Box!A$
+    \DisplayProof  
+    \qquad
+    \Axiom$!A, \Gamma \fCenter \Delta$
+    \RightLabel{$\Diamond$}
+    \UnaryInf$\Diamond!A, \Box\Gamma \fCenter \Diamond\Delta$
+    \DisplayProof
+}{% only Box primitive
+\Axiom$\Gamma \fCenter !A$
+\RightLabel{$\Box$}
+\UnaryInf$\Box\Gamma \fCenter \Box!A$
+\DisplayProof
+}}{% only <> primitive
+  \Axiom$!A \fCenter \Delta$
+  \RightLabel{$\Diamond$}
+  \UnaryInf$\Diamond!A \fCenter \Diamond\Delta$
+  \DisplayProof
+}
+\]
+Ici, \iftag{prvBox}{$\Box\Gamma$ désigne la suite obtenue à partir
+de~$\Gamma$ en plaçant~$\Box$ devant chaque !!{formula}%
+\iftag{prvDiamond}{ ; }{}}{}%
+\iftag{prvDiamond}{$\Diamond\Delta$ désigne la suite obtenue à partir
+de~$\Delta$ en plaçant~$\Diamond$ devant chaque !!{formula}}{}.
+\iftag{notprvDiamond}{Dans la règle~$\Box$, le membre droit de la
+prémisse doit contenir au plus une !!{formula}~$!A$. }{}%
+\iftag{notprvBox}{Dans la règle~$\Diamond$, le membre gauche de la
+prémisse doit contenir au plus une !!{formula}~$!A$. }{}%
+Il est permis que \iftag{prvBox}{$\Gamma$\iftag{prvDiamond}{ ou }{}}{}%
+\iftag{prvDiamond}{$\Delta$}{} soit vide ; dans ce cas, la partie
+correspondante \iftag{prvBox}{$\Box\Gamma$\iftag{prvDiamond}{ ou }{}}{}%
+\iftag{prvDiamond}{$\Diamond\Delta$}{} du séquent de conclusion est vide
+également.
+
+La restriction à une seule !!{formula}~$!A$ pour
+\iftag{prvBox}{l'introduction de~$\Box$ à droite
+\iftag{prvDiamond}{ ou }{}}{}%
+\iftag{prvDiamond}{celle de~$\Diamond$ à gauche}{}
+est nécessaire. Si l'on pouvait
+\iftag{prvBox}{préfixer de~$\Box$ un nombre quelconque de
+!!{formula}s à droite\iftag{prvDiamond}{ ou }{}}{}%
+\iftag{prvDiamond}{préfixer de~$\Diamond$ un nombre quelconque de
+!!{formula}s à gauche}{}, on pourrait !!{derive} :
+\[
+    \iftag{prvBox}{
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\RightR{\lnot}}
+      \UnaryInf$\fCenter !A, \lnot !A$
+      \RightLabel{$\Box*$}
+      \UnaryInf$\fCenter \Box!A, \Box\lnot !A$
+      \doubleLine
+      \RightLabel{\RightR{\lor}}
+      \UnaryInf$\fCenter \Box!A \lor \Box \lnot !A$
+      \DisplayProof}{}
+    \iftag{notprvBox,notprvDiamond}{}{\qquad}
+    \iftag{prvDiamond}{
+      \Axiom$!A \fCenter !A$
+      \RightLabel{\LeftR{\lnot}}
+      \UnaryInf$\lnot !A, !A \fCenter$
+      \RightLabel{$\Diamond*$}
+      \UnaryInf$\Diamond\lnot !A,\Diamond!A \fCenter $
+      \RightLabel{\RightR{\lnot}}
+      \UnaryInf$\Diamond!A \fCenter \lnot\Diamond\lnot !A$
+      \RightLabel{\RightR{\lif}}
+      \UnaryInf$ \fCenter \Diamond!A \lif \lnot\Diamond\lnot !A$
+      \DisplayProof}{}
+  \]
+Or, aucune des formules obtenues n'est valide dans~$\Log{K}$ :
+\iftag{prvBox}{$\Box!A \lor \Box \lnot !A$\iftag{prvDiamond}{ et
+$\Diamond!A \lif \lnot\Diamond\lnot !A$}{}}{$\Diamond!A \lif
+\lnot\Diamond\lnot !A$}.
+
+Si l'on autorisait, dans la prémisse, des !!{formula}s auxiliaires en
+plus de~$!A$, tout en laissant
+\iftag{prvBox}{la règle~$\Box$ préfixer de~$\Box$ seulement~$!A$ à droite
+\iftag{prvDiamond}{, ou }{}}{}%
+\iftag{prvDiamond}{la règle~$\Diamond$ préfixer de~$\Diamond$
+seulement~$!A$ à gauche}{} (sans modifier les !!{formula}s auxiliaires),
+on pourrait !!{derive} :
+\[
+  \iftag{prvBox}{
+    \Axiom$!A \fCenter !A$
+    \RightLabel{\RightR{\lnot}}
+    \UnaryInf$\fCenter !A, \lnot !A$
+    \RightLabel{\RightR{\Exchange}}
+    \UnaryInf$\fCenter \lnot !A, !A$
+    \RightLabel{$\Box*$}
+    \UnaryInf$\fCenter \lnot!A, \Box !A$
+    \doubleLine
+    \RightLabel{\RightR{\lor}}
+    \UnaryInf$\fCenter \lnot!A \lor \Box !A$
+    \DisplayProof}{}
+  \iftag{notprvBox,notprvDiamond}{}{\qquad}
+  \iftag{prvDiamond}{
+    \Axiom$!A \fCenter !A$
+    \RightLabel{\LeftR{\lnot}}
+    \UnaryInf$\lnot !A, !A \fCenter$
+    \RightLabel{$\Diamond*$}
+    \UnaryInf$\Diamond\lnot !A, !A \fCenter $
+    \RightLabel{\RightR{\lnot}}
+    \UnaryInf$!A \fCenter \lnot\Diamond\lnot !A$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$ \fCenter !A \lif \lnot\Diamond\lnot !A$
+    \DisplayProof}{}
+\]
+Or, aucune des formules obtenues n'est valide dans~$\Log{K}$ :
+\iftag{prvBox}{$\lnot!A \lor \Box !A$ (équivalente à $!A
+\lif \Box!A$)\iftag{prvDiamond}{ et $!A \lif \lnot\Diamond\lnot !A$}{}}{$!A \lif \lnot\Diamond\lnot !A$}.
+
+\end{document}

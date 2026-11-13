@@ -1,0 +1,525 @@
+% Part: proof-theory
+% Chapter: cut-elimination
+% Section: ce-largest
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{cut}{inv}
+
+\olsection{Élimination des coupures de rang maximal}
+
+La réduction repose sur l'inversion des règles logiques avec
+une borne sur le nombre de coupures de chaque rang.
+
+
+
+
+
+
+
+
+
+
+
+
+La preuve du \olref[seq][inv]{lem:G3c-invert} montre que, lorsque
+\Log{G3c} !!{prove}s la conclusion d'une règle logique autre que
+\RightR{\lexists} ou \LeftR{\lforall}, il !!{prove}s aussi
+chacune de ses prémisses sans augmenter la !!{height} de la preuve.
+Nous allons étendre ce résultat à $\Log{G3c}+\CutCS$.
+
+Comme précédemment, le \emph{rang} d'une inférence \CutCS est
+la profondeur de sa !!{formula} de coupure.
+
+\begin{lem}\ollabel{lem:inv-G3c-cut}
+Si $\Log{G3c}+\CutCS$ !!{prove}s la conclusion d'une règle
+logique~$R$, autre que \RightR{\lexists} ou \LeftR{\lforall},
+au moyen d'une !!{proof}~$\pi$, il !!{prove}s aussi chacune de
+ses prémisses au moyen d'une !!{proof}~$\pi'$ ou, pour une règle
+à deux prémisses, de !!{proof}s~$\pi'$ et $\pi''$.
+En outre,
+(a)~$\pheight{\pi'}\le\pheight{\pi}$ et, le cas échéant,
+$\pheight{\pi''}\le\pheight{\pi}$;
+(b)~pour chaque rang, le nombre d'inférences \CutCS de ce rang
+dans~$\pi'$ et, séparément, dans~$\pi''$, n'excède pas leur nombre
+dans~$\pi$.
+Pour les règles universelle à droite et existentielle à gauche,
+la constante de la prémisse inversée doit être fraîche dans
+le séquent conclusion, comme dans le lemme d'inversion quantifiée.
+\end{lem}
+
+\begin{proof}
+Examinons les preuves des
+\cref{pt:seq:inv:lem:G3c-invert,pt:seq:inv:lem:invert-quant}.
+La récurrence porte sur~$\pheight{\pi}$.
+Au cas initial, on remplace un axiome par un autre axiome;
+les conditions (a) et~(b) sont donc immédiates.
+Si la dernière règle de~$\pi$ est précisément la règle~$R$
+que l'on inverse, ses sous-!!{proof}s immédiates donnent
+les !!{proof}s~$\pi_i$ recherchées. Leur hauteur est plus
+petite, et leurs coupures forment des sous-ensembles des
+occurrences de coupure de la preuve entière. La condition
+(b) est une borne supérieure, et non une égalité.
+Dans les autres cas logiques, on applique l'hypothèse de
+récurrence aux sous-!!{proof}s immédiates, puis on réapplique
+la règle qui terminait la preuve. Les bornes de hauteur
+et de nombre de coupures de chaque rang se transmettent ainsi
+à la preuve reconstruite.
+Dans le cas quantifié, les renommages de constantes nécessaires
+ne changent pas la profondeur des formules de coupure.
+
+Il reste le cas où la dernière inférence est \CutCS.
+Traitons à nouveau un exemple : soit $\pi$ une !!{proof}
+de la conclusion $!B\land!C,\Gamma\Sequent\Delta$
+de \LeftR{\land}, qui se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$!B \land !C, \Gamma \fCenter \Delta, !A$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$!A, !B \land !C, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$!B \land !C, \Gamma \fCenter \Delta$
+\DisplayProof
+\]
+L'hypothèse de récurrence s'applique à $\pi_1$ et~$\pi_2$,
+qui démontrent aussi des instances de la conclusion de
+$\LeftR{\land}$. Elle fournit des !!{proof}s
+$\pi_1'$ et~$\pi_2'$ respectivement de
+$!B,!C,\Gamma\fCenter\Delta,!A$ et
+$!A,!B,!C,\Gamma\fCenter\Delta$.
+On les réunit par \CutCS pour obtenir~$\pi'$ :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, !C, \Gamma \fCenter \Delta, !A$
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$!A, !B, !C, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$!B, !C, \Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Les conditions (a) et~(b) sont satisfaites : la hauteur ne croît
+pas, et l'on ajoute aux coupures des deux prémisses la même
+coupure finale que dans la preuve initiale.
+\end{proof}
+
+% BEGIN EDITORIAL AUXILIARIES
+\paragraph{Complément éditorial : règles auxiliaires en présence de coupures.}
+Les arguments précédents d'affaiblissement, de substitution dans une
+preuve régulière et de contraction s'étendent à
+$\Log{G3c}+\CutCS$, sans introduire de coupure d'un rang supérieur
+aux rangs déjà présents. Pour l'affaiblissement et la substitution,
+on ajoute à la récurrence sur la hauteur le cas d'une dernière
+règle \CutCS : on transforme ses deux prémisses et on réapplique
+la même coupure. La substitution de termes ne change pas la
+profondeur des formules.
+
+Pour la contraction, on suit également la récurrence sur la hauteur
+de la preuve. Dans les cas logiques où la formule contractée est
+principale, on utilise le lemme d'inversion ci-dessus sur les
+sous-preuves immédiates, puis l'hypothèse de récurrence, puis on
+réapplique la règle logique. L'inversion n'augmente pas la hauteur
+ni les rangs des coupures, de sorte que la récurrence porte toujours
+sur des preuves de hauteur strictement plus petite. Si la dernière
+règle est \CutCS, les deux occurrences à contracter appartiennent
+à son contexte commun : on les contracte dans chacune des deux
+prémisses par récurrence, puis on réapplique la même coupure.
+On distingue ces occurrences de la formule coupée, même si les
+formules sont identiques. Cet argument n'utilise pas le théorème
+d'élimination des coupures.
+
+Avant les transformations, on renomme les variables propres pour
+rendre les preuves régulières et les tenir à l'écart des termes et
+des contextes qui seront ajoutés. Ces renommages ne changent ni la
+hauteur ni le rang des coupures.
+% END EDITORIAL AUXILIARIES
+
+Ce raisonnement ne fonctionnerait pas directement avec \Cut
+à la place de \CutCS : le séquent final contiendrait deux copies
+de $!B,!C,\Gamma$ à gauche et deux copies de $\Delta$ à droite.
+Il faudrait utiliser l'admissibilité de la contraction; or la
+preuve de la \olref[seq][inv]{prop:G3c-cont-adm} fait appel au lemme
+d'inversion. Pour établir l'inversion de cette façon, l'argument
+serait donc circulaire.
+
+Le \cref{pt:cut:inv:lem:inv-G3c-cut} permet de donner une autre preuve
+de l'élimination des coupures. Nous ne supprimons plus successivement
+les inférences \CutCS les plus hautes de l'arbre, mais celles
+de rang maximal. Partant d'une !!{proof}~$\pi$ dans
+$\Log{G3c}+\CutCS$, nous supprimons une coupure, où qu'elle
+se trouve, en la remplaçant éventuellement par des coupures
+de rang inférieur. Nous répétons cette opération jusqu'à
+ce qu'il ne reste plus de coupure. La seule condition locale
+est qu'aucune coupure de rang égal ou supérieur ne se trouve
+au-dessus de celle que nous traitons.
+
+\begin{lem}\ollabel{lem:max-cut-red-G3c}
+Si $\pi$ est une !!{proof} dans $\Log{G3c}+\CutCS$
+qui se termine par une inférence \CutCS de rang~$n$ et dont
+toutes les autres inférences sont des règles de~$\Log{G3c}$
+ou des coupures \CutCS de rang $<n$, il existe une preuve~$\pi'$
+du même séquent final dans~$\Log{G3c}+\CutCS$ dont toutes
+les inférences \CutCS ont un rang~$<n$.
+\end{lem}
+
+\begin{proof}
+La !!{proof}~$\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta, !A$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$!A, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Nous distinguons plusieurs cas suivant la forme de~$!A$.
+
+% BEGIN EDITORIAL FALSE
+\paragraph{Complément éditorial : constante de fausseté.}
+Si $!A\ident\lfalse$, la coupure a le rang zéro, et ses deux
+prémisses ne contiennent aucune coupure. On obtient directement
+une preuve de $\Gamma\Sequent\Delta$ en supprimant, dans toute
+la première sous-preuve, la copie suivie de la constante de
+fausseté à droite. Cette formule ne peut être principale dans une
+règle logique ni constituer l'atome commun d'un axiome d'identité.
+Les axiomes de fausseté à gauche restent des axiomes. Le résultat
+est donc une preuve sans coupure. Ce cas est distinct du cas
+atomique suivant.
+% END EDITORIAL FALSE
+
+Supposons que $!A$ soit atomique.
+Toutes les inférences \CutCS de~$\pi_1$ et $\pi_2$ doivent
+avoir un rang $<\depth{!A}=0$; ces deux preuves ne contiennent
+donc aucune coupure.
+Montrons par récurrence sur $\pheight{\pi_2}$ que
+$\Gamma\Sequent\Delta$ possède une preuve sans coupure.
+Si $\pheight{\pi_2}=0$, le séquent
+$!A,\Gamma\Sequent\Delta$ est un axiome.
+S'il s'agit d'un axiome de fausseté, celle-ci appartient déjà
+au contexte gauche, puisque la formule coupée est atomique
+et distincte de la constante de fausseté; le séquent recherché
+est encore un axiome.
+Pour un axiome d'identité, si $!A$ n'est pas principal,
+un atome $!C$ appartient à la fois à~$\Gamma$ et à $\Delta$,
+et $\Gamma\Sequent\Delta$ est lui-même un axiome.
+Si $!A$ est principal, écrivons $\Delta=\Delta',!A$.
+La preuve $\pi_1$ se termine alors par
+$\Gamma\Sequent\Delta',!A,!A$.
+L'admissibilité de la contraction,
+\olref[seq][inv]{prop:G3c-cont-adm}, donne une preuve sans
+coupure de $\Gamma\Sequent\Delta',!A$.
+
+Si $\pheight{\pi_2}>0$, la preuve se termine par une règle~$R$.
+Une prémisse de cette règle est de la forme
+$!A,\Gamma',\Pi\Sequent\Delta',\Lambda$,
+où $\Pi$ et $\Lambda$ sont les !!{formula}s actives de~$R$.
+L'affaiblissement \olref[seq][adm]{prop:weak-G3c-adm},
+appliqué à~$\pi_1$ et à la sous-preuve de~$\pi_2$ qui conduit
+à cette prémisse, donne des !!{proof}s de
+$\Gamma,\Gamma',\Pi\Sequent\Delta,\Delta',\Lambda,!A$ et
+$!A,\Gamma,\Gamma',\Pi\Sequent\Delta,\Delta',\Lambda$.
+La seconde a une hauteur strictement inférieure à celle
+de la preuve~$\pi_2$ initiale, car l'affaiblissement conserve
+la hauteur. L'hypothèse de récurrence fournit donc, pour
+chaque prémisse de~$R$, une !!{proof} de
+$\Gamma,\Gamma',\Pi\Sequent\Delta,\Delta',\Lambda$.
+En réappliquant $R$, on obtient
+$\Gamma,\Gamma\Sequent\Delta,\Delta$.
+Enfin, \olref[seq][inv]{prop:G3c-cont-adm} donne la preuve
+sans coupure recherchée de $\Gamma\Sequent\Delta$.
+
+Si $!A$ n'est ni atomique ni la constante de fausseté,
+nous distinguons les cas suivant son !!{main operator}.
+Dans chaque cas où les règles correspondantes sont inversibles,
+\olref{lem:inv-G3c-cut} fournit les !!{proof}s de leurs prémisses
+avec $!A$ comme formule principale.
+Nous procédons ensuite comme dans le cas~E de la preuve
+du \olref[top]{lem:cut-adm-G3c}.
+\begin{enumerate}
+  \item $!A\ident\lnot!B$.
+  Les !!{proof}s $\pi_1$ et $\pi_2$ se terminent par
+  $\Gamma\Sequent\Delta,\lnot!B$ et
+  $\lnot!B,\Gamma\Sequent\Delta$.
+  D'après le \olref{lem:inv-G3c-cut}, il existe des !!{proof}s
+  $\pi_1'$ et $\pi_2'$ de $!B,\Gamma\Sequent\Delta$
+  et de $\Gamma\Sequent\Delta,!B$.
+  La !!{proof}~$\pi'$ est
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_2'$}
+  \Deduce$\Gamma \fCenter \Delta, !B$
+  \AxiomC{}
+  \RightLabel{$\pi_1'$}
+  \Deduce$!B, \Gamma \fCenter \Delta$
+  \RightLabel{\CutCS}
+  \BinaryInf$\Gamma \fCenter \Delta$
+  \DisplayProof
+  \]
+  \item $!A\ident(!B\lor!C)$.
+  Les !!{proof}s $\pi_1$ et $\pi_2$ se terminent par
+  $\Gamma\Sequent\Delta,!B\lor!C$ et
+  $!B\lor!C,\Gamma\Sequent\Delta$.
+  L'inversion de \RightR{\lor} dans~$\pi_1$,
+  par le \olref{lem:inv-G3c-cut}, fournit une !!{proof} $\pi_1'$
+  de $\Gamma\Sequent\Delta,!B,!C$.
+  L'inversion de \LeftR{\lor} dans~$\pi_2$,
+  par le \olref{lem:inv-G3c-cut}, fournit une !!{proof} $\pi_2'$
+  de $!B,\Gamma\Sequent\Delta$ et une !!{proof} $\pi_2''$
+  de $!C,\Gamma\Sequent\Delta$.
+  L'affaiblissement \olref[seq][adm]{prop:weak-G3c-adm}
+  appliqué à $\pi_2''$ donne aussi une !!{proof}~$\pi_2'''$
+  de $!C,\Gamma\Sequent\Delta,!B$.
+  La !!{proof}~$\pi'$ est
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1'$}
+  \Deduce$\Gamma \fCenter \Delta, !B, !C$
+  \AxiomC{}
+  \RightLabel{$\pi_2'''$}
+  \Deduce$!C, \Gamma \fCenter \Delta, !B$
+  \RightLabel{\CutCS}
+  \BinaryInf$\Gamma \fCenter \Delta, !B$
+  \AxiomC{}
+  \RightLabel{$\pi_2'$}
+  \Deduce$!B, \Gamma \fCenter \Delta$
+  \RightLabel{\CutCS}
+  \BinaryInf$\Gamma \fCenter \Delta$
+  \DisplayProof
+  \]
+  \item $!A\ident(!B\land!C)$. Exercice.
+  \item $!A\ident(!B\lif!C)$.
+  Les !!{proof}s $\pi_1$ et $\pi_2$ se terminent par
+  $\Gamma\Sequent\Delta,!B\lif!C$ et
+  $!B\lif!C,\Gamma\Sequent\Delta$.
+  L'inversion de \RightR{\lif} dans~$\pi_1$,
+  par le \olref{lem:inv-G3c-cut}, fournit une !!{proof} $\pi_1'$
+  de $!B,\Gamma\Sequent\Delta,!C$.
+  L'inversion de \LeftR{\lif} dans~$\pi_2$,
+  par le \olref{lem:inv-G3c-cut}, fournit une !!{proof} $\pi_2'$
+  de $\Gamma\Sequent\Delta,!B$ et une !!{proof} $\pi_2''$
+  de $!C,\Gamma\Sequent\Delta$.
+  L'affaiblissement \olref[seq][adm]{prop:weak-G3c-adm},
+  appliqué à $\pi_2''$, donne une !!{proof}~$\pi_2'''$
+  de $!C,!B,\Gamma\Sequent\Delta$.
+  La !!{proof}~$\pi'$ est
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_2'$}
+  \Deduce$\Gamma \fCenter \Delta, !B$
+  \AxiomC{}
+  \RightLabel{$\pi_1'$}
+  \Deduce$!B, \Gamma \fCenter \Delta, !C$
+  \AxiomC{}
+  \RightLabel{$\pi_2'''$}
+  \Deduce$!C, !B, \Gamma \fCenter \Delta$
+  \RightLabel{\CutCS}
+  \BinaryInf$!B, \Gamma \fCenter \Delta$
+  \RightLabel{\CutCS}
+  \BinaryInf$\Gamma \fCenter \Delta$
+  \DisplayProof
+  \]
+  \item $!A\ident\lforall[x][!B(x)]$.
+  Les !!{proof}s $\pi_1$ et $\pi_2$ se terminent par
+  $\Gamma\Sequent\Delta,\lforall[x][!B(x)]$ et
+  $\lforall[x][!B(x)],\Gamma\Sequent\Delta$.
+  Par le \olref{lem:inv-G3c-cut}, on obtient une !!{proof}~$\pi_1'$
+  de $\Gamma\Sequent\Delta,!B(c)$.
+  On choisit la constante de cette inversion fraîche dans
+  les deux preuves initiales. On rend la preuve obtenue
+  régulière en renommant ses variables propres afin qu'elles
+  n'apparaissent dans aucun terme ni contexte de l'autre preuve.
+  Les substitutions et affaiblissements ci-dessous respectent
+  alors toutes les conditions de variables propres.
+
+  Examinons maintenant la !!{proof}~$\pi_2$, dont le séquent
+  final est $\lforall[x][!B(x)],\Gamma\Sequent\Delta$.
+  En remontant l'arbre à partir de ce séquent, marquons les
+  occurrences de $\lforall[x][!B(x)]$ à gauche qui conduisent
+  à l'occurrence coupée. Plus précisément :
+  (a)~marquons cette occurrence dans le séquent final de~$\pi_2$;
+  (b)~lorsqu'une occurrence marquée se trouve dans le contexte
+  de la conclusion d'une règle, marquons l'occurrence
+  correspondante dans chacune de ses prémisses;
+  (c)~si l'occurrence marquée est principale dans la conclusion
+  d'une règle \LeftR{\lforall}, marquons les occurrences
+  actives correspondantes de $\lforall[x][!B(x)]$ et de $!B(t)$
+  dans sa prémisse.
+
+  Considérons toutes les occurrences ainsi marquées de
+  $\lforall[x][!B(x)]$. Aucune n'est active pour une règle autre
+  que \LeftR{\lforall}. Supprimons ces occurrences dans~$\pi_2$.
+  Si le résultat reste une !!{proof} correcte, ces occurrences
+  n'étaient jamais actives et provenaient directement des
+  axiomes. La preuve se termine alors par
+  $\Gamma\Sequent\Delta$; elle remplace $\pi$ et supprime
+  la coupure de rang maximal.
+
+  Sinon, certaines !!{formula}s supprimées étaient actives
+  dans des inférences \LeftR{\lforall}.
+  Ces inférences sont devenues des passages incorrects
+  de la forme
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_t$}
+  \Deduce$!B(t), \Pi \fCenter \Lambda$
+  \RightLabel{\LeftR{\lforall}}
+  \UnaryInf$\Pi \fCenter \Lambda$
+  \DisplayProof
+  \]
+  Remplaçons chaque passage incorrect le plus haut par
+  \[
+  \AxiomC{}
+  \RightLabel{$\Subst{\pi_1'}{t}{c}[\Pi \Sequent \Lambda]$}
+  \Deduce$\Gamma, \Pi \fCenter \Delta, \Lambda, !B(t)$
+  \AxiomC{}
+  \RightLabel{$\pi_t[\Gamma \Sequent \Delta]$}
+  \Deduce$!B(t), \Gamma, \Pi \fCenter \Delta, \Lambda$
+  \RightLabel{\CutCS}
+  \BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda$
+  \DisplayProof
+  \]
+  et ajoutons $\Gamma$ à gauche et $\Delta$ à droite de
+  chaque séquent situé au-dessous.
+  Aux règles à deux prémisses, on affaiblit aussi l'autre
+  sous-preuve pour que les deux prémisses conservent des
+  contextes communs. On procède de même lorsqu'on traverse
+  une coupure déjà présente.
+  Le passage le plus haut a une sous-preuve correcte
+  au-dessus de sa prémisse; les nouvelles prémisses
+  proviennent donc bien de preuves, par substitution
+  régulière et affaiblissement.
+  Répétons l'opération jusqu'à ce que toutes les anciennes
+  inférences \LeftR{\lforall} dont la prémisse contient
+  une occurrence marquée de $!B(t)$ soient remplacées
+  par une coupure \CutCS sur~$!B(t)$.
+  La !!{proof} obtenue est correcte, et son séquent final
+  est de la forme
+  $\Gamma,\dots,\Gamma\Sequent\Delta,\dots,\Delta$.
+  Par la contraction en présence de coupures justifiée
+  plus haut, on obtient une !!{proof} de
+  $\Gamma\Sequent\Delta$ qui remplace $\pi$.
+  La coupure sur $\lforall[x][!B(x)]$ a été remplacée
+  par des coupures, éventuellement nombreuses, sur $!B(t)$,
+  toutes de rang inférieur. Les coupures déjà présentes
+  dans $\pi_1$ ou $\pi_2$ peuvent être recopiées au cours
+  du procédé, mais leur rang reste lui aussi inférieur.
+% BEGIN EDITORIAL EXISTS
+  \item \emph{Complément éditorial : cas existentiel, omis dans la source.}
+  Si $!A\ident\lexists[x][!B(x)]$, on procède de façon duale.
+  L'inversion de la règle existentielle à gauche appliquée à
+  $\pi_2$ fournit une preuve $\pi_2'$ de
+  $!B(c),\Gamma\Sequent\Delta$, avec une constante $c$ fraîche.
+  On suit, dans $\pi_1$, les occurrences de la formule existentielle
+  à droite qui conduisent à l'occurrence coupée.
+  À chaque règle existentielle à droite portant sur une occurrence
+  suivie, on suit aussi la formule active $!B(t)$ dans la prémisse.
+  On supprime les occurrences suivies de la formule existentielle.
+
+  Si le résultat est déjà une preuve correcte, il fournit le
+  séquent recherché. Sinon, chaque ancienne application
+  existentielle à droite dont la formule active est suivie a
+  désormais pour prémisse $\Pi\Sequent\Lambda,!B(t)$ et pour
+  conclusion $\Pi\Sequent\Lambda$. En commençant par la plus
+  haute de ces applications, on la remplace par la coupure
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_t[\Gamma\Sequent\Delta]$}
+  \Deduce$\Gamma,\Pi\fCenter\Delta,\Lambda,!B(t)$
+  \AxiomC{}
+  \RightLabel{$\Subst{\pi_2'}{t}{c}[\Pi\Sequent\Lambda]$}
+  \Deduce$!B(t),\Gamma,\Pi\fCenter\Delta,\Lambda$
+  \RightLabel{\CutCS}
+  \BinaryInf$\Gamma,\Pi\fCenter\Delta,\Lambda$
+  \DisplayProof
+  \]
+  Ici, la première prémisse provient de la sous-preuve déjà
+  corrigée par affaiblissement, et la seconde de la substitution
+  régulière suivie d'affaiblissement. La constante fraîche et
+  les renommages sont choisis comme dans le cas universel.
+  On ajoute les contextes communs à tous les séquents situés
+  au-dessous de cette coupure, en affaiblissant également
+  les autres branches aux règles à deux prémisses pour
+  conserver les contextes communs, puis on répète le procédé.
+  La contraction finale supprime les répétitions des contextes.
+  Toutes les nouvelles coupures portent sur $!B(t)$ et ont donc
+  un rang strictement inférieur à celui de la formule existentielle.
+  Les coupures déjà présentes conservent un rang inférieur.
+% END EDITORIAL EXISTS
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Vérifier le cas $!A\ident(!B\land!C)$ dans la preuve du
+\olref{lem:max-cut-red-G3c}.
+Autrement dit, montrer que, s'il existe une !!{proof}~$\pi$
+qui se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta, !B \land !C$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$!B \land !C, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+où $\pi_1$ et $\pi_2$ ne contiennent que des coupures
+de rang $<\depth{!B\land!C}$, il existe une !!{proof}~$\pi'$
+de $\Gamma\Sequent\Delta$ ne contenant que des coupures
+de rang $<\depth{!B\land!C}$.
+\end{prob}
+
+% \begin{prob}
+% Vérifier le cas $!A \ident \lexists[x][!B(x)]$ dans la preuve de
+% \olref{lem:inv-G3c-cut}.
+% \end{prob}
+
+Le \olref{lem:max-cut-red-G3c} montre qu'une inférence \CutCS
+de rang maximal peut être remplacée par des inférences \CutCS
+de rang inférieur, pourvu qu'aucune coupure de même rang
+ne se trouve au-dessus d'elle. En appliquant successivement
+ce lemme aux sous-!!{proof}s qui se terminent par une coupure
+de rang maximal la plus haute, on peut éliminer toutes
+les inférences \CutCS d'une !!{proof}.
+
+\begin{thm}\ollabel{thm:cut-elim-G3c-largest}
+Toute !!{proof} $\pi$ dans $\Log{G3c}+\CutCS$ peut être
+transformée en une preuve dans~\Log{G3c} du même séquent final.
+\end{thm}
+
+\begin{proof}
+Si la preuve ne contient aucune coupure, il n'y a rien à faire.
+Sinon, montrons d'abord que toutes ses coupures de rang maximal
+peuvent être supprimées.
+Soit $d$ ce rang maximal et $n$ le nombre de coupures de rang~$d$.
+Raisonnons par récurrence sur~$n$.
+Si $n=0$, le résultat est immédiat.
+Si $n>0$, choisissons une coupure de rang~$d$ la plus haute,
+et soit $\pi_1$ la sous-!!{proof} qui se termine par elle.
+D'après le \olref{lem:max-cut-red-G3c}, il existe une
+!!{proof}~$\pi_1'$ du même séquent final dont toutes les
+coupures ont un rang $<d$. Remplaçons $\pi_1$ par $\pi_1'$
+dans~$\pi$. La nouvelle !!{proof} contient $n-1$ coupures
+de rang~$d$; l'hypothèse de récurrence s'applique.
+
+Le résultat global suit par récurrence sur~$d$.
+Si $d=0$, toutes les coupures ont le rang zéro, et l'étape
+précédente les supprime toutes.
+Si $d>0$, cette étape fournit une preuve où toutes les
+coupures de rang $d$ ont été remplacées par des coupures
+de rang~$<d$. Si aucune coupure ne reste, la transformation
+est terminée. Sinon, le rang maximal restant est strictement
+inférieur à celui des coupures de~$\pi$, et l'hypothèse
+de récurrence s'applique.
+\end{proof}
+
+\end{document}

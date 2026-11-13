@@ -1,0 +1,53 @@
+% Part: normal-modal-logic
+% Chapter: sequent-calculus
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{seq}{int}
+
+\olsection{Introduction}
+
+Le calcul des séquents de la logique propositionnelle peut être
+étendu par des règles supplémentaires portant sur
+\iftag{prvBox}{$\Box$\iftag{prvDiamond}{ et~}{}}{}%
+\iftag{prvDiamond}{$\Diamond$}{}. Par exemple, pour~$\Log{K}$, nous
+obtenons \Log{LK} auquel s'ajoutent les règles suivantes :
+\[
+  \iftag{prvBox}{\iftag{prvDiamond}{% <> and [] primitive
+    \Axiom$\Gamma \fCenter \Delta, !A$
+    \RightLabel{$\Box$}
+    \UnaryInf$\Box\Gamma \fCenter \Diamond\Delta, \Box!A$
+    \DisplayProof  
+    \qquad
+    \Axiom$!A, \Gamma \fCenter \Delta$
+    \RightLabel{$\Diamond$}
+    \UnaryInf$\Diamond!A, \Box\Gamma \fCenter \Diamond\Delta$
+    \DisplayProof
+}{% only Box primitive
+\Axiom$\Gamma \fCenter !A$
+\RightLabel{$\Box$}
+\UnaryInf$\Box\Gamma \fCenter \Box!A$
+\DisplayProof
+}}{% only <> primitive
+  \Axiom$!A \fCenter \Delta$
+  \RightLabel{$\Diamond$}
+  \UnaryInf$\Diamond!A \fCenter \Diamond\Delta$
+  \DisplayProof
+}
+\]
+Les extensions de~$\Log{K}$ exigent elles aussi des règles
+supplémentaires.
+
+L'ajout de règles modales au calcul propositionnel ne garantit pas un
+système complet sans coupure. Même pour $\Log{S5}$, pourtant simple du
+point de vue sémantique (on peut la définir sans faire figurer
+explicitement de relation d'accessibilité), certaines extensions
+naturelles de~$\Log{LK}$ exigent la règle~\Cut pour être complètes. Il
+existe toutefois des calculs des séquents complets sans coupure, ainsi
+qu'un calcul des \emph{hyperséquents} complet sans coupure, pour cette
+logique.\footnote{La source affirme qu’un tel calcul des séquents n’est pas connu. Cette affirmation est corrigée : voir \href{https://consequently.org/writing/s5nets/}{Restall (2007)} et \href{https://doi.org/10.18778/0138-0680.45.2.05}{Indrzejczak (2016)}. La limitation sans coupure concerne les règles particulières données plus loin.}
+
+\end{document}

@@ -1,0 +1,67 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: def-functions-self-reference
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{slf}
+\olsection{Définir des fonctions par autoréférence}
+
+Il est souvent utile de pouvoir définir une fonction
+en termes d'elle-même. Par exemple, si $k$, $l$
+et~$m$ sont des fonctions calculables totales, le théorème
+du point fixe donne une fonction calculable
+partielle~$f$ qui satisfait, pour tout~$y$,
+\[
+f(y) \simeq
+\begin{cases}
+k(y) & \text{si $l(y) = 0$} \\
+f(m(y)) & \text{sinon.}
+\end{cases}
+\]
+Plus précisément, on obtient~$f$ en posant
+\[
+g(x,y) \simeq
+\begin{cases}
+k(y) & \text{si $l(y) = 0$} \\
+\cfind{x}(m(y)) & \text{sinon}
+\end{cases}
+\]
+puis en appliquant le théorème du point fixe
+pour trouver un indice~$e$ tel que
+$\cfind{e}(y) \simeq g(e,y)$.
+
+Pour un exemple concret, on peut définir la
+fonction « plus grand commun diviseur »
+$\fn{gcd}(u,v)$ par
+\[
+\fn{gcd}(u,v) \simeq
+\begin{cases}
+v & \text{si $u = 0$} \\
+\fn{gcd}(\fn{mod}(v, u), u) & \text{sinon}
+\end{cases}
+\]
+où $\fn{mod}(v,u)$ désigne le reste de la
+division de~$v$ par~$u$. Le théorème du point
+fixe montre que $\fn{gcd}$ est calculable
+partielle. (On peut en effet ramener cet
+exemple à la forme précédente en faisant coder
+le couple $\tuple{u,v}$ par~$y$.) Une récurrence
+sur~$u$ montre ensuite que cette fonction est,
+en fait, totale : pour $u>0$, on a $0\leq\fn{mod}(v,u)<u$, et pour $u=0$ la valeur est immédiatement $v$ (donc $\fn{gcd}(0,0)=0$ selon cette convention).\footnote{Nous employons $\simeq$ dans l'application du théorème du point fixe, contrairement à l'égalité ordinaire de la source, pour couvrir les valeurs partielles avant la preuve de totalité.}
+
+On peut bien sûr inventer des définitions
+autoréférentielles beaucoup plus élaborées.
+La plupart des langages de programmation
+permettent, d'une manière ou d'une autre, de
+définir une fonction en termes d'elle-même.
+Il s'agit toutefois d'un pouvoir un peu moins
+remarquable que celui de définir une fonction
+à partir d'un \emph{indice} d'un algorithme qui
+la calcule : c'est cette dernière possibilité
+que donne le théorème du point fixe dans toute
+sa généralité.
+
+\end{document}

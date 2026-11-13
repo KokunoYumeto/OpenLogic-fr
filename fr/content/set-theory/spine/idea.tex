@@ -1,0 +1,46 @@
+% Partie : set-theory
+% Chapitre : spine
+% Section : idea
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{spine}{valpha}
+
+\olsection{Définir les étapes comme les \texorpdfstring{$V_\alpha$}{Vα}}
+
+Dans le \olref[sth][ordinals][]{chap}, nous avons défini les bons ordres
+et les ordinaux (de von Neumann). Nous allons maintenant nous en
+servir pour caractériser la hiérarchie des ensembles \emph{elle-même}.
+Rappelons qu'à la \olref[sth][ordinals][opps]{sec}, nous avons défini
+les notions d'ordinal successeur et d'ordinal limite. Elles
+interviennent dans la définition suivante :
+
+\begin{defn}\ollabel{defValphas}
+	\begin{align*}
+	V_\emptyset &\defis \emptyset\\
+	V_{\ordsucc{\alpha}} &\defis \Pow{V_\alpha} & &
+	\text{pour tout ordinal }\alpha\\
+	V_{\alpha} &\defis \bigcup_{\gamma < \alpha} V_\gamma & &
+	\text{si }\alpha\text{ est un ordinal limite}
+\end{align*}
+\end{defn}
+\noindent
+Il s'agira d'une définition par \emph{récursion transfinie} sur les
+ordinaux. Comparons-la aux définitions récursives des fonctions sur
+les nombres naturels.\footnote{Voir les définitions de l'addition,
+de la multiplication et de l'exponentiation dans la
+\olref[sfr][infinite][induction]{sec}. Note de l'édition française : le renvoi original vise la section sur les algèbres de Dedekind ; les équations citées figurent dans la section suivante.} Avec les nombres naturels,
+on définit un cas de base et des cas successeurs ; avec les ordinaux,
+il faut aussi décrire ce qui se passe aux étapes \emph{limites}.
+
+Cette définition des $V_\alpha$ constituera un jalon important.
+Nous avons motivé de manière informelle la hiérarchie des ensembles
+en présentant leur formation par \emph{étapes}. Les $V_\alpha$ sont,
+en effet, précisément ces étapes. Mais il s'agit, et c'est important,
+d'une caractérisation \emph{interne} des étapes. Au lieu de proposer
+un éventuel \emph{modèle} de la théorie, nous aurons défini les
+étapes \emph{au sein} de notre théorie des ensembles.
+
+\end{document}

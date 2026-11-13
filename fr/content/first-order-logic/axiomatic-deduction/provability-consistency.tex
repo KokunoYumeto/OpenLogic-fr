@@ -23,13 +23,12 @@ alors $\Gamma$ est incohérent.
 
 \begin{proof}
 Si $\Gamma \cup \{!A\}$ est incohérent, alors
-$\Gamma \cup \{!A\} \Proves \lfalse$. D'après la
-\olref[ptn]{prop:reflexivity}, $\Gamma \Proves !B$ pour tout
-$!B \in \Gamma$. Comme $\Gamma \Proves !A$ par hypothèse, nous avons
-donc $\Gamma \Proves !B$ pour tout
-$!B \in \Gamma \cup \{!A\}$. La \olref[ptn]{prop:transitivity} donne
-alors $\Gamma \Proves \lfalse$, c'est-à-dire que $\Gamma$ est
-incohérent.
+$\Gamma \cup \{!A\} \Proves \lfalse$. Les hypothèses utilisées dans
+cette !!{derivation} forment une partie finie de~$\Gamma\cup\{!A\}$.
+Chacune est dérivable à partir de~$\Gamma$, par hypothèse pour $!A$
+et par la \olref[ptn]{prop:reflexivity} pour les éléments de~$\Gamma$.
+La \olref[ptn]{prop:transitivity} donne alors
+$\Gamma \Proves \lfalse$. Donc $\Gamma$ est incohérent.
 \end{proof}
 
 \begin{prop}
@@ -73,7 +72,9 @@ incohérent.
 
 \begin{proof}
 D'après l'\olref[prp]{ax:lnot2},
-$\Gamma \Proves \lnot !A \lif (!A \lif \lfalse)$. Deux applications
+$\Gamma \Proves \lnot !A \lif (!A \lif \lfalse)$. Comme $\lnot !A$
+appartient à~$\Gamma$, la \olref[ptn]{prop:reflexivity} donne
+$\Gamma \Proves \lnot !A$. Avec $\Gamma \Proves !A$, deux applications
 de la \olref[ded]{prop:mp} donnent $\Gamma \Proves \lfalse$.
 \end{proof}
 

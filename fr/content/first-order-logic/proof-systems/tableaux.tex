@@ -42,15 +42,15 @@ $\sFmla{\False}{!A}$ et $\sFmla{\False}{!B}$.
 Un !!{tableau} est fermé si chacune de ses branches contient une paire
 de !!{signed formula}s $\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$
 portant sur la même formule.
-\begin{editorial}
-Note de l'édition française : la description par sous-formules est
-limitée ici aux règles de décomposition propositionnelles. La coupure,
-présentée plus loin dans l'original, n'est pas une telle règle.
-Le nom de la règle de conjonction fausse est corrigé : l'original
-y place toute la formule au lieu du seul connecteur. Dans le tableau
-ci-dessous, les deux dernières étapes portent également le nom de la
-règle de conjonction vraie, et non celui de l'implication vraie.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
+%
+%
 
 La relation $\Proves$ fondée sur les !!{tableau}s se définit ainsi :
 $\Gamma \Proves !A$ si et seulement s'il existe un ensemble fini
@@ -88,13 +88,13 @@ faciles à mettre en œuvre sur ordinateur. Toutefois, un !!{tableau}
 est souvent difficile à lire, et son rapport avec une démonstration
 n'est pas toujours facile à discerner. La méthode est par ailleurs très
 générale : de nombreuses logiques différentes possèdent des systèmes de
-!!{tableau}s. Ceux-ci aident aussi à trouver des !!{structure}s qui
-satisfont des !!{sentence}s donnés, ou des ensembles d'!!{sentence}s.
-Si l'ensemble est satisfaisable, il n'admet aucun !!{tableau} fermé :
-tout !!{tableau} possède donc une branche ouverte. On peut « lire »
-sur une branche ouverte une !!{structure} qui satisfait l'ensemble,
-à condition que toutes les règles susceptibles d'être appliquées sur
-cette branche l'aient été. Le lien avec le calcul des séquents est
+!!{tableau}s. Ceux-ci aident aussi à trouver des
+\iftag{FOL}{!!{structure}s}{!!{valuation}s} qui satisfont des !!{sentence}s
+donnés ou des ensembles d'!!{sentence}s. Si l'ensemble est satisfaisable,
+tout !!{tableau} possède une branche ouverte. On peut y « lire » une
+\iftag{FOL}{!!{structure}}{!!{valuation}} qui satisfait l'ensemble, à
+condition que toutes les règles applicables sur cette branche l'aient été.
+Le lien avec le calcul des séquents est
 également très étroit : pour l'essentiel, un !!{tableau} fermé est une
 !!{derivation} condensée du calcul des séquents, écrite dans l'autre sens.
 

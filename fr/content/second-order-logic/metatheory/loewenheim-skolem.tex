@@ -1,0 +1,79 @@
+% Part: second-order-logic
+% Chapter: metatheory
+% Section: loewenheim-skolem
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{met}{lst}
+
+\olsection{Les théorèmes de Löwenheim--Skolem
+  échouent au second ordre}
+
+\begin{explain}
+Pour un langage du premier ordre au plus
+dénombrable, le théorème de Löwenheim--Skolem
+\emph{descendant} affirme que tout ensemble
+d'!!{sentence}s ayant un modèle infini possède
+un modèle !!{denumerable}. Sa démonstration
+peut s'appuyer sur le théorème de complétude :
+en ajoutant une infinité dénombrable de constantes contraintes à être
+distinctes, on obtient un modèle infini au plus
+dénombrable. Il existe aussi un théorème de
+Löwenheim--Skolem \emph{ascendant} : un ensemble
+d'!!{sentence}s qui possède un modèle
+!!{denumerable} possède aussi un modèle
+!!{nonenumerable}. Sous la sémantique standard,
+ces deux théorèmes échouent pour la logique du
+second ordre.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:sol-no-ls}
+Le théorème de Löwenheim--Skolem descendant
+échoue au second ordre : certains !!{sentence}s
+ont des modèles infinis, mais aucun modèle
+!!{enumerable}.
+\end{thm}
+
+\begin{proof}
+Rappelons que
+\[
+\fn{Count} \ident \lexists[z][\lexists[u][\lforall[X][((X(z) \land
+      \lforall[x][(X(x) \lif X(u(x)))]) \lif \lforall[x][X(x)])]]]
+\]
+est vrai dans une !!{structure}~$\Struct{M}$
+si et seulement si $\Domain{M}$ est
+!!{enumerable}. Par conséquent,
+$\lnot\fn{Count}$ est vrai dans~$\Struct{M}$
+si et seulement si ce !!{domain} est
+!!{nonenumerable}. De tels !!{domain}s
+existent : prenons, par exemple,
+$\Pow{\Nat}$ ou~$\Real$.
+Ainsi, $\lnot\fn{Count}$ possède des modèles
+infinis, mais aucun modèle !!{enumerable}.
+\end{proof}
+
+\begin{thm}
+Il existe des !!{sentence}s ayant des modèles
+!!{denumerable}s, mais aucun modèle
+!!{nonenumerable}.
+\end{thm}
+
+\begin{proof}
+$\fn{Count}\land\fn{Inf}$ est vrai dans
+$\Nat$, mais dans aucune !!{structure}
+dont le !!{domain} est !!{nonenumerable}.
+\end{proof}
+
+Le raisonnement descendant utilise le fait que le langage enrichi
+reste au plus dénombrable. Dans le sens ascendant, on peut
+au contraire choisir une famille non dénombrable de nouvelles
+constantes et imposer qu'elles soient deux à deux distinctes.
+Chaque sous-ensemble fini des contraintes est satisfaisable
+dans un modèle infini de la théorie. Par compacité, il existe
+un modèle de l'ensemble des contraintes, dont le réduit
+au langage initial est encore non dénombrable.
+
+\end{document}

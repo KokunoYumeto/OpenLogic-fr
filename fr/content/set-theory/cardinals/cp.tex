@@ -1,0 +1,56 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{cardinals}{cp}
+\olsection{Principe de Cantor}
+
+Revenons à la \olref[ordinals][vn]{sec}. Nous parlions
+des ensembles bien ordonnés et suggérions qu'il serait
+utile de disposer d'objets tenant lieu de représentants
+des bons ordres. Dans cette perspective, nous avons
+introduit les ordinaux, puis montré dans le
+\olref[ordinals][ordtype]{ordtypesworklikeyouwant}
+qu'ils se comportent comme nous le souhaitions :
+\[
+	\ordtype{A, <} = \ordtype{B, \lessdot}
+	\text{ ssi } \tuple{A, <}
+	\isomorphic \tuple{B, \lessdot}.
+\]
+Revenons encore plus loin, à la
+\olref[sfr][siz][equ]{sec}. Nous y avons
+introduit, de manière naïve, la notion de
+«~taille~» d'un ensemble. Plus précisément,
+nous avons dit que deux ensembles sont équipotents,
+$\cardeq{A}{B}$, s'il existe !!a{bijection}
+$f \colon A \to B$. Cette notion est
+intrinsèquement {plus simple} que celle de bon
+ordre : seules les !!{bijection}s nous intéressent,
+et non, comme pour les isomorphismes d'ordres,
+la question de savoir si ces !!{bijection}s
+«~préservent une structure~».
+
+Une idée naturelle se présente alors. De même
+que nous avons introduit certains objets, les
+\emph{ordinaux}, pour mesurer les bons ordres,
+nous pouvons introduire d'autres objets, les
+\emph{cardinaux}, pour mesurer la taille.
+Tel est le but de ce chapitre.
+
+Avant de dire ce que seront ces cardinaux,
+énonçons un principe qu'ils devraient satisfaire.
+Si nous écrivons $\card{X}$ pour la cardinalité
+de l'ensemble $X$, nous voudrions avoir :
+\[
+	\card{A} = \card{B}
+	\text{ ssi } \cardeq{A}{B}.
+\]
+Nous l'appellerons le \emph{principe de Cantor},
+car Cantor fut probablement le premier à l'avoir
+très clairement à l'esprit. (Nous reviendrons
+sur sa relation avec le \emph{principe de Hume}
+dans la \olref[hp]{sec}.) Notre objectif est donc
+de définir $\card{X}$ pour chaque $X$ de façon
+à satisfaire le principe de Cantor.
+
+\end{document}

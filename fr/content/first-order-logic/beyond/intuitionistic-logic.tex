@@ -1,0 +1,237 @@
+% Part: first-order-logic
+% Chapter: beyond
+% Section: intuitionistic-logic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{byd}{il}
+
+\olsection{Logique intuitionniste}
+
+À la différence des logiques du second ordre et d'ordre supérieur,
+la logique intuitionniste du premier ordre restreint la version
+classique pour représenter un raisonnement davantage « constructif ».
+Quelques exemples permettront d'en éclairer les motivations.
+
+Supposons que quelqu'un vienne un jour vous annoncer qu'il a
+déterminé un nombre naturel~$x$ tel que, si $x$ est premier,
+l'hypothèse de Riemann est vraie, et que, si $x$ est composé, elle
+est fausse. Voilà une excellente nouvelle !{} La vérité de
+l'hypothèse de Riemann est l'une des grandes questions ouvertes des
+mathématiques; cette personne semble avoir ramené le problème à un
+calcul, celui qui consiste à déterminer si un nombre donné est
+premier ou non.
+
+Quelle est donc cette valeur miraculeuse de~$x$ ? Voici sa
+description : $x$ est le nombre naturel égal à $7$ si l'hypothèse de
+Riemann est vraie, et à $9$ sinon.
+
+Vous réclamez alors votre argent. Du point de vue classique, cette
+description détermine effectivement une unique valeur de~$x$; mais
+vous attendiez une valeur de~$x$ donnée \emph{explicitement}.
+
+Prenons un autre exemple, peut-être moins artificiel. Il est
+possible d'élever un nombre irrationnel à une puissance rationnelle
+et d'obtenir un résultat rationnel : ainsi,
+$\sqrt{2}^2 = 2$. Ce qui est moins évident, c'est la possibilité
+d'élever un irrationnel à une puissance \emph{irrationnelle} pour
+obtenir un rationnel. Le théorème suivant répond par l'affirmative.
+
+\begin{thm}
+Il existe des nombres irrationnels $a$ et $b$ tels que $a^b$ soit
+rationnel.
+\end{thm}
+
+\begin{proof}
+Considérons $\sqrt{2}^{\sqrt{2}}$. Si ce nombre est rationnel,
+il suffit de prendre $a = b = \sqrt{2}$. Dans le cas contraire, il
+est irrationnel. Or
+\[
+(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}} = \sqrt{2}^{\sqrt{2} \cdot
+  \sqrt{2}} = \sqrt{2}^2 = 2,
+\]
+qui est bien rationnel. Dans ce cas, prenons $a$ égal à
+$\sqrt{2}^{\sqrt{2}}$ et $b$ égal à~$\sqrt 2$.
+\end{proof}
+
+Est-ce une démonstration valable ? La plupart des mathématiciens
+estiment que oui. Il reste pourtant quelque chose d'insatisfaisant :
+nous avons prouvé l'existence d'un couple de réels possédant une
+certaine propriété sans pouvoir dire \emph{quel} couple la possède.
+On peut démontrer le même résultat en exhibant le couple $a$, $b$
+dans la preuve : prenons $a = \sqrt{3}$ et $b = \log_3 4$. Alors
+\[
+a^b = \sqrt{3}^{\log_3 4} = 3^{1/2 \cdot \log_3 4} = (3^{\log_3
+  4})^{1/2} = 4^{1/2}= 2,
+\]
+puisque $3^{\log_3 x} = x$.
+De plus, $b$ est irrationnel : si $\log_3 4 = m/n$ pour des
+entiers $m,n>0$, alors $3^m = 4^n$, ce que contredit l'unicité de
+la décomposition en facteurs premiers.\footnote{Complément éditorial : la source donne le couple explicite sans démontrer l'irrationalité de $b$ ; nous ajoutons cette vérification.}
+
+La logique intuitionniste vise à représenter un raisonnement où
+des démarches comme celle de la première preuve ne sont pas admises.
+Prouver qu'il existe un $x$ satisfaisant~$!A(x)$ demande de fournir
+un~$x$ précis, puis une preuve qu'il satisfait $!A$, comme dans
+la seconde démonstration. Prouver que $!A$ ou $!B$ vaut demande une
+preuve de l'un ou de l'autre.
+
+Sur le plan formel, on obtient la logique intuitionniste du premier
+ordre en restreignant d'une certaine manière un système de
+!!{derivation} du premier ordre. Il existe de même des versions
+intuitionnistes des logiques du second ordre et d'ordre supérieur.
+Du point de vue mathématique, il s'agit simplement de systèmes
+déductifs formels; comme nous l'avons dit, ils visent toutefois à
+représenter une forme de raisonnement mathématique. On peut y voir
+le raisonnement justifié par une certaine conception philosophique
+des mathématiques, tel l'intuitionnisme de Brouwer; ou bien un
+raisonnement plus « concret » et satisfaisant, dans l'esprit du
+constructivisme de Bishop. On peut aussi débattre de la fidélité de
+la formalisation à ses motivations informelles. Quelle que soit
+notre position philosophique, nous pouvons cependant étudier la
+logique intuitionniste en tant que logique formellement définie;
+nombre de logiciens mathématiciens y trouvent, pour diverses raisons,
+un intérêt.
+
+Une interprétation constructive informelle des connecteurs
+intuitionnistes est généralement appelée \emph{interprétation BHK},
+d'après Brouwer, Heyting et Kolmogorov. Elle se présente ainsi :
+une preuve de $!A \land !B$ consiste en une preuve de $!A$
+associée à une preuve de $!B$; une preuve de $!A \lor !B$ consiste
+en une preuve de $!A$ ou de $!B$, avec l'indication explicite du
+cas qui se présente; une preuve de $!A \lif !B$ est un procédé
+qui transforme toute preuve de $!A$ en une preuve de~$!B$; une
+preuve de $\lforall[x][!A(x)]$ est un procédé qui fournit, pour
+chaque valeur de~$x$, une preuve de $!A(x)$; et une preuve de
+$\lexists[x][!A(x)]$ comprend une valeur de~$x$ et une preuve
+qu'elle satisfait~$!A$. On peut exprimer cette interprétation
+en termes informatiques sous le nom de « correspondance de
+Curry--Howard », ou de paradigme « formules comme types » :
+on envisage !!a{formula} comme la spécification d'un type de données,
+et ses preuves comme des objets calculatoires de ce type, qui
+permettent de reconnaître sa vérité.
+
+On présente souvent la logique intuitionniste comme la logique
+classique « moins » le principe du tiers exclu. Le théorème
+suivant précise cette idée.
+\begin{thm}
+Du point de vue intuitionniste, les schémas d'axiomes suivants
+sont équivalents :
+\begin{enumerate}
+\item $(\lnot !A \lif \lfalse) \lif !A$.
+\item $!A \lor \lnot !A$
+\item $\lnot \lnot !A \lif !A$
+\end{enumerate}
+\end{thm}
+Déduire les instances de l'un de ces schémas à partir de toutes les instances de l'un des
+deux autres constitue un bon exercice de logique intuitionniste.
+
+Les premiers systèmes déductifs de logique propositionnelle
+intuitionniste, proposés pour formaliser l'intuitionnisme de Brouwer,
+sont dus, indépendamment, à Kolmogorov, Glivenko et Heyting.
+La première formalisation de la logique intuitionniste du premier
+ordre, ainsi que de certaines parties des mathématiques
+intuitionnistes, est due à Heyting. Si plusieurs schémas valides
+classiquement ne le sont pas intuitionnistement, beaucoup d'autres
+le sont.
+
+La \emph{traduction par double négation} établit un lien important
+entre les logiques classique et intuitionniste. On la définit par
+induction comme suit; $!A^N$ est la traduction « intuitionniste »
+de la !!{formula} classique~$!A$ :\footnote{Précision éditoriale : pour compléter les clauses affichées, on prend $\lfalse^N\ident\lfalse$ et $(\lnot !A)^N\ident\lnot !A^N$. Un biconditionnel est développé comme la conjonction des deux implications. La source laisse ces conventions implicites.}
+\begin{align*}
+!A^N & \ident \lnot\lnot !A \quad \text{si $!A$ est une !!{formula} atomique} \\
+(!A \land !B)^N & \ident (!A^N \land !B^N) \\
+(!A \lor !B)^N & \ident  \lnot\lnot (!A^N \lor !B^N) \\
+(!A \lif !B)^N & \ident (!A^N \lif !B^N) \\
+(\lforall[x][!A])^N & \ident \lforall[x][!A^N] \\
+(\lexists[x][!A])^N & \ident \lnot\lnot\lexists[x][!A^N]
+\end{align*}
+Kolmogorov et Glivenko avaient établi des versions de cette
+traduction pour la logique propositionnelle; pour la logique des
+prédicats, elle est due, indépendamment, à G\"odel et à Gentzen.
+On a :
+
+\begin{thm}
+\begin{enumerate}
+\item $!A \liff !A^N$ est démontrable classiquement.
+\item Si $!A$ est démontrable classiquement, alors $!A^N$ est
+  démontrable intuitionnistement.
+\end{enumerate}
+\end{thm}
+
+Imaginons maintenant le dialogue suivant. Un mathématicien classique :
+« J'ai démontré $!A$ ! » Un mathématicien intuitionniste :
+« Votre preuve n'est pas valable. Ce que vous avez réellement
+démontré, c'est $!A^N$. » Le premier répond : « Cela me va ! »
+À ses yeux, le second coupe les cheveux en quatre, puisque les deux
+énoncés sont équivalents. Mais l'intuitionniste insiste sur leur
+différence.
+
+La traduction ci-dessus ne concerne que la logique pure; elle ne
+résout pas la question des axiomes \emph{non logiques} à retenir
+pour les mathématiques classiques et intuitionnistes, ni celle
+du rapport entre ces axiomes. Une légère extension du théorème
+précédent apporte cependant une information utile :
+
+\begin{thm}
+Si $\Gamma$ démontre $!A$ classiquement, $\Gamma^N$ démontre
+$!A^N$ intuitionnistement.
+\end{thm}
+
+Autrement dit, si $!A$ se démontre classiquement à partir de
+certaines hypothèses, $!A^N$ se démontre intuitionnistement à
+partir de leurs traductions par double négation.
+
+Pour montrer qu'un énoncé ou !!a{formula} propositionnelle est
+valide intuitionnistement, il suffit de donner une preuve. Mais
+comment montrer qu'il ne l'est pas ? Il nous faut pour cela une
+sémantique correcte et, de préférence, complète. La sémantique
+due à Kripke répond à ce besoin.
+
+On peut reprendre la démarche suivie pour la logique classique :
+définir la sémantique, puis démontrer la correction et la complétude.
+Une différence mérite toutefois d'être signalée. Pour la logique
+classique, la sémantique paraissait, en un sens, « évidente »,
+comme si elle était contenue dans le sens des connecteurs. La
+sémantique de Kripke peut recevoir une motivation intuitive, sans
+produire pour autant la même impression d'inévitabilité. En outre,
+la notion de !!{structure} classique est mathématiquement naturelle :
+on peut considérer les !!{structure}s comme un outil pour étudier
+la logique classique du premier ordre, ou cette logique comme un
+outil pour étudier les !!{structure}s mathématiques. Les
+!!{structure}s de Kripke, en revanche, semblent n'être que des
+constructions logiques, sans intérêt mathématique indépendant.
+
+Pour un langage propositionnel, !!a{structure} de Kripke
+$\mModel M = \tuple{W, R, V}$ comprend un ensemble~$W$, un ordre
+partiel~$R$ sur~$W$ possédant un plus petit !!{element}, ainsi
+qu'une assignation « monotone » des variables propositionnelles
+aux !!{element}s de~$W$ : si $u\le v$, alors $V(u)\subseteq V(v)$. Intuitivement, les !!{element}s de $W$
+représentent des « mondes » ou des « états de connaissance »;
+un élément $v \geq u$ représente un « état futur possible »
+de~$u$, et les variables propositionnelles assignées à~$u$
+correspondent aux propositions connues comme vraies à l'état~$u$.
+La relation de forçage $\mSat{M}{!A}[w]$ étend alors cette
+interprétation à toutes les !!{formula}s du langage; on lit
+$\mSat{M}{!A}[w]$ : « $!A$ est vraie à l'état~$w$ ».
+On la définit par induction :
+\begin{enumerate}
+\item $\mSat{M}{\Obj p_i}[w]$ si et seulement si $\Obj p_i$
+  est une des variables propositionnelles assignées à~$w$.
+\item $\mSat/{M}{\lfalse}[w]$.
+\item $\mSat{M}{(!A \land !B)}[w]$ si et seulement si
+  $\mSat{M}{!A}[w]$ et $\mSat{M}{!B}[w]$.
+\item $\mSat{M}{(!A \lor !B)}[w]$ si et seulement si
+  $\mSat{M}{!A}[w]$ ou $\mSat{M}{!B}[w]$.
+\item $\mSat{M}{(!A \lif !B)}[w]$ si et seulement si,
+  pour tout $w' \geq w$, $\mSat{M}{!A}[w']$ entraîne
+  $\mSat{M}{!B}[w']$.
+\end{enumerate}
+Un bon exercice consiste à chercher une !!{structure} de Kripke
+qui montre que $\lnot (p \land q) \lif
+(\lnot p \lor \lnot q)$ n'est pas valide intuitionnistement.
+
+\end{document}

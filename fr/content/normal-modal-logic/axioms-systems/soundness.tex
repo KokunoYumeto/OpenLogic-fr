@@ -1,0 +1,66 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: soundness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{snd}
+
+\olsection{Correction}
+
+Un système de !!{derivation} est dit correct si toute !!{formula}
+qu'on peut y !!{derive} est valide. Pour les systèmes modaux, où l'on
+peut employer, outre \Ax{K}, des instances des !!{formula}s
+$!A_1$, \dots,~$!A_n$, on souhaite que chaque !!{formula}
+!!{derivable} soit vraie dans tout modèle où toutes les instances de
+$!A_1$, \dots, $!A_n$ sont vraies.
+
+\begin{thm}[Théorème de correction]\ollabel{thm:soundness}
+  Si toutes les instances de $!A_1$, \dots, $!A_n$ sont valides,
+  respectivement, dans les classes de modèles $\mClass{C}_1$, \dots,
+  $\mClass{C}_n$, alors $\Log{K}!A_1\dots !A_n \Proves !B$ implique
+  que $!B$ est valide dans la classe de modèles
+  $\mClass{C}_1 \cap \dots \cap \mClass{C}_n$.
+\end{thm}
+
+\begin{proof}
+  Raisonnons par récurrence sur la longueur des démonstrations. Pour
+  abréger, posons $\mClass{C} = \mClass{C}_1 \cap \dots \cap
+  \mClass{C}_n$.
+  \begin{enumerate}
+  \item Cas de base : si $!B$ possède une démonstration de
+    longueur~$1$, alors il s'agit soit d'une instance de tautologie, soit
+    d'une instance de~\Ax{K}\iftag{prvDiamond}{ ou de~\Dual{}}{}, soit
+    d'une instance de l'une des !!{formula}s $!A_1$, \dots,~$!A_n$.
+    Dans le premier cas, $!B$ est valide dans $\mClass{C}$, puisque
+    les instances de tautologies sont valides dans \emph{toute}
+    classe de modèles, d'après la \olref[syn][tau]{prop:valid-taut}.
+    Il en va de même dans le deuxième cas, d'après la
+    \olref[syn][sch]{prop:Kvalid}\iftag{prvDiamond}{ et la
+      \olref[syn][sch]{prop:Dual-valid}}{}. Enfin, dans le troisième
+    cas, $!B$ est valide dans $\mClass{C}_i$ et
+    $\mClass{C} \subseteq \mClass{C}_i$ ; donc $!B$ est également
+    valide dans $\mClass{C}$ d'après la
+    \olref[syn][val]{prop:subset-class}.
+  \item Étape de récurrence : supposons que $!B$ possède une
+    démonstration de longueur $k>1$. Si $!B$ est une instance de
+    tautologie, de~\Ax{K}\iftag{prvDiamond}{ ou de~\Dual{}}{}, ou
+    encore de l'une des !!{formula}s $!A_1$, \dots, $!A_n$, on
+    raisonne comme dans le cas de base. Supposons donc que $!B$ soit
+    obtenu par \MP{} à partir des !!{formula}s précédentes
+    $!C \lif !B$ et $!C$. Alors $!C \lif !B$ et $!C$ possèdent des
+    démonstrations de longueur $<k$ et sont, par hypothèse de
+    récurrence, valides dans
+    $\mClass{C}$. D'après la \olref[syn][sch]{prop:soundMP}, $!B$ est
+    également valide dans $\mClass{C}$. Supposons enfin que $!B$ soit obtenu par
+    \Nec{} à partir de $!C$, de sorte que $!B = \Box!C$. Par
+    hypothèse de récurrence, $!C$ est valide dans $\mClass{C}$.
+    Dans chaque modèle de cette classe, $!C$ est donc vraie en
+    tous les successeurs de chaque monde. Le raisonnement de la
+    \olref[syn][val]{prop:Nec-rule} donne ainsi la validité de~$!B$
+    dans~$\mClass{C}$.
+  \end{enumerate}
+\end{proof}
+\end{document}

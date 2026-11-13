@@ -1,0 +1,70 @@
+% Partie : set-theory
+% Chapitre : ordinals
+% Section : vn
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ordinals}{vn}
+\olsection[La construction de von Neumann]{La construction des ordinaux par von Neumann}
+
+Le \olref[sth][ordinals][iso]{thm:woalwayscomparable} suggère une idée.
+Nous pourrions introduire certains objets, appelés \emph{types
+d'ordre}, pour tenir lieu des bons ordres. En notant $\ordtype{A, <}$
+le type d'ordre du bon ordre $\tuple{A, <}$, nous souhaiterions obtenir
+les deux principes suivants :
+\begin{align*}
+	\ordtype{A, <} = \ordtype{B, \lessdot} &
+	\text{ ssi } \ordeq{\tuple{A, <}}{\tuple{B, \lessdot}}\\
+	\ordtype{A, <} < \ordtype{B, \lessdot}&
+	\text{ ssi }\ordeq{\tuple{A, <}}{\tuple{B_b, \lessdot_b}}\text{ pour un certain }b \in B
+\end{align*}
+Nous pourrions, de plus, espérer définir ces types d'ordre \emph{comme
+certains ensembles}, tout comme nous pouvons définir les nombres
+naturels comme certains ensembles.
+
+La façon la plus courante de procéder, que nous suivrons ici, consiste
+à définir ces types d'ordre au moyen de certains ensembles bien
+ordonnés \emph{canoniques}. Von Neumann a introduit ces ensembles
+canoniques le premier :
+
+\begin{defn}
+L'ensemble $A$ est \emph{transitif} si et seulement si
+$(\forall x \in A)x \subseteq A$. L'ensemble $A$ est alors un
+\emph{ordinal} si et seulement s'il est transitif et bien ordonné par
+$\in$.
+\end{defn}
+\noindent
+Dans la suite, nous désignerons les ordinaux par des lettres grecques.
+La définition entraîne immédiatement que, si $\alpha$ est un ordinal,
+alors $\tuple{\alpha, \in_\alpha}$ est un bon ordre, où
+$\in_\alpha = \Setabs{\tuple{x, y} \in \alpha^2}{x \in y}$. Ainsi,
+au prix d'un léger abus de notation, nous pouvons dire simplement que
+$\alpha$ est \emph{lui-même} un bon ordre.
+
+Voici les premiers ordinaux :
+\[
+	\emptyset, \{\emptyset\},
+	\{\emptyset, \{\emptyset\}\},
+	\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}, \ldots
+\]
+On reconnaît les premiers ordinaux rencontrés dans notre axiome de
+l'infini, c'est-à-dire dans la définition de $\omega$ donnée par von
+Neumann (voir la \olref[sth][z][infinity-again]{sec}). Ce n'est pas un
+hasard. La définition des ordinaux de von Neumann considère les
+nombres naturels comme des ordinaux, tout en admettant aussi des
+ordinaux transfinis.
+
+Comme toujours, nous pouvons demander : ces ensembles \emph{sont-ils}
+les ordinaux ? Ou von Neumann nous a-t-il simplement donné des
+ensembles que nous pouvons \emph{traiter} comme les ordinaux ? Les
+discussions que cette question suscite ressemblent à celles que nous
+avons menées dans la \olref[sfr][rel][ref]{sec},
+\olref[sfr][arith][ref]{sec},
+\olref[sfr][infinite][dedekindsproof]{sec} et
+\olref[sth][z][nat]{sec} ; nous n'insisterons donc pas davantage.
+Dans la suite, nous emploierons simplement «~les ordinaux~» pour
+parler des «~ordinaux de von Neumann~».
+
+\end{document}

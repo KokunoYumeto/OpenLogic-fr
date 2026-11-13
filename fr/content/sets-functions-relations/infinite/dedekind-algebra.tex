@@ -39,12 +39,12 @@ de Dedekind consiste à reformuler la condition
 	appliquer $s$ à un !!{element} de cet ensemble donne encore
 	un !!{element} de l'ensemble.
 \end{enumerate}
-Il nous faut toutefois expliciter cette idée pas à pas.\footnote{Note de
-l'édition française : la condition « contenant $0$ », omise dans cette
-reformulation de la source, est nécessaire ; l'ensemble vide est lui aussi
-stable par le successeur. La reformulation ensembliste peut être écrite
-dans le langage du premier ordre de la théorie des ensembles, qui permet
-de quantifier sur les ensembles.}
+La condition que l'ensemble contienne $0$ écarte l'ensemble vide,
+qui est lui aussi stable par le successeur. Dans le langage ensembliste,
+on peut énoncer cette condition de minimalité au premier ordre en
+quantifiant sur les parties du domaine. Il reste à expliciter cette
+idée pas à pas.
+%
 
 \begin{defn}\ollabel{Closure}
 	Soit $f\colon A\to A$. Une partie $X\subseteq A$ est
@@ -54,10 +54,10 @@ de quantifier sur les ensembles.}
 	$$\closureofunder{f}{o} = \bigcap\Setabs{X\subseteq A}{o \in X\text{ et }X
 \text{ est stable par }f}.$$
 \end{defn}
-\noindent\emph{Précision de l'édition française.} Nous fixons ici l'ensemble
-ambiant $A$ et supposons que $f$ est une application de $A$ dans lui-même.
-Ces hypothèses, laissées implicites dans la source, garantissent que la
-famille dont on prend l'intersection est un ensemble non vide.
+Les parties de $A$ stables par $f$ qui contiennent $o$ forment
+un ensemble non vide de parties de $A$, puisqu'elles comprennent $A$
+lui-même. On peut donc prendre leur intersection.
+%
 
 Ainsi, $\closureofunder{f}{o}$ est l'intersection de toutes les parties
 de $A$ stables par $f$ qui contiennent $o$ comme !!{element}.
@@ -113,12 +113,12 @@ $A$ est la plus petite partie stable par $f$ qui contient $o$ comme
 !!{element}. Une algèbre de Dedekind est manifestement infinie au sens
 de Dedekind : il suffit de regarder les conditions \olref{ded:proper}
 et \olref{ded:injection} de la définition. Mais le fait le plus
-remarquable est que tout ensemble infini au sens de Dedekind permet de
-construire une algèbre de Dedekind.\footnote{Note de l'édition française :
-la construction porte sur une partie de l'ensemble infini donné.
-La formulation de la source pouvait laisser entendre que l'ensemble
-tout entier recevait cette structure ; la preuve établit l'énoncé
-d'existence ci-dessous en extrayant la clôture d'un élément.}
+remarquable est que tout ensemble infini au sens de Dedekind contient
+une partie qui, munie d'une application et d'un élément distingué,
+forme une algèbre de Dedekind.
+%
+%
+%
 
 \begin{thm}\ollabel{thm:DedekindInfiniteAlgebra}
 S'il existe un ensemble infini au sens de Dedekind, alors il existe une

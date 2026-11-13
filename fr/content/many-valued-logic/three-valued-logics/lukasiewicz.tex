@@ -1,0 +1,347 @@
+% Part: many-valued-logic
+% Chapter: three-valued-logics
+% Section: lukasiewicz
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{thr}{luk}
+
+\olsection{La logique de \L ukasiewicz}
+
+L'une des premières propositions de
+logique plurivalente élaborées et
+publiées est due au philosophe
+polonais Jan \L ukasiewicz, en 1920.\footnote{\emph{O logice trójwartościowej},
+\href{https://kpbc.umk.pl/dlibra/publication/250664/edition/247342}{\emph{Ruch Filozoficzny}, tome~5, no~9}, p.~170--171.}
+Il s'inspirait du problème de la
+bataille navale d'Aristote : il semble
+que, \emph{aujourd'hui}, la phrase
+«~Il y aura une bataille navale demain~»
+ne soit ni vraie ni fausse; sa valeur
+de vérité n'est pas encore fixée.
+\L ukasiewicz proposa d'attribuer
+une troisième valeur de vérité à ces
+énoncés portant sur les «~futurs
+contingents~».
+\begin{quote}
+Je peux supposer sans contradiction
+que ma présence à Varsovie à un certain
+moment de l'année prochaine, par exemple
+à midi le 21 décembre, n'est à présent
+déterminée ni positivement ni négativement.
+Il est donc possible, mais non nécessaire,
+que je sois à Varsovie à ce moment-là.
+Selon cette hypothèse, la proposition
+«~Je serai à Varsovie à midi le 21 décembre
+de l'année prochaine~» ne peut, à présent,
+être ni vraie ni fausse. Car, si elle
+était vraie maintenant, ma présence
+future à Varsovie devrait être nécessaire,
+ce qui contredit l'hypothèse. Si elle
+était fausse maintenant, en revanche,
+ma présence future à Varsovie devrait
+être impossible, ce qui contredit
+également l'hypothèse. La proposition
+considérée n'est donc pour le moment
+ni vraie ni fausse et doit posséder
+une troisième valeur, différente de
+«~0~», ou le faux, et de «~1~», ou le
+vrai. Nous pouvons désigner cette
+valeur par «~$\frac{1}{2}$~».
+Elle représente «~le possible~» et
+s'ajoute au vrai et au faux comme
+troisième valeur.
+\end{quote}
+Nous emploierons $\Undef$ pour la
+troisième valeur de vérité de
+\L ukasiewicz.\footnote{\L ukasiewicz
+emploie ici «~possible~» dans un sens
+inhabituel aujourd'hui : possible,
+mais non nécessaire.}
+
+Les fonctions de vérité des connecteurs
+$\lnot$, $\land$ et $\lor$ se
+déterminent facilement selon cette
+interprétation. La négation d'un
+énoncé portant sur un futur contingent
+porte elle aussi sur un futur contingent;
+ainsi, $\tf{\lnot}(\Undef)=\Undef$.
+Si l'un des membres d'une conjonction
+est indéterminé et l'autre vrai,
+la conjonction est elle aussi
+indéterminée : selon l'issue du futur
+contingent, elle pourrait devenir
+vraie ou fausse. Nous posons donc
+\[
+  \tf{\land}(\True,\Undef)
+  =\tf{\land}(\Undef,\True)
+  =\Undef.
+\]
+En revanche, si l'autre membre est
+faux, la conjonction ne pourra pas
+devenir vraie; ainsi,
+\[
+  \tf{\land}(\False,\Undef)
+  =\tf{\land}(\Undef,\False)
+  =\False.
+\]
+Lorsque les arguments ont déjà une
+valeur fixée, $\True$ ou $\False$,
+les autres valeurs coïncident avec
+celles de la logique classique.
+
+Pour le conditionnel, la situation
+est un peu plus délicate. Supposons
+que $q$ porte sur un futur contingent.
+Si $p$ est faux, alors $p\lif q$
+sera vrai quelle que soit l'issue
+de $q$; nous posons donc
+$\tf{\lif}(\False,\Undef)=\True$.
+Si $p$ est vrai, alors $q\lif p$
+sera vrai quelle que soit l'issue
+de $q$, d'où
+$\tf{\lif}(\Undef,\True)=\True$.
+Si $p$ est vrai, $p\lif q$ pourra
+devenir vrai ou faux, d'où
+$\tf{\lif}(\True,\Undef)=\Undef$.
+De même, si $p$ est faux, $q\lif p$
+pourra devenir vrai ou faux, d'où
+$\tf{\lif}(\Undef,\False)=\Undef$.
+Reste le cas où $p$ et $q$ portent
+tous deux sur des futurs contingents.
+La motivation initiale nous conduirait
+à attribuer $\Undef$ à ce cas. Mais
+alors $!A\lif !A$ ne serait \emph{pas}
+une tautologie. \L ukasiewicz acceptait
+de renoncer à $!A\lor\lnot !A$ et à
+$\lnot(!A\land\lnot !A)$, mais non
+à $!A\lif !A$. Il posa donc
+$\tf{\lif}(\Undef,\Undef)=\True$.
+
+\begin{defn}\ollabel{def:lukasiewicz}
+La logique à trois valeurs de
+\L ukasiewicz est définie par la matrice
+suivante :
+\begin{enumerate}
+  \item Le fragment de $\Lang L_0$ dont les connecteurs sont $\lnot$,
+  $\land$, $\lor$ et $\lif$.
+  \item L'ensemble des valeurs de vérité
+  $V=\{\True,\Undef,\False\}$.
+  \item $\True$ est la seule valeur
+  désignée, c'est-à-dire
+  $V^+=\{\True\}$.
+  \item Les fonctions de vérité sont
+  données par les tables suivantes :
+  \begin{center}
+    \begin{tabular}{c|c}
+      $\tf{\lnot}$ & \\
+      \hline
+      $\True$ & $\False$ \\
+      $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\land}[\LogLuk[3]]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\False$ \\
+      $\Undef$ & $\Undef$ & $\Undef$ & $\False$ \\
+      $\False$ & $\False$ & $\False$ & $\False$
+    \end{tabular}
+    \\[2ex]
+    \begin{tabular}{c|ccc}
+      $\tf{\lor}[\LogLuk[3]]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\True$ & $\True$ \\
+      $\Undef$ & $\True$ & $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$ & $\Undef$ & $\False$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\lif}[\LogLuk[3]]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\False$ \\
+      $\Undef$ & $\True$ & $\True$ & $\Undef$ \\
+      $\False$ & $\True$ & $\True$ & $\True$
+    \end{tabular}
+  \end{center}
+\end{enumerate}
+\end{defn}
+
+Toute formule~$!A$ ne contenant
+que $\lnot$, $\land$ et $\lor$
+prend la valeur~$\Undef$ si toutes
+ses variables propositionnelles
+reçoivent~$\Undef$. Ainsi, les
+tautologies classiques
+$p\lor\lnot p$ et
+$\lnot(p\land\lnot p)$ ne sont
+pas des tautologies de~$\LogLuk[3]$ :
+pour chacune d'elles,
+$\pValue{v}(!A)=\Undef$ lorsque
+$\pAssign{v}(p)=\Undef$.
+
+Lorsque toutes les variables
+propositionnelles de~$!A$ reçoivent
+$\True$ ou $\False$, sa valeur
+coïncide avec la valeur classique.
+
+\begin{prop}
+  Si $\pAssign{v}(p)\in
+  \{\True,\False\}$ pour toute
+  variable propositionnelle~$p$
+  de~$!A$, alors
+  $\pValue{v}(!A)[\LogLuk[3]]
+  =\pValue{v}(!A)[\LogCL]$.
+\end{prop}
+
+\begin{prob}\label{mvl:thr:luk:prob:luk-iff}
+  Supposons que nous définissions
+  $\pValue{v}(!A\liff !B)
+  =\pValue{v}((!A\lif !B)\land
+  (!B\lif !A))$ dans~$\LogLuk[3]$.
+  Quelle serait la table de vérité
+  de~$\liff$?
+\end{prob}
+
+De nombreuses tautologies classiques
+\emph{sont} aussi des tautologies de
+$\LogLuk[3]$, par exemple
+$\lnot p\lif(p\lif q)$. Comme en
+logique classique, nous pouvons le
+vérifier par une table de vérité :
+\begin{center}
+\begin{tabular}{cc|cccccc}
+  $p$ & $q$ & $\lnot$ & $p$ & $\lif$ & $\smash{(}p$ & $\lif$ & $q\smash{)}$ \\ \hline
+  \True & \True & \False & \True & \True & \True & \True & \True \\
+  \True & \Undef & \False & \True & \True & \True & \Undef & \Undef \\
+  \True & \False & \False & \True & \True & \True & \False & \False \\
+  \Undef & \True & \Undef & \Undef & \True & \Undef & \True & \True \\
+  \Undef & \Undef & \Undef & \Undef & \True & \Undef & \True & \Undef \\
+  \Undef & \False & \Undef & \Undef & \True & \Undef & \Undef & \False \\
+  \False & \True & \True & \False & \True & \False & \True & \True \\
+  \False & \Undef & \True & \False & \True & \False & \True & \Undef \\
+  \False & \False & \True & \False & \True & \False & \True & \False \\
+\end{tabular}
+\end{center}
+
+\begin{prob}
+  Montrer que les formules suivantes
+  sont des tautologies de~$\LogLuk[3]$ :
+  \begin{enumerate}
+    \item $p\lif(q\lif p)$;
+    \item\label{mvl:thr:luk:prob:luk-taut-2}
+      $\lnot(p\land q)\liff
+      (\lnot p\lor\lnot q)$;
+    \item\label{mvl:thr:luk:prob:luk-taut-3}
+      $\lnot(p\lor q)\liff
+      (\lnot p\land\lnot q)$.
+  \end{enumerate}
+  Dans \olref[mvl][thr][luk]{prob:luk-taut-2}
+  et \olref[mvl][thr][luk]{prob:luk-taut-3},
+  prendre $!A\liff !B$ comme abréviation
+  de $(!A\lif !B)\land(!B\lif !A)$,
+  ou utiliser la réponse à
+  l'\olref[mvl][thr][luk]{prob:luk-iff}.
+\end{prob}
+
+\begin{prob}
+  Montrer que les tautologies classiques
+  suivantes ne sont pas des tautologies
+  de~$\LogLuk[3]$ :
+  \begin{enumerate}
+    \item $(\lnot p\land p)\lif q$;
+    \item $((p\lif q)\lif p)\lif p$;
+    \item $(p\lif(p\lif q))\lif(p\lif q)$.
+  \end{enumerate}
+\end{prob}
+
+On pourrait alors penser que, même si
+toutes les tautologies classiques ne
+sont pas des tautologies de~$\LogLuk[3]$,
+elles prennent au moins la valeur
+$\True$ ou $\Undef$ dans toute
+valuation. Ce n'est pas le cas.
+La formule
+\[
+  \lnot(p\lif\lnot p)
+  \lor\lnot(\lnot p\lif p)
+\]
+en fournit un contre-exemple :
+elle vaut $\False$ lorsque
+$p$ vaut~$\Undef$.
+
+\begin{prob}
+  Parmi les relations suivantes,
+  lesquelles valent dans la logique
+  de~\L ukasiewicz? Donner une table
+  de vérité pour chacune.
+  \begin{enumerate}
+    \item $p,p\lif q\Entails q$;
+    \item $\lnot\lnot p\Entails p$;
+    \item $p\land q\Entails p$;
+    \item $p\Entails p\land p$;
+    \item $p\Entails p\lor q$.
+  \end{enumerate}
+\end{prob}
+
+\L ukasiewicz espérait construire
+une logique de la possibilité à partir
+de son système à trois valeurs, en
+introduisant un connecteur unaire
+$\Diamond !A$ (pour «~$!A$ est possible~»)
+et un connecteur correspondant
+$\Box !A$ (pour «~$!A$ est nécessaire~») :
+\begin{center}
+  \begin{tabular}{c|c}
+    $\tf{\Diamond}$ & \\
+    \hline
+    $\True$ & $\True$ \\
+    $\Undef$ & $\True$ \\
+    $\False$ & $\False$
+  \end{tabular}
+  \quad
+  \begin{tabular}{c|c}
+    $\tf{\Box}$ & \\
+    \hline
+    $\True$ & $\True$ \\
+    $\Undef$ & $\False$ \\
+    $\False$ & $\False$
+  \end{tabular}
+\end{center}
+Autrement dit, $p$ est possible si
+et seulement si sa fausseté n'est
+pas déjà établie; $p$ est nécessaire
+si et seulement si sa vérité est déjà
+établie.
+
+\begin{prob}
+  Montrer que
+  $\Box p\liff\lnot\Diamond\lnot p$
+  et $\Diamond p\liff\lnot\Box\lnot p$
+  sont des tautologies de~$\LogLuk[3]$
+  étendue par les tables de vérité de
+  $\Box$ et de~$\Diamond$.
+\end{prob}
+
+Les limites de cette logique modale
+proposée apparurent cependant rapidement.
+Quelle que soit l'issue des événements,
+$p\land\lnot p$ ne pourra jamais
+devenir vrai. Même si sa valeur n'est
+pas encore fixée et qu'il est donc
+indéterminé, cet énoncé devrait être
+impossible : $\lnot\Diamond
+(p\land\lnot p)$ devrait donc être
+une tautologie. Pourtant, si
+$\pAssign{v}(p)=\Undef$, alors
+$\pValue{v}(\lnot\Diamond
+(p\land\lnot p))=\False$. La conjonction vaut alors $\Undef$,
+sa possibilité vaut $\True$ et la négation de celle-ci vaut $\False$.
+Le codage vérifonctionnel proposé ne rend donc pas compte de
+l'impossibilité d'une contradiction, même avec cette troisième
+valeur de vérité.
+
+\end{document}

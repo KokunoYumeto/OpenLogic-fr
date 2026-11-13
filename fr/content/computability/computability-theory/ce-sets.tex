@@ -1,0 +1,61 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: ce-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{ces}
+\olsection{Ensembles effectivement énumérables}
+
+\begin{defn}
+Un ensemble est \emph{effectivement énumérable}
+s'il est vide ou s'il est l'image d'une fonction
+calculable totale, définie sur $\Nat$.
+\end{defn}
+
+\begin{history}
+On dit aussi \emph{récursivement énumérable}.
+C'est la terminologie d'origine; les deux
+appellations restent courantes aujourd'hui,
+de même que les abréviations anglaises
+« c.e. » et « r.e. ».
+\end{history}
+
+\begin{explain}
+Il convient de réfléchir au sens de cette
+définition et à la pertinence du terme.
+Si $S$ est l'image d'une fonction
+calculable~$f$, alors
+\[
+S = \{ f(0), f(1), f(2), \dots \},
+\]
+de sorte que $f$ « énumère » les éléments
+de~$S$. La définition n'exige pas que
+$f$ soit croissante : les éléments n'ont
+pas besoin d'être énumérés dans l'ordre.
+Elle n'exige pas non plus que $f$ soit
+injective : les répétitions dans la
+suite $f(0),f(1),f(2),\dots{}$ sont permises.
+Par exemple, la fonction constante
+$f(x)=0$ énumère l'ensemble $\{0\}$.
+\end{explain}
+
+Tout ensemble calculable est effectivement
+énumérable. En effet, supposons $S$
+calculable. Si $S$ est vide, il satisfait
+la définition. Sinon, choisissons un
+élément~$a$ de~$S$ et définissons
+$f$ par
+\[
+f(x) =
+\begin{cases}
+x & \text{si $\Char{S}(x)=1$}\\
+a & \text{sinon.}
+\end{cases}
+\]
+La fonction $f$ est calculable et son
+image est exactement~$S$.
+
+\end{document}

@@ -1,0 +1,99 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: extensions-of-q-not-decidable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{cqn}
+
+\olsection{Les extensions cohérentes de $\Th{Q}$ sont indécidables}
+
+\begin{explain}
+Rappelons qu'une théorie est \emph{cohérente} si elle ne
+démontre, pour aucune !!{formula}~$!A$, à la fois
+$!A$ et $\lnot !A$. Une contradiction permettant de
+démontrer n'importe quel !!{sentence}, une théorie
+incohérente est triviale : elle démontre tout
+!!{sentence}. Toute théorie $\omega$-cohérente est
+cohérente, mais la réciproque est fausse. Nous pouvons
+donc affaiblir l'hypothèse du
+\olref[oqn]{thm:oconsis-q} en ne supposant que la
+cohérence, et obtenir un théorème plus fort.
+\end{explain}
+
+\begin{lem}
+Il n'existe pas de « relation calculable universelle ».
+Autrement dit, il n'existe aucune relation binaire
+calculable $R(x,y)$ ayant la propriété suivante : pour
+toute relation unaire calculable $S(y)$, il existe un
+entier $k$ tel que, pour tout $y$, $S(y)$ est vraie si
+et seulement si $R(k,y)$ est vraie.
+\end{lem}
+
+\begin{proof}
+Supposons qu'une telle relation $R(x,y)$ existe.
+La relation $S(y)$ définie par $\lnot R(y,y)$ est
+calculable. Il existe donc un entier $k$ tel que
+$S(y)$ équivaille à $R(k,y)$ pour tout $y$.
+En particulier, $S(k)$ équivaut à la fois à
+$R(k,k)$ et à $\lnot R(k,k)$, contradiction.
+\end{proof}
+
+\begin{thm}
+Toute théorie cohérente $\Th{T}$ qui contient
+$\Th{Q}$ est indécidable.
+\end{thm}
+
+\begin{proof}
+Supposons que $\Th{T}$ soit une extension cohérente
+et décidable de $\Th{Q}$. Nous allons en tirer une
+relation calculable universelle, ce qui contredira
+le lemme précédent.
+
+Définissons $R(x,y)$ par la condition suivante :
+\begin{quote}
+$x$ code une !!{formula} $!D(u)$ sans variable libre autre que~$u$,
+et $\Th{T}$ démontre $!D(\num y)$.
+\end{quote}
+La syntaxe et la condition sur les variables libres se vérifient
+par calcul; la substitution de $\num y$ donne alors un !!{sentence}.
+La décision supposée pour~$\Th{T}$ rend $R$ calculable; pour tout code invalide, $R$ est fausse. Montrons qu'elle
+est universelle. Soit $S(y)$ une relation calculable
+quelconque. Une !!{formula} $!D_S(u)$ la représente
+dans $\Th{Q}$, donc aussi dans $\Th{T}$.
+Pour chaque entier $n$, nous avons
+\begin{eqnarray*}
+S(n) & \liff & \Th{T}\vdash !D_S(\num n) \\
+& \liff & R(\Gn{!D_S(u)},n),
+\end{eqnarray*}
+et
+\begin{eqnarray*}
+\lnot S(n) & \liff & \Th{T}\vdash\lnot !D_S(\num n) \\
+& \liff & \Th{T}\not\vdash !D_S(\num n) \\
+& \liff & \lnot R(\Gn{!D_S(u)},n).
+\end{eqnarray*}
+Les deux signes de la représentation, avec la cohérence
+de~$\Th{T}$, donnent les premières équivalences.
+Pour chaque~$n$, un des deux signes est démontrable
+et l’autre ne l’est pas; les liens avec~$R$ suivent de sa définition.
+Par conséquent,
+pour tout $y$, $S(y)$ est vraie si et seulement si
+$R(\Gn{!D_S(u)},y)$ est vraie. La relation $R$ est
+universelle, contradiction.
+\end{proof}
+
+La « véritable arithmétique » est la théorie
+$\Setabs{!A}{\Sat{\Nat}{!A}}$, c'est-à-dire
+l'ensemble des !!{sentence}s arithmétiques vrais
+dans l'interprétation standard.
+
+\begin{cor}
+La véritable arithmétique est indécidable.
+\end{cor}
+
+% La section sur l'indéfinissabilité de la vérité donnera un résultat
+% plus fort, dû à Tarski.
+
+\end{document}

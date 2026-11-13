@@ -1,0 +1,263 @@
+% Part: model-theory
+% Chapter: interpolation
+% Section: interpolation-proof
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{int}{prf}
+
+\olsection{Le théorème d'interpolation de Craig}
+
+\begin{thm}[Théorème d'interpolation de Craig]
+\ollabel{thm:interpol}
+Pour des !!{sentence}s $!A$ et $!B$, si $\Entails !A\lif !B$, il existe
+!!a{sentence}~$!C$ tel que
+$\Entails !A\lif !C$ et
+$\Entails !C\lif !B$.
+Chaque !!{constant}, !!{function} et
+!!{predicate} autre que~$\eq$ figurant
+dans~$!C$ figure à la fois dans~$!A$
+et dans~$!B$. On appelle~$!C$ un
+\emph{interpolant} de~$!A$ et~$!B$.\footnote{Précision éditoriale : nous explicitons que $!A$ et $!B$ sont des énoncés fermés, comme l'exige la preuve de ce chapitre. La version générale pour des formules ouvertes fournit un interpolant qui peut lui aussi avoir des variables libres.}
+\end{thm}
+
+\begin{proof}
+Soient $\Lang{L}_1$ le langage de~$!A$,
+$\Lang{L}_2$ celui de~$!B$, et
+$\Lang{L}_0=\Lang{L}_1\cap\Lang{L}_2$.
+Pour $i\in\{0,1,2\}$, formons
+$\Lang{L}'_i$ en ajoutant à
+$\Lang{L}_i$ les mêmes constantes
+nouvelles $\Obj c_0,\Obj c_1,\Obj c_2,\dots$.
+
+Si~$!A$ est insatisfaisable, la
+contradiction $\lforall[x][\lnot\eq[x][x]]$
+est un interpolant. Si~$\lnot !B$ est
+insatisfaisable, la tautologie
+$\lexists[x][\eq[x][x]]$ en est un.
+Supposons donc $!A$ et~$\lnot !B$
+satisfaisables. Pour démontrer la
+contraposée du théorème, supposons
+qu'il n'existe aucun interpolant.
+Autrement dit, $\{!A\}$ et
+$\{\lnot !B\}$ sont inséparables
+dans~$\Lang{L}_0$.
+
+Nous allons étendre cette paire à
+une paire maximalement inséparable
+$(\Gamma^*,\Delta^*)$.
+Énumérons les !!{sentence}s de
+$\Lang{L}'_1$ sous la forme
+$!A_0,!A_1,!A_2,\dots$, et ceux de
+$\Lang{L}'_2$ sous la forme
+$!B_0,!B_1,!B_2,\dots$.
+Choisissons des énumérations dans
+lesquelles chaque !!{sentence}
+revient une infinité de fois.\footnote{Compléments éditoriaux : les énumérations portent sur les langages étendus, alors que la source écrit les langages initiaux. Les répétitions garantissent qu'un énoncé existentiel ajouté après son premier passage reçoit ensuite un témoin.}
+Posons $\Gamma_0=\{!A\}$ et
+$\Delta_0=\{\lnot !B\}$, puis
+construisons par récurrence des paires
+croissantes $(\Gamma_n,\Delta_n)$.
+À l'étape~$n$ :
+\begin{enumerate}
+\item Si $\Gamma_n\cup\{!A_n\}$ et
+  $\Delta_n$ sont inséparables dans
+  $\Lang{L}'_0$, ajoutons $!A_n$ à
+  $\Gamma_{n+1}$. Si $!A_n$ a la forme
+  $\lexists[x][!S]$, ajoutons aussi
+  $\Subst{!S}{c}{x}$, où~$c$ est
+  une constante de la famille commune $\Obj c_j$, absente de
+  $\Gamma_n$, $\Delta_n$, $!A_n$
+  et~$!B_n$. Si la paire $\Gamma_n\cup\{!A_n\}$, $\Delta_n$ est séparable,
+  posons $\Gamma_{n+1}=\Gamma_n$.
+\item Si $\Gamma_{n+1}$ et
+  $\Delta_n\cup\{!B_n\}$ sont
+  inséparables dans $\Lang{L}'_0$,
+  ajoutons $!B_n$ à $\Delta_{n+1}$.
+  Si $!B_n=\lexists[x][!S]$, ajoutons
+  également $\Subst{!S}{d}{x}$ pour
+  une constante~$d$ de la famille commune $\Obj c_j$, absente
+  de $\Gamma_{n+1}$, $\Delta_n$,
+  $!A_n$ et~$!B_n$. Si la paire $\Gamma_{n+1}$, $\Delta_n\cup\{!B_n\}$ est séparable, posons
+  $\Delta_{n+1}=\Delta_n$.
+\end{enumerate}
+Enfin, posons
+\begin{align*}
+  \Gamma^*&=\bigcup_{n\geq0}\Gamma_n,
+  &
+  \Delta^*&=\bigcup_{n\geq0}\Delta_n.
+\end{align*}
+
+Vérifions simultanément par récurrence
+les deux affirmations suivantes :
+\begin{enumerate}
+\item\ollabel{part-a}
+  $\Gamma_n$ et~$\Delta_n$ sont
+  inséparables pour tout~$n$;
+\item\ollabel{part-b}
+  $\Gamma_{n+1}$ et~$\Delta_n$
+  sont inséparables pour tout~$n$.
+\end{enumerate}
+Le cas initial résulte du
+\olref[sep]{lem:sep1}. À chaque
+demi-étape, si l'énoncé considéré
+est rejeté, la paire ne change pas.
+S'il est ajouté sans témoin, elle
+reste inséparable par le critère
+de l'étape. S'il est existentiel,
+le \olref[sep]{lem:sep2} garantit
+qu'elle reste inséparable après
+l'adjonction du témoin frais.
+Cela prouve \olref{part-a} et
+\olref{part-b} à toutes les étapes.
+Si un !!{sentence} séparait
+$\Gamma^*$ et~$\Delta^*$, la
+compacité donnerait des sous-ensembles
+finis séparés, contenus dans
+$\Gamma_n$ et~$\Delta_n$ pour un
+même~$n$. C'est impossible.
+Chacun des deux ensembles limites
+est donc cohérent : s'il était
+incohérent, une contradiction ou
+une tautologie du langage commun
+séparerait la paire.
+
+Montrons que $\Gamma^*$ est
+maximalement cohérent dans
+$\Lang{L}'_1$. Supposons qu'un
+!!{sentence}~$!E$ et sa négation
+soient tous deux absents de
+$\Gamma^*$. Prenons une étape~$n$
+où $!A_n=!E$. Comme $!E$ n'a pas
+été ajouté, il existe un
+!!{sentence}~$!C$ de~$\Lang{L}'_0$
+tel que
+\begin{align*}
+  \Gamma_n\cup\{!E\}&\Entails !C,
+  &
+  \Delta_n&\Entails\lnot !C.
+\end{align*}
+Ainsi $\Gamma^*\Entails !E\lif !C$
+et $\Delta^*\Entails\lnot !C$.
+À une étape où $\lnot !E$ est
+considéré et rejeté, on obtient
+de même un $!C'$ tel que
+$\Gamma^*\Entails\lnot !E\lif !C'$
+et $\Delta^*\Entails\lnot !C'$.
+Alors $\Gamma^*\Entails !C\lor !C'$,
+tandis que
+$\Delta^*\Entails\lnot(!C\lor !C')$,
+contradiction. Le même raisonnement,
+en échangeant les deux côtés,
+montre que $\Delta^*$ est
+maximalement cohérent dans
+$\Lang{L}'_2$.
+
+Leur intersection est maximalement
+cohérente dans~$\Lang{L}'_0$.
+Elle est cohérente, puisqu'elle
+est contenue dans chacun des deux
+ensembles cohérents. Pour tout
+!!{sentence} commun~$!S$, chacun
+des deux ensembles limites contient
+exactement l'un de $!S$ et~$\lnot !S$.
+Ils ne peuvent faire des choix
+opposés : $!S$ ou~$\lnot !S$
+les séparerait. Ils font donc
+le même choix, qui appartient
+à leur intersection.
+
+Les répétitions dans nos
+énumérations assurent aussi la
+propriété des témoins. Si
+$\lexists[x][!S]$ entre dans
+$\Gamma^*$, il est de nouveau
+considéré après cette entrée;
+un témoin $\Subst{!S}{c}{x}$
+est alors ajouté. Il en va de
+même pour~$\Delta^*$. Prenons
+les modèles canoniques de termes
+$\Struct{M}'_1$ et~$\Struct{M}'_2$
+de ces deux théories complètes et
+pourvues de témoins, comme dans
+la preuve du théorème de complétude
+(\olref[fol][com][cth]{thm:completeness}).
+Tout élément de chacun de ces
+modèles est nommé par une constante de la famille commune $\Obj c_j$ :
+pour tout terme clos~$t$, l'!!{sentence} $\lexists[x][\eq[x][t]]$
+est valide et obtient finalement
+un témoin constant égal à~$t$.
+
+Réduisons $\Struct{M}'_1$ et
+$\Struct{M}'_2$ au langage commun
+$\Lang{L}'_0$, et notons les
+structures obtenues $\Struct{M_1}$
+et~$\Struct{M_2}$. L'application
+\[
+  h\colon\Domain{M_1}\longrightarrow
+  \Domain{M_2},\qquad
+  h(\Assign{c}{M'_1})=\Assign{c}{M'_2}
+\]
+pour $c$ dans la famille commune $\Obj c_j$, est bien définie : une égalité
+entre constantes est vraie dans
+un modèle si et seulement si elle
+appartient à sa théorie complète,
+et les deux théories s'accordent
+sur tous les !!{sentence}s de
+$\Lang{L}'_0$. Le même argument
+donne l'injectivité et, puisque
+tout élément est nommé, la
+surjectivité. Les !!{sentence}s
+atomiques communes portant sur
+des constantes montrent que~$h$
+préserve les !!{predicate}s et
+les !!{function}s. C'est donc
+un isomorphisme des structures
+réduites.
+
+Construisons une structure
+$\Struct{M}$ du langage
+$\Lang{L}'_1\cup\Lang{L}'_2$
+sur le domaine $\Domain{M_2}$.
+Pour les symboles de
+$\Lang{L}'_2$, conservons leur
+interprétation dans
+$\Struct{M}'_2$. Pour un
+!!{predicate}~$P$ de
+$\Lang{L}'_1\setminus\Lang{L}'_2$,
+transportons l'interprétation
+de~$\Struct{M}'_1$ par~$h$ :
+\[
+  \tuple{h(a_1),\dots,h(a_k)}
+  \in\Assign{P}{M}
+  \quad\Longleftrightarrow\quad
+  \tuple{a_1,\dots,a_k}
+  \in\Assign{P}{M'_1}.
+\]
+Pour un !!{function}~$f$
+propre à~$\Lang{L}'_1$, posons
+\[
+\Assign{f}{M}(h(a_1),\dots,h(a_k))
+=h\bigl(\Assign{f}{M'_1}(a_1,\dots,a_k)\bigr).
+\]
+La même règle couvre les
+constantes. Sur les symboles
+communs, les deux prescriptions
+coïncident puisque~$h$ est un
+isomorphisme.\footnote{Corrections éditoriales : les symboles propres à $\Lang{L}'_1$ sont transportés depuis $\Struct{M}'_1$, et non depuis $\Struct{M}'_2$ comme l'écrit par erreur la source pour les prédicats. La structure réunie est construite dans le langage étendu, puisqu'elle doit satisfaire les théories contenant les constantes nouvelles.} Par récurrence
+sur les !!{formula}s,
+$\Struct{M}$ satisfait les mêmes
+!!{sentence}s de $\Lang{L}'_1$
+que~$\Struct{M}'_1$ et les mêmes
+!!{sentence}s de $\Lang{L}'_2$
+que~$\Struct{M}'_2$. Ainsi
+$\Struct{M}\Entails\Gamma^*\cup\Delta^*$,
+en particulier
+$\Struct{M}\Entails !A$ et
+$\Struct{M}\Entails\lnot !B$.
+Cela contredit $\Entails !A\lif !B$.
+\end{proof}
+
+\end{document}

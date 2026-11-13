@@ -1,0 +1,148 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{cardinals}{hp}
+\olsection{Annexe : le principe de Hume}
+
+Dans la \olref[cp]{sec}, nous avons présenté
+le principe de Cantor :
+\begin{align*}
+	\card{A} = \card{B}
+	& \text{ ssi } A \approx B.
+\intertext{Il ressemble beaucoup à ce que l'on appelle
+aujourd'hui le \emph{principe de Hume}, selon lequel :}
+	\fregenum{x} {F(x)} = \fregenum{x}{G(x)}
+	& \text{ ssi } F \sim G
+\end{align*}
+Ici, «~$F \sim G$~» abrège l'affirmation
+qu'il y a exactement autant de $F$ que de
+$G$, autrement dit qu'on peut mettre les
+$F$ en bijection avec les $G$, c'est-à-dire :
+\begin{align*}
+	\exists R(&\forall v\forall y(Rvy
+	\lif (Fv \land Gy)) \land {}\\
+	&\forall v(Fv \lif \lexists![y][Rvy])
+	\land {}\\
+	&\forall y(Gy \lif \lexists![v][Rvy]))
+\end{align*}
+Il existe toutefois une différence de type entre
+le principe de Hume et celui de Cantor. Dans
+l'énoncé du principe de Cantor, les variables
+«~$A$~» et «~$B$~» sont des termes du premier
+ordre qui désignent des \emph{ensembles}.
+Dans celui du principe de Hume, «~$F$~»,
+«~$G$~» et «~$R$~» ne sont \emph{pas} des termes
+du premier ordre : ils occupent plutôt une
+\emph{position de prédicat}. (Peut-être désignent-ils
+des \emph{propriétés}.) On pourrait donc
+paraphraser le principe de Hume ainsi :
+le nombre des $F$ est égal au nombre des $G$
+si et seulement si les $F$ et les $G$ sont
+en bijection. On l'appelle \emph{principe de Hume}
+parce que Hume écrivait :
+\begin{quote}
+	Lorsque deux nombres sont associés de telle
+	sorte qu'à chaque unité de l'un corresponde
+	toujours une unité de l'autre, nous les
+	déclarons égaux.
+	\citep[Pt.III Bk.1 \S1]{Hume1740}
+\end{quote}
+Le principe de Hume a ensuite acquis une place
+importante dans la logique mathématique contemporaine
+grâce à \citet[\S63]{Frege1884}, qui citait ce
+passage de Hume avant d'esquisser, en substance,
+ce que nous appelons le principe de Hume.
+
+Remarquez la ressemblance structurelle entre le
+principe de Hume et la loi fondamentale~V.
+Nous avons formulé cette dernière dans la
+\olref[story][blv]{sec} ainsi :
+\[
+	\fregeext{x}{F(x)} = \fregeext{x}{G(x)}
+	\text{ssi } \lforall[x][(F(x) \liff G(x))].
+\]
+Quelques explications et comparaisons peuvent
+être utiles ici.
+
+Il y a deux façons d'interpréter un principe
+comme celui de Hume ou la loi fondamentale~V :
+de manière \emph{prédicative} ou
+\emph{imprédicative} (rappelons
+la \olref[story][predicative]{sec}). Dans une
+interprétation imprédicative de la loi
+fondamentale~V, pour chaque~$F$, l'objet
+$\fregeext{x}{F(x)}$ appartient au domaine de
+quantification utilisé pour formuler cette loi
+elle-même. De même, dans une interprétation
+imprédicative du principe de Hume, pour
+chaque~$F$, l'objet $\fregenum{x}{F(x)}$
+appartient au domaine de quantification
+utilisé pour formuler ce principe.
+En revanche, selon l'interprétation
+\emph{prédicative}, les objets
+$\fregeext{x}{F(x)}$ et
+$\fregenum{x}{F(x)}$ seraient des entités
+appartenant à un domaine \emph{différent}.
+
+Interprétée imprédicativement, la loi
+fondamentale~V conduit à une contradiction
+par la compréhension naïve (pour les détails,
+voir la \olref[story][blv]{sec}). Comme la
+compréhension naïve, elle peut devenir
+cohérente si on l'interprète
+\emph{prédicativement}. Mais elle ne fera
+probablement pas tout ce que nous attendions
+d'elle.
+
+Le principe de Hume, lui, \emph{peut}
+être interprété imprédicativement de façon
+cohérente. Dans cette interprétation, il est
+assez puissant.
+
+Pour le voir, considérons le prédicat
+«~$x \neq x$~», que rien ne satisfait,
+évidemment. Le principe de Hume fournit
+alors un objet $\# x( x\neq x)$, que nous
+pourrions prendre pour le nombre~$0$.
+Selon l'interprétation \emph{imprédicative},
+et \emph{seulement} selon elle, cet objet $0$
+appartient au domaine initial de quantification.
+Nous pouvons donc appliquer le principe de Hume
+au prédicat «~$x = 0$~» et obtenir un objet
+$\#x (x = 0)$, que nous pourrions prendre pour
+le nombre~$1$. De plus, le principe de Hume
+entraîne que $0 \neq 1$, car il ne peut y
+avoir de bijection entre les objets qui ne
+sont pas identiques à eux-mêmes et ceux qui
+sont identiques à $0$ : il n'y en a aucun
+des premiers, mais un des seconds. Dans
+l'interprétation imprédicative, $1$ appartient
+lui aussi au domaine initial de quantification.
+Nous pouvons donc appliquer le principe de
+Hume au prédicat «~$(x = 0 \lor x = 1)$~»
+pour obtenir un objet
+$\#x(x = 0 \lor x = 1)$, que nous pourrions
+prendre pour le nombre~$2$. Nous pouvons
+alors montrer que $0\neq 2$, que
+$1 \neq 2$, et ainsi de suite.
+
+En somme, interprété imprédicativement,
+le principe de Hume entraîne l'existence
+d'une \emph{infinité d'objets}. C'est
+pourquoi les \emph{logicistes néo-frégéens}
+y ont vu un fondement de l'arithmétique.
+
+Frege \emph{lui-même}, toutefois, n'a pas
+pris le principe de Hume comme fondement
+de l'arithmétique. Il l'a plutôt démontré
+à partir d'une définition explicite :
+$\fregenum{x}{F(x)}$ est défini comme
+l'extension du concept $F \sim \Phi$.
+En termes modernes, nous pourrions tenter
+d'écrire cela
+$\fregenum{x}{F(x)} = \Setabs{G}{F \sim G}$ ;
+mais nous retrouverions alors les problèmes
+de la compréhension naïve.
+
+\end{document}

@@ -1,0 +1,202 @@
+% Part: model-theory
+% Chapter: interpolation
+% Section: definability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{int}{def}
+
+\olsection{Le théorème de définissabilité}
+
+Le théorème de définissabilité de Beth
+est une application importante du
+théorème d'interpolation. Pour définir
+une relation~$R$ à $n$ places,
+on peut donner une !!{formula}~$!C$
+à $n$ !!{variable}s libres qui ne
+fait pas intervenir~$R$. C'est une
+définition \emph{explicite} de~$R$
+au moyen de~$!C$. De même, une
+théorie~$\Sigma(P)$ dont le langage
+contient le !!{predicate}~$P$ à
+$n$ places définit explicitement~$P$
+si elle contient, ou du moins entraîne,
+une définition formalisée :
+\[
+\Sigma(P)\Entails\lforall[x_1][\dots
+  \lforall[x_n][(\Atom{P}{x_1,\dots,x_n}
+  \liff !C(x_1,\dots,x_n))]].
+\]
+Mais on peut aussi déterminer
+entièrement une relation sans en
+donner de formule explicite : il
+se peut que, dans tout modèle de
+la théorie, l'interprétation de~$P$
+soit fixée par celle des autres
+symboles du langage. On dit alors
+que la théorie définit~$P$
+\emph{implicitement}. Le théorème
+de Beth affirme qu'une telle
+définition donne toujours lieu
+à une définition explicite.
+
+\begin{defn}
+Soit $\Lang{L}$ un !!{language}
+ne contenant pas le !!{predicate}~$P$.
+Un ensemble $\Sigma(P)$ d'%
+!!{sentence}s de $\Lang{L}\cup\{P\}$
+\emph{définit explicitement}~$P$
+si et seulement s'il existe une
+!!{formula}~$!C(x_1,\dots,x_n)$
+de~$\Lang{L}$, dont les seules variables éventuellement libres sont $x_1,\dots,x_n$, telle que
+\[
+\Sigma(P)\Entails\lforall[x_1][\dots
+  \lforall[x_n][(\Atom{P}{x_1,\dots,x_n}
+  \liff !C(x_1,\dots,x_n))]].
+\]
+\end{defn}
+
+\begin{defn}
+Soit $\Lang{L}$ un !!{language}
+ne contenant ni~$P$ ni~$P'$.
+Un ensemble $\Sigma(P)$ d'%
+!!{sentence}s de $\Lang{L}\cup\{P\}$
+\emph{définit implicitement}~$P$
+si et seulement si
+\[
+\Sigma(P)\cup\Sigma(P')\Entails
+  \lforall[x_1][\dots
+  \lforall[x_n][(\Atom{P}{x_1,\dots,x_n}
+  \liff\Atom{P'}{x_1,\dots,x_n})]],
+\]
+où $\Sigma(P')$ s'obtient en
+remplaçant partout~$P$ par~$P'$
+dans $\Sigma(P)$.
+\end{defn}
+
+Autrement dit, soient une
+$\Lang{L}$-structure $\Struct{M}$
+et deux relations
+$R,R'\subseteq\Domain{M}^n$.
+Si l'expansion de~$\Struct{M}$
+qui interprète~$P$ par~$R$
+satisfait $\Sigma(P)$, et celle
+qui interprète~$P'$ par~$R'$
+satisfait $\Sigma(P')$, alors
+$R=R'$. La définition implicite
+exprime donc l'unicité de
+l'interprétation compatible avec
+la théorie pour une même structure
+du langage de base.
+
+\begin{thm}[Théorème de définissabilité de Beth]
+Un ensemble $\Sigma(P)$ d'%
+!!{sentence}s de $\Lang{L}\cup\{P\}$
+définit implicitement~$P$ si et
+seulement s'il le définit
+explicitement.\footnote{Précision éditoriale : l'énoncé source dit ici « formules », alors que les deux définitions précédentes portent sur des ensembles d'énoncés fermés. Nous conservons ce cadre dans le théorème et sa preuve.}
+\end{thm}
+
+\begin{proof}
+Supposons d'abord que $\Sigma(P)$
+définisse explicitement~$P$ par
+$!C(x_1,\dots,x_n)$. Le remplacement
+uniforme de~$P$ par~$P'$ donne
+\begin{align*}
+  \Sigma(P)&\Entails
+    \lforall[x_1][\dots\lforall[x_n]
+    [(\Atom{P}{x_1,\dots,x_n}
+    \liff !C(x_1,\dots,x_n))]],\\
+  \Sigma(P')&\Entails
+    \lforall[x_1][\dots\lforall[x_n]
+    [(\Atom{P'}{x_1,\dots,x_n}
+    \liff !C(x_1,\dots,x_n))]].
+\end{align*}
+Il en résulte que $\Sigma(P)$
+définit implicitement~$P$.
+
+Réciproquement, supposons la
+définition implicite. Ajoutons au
+langage des constantes nouvelles deux à deux distinctes
+$c_1,\dots,c_n$. Par la définition,
+\[
+\Sigma(P)\cup\Sigma(P')\Entails
+  \Atom{P}{c_1,\dots,c_n}
+  \lif\Atom{P'}{c_1,\dots,c_n}.
+\]
+La compacité donne des ensembles
+finis $\Delta_0\subseteq\Sigma(P)$
+et $\Delta_1\subseteq\Sigma(P')$
+qui entraînent déjà cette
+implication. Remplaçons~$P'$ par~$P$
+dans les !!{sentence}s de $\Delta_1$,
+et soit~$!D(P)$ la conjonction
+de ces !!{sentence}s et de ceux
+de~$\Delta_0$. Une conjonction
+vide désigne ici une tautologie.
+Écrivons $!D(P')$ pour le résultat
+du remplacement uniforme de~$P$
+par~$P'$ dans~$!D(P)$. Alors
+\[
+!D(P)\land !D(P')\Entails
+  \Atom{P}{c_1,\dots,c_n}
+  \lif\Atom{P'}{c_1,\dots,c_n}.
+\]
+En réarrangeant l'implication,
+on obtient
+\[
+!D(P)\land\Atom{P}{c_1,\dots,c_n}
+  \Entails
+!D(P')\lif\Atom{P'}{c_1,\dots,c_n}.
+\]
+Le théorème d'interpolation de Craig
+fournit donc un !!{sentence}
+$!C(c_1,\dots,c_n)$ du langage de
+base enrichi de ces constantes,
+ne contenant ni~$P$ ni~$P'$, tel que
+\begin{align*}
+!D(P)\land\Atom{P}{c_1,\dots,c_n}
+  &\Entails !C(c_1,\dots,c_n),\\
+!C(c_1,\dots,c_n)
+  &\Entails !D(P')\lif
+    \Atom{P'}{c_1,\dots,c_n}.
+\end{align*}
+De la première conséquence,
+$!D(P)\Entails\Atom{P}{c_1,\dots,c_n}
+\lif !C(c_1,\dots,c_n)$.
+Renommons~$P'$ en~$P$ dans la
+seconde : comme~$!C$ ne contient
+aucun de ces deux symboles,
+on conserve une conséquence valide,
+\[
+!C(c_1,\dots,c_n)\Entails
+  !D(P)\lif\Atom{P}{c_1,\dots,c_n}.
+\]
+Les deux conséquences réunies
+donnent
+\[
+!D(P)\Entails\bigl(
+  \Atom{P}{c_1,\dots,c_n}
+  \liff !C(c_1,\dots,c_n)\bigr).
+\]
+Les constantes $c_1,\dots,c_n$
+ne figurent pas dans~$\Sigma(P)$.
+Après avoir renommé au besoin les
+variables liées de~$!C$ pour éviter
+toute capture, remplaçons ces
+constantes par $x_1,\dots,x_n$.
+Puisque $\Sigma(P)\Entails !D(P)$,
+la généralisation donne
+\[
+\Sigma(P)\Entails
+  \lforall[x_1][\dots\lforall[x_n]
+  [(\Atom{P}{x_1,\dots,x_n}
+  \liff !C(x_1,\dots,x_n))]].
+\]
+Ainsi $\Sigma(P)$ définit
+explicitement~$P$.
+\end{proof}
+
+\end{document}

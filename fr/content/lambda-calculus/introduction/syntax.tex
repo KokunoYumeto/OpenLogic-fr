@@ -1,0 +1,90 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: syntax
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{syn}
+\olsection{La syntaxe du lambda-calcul}
+
+Partons d'une suite de variables $x$, $y$,
+$z$,~\dots{} et de symboles de constante $a$,
+$b$, $c$,~\dots. L'ensemble des termes se
+définit par induction :
+\begin{enumerate}
+\item Chaque variable est un terme.
+\item Chaque constante est un terme.
+\item Si $M$ et $N$ sont des termes, $(MN)$
+      est un terme.
+\item Si $M$ est un terme et $x$ une variable,
+      $(\lambd[x][M])$ est un terme.
+\end{enumerate}
+Les termes de la forme $(MN)$ sont des
+\emph{applications}; ceux de la forme
+$(\lambd[x][M])$ sont des \emph{abstractions}.
+
+Le système dépourvu de constantes s'appelle
+le \emph{lambda-calcul pur}. Nous travaillerons
+surtout dans ce système; toutes les lettres
+minuscules y désigneront donc des variables.
+Les lettres majuscules ($M$, $N$, etc.)
+désigneront des termes du lambda-calcul.
+
+Nous adopterons quelques conventions de
+notation :
+
+\begin{conv}
+\begin{enumerate}
+\item Lorsque les parenthèses sont omises,
+      l'application s'associe de gauche à droite.
+      Par exemple, si $M$, $N$, $P$ et $Q$ sont
+      des termes, $MNPQ$ abrège $(((MN)P)Q)$.
+\item Lorsque les parenthèses sont omises,
+      l'abstraction lambda reçoit la portée la
+      plus large possible. Ainsi,
+      $\lambd[x][MNP]$ se lit
+      $(\lambd[x][((MN)P)])$.
+\item Un lambda peut abstraire plusieurs
+      variables. Par exemple,
+      $\lambd[xyz][M]$ abrège
+      $\lambd[x][\lambd[y][\lambd[z][M]]]$.
+\end{enumerate}
+\end{conv}
+
+Par exemple,
+\[
+\lambd[xy][xxyx \lambd[z][xz]]
+\]
+abrège
+\[
+\lambd[x][\lambd[y][((((xx)y)x)(\lambd[z][(xz)]))]].
+\]
+Retenez ces conventions. Elles risquent de
+vous rendre fou au début; vous vous y
+habituerez, et elles finiront par vous
+agacer moins qu'un enchevêtrement de
+parenthèses.
+
+Deux termes qui ne diffèrent que par un renommage sans capture
+de leurs variables liées sont dits
+$\alpha$-équivalents; c'est le cas de
+$\lambd[x][x]$ et $\lambd[y][y]$. Il sera
+commode de les considérer comme le « même »
+terme : lorsque nous dirons que $M$ et $N$
+sont identiques, nous l'entendrons aussi à
+un renommage des variables liées près.
+Une occurrence de variable est \emph{liée} si elle se trouve
+dans le corps d'une abstraction qui porte son nom.
+Son lieur est alors l'abstraction de ce nom la plus proche.
+Toute occurrence de variable qui n'a pas de lieur est \emph{libre}.
+Les termes $\lambd[x][x]$ et $\lambd[y][y]$ n'ont aucune
+variable libre. Dans
+\[
+(\lambd[z][yz])x,
+\]
+l'occurrence de $z$ dans le corps est liée par $\lambd[z]$.
+Les occurrences de $y$ et de $x$ sont libres.
+
+\end{document}

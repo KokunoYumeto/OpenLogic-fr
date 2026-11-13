@@ -1,0 +1,644 @@
+% Partie : théorie de la démonstration
+% Chapitre : élimination des coupures
+% Section : interpolation
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{cut}{itp}
+
+\olsection{Lemme de Maehara et théorème d'interpolation de Craig}
+
+Le théorème d'interpolation, dû à William Craig, affirme que, si
+$!A \Entails !B$, il existe !!a{sentence}~$!C$, appelé
+\emph{interpolant}, telle que $!A \Entails !C$ et $!C \Entails !B$.
+De plus, on peut choisir l'interpolant~$!C$ de sorte que toutes les
+!!{constant}s et tous les !!{predicate}s qui y apparaissent figurent à la fois
+dans~$!A$ et dans~$!B$. Nous supposons qu'aucun !!{function} n'intervient.
+Sans cette restriction sur le vocabulaire, $!A$ et $!B$ seraient
+eux-mêmes des interpolants.
+
+Le théorème d'interpolation est valable en logique classique du premier
+ordre. On l'a qualifié de « dernière propriété importante de la logique
+du premier ordre » à avoir été découverte. Il a des applications
+importantes en théorie des modèles et en raisonnement automatisé.
+Sa motivation et son application initiales relevaient de la philosophie
+des sciences : il permet d'étudier au moyen de quelles notions primitives
+une théorie peut, ou ne peut pas, être axiomatisée. Il implique aussi
+le théorème de définissabilité de Beth : lorsqu'une théorie peut définir
+implicitement une notion, elle peut également la définir explicitement.
+
+Comme beaucoup de résultats de logique mathématique, le théorème
+d'interpolation se démontre aussi bien par les méthodes de la théorie
+des modèles que par celles de la théorie de la démonstration. Ces
+dernières offrent un avantage : elles établissent l'existence d'un
+interpolant et fournissent un algorithme qui le calcule à partir d'une
+!!{proof} de $!A \Entails !B$, par exemple d'une !!{proof} dans
+\Log{G3c} de $!A \Sequent !B$.
+
+Notons $\Lang L(!A)$ l'ensemble des !!{constant}s et des !!{predicate}s
+de~$!A$, et posons $\Lang L(\Gamma) = \bigcup \Setabs{\Lang L(!A)}{!A \in
+\Gamma}$. Dans toute cette section, les !!{formula}s ne contiennent
+aucun !!{function}.
+
+\begin{thm}[Théorème d'interpolation de Craig]\ollabel{thm:interpolation}
+Soient $\Lang L(!A)$ le !!{language} de~$!A$ et $\Lang L(!B)$ celui
+de~$!B$. Si $\Log{G3c} \Proves !A \Sequent !B$, il existe une
+!!{formula}~$!C$ dont le !!{language} vérifie
+$\Lang L(!C) \subseteq \Lang L(!A) \cap \Lang L(!B)$, telle que
+$\Log{G3c} \Proves !A \Sequent !C$ et
+$\Log{G3c} \Proves !C \Sequent !B$.
+\end{thm}
+
+Pour exploiter la structure des !!{proof}s de~\Log{G3c}, nous allons
+démontrer une généralisation du théorème d'interpolation. Partageons
+l'antécédent et le conséquent de chaque séquent en deux parties.
+La notation $\maeh{\Gamma_1}{\Gamma_2} \Sequent
+\maeh{\Delta_1}{\Delta_2}$ indique que $\Gamma_1$ et $\Delta_1$
+constituent la première partie, et $\Gamma_2$ et $\Delta_2$ la seconde.
+Le théorème d'interpolation découlera immédiatement du lemme suivant.
+
+\begin{lem}[Lemme de Maehara]\ollabel{lem:maehara}
+Si $\Log{G3c} \Proves \maeh{\Gamma_1}{\Gamma_2} \Sequent
+\maeh{\Delta_1}{\Delta_2}$, il existe une !!{formula}~$!C$ dont le
+!!{language} vérifie $\Lang L(!C) \subseteq \Lang L(\Gamma_1,
+\Delta_1) \cap \Lang L(\Gamma_2, \Delta_2)$, telle que
+$\Log{G3c} \Proves \Gamma_1 \Sequent \Delta_1, !C$ et
+$\Log{G3c} \Proves !C, \Gamma_2 \Sequent \Delta_2$.
+\end{lem}
+
+\begin{proof}
+Supposons que $\pi \Proves \maeh{\Gamma_1}{\Gamma_2} \Sequent
+\maeh{\Delta_1}{\Delta_2}$. Nous raisonnons par récurrence sur
+$n=\pheight{\pi}$.
+
+Si $n=0$, le séquent $\maeh{\Gamma_1}{\Gamma_2} \Sequent
+\maeh{\Delta_1}{\Delta_2}$ est un axiome. Considérons d'abord un axiome
+d'identité : une !!{formula} atomique~$!A$ apparaît à la fois dans
+$\Gamma_1, \Gamma_2$ et dans $\Delta_1, \Delta_2$.
+Quatre cas se présentent, selon la partie à laquelle appartient
+l'occurrence de~$!A$ de chaque côté.
+\begin{enumerate}
+\item $!A \in \Gamma_1$ et $!A \in \Delta_1$. Nous cherchons une
+!!{formula}~$!C$ telle que $\Gamma_1 \Sequent \Delta_1, !C$ et
+$!C, \Gamma_2 \Sequent \Delta_2$ soient !!{provable}s. Le premier
+séquent est déjà un axiome, quel que soit le choix de~$!C$, puisque
+$!A$ figure de chaque côté. Un choix qui garantit uniformément que
+le second séquent soit !!{provable} est $!C \ident \lfalse$.
+\item $!A \in \Gamma_1$ et $!A \in \Delta_2$. Les séquents
+$\Gamma_1 \Sequent \Delta_1, !A$ et $!A, \Gamma_2 \Sequent \Delta_2$
+sont alors des axiomes ; nous pouvons donc choisir $!C \ident !A$.
+\item $!A \in \Gamma_2$ et $!A \in \Delta_1$. Les séquents
+$!A, \Gamma_1 \Sequent \Delta_1$ et
+$\Gamma_2 \Sequent \Delta_2, !A$ seraient des axiomes, mais~$!A$
+y figure du mauvais côté. Ce choix ne fournit donc pas directement
+l'interpolant voulu. À l'aide de $\RightR{\lnot}$ et
+$\LeftR{\lnot}$, nous pouvons cependant !!{prove}
+$\Gamma_1 \Sequent \Delta_1, \lnot!A$ et
+$\lnot !A, \Gamma_2 \Sequent \Delta_2$.
+\item $!A \in \Gamma_2$ et $!A \in \Delta_2$. Exercice.
+\end{enumerate}
+Les cas où $\maeh{\Gamma_1}{\Gamma_2} \Sequent
+\maeh{\Delta_1}{\Delta_2}$ est un axiome parce que
+$\lfalse \in \Gamma_1$ ou $\lfalse \in \Gamma_2$ sont laissés en exercice.
+
+Si $n>0$, $\pi$ se termine par une inférence logique. Nous distinguons
+les cas selon la règle appliquée et la partie à laquelle appartient
+la formule principale. L'hypothèse de récurrence s'applique à toutes
+les !!{proof}s~$\pi_1$ telles que $\pheight{\pi_1} < n$, quelle que
+soit la partition en deux parties de leur séquent final.
+Examinons quelques cas.
+\begin{enumerate}
+\item $\pi$ se termine par $\RightR{\lnot}$, de formule principale
+$\lnot !A$. Selon que $\lnot !A$ appartient à la première ou à la
+seconde partie, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\maeh{!A, \Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2}$
+    \RightLabel{\RightR{\lnot}}
+    \UnaryInf$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1, \lnot !A}{\Delta_2}$
+    \DisplayProof
+    \]
+ou par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\maeh{\Gamma_1}{!A, \Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2}$
+    \RightLabel{\RightR{\lnot}}
+    \UnaryInf$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2, \lnot !A}$
+    \DisplayProof
+    \]
+Lorsque la formule principale~$\lnot !A$ appartient à la première
+partie, nous avons placé la formule active~$!A$ dans cette même partie
+de la prémisse. Nous sommes libres de faire ce choix. L'hypothèse
+de récurrence s'appliquerait aussi en plaçant la formule active dans
+l'autre partie, mais l'interpolant obtenu ne pourrait alors,
+en général, être repris tel quel pour la conclusion
+(exercice : examiner ce placement).
+
+Dans le premier cas, où $\lnot !A$ appartient à la première partie,
+l'hypothèse de récurrence donne un interpolant du séquent final
+de~$\pi_1$, c'est-à-dire une !!{formula}~$!C_1$ telle que
+\begin{align*}
+    !A, \Gamma_1 & \Sequent \Delta_1, !C_1 &&\text{et} &
+    !C_1, \Gamma_2 & \Sequent \Delta_2
+    \intertext{sont !!{provable}s. Il nous faut !!a{formula}~$!C$ telle que les deux séquents suivants soient !!{provable}s :}
+    \Gamma_1 & \Sequent \Delta_1, \lnot !A, !C &&\text{et} &
+    !C, \Gamma_2 & \Sequent \Delta_2
+    \end{align*}
+Il suffit de prendre $!C \ident !C_1$. L'hypothèse de récurrence
+donne déjà le séquent de droite ; celui de gauche se déduit de la
+prémisse correspondante par $\RightR{\lnot}$. Nous savons aussi que
+$\Lang L(!C_1) \subseteq \Lang L(!A, \Gamma_1,
+\Delta_1) \cap \Lang L(\Gamma_2, \Delta_2)$. Comme
+$\Lang L(\lnot !A) = \Lang L(!A)$ et
+$\Lang L(!C) = \Lang L(!C_1)$, nous avons
+$\Lang L(!C_1) \subseteq \Lang L(\Gamma_1, \Delta_1, \lnot !A) \cap
+\Lang L(\Gamma_2, \Delta_2)$.
+
+Dans le second cas, $\lnot !A$ appartient à la seconde partie.
+Nous plaçons également la formule active de la prémisse dans cette
+partie. L'hypothèse de récurrence donne des preuves des séquents
+suivants :
+\begin{align*}
+    \Gamma_1 & \Sequent \Delta_1, !C_1 &&\text{et} &
+    !C_1, !A, \Gamma_2 & \Sequent \Delta_2
+    \intertext{sont !!{provable}s. En appliquant de nouveau la règle \RightR{\lnot} au second, nous obtenons des !!{proof}s de}
+    \Gamma_1 & \Sequent \Delta_1, !C_1 &&\text{et} &
+    !C_1, \Gamma_2 & \Sequent \Delta_2, \lnot !A
+    \end{align*}
+Ce sont exactement les séquents requis pour que $!C_1$ soit un
+interpolant ; nous prenons donc de nouveau $!C \ident !C_1$.
+Comme précédemment,
+$\Lang L(!C_1) \subseteq \Lang L(\Gamma_1, \Delta_1) \cap
+\Lang L(\Gamma_2, \Delta_2, \lnot !A)$.
+
+\item $\pi$ se termine par $\RightR{\lif}$, de formule principale
+$!A \lif !B$. Nous avons encore deux cas, selon que $!A \lif !B$
+appartient à la première ou à la seconde partie. La !!{proof}~$\pi$
+se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\maeh{!A, \Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1, !B}{\Delta_2}$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1, !A \lif !B}{\Delta_2}$
+    \DisplayProof
+    \]
+ou par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\maeh{\Gamma_1}{!A, \Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2, !B}$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2, !A \lif !B}$
+    \DisplayProof
+    \]
+Nous avons de nouveau placé les formules actives dans la même partie
+de la prémisse que la formule principale dans la conclusion.
+Dans le premier cas, l'hypothèse de récurrence donne des preuves de
+\begin{align*}
+    !A, \Gamma_1 & \Sequent \Delta_1, !B, !C_1 &&\text{et} & !C_1, \Gamma_2 & \Sequent \Delta_2
+    \intertext{Le séquent de gauche peut servir de prémisse à \RightR{\lif}. Les séquents suivants sont donc !!{provable}s :}
+    \Gamma_1 & \Sequent \Delta_1, !A \lif !B, !C_1 &&\text{et} & !C_1, \Gamma_2 & \Sequent \Delta_2
+    \end{align*}
+Ainsi, $!C_1$ est aussi un interpolant du séquent final de~$\pi$,
+et nous pouvons encore prendre $!C \ident !C_1$.
+
+Le second cas se traite de la même façon.
+
+\item $\pi$ se termine par $\LeftR{\lif}$, de formule principale
+$!A \lif !B$. Si $!A \lif !B$ appartient à la première partie,
+la !!{proof}~$\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1, !A}{\Delta_2}$
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$\maeh{!B, \Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2}$
+    \RightLabel{\LeftR{\lif}}
+    \BinaryInf$\maeh{!A \lif !B, \Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2}$
+    \DisplayProof
+    \]
+L'hypothèse de récurrence donne quatre séquents !!{provable}s :
+deux pour l'interpolant $!C_1$ de la prémisse de gauche et deux
+pour l'interpolant $!C_2$ de la seconde prémisse :
+\begin{align*}
+    \Gamma_1 & \Sequent \Delta_1, !A, !C_1 &&\text{(1)} &
+    !C_1, \Gamma_2 & \Sequent \Delta_2 && \text{(2)}\\
+    !B, \Gamma_1 & \Sequent \Delta_1, !C_2 &&\text{(3)} &
+    !C_2, \Gamma_2 & \Sequent \Delta_2 && \text{(4)}
+    \end{align*}
+Les séquents (1) et (3) peuvent servir de prémisses à
+\LeftR{\lif} : par affaiblissement, ajoutons $!C_2$ à droite
+dans~(1) et $!C_1$ à droite dans~(3).
+\[
+    \AxiomC{}
+    \Deduce$\Gamma_1 \fCenter \Delta_1, !A, !C_1, !C_2$
+    \AxiomC{}
+    \Deduce$!B, \Gamma_1 \fCenter \Delta_1, !C_1, !C_2$
+    \RightLabel{\LeftR{\lif}}
+    \BinaryInf$!A \lif !B, \Gamma_1 \fCenter \Delta_1, !C_1, !C_2$
+    \DisplayProof
+    \]
+En appliquant $\RightR{\lor}$, nous obtenons
+\[
+    !A \lif !B, \Gamma_1 \fCenter \Delta_1, !C_1 \lor !C_2
+    \]
+Ceci suggère de choisir $!C_1 \lor !C_2$ comme interpolant.
+Le second séquent requis se démontre effectivement à partir
+des séquents restants (2) et~(4) :
+\[
+    \AxiomC{}
+    \Deduce$!C_1, \Gamma_2 \fCenter \Delta_2$
+    \AxiomC{}
+    \Deduce$!C_2, \Gamma_2 \fCenter \Delta_2$
+    \RightLabel{\LeftR{\lor}}
+    \BinaryInf$!C_1 \lor !C_2, \Gamma_2 \fCenter \Delta_2$
+    \DisplayProof
+    \]
+Il reste à vérifier que $!C_1 \lor !C_2$ appartient au langage voulu.
+L'hypothèse de récurrence donne
+\begin{align*}
+    \Lang L(!C_1) & \subseteq
+    \Lang L(\Gamma_1, \Delta_1, !A) \cap \Lang L(\Gamma_2, \Delta_2) &\text{et}\\
+    \Lang L(!C_2) & \subseteq
+    \Lang L(!B, \Gamma_1, \Delta_1) \cap \Lang L(\Gamma_2, \Delta_2)
+    \intertext{Comme}
+    \Lang L(!A) & \subseteq \Lang L(!A \lif !B) &\text{et}\\
+    \Lang L(!B) & \subseteq \Lang L(!A \lif !B)
+    \intertext{nous avons à la fois}
+    \Lang L(!C_1) & \subseteq
+    \Lang L(\Gamma_1, \Delta_1, !A \lif !B) \cap \Lang L(\Gamma_2, \Delta_2) &\text{et}\\
+    \Lang L(!C_2) & \subseteq
+    \Lang L(\Gamma_1, \Delta_1, !A \lif !B) \cap \Lang L(\Gamma_2, \Delta_2)
+    \intertext{et, par conséquent, $\Lang L (!C_1 \lor !C_2) = {}$}
+    \Lang L(!C_1) \cup \Lang L(!C_2) & \subseteq
+    \Lang L(\Gamma_1, \Delta_1, !A \lif !B) \cap \Lang L(\Gamma_2, \Delta_2),
+    \end{align*}
+comme il le fallait.
+
+Lorsque $!A \lif !B$ appartient à la seconde partie, la situation
+est différente, mais se traite de façon analogue. L'hypothèse
+de récurrence donne encore quatre séquents !!{provable}s :
+\begin{align*}
+    \Gamma_1 & \Sequent \Delta_1, !C_1 &&\text{(1)} &
+    !C_1, \Gamma_2 & \Sequent \Delta_2, !A && \text{(2)}\\
+    \Gamma_1 & \Sequent \Delta_1, !C_2 &&\text{(3)} &
+    !C_2, !B, \Gamma_2 & \Sequent \Delta_2 && \text{(4)}
+    \end{align*}
+Les séquents (2) et (4), après quelques affaiblissements, servent
+cette fois de prémisses à~\LeftR{\lif} :
+\[
+    \AxiomC{}
+    \Deduce$!C_1, !C_2, \Gamma_2 \fCenter \Delta_2, !A$
+    \AxiomC{}
+    \Deduce$!B, !C_1, !C_2, \Gamma_2 \fCenter \Delta_2$
+    \RightLabel{\LeftR{\lif}}
+    \BinaryInf$!A \lif !B, !C_1, !C_2, \Gamma_2 \fCenter \Delta_2$
+    \DisplayProof
+    \]
+Nous voulons de nouveau réunir $!C_1$ et $!C_2$ en une seule formule,
+mais cette fois dans l'antécédent, puisque nous traitons la seconde
+partie. La règle $\LeftR{\land}$ convient ; nous choisissons
+$!C \ident (!C_1 \land !C_2)$ comme interpolant. Les séquents restants
+(1) et (3) permettent de démontrer le séquent requis pour l'autre
+partie :
+\[
+    \AxiomC{}
+    \Deduce$\Gamma_1 \fCenter \Delta_1, !C_1$
+    \AxiomC{}
+    \Deduce$\Gamma_1 \fCenter \Delta_1, !C_2$
+    \RightLabel{\RightR{\land}}
+    \BinaryInf$\Gamma_1 \fCenter \Delta_1, !C_1 \land !C_2$
+    \DisplayProof
+    \]
+Comme précédemment,
+$\Lang L(!C_1 \land !C_2) \subseteq \Lang L(\Gamma_1, \Delta_1) \cap
+\Lang L(\Gamma_2, \Delta_2, !A \lif !B)$.
+
+\item $\pi$ se termine par $\RightR{\lforall}$, de formule principale
+$\lforall[x][!A(x)]$ :
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+    \maeh{\Delta_1, !A(c)}{\Delta_2}$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1, \lforall[x][!A(x)]}{\Delta_2}$
+    \DisplayProof
+    \]
+ou
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2, !A(c)}$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1}{\Delta_2, \lforall[x][!A(x)]}$
+    \DisplayProof
+    \]
+Dans le premier cas, l'hypothèse de récurrence donne des preuves de
+$\Gamma_1 \Sequent \Delta_1, !A(c), !C_1$ et
+$!C_1, \Gamma_2 \Sequent \Delta_2$. Elle donne aussi
+$\Lang L(!C_1) \subseteq \Lang L(\Gamma_1,
+\Delta_1, !A(c)) \cap \Lang L(\Gamma_2, \Delta_2)$.
+La constante~$c$ ne peut donc pas apparaître dans~$!C_1$ :
+sinon, l'inclusion ci-dessus imposerait
+$c \in \Lang L(\Gamma_2, \Delta_2)$.
+Or $c$ est absente de cette partie de la conclusion par la
+condition de constante propre de l'inférence $\RightR{\lforall}$.
+
+
+
+Nous pouvons dès lors appliquer $\RightR{\lforall}$ à la première
+preuve et obtenir
+$\Gamma_1 \Sequent \Delta_1, \lforall[x][!A(x)], !C_1$ :
+la constante~$c$ est absente aussi bien du contexte initial que
+de l'interpolant ajouté. La condition de vocabulaire
+$\Lang L(!C_1) \subseteq \Lang L(\Gamma_1, \Delta_1, \lforall[x][!A(x)])
+\cap \Lang L(\Gamma_2, \Delta_2)$ est également satisfaite.
+La formule~$!C_1$ est donc un interpolant.
+
+Le second cas est analogue.
+
+\item $\pi$ se termine par $\RightR{\lexists}$, de formule principale
+$\lexists[x][!A(x)]$. Nous avons encore deux cas. Nous traitons celui
+où $\lexists[x][!A(x)]$ appartient à la première partie et laissons
+l'autre en exercice.
+
+Dans le premier cas, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1, \lexists[x][!A(x)], !A(t)}{\Delta_2}$
+    \RightLabel{\RightR{\lexists}}
+    \UnaryInf$\maeh{\Gamma_1}{\Gamma_2} \fCenter
+      \maeh{\Delta_1, \lexists[x][!A(x)]}{\Delta_2}$
+    \DisplayProof
+    \]
+L'hypothèse de récurrence donne des preuves de
+$\Gamma_1 \Sequent \Delta_1, \lexists[x][!A(x)], !A(t), !C_1$ et
+$!C_1, \Gamma_2 \Sequent \Delta_2$. En appliquant
+$\RightR{\lexists}$ à la première, nous obtenons
+$\Gamma_1 \Sequent \Delta_1, \lexists[x][!A(x)], !C_1$.
+Ainsi, $!C_1$ serait encore un interpolant si
+$\Lang L(!C_1) \subseteq \Lang L(\Gamma_1, \Delta_1,
+\lexists[x][!A(x)]) \cap \Lang L(\Gamma_2, \Delta_2)$.
+L'hypothèse de récurrence donne toutefois
+$\Lang L(!C_1) \subseteq \Lang L(\Gamma_1, \Delta_1,
+\lexists[x][!A(x)], !A(t)) \cap \Lang L(\Gamma_2, \Delta_2)$.
+
+Rappelons qu'il n'y a aucun !!{function} et que les termes
+d'instanciation de ce calcul sont clos. Le terme~$t$ est donc
+nécessairement une !!{constant}, soit $t \ident b$.
+Si $b \notin \Lang L(!C_1)$ ou si
+$b \in \Lang L(\Gamma_1, \Delta_1, \lexists[x][!A(x)]) \cap
+\Lang L(\Gamma_2, \Delta_2)$, nous pouvons choisir $!C_1$ comme
+interpolant. Mais supposons que $b \in \Lang L(!C_1)$ et
+$b \notin \Lang L(\Gamma_1, \Delta_1,
+\lexists[x][!A(x)]) \cap \Lang L(\Gamma_2, \Delta_2)$.
+Remplaçons toutes les occurrences de~$b$ dans~$!C_1$ par une
+variable fraîche~$y$, après renommage des variables liées si
+nécessaire pour éviter toute capture. Nous pouvons alors écrire
+$!C_1 \ident \Subst{!C_1'}{b}{y}$, où $!C_1'$ ne contient pas~$b$.
+Nous avons soit
+$b \notin \Lang L(\Gamma_1, \Delta_1, \lexists[x][!A(x)])$,
+soit $b \notin \Lang L(\Gamma_2, \Delta_2)$.
+Dans ces deux cas, nous pouvons prendre respectivement
+$!C \ident \lforall[y][!C_1'(y)]$ et
+$!C \ident \lexists[y][!C_1'(y)]$.
+
+Dans le premier cas, nous avons
+\[
+    \AxiomC{}
+    \Deduce$\Gamma_1 \fCenter
+      \Delta_1, \lexists[x][!A(x)], !A(b), !C_1'(b)$
+    \RightLabel{\RightR{\lexists}}
+    \UnaryInf$\Gamma_1 \fCenter \Delta_1, \lexists[x][!A(x)], !C_1'(b)$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\Gamma_1 \fCenter
+      \Delta_1, \lexists[x][!A(x)], \lforall[y][!C_1'(y)]$
+    \DisplayProof
+    \]
+et, par l'hypothèse de récurrence et l'affaiblissement à gauche
+par~$\lforall[y][!C_1'(y)]$,
+\[
+    \AxiomC{}
+    \Deduce$!C_1'(b), \lforall[y][!C_1'(y)], \Gamma_2 \fCenter \Delta_2$
+    \RightLabel{\LeftR{\lforall}}
+    \UnaryInf$\lforall[y][!C_1'(y)], \Gamma_2 \fCenter \Delta_2$
+    \DisplayProof
+    \]
+La condition de constante propre de \RightR{\lforall} dans la
+première preuve est satisfaite parce que
+$b \notin \Lang L(\Gamma_1, \Delta_1, \lexists[x][!A(x)])$
+et parce que $!C_1'$ a été défini de façon à ne pas contenir~$b$.
+
+Dans le second cas, l'hypothèse de récurrence et l'admissibilité
+de l'affaiblissement par~$\lexists[y][!C_1'(y)]$ donnent
+\[
+    \AxiomC{}
+    \Deduce$\Gamma_1 \fCenter
+      \Delta_1, \lexists[x][!A(x)], !A(b), \lexists[y][!C_1'(y)], !C_1'(b)$
+    \RightLabel{\RightR{\lexists}}
+    \UnaryInf$\Gamma_1 \fCenter
+      \Delta_1, \lexists[x][!A(x)], \lexists[y][!C_1'(y)], !C_1'(b)$
+    \RightLabel{\RightR{\lexists}}
+    \UnaryInf$\Gamma_1 \fCenter
+      \Delta_1, \lexists[x][!A(x)], \lexists[y][!C_1'(y)]$
+    \DisplayProof
+    \]
+et
+\[
+    \AxiomC{}
+    \Deduce$!C_1'(b), \Gamma_2 \fCenter \Delta_2$
+    \RightLabel{\LeftR{\lexists}}
+    \UnaryInf$\lexists[y][!C_1'(y)], \Gamma_2 \fCenter \Delta_2$
+    \DisplayProof
+    \]
+La condition de constante propre de \LeftR{\lexists} dans la
+seconde preuve est satisfaite parce que
+$b \notin \Lang L(\Gamma_2, \Delta_2)$
+et parce que $!C_1'$ ne contient pas~$b$.
+\end{enumerate}
+Les autres cas sont analogues ; nous les laissons en exercice.
+\end{proof}
+
+\begin{prob}
+Supposons que nous disposions d'un connecteur $\lnand$ muni des règles
+\[
+\Axiom$\Gamma \fCenter \Delta, !A$
+\Axiom$\Gamma \fCenter \Delta, !B$
+\RightLabel{\LeftR{\lnand}}
+\BinaryInf$!A \lnand !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\quad
+\Axiom$!A, !B, \Gamma \fCenter \Delta$
+\RightLabel{\RightR{\lnand}}
+\UnaryInf$\Gamma \fCenter \Delta, !A \lnand !B$
+\DisplayProof
+\]
+Montrer que le lemme de Maehara reste valable en traitant les cas
+de la preuve du \olref{lem:maehara} où $\pi$ se termine par l'une
+de ces règles.
+\end{prob}
+
+Le lemme de Maehara permet maintenant de démontrer le théorème
+d'interpolation de Craig.
+
+\begin{proof}[Preuve du \olref{thm:interpolation}]
+Supposons que $!A \Sequent !B$ soit !!{provable}. Appliquons
+\olref{lem:maehara} à $\maeh{!A}{\ } \Sequent \maeh{\ }{!B}$
+pour obtenir l'interpolant~$!C$. Nous avons
+$\Proves !A \Sequent !C$ et $\Proves !C \Sequent !B$.
+\end{proof}
+
+Soit $\Gamma$ une théorie, c'est-à-dire un ensemble d'!!{sentence}s,
+dans un !!{language}~$\Lang L$ contenant un !!{predicate}~$R$
+d'arité $n$. Nous disons que $\Gamma$ \emph{définit implicitement}~$R$
+si
+\begin{align*}
+\Gamma, \Gamma'
+& \Entails \lforall[x_1][\dots\lforall[x_n][(R(x_1,\dots,x_n) \liff
+R'(x_1, \dots, x_n))]],
+\intertext{où $\Gamma'$ s'obtient à partir de $\Gamma$ en remplaçant toutes les occurrences de~$R$ par~$R' \notin \Lang L$. Nous disons que $\Gamma$ \emph{définit explicitement}~$R$ s'il existe une !!{formula}~$!A(x_1, \dots, x_n)$ de ce langage, dont les variables libres sont parmi celles indiquées et qui ne contient pas~$R$, telle que}
+\Gamma &\Entails
+\lforall[x_1][\dots\lforall[x_n][(R(x_1,\dots,x_n) \liff !A(x_1,
+\dots, x_n))]].
+\end{align*}
+Si $\Gamma$ définit explicitement $R$, elle le définit évidemment
+implicitement. La réciproque est moins immédiate, mais elle est vraie :
+
+\begin{lem}[Théorème de définissabilité de Beth]
+Si $\Gamma$ définit implicitement~$R$, elle le définit aussi explicitement.
+\end{lem}
+
+\begin{proof}
+Supposons que $\Gamma$ définisse implicitement~$R$.
+Soient $R'$ et $\Gamma'$ comme ci-dessus. La théorie renommée est
+dans le langage $\Lang L' = \Lang L \setminus \{R\} \cup \{R'\}$.
+Par complétude, l'hypothèse donne une preuve du premier séquent
+ci-dessous ; les contextes théoriques désignent ici des sous-ensembles
+finis suffisants pour cette preuve.
+\begin{align*}
+    \Gamma, \Gamma' & 
+    \Sequent \lforall[x_1][\dots\lforall[x_n][(R(x_1,\dots,x_n) 
+    \liff R'(x_1, \dots, x_n))]]
+  \intertext{Soient $c_1$, \dots,~$c_n$ des !!{constant}s distinctes n'apparaissant pas dans~$\Gamma$ et fraîches pour les preuves. Par le lemme d'inversibilité, nous avons}
+    \Gamma, \Gamma', R(c_1,\dots,c_n) & \Sequent  R'(c_1, \dots, c_n)
+  \intertext{Appliquons le lemme de Maehara à}
+    \maeh{\Gamma, R(c_1,\dots,c_n)}{\Gamma'} & \Sequent
+      \maeh{\ }{R'(c_1, \dots, c_n)}
+  \intertext{pour obtenir un interpolant. En remplaçant dans cet interpolant les constantes introduites par des variables fraîches, sans capture, nous obtenons une !!{formula}~$!A \ident !A(x_1, \dots, x_n)$ telle que}
+    \Gamma, R(c_1,\dots,c_n) & \Sequent !A(c_1, \dots, c_n) \\
+    !A(c_1, \dots, c_n), \Gamma' & \Sequent R'(c_1, \dots, c_n)
+  \intertext{soient !!{provable}s. Le vocabulaire commun des deux parties ne contient ni~$R$ ni le nouveau prédicat. Après abstraction des constantes introduites, $\Lang L(!A) \subseteq \Lang L \setminus \{R\}$. Ainsi, $!A$ ne contient ni le prédicat défini ni son renommage. Remplaçons partout $R'$ par~$R$ dans la preuve du second séquent pour obtenir une preuve de}
+    !A(c_1, \dots, c_n), \Gamma & \Sequent R(c_1, \dots, c_n)
+  \end{align*}
+Appliquons \RightR{\lif} aux deux séquents obtenus, puis la règle
+de conjonction à droite pour former l'équivalence, et enfin
+\RightR{\lforall} pour fermer universellement les variables.
+Les constantes introduites étant fraîches pour le contexte,
+nous obtenons une preuve de
+\[
+    \Gamma \Sequent \lforall[x_1][\dots\lforall[x_n][(R(x_1,\dots,x_n) \liff !A(x_1, \dots, x_n))]].
+  \]
+Ainsi, $!A(x_1, \dots, x_n)$ définit explicitement $R$ dans~$\Gamma$.
+\end{proof}
+
+Un troisième résultat, équivalent à l'interpolation et démontrable
+lui aussi à partir du lemme de Maehara, est le suivant.
+Si deux théories cohérentes~$\Gamma_1$ et $\Gamma_2$ contiennent une
+théorie $\Gamma$ complète pour tous les énoncés du langage commun
+$\Lang L(\Gamma_1) \cap \Lang L(\Gamma_2)$,
+alors $\Gamma_1 \cup \Gamma_2$ est cohérente.
+
+Rappelons qu'une théorie est complète si, pour tout
+!!{sentence}~$!A$ de son langage, soit $\Gamma \Proves !A$, soit
+$\Gamma \Proves \lnot !A$. Comme $\Gamma_1$ et $\Gamma_2$ sont
+des extensions cohérentes de~$\Gamma$, celle-ci est cohérente.
+Il s'ensuit que, pour un !!{sentence}~$!A$ du langage
+$\Lang L(\Gamma_1) \cap \Lang L(\Gamma_2)$,
+nous ne pouvons avoir à la fois $\Gamma_1 \Entails !A$ et
+$\Gamma_2 \Entails \lnot !A$.
+
+En effet, supposons qu'un tel énoncé existe. Si
+$\Gamma_1 \Entails !A$, alors $\Gamma \Entails !A$ :
+sinon, par complétude de~$\Gamma$, nous aurions
+$\Gamma \Entails \lnot !A$ et, puisque $\Gamma \subseteq \Gamma_1$,
+$\Gamma_1 \Entails \lnot !A$, ce qui rendrait $\Gamma_1$ incohérente.
+Donc $\Gamma \Entails !A$ et, puisque $\Gamma \subseteq \Gamma_2$,
+$\Gamma_2 \Entails !A$. Par conséquent,
+$\Gamma_2 \Entails/ \lnot !A$, faute de quoi $\Gamma_2$
+serait incohérente.
+
+L'absence d'un !!{sentence}~$!A$ du !!{language} commun
+$\Lang L(\Gamma_1) \cap \Lang L(\Gamma_2)$ tel que
+$\Gamma_1 \Entails !A$ et $\Gamma_2 \Entails \lnot !A$
+suffit à la preuve suivante, que nous donnons au moyen du
+lemme de Maehara.
+
+\begin{thm}[Théorème de cohérence conjointe de Robinson]
+Supposons que $\Gamma_1$ et $\Gamma_2$ soient des théories
+cohérentes et qu'il n'existe aucun !!{sentence}~$!A$ du
+!!{language} $\Lang L(\Gamma_1) \cap \Lang L(\Gamma_2)$ tel que
+$\Gamma_1 \Entails !A$ et $\Gamma_2 \Entails \lnot !A$.
+Alors $\Gamma_1 \cup \Gamma_2$ est cohérente.
+\end{thm}
+
+\begin{proof}
+Supposons au contraire que $\Gamma_1 \cup \Gamma_2$ soit incohérente.
+Le séquent $\Gamma_1, \Gamma_2 \Sequent \ $ possède alors une preuve.
+Appliquons le lemme de Maehara à
+$\maeh{\Gamma_1}{\Gamma_2} \Sequent \maeh{\ }{\ }$ pour obtenir
+un !!{sentence}~$!A$ du !!{language}
+$\Lang L(\Gamma_1) \cap \Lang L(\Gamma_2)$ tel que
+$\Proves \Gamma_1 \Sequent !A$ et
+$\Proves !A, \Gamma_2 \Sequent \quad$.
+Du second séquent, nous déduisons
+$\Proves \Gamma_2 \Sequent \lnot !A$.
+Or nous avons supposé qu'aucun énoncé de ce genre n'existe.
+\end{proof}
+
+Les contextes des preuves sont finis : dans les arguments précédents,
+les théories $\Gamma$, $\Gamma_1$ et $\Gamma_2$ y désignent les
+sous-ensembles finis effectivement employés. La compacité permet
+d'étendre les résultats aux théories infinies.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

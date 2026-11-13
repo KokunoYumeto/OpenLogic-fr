@@ -1,0 +1,303 @@
+% Partie : théorie de la démonstration
+% Chapitre : recherche de preuves
+% Section : complétude
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{ps}{cpl}
+
+\olsection{Complétude}
+
+Nous montrons maintenant que, si l'algorithme s'arrête
+sans succès ou ne s'arrête jamais, le séquent initial
+$\Gamma \Sequent \Delta$ n'a pas de preuve.
+Nous construisons pour cela une structure~$\Struct M$
+telle que $\Sat{M}{!A}$ pour tout $!A \in \Gamma$,
+et $\Sat/{M}{!A}$ pour tout~$!A \in \Delta$.
+Toutes les formules de~$\Gamma$ y sont donc vraies
+et toutes celles de~$\Delta$ fausses : le séquent
+$\Gamma \Sequent \Delta$ est invalide. Par correction
+de \Log{G3c}, $\Gamma \Sequent \Delta$ n'a alors
+aucune preuve. Nous conservons les conventions
+du chapitre : formules closes et absence d'égalité logique.
+
+La structure $\Struct{M}$ est définie à partir de
+deux ensembles de formules $\Theta, \Xi$ et d'un
+ensemble~$C$ de constantes. On obtient $\Theta, \Xi$
+et~$C$ sur une \emph{branche d'échec} de la recherche.
+Il s'agit d'une suite de séquents
+$\Pi_n \Sequent \Lambda_n$, munis d'ensembles de
+constantes~$C_n$, qui commence par le séquent final
+$\Pi_0 \Sequent \Lambda_0$, égal à $\Gamma \Sequent \Delta$.
+Chaque séquent $\Pi_{n+1} \Sequent \Lambda_{n+1}$
+est une prémisse de $\Pi_n \Sequent \Lambda_n$
+engendrée à l'étape~$n+1$, et aucun séquent
+de la branche n'est une feuille de clôture.
+On note $C_n$ l'ensemble de constantes associé
+à~$\Pi_n \Sequent \Lambda_n$.
+
+Si l'algorithme s'arrête sans succès sur un séquent
+supérieur ne contenant que des formules atomiques,
+le chemin menant à ce séquent est une branche
+d'échec finie. Sinon, lorsque la recherche ne
+s'arrête jamais, elle engendre des arbres de
+plus en plus grands. Leur union est un arbre
+infini à ramifications finies. Chaque nœud
+a au plus deux prémisses immédiates.
+Le lemme de K\H{o}nig fournit une branche infinie.
+Comme aucune feuille de clôture n'est développée,
+cette branche ne passe par aucune clôture ;
+c'est une branche d'échec.
+
+À partir de $\Pi_n \Sequent \Lambda_n$ et $C_n$,
+on pose $\Theta = \bigcup_n \Pi_n$ et
+$\Xi = \bigcup_n \Lambda_n$, en supprimant les
+indices et les répétitions de formules, ainsi que
+$C = \bigcup_n C_n$. Pour une branche finie,
+ces unions portent sur les seuls séquents
+effectivement présents.
+
+On définit alors~$\Struct{M}$ comme suit.
+\begin{enumerate}
+  \item Son domaine $\Domain{M}$ est l'ensemble
+  des termes clos construits à partir de~$C$
+  et des symboles de fonction qui figurent dans
+  $\Gamma \Sequent \Delta$, s'il y en a.
+  Ce domaine est non vide, puisque l'ensemble
+  initial de constantes est non vide.
+
+  \item Pour chaque constante $c \in C$,
+  on pose $\Assign{c}{M} = c$.
+
+  \item Si $f$ est un symbole de fonction d'arité $m$
+  présent dans $\Gamma \Sequent \Delta$, et
+  $t_1$, \dots, $t_m \in \Domain{M}$, on pose
+  $\Assign{f}{M}(t_1, \dots, t_m) =
+  f(t_1, \dots, t_m)$.
+
+  \item Si $R$ est un symbole de prédicat d'arité $m$
+  présent dans $\Gamma \Sequent \Delta$, on pose
+  $\Assign{R}{M} = \Setabs{\tuple{t_1, \dots, t_m} \in
+  \Domain{M}^m}{R(t_1, \dots, t_m) \in \Theta}$.
+\end{enumerate}
+
+La structure $\Struct{M}$ est un \emph{modèle de termes} :
+son domaine est constitué de termes, et l'interprétation
+des constantes et des fonctions garantit que
+$\Value{t}{M} = t$. Les formules atomiques de~$\Theta$
+définissent $\Assign{R}{M}$ de façon que
+$\Sat{M}{R(t_1, \dots, t_m)}$ équivaille à
+$R(t_1, \dots, t_m) \in \Theta$.
+Les symboles du langage qui ne figurent pas dans
+le séquent initial, hormis les constantes déjà
+interprétées, peuvent recevoir des interprétations
+arbitraires sur ce domaine non vide. Cela ne
+modifie la valeur d'aucune formule de la branche.
+
+\begin{lem}\ollabel{lem:truth}
+Pour tout $!A \in \Theta \cup \Xi$ :
+\begin{enumerate}
+  \item si $!A \in \Theta$, alors $\Sat{M}{!A}$ ;
+  \item si $!A \in \Xi$, alors $\Sat/{M}{!A}$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+On raisonne par récurrence sur $\depth{!A}$.
+
+Supposons d'abord $!A$ atomique : soit
+$!A \ident \lfalse$, soit $!A \ident R(t_1, \dots, t_m)$.
+Aucun antécédent $\Pi_n$ de la branche d'échec
+$\Pi_n \Sequent \Lambda_n$ ne contient $\lfalse$,
+car un tel séquent serait un axiome.
+D'autre part, $\Sat{M}{R(t_1, \dots, t_m)}$ équivaut
+à $R(t_1, \dots, t_m) \in \Theta$ par définition
+de~$\Struct{M}$. Ainsi, si $!A \in \Theta$,
+alors $\Sat{M}{!A}$.
+
+Les occurrences atomiques persistent sur la branche :
+si $!A \in \Pi_n$, alors $!A \in \Pi_{n+1}$,
+et si $!A \in \Lambda_n$, alors $!A \in \Lambda_{n+1}$,
+tant qu'un séquent suivant existe.
+Si $!A \in \Theta \cap \Xi$, on aurait donc,
+à un même stade~$n$, $!A \in \Pi_n \cap \Lambda_n$.
+Le séquent $\Pi_n \Sequent \Lambda_n$ serait
+une feuille de clôture, ce qui est exclu.
+On a donc $!A \notin \Theta \cap \Xi$
+pour une formule atomique~$!A$. Si $!A \in \Xi$, alors
+$!A \notin \Theta$, d'où $\Sat/{M}{!A}$
+par l'interprétation des prédicats.
+Le cas de l'absurde, qui est toujours faux,
+satisfait lui aussi cette conclusion.
+
+Pour l'étape de récurrence, supposons les deux
+assertions établies pour toutes les formules
+de profondeur inférieure à celle de~$!A$.
+Nous distinguons les opérateurs principaux.
+
+L'équité garantit qu'une occurrence non atomique
+$!A^i$ présente dans $\Pi_n \Sequent \Lambda_n$
+est finalement réduite. Elle persiste dans
+$\Pi_{n+1} \Sequent \Lambda_{n+1}$ tant qu'elle
+n'est pas choisie. À chaque réduction, l'indice
+minimal \emph{parmi les occurrences non atomiques}
+augmente, puisque les indices introduits sont
+strictement plus grands que tous les anciens.
+Les atomes peuvent garder de petits indices
+sans intervenir dans ce choix. On atteint donc
+un séquent $\Pi_n \Sequent \Lambda_n$ où $!A^i$
+est l'occurrence non atomique d'indice~$i$ minimal,
+puis on la réduit à l'étape $n+1$.
+Ainsi, si $!A \in \Theta$, il existe un stade $n$
+où $\Pi_n = \Pi_n', !A^i$ et où cette occurrence
+est choisie ; si $!A \in \Xi$, il existe de même
+un stade avec $\Lambda_n = \Lambda_n', !A^i$.
+
+\begin{enumerate}
+  \item Supposons $!A \in \Theta$ et
+  $!A \ident !B \land !C$. Pour un certain $n$,
+  $\Pi_n = \Pi_n', (!B \land !C)^i$.
+  Le séquent $\Pi_{n+1} \Sequent \Lambda_{n+1}$
+  est la prémisse de \LeftR{\land}, avec
+  $\Pi_{n+1} = \Pi_n', !B^k, !C^{k+1}$.
+  Donc $!B, !C \in \Theta$.
+  Par hypothèse de récurrence, $\Sat{M}{!B}$
+  et $\Sat{M}{!C}$. Par définition de
+  $\Sat{M}{}$, on obtient $\Sat{M}{!B \land !C}$.
+
+  \item Supposons $!A \in \Xi$ et
+  $!A \ident !B \land !C$. Pour un certain $n$,
+  $\Lambda_n = \Lambda_n', !B \land !C$.
+  Le séquent $\Pi_{n+1} \Sequent \Lambda_{n+1}$
+  est l'une des deux prémisses de \RightR{\land}
+  dont la conclusion est
+  $\Pi_n \Sequent \Lambda'_n, !B \land !C$.
+  Ainsi, $\Lambda_{n+1} = \Lambda_n', !B^k$
+  ou $\Lambda_{n+1} = \Lambda_n', !C^k$.
+  Donc $!B \in \Xi$ ou $!C \in \Xi$.
+  Par hypothèse de récurrence, $\Sat/{M}{!B}$
+  ou $\Sat/{M}{!C}$ ; par définition de
+  $\Sat{M}{}$, il vient $\Sat/{M}{!B \land !C}$.
+
+  \item Les cas $!A \ident \lnot !B$,
+  $!A \ident !B \lor !C$ et $!A \ident !B \lif !C$
+  sont analogues. Leurs détails sont laissés
+  en exercice. Les conditions de vérité
+  à vérifier sont données ci-dessous.
+
+  \item Supposons $!A \in \Theta$ et
+  $!A \ident \lexists[x][!B(x)]$.
+  Pour un certain $n$,
+  $\Pi_n = \Pi_n', \lexists[x][!B(x)]^i$.
+  Le séquent $\Pi_{n+1} \Sequent \Lambda_{n+1}$
+  est la prémisse de \LeftR{\lexists} :
+  $\Pi_{n+1} = \Pi_n', !B(c)^k$
+  pour une certaine constante~$c$.
+  Donc $!B(c) \in \Theta$ et~$c \in C$.
+  Par hypothèse de récurrence, $\Sat{M}{!B(c)}$.
+  Par définition de $\Sat{M}{}$,
+  on obtient $\Sat{M}{\lexists[x][!B(x)]}$.
+
+  \item Supposons $!A \in \Xi$ et
+  $!A \ident \lexists[x][!B(x)]$.
+  Pour un certain $n$,
+  $\Lambda_n = \Lambda_n', \lexists[x][!B(x)]^i$.
+  Chaque réduction de $\lexists[x][!B(x)]$
+  à droite conserve $\lexists[x][!B(x)]$
+  dans la prémisse, avec un nouvel indice.
+  Une branche d'échec contenant
+  $\lexists[x][!B(x)]$ à droite est donc infinie :
+  elle ne peut finir sur une feuille atomique.
+  Par équité, cette occurrence est réduite
+  une infinité de fois.
+
+  Pour tout terme $t \in \Domain{M}$, ses
+  constantes, en nombre fini, appartiennent
+  toutes à~$C_n$ à partir d'un certain stade.
+  Le terme a un rang fini dans l'énumération ;
+  les seuls termes susceptibles de le précéder
+  sont donc en nombre fini. L'historique
+  conservé lors des réindexations assure que
+  ce terme finit par être choisi pour réduire
+  $\lexists[x][!B(x)]$ à droite.
+  Pour tout $t \in \Domain{M}$, il existe ainsi
+  un stade~$n$ où $!B(t) \in \Lambda_n$ ;
+  par conséquent, $!B(t) \in \Xi$.
+  Par hypothèse de récurrence,
+  $\Sat/{M}{!B(t)}$ pour tout $t \in \Domain{M}$.
+  Par définition de $\Sat{M}{}$,
+  on conclut $\Sat/{M}{\lexists[x][!B(x)]}$.
+
+  \item Les cas $!A \ident \lforall[x][!B(x)]$
+  sont analogues ; leurs détails sont laissés
+  en exercice.
+\end{enumerate}
+
+Les cas restants se lisent dans les règles.
+Sur la branche, une négation
+$\lnot !B$ dans $\Theta$ place $!B$ dans $\Xi$,
+et une négation dans $\Xi$ place $!B$ dans $\Theta$.
+Une disjonction $!B \lor !C$ dans $\Theta$
+place au moins l'une de ses composantes dans
+$\Theta$, tandis qu'une disjonction dans $\Xi$
+place les deux dans $\Xi$.
+Une implication $!B \lif !C$ dans $\Theta$
+place $!B$ dans $\Xi$ ou $!C$ dans $\Theta$ ;
+dans $\Xi$, elle place $!B$ dans $\Theta$
+et $!C$ dans $\Xi$.
+L'hypothèse de récurrence donne chaque fois
+la condition de vérité ou de fausseté voulue.
+
+Une universelle $\lforall[x][!B(x)]$ dans
+$\Theta$ est conservée et réduite une infinité
+de fois. Le même argument d'énumération donne
+$!B(t) \in \Theta$ pour tout terme du domaine ;
+elle est donc vraie. Une universelle dans
+$\Xi$ fournit une instance $!B(c) \in \Xi$
+avec $c \in C$ ; elle est donc fausse.
+Les instances ont une profondeur strictement
+inférieure à celle de la formule quantifiée,
+ce qui justifie l'emploi de l'hypothèse de
+récurrence.
+%
+\end{proof}
+
+\begin{cor}\ollabel{cor:complete}
+L'algorithme de recherche pour \Log{G3c} est complet :
+s'il s'arrête sans succès ou ne s'arrête jamais,
+le séquent initial~$\Gamma \Sequent \Delta$
+est invalide et n'a donc pas de preuve.
+\end{cor}
+
+\begin{proof}
+Une telle recherche possède une branche d'échec,
+à partir de laquelle on définit $\Struct{M}$.
+Par le \olref{lem:truth}, pour tout $!A \in \Gamma$,
+on a $\Sat{M}{!A}$, et pour tout $!A \in \Delta$,
+on a $\Sat/{M}{!A}$. En effet, $\Pi_0 = \Gamma$
+et $\Lambda_0 = \Delta$, donc
+$\Gamma \subseteq \Theta$ et $\Delta \subseteq \Xi$.
+Le séquent $\Gamma \Sequent \Delta$ est invalide.
+Par correction de~\Log{G3c},
+$\Gamma \Sequent \Delta$ n'a aucune preuve.
+\end{proof}
+
+\begin{cor}
+Le calcul \Log{G3c} est complet :
+si $\Gamma \Sequent \Delta$ est valide,
+alors $\Log{G3c} \Proves \Gamma \Sequent \Delta$.
+\end{cor}
+
+\begin{proof}
+On raisonne par contraposition. Supposons
+$\Log{G3c} \Proves/ \Gamma \Sequent \Delta$.
+L'algorithme ne peut s'arrêter avec succès,
+puisqu'aucune preuve n'existe ; il s'arrête
+donc sans succès ou poursuit indéfiniment
+la recherche. D'après le \olref{cor:complete},
+$\Gamma \Sequent \Delta$ est invalide.
+\end{proof}
+
+\end{document}

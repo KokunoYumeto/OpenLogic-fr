@@ -1,0 +1,226 @@
+% Partie : théorie de la démonstration
+% Chapitre : déduction naturelle
+% Section : traduction de N2 vers G2
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nat}{tni}
+
+\olsection{Traduction de \Log{N2} vers \Log{G2}}
+
+\begin{prop}\ollabel{prop:N2-to-G2}
+Si $\Log{N2c}\ (\Log{N2i}) \Proves \Gamma \Sequent !A$,
+alors $\Log{G2c}\ (\Log{G2i}) + \Cut \Proves
+\Gamma' \Sequent \Delta$, où $\Gamma'$ est le
+multiensemble de !!{formula}s obtenu en effaçant les
+étiquettes de $\Gamma$. On prend $\Delta = \{!A\}$
+si $!A$ n'est pas~$\lfalse$, et $\Delta = \emptyset$
+sinon. Les variantes entre parenthèses correspondent
+respectivement l'une à l'autre.
+\end{prop}
+
+\begin{proof}
+Procédons par récurrence sur la hauteur de la
+!!{proof}~$\delta$ de $\Gamma \Sequent !A$.
+Si $\delta$ est l'axiome $x:!A \Sequent !A$,
+on prend pour $\pi$ l'axiome correspondant
+$!A \Sequent !A$, ou $\lfalse \Sequent \ $
+lorsque $!A \ident \lfalse$.
+
+Précisons deux opérations employées dans les cas suivants.
+Lorsqu'une traduction de prémisse a un conséquent vide,
+on peut rétablir la formule $\lfalse$ à droite par
+\RightR{\Weakening} si la règle suivante exige une
+prémisse portant cette formule. Inversement, si la
+construction donne l'absurde à droite alors que
+l'énoncé exige un conséquent vide, une coupure avec
+l'axiome $\lfalse \Sequent \ $ retire cette occurrence.
+Ces deux opérations conservent exactement le contexte.
+
+Si $\delta$ se termine par une règle d'inférence~$R$,
+distinguons les cas.
+\begin{enumerate}
+  \item Si $R$ est \Intro{\lif}, de formule principale
+  $!B \lif !C$, et si $x:!B$ apparaît dans le contexte
+  de la prémisse mais pas dans celui de la conclusion,
+  $\delta$ se termine par
+\[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$x:!B, \Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+  L'hypothèse de récurrence donne une
+  !!{proof}~$\pi_1$ de $!B, \Gamma' \Sequent !C$
+  (ou de $!B, \Gamma' \Sequent \ $ si
+  $!C \ident \lfalse$). On obtient $\pi$ par
+  \RightR{\lif}, après une application de
+  \RightR{\Weakening} si $!C \ident \lfalse$.
+  \item Si $R$ est \Intro{\lif}, mais que $x:!B$
+  n'apparaît pas dans le contexte de la prémisse,
+  $\delta$ se termine par
+\[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$\Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+  L'hypothèse de récurrence donne une
+  !!{proof}~$\pi_1$ de $\Gamma' \Sequent !C$,
+  avec rétablissement de l'absurde à droite si
+  nécessaire. On applique \LeftR{\Weakening}
+  avec~$!B$, puis \RightR{\lif}, pour obtenir $\pi$.
+  \item Si $R$ est \Elim{\lif}, $\delta$ se termine par
+\[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$\Gamma_1 \fCenter !B \lif !A$
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \Deduce$\Gamma_2 \fCenter !B$
+  \RightLabel{\Elim{\lif}}
+  \BinaryInf$\Gamma_1, \Gamma_2 \fCenter !A$
+  \DisplayProof
+  \]
+  où $\Gamma = \Gamma_1 \cup \Gamma_2$.
+  L'hypothèse de récurrence donne des !!{proof}s
+  $\pi_1$ de $\Gamma_1' \Sequent !B \lif !A$
+  et $\pi_2$ de $\Gamma_2' \Sequent !B$,
+  après rétablissement de l'absurde à droite dans
+  la prémisse mineure si nécessaire.
+  On construit $\pi$ comme suit :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma_1' \fCenter !B \lif !A$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$\Gamma_2' \fCenter !B$
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\LeftR{\lif}}
+  \BinaryInf$!B \lif !A, \Gamma_2' \fCenter !A$
+  \RightLabel{\Cut}
+  \BinaryInf$\Gamma_1', \Gamma_2' \fCenter !A$
+  \DisplayProof
+  \]
+  Le multiensemble $\Gamma_1' \cup \Gamma_2'$
+  peut différer de $\Gamma' = (\Gamma_1 \cup \Gamma_2)'$.
+  Par exemple, si $\Gamma_1$ et $\Gamma_2$ contiennent
+  tous deux $x:!C$, l'union additive
+  $\Gamma_1' \cup \Gamma_2'$ contient deux copies
+  de $!C$, tandis que $(\Gamma_1 \cup \Gamma_2)'$
+  n'en contient qu'une pour cette même classe.
+  Des applications de \LeftR{\Contraction} retirent
+  exactement les copies dues aux classes communes.
+  Des étiquettes différentes portant une même formule
+  conservent, en revanche, leurs copies distinctes.
+
+  Si la prémisse mineure se termine par l'absurde,
+  l'hypothèse de récurrence appliquée à $\delta_2$
+  donne une !!{proof} de $\Gamma_2' \Sequent \ $ ;
+  l'affaiblissement droit permet alors d'employer
+  l'arbre ci-dessus. Si la conclusion finale est
+  l'absurde, on la retire par la coupure de normalisation
+  du conséquent décrite au début. Ces deux cas sont
+  indépendants : la forme de la conclusion ne
+  détermine pas celle de la prémisse mineure.
+  \item Si $R$ est \FalseCl, $\delta$ se termine par
+\[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$x: \lnot !A, \Gamma \fCenter \lfalse$
+  \RightLabel{\FalseCl}
+  \UnaryInf$\Gamma \fCenter !A$
+  \DisplayProof
+  \]
+  L'hypothèse de récurrence donne, après un affaiblissement
+  gauche si la décharge classique est vacante, une
+  !!{proof} $\pi_1$ de $\lnot !A, \Gamma' \Sequent \ $.
+  On obtient $\pi$ par
+\[
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\RightR{\lnot}}
+  \UnaryInf$\fCenter !A, \lnot !A$
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\lnot !A, \Gamma' \fCenter $
+  \RightLabel{\Cut}
+  \BinaryInf$\Gamma' \fCenter !A$
+  \DisplayProof
+  \]
+  Si la conclusion est l'absurde, on retire à nouveau
+  sa formule du conséquent selon la convention fixée.
+\end{enumerate}
+
+Voici les autres constructions. L'introduction de la
+conjonction, de la disjonction et de l'existentielle
+emploie la règle droite G2 correspondante, après
+rétablissement éventuel d'une prémisse absurde.
+Pour une projection de conjonction, on dérive le
+séquent de projection par la règle gauche à partir
+de l'axiome de la formule projetée, puis on coupe
+avec la preuve traduite de la conjonction.
+Pour l'élimination de la disjonction, on rétablit au besoin par
+affaiblissement les hypothèses déchargées dans les deux branches.
+On applique la règle gauche à conséquent partagé dans \Log{G2i}.
+Dans \Log{G2c}, la règle gauche ordinaire est suivie d'une contraction
+si le conséquent est non vide. On coupe enfin avec la majeure.
+
+L'introduction de la négation emploie sa règle droite
+avec le conséquent vide ; si sa décharge est vacante,
+on ajoute d'abord la formule active par affaiblissement
+gauche. L'élimination de la
+négation emploie sa règle gauche sur la preuve
+de la formule positive, puis une coupure avec la
+preuve de sa négation. L'élimination intuitionniste
+de l'absurde est un affaiblissement droit ; si sa
+conclusion est elle-même l'absurde, on garde
+directement le conséquent vide.
+
+L'introduction universelle et l'introduction
+existentielle emploient les règles droites G2.
+L'élimination universelle coupe la preuve de la
+majeure avec un séquent d'instanciation obtenu
+par la règle gauche universelle et un axiome.
+L'élimination existentielle applique la règle
+gauche à sa branche mineure traduite, puis
+coupe avec la preuve de la majeure ; une décharge
+vacante requiert d'abord l'ajout de l'instance
+à gauche. Les termes restent clos et la fraîcheur
+est conservée par effacement des étiquettes.
+
+Dans chaque construction à plusieurs branches,
+on contracte uniquement les répétitions des classes
+qui étaient communes aux contextes étiquetés.
+Le contexte final est donc exactement le multiensemble
+annoncé. Les conventions de conséquent vide et
+d'absurde singleton se traitent par les deux
+opérations initiales. Seule la traduction de
+\FalseCl{} utilise un séquent à plusieurs formules
+à droite. La traduction d'une !!{proof} de
+\Log{N2i} est donc une !!{proof} de \Log{G2i}
+augmenté de la coupure.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

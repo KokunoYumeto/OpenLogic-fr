@@ -1,0 +1,156 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: halting-problem
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{hal}
+\olsection{Le problème de l'arrêt}
+
+\begin{explain}
+Supposons fixée une énumération des descriptions de machines de
+Turing. Chaque machine reçoit ainsi un \emph{indice}, sa position
+dans l'énumération $M_0$, $M_1$, $M_2$, \dots{} des descriptions.\footnote{Précision éditoriale : nous conservons ici l'indexation à partir de $0$ adoptée pour la machine universelle, afin que chaque entier naturel désigne une machine. La dénombrabilité des machines s'entend à renommage des états et des symboles près.}
+
+Nous savons qu'il existe des fonctions non calculables par machine
+de Turing : l'ensemble des descriptions de telles machines ---
+et donc, à renommage près, celui des machines --- est
+!!{enumerable}, tandis que l'ensemble de toutes les fonctions
+de $\Nat$ vers~$\Nat$ ne l'est pas. Nous pouvons aussi donner
+des exemples particuliers de fonctions non calculables.
+La fonction de l'arrêt en est un.
+\end{explain}
+
+\begin{defn}[Fonction de l'arrêt]
+La \emph{fonction de l'arrêt}~$h$ est définie par
+\[
+h(e,n) =
+\begin{cases}
+  \text{0} & \text{si la machine~$M_e$ ne s'arrête pas sur l'entrée~$n$} \\
+  \text{1} & \text{si la machine~$M_e$ s'arrête sur l'entrée~$n$}
+\end{cases}
+\]
+\end{defn}
+
+\begin{defn}[Problème de l'arrêt]
+Le \emph{problème de l'arrêt} consiste à déterminer, pour tous
+$e$ et~$n$, si la machine de Turing~$M_e$ s'arrête sur une entrée
+de~$n$ symboles $\TMstroke$.
+\end{defn}
+
+\begin{explain}
+Nous montrerons que~$h$ n'est pas calculable par machine de Turing
+en prouvant d'abord la non-calculabilité d'une fonction apparentée,
+notée~$s$. La preuve utilise deux faits déjà établis : tout calcul
+effectuable par une machine de Turing peut l'être par une machine
+disciplinée (\olref[mac][dis]{sec}), et deux machines peuvent
+être raccordées pour n'en former qu'une (\olref[mac][cmb]{sec}).
+\end{explain}
+
+\begin{defn}
+La fonction~$s$ est définie par
+\[
+s(e) =
+\begin{cases}
+  \text{0} & \text{si la machine~$M_e$ ne s'arrête pas sur l'entrée~$e$} \\
+  \text{1} & \text{si la machine~$M_e$ s'arrête sur l'entrée~$e$}
+\end{cases}
+\]
+\end{defn}
+
+\begin{lem}
+La fonction~$s$ n'est pas calculable par machine de Turing.
+\end{lem}
+
+\begin{proof}
+Supposons au contraire que~$s$ soit calculable par une machine
+de Turing~$S$. Nous pouvons supposer sans perte de généralité
+que~$S$ est disciplinée : à l'arrêt, sa tête lit la première
+case. Raccordons~$S$ à une machine~$J$, sur un alphabet commun, qui s'arrête si elle
+reçoit l'entrée~$0$, c'est-à-dire si, dans son état initial,
+elle lit~$\TMblank$ dans la case située immédiatement à droite
+du marqueur de début. Sur toute autre entrée, $J$ avance sans
+fin vers la droite et ne s'arrête jamais. La machine raccordée
+$S \concat J$ est une machine de Turing; elle apparaît donc dans
+l'énumération sous un certain indice~$e$ : c'est~$M_e$.
+Lançons~$M_e$ sur une entrée de~$e$ symboles $\TMstroke$.
+Deux cas sont possibles.
+\begin{enumerate}
+\item Supposons que~$M_e$ s'arrête sur cette entrée. Alors
+  $s(e)=1$. Lancée sur~$e$, la machine~$S$ s'arrête donc avec
+  un seul~$\TMstroke$ en sortie. La machine~$J$ démarre alors
+  sur un ruban portant ce symbole et ne s'arrête pas. Or~$M_e$
+  est précisément $S \concat J$ : elle devrait exécuter~$S$,
+  puis~$J$, et donc avancer indéfiniment vers la droite. Elle
+  ne peut donc pas s'arrêter sur l'entrée de~$e$ symboles
+  $\TMstroke$, contrairement à notre supposition.
+
+\item Supposons maintenant que~$M_e$ ne s'arrête pas sur cette
+  entrée. Alors $s(e)=0$ et~$S$, lancée sur~$e$, s'arrête avec
+  la sortie vide qui représente~$0$. Lisant la case~$1$ blanche, $J$ s'arrête
+  immédiatement. La machine~$M_e=S \concat J$ doit donc elle
+  aussi s'arrêter sur l'entrée de~$e$ symboles $\TMstroke$,
+  ce qui contredit à nouveau notre supposition.
+\end{enumerate}
+Les deux cas sont impossibles. Aucune machine~$S$ ne calcule
+donc~$s$.
+\end{proof}
+
+\begin{thm}[Insolubilité du problème de l'arrêt]
+\ollabel{thm:halting-problem}
+Le problème de l'arrêt est insoluble : la fonction~$h$ n'est
+pas calculable par machine de Turing.
+\end{thm}
+
+\begin{proof}
+Supposons que~$h$ soit calculable par une machine de Turing~$H$.
+Nous pourrions construire une machine calculant~$s$ : elle ferait
+d'abord une copie de l'entrée, séparée de l'original par un
+symbole~$\TMblank$, reviendrait au début du ruban puis
+exécuterait~$H$. Une machine peut effectuer la copie
+(voir l'\cref{tur:mac:dis:prob:copier}); si~$H$ existait,
+nous pourrions la raccorder à cette machine copieuse pour
+décider si~$M_e$ s'arrête sur l'entrée~$e$, autrement dit
+pour calculer~$s$. Nous avons démontré que c'est impossible.
+La fonction~$h$ n'est donc pas calculable par machine de Turing.
+\end{proof}
+
+\begin{prob}
+Le problème de l'arrêt sur trois traits, ou 3-Halt,
+demande une procédure de décision qui détermine si une machine
+de Turing arbitraire s'arrête sur une entrée de trois symboles
+$\TMstroke$ inscrits sur un ruban autrement blanc. Démontrez
+que ce problème est insoluble.
+\end{prob}
+
+\begin{prob}
+Montrez que si le problème de l'arrêt était soluble pour les
+couples machine--entrée $M_e,n$ avec $e\neq n$, il le serait
+aussi pour les cas où $e=n$.
+\end{prob}
+
+\begin{prob}
+Nous avons montré que le problème de l'arrêt est insoluble
+lorsqu'une entrée~$e$ désigne une machine~$M_e$ au moyen d'une
+énumération. Qu'en est-il si l'on donne directement en entrée
+la description d'une machine de Turing, telle qu'elle a été
+présentée dans la \olref[tur][und][enu]{sec} ? Une machine de Turing
+pourrait-elle décider le problème de l'arrêt en recevant les
+descriptions plutôt que les indices ? Expliquez pourquoi.
+\end{prob}
+
+\begin{prob}
+Montrez que la fonction \emph{partielle}~$s'$ définie par
+\[
+s'(e) =
+\begin{cases}
+  \text{1} & \text{si la machine~$M_e$ s'arrête sur l'entrée~$e$}\\
+  \text{non définie} & \text{si la machine~$M_e$ ne s'arrête pas sur l'entrée~$e$}
+\end{cases}
+\]
+\emph{est} calculable par machine de Turing.
+\end{prob}
+
+\end{document}

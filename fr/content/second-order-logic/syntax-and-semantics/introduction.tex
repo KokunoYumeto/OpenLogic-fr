@@ -1,0 +1,103 @@
+% Part: second-order-logic
+% Chapter: syntax-and-semantics
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{syn}{int}
+
+\olsection{Introduction}
+
+En logique du premier ordre, nous combinons les
+symboles non logiques d'un langage donné, à savoir
+ses !!{constant}s, ses !!{function}s et ses
+!!{predicate}s, avec les symboles logiques pour
+exprimer des propriétés des !!{structure}s du
+premier ordre. La notion de satisfaction permet de
+le faire : elle met en relation une
+!!{structure}~$\Struct{M}$, une assignation de
+!!{variable}s~$s$ et une !!{formula}~$!A$.
+On a $\Sat{M}{!A}[s]$ si et seulement si ce
+qu'exprime~$!A$ est vrai lorsque ses
+!!{constant}s, !!{function}s et !!{predicate}s
+reçoivent l'interprétation donnée par~$\Struct{M}$,
+et ses !!{variable}s libres celle donnée par~$s$.
+L'interprétation de l'!!{identity}~$\eq$ est
+fixée par la définition de $\Sat{M}{!A}[s]$,
+tout comme celle de~$\lforall$ et de~$\lexists$.
+L'!!{identity} est toujours interprétée par la
+relation d'identité sur le !!{domain}~$\Domain{M}$
+de la structure, et les quantificateurs parcourent
+toujours tout ce !!{domain}. Mais la quantification
+ne porte, de manière décisive, que sur les éléments
+du !!{domain}; seules des !!{variable}s d'objet
+peuvent donc suivre un quantificateur.
+
+En logique du second ordre, on étend le langage
+et la définition de la satisfaction pour inclure
+des variables de fonction et de prédicat, libres
+ou liées, ainsi que leur quantification. Ces
+variables sont aux !!{function}s et aux
+!!{predicate}s ce que les variables d'objet sont
+aux !!{constant}s. Elles jouent un rôle analogue
+dans la formation des termes et des !!{formula}s
+du second ordre, et l'on traite leur quantification
+de façon analogue. Dans la \emph{sémantique
+standard}, les quantificateurs du second ordre
+parcourent tous les objets possibles du type voulu :
+les fonctions à $n$ arguments de $\Domain{M}$
+dans~$\Domain{M}$ pour les variables de fonction,
+et les relations $n$-aires sur $\Domain{M}$ pour
+les variables de prédicat.
+
+Par exemple, la !!{formula}
+\[
+\lforall[\Obj{v_0}][(\Obj{P^1_0}(\Obj{v_0})
+\lor\lnot\Obj{P^1_0}(\Obj{v_0}))]
+\]
+appartient aussi bien à la logique du premier
+ordre qu'à celle du second ordre. Dans cette
+dernière, nous pouvons également considérer
+\[
+\lforall[\Obj{V^1_0}][\lforall[\Obj{v_0}]
+[(\Obj{V^1_0}(\Obj{v_0})\lor
+\lnot\Obj{V^1_0}(\Obj{v_0}))]]
+\]
+et
+\[
+\lexists[\Obj{V^1_0}][\lforall[\Obj{v_0}]
+[(\Obj{V^1_0}(\Obj{v_0})\lor
+\lnot\Obj{V^1_0}(\Obj{v_0}))]].
+\]
+Ces deux dernières !!{formula}s n'ont aucune
+!!{variable} libre : ce sont donc des
+!!{sentence}s du second ordre. Ici,
+$\Obj{V^1_0}$ est une variable de prédicat
+unaire du second ordre. Ses interprétations
+possibles sont les mêmes que celles d'un
+!!{predicate} unaire tel que~$\Obj{P^1_0}$,
+c'est-à-dire les sous-ensembles de~$\Domain{M}$.
+Quantifier sur $\Obj{V^1_0}$ revient donc à
+affirmer que
+$\lforall[\Obj{v_0}]
+[(\Obj{V^1_0}(\Obj{v_0})\lor
+\lnot\Obj{V^1_0}(\Obj{v_0}))]$
+vaut pour toutes les façons d'attribuer à
+$\Obj{V^1_0}$ un sous-ensemble de~$\Domain{M}$,
+ou pour au moins l'une d'elles. Puisque tout
+ensemble contient ou ne contient pas un objet
+donné, les deux !!{sentence}s sont vrais dans
+toute !!{structure}.
+
+\begin{editorial}
+Dans la dernière occurrence de la !!{formula}
+quantifiée, la source écrit une fois
+$\Obj v_0$ et une fois $v_0$ pour la même
+!!{variable} d'objet. Nous écrivons
+$\Obj{v_0}$ dans les deux cas, comme dans les
+!!{formula}s affichées juste avant.
+\end{editorial}
+
+\end{document}

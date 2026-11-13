@@ -1,0 +1,45 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: pr-functions-computable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{cmp}
+\olsection{Les fonctions récursives primitives sont calculables}
+
+Supposons qu'une fonction~$h$ soit définie par récurrence primitive :
+\begin{eqnarray*}
+h(\vec x, 0)     & = & f(\vec x) \\
+h(\vec x, y + 1) & = & g(\vec x, y, h(\vec x, y))
+\end{eqnarray*}
+et que les fonctions $f$ et $g$ soient calculables. (Nous abrégeons
+par~$\vec x$ la suite $x_0,\dots,x_{k-1}$.) Alors
+$h(\vec x,0)$ est calculable : ce n'est autre que $f(\vec x)$,
+que nous supposons calculable. On peut ensuite calculer
+$h(\vec x,1)$ puisque $1=0+1$ et donc
+\begin{align*}
+ h(\vec x, 1) & = g(\vec x, 0, h(\vec x, 0)) =  g(\vec x, 0, f(\vec x)).
+\intertext{En poursuivant de la même façon, on calcule}
+h(\vec x, 2) & = g(\vec x, 1, h(\vec x, 1)) = g(\vec x, 1, g(\vec x, 0, f(\vec x)))\\
+h(\vec x, 3) & = g(\vec x, 2, h(\vec x, 2)) = g(\vec x, 2, g(\vec x, 1, g(\vec x, 0, f(\vec x))))\\
+h(\vec x, 4) & = g(\vec x, 3, h(\vec x, 3)) = g(\vec x, 3, g(\vec x, 2, g(\vec x, 1, g(\vec x, 0, f(\vec x)))))\\
+& \vdots
+\end{align*}
+Pour calculer $h(\vec x,y)$ en général, il suffit donc de
+calculer successivement $h(\vec x,0)$, $h(\vec x,1)$,
+$\dots$, jusqu'à $h(\vec x,y)$.
+
+Ainsi, si les fonctions $f$ et~$g$ sont calculables, une
+définition par récurrence primitive fournit une nouvelle
+fonction calculable. La composition de fonctions calculables
+fournit elle aussi une fonction calculable, lorsque $f$ et
+les fonctions $g_i$ le sont.
+
+Les fonctions de base $\Zero$, $\Succ$ et $\Proj{n}{i}$
+sont calculables. Puisque la composition et la récurrence
+primitive préservent la calculabilité, toute fonction récursive
+primitive est donc calculable.
+
+\end{document}

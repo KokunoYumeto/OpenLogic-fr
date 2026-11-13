@@ -1,0 +1,101 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: truth-values
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{tvr}
+\olsection{Valeurs de vérité et relations}
+
+Dans le lambda-calcul pur, on peut coder
+les valeurs de vérité par
+\begin{align*}
+  \fn{true} & \ident \lambd[x][\lambd[y][x]]\\
+  \fn{false} & \ident \lambd[x][\lambd[y][y]].
+\end{align*}
+
+Ces valeurs sont des \emph{sélecteurs} :
+elles reçoivent deux arguments et
+renvoient l'un d'eux. Le terme
+$\fn{true}$ sélectionne le premier,
+$\fn{false}$ le second. Ainsi,
+$\fn{true}\,M N\bred M$ et
+$\fn{false}\,M N\bred N$.
+
+\begin{defn}
+Une relation $R\subseteq\Nat^k$ est
+\emph{$\lambda$-définissable} s'il existe
+un lambda-terme~$T_R$ tel que
+\begin{align*}
+  T_R\,\num{n_1}\dots\num{n_k}
+    & \bred \fn{true}
+  \intertext{lorsque $R(n_1,\dots,n_k)$
+    est vraie, et}
+  T_R\,\num{n_1}\dots\num{n_k}
+    & \bred \fn{false}
+\end{align*}
+sinon.
+\end{defn}
+
+Par exemple, la relation $\{0\}$,
+vraie exactement pour~$0$, est
+$\lambda$-définie par le terme
+\[
+  \fn{IsZero} \ident
+  \lambd[n][n (\lambd[x][\fn{false}])\,\fn{true}].
+\]
+En effet, un numéral de Church est un
+itérateur : nous partons de $\fn{true}$
+et chaque itération renvoie $\fn{false}$,
+quel que soit le résultat précédent.
+Si $n=0$, aucune itération n'a lieu et
+le résultat est $\fn{true}$; si $n>0$,
+le résultat est $\fn{false}$.
+
+Avec ce codage, nous pouvons définir
+des fonctions de vérité. Voici la
+négation et la conjonction :
+\begin{align*}
+  \fn{Not} & \ident
+    \lambd[x][x\,\fn{false}\,\fn{true}]\\
+  \fn{And} & \ident
+    \lambd[x][\lambd[y][xy\,\fn{false}]].
+\end{align*}
+La fonction $\fn{Not}$ renvoie
+$\fn{true}$ sur l'entrée $\fn{false}$,
+et $\fn{false}$ sur l'entrée $\fn{true}$.
+La fonction $\fn{And}$ reçoit deux
+valeurs de vérité $x$ et~$y$, et doit
+renvoyer $\fn{true}$ exactement lorsque
+les deux sont $\fn{true}$. Comme $x$
+est un sélecteur, l'application
+$xy\,\fn{false}$ renvoie~$y$ si
+$x=\fn{true}$, et $\fn{false}$ si
+$x=\fn{false}$. C'est bien la
+conjonction voulue.
+
+Nous supposons ici que les arguments de
+$\fn{And}$ sont des valeurs de vérité.
+Si l'on lui passe d'autres termes,
+le résultat, c'est-à-dire sa forme
+normale lorsqu'elle existe, peut ne
+pas être une valeur de vérité.
+
+\begin{prob}
+Définir $\fn{Or}$ et $\fn{Xor}$,
+qui représentent respectivement la
+disjonction inclusive et la disjonction
+exclusive avec ce codage des valeurs
+de vérité en lambda-termes.
+\end{prob}
+
+Pour représenter une relation à $k$ arguments, on applique
+son terme représentant aux $k$ numéraux de l'entrée.
+Par exemple, $\fn{IsZero}$ reçoit un seul numéral.
+Le terme $\fn{IsZero}\,\num{0}$ se réduit à $\fn{true}$.
+Pour $n>0$, le terme $\fn{IsZero}\,\num{n}$ se réduit à
+$\fn{false}$.
+
+\end{document}

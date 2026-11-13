@@ -1,0 +1,119 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: normal-form
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{nfm}
+\olsection{Le théorème de forme normale}
+
+Supposons que nous puissions décrire les définitions des
+fonctions calculables et vérifier si un enregistrement
+proposé constitue bien le relevé complet du calcul d'une
+de ces fonctions sur une entrée donnée. Nous pouvons
+alors déterminer, quel que soit le modèle de calcul
+usuel considéré, la valeur d'une fonction calculable~$f$
+sur une entrée~$x$ en procédant ainsi :
+\begin{enumerate}
+  \item Parcourir toutes les descriptions possibles
+  d'enregistrements de calcul.
+  \item Vérifier si l'un de ces enregistrements décrit
+  le calcul de~$f(x)$.
+  \item Si un enregistrement correct est trouvé,
+  en extraire la valeur de~$f(x)$.
+\end{enumerate}
+Le théorème de forme normale de Kleene donne un
+fondement rigoureux à cette procédure.
+
+\begin{thm}[Théorème de forme normale de Kleene]
+\ollabel{thm:normal-form}
+Il existe une relation récursive primitive~$T(e,x,s)$
+et une fonction récursive primitive~$U(s)$ ayant la
+propriété suivante : pour toute fonction partielle
+calculable \emph{unaire}~$f$, il existe un entier~$e$ tel que
+\[
+f(x) \simeq U(\umin{s}{T(e, x, s)})
+\]
+pour tout~$x$. Les fonctions de plusieurs arguments
+se traitent en codant leurs tuples d'arguments ou
+en adaptant~$T$ à chaque arité.\footnote{Précisions éditoriales : nous explicitons l'arité unaire de la formule à un argument de la source. Les affirmations sur les modèles de calcul sont comprises dans le cadre des modèles effectifs usuels et d'un codage approprié.}
+\end{thm}
+
+\begin{proof}[Esquisse de démonstration]
+Dans un modèle usuel de calcul, on peut définir
+rigoureusement une description de la fonction
+calculable~$f$ et coder cette description par un
+entier naturel~$e$. On peut également définir une
+« suite de calcul » qui enregistre le calcul de la
+fonction d'indice~$e$ sur l'entrée~$x$, puis coder
+cette suite par un entier~$s$. On choisit les codages
+de telle sorte que
+\begin{enumerate}
+  \item la relation $T(e,x,s)$, vraie si et seulement
+  si $s$ code la suite complète d'un calcul terminé de la fonction
+  d'indice~$e$ sur l'entrée~$x$, et
+  \item la fonction $U(s)$, qui associe à une suite
+  de calcul codée par~$s$ le résultat final
+  de ce calcul,
+\end{enumerate}
+soient toutes deux calculables. Avec un codage
+approprié, la relation~$T$ et la fonction~$U$
+sont même récursives primitives.
+\end{proof}
+
+\begin{explain}
+Pour démontrer rigoureusement le théorème de forme
+normale, il faudrait fixer un modèle de calcul,
+coder en détail les descriptions de fonctions
+calculables et les suites de calcul, puis vérifier
+que la relation~$T$ et la fonction~$U$ sont
+récursives primitives. Dans la plupart des
+applications, il suffit que $T$ et~$U$ soient
+calculables et que $U$ soit totale. On peut, par convention, lui donner la valeur $0$ sur les entiers qui ne codent pas un calcul terminé. Cette extension ne change aucune valeur obtenue à partir d'un témoin de $T$.
+
+On peut retenir la preuve sous la forme suivante :
+$\umin{s}{T(e, x, s)}$ cherche une suite de calcul
+de la fonction d'indice~$e$ sur l'entrée~$x$,
+et $U$ renvoie le résultat de ce calcul lorsqu'une
+telle suite est trouvée.
+\end{explain}
+
+Lorsque le modèle de calcul est celui des fonctions
+récursives partielles, employé à l'origine par
+Kleene, le théorème montre qu'une seule application
+de la recherche non bornée, c'est-à-dire d'un
+opérateur $\umin{y}{f(\vec x,y)}$, suffit à définir
+toute fonction récursive partielle. C'est en ce sens
+qu'une telle fonction possède une forme normale.
+
+$T$ et $U$ permettent de définir l'énumération
+$\cfind{0}$, $\cfind{1}$, $\cfind{2}$, \dots.
+Désormais, nous supposerons fixé un choix approprié
+de $T$ et de~$U$ pour le codage usuel des programmes, et nous prendrons l'équation
+\[
+\cfind{e}(x) \simeq U(\umin{s}{T(e,x,s)})
+\]
+comme \emph{définition} de $\cfind{e}$.
+
+Voici encore un fait utile :
+
+\begin{thm}
+Dans le codage usuel des programmes, toute fonction partielle calculable possède une
+infinité d'indices.
+\end{thm}
+
+Cela se comprend intuitivement. Partant d'une
+description d'une fonction calculable, on peut
+en produire une autre qui calcule la même
+fonction, c'est-à-dire les mêmes couples
+entrée-résultat, après avoir effectué une
+opération sans effet sur le résultat, par exemple
+tester si $0=0$ ou compter jusqu'à~$5$.
+La nouvelle description possède un indice
+différent de l'originale. Les deux indices
+désignent la même fonction calculée de deux
+manières légèrement différentes. En ajoutant un nombre arbitraire de telles opérations inutiles, on obtient une infinité de descriptions distinctes, donc d'indices distincts dans ce codage.
+
+\end{document}

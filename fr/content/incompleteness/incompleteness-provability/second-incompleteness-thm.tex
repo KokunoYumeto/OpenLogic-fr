@@ -1,0 +1,176 @@
+% Part: incompleteness
+% Chapter: incompleteness-provability
+% Section: second-incompleteness-thm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{2in}
+
+\olsection{Le second théorème d'incomplétude}
+
+Comment exprimer l'affirmation que $\Th{PA}$ ne
+démontre pas sa propre cohérence? Dire que $\Th{PA}$
+est incohérente revient à dire qu'elle démontre
+une contradiction, par exemple
+$\Th{PA}\Proves\eq[0][1]$. Nous prendrons pour
+énoncé de cohérence $\OCon[\Th{PA}]$ l'!!{sentence}
+$\lnot\OProv[\Th{PA}](\gn{\lfalse})$.
+Ces deux témoins de contradiction donnent des énoncés de
+cohérence équivalents dans~$\Th{PA}$. La théorie démontre
+$\eq[0][1]\lif\lfalse$, puisque $\Th{Q}$ démontre que les
+numéraux de zéro et de un sont distincts, et elle démontre
+$\lfalse\lif\eq[0][1]$ par logique. En appliquant P1,
+puis P2, à ces deux implications, elle obtient
+
+\[
+\OProv[\Th{PA}](\gn{\eq[0][1]})
+\liff\OProv[\Th{PA}](\gn{\lfalse}).
+\]
+Leurs négations sont donc également équivalentes dans la
+théorie. Le théorème suivant exprime le résultat recherché.
+
+\begin{thm}
+\ollabel{thm:second-incompleteness}
+Si $\Th{PA}$ est cohérente, elle ne démontre pas
+$\OCon[\Th{PA}]$.
+\end{thm}
+
+Il importe de noter que le théorème dépend de la
+représentation particulière de
+$\OCon[\Th{PA}]$, c'est-à-dire de celle de
+$\OProv[\Th{PA}](y)$. Nous n'utiliserons que les
+trois conditions de dérivabilité satisfaites par
+cette dernière. Le résultat s'étend donc à toute
+théorie cohérente étendant~$\Th{Q}$, dotée d'un prédicat de dérivabilité qui
+satisfait ces conditions.
+
+Il est instructif de suivre l'esquisse de
+l'argument donnée par Gödel : le théorème en est
+la conclusion frappante. Soit $!G_\Th{PA}$
+l'!!{sentence} de Gödel construit dans la preuve du
+\olref[1in]{thm:first-incompleteness}. Nous avons
+montré : « Si $\Th{PA}$ est cohérente, elle ne
+démontre pas $!G_\Th{PA}$. » En formalisant cette
+implication \emph{dans} $\Th{PA}$, nous obtenons
+une preuve de
+\[
+\OCon[\Th{PA}] \lif
+\lnot\OProv[\Th{PA}](\gn{!G_\Th{PA}}).
+\]
+Supposons maintenant que $\Th{PA}$ démontre
+$\OCon[\Th{PA}]$. Elle démontre alors
+$\lnot\OProv[\Th{PA}](\gn{!G_\Th{PA}})$.
+Mais, puisque $!G_\Th{PA}$ est un !!{sentence}
+de Gödel, cette dernière formule équivaut à
+$!G_\Th{PA}$. Ainsi, $\Th{PA}$ démontre
+$!G_\Th{PA}$.
+
+Or, si $\Th{PA}$ est cohérente, nous savons
+qu'elle ne démontre pas $!G_\Th{PA}$!{} Elle ne
+peut donc pas non plus démontrer
+$\OCon[\Th{PA}]$.
+
+Précisons l'argument. Prenons pour $!G_\Th{PA}$
+l'!!{sentence} de Gödel de~$\Th{PA}$ et utilisons
+les conditions de dérivabilité P1--P3 afin de
+montrer que $\Th{PA}$ démontre
+$\OCon[\Th{PA}]\lif !G_\Th{PA}$. Puisque
+$\Th{PA}$ ne démontre pas $!G_\Th{PA}$ lorsqu'elle
+est cohérente, elle ne démontre pas non plus
+$\OCon[\Th{PA}]$. Voici les étapes de la preuve,
+effectuées dans~$\Th{PA}$. Nous omettons les indices
+$\Th{PA}$ pour alléger les notations et écrivons
+$\OCon\ident\lnot\OProv(\gn{\lfalse})$.
+\begin{align}
+& !G \liff \lnot \OProv(\gn{!G}) \ollabel{G2-1}\\
+& \qquad\text{$!G$ est une phrase de Gödel}\notag \\
+& !G \lif \lnot \OProv(\gn{!G}) \ollabel{G2-2}\\
+& \qquad\text{par \olref{G2-1}} \notag\\
+& !G \lif
+  (\OProv(\gn{!G}) \lif \lfalse) \ollabel{G2-3}\\
+& \qquad\text{par \olref{G2-2} et la logique}\notag\\
+& \OProv(\gn{
+    !G \lif
+    (\OProv(\gn{!G}) \lif \lfalse)
+  }) \ollabel{G2-4}\\
+& \qquad\text{par \olref{G2-3} et P1} \notag\\
+& \OProv(\gn{!G}) \lif
+  \OProv(\gn{
+    (\OProv(\gn{!G}) \lif \lfalse)
+    }) \ollabel{G2-5}\\
+& \qquad\text{par \olref{G2-4} et P2} \notag\\
+& \OProv(\gn{!G}) \lif (\OProv(\gn{\OProv(\gn{!G})}) \lif \OProv(\gn{\lfalse})) \ollabel{G2-6}\\
+& \qquad\text{par \olref{G2-5}, P2 et la logique} \notag\\
+& \OProv(\gn{!G}) \lif
+  \OProv(\gn{\OProv(\gn{!G})}) \ollabel{G2-7}\\
+& \qquad\text{par P3} \notag\\
+& \OProv(\gn{!G}) \lif \OProv(\gn{\lfalse}) \ollabel{G2-8}\\
+& \qquad\text{par \olref{G2-6}, \olref{G2-7} et la logique}\notag\\
+& \OCon \lif \lnot \OProv(\gn{!G}) \ollabel{G2-9}\\
+& \qquad\text{par contraposition de \olref{G2-8}}\notag \\
+& \OCon \lif !G \notag\\
+& \qquad\text{par \olref{G2-1}, \olref{G2-9} et la logique}\notag
+\end{align}
+Les recours à la logique ci-dessus n'emploient que
+des faits élémentaires de logique propositionnelle.
+Par exemple, \olref{G2-3} utilise
+$\Proves\lnot !A\liff(!A\lif\lfalse)$, tandis
+que \olref{G2-8} utilise
+$!A\lif(!B\lif !C),\ !A\lif !B\Proves !A\lif !C$.
+L'emploi de P2 en \olref{G2-5} et \olref{G2-6}
+repose sur des instances de
+$\OProv(\gn{!A\lif !B})\lif
+(\OProv(\gn{!A})\lif\OProv(\gn{!B}))$.
+Dans la première, $!A\ident !G$ et
+$!B\ident\OProv(\gn{!G})\lif\lfalse$;
+dans la seconde, $!A\ident\OProv(\gn{!G})$
+et $!B\ident\lfalse$.
+
+La version plus générale du second théorème
+d'incomplétude est la suivante.
+
+\begin{thm}
+\ollabel{thm:second-incompleteness-gen}
+Soit $\Th{T}$ une théorie cohérente, axiomatisée
+et étendant~$\Th{Q}$, et soit
+$\OProv[\Th{T}](y)$ une !!{formula} sans variable libre autre que~$y$, satisfaisant
+les conditions de dérivabilité P1--P3 pour~$\Th{T}$.
+Alors $\Th{T}$ ne démontre pas
+$\OCon[\Th{T}]$, où
+$\OCon[\Th{T}]\ident
+\lnot\OProv[\Th{T}](\gn{\lfalse})$.
+\end{thm}
+
+\begin{prob}
+Montrez que $\Th{PA}$ démontre
+$!G_{\Th{PA}}\lif\OCon[\Th{PA}]$.
+\end{prob}
+
+\begin{digress}
+La leçon à retenir est qu'aucune théorie cohérente
+« raisonnable » des mathématiques ne peut démontrer
+son propre énoncé de cohérence. Supposons qu'une
+telle théorie mathématique cohérente~$\Th{T}$ contienne $\Th{Q}$
+ainsi que les raisonnements « finitaires » de
+Hilbert, quels qu'ils soient. La théorie entière
+$\Th{T}$ ne peut démontrer son propre énoncé de
+cohérence; à plus forte raison, sa partie finitaire
+ne peut pas non plus le démontrer. En ce sens,
+il ne peut exister de preuve finitaire de la
+cohérence de « toutes les mathématiques ».
+
+Le mot « finitaire » laisse une certaine marge
+d'interprétation. Dans son article de 1931, Gödel
+admettait que ce que nous pourrions juger
+« finitaire » dépasse peut-être les mathématiques
+que Hilbert souhaitait formaliser. Mais Gödel se
+montrait charitable : de nos jours, il est difficile
+de voir ce qui pourrait raisonnablement être dit
+finitaire sans être formalisable, par exemple,
+dans~$\Th{ZFC}$, la théorie des ensembles de
+Zermelo--Fraenkel avec l'axiome du choix.
+\end{digress}
+
+\end{document}

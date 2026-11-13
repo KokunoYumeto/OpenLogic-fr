@@ -1,0 +1,100 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: variants
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{var}
+\olsection{Variantes des machines de Turing}
+
+Il existe de nombreuses façons de définir les machines de Turing;
+la nôtre n'en est qu'une. À certains égards, elle est plus
+permissive que d'autres. Nous autorisons tout alphabet fini,
+alors qu'une définition plus restrictive pourrait ne permettre
+que deux symboles de ruban, $\TMstroke$ et~$\TMblank$.
+Nous permettons à la machine d'écrire un symbole et de déplacer
+sa tête au cours d'une même étape; d'autres définitions lui
+permettent soit d'écrire, soit de se déplacer. Nous admettons
+aussi qu'elle écrive sans déplacer la tête, tandis que
+d'autres omettent le mouvement~$\TMstay$.
+
+À d'autres égards, notre définition est plus restrictive.
+Nous avons supposé que le ruban n'est infini que dans une
+direction; d'autres définitions le rendent infini à gauche
+comme à droite. On peut même autoriser plusieurs rubans
+distincts, voire une grille infinie de cases. Nous représentons
+les instructions de la machine par une fonction de transition;
+d'autres définitions emploient une relation de transition,
+qui peut offrir plusieurs instructions dans une même situation.
+
+Cette dernière variante est particulièrement intéressante.
+Dans notre définition, lorsque la machine est dans l'état~$q$
+et lit le symbole~$\sigma$, la valeur
+$\delta(q,\sigma)$ détermine le nouveau symbole, le nouvel
+état et la position suivante de la tête. Mais si les
+instructions forment une relation entre les paires
+état-symbole courantes $\tuple{q,\sigma}$ et les triplets
+nouvel état-symbole-direction
+$\tuple{q',\sigma',D}$, l'action de la machine n'est
+plus nécessairement unique : la relation peut contenir
+à la fois $\tuple{q,\sigma,q',\sigma',D}$ et
+$\tuple{q,\sigma,q'',\sigma'',D'}$.
+Nous obtenons alors une machine de Turing
+\emph{non déterministe}. De telles machines jouent
+un rôle important en théorie de la complexité
+algorithmique.
+
+Les conventions d'arrêt varient également. Selon la nôtre,
+la machine s'arrête lorsque sa fonction de transition n'est
+pas définie; d'autres exigent qu'elle entre dans un état
+d'arrêt désigné. Nous avons expliqué dans la
+\olref[hal]{sec} que cette exigence ne change pas ce que
+les machines de Turing peuvent calculer. Puisque nos
+rubans ne sont infinis que dans une direction, une machine
+peut recevoir une instruction qu'elle ne saurait exécuter
+littéralement : déplacer sa tête vers la gauche alors qu'elle
+lit la case la plus à gauche. Notre définition la laisse
+sur place au lieu de la faire « tomber » hors du ruban,
+mais on pourrait décider que la machine s'arrête alors.
+Cette convention est également équivalente. Une première
+idée, pour simuler une machine qui s'arrête lorsqu'elle
+tente de quitter la case~$0$ vers la gauche, serait de
+supprimer toute transition
+$\delta(q,\TMendtape)=
+\tuple{q',\sigma,\TMleft}$ : elle s'arrêterait alors
+au lieu de tenter ce déplacement sur~$\TMendtape$.\footnote{
+Précision éditoriale : nous explicitons aussi le cas où la case $0$ est écrasée, omis dans la réserve source. Cela ne suffit pas \emph{tout à fait} : rien n'interdit d'écrire
+puis de lire~$\TMendtape$ dans une case autre que~$0$
+(voir l'\olref[una]{ex:mover}), ni d'écraser le contenu
+de la case~$0$. Une simulation correcte peut réserver
+un marqueur distinct~$\TMendtape'$ à la case~$0$,
+coder séparément le contenu de cette case et utiliser
+un autre symbole pour les autres occurrences du marqueur.}
+
+Les nombres, et donc les entrées et sorties des fonctions
+calculées, peuvent aussi être représentés de différentes
+manières. Nous employons l'écriture unaire, mais une
+écriture binaire est également possible; elle nécessite
+deux symboles en plus de~$\TMblank$ et de~$\TMendtape$.
+
+Voici le fait remarquable : aucune de ces variantes
+ne change l'ensemble des fonctions calculables par une
+machine de Turing ; les ressources de temps ou d'espace peuvent, elles, changer. \emph{Une fonction calculable selon
+l'une de ces définitions l'est aussi selon toutes les autres.}\footnote{Pour la variante non déterministe, on retient une valeur lorsqu'une branche finie la produit, et toutes les branches produisant une valeur doivent s'accorder sur celle-ci. L'exploration en largeur des branches finies retrouve cette valeur dès qu'elle existe ; l'existence de choix ne fournit pas un oracle.}
+
+Nous ne démontrerons pas ce résultat en détail. Considérons
+simplement les rubans infinis dans les deux directions ou
+les machines à plusieurs rubans : ces variantes n'ajoutent
+aucune puissance de calcul. En effet, une machine à un seul
+ruban infini dans une direction peut les simuler. À l'aide
+d'états et d'instructions supplémentaires, on peut, par
+exemple, traduire le programme d'une machine à plusieurs
+rubans ou à ruban bidirectionnel en celui d'une machine
+à ruban unilatéral. Celle-ci peut affecter les cases paires
+aux cases du premier ruban, ou aux positions « positives »
+du ruban bidirectionnel, et les cases impaires aux cases
+du second ruban, ou aux positions « négatives ».
+
+\end{document}

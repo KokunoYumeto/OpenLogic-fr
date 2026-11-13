@@ -1,0 +1,416 @@
+% Partie : méthodes
+% Chapitre : induction mathématique
+% Section : définitions inductives
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{ind}{idf}
+
+\olsection{Définitions inductives}
+
+En logique, nous définissons
+très souvent des catégories
+d'objets \emph{inductivement} :
+nous donnons des règles qui
+précisent ce qui compte
+comme objet de la catégorie
+et comment en former de
+nouveaux à partir de ceux
+que nous avons déjà.
+Ainsi, certains types
+de suites de symboles,
+comme les termes et
+les !!{formula}s d'un
+langage, reçoivent
+souvent une définition
+inductive. Prenons
+un exemple simple.
+Considérons les suites
+composées des lettres
+$\mathrm{a}$, $\mathrm{b}$,
+$\mathrm{c}$, $\mathrm{d}$,
+du symbole~$\circ$
+et des crochets $[$ et
+$]$, telles que
+«~$[[\mathrm{c} \circ \mathrm{d}][$~»,
+«~$[\mathrm{a}[]\circ]$~»,
+«~$\mathrm{a}$~» ou
+«~$[[\mathrm{a} \circ \mathrm{b}]
+\circ \mathrm{d}]$~».
+Vous avez probablement
+l'impression que les
+deux premières ont
+quelque chose d'incorrect :
+dans la première,
+les crochets ne
+s'apparient pas ;
+dans la seconde,
+le symbole~$\circ$
+ne relie pas deux
+expressions qui ont
+elles-mêmes un sens.
+La troisième et la
+quatrième paraissent
+meilleures : chaque
+crochet ouvrant $[$
+possède un crochet
+fermant $]$ correspondant,
+s'il y a des crochets ;
+et chaque $\circ$
+relie deux expressions
+correctes encadrées
+par des crochets.
+
+Nous voulons préciser
+ce que sont ces
+«~termes bien formés~».
+Tout d'abord,
+chaque lettre
+prise seule
+en est un.
+Tout terme qui
+n'est pas une
+lettre seule
+doit avoir la
+forme
+«~$[t \circ s]$~»,
+où $s$ et $t$
+sont eux-mêmes
+bien formés.
+Réciproquement,
+si $t$ et $s$
+le sont, nous
+pouvons placer
+$\circ$ entre
+eux et entourer
+le résultat
+d'une paire
+de crochets
+pour former
+un nouveau
+terme bien
+formé.
+Ces opérations
+permettent de
+\emph{définir}
+l'ensemble des
+termes bien
+formés : c'est
+une \emph{définition
+inductive}.
+
+\begin{defn}[Termes bien formés]
+  L'ensemble des
+  \emph{termes bien formés}
+  est défini inductivement
+  par les règles suivantes :
+  \begin{enumerate}
+  \item Chaque lettre
+    $\mathrm{a}$, $\mathrm{b}$,
+    $\mathrm{c}$ ou $\mathrm{d}$
+    est un terme bien formé.
+  \item Si $s_1$ et $s_2$
+    sont des termes bien
+    formés, alors
+    $[s_1 \circ s_2]$
+    l'est aussi.
+  \item Aucun autre objet
+    n'est un terme
+    bien formé.
+  \end{enumerate}
+\end{defn}
+
+Selon cette définition,
+une suite de symboles
+est un terme bien
+formé si et seulement
+si elle peut être
+construite par les
+règles (1) et~(2)
+en un nombre fini
+d'étapes. À la
+première étape,
+nous construisons
+les termes réduits
+à une lettre :
+\[
+\mathrm{a}, \mathrm{b}, \mathrm{c}, \mathrm{d}.
+\]
+À la deuxième,
+nous appliquons (2)
+à ces termes :
+\[
+[\mathrm{a} \circ \mathrm{a}],
+[\mathrm{a} \circ \mathrm{b}],
+[\mathrm{b} \circ \mathrm{a}],
+\dots, [\mathrm{d} \circ \mathrm{d}].
+\]
+Nous obtenons ainsi
+toutes les combinaisons
+de deux lettres.
+À la troisième étape,
+nous appliquons encore
+(2) à deux termes
+bien formés quelconques
+déjà construits.
+Nous obtenons, par
+exemple,
+$[\mathrm{a} \circ
+  [\mathrm{a} \circ \mathrm{a}]]$,
+où $t$ est le terme
+$\mathrm{a}$ de la
+première étape et
+$s$ est le terme
+$[\mathrm{a} \circ \mathrm{a}]$
+de la deuxième.
+Nous obtenons aussi
+$[[\mathrm{b} \circ \mathrm{c}]
+  \circ [\mathrm{d} \circ \mathrm{b}]]$
+à partir des deux
+termes
+$[\mathrm{b} \circ \mathrm{c}]$
+et
+$[\mathrm{d} \circ \mathrm{b}]$
+de la deuxième étape.
+Et ainsi de suite.
+La clause (3) empêche
+qu'un objet non construit
+de cette manière se
+glisse dans l'ensemble.
+
+Nous n'avons pas encore
+démontré que toute suite
+de symboles qui nous
+paraît bien formée
+l'est selon cette
+définition. En revanche,
+il devrait être clair
+que chaque suite
+effectivement construite
+paraît bien formée :
+ses crochets
+s'apparient et
+chaque $\circ$
+relie des parties
+elles-mêmes bien formées.
+
+Une définition inductive
+est particulièrement
+utile quand on veut
+démontrer une propriété
+de tous les termes
+bien formés : elle
+indique quels cas
+examiner. Si l'on
+vous dit que $t$
+est un tel terme,
+la définition
+inductive précise
+ses formes possibles :
+soit $t$ est une
+lettre, soit
+$t=[s_1 \circ s_2]$
+pour deux termes
+bien formés
+$s_1$ et~$s_2$.
+Grâce à la
+clause (3),
+il n'y a pas
+d'autre possibilité.
+
+La forme forte de
+la récurrence devient
+particulièrement utile
+pour démontrer des
+énoncés portant sur
+tout un ensemble
+défini inductivement.
+Supposons, par exemple,
+que nous voulions
+montrer que, dans
+chaque terme bien
+formé de longueur~$n$,
+le nombre de
+crochets ouvrants
+$[$ est $< n/2$.
+On peut y voir
+un énoncé portant
+sur tous les~$n$ :
+pour chaque~$n$,
+tout terme bien
+formé de longueur~$n$
+contient moins de
+$n/2$ crochets
+ouvrants.
+
+\begin{prop}
+  Pour tout~$n$,
+  le nombre de
+  crochets ouvrants
+  $[$ dans un
+  terme bien formé
+  de longueur~$n$
+  est $< n/2$.
+\end{prop}
+
+\begin{proof}
+Pour démontrer ce
+résultat par récurrence
+forte, il faut établir, pour tout entier naturel~$k$,
+l'implication suivante :
+\begin{quote}
+  Si, pour chaque
+  $l<k$, tout terme
+  bien formé de
+  longueur~$l$
+  possède moins
+  de $l/2$
+  crochets ouvrants
+  $[$, alors
+  tout terme bien
+  formé de
+  longueur~$k$
+  possède moins
+  de $k/2$
+  crochets
+  ouvrants $[$.
+\end{quote}
+Supposons l'antécédent
+de cette implication :
+pour tout $l<k$,
+les termes bien
+formés de longueur~$l$
+contiennent moins
+de $l/2$ crochets
+ouvrants. C'est
+l'hypothèse de
+récurrence. Montrons
+que la même propriété
+vaut pour les termes
+de longueur~$k$.
+
+Pour $k=0$, aucun terme bien formé n'a cette longueur :
+l'énoncé est donc vérifié. Soit maintenant $t$ un terme bien
+formé de longueur~$k$.
+Sa définition inductive
+ne laisse que deux
+cas : (1)~$t$ est
+une lettre seule ;
+ou (2)~$t$ a
+la forme
+$[s_1 \circ s_2]$
+pour deux termes
+bien formés
+$s_1$ et~$s_2$.
+\begin{enumerate}
+\item Si $t$ est
+  une lettre,
+  alors $k=1$
+  et $t$ ne
+  contient aucun
+  crochet ouvrant.
+  Comme $0<1/2$,
+  la propriété
+  est vérifiée.
+\item Supposons
+  $t=[s_1 \circ s_2]$
+  pour deux termes
+  bien formés
+  $s_1$ et~$s_2$.
+  Notons $l_1$
+  la longueur
+  de~$s_1$ et
+  $l_2$ celle
+  de~$s_2$.
+  La longueur
+  de~$t$ vaut
+  $k=l_1+l_2+3$ :
+  les longueurs
+  des deux sous-termes,
+  plus les trois
+  symboles $[$,
+  $\circ$ et $]$.
+  Donc $l_1<k$
+  et $l_2<k$.
+  L'hypothèse de
+  récurrence s'applique
+  ainsi à $s_1$
+  et à~$s_2$ :
+  le nombre~$m_1$
+  de crochets
+  ouvrants dans~$s_1$
+  est $<l_1/2$,
+  et leur nombre~$m_2$
+  dans~$s_2$
+  est $<l_2/2$.
+
+  Le nombre de
+  crochets ouvrants
+  de~$t$ est
+  $m_1+m_2+1$ :
+  ceux des deux
+  sous-termes,
+  plus le crochet
+  ouvrant extérieur.
+  Puisque
+  $m_1<l_1/2$
+  et $m_2<l_2/2$,
+  nous obtenons :
+  \[
+  m_1 + m_2 + 1
+  < \frac{l_1}{2}
+    + \frac{l_2}{2} + 1
+  = \frac{l_1+l_2+2}{2}
+  < \frac{l_1+l_2+3}{2}
+  = k/2.
+  \]
+\end{enumerate}
+Dans chaque cas,
+le nombre de
+crochets ouvrants
+de~$t$ est $<k/2$.
+La récurrence
+forte démontre
+donc la proposition.
+\end{proof}
+
+\begin{prob}
+  Définissez l'ensemble
+  des termes
+  «~super bien formés~»
+  par les clauses
+  suivantes :
+  \begin{enumerate}
+  \item Chaque lettre
+    $\mathrm{a}$, $\mathrm{b}$,
+    $\mathrm{c}$ ou $\mathrm{d}$
+    est un terme
+    super bien formé.
+  \item Si $s$ est
+    un terme super
+    bien formé,
+    alors $[s]$
+    l'est aussi.
+  \item Si $s_1$
+    et $s_2$
+    sont des termes
+    super bien formés,
+    alors
+    $[s_1 \circ s_2]$
+    l'est aussi.
+  \item Aucun autre
+    objet n'est un
+    terme super
+    bien formé.
+  \end{enumerate}
+  Montrez que le
+  nombre de crochets
+  ouvrants $[$
+  dans un terme
+  super bien formé~$t$
+  de longueur~$n$
+  est $\le n/2+1$.
+\end{prob}
+
+\end{document}

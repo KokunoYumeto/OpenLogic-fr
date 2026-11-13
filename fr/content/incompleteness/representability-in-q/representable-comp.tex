@@ -1,0 +1,133 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: representable-comp
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{rpc}
+\olsection{Les fonctions représentables dans $\Th{Q}$ sont calculables}
+
+Nous allons démontrer que toute fonction représentable dans~$\Th{Q}$
+est calculable. Il nous faut d'abord établir un lemme sur ces
+fonctions.
+
+\begin{lem}\ollabel{lem:rep-q}
+  Si $f(x_0,\dots,x_k)$ est représentable dans~$\Th{Q}$, il existe
+  une !!{formula}~$!A_f(x_0,\dots,x_k,y)$ telle que
+  \[
+  \Th{Q} \Proves !A_f(\num{n_0}, \dots, \num{n_k}, \num{m})
+  \quad\text{ssi}\quad m = f(n_0, \dots, n_k).
+  \]
+\end{lem}
+
+\begin{proof}
+  L'implication « si » découle de la
+  \olref[int]{defn:representable-fn}\olref[int]{defn:rep:a}.
+  Pour l'implication réciproque, supposons que
+  $\Th{Q} \Proves !A_f(\num{n_0},\dots,\num{n_k},\num{m})$
+  mais que $m\neq f(n_0,\dots,n_k)$, et posons
+  $l=f(n_0,\dots,n_k)$. Par la
+  \olref[int]{defn:representable-fn}\olref[int]{defn:rep:a},
+  $\Th{Q} \Proves !A_f(\num{n_0},\dots,\num{n_k},\num{l})$.
+  D'après la \olref[int]{defn:representable-fn}\olref[int]{defn:rep:b},
+  $\Th{Q}$ démontre aussi
+  $\lforall[y][(!A_f(\num{n_0},\dots,\num{n_k},y)\lif\num{l}=y)]$.
+  En appliquant les règles logiques à cet énoncé et à l'hypothèse
+  $\Th{Q} \Proves !A_f(\num{n_0},\dots,\num{n_k},\num{m})$,
+  on obtient $\Th{Q} \Proves \eq[\num{l}][\num{m}]$.
+  D'autre part, \olref[bre]{lem:q-proves-neq} donne
+  $\Th{Q} \Proves \eq/[\num{l}][\num{m}]$. La théorie $\Th{Q}$
+  serait donc incohérente. C'est impossible : le modèle standard
+  satisfait $\Th{Q}$ (voir la \olref[int][def]{def:standard-model}),
+  soit $\Sat{N}{\Th{Q}}$, et toute théorie satisfaisable est
+  cohérente par le théorème de correction
+  (\tagrefs{prfAX/{fol:axd:sou:cor:consistency-soundness},
+prfSC/{fol:seq:sou:cor:consistency-soundness},
+prfND/{fol:ntd:sou:cor:consistency-soundness},
+prfTab/{fol:tab:sou:cor:consistency-soundness}}).
+\end{proof}
+
+\begin{lem}
+Toute fonction représentable dans $\Th{Q}$ est calculable.
+\end{lem}
+
+\begin{proof}
+Commençons par l'idée intuitive. Pour calculer~$f$, énumérons
+toutes les !!{derivation}s possibles dans le langage de
+l'arithmétique; cette énumération peut se faire mécaniquement.
+Pour chacune, vérifions si elle démontre, à partir des axiomes
+de~$\Th{Q}$, !!a{formula} de la forme
+$!A_f(\num{n_0},\dots,\num{n_k},\num{m})$, où $!A_f$ représente
+$f$ comme dans le \olref{lem:rep-q}. Si oui, alors
+$m=f(n_0,\dots,n_k)$ d'après le \olref{lem:rep-q}, et nous avons
+trouvé la valeur de~$f$. La recherche s'arrête, car
+$\Th{Q} \Proves !A_f(\num{n_0},\dots,\num{n_k},
+\num{f(n_0,\dots,n_k)})$; nous rencontrerons donc une
+!!{derivation} appropriée.
+
+Cette description n'est pas encore tout à fait précise : notre
+procédure manipule des !!{derivation}s et des !!{formula}s, et
+non seulement des nombres, et nous n'avons pas expliqué pourquoi
+on peut énumérer mécaniquement toutes les !!{derivation}s
+possibles. Mais nous avons vu comment coder les termes, les
+!!{formula}s et les !!{derivation}s par des numéros de G\"odel.
+Nous avons aussi défini un modèle précis de calcul, celui des
+fonctions récursives générales. La relation
+$\Prf[\Th{Q}](d,y)$, qui vérifie qu'un code~$d$ est un témoin de
+preuve, à partir des axiomes de~$\Th{Q}$, de la !!{formula} de
+numéro de G\"odel~$y$, est récursive primitive. Ici, les
+prémisses de ce test sont les huit axiomes de~$\Th{Q}$, et non
+l'ensemble déjà clos de tous ses théorèmes. Les autres fonctions
+récursives primitives dont nous aurons besoin sont $\fn{num}$
+(\olref[art][trm]{prop:num-primrec}) et $\fn{Subst}$
+(\olref[art][sub]{prop:subst-primrec}). Elles permettront de
+définir~$f$ par minimisation; $f$ est donc récursive.
+
+Définissons d'abord
+\begin{multline*}
+  A(n_0, \dots, n_k, m) = \\
+  \fn{Subst}(\fn{Subst}(\dots\fn{Subst}(\Gn{!A_f}, \fn{num}(n_0), \Gn{x_0}),\\ \dots),
+  \fn{num}(n_k),  \Gn{x_k}), \fn{num}(m), \Gn{y})
+\end{multline*}
+L'expression est compliquée, mais cette fonction donne simplement
+$A(n_0,\dots,n_k,m)=\Gn{!A_f(\num{n_0},\dots,\num{n_k},\num{m})}$.
+
+Considérons maintenant la relation $R(n_0,\dots,n_k,s)$, vraie si
+$s$ code un couple dont la première composante $(s)_0$ est un
+témoin de preuve, à partir des axiomes de~$\Th{Q}$, de
+$!A_f(\num{n_0},\dots,\num{n_k},\num{(s)_1})$. On pose
+\begin{multline*}
+R(n_0,\dots,n_k,s) \quad\text{ssi}\quad
+\fn{SeqCode}(s)\land \len{s}=2\\
+\land \Prf[\Th{Q}]((s)_0,A(n_0,\dots,n_k,(s)_1)).
+\end{multline*}
+Si nous trouvons un~$s$ vérifiant $R(n_0,\dots,n_k,s)$, nous
+obtenons la paire $((s)_0,(s)_1)$ : son premier élément code un
+témoin de preuve de
+$!A_f(\num{n_0},\dots,\num{n_k},\num{(s)_1})$ à partir
+des axiomes de~$\Th{Q}$, et son second élément est la valeur
+cherchée. Chercher~$s$ revient donc à chercher les nombres $d$
+et $m$ de l'argument informel. Une fonction calculable qui trouve
+un tel~$s$ se définit par minimisation régulière. En effet,
+$R$ possède toujours un témoin : pour tous $n_0,\dots,n_k$,
+il existe un témoin de preuve~$\delta$ attestant
+$\Th{Q} \Proves !A_f(\num{n_0},\dots,\num{n_k},
+\num{f(n_0,\dots,n_k)})$, de sorte que $R(n_0,\dots,n_k,s)$
+est vraie pour
+$s=\tuple{\Gn{\delta},f(n_0,\dots,n_k)}$.
+Nous pouvons donc écrire
+\[
+f(n_0,\dots,n_{k}) = (\umin{s}{R(n_0, \dots, n_k, s)})_1.
+\]
+\end{proof}
+
+\begin{explain}
+Le test d'un témoin utilise la liste finie des axiomes de
+$\Th{Q}$ et les règles du calcul. C'est cette vérification
+de preuves qui permet de chercher la valeur de~$f$ sans disposer
+d'une procédure de décision pour les théorèmes de~$\Th{Q}$.
+\end{explain}
+
+\end{document}

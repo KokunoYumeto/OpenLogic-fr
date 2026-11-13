@@ -86,13 +86,13 @@ $\Atom{\Obj P}{a,a}$ à l'aide de~$\Intro\lforall$.
 \end{explain}
 
 \begin{explain}
-Dans \Intro{\lexists} et \Elim{\lforall}, aucune autre restriction
-ne porte sur le terme clos~$t$. En revanche, dans les règles
-\Elim{\lexists} et \Intro{\lforall}, la condition sur
-l'eigenvariable impose les restrictions énoncées plus haut aux
-occurrences de la !!{constant}~$a$ dans la conclusion et les
-hypothèses !!{undischarged}s. Cette condition est nécessaire
-à la correction du système : elle garantit que tout !!{sentence}
+Dans \Intro{\lexists} et \Elim{\lforall}, on peut choisir
+n'importe quel terme clos~$t$. Pour \Intro{\lforall} et
+\Elim{\lexists}, la constante~$a$ doit satisfaire la condition
+sur l'eigenvariable donnée plus haut. Les restrictions concernent
+la conclusion et les hypothèses encore ouvertes, ainsi que la
+prémisse existentielle dans \Elim{\lexists}. Elles garantissent
+la correction du système, c'est-à-dire que chaque !!{sentence}
 dérivé est une conséquence des hypothèses !!{undischarged}s.
 Sans cette condition, la dérivation suivante serait permise :
 \begin{prooftree}
@@ -100,30 +100,30 @@ Sans cette condition, la dérivation suivante serait permise :
   \AxiomC{$\Discharge{!A(a)}{1}$}
   \RightLabel{*\Intro{\lforall}}
   \UnaryInfC{$\lforall[x][!A(x)]$}
-  \RightLabel{\Elim{\lexists}}
+  \DischargeRule{\Elim{\lexists}}{1}
   \BinaryInfC{$\lforall[x][!A(x)]$}
 \end{prooftree}
 Or, en général, $\lexists[x][!A(x)] \Entails/ \lforall[x][!A(x)]$.
+Sur un domaine de deux éléments, il suffit que $!A(x)$ soit vrai
+d'un seul de ces éléments.
 
-Puisque les règles pour les quantificateurs n'autorisent à
-substituer aux !!{variable}s que des termes clos (en particulier
-des constantes), toute !!{formula} dérivable à partir d'un ensemble
-d'!!{sentence}s est elle-même !!a{sentence}.
+Les règles pour les quantificateurs substituent des termes clos,
+y compris des constantes, aux occurrences libres des variables.
+Lorsque la matrice n'a pas d'autre variable libre que celle qu'on
+lie ou qu'on instancie, la quantification et ses instances donnent
+des énoncés. Toute !!{formula} dérivable à partir d'un ensemble
+d'!!{sentence}s dans ce système est elle-même !!a{sentence}.
 \end{explain}
-
-\begin{editorial}
-Le résumé de la source interdit à tort toute occurrence de
-l'eigenvariable dans les prémisses. On renvoie ici aux conditions
-précises données avec chaque règle : $a$ peut notamment figurer
-dans $!A(a)$. L'exception concernant les hypothèses $!A(a)$ dans
-l'élimination existentielle est conservée telle que la source
-l'énonce; elle ne doit pas disparaître dans le rappel ultérieur.
-Le terme~$t$
-reste clos, même lorsque la source le dit sans restriction. La
-condition est donc rappelée par un renvoi à sa formulation complète.
-Enfin, la non-conséquence affichée vaut en général, non
-pour toute instance de~$!A$, et la dernière explication porte sur
-toutes les règles quantificatrices, pas seulement celles d'élimination.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
 
 \end{document}

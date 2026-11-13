@@ -1,0 +1,101 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: free-vars-sentences
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{fvs}
+
+\olsection{\printtoken{P}{variable} libres et \printtoken{p}{sentence}}
+
+\begin{defn}[Occurrences libres d'!!a{variable}]
+\ollabel{defn:free-occ}
+Les occurrences \emph{libres} d'!!a{variable} dans !!a{formula}
+sont définies inductivement comme suit :
+\begin{enumerate}
+\item \indcase*{!A}{$!A$ est atomique}{toutes les occurrences de
+  !!{variable} dans $\indfrm$ sont libres.}
+
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{les occurrences libres de
+  !!{variable} dans $\indfrm$ sont exactement celles de~$!B$.}}{}
+
+\item \indcase{!A}{(!B \ast !C)}{les occurrences libres de
+  !!{variable} dans $\indfrm$ sont celles de~$!B$ réunies à
+  celles de~$!C$.}
+
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{les occurrences
+  libres de !!{variable} dans $\indfrm$ sont toutes celles de~$!B$,
+  sauf les occurrences de~$x$.}}{}
+
+\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{les occurrences
+  libres de !!{variable} dans $\indfrm$ sont toutes celles de~$!B$,
+  sauf les occurrences de~$x$.}}{}
+\end{enumerate}
+\end{defn}
+
+\begin{defn}[Occurrences liées de variables]
+Une occurrence d'!!a{variable} dans une !!{formula}~$!A$ est
+\emph{liée} si elle n'est pas libre.
+\end{defn}
+
+\begin{prob}
+Donner une définition inductive des occurrences liées de variables,
+sur le modèle de la \olref[fol][syn][fvs]{defn:free-occ}.
+\end{prob}
+
+\begin{defn}[Portée]
+\iftag{prvAll}{Si $\lforall[x][!B]$ apparaît comme occurrence d'une
+  sous-formule dans une !!{formula}~$!A$, l'occurrence correspondante
+  de~$!B$ dans~$!A$ est la \emph{portée} de l'occurrence correspondante
+  de~$\lforall[x]$. \iftag{prvEx}{Il en va de même pour
+  $\lexists[x]$.}{}}{Si $\lexists[x][!B]$ apparaît comme occurrence
+  d'une sous-formule dans une !!{formula}~$!A$, l'occurrence
+  correspondante de~$!B$ dans~$!A$ est la \emph{portée} de
+  l'occurrence correspondante de~$\lexists[x]$.}
+
+Si $!B$ est la portée d'une occurrence du quantificateur
+\iftag{prvAll}{$\lforall[x]$\iftag{prvEx}{ ou
+    $\lexists[x]$}{}}{$\lexists[x]$} dans~$!A$, les occurrences
+libres de~$x$ dans~$!B$ sont liées dans
+\iftag{prvAll}{$\lforall[x][!B]$\iftag{prvEx}{ et
+$\lexists[x][!B]$}{}}{$\lexists[x][!B]$}. Nous disons que ces
+occurrences sont \emph{liées par} l'occurrence du quantificateur en
+question.
+\end{defn}
+
+\begin{ex}
+Considérons la !!{formula} suivante :
+\[
+\lexists[\Obj v_0][\underbrace{\Atom{\Obj A^2_0}{\Obj v_0,\Obj v_1}}_{!B}]
+\]
+$!B$ représente la portée de~$\lexists[\Obj v_0]$. Ce
+quantificateur lie l'occurrence de~$\Obj v_0$ dans~$!B$, mais non
+celle de~$\Obj v_1$. Ainsi, $\Obj v_1$ est ici une variable libre.
+
+Voyons maintenant une !!{formula}~$!A$ plus complexe :
+\[
+\lforall[\Obj v_0][\underbrace{(\Atom{\Obj A^1_0}{\Obj v_0} \lif
+    \Atom{\Obj A^2_0}{\Obj v_0, \Obj v_1})}_{!B}] \lif \lexists[\Obj
+  v_1][\underbrace{(\Atom{\Obj A^2_1}{\Obj v_0, \Obj v_1} \lor \lforall[\Obj v_0][\overbrace{\lnot \Atom{\Obj A^1_1}{\Obj v_0}}^{!D}])}_{!C}]
+\]
+$!B$ est la portée du premier $\lforall[\Obj v_0]$ ; $!C$ est
+la portée de $\lexists[\Obj v_1]$ et $!D$ celle du second
+$\lforall[\Obj v_0]$. Le premier $\lforall[\Obj v_0]$ lie les
+occurrences de~$\Obj v_0$ dans~$!B$ ; $\lexists[\Obj v_1]$ lie
+l'occurrence de~$\Obj v_1$ dans~$!C$ ; le second
+$\lforall[\Obj v_0]$ lie l'occurrence de~$\Obj v_0$ dans~$!D$.
+La première occurrence de~$\Obj v_1$ et la quatrième occurrence
+de~$\Obj v_0$ sont libres dans~$!A$. La dernière occurrence
+de~$\Obj v_0$ est libre dans~$!D$, mais liée dans~$!C$ et~$!A$.
+\end{ex}
+
+\begin{defn}[Énoncé]
+Une !!{formula}~$!A$ est un \emph{!!{sentence}} si et seulement si
+elle ne contient aucune occurrence libre de !!{variable}.
+\end{defn}
+
+% Ajouter des exemples.
+
+\end{document}

@@ -1,0 +1,122 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: unique-readability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{unq}
+\olsection{Lecture unique}
+
+Chaque terme possède-t-il une seule manière
+d'être formé? Oui : chaque lambda-terme admet
+une unique construction et, par conséquent,
+une unique analyse syntaxique. Dans ce qui suit,
+une \emph{formation} est un arbre décrivant la
+construction d’un terme par une ou plusieurs
+applications des règles de la \olref[trm]{defn:term}.
+
+\begin{lem}\ollabel{lem:term-start}
+Un terme commence soit par une variable,
+soit par une parenthèse ouvrante.
+\end{lem}
+
+\begin{proof}
+Une expression n'est un terme que si elle est
+construite selon la \olref[trm]{defn:term}.
+Si sa dernière étape est
+\olref[trm]{defn:term-var}, elle est une variable.
+Si sa dernière étape est
+\olref[trm]{defn:term-abs} ou
+\olref[trm]{defn:term-app}, elle commence
+par une parenthèse ouvrante.
+\end{proof}
+
+\begin{lem}\ollabel{lem:app-start}
+Le résultat d'une application commence soit
+par deux parenthèses ouvrantes, soit par une
+parenthèse ouvrante suivie d'une variable.
+\end{lem}
+
+\begin{proof}
+Si $M$ résulte d'une application, il est
+de la forme $(PQ)$ et commence donc par
+une parenthèse ouvrante. Comme $P$ est un
+terme, le \olref{lem:term-start} montre qu'il
+commence à son tour soit par une parenthèse
+ouvrante, soit par une variable.
+\end{proof}
+
+\begin{lem}\ollabel{lem:initial}
+Aucun préfixe propre d'un terme n'est lui-même
+un terme.
+\end{lem}
+
+\begin{prob}
+Démontrer le \olref[lam][syn][unq]{lem:initial}
+par induction sur la longueur des termes.
+\end{prob}
+
+\begin{prop}[Lecture unique] \ollabel{prop:unq}
+Chaque terme possède une formation unique :
+si une formation produit un terme~$M$,
+aucune autre formation ne produit ce même terme.
+\end{prop}
+
+\begin{proof}
+Nous raisonnons par induction sur la formation
+des termes.
+\begin{enumerate}
+\item Supposons $M=x$, où $x$ est une variable.
+  Les résultats d'une abstraction ou d'une
+  application commencent toujours par une
+  parenthèse; ces règles n'ont donc pas pu
+  produire~$M$. Sa formation consiste en une
+  seule application de la
+  \olref[trm]{defn:term}\olref[trm]{defn:term-var}.
+\item Supposons $M=(\lambd[x][N])$, où $x$
+  est une variable et $N$ un terme. Ce n'est
+  pas une variable isolée, donc la clause de la
+  \olref[trm]{defn:term}\olref[trm]{defn:term-var}
+  ne l'a pas produit. Ce n'est pas non plus
+  le résultat d'une application, d'après le
+  \olref{lem:app-start}. La dernière étape
+  est donc nécessairement une abstraction
+  sur~$N$. L'hypothèse d'induction garantit
+  l'unicité de la formation de~$N$.
+\item Supposons $M=(PQ)$, où $P$ et~$Q$
+  sont des termes. Puisque $M$ commence par
+  une parenthèse, il ne résulte pas de la
+  \olref[trm]{defn:term}\olref[trm]{defn:term-var}.
+  D'après le \olref{lem:term-start}, $P$ ne
+  commence pas par~$\lambd$; $(PQ)$ n'est
+  donc pas le résultat d'une abstraction.
+  Supposons qu'une autre application construise
+  le même terme sous la forme $(P'Q')$. Si
+  $P\ne P'$, l'un des deux termes~$P$ et~$P'$
+  est un préfixe propre de l'autre, ce qui
+  contredit le \olref{lem:initial}. Ainsi $P=P'$
+  et, par conséquent, $Q=Q'$. L'hypothèse
+  d'induction assure alors l'unicité des
+  formations de~$P$ et de~$Q$.
+\end{enumerate}
+\end{proof}
+
+La proposition peut se reformuler plus
+simplement comme suit.
+\begin{prop}
+Un terme~$M$ possède exactement l'une des
+formes suivantes :
+\begin{enumerate}
+\item $x$, où la variable~$x$ est déterminée
+  de manière unique par~$M$;
+\item $(\lambd[x][N])$, où la variable~$x$
+  et le terme~$N$ sont tous deux déterminés
+  de manière unique par~$M$;
+\item $(PQ)$, où les termes~$P$ et~$Q$ sont
+  déterminés de manière unique par~$M$.
+\end{enumerate}
+\end{prop}
+
+\end{document}

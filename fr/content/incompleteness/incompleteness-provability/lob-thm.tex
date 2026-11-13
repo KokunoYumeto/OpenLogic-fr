@@ -1,0 +1,198 @@
+% Part: incompleteness
+% Chapter: incompleteness-provability
+% Section: lob-thm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{lob}
+
+\olsection{Le théorème de Löb}
+
+L'!!{sentence} de Gödel d'une théorie~$\Th{T}$
+est un point fixe de $\lnot\OProv[\Th{T}](y)$ :
+c'est un !!{sentence}~$!G$ tel que
+\[
+\Th{T}\Proves\lnot\OProv[\Th{T}](\gn{!G})
+\liff !G.
+\]
+Il n'est pas démontrable si $\Th{T}$ est
+cohérente. En effet, si $\Th{T}\Proves !G$,
+alors, d'une part, la condition de dérivabilité
+P1 donne
+$\Th{T}\Proves\OProv[\Th{T}](\gn{!G})$;
+d'autre part, l'équivalence ci-dessus et
+$\Th{T}\Proves !G$ donnent
+$\Th{T}\Proves\lnot\OProv[\Th{T}](\gn{!G})$.
+La théorie serait donc incohérente. Demandons-nous
+maintenant ce qu'il en est d'un point fixe de
+$\OProv[\Th{T}](y)$, c'est-à-dire d'un
+!!{sentence}~$!H$ tel que
+\[
+\Th{T}\Proves\OProv[\Th{T}](\gn{!H})
+\liff !H.
+\]
+Si $!H$ était démontrable, P1 donnerait
+$\Th{T}\Proves\OProv[\Th{T}](\gn{!H})$;
+mais l'équivalence ci-dessus, appliquée à
+$\Th{T}\Proves !H$, donnerait la même conclusion
+par modus ponens. Nous n'obtenons donc pas de
+contradiction par l'argument utilisé pour
+l'!!{sentence} de Gödel. Cela ne prouve évidemment
+pas que $\Th{T}$ \emph{démontre}~$!H$.
+
+Pour avancer, généralisons quelque peu la question.
+Le sens de gauche à droite de l'équivalence du
+point fixe,
+$\OProv[\Th{T}](\gn{!H})\lif !H$,
+est une instance d'un schéma général appelé
+\emph{principe de réflexion} :
+$\OProv[\Th{T}](\gn{!A})\lif !A$.
+Ce nom évoque la capacité de~$\Th{T}$ à
+« réfléchir » sur ce qu'elle peut démontrer.
+En substance, le principe dit : « Si $\Th{T}$
+peut démontrer~$!A$, alors $!A$ est vrai », pour
+tout~$!A$. Toutes ses instances ne sont vraies
+que pour une théorie correcte, ce qui laisse penser
+qu'une théorie ne les démontre pas toutes en
+général. Quelles instances une théorie suffisamment
+forte et satisfaisant les conditions de dérivabilité
+peut-elle donc démontrer? Assurément celles où
+$!A$ est lui-même démontrable. Le résultat suivant
+montre qu'il n'y en a pas d'autres.
+
+\begin{thm}\ollabel{thm:lob}
+Soit $\Th{T}$ une théorie !!{axiomatizable}
+étendant~$\Th{Q}$, et supposons que la
+!!{formula}~$\OProv[\Th{T}](y)$ satisfasse les
+conditions P1--P3 de la \olref[prc]{sec}. Pour tout
+!!{sentence}~$!A$, si
+\[
+\Th{T}\Proves\OProv[\Th{T}](\gn{!A})\lif !A,
+\]
+alors $\Th{T}\Proves !A$.
+\end{thm}
+
+Autrement dit, si $\Th{T}\Proves/ !A$, alors
+$\Th{T}\Proves/
+\OProv[\Th{T}](\gn{!A})\lif !A$.
+C'est le théorème de Löb.
+
+\begin{explain}
+Voici une intuition pour la preuve du théorème de
+Löb, sous la forme d'un raisonnement ingénieux
+concluant à l'existence du Père Noël. Si cette
+conclusion ne vous plaît pas, remplacez-la par
+n'importe quelle autre. L'argument est le suivant.
+\begin{enumerate}
+\item Soit $X$ la phrase : « Si $X$ est vraie,
+  alors le Père Noël existe. »
+\item Supposons que $X$ soit vraie.
+\item Ce qu'elle dit vaut donc : si $X$ est vraie,
+  alors le Père Noël existe.
+\item Puisque nous supposons $X$ vraie, (2) et~(3)
+  donnent, par modus ponens, que le Père Noël existe.
+\item Nous avons déduit (4), « le Père Noël existe »,
+  de l'hypothèse~(2), « $X$ est vraie ». Par preuve
+  conditionnelle, nous avons donc montré :
+  « Si $X$ est vraie, alors le Père Noël existe. »
+\item Or, il s'agit précisément de la phrase~$X$.
+  Nous avons donc montré que $X$ est vraie.
+\item Mais alors, par l'argument (2)--(4), le
+  Père Noël existe.
+\end{enumerate}
+Ce raisonnement est une forme du paradoxe de Curry. Son
+étape (3) traite la vérité de la phrase comme une autorisation
+d'affirmer ce qu'elle dit. Dans l'arithmétique, passer de la
+démontrabilité d'un énoncé à cet énoncé exige précisément une
+instance du principe de réflexion. Pour rendre l'idée formelle,
+on applique le lemme du point fixe à la !!{formula}
+$\OProv[\Th{T}](y)\lif !A$. Le point fixe joue le rôle de~$X$.
+La preuve utilise P1--P3 et suppose l'instance de réflexion
+pour le seul énoncé~$!A$.
+\end{explain}
+
+\begin{proof}[Preuve du \olref{thm:lob}]
+Supposons que $!A$ soit un !!{sentence} et que
+\[
+\Th{T}\Proves\OProv[\Th{T}](\gn{!A})\lif !A.
+\]
+Posons $!B(y)=\OProv[\Th{T}](y)\lif !A$.
+Le lemme du point fixe donne un !!{sentence}~$!D$
+tel que
+\[
+\Th{T}\Proves !D\liff !B(\gn{!D}).
+\]
+Chacune des lignes suivantes est démontrable
+dans~$\Th{T}$ :
+\begin{align}
+  & !D \liff (\OProv[\Th{T}](\gn{!D}) \lif !A) \ollabel{L-1}\\
+  & \qquad \text{$!D$ est un point fixe de~$!B(y)$}\notag \\
+  & !D \lif (\OProv[\Th{T}](\gn{!D}) \lif !A) \ollabel{L-2}\\
+  & \qquad\text{par \olref{L-1}}\notag\\
+  & \OProv[\Th{T}](\gn{!D \lif (\OProv[\Th{T}](\gn{!D}) \lif !A)}) \ollabel{L-3}\\
+  & \qquad\text{par \olref{L-2} et P1}\notag \\
+  & \OProv[\Th{T}](\gn{!D}) \lif \OProv[\Th{T}](\gn{\OProv[\Th{T}](\gn{!D}) \lif !A})
+  \ollabel{L-4}\\
+  &\qquad \text{par \olref{L-3} et P2}\notag \\
+  & \OProv[\Th{T}](\gn{!D}) \lif (\OProv[\Th{T}](\gn{\OProv[\Th{T}](\gn{!D})}) \lif \OProv[\Th{T}](\gn{!A})) \ollabel{L-5}\\
+  &\qquad \text{par \olref{L-4} et P2}\notag\\
+  & \OProv[\Th{T}](\gn{!D}) \lif \OProv[\Th{T}](\gn{\OProv[\Th{T}](\gn{!D})}) \ollabel{L-6}\\
+  & \qquad\text{par P3}\notag\\
+  & \OProv[\Th{T}](\gn{!D}) \lif \OProv[\Th{T}](\gn{!A}) \ollabel{L-7}\\
+  &\qquad\text{par \olref{L-5} et \olref{L-6}}\notag\\
+  & \OProv[\Th{T}](\gn{!A}) \lif !A \ollabel{L-8}\\
+  &\qquad\text{par hypothèse}\notag\\
+  & \OProv[\Th{T}](\gn{!D}) \lif !A \ollabel{L-9}\\
+  &\qquad\text{par \olref{L-7} et \olref{L-8}}\notag\\
+  & (\OProv[\Th{T}](\gn{!D}) \lif !A) \lif !D \ollabel{L-10}\\
+  & \qquad \text{par \olref{L-1}}\notag \\
+  & !D \ollabel{L-11}\\
+  & \qquad\text{par \olref{L-9} et \olref{L-10}}\notag \\
+  & \OProv[\Th{T}](\gn{!D}) \ollabel{L-12}\\
+  & \qquad\text{par \olref{L-11} et P1}\notag \\
+  & !A \qquad\qquad\text{par \olref{L-9} et \olref{L-12}}\notag
+\end{align}
+\end{proof}
+
+Le théorème de Löb donne une courte preuve du
+second théorème d'incomplétude pour les théories
+dont le prédicat de dérivabilité satisfait P1--P3 :
+si $\Th{T}\Proves
+\OProv[\Th{T}](\gn{\lfalse})\lif\lfalse$,
+alors $\Th{T}\Proves\lfalse$.
+Si $\Th{T}$ est cohérente, elle ne démontre pas
+$\lfalse$; elle ne démontre donc pas non plus
+$\OProv[\Th{T}](\gn{\lfalse})\lif\lfalse$,
+c'est-à-dire $\OCon[\Th{T}]$.
+Le même théorème montre que le point fixe~$!H$
+de $\OProv[\Th{T}](x)$ est démontrable. En effet,
+\begin{align*}
+  \Th{T} & \Proves \OProv[\Th{T}](\gn{!H}) \liff !H\\
+  \intertext{et donc, en particulier,}
+    \Th{T} & \Proves \OProv[\Th{T}](\gn{!H}) \lif !H.
+\end{align*}
+Par le théorème de Löb, $\Th{T}\Proves !H$.
+
+\begin{prob}
+Soit $\Th{T}$ une théorie axiomatisée par un
+ensemble calculable et soit $\OProv[\Th{T}]$
+un prédicat de dérivabilité pour~$\Th{T}$.
+Considérez les quatre énoncés suivants :
+\begin{enumerate}
+\item Si $\Th{T}\Proves !A$, alors
+  $\Th{T}\Proves\OProv[\Th{T}](\gn{!A})$.
+\item $\Th{T}\Proves !A\lif
+  \OProv[\Th{T}](\gn{!A})$.
+\item Si $\Th{T}\Proves
+  \OProv[\Th{T}](\gn{!A})$, alors
+  $\Th{T}\Proves !A$.
+\item $\Th{T}\Proves
+  \OProv[\Th{T}](\gn{!A})\lif !A$.
+\end{enumerate}
+Sous quelles conditions chacun de ces énoncés
+est-il vrai?
+\end{prob}
+
+\end{document}

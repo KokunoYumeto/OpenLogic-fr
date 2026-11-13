@@ -31,11 +31,11 @@ $f\colon U\to U$ et une partie $B\subseteq U$,
 \text{ et }X\text{ est stable par }f}.
 \]
 Ainsi définie, $\Closureofunder{f}{B}$ est la plus petite partie de $U$
-stable par $f$ qui contient $B$, au sens suivant.\footnote{Note de
-l'édition française : comme pour la clôture d'un élément, on fixe
-l'ensemble ambiant et on suppose que l'application le préserve.
-La famille de parties à intersecter contient $U$ ; elle est donc
-non vide, y compris lorsque $B$ est vide.}
+stable par $f$ qui contient $B$. La famille dont on prend l'intersection
+est non vide, y compris lorsque $B$ est vide, car elle contient $U$.
+Le lemme suivant précise cette caractérisation.
+%
+%
 
 \begin{lem}\ollabel{Closureprops}
 	Pour toute application $f\colon U\to U$ et toute partie $B\subseteq U$ :
@@ -91,9 +91,9 @@ $g$ est donc !!a{injection}.
 Il reste à montrer que $\ran{g}=B$. Vérifions d'abord que
 $\ran{g}\subseteq B$ : si $z\in F$, alors $g(z)=f(z)\in A\subseteq B$ ;
 si $z\in C\setminus F$, alors $z\notin C\setminus B$, puisque
-$C\setminus B\subseteq F$, donc $g(z)=z\in B$.\footnote{Note de
-l'édition française : cette inclusion, implicite dans la source, est
-nécessaire pour établir que $g$ a bien ses valeurs dans $B$.}
+$C\setminus B\subseteq F$, donc $g(z)=z\in B$.
+%
+%
 Fixons maintenant $x\in B\subseteq C$. Si $x\notin F$, alors $g(x)=x$.
 Si $x\in F$, il existe $y\in F$ tel que $x=f(y)$ : sinon
 $F\setminus\{x\}$ serait stable par $f$ et contiendrait $C\setminus B$.

@@ -1,0 +1,103 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ord-arithmetic}{expo}
+\olsection{Exponentiation ordinale}
+
+Passons maintenant à l'exponentiation ordinale.
+Malheureusement, il n'en existe pas de définition
+synthétique \emph{simple}.
+
+Il existe certes des définitions synthétiques
+\emph{explicites}. En voici une. Soit
+$\text{finfun}(\alpha,\beta)$ l'ensemble des
+fonctions $f \colon \beta \to \alpha$
+pour lesquelles
+$\Setabs{\gamma \in \beta}{f(\gamma) \neq 0}$
+est équipotent à un nombre naturel.\footnote{Note
+de l'édition française : l'original inverse ici
+le domaine et le codomaine. Pour représenter
+$\ordexpo{\alpha}{\beta}$, il faut des fonctions
+de $\beta$ vers $\alpha$, dont le support est
+un sous-ensemble fini de $\beta$.}
+Définissons un bon ordre sur
+$\text{finfun}(\alpha,\beta)$ en posant
+$f \sqsubset g$ si et seulement si
+$f \neq g$ et
+$f(\gamma_0) < g(\gamma_0)$, où
+$\gamma_0 =
+\text{max}\Setabs{\gamma \in \beta}
+{f(\gamma) \neq g(\gamma)}$.
+Nous pouvons alors définir
+$\ordexpo{\alpha}{\beta}$ comme
+$\ordtype{\text{finfun}(\alpha, \beta),
+\sqsubset}$. Potter emploie cette définition
+explicite, puis explique aussitôt :
+\begin{quote}
+	Le choix de cet ordre est entièrement déterminé
+	par notre souhait d'obtenir une définition de
+	l'exponentiation ordinale qui satisfasse la
+	condition de récursion appropriée\ldots ;
+	et il est bien plus difficile à se représenter
+	que la somme ordonnée ou le produit ordonné.
+	\citep[p.~199]{Potter2004}
+\end{quote}
+En effet. Nous avons expliqué l'addition comme
+«~une copie de $\alpha$ suivie d'une copie de
+$\beta$~», et la multiplication comme
+«~une suite de $\beta$ copies de $\alpha$~».
+Mais nous n'avons rien d'aussi concis à dire sur
+$\text{finfun}(\alpha, \gamma)$. Nous définirons
+donc l'exponentiation ordinale \emph{par}
+récursion transfinie :
+
+\begin{defn}\ollabel{ordexporecursion}
+Pour $\alpha>0$, posons :
+\begin{align*}
+	\ordexpo{\alpha}{0} &= 1\\
+	\ordexpo{\alpha}{\beta\ordplus 1}
+	&= \ordexpo{\alpha}{\beta} \ordtimes \alpha\\
+	\ordexpo{\alpha}{\beta}
+	&= \bigcup_{\delta < \beta}
+	\ordexpo{\alpha}{\delta}
+	&& \text{si $\beta$ est un ordinal limite}
+\end{align*}
+Pour la base nulle, posons
+$\ordexpo{0}{0}=1$ et
+$\ordexpo{0}{\beta}=0$ si $\beta>0$.
+\footnote{Note de l'édition française : la règle
+pour les exposants limites, appliquée dans
+l'original sans restriction à la base $0$,
+donnerait $\ordexpo{0}{\omega}=1$ à cause du
+terme d'exposant $0$. La restriction et le cas
+de base nulle rétablissent la convention
+ordinale usuelle.}
+\end{defn}
+
+Si nous travaillions \emph{en tant que} théoriciens
+des ensembles, nous pourrions étudier diverses
+propriétés de l'exponentiation ordinale. Nous
+n'ajouterons guère qu'un fait peu surprenant :
+elle n'est pas commutative. Ainsi,
+$\ordexpo{2}{\omega} =
+\bigcup_{\delta < \omega}\ordexpo{2}{\delta}
+= \omega$, tandis que
+$\ordexpo{\omega}{2} = \omega \ordtimes \omega$.
+Mais nous ne devrions \emph{pas nous attendre}
+à ce que l'exponentiation soit commutative,
+puisqu'elle ne l'est déjà pas pour les nombres
+naturels :
+$\ordexpo{2}{3} = 8 < 9 = \ordexpo{3}{2}$.
+
+\begin{prob}
+À l'aide de la récurrence transfinie, démontrez
+que, si nous définissons
+$\ordexpo{\alpha}{\beta} =
+\ordtype{\text{finfun}(\alpha, \beta),
+\sqsubset}$, nous obtenons les équations
+de récursion de la
+\olref[sth][ord-arithmetic][expo]{ordexporecursion}.
+\end{prob}
+
+\end{document}

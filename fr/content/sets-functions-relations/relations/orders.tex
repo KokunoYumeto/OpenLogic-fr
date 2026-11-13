@@ -59,13 +59,13 @@ $\{b\} \nsubseteq \{a\}$.
 \end{ex}
 
 \begin{ex}
-La relation de \emph{divisibilité} fournit un ordre partiel qui n’est pas
-linéaire. Pour des entiers $n$ et~$m$, on écrit $n \mid m$ pour dire que
-$n$ divise $m$ sans reste, c’est-à-dire qu’il existe un entier~$k$ tel que
-$m = kn$. Sur~$\Nat$, c’est un ordre partiel, mais pas un ordre linéaire :
-par exemple, $2 \nmid 3$ et $3 \nmid 2$. Sur $\Int$, la divisibilité
+Sur~$\Nat$, la relation de \emph{divisibilité} est un ordre partiel
+qui n’est pas linéaire. Pour des entiers $n$ et~$m$, on écrit
+$n \mid m$ s’il existe un entier~$k$ tel que $m = kn$.
+Ainsi, $2 \nmid 3$ et $3 \nmid 2$. Sur $\Int$, la divisibilité
 n’est qu’un préordre, car elle n’est pas antisymétrique : $1 \mid -1$ et
 $-1 \mid 1$, alors que $1 \neq -1$.
+%
 \end{ex}
 
 \begin{ex}
@@ -77,10 +77,10 @@ Lorsque $s \sqsubseteq s'$, on dit aussi que $s$ est un \emph{segment initial}
 de~$s'$. La relation de prolongement sur $A^*$ est un ordre partiel.
 Elle n’est pas linéaire dès que l’alphabet contient deux symboles distincts :
 si $a \neq b$, alors $ab \not\sqsubseteq ba$ et $ba \not\sqsubseteq ab$.
-\footnote{Précisions éditoriales : avec au plus un symbole, cet ordre est
-linéaire. On considère ici de véritables suites finies, dont la longueur
-fait partie de l’identité, conformément à la précision sur le codage des
-mots donnée au chapitre précédent.}
+Avec au plus un symbole, deux mots quelconques se comparent par leur
+longueur, et l’ordre de prolongement est total.
+%
+%
 \end{ex}
 
 \begin{defn}[Ordre strict]

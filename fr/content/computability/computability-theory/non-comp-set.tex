@@ -1,0 +1,78 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: non-comp-set
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{ncp}
+\olsection{Il existe des ensembles non calculables}
+
+Nous avons vu que tout ensemble calculable est
+effectivement énumérable. La réciproque est-elle
+vraie ? Le résultat suivant montre que non.
+
+\begin{thm}\ollabel{thm:K-0}
+Soit $K_0$ l'ensemble
+$\Setabs{\tuple{e, x}}{\cfind{e}(x) \fdefined}$.
+Alors $K_0$ est effectivement énumérable,
+mais non calculable.
+\end{thm}
+
+\begin{proof}
+Pour voir que $K_0$ est effectivement énumérable,
+remarquons qu'il est le domaine de la fonction~$f$
+définie par
+\[
+f(z) = \umin{y}{(\fn{SeqCode}(z) \land \len{z} = 2 \land T((z)_0, (z)_1, y))}.
+\]
+En effet, si $\cfind{e}(x)$ est définie,
+$f(\tuple{e,x})$ trouve le code d'un calcul qui
+s'arrête. Si $\cfind{e}(x)$ n'est pas définie,
+$f(\tuple{e,x})$ ne l'est pas non plus. Enfin,
+si $z$ ne code même pas une paire, $f(z)$ est
+également indéfinie.\footnote{Correction éditoriale : nous ajoutons le test $\fn{SeqCode}(z)$ défini au chapitre précédent. La longueur calculée seule n'exclut pas un entier non codant : multiplier le code d'une paire par $7$, sans facteur $5$, conserve cette longueur et les deux coordonnées, mais ne donne plus un code de suite.}
+
+La non-calculabilité de $K_0$ n'est autre que
+l'indécidabilité du problème de l'arrêt,
+\olref[hlt]{thm:halting-problem}.
+\end{proof}
+
+L'ensemble $K_0$ rassemble les paires
+$\tuple{e,x}$ telles que $\cfind{e}(x)\fdefined$;
+autrement dit, $\tuple{e,x}\in K_0$ si et
+seulement si $\cfind{e}$ s'arrête sur l'entrée~$x$.
+On l'appelle aussi l'« ensemble de l'arrêt ».
+L'ensemble
+$K=\Setabs{e}{\cfind{e}(e)\fdefined}$ est
+l'« ensemble de l'arrêt diagonal ». Il sert souvent
+d'exemple canonique d'ensemble indécidable.
+
+\begin{thm}\ollabel{thm:K}
+L'ensemble de l'arrêt diagonal
+$K=\Setabs{e}{\cfind{e}(e)\fdefined}$ est
+!!{c.e.}, mais non décidable.
+\end{thm}
+
+\begin{proof}
+Supposons $K$ décidable, c'est-à-dire sa fonction
+caractéristique $\Char{K}$ calculable. Posons
+\[d(e) = \begin{cases}
+  1 & \text{si\/ $\Char{K}(e) = 0$}\\
+  \fundefined & \text{sinon.}
+  \end{cases}
+  \]
+Cette fonction est calculable partielle sous l'hypothèse faite : $d(e)\simeq 1+\umin{y}{\Char{K}(e)=0}$. Soit $k$ un indice de~$d$, donc
+$d\simeq\cfind{k}$. On a alors
+$d(k)\simeq\cfind{k}(k)$, contrairement au
+fait que $d(k)\fdefined$ si et seulement si
+$\cfind{k}(k)\fundefined$, qui découle
+de la définition de~$d$.
+
+$K$ est le domaine de
+$f(x)=\umin{y}{T(x,x,y)}$;
+il est donc !!{c.e.}
+\end{proof}
+
+\end{document}

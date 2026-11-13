@@ -1,0 +1,53 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{replacement}{ref}
+\olsection{Remplacement et réflexion}
+
+Notre dernière tentative de justification du remplacement par
+\stagesinex{} commence par un résultat profond et remarquable :
+\footnote{Rappel : toute formule peut contenir des paramètres,
+sauf indication explicite du contraire.}
+% Ici, une notation avec barre pourrait abréger la liste
+% $x_1, \ldots, x_n$.
+\begin{thm}[Schéma de réflexion]\ollabel{reflectionschema}
+Pour toute formule $\phi$ :
+\[
+\forall \alpha \exists \beta > \alpha (\forall x_1 \ldots, x_n \in
+V_\beta)(\phi(x_1, \ldots, x_n) \liff \phi^{V_\beta}(x_1, \ldots, x_n))
+\]
+\end{thm}
+\noindent
+Comme dans la
+\olref[sth][replacement][strength]{formularelativization},
+$\phi^{V_\beta}$ résulte de la restriction de tous les
+quantificateurs de $\phi$ à l'ensemble~$V_\beta$.
+Intuitivement, la réflexion affirme donc ceci : si $\phi$
+est vraie dans la hiérarchie entière, alors elle est vraie
+dans des \emph{segments initiaux} de la hiérarchie aussi
+grands qu'on le souhaite.
+
+\citet{Montague1961} et \citet{Levy1960} ont montré que
+des formulations appropriées du remplacement et de la
+réflexion sont équivalentes modulo~$\Z$ : ajouter l'un ou
+l'autre donne~$\ZF$. (Nous démontrons ces résultats
+dans la \olref[sth][replacement][refproofs]{sec}.)
+Cette équivalence permet d'espérer justifier la réflexion
+et le remplacement par \stagesinex{} de la manière suivante :
+si nous acceptons \stagesinex, la hiérarchie devrait être
+extrêmement haute, au point que rien de ce que nous pouvons
+en dire ne suffise à borner sa hauteur. Nous pouvons comprendre
+cela comme l'idée que, si une phrase~$\phi$ est vraie dans la
+hiérarchie entière, alors elle est vraie dans des segments
+initiaux de celle-ci aussi grands qu'on le souhaite. Et c'est
+précisément la réflexion.
+
+Là encore, il semble s'agir d'une tentative réellement
+prometteuse de justification intrinsèque du remplacement.
+Mais il y aurait beaucoup trop à en dire ici. À vous,
+maintenant, de décider si elle réussit.\footnote{Vous pourriez
+toutefois poursuivre votre lecture avec
+\citet[95--100]{Incurvati2020}.}
+
+\end{document}

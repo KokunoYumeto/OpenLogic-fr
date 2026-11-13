@@ -1,0 +1,172 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: pr-functions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{prf}
+\olsection{Fonctions récursives primitives}
+
+Récapitulons les deux procédés qui permettent de définir de nouvelles
+fonctions à partir de fonctions connues : la récurrence primitive
+et la composition.
+
+\begin{defn}
+  \ollabel{defn:primitive-recursion} Soit $f$ une fonction à $k$
+  arguments ($k\ge 1$) et $g$ une fonction à $k+2$ arguments.
+  La fonction \emph{définie par récurrence primitive à partir de
+  $f$ et de $g$} est la fonction~$h$ à $k+1$ arguments donnée par
+  les équations
+  \begin{align*}
+    h(x_0,\dots,x_{k-1},0) & =  f(x_0,\dots,x_{k-1}) \\
+    h(x_0,\dots,x_{k-1},y+1) & = g(x_0,\dots,x_{k-1}, y, h(x_0,\dots,x_{k-1}, y))
+  \end{align*}
+\end{defn}
+
+\begin{defn}
+  \ollabel{defn:composition} Soit $f$ une fonction à $k$ arguments
+  et soient $g_0,\dots,g_{k-1}$ des fonctions à $n$ arguments.
+  La fonction \emph{définie par composition de $f$ avec
+    $g_0,\dots,g_{k-1}$} est la fonction~$h$ à $n$ arguments
+  donnée par
+  \[
+  h(x_0, \dots, x_{n-1}) =
+  f(g_0(x_0, \dots, x_{n-1}), \dots, g_{k-1}(x_0, \dots, x_{n-1})).
+  \]
+\end{defn}
+
+Outre la fonction successeur~$\Succ$ et les fonctions de projection
+\[
+\Proj{n}{i}(x_0,\dots,x_{n-1}) = x_i,
+\]
+pour chaque entier naturel~$n$ et chaque $i<n$, nous compterons
+parmi les fonctions récursives primitives la fonction nulle
+$\Zero(x)=0$.
+
+\begin{defn}
+  L'ensemble des fonctions récursives primitives est l'ensemble
+  des fonctions de $\Nat^n$ dans $\Nat$, pour $n\geq1$, défini inductivement
+  par les clauses suivantes :
+  \begin{enumerate}
+  \item $\Zero$ est récursive primitive.
+  \item $\Succ$ est récursive primitive.
+  \item Chaque projection $\Proj{n}{i}$ est récursive primitive.
+  \item Si $f$ est une fonction récursive primitive à $k$ arguments
+    et si $g_0,\dots,g_{k-1}$ sont des fonctions récursives
+    primitives à $n$ arguments, la composition de $f$ avec
+    $g_0,\dots,g_{k-1}$ est récursive primitive.
+  \item Si $f$ est une fonction récursive primitive à $k$ arguments
+    et $g$ une fonction récursive primitive à $k+2$ arguments,
+    la fonction définie par récurrence primitive à partir de
+    $f$ et de $g$ est récursive primitive.
+  \end{enumerate}
+\end{defn}
+
+\begin{explain}
+En bref, l'ensemble des fonctions récursives primitives est le
+plus petit ensemble qui contient $\Zero$, $\Succ$ et les
+projections~$\Proj{n}{j}$, et qui est clos par composition et
+par récurrence primitive.
+
+On peut aussi décrire cet ensemble par « étapes ». Soit $S_0$
+l'ensemble des fonctions de base : $\Zero$, $\Succ$ et les
+projections. Ce sont les fonctions récursives primitives de
+l'étape~$0$. Une fois $S_i$ défini, on obtient $S_{i+1}$ en
+conservant les fonctions de~$S_i$ et en y ajoutant toutes celles
+que donne une seule application de la composition ou de la
+récurrence primitive à des fonctions de~$S_i$. Alors
+\[
+S = \bigcup_{i \in \Nat} S_i
+\]
+est l'ensemble de toutes les fonctions récursives primitives.\footnote{Explicitation éditoriale : les étapes décrites dans la source sont déjà croissantes, car la composition de la fonction identité avec une fonction la reproduit, et l'identité reste présente à chaque étape. Nous rendons cette conservation explicite ; nous ne changeons pas la classe obtenue.}
+\end{explain}
+
+Vérifions que $\Add$ est récursive primitive.
+
+\begin{prop}
+  La fonction d'addition $\Add(x,y)=x+y$ est récursive primitive.
+\end{prop}
+
+\begin{proof}
+Nous disposons déjà d'une définition par récurrence primitive
+de $\Add$ au moyen de deux fonctions $f$ et~$g$; elle a la
+forme exigée par la \olref{defn:primitive-recursion} :
+\begin{align*}
+  \Add(x_0, 0) & = f(x_0) = x_0\\
+  \Add(x_0, y+1) & = g(x_0, y, \Add(x_0, y)) =
+  \Succ(\Add(x_0, y))
+\end{align*}
+Il suffit donc de montrer que $f$ et $g$ sont elles-mêmes
+récursives primitives. Or $f(x_0)=x_0=\Proj{1}{0}(x_0)$ :
+les projections étant récursives primitives, $f$ l'est.
+La fonction~$g$ à trois arguments est définie par
+\[
+g(x_0, y, z) = \Succ(z).
+\]
+Cela ne suffit pas encore à conclure : $\Succ$ n'a qu'un
+argument, tandis que $g$ en a trois. Mais on peut définir
+$g$ par composition, de façon explicite :
+\[
+g(x_0, y, z) = \Succ(\Proj{3}{2}(x_0, y, z))
+\]
+Puisque $\Succ$ et $\Proj{3}{2}$ sont récursives primitives,
+leur composition~$g$ l'est aussi.
+\end{proof}
+
+\begin{prop}
+  \ollabel{prop:mult-pr}
+  La fonction de multiplication $\Mult(x,y)=x\cdot y$ est
+  récursive primitive.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrer la \olref[cmp][rec][prf]{prop:mult-pr} en mettant la
+  définition par récurrence primitive de $\Mult$ sous la forme
+  exigée par la \olref[cmp][rec][prf]{defn:primitive-recursion},
+  puis en montrant que les fonctions $f$ et~$g$ correspondantes
+  sont récursives primitives.
+\end{prob}
+
+\begin{ex}
+Reprenons notre tout premier exemple de définition récursive
+primitive :
+\begin{align*}
+h(0) & =  1 \\
+h(y+1) & =  2 \cdot h(y).
+\end{align*}
+Cette fonction n'entre pas dans le schéma de la
+\olref{defn:primitive-recursion}, car $k=0$. Sa définition
+fait aussi intervenir les constantes $1$ et~$2$. Pour surmonter
+la première difficulté, ajoutons un argument fictif et
+définissons~$h'$ :
+\begin{align*}
+h'(x_0, 0) & =  f(x_0) = 1 \\
+h'(x_0, y+1) & =  g(x_0, y, h'(x_0, y)) = 2 \cdot h'(x_0, y).
+\end{align*}
+La fonction $f(x_0)=1$ s'obtient par composition de $\Succ$
+et de $\Zero$ : $f(x_0)=\Succ(\Zero(x_0))$. La fonction~$g$
+s'obtient par composition à partir de $g'(z)=2\cdot z$ et
+des projections :
+\begin{align*}
+g(x_0, y, z) & = g'(\Proj{3}{2}(x_0, y, z))
+\intertext{et $g'$ s'obtient à son tour par composition :}
+g'(z) & = \Mult(g''(z), \Proj{1}{0}(z))
+\intertext{où}
+g''(z) & = \Succ(f(z)),
+\end{align*}
+$f$ étant la fonction définie ci-dessus :
+$f(z)=\Succ(\Zero(z))$. Une fois $h'$ obtenue, la composition
+permet encore de poser
+$h(y)=h'(\Proj{1}{0}(y),\Proj{1}{0}(y))$.
+Ainsi, $h$ se définit à partir des fonctions de base par une
+suite de compositions et de récurrences primitives : elle est
+donc récursive primitive.
+\end{ex}
+
+\end{document}

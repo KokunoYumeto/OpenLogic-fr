@@ -1,0 +1,57 @@
+% Part: many-valued-logic
+% Chapter: infinite-valued-logics
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{inf}{int}
+
+\olsection{Introduction}
+
+Le nombre de valeurs de vérité d'une
+matrice n'est pas nécessairement fini.
+Un choix naturel pour un ensemble
+infini de valeurs de vérité est celui
+des nombres rationnels compris entre
+$0$ et~$1$,
+$V_\infty=[0,1]\cap\Rat$;
+autrement dit,
+\begin{align*}
+  V_\infty
+    &=\Setabs{\frac{n}{m}}{n,m\in\Nat,
+      \ m\ge1,\ 0\le n\le m}.
+\intertext{Lorsque nous considérons
+cet ensemble infini de valeurs de vérité,
+il est souvent utile d'étudier aussi,
+pour tout entier $m\ge2$, les sous-ensembles}
+  V_m
+    &=\Setabs{\frac{n}{m-1}}{n\in\Nat,
+      \ 0\le n\le m-1}.
+\intertext{Les $m$ valeurs de $V_m$ sont régulièrement espacées
+de $0$ à $1$. Pour $m=5$, on obtient :}
+  V_5
+    &=\{0,\frac14,\frac12,
+      \frac34,1\}.
+\end{align*}
+Dans les logiques fondées sur ces
+ensembles de valeurs, seule la
+valeur~$1$ est généralement désignée,
+c'est-à-dire $V^+=\{1\}$.
+Autrement dit, $1$ joue le rôle
+de la vérité absolue et $0$ celui
+de la fausseté absolue, mais les
+formules peuvent prendre toute valeur
+intermédiaire de~$V$.
+
+Nous pouvons aussi considérer
+$V_{[0,1]}=[0,1]$, l'ensemble de
+tous les nombres \emph{réels} entre
+$0$ et~$1$, ou d'autres sous-ensembles
+infinis de~$[0,1]$. Les logiques
+ayant $V_{[0,1]}$ pour ensemble de
+valeurs de vérité sont souvent
+appelées \emph{logiques floues}.
+
+\end{document}

@@ -1,0 +1,125 @@
+% Partie : set-theory
+% Chapitre : spine
+% Section : foundation
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{spine}{foundation}
+
+\olsection{Fondation}
+
+Nous avons \emph{presque} terminé, mais pas \emph{tout à fait} :
+rien, dans $\ZFminus$, ne garantit que \emph{tout} ensemble
+appartienne à un certain $V_\alpha$, c'est-à-dire que chaque
+ensemble se forme à une étape.
+
+En un sens mathématique assez simple, la présence éventuelle
+d'ensembles hors de la hiérarchie ne nous \emph{importe} pas : s'il
+en existe, nous pouvons les ignorer. Mais nous avons motivé notre
+\emph{concept} d'ensemble par l'idée que chaque ensemble se forme à
+une étape (voir \stageshier{} dans la \olref[z][story]{sec}). Nous
+voulons donc exclure la possibilité d'ensembles extérieurs à la
+hiérarchie. Il nous faut, pour cela, ajouter un axiome qui assure que
+chaque ensemble se trouve quelque part dans la hiérarchie.
+
+Puisque les $V_\alpha$ sont nos étapes, nous pourrions simplement
+envisager d'ajouter l'énoncé suivant comme axiome :
+
+\begin{defish}
+\emph{Régularité.} $\forall A \exists \alpha\, A \subseteq V_\alpha$
+\end{defish}
+
+Ce serait une démarche parfaitement raisonnable. Toutefois, pour
+des raisons qui seront expliquées dans la section suivante, nous
+adopterons plutôt un autre axiome :
+
+\begin{axiom}[Fondation]
+$(\forall A \neq \emptyset)(\exists B \in A)A \cap B = \emptyset$.
+\end{axiom}
+
+Avec quelques efforts, nous pouvons montrer, dans $\ZFminus$, que
+la fondation entraîne la régularité :
+\begin{defn}
+Pour chaque ensemble $A$, posons :
+\begin{align*}
+	\text{cl}_0(A) &= A,\\
+	\text{cl}_{n+1}(A) &= \bigcup \text{cl}_n(A),\\
+	\text{trcl}(A) &= \bigcup_{n < \omega} \text{cl}_{n}(A).
+\end{align*}
+Nous appelons $\text{trcl}(A)$ la \emph{clôture transitive} de $A$.
+\end{defn}
+\noindent
+Le nom de «~clôture transitive~» est bien choisi :
+\begin{prop}\ollabel{subsetoftrcl}
+$A \subseteq \trcl{A}$ et $\trcl{A}$ est un ensemble transitif.
+\end{prop}
+
+\begin{proof}
+Il est clair que $A = \text{cl}_0(A) \subseteq \text{trcl}(A)$.
+Si $x \in b \in \trcl{A}$, alors $b \in \text{cl}_n(A)$ pour un certain
+$n$, et donc
+$x \in \text{cl}_{n+1}(A) \subseteq \text{trcl}(A)$.
+\end{proof}
+
+\begin{lem}\ollabel{lem:TransitiveWellFounded}
+Si $A$ est un ensemble transitif, alors il existe un ordinal
+$\alpha$ tel que $A \subseteq V_\alpha$.
+\end{lem}
+
+\begin{proof}
+Rappelons la définition de «~$\supstrict(X)$~» donnée dans la
+\olref[ordinals][opps]{defsupstrict}. Définissons deux ensembles :
+\begin{align*}
+	D  &= \Setabs{x \in A}{\forall \delta\ x \nsubseteq V_\delta}\\
+	\alpha &= \supstrict\Setabs{\delta}{(\exists x \in A)
+	(x \subseteq V_\delta \land (\forall \gamma \in \delta)x \nsubseteq V_\gamma)}
+\end{align*}
+Supposons $D = \emptyset$. Pour chaque $x \in A$, il existe alors un
+$\delta$ tel que $x \subseteq V_\delta$ et, par le bon ordre des
+ordinaux, tel que
+$(\forall \gamma \in \delta)x \nsubseteq V_\gamma$. Ainsi,
+$\delta \in \alpha$, d'où $x \in V_\alpha$ par le
+\olref[spine][Valphabasic]{Valphabasicprops}. Par conséquent,
+$A \subseteq V_{\alpha}$, comme voulu.
+
+Il suffit donc de montrer que $D = \emptyset$. Par l'absurde,
+supposons le contraire. Par fondation, il existe
+$B \in D \subseteq A$ tel que $D \cap B = \emptyset$. Si $x \in B$,
+alors $x \in A$ puisque $A$ est transitif ; et, comme $x \notin D$,
+il existe un $\delta$ tel que $x \subseteq V_\delta$. Posons donc
+\[
+	\beta = \supstrict\Setabs{\delta}{(\exists x \in B)(x \subseteq V_\delta \land (\forall \gamma < \delta)x \nsubseteq V_\gamma)}.
+\]
+\footnote{Note de l'édition française : l'original écrit ici
+«~$x \in b$~», avec un $b$ minuscule non défini dans cette
+démonstration. La formule doit porter sur l'ensemble $B$ choisi par
+fondation.}
+Comme précédemment, $B \subseteq V_\beta$, ce qui contredit
+$B \in D$.
+\end{proof}
+
+\begin{thm}\ollabel{zfentailsregularity}
+La régularité est vraie.
+\end{thm}
+
+\begin{proof}
+Fixons $A$. Par la \olref{subsetoftrcl}, nous avons
+$A \subseteq \trcl{A}$, et $\trcl{A}$ est transitif. Il existe donc
+un $\alpha$ tel que
+$A \subseteq \trcl{A} \subseteq V_\alpha$ par le
+\olref{lem:TransitiveWellFounded}.
+\end{proof}
+
+Ces résultats montrent que $\ZFminus$ démontre l'implication
+$\emph{Fondation}\Rightarrow\emph{Régularité}$. Dans la
+\olref[spine][rank]{zfminusregularityfoundation}, nous montrerons que
+$\ZFminus$ démontre aussi
+$\emph{Régularité}\Rightarrow\emph{Fondation}$. Ainsi, la fondation
+et la régularité sont \emph{équivalentes} modulo $\ZFminus$. Dans
+cette théorie, nous pouvons donc justifier la fondation en remarquant
+qu'elle équivaut à la régularité. Quant à la régularité, elle se
+justifie immédiatement à partir de \stageshier{}.
+
+\end{document}

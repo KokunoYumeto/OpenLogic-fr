@@ -1,0 +1,102 @@
+% Partie : logique intuitionniste
+% Chapitre : propositions comme types
+% Section : des preuves aux termes
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{pty}{pt}
+
+\olsection{Des \usetoken{p}{derivation} aux termes de preuve}
+
+Passer des preuves en déduction naturelle aux termes de preuve,
+c'est-à-dire des preuves de \Log{N2i} aux preuves de \Log{tN2i},
+est très simple. Il suffit d'inscrire un terme à gauche
+de chaque formule à droite d'un séquent de la dérivation ;
+on obtient des séquents $\Gamma \Sequent M : !A$.
+Nous disons alors que $M$ \emph{témoigne} de~$!A$
+dans le contexte~$\Gamma$.
+Les règles de \Log{tN2i} déterminent le terme à inscrire.
+Les étiquettes des hypothèses sont fixées, y compris
+la variable choisie pour justifier chaque axiome.
+
+\begin{prop}
+Dans le fragment propositionnel décrit ci-dessus, toute preuve~$\delta$
+de $\Gamma \Sequent !A$ dans \Log{N2i} correspond à une preuve~$\delta'$
+de $\Gamma \Sequent N : !A$ dans \Log{tN2i}. Le terme $N$ est déterminé
+de manière unique par~$\delta$, une fois ses étiquettes fixées.
+\end{prop}
+
+\begin{proof}
+On raisonne par récurrence sur la hauteur de~$\delta$.
+Si $\delta$ est l'axiome $\Gamma \Sequent !A$, justifié
+par l'hypothèse étiquetée $x:!A$ dans le contexte,
+alors $\delta'$ est l'axiome $\Gamma \Sequent x:!A$.
+Si $\delta$ se termine par une règle d'inférence,
+l'hypothèse de récurrence fournit, pour chacune de ses
+prémisses, un terme de preuve et une preuve dans \Log{tN2i}
+du séquent ainsi étiqueté.
+On applique la règle correspondante de \Log{tN2i},
+qui détermine le terme de preuve de la conclusion.
+\end{proof}
+
+\begin{ex}
+Considérons la preuve très simple de
+$(!A \land !B) \lif (!B \land !A)$ dans \Log{N1i} :
+\[
+  \AxiomC{$\Discharge{!A\land !B}{x}$}
+  \RightLabel{\Elim\land[2]}
+  \UnaryInfC{$!B$}
+  \AxiomC{$\Discharge{!A\land !B}{x}$}
+  \RightLabel{\Elim\land[1]}
+  \UnaryInfC{$!A$}
+  \RightLabel{\Intro\land}
+  \BinaryInfC{$!B \land !A$}
+  \DischargeRule{\Intro\lif}{x}
+  \UnaryInfC{$(!A \land !B) \lif (!B \land !A)$}
+  \DisplayProof
+  \]
+Sa présentation dans \Log{N2i} est :
+\[
+  \Axiom$x : !A\land !B \fCenter !A\land !B$
+  \RightLabel{\Elim\land[2]}
+  \UnaryInf$x : !A\land !B \fCenter !B$
+  \Axiom$x : !A\land !B \fCenter !A\land !B$
+  \RightLabel{\Elim\land[1]}
+  \UnaryInf$x : !A\land !B \fCenter !A$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter !B \land !A$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter (!A \land !B) \lif (!B \land !A)$
+  \DisplayProof
+  \]
+Nous attribuons les termes de preuve de haut en bas.
+Pour un axiome, le terme est la variable de son contexte,
+ici~$x$. Les deux règles $\Elim\land[i]$ produisent
+respectivement $\proj{2}{x}$ et~$\proj{1}{x}$.
+La règle \Intro{\land} réunit ces termes en
+$\pair{\proj{2}{x}}{\proj{1}{x}}$.
+Enfin, \Intro{\lif} effectue une $\lambd$-abstraction :
+elle lie $x$ et enregistre que cette variable étiquetait
+l'hypothèse~$!A \land !B$. On obtient
+$\lambd[\typeof{x}{!A \land !B}][\pair{\proj{2}{x}}{\proj{1}{x}}]$.
+La preuve dans \Log{tN2i} est donc :
+\[
+  \Axiom$x : !A\land !B \fCenter x: !A\land !B$
+  \RightLabel{\Elim\land[2]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{2}{x} : !B$
+  \Axiom$x : !A\land !B \fCenter x: !A\land !B$
+  \RightLabel{\Elim\land[1]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{1}{x} : !A$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !B \land !A$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif (!B \land !A)$
+  \DisplayProof
+  \]
+\end{ex}
+
+\end{document}

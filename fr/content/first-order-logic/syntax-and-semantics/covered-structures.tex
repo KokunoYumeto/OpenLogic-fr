@@ -1,0 +1,79 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: covered-structures
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{cov}
+
+\olsection{\printtoken{P}{structure} couvertes pour les langages du premier ordre}
+
+\begin{explain}
+Rappelons qu'un terme est \emph{clos} s'il ne contient aucune
+!!{variable}.
+\end{explain}
+
+\begin{defn}[Valeur d'un terme clos]
+Si $t$ est un terme clos du langage~$\Lang L$ et $\Struct M$ une
+!!{structure} pour~$\Lang L$, la \emph{!!{value}}~$\Value{t}{M}$
+est définie comme suit :
+\begin{enumerate}
+\item Si $t$ est simplement la !!{constant}~$c$, alors
+  $\Value{c}{M} = \Assign{c}{M}$.
+\item Si $t$ est de la forme $\Atom{f}{t_1, \ldots, t_n}$, alors
+  \[
+  \Value{t}{M} = \Assign{f}{M}(\Value{t_1}{M}, \ldots,
+  \Value{t_n}{M}).
+  \]
+\end{enumerate}
+\end{defn}
+
+\begin{defn}[Structure couverte]
+Une !!{structure} est \emph{couverte} si tout !!{element} de son
+!!{domain} est la !!{value} d'un terme clos.
+\end{defn}
+
+\begin{ex}
+Soit ~$\Lang L$ le langage qui contient les !!{constant}s
+$\Obj{zero}$, $\Obj{one}$, $\Obj{two}$, \dots, le !!{predicate}
+binaire~$<$ et les !!{function}s binaires $+$ et~$\times$.
+Considérons la !!{structure}~$\Struct M$ pour~$\Lang L$ dont le
+domaine est $\Domain M = \{0, 1, 2, \ldots \}$ et où
+$\Assign{\Obj{zero}}{M} = 0$,
+$\Assign{\Obj{one}}{M} = 1$, $\Assign{\Obj{two}}{M} = 2$, et ainsi
+de suite. Le symbole de relation binaire~$<$ est interprété par
+l'ensemble $\Assign{<}{M}$ de tous les couples
+$\tuple{c_1, c_2} \in \Domain{M}^2$ tels que $c_1$ est inférieur
+à~$c_2$ : par exemple,
+$\tuple{1, 3} \in \Assign{<}{M}$, mais
+$\tuple{2, 2} \notin \Assign{<}{M}$. Pour le !!{function} binaire~$+$,
+on définit $\Assign{+}{M}$ de la manière usuelle : ainsi,
+$\Assign{+}{M}(2,3)$ vaut~$5$ ; il en va de même pour le
+!!{function} binaire~$\times$. La !!{value} de $\Obj{four}$ est
+donc~$4$, et celle de
+$\times(\Obj{two}, +(\Obj{three},\Obj{zero}))$, que l'on peut aussi
+écrire sous forme infixe
+$\Obj{two} \times (\Obj{three} + \Obj{zero})$, est
+\begin{multline*}
+\Value{\times(\Obj{two}, +(\Obj{three},\Obj{zero}))}{M} =\\
+\begin{aligned}
+& \Assign{\times}{M}(\Value{\Obj{two}}{M}, \Value{+(\Obj{three}, \Obj{zero})}{M})\\
+& = \Assign{\times}{M}(\Value{\Obj{two}}{M}, \Assign{+}{M}(\Value{\Obj{three}}{M},
+\Value{\Obj{zero}}{M})) \\
+& = \Assign{\times}{M}(\Assign{\Obj{two}}{M}, \Assign{+}{M}(\Assign{\Obj{three}}{M},
+\Assign{\Obj{zero}}{M})) \\
+& = \Assign{\times}{M}(2, \Assign{+}{M}(3, 0)) \\
+& = \Assign{\times}{M}(2, 3) \\
+& = 6
+\end{aligned}
+\end{multline*}
+\end{ex}
+
+\begin{prob}
+La !!{structure}~$\Struct N$, modèle standard de l'arithmétique,
+est-elle couverte ? Expliquer.
+\end{prob}
+
+\end{document}

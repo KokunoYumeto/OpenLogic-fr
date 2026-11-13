@@ -1,0 +1,69 @@
+% Part: first-order-logic
+% Chapter: model-theory
+% Section: reducts-and-expansions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{bas}{red}
+\section{Réduits et expansions}
+
+Il est souvent utile, voire nécessaire, de comparer des langages qui
+possèdent des symboles communs, ainsi que des !!{structure}s pour ces
+langages. Le cas le plus courant est celui où tous les symboles
+d'!!a{language}~$\Lang{L}$ appartiennent aussi à !!a{language}~$\Lang{L'}$,
+autrement dit où $\Lang{L} \subseteq \Lang{L'}$. On peut alors toujours
+obtenir une $\Lang{L'}$-!!{structure} en ajoutant à !!a{structure}
+$\Lang{L}$~$\Struct{M}$ des interprétations pour les nouveaux symboles,
+sans modifier celles des symboles communs. Inversement, à partir
+d'!!a{structure} $\Lang{L'}$~$\Struct{M'}$, on obtient une
+$\Lang{L}$-!!{structure} en « oubliant » les interprétations des symboles
+qui ne figurent pas dans~$\Lang{L}$.
+
+\begin{defn}
+\ollabel{defn:reduct}
+Supposons que $\Lang L \subseteq \Lang L'$, que $\Struct M$ soit
+!!a{structure} pour $\Lang L$ et que $\Struct M'$ soit !!a{structure}
+pour $\Lang L'$. On dit que $\Struct M$ est le \emph{réduit} de
+$\Struct M'$ à $\Lang L$, et que $\Struct M'$ est une \emph{expansion}
+de $\Struct M$ à $\Lang L'$, si et seulement si :
+\begin{enumerate}
+\item $\Domain{M} = \Domain{M'}$;
+\item pour toute !!{constant}~$c \in \Lang L$, $\Assign{c}{M} =
+  \Assign{c}{M'}$;
+\item pour tout !!{function}~$f \in \Lang L$, $\Assign{f}{M} =
+  \Assign{f}{M'}$;
+\item pour tout !!{predicate}~$P \in \Lang L$, $\Assign{P}{M} =
+  \Assign{P}{M'}$.
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+\ollabel{prop:reduct}
+Si !!a{structure} pour $\Lang{L}$~$\Struct{M}$ est le réduit
+d'!!a{structure} pour $\Lang{L'}$~$\Struct{M'}$, alors, pour tout
+!!{sentence}~$!A$ du langage $\Lang{L}$,
+\[
+\Sat{M}{!A} \text{ si et seulement si } \Sat{M'}{!A}.
+\]
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrez la \olref[mod][bas][red]{prop:reduct}.
+\end{prob}
+
+\begin{defn}
+Soit $\Struct{M}$ !!a{structure} pour $\Lang{L}$. Supposons que
+$\Lang{L'} = \Lang{L} \cup \{P\}$ soit obtenu en ajoutant à $\Lang{L}$
+un seul !!{predicate}~$P$ d'arité~$n$, et soit
+$R \subseteq \Domain{M}^n$ une relation $n$-aire. On note alors
+$\Expan{M}{R}$ l'expansion~$\Struct{M'}$ de~$\Struct{M}$ dans laquelle
+$\Assign{P}{M'} = R$.
+\end{defn}
+
+\end{document}

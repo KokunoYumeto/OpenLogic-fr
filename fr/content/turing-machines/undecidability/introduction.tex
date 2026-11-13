@@ -1,0 +1,113 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{int}
+\olsection{Introduction}
+
+Il peut sembler évident que toutes les fonctions ne sont pas
+calculables, même parmi les fonctions arithmétiques : elles
+sont trop nombreuses, et certaines ont un comportement trop
+complexe. Songeons, par exemple, à des fonctions définies
+à partir de la désintégration de particules radioactives,
+ou d'autres phénomènes chaotiques ou aléatoires. Fixons un
+instant initial et comptons les intervalles successifs d'une
+seconde. Définissons $f(n)$ comme le nombre de particules
+de l'univers qui se désintègrent pendant le $n$-ième de
+ces intervalles. Voilà, semble-t-il, une fonction dont
+on ne saurait espérer calculer les valeurs.
+
+Ne pas imaginer comment calculer une telle fonction est
+cependant bien différent de démontrer qu'elle n'est pas
+calculable. Même une fonction qui paraît d'une complexité
+insurmontable peut être calculable au sens abstrait.
+Supposons, par exemple, que l'univers ait une durée finie
+et finisse, dans un avenir extrêmement lointain, par se
+contracter en un point. Il n'y aurait alors qu'un nombre
+fini, quoique prodigieux, d'intervalles d'une seconde après
+l'instant initial pour lesquels $f(n)$ serait définie.
+Or toute fonction définie sur un ensemble fini d'entrées
+est calculable : en principe, ses valeurs pourraient figurer
+dans une immense table ou être codées dans le diagramme
+de transition d'une très grande machine de Turing.
+Cette existence abstraite n'exige pas que nous connaissions
+effectivement la table.
+
+Nous nous intéressons souvent aux fonctions dont les
+valeurs répondent à des questions par oui ou par non.
+Par exemple, à la question « $n$ est-il un nombre premier ? »
+correspond la fonction
+\[
+\fn{isprime}(n) = \begin{cases}
+  1 & \text{si $n$ est premier}\\
+  0 & \text{sinon.}
+  \end{cases}
+\]
+On dit qu'une question de ce type est
+\emph{effectivement décidable} si la fonction associée,
+à valeurs dans $\{0,1\}$, est effectivement calculable.
+
+Pour démontrer mathématiquement que certaines fonctions
+ne sont pas effectivement calculables ou que certains
+problèmes ne sont pas effectivement décidables, il est
+indispensable de fixer un modèle précis de calcul, puis
+d'établir que ce modèle ne calcule pas ces fonctions ou
+ne décide pas ces problèmes. Nous pouvons ainsi montrer
+que les machines de Turing ne calculent pas toutes les
+fonctions et ne décident pas tous les problèmes. La thèse
+de Church--Turing permet ensuite de conclure qu'aucune
+procédure effective ne peut combler cette limite.
+
+L'argument décisif repose sur la possibilité d'attribuer
+des nombres aux machines de Turing elles-mêmes. Le moyen
+le plus simple est de les énumérer : fixons une façon
+d'écrire les machines et leurs programmes, puis dressons-en
+une liste systématique. Dès que cette énumération est
+établie, un argument de cardinalité montre qu'il existe
+des fonctions non calculables par machine de Turing.
+En effet, l'ensemble des fonctions de $\Nat$ vers~$\Nat$
+--- et même celui des fonctions de $\Nat$ vers
+$\{0,1\}$ --- est !!{nonenumerable}, tandis que l'ensemble
+des machines de Turing, donc celui des fonctions qu'elles
+calculent, est seulement !!{denumerable}.
+
+Nous pouvons aussi définir des fonctions et des problèmes
+\emph{particuliers} dont nous démontrons respectivement
+la non-calculabilité et l'indécidabilité. Le
+\emph{problème de l'arrêt} en est un exemple. Une machine
+de Turing possède une description finie : la liste de
+ses instructions. Cette description, autrement dit son
+programme, peut elle-même servir d'entrée à une autre
+machine de Turing. On peut donc poser à une machine
+des questions sur d'autres machines. L'une d'elles
+est : « La machine décrite finit-elle par s'arrêter
+sur l'entrée~$n$ ? » Une machine capable de répondre
+serait bien pratique, comme un dispositif de contrôle
+détectant les boucles infinies. Mais Turing a démontré
+qu'aucune machine de Turing ne peut décider cette question.
+Il n'existe pas de machine unique qui, recevant la
+description d'une machine~$M$ et un nombre~$n$,
+s'arrête toujours avec la sortie~$1$ ou~$0$ selon
+que~$M$ s'arrête ou non sur l'entrée~$n$.
+
+Une fois certains problèmes particuliers reconnus
+indécidables, nous pouvons nous en servir pour en
+établir d'autres. Un exemple célèbre est la question :
+« La !!{formula} du premier ordre~$!A$ est-elle valide ? »
+Aucune machine de Turing ne peut, pour toute
+!!{formula} du premier ordre~$!A$ reçue en entrée,
+s'arrêter à coup sûr avec la sortie~$1$ ou~$0$
+selon que~$!A$ est valide ou non. Historiquement,
+la recherche d'une procédure effective pour répondre
+à cette question s'appelait simplement le
+« problème de la décision »; nous disons donc que
+ce problème est insoluble. Turing et Church ont
+démontré ce résultat indépendamment, à peu près
+à la même époque. On l'appelle aussi le
+théorème de Church--Turing.\footnote{Cette appellation, conservée de la source, désigne ici le résultat d'indécidabilité de la validité du premier ordre. Il faut la distinguer de la thèse de Church--Turing, qui relie une notion intuitive de calcul effectif à un modèle formel.}
+
+\end{document}

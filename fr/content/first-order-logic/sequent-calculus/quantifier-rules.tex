@@ -82,14 +82,14 @@ de~$\RightR{\lforall}$.
 \end{explain}
 
 \begin{explain}
-Dans \RightR{\lexists} et \LeftR{\lforall}, aucune autre restriction
-ne porte sur le terme clos~$t$. En revanche, dans les règles
-\LeftR{\lexists} et \RightR{\lforall}, la condition sur
-l'eigenvariable impose en particulier que la !!{constant}~$a$ ne
-figure nulle part en dehors de~$!A(a)$ dans le séquent supérieur.
-Cette condition est nécessaire à la correction du système : elle
-garantit que celui-ci ne !!{derive}s que des séquents valides. Sans
-elle, les inférences suivantes seraient permises :
+Dans \RightR{\lexists} et \LeftR{\lforall}, $t$ est un terme clos
+quelconque. Dans \LeftR{\lexists} et \RightR{\lforall}, la
+!!{constant}~$a$ doit être absente de tout le séquent inférieur.
+Elle ne peut donc apparaître, dans le séquent supérieur, que
+dans l'instance $!A(a)$, à la place des occurrences libres de~$x$.
+Cette condition est indispensable à la correction du système.
+Sans elle, on pourrait dériver des séquents qui ne sont pas valides,
+comme le montrent les deux arbres suivants :
 \begin{prooftree}
   \Axiom$!A(a) \fCenter !A(a)$
   \RightLabel{*\LeftR{\lexists}}
@@ -106,16 +106,16 @@ elle, les inférences suivantes seraient permises :
 \end{prooftree}
 Or le schéma de séquent
 $\lexists[x][!A(x)] \Sequent \lforall[x][!A(x)]$ n'est pas valide
-en général.
-\begin{editorial}
-  La source dit ici que le terme n'est soumis à aucune restriction ;
-  on rappelle qu'il doit rester clos, conformément aux règles
-  précédentes. L'absence de la constante en dehors de la formule
-  indiquée est une conséquence de la condition sur l'eigenvariable,
-  et non sa formulation complète : elle doit être absente de tout
-  le séquent inférieur. Le dernier séquent n'est pas valide en tant
-  que schéma ; certaines de ses instances peuvent être valides.
-\end{editorial}
+en général. Prenons pour $!A(x)$ la formule $\Atom{\Obj P}{x}$.
+Sur un domaine de deux éléments, interprétons $\Obj P$ par un
+singleton. L'antécédent est alors vrai et le conséquent faux.
+%
+%
+%
+%
+%
+%
+%
 \end{explain}
 
 \end{document}

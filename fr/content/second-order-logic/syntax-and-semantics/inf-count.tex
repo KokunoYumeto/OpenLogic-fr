@@ -1,0 +1,217 @@
+% Part: second-order-logic
+% Chapter: syntax-and-semantics
+% Section: size-of-domain
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{syn}{siz}
+
+\olsection{Décrire les domaines infinis et au plus
+  dénombrables}
+
+Un ensemble~$M$ est \emph{infini au sens de
+Dedekind} si et seulement s'il existe une
+fonction !!{injective}~$f\colon M\to M$ qui
+n'est pas !!{surjective}, c'est-à-dire telle
+que $\ran{f}\neq M$. Dans le cadre usuel où
+l'on admet l'axiome du choix dénombrable,
+cette propriété équivaut à l'infinitude.
+En logique du premier ordre, nous pouvons
+considérer un !!{function}
+unaire~$f$ et affirmer que la fonction
+$\Assign{f}{M}$ qui lui est attribuée dans
+une !!{structure}~$\Struct{M}$ est
+!!{injective} et que
+$\ran{\Assign{f}{M}}\neq\Domain{M}$ :
+\[
+\lforall[x][\lforall[y][(\eq[f(x)][f(y)]
+\to\eq[x][y])]]\land
+\lexists[y][\lforall[x][\eq/[y][f(x)]]].
+\]
+Si $\Struct{M}$ satisfait cet énoncé,
+$\Assign{f}{M}\colon\Domain{M}\to\Domain{M}$
+est !!{injective} sans être !!{surjective};
+le !!{domain} est donc infini.
+Réciproquement, dans le cadre précisé ci-dessus,
+si $\Domain{M}$ est infini, une telle fonction
+existe. Nous pouvons alors prendre cette fonction
+pour $\Assign{f}{M}$, et $\Struct{M}$ satisfera
+l'énoncé. Il faut toutefois que notre langage
+contienne le symbole non logique~$f$ utilisé
+à cette fin. En logique du second ordre, nous
+pouvons simplement affirmer qu'une telle
+fonction \emph{existe}. Le symbole~$f$ n'est
+plus nécessaire; nous obtenons l'énoncé suivant
+de la logique pure du second ordre :
+\[
+\fn{Inf}\ident
+\lexists[u][(\lforall[x][\lforall[y]
+[(\eq[u(x)][u(y)]\lif\eq[x][y])]]
+\land\lexists[y][\lforall[x][\eq/[y][u(x)]]])].
+\]
+$\Sat{M}{\fn{Inf}}$ si et seulement si
+$\Domain{M}$ est infini au sens de Dedekind;
+dans le cadre usuel précisé ci-dessus, si et
+seulement s'il est infini. Posons ensuite
+$\fn{Fin}\ident\lnot\fn{Inf}$; dans ce
+même cadre, $\Sat{M}{\fn{Fin}}$ si et seulement
+si $\Domain{M}$ est fini. Aucun énoncé unique
+de la logique pure du premier ordre ne peut
+exprimer que le !!{domain} est infini,
+quoiqu'un ensemble infini de tels énoncés
+le puisse. Aucun ensemble d'énoncés de la
+logique pure du premier ordre n'est satisfait
+exactement dans les !!{structure}s de
+!!{domain} fini.
+
+\begin{prop}
+En présence de l'axiome du choix dénombrable,
+$\Sat{M}{\fn{Inf}}$ si et seulement si
+$\Domain{M}$ est infini.
+\end{prop}
+
+\begin{proof}
+$\Sat{M}{\fn{Inf}}$ si et seulement si,
+pour une certaine assignation~$s$,
+\[
+\Sat{M}{\lforall[x][\lforall[y]
+[(\eq[u(x)][u(y)]\lif\eq[x][y])]]
+\land\lexists[y][\lforall[x][\eq/[y][u(x)]]]}[s].
+\]
+Dans ce cas, $s(u)$ est une fonction
+!!{injective}, et il existe un élément
+$y\in\Domain{M}$ qui n'appartient pas à son
+image. Réciproquement, s'il existe une fonction
+!!{injective}
+$f\colon\Domain{M}\to\Domain{M}$
+avec $\ran{f}\neq\Domain{M}$, nous pouvons
+choisir l'assignation~$s$ de sorte que
+$s(u)=f$. Cela établit directement l'équivalence
+avec l'infinitude au sens de Dedekind; l'axiome
+du choix dénombrable donne celle avec
+l'infinitude ordinaire.
+\end{proof}
+
+Un ensemble non vide~$M$ est !!{enumerable}
+s'il existe une énumération de ses !!{element}s
+\[
+m_0,m_1,m_2,\dots
+\]
+sans répétition, éventuellement finie.
+Une telle énumération existe si et seulement
+s'il existe un !!{element}~$z\in M$ et une
+fonction $f\colon M\to M$ tels que
+$z$, $f(z)$, $f(f(z))$, \dots, parcourent tous
+les !!{element}s de~$M$.
+Dans un sens, si l'énumération existe,
+prenons $z=m_0$ et $f(m_k)=m_{k+1}$,
+en posant $f(m_k)=m_k$ si $m_k$ est le dernier
+!!{element}. Dans l'autre sens, l'orbite
+$z$, $f(z)$, $f(f(z))$, \dots, couvre~$M$;
+en supprimant les répétitions éventuelles,
+elle en fournit une énumération.
+Nous pouvons exprimer l'existence de~$z$ et
+de~$f$ en logique du second ordre par un
+énoncé vrai dans une !!{structure} si et
+seulement si son !!{domain} est
+!!{enumerable} :
+\[
+\fn{Count}\ident
+\lexists[z][\lexists[u][\lforall[X]
+[((X(z)\land
+\lforall[x][(X(x)\lif X(u(x)))])
+\lif\lforall[x][X(x)])]]].
+\]
+
+\begin{prop}
+$\Sat{M}{\fn{Count}}$ si et seulement si
+$\Domain{M}$ est !!{enumerable}.
+\end{prop}
+
+\begin{proof}
+Supposons $\Domain{M}$ !!{enumerable}, et
+soit $m_0,m_1,\dots$ une énumération sans
+répétition. Définissons
+$f(m_k)=m_{k+1}$, en fixant le dernier
+!!{element} si l'énumération est finie,
+et prenons $s(z)=m_0$, $s(u)=f$.
+Montrons que
+\[
+\Sat{M}{\lforall[X][((X(z)\land
+\lforall[x][(X(x)\lif X(u(x)))])
+\lif\lforall[x][X(x)])]}[s].
+\]
+Soit $S\subseteq\Domain{M}$ quelconque et
+supposons
+$\Sat{M}{(X(z)\land\lforall[x]
+[(X(x)\lif X(u(x)))])}
+[\Subst{s}{S}{X}]$.
+Alors $m_0=s(z)\in S$, et si $a\in S$,
+on a aussi $f(a)=s(u)(a)\in S$.
+Par récurrence,
+$m_0,m_1=f(m_0),m_2=f(f(m_0)),\dots$
+appartiennent tous à~$S$. Puisqu'ils épuisent
+$\Domain{M}$, on a $S=\Domain{M}$, donc
+$\Sat{M}{\lforall[x][X(x)]}
+[\Subst{s}{S}{X}]$. Comme~$S$ était
+arbitraire, $\Sat{M}{\fn{Count}}$.
+
+Réciproquement, supposons
+$\Sat{M}{\fn{Count}}$, c'est-à-dire que,
+pour une certaine assignation~$s$,
+\[
+\Sat{M}{\lforall[X][((X(z)\land
+\lforall[x][(X(x)\lif X(u(x)))])
+\lif\lforall[x][X(x)])]}[s].
+\]
+Posons $m=s(z)$, $f=s(u)$ et
+$S=\{m,f(m),f(f(m)),\dots\}$.
+Par construction, $S$ est !!{enumerable}.
+L'hypothèse donne
+\[
+\Sat{M}{(X(z)\land\lforall[x]
+[(X(x)\lif X(u(x)))])
+\lif\lforall[x][X(x)]}
+[\Subst{s}{S}{X}].
+\]
+Or $\Sat{M}{X(z)}[\Subst{s}{S}{X}]$,
+car $m=s(z)\in S$; et
+$\Sat{M}{\lforall[x][(X(x)\lif X(u(x)))]}
+[\Subst{s}{S}{X}]$, car $S$ est stable
+par~$f$. L'antécédent de l'implication est
+donc satisfait et, par l'hypothèse, son
+conséquent l'est également :
+$\Sat{M}{\lforall[x][X(x)]}
+[\Subst{s}{S}{X}]$. Il s'ensuit que
+$S=\Domain{M}$. Le !!{domain} est donc
+!!{enumerable}, puisque $S$ l'est.
+\end{proof}
+
+\begin{prob}
+L'énoncé $\fn{Inf}\land\fn{Count}$ est vrai
+exactement dans les !!{domain}s
+!!{denumerable}s. Modifiez la définition de
+$\fn{Count}$ pour obtenir un autre énoncé
+qui exprime directement que le !!{domain} est
+!!{denumerable}, puis démontrez-le.
+\end{prob}
+
+\begin{editorial}
+La source assimile l'infinitude au sens de Dedekind
+à l'infinitude sans préciser l'hypothèse de choix
+nécessaire à cette réciproque. Nous indiquons
+l'axiome du choix dénombrable, conformément au
+cadre dans lequel ces notions coïncident.
+L'énumération par une orbite demande aussi de
+supprimer les répétitions éventuelles, et le
+dernier élément d'une énumération finie doit
+rester fixé par~$f$ dans la première moitié de
+la preuve. Enfin, nous notons~$S$ les
+sous-ensembles du !!{domain} que la source
+appelle~$M$, afin de les distinguer de la
+!!{structure}~$\Struct{M}$.
+\end{editorial}
+
+\end{document}

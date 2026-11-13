@@ -1,0 +1,101 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{his}{set}{infinitesimals}
+\olsection{Infinitésimaux et dérivation}
+
+Newton et Leibniz découvrirent indépendamment le calcul
+infinitésimal à la fin du XVIIe siècle. Une application
+particulièrement importante en était la \emph{dérivation}. En
+première approximation, celle-ci cherche à définir le «~taux de
+variation~», ou la pente, d'une fonction en un point.
+
+Voici une illustration concrète de cette idée. Considérons la
+fonction $f(x) = \nicefrac{x^2}{4} + \nicefrac{1}{2}$, représentée
+ci-dessous en noir :
+\begin{center}
+	\begin{tikzpicture}[scale=1]
+	\draw[->, gray] (-1,0) -- (4.25,0) node[right] {$x$};
+	\draw[->, gray] (0,-0.25) -- (0,5.25) node[above] {$f(x)$};
+
+	\foreach \x/\xtext in {1/1, 2/2, 3/3, 4/4}
+	\draw[shift={(\x,0)}, gray] (0pt,2pt) -- (0pt,-2pt) node[below] {$\xtext$};
+
+	\foreach \y/\ytext in {1/1, 2/2, 3/3, 4/4, 5/5}
+	\draw[shift={(0,\y)}, gray] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+
+	\draw[oldiagcolorC] (0.5, 9/16) -- (3.5, 57/16) -- (3.5, 9/16)--cycle;
+	\draw[oldiagcolorD] (.5, 9/16) -- (2.5, 33/16) -- (2.5, 9/16) -- cycle;
+	\draw[oldiagcolorE] (.5, 9/16) -- (1.5, 17/16) -- (1.5, 9/16) -- cycle;
+	\draw[thick] (-1,.75) parabola bend (0,0.5) (4,4.5);
+	\end{tikzpicture}
+\end{center}
+Supposons que nous voulions trouver la pente de la courbe au point
+$c = \nicefrac{1}{2}$. Nous traçons d'abord un triangle dont
+l'hypoténuse donne une approximation de cette pente, par exemple
+le triangle rouge de la figure. Si la base de ce triangle a
+pour longueur $\beta$, sa hauteur vaut
+$f(\nicefrac{1}{2}+\beta) - f(\nicefrac{1}{2})$. La pente de
+l'hypoténuse est donc :
+\[
+\frac{f(\nicefrac{1}{2}+\beta) - f(\nicefrac{1}{2})}{\beta}.
+\]
+La pente de l'hypoténuse du triangle !!{colorC}, dont la base
+mesure~$3$, vaut ainsi exactement~$1$. L'hypoténuse d'un triangle
+plus petit, le triangle !!{colorD} de base~$2$, fournit une meilleure
+approximation : sa pente est $\nicefrac{3}{4}$. Un triangle encore
+plus petit, le triangle !!{colorE} de base~$1$, donne une
+approximation meilleure encore : sa pente est $\nicefrac{1}{2}$.
+
+Des triangles de plus en plus petits fournissent des approximations
+de plus en plus précises. Nous pourrions donc dire ceci :
+l'hypoténuse d'un triangle dont la base a une longueur
+\emph{infinitésimale} donne la pente de la courbe au point
+$c = \nicefrac{1}{2}$ lui-même. Nous obtiendrions ainsi une formule
+pour la dérivée (première) de $f$ au point $c$ :
+\[
+{f'}(c) = \frac{f(c+\beta) - f(c)}{\beta}
+\text{ où $\beta$ est infinitésimal.}
+\]
+À peu de chose près, c'est ce que disaient Newton et Leibniz.
+
+Mais, dès lors, nous devons leur demander : qu'est-ce qu'un
+\emph{infinitésimal} ? Un sérieux dilemme apparaît. Si $\beta = 0$,
+alors $f'$ n'est pas définie, puisqu'il faudrait diviser par~$0$.
+Mais si $\beta > 0$, nous n'obtenons qu'une
+\emph{approximation} de la pente, et non la pente elle-même.
+
+Cette objection n'est pas anachronique. Voici comment Berkeley
+critiquait les disciples de Newton :
+\begin{quote}
+J'admets que l'on puisse faire désigner aux signes quelque chose ou
+rien du tout, et donc que, dans la notation initiale $c + \beta$,
+$\beta$ ait pu signifier soit un accroissement, soit rien. Mais,
+quel que soit le sens que vous lui donniez, vous devez raisonner
+en accord avec ce sens et ne pas jouer sur une double signification :
+ce serait là un sophisme manifeste.
+(\citealt[\S{}XIII]{Berkeley1734}, variables adaptées à la notation
+précédente)
+\end{quote}
+Pour défendre le calcul infinitésimal contre Berkeley, on pourrait
+répondre que parler d'«~infinitésimaux~» n'est qu'une image. On
+pourrait dire qu'un triangle \emph{vraiment petit} donne une
+approximation \emph{suffisamment bonne} de la tangente. Berkeley
+avait également une réponse à cela : cette approximation peut
+suffire en ingénierie, mais elle compromet le \emph{statut} des
+mathématiques, car
+\begin{quote}
+on nous dit que \emph{in rebus mathematicis errores qu\`{a}m minimi
+non sunt contemnendi}. [En mathématiques, même les plus petites
+erreurs ne doivent pas être négligées.] \citep[\S{}IX]{Berkeley1734}
+\end{quote}
+Le passage en italique est une citation presque littérale de la
+\emph{Quadrature des courbes} (1704) de Newton.
+
+Les objections philosophiques de Berkeley sont d'une grande acuité.
+Le calcul infinitésimal n'en fut pas moins une entreprise
+extraordinairement féconde, et les mathématiciens continuèrent à
+l'utiliser sans tomber dans l'erreur.
+
+\end{document}

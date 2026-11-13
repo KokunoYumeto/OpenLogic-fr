@@ -34,9 +34,9 @@ pour «~être~» la relation d'ordre sur les entiers naturels :
 		R &= \Setabs{\tuple{n,m}}{n, m \in \Nat \text{ et }n < m}\\
 		S &= \Setabs{\lVert n,m\rVert}{n, m \in \Nat \text{ et }n < m}.
 \end{align*}
-Puisque $R \neq S$, par extensionnalité, ils ne peuvent
-manifestement pas être \emph{tous deux} identiques à la relation
-d'ordre sur~$\Nat$. Mais il serait arbitraire, et donc quelque
+Le couple $\tuple{0,1}$ appartient à $R$ et non à $S$.
+Ces ensembles distincts ne peuvent être \emph{tous deux} identiques à
+la relation d'ordre sur~$\Nat$. Mais il serait arbitraire, et donc quelque
 peu embarrassant, d'affirmer que c'est $R$, plutôt que $S$
 (ou l'inverse), qui \emph{est}, dans les faits, cette relation
 d'ordre. Il s'agit d'un exemple très simple d'un argument
@@ -50,17 +50,17 @@ devrait être un ensemble particulier : précisément,
 $\Setabs{\tuple{x,y}}{x \in y}$.
 Mais cet ensemble existe-t-il ?
 Le paradoxe de Russell nous avertit que son existence
-ne va pas de soi. En fait,
-\oliflabeldef{cumul:::part}{la théorie des ensembles développée
-dans la partie \olref[cumul][][]{part} \emph{exclura} l'existence
-de cet ensemble.\footnote{En anticipant sur la suite, voici
-pourquoi. Supposons, pour raisonner par l'absurde, que
+ne va pas de soi. En fait, la théorie axiomatique des ensembles%
+\oliflabeldef{cumul:::part}{ développée dans la \olref[cumul][][]{part}}{}
+exclut l'existence de cet ensemble. Supposons que
 $I = \Setabs{\tuple{x,y}}{x \in y}$ existe.
-Alors $\bigcup \bigcup I$ est l'ensemble universel,
-ce qui contredit le résultat \olref[sfr][z][sep]{thm:NoUniversalSet}.}}{on peut
-développer rigoureusement la théorie des ensembles sous forme
-axiomatique, et cette théorie exclura effectivement l'existence
-de cet ensemble.}
+Pour tout ensemble~$z$, le couple $\tuple{z,\{z\}}$ appartient
+à~$I$. Or $z\in\{z\}\in\tuple{z,\{z\}}$, donc $z\in\bigcup\bigcup I$.
+La double réunion de~$I$ serait alors un ensemble universel%
+\oliflabeldef{sth:z:sep:thm:NoUniversalSet}{, contrairement
+au \olref[sth][z][sep]{thm:NoUniversalSet}}{, ce que la séparation exclut}.
+%
+%
 Ainsi, même si certaines relations peuvent être traitées
 comme des ensembles, la relation d'appartenance devra
 constituer un cas particulier.

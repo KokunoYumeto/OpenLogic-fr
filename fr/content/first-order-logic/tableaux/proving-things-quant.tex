@@ -36,10 +36,10 @@ $\TRule{\False}{\lif}$ :
   ]
 ]
 \end{oltableau}
-Il faut ensuite traiter la ligne~$2$ au moyen de
-$\TRule{\True}{\lexists}$. Cette règle exige une nouvelle
-!!{constant}. Comme aucune !!{constant} ne figure encore dans le
-tableau, nous pouvons en choisir une quelconque, par exemple~$a$.
+Appliquons $\TRule{\True}{\lexists}$ à la ligne~$2$.
+La règle exige une !!{constant} absente de la branche.
+Choisissons-en une et appelons-la~$a$.
+%
 \begin{oltableau}
 [\sFmla{\False}{\lexists[x][\lnot \formula{A}(x)]\lif \lnot
     \lforall[x][\formula{A}(x)]}, just=\TAss, checked
@@ -112,10 +112,10 @@ Comme d'habitude, commençons par les hypothèses :
     ]
   ]
 \end{oltableau}
-Dans cette recherche, appliquons d'abord une règle soumise à la
-condition sur l'eigenvariable : ici, $\TRule{\True}{\lexists}$ à la
-ligne~$2$. Comme les hypothèses contiennent la !!{constant}~$b$, il
-faut en choisir une autre ; prenons de nouveau~$a$.
+Appliquons d'abord $\TRule{\True}{\lexists}$ à la ligne~$2$.
+Choisissons pour cela une !!{constant}~$a$ absente de toutes les
+hypothèses de la branche. Elle est donc distincte de~$b$.
+%
 \begin{oltableau}
   [\sFmla{\False}{\lexists[x][\formula{C}(x,b)]}, just=\TAss
     [\sFmla{\True}{\lexists[x][(\formula{A}(x) \land \formula{B}(x))]},
@@ -262,8 +262,8 @@ appliquons d'abord $\TRule{\True}{\lif}$ à la ligne~$2$.
     ]
   ]
 \end{oltableau}
-Les deux nouvelles !!{signed formula}s appellent des règles soumises à
-la condition sur l'eigenvariable ; traitons-les donc ensuite :
+Appliquons aux deux nouvelles !!{signed formula}s les règles à eigenvariable.
+Notons $b$ et $c$ les constantes choisies fraîches sur leurs branches respectives.
 \begin{oltableau}
   [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just=\TAss
     [\sFmla{\True}{\lforall[x][\formula{A}(x)] \lif
@@ -275,18 +275,18 @@ la condition sur l'eigenvariable ; traitons-les donc ensuite :
             [\sFmla{\False}{\formula{A}(b)}, just={\TRule{\False}{\lforall}[5]}]
           ]
           [\sFmla{\True}{\lexists[y][\formula{B}(y)]}, just={\TRule{\True}{\lif}[2]},checked
-            [\sFmla{\True}{\formula{B}(c)}, just={\TRule{\True}{\lexists}[5]}]
+            [\sFmla{\True}{\formula{B}(c)}, just={\TRule{\True}{\lexists}[5]}, move by=2]
           ]
         ]
       ]
     ]
   ]
 \end{oltableau}
-Pour fermer les branches, il faut utiliser les !!{signed formula}s des
-lignes $1$ et~$3$. Les règles correspondantes,
-\TRule{\True}{\lforall} et \TRule{\False}{\lexists}, ne comportent pas
-de condition sur l'eigenvariable ; nous pouvons donc choisir les termes
-clos appropriés. Il s'agit ici respectivement de $b$ et de~$c$.
+Pour fermer la branche gauche, appliquons \TRule{\True}{\lforall}
+à la ligne~$1$ avec le terme clos $b$. Pour fermer la branche droite,
+appliquons \TRule{\False}{\lexists} à la ligne~$4$ avec le terme clos
+$c$. Ces deux règles permettent de réutiliser les constantes ainsi
+introduites sur leurs branches respectives.
 \begin{oltableau}
   [\sFmla{\True}{\lforall[x][\formula{A}(x)]}, just=\TAss
     [\sFmla{\True}{\lforall[x][\formula{A}(x)] \lif
@@ -306,7 +306,7 @@ clos appropriés. Il s'agit ici respectivement de $b$ et de~$c$.
           [\sFmla{\True}{\lexists[y][\formula{B}(y)]},
             just={\TRule{\True}{\lif}[2]},checked
             [\sFmla{\True}{\formula{B}(c)},
-              just={\TRule{\True}{\lexists}[5]}
+              just={\TRule{\True}{\lexists}[5]}, move by=2
               [\sFmla{\False}{\formula{B}(c)},
                 just={\TRule{\False}{\lexists}[4]},close
               ]
@@ -318,13 +318,13 @@ clos appropriés. Il s'agit ici respectivement de $b$ et de~$c$.
   ]
 \end{oltableau}
 \end{ex}
-
-\begin{editorial}
-Note de l'édition française : l'original indique à deux reprises que
-les règles sans condition sur l'eigenvariable permettent de choisir
-n'importe quel terme. Les règles de la section précédente exigent
-toutefois un terme clos ; cette exigence est donc explicitée ici.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
 
 \begin{prob}
 Construire un !!{tableau} fermé pour chacun des ensembles suivants :

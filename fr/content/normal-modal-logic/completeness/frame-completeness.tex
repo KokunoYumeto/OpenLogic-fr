@@ -1,0 +1,242 @@
+% Part: normal-modal-logic
+% Chapter: completeness
+% Section: frame-completeness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{com}{fra}
+
+\olsection{Complétude relativement aux classes de cadres}
+
+Le théorème de complétude pour \Log{K} s'étend à d'autres systèmes
+modaux dès que l'on montre que le modèle canonique de la logique
+considérée possède la propriété de cadre correspondante.
+
+\begin{thm}\ollabel{thm:completeframeprops}
+  Considérons \olref{tab:correspondencetable}. Si une logique modale
+  normale et cohérente $\Sigma$ contient l'un des schémas de !!{formula}s
+  figurant dans la colonne de gauche, alors le modèle canonique de~$\Sigma$
+  possède la propriété correspondante indiquée dans la colonne de droite.
+\end{thm}
+
+\begin{table}[htp]
+  \centering
+    \begin{tabular}{| l || l |}
+      \hline
+      \emph{Si $\Sigma$ contient \dots} & \emph{\dots le modèle
+        canonique de $\Sigma$ est :} \\
+      \hline \hline
+      \Ax{D}:\;\; $\Box!A \lif \Diamond !A$ & \quad sériel ; \\
+      \hline
+      \Ax{T}:\;\; $\Box!A \lif !A$ &\quad réflexif ;\\
+      \hline
+      \Ax{B}: \;\;$!A \lif \Box\Diamond!A$ &\quad symétrique ; \\
+      \hline
+      \Ax{4}: \;\; $\Box!A \lif \Box\Box!A$ & \quad transitif ; \\
+      \hline
+      \Ax{5}: \;\; $\Diamond !A \lif \Box\Diamond!A$& \quad euclidien.\\
+      \hline
+    \end{tabular}
+    \caption{Correspondances fondamentales.}
+    \ollabel{tab:correspondencetable}
+\end{table}
+
+\begin{proof}
+  Examinons ces cas successivement.
+
+  Supposons que $\Sigma$ contienne \Ax{D} et soit $\Delta \in W^\Sigma$.
+  Il faut montrer qu'il existe un $\Delta'$ tel que $R^\Sigma
+  \Delta\Delta'$. Il suffit de montrer que $\Box^{-1}\Delta$ est
+  $\Sigma$-cohérent : le lemme de Lindenbaum fournit alors un ensemble
+  $\Sigma$-cohérent complet $\Delta' \supseteq
+  \Box^{-1}\Delta$, et la définition de $R^\Sigma$
+  \iftag{prvBox}{}{et le \olref[mod]{lem:box-iff-diamond} }donnent
+  $R^\Sigma \Delta\Delta'$. Supposons donc, pour obtenir une
+  contradiction, que $\Box^{-1}\Delta$ ne soit \emph{pas}
+  $\Sigma$-cohérent, c'est-à-dire que
+  $\Box^{-1}\Delta \Proves[\Sigma] \lfalse$. D'après le
+  \olref[mod]{lem:box2}, on a $\Delta \Proves[\Sigma] \Box\lfalse$ ;
+  puisque $\Sigma$ contient \Ax{D}, on obtient aussi
+  $\Delta \Proves[\Sigma] \Diamond\lfalse$. Mais la logique~$\Sigma$ est normale,
+  donc $\Sigma \Proves \lnot\Diamond \lfalse$
+  (\olref[prf][nor]{prop:notDiamondBot}) ; ainsi $\Delta
+  \Proves[\Sigma] \lnot\Diamond \lfalse$, ce qui contredit la cohérence
+  de~$\Delta$.
+
+  Supposons maintenant que $\Sigma$ contienne \Ax{T} et soit $\Delta \in
+  W^\Sigma$. Il faut montrer $R^\Sigma \Delta\Delta$,
+  c'est-à-dire,\iftag{prvBox}{}{ d'après le
+    \olref[mod]{lem:box-iff-diamond},}
+  $\Box^{-1}\Delta \subseteq \Delta$. Or, si $\Box!A \in \Delta$, alors
+  \Ax{T} donne aussi $!A \in \Delta$, comme voulu.
+
+  Supposons ensuite que $\Sigma$ contienne \Ax{B} et que $R^\Sigma
+  \Delta\Delta'$ pour $\Delta$, $\Delta' \in W^\Sigma$. Il faut
+  montrer $R^\Sigma \Delta'\Delta$, c'est-à-dire,\iftag{prvBox}{
+    $\Box^{-1}\Delta' \subseteq \Delta$. D'après le
+    \olref[mod]{lem:box-iff-diamond}, cela équivaut à}{}
+  $\Diamond\Delta \subseteq \Delta'$. Soit donc $!A \in \Delta$.
+  D'après \Ax{B}, on a aussi $\Box\Diamond!A \in \Delta$. L'hypothèse
+  $R^\Sigma \Delta\Delta'$\iftag{prvBox}{}{ et le
+    \olref[mod]{lem:box-iff-diamond}} donnent $\Box^{-1}\Delta
+  \subseteq \Delta'$, donc $\Diamond!A \in \Delta'$, comme voulu.
+
+  Supposons que $\Sigma$ contienne \Ax{4}, et que $R^\Sigma
+  \Delta_1\Delta_2$ et $R^\Sigma \Delta_2\Delta_3$. Il faut montrer
+  $R^\Sigma \Delta_1\Delta_3$. L'hypothèse\iftag{prvBox}{}{ et le
+    \olref[mod]{lem:box-iff-diamond}} donnent à la fois $\Box^{-1}\Delta_1
+  \subseteq \Delta_2$ et $\Box^{-1}\Delta_2 \subseteq \Delta_3$. Il
+  suffit donc, pour montrer $R^\Sigma \Delta_1\Delta_3$, d'établir
+  $\Box^{-1}\Delta_1 \subseteq \Delta_3$. Soit
+  $!B \in \Box^{-1}\Delta_1$, c'est-à-dire $\Box!B \in \Delta_1$.
+  D'après \Ax{4}, on a aussi $\Box\Box!B \in \Delta_1$ ; la première
+  inclusion donne alors $\Box!B \in \Delta_2$, et la seconde donne
+  $!B \in \Delta_3$, comme voulu.
+
+  Supposons enfin que $\Sigma$ contienne \Ax{5}, et que $R^\Sigma
+  \Delta_1\Delta_2$ et $R^\Sigma \Delta_1\Delta_3$. Il faut montrer
+  $R^\Sigma \Delta_2\Delta_3$. La première hypothèse donne
+  $\Box^{-1}\Delta_1 \subseteq \Delta_2$\iftag{prvBox}{}{ d'après le
+    \olref[mod]{lem:box-iff-diamond}}, et la seconde équivaut à
+  $\Diamond\Delta_3 \subseteq \Delta_1$\iftag{prvBox}{, d'après le
+    \olref[mod]{lem:box-iff-diamond}}{}. Pour montrer $R^\Sigma
+  \Delta_2\Delta_3$,\iftag{prvBox}{ le
+    \olref[mod]{lem:box-iff-diamond} ramène la question à}{il faut} montrer
+  $\Diamond\Delta_3 \subseteq \Delta_2$. Soit $\Diamond!A \in
+  \Diamond\Delta_3$, c'est-à-dire $!A \in \Delta_3$. La seconde
+  hypothèse donne $\Diamond!A \in \Delta_1$, puis \Ax{5} donne
+  $\Box\Diamond!A \in \Delta_1$. La première hypothèse donne alors
+  $\Diamond!A \in \Delta_2$, comme voulu.
+\end{proof}
+
+Nous en déduisons la complétude de plusieurs systèmes. Par exemple,
+on sait que $\Log{S5} = \Log{KT5} = \Log{KTB4}$ est complet
+relativement à la classe des modèles réflexifs et euclidiens, qui est
+aussi celle des modèles réflexifs, symétriques et transitifs.
+
+\begin{thm}\ollabel{thm:generaldet}
+  Soient $\mClass{C}_\Ax{D}$, $\mClass{C}_\Ax{T}$,
+  $\mClass{C}_\Ax{B}$, $\mClass{C}_\Ax{4}$ et
+  $\mClass{C}_\Ax{5}$ les classes des modèles sériels, réflexifs,
+  symétriques, transitifs et euclidiens, respectivement. Pour tous
+  schémas $!A_1$, \dots, $!A_n$ choisis parmi \Ax{D},
+  \Ax{T}, \Ax{B}, \Ax{4} et \Ax{5}, le système
+  $\Log{K}!A_1 \dots !A_n$ est déterminé par la classe de modèles
+  $\mClass{C} = \mClass{C}_{!A_1} \cap \dots
+  \cap \mClass{C}_{!A_n}$.
+\end{thm}
+
+\begin{prop}
+  Soit $\Sigma$ une logique modale normale et cohérente. Alors :
+  \begin{enumerate}
+  \item\ollabel{prop:anotherfive-a}%
+    Si $\Sigma$ contient le schéma $\Diamond!A \lif \Box
+    !A$, le modèle canonique de $\Sigma$ est partiellement fonctionnel.
+  \item Si $\Sigma$ contient le schéma $\Diamond!A \liff \Box
+    !A$, le modèle canonique de $\Sigma$ est fonctionnel.
+  \item Si $\Sigma$ contient le schéma $\Box\Box!A \lif \Box
+    !A$, le modèle canonique de $\Sigma$ est faiblement dense.
+  \end{enumerate}
+  (Voir le \olref[frd][acc]{tab:anotherfive} pour les définitions de ces
+  propriétés de cadre.)
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Supposons que $\Sigma$ contienne le schéma $\Diamond !A \lif
+    \Box !A$. Pour montrer que $R^\Sigma$ est partiellement
+    fonctionnelle, il faut montrer que, pour tous $\Delta_1$,
+    $\Delta_2$, $\Delta_3 \in W^\Sigma$, si $R^\Sigma
+    \Delta_1\Delta_2$ et $R^\Sigma \Delta_1\Delta_3$, alors
+    $\Delta_2=\Delta_3$. La relation $R^\Sigma \Delta_1\Delta_2$
+    donne $\Box^{-1}\Delta_1 \subseteq \Delta_2$, et $R^\Sigma
+    \Delta_1\Delta_3$ donne aussi $\Box^{-1}\Delta_1
+    \subseteq \Delta_3$\iftag{prvBox}{}{, dans les deux cas d'après
+      le \olref[mod]{lem:box-iff-diamond}}. Pour établir
+    $\Delta_2=\Delta_3$, il suffit de montrer les deux inclusions
+    $\Delta_2 \subseteq \Delta_3$ et $\Delta_3 \subseteq
+    \Delta_2$. Pour la première, soit $!A \in \Delta_2$ ; alors
+    $\Diamond!A \in \Delta_1$ et, par le schéma et la clôture déductive
+    de $\Delta_1$, on a aussi $\Box!A \in \Delta_1$. L'hypothèse
+    $R^\Sigma \Delta_1\Delta_3$ donne donc $!A \in \Delta_3$. La
+    seconde inclusion se démontre de la même manière.
+
+  \item Cela découle immédiatement du point~\olref{prop:anotherfive-a}
+    et de la démonstration de la sérialité dans le
+    \olref{thm:completeframeprops}.
+
+  \item Supposons que $\Sigma$ contienne le schéma $\Box\Box!A \lif \Box!A$.
+    Pour montrer que $R^\Sigma$ est faiblement dense, soit $R^\Sigma
+    \Delta_1\Delta_2$. Il faut trouver un ensemble $\Sigma$-cohérent
+    complet $\Delta_3$ tel que $R^\Sigma
+    \Delta_1\Delta_3$ et $R^\Sigma \Delta_3\Delta_2$. Posons :
+    \[
+    \Gamma = \Box^{-1}\Delta_1 \cup \Diamond\Delta_2.
+    \]
+    Il suffit de montrer que $\Gamma$ est $\Sigma$-cohérent : le lemme
+    de Lindenbaum le prolonge alors en un ensemble $\Sigma$-cohérent
+    complet~$\Delta_3$ tel que $\Box^{-1}\Delta_1
+    \subseteq \Delta_3$ et $\Diamond\Delta_2 \subseteq \Delta_3$,
+    c'est-à-dire $R^\Sigma \Delta_1\Delta_3$\iftag{prvBox}{}{ (d'après
+      le \olref[mod]{lem:box-iff-diamond})} et $R^\Sigma
+    \Delta_3\Delta_2$\iftag{prvBox}{ (d'après le
+      \olref[mod]{lem:box-iff-diamond})}{}.
+
+    Supposons, pour obtenir une contradiction, que $\Gamma$ ne soit pas
+    cohérent. La partie des prémisses issue des formules encadrées est
+    déjà cohérente, car elle est incluse dans le second monde ; la
+    seconde famille de prémisses est donc non vide. Il existe alors des
+    !!{formula}s $\Box!A_1$, \dots,
+    $\Box!A_n \in \Delta_1$ et $!B_1$, \dots,~$!B_m \in \Delta_2$ tels
+    que \[!A_1, \dots,
+    !A_n, \Diamond!B_1, \dots, \Diamond!B_m \Proves[\Sigma]
+    \lfalse.\] Puisque $\Diamond (!B_1 \land \dots \land !B_m) \to
+    (\Diamond!B_1 \land \dots \land \Diamond!B_m)$ est !!{derivable}
+    dans toute logique modale normale, on obtient les étapes suivantes,
+    qui contredisent la cohérence de~$\Delta_2$ :
+    \begin{align*}
+      !A_1, \dots, !A_n, & \Diamond!B_1, \dots,
+      \Diamond!B_m \Proves[\Sigma] \lfalse \\
+      !A_1, \dots,!A_n & \Proves[\Sigma] (\Diamond!B_1 \land
+      \dots \land \Diamond!B_m) \lif \lfalse\\
+      & \qquad\text{par le théorème de déduction}\\
+      & \qquad\text{\olref[prf][prp]{prop:derivabilityfacts}\olref[prf][prp]{prop:derivabilityfacts-deduction} et \Taut} \\
+      !A_1, \dots,!A_n & \Proves[\Sigma]
+      \Diamond(!B_1 \land
+      \dots \land !B_m) \lif \lfalse\\
+      & \qquad \text{car la logique~$\Sigma$ est normale} \\
+      !A_1, \dots,!A_n & \Proves[\Sigma]
+      \lnot\Diamond (!B_1 \land \dots \land !B_m)\\
+      & \qquad\text{d'après \PL} \\
+      !A_1, \dots,!A_n & \Proves[\Sigma]
+      \Box\lnot (!B_1 \land \dots \land !B_m)\\
+      & \qquad\text{$\Box\lnot$ pour $\lnot\Diamond$} \\
+      \Box!A_1, \dots,\Box!A_n
+      & \Proves[\Sigma] \Box\Box \lnot (!B_1 \land \dots \land !B_m)\\
+      & \qquad\text{d'après le \olref[mod]{lem:box1}} \\
+      \Box!A_1, \dots,\Box!A_n
+      & \Proves[\Sigma]
+      \Box\lnot (!B_1 \land \dots \land !B_m)\\
+      &\qquad\text{par le schéma $\Box\Box!A \lif \Box!A$} \\
+      \Delta_1 & \Proves[\Sigma]
+      \Box\lnot (!B_1 \land \dots \land !B_m)\\
+      &\qquad\text{par monotonie, \olref[prf][prp]{prop:derivabilityfacts}\olref[prf][prp]{prop:derivabilityfacts-monotonicity}} \\
+      & \Box\lnot (!B_1 \land \dots \land !B_m) \in \Delta_1\\
+      &\qquad\text{par clôture déductive} ; \\
+      & \lnot (!B_1 \land \dots \land !B_m) \in \Delta_2\\
+      &\qquad \text{puisque }
+      R^\Sigma \Delta_1\Delta_2.
+    \end{align*}
+    Or toutes les formules de la seconde famille appartiennent au
+    second monde ; leur conjonction y appartient donc aussi par clôture
+    déductive. Cela contredit la dernière ligne.
+  \end{enumerate}
+\end{proof}
+
+Ces exemples pourraient laisser croire que tout système modal~$\Sigma$
+est \emph{complet}, au sens où il démontre toute formule valide dans
+tous les cadres où tous les théorèmes de $\Sigma$ sont valides. Il existe pourtant
+de nombreux systèmes qui ne sont pas complets en ce sens.
+\end{document}

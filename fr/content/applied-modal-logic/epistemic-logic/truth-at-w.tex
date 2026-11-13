@@ -1,0 +1,130 @@
+% Partie : applied-modal-logics
+% Chapitre : epistemic-logic
+% Section : truth-at-w
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{el}{trw}
+
+\olsection{Vérité en un monde}
+
+Comme en logique modale normale, chaque modèle épistémique détermine
+quelles !!{formula}s sont vraies en quels mondes. Nous employons la
+même notation pour la notion fondamentale de la sémantique relationnelle :
+« le modèle $\mModel{M}$ rend la !!{formula}~$!A$ vraie au monde~$w$ ».
+Cette relation est définie inductivement ; pour tous les opérateurs
+non modaux, sa définition est identique à celle de la logique modale normale.
+
+\begin{defn}\ollabel{defn:mmodels}
+  La \emph{vérité d'!!a{formula}~$!A$ en~$w$} dans
+  un modèle~$\mModel M$, notée $\mSat{M}{!A}[w]$, est définie
+  inductivement comme suit :
+  \begin{enumerate}
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{On n'a jamais $\mSat{M}{\lfalse}[w]$}.}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{On a toujours $\mSat{M}{\ltrue}[w]$}.}{}
+  \item $\mSat{M}{p}[w]$ si et seulement si $w \in V(p)$.
+  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat/{M}{!B}[w]$}.}{}
+  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat{M}{!B}[w]$ et $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$} (éventuellement les deux).}{}
+  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat/{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    soit on a à la fois $\mSat{M}{!B}[w]$ et $\mSat{M}{!C}[w]$, soit
+    on n'a ni $\mSat{M}{!B}[w]$ ni $\mSat{M}{!C}[w]$}.}{}
+  \item\ollabel{defn:sub:mmodels-box}
+    \indcase{!A}{\Knows_a !B}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat{M}{!B}[w']$ pour tout $w' \in W$ tel que $R_a ww'$}
+  \end{enumerate}
+\end{defn}
+
+C'est ici qu'il faut envisager des restrictions sur nos relations
+d'accessibilité. D'après la clause~\olref{defn:sub:mmodels-box},
+!!a{formula}~$\Knows_a !B$ est vraie en~$w$ dès qu'il n'existe
+aucun~$w'$ tel que $R_a ww'$. Comme en logique modale normale,
+toutes les formules en $\Box$ sont vraies par vacuité dans un monde
+sans successeur. Ce résultat paraît très contraire à l'intuition si
+l'on interprète $\Knows$ comme la \emph{connaissance} : nous tendons
+à penser qu'un agent ne peut, en \emph{aucune} circonstance, savoir
+à la fois $!A$ et $\lnot !A$.
+
+Une solution consiste à exiger que la relation d'accessibilité soit
+\emph{réflexive}. Cela correspond approximativement à l'idée que le
+monde réel est compatible avec l'information de l'agent. Les logiques
+épistémiques utilisent souvent S5, mais on peut aussi choisir des
+systèmes plus faibles selon ce que l'on souhaite représenter par
+l'opérateur $\Knows_a$.
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[modal]
+      \node[world] (w1) [label={[align=right]right:\mTrue{p}\\ \mFalse{q}}]{$w_1$};
+      \node[world] (w2) [label={[align=right]right:\mTrue{p}\\ \mTrue{q}},
+        above right=of w1]{$w_2$};
+      \node[world] (w3) [label={[align=right]right:\mFalse{p}\\ \mFalse{q}},
+        below right=of w1] {$w_3$};
+      \draw[<->] (w1) to node {$a$} (w2);
+      \draw[->,loop left] (w1) to node {$a,b$} (w1);
+      \draw[<->] (w1) to [swap] node {$b$} (w3);
+      \draw[->,loop above] (w2) to node {$a,b$} (w2) ;
+      \draw[->,loop below] (w3) to node {$a,b$} (w3) ;
+    \end{tikzpicture}
+  \end{center}
+  \caption{Un modèle épistémique simple.}
+  \ollabel{fig:simple}
+\end{figure}
+
+\begin{prob}
+  Déterminez lesquels des énoncés suivants sont vérifiés dans
+  la \olref[aml][el][trw]{fig:simple} :
+  \begin{enumerate}
+    \item $\mSat{M}{\lnot q}[w_1]$;
+    \item $\mSat{M}{\Knows_a \lnot q}[w_1]$;
+    \item $\mSat{M}{\Knows_b \lnot q}[w_1]$;
+    \item $\mSat{M}{\Knows_b q \lor \Knows_b \lnot q}[w_2]$;
+    \item $\mSat{M}{\Knows_a( \Knows_b q \lor \Knows_b \lnot q)}[w_2]$;
+    \item $\mSat{M}{\EKnows_{\{a,b\}} \lnot q}[w_3]$;
+    \end{enumerate}
+\end{prob}
+
+Une fois la vérité en un monde définie, les autres notions sémantiques
+de la logique modale normale, telles que la validité modale et la
+conséquence logique, se transposent à cette nouvelle interprétation
+des opérateurs modaux.
+
+Nous pouvons maintenant donner les conditions de vérité de l'opérateur
+de connaissance commune~$\CKnows_G$. Rappelons, d'après la
+\olref[sfr][rel][ops]{sec}, que la \emph{clôture transitive}~$R^+$
+d'une relation~$R$ est définie comme suit.
+\footnote{L'indice zéro ci-dessous correspond à un pas : l'indexation
+est décalée d'une unité par rapport à celle de la section citée.
+La relation obtenue reste la clôture des chemins de longueur
+strictement positive.}
+\begin{align*}
+  R^+ &= \bigcup_{ n \in \mathbb{N}} R^n,
+\intertext{où}
+  R^0 & = R \text{ et}\\
+  R^{n+1} & = \Setabs{\tuple{x, z}}{\exists y (R^n xy \land Ryz)}.
+\end{align*}
+Pour un groupe d'agents $G$, on définit alors
+$R_G = ( \bigcup_{b
+\in G} R_b )^+$ comme la clôture transitive de la réunion des relations
+d'accessibilité de ses agents.
+
+\begin{defn}
+Si $G' \subseteq G$, on pose $\mSat{M}{\CKnows_{G'} !A}[ w]$ si et
+seulement si, pour tout $w'$ tel que $R_{G'} w w'$, on a
+$\mSat{M}{!A}[w']$.
+\end{defn}
+
+Cette définition retient toutes les itérations de connaissance de
+longueur strictement positive. Si les relations des agents sont
+réflexives et le groupe non vide, elle inclut aussi la vérité de la
+formule au monde de départ. Sur des relations arbitraires, elle
+n'ajoute pas automatiquement cette condition.
+
+\end{document}

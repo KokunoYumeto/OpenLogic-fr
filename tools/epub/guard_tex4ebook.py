@@ -34,17 +34,18 @@ def check(ok):
 def counts(job):
  a=Accounting();check(QueryJob(job,1,c.byref(a),c.sizeof(a),None));return a
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
-def run(attempt,mode="convert",source_scope_units=111,worker_script=None):
+def run(attempt,mode="convert",source_scope_units=111,worker_script=None,*,slot_timeout_ms=45000,full_reader=False):
  if not attempt.replace("-","").isalnum():raise ValueError("Invalid attempt name")
  capture=E/attempt;capture.mkdir(exist_ok=False)
  pdf_limit=int(os.environ.get("INTERLANGUAGE_PDF_COMPARE_TIMEOUT", "420"))
  if pdf_limit < 60 or pdf_limit > 900:raise ValueError("Invalid bounded PDF timeout")
- limit=600 if mode=="convert" else (pdf_limit if mode=="pdf-compare" else (25 if mode=="diagnostic" else (1 if mode=="test-timeout" else 10)))
- r=dict(mutex="Global\\InterlanguageTeXSlotV1",timeout_ms=45000,whole_tree_timeout_seconds=limit,status="pending",acquired=False,abandoned_recovery=False,source_scope_units=source_scope_units,mode=mode,job_kill_on_close=True,created_suspended=True)
+ epub_limit=900 if full_reader else 600
+ limit=epub_limit if mode=="convert" else (pdf_limit if mode=="pdf-compare" else (25 if mode=="diagnostic" else (1 if mode=="test-timeout" else 10)))
+ r=dict(mutex="Global\\InterlanguageTeXSlotV1",timeout_ms=slot_timeout_ms,whole_tree_timeout_seconds=limit,status="pending",acquired=False,abandoned_recovery=False,source_scope_units=source_scope_units,mode=mode,job_kill_on_close=True,created_suspended=True)
  mutex=job=ph=th=None;assigned=False;empty=True;streams=[]
  try:
   mutex=CreateMutex(None,False,r["mutex"]);check(mutex)
-  outcome=Wait(mutex,45000)
+  outcome=Wait(mutex,slot_timeout_ms)
   if outcome==258:r["status"]="slot_occupied";return r
   if outcome not in (0,128):raise c.WinError(c.get_last_error())
   r.update(acquired=True,abandoned_recovery=outcome==128,acquired_utc=now())
@@ -53,6 +54,11 @@ def run(attempt,mode="convert",source_scope_units=111,worker_script=None):
   check(SetJob(job,9,c.byref(limits),c.sizeof(limits)))
   env=os.environ.copy()
   env.update(LUAINPUTS=E.as_posix()+"/dependencies/make4ht//;"+E.as_posix()+"/dependencies/tex4ebook//;",TEXINPUTS=E.as_posix()+"/dependencies/tex4ht-texlive/texmf-dist/tex/generic/tex4ht//;"+E.as_posix()+"/dependencies/tex4ebook//;",SOURCE_DATE_EPOCH="1788739200",FORCE_SOURCE_DATE="1")
+  if full_reader and mode=="convert":
+   override=E.as_posix()+"/overrides//;"
+   for name in ("LUAINPUTS","TEXINPUTS"):
+    env[name]=override+env[name]
+   env["INTERLANGUAGE_FULL_EPUB_PYTHON"]=Path(sys.executable).as_posix()
   if mode in ("convert","diagnostic"):
    cmd=[shutil.which("texlua.exe"),str(E/"dependencies/tex4ebook/tex4ebook"),"-x","-f","epub3","-c","french-epub.cfg","reader.tex","mathml,daisy-","","","-disable-installer -recorder -interaction=nonstopmode -halt-on-error"]
   elif mode=="pdf-compare":

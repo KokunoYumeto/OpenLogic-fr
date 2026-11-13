@@ -37,12 +37,12 @@ de transformer une énumération de~$A$ en une énumération de~$B$.
 Le plus simple est de définir une !!{surjection} $f\colon A \to B$.
 Si $x_1$, $x_2$, \dots{} énumèrent~$A$, la liste $f(x_1)$,
 $f(x_2)$, \dots{} parcourt tout~$B$ ; en retirant les répétitions,
-on obtient une énumération de~$B$.\footnote{Précision éditoriale :
-la définition bijective de cette variante exige que chaque élément
-apparaisse une seule fois. Une surjection seule ne garantit pas
-cette condition, laissée implicite dans l'original. On conserve
-chaque valeur à sa première apparition, puis on réindexe la liste
-obtenue par $\Nat$ ou par un segment initial si elle est finie.}
+on obtient une énumération de~$B$. On conserve chaque valeur
+à sa première apparition, puis on réindexe la liste obtenue par
+$\Nat$ ou par un segment initial si elle est finie et non vide.
+Si la liste est vide, $B$ est vide.
+%
+%
 Dans notre cas, nous cherchons une !!{surjection}
 $f\colon \Pow{\Nat} \to \Bin^\omega$.
 
@@ -56,16 +56,16 @@ de~$A$ en une énumération de~$B$.
 \begin{proof}[Démonstration du {\olref[nen-alt]{thm:nonenum-pownat}} par réduction]
 Supposons que $\Pow{\Nat}$ soit !!{enumerable}, et soit
 $N_{1}$, $N_{2}$, $N_{3}$, \dots{} une énumération de ses
-éléments.\footnote{L'ensemble $\Pow{\Nat}$ est infini, puisqu'il
-contient tous les singletons d'entiers naturels. Cette liste est
-donc infinie ; ses indices commencent à $1$ comme dans l'original,
-ce qui revient à décaler d'une unité les indices de~$\Nat$.}
+éléments. L'ensemble $\Pow{\Nat}$ est infini, puisqu'il
+contient tous les singletons d'entiers naturels. La liste est
+donc infinie. Numéroter les termes à partir de $1$ revient à
+décaler d'une unité les indices de~$\Nat$.
 
 Définissons $f \colon \Pow{\Nat} \to \Bin^\omega$ en associant
 à $N$ la suite $s$ telle que $s(n) = 1$ si et seulement si
-$n \in N$, et $s(n) = 0$ sinon.\footnote{Note de traduction :
-l'original écrit $s_k$ sans définir l'indice $k$ ; nous écrivons
-$s$ pour la suite associée à~$N$.}
+$n \in N$, et $s(n) = 0$ sinon.
+%
+%
 
 Cela définit bien une fonction : pour tout $N \subseteq \Nat$,
 chaque $n \in \Nat$ appartient ou n'appartient pas à~$N$.
@@ -84,10 +84,10 @@ N = \Setabs{n \in \Nat}{s(n) = 1}
 Alors $f(N) = s$, comme on le vérifie à partir de la définition
 de~$f$. De plus, $f$ est injective : deux parties distinctes de
 $\Nat$ diffèrent par l'appartenance d'au moins un entier, et
-leurs suites diffèrent donc au terme de cet indice.\footnote{
-Précision éditoriale : cette vérification d'injectivité est ajoutée
-pour établir directement une énumération bijective dans la
-démonstration qui suit.}
+leurs suites diffèrent donc au terme de cet indice.
+%
+%
+%
 
 Considérons maintenant la liste
 \[
@@ -105,31 +105,31 @@ donc aussi. Or $\Bin^\omega$ est !!{nonenumerable}
 $\Pow{\Nat}$ est !!{nonenumerable}.
 \end{proof}
 
-\begin{editorial}\textit{Passage conservé en commentaire dans l'original.}
-\begin{explain}
-Il est facile de se tromper sur le sens de la réduction. Une fonction
-!!{surjective} $g\colon \Bin^\omega \to X$ ne permet \emph{pas}
-d'établir que $X$ est !!{nonenumerable}. Considérons, par exemple,
-$g\colon \Bin^\omega \to \Bin$ définie par $g(s) = s(1)$ : elle
-associe à chaque suite binaire son terme d'indice $1$, le deuxième
-avec l'indexation adoptée ici. Elle est surjective, car ce terme peut
-valoir $0$ ou $1$, alors que $\Bin$ est fini. De même, la fonction
-$f\colon A \to B$ du transfert doit être surjective : sinon,
-rien ne garantit que $f(x_1)$, $f(x_2)$, \dots{} atteignent tous
-les éléments de~$B$. Par exemple, la fonction $h\colon \Nat \to
-\Bin^\omega$ définie par
-\[
-h(n) = \underbrace{000\dots0}_{\text{$n$ zéros}}111\dots
-\]
-est bien une fonction, alors que $\Nat$ est !!{enumerable}.
-\footnote{Note de traduction : la source appelle $s(1)$ le premier
-terme ; nous précisons son indice sans changer la formule. Son $Y$
-final n'est pas défini : nous reprenons $B$ du transfert de $A$ vers $B$.
-Son mot fini de $n$ zéros est complété par une infinité de $1$ pour
-avoir le type annoncé ; cette application n'atteint pas la suite
-constante égale à $0$.}
-\end{explain}
-\end{editorial}
+%
+%\begin{explain}
+%Il est facile de se tromper sur le sens de la réduction. Une fonction
+%!!{surjective} $g\colon \Bin^\omega \to X$ ne permet \emph{pas}
+%d'établir que $X$ est !!{nonenumerable}. Considérons, par exemple,
+%$g\colon \Bin^\omega \to \Bin$ définie par $g(s) = s(1)$ : elle
+%associe à chaque suite binaire son terme d'indice $1$, le deuxième
+%avec l'indexation adoptée ici. Elle est surjective, car ce terme peut
+%valoir $0$ ou $1$, alors que $\Bin$ est fini. De même, la fonction
+%$f\colon A \to B$ du transfert doit être surjective : sinon,
+%rien ne garantit que $f(x_1)$, $f(x_2)$, \dots{} atteignent tous
+%les éléments de~$B$. Par exemple, la fonction $h\colon \Nat \to
+%\Bin^\omega$ définie par
+%\[
+%h(n) = \underbrace{000\dots0}_{\text{$n$ zéros}}111\dots
+%\]
+%est bien une fonction, alors que $\Nat$ est !!{enumerable}.
+%La suite constante égale à $0$ reste hors de l’image de $h$.
+%
+%
+%
+%
+%
+%\end{explain}
+%
 
 \begin{prob}\label{sfr:siz:red-alt:prob:nat-nat}
   % Le label source red:prob:nat-nat est aussi défini dans reduction.tex.
@@ -150,14 +150,14 @@ Montrer par réduction que $\Nat^\omega$, l'ensemble des suites
 infinies d'entiers naturels, est !!{nonenumerable}.
 \end{prob}
 
-\begin{prob}
-\textit{Exercice conservé en commentaire dans l'original.}
-Soit $P$ l'ensemble des fonctions de $\Nat$ dans $\{0\}$, et soit $Q$
-l'ensemble des fonctions partielles des entiers strictement positifs
-dans $\{0\}$. Montrer que $P$ est !!{enumerable} et que $Q$ ne l'est pas.
-Indication : réduire le problème de l'énumération de $\Bin^\omega$
-à celui de l'énumération de~$Q$.
-\end{prob}
+%\begin{prob}
+%
+%Soit $P$ l'ensemble des fonctions de $\Nat$ dans $\{0\}$, et soit $Q$
+%l'ensemble des fonctions partielles des entiers strictement positifs
+%dans $\{0\}$. Montrer que $P$ est !!{enumerable} et que $Q$ ne l'est pas.
+%Indication : réduire le problème de l'énumération de $\Bin^\omega$
+%à celui de l'énumération de~$Q$.
+%\end{prob}
 
 \begin{prob}
 Soit $S$ l'ensemble de toutes les !!{surjection}s de $\Nat$ dans

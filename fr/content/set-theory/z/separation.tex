@@ -1,0 +1,121 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{z}{sep}
+\olsection{Séparation}
+
+Commençons par un principe destiné à remplacer la compréhension naïve :
+
+\begin{axiom}[Schéma de séparation] Pour toute formule $\phi(x)$,
+l'énoncé suivant est un axiome : quel que soit $A$, l'ensemble
+$\Setabs{x \in A}{\phi(x)}$ existe.
+\end{axiom}
+
+Remarquons qu'il ne s'agit pas d'un axiome unique, mais d'un
+\emph{schéma} d'axiomes. Il y a une \emph{infinité} d'axiomes de
+séparation, un pour chaque formule $\phi(x)$. On peut également écrire
+le schéma sous la forme suivante, qui est la forme habituelle :
+
+\begin{defish}
+Pour toute formule $\phi(x)$ qui ne contient pas «~$S$~», l'énoncé
+suivant est un axiome :
+\[
+	\forall A \exists S \forall x(x \in S \liff (\phi(x) \land x \in A)).
+\]
+\end{defish}
+
+Conformément à la convention énoncée au début de la
+\olref[sth][][]{part}, les formules~$\phi$ des axiomes de séparation
+peuvent contenir des paramètres.\footnote{Pour comprendre ce que cela
+signifie, voir le passage immédiatement après la
+\olref[sfr][infinite][induction]{natinductionschema}.}
+
+La conception cumulative et itérative des ensembles que nous avons
+présentée justifie directement la séparation. Pour le voir, soit $A$
+un ensemble. L'ensemble $A$ est donc formé à une certaine étape~$S$
+(par \stageshier). Puisque $A$ est formé à l'étape~$S$, tous les
+!!{element}s de $A$ ont été formés avant l'étape~$S$ (par \stagesacc).
+Considérons en particulier tous les ensembles qui appartiennent à~$A$
+et qui satisfont aussi $\phi$ : eux aussi ont manifestement été formés
+avant l'étape~$S$. Ils sont donc réunis en un ensemble
+$\Setabs{x \in A}{\phi(x)}$ à cette même étape~$S$ (par \stagesacc).
+
+À la différence de la compréhension naïve, ce principe évite le
+paradoxe de Russell. Nous ne pouvons pas simplement affirmer
+l'existence de l'ensemble $\Setabs{x}{x \notin x}$. En revanche,
+\emph{étant donné} un ensemble~$A$, nous pouvons affirmer l'existence
+de l'ensemble $R_A = \Setabs{x \in A}{x \notin x}$. Mais tout ce que
+cela permet de démontrer, c'est que $R_A \notin R_A$ et
+$R_A \notin A$, ce qui n'a rien d'inquiétant.
+
+La séparation a toutefois une conséquence immédiate et frappante :
+
+\begin{thm}\ollabel{thm:NoUniversalSet}
+Il n'existe pas d'ensemble \emph{universel}, c'est-à-dire que
+$\Setabs{x}{x = x}$ n'existe pas.
+\end{thm}
+
+\begin{proof}
+Supposons, pour obtenir une contradiction, que $V$ soit un ensemble
+universel. Alors, par séparation, l'ensemble
+$R = \Setabs{x \in V}{x \notin x} = \Setabs{x}{x \notin x}$ existe.
+Comme $V$ contient tous les ensembles, la définition de $R$ donne
+$R \in R \liff R \notin R$, ce qui est impossible.
+\end{proof}
+
+L'absence d'un ensemble universel, et même le caractère ouvert de la
+hiérarchie des ensembles, compte parmi les idées les plus fondamentales
+de la conception cumulative et itérative. Il vaut donc la peine de
+voir que, intuitivement, on peut y parvenir par une autre voie. Un
+ensemble universel doit être !!a{element} de lui-même. Or, selon
+notre conception cumulative et itérative, tout ensemble apparaît pour
+la première fois dans la hiérarchie à la toute première étape après
+l'apparition de tous ses !!{element}s. Il en
+résulte qu'\emph{aucun} ensemble ne s'appartient à lui-même : un tel
+ensemble devrait apparaître pour la première fois immédiatement après
+l'étape où il apparaît pour la première fois, ce qui est absurde.
+(Nous verrons à la \olref[sth][spine][rank]{defnsetrank} comment
+rendre cette explication plus rigoureuse grâce à la notion de
+«~rang~» d'un ensemble. Nous aurons toutefois besoin de quelques
+axiomes supplémentaires.)
+
+Voici quelques autres conséquences de la séparation et de
+l'extensionnalité.
+
+\begin{prop}\ollabel{prop:emptyexists}
+Si au moins un ensemble existe, alors $\emptyset$ existe.
+\end{prop}
+
+\begin{proof}
+Si $A$ est un ensemble, alors
+$\emptyset = \Setabs{x \in A}{x \neq x}$ existe par séparation.
+\end{proof}
+
+\begin{prop}
+$A \setminus B$ existe quels que soient les ensembles $A$ et $B$.
+\end{prop}
+
+\begin{proof}
+$A \setminus B = \Setabs{x \in A}{x \notin B}$ existe par séparation.
+\end{proof}
+
+Il s'avère aussi que les intersections (presque) arbitraires existent :
+
+\begin{prop}\ollabel{prop:intersectionsexist}
+Si $A \neq \emptyset$, alors
+$\bigcap A = \Setabs{x}{(\forall y \in A)x \in y}$ existe.
+\end{prop}
+
+\begin{proof}
+Soit $A \neq \emptyset$ ; il existe donc un $c \in A$. Alors
+$\bigcap A = \Setabs{x}{(\forall y \in A)x \in y}
+= \Setabs{x \in c}{(\forall y \in A)x \in y}$, qui existe par
+séparation.
+\end{proof}
+
+Notons toutefois la condition $A \neq \emptyset$ : si elle n'était pas
+remplie, $\bigcap \emptyset$ serait l'ensemble universel, par vacuité, ce qui
+contredirait le \olref{thm:NoUniversalSet}.
+
+\end{document}

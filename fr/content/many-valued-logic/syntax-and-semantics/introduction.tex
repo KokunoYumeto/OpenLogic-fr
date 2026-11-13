@@ -1,0 +1,83 @@
+% Part: many-valued-logic
+% Chapter: syntax-and-semantics
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{syn}{int}
+
+\olsection{Introduction}
+
+En logique classique, les formules
+se construisent à partir de variables
+propositionnelles au moyen des connecteurs
+$\lnot$, $\land$, $\lor$, $\lif$ et
+$\liff$. Sa sémantique emploie les deux
+valeurs de vérité $\True$ et~$\False$.
+Une valuation~$\pAssign{v}$ attribue
+l'une de ces valeurs à chaque variable
+propositionnelle. Elle détermine alors
+une valeur~$\pValue{v}(!A)$ pour chaque
+formule~$!A$. La formule~$!A$ est
+satisfaite dans cette valuation,
+$\pSat{v}{!A}$, si et seulement si
+$\pValue{v}(!A)=\True$.
+
+Les logiques plurivalentes généralisent
+la logique classique en admettant
+d'autres valeurs de vérité que
+$\True$ et~$\False$. Une valuation
+$\pAssign{v}$ attribue ainsi à chaque
+variable propositionnelle~$p$ une
+valeur prise dans un ensemble~$V$.
+La logique classique en est un cas
+où $V=\{\True,\False\}$; les tables
+de vérité familières des connecteurs
+permettent alors de calculer
+$\pValue{v}(!A)$.
+
+Dès que l'on ajoute d'autres valeurs,
+plusieurs fonctions peuvent
+interpréter les connecteurs que nous
+lisons « et », « ou », « non » et
+« si... alors ». Pour définir l'évaluation des formules, on fixe,
+en plus de l'ensemble~$V$, une \emph{fonction de vérité} pour
+chaque connecteur. Une fois ces fonctions fixées pour une
+logique~$\Log L$, la valuation détermine de manière unique la
+valeur $\pValue{v}(!A)[\Log L]$ de chaque formule. Comme la
+logique classique, ces logiques sont \emph{vérifonctionnelles}.
+
+Nous pouvons alors généraliser les notions
+sémantiques de tautologie, de conséquence
+et de satisfaisabilité. En logique
+classique, une formule est une tautologie
+si $\pValue{v}(!A)=\True$ pour toute
+valuation~$\pAssign{v}$. Dans une
+logique plurivalente, l'ensemble~$V$
+ne contient pas nécessairement la
+valeur~$\True$. Il peut, par exemple,
+être formé de tous les rationnels
+compris entre~$0$ et~$1$; la valeur~$1$
+y joue généralement le rôle de~$\True$.
+Dans d'autres logiques, plusieurs
+valeurs jouent ce rôle. Nous distinguons
+donc un sous-ensemble~$V^+\subseteq V$
+de \emph{valeurs désignées}.
+
+Une formule~$!A$ est satisfaite dans
+la valuation~$\pAssign{v}$ pour la
+logique~$\Log L$, ce que nous notons
+$\pSat{v}{!A}[\Log L]$, si et seulement
+si $\pValue{v}(!A)[\Log L]\in V^+$.
+Elle est une tautologie de~$\Log L$,
+$\Entails[\Log L] !A$, si cette
+appartenance vaut pour toute valuation.
+Enfin, un ensemble de formules~$\Gamma$
+entraîne~$!A$, ce que nous notons
+$\Gamma\Entails[\Log L] !A$, si toute
+valuation qui satisfait toutes les
+formules de~$\Gamma$ satisfait aussi~$!A$.
+
+\end{document}

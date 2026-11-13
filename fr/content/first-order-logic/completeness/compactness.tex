@@ -1,0 +1,217 @@
+% Partie : logique du premier ordre
+% Chapitre : complétude
+% Section : compacité
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{com}{com}}
+      {\olfileid[fr]{pl}{com}{com}}
+
+\olsection{Le théorème de compacité}
+
+Le théorème de compacité est une conséquence importante du théorème de
+complétude. Il affirme que si chaque sous-ensemble \emph{fini} d'un
+ensemble \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} est satisfaisable, l'ensemble entier l'est
+aussi, même s'il est infini. Cela n'a rien d'évident. À première vue,
+on pourrait imaginer qu'un ensemble infini \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} soit
+contradictoire uniquement en raison de son infinité, alors que chacun
+de ses sous-ensembles finis serait satisfaisable. Le théorème exclut
+cette possibilité : aucun ensemble infini non satisfaisable \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} ne possède cette propriété. Comme pour la complétude,
+il existe aussi une formulation en termes de conséquence logique : si
+un ensemble infini \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} entraîne \iftag{FOL}{un !!{sentence}}{une !!{formula}}, un de ses
+sous-ensembles finis l'entraîne déjà.
+
+\begin{defn}
+  Un ensemble~$\Gamma$ \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}
+  est \emph{finiment satisfaisable} si et seulement si tout
+  sous-ensemble fini $\Gamma_0\subseteq\Gamma$ est satisfaisable.
+\end{defn}
+
+\begin{thm}[Théorème de compacité]
+\ollabel{thm:compactness}
+Soient $\Gamma$ un ensemble \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} et $!A$
+\iftag{FOL}{un !!{sentence}}{une !!{formula}} du même langage. Alors :
+\begin{enumerate}
+  \item $\Gamma\Entails !A$ si et seulement s'il existe un
+    sous-ensemble fini $\Gamma_0\subseteq\Gamma$ tel que
+    $\Gamma_0\Entails !A$.
+  \item $\Gamma$ est satisfaisable si et seulement s'il est finiment
+    satisfaisable.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+Démontrons (2). Si $\Gamma$ est satisfaisable, il existe
+\iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
+telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ pour \iftag{FOL}{tout !!{sentence}}{toute !!{formula}}
+$!A\in\Gamma$. Cette $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
+satisfait évidemment aussi chaque sous-ensemble fini de~$\Gamma$ ;
+donc $\Gamma$ est finiment satisfaisable.
+
+Supposons maintenant $\Gamma$ finiment satisfaisable. Alors chaque
+sous-ensemble fini $\Gamma_0\subseteq\Gamma$ est satisfaisable.
+Par correction
+(\iftag{FOL}{%
+  \tagrefs{prfAX/{fol:axd:sou:cor:consistency-soundness},
+    prfSC/{fol:seq:sou:cor:consistency-soundness},
+    prfND/{fol:ntd:sou:cor:consistency-soundness},
+    prfTab/{fol:tab:sou:cor:consistency-soundness}}}{%
+  \tagrefs{prfAX/{pl:axd:sou:cor:consistency-soundness},
+    prfSC/{pl:seq:sou:cor:consistency-soundness},
+    prfND/{pl:ntd:sou:cor:consistency-soundness},
+    prfTab/{pl:tab:sou:cor:consistency-soundness}}}),
+chaque sous-ensemble fini est cohérent. Il s'ensuit que $\Gamma$
+lui-même est cohérent, d'après les
+\iftag{FOL}{%
+  \tagrefs{prfAX/{fol:axd:ptn:prop:proves-compact},
+    prfSC/{fol:seq:ptn:prop:proves-compact},
+    prfND/{fol:ntd:ptn:prop:proves-compact},
+    prfTab/{fol:tab:ptn:prop:proves-compact}}}{%
+  \tagrefs{prfAX/{pl:axd:ptn:prop:proves-compact},
+    prfSC/{pl:seq:ptn:prop:proves-compact},
+    prfND/{pl:ntd:ptn:prop:proves-compact},
+    prfTab/{pl:tab:ptn:prop:proves-compact}}}.
+Par complétude (\olref[cth]{thm:completeness}), puisque $\Gamma$ est
+cohérent, il est satisfaisable.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Démontrez (1) du~\olref[fol][com][com]{thm:compactness}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Démontrez (1) du~\olref[pl][com][com]{thm:compactness}.
+\end{prob}
+\tagendprob
+
+\iftag{FOL}{%
+\begin{ex}
+Dans tout modèle~$\Struct{M}$ d'une théorie~$\Gamma$, chaque terme
+\emph{clos}~$t$ désigne bien sûr !!a{element} de~$\Domain{M}$.
+Peut-on garantir que, réciproquement, chaque !!{element} de
+$\Domain{M}$ est désigné par un terme clos ? Autrement dit,
+existe-t-il des théories~$\Gamma$ dont tous les modèles sont
+couverts ? Le théorème de compacité montre que ce n'est pas le cas
+si~$\Gamma$ possède un modèle infini. Voici pourquoi. Soit
+$\Struct{M}$ un modèle infini de~$\Gamma$, et soit $c$ !!a{constant}
+étrangère au langage de~$\Gamma$. Soit $\Delta$ l'ensemble de tous
+les énoncés $\eq/[c][t]$ où $t$ est un terme \emph{clos} du
+langage~$\Lang{L}$ de~$\Gamma$, c'est-à-dire
+  \[
+  \Delta=\Setabs{\eq/[c][t]}{t\in\Trm[L]\text{ et }t\text{ est clos}}.
+  \]
+Un sous-ensemble fini de $\Gamma\cup\Delta$ s'écrit
+$\Gamma'\cup\Delta'$, où $\Gamma'\subseteq\Gamma$ et
+$\Delta'\subseteq\Delta$. Puisque $\Delta'$ est fini, il n'y figure
+qu'un nombre fini de termes. Choisissons un
+$a\in\Domain{M}$ qui n'est désigné par aucun d'eux, et soit
+$\Struct{M'}$ la !!{structure} obtenue en interprétant en outre
+$c$ par $\Assign{c}{M'}=a$. Comme
+$a\ne\Value{t}{M}$ pour chaque terme~$t$ figurant dans~$\Delta'$,
+on a $\Sat{M'}{\Delta'}$. De plus,
+$\Sat{M}{\Gamma}$, $\Gamma'\subseteq\Gamma$, et $c$ n'apparaît pas
+dans~$\Gamma$ ; donc $\Sat{M'}{\Gamma'}$. Ainsi,
+$\Sat{M'}{\Gamma'\cup\Delta'}$ pour chaque sous-ensemble fini
+$\Gamma'\cup\Delta'$ de~$\Gamma\cup\Delta$. Par compacité,
+$\Gamma\cup\Delta$ est satisfaisable. Soit $\Struct{M^+}$ l'un de
+ses modèles. Le réduit de~$\Struct{M^+}$ au langage~$\Lang L$ est
+un modèle de~$\Gamma$ qui n'est pas couvert : l'élément
+$\Assign{c}{M^+}$ de son domaine est distinct de la valeur de tout
+terme clos~$t$ de~$\Lang L$.
+\end{ex}
+
+\begin{ex}
+Considérons !!a{language}~$\Lang{L}$ contenant le
+!!{predicate}~$<$, les !!{constant}s $\Obj{0}$ et $\Obj{1}$, et
+les !!{function}s $+$, $\times$ et $-$. Soit $\Gamma$ l'ensemble
+des !!{sentence}s de ce langage qui sont vrais dans la
+!!{structure}~$\Struct{Q}$ de domaine~$\Rat$, avec les
+interprétations usuelles. Ainsi, $\Gamma$ exprime tous les énoncés
+de~$\Lang{L}$ vrais dans les rationnels. Dans~$\Rat$ (et même
+dans~$\Real$), aucun nombre~$r$ n'est supérieur à~$0$ tout en étant
+inférieur à~$1/k$ pour chaque $k\in\PosInt$. Un tel nombre, s'il
+existait, serait un \emph{infinitésimal strictement positif}. Le théorème de compacité permet de montrer qu'il existe des
+modèles de~$\Gamma$ contenant des infinitésimaux. Notre langage n'a
+pas de !!{function} de division (la division par zéro n'est pas
+définie, alors que les !!{function}s doivent être interprétés par
+des fonctions totales). Nous pouvons néanmoins exprimer $r<1/k$ par
+$r\cdot k<1$. Soit maintenant $c$ une nouvelle !!{constant}, et
+posons
+\[
+\Delta=\{\Obj{0}<c\}
+\cup\Setabs{c\times\num k<\Obj{1}}{k\in\PosInt}
+\]
+(où $\num{k}=(\Obj{1}+(\Obj{1}+\dots+(\Obj{1}+
+\Obj{1})\dots))$ contient $k$ occurrences de~$\Obj{1}$).
+Pour tout sous-ensemble fini~$\Delta_0$ de~$\Delta$, il existe un
+entier~$K>0$ tel que chaque énoncé $c\times\num{k}<\Obj{1}$
+appartenant à~$\Delta_0$ ait $k<K$. Si nous élargissons
+$\Struct{Q}$ en~$\Struct{Q'}$ avec
+$\Assign{c}{Q'}=1/K$, alors
+$\Sat{Q'}{\Gamma_0\cup\Delta_0}$ pour tout sous-ensemble fini
+$\Gamma_0\subseteq\Gamma$. Ainsi, $\Gamma\cup\Delta$ est finiment
+satisfaisable (exercice : démontrez-le en détail). Par compacité,
+$\Gamma\cup\Delta$ est satisfaisable. Tout modèle~$\Struct{S}$ de
+$\Gamma\cup\Delta$ contient un infinitésimal, à savoir
+$\Assign{c}{S}$.
+\end{ex}
+}{}
+
+\tagprob{FOL}
+\begin{prob}
+Dans le modèle standard de l'arithmétique~$\Struct{N}$, aucun
+!!{element}~$k\in\Domain{N}$ ne satisfait toutes les formules
+$\num{n}<x$ (où $\num{n}$ vaut
+$\Obj{0}^{\prime\dots\prime}$ avec $n$ occurrences de~$\prime$).
+Utilisez le théorème de compacité pour montrer que les !!{sentence}s
+du langage de l'arithmétique vrais dans le modèle standard
+$\Struct{N}$ sont aussi vrais dans !!a{structure}~$\Struct{N'}$
+qui contient !!a{element} satisfaisant chacune des formules
+$\num{n}<x$.
+\end{prob}
+\tagendprob
+
+\iftag{FOL}{
+\begin{ex}
+Nous savons qu'avec l'!!{identity}, la logique du premier ordre peut
+imposer une taille minimale au !!{domain}. L'énoncé~$!A_{\ge n}$,
+qui dit « il y a au moins $n$ objets distincts », est vrai
+exactement dans les structures dont le domaine possède au moins~$n$
+éléments.
+Si nous posons
+  \[
+  \Delta=\Setabs{!A_{\ge n}}{n\ge1},
+  \]
+alors tout modèle de~$\Delta$ est infini. Ajouter~$\Delta$ à une
+théorie permet donc de ne conserver que ses modèles infinis : les
+modèles de $\Gamma\cup\Delta$ sont exactement les modèles infinis
+de~$\Gamma$.
+
+Une \emph{théorie}, c'est-à-dire un ensemble d'énoncés du premier
+ordre, peut ainsi imposer l'infinitude. Le théorème de compacité
+montre toutefois qu'aucun ensemble d'énoncés ne peut caractériser
+exactement la finitude. Supposons en effet qu'un ensemble d'énoncés
+$\Lambda$ soit satisfait dans toutes les !!{structure}s finies et
+seulement dans celles-ci. Alors $\Delta\cup\Lambda$ est finiment
+satisfaisable. Pourquoi ? Soit
+$\Delta'\cup\Lambda'\subseteq\Delta\cup\Lambda$ un sous-ensemble
+fini, avec $\Delta'\subseteq\Delta$ et
+$\Lambda'\subseteq\Lambda$. Prenons pour~$n$ le plus grand entier
+tel que $!A_{\ge n}\in\Delta'$ ; si $\Delta'$ est vide, prenons
+$n=0$. Puisque $\Lambda$ est satisfait dans toutes les
+structures finies, il existe un modèle~$\Struct{M}$ de~$\Lambda$
+dont le domaine est fini et possède au moins~$n$ !!{element}s.
+Alors $\Sat{M}{\Delta'\cup\Lambda'}$. Par compacité,
+$\Delta\cup\Lambda$ possède un modèle infini, contrairement à
+l'hypothèse selon laquelle $\Lambda$ n'est satisfait que dans des
+!!{structure}s finies.
+\end{ex}
+}{}
+
+\end{document}

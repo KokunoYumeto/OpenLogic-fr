@@ -1,0 +1,229 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : règles et preuves
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{seq}{rp}
+
+\olsection{Règles et \usetoken{p}{proof}}
+
+Commençons par quelques définitions et conventions terminologiques.
+
+Considérons, par exemple, les deux règles de \Log{G3c}
+qui permettent de prouver des séquents contenant $!A \land !B$
+à partir de séquents contenant $!A$ et~$!B$ :
+\[
+\Axiom$ !A, !B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$ !A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\qquad
+\Axiom$\Gamma \fCenter \Delta, !A$
+\Axiom$ \Gamma \fCenter \Delta, !B$
+\RightLabel{\RightR{\land}}
+\BinaryInf$ \Gamma \fCenter \Delta, !A \land !B $
+\DisplayProof
+\]
+Les séquents au-dessus du trait sont les \emph{prémisses},
+et celui au-dessous est la \emph{conclusion}.
+Les occurrences de formules dans $\Gamma$ et $\Delta$
+constituent le \emph{contexte} de chaque règle.
+Ce sont les \emph{formules latérales}.
+Dans ces schémas, l'occurrence qui s'ajoute au contexte
+dans la conclusion est celle de la \emph{formule principale}.
+Les occurrences qui s'ajoutent au contexte dans les prémisses
+sont celles des \emph{formules actives},
+ou \emph{auxiliaires}.
+
+Les règles des quantificateurs sont un peu plus complexes.
+Ainsi, les règles de \Log{G1c} pour $\lforall$ sont :
+\[\Axiom$ !A(t), \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lforall}}
+\UnaryInf$ \lforall[x][!A(x)],\Gamma \fCenter \Delta$
+\DisplayProof
+\qquad
+\Axiom$ \Gamma \fCenter \Delta, !A(a) $
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$ \Gamma \fCenter \Delta, \lforall[x][!A(x)]$
+\DisplayProof
+\]
+Dans la règle \LeftR{\lforall}, la formule active est~$!A(t)$,
+où $t$ est un terme clos, c'est-à-dire sans variable.
+Une telle inférence est conforme au schéma \LeftR{\lforall}
+s'il existe une formule~$!A$, une variable~$x$
+et un terme clos~$t$ tels que la formule principale
+de la conclusion soit $\lforall[x][!A]$ et que la
+formule active de la prémisse soit~$\Subst{!A}{t}{x}$.
+La règle \RightR{\lforall} se présente de la même façon,
+mais, au lieu d'un terme quelconque~$t$, elle exige
+dans la prémisse la formule active~$\Subst{!A}{a}{x}$,
+où $a$ est une constante. On appelle cette constante
+la \emph{constante propre}, ou \emph{eigenvariable},
+de l'inférence \RightR{\lforall}.
+L'inférence n'est conforme à la règle que si $a$
+n'apparaît pas dans le séquent inférieur, donc ni
+dans $\Gamma$, ni dans $\Delta$, ni dans~$!A$.
+C'est la \emph{condition sur la constante propre}.
+
+Un calcul des séquents tel que \Log{G1c} ou \Log{G3c}
+comprend des règles ainsi spécifiées par des schémas,
+ainsi que des schémas de séquents qui constituent
+ses axiomes. Les preuves de ce calcul sont des
+arbres finis de séquents construits inductivement
+à partir des axiomes au moyen des règles d'inférence.
+Chaque feuille est un axiome, et tout autre séquent
+découle des séquents immédiatement au-dessus de lui
+par l'une des règles du calcul.
+
+\begin{defn}\ollabel{defn:proof}
+Les \emph{preuves} d'un calcul des séquents sont
+les arbres finis de séquents définis inductivement
+comme suit :
+\begin{enumerate}
+  \item\ollabel{defn:prf:axiom} Tout axiome est une preuve.
+  \item\ollabel{defn:prf:one-prem} Si $\pi_1$ est une preuve
+  dont le séquent final est~$S_1$, et si le séquent~$S$
+  découle de~$S_1$ par une règle~$R$ à une prémisse, alors
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \DeduceC{$S_1$}
+  \RightLabel{$R$}
+  \UnaryInfC{$S$}
+  \DisplayProof
+  \]
+  est une preuve.
+  \item\ollabel{defn:prf:two-prem} Si $\pi_1$ et $\pi_2$
+  sont des preuves dont les séquents finaux sont~$S_1$
+  et~$S_2$, et si le séquent~$S$ découle de~$S_1$
+  et~$S_2$ par une règle~$R$ à deux prémisses, alors
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \DeduceC{$S_1$}
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \DeduceC{$S_2$}
+  \RightLabel{$R$}
+  \BinaryInfC{$S$}
+  \DisplayProof
+  \]
+  est une preuve.
+\end{enumerate}
+\end{defn}
+
+\Olref{defn:proof} définit les preuves comme des
+arbres de séquents. Nous représentons ces arbres
+avec leurs branches dirigées vers le haut.
+Les nœuds supérieurs, ou feuilles, sont des axiomes ;
+on les appelle les \emph{séquents initiaux}.
+Le séquent inférieur est le \emph{séquent final}.
+Si $\pi$ est une preuve de séquent final~$S$,
+on écrit aussi $\pi \Proves S$.
+S'il existe une preuve du séquent~$S$, on écrit
+$\Proves S$, en précisant éventuellement le calcul
+à gauche du symbole~$\Proves$ : par exemple,
+$\Log{G1c} \Proves !A, !B \Sequent !A \land !B$.
+Tout séquent d'une preuve, sauf les séquents initiaux,
+est la \emph{conclusion} d'une inférence obtenue par
+une règle~$R$. Les \emph{prémisses} de cette inférence
+sont les séquents immédiatement au-dessus
+de sa conclusion.
+
+Les preuves utilisées dans la construction inductive
+d'une preuve en sont les \emph{sous-preuves}.
+Celles dont les séquents finaux sont les prémisses
+d'une inférence sont les \emph{sous-preuves immédiates}
+de cette inférence.
+
+Il faut souvent mesurer la complexité d'une preuve
+par un entier naturel. On pourrait compter ses séquents,
+mais une mesure souvent plus utile est sa hauteur :
+le nombre maximal d'inférences sur un chemin reliant
+le séquent final à un séquent initial. On compte donc
+les arêtes de ce chemin ; une preuve réduite à un axiome
+a hauteur zéro. Cette notion se définit aussi inductivement.
+
+\begin{defn}
+La \emph{hauteur}~$\pheight{\pi}$ d'une preuve~$\pi$
+est définie inductivement comme suit :
+\begin{enumerate}
+  \item Si $\pi$ se réduit à un axiome, $\pheight{\pi} = 0$.
+  \item Si $\pi$ se termine par une inférence à une prémisse,
+  de sous-preuve immédiate~$\pi_1$, alors
+  $\pheight{\pi} = \pheight{\pi_1} + 1$.
+  \item Si $\pi$ se termine par une inférence à deux prémisses,
+  de sous-preuves immédiates~$\pi_1$ et~$\pi_2$, alors
+  $\pheight{\pi} = \max(\pheight{\pi_1}, \pheight{\pi_2}) + 1$.
+\end{enumerate}
+Si le séquent~$S$ possède une preuve de hauteur $\le n$,
+on écrit $\Proves[n] S$.
+\end{defn}
+
+\begin{ex}
+Dans \Log{G3c}, tout séquent de la forme
+$!C, \Gamma \Sequent \Delta, !C$ est un axiome
+si $!C$ est atomique. Supposons que $!D$ et $!E$
+soient des formules atomiques closes.
+Les séquents $!D, !E \Sequent !D$ et
+$!D, !E \Sequent !E$ sont alors des instances
+du schéma $!C, \Gamma \Sequent \Delta, !C$.
+Par exemple, en prenant $!C \ident !E$,
+$\Gamma = \{!D\}$ et $\Delta = \emptyset$
+dans $!C, \Gamma \Sequent \Delta, !C$,
+on obtient précisément $!D, !E \Sequent !E$.
+Rappelons que les contextes sont des multiensembles :
+$!D, !E \Sequent !E$ et $!E, !D \Sequent !E$
+sont donc le même séquent, puisque seul l'ordre
+des formules de l'antécédent a changé.
+
+Le séquent $!D, !E \Sequent !D$, instance d'un axiome
+de~\Log{G3c}, constitue à lui seul une preuve
+de~\Log{G3c}. Il en va de même de
+$!D, !E \Sequent !E$, par la
+\olref{defn:proof}\olref{defn:prf:axiom}.
+Appelons ces preuves $\pi_1$ et~$\pi_2$.
+Par \olref{defn:prf:two-prem}, on peut les combiner
+pour construire une nouvelle preuve, $\pi_3$,
+au moyen de la règle à deux prémisses~$\RightR{\land}$ :
+\[
+\Axiom$!D, !E \fCenter !D$
+\Axiom$!D, !E \fCenter !E$
+\RightLabel{\RightR{\land}}
+\BinaryInf$!D, !E  \fCenter !D \land !E $
+\DisplayProof
+\]
+À partir de $\pi_3$, on obtient à son tour
+la preuve~$\pi_4$
+\[
+\Axiom$!D, !E \fCenter !D$
+\Axiom$!D, !E \fCenter !E$
+\RightLabel{\RightR{\land}}
+\insertBetweenHyps{\hspace{5ex}}
+\BinaryInf$!D, !E  \fCenter !D \land !E $
+\LeftSubproofLabel{$\pi_3$}
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!D \land !E  \fCenter !D \land !E$
+\RightSubproofLabel{$\pi_4$}
+\DisplayProof
+\]
+par la règle à une prémisse~$\LeftR{\land}$,
+en appliquant \olref{defn:proof}\olref{defn:prf:one-prem}.
+La sous-preuve immédiate de la dernière inférence
+de~$\pi_4$ est~$\pi_3$. Les sous-preuves immédiates
+de l'inférence $\RightR{\land}$ sont $\pi_1$ et~$\pi_2$.
+Les sous-preuves de $\pi_4$ sont $\pi_1$, $\pi_2$,
+$\pi_3$ et $\pi_4$ elle-même.
+On a $\pheight{\pi_1} = \pheight{\pi_2} = 0$,
+$\pheight{\pi_3} = 1$ et $\pheight{\pi_4} = 2$.
+On a donc montré que
+$\Log{G3c} \Proves[4] !D \land !E  \fCenter !D \land !E$
+pour tous $!D$ et~$!E$ atomiques.
+La borne quatre est valable, mais non optimale :
+la preuve construite a hauteur deux.
+\end{ex}
+
+\end{document}

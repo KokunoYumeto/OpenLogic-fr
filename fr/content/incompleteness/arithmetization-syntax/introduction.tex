@@ -1,0 +1,101 @@
+% Part: incompleteness
+% Chapter: arithmetization-syntax
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{art}{int}
+\olsection{Introduction}
+
+Pour relier la calculabilité et la logique, il nous faut pouvoir
+parler des objets de la logique (symboles, termes, !!{formula}s,
+!!{derivation}s), des opérations que l'on effectue sur eux, ainsi
+que de leurs propriétés et de leurs relations, d'une manière qui
+se prête au calcul. Nous pouvons le faire directement, en étudiant
+les fonctions et les relations calculables portant sur les symboles,
+les suites de symboles et les autres objets construits à partir
+d'eux. Comme les objets de la syntaxe logique sont tous finis et
+formés à partir d'ensembles !!{enumerable}s de symboles, certains
+modèles de calcul permettent cette approche. Mais d'autres modèles,
+comme celui des fonctions récursives, ne portent que sur les nombres
+et sur les fonctions et les relations entre nombres. De plus, nous
+voulons finalement pouvoir traiter de la syntaxe au sein de
+certaines théories, en particulier des théories formulées dans le
+langage de l'arithmétique. Dans ces cas, il faut
+\emph{arithmétiser} la syntaxe : représenter respectivement les
+objets syntaxiques, les opérations sur ces objets et leurs
+relations par des nombres, des fonctions arithmétiques et des
+relations arithmétiques. L'idée, qui remonte à Leibniz, est
+d'attribuer des nombres aux objets syntaxiques.
+
+Il est relativement simple d'attribuer aux symboles des nombres qui
+leur servent de « codes ». Certains symboles posent néanmoins un
+petit problème : il existe, par exemple, une infinité de
+!!{variable}s, et même une infinité de !!{function}s pour chaque
+arité~$n$. On peut bien sûr attribuer systématiquement des codes
+distincts aux symboles, de sorte que, par exemple, $\Obj v_2$ et
+$\Obj v_3$ reçoivent des codes différents. Les suites de symboles,
+comme les termes et les !!{formula}s, présentent une difficulté
+plus grande. Mais si nous savons traiter arithmétiquement les suites
+de nombres, par exemple en les codant à l'aide de puissances de
+nombres premiers, nous pouvons étendre le codage des symboles
+individuels aux suites de symboles, puis aux suites ou autres
+agencements de !!{formula}s, comme les !!{derivation}s. Ce codage
+étendu porte le nom de « numérotation de G\"odel ». Chaque terme,
+chaque !!{formula} et chaque !!{derivation} reçoit un numéro de
+G\"odel.
+
+En codant les suites de symboles par les suites de leurs codes et
+en choisissant un codage des suites que des fonctions calculables
+permettent de manipuler, nous pouvons alors aussi manipuler les
+numéros de G\"odel au moyen de fonctions calculables. En pratique,
+toutes les fonctions pertinentes seront récursives primitives. Par
+exemple, calculer la longueur d'une suite et calculer son $i$-ième
+élément à partir de son code sont deux opérations récursives
+primitives. Si le nombre qui code la suite est, par exemple, le
+numéro de G\"odel d'!!a{formula}~$!A$, nous voyons aussitôt que la
+longueur d'!!a{formula} et le code de son $i$-ième symbole peuvent
+également être calculés à partir du numéro de G\"odel de~$!A$. Il
+est un peu plus difficile de prouver que la propriété d'être le
+numéro de G\"odel d'un terme bien formé ou d'!!a{derivation}
+correcte est récursive primitive. C'est néanmoins possible parce
+que les suites considérées (termes, !!{formula}s, !!{derivation}s)
+sont définies inductivement.
+
+Prenons pour exemple l'opération de substitution. Si $!A$ est une
+formule, $x$ une variable et $t$ un terme libre pour~$x$ dans~$!A$, alors $\Subst{!A}{t}{x}$
+résulte du remplacement de chaque occurrence libre de~$x$ dans~$!A$
+par~$t$. Supposons maintenant que nous ayons attribué des numéros de
+G\"odel à $!A$, $x$ et $t$, disons respectivement $k$, $l$ et $m$.
+Le même codage attribue un numéro de G\"odel à $\Subst{!A}{t}{x}$,
+disons~$n$. L'application qui associe $n$ à $k$, $l$ et $m$ est
+l'analogue arithmétique de l'opération de substitution. Tandis que
+cette opération envoie $!A$, $x$ et $t$ sur $\Subst{!A}{t}{x}$,
+la fonction de substitution arithmétisée envoie les numéros de
+G\"odel $k$, $l$ et $m$ sur le numéro de G\"odel~$n$. Nous
+verrons que cette fonction est récursive primitive.
+
+L'arithmétisation de la syntaxe n'a pas qu'un intérêt abstrait. Ce
+fut d'abord une idée féconde, et nullement évidente, que des
+langages comme celui de l'arithmétique, qui ne disposent pas au
+départ de moyens pour « parler des » langages, puissent malgré tout
+formaliser des propriétés complexes des expressions. Il suffit
+alors d'un pas de plus pour se demander ce qu'une théorie formulée
+dans un tel langage, comme l'arithmétique de Peano, peut
+\emph{démontrer} à propos de son propre langage, notamment sur la
+démontrabilité ou la vérité d'!!{sentence}s. On arrive ainsi aux
+célèbres théorèmes de limitation de G\"odel, sur la
+non-démontrabilité, et de Tarski, sur l'indéfinissabilité de la
+vérité. Mais l'arithmétisation de la syntaxe est aussi essentielle
+à la preuve de résultats importants en théorie de la calculabilité,
+par exemple sur la puissance de calcul des théories ou sur les
+rapports entre différents modèles de calcul. Elle sert en outre de
+modèle pour l'arithmétisation d'autres objets et propriétés. On
+peut ainsi arithmétiser les configurations et les calculs, par
+exemple ceux des machines de Turing. Cela permet de simuler les
+calculs d'un modèle, tel celui des machines de Turing, dans un autre,
+tel celui des fonctions récursives.
+
+\end{document}

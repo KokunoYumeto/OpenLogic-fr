@@ -1,0 +1,200 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{sth}{card-arithmetic}{simp}
+
+\olsection{Simplification de l'addition et de la multiplication}
+
+Il s'avère que l'addition et la multiplication
+cardinales transfinies sont \emph{extrêmement}
+simples. Cela tient au fait que les cardinaux sont
+des ordinaux (d'un certain type), donc bien ordonnés,
+et peuvent ainsi être manipulés d'une certaine manière.
+Le démontrer, en revanche, n'est \emph{pas} si simple.
+Commençons par une définition subtile :
+
+\begin{defn}
+Nous définissons un \emph{ordre canonique},
+$\canonord$, sur les couples d'ordinaux en stipulant
+que $\tuple{\alpha_1, \alpha_2} \canonord
+\tuple{\beta_1, \beta_2}$ si et seulement si
+l'une des conditions suivantes est remplie :
+\begin{enumerate}
+	\item $\max(\alpha_1, \alpha_2) < \max(\beta_1, \beta_2)$ ; ou
+	\item $\max(\alpha_1, \alpha_2) = \max(\beta_1, \beta_2)$
+	et $\alpha_1 < \beta_1$ ; ou
+	\item $\max(\alpha_1, \alpha_2) = \max(\beta_1, \beta_2)$
+	et $\alpha_1 = \beta_1$ et $\alpha_2 < \beta_2$.
+\end{enumerate}
+\end{defn}
+
+\begin{lem}
+$\tuple{\alpha \times \alpha, \canonord}$ est un
+bon ordre pour tout ordinal $\alpha$.
+\end{lem}
+
+\begin{proof}
+La relation $\canonord$ est manifestement connexe
+sur $\alpha \times \alpha$. En effet, supposons
+que ni $\tuple{\alpha_1, \alpha_2}$ ni
+$\tuple{\beta_1, \beta_2}$ ne précède l'autre
+selon $\canonord$. Alors
+$\max(\alpha_1, \alpha_2) = \max(\beta_1, \beta_2)$,
+$\alpha_1 = \beta_1$ et
+$\alpha_2 = \beta_2$ ; donc
+$\tuple{\alpha_1, \alpha_2} =
+\tuple{\beta_1, \beta_2}$.
+
+Pour établir que c'est un bon ordre, soit
+$X \subseteq \alpha\times\alpha$ non vide.
+Puisque $\alpha$ est un ordinal, il existe un plus
+petit élément $\delta$ de
+$\Setabs{\max(\gamma_1, \gamma_2)}
+{\tuple{\gamma_1, \gamma_2} \in X}$.
+Parmi les couples de
+$\Setabs{\tuple{\gamma_1,\gamma_2} \in X}
+{\max(\gamma_1, \gamma_2) = \delta}$,
+ne gardons que ceux dont la première coordonnée
+est minimale ; parmi eux, le couple dont la seconde
+coordonnée est minimale est le plus petit élément
+de $X$ pour $\canonord$.
+\end{proof}
+\noindent
+Voici maintenant une observation toute simple :
+
+\begin{prop}\ollabel{simplecardproduct}
+Si $\cardeq{\alpha}{\beta}$, alors
+$\cardeq{\alpha \times \alpha}{\beta \times \beta}$.
+\end{prop}
+
+\begin{proof}
+Toute bijection
+$f \colon \alpha \to \beta$ induit la bijection
+$\tuple{\gamma_1, \gamma_2} \mapsto
+\tuple{f(\gamma_1), f(\gamma_2)}$.
+\end{proof}
+\noindent
+Nous pouvons désormais utiliser tout cela pour
+démontrer un lemme essentiel :
+
+\begin{lem}\ollabel{alphatimesalpha}
+$\cardeq{\alpha}{\alpha \times \alpha}$,
+pour tout ordinal infini $\alpha$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par l'absurde : soit $\alpha$ le plus
+petit ordinal infini pour lequel l'énoncé est faux.
+La \olref[sfr][siz][zigzag]{natsquaredenumerable}
+montre que
+$\cardeq{\omega}{\omega\times\omega}$ ;
+donc $\omega \in \alpha$.
+De plus, $\alpha$ est un cardinal. Sinon,
+$\card{\alpha} \in \alpha$ ; l'hypothèse de
+minimalité donnerait
+$\cardeq{\card{\alpha}}
+{\card{\alpha} \times \card{\alpha}}$.
+Or $\cardeq{\card{\alpha}}{\alpha}$ par définition ;
+donc la \olref{simplecardproduct} entraînerait
+$\cardeq{\alpha}{\alpha\times\alpha}$,
+ce qui est contradictoire.
+
+Pour chaque
+$\tuple{\gamma_1, \gamma_2} \in \alpha \times \alpha$,
+considérons le segment :
+\begin{align*}
+	\text{Seg}(\gamma_1, \gamma_2)
+	&= \Setabs{\tuple{\delta_1, \delta_2}
+	\in \alpha \times \alpha}
+	{\tuple{\delta_1, \delta_2}
+	\canonord \tuple{\gamma_1, \gamma_2}}
+\end{align*}
+Posons $\gamma = \max(\gamma_1, \gamma_2)$.
+Alors $\tuple{\gamma_1, \gamma_2}
+\canonord \tuple{\gamma+1, \gamma + 1}$.
+Si $\gamma$ est infini, on obtient :
+\begin{align*}
+	\text{Seg}(\gamma_1, \gamma_2) &
+	\precsim ((\gamma \ordplus 1)
+	\ordtimes (\gamma \ordplus 1))\\
+	&\approx (\gamma \ordtimes \gamma)
+	\text{, par le
+	\olref[ord-arithmetic][using-addition]{ordinfinitycharacter}
+	et la \olref{simplecardproduct}}\\
+	&\approx \gamma
+	\text{, par l'hypothèse de minimalité}\\
+	& \prec \alpha
+	\text{, puisque $\alpha$ est un cardinal}
+\end{align*}
+
+
+
+Donc $\ordtype{\alpha\times \alpha, \canonord}
+\leq \alpha$, et par conséquent
+$\cardle{\alpha \times \alpha}{\alpha}$.
+Comme, bien entendu,
+$\cardle{\alpha}{\alpha \times \alpha}$,
+le résultat découle du théorème de
+Schröder--Bernstein.
+\end{proof}
+
+Nous obtenons enfin le résultat qui simplifie
+les opérations :
+
+\begin{thm}\ollabel{cardplustimesmax}
+Si $\cardfont{a}, \cardfont{b}$ sont des
+cardinaux infinis, alors :
+\[
+	\cardfont{a}
+\cardtimes \cardfont{b}
+= \cardfont{a} \cardplus \cardfont{b}
+= \text{max}(\cardfont{a}, \cardfont{b}).
+\]
+\end{thm}
+
+\begin{proof}
+Sans perte de généralité, supposons que
+$\cardfont{a} = \max(\cardfont{a}, \cardfont{b})$.
+Alors, par le \olref{alphatimesalpha},
+$\cardfont{a}\cardtimes\cardfont{a}
+= \cardfont{a}
+\leq \cardfont{a}\cardplus \cardfont{b}
+\leq \cardfont{a} \cardplus \cardfont{a}
+\leq \cardfont{a} \cardtimes\cardfont{a}$.
+\end{proof}
+\noindent
+De même, si $\cardfont{a}$ est infini,
+l'union de $\cardfont{a}$ ensembles ayant
+chacun au plus $\cardfont{a}$ éléments
+possède elle aussi au plus $\cardfont{a}$ éléments :
+
+\begin{prop}\ollabel{kappaunionkappasize}
+Soit $\cardfont{a}$ un cardinal infini.
+Pour chaque ordinal $\beta \in \cardfont{a}$,
+soit $X_\beta$ un ensemble tel que
+$\card{X_\beta} \leq \cardfont{a}$.
+Alors
+$\card{\bigcup_{\beta \in \cardfont{a}} X_\beta}
+\leq \cardfont{a}$.
+\end{prop}
+
+\begin{proof}
+Pour chaque $\beta \in \cardfont{a}$,
+fixons !!a{injection}
+$f_\beta \colon X_\beta \to \cardfont{a}$.\footnote{
+Comment fixer toutes ces injections ?
+Voir la \olref[sth][choice][countablechoice]{sec}.}
+Définissons !!a{injection}
+$g \colon \bigcup_{\beta \in \cardfont{a}} X_\beta
+\to \cardfont{a} \times \cardfont{a}$
+par $g(v) = \tuple{\beta, f_\beta(v)}$,
+où $v \in X_\beta$ et où
+$v \notin X_\gamma$ pour tout $\gamma \in \beta$.
+Alors
+$\bigcup_{\beta \in \cardfont{a}} X_\beta
+\preceq \cardfont{a} \times \cardfont{a}
+\approx \cardfont{a}$,
+par le \olref{cardplustimesmax}.
+\end{proof}
+
+\end{document}

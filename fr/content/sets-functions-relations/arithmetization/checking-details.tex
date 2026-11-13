@@ -112,14 +112,14 @@ Plus précisément, il faut montrer que $\Int$ est un anneau
 relation réflexive, transitive, antisymétrique et connexe. Pour un tel
 ordre, la connexité donne la \emph{trichotomie} de l'ordre strict
 associé : pour tous $a$ et $b$, exactement l'une des relations
-$a < b$, $a = b$, $a > b$ est vérifiée.
-\emph{Précision éditoriale :} la source écrit ici
-$a \leq b \lor a = b \lor a \geq b$ ; cette disjonction est vraie,
-mais ses trois cas ne sont pas exclusifs.}
+$a < b$, $a = b$, $a > b$ est vérifiée.}
+%
+%
+%
 
 \begin{defn}
-Un \emph{anneau ordonné} est un anneau commutatif muni d'une relation
-d'ordre total $\leq$ telle que, pour tous $a,b,c\in S$ :
+Un \emph{anneau ordonné} est un anneau commutatif $S$ muni d’un
+ordre total $\leq$ tel que, pour tous $a,b,c\in S$ :
 \begin{align*}
   a \leq b &\lif a + c \leq b + c\\
   (a \leq b \land 0 \leq c) &\lif a \times c \leq b \times c
@@ -146,11 +146,11 @@ $0\neq1$ et qui satisfait en outre :
   (\forall a \in S \setminus \{0\})(\exists b \in S) a\times b& = 1
 \end{align*}
 \end{defn}
-\begin{editorial}
-La condition $0\neq1$, omise dans la source, exclut l'anneau réduit à un
-seul élément. Sans elle, la condition sur les éléments non nuls serait
-vide et ne suffirait pas à définir un corps.
-\end{editorial}
+La condition $0\neq1$ exclut l’anneau à un seul élément, dans
+lequel la condition d’inversibilité des éléments non nuls est
+satisfaite par vacuité.
+%
+%
 
 Une fois établi que $\Int$ est un anneau ordonné, il est facile, quoique
 laborieux, de montrer que $\Rat$ est un corps ordonné.
@@ -175,9 +175,9 @@ En voici une démonstration :
 \begin{proof}
 Puisque $\alpha$ et $\beta$ sont des coupures,
 $\alpha + \beta = \Setabs{p + q}{p \in \alpha \land q \in \beta}$
-est une partie non vide et propre de $\Rat$. En effet, chacune des
-deux coupures contient un rationnel, dont la somme appartient à
-$\alpha+\beta$. Choisissons aussi $r\in\Rat\setminus\alpha$ et
+est une partie non vide et propre de $\Rat$. En effet, prenons
+un rationnel dans chacune des deux coupures. Leur somme appartient
+à $\alpha+\beta$. Choisissons aussi $r\in\Rat\setminus\alpha$ et
 $s\in\Rat\setminus\beta$. Tout $p\in\alpha$ vérifie $p<r$ et tout
 $q\in\beta$ vérifie $q<s$, car les coupures sont des segments initiaux.
 Ainsi $p+q<r+s$, et $r+s\notin\alpha+\beta$.
@@ -195,20 +195,20 @@ Des vérifications analogues permettent de montrer que $\alpha - \beta$,
 $\alpha \times \beta$ et $\alpha \div \beta$ sont des coupures, en
 excluant, dans le dernier cas, celui où $\beta$ est la coupure nulle.
 Là encore, nous vous laissons ces vérifications.
-\begin{editorial}
-La source n'active pas ses définitions de la soustraction et de la
-division des coupures. Pour donner un sens précis à cet exercice,
-on pose $\alpha-\beta=\alpha+(-\beta)$ et
-$\alpha\div\beta=\alpha\times\beta^{-1}$ pour $\beta\neq0_\Real$.
+%
+Pour ces vérifications, on pose $\alpha-\beta=\alpha+(-\beta)$
+et $\alpha\div\beta=\alpha\times\beta^{-1}$ pour $\beta\neq0_\Real$.
 Si $\beta>0_\Real$, on définit
+%
+%
 \[
 \beta^{-1}=\Setabs{q\in\Rat}{q\leq0\ \lor\
 (\exists r\in\Rat\setminus\beta)(r>0\land q<1/r)}.
 \]
 Si $\beta<0_\Real$, on pose $\beta^{-1}=-((-\beta)^{-1})$.
-Les opposés et les produits sont ceux définis précédemment ; vérifier
-que cette construction donne bien l'inverse fait partie de l'exercice.
-\end{editorial}
+Les opposés et les produits sont ceux définis précédemment. Il reste à vérifier
+que cette construction donne bien l'inverse.
+%
 
 \begin{prob}
 Démontrer que $\Real$ est un corps ordonné.

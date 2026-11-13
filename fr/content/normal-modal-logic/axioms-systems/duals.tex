@@ -1,0 +1,42 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: duals
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{dua}
+
+\olsection{\usetoken{P}{formula} duales}
+
+\begin{defn}\ollabel{def:duals}
+  Chacune des !!{formula}s \Ax{T}, \Ax{B}, \Ax{4} et
+  \Ax{5} possède une \emph{duale}, notée par un losange en indice,
+  comme suit :
+  \begin{align}
+    \tag{\Ax{T_\Diamond}} p & \lif \Diamond p\\
+    \tag{\Ax{B_\Diamond}} \Diamond\Box p & \lif p\\
+    \tag{\Ax{4_\Diamond}} \Diamond\Diamond p & \lif \Diamond p\\
+    \tag{\Ax{5_\Diamond}} \Diamond\Box p & \lif \Box p
+    \end{align}
+\end{defn}
+
+Chacune des !!{formula}s duales ci-dessus s'obtient à partir de la
+!!{formula} correspondante en substituant $\lnot p$ à $p$, en
+prenant la contraposée, en remplaçant $\lnot\Box\lnot$ par $\Diamond$
+et en remplaçant $\lnot\Diamond\lnot$ par~$\Box$. La formule \Ax{D},
+c'est-à-dire $\Box!A \lif \Diamond!A$, est sa propre duale en ce sens.
+
+\begin{prop}\ollabel{prop:dualsys}
+  Pour chaque !!{formula}~$!A$ de la \olref[nml][prf][dua]{def:duals} :
+  $\Log{K}!A = \Log{K}!A_{\Diamond}$.
+\end{prop}
+\begin{proof}
+  Exercice.
+\end{proof}
+\begin{prob}
+  Démontrer la \olref[nml][prf][dua]{prop:dualsys}.
+\end{prob}
+
+\end{document}

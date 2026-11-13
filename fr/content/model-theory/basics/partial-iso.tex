@@ -1,0 +1,266 @@
+% Part: first-order-logic
+% Chapter: model-theory
+% Section: partial-iso
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{bas}{pis}
+\section{Isomorphismes partiels}
+
+\begin{defn}
+  Soient deux !!{structure}s $\Struct{M}$ et $\Struct{N}$.
+  Un \emph{isomorphisme partiel} de $\Struct{M}$ dans $\Struct{N}$
+  est une application partielle finie $p$ de $\Domain M$ dans
+  $\Domain N$ qui vérifie, sur son domaine, les conditions
+  d'isomorphisme de la \olref[iso]{defn:isomorphism} :
+  \begin{enumerate}
+  \item $p$ est !!{injective};
+  \item pour chaque !!{constant}~$c$, si $p(\Assign{c}{M})$ est défini,
+    alors $p(\Assign{c}{M}) = \Assign{c}{N}$;
+  \item pour chaque !!{predicate} $n$-aire $P$, si $a_1$, \dots, $a_n$
+    appartiennent au domaine de $p$, alors
+    $\langle a_1, \dots, a_n\rangle \in \Assign P M$ si et seulement
+    si $\langle p(a_1), \dots, p(a_n) \rangle \in \Assign P N$;
+  \item pour chaque !!{function} $n$-aire $f$, si $a_1$, \dots, $a_n$
+    et $\Assign f M (a_1, \dots,a_n)$ appartiennent au domaine de $p$,
+    alors $p(\Assign f M (a_1, \dots,a_n))
+    = \Assign f N (p(a_1), \dots, p(a_n))$.
+  \end{enumerate}
+  Dire que $p$ est finie signifie que $\dom{p}$ est fini.\footnote{Précision éditoriale : dans la condition sur une fonction, nous ajoutons que sa valeur dans $\Struct M$ doit appartenir au domaine de $p$, afin que l'expression $p(\Assign f M(\vec a))$ soit définie. Cette convention de correspondances finies n'exige pas que leur domaine soit une sous-structure close par les fonctions. La préservation de termes dont les valeurs sortent de ce domaine demande les prolongements d'une famille de va-et-vient.}
+\end{defn}
+
+Remarquons que l'application vide~$\emptyset$ est toujours un
+isomorphisme partiel entre deux !!{structure}s quelconques.
+
+\begin{defn}\ollabel{defn:partialisom}
+  Deux !!{structure}s $\Struct{M}$ et $\Struct{N}$ sont
+  \emph{partiellement isomorphes}, ce que l'on note
+  $\Struct{M} \iso[p] \Struct{N}$, s'il existe un ensemble non vide
+  $I$ d'isomorphismes partiels entre elles qui possède la propriété
+  de \emph{va-et-vient} :
+  \begin{enumerate}
+  \item (\emph{Aller}) Pour tout $p \in I$ et tout
+    $a \in \Domain M$, il existe $q \in I$ tel que $p \subseteq q$
+    et que $a$ appartienne au domaine de $q$;
+  \item (\emph{Retour}) Pour tout $p \in I$ et tout
+    $b \in \Domain N$, il existe $q \in I$ tel que $p \subseteq q$
+    et que $b$ appartienne à l'image de $q$.
+  \end{enumerate}
+\end{defn}
+
+\begin{thm}\ollabel{thm:p-isom1}
+  Si $\Struct{M} \iso[p] \Struct{N}$ et si $\Struct{M}$ et
+  $\Struct{N}$ sont !!{enumerable}, alors $\Struct{M} \iso
+  \Struct{N}$.
+\end{thm}
+
+\begin{proof}
+  Puisque $\Struct{M}$ et $\Struct{N}$ sont !!{enumerable},
+  écrivons $\Domain{M} = \{a_0, a_1, \ldots \}$ et
+  $\Domain{N} = \{b_0, b_1, \ldots \}$. En partant d'un élément
+  quelconque $p_0 \in I$, construisons une suite croissante
+  d'isomorphismes partiels
+  $p_0 \subseteq p_1 \subseteq p_2 \subseteq \cdots$ :
+  \begin{enumerate}
+  \item si $n+1$ est impair, donc $n = 2r$, la propriété d'aller
+    fournit $p_{n+1} \in I$ tel que $p_n \subseteq p_{n+1}$
+    et que $a_r$ appartienne au domaine de $p_{n+1}$;
+  \item si $n+1$ est pair, donc $n+1 =2r$, la propriété de retour
+    fournit $p_{n+1} \in I$ tel que $p_n \subseteq p_{n+1}$
+    et que $b_{r-1}$ appartienne à l'image de $p_{n+1}$.
+  \end{enumerate}
+En posant
+\[
+p = \bigcup_{n\ge 0} p_n,
+\]
+on obtient un isomorphisme de $\Struct{M}$ sur $\Struct{N}$.\footnote{Correction éditoriale : le retour vise $b_{r-1}$, et non $b_r$ comme dans la source, qui omet ainsi $b_0$. Si l'un des domaines est fini, son énumération peut répéter des éléments ; les deux propriétés permettent alors de garder un prolongement déjà obtenu.}
+\end{proof}
+
+\begin{prob}
+  Vérifier en détail que l'application $p$ construite dans le
+  \olref[mod][bas][pis]{thm:p-isom1} est bien un isomorphisme.
+\end{prob}
+
+\begin{thm}\ollabel{thm:p-isom2}
+  Supposons que $\Struct{M}$ et $\Struct{N}$ soient des !!{structure}s
+  pour un !!{language} purement relationnel (ne contenant que des
+  !!{predicate}s, sans !!{function} ni constante). Alors
+  $\Struct{M} \iso[p] \Struct{N}$ entraîne
+  $\Struct{M} \elemequiv \Struct{N}$.
+\end{thm}
+
+\begin{proof}
+  Soit $I$ une famille de va-et-vient. On montre par induction sur
+  les !!{formula}s que, si $p\in I$ envoie $a_i$ sur $b_i$
+  pour $i =1$, \dots,~$n$, si les variables libres de $!A$
+  sont parmi $x_1$, \dots, $x_n$, et si $s_1(x_i) =a_i$
+  et $s_2(x_i) =b_i$, alors $\Sat{M}{!A}[s_1]$ si et seulement
+  si $\Sat{N}{!A}[s_2]$. Les formules atomiques sont préservées
+  par $p$; les connecteurs se traitent directement. Pour un
+  quantificateur existentiel, on prolonge $p$ par la propriété
+  d'aller afin d'y inclure un témoin dans $\Struct M$; la
+  réciproque utilise la propriété de retour. Le cas $n=0$,
+  appliqué aux énoncés, donne
+  $\Struct{M} \elemequiv \Struct{N}$.\footnote{Précision éditoriale : l'induction porte sur tous les $p$ d'une même famille de va-et-vient $I$, et non sur une application partielle arbitraire comme le laisse entendre la source. La liste des variables libres est fixée ; les variables liées sont renommées au besoin.}
+\end{proof}
+
+\begin{rem}
+En présence de !!{function}s, le résultat précédent reste vrai.
+Pour $p\in I$, on le prolonge par l'aller afin d'inclure les valeurs
+dans $\Struct M$ de toutes les constantes et de tous les sous-termes
+d'une formule atomique donnée ; il suffit d'un nombre fini de prolongements.
+Les conditions gardées assurent alors la correspondance des valeurs des termes et des formules atomiques. La même induction sur les formules s'applique.\footnote{Précision éditoriale : un $p$ isolé ne suffit pas ; cette justification utilise la famille de va-et-vient. Elle explicite le passage aux sous-structures engendrées évoqué par la source.}
+\end{rem}
+
+Le résultat précédent peut se décomposer en étapes : le nombre
+de quantificateurs emboîtés dans !!a{formula} est lié au nombre
+de prolongements d'isomorphismes partiels dont on a besoin.
+
+\begin{defn}
+  Pour toute !!{formula}~$!A$, son \emph{rang de quantification},
+  noté $\QuantRank{!A} \in \Nat$, est défini récursivement
+  comme le plus grand nombre de quantificateurs emboîtés dans
+  $!A$. Deux !!{structure}s $\Struct{M}$ et $\Struct{N}$ sont
+  \emph{$n$-équivalentes}, ce que l'on note
+  $\Struct{M} \elemequiv[n] \Struct{N}$, si elles satisfont les mêmes
+  énoncés de rang de quantification inférieur ou égal à~$n$.
+\end{defn}
+
+\begin{prop}\ollabel{prop:qr-finite}
+  Soit $\Lang{L}$ un !!{language} relationnel fini, comportant un
+  nombre fini de !!{predicate}s et de !!{constant}s, mais aucun
+  !!{function} d'arité positive. Pour tout $n \in \Nat$ et tout
+  ensemble fini fixé de variables libres, il n'existe, à
+  équivalence logique près, qu'un nombre fini de !!{formula}s
+  du premier ordre de $\Lang{L}$ dont les variables libres
+  appartiennent à cet ensemble et dont le rang de quantification
+  ne dépasse pas $n$. En particulier, cette conclusion vaut
+  pour les !!{sentence}s.\footnote{Précision éditoriale : la source emploie ici « purement relationnel » tout en autorisant des constantes, et n'énonce la finitude que pour les énoncés. La preuve suivante a besoin de la version avec un ensemble fini fixé de variables libres. À chaque étape de l'induction, on ajoute une seule variable fraîche aux variables fixées, après renommage des variables liées.}
+\end{prop}
+
+\begin{proof}
+  Par induction sur $n$ : pour un nombre fixé de variables,
+  il n'y a qu'un nombre fini de formules atomiques distinctes
+  dans ce langage; à chaque étape, les combinaisons booléennes
+  et la quantification d'une variable ne produisent qu'un
+  nombre fini de classes d'équivalence.
+\end{proof}
+
+\begin{defn}
+  Étant donné !!a{structure}~$\Struct{M}$, soit
+  $\Domain M^{<\omega}$ l'ensemble des suites finies d'éléments
+  de $\Domain{M}$. Les lettres $\mathbf{a}, \mathbf{b},
+  \mathbf{c}, \ldots$ désignent de telles suites. Si
+  $\mathbf{a} \in \Domain{M}^{<\omega}$ et $a \in \Domain{M}$,
+  alors $\mathbf{a}a$ désigne la \emph{concaténation} de
+  $\mathbf{a}$ et de $a$.
+\end{defn}
+
+\begin{defn}
+  Étant donné deux !!{structure}s $\Struct{M}$ et $\Struct{N}$,
+  définissons par récurrence sur $n$ des relations
+  $I_n \subseteq \Domain M^{<\omega} \times \Domain N^{<\omega}$
+  entre suites de même longueur :
+   \begin{enumerate}
+   \item $I_0(\mathbf{a},\mathbf{b})$ si et seulement si
+     $\mathbf{a}$ et $\mathbf{b}$ satisfont les mêmes
+     !!{formula}s atomiques dans $\Struct{M}$ et $\Struct{N}$.
+     Plus précisément, si ces suites sont de longueur $k$,
+     si $s_1(x_i) = a_i$ et $s_2(x_i) = b_i$ pour
+     $i=1$, \dots, $k$, et si les variables libres de
+     la formule atomique $!A$ sont parmi $x_1$, \dots,~$x_k$,
+     alors $\Sat{M}{!A}[s_1]$ si et seulement si
+     $\Sat{N}{!A}[s_2]$.\footnote{Correction éditoriale : $k$ désigne la longueur des suites, indépendamment de l'indice de rang $n$. La source réemploie $n$ dans les deux rôles ; dans la définition de $I_0$, il faut bien considérer toutes les coordonnées de ces suites.}
+   \item $I_{n+1} (\mathbf{a},\mathbf{b})$ si et seulement si,
+     pour tout $a\in \Domain M$, il existe
+     $b\in \Domain N$ tel que
+     $I_n(\mathbf{a}a,\mathbf{b}b)$, et réciproquement.
+   \end{enumerate}
+\end{defn}
+
+\begin{defn}
+  Écrivons $\Struct{M} \approx_n \Struct{N}$ lorsque
+  $I_n(\emptyseq,\emptyseq)$ est vrai pour $\Struct{M}$
+  et $\Struct{N}$, où $\emptyseq$ est la suite vide.
+\end{defn}
+
+\begin{thm}\ollabel{thm:b-n-f}
+  Soit $\Lang{L}$ un !!{language} purement relationnel.
+  Si $I_n(\mathbf{a},\mathbf{b})$, alors pour toute
+  formule $!A$ dont les variables libres figurent parmi
+  les coordonnées de ces suites et telle que
+  $\QuantRank{!A} \le n$, on a
+  $\Sat{M}{!A}[\mathbf{a}]$ si et seulement si
+  $\Sat{N}{!A}[\mathbf{b}]$; ici,
+  $\mathbf{a}$ satisfait $!A$ si une assignation $s$
+  telle que $s(x_i) = a_i$ satisfait $!A$.
+  Si, de plus, $\Lang{L}$ est fini, la réciproque est vraie.
+\end{thm}
+
+\begin{proof}
+  L'implication directe se montre par induction sur le rang
+  et sur la construction de $!A$ : $I_n$ entraîne $I_0$
+  en itérant les prolongements (les domaines des structures
+  étant non vides); les formules atomiques relèvent donc de
+  $I_0$. Les connecteurs préservent l'assertion et le cas
+  existentiel utilise les deux clauses de va-et-vient de
+  $I_{n+1}$.
+  Pour la réciproque, raisonnons par induction sur $n$ en
+  utilisant \olref{prop:qr-finite}, qui donne, pour un
+  ensemble fixé de variables libres et une borne de rang,
+  un nombre fini de classes de formules modulo
+  l'équivalence logique.
+
+  Pour $n=0$, si $\mathbf{a}$ et $\mathbf{b}$ satisfont
+  les mêmes !!{formula}s sans quantificateur, elles
+  satisfont les mêmes formules atomiques; donc
+  $I_0(\mathbf{a},\mathbf{b})$.
+
+  Supposons que $\mathbf{a}$ et $\mathbf{b}$ satisfassent
+  les mêmes !!{formula}s de rang de quantification au plus
+  $n+1$. Pour obtenir $I_{n+1}(\mathbf{a},\mathbf{b})$,
+  il suffit, par hypothèse d'induction, de trouver,
+  pour tout $a \in \Domain M$, un $b \in \Domain N$
+  tel que $\mathbf{a}a$ et $\mathbf{b}b$ satisfassent
+  les mêmes !!{formula}s de rang au plus $n$,
+  puis de procéder dans l'autre sens.
+
+  Pour $a \in \Domain M$ donné, posons $x=x_{k+1}$, avec $k$ la longueur de $\mathbf a$, et $\mathbf y=(x_1,\dots,x_k)$ ; les variables liées sont renommées au besoin. Soit $!T^a_n$
+  l'ensemble des !!{formula}s $!B(x,\mathbf{y})$
+  de rang au plus $n$ satisfaites par
+  $\mathbf{a}a$ dans $\Struct{M}$. Cet ensemble peut
+  être infini syntaxiquement, mais, à équivalence
+  logique près, il possède un nombre fini de représentants.
+  Leur conjonction constitue donc une seule !!{formula}\footnote{Correction éditoriale : la source dit que l'ensemble de toutes ces formules est fini. Il est généralement infini syntaxiquement ; seule la finitude des classes modulo l'équivalence logique autorise le choix d'une conjonction finie de représentants.}
+  $!T^a_n(x,\mathbf{y})$. Comme, pour chaque classe,
+  la formule ou sa négation est satisfaite par
+  $\mathbf{a}a$, cette conjonction caractérise
+  entièrement les formules de rang au plus $n$
+  satisfaites par ce uplet. Dès lors,
+  $\mathbf{a}$ satisfait
+  $\lexists[x][!T^a_n(x,\mathbf{y})]$,
+  dont le rang ne dépasse pas $n+1$.
+  Par hypothèse, $\mathbf{b}$ satisfait la même
+  !!{formula} dans $\Struct{N}$ : il existe donc
+  $b \in \Domain N$ tel que $\mathbf{b}b$ satisfasse
+  $!T^a_n$. Les uplets $\mathbf{a}a$ et
+  $\mathbf{b}b$ satisfont alors exactement les mêmes
+  !!{formula}s de rang au plus $n$.
+  Le même raisonnement, en échangeant $\Struct{M}$
+  et $\Struct{N}$, donne pour tout $b \in \Domain N$
+  un $a\in \Domain M$ ayant cette propriété.
+  La démonstration est achevée.
+\end{proof}
+
+\begin{cor}\ollabel{cor:b-n-f}
+  Si $\Struct{M}$ et $\Struct{N}$ sont des !!{structure}s
+  purement relationnelles dans un !!{language} fini, alors
+  $\Struct{M} \approx_n\Struct{N}$ si et seulement si
+  $\Struct{M} \elemequiv[n] \Struct{N}$. En particulier,
+  $\Struct{M} \elemequiv \Struct{N}$ si et seulement si,
+  pour tout $n$, $\Struct{M} \approx_n \Struct{N}$.
+\end{cor}
+
+\end{document}

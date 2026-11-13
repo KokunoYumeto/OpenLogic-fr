@@ -1,0 +1,185 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: combining-machines
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{cmb}
+\olsection{Combiner des machines de Turing}
+
+\begin{explain}
+Les machines de Turing vues jusqu'ici étaient assez simples.
+En réalité, tout problème que l'on peut résoudre au moyen
+d'un langage de programmation usuel peut aussi être résolu
+par une machine de Turing. Pour construire des machines plus
+complexes, il faut voir comment en combiner plusieurs :
+on décompose alors une procédure en étapes plus simples,
+on construit une machine pour chaque étape, puis on les
+réunit en une seule machine. Cette méthode jouera notamment
+un rôle dans l'étude du problème de l'arrêt.
+
+Comment combiner les machines de Turing
+$M=\tuple{Q,\Sigma,q_0,\delta}$ et
+$M'=\tuple{Q',\Sigma',q_0',\delta'}$ ?
+La configuration du ruban au moment où~$M$ s'arrête
+servira de configuration de départ pour~$M'$.
+Pour obtenir une seule machine $M\frown M'$ ayant ce
+comportement, procédons comme suit :
+\begin{enumerate}
+    \item Renumérotons, ou renommons, tous les états de~$M'$
+    de sorte que les deux machines n'aient aucun état en
+    commun : $Q\cap Q'=\emptyset$.
+    \item Les états de $M\frown M'$ sont ceux de $Q\cup Q'$.
+    \item Son alphabet de ruban est $\Sigma\cup\Sigma'$.
+    \item Son état initial est~$q_0$.
+    \item Sa fonction de transition partielle~$\delta''$
+    est donnée par\footnote{Correction éditoriale : dans la source, le premier cas inclut aussi les paires où $\delta$ n'est pas définie et recouvre ainsi le troisième. Nous séparons les cas définis du transfert ; dans les états de $Q'$, l'absence d'instruction reste un arrêt.} :
+    \[\delta''(q,\sigma) =
+    \begin{cases}
+      \delta(q,\sigma) & \text{si $q\in Q$ et
+      $\delta(q,\sigma)$ est définie}\\
+      \delta'(q,\sigma) & \text{si $q\in Q'$ et
+      $\delta'(q,\sigma)$ est définie}\\
+      \tuple{q_0',\sigma,\TMstay} & \text{si $q\in Q$ et
+      $\delta(q,\sigma)$ n'est pas définie}
+    \end{cases}\]
+\end{enumerate}
+La machine obtenue suit les instructions de~$M$ dans
+un état $q\in Q$, et celles de~$M'$ dans un état
+$q\in Q'$. Quand $q\in Q$ et que la tête lit un symbole
+$\sigma$ pour lequel~$M$ ne possède aucune transition
+(autrement dit, lorsque~$M$ s'arrêterait), elle passe
+dans l'état initial de~$M'$ sans modifier le ruban ni
+la position de la tête.
+
+Si~$M$ n'est pas disciplinée, nous ne savons pas où se
+trouve la tête à son arrêt : elle ne lit pas
+nécessairement la case~$1$. Il faut en tenir compte
+lorsque l'on combine des machines.
+\end{explain}
+
+\begin{ex}
+\emph{Combinaison de machines} : concevons une machine qui,
+sur une entrée composée de deux blocs de symboles
+$\TMstroke$ de longueurs $n$ et~$m$, s'arrête avec un
+seul bloc de $2(m+n)$ de ces symboles sur le ruban.
+Nous pouvons combiner deux machines déjà rencontrées :
+la machine d'addition et la machine doubleuse.
+Commençons par tracer le diagramme d'états de l'addition.\footnote{Correction éditoriale : dans chacun des trois diagrammes de cet exemple, le trait lu en $q_0$ doit laisser la machine dans $q_0$, afin qu'elle atteigne le séparateur. Nous corrigeons les trois copies de la même instruction source.}
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state] (A)              {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+  \node[state]         (C) [right of=B] {$q_2$};
+
+  \path (A) edge node {\TMtrans{\TMblank}{\TMstroke}{\TMstay}} (B)
+            edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (A)
+        (B) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (B)
+            edge node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (C)
+        (C) edge [loop above] node {\TMtrans{\TMstroke}{\TMblank}{\TMstay}} (C);
+\end{tikzpicture}
+\]
+Au lieu de nous arrêter dans l'état~$q_2$, nous
+voulons poursuivre le calcul pour doubler le résultat.
+Rappelons que la machine doubleuse efface le premier
+trait de l'entrée et écrit deux traits dans une zone
+de sortie distincte. Ajoutons des instructions pour
+placer la tête sur le premier trait produit par
+la machine d'addition.
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state] (A)              {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+  \node[state]         (C) [right of=B] {$q_2$};
+  \node[state]         (D) [below left of=C] {$q_3$};
+  \node[state]         (E) [below left of=D] {$q_4$};
+
+  \path (A) edge node {\TMtrans{\TMblank}{\TMstroke}{\TMstay}} (B)
+            edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (A)
+        (B) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (B)
+            edge node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (C)
+        (C) edge node {\TMtrans{\TMstroke}{\TMblank}{\TMleft}} (D)
+        (D) edge [loop left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (D)
+            edge node[left, xshift=-2mm] {\TMtrans{\TMendtape}{\TMendtape}{\TMright}} (E);
+\end{tikzpicture}
+\]
+Il reste à raccorder la machine doubleuse à l'état~$q_4$.
+Pour cela, renommons ses états de façon que son état
+initial devienne~$q_4$ au lieu de~$q_0$ : la seconde
+phase commence ainsi là où se termine la première.
+Le diagramme complet est donné dans la
+\olref{fig:combined}.
+\begin{figure}
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+  \node[initial,state] (A)              {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+  \node[state]         (C) [right of=B] {$q_2$};
+  \node[state]         (D) [below left of=C] {$q_3$};
+  \node[state]         (E) [below left of=D] {$q_4$};
+  \node[state]         (2) [right of=E] {$q_5$};
+  \node[state]         (3) [right of=2] {$q_6$};
+  \node[state]         (4) [below of=3] {$q_7$};
+  \node[state]         (5) [left of=4]  {$q_8$};
+  \node[state]         (6) [left of=5]  {$q_9$};
+
+  \path (A) edge node {\TMtrans{\TMblank}{\TMstroke}{\TMstay}} (B)
+            edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (A)
+        (B) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (B)
+            edge node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (C)
+        (C) edge node {\TMtrans{\TMstroke}{\TMblank}{\TMleft}} (D)
+        (D) edge [loop left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (D)
+            edge node[left, xshift=-2mm] {\TMtrans{\TMendtape}{\TMendtape}{\TMright}} (E)
+    (E) edge node {\TMtrans{\TMstroke}{\TMblank}{\TMright}} (2)
+    (2) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (2)
+      edge node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (3)
+    (3) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (3)
+        edge node {\TMtrans{\TMblank}{\TMstroke}{\TMright}} (4)
+    (4) edge [loop below] node {\TMtrans{\TMblank}{\TMstroke}{\TMleft}} (4)
+        edge node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (5)
+    (5) edge [loop below]  node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (5)
+        edge              node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (6)
+    (6) edge [loop below] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (6)
+        edge              node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (E);
+\end{tikzpicture}
+\]
+\caption{Combinaison des machines d'addition et de doublement}
+\ollabel{fig:combined}
+\end{figure}
+Le bloc doublé est précédé de cases blanches : comme pour la première machine doubleuse, cet exemple ne fournit pas encore la sortie unaire $2(m+n)$ au sens strict. On peut ensuite lui adjoindre le déplacement du bloc vers la gauche. \end{ex}
+
+\begin{prop}
+    Si~$M$ et~$M'$ sont disciplinées, ont le même alphabet de ruban et calculent respectivement
+    $f\colon\Nat^k\to\Nat$ et
+    $f'\colon\Nat\to\Nat$, alors $M\frown M'$
+    est disciplinée et calcule~$\comp{f}{f'}$.\footnote{Précision éditoriale : la source omet l'hypothèse d'alphabet commun. Pour appliquer le résultat à des alphabets différents, on peut d'abord les étendre à leur réunion : dans chaque état non final, les nouveaux symboles donnent une boucle qui laisse le ruban et la tête inchangés. Les états finaux restent sans instruction. Le comportement sur les entrées initialement admissibles est conservé.}
+\end{prop}
+
+\begin{proof}
+    Puisque~$M$ est disciplinée, lorsqu'elle s'arrête
+    avec la sortie $f(n_1,\dots,n_k)=m$, la tête lit
+    la case~$1$. Si l'on passe alors à l'état initial
+    de~$M'$, la machine s'arrête avec la sortie
+    $f'(m)$, de nouveau sur la case~$1$.
+    Les autres conditions de la
+    \olref[dis]{defn:disciplined} sont également satisfaites.
+\end{proof}
+
+\begin{prob}
+    À partir de la machine~$M$ de
+    l'\cref{tur:mac:dis:prob:disc-succ}, construisez
+    la machine disciplinée $M\frown M$
+    qui calcule $f(x)=x+2$.
+\end{prob}
+
+\end{document}

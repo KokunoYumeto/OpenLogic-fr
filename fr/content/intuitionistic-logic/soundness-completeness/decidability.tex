@@ -1,0 +1,110 @@
+% Partie : intuitionistic-logic
+% Chapitre : soundness-completeness
+% Section : decidability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sc}{dec}
+
+\olsection{Décidabilité}
+
+La preuve du théorème de complétude fournit, pour chaque
+$\Gamma \Proves/ !A$, un modèle à une infinité de mondes témoignant
+de $\Gamma \Entails/ !A$. La proposition suivante montre que, pour
+établir $\Entails !A$, il suffit de vérifier
+$\mSat{M}{!A}$ dans tous les modèles finis, c'est-à-dire les modèles
+dont l'ensemble des mondes est fini.
+
+\begin{thm}\ollabel{thm:decidability}
+  Si $\Entails/ !A$, il existe un modèle fini tel que
+  $\mSat/{M'}{!A}$.
+\end{thm}
+
+\emph{Note éditoriale.} La construction de la source ne retient que
+les valeurs des variables propositionnelles aux mondes ; elle ne
+préserve pas en général les formules composées. La preuve suivante
+utilise l'ensemble fini de toutes les sous-formules de l'énoncé.
+
+\begin{proof}
+  Supposons $\mModel{M}=\tuple{W,R,V}$ et
+  $\mSat/{M}{!A}$. Il existe donc un monde~$w_0$ tel que
+  $\mSat/{M}{!A}[w_0]$. Soit $\Sigma$ l'ensemble des sous-formules de
+  $!A$ ; cet ensemble est fini et fermé par sous-formules. Les
+  !!{propositional variable}s de~$!A$ appartiennent à~$\Sigma$. Pour
+  chaque $w \in W$, définissons son \emph{type}
+  \[
+    T(w)=\Setabs{!B \in \Sigma}{\mSat{M}{!B}[w]}.
+  \]
+  Construisons $\mModel{M'}=\tuple{W',R',V'}$ en posant
+  \[
+    W'=\Setabs{T(w)}{w\in W},\qquad
+    T(w)\,R'\,T(v)\quad\text{si et seulement si}\quad
+    T(w)\subseteq T(v),
+  \]
+  et, pour chaque variable propositionnelle~$p$ de~$!A$,
+  \[
+    V'(p)=\Setabs{T(w)\in W'}{p\in T(w)}.
+  \]
+  Pour toute autre variable propositionnelle, posons $V'(p)=\emptyset$.
+  L'ensemble $W'$ a au plus $2^{|\Sigma|}$ éléments. L'inclusion
+  est un ordre partiel sur les types ; la valuation $V'$ est monotone
+  pour cet ordre. Ainsi, $\mModel{M'}$ est !!a{relational model} fini.
+  De plus, la monotonie de la satisfaction dans
+  $\mModel{M}$ donne $T(w)\subseteq T(v)$ dès que $Rwv$.
+
+  Montrons par induction sur les !!{formula}s $!B\in\Sigma$ que,
+  pour tout $w\in W$,
+  \[
+    \mSat{M}{!B}[w]\quad\Longleftrightarrow\quad
+    \mSat{M'}{!B}[T(w)].
+  \]
+  Le cas atomique découle de la définition de $V'$ ; l'absurde
+  n'est forcé nulle part. Les cas de la conjonction et de la
+  disjonction suivent directement de l'hypothèse d'induction.
+
+  Pour l'implication, supposons
+  $\mSat{M}{!C\lif !D}[w]$ et $T(w)\subseteq T(v)$. Comme
+  $!C\lif !D$ appartient à $\Sigma$, cette formule appartient à
+  $T(w)$, donc à $T(v)$. Ainsi,
+  $\mSat{M}{!C\lif !D}[v]$. Si
+  $\mSat{M'}{!C}[T(v)]$, l'hypothèse d'induction donne
+  $\mSat{M}{!C}[v]$, puis $\mSat{M}{!D}[v]$, et finalement
+  $\mSat{M'}{!D}[T(v)]$. Réciproquement, si
+  $\mSat/{M}{!C\lif !D}[w]$, il existe $u$ avec $Rwu$ tel que
+  $\mSat{M}{!C}[u]$ mais $\mSat/{M}{!D}[u]$. Nous avons
+  $T(w)\subseteq T(u)$, et l'hypothèse d'induction fournit au monde
+  $T(u)$ un contre-exemple à l'implication dans $\mModel{M'}$.
+
+  Pour la négation, si $\mSat{M}{\lnot !C}[w]$, la formule
+  $\lnot !C$ appartient à $T(w)$, donc à tout type $T(v)$ qui le
+  contient. Aucun de ces mondes ne force $!C$ ; par hypothèse
+  d'induction, aucun ne force $!C$ dans le modèle filtré.
+  Réciproquement, si $\mSat/{M}{\lnot !C}[w]$, un monde $u$ tel que
+  $Rwu$ force $!C$ ; son type $T(u)$ est accessible depuis $T(w)$ et
+  force $!C$ dans le modèle filtré. L'équivalence est démontrée.
+
+  En particulier, comme $!A\in\Sigma$ et
+  $\mSat/{M}{!A}[w_0]$, on a
+  $\mSat/{M'}{!A}[T(w_0)]$. Ainsi, le modèle fini
+  $\mModel{M'}$ ne rend pas $!A$ vraie partout.
+\end{proof}
+
+\begin{prob}
+Complétez les détails de la preuve du
+\olref[int][sc][dec]{thm:decidability} : vérifiez d'abord la clause
+des !!{propositional variable}s de~$!A$, puis l'équivalence
+$\mSat{M}{!B}[w]$ si et seulement si
+$\mSat{M'}{!B}[T(w)]$ pour toutes les !!{formula}s~$!B$ qui sont
+sous-formules de~$!A$,
+notamment pour l'implication et la négation.
+\end{prob}
+
+Par le \olref{thm:decidability}, la borne $2^{|\Sigma|}$ est calculable
+à partir de~$!A$ : on peut
+tester tous les cadres de cette taille au plus et toutes les
+valuations monotones des variables de~$!A$. L'absence de
+contre-modèle décide si $\Entails !A$.
+
+\end{document}

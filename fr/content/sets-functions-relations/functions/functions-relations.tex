@@ -36,7 +36,7 @@ le principe implicite d’extensionnalité des fonctions : deux fonctions
 $f$ et~$g$ de mêmes domaine et ensemble d’arrivée sont identiques si
 elles prennent les mêmes valeurs en chaque point de leur domaine.
 
-De même, une relation « fonctionnelle » est le graphe d’une fonction.
+Une relation « fonctionnelle » sur $A$ doit en outre être définie en tout point de $A$ pour être le graphe d’une fonction de domaine $A$.
 \end{explain}
 
 \begin{prop}\ollabel{prop:graph-function}
@@ -63,9 +63,9 @@ Toute fonction $f\colon A \to B$ possède un graphe : une relation
 incluse dans $A \times B$, définie par $f(x) = y$. Réciproquement, toute
 relation~$R \subseteq A \times B$ qui possède les propriétés de la
 \olref{prop:graph-function} est le graphe d’une fonction~$f\colon A \to B$.
-Ce lien étroit permet de considérer une fonction simplement comme son
-graphe. Autrement dit, on peut identifier les fonctions à certaines
-relations, donc à certains ensembles de couples.
+Lorsque $A$ et $B$ sont fixés, on peut identifier une fonction à son
+graphe, donc à un ensemble de couples. Le graphe détermine le domaine
+et les valeurs. L’ensemble d’arrivée $B$ est donné séparément.
 \oliflabeldef{sfr:rel:ref:sec}{Il faut toutefois comprendre cette
 « identification » dans l’esprit de la \olref[sfr][rel][ref]{sec} :
 il ne s’agit pas d’une affirmation sur la métaphysique des fonctions,
@@ -96,14 +96,14 @@ fonction~$f$.
 \oliflabeldef{sfr:rel:ops:sec}{La notion d’image concorde avec celle
 de la \olref[sfr][rel][ops]{sec} lorsqu’on identifie les fonctions à
 leurs graphes. Pour la restriction, il faut distinguer les deux
-conventions.\footnote{Précision éditoriale : l’original annonce un
-accord des notions, mais la restriction d’une fonction à $C$ ne
-restreint que la première coordonnée, tandis que la restriction d’une
-relation définie précédemment intersecte son graphe avec $C^2$.
+conventions. La restriction d’une fonction à $C$ ne
+restreint que la première coordonnée. La restriction d’une relation
+à $C$ intersecte son graphe avec $C^2$.
 Ainsi, pour $f(n)=n+1$ sur $\Nat$ et $C=\{0\}$, la restriction
 fonctionnelle a pour graphe $\{\tuple{0,1}\}$, alors que la restriction
-relationnelle à $C$ est vide. Les deux coïncident lorsque
-$\funimage{f}{C}\subseteq C$.}
+relationnelle à $C$ est vide. Les deux coïncident exactement lorsque
+$\funimage{f}{C}\subseteq C$.
+%
 Deux autres opérations, l’inversion et le produit relatif, demandent
 quelques précisions supplémentaires. Nous les donnerons dans la
 \olref[inv]{sec} et dans la \olref[cmp]{sec}.}{}

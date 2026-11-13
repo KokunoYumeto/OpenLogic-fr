@@ -8,8 +8,8 @@
 
 \olfileid[fr]{fol}{tab}{qrl}
 
+\Needspace{12\baselineskip}
 \olsection{Règles pour les quantificateurs}
-
 \subsection{Règles pour $\lforall$}
 
 \begin{defish}
@@ -81,15 +81,15 @@ de~$\TRule{\False}{\lforall}$.
 \end{explain}
 
 \begin{explain}
-Dans \TRule{\True}{\lforall} et \TRule{\False}{\lexists}, le terme
-$t$ n'est soumis à aucune restriction supplémentaire : il doit
-seulement être clos. En revanche, dans les règles
-\TRule{\True}{\lexists} et \TRule{\False}{\lforall}, la condition
-sur l'eigenvariable exige que la !!{constant}~$a$ ne figure nulle part
-dans la branche au-dessus de l'inférence correspondante. Cette
-condition est nécessaire à la correction du système. Sans elle, le
-tableau suivant serait un !!{tableau} fermé pour
+Les règles \TRule{\True}{\lforall} et \TRule{\False}{\lexists}
+admettent tout terme clos~$t$. Les règles \TRule{\True}{\lexists}
+et \TRule{\False}{\lforall} exigent une !!{constant}~$a$ qui ne
+figure nulle part sur la branche au-dessus de l'inférence.
+Cette condition sur l'eigenvariable est nécessaire à la
+correction du système. Sans elle, on pourrait fermer le
+!!{tableau} suivant, construit pour
 $\lexists[x][\formula{A}(x)] \lif \lforall[x][\formula{A}(x)]$ :
+%
 \begin{center}
 \begin{tableau}{}
   [\sFmla{\False}{\lexists[x][\formula{A}(x)] \lif \lforall[x][\formula{A}(x)]}, just=\TAss
@@ -107,15 +107,15 @@ $\lexists[x][\formula{A}(x)] \lif \lforall[x][\formula{A}(x)]$ :
   ]
 \end{tableau}
 \end{center}
-Or $\lexists[x][\formula{A}(x)] \lif
-\lforall[x][\formula{A}(x)]$ n'est pas valide.
+La dernière application de \TRule{\False}{\lforall} est interdite :
+$a$ figure déjà sur la branche. Le schéma
+$\lexists[x][\formula{A}(x)] \lif \lforall[x][\formula{A}(x)]$
+n'est pas valide en général. Sur un domaine de deux éléments, il
+suffit que $\formula{A}(x)$ soit vrai d'un seul des deux.
 \end{explain}
-
-\begin{editorial}
-Note de l'édition française : l'original exige d'abord que $t$ soit
-clos, puis affirme qu'il n'est soumis à aucune restriction. La seconde
-occurrence est précisée ici : il n'existe aucune restriction
-supplémentaire à l'exigence de fermeture.
-\end{editorial}
+%
+%
+%
+%
 
 \end{document}

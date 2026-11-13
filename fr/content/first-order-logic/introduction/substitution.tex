@@ -31,30 +31,19 @@ a-t-il entre $!A(x)$ et~$!A(t)$ ? Cette opération est-elle toujours
 licite ?
 
 Pour rendre cette idée précise, nous définissons l'opération de
-\emph{substitution}. La substitution est en réalité délicate : nous ne
-pouvons pas simplement remplacer tous les~$x$ de~$!A$ par~$t$, et
-on ne peut pas toujours substituer n'importe quel terme~$t$ à
-n'importe quelle variable~$x$. Nous traiterons encore ces difficultés
-au moyen de définitions inductives. Une fois ces définitions données,
-la règle « inférer $!A(t)$ de $\lforall[x][!A(x)]$ » sera définie avec
-précision. Nous pourrons en outre montrer que cette règle d'inférence
-est correcte, au sens où $\lforall[x][!A(x)]$ entraîne~$!A(t)$. Pour le
-démontrer, il faudra encore établir un résultat dont l'utilité peut
-d'abord sembler obscure. Le fait que $\lforall[x][!A(x)]$
-entraîne~$!A(t)$ repose sur la propriété suivante : savoir si
-$\Sat{M}{!A(t)}$ vaut ne dépend que de la valeur du terme~$t$. Si $m$
-est l'!!{element} de~$\Domain{M}$
-désigné par~$t$, alors
+\emph{substitution}. Elle remplace les occurrences libres de~$x$
+dans~$!A$. Pour pouvoir y substituer le terme~$t$, il faut en outre
+qu'aucune !!{variable} de~$t$ ne devienne liée par ce remplacement.
+Des définitions inductives préciseront ces conditions et permettront
+de formuler la règle « inférer $!A(t)$ de $\lforall[x][!A(x)]$ ».
+Nous montrerons aussi que cette règle est correcte, au sens où
+$\lforall[x][!A(x)]$ entraîne~$!A(t)$ lorsque la substitution est
+permise. Pour le démontrer, on établira d'abord une propriété dont
+l'utilité peut sembler obscure au premier abord. Soit $m$ la valeur
+du terme~$t$ dans~$\Struct{M}$ sous l'assignation~$s$. Alors
 $\Sat{M}{!A(t)}[s]$ si et seulement si
-$\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$. Ce résultat reste vrai lorsque $t$
-contient des !!{variable}s, mais il faudra l'énoncer avec soin.
-
-\begin{editorial}
-Dans la première formule de la source, les arguments de
-$\Atom{\Obj P}{\Obj v_0}$ et de
-$\lforall[\Obj v_0][\Atom{\Obj P}{\Obj v_0}]$ sont délimités de façon
-incompatible avec les macros employées. Les limites correspondant à la
-formule universelle décrite par la phrase sont rétablies.
-\end{editorial}
+$\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$. Cette équivalence vaut également
+pour un terme~$t$ qui contient des !!{variable}s, sous la même
+condition de substitution.
 
 \end{document}

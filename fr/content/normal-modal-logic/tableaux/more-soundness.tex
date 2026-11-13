@@ -1,0 +1,237 @@
+% Part: normal-modal-logic
+% Chapter: tableaux
+% Section: more-soundness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{tab}{msn}
+      
+\olsection{Correction des règles supplémentaires}
+
+Nous considérons les branches dont l’ensemble des préfixes est clos par segments initiaux non vides, comme dans la preuve précédente. Une règle est correcte pour une classe de modèles si, chaque fois
+qu'une branche d'!!a{tableau} est satisfaisable dans un modèle de
+cette classe, la branche obtenue en appliquant la règle est également
+satisfaisable dans un modèle de cette classe.
+
+\begin{prop}
+  \ollabel{prop:soundness-T} 
+  \iftag{prvBox}{\Ax{T}$\Box$}{}%
+  \iftag{notprvBox,notprvDiamond}{}{ et }%
+  \iftag{prvDiamond}{\Ax{T}$\Diamond$}{}
+  \iftag{notprvBox,notprvDiamond}{est correcte}{sont correctes}
+  pour les modèles réflexifs.
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvBox,prvDiamond}
+\tagitem{prvBox}{On prolonge la branche en appliquant T$\Box$ à
+  $\sFmla{\True}{\Box !B}[\sigma] \in \Gamma$:
+  \iftag{probBox}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\True}{!B}[\sigma]$ à la branche. Supposons
+    $\mSat{M}{\Gamma}[f]$, en particulier $\mSat{M}{\Box
+      !B}[f(\sigma)]$. Comme $R$ est réflexive, nous savons que
+    $Rf(\sigma)f(\sigma)$. Donc $\mSat{M}{!B}[f(\sigma)]$ ; autrement dit,
+    $\mModel{M}, f$ satisfait $\sFmla{\True}{!B}[\sigma]$.}}{}
+\tagitem{prvDiamond}{On prolonge la branche en appliquant T$\Diamond$ à
+  $\sFmla{\False}{\Diamond !B}[\sigma] \in \Gamma$:
+  \iftag{probDiamond}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\False}{!B}[\sigma]$ à la branche. Supposons
+    $\mSat{M}{\Gamma}[f]$, en particulier $\mSat/{M}{\Diamond
+      !B}[f(\sigma)]$. Comme $R$ est réflexive, nous savons que
+    $Rf(\sigma)f(\sigma)$. Donc $\mSat/{M}{!B}[f(\sigma)]$ ; autrement dit,
+    $\mModel{M}, f$ satisfait $\sFmla{\False}{!B}[\sigma]$.}}{}
+\end{tagenumerate}
+\end{proof}
+
+\tagprob{probBox,probDiamond}
+\begin{prob}
+  Complétez la démonstration de la \olref[nml][tab][msn]{prop:soundness-T}.
+\end{prob}
+\tagendprob
+
+\begin{prop}
+  \ollabel{prop:soundness-D} 
+  \iftag{prvBox}{\Ax{D}$\Box$}{}%
+  \iftag{notprvBox,notprvDiamond}{}{ et }%
+  \iftag{prvDiamond}{\Ax{D}$\Diamond$}{}
+  \iftag{notprvBox,notprvDiamond}{est correcte}{sont correctes}
+  pour les modèles sériels.
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvBox,prvDiamond}
+\tagitem{prvBox}{On prolonge la branche en appliquant D$\Box$ à
+  $\sFmla{\True}{\Box !B}[\sigma] \in \Gamma$:
+  \iftag{probBox}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\True}{\Diamond !B}[\sigma]$ à la
+    branche. Supposons $\mSat{M}{\Gamma}[f]$, en particulier
+    $\mSat{M}{\Box !B}[f(\sigma)]$. Comme $R$ est sérielle, il existe un $w
+    \in W$ tel que $Rf(\sigma)w$. Alors $\mSat{M}{!B}[w]$, et donc
+    $\mSat{M}{\Diamond !B}[f(\sigma)]$. Ainsi, $\mModel{M}, f$
+    satisfait $\sFmla{\True}{\Diamond!B}[\sigma]$.}}{}
+\tagitem{prvDiamond}{On prolonge la branche en appliquant D$\Diamond$ à
+  $\sFmla{\False}{\Diamond !B}[\sigma] \in \Gamma$:
+  \iftag{probDiamond}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\False}{\Box !B}[\sigma]$ à la
+    branche. Supposons $\mSat{M}{\Gamma}[f]$, en particulier
+    $\mSat/{M}{\Diamond !B}[f(\sigma)]$. Comme $R$ est sérielle, il existe un $w
+    \in W$ tel que $Rf(\sigma)w$. Alors $\mSat/{M}{!B}[w]$, et donc
+    $\mSat/{M}{\Box !B}[f(\sigma)]$. Ainsi, $\mModel{M}, f$
+    satisfait $\sFmla{\False}{\Box!B}[\sigma]$.}}{}
+\end{tagenumerate}
+\end{proof}
+
+\tagprob{probBox,probDiamond}
+\begin{prob}
+  Complétez la démonstration de la \olref[nml][tab][msn]{prop:soundness-D}.
+\end{prob}
+\tagendprob
+
+\begin{prop}
+  \ollabel{prop:soundness-B} 
+  \iftag{prvBox}{\Ax{B}$\Box$}{}%
+  \iftag{notprvBox,notprvDiamond}{}{ et }%
+  \iftag{prvDiamond}{\Ax{B}$\Diamond$}{}
+  \iftag{notprvBox,notprvDiamond}{est correcte}{sont correctes}
+  pour les modèles symétriques.
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvBox,prvDiamond}
+\tagitem{prvBox}{On prolonge la branche en appliquant B$\Box$ à
+  $\sFmla{\True}{\Box !B}[\sigma.n] \in \Gamma$:
+  \iftag{probBox}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\True}{!B}[\sigma]$ à la branche. Supposons
+    $\mSat{M}{\Gamma}[f]$, en particulier $\mSat{M}{\Box
+      !B}[f(\sigma.n)]$. Comme $f$ interprète les préfixes de
+    la branche dans~$\mModel{M}$, nous avons
+    $Rf(\sigma)f(\sigma.n)$. Puisque $R$ est symétrique,
+    $Rf(\sigma.n)f(\sigma)$. Comme $\mSat{M}{\Box !B}[f(\sigma.n)]$,
+    on a $\mSat{M}{!B}[f(\sigma)]$. Donc $\mModel{M}, f$ satisfait
+    $\sFmla{\True}{!B}[\sigma]$.}}{}
+\tagitem{prvDiamond}{On prolonge la branche en appliquant B$\Diamond$ à
+  $\sFmla{\False}{\Diamond !B}[\sigma.n] \in \Gamma$:
+  \iftag{probDiamond}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\False}{!B}[\sigma]$ à la branche. Supposons
+    $\mSat{M}{\Gamma}[f]$, en particulier $\mSat/{M}{\Diamond
+      !B}[f(\sigma.n)]$. Comme $f$ interprète les préfixes de
+    la branche dans~$\mModel{M}$, nous avons
+    $Rf(\sigma)f(\sigma.n)$. Puisque $R$ est symétrique,
+    $Rf(\sigma.n)f(\sigma)$. Comme $\mSat/{M}{\Diamond !B}[f(\sigma.n)]$,
+    on a $\mSat/{M}{!B}[f(\sigma)]$. Donc $\mModel{M}, f$ satisfait
+    $\sFmla{\False}{!B}[\sigma]$.}}{}
+\end{tagenumerate}
+\end{proof}
+
+\tagprob{probBox,probDiamond}
+\begin{prob}
+  Complétez la démonstration de la \olref[nml][tab][msn]{prop:soundness-B}.
+\end{prob}
+\tagendprob
+
+\begin{prop}
+  \ollabel{prop:soundness-4} 
+  \iftag{prvBox}{\Ax{4}$\Box$}{}%
+  \iftag{notprvBox,notprvDiamond}{}{ et }%
+  \iftag{prvDiamond}{\Ax{4}$\Diamond$}{}
+  \iftag{notprvBox,notprvDiamond}{est correcte}{sont correctes}
+  pour les modèles transitifs.
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvBox,prvDiamond}
+\tagitem{prvBox}{On prolonge la branche en appliquant 4$\Box$ à
+  $\sFmla{\True}{\Box !B}[\sigma] \in \Gamma$:
+  \iftag{probBox}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\True}{\Box!B}[\sigma.n]$ à la
+    branche. Supposons $\mSat{M}{\Gamma}[f]$, en particulier
+    $\mSat{M}{\Box !B}[f(\sigma)]$. Comme $f$ interprète les préfixes
+    de la branche dans~$\mModel{M}$ et que $\sigma.n$ doit être déjà
+    utilisé, nous avons $Rf(\sigma)f(\sigma.n)$. Soit maintenant $w$
+    un monde quelconque tel que $Rf(\sigma.n)w$. La transitivité de
+    $R$ donne $Rf(\sigma)w$. Puisque $\mSat{M}{\Box !B}[f(\sigma)]$,
+    on a $\mSat{M}{!B}[w]$. Donc $\mSat{M}{\Box !B}[f(\sigma.n)]$ et
+    $\mModel{M}, f$ satisfait $\sFmla{\True}{\Box !B}[\sigma.n]$.}}{}
+\tagitem{prvDiamond}{On prolonge la branche en appliquant 4$\Diamond$ à
+  $\sFmla{\False}{\Diamond !B}[\sigma] \in \Gamma$:
+  \iftag{probDiamond}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\False}{\Diamond!B}[\sigma.n]$ à la
+    branche. Supposons $\mSat{M}{\Gamma}[f]$, en particulier
+    $\mSat/{M}{\Diamond !B}[f(\sigma)]$. Comme $f$ interprète les
+    préfixes de la branche dans~$\mModel{M}$ et que $\sigma.n$ doit être
+    déjà utilisé, nous avons $Rf(\sigma)f(\sigma.n)$. Soit maintenant
+    $w$ un monde quelconque tel que $Rf(\sigma.n)w$. La transitivité de
+    $R$ donne $Rf(\sigma)w$. Puisque $\mSat/{M}{\Diamond !B}[f(\sigma)]$,
+    on a $\mSat/{M}{!B}[w]$. Donc
+    $\mSat/{M}{\Diamond !B}[f(\sigma.n)]$ et $\mModel{M}, f$ satisfait
+    $\sFmla{\False}{\Diamond !B}[\sigma.n]$.}}{}
+\end{tagenumerate}
+\end{proof}
+
+\tagprob{probBox,probDiamond}
+\begin{prob}
+  Complétez la démonstration de la \olref[nml][tab][msn]{prop:soundness-4}.
+\end{prob}
+\tagendprob
+
+\begin{prop}
+  \ollabel{prop:soundness-4r} 
+  \iftag{prvBox}{\Ax{4r}$\Box$}{}%
+  \iftag{notprvBox,notprvDiamond}{}{ et }%
+  \iftag{prvDiamond}{\Ax{4r}$\Diamond$}{}
+  \iftag{notprvBox,notprvDiamond}{est correcte}{sont correctes}
+  pour les modèles euclidiens.
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvBox,prvDiamond}
+\tagitem{prvBox}{On prolonge la branche en appliquant 4r$\Box$ à
+  $\sFmla{\True}{\Box !B}[\sigma.n] \in \Gamma$:
+  \iftag{probBox}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\True}{\Box!B}[\sigma]$ à la branche. Supposons
+    $\mSat{M}{\Gamma}[f]$, en particulier $\mSat{M}{\Box
+      !B}[f(\sigma.n)]$. Comme $f$ interprète les préfixes de la
+    branche dans~$\mModel{M}$, nous avons
+    $Rf(\sigma)f(\sigma.n)$. Soit maintenant $w$ un monde quelconque
+    tel que $Rf(\sigma)w$. Puisque $R$ est euclidienne,
+    $Rf(\sigma.n)w$. Comme $\mSat{M}{\Box !B}[f(\sigma.n)]$, on a
+    $\mSat{M}{!B}[w]$. Donc $\mSat{M}{\Box !B}[f(\sigma)]$, et
+    $\mModel{M}, f$ satisfait $\sFmla{\True}{\Box !B}[\sigma]$.}}{}
+\tagitem{prvDiamond}{On prolonge la branche en appliquant 4r$\Diamond$ à
+  $\sFmla{\False}{\Diamond !B}[\sigma.n] \in \Gamma$:
+  \iftag{probDiamond}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\False}{\Diamond!B}[\sigma]$ à la branche. Supposons
+    $\mSat{M}{\Gamma}[f]$, en particulier $\mSat/{M}{\Diamond
+      !B}[f(\sigma.n)]$. Comme $f$ interprète les préfixes de la
+    branche dans~$\mModel{M}$, nous avons
+    $Rf(\sigma)f(\sigma.n)$. Soit maintenant $w$ un monde quelconque
+    tel que $Rf(\sigma)w$. Puisque $R$ est euclidienne,
+    $Rf(\sigma.n)w$. Comme $\mSat/{M}{\Diamond !B}[f(\sigma.n)]$,
+    on a $\mSat/{M}{!B}[w]$. Donc
+    $\mSat/{M}{\Diamond !B}[f(\sigma)]$, et $\mModel{M}, f$ satisfait
+    $\sFmla{\False}{\Diamond !B}[\sigma]$.}}{}
+\end{tagenumerate}
+\end{proof}
+
+\tagprob{probBox,probDiamond}
+\begin{prob}
+  Complétez la démonstration de la \olref[nml][tab][msn]{prop:soundness-4r}.
+\end{prob}
+\tagendprob
+
+\begin{cor}
+\ollabel{cor:soundness-logics} Les systèmes de !!{tableau}s indiqués
+dans le \olref[mru]{tab:logics-rules} sont corrects pour leurs classes
+de modèles respectives.
+\end{cor}
+\begin{explain}
+Pour les règles euclidiennes, tout monde accessible depuis
+$f(\sigma)$ est aussi accessible depuis $f(\sigma.n)$.
+En effet, $f(\sigma)$ accède à $f(\sigma.n)$ et à chacun de
+ces mondes. Cette inclusion suffit à transmettre vers le
+parent la vérité d'une nécessité et la fausseté d'une
+possibilité.
+\end{explain}
+\end{document}

@@ -1,0 +1,239 @@
+% Partie : logique du premier ordre
+% Chapitre : complétude
+% Section : identité
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{com}{ide}
+\olsection{Égalité}
+
+\begin{explain}
+La construction du modèle des termes donnée à la section précédente suffit
+à établir la complétude de la logique du premier ordre pour les ensembles
+$\Gamma$ dont les formules ne contiennent pas~$\eq$. Le modèle des termes
+satisfait tout !!{sentence}~$!A\in\Gamma^*$ qui ne contient pas~$\eq$
+(et donc toute formule~$!A\in\Gamma$). Cependant, cette construction ne
+convient plus en présence de~$\eq$. En effet, $\Gamma^*$ peut alors
+contenir !!a{sentence}~$\eq[t][t']$, alors que, dans le modèle des
+termes, la valeur d'un terme est ce terme lui-même. Si $t$ et $t'$ sont des
+termes distincts, leurs valeurs dans ce modèle, à savoir $t$ et $t'$, sont
+donc distinctes, et $\eq[t][t']$ est fausse. Nous remédions à cela en
+passant au quotient.
+\end{explain}
+
+\begin{defn}
+  Soit $\Gamma^*$ un ensemble cohérent et !!{complete} d'énoncés du
+  langage~$\Lang L$. Nous définissons la relation $\approx$ sur l'ensemble
+  des termes clos de~$\Lang L$ par
+  \[
+  t\approx t' \quad\Longleftrightarrow\quad \eq[t][t']\in\Gamma^*.
+  \]
+\end{defn}
+
+\begin{prop}
+\ollabel{prop:approx-equiv}
+La relation $\approx$ possède les propriétés suivantes :
+\begin{enumerate}
+\item $\approx$ est réflexive.
+\item $\approx$ est symétrique.
+\item $\approx$ est transitive.
+\item Si $t\approx t'$, si $f$ est !!a{function} et si $t_1$, \dots,
+  $t_{i-1}$, $t_{i+1}$, \dots, $t_n$ sont des termes clos, alors
+\[
+\Atom{f}{t_1,\dots,t_{i-1},t,t_{i+1},\dots,t_n}\approx
+\Atom{f}{t_1,\dots,t_{i-1},t',t_{i+1},\dots,t_n}.
+\]
+\item Si $t\approx t'$, si $R$ est !!a{predicate} et si $t_1$, \dots,
+  $t_{i-1}$, $t_{i+1}$, \dots, $t_n$ sont des termes clos, alors
+\begin{multline*}
+\Atom{R}{t_1,\dots,t_{i-1},t,t_{i+1},\dots,t_n}\in\Gamma^*
+\quad\Longleftrightarrow\quad\\
+\Atom{R}{t_1,\dots,t_{i-1},t',t_{i+1},\dots,t_n}\in\Gamma^*.
+\end{multline*}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Puisque $\Gamma^*$ est cohérent et !!{complete},
+$\eq[t][t']\in\Gamma^*$ si et seulement si
+$\Gamma^*\Proves\eq[t][t']$, par réflexivité et par la
+\olref[ccs]{prop:ccs}\olref[ccs]{prop:ccs-prov-in}.
+Il suffit donc d'établir les faits suivants. Dans le dernier point,
+la réciproque s'obtient en échangeant $t$ et~$t'$ par symétrie.
+\begin{enumerate}
+\item $\Gamma^*\Proves\eq[t][t]$ pour tout terme clos~$t$.
+\item Si $\Gamma^*\Proves\eq[t][t']$, alors
+  $\Gamma^*\Proves\eq[t'][t]$.
+\item Si $\Gamma^*\Proves\eq[t][t']$ et
+  $\Gamma^*\Proves\eq[t'][t'']$, alors
+  $\Gamma^*\Proves\eq[t][t'']$.
+\item Si $\Gamma^*\Proves\eq[t][t']$, alors
+\[
+\Gamma^*\Proves
+\eq[\Atom{f}{t_1,\dots,t_{i-1},t,t_{i+1},\dots,t_n}]
+   [\Atom{f}{t_1,\dots,t_{i-1},t',t_{i+1},\dots,t_n}]
+\]
+pour tout !!{function} $n$-aire~$f$ et tous termes clos $t_1$, \dots,
+$t_{i-1}$, $t_{i+1}$, \dots,~$t_n$.
+\item Si $\Gamma^*\Proves\eq[t][t']$ et
+$\Gamma^*\Proves\Atom{R}{t_1,\dots,t_{i-1},t,t_{i+1},\dots,t_n}$,
+alors
+$\Gamma^*\Proves\Atom{R}{t_1,\dots,t_{i-1},t',t_{i+1},\dots,t_n}$
+pour tout !!{predicate} $n$-aire~$R$ et tous termes clos $t_1$, \dots,
+$t_{i-1}$, $t_{i+1}$, \dots,~$t_n$.
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Complétez la démonstration de la~\olref[fol][com][ide]{prop:approx-equiv}.
+\end{prob}
+
+\begin{defn}
+Supposons que $\Gamma^*$ soit un ensemble cohérent et !!{complete} dans
+le langage~$\Lang L$, que $t$ soit un terme clos et que $\approx$ soit
+la relation définie ci-dessus. Posons
+$T_L=\Setabs{u}{u\in\Trm[L]\text{ et }u\text{ est clos}}$.
+Alors :
+\[
+\equivrep{t}{\approx}=
+\Setabs{t'}{t'\in T_L,\ t\approx t'}
+\]
+et
+$\equivclass{T_L}{\approx}=
+\Setabs{\equivrep{t}{\approx}}{t\in T_L}$.
+\end{defn}
+
+\begin{defn}
+\ollabel{defn:term-model-factor}
+Soit $\Struct M=\Struct M(\Gamma^*)$ le modèle des termes associé à
+$\Gamma^*$ dans la~\olref[mod]{defn:termmodel}. Alors
+$\Struct{\equivclass{M}{\approx}}$ est la !!{structure} suivante :
+\begin{enumerate}
+\item $\Domain{\equivclass{M}{\approx}}=
+  \equivclass{T_L}{\approx}$.
+\item $\Assign{c}{\equivclass{M}{\approx}}=
+  \equivrep{c}{\approx}$.
+\item $\Assign{f}{\equivclass{M}{\approx}}
+  (\equivrep{t_1}{\approx},\dots,\equivrep{t_n}{\approx})=
+  \equivrep{\Atom{f}{t_1,\dots,t_n}}{\approx}$.
+\item $\tuple{\equivrep{t_1}{\approx},\dots,\equivrep{t_n}{\approx}}
+  \in\Assign{R}{\equivclass{M}{\approx}}$ si et seulement si
+  $\Sat{M}{\Atom{R}{t_1,\dots,t_n}}$, c'est-à-dire si et seulement si
+  $\Atom{R}{t_1,\dots,t_n}\in\Gamma^*$.
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+Pour définir $\Assign{f}{\equivclass{M}{\approx}}$ et
+$\Assign{R}{\equivclass{M}{\approx}}$ sur les éléments de
+$\equivclass{T_L}{\approx}$, nous avons désigné ces éléments sous la
+forme $\equivrep{t}{\approx}$, c'est-à-dire au moyen de
+\emph{représentants}~$t\in\equivrep{t}{\approx}$. Il faut vérifier
+que les définitions ne dépendent pas du choix de ces représentants :
+d'autres termes~$t'$ de la même classe
+($\equivrep{t}{\approx}=\equivrep{t'}{\approx}$) doivent donner le
+même résultat. Par exemple, si $R$ est un !!{predicate} unaire, la
+dernière clause dit que
+$\equivrep{t}{\approx}\in\Assign{R}{\equivclass{M}{\approx}}$
+si et seulement si $\Sat{M}{\Atom{R}{t}}$. S'il existait un autre
+terme~$t'$ tel que $t\approx t'$ mais
+$\Sat/{M}{\Atom{R}{t'}}$,
+la même définition imposerait
+$\equivrep{t'}{\approx}\notin
+\Assign{R}{\equivclass{M}{\approx}}$.
+Or $t\approx t'$ entraîne
+$\equivrep{t}{\approx}=\equivrep{t'}{\approx}$, et une même classe
+ne peut à la fois appartenir et ne pas appartenir à cette relation.
+La \olref{prop:approx-equiv} exclut précisément ce cas.
+\end{explain}
+
+\begin{prop}
+La !!{structure} $\Struct{\equivclass{M}{\approx}}$ est bien définie.
+Plus précisément, si $t_1$, \dots, $t_n$, $t_1'$, \dots, $t_n'$ sont
+des termes clos tels que $t_i\approx t_i'$ pour chaque $i=1,\dots,n$,
+alors :
+\begin{enumerate}
+\item $\equivrep{\Atom{f}{t_1,\dots,t_n}}{\approx}=
+  \equivrep{\Atom{f}{t_1',\dots,t_n'}}{\approx}$, autrement dit
+  \[
+  \Atom{f}{t_1,\dots,t_n}\approx
+  \Atom{f}{t_1',\dots,t_n'};
+  \]
+\item $\Sat{M}{\Atom{R}{t_1,\dots,t_n}}$ si et seulement si
+  $\Sat{M}{\Atom{R}{t_1',\dots,t_n'}}$, autrement dit
+  \[
+  \Atom{R}{t_1,\dots,t_n}\in\Gamma^*
+  \quad\Longleftrightarrow\quad
+  \Atom{R}{t_1',\dots,t_n'}\in\Gamma^*.
+  \]
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+La \olref{prop:approx-equiv} s'applique successivement
+aux $n$ coordonnées, en remplaçant chaque $t_i$ par~$t_i'$. La
+transitivité de~$\approx$ relie les termes obtenus aux deux extrémités,
+et l'équivalence d'appartenance se transmet à chaque remplacement.
+\end{proof}
+
+Comme dans le cas du modèle des termes, nous avons besoin du lemme
+suivant avant de démontrer le lemme de vérité.
+
+\begin{lem}
+\ollabel{lem:val-in-termmodel-factored}
+Soit $\Struct M=\Struct M(\Gamma^*)$. Pour tout terme clos~$t$,
+$\Value{t}{\equivclass{M}{\approx}}=\equivrep{t}{\approx}$.
+\end{lem}
+\begin{proof}
+La démonstration est analogue à celle du
+\olref[mod]{lem:val-in-termmodel}.
+\end{proof}
+
+\begin{prob}
+Complétez la démonstration du
+\olref[fol][com][ide]{lem:val-in-termmodel-factored}.
+\end{prob}
+
+\begin{lem}
+\ollabel{lem:truth}
+Soit $\Gamma^*$ un ensemble cohérent, !!{complete} et saturé
+comme dans la définition du modèle des termes.
+Pour tout énoncé~$!A$,
+$\Sat{\equivclass{M}{\approx}}{!A}$ si et seulement si
+$!A\in\Gamma^*$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par récurrence sur le nombre de connecteurs et de
+quantificateurs de~$!A$, comme dans la démonstration du
+\olref[mod]{lem:truth}. Pour les atomes relationnels, la définition du
+quotient et le lemme sur la valeur des termes donnent l'équivalence.
+Les cas quantifiés utilisent les instances closes, puisque chaque
+élément du quotient est désigné par l'un de ses représentants.
+Reste le cas de l'égalité, où $!A\ident\eq[t][t']$.
+\begin{align*}
+\Sat{\equivclass{M}{\approx}}{\eq[t][t']}
+&\Longleftrightarrow \equivrep{t}{\approx}=\equivrep{t'}{\approx}
+  &&\text{(par le \olref{lem:val-in-termmodel-factored})}\\
+&\Longleftrightarrow t\approx t'
+  &&\text{(par définition des classes d'équivalence)}\\
+&\Longleftrightarrow \eq[t][t']\in\Gamma^*
+  &&\text{(par définition de $\approx$).}
+\end{align*}
+\end{proof}
+
+\begin{digress}
+Dans le langage enrichi de l'expansion de Henkin, le modèle des
+termes $\Struct{M(\Gamma^*)}$ est infini dénombrable. Son quotient
+$\Struct{\equivclass{M}{\approx}}$ peut être fini s'il n'existe
+qu'un nombre fini de classes~$\equivrep{t}{\approx}$. C'est
+prévisible : $\Gamma$ peut contenir des !!{sentence}s qui imposent
+que toute !!{structure} les satisfaisant soit finie. Par exemple,
+$\lforall[x][\lforall[y][x=y]]$ est un !!{sentence} cohérent.
+Il est satisfait exactement dans les !!{structure}s dont le
+!!{domain} contient un seul !!{element}.
+\end{digress}
+
+\end{document}

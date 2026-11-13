@@ -1,0 +1,78 @@
+% Partie : intuitionistic-logic
+% Chapitre : semantics
+% Section : semantic-notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sem}{sem}
+
+\olsection{Notions sémantiques}
+
+\begin{defn}
+  Nous disons que $!A$ est \emph{vraie dans le modèle
+  $\mModel{M} = \tuple{W,R,V}$}, $\mSat{M}{!A}$, si et seulement si
+  $\mSat{M}{!A}[w]$ pour tout $w \in W$.
+  $!A$ est \emph{valide}, $\Entails !A$, si et seulement si elle est
+  vraie dans tous les modèles. Nous disons qu'un ensemble de
+  !!{formula}s~$\Gamma$ \emph{entraîne}~$!A$, ce que nous notons
+  $\Gamma \Entails !A$, si et seulement si, pour tout
+  modèle~$\mModel{M}$ et tout monde~$w$ tels que
+  $\mSat{M}{\Gamma}[w]$, on a $\mSat{M}{!A}[w]$.
+\end{defn}
+
+\begin{prop}\ollabel{prop:sat-entails}
+  \begin{enumerate}
+  \item\ollabel{prop:sat-entails1} Si $\mSat{M}{\Gamma}[w]$ et
+    $\Gamma \Entails !A$, alors $\mSat{M}{!A}[w]$.
+  \item\ollabel{prop:sat-entails2} Si $\mSat{M}{\Gamma}$ et $\Gamma
+    \Entails !A$, alors $\mSat{M}{!A}$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Supposons $\mSat{M}{\Gamma}[w]$. Puisque
+    $\Gamma \Entails !A$, la définition de la conséquence donne
+    immédiatement $\mSat{M}{!A}[w]$.
+  \item Si $\mSat{M}{\Gamma}$, alors $\mSat{M}{\Gamma}[u]$ pour tout
+    $u \in W$. Par \olref{prop:sat-entails1}, $\mSat{M}{!A}[u]$ pour tout
+    $u \in W$ ; donc $\mSat{M}{!A}$.
+  \end{enumerate}
+\end{proof}
+
+\begin{defn}\ollabel{defn:restrict}
+  Soit $\mModel{M}$ un modèle relationnel et soit $w \in W$. La
+  \emph{restriction} $\mModel{M}_w=\tuple{W_w, R_w, V_w}$ de
+  $\mModel{M}$ à~$w$ est définie par :
+  \begin{align*}
+    W_w & = \Setabs{u \in W}{Rwu},\\
+    R_w  & = R \cap (W_w)^2, \text{ et}\\
+    V_w(p) & = V(p) \cap W_w.
+  \end{align*}
+\end{defn}
+
+\begin{prop}\ollabel{prop:restrict}
+  $\mSat{M}{!A}[w]$ si et seulement si $\mSat{M_w}{!A}$.
+\end{prop}
+
+\begin{prob}
+  Démontrez la \olref[int][sem][sem]{prop:restrict}.
+\end{prob}
+
+\begin{prop}
+  Supposons que, pour tout modèle~$\mModel{M}$ tel que
+  $\mSat{M}{\Gamma}$, on ait $\mSat{M}{!A}$. Alors
+  $\Gamma \Entails !A$.
+\end{prop}
+
+\begin{proof}
+  Supposons $\mSat{M}{\Gamma}[w]$. En appliquant
+  la \olref{prop:restrict} à chaque~$!B \in \Gamma$, nous obtenons
+  $\mSat{M_w}{\Gamma}$. Par hypothèse,
+  $\mSat{M_w}{!A}$. Une nouvelle application de la
+  \olref{prop:restrict} donne $\mSat{M}{!A}[w]$.
+\end{proof}
+
+\end{document}

@@ -9,14 +9,14 @@
       {\olchapter{fol}{axd}{\usetoken{P}{derivation} axiomatiques}}
       {\olchapter{pl}{axd}{\usetoken{P}{derivation} axiomatiques}}
 
-\begin{editorial}
-  Aucun effort n'a encore été fait pour garantir que le contenu de ce
-  chapitre respecte les différentes balises qui indiquent quels
-  connecteurs et quantificateurs sont primitifs ou définis : tous sont
-  supposés primitifs, à l'exception de~$\liff$, qui est supposé défini.
-  Si la balise FOL est active, le chapitre comprend les quantificateurs;
-  sinon, il les omet.
-\end{editorial}
+\begin{explain}
+Les connecteurs sont primitifs dans ce chapitre, à l'exception du
+biconditionnel~$\liff$, qui est défini à partir des autres.
+\iftag{FOL}{Les quantificateurs sont également primitifs.}{}
+\end{explain}
+%
+%
+%
 
 \olimport{rules-and-proofs}
 

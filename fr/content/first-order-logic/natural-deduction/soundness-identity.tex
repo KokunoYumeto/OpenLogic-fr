@@ -15,10 +15,10 @@ La déduction naturelle munie des règles pour $\eq$ est correcte.
 \end{prop}
 
 \begin{proof}
-Toute !!{formula} de la forme $\eq[t][t]$ est valide : pour toute
-!!{structure}~$\Struct M$, on a $\Sat{M}{\eq[t][t]}$.
-Le terme $t$ est supposé clos, c'est-à-dire sans variable;
-les affectations de variables n'interviennent donc pas.
+Reprenons la récurrence du \olref[fol][ntd][sou]{thm:soundness}.
+Toute !!{formula} $\eq[t][t]$ obtenue par \Intro{\eq} est valide.
+Pour toute !!{structure}~$\Struct M$, on a $\Sat{M}{\eq[t][t]}$.
+Le terme clos $t$ ne contient aucune variable.
 
 Supposons que la dernière inférence d'une !!{derivation} soit
 \Elim{\eq}. Considérons d'abord l'orientation suivante :
@@ -41,22 +41,22 @@ $\Sat{M}{\Gamma_1 \cup \Gamma_2}$.
 Par hypothèse de récurrence, $\Sat{M}{!A(t_1)}$ et
 $\Sat{M}{\eq[t_1][t_2]}$. Donc
 $\Value{t_1}{M} = \Value{t_2}{M}$.
-Soit $s$ une affectation de variables quelconque, et posons
+Soit $s$ une assignation de variables quelconque et posons
 $m = \Value{t_1}{M} = \Value{t_2}{M}$.
 Par la \olref[fol][syn][ext]{prop:ext-formulas},
 $\Sat{M}{!A(t_1)}[s]$ si et seulement si
 $\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$, si et seulement si
 $\Sat{M}{!A(t_2)}[s]$.
-Puisque $\Sat{M}{!A(t_1)}$, il vient $\Sat{M}{!A(t_2)}$.
-L'autre orientation de \Elim{\eq} se traite de la même façon,
-en échangeant les rôles de $t_1$ et $t_2$; l'égalité de leurs
+Comme $!A(t_1)$ est un énoncé, $\Sat{M}{!A(t_1)}$ donne
+$\Sat{M}{!A(t_1)}[s]$ pour toute assignation~$s$. On obtient donc
+$\Sat{M}{!A(t_2)}[s]$ pour toute assignation, d'où $\Sat{M}{!A(t_2)}$.
+L'autre orientation de \Elim{\eq} s'obtient en échangeant les
+rôles de $t_1$ et $t_2$ dans la substitution. L'égalité de leurs
 dénotations est symétrique.
 \end{proof}
-
-\begin{editorial}
-La source détaille une seule orientation de l'élimination de
-l'égalité. Le traitement analogue de la seconde est explicité
-pour couvrir les deux règles présentées dans la section précédente.
-\end{editorial}
+%
+%
+%
+%
 
 \end{document}

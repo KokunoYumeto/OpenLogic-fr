@@ -1,0 +1,50 @@
+% Part: first-order-logic
+% Chapter: semantics
+% Section: intro-semantics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{its}
+
+\olsection{Introduction}
+
+Attribuer un sens aux expressions relève de la sémantique. La notion
+centrale est celle de satisfaction dans !!a{structure}. !!^a{structure}
+donne un sens aux éléments de base du langage. Son !!{domain} est
+un ensemble non vide d'objets : les quantificateurs portent sur ses
+éléments, les !!{constant}s désignent des !!{element}s de ce domaine,
+les !!{function}s sont interprétés par des fonctions d'une puissance
+du domaine dans ce domaine, et les !!{predicate}s par des relations sur ce domaine.
+Le !!{domain} et ces interprétations du vocabulaire de base constituent
+!!a{structure}. Comme les !!{formula}s peuvent contenir des
+!!{variable}s, nous devons aussi leur associer des !!{element}s du
+!!{domain} : c'est une assignation de variables. La relation de
+satisfaction réunit enfin ces données. Une !!{formula} peut être
+satisfaite dans !!a{structure}~$\Struct{M}$ relativement à une
+assignation de variables~$s$, ce que nous notons $\Sat{M}{!A}[s]$.
+Cette relation est elle aussi définie par induction sur la structure
+de~$!A$ : les tables de vérité des connecteurs logiques permettent,
+par exemple, de définir la satisfaction de $(!A \land !B)$ à partir
+de la satisfaction, ou de la non-satisfaction, de $!A$ et de~$!B$.
+Nous verrons alors que l'assignation est sans incidence lorsque la
+!!{formula}~$!A$ est !!a{sentence}, c'est-à-dire lorsqu'elle ne
+possède aucune variable libre. Nous pourrons donc dire simplement
+qu'un !!{sentence} est satisfait, ou non, dans !!a{structure}.
+
+À partir de la relation de satisfaction $\Sat{M}{!A}$ pour les
+!!{sentence}s, nous définirons les notions sémantiques fondamentales
+de validité, de conséquence logique et de satisfaisabilité. Un
+!!{sentence} est valide, $\Entails !A$, s'il est satisfait dans
+toute !!{structure}. Il est conséquence d'un ensemble d'!!{sentence}s,
+$\Gamma \Entails !A$, si toute !!{structure} qui satisfait tous les
+!!{sentence}s de~$\Gamma$ satisfait également~$!A$. Enfin, un
+ensemble d'!!{sentence}s est satisfaisable s'il existe une
+!!{structure} qui les satisfait tous simultanément. Puisque les
+!!{formula}s sont définies inductivement et que la satisfaction
+l'est à son tour à partir de leur structure, nous pouvons démontrer
+par induction des propriétés de cette sémantique et relier entre elles
+les notions ainsi définies.
+
+\end{document}

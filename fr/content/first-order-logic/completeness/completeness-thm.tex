@@ -1,0 +1,135 @@
+% Partie : logique du premier ordre
+% Chapitre : complétude
+% Section : théorème de complétude
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{com}{cth}}
+      {\olfileid[fr]{pl}{com}{cth}}
+
+\olsection{Le théorème de complétude}
+
+\begin{explain}
+Rassemblons les résultats obtenus : nous arrivons au théorème de
+complétude.
+\end{explain}
+
+\begin{thm}[Théorème de complétude]
+\ollabel{thm:completeness}
+Dans le langage au plus dénombrable fixé ici, soit $\Gamma$ un
+ensemble \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}.
+Si $\Gamma$ est cohérent, il est satisfaisable.
+\end{thm}
+
+\begin{proof}
+Supposons $\Gamma$ cohérent.\iftag{FOL}{ D'après le
+  \olref[hen]{lem:henkin}, il existe un ensemble cohérent et saturé
+  $\Gamma'\supseteq\Gamma$ dans le langage enrichi~$\Lang L'$.}{} D'après le
+\olref[lin]{lem:lindenbaum}, il existe un ensemble
+$\Gamma^*\supseteq\iftag{FOL}{\Gamma'}{\Gamma}$ cohérent et
+!!{complete}.
+\iftag{FOL}{
+  Puisque $\Gamma'\subseteq\Gamma^*$, pour toute
+  !!{formula}~$!A(x)$ dont les variables libres appartiennent
+  à~$\{x\}$, $\Gamma^*$ contient !!a{sentence} de la forme
+  \iftag{prvEx}
+        {$\lexists[x][!A(x)]\lif !A(c)$}
+        {$\lnot\lforall[x][!A(x)]\lif\lnot !A(c)$} ;
+  $\Gamma^*$ est donc saturé. Si aucun énoncé de $\Gamma$ ne
+  contient~$\eq$, alors, d'après le}{D'après le}
+\olref[mod]{lem:truth},
+$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!A}$ si et
+seulement si $!A\in\Gamma^*$ pour \iftag{FOL}{tout !!{sentence}}{toute !!{formula}}~$!A$ de~$\Gamma$.
+Tous les éléments de~$\Gamma$ sont donc satisfaits.\iftag{FOL}{
+  Si un énoncé de~$\Gamma$ contient~$\eq$, alors, d'après le
+  \olref[ide]{lem:truth}, pour tout !!{sentence}~$!A$,
+  $\Sat{\equivclass{M}{\approx}}{!A}$ si et seulement si
+  $!A\in\Gamma^*$. En particulier,
+  $\Sat{\equivclass{M}{\approx}}{!A}$ pour tout énoncé
+  $!A\in\Gamma$. Dans les deux cas, le réduit de la structure au
+  langage initial~$\Lang L$ satisfait~$\Gamma$.}{}
+Ainsi, $\Gamma$ est satisfaisable.
+\end{proof}
+
+\begin{cor}[Théorème de complétude, seconde formulation]
+\ollabel{cor:completeness}
+Soient $\Gamma$ un ensemble \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}
+et $!A$ \iftag{FOL}{un !!{sentence}}{une !!{formula}} du même langage.
+Si $\Gamma\Entails !A$, alors $\Gamma\Proves !A$.
+\end{cor}
+
+\begin{proof}
+Les $\Gamma$ du~\olref{cor:completeness} et du
+\olref{thm:completeness} sont quantifiés universellement. Pour éviter
+toute confusion, reformulons le \olref{thm:completeness} avec une autre
+variable : pour tout ensemble \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}~$\Delta$, si $\Delta$
+est cohérent, alors il est satisfaisable. Par contraposition, si
+$\Delta$ n'est pas satisfaisable, alors il est incohérent. Nous allons
+appliquer ce résultat au corollaire.
+
+Supposons $\Gamma\Entails !A$. Alors
+$\Gamma\cup\{\lnot !A\}$ n'est pas satisfaisable, d'après la
+\olref[syn][sem]{prop:entails-unsat}. En prenant
+$\Delta=\Gamma\cup\{\lnot !A\}$, la première formulation du
+\olref{thm:completeness} montre que cet ensemble est incohérent.
+D'après les
+\iftag{FOL}{%
+  \tagrefs{prfAX/{fol:axd:prv:prop:prov-incons},
+    prfSC/{fol:seq:prv:prop:prov-incons},
+    prfND/{fol:ntd:prv:prop:prov-incons},
+    prfTab/{fol:tab:prv:prop:prov-incons}}}{%
+  \tagrefs{prfAX/{pl:axd:prv:prop:prov-incons},
+    prfSC/{pl:seq:prv:prop:prov-incons},
+    prfND/{pl:ntd:prv:prop:prov-incons},
+    prfTab/{pl:tab:prv:prop:prov-incons}}},
+$\Gamma\Proves !A$.
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Utilisez le \olref[fol][com][cth]{cor:completeness} pour démontrer le
+\olref[fol][com][cth]{thm:completeness}, et montrez ainsi que les deux
+formulations du théorème de complétude sont équivalentes.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Utilisez le \olref[pl][com][cth]{cor:completeness} pour démontrer le
+\olref[pl][com][cth]{thm:completeness}, et montrez ainsi que les deux
+formulations du théorème de complétude sont équivalentes.
+\end{prob}
+\tagendprob
+
+\tagprob{FOL}
+\begin{prob}
+Pour qu'un système de !!{derivation} soit complet, ses règles doivent
+permettre de démontrer l'incohérence de tout ensemble non
+satisfaisable. Quelles règles de !!{derivation} ont été nécessaires
+pour démontrer la complétude ? Certaines de ces règles ne sont-elles
+utilisées nulle part dans la démonstration ? Pour répondre, dressez
+une liste ou un diagramme indiquant quelles règles de !!{derivation}
+interviennent dans quels résultats menant à la démonstration du
+\olref[fol][com][cth]{thm:completeness}. Relevez aussi tout emploi
+implicite des règles dans ces démonstrations.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Pour qu'un système de !!{derivation} soit complet, ses règles doivent
+permettre de démontrer l'incohérence de tout ensemble non
+satisfaisable. Quelles règles de !!{derivation} ont été nécessaires
+pour démontrer la complétude ? Certaines de ces règles ne sont-elles
+utilisées nulle part dans la démonstration ? Pour répondre, dressez
+une liste ou un diagramme indiquant quelles règles de !!{derivation}
+interviennent dans quels résultats menant à la démonstration du
+\olref[pl][com][cth]{thm:completeness}. Relevez aussi tout emploi
+implicite des règles dans ces démonstrations.
+\end{prob}
+\tagendprob
+
+\end{document}

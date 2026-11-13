@@ -1,0 +1,61 @@
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{frd}{int}
+
+\olsection{Introduction}
+
+Une question qui intéresse les spécialistes de logique modale
+concerne le rapport entre la relation d'accessibilité et la vérité
+de certaines !!{formula}s dans les modèles qui utilisent cette
+relation. Supposons, par exemple, que la relation d'accessibilité
+soit réflexive : pour tout $w \in W$, $Rww$. Autrement dit, chaque
+monde est accessible depuis lui-même. Si $\Box !A$ est vraie en un
+monde~$w$, $w$ lui-même fait alors partie des mondes accessibles où
+$!A$ doit être vraie. Ainsi, lorsque la relation d'accessibilité~$R$
+de~$\mModel{M}$ est réflexive, quels que soient le monde $w$ et la
+formule $!A$ considérés, $\Box !A \lif !A$ y est vraie. En
+d'autres termes, toutes les instances de substitution de
+$\Box p \lif p$ sont vraies dans~$\mModel{M}$.
+
+La réciproque est pourtant fausse : la vérité de
+$\Box p \lif p$ dans~$\mModel{M}$ n'implique pas que $R$ soit
+réflexive. Prenons un modèle non réflexif~$\mModel{M}$ ayant un
+seul monde~$w$, qui n'est pas accessible depuis lui-même, et
+supposons $w \in V(p)$. La formule $\Box p \lif p$ est alors
+vraie en~$w$, donc dans le modèle. En choisissant ainsi la
+valeur de vérité de $p$, nous pouvons rendre $\Box p \lif p$ vraie
+dans un modèle non réflexif.
+
+Fixons l'ensemble des mondes~$W$ et la relation d'accessibilité~$R$.
+Si $\Box p \lif p$ est vraie en tous les mondes pour toute
+valuation~$V$, alors $R$ doit être réflexive. En effet, si $R$
+n'est pas réflexive, il existe un monde~$w$ tel que $Rww$ ne vaut
+pas. Posons
+$V(p) = W \setminus \{w\}$. Alors $p$ est vraie dans tous les
+mondes autres que~$w$, et donc dans tous les mondes accessibles
+depuis~$w$ : $w$ n'est pas accessible depuis~$w$ et il est
+le seul monde où $p$ est fausse. Mais $p$ est fausse en $w$,
+donc $\Box p \lif p$ est fausse en~$w$.
+
+Cela suggère d'introduire une notation pour les structures de
+modèles dépourvues d'attribution de valeurs : nous les appelons
+des \emph{cadres}. Un cadre $\mModel{F}$ est simplement une paire
+$\tuple{W, R}$ composée d'un ensemble de mondes et d'une relation
+d'accessibilité. Chaque modèle $\tuple{W, R, V}$ est alors,
+selon notre terminologie, \emph{fondé sur} le cadre
+$\tuple{W, R}$. Réciproquement, un cadre détermine la classe
+des modèles fondés sur lui; une classe de cadres détermine celle
+des modèles fondés sur l'un des cadres de cette classe. Nous
+pouvons donc définir $\mModel{F} \Entails !A$ : une !!{formula}
+est \emph{valide} dans un cadre si $\mSat{M}{!A}$ pour tout
+modèle $\mModel{M}$ fondé sur~$\mModel{F}$.
+
+Avec cette notation, nous pouvons établir des correspondances
+entre !!{formula}s et classes de cadres. Par exemple,
+$\mModel{F} \Entails \Box p \lif p$ si et seulement si
+$\mModel{F}$ est réflexif.
+\end{document}

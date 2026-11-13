@@ -1,0 +1,130 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: configuration
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{con}
+\olsection{Configurations et calculs}
+
+\begin{explain}
+Nous avons déjà suivi les configurations successives
+de la machine paire. Le mécanisme imaginaire composé
+d'un ruban, d'une tête de lecture-écriture et d'un
+programme n'est qu'une image intuitive du calcul
+d'une machine de Turing. Formellement, on peut
+définir le calcul sur une entrée donnée comme une
+suite de \emph{configurations}. Une configuration
+comprend une suite de symboles, qui représente le
+contenu du ruban à un instant du calcul, un nombre
+qui indique la position de la tête et un état.
+Ces données permettent de définir ce que calcule
+la machine de Turing~$M$ sur une entrée donnée.
+\end{explain}
+
+\begin{defn}[Configuration]
+Une \emph{configuration} de la machine de Turing
+$M=\tuple{Q,\Sigma,q_0,\delta}$ est un triplet
+$\tuple{C,m,q}$ tel que :
+\begin{enumerate}
+\item $C\in\Sigma^*$ est une suite finie de
+  symboles de~$\Sigma$;
+\item $m\in\Nat$ et $m<\len{C}$;
+\item $q\in Q$.
+\end{enumerate}
+Intuitivement, la suite~$C$ représente le contenu
+du ruban, depuis la case la plus à gauche jusqu'à
+la dernière case non blanche ou déjà visitée;
+$m$ est le numéro de la case lue par la tête
+(la case la plus à gauche porte le numéro~$0$),
+et $q$ est l'état courant de la machine.
+\end{defn}
+
+\begin{explain}
+Une entrée possible pour la machine est une suite
+de symboles, qui code généralement un nombre.
+Dans la configuration initiale, le ruban porte
+le marqueur de début suivi immédiatement de
+l'entrée, écrite dans les cases à droite;
+la tête lit la première case à droite du marqueur
+et le mécanisme se trouve dans l'état initial
+désigné~$q_0$.
+\end{explain}
+
+\begin{defn}[Configuration initiale]
+La \emph{configuration initiale} de~$M$ pour
+l'entrée $I\in\Sigma^*$ est
+\[
+\tuple{\TMendtape \frown I \frown \TMblank, 1, q_0}.
+\]
+La case blanche finale assure que la position~$1$
+existe aussi lorsque l'entrée est vide.\footnote{Correction éditoriale : la suite source n'ajoute aucune case blanche. Pour une entrée vide, elle aurait une seule case et la position $1$ violerait $m<\len{C}$. Nous représentons donc explicitement une case blanche supplémentaire.}
+\end{defn}
+
+\begin{explain}
+Le symbole~$\frown$ désigne la \emph{concaténation} :
+la chaîne d'entrée commence immédiatement à droite
+du marqueur de début du ruban. La case blanche
+supplémentaire ne fait que prolonger la représentation
+finie du ruban, qui est blanc au-delà de cette suite.
+\end{explain}
+
+\begin{defn}
+On dit qu'une configuration $\tuple{C,m,q}$
+\emph{produit en une étape la configuration
+$\tuple{C',m',q'}$} (selon~$M$) si et seulement si :
+\begin{enumerate}
+\item le symbole de rang~$m$ dans~$C$ est~$\sigma$;
+\item les instructions de~$M$ prescrivent
+  $\delta(q,\sigma)=\tuple{q',\sigma',D}$;
+\item le symbole de rang~$m$ dans~$C'$ est~$\sigma'$;
+\item
+\begin{enumerate}
+\item soit $D=L$ et $m'=m-1$ si $m>0$,
+  et $m'=0$ sinon;
+\item soit $D=R$ et $m'=m+1$;
+\item soit $D=N$ et $m'=m$;
+\end{enumerate}
+\item si $m'=\len{C}$, alors
+  $\len{C'}=\len{C}+1$ et le symbole de rang~$m'$
+  dans~$C'$ est~$\TMblank$; sinon,
+  $\len{C'}=\len{C}$;
+\item pour tout~$i$ tel que $i<\len{C}$ et
+  $i\neq m$, on a $C'(i)=C(i)$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}\ollabel{defn:run-output}
+Une \emph{exécution de~$M$ sur l'entrée~$I$}
+est une suite, finie ou infinie, de configurations
+$C_i$ de~$M$, dont $C_0$ est la configuration
+initiale pour~$I$ et dont chaque paire de
+configurations consécutives $C_i,C_{i+1}$ est
+liée par une étape.
+
+On dit que~$M$ \emph{s'arrête sur l'entrée~$I$
+après $k$ étapes} si $C_k=\tuple{C,m,q}$,
+si le symbole de rang~$m$ dans~$C$ est~$\sigma$
+et si $\delta(q,\sigma)$ n'est pas définie.
+Dans ce cas, la \emph{sortie} de~$M$ sur~$I$
+est la chaîne~$O$ ne se terminant pas par
+$\TMblank$ et telle que
+$C=C(0)\concat O\concat\TMblank^j$ pour un
+certain~$j\in\Nat$. Autrement dit, la première
+case est écartée, qu'elle contienne encore
+$\TMendtape$ ou que la machine l'ait écrasé.\footnote{Correction éditoriale : la source exige $C=\TMendtape\concat O\concat\TMblank^j$, alors qu'elle autorise l'écrasement du marqueur. Nous utilisons le contenu actuel $C(0)$ pour définir la sortie de toute machine arrêtée.}
+La notation $\TMblank^j$ désigne une suite de
+$j$ symboles $\TMblank$.
+\end{defn}
+
+\begin{explain}
+Selon cette définition, la sortie~$O$ de~$M$
+se termine toujours par un symbole autre que
+$\TMblank$; si, à l'étape~$k$, toutes les cases
+représentées après la première sont blanches,
+$O$ est la chaîne vide.
+\end{explain}
+
+\end{document}

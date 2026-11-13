@@ -27,9 +27,9 @@ arbre fini de !!{signed formula}s qui vérifie les conditions suivantes :
 \begin{enumerate}
 \item Les $n$ !!{signed formula}s placées tout en haut de l'arbre sont
   $\sFmla{S_i}{!A_i}$, l'une au-dessous de l'autre.
-\item Toute !!{signed formula} de l'arbre qui n'est pas une hypothèse
-  résulte de l'application correcte d'une règle d'inférence à
-  !!a{signed formula} située plus haut sur sa branche.
+\item Chaque prolongement d'une branche résulte d'une application
+  correcte d'une règle à une !!{signed formula} située plus haut
+  sur cette branche, ou d'une application de la règle de coupure.
 \end{enumerate}
 Une branche d'!!a{tableau} est \emph{fermée} si et seulement si elle
 contient à la fois $\sFmla{\True}{!A}$ et~$\sFmla{\False}{!A}$ ; elle
@@ -40,16 +40,16 @@ au moins une branche ouverte, il est \emph{ouvert}.
 \end{defn}
 
 \begin{ex}
-  Tout ensemble d'hypothèses constitue à lui seul !!a{tableau}, mais
-  celui-ci n'est généralement pas fermé. Il ne l'est manifestement que
-  si les hypothèses contiennent déjà une paire de !!{signed formula}s
-  $\sFmla{\True}{!A}$ et~$\sFmla{\False}{!A}$.
+  Une liste finie non vide d'hypothèses forme à elle seule
+  !!a{tableau}. Celui-ci est fermé exactement lorsque les
+  hypothèses contiennent déjà $\sFmla{\True}{!A}$ et
+  $\sFmla{\False}{!A}$ pour un même énoncé~$!A$.
 
-  À partir d'!!a{tableau}, ouvert ou fermé, on peut en obtenir un nouveau,
-  plus grand, en appliquant l'une des règles d'inférence à
-  !!a{signed formula} qui y figure et dont la formule est~$!A$. La règle ajoute une ou plusieurs
-  !!{signed formula}s à l'extrémité de toute branche qui contient
-  l'occurrence de~$!A$ à laquelle elle est appliquée.
+  On peut prolonger une branche d'!!a{tableau}, ouvert ou
+  fermé, en appliquant une règle à une !!{signed formula} qui
+  figure sur cette branche. Les nouvelles !!{signed formula}s
+  sont ajoutées à son extrémité, avec la ramification éventuelle
+  prescrite par la règle.
 
   Considérons par exemple l'hypothèse $\sFmla{\True}{!A \land \lnot
     !A}$. Voici le !!{tableau} ouvert qui ne contient que cette hypothèse :
@@ -76,11 +76,11 @@ au moins une branche ouverte, il est \emph{ouvert}.
   règles appliquées. Ainsi, $\TRule{\True}{\land} 1$ signifie que la
   !!{signed formula} de cette ligne résulte de l'application de la règle
   $\TRule{\True}{\land}$ à la !!{signed formula} de la ligne~$1$.
-  Ce nouveau !!{tableau} contient maintenant d'autres
-  !!{signed formula}s, mais une seule d'entre elles,
-  $\sFmla{\True}{\lnot !A}$, permet encore l'application d'une règle,
-  en l'occurrence $\TRule{\True}{\lnot}$. On obtient ainsi le
-  !!{tableau} fermé suivant :
+  Appliquons $\TRule{\True}{\lnot}$ à la troisième ligne,
+  $\sFmla{\True}{\lnot !A}$. On obtient $\sFmla{\False}{!A}$.
+  La branche contient alors aussi $\sFmla{\True}{!A}$.
+  On obtient ainsi le !!{tableau} fermé suivant :
+%
   \begin{center}
     \begin{tableau}{}
       [\sFmla{\True}{\formula{A} \land \lnot \formula{A}}, just=\TAss

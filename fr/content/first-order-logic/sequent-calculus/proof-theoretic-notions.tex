@@ -6,26 +6,26 @@
 
 \begin{document}
 
-\begin{editorial}
-Cette section rassemble les définitions de la relation de
-!!{derivability} et de la cohérence pour le calcul des séquents.
-La mention de la déduction naturelle dans la source est une erreur
-éditoriale corrigée ici.
-\end{editorial}
-
 \iftag{FOL}
       {\olfileid[fr]{fol}{seq}{ptn}}
       {\olfileid[fr]{pl}{seq}{ptn}}
 
 \olsection{Notions de théorie de la démonstration}
 
+Un séquent présente à gauche une suite finie d'!!{sentence}s.
+Pour définir la !!{derivability} à partir d'un ensemble quelconque,
+on cherche donc une partie finie de cet ensemble qui fournisse
+l'antécédent d'un séquent !!{derivable}. Les règles structurelles
+permettent de modifier l'ordre et le nombre d'occurrences des
+!!{sentence}s de cette partie finie.
+
 \begin{explain}
 Nous avons défini plusieurs notions sémantiques importantes : validité,
 conséquence logique et satisfaisabilité. Définissons maintenant les
 \emph{notions de théorie de la démonstration} correspondantes.
 Elles font appel à la !!{derivability} ou à la !!{nonderivability}
-de certains séquents, plutôt qu'à la satisfaction d'!!{sentence}s
-dans des !!{structure}s. La coïncidence de ces notions constitue une
+de certains séquents. Les notions sémantiques reposent sur la satisfaction
+des !!{sentence}s \iftag{FOL}{dans les !!{structure}s}{par les !!{valuation}s}. Leur coïncidence constitue une
 découverte importante : c'est le contenu des \emph{théorèmes de
 correction et de complétude}.
 \end{explain}
@@ -153,9 +153,9 @@ La démonstration est laissée en exercice.
 \end{proof}
 
 \begin{prob}
-Démontrer la \olref{prop:incons}.\footnote{Note de l'édition
-française : le renvoi est relatif à la section courante, afin de
-fonctionner dans les présentations propositionnelle et du premier ordre.}
+Démontrer la \olref{prop:incons}.
+%
+%
 \end{prob}
 
 \begin{prop}[Compacité]

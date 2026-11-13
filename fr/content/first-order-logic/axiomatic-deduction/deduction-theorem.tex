@@ -56,6 +56,10 @@ $\Gamma \Proves !A \lif !B$.
 \end{thm}
 
 \begin{proof}
+\iftag{FOL}{Nous démontrons ici le sens « si », puis les cas du sens
+« seulement si » où la dernière ligne est une hypothèse,
+un axiome ou une application du modus ponens. Le
+\olref[ddq]{thm:deduction-thm-q} traite les règles de quantification.}{}
 Le sens « si » est immédiat. Si $\Gamma \Proves !A \lif !B$, alors
 $\Gamma \cup \{!A\} \Proves !A \lif !B$ par la
 \olref[ptn]{prop:monotonicity}. En outre,
@@ -79,11 +83,10 @@ $\Gamma \Proves !A \lif !B$, car $!A \lif !B$ est dans ce cas le
 même !!{sentence} que $!A \lif !A$, dont nous avons donné une
 !!{derivation} dans l'\olref[pro]{ex:identity}.
 
-Pour l'étape de récurrence, supposons qu'une !!{derivation} de~$!B$ à
-partir de $\Gamma \cup \{!A\}$ se termine par une étape~$!B$ justifiée
-par modus ponens. Si ce n'est pas le cas, alors $!B \in \Gamma$,
-$!B \ident !A$, ou $!B$ est un axiome, et le raisonnement du cas de
-base s'applique. Dans le cas du modus ponens, des étapes antérieures de
+Pour l'étape de récurrence, considérons la dernière ligne~$!B$ de
+la !!{derivation} à partir de $\Gamma \cup \{!A\}$. Si c'est une
+hypothèse ou un axiome, reprenons le raisonnement du cas de base.
+Si elle résulte d'un modus ponens, des lignes antérieures de
 la !!{derivation} sont $!C \lif !B$ et $!C$, pour une certaine
 !!{formula}~$!C$. Ainsi,
 $\Gamma \cup \{!A\} \Proves !C \lif !B$ et
@@ -139,12 +142,5 @@ Démontrer la \olref[fol][axd][ded]{prop:derivfacts}.
 Démontrer la \olref[pl][axd][ded]{prop:derivfacts}.
 \end{prob}
 \tagendprob
-
-\begin{editorial}
-Dans le premier item de la proposition précédente, la source omet la
-parenthèse fermante du conséquent. Elle a été rétablie.
-\iftag{FOL}{En présence des quantificateurs, l'étape supplémentaire
-qui traite les règles~\QR{} est donnée dans la section suivante.}{}
-\end{editorial}
 
 \end{document}

@@ -1,0 +1,110 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{choice}{woproblem}
+\olsection{Le problème du bon ordre}
+
+Il est clair que beaucoup de choses dépendent
+de notre acceptation de l'axiome du bon ordre.
+Mais la discussion s'est surtout concentrée
+sur un principe équivalent : l'axiome du choix.
+Nous allons donc nous tourner vers celui-ci
+et démontrer cette équivalence.
+
+En \citeyear{Cantor1883}, Cantor exprimait
+son soutien à l'axiome du bon ordre, qu'il
+appelait «~une loi de la pensée qui me
+paraît fondamentale, riche de conséquences
+et particulièrement remarquable par sa
+validité générale~» (cité par
+\citeauthor{Potter2004}
+\citeyear[p.~243]{Potter2004}).
+Mais Cantor finit par se convaincre
+que cet «~axiome~» devait être démontré.
+La communauté mathématique en vint
+à la même conclusion.
+
+Le problème fut «~résolu~» par Zermelo
+en \citeyear{Zermelo1904}. Pour expliquer
+sa solution, il nous faut quelques définitions.
+
+\begin{defn}
+Une fonction $f$ est une \emph{fonction de choix}
+si et seulement si $f(x) \in x$ pour tout
+$x \in \dom{f}$. Nous disons que $f$ est
+une \emph{fonction de choix pour $A$} si
+$f$ est une fonction de choix telle que
+$\dom{f} = A \setminus \{\emptyset\}$.
+\end{defn}
+
+Intuitivement, pour chaque ensemble non vide
+$x \in A$, une fonction de choix pour $A$
+\emph{choisit} un élément particulier
+$f(x)$ de $x$. Voici donc l'axiome du choix :
+
+\begin{axiom}[Choix]
+	Tout ensemble admet une fonction de choix.
+\end{axiom}
+
+Zermelo a montré que le choix entraîne
+le bon ordre, et réciproquement :
+
+\begin{thm}[dans $\ZF$]\ollabel{thmwochoice}
+L'axiome du bon ordre et l'axiome du choix
+sont équivalents.
+\end{thm}
+
+\begin{proof}
+\emph{De gauche à droite.}
+Soit $A$ un ensemble d'ensembles.
+L'ensemble $\bigcup A$ existe par l'axiome
+de l'union ; d'après l'axiome du bon ordre,
+il existe donc un ordre $<$ qui
+bien ordonne $\bigcup A$. Posons
+$f(x) = \text{le plus petit élément de $x$
+pour l'ordre $<$}$.
+C'est une fonction de choix pour $A$.
+
+\emph{De droite à gauche.}
+Fixons $A$. Si $A=\emptyset$, il est déjà
+bien ordonné. Supposons donc $A$ non vide.
+Par l'axiome du choix, il existe une fonction
+de choix $f$ pour
+$\Pow{A} \setminus \{\emptyset\}$.
+Le théorème de récursion donne d'abord un \emph{terme} pour les
+valeurs successives (voir les remarques qui suivent
+le \olref[sth][spine][recursion]{transrecursionschema}).
+D'après le \olref[hartogs]{HartogsLemma}, il existe un ordinal
+$\theta$ qui ne s'injecte pas dans $A$. Fixons un marqueur
+$\ast\notin A$. Sur l'ordinal $\theta$, le remplacement permet de
+rassembler les valeurs de la récursion en une fonction $g$ de
+domaine $\theta$, définie pour tout $\beta\in\theta$ par
+\[
+g(\beta) =
+  \begin{cases}
+    f(A\setminus\funimage{g}{\beta})
+      & \text{si } A\setminus\funimage{g}{\beta}\neq\emptyset,\\
+    \ast & \text{sinon}.
+  \end{cases}
+\]
+
+Avant la première occurrence du marqueur, chaque valeur choisie
+appartient à $A$ et diffère de toutes les valeurs précédentes.
+Si le marqueur n'apparaissait jamais, $g$ serait une injection de
+$\theta$ dans $A$, en contradiction avec le choix de $\theta$.
+
+Soit donc $\alpha$ le premier ordinal pour lequel $g(\alpha)=\ast$.
+Les valeurs précédentes sont toutes dans $A$ et les éléments de $A$
+sont tous atteints, puisque $A\setminus\funimage{g}{\alpha}=\emptyset$.
+La restriction $g\!\upharpoonright\!\alpha$ est ainsi une
+!!{bijection} de l'ordinal $\alpha$ sur $A$. Le bon ordre de
+$\alpha$ se transporte par cette bijection sur $A$.
+\end{proof}
+
+Ainsi, le bon ordre et le choix
+se soutiennent ou tombent ensemble.
+La question demeure : devons-nous
+les accepter ?
+
+\end{document}

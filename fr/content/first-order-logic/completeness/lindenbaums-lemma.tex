@@ -1,0 +1,104 @@
+% Part: first-order-logic
+% Chapter: completeness
+% Section: lindenbaums-lemma
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{com}{lin}}
+      {\olfileid[fr]{pl}{com}{lin}}
+
+\olsection{Lemme de Lindenbaum}
+
+\begin{explain}
+Nous allons montrer que tout ensemble cohérent \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} est
+contenu dans un ensemble à la fois cohérent et !!{complete}. La
+démonstration ajoute successivement des \iftag{FOL}{énoncés}{formules}, en maintenant la
+cohérence à chaque étape. Elle procède de sorte que, pour \iftag{FOL}{tout !!{sentence}}{toute !!{formula}}~$!A$, soit $!A$, soit $\lnot !A$ soit ajouté à une
+étape. La réunion de toutes les étapes contient donc $!A$ ou sa
+négation et est ainsi complète. Elle reste cohérente, car aucune
+étape n'introduit d'incohérence.
+\end{explain}
+
+\begin{lem}[Lemme de Lindenbaum]
+\ollabel{lem:lindenbaum} Tout ensemble cohérent~$\Gamma$ dans un
+langage~$\Lang{L}$ peut s'étendre en un ensemble cohérent et
+!!{complete}~$\Gamma^*$.
+\end{lem}
+
+\begin{proof}
+Soit $\Gamma$ cohérent. Dans le langage au plus dénombrable fixé ici,
+énumérons \iftag{FOL}{tous les !!{sentence}s}{toutes les !!{formula}s} de~$\Lang L$ sous la forme
+$!A_0,!A_1,\dots{}$. Posons $\Gamma_0=\Gamma$, puis
+\[
+\Gamma_{n+1} =
+\begin{cases}
+\Gamma_n \cup \{ !A_n \} & \textrm{si $\Gamma_n \cup \{!A_n\}$ est
+  cohérent ;} \\
+\Gamma_n \cup \{ \lnot !A_n \} & \textrm{sinon.}
+\end{cases}
+\]
+Enfin, posons $\Gamma^*=\bigcup_{n\geq 0}\Gamma_n$.
+
+Chaque $\Gamma_n$ est cohérent. En effet, $\Gamma_0$ l'est par
+hypothèse. Si $\Gamma_{n+1}=\Gamma_n\cup\{!A_n\}$, cette réunion
+est cohérente par le choix de la première branche. Sinon,
+$\Gamma_{n+1}=\Gamma_n\cup\{\lnot !A_n\}$. Vérifions que cette
+dernière réunion est cohérente. Si elle ne l'était pas,
+\emph{les deux} ensembles $\Gamma_n\cup\{!A_n\}$ et
+$\Gamma_n\cup\{\lnot !A_n\}$ seraient incohérents.
+D'après les
+\iftag{FOL}{%
+  \tagrefs{prfAX/{fol:axd:prv:prop:provability-exhaustive},
+    prfSC/{fol:seq:prv:prop:provability-exhaustive},
+    prfND/{fol:ntd:prv:prop:provability-exhaustive},
+    prfTab/{fol:tab:prv:prop:provability-exhaustive}}}{%
+  \tagrefs{prfAX/{pl:axd:prv:prop:provability-exhaustive},
+    prfSC/{pl:seq:prv:prop:provability-exhaustive},
+    prfND/{pl:ntd:prv:prop:provability-exhaustive},
+    prfTab/{pl:tab:prv:prop:provability-exhaustive}}},
+$\Gamma_n$ serait alors incohérent, contrairement à l'hypothèse de
+récurrence.
+
+Pour tout~$n$ et tout $i<n$, on a $\Gamma_i\subseteq\Gamma_n$.
+Montrons-le par récurrence sur~$n$. Pour $n=0$, il n'y a aucun
+$i<0$ : l'énoncé est donc immédiat. Supposons-le vrai pour~$n$.
+Par construction, $\Gamma_{n+1}$ vaut
+$\Gamma_n\cup\{!A_n\}$ ou
+$\Gamma_n\cup\{\lnot !A_n\}$ ; ainsi,
+$\Gamma_n\subseteq\Gamma_{n+1}$. Si $i<n+1$, alors
+$\Gamma_i\subseteq\Gamma_n$ par hypothèse de récurrence quand
+$i<n$, et par réflexivité de~$\subseteq$ quand $i=n$.
+La transitivité de~$\subseteq$ donne donc
+$\Gamma_i\subseteq\Gamma_{n+1}$.
+
+Il en résulte que $\Gamma^*$ est cohérent. Soit, en effet,
+$\Gamma'\subseteq\Gamma^*$ fini. Si $\Gamma'$ est vide, prenons
+$n=0$. Sinon, pour chaque $!B\in\Gamma'$ choisissons un indice~$i$
+tel que $!B\in\Gamma_i$, et prenons pour~$n$ le plus grand de ces
+indices. Puisque $\Gamma_i\subseteq\Gamma_n$ dès que $i\le n$,
+tous les éléments de~$\Gamma'$ appartiennent à~$\Gamma_n$.
+Ainsi, $\Gamma'\subseteq\Gamma_n$ et $\Gamma'$ est cohérent.
+Tout sous-ensemble fini de~$\Gamma^*$ est donc cohérent. Par les
+\iftag{FOL}{%
+  \tagrefs{prfAX/{fol:axd:ptn:prop:proves-compact},
+    prfSC/{fol:seq:ptn:prop:proves-compact},
+    prfND/{fol:ntd:ptn:prop:proves-compact},
+    prfTab/{fol:tab:ptn:prop:proves-compact}}}{%
+  \tagrefs{prfAX/{pl:axd:ptn:prop:proves-compact},
+    prfSC/{pl:seq:ptn:prop:proves-compact},
+    prfND/{pl:ntd:ptn:prop:proves-compact},
+    prfTab/{pl:tab:ptn:prop:proves-compact}}},
+$\Gamma^*$ est cohérent.
+
+Enfin, \iftag{FOL}{tout !!{sentence}}{toute !!{formula}} du langage apparaît dans l'énumération
+utilisée. Si $!A_n\notin\Gamma^*$, c'est que
+$\Gamma_n\cup\{!A_n\}$ était incohérent. La seconde branche a
+donc ajouté $\lnot !A_n$ à~$\Gamma^*$. Ainsi, pour \iftag{FOL}{tout !!{sentence}}{toute !!{formula}}~$!A_n$, $!A_n\in\Gamma^*$ ou
+$\lnot !A_n\in\Gamma^*$ : l'ensemble $\Gamma^*$ est
+!!{complete}.
+\end{proof}
+
+\end{document}

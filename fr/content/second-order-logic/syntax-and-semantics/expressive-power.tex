@@ -1,0 +1,132 @@
+% Part: second-order-logic
+% Chapter: syntax-and-semantics
+% Section: expressive-power
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{syn}{exp}
+\olsection{Puissance expressive}
+
+\begin{explain}
+La quantification sur les variables du second ordre
+accroît considérablement la puissance expressive
+du langage par rapport à la logique du premier
+ordre. La quantification existentielle du second
+ordre permet d'affirmer qu'il existe des fonctions
+ou des relations possédant certaines propriétés.
+Au premier ordre, il faut, pour cela, prévoir un
+symbole non logique, c'est-à-dire un
+!!{function} ou un !!{predicate}. La quantification
+universelle du second ordre permet d'affirmer que
+tous les sous-ensembles du !!{domain}, toutes les
+relations sur ce !!{domain}, ou toutes les fonctions
+de ce !!{domain} dans lui-même possèdent une
+propriété. Au premier ordre, on ne peut parler que
+des sous-ensembles, relations ou fonctions attribués
+à l'un des symboles non logiques du langage.
+De plus, pour préciser la propriété dont on affirme
+qu'elle appartient à certains ou à tous ces objets,
+on peut encore employer la quantification du second
+ordre. Cela permet de définir des relations et
+d'exprimer des propriétés du !!{domain} qui ne sont
+pas définissables ou exprimables au premier ordre.
+\end{explain}
+
+\begin{defn}
+Soit $\Struct{M}$ une !!{structure} pour un
+langage~$\Lang{L}$. Une relation
+$R\subseteq\Domain{M}^2$ est
+\emph{définissable} dans~$\Lang{L}$ s'il existe
+une !!{formula}~$!A_R(x,y)$ dont les seules
+!!{variable}s libres sont $x$ et~$y$, telle que,
+pour tous $a,b\in\Domain{M}$ et toute
+assignation~$s$ avec $s(x)=a$ et $s(y)=b$,
+$R(a,b)$, c'est-à-dire $\tuple{a,b}\in R$,
+si et seulement si $\Sat{M}{!A_R(x,y)}[s]$.
+\end{defn}
+
+\begin{ex}
+Au premier ordre, la !!{formula}~$\eq[x][y]$
+définit la relation d'identité
+$\Id{\Domain{M}}$, c'est-à-dire
+$\Setabs{\tuple{a,a}}{a\in\Domain{M}}$.
+Au second ordre, nous pouvons la définir
+\emph{sans~$\eq$}. Si $a$ et $b$ sont le même
+!!{element} de~$\Domain{M}$, ils appartiennent
+exactement aux mêmes sous-ensembles de ce
+!!{domain}. Réciproquement, s'ils sont distincts,
+ils n'appartiennent pas aux mêmes sous-ensembles :
+par exemple, $a\in\{a\}$ mais $b\notin\{a\}$
+si $a\neq b$. La propriété « appartenir aux
+mêmes sous-ensembles de~$\Domain{M}$ » vaut donc
+de $a$ et~$b$ exactement lorsque $a=b$.
+Elle s'exprime au second ordre, puisqu'on peut
+quantifier sur tous les sous-ensembles
+de~$\Domain{M}$. La !!{formula} suivante définit
+donc $\Id{\Domain{M}}$ :
+\[
+\lforall[X][(X(x)\liff X(y))].
+\]
+\end{ex}
+
+\begin{prob}
+Montrez que
+$\lforall[X][(X(x)\lif X(y))]$
+définit $\Id{\Domain{M}}$.
+Attention : il s'agit de $\lif$, non de~$\liff$!
+\end{prob}
+
+\begin{ex}
+Si $R$ est un !!{predicate} binaire,
+$\Assign{R}{M}$ est une relation binaire
+sur~$\Domain{M}$. Au risque d'une certaine
+confusion, nous noterons~$R$ aussi bien le
+!!{predicate} que la relation
+$\Assign{R}{M}$ elle-même. La
+\emph{fermeture transitive}~$R^*$ de~$R$
+relie $a$ à~$b$ si, pour certains
+$c_1$, \dots, $c_k$, on a
+$R(a,c_1)$, $R(c_1,c_2)$, \dots, $R(c_k,b)$.
+Le cas $k=0$ est inclus : si $R(a,b)$,
+alors $R^*(a,b)$. Ainsi $R\subseteq R^*$.
+En fait, $R^*$ est la plus petite relation
+transitive qui contient~$R$. Nous pouvons exprimer
+au second ordre que $X$ est une relation
+transitive contenant~$R$ :
+\begin{multline*}
+!B_R(X)\ident
+\lforall[x][\lforall[y][(R(x,y)\lif X(x,y))]]
+\land {}\\
+\lforall[x][\lforall[y][\lforall[z]
+[((X(x,y)\land X(y,z))\lif X(x,z))]]].
+\end{multline*}
+La première conjonction dit que $R\subseteq X$;
+la seconde, que $X$ est transitive.
+
+Dire que $X$ est la plus petite de ces relations,
+c'est dire qu'elle est incluse dans toute relation
+transitive contenant~$R$. Nous définissons donc
+la fermeture transitive de~$R$ par la
+!!{formula}
+\[
+R^*(X)\ident !B_R(X)\land
+\lforall[Y][(!B_R(Y)\lif
+\lforall[x][\lforall[y][(X(x,y)\lif Y(x,y))]])].
+\]
+On a $\Sat{M}{R^*(X)}[s]$ si et seulement si
+$s(X)=R^*$. Aucune !!{formula} du premier ordre ne définit uniformément
+la fermeture transitive de~$R$ dans toutes les !!{structure}s.
+\end{ex}
+
+\begin{editorial}
+La notation~$R^*$ désigne ici la plus petite
+relation \emph{transitive} contenant~$R$ :
+les chemins considérés ont au moins une arête.
+Certaines conventions réservent cette notation à
+la fermeture réflexive et transitive; ce n'est
+pas le sens adopté par la source dans cet exemple.
+\end{editorial}
+
+\end{document}

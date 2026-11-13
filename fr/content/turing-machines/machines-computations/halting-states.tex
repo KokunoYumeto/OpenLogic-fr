@@ -1,0 +1,80 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: halting-states
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{hal}
+\olsection{États d'arrêt}
+
+\begin{explain}
+Nous avons défini nos machines de telle sorte qu'elles ne
+s'arrêtent que lorsqu'aucune instruction ne peut être exécutée.
+Dans d'autres présentations usuelles des machines de Turing,
+on distingue un \emph{état d'arrêt}~$h$, avec $h\in Q$.
+
+L'idée est simple : lorsque la machine a terminé son travail
+(elle a décidé d'accepter l'entrée ou fini d'écrire la sortie),
+elle passe dans l'état~$h$, où elle s'arrête. Certaines machines
+possèdent deux états d'arrêt, l'un pour accepter l'entrée et
+l'autre pour la rejeter.
+\end{explain}
+
+\begin{ex}\emph{États d'arrêt}.
+Pour éclairer cette notion, modifions d'abord la machine paire.
+Au lieu de la laisser s'arrêter dans l'état~$q_0$ lorsque
+l'entrée est paire, ajoutons une instruction qui la fait
+passer dans un état d'arrêt.
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial, state]         (A)                     {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+  \node[state]         (C) [below of=A] {$h$};
+
+  \path (A) edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{R}} (B)
+  	    edge node {\TMtrans{\TMblank}{\TMblank}{N}} (C)
+        (B) edge [loop above] node {\TMtrans{\TMblank}{\TMblank}{R}} (B)
+            edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{R}} (A);
+\end{tikzpicture}
+\]
+
+Poussons l'exemple plus loin. Quand la machine constate que
+l'entrée est impaire, elle ne s'arrête jamais. On peut la
+modifier pour y ajouter un état de \emph{rejet}~$r$ : il suffit
+de remplacer l'instruction qui la fait boucler par une
+instruction qui la conduit dans cet état. Dans cette présentation à deux états d'arrêt, le rejet est distingué de l'acceptation par l'état final ; dans notre convention initiale, rejeter signifie ne pas s'arrêter.
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state]         (A)                     {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+  \node[state]         (C) [below of=A] {$h$};
+  \node[state]         (D) [below of=B] {$r$};
+
+  \path (A) edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{R}} (B)
+  	    edge node {\TMtrans{\TMblank}{\TMblank}{N}} (C)
+        (B) edge node {\TMtrans{\TMblank}{\TMblank}{N}} (D)
+            edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{R}} (A);
+\end{tikzpicture}
+\]
+\end{ex}
+
+\begin{explain}
+Un état d'arrêt désigné peut être utile dans un cas comme
+celui-ci : il rend explicite l'acceptation ou le rejet de
+certaines entrées. Il ne donne cependant aucune puissance
+de calcul supplémentaire. Notre convention d'arrêt, moins
+chargée en états particuliers, a elle aussi des avantages.
+La définition employée jusqu'ici dans ce chapitre rend
+la démonstration de l'indécidabilité du \emph{problème de l'arrêt} intuitive
+et facile à suivre. Nous la conserverons donc.
+\end{explain}
+
+\end{document}

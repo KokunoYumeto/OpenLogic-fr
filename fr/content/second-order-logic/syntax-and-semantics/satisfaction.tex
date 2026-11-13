@@ -1,0 +1,304 @@
+% Part: second-order-logic
+% Chapter: syntax-and-semantics
+% Section: satisfaction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{syn}{sat}
+
+\olsection{Satisfaction}
+
+\begin{explain}
+Pour définir la relation de satisfaction
+$\Sat{M}{!A}[s]$ des !!{formula}s du second ordre,
+nous devons étendre les définitions aux
+!!{variable}s du second ordre. La notion de
+!!{structure} reste la même qu'au premier ordre.
+Seules les assignations de variables~$s$ changent :
+elles doivent désormais donner des valeurs non
+seulement aux !!{variable}s du premier ordre,
+mais aussi à celles du second ordre.
+\end{explain}
+
+\begin{defn}[Assignation de variables]
+Une \emph{assignation de variables}~$s$ pour une
+!!{structure}~$\Struct{M}$ est une fonction qui
+associe à chaque
+\begin{enumerate}
+\item variable d'objet~$\Obj{v_i}$ un élément
+  de~$\Domain{M}$, autrement dit
+  $s(\Obj{v_i})\in\Domain{M}$;
+\item variable de relation $n$-aire~$\Obj{V_i^n}$
+  une relation $n$-aire sur~$\Domain{M}$,
+  autrement dit
+  $s(\Obj{V_i^n})\subseteq\Domain{M}^n$;
+\item variable de fonction $n$-aire~$\Obj{u_i^n}$
+  une fonction de $\Domain{M}^n$ dans~$\Domain{M}$,
+  autrement dit
+  $s(\Obj{u_i^n})\colon\Domain{M}^n\to\Domain{M}$.
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+Une !!{structure} attribue une !!{value} à chaque
+!!{constant} et à chaque !!{function};
+une assignation du second ordre attribue des
+objets et des fonctions aux variables d'objet et
+de fonction. Ensemble, elles permettent de donner
+une !!{value} à chaque terme.
+\end{explain}
+
+\begin{defn}[Valeur d'un terme]
+Si $t$ est un terme du langage~$\Lang L$,
+si $\Struct M$ est une !!{structure} pour~$\Lang L$
+et si $s$ est une assignation de !!{variable}s
+pour~$\Struct M$, sa \emph{!!{value}}
+$\Value{t}{M}[s]$ se définit par les clauses du premier ordre, appliquées aux termes du second ordre,
+et par la clause supplémentaire suivante :
+\begin{quote}
+\indcase{t}{\Atom{u}{t_1,\ldots,t_n}}{
+\[
+\Value{\indfrm}{M}[s]
+=s(u)(\Value{t_1}{M}[s],\ldots,
+\Value{t_n}{M}[s]).
+\]}
+\end{quote}
+\end{defn}
+
+\begin{defn}[Variante en~$x$]
+Si $s$ est une assignation de !!{variable}s pour
+une !!{structure}~$\Struct M$, toute assignation
+$s'$ pour~$\Struct M$ qui ne diffère de~$s$ que,
+éventuellement, par la !!{value} attribuée à~$x$
+est une \emph{variante en~$x$} de~$s$.
+Nous écrivons alors $\varAssign{s'}{s}{x}$.
+On définit de même les variantes en une variable
+de relation~$X$ ou de fonction~$u$ du second ordre.
+\end{defn}
+
+\begin{defn}
+Si $s$ est une assignation de !!{variable}s pour
+une !!{structure}~$\Struct M$ et si
+$m\in\Domain{M}$, l'assignation
+$\Subst{s}{m}{x}$ est définie par
+\[
+\Subst{s}{m}{x}(y)=\begin{cases}
+  m & \text{si }y\ident x,\\
+  s(y) & \text{sinon}.
+\end{cases}
+\]
+Si $X$ est une variable de relation $n$-aire et
+si $R\subseteq\Domain{M}^n$, l'assignation
+$\Subst{s}{R}{X}$ est définie par
+\[
+\Subst{s}{R}{X}(y)=\begin{cases}
+  R & \text{si }y\ident X,\\
+  s(y) & \text{sinon}.
+\end{cases}
+\]
+Si $u$ est une variable de fonction $n$-aire et
+si $f\colon\Domain{M}^n\to\Domain{M}$,
+l'assignation $\Subst{s}{f}{u}$ est définie par
+\[
+\Subst{s}{f}{u}(y)=\begin{cases}
+  f & \text{si }y\ident u,\\
+  s(y) & \text{sinon}.
+\end{cases}
+\]
+Dans chacun de ces cas, $y$ peut être n'importe
+quelle !!{variable} du premier ou du second ordre.
+\end{defn}
+
+\begin{defn}[Satisfaction]
+Pour les !!{formula}s du second ordre~$!A$,
+la définition de la satisfaction est celle de la
+\olref[fol][syn][sat]{defn:satisfaction}, appliquée aux termes et !!{formula}s du second ordre,
+augmentée des clauses suivantes :
+\begin{enumerate}
+\item \indcase{!A}{\Atom{X^n}{t_1,\dots,t_n}}{
+  $\Sat{M}{\indfrm}[s]$ si et seulement si
+  $\langle\Value{t_1}{M}[s],\dots,
+  \Value{t_n}{M}[s]\rangle\in s(X^n)$.}
+\tagitem{prvAll}{%
+  \indcase{!A}{\lforall[X][!B]}{
+  $\Sat{M}{\indfrm}[s]$ si et seulement si, pour
+  toute relation $R\subseteq\Domain{M}^n$,
+  $\Sat{M}{!B}[\Subst{s}{R}{X}]$.}}{}
+
+\tagitem{prvEx}{%
+  \indcase{!A}{\lexists[X][!B]}{
+  $\Sat{M}{\indfrm}[s]$ si et seulement s'il existe
+  une relation $R\subseteq\Domain{M}^n$ telle que
+  $\Sat{M}{!B}[\Subst{s}{R}{X}]$.}}{}
+
+\tagitem{prvAll}{%
+  \indcase{!A}{\lforall[u][!B]}{
+  $\Sat{M}{\indfrm}[s]$ si et seulement si, pour
+  toute fonction $f\colon\Domain{M}^n\to\Domain{M}$,
+  $\Sat{M}{!B}[\Subst{s}{f}{u}]$.}}{}
+
+\tagitem{prvEx}{%
+  \indcase{!A}{\lexists[u][!B]}{
+  $\Sat{M}{\indfrm}[s]$ si et seulement s'il existe
+  une fonction $f\colon\Domain{M}^n\to\Domain{M}$
+  telle que $\Sat{M}{!B}[\Subst{s}{f}{u}]$.}}{}
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+Considérons la !!{formula}
+$\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})]$. Elle ne contient aucun
+quantificateur du second ordre, mais elle contient
+les !!{variable}s du second ordre $X$ et~$Y$,
+ici unaires. L'!!{sentence} correspondant du
+premier ordre,
+$\lforall[z][(\Atom{P}{z}\liff
+\lnot\Atom{R}{z})]$, dit que les objets relevant
+de l'interprétation de~$P$ ne relèvent pas de celle
+de~$R$, et réciproquement. Dans une
+!!{structure}, l'interprétation d'un
+!!{predicate}~$P$ est donnée par
+$\Assign{P}{M}$. En revanche, l'interprétation
+des !!{variable}s du second ordre comme $X$
+et~$Y$ vient de l'assignation, non de la
+!!{structure} elle-même. La !!{formula} du
+second ordre n'étant pas un !!{sentence}
+(elle contient les !!{variable}s libres $X$
+et~$Y$), elle ne peut être satisfaite que
+relativement à la fois à une
+!!{structure}~$\Struct{M}$ et à une
+assignation de !!{variable}s~$s$.
+
+On a
+$\Sat{M}{\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})]}[s]$
+si et seulement si chaque !!{element} de~$s(X)$
+est hors de~$s(Y)$ et chaque !!{element} hors
+de~$s(X)$ appartient à~$s(Y)$; autrement dit,
+$s(Y)=\Domain{M}\setminus s(X)$.
+Prenons, par exemple,
+$\Domain{M}=\{1,2,3\}$. Aucun !!{predicate},
+!!{function} ou !!{constant}
+n'intervenant ici, seul le domaine de~$\Struct{M}$
+importe. Avec $s_1(X)=\{1,2\}$ et
+$s_1(Y)=\{3\}$, nous avons
+$\Sat{M}{\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})]}[s_1]$.
+
+En revanche, pour $s_2(X)=\{1,2\}$ et
+$s_2(Y)=\{2,3\}$, on a
+$\Sat/{M}{\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})]}[s_2]$.
+En effet,
+$\Sat{M}{\Atom{X}{z}}[\Subst{s_2}{2}{z}]$,
+puisque $2\in\Subst{s_2}{2}{z}(X)$, tandis que
+$\Sat/{M}{\lnot\Atom{Y}{z}}
+[\Subst{s_2}{2}{z}]$,
+puisque $2\in\Subst{s_2}{2}{z}(Y)$ également.
+\end{ex}
+
+\begin{ex}
+On a
+$\Sat{M}{\lexists[Y][(\lexists[y][\Atom{Y}{y}]
+\land\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})])]}[s]$
+s'il existe un ensemble $N\subseteq\Domain{M}$
+tel que
+$\Sat{M}{(\lexists[y][\Atom{Y}{y}]
+\land\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})])}[\Subst{s}{N}{Y}]$.
+Cela se produit exactement lorsque $N$ est non
+vide, de sorte que
+$\Sat{M}{\lexists[y][\Atom{Y}{y}]}
+[\Subst{s}{N}{Y}]$, et que, comme dans l'exemple
+précédent, $N=\Domain{M}\setminus s(X)$.
+Autrement dit,
+$\Sat{M}{\lexists[Y][(\lexists[y][\Atom{Y}{y}]
+\land\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})])]}[s]$
+si et seulement si
+$\Domain{M}\setminus s(X)\neq\emptyset$,
+ou encore $s(X)\neq\Domain{M}$.
+La !!{formula} est donc satisfaite, par exemple,
+si $\Domain{M}=\{1,2,3\}$ et
+$s(X)=\{1,2\}$, mais pas si
+$s(X)=\{1,2,3\}=\Domain{M}$.
+
+Puisque la !!{formula} n'est pas satisfaite lorsque
+$s(X)=\Domain{M}$, l'!!{sentence}
+\[
+\lforall[X][\lexists[Y][(\lexists[y][\Atom{Y}{y}]
+\land\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})])]]
+\]
+n'est jamais satisfait : dans toute
+!!{structure}~$\Struct{M}$, l'instance où~$X$
+reçoit $\Domain{M}$ rend la portée du quantificateur
+universel fausse. En revanche, l'!!{sentence}
+\[
+\lexists[X][\lexists[Y][(\lexists[y][\Atom{Y}{y}]
+\land\lforall[z][(\Atom{X}{z}\liff
+\lnot\Atom{Y}{z})])]]
+\]
+est satisfait relativement à toute
+assignation~$s$, car le domaine, non vide, possède
+toujours un sous-ensemble propre~$R$
+(par exemple, $R=\emptyset$).
+\end{ex}
+
+\begin{ex}
+L'!!{sentence} du second ordre
+$\lforall[X][\lforall[y][X(y)]]$ affirme que
+toute relation unaire, c'est-à-dire toute propriété,
+vaut de chaque objet. Cela n'est jamais vrai :
+dans toute !!{structure}~$\Struct{M}$ de domaine
+non vide, on peut choisir une assignation~$s$
+telle que $s(X)=\emptyset$ et
+$s(y)=a\in\Domain{M}$; alors
+$\Sat/{M}{X(y)}[s]$.
+Ainsi, pour toute !!{formula}~$!A$ et toute
+assignation~$s$,
+$\Sat{M}{!A\lif
+\lforall[X][\lforall[y][X(y)]]}[s]$
+si et seulement si $\Sat{M}{\lnot !A}[s]$.
+Autrement dit, au second ordre, on peut définir
+$\lnot$ au moyen de $\lforall$ et de~$\lif$.
+\end{ex}
+
+\begin{prob}
+Montrez qu'en logique du second ordre,
+$\lforall$ et~$\lif$ permettent de définir
+les autres connecteurs :
+\begin{enumerate}
+\item Soit $X$ une variable de relation unaire qui n'est libre ni dans~$!A$ ni dans~$!B$. Démontrez que
+  $!A\land !B$ équivaut en logique du second ordre à
+  $\lforall[X][((!A\lif
+  (!B\lif\lforall[x][X(x)]))\lif
+  \lforall[x][X(x)])]$.
+\item Trouvez une !!{formula} du second ordre
+  n'utilisant que $\lforall$ et $\lif$ et
+  équivalente à $!A\lor !B$.
+\end{enumerate}
+\end{prob}
+
+\begin{editorial}
+Dans les trois définitions d'assignations modifiées,
+la source écrit respectivement
+$\Subst{s}{m}{y}$, $\Subst{s}{M}{y}$ et
+$\Subst{s}{f}{y}$ au membre de gauche, alors que
+la variable modifiée est~$x$, $X$ ou~$u$ et que
+$y$ est l'argument auquel on applique
+l'assignation. Nous écrivons donc
+$\Subst{s}{m}{x}(y)$,
+$\Subst{s}{R}{X}(y)$ et
+$\Subst{s}{f}{u}(y)$, en réservant~$R$ à la
+relation qui remplace la valeur de~$X$.
+Dans la dernière équivalence de satisfaction,
+nous indiquons aussi l'assignation~$s$, puisque
+$!A$ peut contenir des !!{variable}s libres.
+\end{editorial}
+
+\end{document}

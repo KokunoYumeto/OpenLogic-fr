@@ -1,0 +1,305 @@
+% Partie : théorie de la démonstration
+% Chapitre : déduction naturelle
+% Section : traduction de G2i vers N2i
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nat}{tgi}
+
+\olsection{Traduction de \Log{G2i} vers \Log{N2i}}
+
+Nous prenons ici pour \Log{G2i} la version des règles
+de \Log{G2c} dans laquelle tous les séquents ont au plus
+une formule à droite, avec une adaptation de la règle
+\LeftR{\lor} : ses deux prémisses et sa conclusion ont
+le même conséquent, et les contextes à gauche s'additionnent.
+Les antécédents de ses séquents
+sont des multiensembles~$\Gamma$ de !!{formula}s, tandis
+que ceux de \Log{N2i} sont des ensembles~$\Gamma'$ de
+formules étiquetées, où chaque étiquette apparaît une
+seule fois. Un ensemble~$\Gamma'$ de !!{formula}s
+étiquetées \emph{correspond} au multiensemble~$\Gamma$
+si, pour toute !!{formula}~$!A$, le nombre de ses
+!!{element}s de la forme $x : !A$ est inférieur ou égal
+à la multiplicité de~$!A$ dans~$\Gamma$, c'est-à-dire
+au nombre de ses copies.
+
+\begin{prop}\ollabel{prop:G2i-to-N2i}
+Si $\Log{G2i} + \Cut \Proves \Gamma \Sequent \Delta$,
+il existe un contexte $\Gamma'$ correspondant à~$\Gamma$
+tel que $\Log{N2i} \Proves \Gamma' \Sequent !C$,
+où $!C \ident \lfalse$ lorsque $\Delta$ est vide,
+et $\Delta = \{!C\}$ sinon.
+\end{prop}
+
+\begin{proof}
+Soit $\pi$ une !!{proof} de $\Gamma \Sequent \Delta$
+dans \Log{G2i} augmenté de la coupure. Construisons
+un~$\Gamma'$ correspondant à~$\Gamma$ et une
+!!{proof}~$\delta$ de~$\Gamma' \Sequent !C$
+dans~\Log{N2i}, par récurrence sur $n = \pheight{\pi}$.
+
+Si $n = 0$, $\pi$ est un axiome. Pour l'axiome
+$\lfalse \Sequent \quad$, $\delta$ est l'axiome
+$x:\lfalse \Sequent \lfalse$ ; on prend
+$\Gamma' = \{x:\lfalse\}$ et $!C \ident \lfalse$.
+Pour un axiome $!A \Sequent !A$, on prend
+$x: !A \Sequent !A$.
+
+Si $n>0$, $\pi$ se termine par une règle~$R$.
+L'hypothèse de récurrence donne dans~\Log{N2i}
+des !!{proof}s correspondant aux prémisses.
+Par renommage, on rend disjointes les étiquettes des
+différentes sous-preuves. On peut aussi réserver à
+chaque classe déchargée une étiquette~$x$ qui ne figure
+que dans la branche au-dessus de sa décharge.
+Une étiquette encore ouverte à la conclusion n'est
+donc déchargée par aucune inférence de cette sous-preuve.
+Les constantes propres sont renommées, au besoin,
+avant toute greffe, pour préserver leur fraîcheur.
+Combinons ces !!{proof}s pour obtenir un
+séquent~$\Gamma' \Sequent !C$ convenable.
+
+\begin{enumerate}
+  \item Si $R$ est \RightR{\Weakening}, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma \fCenter$
+    \RightLabel{\RightR{\Weakening}}
+    \UnaryInf$\Gamma \fCenter !A$
+    \DisplayProof
+    \]
+  L'hypothèse de récurrence appliquée à $\pi_1$ donne une
+  !!{proof} de~$\Gamma' \Sequent \lfalse$.
+  L'application de $\FalseInt$ donne alors une
+  !!{proof} de $\Gamma' \Sequent !A$.
+  \item Si $R$ est \LeftR{\Weakening}, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\Weakening}}
+    \UnaryInf$!A, \Gamma \fCenter \Delta$
+    \DisplayProof
+    \]
+  L'hypothèse de récurrence appliquée à $\pi_1$ donne
+  une !!{proof} de~$\Gamma' \Sequent !C$, que l'on
+  prend pour $\delta$. Si $\Gamma'$ correspond à
+  $\Gamma$, il correspond aussi à $!A, \Gamma$ :
+  le nombre de $x : !A$ dans $\Gamma'$ ne dépasse pas
+  la multiplicité de~$!A$ dans $\Gamma$, donc ne
+  dépasse pas non plus sa multiplicité dans
+  $\Gamma \cup \{!A\}$. L'union est ici additive
+  pour les multiensembles.
+  \item Si $R$ est \LeftR{\Contraction}, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$!A, !A, \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\Contraction}}
+    \UnaryInf$!A, \Gamma \fCenter \Delta$
+    \DisplayProof
+    \]
+  L'hypothèse de récurrence appliquée à $\pi_1$ donne
+  une !!{proof}~$\delta_1$ de
+  $\Pi, \Gamma' \Sequent !C$, avec
+  $\Pi \subseteq \{x : !A, y:!A\}$, et un contexte
+  résiduel correspondant à celui qui reste après retrait
+  des deux occurrences actives.
+  Si $\Pi = \{x : !A, y:!A\}$, on remplace dans
+  cette preuve les formules étiquetées $y:!A$ par
+  $x:!A$. Ces deux classes sont ouvertes à la conclusion.
+  Après le renommage préalable des classes déchargées,
+  aucune inférence ne décharge une formule de la
+  forme~$x:!B$ ni une formule de la classe à fusionner.
+  Le renommage conserve donc toutes les règles et
+  leurs contextes ; le résultat est une !!{proof}
+  de~\Log{N2i}. Le contexte final, où les deux classes
+  ont fusionné, correspond à l'antécédent après contraction.
+  S'il y avait au plus une classe supplémentaire,
+  aucune fusion n'est nécessaire.
+  \item Si $R$ est $\RightR{\lif}$, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$!A, \Gamma \fCenter !B$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$\Gamma \fCenter !A \lif !B$
+    \DisplayProof
+    \]
+  L'hypothèse de récurrence donne une
+  !!{proof}~$\delta_1$ de $x:!A, \Gamma' \Sequent !B$
+  ou de $\Gamma' \Sequent !B$, où $\Gamma'$
+  correspond à~$\Gamma$. On obtient $\delta$ en
+  ajoutant une application de \Intro{\lif} à
+  $\delta_1$, avec décharge ou décharge vacante,
+  respectivement.
+  \item Si $R$ est \LeftR{\lif}, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma_1 \fCenter !A$
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$!B, \Gamma_2 \fCenter \Delta$
+    \RightLabel{\LeftR{\lif}}
+    \BinaryInf$!A \lif !B, \Gamma_1, \Gamma_2 \fCenter \Delta$
+    \DisplayProof
+    \]
+  L'hypothèse de récurrence donne des !!{proof}s
+  $\delta_1$ de $\Gamma_1' \Sequent !A$ et
+  $\delta_2$ de $x:!B, \Gamma_2' \Sequent !C$
+  ou de $\Gamma_2' \Sequent !C$. Dans le dernier
+  cas, $\delta_2$ convient pour~$\delta$.
+  Sinon, on renomme les étiquettes de~$\delta_1$
+  pour qu'elles soient disjointes de celles de~$\delta_2$.
+  Alors $\Gamma_1' \cup \Gamma_2'$ correspond à
+  $\Gamma_1 \cup \Gamma_2$ ; l'union de droite
+  additionne les multiplicités. La classe $x:!B$,
+  ouverte à la conclusion de~$\delta_2$, n'est
+  déchargée par aucune inférence de cette preuve.
+  On remplace chaque axiome $x:!B \Sequent !B$
+  par la !!{proof}~$\delta_3$
+\[
+    \Axiom$x: !A \lif !B \fCenter !A \lif !B$
+    \AxiomC{}
+    \RightLabel{$\delta_1$}
+    \Deduce$\Gamma_1' \fCenter !A$
+    \RightLabel{\Elim{\lif}}
+    \BinaryInf$x: !A \lif !B, \Gamma_1' \fCenter !B$
+    \DisplayProof
+    \]
+  et, dans les contextes qui dépendent de cet axiome,
+  chaque occurrence de $x:!B$ par la classe
+  $x:!A \lif !B$ et le contexte de sa prémisse mineure.
+  La greffe donne ainsi la !!{proof}
+  $\Subst{\delta_2}{\delta_3}{x:!B}$ de
+  $x:!A \lif !B, \Gamma_1', \Gamma_2' \Sequent !C$.
+  \item Si $R$ est \RightR{\land}, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma_1 \fCenter !A$
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$\Gamma_2 \fCenter !B$
+    \RightLabel{\RightR{\land}}
+    \BinaryInf$\Gamma_1, \Gamma_2 \fCenter !A \land !B$
+    \DisplayProof
+    \]
+  L'hypothèse de récurrence donne des !!{proof}s
+  $\delta_1$ de $\Gamma_1' \Sequent !A$ et
+  $\delta_2$ de $\Gamma_2' \Sequent !B$.
+  Après renommage des étiquettes de~$\delta_2$,
+  les deux preuves n'ont aucune étiquette commune.
+  Alors $\Gamma_1' \cup \Gamma_2'$ correspond à
+  $\Gamma_1 \cup \Gamma_2$. L'application de
+  $\Intro{\land}$ à leurs séquents finaux donne
+  la !!{proof}~$\delta$ recherchée.
+  \item Si $R$ est $\LeftR{\land}$, $\pi$ se termine,
+  par exemple, par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$!A, \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\land}}
+    \UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+    \DisplayProof
+    \]
+  L'hypothèse de récurrence donne une
+  !!{proof}~$\delta_1$ de $x:!A, \Gamma' \Sequent !C$
+  ou de $\Gamma' \Sequent !C$, avec $\Gamma'$
+  correspondant à~$\Gamma$. Dans le dernier cas,
+  on prend $\delta_1$ pour $\delta$.
+  Sinon, la classe $x:!A$, ouverte à la conclusion,
+  n'est déchargée par aucune inférence. On remplace
+  chaque axiome $x:!A \Sequent !A$ par la
+  !!{proof}~$\delta_2$
+\[
+    \Axiom$x: !A \land !B \fCenter !A \land !B$
+    \RightLabel{\Elim{\land}}
+    \UnaryInf$x: !A \land !B \fCenter !A$
+    \DisplayProof
+    \]
+  et chaque occurrence de $x:!A$ dans les contextes
+  par $x:!A \land !B$. Le résultat
+  $\Subst{\delta_1}{\delta_2}{x:!A}$ est une
+  !!{proof} de $x:!A \land !B, \Gamma' \Sequent !C$.
+  L'autre projection se traite de la même manière.
+  \item Si $R$ est \Cut, $\pi$ se termine par
+\[
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma_1 \fCenter !A$
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$!A, \Gamma_2 \fCenter \Delta$
+    \RightLabel{\Cut}
+    \BinaryInf$\Gamma_1, \Gamma_2 \fCenter \Delta$
+    \DisplayProof
+    \]
+  L'hypothèse de récurrence donne des !!{proof}s
+  $\delta_1$ de $\Gamma_1' \Sequent !A$ et
+  $\delta_2$ de $x:!A, \Gamma_2' \Sequent !C$
+  ou de $\Gamma_2' \Sequent !C$. Dans le dernier
+  cas, on prend $\delta_2$ pour $\delta$.
+  Sinon, on greffe $\delta_1$ à la place de chaque
+  axiome $x:!A \Sequent !A$ de $\delta_2$, en
+  transportant son contexte dans les nœuds dépendants.
+  On obtient la !!{proof}~$\Subst{\delta_2}{\delta_1}{x:!A}$
+  de $\Gamma_1', \Gamma_2' \Sequent !C$.
+\end{enumerate}
+
+Les cas non dessinés se traitent comme suit. L'introduction
+à droite de la disjonction ou de l'existentielle devient
+l'introduction correspondante de N2. L'introduction à
+gauche de la disjonction devient son élimination : on
+ajoute l'axiome de la disjonction principale, puis on
+décharge les classes désignées dans les deux branches.
+Les deux branches ont le même conséquent ; lorsqu'il
+est vide, toutes deux se traduisent par une conclusion
+absurde. L'élimination de la disjonction fournit donc
+exactement la conclusion commune requise.
+Pour la négation à droite, on introduit la négation
+en déchargeant la classe active ; pour la négation
+à gauche, on applique son élimination à la preuve
+de la formule active et à l'axiome de sa négation.
+
+Pour l'universelle à droite, on applique l'introduction
+universelle ; pour l'existentielle à gauche, on ajoute
+l'axiome existentiel principal et on décharge la classe
+de son instance dans l'élimination existentielle.
+La fraîcheur dans le séquent G2 garantit la fraîcheur
+dans les contextes traduits. Pour l'universelle à gauche,
+on greffe une élimination universelle issue de l'axiome
+de la formule principale à la place des axiomes de
+l'instance active ; le terme d'instanciation reste clos.
+Dans chaque cas à gauche, une classe active inutilisée
+peut simplement être ignorée.
+Les contextes restants correspondent aux multiensembles
+d'origine, puisque leurs unions ajoutent les nombres
+de classes issues de branches aux étiquettes disjointes.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

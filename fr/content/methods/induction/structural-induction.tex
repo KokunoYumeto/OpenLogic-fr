@@ -1,0 +1,312 @@
+% Partie : méthodes
+% Chapitre : induction mathématique
+% Section : induction structurelle
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{ind}{sti}
+
+\olsection{Induction structurelle}
+
+Jusqu'ici, nous avons
+utilisé la récurrence
+pour démontrer des
+résultats concernant
+tous les nombres
+naturels. Un principe
+semblable s'applique
+directement à tous
+les !!{element}s
+d'un ensemble défini
+inductivement. On
+l'appelle souvent
+induction
+\emph{structurelle},
+car il s'appuie
+sur la structure
+des objets définis.
+
+En général, une
+définition inductive
+donne (a)~une liste
+d'!!{element}s
+«~initiaux~» de
+l'ensemble et
+(b)~une liste
+d'opérations qui
+produisent de
+nouveaux
+!!{element}s
+à partir de
+ceux déjà construits.
+Pour les termes
+bien formés,
+les objets initiaux
+sont les lettres
+et il n'y a
+qu'une opération :
+\begin{align*}
+  o(s_1,s_2)
+    &= [s_1 \circ s_2].
+\end{align*}
+On peut même voir
+les nombres naturels
+$\Nat$ comme un
+ensemble défini
+inductivement :
+l'objet initial
+est~$0$, et
+l'opération est
+la fonction
+successeur $x+1$.
+
+Pour démontrer que
+tous les
+!!{element}s
+d'un ensemble
+défini inductivement
+possèdent une
+propriété~$P$,
+il faut :
+\begin{enumerate}
+\item montrer que
+  les objets initiaux
+  possèdent~$P$ ;
+\item montrer que,
+  pour chaque
+  opération~$o$,
+  si ses arguments
+  possèdent~$P$,
+  son résultat
+  la possède aussi.
+\end{enumerate}
+Ainsi, pour démontrer
+une propriété de
+tous les termes
+bien formés,
+on la démontre
+pour chaque lettre,
+puis pour
+$[s_1 \circ s_2]$
+en supposant
+qu'elle vaut
+séparément pour
+$s_1$ et~$s_2$.
+
+\begin{prop}
+  Dans tout terme
+  bien formé~$t$,
+  le nombre de
+  crochets ouvrants
+  $[$ est égal
+  au nombre de
+  crochets fermants
+  $]$.
+\end{prop}
+
+\begin{proof}
+Procédons par
+induction structurelle.
+Les termes bien
+formés sont définis
+à partir des lettres
+au moyen de
+l'opération~$o$.
+\begin{enumerate}
+\item Pour chaque
+  lettre, la
+  propriété est
+  vraie : elle
+  contient $0$
+  crochet ouvrant
+  et $0$ crochet
+  fermant.
+\item Supposons
+  que les nombres
+  de $[$ et de
+  $]$ soient égaux
+  dans~$s_1$,
+  et qu'il en
+  aille de même
+  dans~$s_2$.
+  Dans
+  $o(s_1,s_2)
+  = [s_1 \circ s_2]$,
+  le nombre de
+  $[$ est la
+  somme des nombres
+  de $[$ dans
+  $s_1$ et $s_2$,
+  plus~$1$.
+  Le nombre de
+  $]$ est la
+  somme des nombres
+  de $]$ dans
+  $s_1$ et $s_2$,
+  plus~$1$.
+  Ils sont donc
+  égaux dans
+  $o(s_1,s_2)$.
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+  Démontrez par
+  induction structurelle
+  qu'aucun terme
+  bien formé ne
+  commence par~$]$.
+\end{prob}
+
+Voici une autre
+démonstration par
+induction structurelle.
+Un \emph{préfixe propre
+non vide} d'une
+suite de symboles~$t$
+est une suite~$s$
+non vide qui coïncide
+avec le début
+de~$t$, symbole
+par symbole, mais
+qui est plus courte
+que~$t$. Ainsi,
+$[a \circ {}$
+est un préfixe
+propre non vide
+de $[a \circ b]$ ;
+en revanche,
+$[b \circ {}$
+ne l'est pas
+(les deux suites
+diffèrent au
+deuxième symbole),
+et $[a \circ b]$
+non plus (il
+a la même
+longueur).
+
+\begin{prop}\ollabel{prop:initial}
+  Tout préfixe
+  propre non vide
+  d'un terme
+  bien formé~$t$
+contient plus
+de $[$ que
+de $]$.\footnote{
+Correction de l'édition française :
+la source anglaise définit un
+segment initial propre sans
+exclure la suite vide, puis
+affirme qu'il contient plus
+de crochets ouvrants que de
+crochets fermants. La suite
+vide est pourtant un préfixe
+propre de tout terme non vide
+et contient zéro crochet de
+chaque sorte. Le mot
+«~non vide~» est donc
+nécessaire à l'énoncé
+et à sa démonstration.}
+\end{prop}
+
+\begin{proof}
+Raisonnons par
+induction sur~$t$.
+\begin{enumerate}
+\item Si $t$
+  est une lettre,
+  il n'a aucun
+  préfixe propre
+  non vide.
+\item Supposons
+  $t=[s_1 \circ s_2]$
+  pour des termes
+  bien formés
+  $s_1$ et~$s_2$.
+  Si $r$ est
+  un préfixe
+  propre non vide
+  de~$t$,
+  plusieurs cas
+  sont possibles :
+  \begin{enumerate}
+  \item $r$ est
+    simplement $[$ :
+    il contient
+    un $[$ de
+    plus que
+    de $]$.
+  \item $r$ est
+    $[r_1$, où
+    $r_1$ est
+    un préfixe
+    propre non
+    vide de~$s_1$.
+    Par hypothèse
+    d'induction,
+    $r_1$ contient
+    plus de $[$
+    que de $]$.
+    Il en va
+    donc de même
+    pour $[r_1$.
+  \item $r$ est
+    $[s_1$ ou
+    $[s_1 \circ {}$.
+    D'après la
+    proposition
+    précédente,
+    les nombres
+    de $[$ et
+    de $]$ dans
+    $s_1$ sont
+    égaux. Dans
+    chacun de ces
+    deux préfixes,
+    $[s_1$ ou
+    $[s_1 \circ {}$,
+    le $[$ extérieur
+    en ajoute un.
+  \item $r$ est
+    $[s_1 \circ r_2$,
+    où $r_2$ est
+    un préfixe
+    propre non
+    vide de~$s_2$.
+    Par hypothèse
+    d'induction,
+    $r_2$ contient
+    plus de $[$
+    que de $]$.
+    La proposition
+    précédente donne
+    autant de
+    crochets de
+    chaque sorte
+    dans~$s_1$.
+    Le $[$ extérieur
+    rend donc
+    l'inégalité
+    stricte pour
+    $[s_1 \circ r_2$.
+  \item $r$ est
+    $[s_1 \circ s_2$.
+    D'après la
+    proposition
+    précédente,
+    $s_1$ et
+    $s_2$ ont
+    chacun autant
+    de $[$ que
+    de $]$.
+    Le préfixe
+    $[s_1 \circ s_2$
+    contient donc
+    un $[$ de plus.
+  \end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\end{document}

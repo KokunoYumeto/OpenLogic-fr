@@ -1,0 +1,87 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{story}{urelements}
+\olsection{Des uréléments ou non ?}
+
+Dans les prochains chapitres, nous chercherons à dégager des axiomes
+de la conception cumulative et itérative des ensembles. Mais, avant
+d'aller plus loin, il nous faut préciser le rôle des \emph{uréléments}.
+
+Le schéma de la \olref[approach]{sec} ne nous permettait de former de
+nouveaux ensembles qu'à partir d'\emph{ensembles déjà formés}. Nous
+pourrions toutefois vouloir admettre que certains \emph{objets qui ne
+sont pas des ensembles} — vaches, cochons, grains de sable ou autres —
+soient des !!{element}s d'ensembles. Dans ce cas, nous partirions
+d'objets fondamentaux, les \emph{uréléments}, puis nous dirions qu'à
+chaque étape $S$ nous formons «~tous les ensembles possibles~» dont
+les membres sont des uréléments ou des ensembles formés aux étapes
+antérieures à $S$ (dans n'importe quelle combinaison). Le schéma
+obtenu ressemblerait plutôt à ceci :
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+	\tikzset{cut_here/.style={densely dotted}}
+	\draw (-4,6) -- (-1, 0) -- (1,0) -- (4,6);
+	\draw[cut_here] (-5,8)--(-4,6);
+	\draw[cut_here] (5,8)--(4,6);
+	\draw(-1.5, 1)--(1.5, 1);
+	\draw(-2, 2)--(2, 2);
+	\draw(-2.5, 3)--(2.5,3);
+	\draw(-3, 4)--(3, 4);
+	\draw(-3.5, 5)--(3.5, 5);
+	\draw(-4, 6)--(4, 6);
+	\node[label] at (2, 0) {\small 0};
+	\node[label] at (2.5, 1) {\small 1};
+	\node[label] at (3, 2) {\small 2};
+	\node[label] at (3.5, 3) {\small 3};
+	\node[label] at (4, 4) {\small 4};
+	\node[label] at (4.5, 5) {\small 5};
+	\node[label] at (5, 6) {\small 6};
+	\end{tikzpicture}
+\end{center}
+Nous devons donc trancher : \emph{faut-il admettre des uréléments ?}
+
+Du point de vue philosophique, leur inclusion se défend. La raison
+principale est de rendre notre théorie des ensembles \emph{applicable}.
+Pour illustrer cette idée, rappelons que, dans le
+\olref[sfr][siz][]{chap}, nous avons dit que deux ensembles $A$ et~$B$
+ont la même taille, c'est-à-dire que $\cardeq{A}{B}$, si et seulement
+s'il existe une bijection entre eux. Or, si les vaches d'un pré
+forment un ensemble et les cochons d'une porcherie en forment un
+autre, nous pouvons traiter en termes ensemblistes l'affirmation
+«~il y a autant de vaches que de cochons~». Si, en revanche, nous
+excluons les uréléments, de sorte que les vaches et les cochons ne
+forment \emph{pas} d'ensembles, ce traitement ensembliste n'est plus
+disponible. Nous ne pouvons alors appliquer directement la théorie
+des ensembles qu'aux ensembles eux-mêmes. (Pour d'autres arguments
+en faveur des uréléments, voir \citealt[pp.~vi, 24,
+50--1]{Potter2004}.)
+
+En mathématiques, cependant, il est assez rare d'admettre des
+uréléments. C'est en partie parce qu'il est \emph{un tout petit peu}
+plus facile de formuler la théorie des ensembles sans eux. On trouve
+néanmoins parfois des raisons plus intéressantes de les exclure :
+\begin{quote}
+	Si l'on estime que la théorie des ensembles fonde les
+	mathématiques, nous devrions pouvoir saisir toutes les
+	mathématiques en ne parlant que d'ensembles ; nos variables ne
+	devraient donc pas parcourir des objets tels que les vaches et les
+	cochons.
+	%Mais si $C$ est une vache, $\{C\}$ est un ensemble sans être un objet mathématique légitime.
+	\citep[p.~8]{Kunen1980}
+\end{quote}
+Ainsi, le souci de l'applicabilité inciterait à \emph{admettre} des
+uréléments ; une visée fondatrice réductrice, qui ramène les
+mathématiques à la théorie pure des ensembles, pourrait inciter à
+les \emph{exclure}. Une légère paresse conduit aussi à les exclure.
+
+Nous suivrons la voie la plus paresseuse. Il y a toutefois à cela une
+raison pédagogique : nous voulons présenter les rudiments de la
+théorie des ensembles nécessaires pour aborder sa philosophie. Or
+la majeure partie de la littérature philosophique sur ce sujet
+traite de théories des ensembles formulées \emph{sans} uréléments.
+Ce livre sera donc peut-être plus utile s'il reste assez proche de
+cette littérature.
+
+\end{document}

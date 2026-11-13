@@ -10,8 +10,8 @@
       {\olfileid[fr]{fol}{ntd}{prl}}
       {\olfileid[fr]{pl}{ntd}{prl}}
 
+\Needspace{16\baselineskip}
 \olsection{Règles propositionnelles}
-
 \Needspace{11\baselineskip}
 \subsection{Règles pour $\land$}
 
@@ -112,20 +112,20 @@
 \DisplayProof
 \end{defish}
 
-Les règles $\Intro{\lnot}$ et $\FalseCl$ sont très proches : la
-première permet de dériver l'!!{sentence} nié~$\lnot !A$, tandis que
-la seconde permet de dériver~$!A$, sans lui ajouter de négation.
+Les règles $\Intro{\lnot}$ et $\FalseCl$ ont en commun une
+dérivation de $\lfalse$ sous une hypothèse. La première décharge
+une hypothèse~$!A$ pour conclure $\lnot !A$. La seconde décharge
+une hypothèse~$\lnot !A$ pour conclure~$!A$, qui peut lui-même
+contenir une négation.
 
-Lorsqu'une règle indique que l'on peut décharger une hypothèse,
-il s'agit d'une possibilité, et non d'une obligation. Par exemple,
-la règle $\Intro{\lif}$ permet de décharger un nombre quelconque
-d'hypothèses de la forme~$!A$ dans la !!{derivation} de la
-prémisse~$!B$, y compris zéro.
-
-\begin{editorial}
-La source qualifie ici $!A$ de « positif ». Ce mot signifie seulement
-que la règle n'ajoute pas de négation devant $!A$ : le schéma n'exige
-pas que $!A$ soit lui-même dépourvu de négation.
-\end{editorial}
+La décharge est facultative. Par exemple, la règle $\Intro{\lif}$
+permet de décharger un nombre quelconque d'occurrences de
+l'hypothèse~$!A$ dans la !!{derivation} de la prémisse~$!B$,
+y compris zéro.
+%
+%
+%
+%
+%
 
 \end{document}

@@ -1,0 +1,423 @@
+% Partie : méthodes
+% Chapitre : démonstrations
+% Section : schémas d'inférence
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{prf}{pat}
+
+\olsection{Schémas d'inférence}
+
+Une démonstration se compose d'inférences individuelles. Lorsque
+nous faisons une inférence, nous le signalons généralement par un
+mot comme «~donc~», «~ainsi~» ou «~par conséquent~». L'inférence
+s'appuie souvent sur un ou deux faits dont nous disposons déjà :
+il peut s'agir d'hypothèses ou de conclusions obtenues au cours de
+la démonstration. Pour être clairs, nous pouvons numéroter ces
+faits, puis indiquer, à chaque inférence, les énoncés utilisés.
+Souvent, nous expliquons aussi \emph{pourquoi} la nouvelle
+conclusion découle de ce qui précède. Certains schémas d'inférence
+reviennent très souvent dans les démonstrations ; nous allons en
+examiner quelques-uns. D'autres, comme la démonstration par
+récurrence, sont plus élaborés et seront abordés plus loin.
+
+Nous avons déjà rencontré un schéma d'inférence : déplier,
+c'est-à-dire appliquer, une définition. Pour ce faire, nous
+reformulons un énoncé qui contient le definiendum au moyen du
+definiens. Supposons, par exemple, avoir déjà établi au cours
+d'une démonstration que $D = E$ (a). Nous pouvons alors appliquer
+la définition de $=$ pour les ensembles et conclure : «~Donc,
+par définition et d'après (a), tout !!{element} de~$D$ est
+!!a{element} de~$E$, et réciproquement.~»
+
+Chose peut-être déroutante, il nous arrive de donner la
+justification d'une inférence \emph{avant} de la faire plutôt
+qu'au moment où nous la faisons. Supposons que nous n'ayons pas
+encore démontré $D = E$, mais que ce soit notre objectif. En
+appliquant la définition, nous pouvons reformuler cet objectif :
+il faut démontrer que tout !!{element} de~$D$ est !!a{element}
+de~$E$, et réciproquement. La démonstration aurait donc la forme
+suivante : (a) démontrer que tout !!{element} de~$D$ est
+!!a{element} de~$E$ ; (b) démontrer que tout !!{element} de~$E$
+est !!a{element} de~$D$ ; (c) en déduire, de (a) et de (b), que
+$D = E$ par définition. Cependant, nous ne l'écririons
+généralement pas ainsi. Nous pourrions plutôt écrire :
+\begin{quote}
+Nous voulons montrer que $D = E$. Par définition de~$=$, cela
+revient à montrer que tout !!{element} de~$D$ est !!a{element}
+de~$E$, et réciproquement.
+
+(a) \dots{} (démonstration que tout !!{element} de~$D$ est
+!!a{element} de~$E$) \dots
+
+(b) \dots{} (démonstration que tout !!{element} de~$E$ est
+!!a{element} de~$D$) \dots
+\end{quote}
+
+\subsection{Utiliser une conjonction}
+
+Le schéma d'inférence le plus simple consiste peut-être à tirer
+d'une conjonction l'un de ses membres. Autrement dit, si nous avons
+supposé ou déjà démontré $p$ et~$q$, nous pouvons conclure~$p$
+(et aussi~$q$). Cette inférence est si élémentaire qu'elle reste
+souvent implicite. Par exemple, après avoir déplié la définition
+de $D = E$, nous avons établi que tout !!{element} de~$D$ est
+!!a{element} de~$E$, et réciproquement. Nous pouvons en conclure
+que tout !!{element} de~$E$ est !!a{element} de~$D$ : c'est le
+sens de «~réciproquement~».
+
+\subsection{Démontrer une conjonction}
+
+Parfois, l'énoncé à démontrer est une conjonction : on vous demande
+de «~démontrer $p$ et $q$~». Il suffit alors de faire deux choses :
+démontrer $p$, puis démontrer $q$. Vous pouvez partager votre
+démonstration en deux parties et les numéroter pour plus de clarté.
+Dans vos premières notes, vous pourriez écrire «~(1) Démontrer
+$p$~» en haut de la page, puis «~(2) Démontrer $q$~» au milieu.
+Il arrive aussi que la conjonction ne figure pas explicitement
+dans la question, mais apparaisse après analyse. Ainsi, si l'on
+vous demande de démontrer $D = E$, le dépliage de la définition
+de~$=$ montre qu'il faut établir que tout !!{element} de~$D$
+est !!a{element} de~$E$ \emph{et} que tout !!{element} de~$E$
+est !!a{element} de~$D$.
+
+\subsection{Démontrer une disjonction}
+
+Lorsque l'énoncé à démontrer est une disjonction, c'est-à-dire
+qu'il a la forme «~$p$ ou $q$~», il suffit d'établir l'un des
+deux membres. Toutefois, il n'arrive presque jamais que l'un
+des membres découle immédiatement des hypothèses du théorème.
+Le plus souvent, ces hypothèses sont elles-mêmes disjonctives,
+ou bien on cherche à montrer que tous les objets d'un certain
+type possèdent l'une de deux propriétés : certains possèdent
+la première, les autres la seconde. C'est alors qu'une
+démonstration par cas est utile (voir plus bas).
+
+\subsection{Démonstration d'une implication}
+
+De nombreux théorèmes ont la forme d'une implication : il faut
+montrer que, si $p$ est vrai, alors $q$ l'est aussi. La mise en
+place est simple : supposons l'antécédent de l'implication, ici
+$p$, puis démontrons-en la conclusion~$q$. Si votre théorème dit
+«~si $p$, alors $q$~», commencez donc par «~supposons $p$~» ;
+à la fin, vous devez avoir démontré~$q$.
+
+Une implication peut être formulée de plusieurs manières.
+Outre «~si $p$, alors $q$~», on peut lire «~$p$ seulement si
+$q$~», «~$q$ si $p$~» ou «~$q$, pourvu que $p$~». Toutes ces
+formulations ont le même sens et demandent de supposer $p$
+pour démontrer~$q$. Rappelons qu'une équivalence, «~$p$ si et
+seulement si (ssi) $q$~», réunit deux implications : si $p$
+alors $q$, et si $q$ alors~$p$. Il suffit donc de faire deux
+démonstrations d'implication, une pour chaque sens. Parfois,
+on peut cependant démontrer une équivalence en enchaînant
+d'autres équivalences, de façon à partir de «~$p$~» pour
+arriver à «~$q$~» ; il faut alors vérifier que \emph{chaque}
+étape est bien une équivalence.
+
+\subsection{Énoncés universels}
+
+Utiliser un énoncé universel est simple : ce qui vaut pour
+tous les objets vaut pour chacun d'eux en particulier.
+Supposons, par exemple, que l'hypothèse d'une démonstration
+soit $A \subseteq B$. En dépliant la définition de
+$\subseteq$, cela signifie que, pour tout $x \in A$,
+$x \in B$. Si nous savons aussi que $z \in A$, nous
+pouvons donc conclure que $z \in B$.
+
+Démontrer un énoncé universel peut sembler un peu plus délicat.
+Ces énoncés se présentent souvent sous la forme «~si $x$
+possède la propriété~$P$, alors il possède la propriété~$Q$~»
+ou «~tous les $P$ sont des $Q$~». L'énoncé ne se présente
+pas toujours exactement ainsi : il faut parfois s'exercer
+à reconnaître ce que l'on nous demande de démontrer. Mais
+il s'agit souvent d'établir que tous les objets qui possèdent
+une propriété en possèdent une autre.
+
+Pour démontrer un énoncé universel, on donne un nom, ou une
+variable, à l'un des objets qui possèdent la première
+propriété, puis on montre qu'il possède aussi la seconde.
+Autrement dit, pour démontrer quelque chose concernant
+\emph{tous} les $P$, on le démontre pour un $P$
+\emph{arbitraire}. Le nom introduit désigne précisément
+un tel objet. Nous utilisons habituellement une seule
+lettre, choisie selon certaines conventions : $n$ pour
+un nombre naturel, $!A$ pour une !!{formula}, $A$ pour
+un ensemble, $f$ pour une fonction, etc.
+
+Le point délicat est de conserver cette généralité pendant
+toute la démonstration. On suppose qu'un objet arbitraire
+(«~$x$~») possède la propriété~$P$, puis on établit qu'il
+possède la propriété~$Q$, en n'utilisant que les définitions
+et les hypothèses permises. Puisque nous n'avons rien
+stipulé de particulier au sujet de $x$, hormis la propriété
+$P$, nous pouvons affirmer que tout objet possédant $P$
+possède aussi~$Q$. Ainsi, $x$ représente ici \emph{tous}
+les objets qui ont la propriété~$P$.
+
+\begin{prop}
+  Pour tous ensembles $A$ et $B$, $A \subseteq A \cup B$.
+\end{prop}
+
+\begin{proof}
+  Soient $A$ et $B$ des ensembles arbitraires. Nous voulons
+  montrer que $A \subseteq A \cup B$. Par définition de
+  $\subseteq$, il faut établir que, pour tout $x$, si
+  $x \in A$, alors $x \in A \cup B$. Soit donc $x \in A$
+  un !!{element} arbitraire de~$A$. Nous devons montrer
+  que $x \in A \cup B$. Puisque $x \in A$, nous avons
+  $x \in A$ ou $x \in B$. Donc
+  $x \in \Setabs{z}{z \in A \lor z \in B}$.
+  Par définition de $\cup$, cela signifie
+  $x \in A \cup B$.
+\end{proof}
+
+\subsection{Démonstration par cas}
+
+Supposons qu'une disjonction soit une hypothèse ou une
+conclusion déjà établie : nous avons supposé ou démontré
+que $p$ ou $q$ est vrai. Nous voulons démontrer~$r$.
+Procédons en deux étapes : supposons d'abord $p$ et
+démontrons~$r$ ; supposons ensuite $q$ et démontrons
+à nouveau~$r$. Cela fonctionne parce que nous savons
+ou supposons que l'une des deux possibilités se réalise.
+Chaque étape établit qu'une possibilité suffit à rendre
+$r$ vrai. Si les deux sont vraies, nous avons deux raisons,
+et non une seule, de conclure~$r$ : il n'est pas nécessaire
+de traiter séparément l'hypothèse conjointe $p$ et~$q$.
+Pour annoncer cette méthode, nous disons que nous
+«~distinguons des cas~».
+
+Supposons, par exemple, savoir que $x \in B \cup C$.
+L'ensemble $B \cup C$ est défini comme
+$\Setabs{z}{z \in B \text{ ou } z \in C}$.
+Autrement dit, par définition, $x \in B$ ou $x \in C$.
+Pour en déduire $x \in A$, nous supposerions d'abord
+$x \in B$ et démontrerions $x \in A$ sous cette
+hypothèse ; nous supposerions ensuite $x \in C$ et
+démontrerions de nouveau $x \in A$. Vous écririez
+«~Distinguons deux cas~» sous l'hypothèse, puis
+«~Cas (1) : $x \in B$~» et, plus bas,
+«~Cas (2) : $x \in C$~». Il resterait à remplir
+chacune des deux parties de la page.
+
+La démonstration par cas est particulièrement utile
+lorsque la conclusion est elle-même disjonctive.
+En voici un exemple simple :
+
+\begin{prop}
+Supposons $B \subseteq D$ et $C \subseteq E$.
+Alors $B \cup C \subseteq D \cup E$.
+\end{prop}
+
+\begin{proof}
+  Supposons (a) $B \subseteq D$ et (b) $C \subseteq E$.
+  Par définition, tout $x \in B$ appartient aussi à $D$
+  (c), et tout $x \in C$ appartient aussi à $E$ (d).
+  Pour montrer $B \cup C \subseteq D \cup E$, nous devons
+  établir que, si $x \in B \cup C$, alors
+  $x \in D \cup E$ (par définition de $\subseteq$).
+  Or $x \in B \cup C$ si et seulement si $x \in B$
+  ou $x \in C$ (par définition de~$\cup$).
+  De même, $x \in D \cup E$ si et seulement si
+  $x \in D$ ou $x \in E$. Il faut donc démontrer :
+  pour tout $x$, si $x \in B$ ou $x \in C$,
+  alors $x \in D$ ou $x \in E$.
+
+  \begin{quote}
+  Jusqu'ici, nous n'avons fait que déplier des définitions !{}
+  Nous avons reformulé notre proposition sans
+  $\subseteq$ ni $\cup$ : il reste à démontrer
+  une implication universelle. Selon la méthode décrite
+  plus haut, nous introduisons un objet $x$ arbitraire
+  et supposons vraie la partie «~si~», puis nous
+  démontrons la partie «~alors~». Autrement dit,
+  nous supposons $x \in B$ ou $x \in C$ et montrons
+  $x \in D$ ou $x \in E$.\footnote{
+    Ce paragraphe explique seulement notre démarche :
+    il ne fait pas partie de la démonstration et vous
+    n'avez pas besoin de donner autant de détails dans
+    vos propres démonstrations.}
+  \end{quote}
+
+  Supposons $x \in B$ ou $x \in C$. Nous devons
+  montrer $x \in D$ ou $x \in E$. Distinguons
+  deux cas.
+
+  Cas 1 : $x \in B$. D'après (c), $x \in D$.
+  Donc $x \in D$ ou $x \in E$. (Nous venons
+  d'utiliser l'inférence étudiée dans la
+  sous-section précédente !)
+
+  Cas 2 : $x \in C$. D'après (d), $x \in E$.
+  Donc $x \in D$ ou $x \in E$.
+\end{proof}
+
+\subsection{Démontrer un énoncé d'existence}
+
+Lorsqu'on vous demande de démontrer un énoncé d'existence,
+la question prend généralement la forme «~démontrer qu'il
+existe un~$x$ tel que $\dots x \dots$~» : il faut établir
+qu'un objet possède la propriété décrite par
+«~$\dots x \dots$~». Il faut alors trouver un objet
+approprié et montrer qu'il possède cette propriété.
+Cela paraît simple, mais la démonstration peut être
+délicate. Elle demande souvent de \emph{construire}
+ou de \emph{définir} un objet, puis de vérifier qu'il
+possède la propriété requise. Trouver le bon objet
+peut être difficile ; vérifier sa propriété aussi ;
+parfois, il n'est même pas facile de montrer que la
+définition proposée désigne effectivement un objet !{}
+
+En général, vous commencez par désigner l'objet :
+«~soit $x$ \dots~», où les points de suspension
+précisent l'objet envisagé. Au besoin, vous montrez
+que cette description définit bien un objet existant.
+Vous établissez ensuite que $x$ possède la
+propriété~$Q$. Voici un exemple simple.
+
+\begin{prop}
+  Supposons $x \in B$. Alors il existe un~$A$
+  tel que $A \subseteq B$ et $A \neq \emptyset$.
+\end{prop}
+
+\begin{proof}
+  Supposons $x \in B$. Posons $A = \{x\}$.
+  \begin{quote}
+    Nous avons défini l'ensemble~$A$ en énumérant
+    ses !!{element}s. Puisque $x$ est supposé être
+    un objet et que nous pouvons former l'ensemble
+    dont il est l'unique !!{element}, il n'est pas
+    nécessaire ici de prouver séparément que notre
+    définition donne bien un ensemble~$A$. Mais
+    nous devons encore montrer que $A$ possède les
+    propriétés exigées par la proposition : sans
+    cela, la démonstration serait incomplète !{}
+  \end{quote}
+  Puisque $x \in A$, nous avons $A \neq \emptyset$.
+  \begin{quote}
+    Nous utilisons ici la définition $A = \{x\}$,
+    ainsi que les faits évidents $x \in \{x\}$ et
+    $x \notin \emptyset$.
+  \end{quote}
+  Puisque $x$ est l'unique !!{element} de~$\{x\}$
+  et que $x \in B$, tout !!{element} de~$A$
+  est aussi !!a{element} de~$B$. Par définition
+  de~$\subseteq$, $A \subseteq B$.
+\end{proof}
+
+\subsection{Utiliser un énoncé d'existence}
+
+Supposons que vous sachiez qu'un énoncé d'existence
+est vrai, parce que vous l'avez démontré ou parce
+qu'il est donné comme hypothèse : par exemple
+«~pour un certain~$x$, $x \in A$~» ou
+«~il existe un $x \in A$~». Pour l'utiliser dans
+une démonstration, vous pouvez donner un nom à
+l'un des objets dont il affirme l'existence.
+Puisque $A$ contient au moins un objet, ce nom
+peut en désigner un, même si vous ne savez pas
+le choisir concrètement ni le décrire autrement
+que par son appartenance à~$A$. Aux fins de la
+démonstration, nommez-en donc un. Il est essentiel
+de choisir un nom qui n'a pas encore servi et
+qui n'apparaît pas dans vos hypothèses : sinon,
+le raisonnement risque d'être erroné. Vous passez
+ainsi de «~pour un certain $x$, $x \in A$~» à
+«~soit $a \in A$~». Vous pouvez alors raisonner
+sur~$a$, utiliser d'autres hypothèses, puis
+aboutir à une conclusion~$p$. Si $a$ ne figure ni dans $p$
+ni dans les hypothèses encore ouvertes autres que $a \in A$,
+on peut conclure $p$ à partir de «~pour un certain $x$, $x \in A$~»
+et des autres hypothèses utilisées.
+
+\begin{prop}
+Si $A \neq \emptyset$, alors $A \cup B \neq \emptyset$.
+\end{prop}
+
+\begin{proof}
+  Supposons $A \neq \emptyset$. Il existe donc
+  un $x$ tel que $x \in A$.
+  \begin{quote}
+    Nous avons d'abord reformulé l'hypothèse
+    de la proposition. Cette hypothèse,
+    $A \neq \emptyset$, cache un énoncé d'existence
+    que l'on découvre en dépliant plusieurs
+    définitions. Selon la définition de $=$,
+    $A = \emptyset$ si et seulement si tout
+    $x \in A$ appartient aussi à $\emptyset$
+    et que tout $x \in \emptyset$ appartient
+    aussi à $A$. En logique classique, en niant les deux
+    membres de cette équivalence, on obtient :
+    $A \neq \emptyset$ si et seulement si
+    un certain $x \in A$ n'appartient pas
+    à $\emptyset$, ou un certain
+    $x \in \emptyset$ n'appartient pas à~$A$.
+    Comme rien n'appartient à $\emptyset$,
+    le second terme de la disjonction est
+    toujours faux ; le premier se réduit
+    à «~$x \in A$~». Ainsi,
+    $A \neq \emptyset$ si et seulement s'il
+    existe un $x$ tel que $x \in A$.
+    Voilà un énoncé d'existence. Utilisons-le
+    en donnant un nom à l'un des !!{element}s
+    de~$A$ :
+  \end{quote}
+  Soit $a \in A$.
+  \begin{quote}
+    Nous avons nommé l'un des objets de~$A$.
+    Nous allons raisonner sur~$a$, en veillant
+    à ne rien supposer de plus que $a \in A$ :
+  \end{quote}
+  Puisque $a \in A$, nous avons
+  $a \in A \cup B$ par définition de~$\cup$.
+  Il existe donc un $x$ tel que $x \in A \cup B$,
+  c'est-à-dire $A \cup B \neq \emptyset$.
+  \begin{quote}
+    Dans cette dernière étape, nous sommes
+    passés de «~$a \in A \cup B$~» à
+    «~il existe un $x$ tel que $x \in A \cup B$~».
+    Ce dernier énoncé ne mentionne plus~$a$ :
+    il découle donc de «~il existe un $x$ tel
+    que $x \in A$~», sans dépendre du témoin
+    choisi. Cela signifie que
+    $A \cup B \neq \emptyset$.
+  \end{quote}
+\end{proof}
+
+Il est peut-être préférable de distinguer les
+variables liées, comme «~$x$~», des noms
+hypothétiques de témoins, comme $a$, ainsi
+que nous l'avons fait. En pratique, cependant,
+nous ne le faisons pas toujours et employons
+simplement $x$ :
+\begin{quote}
+Supposons $A \neq \emptyset$, c'est-à-dire
+qu'il existe un $x \in A$. Par définition
+de $\cup$, $x \in A \cup B$. Donc
+$A \cup B \neq \emptyset$.
+\end{quote}
+Dans ce cas, il faut toutefois faire très
+attention à employer des lettres distinctes
+pour les témoins de différents énoncés
+d'existence. Par exemple, ce qui suit
+n'est \emph{pas} une démonstration correcte
+de «~si $A \neq \emptyset$ et
+$B \neq \emptyset$, alors
+$A \cap B \neq \emptyset$~»,
+énoncé qui est lui-même faux :
+\begin{quote}
+Supposons $A \neq \emptyset$ et
+$B \neq \emptyset$. Il existe donc
+un $x$ tel que $x \in A$, et il
+existe aussi un $x$ tel que $x \in B$.
+Puisque $x \in A$ et $x \in B$,
+la définition de~$\cap$ donne
+$x \in A \cap B$. Donc
+$A \cap B \neq \emptyset$.
+\end{quote}
+Voyez-vous quelle étape est erronée
+et pourquoi la conclusion ne vaut pas ?
+
+\end{document}

@@ -1,0 +1,476 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : inversibilité
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{seq}{inv}
+
+\olsection{Inversibilité des règles}
+
+\begin{defn}
+Une règle~$R$,
+\[
+\AxiomC{$S_1$}
+\AxiomC{$\dots$}
+\AxiomC{$S_n$}
+\RightLabel{$R$}
+\TrinaryInfC{$S$}
+\DisplayProof
+\]
+est \emph{inversible} dans un calcul si, dès que
+$\Proves S$, on a $\Proves S_i$ pour
+$i = 1$, \dots,~$n$.
+Elle est \emph{inversible sans augmentation de hauteur},
+ou \emph{hp-inversible}, si, pour toute borne de hauteur,
+$\Proves[h] S$ entraîne $\Proves[h] S_i$
+pour $i = 1$, \dots,~$n$.
+La borne de hauteur et le nombre de prémisses
+sont ici deux paramètres distincts.
+\end{defn}
+
+\begin{lem}\ollabel{lem:G3c-invert}
+Les règles de~\Log{G3c} pour $\lnot$, $\land$,
+$\lor$ et $\lif$ sont inversibles sans augmentation
+de hauteur. Plus précisément :
+\begin{enumerate}
+  \item \RightR{\lnot} : si
+  $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, \lnot !A$,
+  alors $\Log{G3c} \Proves[n] !A, \Gamma \Sequent \Delta$.
+  \item \LeftR{\lnot} : si
+  $\Log{G3c} \Proves[n] \Gamma, \lnot !A \Sequent \Delta$,
+  alors $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !A$.
+  \item \RightR{\land} : si
+  $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !A \land !B$,
+  alors $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !A$
+  et $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !B$.
+  \item \LeftR{\land} : si
+  $\Log{G3c} \Proves[n] \Gamma, !A \land !B \Sequent \Delta$,
+  alors $\Log{G3c} \Proves[n] !A, !B, \Gamma \Sequent \Delta$.
+  \item \RightR{\lor} : si
+  $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !A \lor !B$,
+  alors $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !A, !B$.
+  \item \LeftR{\lor} : si
+  $\Log{G3c} \Proves[n] !A \lor !B, \Gamma \Sequent \Delta$,
+  alors $\Log{G3c} \Proves[n] !A, \Gamma \Sequent \Delta$
+  et $\Log{G3c} \Proves[n] !B, \Gamma \Sequent \Delta$.
+  \item \RightR{\lif} : si
+  $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !A \lif !B$,
+  alors $\Log{G3c} \Proves[n] !A, \Gamma \Sequent \Delta, !B$.
+  \item \LeftR{\lif} : si
+  $\Log{G3c} \Proves[n] !A \lif !B, \Gamma \Sequent \Delta$,
+  alors $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !A$
+  et $\Log{G3c} \Proves[n] !B, \Gamma \Sequent \Delta$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Pour chacune de ces règles~$R$, une preuve~$\pi$
+de sa conclusion~$S$ doit fournir des preuves~$\pi_i$
+de ses prémisses $S_i$, avec
+$\pheight{\pi_i} \le \pheight{\pi}$.
+Considérons \LeftR{\land}. Supposons donnée une
+preuve~$\pi$ de $!A \land !B, \Gamma \Sequent \Delta$.
+Il faut construire une preuve $\pi'$ de
+$!A, !B, \Gamma \Sequent \Delta$ telle que
+$\pheight{\pi'} \le \pheight{\pi}$.
+On raisonne par récurrence sur $n = \pheight{\pi}$.
+
+Si $n = 0$, la preuve $\pi$ se réduit à l'axiome
+$!A \land !B, \Gamma \Sequent \Delta$.
+Un axiome d'identité de \Log{G3c} a la forme
+$!C, \Gamma \Sequent \Delta, !C$, avec $!C$ atomique.
+La formule $!C$ ne peut donc pas être $!A \land !B$ :
+elle se trouve à la fois dans $\Gamma$ et~$\Delta$.
+Le séquent $!A, !B, \Gamma \Sequent \Delta$
+reste alors un axiome d'identité.
+Si l'axiome initial est un axiome de l'absurde,
+l'absurde se trouve dans l'antécédent de contexte,
+et y reste après la décomposition.
+Dans les deux cas, on obtient une preuve~$\pi'$
+de hauteur~$0$.
+
+Si $n>0$, la preuve se termine par une inférence.
+L'hypothèse de récurrence vaut pour toute preuve
+de hauteur~$<n$, quels que soient ses contextes :
+pour $k<n$ et tous $\Pi$ et $\Lambda$,
+une preuve de hauteur~$k$ de
+$!A \land !B, \Pi \Sequent \Lambda$ donne une
+preuve de hauteur~$\le k$ de
+$!A, !B, \Pi \Sequent \Lambda$.
+
+Si l'occurrence choisie de $!A \land !B$ est
+principale dans la dernière inférence, celle-ci
+est \LeftR{\land}. Sa sous-preuve immédiate~$\pi_1$
+se termine par $!A, !B, \Gamma \Sequent \Delta$,
+et $\pheight{\pi_1} < \pheight{\pi}$ donne le résultat.
+
+Sinon, $!A \land !B$ appartient au contexte.
+On applique l'hypothèse aux sous-preuves immédiates
+de la dernière règle~$R$. On obtient une preuve~$\pi_1'$,
+ou deux preuves~$\pi_1'$ et~$\pi_2'$,
+de hauteurs au plus celles des sous-preuves originales.
+Leurs séquents finaux ont $!A, !B$ à gauche
+à la place de $!A \land !B$. On réapplique $R$
+pour obtenir~$\pi'$. Les constantes de ces formules
+sont celles de la conjonction : cette décomposition
+n'en introduit aucune et conserve les conditions
+sur les constantes propres.
+Par exemple, si $\pi$ se termine par~\LeftR{\lif},
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$!A \land !B, \Gamma' \fCenter \Delta, !C$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$!A \land !B, \Gamma', !D \fCenter \Delta$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$!A \land !B, \Gamma', !C \lif !D \fCenter \Delta$
+\DisplayProof
+\]
+la principale est $!C \lif !D$, et le contexte
+gauche est $!A \land !B, \Gamma'$,
+avec $\Gamma = \Gamma', !C \lif !D$.
+L'hypothèse donne des preuves $\pi_1'$ et $\pi_2'$
+de $!A, !B, \Gamma' \Sequent \Delta, !C$
+et de $!A, !B, \Gamma', !D \Sequent \Delta$.
+On les combine par \LeftR{\lif} :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!A, !B, \Gamma' \fCenter \Delta, !C$
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$!A, !B, \Gamma', !D \fCenter \Delta$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$!A, !B, \Gamma', !C \lif !D \fCenter \Delta$
+\DisplayProof
+\]
+Les hauteurs vérifient
+\begin{align*}
+\pheight{\pi} & = \max(\pheight{\pi_1}, \pheight{\pi_2}) + 1\\
+\pheight{\pi'} & = \max(\pheight{\pi_1'}, \pheight{\pi_2'}) + 1
+\intertext{par définition, et}
+\pheight{\pi_1'} & \le \pheight{\pi_1}\\
+\pheight{\pi_2'} & \le \pheight{\pi_2}
+\intertext{par hypothèse de récurrence. Donc,}
+\pheight{\pi'} & \le \pheight{\pi}.
+\end{align*}
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref{lem:G3c-invert} pour \RightR{\lif}.
+\end{prob}
+
+\begin{lem}\ollabel{lem:invert-quant}
+Les règles \RightR{\lforall} et \LeftR{\lexists}
+sont inversibles sans augmentation de hauteur
+au sens suivant :
+\begin{enumerate}
+  \item si
+  $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, \lforall[x][!A(x)]$,
+  alors $\Log{G3c} \Proves[n] \Gamma \Sequent \Delta, !A(c)$ ;
+  \item si
+  $\Log{G3c} \Proves[n] \lexists[x][!A(x)], \Gamma \Sequent \Delta$,
+  alors $\Log{G3c} \Proves[n] !A(c), \Gamma \Sequent \Delta$ ;
+\end{enumerate}
+pour toute constante $c$ absente de $\Gamma$,
+de $\Delta$ et, respectivement, de
+$\lforall[x][!A(x)]$ ou de $\lexists[x][!A(x)]$.
+\end{lem}
+
+\begin{proof}
+On démontre (1). Le cas (2) est laissé en exercice.
+On peut supposer la preuve~$\pi$ régulière et choisir une
+constante~$d$, distincte de~$c$, qui n'apparaît nulle part
+dans~$\pi$, y compris comme constante propre.
+On obtient d'abord une preuve de $\Gamma \Sequent \Delta, !A(d)$,
+par récurrence sur la hauteur de~$\pi$ comme dans le
+\olref{lem:G3c-invert}.
+
+À hauteur zéro, la formule quantifiée n'est pas atomique.
+L'identité atomique qui ferme le séquent reste dans les contextes,
+ou l'absurde reste à gauche. L'instance obtenue est donc un axiome.
+
+Si $\lforall[x][!A(x)]$ est principale, la dernière règle est
+$\RightR{\lforall}$ et sa prémisse est
+$\Gamma \Sequent \Delta, !A(a)$. La sous-preuve immédiate~$\pi_1$
+a une hauteur strictement inférieure à celle de~$\pi$.
+La constante~$a$ est absente de la conclusion de l'inférence.
+Comme $\pi$ est régulière, $a$ n'est constante propre d'aucune
+inférence de~$\pi_1$. La constante~$d$ n'en est pas une non plus.
+Le \olref[qua]{lem:subst-regular} s'applique à
+$\Subst{\pi_1}{d}{a}$. On obtient une preuve de même hauteur
+que~$\pi_1$ du séquent $\Gamma \Sequent \Delta, !A(d)$.
+
+Si $\lforall[x][!A(x)]$ n'est pas principale, elle appartient
+au contexte de la dernière inférence. Par exemple, pour
+\RightR{\land} avec $!B \land !C$ principale, la preuve se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta', \lforall[x][!A(x)], !B$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$\Gamma \fCenter \Delta', \lforall[x][!A(x)], !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma \fCenter \Delta', \lforall[x][!A(x)], !B \land !C$
+\DisplayProof
+\]
+où $\Delta = \Delta', !B \land !C$.
+Puisque $d$ est absente des deux sous-preuves, l'hypothèse
+de récurrence fournit $\pi_1'$ et~$\pi_2'$ telles que
+$\pheight{\pi_1'} \le \pheight{\pi_1}$ et
+$\pheight{\pi_2'} \le \pheight{\pi_2}$. On obtient
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$\Gamma \fCenter \Delta', !A(d), !B$
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$\Gamma \fCenter \Delta', !A(d), !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma \fCenter \Delta', !A(d), !B \land !C$
+\DisplayProof
+\]
+avec
+$\pheight{\pi'} = \max(\pheight{\pi_1'}, \pheight{\pi_2'})+1 \le \pheight{\pi}$.
+Les autres règles se réappliquent de la même façon. Pour
+\LeftR{\lforall} et \RightR{\lexists}, on garde le même terme
+d'instanciation, qui ne contient pas~$d$. Pour les règles
+à constante propre, l'instance $!A(d)$ ne contient pas
+la constante propre de la dernière inférence, puisque
+celle-ci était absente de la conclusion et distincte de~$d$.
+
+On a ainsi une preuve~$\pi'$ de $\Gamma \Sequent \Delta, !A(d)$
+de hauteur au plus $\pheight{\pi}$. On la régularise en choisissant
+toutes ses constantes propres différentes de $c$ et de~$d$,
+sans changer sa conclusion ni sa hauteur. On applique ensuite
+le lemme de substitution à $\Subst{\pi'}{c}{d}$. Comme $d$
+était absente de la conclusion de~$\pi$, le séquent obtenu
+est bien $\Gamma \Sequent \Delta, !A(c)$.
+%
+%
+%
+%
+%
+\end{proof}
+
+\Olref{lem:G3c-invert} intervient dans la preuve
+du théorème d'élimination des coupures.
+Il permet aussi d'obtenir le résultat suivant.
+
+\begin{prop}\ollabel{prop:G3c-cont-adm}
+Les règles de contraction \LeftR{\Contraction}
+et \RightR{\Contraction} de~\Log{G1c}
+sont admissibles dans~\Log{G3c} sans augmentation
+de hauteur.
+\end{prop}
+
+\begin{proof}
+On traite simultanément \RightR{\Contraction}
+et \LeftR{\Contraction}.
+Soit $\pi$ une preuve de
+$\Gamma \Sequent \Delta, !A, !A$ ou de
+$!A, !A, \Gamma \Sequent \Delta$ dans~\Log{G3c}.
+Il faut une preuve~$\pi'$ dans \Log{G3c} de
+$\Gamma \Sequent \Delta, !A$ ou, respectivement,
+de $!A, \Gamma \Sequent \Delta$, avec
+$\pheight{\pi'} \le \pheight{\pi}$.
+On raisonne par récurrence sur $n = \pheight{\pi}$.
+
+Si $n=0$, la preuve se réduit à un axiome.
+Lorsque $\Gamma \Sequent \Delta, !A, !A$
+est un axiome d'identité, une formule atomique~$!C$
+est commune à $\Gamma$ et~$\Delta$, ou $!A$
+est atomique et appartient à~$\Gamma$.
+Après suppression d'une des deux occurrences,
+$\Gamma \Sequent \Delta, !A$ reste un axiome.
+Un axiome de l'absurde reste aussi un axiome,
+puisque son antécédent n'est pas modifié.
+Pour $!A, !A, \Gamma \Sequent \Delta$,
+le même argument conserve une identité atomique ;
+si l'absurde est la formule contractée, une occurrence
+reste à gauche. Les deux types d'axiomes sont donc couverts.
+
+Si $n>0$, soit $R$ la dernière règle.
+Quand les occurrences à contracter de $!A$
+ne sont pas principales, on applique l'hypothèse
+aux sous-preuves immédiates puis on réapplique $R$,
+comme dans le \olref{lem:G3c-invert}.
+L'hypothèse porte sur toute preuve de hauteur~$k<n$
+de $\Pi \Sequent \Lambda, !D, !D$
+ou de $!D, !D, \Pi \Sequent \Lambda$.
+Elle donne une preuve de hauteur~$\le k$ de
+$\Pi \Sequent \Lambda, !D$ ou, respectivement,
+de $!D, \Pi \Sequent \Lambda$.
+Les contextes et la formule contractée peuvent donc
+différer de $\Gamma$, de $\Delta$ et de~$!A$.
+
+Par exemple, si $R$ est $\RightR{\land}$
+et que $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta', !B, !A, !A$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$\Gamma \fCenter \Delta', !C, !A, !A$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma \fCenter \Delta', !B \land !C, !A, !A$
+\DisplayProof
+\]
+avec $\Delta = \Delta', !B \land !C$,
+l'hypothèse fournit des preuves $\pi_1'$ et $\pi_2'$
+de $\Gamma \fCenter \Delta', !B, !A$
+et de $\Gamma \fCenter \Delta', !C, !A$,
+avec $\pheight{\pi_1'} \le \pheight{\pi_1}$
+et $\pheight{\pi_2'} \le \pheight{\pi_2}$.
+La preuve~$\pi'$ est
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$\Gamma \fCenter \Delta', !B, !A$
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$\Gamma \fCenter \Delta', !C, !A$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma \fCenter \Delta', !B \land !C, !A$
+\DisplayProof
+\]
+
+Si une occurrence de $!A$ est principale,
+on applique le lemme d'inversion
+\olref{lem:G3c-invert} aux sous-preuves immédiates,
+puis l'hypothèse de récurrence et enfin la règle~$R$.
+Supposons, par exemple, que $\pi$ prouve
+$\Gamma \Sequent \Delta, !A, !A$,
+avec $!A \ident (!B \land !C)$ principale
+dans la dernière inférence :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta, !B \land !C, !B$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$\Gamma \fCenter \Delta, !B \land !C, !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma \fCenter \Delta, !B \land !C, !B \land !C$
+\DisplayProof
+\]
+Le \olref{lem:G3c-invert} appliqué à $\pi_1$
+donne une preuve~$\pi_1'$ de
+$\Gamma \Sequent \Delta, !B, !B$.
+Il donne aussi une preuve de
+$\Gamma \Sequent \Delta, !C, !B$,
+dont nous n'avons pas besoin.
+Appliqué à~$\pi_2$, le
+\olref{lem:G3c-invert} fournit une preuve~$\pi_2'$
+de $\Gamma \Sequent \Delta, !C, !C$.
+L'inversion de \RightR{\land} n'augmente pas la hauteur :
+$\pheight{\pi_1'} \le \pheight{\pi_1} < \pheight{\pi}$
+et $\pheight{\pi_2'} \le \pheight{\pi_2} < \pheight{\pi}$.
+L'hypothèse s'applique donc à $\pi_1'$ et $\pi_2'$.
+On obtient des preuves~$\pi_1''$ et $\pi_2''$
+de $\Gamma \Sequent \Delta, !B$
+et de $\Gamma \Sequent \Delta, !C$, avec
+$\pheight{\pi_1''} \le \pheight{\pi_1'} \le \pheight{\pi_1}$
+et $\pheight{\pi_2''} \le \pheight{\pi_2'} \le \pheight{\pi_2}$.
+La preuve~$\pi'$ est alors
+\[
+\AxiomC{}
+\RightLabel{$\pi_1''$}
+\Deduce$\Gamma \fCenter \Delta, !B$
+\AxiomC{}
+\RightLabel{$\pi_2''$}
+\Deduce$\Gamma \fCenter \Delta, !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma \fCenter \Delta, !B \land !C$
+\DisplayProof
+\]
+avec $\pheight{\pi'} \le \pheight{\pi}$.
+
+Les cas quantifiés où la formule contractée
+est principale demandent une attention particulière.
+Supposons $!A \ident \lforall[x][!B(x)]$
+principale à droite. La preuve $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta, \lforall[x][!B(x)], !B(a)$
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$\Gamma \fCenter \Delta, \lforall[x][!B(x)], \lforall[x][!B(x)]$
+\DisplayProof
+\]
+Par le \olref{lem:invert-quant}, il existe une preuve~$\pi_1'$
+de hauteur $\le \pheight{\pi_1}$ de
+$\Gamma \fCenter \Delta, !B(c), !B(a)$
+pour toute constante~$c$ absente de
+$\Gamma \fCenter \Delta, \lforall[x][!B(x)], !B(a)$.
+On régularise $\pi_1'$ en choisissant ses constantes
+propres différentes de $a$ et de $c$.
+La régularité seule ne garantirait pas cette
+absence dans les inférences supérieures.
+Le \olref[qua]{lem:subst-regular} s'applique
+alors : $\Subst{\pi_1'}{a}{c}$ est une preuve
+de $\Gamma \fCenter \Delta, !B(a), !B(a)$
+de hauteur $\le \pheight{\pi_1}$.
+L'hypothèse donne une preuve~$\pi_1''$
+de $\Gamma \fCenter \Delta, !B(a)$.
+On réapplique \RightR{\lforall} :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1''$}
+\Deduce$\Gamma \fCenter \Delta, !B(a)$
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$\Gamma \fCenter \Delta, \lforall[x][!B(x)]$
+\DisplayProof
+\]
+La constante propre est absente de la conclusion
+par la condition de l'inférence originale,
+et $\pheight{\pi'} \le \pheight{\pi}$.
+
+Supposons maintenant $!A \ident \lexists[x][!B(x)]$
+principale à droite. La preuve $\pi$ a la forme
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta, \lexists[x][!B(x)], \lexists[x][!B(x)], !B(t)$
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$\Gamma \fCenter \Delta, \lexists[x][!B(x)], \lexists[x][!B(x)]$
+\DisplayProof
+\]
+L'hypothèse s'applique à~$\pi_1$ et fournit
+une preuve~$\pi_1'$ de
+$\Gamma \Sequent \Delta, \lexists[x][!B(x)], !B(t)$.
+Aucun lemme d'inversion n'est nécessaire :
+la règle a conservé les deux occurrences
+de l'existentielle dans sa prémisse.
+La preuve~$\pi'$ est
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$\Gamma \fCenter \Delta,  \lexists[x][!B(x)], !B(t)$
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$\Gamma \fCenter \Delta, \lexists[x][!B(x)]$
+\DisplayProof
+\]
+avec $\pheight{\pi'} \le \pheight{\pi}$.
+\end{proof}
+
+\begin{prob}
+Esquisser la preuve de la \olref{prop:G3c-cont-adm}
+pour \LeftR{\Contraction}, en décrivant les cas
+$!A \ident (!B \land !C)$ et $!A \ident (!B \lif !C)$.
+\end{prob}
+
+\begin{prob}
+Esquisser la preuve de la \olref{prop:G3c-cont-adm}
+pour \LeftR{\Contraction} dans les cas quantifiés
+restants : $!A \ident \lforall[x][!B(x)]$
+et $!A \ident \lexists[x][!B(x)]$.
+\end{prob}
+
+\end{document}

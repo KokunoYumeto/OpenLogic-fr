@@ -1,0 +1,195 @@
+% Part: many-valued-logic
+% Chapter: syntax-and-semantics
+% Section: sublogics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{syn}{sub}
+
+\olsection{Les logiques plurivalentes comme
+  sous-logiques de~$\LogCL$}
+
+Les logiques plurivalentes usuelles
+sont définies par des matrices dont
+les fonctions de vérité coïncident
+avec les fonctions classiques lorsque
+leurs arguments appartiennent à
+$\{\True,\False\}$. En particulier,
+si $x\in\{\True,\False\}$, alors
+$\tf{\lnot}[\Log L](x)
+=\tf{\lnot}[\LogCL](x)$.
+De même, pour chacun des connecteurs
+$\star\in\{\land,\lor,\lif\}$
+et tous $x,y\in\{\True,\False\}$,
+on a
+$\tf{\star}[\Log L](x,y)
+=\tf{\star}[\LogCL](x,y)$.
+Les restrictions des quatre fonctions
+de vérité à ces valeurs sont donc
+exactement les fonctions classiques.
+
+\begin{prop}\ollabel{prop:mvl-cl}
+Supposons que le langage d'une logique
+plurivalente~$\Log L$ contienne
+$\lnot$, $\land$, $\lor$ et $\lif$,
+que $\True,\False\in V$, et que ses
+fonctions de vérité vérifient :
+\begin{enumerate}
+\item\ollabel{prop:not}
+  $\tf{\lnot}[\Log L](x)
+   =\tf{\lnot}[\LogCL](x)$
+  pour $x\in\{\True,\False\}$;
+\item\ollabel{prop:land}
+  $\tf{\land}[\Log L](x,y)
+   =\tf{\land}[\LogCL](x,y)$;
+\item\ollabel{prop:lor}
+  $\tf{\lor}[\Log L](x,y)
+   =\tf{\lor}[\LogCL](x,y)$;
+\item\ollabel{prop:lif}
+  $\tf{\lif}[\Log L](x,y)
+   =\tf{\lif}[\LogCL](x,y)$,
+\end{enumerate}
+les trois dernières égalités valant
+pour tous $x,y\in\{\True,\False\}$.
+Alors, pour toute formule~$!A$
+construite uniquement avec des
+variables propositionnelles et ces
+quatre connecteurs, et pour toute
+valuation classique
+$\pAssign{v}\colon\PVar\to
+\{\True,\False\}$, on a
+\[
+  \pValue{v}(!A)[\Log L]
+    =\pValue{v}(!A)[\LogCL].
+\]
+\end{prop}
+
+\begin{proof}
+Procédons par induction sur~$!A$.
+\begin{enumerate}
+\item Si $!A\ident p$ est atomique,
+  alors
+  $\pValue{v}(!A)[\Log L]
+   =\pAssign{v}(p)
+   =\pValue{v}(!A)[\LogCL]$.
+\item Si $!A\ident\lnot !B$, alors
+  \begin{align*}
+    \pValue{v}(!A)[\Log L]
+      &=\tf{\lnot}[\Log L]
+        (\pValue{v}(!B)[\Log L])\\
+      &=\tf{\lnot}[\Log L]
+        (\pValue{v}(!B)[\LogCL])\\
+      &=\tf{\lnot}[\LogCL]
+        (\pValue{v}(!B)[\LogCL])\\
+      &=\pValue{v}(!A)[\LogCL].
+  \end{align*}
+  La première et la dernière égalité
+  viennent de la \olref[val]{defn:pValue},
+  la deuxième de l'hypothèse
+  d'induction, et la troisième de
+  \olref{prop:not}, puisque la valeur
+  classique de~$!B$ appartient à
+  $\{\True,\False\}$.
+\item Si $!A\ident(!B\land !C)$,
+  on obtient de même
+  \begin{align*}
+    \pValue{v}(!A)[\Log L]
+      &=\tf{\land}[\Log L]
+        (\pValue{v}(!B)[\Log L],
+         \pValue{v}(!C)[\Log L])\\
+      &=\tf{\land}[\Log L]
+        (\pValue{v}(!B)[\LogCL],
+         \pValue{v}(!C)[\LogCL])\\
+      &=\tf{\land}[\LogCL]
+        (\pValue{v}(!B)[\LogCL],
+         \pValue{v}(!C)[\LogCL])\\
+      &=\pValue{v}(!A)[\LogCL].
+  \end{align*}
+  Les étapes utilisent successivement
+  la \olref[val]{defn:pValue}, l'hypothèse
+  d'induction, \olref{prop:land} et
+  de nouveau la définition de
+  l'évaluation. Les valeurs classiques
+  de~$!B$ et~$!C$ appartiennent à
+  $\{\True,\False\}$.
+\end{enumerate}
+Les cas $!A\ident(!B\lor !C)$ et
+$!A\ident(!B\lif !C)$ sont analogues,
+en utilisant \olref{prop:lor} et
+\olref{prop:lif}.
+\end{proof}
+
+\begin{cor}
+Supposons que $\Log L$ vérifie les
+hypothèses de la \olref{prop:mvl-cl},
+que $\True\in V^+$ et que
+$\False\notin V^+$. Pour les formules
+du fragment commun défini dans cette
+proposition, la conséquence de~$\Log L$
+est incluse dans la conséquence
+classique :
+\[
+  {\Entails[\Log L]}
+    \subseteq {\Entails[\LogCL]}.
+\]
+Autrement dit, si $\Gamma$ ne contient
+que des formules de ce fragment et
+si~$!B$ en est une aussi, alors
+$\Gamma\Entails[\Log L] !B$
+implique $\Gamma\Entails[\LogCL] !B$.
+En particulier, toute tautologie
+de~$\Log L$ dans ce fragment est
+une tautologie classique.
+\end{cor}
+
+\begin{proof}
+Raisonnons par contraposition.
+Supposons
+$\Gamma\Entails/[\LogCL] !B$.
+Il existe alors une valuation
+classique
+$\pAssign{v}\colon\PVar\to
+\{\True,\False\}$ telle que
+$\pValue{v}(!A)[\LogCL]=\True$
+pour tout $!A\in\Gamma$, tandis que
+$\pValue{v}(!B)[\LogCL]=\False$.
+Puisque $\True,\False\in V$, cette
+valuation est aussi une valuation
+de~$\Log L$. Par la
+\olref{prop:mvl-cl}, les valeurs
+des mêmes formules dans~$\Log L$
+sont respectivement $\True$ et
+$\False$. Comme $\True\in V^+$
+et $\False\notin V^+$, on a
+$\pSat{v}{\Gamma}[\Log L]$ et
+$\pSat/{v}{!B}[\Log L]$.
+Donc $\Gamma\Entails/[\Log L] !B$.
+\end{proof}
+
+\begin{editorial}
+La condition source écrite
+$\pAssign{v}(p)\in\{\True,\False\}$
+est lue ici pour chaque variable~$p$.
+L'énoncé français explicite donc
+les valeurs classiques de toutes
+les variables utilisées. De plus,
+ses hypothèses ne règlent que quatre
+connecteurs : un langage peut en
+contenir d'autres, notamment une
+constante dont la valeur diffère
+de sa valeur classique. L'énoncé
+français porte donc sur le fragment
+engendré par ces quatre connecteurs
+et les variables, et le corollaire
+est restreint au même fragment.
+Dans la dernière ligne de la preuve
+source, une valuation est reliée à
+$\Gamma$ et~$!B$ par le symbole de
+conséquence; la preuve française
+emploie à cet endroit les relations
+de satisfaction correspondantes.
+\end{editorial}
+
+\end{document}

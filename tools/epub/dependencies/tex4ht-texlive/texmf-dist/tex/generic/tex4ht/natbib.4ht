@@ -1,0 +1,73 @@
+% natbib.4ht (2026-02-01-13:14), generated from tex4ht-4ht.tex
+% Copyright 1999-2009 Eitan M. Gurari
+% Copyright 2009-2026 TeX Users Group
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3c of this license or (at your option) any
+% later version. The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions
+% of LaTeX version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% The Current Maintainer of this work
+% is the TeX4ht Project <https://tug.org/tex4ht>.
+%
+% If you modify this program, changing the
+% version identification would be appreciated.
+\immediate\write-1{version 2026-02-01-13:14}
+
+
+% these should be not necessary anymore
+% \HRestore\@lbibitem
+% \HRestore\@bibitem
+
+% this is a copy of code from latex.4ht with support for natbib's version of \item
+\def\:tempa[#1]#2{{\:SUBOff\:SUPOff\edef\:tempb{{#2}}%
+   \pend:def\:tempb{\o:@lbibitem:[#1]}%
+   \global\let\:temp\:tempb}%
+   \natbibsetb:anc{#2}\:temp\bib:anc \let\AnchorLabel\sv:anc\ignorespaces}%
+\HLet\@lbibitem\:tempa
+
+\def\natbibsetb:anc#1{\let\sv:anc\AnchorLabel
+   \def\bib:anc{\def\bib:anc{#1}\ifx \bib:anc\empty \else
+      \a:bibitem{}{\a:bibanchor#1}\b:bibitem\fi \gdef\bib:anc{}}%
+   \def\AnchorLabel{\bib:anc}%
+   \let\cite:item=\item
+\def\item[##1]{\let\item\cite:item
+   \item[##1]\bib:anc}%
+}
+
+\def\hyper@natlinkstart#1{%
+  \let\rel:hyper\def  \hyper@linkstart{cite}{X#1}%
+  \def\hyper@nat@current{#1}%
+}
+\def\hyper@natlinkbreak#1#2{%
+  \hyper@linkend#1\let\rel:hyper\def \hyper@linkstart{cite}{X#2}%
+}
+\def\hyper@natlinkend{\hyper@linkend}
+\expandafter\ifx \csname hyper@linkstart\endcsname\relax
+   \def\hyper@linkstart#1#2{%
+     \a:cite%
+     \def\:temp{#1}%
+     \ifx\:temp\@urltype
+       \cIteLink[#2]{}{}%
+     \else
+       \ifx\rel:hyper\def\cIteLink{#2}{}\else\cIteLink[\##2]{}{}\fi
+     \fi  \global\let\rel:hyper=\:UnDef
+   }
+   \def\hyper@linkend{\EndcIteLink\b:cite}
+\fi
+\long\def\:temp#1{}\ifx \:temp\hyper@natanchorstart
+   \def\hyper@natanchorstart#1{\Link{}{X#1}\EndLink}
+\fi
+
+\pend:defIII\NAT@cite{\let\mbox\o:mbox:}
+\pend:defIII\NAT@citenum{\let\mbox\o:mbox:}
+
+
+\Hinput{natbib}
+\endinput
+

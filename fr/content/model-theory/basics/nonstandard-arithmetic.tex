@@ -1,0 +1,304 @@
+% Part: first-order-logic
+% Chapter: model-theory
+% Section: nonstandard-arithmetic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{bas}{nsa}
+\section{Modèles non standards de l'arithmétique}
+
+On construit des modèles non standards de l'arithmétique vraie,
+puis on détermine le type d'ordre de leurs réduits dénombrables
+au langage de l'ordre.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{defn}
+Soit $\Lang{L_N}$ le !!{language} de l'arithmétique, constitué d'une
+!!{constant} $\Obj{0}$, d'un !!{predicate} binaire $<$, d'un
+!!{function} unaire $\prime$ et de !!{function}s binaires
+$+$ et $\times$.
+\begin{enumerate}
+\item Le \emph{modèle standard} de l'arithmétique est la !!{structure}
+  $\Struct{N}$ pour $\Lang{L_N}$ dont le domaine est
+  $\Nat = \{ 0, 1, 2, \dots\}$ et qui interprète $\Obj{0}$ par $0$,
+  $<$ par la relation « strictement inférieur à » sur~$\Nat$,
+  et $\prime$, $+$ et $\times$ respectivement par le successeur,
+  l'addition et la multiplication sur $\Nat$.
+\item L'\emph{arithmétique vraie} est la théorie $\Theory{N}$.
+\end{enumerate}
+\end{defn}
+
+Dans $\Lang{L_N}$, nous abrégeons par~$\num{n}$ le terme
+$\Obj{0}^{\prime\dots\prime}$ obtenu en appliquant $n$ fois la
+fonction successeur à $\Obj{0}$.
+
+\begin{defn}
+Une !!{structure}~$\Struct{M}$ pour $\Lang{L_N}$ est \emph{standard}
+si et seulement si $\Struct{N} \iso \Struct{M}$.
+\end{defn}
+
+\begin{thm}\ollabel{thm:non-std}
+L'arithmétique vraie possède des modèles non standards !!{enumerable}s.
+\end{thm}
+
+\begin{proof}
+Étendons $\Lang{L_N}$ par une nouvelle !!{constant}~$c$ et considérons
+la théorie
+\[
+\Theory{N} \cup \Setabs{\num{n} < c}{n \in \Nat}.
+\]
+Elle est finiment satisfaisable : pour toute partie finie, on peut
+interpréter la nouvelle constante dans le modèle standard par un
+nombre supérieur à tous les indices des numéraux qui y apparaissent.
+La compacité fournit donc un modèle $\Struct{M}$, que le théorème
+de Löwenheim--Skolem descendant permet de choisir !!{enumerable}.
+Notons $\Domain{M}$ son domaine. Les interprétations des symboles
+non logiques de $\Lang{L_N}$ sont
+$\mathbf{z} = \Assign{\Obj{0}}{M} \in \Domain{M}$,
+$ {\prec} = \Assign{<}{M} \subseteq \Domain{M}^2$,
+$* = \Assign{\prime}{M} \colon \Domain{M} \to \Domain{M}$,
+et $\oplus = \Assign{+}{M}, \otimes = \Assign{\times}{M} \colon
+\Domain{M}^2 \to \Domain{M}$.
+Pour chaque $x \in \Domain{M}$, nous notons $x^*$ l'élément de
+$\Domain{M}$ obtenu en appliquant~$*$ à $x$.
+
+Supposons que $h$ soit un isomorphisme de $\Struct{N}$ sur le réduit
+de $\Struct{M}$ au langage arithmétique. Par surjectivité, il existerait
+$n \in \Nat$ tel que $h(n) = \Assign{c}{M}$. Soit $s$ une assignation
+dans $\Struct{N}$ telle que $s(x) = n$. Alors
+$\Sat{N}{\eq[\num{n}][x]}[s]$ et, d'après la preuve du
+\olref[iso]{thm:isom}, on aurait également
+$\Sat{M}{\eq[\num{n}][x]}[h \circ s]$.
+Il s'ensuivrait que
+$\Assign{c}{M} = \mathbf{z}^{*\cdots *}$, où $*$ est appliqué $n$ fois.
+Cela est impossible, puisque $\Sat{M}{\num{n} < c}$ et que $\prec$
+est irréflexive. Le réduit de $\Struct{M}$ est donc non standard;
+dans la suite, nous le désignons aussi par $\Struct{M}$.
+\end{proof}
+
+\begin{prob}
+Une relation $R$ sur un ensemble $X$ est \emph{bien fondée} si et
+seulement s'il n'existe aucune chaîne descendante infinie pour~$R$,
+c'est-à-dire aucun $x_0$, $x_1$, $x_2$,~\dots dans $X$ tel que
+$\dots x_2Rx_1Rx_0$.
+En supposant que la théorie des ensembles de Zermelo--Fraenkel~$ZF$
+est cohérente, montrer qu'elle possède des modèles non bien fondés,
+c'est-à-dire des modèles $\mathfrak{M}$ pour lesquels il existe
+extérieurement une suite $\dots x_2 \in x_1 \in x_0$.
+Ici, l'appartenance désigne la relation interprétée dans le modèle;
+la suite extérieure ne contredit pas l'axiome de fondation tel
+que le modèle l'interprète.
+\end{prob}
+
+Soit $\Struct{M}$ un modèle non standard quelconque de
+$\Theory{N}$, comme celui du \olref{thm:non-std}. Il est
+donc élémentairement équivalent au modèle standard. Les propriétés
+suivantes détermineront le type d'ordre de son domaine lorsque
+$\Struct{M}$ est !!{enumerable}.
+
+\begin{enumerate}
+\item Aucun élément de $\Domain{M}$ n'est strictement inférieur
+  à lui-même pour $\prec$ : le !!{sentence}
+  $\lforall[x][\lnot x < x]$ est vrai dans $\Struct{N}$, donc aussi
+  dans $\Struct{M}$.
+\item Le même raisonnement montre que $\prec$ est un \emph{ordre
+  linéaire strict} sur $\Domain{M}$ : il est irréflexif et transitif,
+  et deux éléments distincts de $\Domain{M}$ sont toujours comparables.
+\item L'élément $\mathbf{z}$ est le plus petit élément de $\Domain{M}$
+  pour $\prec$.
+\item Tout élément de $\Domain{M}$ précède son successeur pour~$*$,
+  et $x^*$ est le plus petit élément de $\Domain{M}$ strictement
+  supérieur à $x$.
+\item $\Struct{M}$ contient un segment initial de l'ordre $\prec$
+  isomorphe à $\Nat$ : $\mathbf{z}, \mathbf{z}^*, \mathbf{z}^{**}, \dots$.
+  On l'appelle la \emph{partie standard} de $\Domain{M}$.
+  Tout autre élément de $\Domain{M}$ est \emph{non standard}.
+  Il existe nécessairement des éléments non standards dans
+  $\Domain{M}$; sinon, l'application qui envoie chaque naturel
+  sur l'interprétation de son numéral serait un isomorphisme,
+  contrairement au \olref{thm:non-std}.
+  Nous utilisons $n, m, \dots$ comme !!{variable}s parcourant cette
+  partie standard de $\Struct{M}$.
+\item Tout élément non standard est supérieur à tous les éléments
+  standards. En effet, pour chaque $n \in \Nat$,
+  \[
+  \Sat{N}{\lforall[z][(\lnot(\eq[z][\Obj{0}] \lor
+  \dots \lor \eq[z][\num{n}]) \lif \num{n} < z)]},
+  \]
+  et ce !!{sentence} est donc aussi vrai dans le modèle non standard.
+  Si $z \in \Domain{M}$ est distinct de tous les éléments standards,
+  il est ainsi \emph{supérieur} à chacun d'eux.
+\item Tout élément $x$ de $\Domain{M}$ autre que $\mathbf{z}$ est
+  le successeur pour~$*$ d'un unique élément de $\Domain{M}$,
+  que nous notons $^*x$. Si $x = y^*$, alors $x$ et $y$ sont tous
+  deux standards dès que l'un l'est, et tous deux non standards
+  dès que l'un ne l'est pas.
+\item Définissons une relation d'équivalence $\approx$ sur
+  $\Domain{M}$ : on pose $x \approx y$ si et seulement s'il existe
+  un $n$ \emph{standard} tel que $x \oplus n = y$ ou $y \oplus n =x$.
+  Autrement dit, $x \approx y$ signifie que $x$ et $y$ sont à
+  distance finie l'un de l'autre. Si $n$ et $m$ sont standards,
+  alors $n \approx m$. Le \emph{bloc} de $x$ est sa classe
+  d'équivalence $[x] = \Setabs{y}{x \approx y}$.
+\item Supposons que $x \prec y$ et que $x \not\approx y$. Puisque
+  $\Sat{N}{\lforall[x][\lforall[y][(x < y \lif (x' < y \lor x' =
+      y))]]}$, on a $x^* \prec y$ ou $x^* = y$. L'égalité est
+  impossible, car elle entraînerait $x \approx y$; ainsi,
+  $x^* \prec y$. De même, si $x \prec y$ et $x \not\approx y$,
+  alors $x \prec {^*y}$.
+  En répétant ces observations un nombre fini de fois, on obtient
+  que tout $w \approx x$ précède tout $v \approx y$ pour $\prec$.
+  Chaque bloc \emph{non standard} $[x]$ forme une chaîne infinie
+  dans les deux sens :
+  \[
+  \cdots \prec  {^{**}x} \prec {^*}x \prec x \prec x^* \prec x^{**}
+  \prec \cdots
+  \]
+  On l'appelle une chaîne de type $Z$, car elle a le type d'ordre
+  des entiers relatifs. Le bloc standard a, quant à lui, le type
+  d'ordre des naturels.
+\item L'ordre $\prec$ induit un ordre sur les blocs distincts :
+  si $x \prec y$ et $x \not\approx y$, le bloc de $x$ précède
+  celui de $y$. Un bloc est \emph{non standard} s'il contient
+  un élément non standard. Le bloc standard est le premier bloc.
+\item Il n'existe pas de plus petit bloc non standard. Si $y$ est
+  non standard, il existe un $x \prec y$ lui aussi non standard
+  tel que $x \not\approx y$. En effet, dans le modèle standard
+  $\Struct{N}$, tout nombre admet une division par deux avec reste
+  zéro ou un :
+  $\Sat{N}{\lforall[y][\lexists[x][(y = x + x \lor y = x + x +
+        \Obj{0}')]]}$.
+  Par équivalence élémentaire, pour tout $y \in \Domain{M}$,
+  il existe $x \in \Domain{M}$ tel que $x \oplus x = y$ ou
+  $x \oplus x \oplus \mathbf{z}^*= y$.
+  Si $x$ était standard, $y$ le serait aussi; donc $x$ est
+  non standard. Les lois de l'addition et de l'ordre donnent
+  alors $x \prec y$.
+  En outre, $x$ et $y$ appartiennent à des blocs distincts,
+  c'est-à-dire $x \not\approx y$.
+  Sinon, puisque le premier précède le second, il existerait un
+  $n$ standard tel que $x \oplus n = y$.
+  Dans le cas $y = x \oplus x$, on aurait
+  $x \oplus n = x \oplus x$, d'où $x = n$ par simplification
+  additive. Cette loi est vraie dans $\Struct{N}$, donc aussi
+  dans $\Struct{M}$. Cela rendrait $x$ standard, contrairement
+  à l'hypothèse. Le cas $y = x \oplus x \oplus \mathbf{z}^*$
+  se traite de même : la simplification rendrait le successeur
+  de $x$ standard, donc $x$ également.
+\item Un raisonnement analogue montre qu'il n'existe pas de
+  plus grand bloc.
+\item L'ordre des blocs est dense : si $[x]$ précède $[y]$,
+  avec $x \not\approx y$, il existe un bloc $[z]$ distinct
+  de ces deux blocs et situé entre eux.
+  Supposons que $x \prec y$. Comme précédemment, la division
+  de $x \oplus y$ par deux fournit un $u \in \Domain{M}$
+  tel que $x \oplus y = u \oplus u$ ou
+  $x \oplus y = u \oplus u \oplus \mathbf{z}^*$.
+  L'élément $u$ est la partie entière de la moyenne de $x$ et $y$.
+  Puisque ces éléments appartiennent à des blocs distincts,
+  ils ne sont pas voisins; les lois de l'ordre et de l'addition
+  placent donc $u$ strictement entre eux.
+  Considérons le cas $x \oplus y = u \oplus u$,
+  l'autre étant analogue. Si $u \approx x$, il existerait un
+  $n$ standard tel que
+  \[
+  x \oplus y = x \oplus n \oplus x \oplus n,
+  \]
+  d'où $y = x \oplus n \oplus n$, donc $x \approx y$,
+  contrairement à l'hypothèse. Ainsi, $u \not\approx x$.
+  De même, $u \not\approx y$.
+\end{enumerate}
+
+Si $\Struct{M}$ est !!{enumerable}, ses blocs non standards forment
+un ordre linéaire dense dénombrable sans extrémités, isomorphe à celui des rationnels.
+Il s'ensuit que, pour deux modèles non standards !!{enumerable}s
+$\Struct{M}_1$ et $\Struct{M_2}$ de l'arithmétique vraie, les réduits
+au langage qui ne contient que $<$ et $=$ sont isomorphes.
+On construit un isomorphisme $h$ de la façon suivante.
+Les parties standards de $\Struct{M_1}$ et $\Struct{M_2}$
+sont isomorphes au modèle standard $\Struct{N}$, donc l'une à l'autre.
+Les ensembles de blocs non standards sont eux-mêmes ordonnés comme
+les rationnels et, d'après le \olref[dlo]{thm:cantorQ}, sont isomorphes.
+Cet isomorphisme entre les ordres des blocs s'étend \emph{à l'intérieur}
+des blocs : on choisit arbitrairement un élément dans chacun des
+deux blocs correspondants, puis on fait correspondre leurs successeurs
+et leurs prédécesseurs. Ainsi, le successeur de $x$ dans
+$\Struct{M_1}$ a pour image le successeur de l'image de $x$
+dans $\Struct{M_2}$.
+
+Cela n'implique \emph{pas} que $\mathfrak{M}_1$ et $\mathfrak{M}_2$
+soient isomorphes dans tout le langage arithmétique : l'isomorphisme
+est toujours relatif à une signature. On peut interpréter l'addition
+et la multiplication sur $\Domain{M_1}$ et $\Domain{M_2}$
+de façons qui ne donnent pas des structures isomorphes.
+L'existence de modèles arithmétiques non isomorphes résulte aussi
+d'un théorème de Vaught : une théorie complète dans un langage
+dénombrable ne peut avoir exactement~2 modèles dénombrables
+à isomorphisme près. Le modèle standard et le modèle non standard
+déjà construit sont deux modèles non isomorphes de l'arithmétique
+vraie; il doit donc exister au moins un autre type d'isomorphisme.
+
+\begin{prob}
+Montrer qu'un modèle non standard de l'arithmétique ne possède
+aucun plus grand bloc.
+\end{prob}
+
+\begin{prob}
+Soit $\Lang{L}$ le !!{language} du premier ordre dont $<$ est
+le seul !!{predicate} en dehors de $\eq$, et soit
+$\Struct{N} = (\Nat, <)$. Tous les sous-ensembles finis ou
+cofinis de $\Struct{N}$ sont définissables. Montrer que ce sont
+les \emph{seuls} sous-ensembles définissables de $\Struct{N}$.
+
+\emph{Indication.}
+Notons d'abord $\Obj{prc}(x,y)$ la formule de $\Lang{L}$ qui
+abrège « $x$ est le prédécesseur immédiat de $y$ » :
+\[
+x<y \land \lnot \lexists[z][(x<z \land z < y)].
+\]
+À tout sous-ensemble définissable de $\Struct{N}$ correspond
+une formule $!A(x)$ de $\Lang{L}$, sans paramètres et dont seule
+la variable indiquée est libre. Pour une telle formule $!A$,
+considérons le !!{sentence} $!D$ :
+\[
+\lexists[x][\lforall[y][\lforall[z][((x<y \land x<z \land \Obj{prc}(y,z)
+  \land !A(y)) \lif !A(z))]]].
+\]
+Montrer que $\Sat{N}{!D}$ si et seulement si le sous-ensemble de
+$\Struct{N}$ défini par $!A$ est fini ou cofini.
+
+Soit maintenant $\Struct{M}$ un modèle non standard élémentairement
+équivalent à $\Struct{N}$, dans ce seul langage de l'ordre.
+Choisissons un élément non standard $a \in \Domain{M}$, puis
+des éléments $b, c \in \Domain{M}$ supérieurs à $a$ tels que
+$b$ soit le prédécesseur immédiat de~$c$.
+Il existe un automorphisme $h$ de la structure d'ordre
+$\Struct{M}$ tel que $h(b)=c$; on translate d'un pas leur bloc
+non standard et on laisse les autres blocs fixes. Pourquoi
+cela donne-t-il un automorphisme ?
+Si $b$ satisfait $!A$, alors $c$ le satisfait également.
+Pourquoi l'absence de paramètres assure-t-elle cette invariance ?
+Il s'ensuit que $!D$ est vrai dans $\Struct{M}$, donc dans
+$\Struct{N}$. Le sous-ensemble de $\Struct{N}$ défini par $!A$
+est par conséquent fini ou cofini.
+
+Cette conclusion vaut aussi lorsqu'on autorise un nombre fini de
+paramètres standards : chacun est définissable sans paramètres
+dans l'ordre des naturels, et l'on peut remplacer ces paramètres
+par leurs définitions.
+\end{prob}
+
+\end{document}

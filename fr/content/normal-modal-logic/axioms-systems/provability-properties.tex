@@ -1,0 +1,52 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: provability-properties
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{prp}
+
+\Needspace{9\baselineskip}\olsection{Propriétés de la \usetoken{s}{derivability}}
+
+\begin{prop}\ollabel{prop:derivabilityfacts}
+  Soit $\Sigma$ un système modal. Soient $\Gamma$ et $\Delta$ des
+  ensembles de !!{formula}s modales. Les propriétés suivantes sont vérifiées :
+  \begin{enumerate}
+  \item\ollabel{prop:derivabilityfacts-monotonicity} \emph{Monotonie} : si
+    $\Gamma \Proves[\Sigma] !A$ et $\Gamma \subseteq \Delta$, alors
+    $\Delta \Proves[\Sigma] !A$ ;
+  \item\ollabel{prop:derivabilityfacts-reflexivity}
+    \emph{Réflexivité} : si $!A \in \Gamma$, alors $\Gamma
+    \Proves[\Sigma] !A$ ;
+  \item\ollabel{prop:derivabilityfacts-cut} \emph{Coupure} : si $\Gamma
+    \Proves[\Sigma] !A$ et $\Delta \cup \{!A\} \Proves[\Sigma] !B$,
+    alors $\Gamma \cup \Delta \Proves[\Sigma] !B$ ;
+  \item\ollabel{prop:derivabilityfacts-deduction} \emph{Théorème de déduction} :
+    $\Gamma \cup \{!B\} \Proves[\Sigma] !A$ si et seulement si
+    $\Gamma \Proves[\Sigma] !B \lif !A$ ;
+  \item\ollabel{prop:derivabilityfacts-ruleT} Si
+    $\Gamma \Proves[\Sigma] !A_1$, \dots, $\Gamma
+    \Proves[\Sigma] !A_n$ et si $!A_1 \to (!A_2 \lif \cdots (!A_n \lif
+    !B)\cdots)$ est une instance de tautologie, alors $\Gamma
+    \Proves[\Sigma] !B$.
+  \end{enumerate}
+\end{prop}
+
+La démonstration est un exercice facile. Le point
+\olref{prop:derivabilityfacts-ruleT} de la
+\olref{prop:derivabilityfacts} montre par exemple que, si
+$\Gamma \Proves[\Sigma] !A \lor !B$ et
+$\Gamma \Proves[\Sigma] \lnot !A$, alors
+$\Gamma \Proves[\Sigma] !B$. Dans la suite, nous écrirons aussi
+$\Gamma, !A \Proves[\Sigma] !B$ au lieu de
+$\Gamma \cup \{ !A\} \Proves[\Sigma] !B$.
+
+\begin{defn}
+  Un ensemble $\Gamma$ est \emph{déductivement clos} relativement à
+  un système $\Sigma$ si et seulement si
+  $\Gamma \Proves[\Sigma] !A$ implique $!A \in \Gamma$.
+\end{defn}
+
+\end{document}

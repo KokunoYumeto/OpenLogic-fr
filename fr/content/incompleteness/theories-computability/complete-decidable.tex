@@ -1,0 +1,49 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: complete-decidable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{cdc}
+
+\olsection{Les théories complètes axiomatisables sont décidables}
+
+Une théorie est dite \emph{complète} si, pour tout
+!!{sentence}~$!A$, elle démontre soit $!A$, soit
+$\lnot !A$.
+
+\begin{lem}
+Toute théorie~$\Th{T}$ complète et !!{axiomatizable}
+est décidable.
+\end{lem}
+
+\begin{proof}
+Supposons $\Th{T}$ complète et axiomatisée par un
+ensemble calculable~$A$. Si $\Th{T}$ est incohérente,
+elle démontre tout !!{sentence}; il suffit donc de
+répondre toujours « oui » pour décider l'appartenance
+d'un !!{sentence} à~$\Th{T}$. Supposons désormais
+$\Th{T}$ cohérente.
+
+Pour décider si un !!{sentence}~$!A$ appartient
+à~$\Th{T}$, cherchons simultanément une
+!!{derivation} de~$!A$ et une
+!!{derivation} de~$\lnot !A$ à partir des axiomes.
+Comme $\Th{T}$ est complète, l'une des deux
+recherches aboutit. Si la seconde aboutit, la
+cohérence de $\Th{T}$ exclut que la première
+aboutisse aussi; nous pouvons donc répondre « non ».
+
+Autrement dit, nous savons déjà que $\Th{T}$ est
+!!{c.e.}. Un théorème antérieur assure qu'il
+suffit de montrer que son complément est lui aussi
+!!{c.e.}. Pour un !!{sentence}~$!A$, son code appartient à
+$\Th{\bar T}$ si et seulement si $\lnot !A$ appartient à~$\Th{T}$.
+Les autres codes appartiennent aussi au complément. La réduction calculable
+envoie le code d'un !!{sentence}~$!A$ sur celui de~$\lnot !A$ et tout autre code
+sur celui de~$\ltrue$, théorème de logique pure; ainsi $\Th{\bar T}\leq_m\Th{T}$.
+\end{proof}
+
+\end{document}

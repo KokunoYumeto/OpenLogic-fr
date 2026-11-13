@@ -1,0 +1,170 @@
+% Part: normal-modal-logic
+% Chapter: frame-correspondence
+% Section: standard-translation
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{frd}{st}
+
+\olsection{Définissabilité au second ordre}
+
+Les propriétés des cadres définissables par des formules modales ne
+sont pas toutes définissables au premier ordre. Si l'on autorise la
+quantification sur des prédicats unaires, c'est-à-dire la
+quantification monadique du second ordre, on peut toutefois définir
+toutes les propriétés des cadres définissables par une formule modale.
+Il faut pour cela relier systématiquement les conditions de vérité
+d'une !!{formula} modale en un monde à des !!{formula}s du premier
+ordre. C'est la \emph{traduction standard} des formules modales dans
+un langage du premier ordre comportant, outre un !!{predicate}
+binaire~$Q$ pour la relation d'accessibilité, un !!{predicate}
+unaire~$P_i$ pour chaque !!{propositional variable}~$\Obj p_i$
+présente dans~$!A$.
+
+\begin{defn}
+  La \emph{traduction standard}~$\ST_x(!A)$ est définie par récurrence
+  comme suit; dans chaque clause modale, $y$ est choisi distinct de $x$ et de toutes les variables déjà utilisées dans la traduction :
+  \begin{enumerate}
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\ST_x(\indfrm) = \lfalse$.}}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{$\ST_x(\indfrm) = \ltrue$.}}{}
+  \item \indcase{!A}{\Obj p_i}{$\ST_x(\indfrm) = \Atom{P_i}{x}$.}
+  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\ST_x(\indfrm) = \lnot \ST_x(!B)$.}}{}
+  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\ST_x(\indfrm) = (\ST_x(!B)
+      \land \ST_x(!C))$.}}{}
+  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\ST_x(\indfrm) = (\ST_x(!B)
+      \lor \ST_x(!C))$.}}{}
+  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\ST_x(\indfrm) = (\ST_x(!B)
+      \lif \ST_x(!C))$.}}{}
+  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\ST_x(\indfrm) = (\ST_x(!B)
+      \liff \ST_x(!C))}$.}{}
+  \tagitem{prvBox}{\indcase{!A}{\Box !B}{$\ST_x(\indfrm) =
+      \lforall[y][(\Atom{Q}{x,y} \lif \ST_y(!B))]$.}}{}
+  \tagitem{prvDiamond}{\indcase{!A}{\Diamond !B}{$\ST_x(\indfrm) =
+      \lexists[y][(\Atom{Q}{x,y} \land \ST_y(!B))]$.}}{}
+  \end{enumerate}
+\end{defn}
+
+Par exemple, $\ST_x(\Box p \lif p)$ est
+$\lforall[y][(\Atom{Q}{x,y} \lif \Atom{P}{y})] \lif \Atom{P}{x}$.
+Une !!{structure} pour le langage de~$\ST_x(!A)$ exige un domaine,
+une relation binaire interprétant~$Q$ et des sous-ensembles du domaine
+interprétant les !!{predicate}s unaires~$P_i$. Autrement dit, ses
+composantes sont exactement celles d'un modèle de~$!A$ : le domaine
+est l'ensemble des mondes, la relation interprétant~$Q$ est la
+relation d'accessibilité et les sous-ensembles interprétant~$P_i$
+sont les ensembles~$V(\Obj p_i)$. La satisfaction de $!A$ dans le
+modèle modal coïncide donc avec celle de $\ST_x(!A)$ dans la
+!!{structure} correspondante :
+
+\begin{prop}\ollabel{prop:st}
+  Soit $\mModel{M} = \tuple{W, R, V}$. Soit $\Struct{M'}$ la
+  !!{structure} du premier ordre telle que $\Domain{M'} = W$,
+  $\Assign{Q}{M'} = R$ et
+  $\Assign{P_i}{M'} = V(\Obj p_i)$. Si $s(x) = w$, alors
+  \[
+  \mSat{M}{!A}[w] \text{ ssi } \Sat{M'}{\ST_x(!A)}[s]
+  \]
+\end{prop}
+
+\begin{proof}
+  Par récurrence sur~$!A$.
+\end{proof}
+
+\begin{prop}
+  Soit $!A$ une !!{formula} modale et
+  $\mModel{F} = \tuple{W, R}$ un cadre. Soit $\Struct{F'}$ la
+  !!{structure} du premier ordre telle que
+  $\Domain{F'} = W$ et $\Assign{Q}{F'} = R$; soit $!A'$ la formule
+  du second ordre
+  \[
+  \lforall[X_1][\dots\lforall[X_n][\lforall[x][
+        \SSubst{\ST_x(!A)}{\subst{X_1}{P_1}, \dots,
+          \subst{X_n}{P_n}}]]],
+  \]
+  où $P_1$, \dots, $P_n$ sont tous les !!{predicate}s unaires
+  apparaissant dans~$\ST_x(!A)$. Alors
+  \[
+  \mModel{F} \Entails !A \text{ ssi } \Sat{F'}{!A'}
+  \]
+\end{prop}
+
+\begin{proof}
+  $\Sat{F'}{!A'}$ si et seulement si, pour toute
+  expansion~$\Struct{M'}$ de~$\Struct{F'}$ interprétant
+  les $P_i$ par des sous-ensembles de~$W$ et pour
+  toute affectation~$s$ telle que $s(x) \in W$,
+  $\Sat{M'}{\ST_x(!A)}[s]$. D'après la \olref{prop:st}, cela revient à
+  dire que, dans tous les modèles~$\mModel{M}$ fondés sur
+  $\mModel{F}$ et en tout monde~$w \in W$,
+  $\mSat{M}{!A}[w]$, c'est-à-dire $\mModel{F} \Entails !A$.
+\end{proof}
+
+\begin{defn}
+  Une classe~$\mClass{F}$ de cadres est \emph{définissable au second
+  ordre} s'il existe un !!{sentence}~$!A$ dans le langage du second
+  ordre ayant un seul !!{predicate} binaire~$P$ et dont tous les
+  quantificateurs du second ordre portent sur des variables
+  d'ensembles unaires, tel que
+  $\mModel{F} = \tuple{W, R} \in \mClass{F}$ si et seulement si
+  $\Sat{M}{!A}$ dans la !!{structure}~$\Struct{M}$ où
+  $\Domain{M} = W$ et $\Assign{P}{M} = R$.
+\end{defn}
+
+\begin{cor}
+  Si une classe de cadres est définissable par une
+  !!{formula}~$!A$, la classe correspondante des relations
+  d'accessibilité est définissable par un énoncé monadique du second
+  ordre.
+\end{cor}
+
+\begin{proof}
+  L'énoncé monadique du second ordre~$!A'$ de la démonstration
+  précédente possède la propriété voulue.
+\end{proof}
+
+Reprenons comme exemple la !!{formula}~$\Box p \lif p$. Elle définit
+la réflexivité, laquelle est déjà définissable au premier ordre par
+l'!!{sentence}~$\lforall[x][\Atom{Q}{x,x}]$. Elle est aussi
+définissable par l'!!{sentence} monadique du second ordre
+\[
+\lforall[X][\lforall[x][(\lforall[y][(\Atom{Q}{x,y} \lif \Atom{X}{y})]
+    \lif \Atom{X}{x})]].
+\]
+Les deux énoncés sont donc équivalents. Vérifions-le directement.
+Supposons d'abord que l'énoncé du second ordre soit vrai dans une
+!!{structure}~$\Struct{M}$. Puisque $x$ et $X$ sont universellement
+quantifiés, la suite vaut pour tout $x \in W$ et tout ensemble
+$X \subseteq W$, notamment pour $\Setabs{z}{Rxz}$, où
+$R = \Assign{Q}{M}$. Pour toute affectation~$s$ telle que
+$s(x) \in W$ et $s(X) = \Setabs{z}{Rxz}$, nous avons donc
+$\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif
+    \Atom{X}{y})] \lif \Atom{X}{x}}[s]$. Par le choix de $s(X)$,
+cela revient à
+$\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif
+    \Atom{Q}{x,y})] \lif \Atom{Q}{x,x}}[s]$.
+L'antécédent étant toujours vrai, cette formule équivaut à
+$\Atom{Q}{x,x}$. Comme $s(x)$ est arbitraire,
+$\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$.
+
+Supposons maintenant $\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$ et
+montrons que
+$\Sat{M}{\lforall[X][\lforall[x][(\lforall[y][(\Atom{Q}{x,y} \lif
+        \Atom{X}{y})] \lif \Atom{X}{x})]]}$. Choisissons une
+affectation~$s$ quelconque et supposons
+$\Sat{M}{\lforall[y][(\Atom{Q}{x,y} \lif
+    \Atom{X}{y})]}[s]$. Soit $s'$ la variante en~$y$ de~$s$
+définie par $s'(y) = s(x)$; alors
+$\Sat{M}{\Atom{Q}{x,y} \lif \Atom{X}{y}}[s']$, c'est-à-dire
+$\Sat{M}{\Atom{Q}{x,x} \lif \Atom{X}{x}}[s]$. Puisque
+$\Sat{M}{\lforall[x][\Atom{Q}{x,x}]}$, l'antécédent est vrai, d'où
+$\Sat{M}{\Atom{X}{x}}[s]$, comme voulu.
+
+Certaines classes de cadres définissables par une formule modale ne
+sont pas définissables au premier ordre. Les énoncés monadiques du
+second ordre de la forme~$!A'$ ne sont donc pas tous équivalents à un
+!!{sentence} du premier ordre. Il n'existe pas de méthode effective
+pour décider lesquels le sont.
+\begin{editorial}La clause de la constante vraie corrige une répétition de la constante fausse dans la source. La preuve relative aux cadres précise que seules les interprétations des prédicats unaires varient : le domaine et la relation du cadre restent fixés. La convention des variables liées fraîches est explicitée. La notation d’une structure du premier ordre et une affectation omise dans l’exemple sont rétablies ; la restriction monadique concerne les quantificateurs du second ordre.\end{editorial}
+\end{document}

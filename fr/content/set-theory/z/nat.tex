@@ -1,0 +1,61 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+	
+\olfileid[fr]{sth}{z}{nat}
+\olsection{Choisir nos nombres naturels}
+
+%Admettons que le principe informel \stagesinf{} puisse être justifié.
+%Il vaut cependant aussi la peine de commenter l'axiome particulier
+%que nous avons tiré de ce principe informel.
+
+Dans la \olref[infinity-again]{defnomega}, nous avons défini
+explicitement l'expression «~nombres naturels~». Comment comprendre
+cette stipulation ? Il ne s'agit pas d'une thèse métaphysique, mais
+seulement d'une décision de \emph{traiter} certains ensembles comme
+les nombres naturels. Nous avons évoqué des raisons de penser ainsi
+dans la \olref[sfr][rel][ref]{sec}, la \olref[sfr][arith][ref]{sec} et
+la \olref[sfr][infinite][dedekindsproof]{sec}. Mais nous pouvons
+formuler ces raisons plus nettement encore.
+
+Notre axiome de l'infini suit \citet{VonNeumann1925}. Nous aurions
+toutefois pu adopter, à sa place, l'axiome suivant :
+
+\begin{defish}
+\emph{Axiome de l'infini de Zermelo, \citeyear{Zermelo1908Untersuchungen}.}
+Il existe un ensemble $A$ tel que $\emptyset \in A$ et
+$(\forall x \in A)\{x\} \in A$.
+\end{defish}
+
+Si nous avions adopté l'axiome de Zermelo plutôt que le nôtre,
+inspiré de von Neumann, nous aurions tout autant obtenu un ensemble
+infini au sens de Dedekind, donc une algèbre de Dedekind. Dans
+l'approche de Zermelo, l'élément distingué de notre algèbre aurait
+encore été $\emptyset$ (notre substitut de $0$), mais l'injection
+aurait été donnée par l'application $x \mapsto \{x\}$, au lieu de
+$x \mapsto x \cup \{x\}$. La conséquence la plus simple est que
+Zermelo prend pour $2$ l'ensemble $\{\{\emptyset\}\}$, tandis que
+nous prenons, avec von Neumann, pour $2$ l'ensemble
+$\{\emptyset, \{\emptyset\}\}$.
+
+Pourquoi choisir l'un de ces axiomes de l'infini plutôt que l'autre ?
+La principale raison pratique est que l'approche de von Neumann
+s'étend assez bien aux nombres transfinis. Nous l'étudierons à partir
+du \olref[ordinals][]{chap}. Mais, si l'on veut simplement
+\emph{faire de l'arithmétique}, les deux approches conviendraient
+tout aussi bien. Si quelqu'un vous dit que les nombres naturels
+\emph{sont} des ensembles, la question évidente est donc :
+\emph{Quels ensembles sont-ils ?}
+
+Cette question précise a été rendue célèbre par \citet{Benacerraf1965}.
+Il faut cependant souligner qu'elle n'est que l'exemple le plus connu
+d'un phénomène que nous avons déjà rencontré bien des fois. Voici
+l'idée fondamentale : la théorie des ensembles nous donne un moyen
+de \emph{simuler} plusieurs sortes d'entités «~intuitives~» : les
+réels, les rationnels, les entiers relatifs et les naturels, certes,
+mais aussi les couples ordonnés, les fonctions et les relations.
+Toutefois, elle ne nous impose jamais une manière \emph{unique} de
+les simuler. Il existe \emph{toujours} d'autres choix qui auraient,
+tout simplement, aussi bien rempli ce rôle.
+
+\end{document}

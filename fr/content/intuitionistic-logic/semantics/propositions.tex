@@ -1,0 +1,61 @@
+% Partie : logique intuitionniste
+% Chapitre : sémantique
+% Section : propositions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sem}{pro}
+
+\olsection{Propositions}
+
+Il est parfois utile de donner un nom à l'ensemble des mondes
+d'!!a{relational model}~$\mModel{M}$ dans lesquels
+!!a{formula}~$!A$ est vraie. Nous l'appelons la
+\emph{proposition} définie par~$!A$ et le notons
+$\Prop{M}{!A}$.
+
+\begin{defn}
+Nous prolongeons la fonction $V$ en une application
+$\Frm\to\Pow{W},\qquad !A\mapsto\Prop{M}{!A}$
+définie inductivement comme suit :\footnote{Précision de
+l'édition française : la source emploie une valeur de cette
+application à la place de son nom dans la déclaration
+de type. Nous distinguons ici l'application de ses valeurs.}
+\begin{enumerate}
+\item $\Prop{M}{\lfalse}=\emptyset$.
+\item $\Prop{M}{p}=V(p)$.
+\item $\Prop{M}{\lnot !B}={}$ :
+\[
+\Setabs{w \in W}{\text{pour tout $w'$ tel que $Rww'$, $w'
+    \notin \Prop{M}{!B}$}}.
+\]
+\item $\Prop{M}{!B\land !C}=\Prop{M}{!B}\cap\Prop{M}{!C}$.
+\item $\Prop{M}{!B\lor !C}=\Prop{M}{!B}\cup\Prop{M}{!C}$.
+\item $\Prop{M}{!B\lif !C}={}$ :
+\[
+\Setabs{w \in W}{\text{pour tout $w'$ tel que $Rww'$, si $w'
+    \in \Prop{M}{!B}$, alors $w' \in \Prop{M}{!C}$}}.
+\]
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+\ollabel{prop:propositions-true}
+$\mSat{M}{!A}[w]$ si et seulement si
+$w\in\Prop{M}{!A}$.\footnote{Correction de l'édition
+française : la source utilise ici la macro désignant le
+modèle au lieu de celle exprimant la vérité d'une formule
+dans ce modèle à un monde donné.}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[int][sem][pro]{prop:propositions-true}.
+\end{prob}
+
+\end{document}

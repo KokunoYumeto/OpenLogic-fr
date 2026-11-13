@@ -1,0 +1,92 @@
+% Part: many-valued-logic
+% Chapter: syntax-and-semantics
+% Section: semantic-notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{syn}{sem}
+
+\olsection{Notions sémantiques}
+
+Supposons qu'une matrice détermine
+une logique plurivalente~$\Log L$.
+Nous pouvons alors définir pour
+$\Log L$ les notions sémantiques usuelles.
+
+\begin{defn}
+\begin{enumerate}
+\item Une formule~$!A$ est
+  \emph{satisfaisable} s'il existe
+  une valuation~$\pAssign{v}$ telle
+  que $\pSat{v}{!A}$; elle est
+  \emph{insatisfaisable} si aucune
+  valuation ne la satisfait.
+\item Une formule~$!A$ est une
+  \emph{tautologie} si
+  $\pSat{v}{!A}$ pour toute
+  valuation~$v$.
+\item Si~$\Gamma$ est un ensemble
+  de formules, $\Gamma\Entails !A$
+  (« $\Gamma$ entraîne~$!A$ »)
+  si et seulement si toute valuation
+  $\pAssign{v}$ qui satisfait
+  $\Gamma$ satisfait aussi~$!A$.
+\item Un ensemble de formules~$\Gamma$
+  est \emph{satisfaisable} s'il existe
+  une valuation~$\pAssign{v}$ telle
+  que $\pSat{v}{\Gamma}$; sinon,
+  il est \emph{insatisfaisable}.
+\end{enumerate}
+\end{defn}
+
+Comme en logique classique, ces
+notions vérifient certains faits :
+
+\begin{prop}
+\ollabel{prop:semanticalfacts}
+\begin{enumerate}
+\item $!A$ est une tautologie si et
+  seulement si $\emptyset\Entails !A$;
+\item si $\Gamma$ est satisfaisable,
+  tout sous-ensemble fini de~$\Gamma$
+  l'est aussi;
+\item\ollabel{def:monotonicity}%
+  \emph{Monotonie} : si
+  $\Gamma\subseteq\Delta$ et
+  $\Gamma\Entails !A$, alors
+  $\Delta\Entails !A$;
+\item\ollabel{def:Cut}%
+  \emph{Transitivité} : si
+  $\Gamma\Entails !A$ et
+  $\Delta\cup\{!A\}\Entails !B$,
+  alors $\Gamma\cup\Delta\Entails !B$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[mvl][syn][sem]{prop:semanticalfacts}.
+\end{prob}
+
+En logique classique, la conséquence
+est liée au conditionnel. Ainsi,
+le \emph{modus ponens} est valide :
+si $\Gamma\Entails !A$ et
+$\Gamma\Entails !A\lif !B$,
+alors $\Gamma\Entails !B$.
+Le théorème sémantique de déduction
+donne une autre relation :
+$\Gamma\Entails !A\lif !B$
+si et seulement si
+$\Gamma\cup\{!A\}\Entails !B$.
+Ces résultats ne valent
+\emph{pas toujours} dans les
+logiques plurivalentes : ils dépendent
+de la fonction de vérité~$\tf{\lif}$.
+
+\end{document}

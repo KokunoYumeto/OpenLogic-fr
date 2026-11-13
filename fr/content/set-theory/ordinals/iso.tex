@@ -1,0 +1,183 @@
+% Partie : set-theory
+% Chapitre : ordinals
+% Section : iso
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ordinals}{iso}
+\olsection{Isomorphismes d'ordre}
+
+Pour expliquer \emph{à quel point} la notion de bon ordre est robuste,
+commençons par introduire une méthode de comparaison des bons ordres.
+
+\begin{defn}
+Un \emph{bon ordre} est un couple $\tuple{A, <}$ tel que $<$ définit
+un bon ordre sur $A$. Les bons ordres $\tuple{A, <}$ et $\tuple{B,
+\lessdot}$ sont \emph{isomorphes en tant qu'ordres} si et seulement
+s'il existe !!a{bijection} $f \colon A \to B$ telle que : $x < y$ si
+et seulement si $f(x) \lessdot f(y)$. Dans ce cas, nous écrivons
+$\ordeq{\tuple{A, <}}{\tuple{B, \lessdot}}$ et disons que $f$ est un
+\emph{isomorphisme d'ordre}.
+\end{defn}
+\noindent
+Dans la suite, par souci de brièveté, nous parlerons simplement
+d'«~isomorphismes~» plutôt que d'«~isomorphismes d'ordre~».
+Intuitivement, les isomorphismes sont des !!{bijection}s qui préservent
+la structure. Voici quelques faits simples à leur sujet.
+
+\begin{lem}\ollabel{isoscompose}
+La composée de deux isomorphismes est un isomorphisme : si $f \colon A
+\to B$ et $g \colon B \to C$ sont des isomorphismes, alors
+$(g \circ f) \colon A \to C$ est un isomorphisme.
+\end{lem}
+\begin{prob}
+	Démontrez le \olref[sth][ordinals][iso]{isoscompose}.
+\end{prob}
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+\begin{cor}\ollabel{ordisoisequiv}
+	$\ordeq{X}{Y}$ est une relation d'équivalence.
+\end{cor}
+\begin{prop}\ollabel{ordisounique}
+Si $\tuple{A, <}$ et $\tuple{B, \lessdot}$ sont des bons ordres
+isomorphes, l'isomorphisme entre eux est unique.
+\end{prop}
+
+\begin{proof}
+Soient $f$ et $g$ deux isomorphismes de $A$ sur $B$. Nous allons
+démontrer le résultat par récurrence, en utilisant
+la \olref[wo]{propwoinduction}.
+Fixons $a\in A$ et supposons, comme hypothèse de récurrence, que
+$(\forall b < a)f(b) = g(b)$. Fixons aussi $x \in B$.
+
+Si $x \lessdot f(a)$, alors $f^{-1}(x) < a$ et donc
+$g(f^{-1}(x)) \lessdot g(a)$, puisque $f$ et $g$ sont des
+isomorphismes. Mais, comme $f^{-1}(x) < a$, notre hypothèse donne
+$x =f(f^{-1}(x)) = g(f^{-1}(x))$. Donc $x \lessdot g(a)$. De même, si
+$x \lessdot g(a)$, alors $x \lessdot f(a)$.
+
+En général, $(\forall x \in B)(x \lessdot f(a) \liff x \lessdot
+g(a))$. Il s'ensuit que $f(a) = g(a)$ par la
+\olref[sfr][rel][ord]{prop:extensionality-strictlinearorders}. Ainsi,
+$(\forall a \in A)f(a) = g(a)$ par la \olref[wo]{propwoinduction}.
+\end{proof}\noindent
+Voilà qui donne une idée de la robustesse des bons ordres. Pour aller
+plus loin, introduisons quelques notations supplémentaires.
+
+\begin{defn}
+Si $\tuple{A, <}$ est un bon ordre et si $a \in A$, posons
+$A_a = \Setabs{x \in A}{x < a}$. Nous disons que $A_a$ est un
+\emph{segment initial} propre de $A$ (et admettons que $A$ lui-même
+soit un segment initial impropre de $A$). Soit $<_a$ la restriction de
+$<$ à ce segment initial, c'est-à-dire
+$\funrestrictionto{\mathord{<}}{A_a^2}$.
+\end{defn}
+\noindent
+Avec cette notation, nous pouvons énoncer et démontrer qu'aucun bon
+ordre n'est isomorphe à l'un de ses segments initiaux propres.
+
+\begin{lem}\ollabel{wellordnotinitial}
+Si $\tuple{A, <}$ est un bon ordre et si $a \in A$, alors
+$\ordneq{\tuple{A, <}}{\tuple{A_a, <_a}}$.
+\end{lem}
+
+\begin{proof}
+Par l'absurde, supposons que $f \colon A \to A_a$ soit un
+isomorphisme. Puisque $f$ est une bijection et que $A_a \subsetneq A$,
+\olref[wo]{wo:strictorder} nous permet de choisir le plus petit
+!!{element} $b \in A$ pour $<$ tel que $b \neq f(b)$. Nous allons
+montrer que $(\forall x \in A)(x<b \liff x < f(b))$ ; il s'ensuivra,
+par la \olref[sfr][rel][ord]{prop:extensionality-strictlinearorders}, que
+$b = f(b)$, ce qui donnera la contradiction cherchée.
+
+Supposons $x < b$. Alors $x = f(x)$ par le choix de $b$. Comme $f$ est
+un isomorphisme, $f(x) < f(b)$. Donc $x < f(b)$.
+
+Supposons $x < f(b)$. Alors $f^{-1}(x) < b$, puisque $f$ est un
+isomorphisme ; et donc $f^{-1}(x) = x$ par le choix de $b$. Ainsi,
+$x < b$.
+\end{proof}
+
+Le résultat suivant montre, en gros, que la restriction d'un
+isomorphisme à un «~segment initial~» est encore un isomorphisme :
+
+\begin{lem}\ollabel{wellordinitialsegment}
+Soient $\tuple{A, <}$ et $\tuple{B, \lessdot}$ deux bons ordres. Si
+$f \colon A \to B$ est un isomorphisme et si $a \in A$, alors
+$\funrestrictionto{f}{A_{a}} : A_a \to B_{f(a)}$ est un isomorphisme.
+\end{lem}
+
+\begin{proof}
+Puisque $f$ est un isomorphisme :
+	%Puisque f est un isomorphisme, b < a ssi f(b) \lessdot f(a), donc
+\begin{align*}
+	\funimage{f}{A_a} &= \funimage{f}{\Setabs{x \in A}{x < a}}\\
+	&= \funimage{f}{\Setabs{f^{-1}(y) \in A}{f^{-1}(y) < a}} \\
+	&= \Setabs{y \in B}{y \lessdot f(a)} \\
+	&=B_{f(a)}
+\end{align*}
+Et $\funrestrictionto{f}{A_a}$ préserve l'ordre, puisque $f$ le
+préserve.
+\end{proof}
+
+Les deux résultats qui suivent établissent que deux bons ordres sont
+toujours comparables :
+
+\begin{lem}\ollabel{lemordsegments}
+Soient $\tuple{A, <}$ et $\tuple{B, \lessdot}$ deux bons ordres. Si
+$\ordeq{\tuple{A_{a_1}, <_{a_1}}}{\tuple{B_{b_1}, \lessdot_{b_1}}}$
+et $\ordeq{\tuple{A_{{a_2}}, <_{a_2}}}{\tuple{B_{{b_2}},
+\lessdot_{b_2}}}$, alors ${a_1} < {a_2} \text{ ssi }{b_1} \lessdot
+{b_2}$.
+\end{lem}
+
+\begin{proof}
+Nous démontrons l'implication \emph{de gauche à droite} ; l'autre sens
+est analogue. Supposons que
+$\ordeq{\tuple{A_{a_1}, <_{a_1}}}{\tuple{B_{b_1},
+\lessdot_{b_1}}}$ et
+$\ordeq{\tuple{A_{{a_2}}, <_{a_2}}}{\tuple{B_{{b_2}},
+\lessdot_{b_2}}}$, et soit $f \colon A_{{a_2}} \to B_{{b_2}}$
+l'isomorphisme considéré. Supposons ${a_1} < {a_2}$ ; alors
+$\ordeq{\tuple{A_{a_1}, <_{a_1}}}{\tuple{B_{f({a_1})},
+\lessdot_{f({a_1})}}}$ par le \olref{wellordinitialsegment}. Ainsi,
+$\ordeq{\tuple{B_{b_1}, \lessdot_{b_1}}}{\tuple{B_{f({a_1})},
+\lessdot_{f({a_1})}}}$, d'où ${b_1} = f({a_1})$ par le
+\olref{wellordnotinitial}. Enfin, ${b_1} \lessdot {b_2}$ puisque
+l'image de $f$ est $B_{{b_2}}$.\footnote{Note de l'édition
+française : l'original indique ici le domaine de $f$, alors que
+$f \colon A_{a_2} \to B_{b_2}$ a pour image $B_{b_2}$.}
+\end{proof}
+
+\begin{thm}\ollabel{thm:woalwayscomparable}
+Quels que soient deux bons ordres, l'un est isomorphe à un segment
+initial, éventuellement impropre, de l'autre.
+\end{thm}
+
+\begin{proof}
+Soient $\tuple{A, <}$ et $\tuple{B, \lessdot}$ deux bons ordres.
+Par séparation, posons
+\[
+	f = \Setabs{\tuple{a, b} \in A \times B}{
+		\ordeq{\tuple{A_a, <_a}}{\tuple{B_b, \lessdot_b}}}.
+\]
+Par le \olref{lemordsegments}, $a_1 < a_2$ si et seulement si
+$b_1 \lessdot b_2$ pour tous
+$\tuple{a_1, b_1}, \tuple{a_2, b_2} \in f$. Ainsi,
+$f \colon \dom{f} \to \ran{f}$ est un isomorphisme.
+
+Si $a_2 \in \dom{f}$ et $a_1 < a_2$, alors $a_1 \in \dom{f}$ par le
+\olref{wellordinitialsegment} ; donc $\dom{f}$ est un segment initial
+de $A$. De même, $\ran{f}$ est un segment initial de $B$. Par
+l'absurde, supposons que les deux soient \emph{propres}. Soit alors
+$a$ le plus petit !!{element} de $A \setminus \dom{f}$ pour $<$, de
+sorte que $\dom{f} = A_a$, et soit $b$ le plus petit !!{element} de
+$B \setminus \ran{f}$ pour $\lessdot$, de sorte que $\ran{f} = B_b$.
+Ainsi, $f \colon A_a \to B_b$ est un isomorphisme, donc
+$\tuple{a, b} \in f$, contradiction.
+\end{proof}
+
+\end{document}

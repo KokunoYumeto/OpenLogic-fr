@@ -1,0 +1,98 @@
+% Partie : intuitionistic-logic
+% Chapitre : soundness-completeness
+% Section : soundness-axd
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sc}{sax}
+
+\olsection{Correction des \usetoken{p}{derivation} axiomatiques}
+
+Dans un modèle relationnel, écrivons $u\leq v$ pour $Ruv$.
+La vérité d'une formule se conserve quand on passe de $u$ à
+$v\geq u$, par la \olref[int][sem][rel]{prop:true-monotonic}.
+Pour vérifier une implication en $u$, il faut vérifier sa
+conclusion en tout monde $v\geq u$ où sa prémisse est vraie.
+On itère cette lecture pour les implications emboîtées.
+
+\begin{lem}\ollabel{lem:axioms-valid}
+Tous les axiomes de la déduction axiomatique intuitionniste
+sont valides.
+\end{lem}
+
+\begin{proof}
+Considérons les neuf schémas de la \olref[int][int][axd]{sec}.
+\begin{enumerate}
+\item Les deux projections de la conjonction sont valides,
+  car si $!A\land !B$ est vraie en un monde, chacun de ses
+  membres y est vrai. Pour l'introduction de la conjonction,
+  supposons $!A$ vraie en $u$ et $!B$ vraie en $v\geq u$.
+  Par monotonie, $!A$ est encore vraie en $v$, donc
+  $!A\land !B$ y est vraie.
+\item Les deux introductions de la disjonction sont valides
+  dès que $!A$ est vraie au monde considéré. Pour l'élimination,
+  prenons $u\leq v\leq w$ où sont vraies, respectivement,
+  $!A\lif !C$, $!B\lif !C$ et $!A\lor !B$.
+  Les deux implications sont vraies en $w$ par monotonie.
+  L'un des deux disjoints est vrai en $w$ et l'implication
+  correspondante donne $!C$ en $w$, par réflexivité.
+\item Pour $!A\lif(!B\lif !A)$, la vérité de $!A$ se
+  conserve de $u$ à tout $v\geq u$, y compris si $!B$
+  est vraie en $v$. Pour le second schéma d'implication,
+  prenons $u\leq v\leq w$ où sont vraies, respectivement,
+  $!A\lif(!B\lif !C)$, $!A\lif !B$ et $!A$.
+  Les deux premières formules sont encore vraies en $w$.
+  La réflexivité donne $!B\lif !C$ puis $!B$ en $w$,
+  et finalement $!C$ en $w$.
+\item $\lfalse$ n'est vraie en aucun monde. L'implication
+  $\lfalse\lif !A$ est donc vraie partout, par vacuité.
+\end{enumerate}
+\end{proof}
+
+\begin{thm}[Correction]
+  \ollabel{thm:soundness}
+  Si $\Gamma \Proves !A$, alors $ \Gamma \Entails !A$.
+\end{thm}
+
+\begin{proof}
+  Nous démontrons que si $\Gamma \Proves !A$, alors
+  $\Gamma \Entails !A$. La preuve procède par récurrence sur le
+  nombre~$n$ de !!{formula}s dans la !!{derivation} de~$!A$ à partir
+  de~$\Gamma$. Nous montrons que si $!A_1$, \dots,
+  $!A_n = !A$ est !!a{derivation} à partir de~$\Gamma$, alors
+  $\Gamma \Entails !A_n$. Remarquons que si $!A_1$, \dots,
+  $!A_n$ est !!a{derivation}, alors $!A_1$, \dots,
+  $!A_k$ en est aussi une pour tout $k<n$.
+
+  Il n'existe pas de !!{derivation} de longueur~$0$ ; pour $n=0$,
+  l'énoncé est donc vrai par vacuité. Supposons-le vrai pour toutes
+  les !!{derivation}s de longueur~$<n$. Nous distinguons les cas
+  d'après la justification de~$!A_n$.
+
+  \begin{enumerate}
+  \item $!A_n$ est un axiome. Le \olref{lem:axioms-valid} donne
+    $\Gamma \Entails !A_n$ quel que soit~$\Gamma$.
+  \item $!A_n \in \Gamma$. Alors, quels que soient $\mModel{M}$ et
+    $w$, si $\mSat{M}{\Gamma}[w]$, on a évidemment
+    $\mSat{M}{!A_n}[w]$, c'est-à-dire $\Gamma \Entails !A$.
+  \item $!A_n$ résulte de $!A_i$ et de
+    $!A_j \ident !A_i \lif !A_n$ par \MP{}. Les suites $!A_1$, \dots,
+    $!A_i$ et $!A_1$, \dots, $!A_j$ sont des !!{derivation}s à partir
+    de~$\Gamma$. Par hypothèse de récurrence, nous avons
+    $\Gamma \Entails !A_i$ et $\Gamma \Entails !A_i \lif !A_n$.
+
+    Supposons $\mSat{M}{\Gamma}[w]$. Puisque
+    $\mSat{M}{\Gamma}[w]$ et $\Gamma \Entails !A_i \lif !A_n$,
+    on a $\mSat{M}{!A_i \lif !A_n}[w]$. Par définition, pour tout
+    $w'$ tel que $Rww'$, si $\mSat{M}{!A_i}[w']$, alors
+    $\mSat{M}{!A_n}[w']$. La relation $R$ étant réflexive,
+    $w$ est l'un des $w'$ tels que $Rww'$ : ainsi,
+    $\mSat{M}{!A_i}[w]$ implique $\mSat{M}{!A_n}[w]$. Comme
+    $\Gamma \Entails !A_i$, nous avons $\mSat{M}{!A_i}[w]$ et donc
+    $\mSat{M}{!A_n}[w]$, ce qu'il fallait démontrer.
+  \end{enumerate}
+\end{proof}
+
+\end{document}

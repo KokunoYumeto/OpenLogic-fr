@@ -1,0 +1,44 @@
+% IEEEtran.4ht (2026-05-21-12:49), generated from tex4ht-4ht.tex
+% Copyright (C) 2009-2009 Eitan M. Gurari
+% Copyright 2009-2026 TeX Users Group
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3c of this license or (at your option) any
+% later version. The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions
+% of LaTeX version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% The Current Maintainer of this work
+% is the TeX4ht Project <https://tug.org/tex4ht>.
+%
+% If you modify this program, changing the
+% version identification would be appreciated.
+\immediate\write-1{version 2026-05-21-12:49}
+
+\input article.4ht
+\let\twocolumn\onecolumn
+\AtBeginDocument{
+  \@restonecoltrue\onecolumn
+  \let\@restonecolfalse\@restonecoltrue
+}
+
+\ifCLASSOPTIONcompsoc\else
+\def\thesubsection{\thesection-\Alph{subsection}}     % I-A
+\fi
+
+\NewConfigure{authorblockN}{2}
+\NewConfigure{authorblockA}{2}
+
+\def\:tempa#1{\a:authorblockA\o:IEEEauthorblockA:{#1}\b:authorblockA}
+\HLet\IEEEauthorblockA\:tempa
+
+\def\:tempa#1{\a:authorblockN\o:IEEEauthorblockN:{#1}\b:authorblockN}
+\HLet\IEEEauthorblockN\:tempa
+
+\Hinput{IEEEtran}
+\endinput
+

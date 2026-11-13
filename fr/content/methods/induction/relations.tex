@@ -1,0 +1,463 @@
+% Partie : méthodes
+% Chapitre : induction mathématique
+% Section : relations et fonctions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{ind}{rel}
+
+\olsection{Relations et fonctions}
+
+Après avoir défini
+inductivement un
+ensemble d'objets,
+comme les nombres
+naturels ou les
+termes bien formés,
+nous pouvons aussi
+définir par induction
+des \emph{relations
+sur} ces objets.
+Par exemple, un
+terme bien formé~$t_1$
+est un sous-terme
+d'un autre terme
+bien formé~$t_2$
+s'il apparaît
+comme l'une
+de ses parties.
+Notons cette relation
+$t_1 \sqsubseteq t_2$.
+Tout terme est
+bien sûr un
+sous-terme de
+lui-même :
+$t \sqsubseteq t$.
+La relation reçoit
+la définition
+inductive suivante.
+
+\begin{defn}
+  La relation
+  «~le terme bien
+  formé~$t_1$
+  est un sous-terme
+  de~$t_2$~»,
+  notée
+  $t_1 \sqsubseteq t_2$,
+  est définie
+  par induction
+  sur~$t_2$ :
+  \begin{enumerate}
+  \item Si $t_2$
+    est une lettre,
+    alors
+    $t_1 \sqsubseteq t_2$
+    si et seulement
+    si $t_1=t_2$.
+  \item Si
+    $t_2=[s_1 \circ s_2]$,
+    alors
+    $t_1 \sqsubseteq t_2$
+    si et seulement
+    si $t_1=t_2$,
+    $t_1 \sqsubseteq s_1$
+    ou
+    $t_1 \sqsubseteq s_2$.
+  \end{enumerate}
+\end{defn}
+
+Cette définition donne,
+par exemple,
+$\mathrm{a}
+\sqsubseteq
+[\mathrm{b}\circ\mathrm{a}]$.
+En effet, d'après
+la clause (2),
+$\mathrm{a}\sqsubseteq
+[\mathrm{b}\circ\mathrm{a}]$
+vaut si et
+seulement si
+$\mathrm{a}
+=[\mathrm{b}\circ\mathrm{a}]$,
+ou
+$\mathrm{a}
+\sqsubseteq\mathrm{b}$,
+ou
+$\mathrm{a}
+\sqsubseteq\mathrm{a}$.
+Les deux premières
+possibilités sont
+fausses : la lettre
+$\mathrm{a}$ n'est
+pas identique au
+terme composé
+$[\mathrm{b}\circ\mathrm{a}]$,
+et
+la clause (1) dit
+que
+$\mathrm{a}
+\sqsubseteq\mathrm{b}$
+si et seulement si
+$\mathrm{a}=\mathrm{b}$,
+ce qui est également
+faux. En revanche,
+toujours d'après
+la clause (1),
+$\mathrm{a}
+\sqsubseteq\mathrm{a}$
+si et seulement si
+$\mathrm{a}=\mathrm{a}$,
+ce qui est vrai.
+
+Le bon fonctionnement
+de cette définition
+dépend d'un fait
+que nous n'avons
+pas encore démontré :
+chaque terme bien
+formé~$t$ est
+soit une lettre
+seule, soit de
+la forme
+$[s_1\circ s_2]$
+pour des termes
+bien formés
+$s_1$ et $s_2$
+\emph{déterminés de
+manière unique}.
+Cette unicité
+signifie que si
+$t=[s_1\circ s_2]$,
+on ne peut pas
+avoir \emph{aussi}
+$t=[r_1\circ r_2]$
+avec $s_1\neq r_1$
+ou $s_2\neq r_2$.
+Sinon, la clause~(2)
+pourrait donner
+des réponses
+contradictoires :
+la décomposition
+$[s_1\circ s_2]$
+pourrait conduire
+à $t_1\sqsubseteq t_2$,
+alors que
+$[r_1\circ r_2]$
+conduirait à la
+négation de
+$t_1\sqsubseteq t_2$.
+Avant
+de démontrer que
+cela n'arrive pas
+pour les termes
+bien formés,
+considérons un
+exemple où cela
+\emph{peut} arriver.
+
+\begin{defn}
+  Définissons
+  inductivement
+  les \emph{termes
+  sans crochets} :
+  \begin{enumerate}
+  \item Chaque lettre
+    est un terme
+    sans crochets.
+  \item Si $s_1$
+    et $s_2$
+    sont des termes
+    sans crochets,
+    $s_1\circ s_2$
+    l'est aussi.
+  \item Aucun autre
+    objet n'est
+    un terme
+    sans crochets.
+  \end{enumerate}
+\end{defn}
+
+Les expressions
+$\mathrm{a}$,
+$\mathrm{b}\circ\mathrm{d}$
+et
+$\mathrm{b}\circ\mathrm{a}
+\circ\mathrm{b}$
+sont, par exemple,
+des termes sans
+crochets. Si nous
+définissions pour
+eux «~sous-terme~»
+de la même façon
+que précédemment,
+la seconde clause
+serait :
+\begin{center}
+  Si $t_2=s_1\circ s_2$,
+  alors
+  $t_1\sqsubseteq t_2$
+  si et seulement si
+  $t_1=t_2$,
+  $t_1\sqsubseteq s_1$
+  ou
+  $t_1\sqsubseteq s_2$.
+\end{center}
+
+Or
+$\mathrm{b}\circ\mathrm{a}
+\circ\mathrm{b}$
+peut se lire
+$s_1\circ s_2$
+avec
+\begin{align*}
+  s_1 &= \mathrm{b}
+    \text{ et} &
+  s_2 &= \mathrm{a}\circ\mathrm{b}.
+\intertext{On peut aussi le lire
+  $r_1\circ r_2$ avec}
+  r_1 &= \mathrm{b}\circ\mathrm{a}
+    \text{ et} &
+  r_2 &= \mathrm{b}.
+\end{align*}
+Le terme
+$\mathrm{a}\circ\mathrm{b}$
+est-il un sous-terme
+de
+$\mathrm{b}\circ\mathrm{a}
+\circ\mathrm{b}$ ?
+Oui selon la première
+lecture, non selon
+la seconde.
+
+La propriété selon
+laquelle un terme
+bien formé admet
+une seule décomposition
+en termes bien
+formés plus simples
+s'appelle
+l'\emph{unicité de
+la lecture}.
+Comme les définitions
+inductives de relations
+sur de tels objets
+sont importantes,
+nous devons établir
+cette propriété.
+
+\begin{prop}
+  Supposons que $t$
+  soit un terme bien
+  formé. Alors,
+  soit $t$ est une
+  lettre seule,
+  soit il existe
+  des termes bien
+  formés $s_1$
+  et $s_2$
+  déterminés de
+  manière unique
+  tels que
+  $t=[s_1\circ s_2]$.
+\end{prop}
+
+\begin{proof}
+  Si $t$ est une
+  lettre seule,
+  la condition est
+  satisfaite.
+  Sinon, la définition
+  inductive impose
+  la forme
+  $t=[s_1\circ s_2]$
+  pour certains
+  termes bien formés
+  $s_1$ et~$s_2$.
+  Montrons que
+  ces deux termes
+  sont déterminés
+  de manière unique :
+  si
+  $t=[r_1\circ r_2]$,
+  alors $s_1=r_1$
+  et $s_2=r_2$.
+
+  Supposons donc
+  $t=[s_1\circ s_2]
+  =[r_1\circ r_2]$,
+  les quatre
+  sous-termes étant
+  bien formés.
+  Les termes $s_1$
+  et $r_1$ doivent
+  être identiques :
+  sinon, puisque
+  les deux lectures
+  portent sur la
+  même suite de
+  symboles, l'un
+  serait un préfixe
+  propre non vide
+  de l'autre.
+  Or la
+  \olref[sti]{prop:initial}
+  l'interdit lorsque
+  les deux termes sont
+  bien formés.
+  %
+  %
+  %
+  %
+  %
+  %
+  %
+  %
+  %
+  Ainsi $s_1=r_1$ ;
+  il s'ensuit
+  immédiatement
+  $s_2=r_2$.
+\end{proof}
+
+Nous pouvons aussi
+définir des fonctions
+inductivement.
+Par exemple,
+définissons la
+fonction~$f$
+qui associe à
+chaque terme bien
+formé la profondeur
+maximale de ses
+crochets emboîtés
+$[\dots]$ :
+\begin{defn}
+  \ollabel{defn:depth}
+  La \emph{profondeur}
+  d'un terme
+  bien formé~$t$,
+  notée $f(t)$,
+  est définie
+  inductivement par
+  \[
+    f(t)=
+    \begin{cases}
+      0
+        & \text{si $t$ est une lettre},\\
+      \max(f(s_1),f(s_2))+1
+        & \text{si $t=[s_1\circ s_2]$.}
+    \end{cases}
+  \]
+\end{defn}
+
+Par exemple :
+\begin{align*}
+  f([\mathrm{a}\circ\mathrm{b}])
+    &=\max(f(\mathrm{a}),f(\mathrm{b}))+1\\
+    &=\max(0,0)+1=1,
+      \text{ et}\\
+  f([[\mathrm{a}\circ\mathrm{b}]
+      \circ\mathrm{c}])
+    &=\max(f([\mathrm{a}\circ\mathrm{b}]),
+           f(\mathrm{c}))+1\\
+    &=\max(1,0)+1=2.
+\end{align*}
+
+Nous supposons ici
+que $s_1$ et $s_2$
+sont des termes bien
+formés et utilisons
+le fait que tout
+terme bien formé
+est soit une lettre,
+soit de la forme
+$[s_1\circ s_2]$.
+L'unicité de cette
+décomposition est
+encore essentielle.
+Reprenons, pour le
+voir, les termes
+sans crochets
+définis plus haut.
+La «~définition~»
+analogue serait :
+\[
+  g(t)=
+  \begin{cases}
+    0
+      & \text{si $t$ est une lettre},\\
+    \max(g(s_1),g(s_2))+1
+      & \text{si $t=s_1\circ s_2$.}
+  \end{cases}
+\]
+Considérons maintenant
+le terme sans crochets
+$\mathrm{a}\circ\mathrm{b}
+\circ\mathrm{c}\circ\mathrm{d}$.
+On peut notamment
+le lire
+$s_1\circ s_2$
+avec
+\begin{align*}
+  s_1 &= \mathrm{a}
+    \text{ et} &
+  s_2 &= \mathrm{b}\circ\mathrm{c}
+    \circ\mathrm{d},
+\intertext{ou $r_1\circ r_2$ avec}
+  r_1 &= \mathrm{a}\circ\mathrm{b}
+    \text{ et} &
+  r_2 &= \mathrm{c}\circ\mathrm{d}.
+\end{align*}
+Le calcul de $g$
+selon la première
+lecture donnerait
+\begin{align*}
+  g(s_1\circ s_2)
+    &=\max(g(\mathrm{a}),
+      g(\mathrm{b}\circ\mathrm{c}
+      \circ\mathrm{d}))+1\\
+    &=\max(0,2)+1=3.
+\intertext{Selon l'autre lecture,
+  on obtient}
+  g(r_1\circ r_2)
+    &=\max(g(\mathrm{a}\circ\mathrm{b}),
+      g(\mathrm{c}\circ\mathrm{d}))+1\\
+    &=\max(1,1)+1=2.
+\end{align*}
+Une fonction doit
+cependant attribuer
+une valeur unique
+à chaque argument.
+Notre «~définition~»
+de~$g$ ne définit
+donc pas de fonction.
+
+\begin{prob}
+  Donnez une définition
+  inductive de la
+  fonction~$l$,
+  où $l(t)$
+  désigne le
+  nombre de symboles
+  du terme bien
+  formé~$t$.
+\end{prob}
+
+\begin{prob}
+  Démontrez par
+  induction structurelle
+  sur les termes
+  bien formés~$t$
+  que $f(t)<l(t)$,
+  où $l(t)$ est
+  le nombre de
+  symboles de~$t$
+  et $f(t)$ sa
+  profondeur,
+  définie dans la
+  \olref[mth][ind][rel]{defn:depth}.
+\end{prob}
+
+\end{document}

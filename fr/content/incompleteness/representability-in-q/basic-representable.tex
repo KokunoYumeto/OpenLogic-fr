@@ -1,0 +1,260 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: basic-representable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{bre}
+\olsection{Les fonctions de base sont représentables dans~$\Th{Q}$}
+
+Montrons d'abord que toutes les fonctions de base sont
+représentables dans~$\Th{Q}$. Nous devons associer à chaque
+fonction de base $k$-aire $f(x_0,\dots,x_{k-1})$ une !!{formula}
+$!A_f(x_0,\dots,x_{k-1},y)$ qui la représente.
+
+Nous pourrons représenter la fonction nulle, le successeur,
+l'addition, la multiplication, la fonction caractéristique de
+l'égalité et les projections. Chaque !!{formula} représentante
+est facile à trouver : par exemple, la fonction nulle est
+représentée par $y=\Obj 0$, le successeur par $x_0'=y$ et
+l'addition par $(x_0+x_1)=y$. Le travail consiste à montrer que
+$\Th{Q}$ démontre les !!{sentence}s requis. Ainsi, pour dire que
+l'addition est représentée par la !!{formula} indiquée, nous
+devons montrer que, pour toute paire d'entiers naturels $m,n$,
+$\Th{Q}$ démontre
+\begin{align*}
+& \eq[\num n + \num m][\num {n+m}] \text{ et}\\
+& \lforall[y][(\eq[(\num n + \num m)][y] \lif \eq[y][\num{n+m}])].
+\end{align*}
+
+\begin{prop}
+\ollabel{prop:rep-zero}
+La fonction nulle $\Zero(x)=0$ est représentée dans~$\Th{Q}$ par
+$!A_{\Zero}(x,y)\ident\eq[y][\Obj 0]$.
+\end{prop}
+
+\begin{prop}
+\ollabel{prop:rep-succ}
+La fonction successeur $\Succ(x)=x+1$ est représentée dans~$\Th{Q}$
+par $!A_{\Succ}(x,y)\ident\eq[y][x']$.
+\end{prop}
+
+\begin{prop}
+\ollabel{prop:rep-proj}
+La projection $\Proj{n}{i}(x_0,\dots,x_{n-1})=x_i$ est
+représentée dans~$\Th{Q}$ par
+\[!A_{\Proj{n}{i}}(x_0, \dots, x_{n-1}, y) \ident \eq[y][x_i].\]
+\end{prop}
+
+\begin{prob}
+Démontrez que $\eq[y][\Obj 0]$, $\eq[y][x']$ et $\eq[y][x_i]$
+représentent respectivement $\Zero$, $\Succ$ et $\Proj{n}{i}$.
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:rep-id}
+La fonction caractéristique de~$=$,
+\[
+\Char{=}(x_0, x_1) =
+\begin{cases}
+  1 & \text{si } x_0 =x_1\\
+  0 & \text{sinon}
+\end{cases}
+\]
+est représentée dans~$\Th{Q}$ par
+\[
+  !A_{\Char{=}}(x_0, x_1, y) \ident (\eq[x_0][x_1] \land \eq[y][\num{1}]) \lor (\eq/[x_0][x_1] \land
+\eq[y][\num{0}]).
+\]
+\end{prop}
+
+La preuve utilise le lemme suivant.
+
+\begin{lem}
+\ollabel{lem:q-proves-neq}
+Si les entiers naturels $n,m$ sont distincts, alors
+$\Th{Q}\Proves\eq/[\num n][\num m]$.
+\end{lem}
+
+\begin{proof}
+Par récurrence sur~$n$, montrons que, pour tout~$m$, si $n\neq m$,
+alors $\Th{Q}\Proves\eq/[\num n][\num m]$.
+
+Pour l'initialisation, prenons $n=0$. Si $m\neq0$, alors
+$m=k+1$ pour un entier naturel~$k$. L'un des axiomes dit
+$\lforall[x][\eq/[0][x']]$. En y remplaçant $x$ par~$\num k$
+au moyen d'un axiome de quantification, nous obtenons
+$\eq/[0][\num k']$; or $\num k'$ n'est autre que~$\num m$.
+
+Pour l'étape de récurrence, supposons la propriété acquise au
+rang~$n$ et considérons $n+1$. Soit $m$ un entier naturel.
+Ou bien $m=0$, ou bien $m=k+1$ pour un certain~$k$. Si $m=0$,
+l'axiome précédent donne
+$\Th{Q}\Proves\eq/[0][\num{n+1}]$; la symétrie de
+l'égalité fournit alors
+$\Th{Q}\Proves\eq/[\num{n+1}][0]$. Dans l'autre cas,
+supposons $n+1\neq k+1$. Alors $n\neq k$ et, par hypothèse de
+récurrence, $\Th{Q}\Proves\eq/[\num n][\num k]$. Un axiome
+affirme $\lforall[x][\lforall[y][\eq[x'][y']\lif\eq[x][y]]]$.
+En instanciant les quantificateurs, nous obtenons
+$\eq[\num n'][\num k']\lif\eq[\num n][\num k]$. La logique
+propositionnelle permet d'en déduire dans~$\Th{Q}$
+$\eq/[\num n][\num k]\lif\eq/[\num n'][\num k']$.
+Par modus ponens, $\Th{Q}\Proves\eq/[\num n'][\num k']$;
+c'est le résultat voulu puisque $\num k'=\num m$.
+\end{proof}
+
+\begin{explain}
+Le lemme n'affirme au fond qu'une chose : $\Th{Q}$ démontre que
+deux numéraux distincts désignent des objets distincts. Par
+exemple, $\Th{Q}$ démontre $0''\neq0'''$. Mais établir ce fait
+en général demande un peu de soin. Remarquons surtout que la
+récurrence employée dans la preuve est une récurrence
+\emph{extérieure} à~$\Th{Q}$.
+\end{explain}
+
+\begin{proof}[Démonstration de la \olref{prop:rep-id}]
+Si $n=m$, les termes $\num{n}$ et $\num{m}$ sont identiques, et
+$\Char{=}(n,m)=1$. La théorie $\Th{Q}$ démontre alors
+$(\eq[\num{n}][\num{m}]\land\eq[\num{1}][\num{1}])$; elle
+démontre donc $!A_{\Char{=}}(\num{n},\num{m},\num{1})$.
+Si $n\neq m$, alors $\Char{=}(n,m)=0$. D'après le
+\olref{lem:q-proves-neq}, $\Th{Q}\Proves\eq/[\num{n}][\num{m}]$;
+elle démontre aussi
+$(\eq/[\num{n}][\num{m}]\land\Obj 0=\Obj 0)$, puis
+$!A_{\Char{=}}(\num{n},\num{m},\num{0})$.
+
+Pour la seconde condition de représentabilité, distinguons
+également deux cas. Si $n=m$, nous devons montrer que
+$\Th{Q}\Proves\lforall[y][(!A_{\Char{=}}(\num{n},\num{m},y)
+\lif\eq[y][\num{1}])]$. Informellement, supposons
+$!A_{\Char{=}}(\num{n},\num{m},y)$, c'est-à-dire
+\[
+(\eq[\num{n}][\num{n}] \land \eq[y][\num{1}]) \lor
+(\eq/[\num{n}][\num{n}] \land \eq[y][\num{0}])
+\]
+Le premier membre de la disjonction implique
+$\eq[y][\num{1}]$ par la logique seule; le second contredit
+$\eq[\num{n}][\num{n}]$, que la logique de l'égalité permet
+de démontrer.
+
+Supposons maintenant $n\neq m$. La formule
+$!A_{\Char{=}}(\num{n},\num{m},y)$ est alors
+\[
+(\eq[\num{n}][\num{m}] \land \eq[y][\num{1}]) \lor
+(\eq/[\num{n}][\num{m}] \land \eq[y][\num{0}])
+\]
+Le premier membre contredit
+$\eq/[\num{n}][\num{m}]$, démontrable dans~$\Th{Q}$ d'après le
+\olref{lem:q-proves-neq}; le second implique
+$\eq[y][\num{0}]$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:rep-add}
+La fonction d'addition $\Add(x_0,x_1)=x_0+x_1$ est représentée
+dans~$\Th{Q}$ par
+\[
+  !A_{\Add}(x_0, x_1, y) \ident \eq[y][(x_0 + x_1)].
+\]
+\end{prop}
+
+\begin{lem}
+\ollabel{lem:q-proves-add}
+$\Th{Q}\Proves\eq[(\num{n}+\num{m})][\num{n+m}]$.
+\end{lem}
+
+\begin{proof}
+Procédons par récurrence sur~$m$. Pour $m=0$, il faut démontrer
+$\Th{Q}\Proves\eq[(\num{n}+\Obj 0)][\num{n}]$, ce qui découle
+de l'axiome~$!Q_4$. Supposons le résultat établi au rang~$m$
+et prouvons-le pour $m+1$, c'est-à-dire montrons que
+$\Th{Q}\Proves\eq[(\num{n}+\num{m+1})][\num{n+m+1}]$.
+Or $\num{m+1}$ est le terme $\num{m}'$, et $\num{n+m+1}$ est
+$\num{n+m}'$. D'après l'axiome~$!Q_5$,
+$\Th{Q}\Proves\eq[(\num{n}+\num{m}')][(\num{n}+\num{m})']$.
+L'hypothèse de récurrence donne
+$\Th{Q}\Proves\eq[(\num{n}+\num{m})][\num{n+m}]$.
+La substitution des égaux permet donc de conclure
+$\Th{Q}\Proves\eq[(\num{n}+\num{m}')][\num{n+m}']$.
+\end{proof}
+
+\begin{proof}[Démonstration de la \olref{prop:rep-add}]
+La !!{formula}~$!A_\Add(x_0,x_1,y)$ qui représente $\Add$ est
+$\eq[y][(x_0+x_1)]$. Montrons d'abord que si $\Add(n,m)=k$,
+alors $\Th{Q}\Proves !A_\Add(\num{n},\num{m},\num{k})$,
+c'est-à-dire $\Th{Q}\Proves\eq[\num{k}][(\num{n}+\num{m})]$.
+Comme $k=n+m$, le numéral $\num{k}$ est $\num{n+m}$; or
+\olref{lem:q-proves-add} donne
+$\Th{Q}\Proves\eq[(\num{n}+\num{m})][\num{n+m}]$.
+La symétrie de l'égalité donne le sens requis.
+
+Nous devons aussi montrer que si $\Add(n,m)=k$, alors
+\[
+\Th{Q} \Proves \lforall[y][(!A_\Add(\num{n}, \num{m}, y) \lif
+  \eq[y][\num{k}])].
+\]
+Supposons $\eq[y][(\num{n}+\num{m})]$, comme l'impose la
+!!{formula} représentante. Puisque
+\[
+\Th{Q} \Proves \eq[(\num{n}+\num{m})][\num{n+m}],
+\]
+la transitivité de l'égalité donne
+$\eq[y][\num{n+m}]$ pour tout~$y$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:rep-mult}
+La fonction de multiplication
+$\Mult(x_0,x_1)=x_0\cdot x_1$ est représentée dans~$\Th{Q}$ par
+\[
+  !A_{\Mult}(x_0, x_1, y) \ident y = (x_0 \times x_1).
+\]
+\end{prop}
+
+\begin{proof} Exercice. \end{proof}
+
+\begin{lem}
+\ollabel{lem:q-proves-mult}
+$\Th{Q}\Proves\eq[(\num{n}\times\num{m})][\num{n\cdot m}]$.
+\end{lem}
+
+\begin{proof} Exercice. \end{proof}
+
+\begin{prob}
+Démontrez le \olref[inc][req][bre]{lem:q-proves-mult}.
+\end{prob}
+
+\begin{prob}
+À l'aide du \olref[inc][req][bre]{lem:q-proves-mult}, démontrez la
+\olref[inc][req][bre]{prop:rep-mult}.
+\end{prob}
+
+\begin{explain}
+  Rappelons que $\times$ désigne le symbole de fonction du
+  langage de l'arithmétique, tandis que $\cdot$ désigne la
+  multiplication ordinaire des nombres. Ainsi, $\cdot$ peut
+  apparaître entre des expressions désignant des nombres, comme
+  $m\cdot n$, alors que $\times$ se place seulement entre des
+  termes du langage de l'arithmétique, comme
+  $(\num{m}\times\num{n})$. Plus déroutant encore, le signe~$+$
+  sert à la fois de !!{function} et de signe de
+  l'addition ordinaire. Entre des termes, par exemple dans
+  $(\num{n}+\num{m})$, c'est le !!{function} binaire
+  du langage de l'arithmétique; entre des nombres, par exemple
+  dans $n+m$, c'est l'opération d'addition. Il en va de même
+  dans $\num{n+m}$ : ce terme est le numéral standard qui
+  correspond au nombre~$n+m$.
+\end{explain}
+
+\begin{explain}
+Pour l'addition, le calcul sur deux numéraux établit une
+égalité dans~$\Th{Q}$. La symétrie donne l'instance où le
+numéral résultat figure à gauche. La transitivité donne
+l'unicité de la valeur : toute valeur égale au terme
+$\num{n}+\num{m}$ est égale au numéral~$\num{n+m}$.
+\end{explain}
+
+\end{document}

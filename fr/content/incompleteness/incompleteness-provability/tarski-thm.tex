@@ -1,0 +1,155 @@
+% Part: incompleteness
+% Chapter: incompleteness-provability
+% Section: tarski-thm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{tar}
+
+\olsection{L'indéfinissabilité de la vérité}
+
+La notion de \emph{définissabilité} suppose que
+l'on ait donné une sémantique formelle du langage
+de l'arithmétique. Nous avons décrit un ensemble de
+!!{formula}s et d'!!{sentence}s de ce langage.
+Selon l'« interprétation voulue », ces
+!!{sentence}s expriment des assertions sur les
+entiers naturels; une telle assertion peut être
+vraie ou fausse. Soit $\Struct{N}$ la
+!!{structure} de domaine~$\Nat$ qui donne aux
+symboles du langage de l'arithmétique leur
+interprétation usuelle. Alors $\Sat{N}{!A}$
+signifie que « $!A$ est vraie dans l'interprétation
+usuelle ».
+
+\begin{defn}
+Une relation $R(x_1,\dots,x_k)$ sur les entiers
+naturels est \emph{définissable} dans~$\Struct{N}$
+si et seulement s'il existe une !!{formula}
+$!A(x_1,\dots,x_k)$ du langage de l'arithmétique
+telle que, pour tous $n_1,\dots,n_k$,
+$R(n_1,\dots,n_k)$ si et seulement si
+$\Sat{N}{!A(\num n_1,\dots,\num n_k)}$.
+\end{defn}
+
+Autrement dit, une relation est définissable dans
+$\Struct{N}$ si et seulement si elle est
+représentable dans la théorie $\Th{TA}$, où
+$\Th{TA}=\Setabs{!A}{\Sat{N}{!A}}$ est l'ensemble
+des !!{sentence}s vrais de l'arithmétique.
+Si cette équivalence ne vous paraît pas immédiate,
+reprenez les définitions pour vous en convaincre.
+
+\begin{lem}
+Toute relation calculable est définissable
+dans~$\Struct{N}$.
+\end{lem}
+
+\begin{proof}
+On vérifie facilement que la !!{formula}
+représentant une relation dans~$\Th{Q}$ définit
+la même relation dans~$\Struct{N}$.
+\end{proof}
+
+La réciproque est-elle vraie? Toute relation
+définissable dans~$\Struct{N}$ est-elle calculable?
+Non. En voici un exemple.
+
+\begin{lem}
+La relation d'arrêt est définissable
+dans~$\Struct{N}$.
+\end{lem}
+
+\begin{proof}
+Rappelons que le théorème de la forme normale de
+Kleene affirme que toute fonction partiellement
+calculable~$f$ possède un indice~$e$ tel que,
+pour tout $x\in\Nat$,
+$f(x)=U(\umin{s}{T(e,x,s)})$, où $U$ et $T$
+sont récursives primitives : leurs évaluations
+terminent donc toujours.
+Ainsi, $f(x)$ est définie, c'est-à-dire que le
+calcul s'arrête, si et seulement s'il existe
+un~$s$ tel que $T(e,x,s)$.
+
+Soit maintenant $H$ la relation d'arrêt :
+\[
+H=\Setabs{\tuple{e,x}}{\lexists[s][T(e,x,s)]}.
+\]
+Soit $!D_T$ une !!{formula} qui définit~$T$
+dans~$\Struct{N}$. Alors
+\[
+H=\Setabs{\tuple{e,x}}{
+\Sat{N}{\lexists[s][!D_T(\num e,\num x,s)]}},
+\]
+si bien que
+$\lexists[s][!D_T(z,x,s)]$ définit~$H$
+dans~$\Struct{N}$.
+\end{proof}
+
+\begin{prob}
+Montrez que la relation
+$Q(n)\defiff n\in
+\Setabs{\Gn{!A}}{\Th{Q}\Proves !A}$
+est définissable en arithmétique.
+\end{prob}
+
+Qu'en est-il de $\Th{TA}$ elle-même?
+Est-elle définissable en arithmétique?
+Autrement dit, l'ensemble
+$\Setabs{\Gn{!A}}{\Sat{N}{!A}}$
+est-il définissable en arithmétique?
+Le théorème de Tarski répond par la négative.
+
+\begin{thm}
+\ollabel{thm:tarski}
+L'ensemble des !!{sentence}s vrais de
+l'arithmétique n'est pas définissable en
+arithmétique.
+\end{thm}
+
+\begin{proof}
+Supposons que $!D(x)$ définisse cet ensemble :
+$\Sat{N}{!A}$ si et seulement si
+$\Sat{N}{!D(\gn{!A})}$. Par le lemme du point
+fixe, il existe un !!{sentence}~$!A$ tel que
+$\Th{Q}\Proves !A\liff\lnot !D(\gn{!A})$,
+et donc
+$\Sat{N}{!A\liff\lnot !D(\gn{!A})}$.
+Ainsi, $\Sat{N}{!A}$ si et seulement si
+$\Sat{N}{\lnot !D(\gn{!A})}$, ce qui contredit
+le fait que $!D(y)$ définisse l'ensemble des
+!!{sentence}s vrais de l'arithmétique.
+\end{proof}
+
+Tarski a appliqué cette analyse à une notion
+philosophique plus générale de vérité. Pour tout
+langage~$L$, une notion de vérité adéquate devrait,
+selon lui, satisfaire, pour chaque énoncé~$X$, le
+schéma suivant :
+\begin{quote}
+« $X$ » est vrai si et seulement si $X$.
+\end{quote}
+Son exemple souvent cité, formulé en français, est :
+\begin{quote}
+L'énoncé « La neige est blanche » est vrai si et
+seulement si la neige est blanche.
+\end{quote}
+Cependant, dans tout langage assez puissant pour
+représenter la fonction diagonale, et pour tout
+prédicat linguistique~$T(x)$, on peut construire
+un !!{sentence}~$X$ qui satisfait :
+« $X$ si et seulement si non
+$T(\text{« $X$ »})$ ».
+Puisque nous ne voulons pas qu'un prédicat de
+vérité déclare certains !!{sentence}s à la fois
+vrais et faux, Tarski en conclut qu'on ne peut
+définir un prédicat de vérité pour tous les
+!!{sentence}s d'un tel langage sans sortir, d'une
+façon ou d'une autre, du langage lui-même.
+Autrement dit, le prédicat de vérité d'un tel langage
+ne peut pas être défini dans ce langage.
+
+\end{document}

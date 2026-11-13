@@ -5,8 +5,25 @@ from urllib.parse import urlsplit,unquote
 from lxml import etree
 E=Path(__file__).resolve().parent
 epub=Path(sys.argv[1])
+source_scope_units=int(sys.argv[2]) if len(sys.argv)>2 else 111
+assert 1<=source_scope_units<=722
+MATHML="{http://www.w3.org/1998/Math/MathML}"
+XHTML="{http://www.w3.org/1999/xhtml}"
+EPUB="{http://www.idpf.org/2007/ops}"
 sha=lambda b:hashlib.sha256(b).hexdigest()
 errors=[];documents={};ids={};maths=0;figures=0;links=0;external=[];missing_math=[];spine=[]
+def presentation_child(e):
+ if not isinstance(e.tag,str) or e.tag.startswith(MATHML):
+  return True
+ if e.tag==XHTML+"img":
+  return True
+ parent=e.getparent()
+ if e.tag==XHTML+"a":
+  return parent.tag==MATHML+"mtext" and e.get(EPUB+"type")=="noteref"
+ if e.tag==XHTML+"sup":
+  return parent.tag==XHTML+"a" and parent.get(EPUB+"type")=="noteref" and parent.getparent().tag==MATHML+"mtext"
+ return False
+
 with zipfile.ZipFile(epub) as z:
  names=set(z.namelist());entries=z.infolist()
  assert entries[0].filename=="mimetype" and entries[0].compress_type==zipfile.ZIP_STORED
@@ -37,7 +54,7 @@ with zipfile.ZipFile(epub) as z:
    for n,m in enumerate(mm):
     if not list(m):missing_math.append([p,n,"empty"])
     if etree.QName(m).namespace!="http://www.w3.org/1998/Math/MathML":errors.append(["mathml_namespace",p,n])
-    if any(etree.QName(e).namespace!="http://www.w3.org/1998/Math/MathML" for e in m.iter() if isinstance(e.tag,str) and etree.QName(e).localname!="img"):errors.append(["mathml_child_namespace",p,n])
+    if not all(map(presentation_child,m.iter())):errors.append(["mathml_child_namespace",p,n])
    figures+=len(root.xpath("//*[local-name()='img' or local-name()='svg']"))
    if not "".join(root.itertext()).strip():errors.append(["empty_document",p])
  for itemref in package.xpath("//*[local-name()='spine']/*"):
@@ -45,7 +62,7 @@ with zipfile.ZipFile(epub) as z:
   if item is None:errors.append(["spine_missing",itemref.get("idref")])
   else:spine.append(posixpath.normpath(posixpath.join(base,item.get("href"))))
  for p,root in documents.items():
-  for attr in root.xpath("//@href | //@src"):
+  for attr in root.xpath("//@*[local-name()='href' or local-name()='src']"):
    u=urlsplit(attr)
    if u.scheme or u.netloc:external.append(attr);continue
    dest=posixpath.normpath(posixpath.join(posixpath.dirname(p),unquote(u.path))) if u.path else p
@@ -55,6 +72,6 @@ with zipfile.ZipFile(epub) as z:
  if maths==0:errors.append(["no_native_mathml"])
  nav=[x for x in items.values() if "nav" in x.get("properties","").split()]
  if len(nav)!=1:errors.append(["nav_count",len(nav)])
- report=dict(epub=epub.name,bytes=epub.stat().st_size,sha256=sha(epub.read_bytes()),documents=len(documents),spine=spine,native_mathml_roots=maths,figures=figures,internal_links=links,external_links=sorted(set(external)),missing_math=missing_math,errors=errors,status="PASS_STRUCTURE_ONLY" if not errors and not missing_math else "FAIL",semantic_source_coverage_inferred=False,source_scope_units=111,total_edition_units=722,full_edition_complete=False)
+ report=dict(epub=epub.name,bytes=epub.stat().st_size,sha256=sha(epub.read_bytes()),documents=len(documents),spine=spine,native_mathml_roots=maths,figures=figures,internal_links=links,external_links=sorted(set(external)),missing_math=missing_math,errors=errors,status="PASS_STRUCTURE_ONLY" if not errors and not missing_math else "FAIL",semantic_source_coverage_inferred=False,source_scope_units=source_scope_units,total_edition_units=722,full_edition_complete=False)
  print(json.dumps(report,ensure_ascii=True,indent=2))
 sys.exit(bool(errors or missing_math))

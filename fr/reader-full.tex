@@ -1,0 +1,90 @@
+% Lecteur de l'édition française avec compléments.
+\documentclass[11pt,a4paper,openany]{memoir}
+\usepackage{mathpazo}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+\usepackage{natbib}
+\newcommand*{\olpath}{../..}
+\newcommand*{\ollangid}{fr}
+\newcommand*{\ollanguage}{french}
+\input{\olpath/sty/open-logic.sty}
+\input{\olpath/sty/open-logic-defer.sty}
+\includeenv{editorial}
+\usepackage{footnotehyper}
+\makesavenoteenv{editorial}
+\frcompletevariantstrue
+\problemsperchapter
+\setlrmarginsandblock{28mm}{28mm}{*}
+\setulmarginsandblock{26mm}{28mm}{*}
+\checkandfixthelayout
+\linespread{1.05}
+\raggedbottom
+\setlength{\emergencystretch}{2em}
+\hfuzz=3pt
+\let\cleardoublepage\clearpage
+\pagestyle{plain}
+\setlength{\cftbeforechapterskip}{0.65em}
+\hypersetup{pdftitle={OpenLogic — Édition française},
+pdfauthor={Open Logic Project ; traduction française produite par IA},
+pdfsubject={Logique, ensembles, calculabilité, théorie des modèles et méthodes formelles},
+linkcolor=black,citecolor=black,urlcolor=blue}
+
+\begin{document}
+\frontmatter
+\begin{titlingpage}
+\setlength{\parindent}{0pt}
+\vspace*{15mm}
+{\sffamily\Huge\bfseries OpenLogic\par}
+\vspace{6mm}
+{\sffamily\LARGE Édition française\par}
+\vspace{14mm}
+\vfill
+Ce volume réunit la théorie des ensembles, les logiques propositionnelle
+et du premier ordre, la théorie des modèles, la calculabilité,
+l'incomplétude, les logiques modales et non classiques, ainsi que les
+méthodes de démonstration et des éléments d'histoire de la logique.
+Les compléments comprennent des présentations alternatives et un
+fragment de théorie de la démonstration. Les autres variantes sont
+conservées dans les sources.
+\par\medskip
+Texte original : \href{https://openlogicproject.org/}{Open Logic Project}.
+Traduction française et révision éditoriale produites par IA.
+\par\medskip
+Texte original et traduction : licence
+\href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons
+Attribution 4.0 International}. Les notices de droits propres aux
+composants sont conservées avec les sources.
+\end{titlingpage}
+\tableofcontents*
+\input{content/open-logic-about.tex}
+\mainmatter
+
+\olimport[content/sets-functions-relations]{sets-functions-relations-complete}
+\olimport[content/propositional-logic]{propositional-logic}
+\olimport[content/first-order-logic]{first-order-logic}
+\olimport[content/model-theory]{model-theory}
+\olimport[content/computability]{computability}
+\olimport[content/turing-machines]{turing-machines}
+\olimport[content/incompleteness]{incompleteness}
+\olimport[content/second-order-logic]{second-order-logic}
+\olimport[content/lambda-calculus]{lambda-calculus}
+\olimport[content/many-valued-logic]{many-valued-logic}
+\olimport[content/normal-modal-logic]{normal-modal-logic}
+\olimport[content/applied-modal-logic]{applied-modal-logic}
+\olimport[content/intuitionistic-logic]{intuitionistic-logic}
+\olimport[content/counterfactuals]{counterfactuals}
+\olimport[content/set-theory]{set-theory}
+\olimport[content/methods]{methods}
+\olimport[content/history]{history}
+\olimport[content/reference]{reference}
+\olimport[content/proof-theory]{proof-theory}
+\olimport[content/supplements]{supplements}
+
+\backmatter
+% Ces deux traductions sont citées dans les notices bibliographiques.
+\nocite{Frege1953,Peter1967}
+\bibliographystyle{plainnat}
+\bibliography{bib/open-logic}
+\end{document}

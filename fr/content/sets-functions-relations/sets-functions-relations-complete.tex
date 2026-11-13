@@ -1,0 +1,30 @@
+% Part: sets-functions-relations-complete
+
+\documentclass[../../include/open-logic-part]{subfiles}
+
+\begin{document}
+\begingroup\newbox\OLSetTheoryNoticeBox
+\setbox\OLSetTheoryNoticeBox=\vbox\bgroup
+\begin{editorial}
+  Cette partie présente les notions élémentaires de la théorie naïve des ensembles.
+  Elle comprend des chapitres de l'\emph{Open Set Theory} de Tim Button sur la construction
+  des systèmes de nombres et sur l'infini. Les parties consacrées à la logique peuvent se lire indépendamment de ces chapitres.
+\end{editorial}
+\egroup\let\OLSetTheoryAfterPartSkip\afterpartskip
+\renewcommand*{\afterpartskip}{\ifdim\ht\OLSetTheoryNoticeBox>0pt\relax\par\bigskip\unvbox\OLSetTheoryNoticeBox\fi\OLSetTheoryAfterPartSkip}
+\olpart{sfr}{Théorie naïve des ensembles}\endgroup
+
+\olimport[sets]{sets}
+
+\olimport[relations]{relations-complete}
+
+\olimport[functions]{functions}
+
+\olimport[size-of-sets]{size-of-sets-complete}
+
+\olimport[arithmetization]{arithmetization}
+
+\olimport[infinite]{infinite}
+
+\OLEndPartHook
+\end{document}

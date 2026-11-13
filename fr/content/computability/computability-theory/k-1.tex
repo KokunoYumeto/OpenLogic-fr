@@ -1,0 +1,96 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: k-1
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{k1}
+\olsection{Un exemple de réduction}
+
+Appliquons la \olref[ppr]{prop:reduce}.
+
+\begin{prop}
+\ollabel{prop:k1}
+Soit
+\[
+K_1 = \Setabs{e}{\cfind{e}(0) \fdefined}.
+\]
+Alors $K_1$ est effectivement énumérable,
+mais non calculable.
+\end{prop}
+
+\begin{proof}
+Puisque
+$K_1=\Setabs{e}{\lexists[s][T(e,0,s)]}$,
+$K_1$ est effectivement énumérable par le
+\olref[eqc]{thm:exists-char}.
+
+Pour montrer que $K_1$ n'est pas calculable,
+réduisons-y $K_0$.
+
+\begin{explain}
+Cette réduction demande une petite astuce :
+les questions portant sur~$K_1$ concernent
+seulement les calculs lancés sur l'entrée~$0$.
+Supposons qu'un interlocuteur puisse répondre
+à de telles questions; on appelle « oracle »
+un moyen d'obtenir ces réponses. Pour savoir
+si $\tuple{e,x}\in K_0$, c'est-à-dire si la
+machine d'indice~$e$ s'arrête sur l'entrée~$x$,
+construisons une autre machine, d'indice~$e_x$,
+qui ignore toute entrée qu'on lui fournit et
+exécute à la place la machine~$e$ sur~$x$.
+Alors $e$ s'arrête sur~$x$ si et seulement si
+$e_x$ s'arrête sur~$0$ (ou sur n'importe
+quelle autre entrée). La réponse de l'oracle
+pour~$e_x$ fournit donc la réponse à la
+question initiale. C'est la réduction cherchée.
+\end{explain}
+
+À l'aide de la fonction universelle partielle
+calculable, définissons la fonction ternaire~$f$
+par
+\[
+f(x,y,z) \simeq \cfind{x}(y).
+\]
+Elle ignore entièrement son troisième argument.
+Choisissons un indice~$e$ tel que
+$f\simeq\cfind{e}[3]$; on a donc
+\[
+\cfind{e}[3](x,y,z) \simeq \cfind{x}(y).
+\]
+Par le théorème $s$-$m$-$n$, il existe une
+fonction récursive primitive $s(e,x,y)$ telle que,
+pour tout~$z$,
+\begin{align*}
+\cfind{s(e,x,y)}(z) & \simeq \cfind{e}[3](x,y,z) \\
+& \simeq \cfind{x}(y).
+\end{align*}
+
+\begin{explain}
+Dans le raisonnement intuitif, $s(e,x,y)$
+est l'indice d'une machine qui ignore son
+entrée~$z$ et calcule $\cfind{x}(y)$.
+\end{explain}
+
+En particulier,
+\[
+\cfind{s(e,x,y)}(0) \fdefined \quad \text{si et seulement si} \quad
+\cfind{x}(y) \fdefined.
+\]
+Ainsi, $\tuple{x,y}\in K_0$ si et seulement si
+$s(e,x,y)\in K_1$. Pour les codes de paires,
+la réduction prend donc la valeur
+\[
+g(w) = s(e,(w)_0,(w)_1)
+\]
+et, pour les entiers qui ne codent pas une paire,
+elle prend un indice fixé d'une fonction nulle
+part définie. La reconnaissance des codes de
+paires est calculable : on teste $\fn{SeqCode}(w)$ et $\len{w}=2$; la fonction totale ainsi
+définie réduit bien $K_0$ à~$K_1$.\footnote{Complément éditorial : la formule source pour $g$ ne traite pas les entiers non codants. Nous ajoutons ce cas pour obtenir une réduction totale. Nous employons également $\simeq$ pour comparer les fonctions et valeurs partielles.}
+\end{proof}
+
+\end{document}

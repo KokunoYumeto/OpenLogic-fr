@@ -1,0 +1,72 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: prim-rec
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{pri}
+\olsection{Simulation de la récurrence primitive}
+
+Nous pouvons maintenant montrer que la définition par récurrence
+primitive se « simule » au moyen de la minimisation régulière et
+de la fonction bêta. Supposons données les fonctions totales
+$f(\vec x)$ et $g(\vec x,y,z)$. La fonction $h(\vec x,y)$ obtenue à partir de
+$f$ et de~$g$ par récurrence primitive est définie par
+\begin{align*}
+h(\vec x, 0) & =  f(\vec x) \\
+h(\vec x, y+1) & =  g(\vec x, y, h(\vec x, y)).
+\end{align*}
+Nous devons montrer que $h$ peut être définie à partir de $f$ et
+de~$g$ en n'utilisant que la composition, la minimisation
+régulière, les fonctions de base et les fonctions déjà obtenues
+à partir de celles-ci par ces deux opérations, comme~$\beta$.
+
+\begin{lem}
+\ollabel{lem:prim-rec}
+Si $h$ se définit à partir des fonctions totales $f$ et $g$ par
+récurrence primitive, elle se définit aussi à partir de $f$, de $g$ et des
+fonctions $\Zero$, $\Succ$, $\Proj{n}{i}$, $\Add$, $\Mult$ et
+$\Char{=}$, au moyen de la composition et de la minimisation
+régulière.
+\end{lem}
+
+\begin{proof}
+Définissons d'abord une fonction auxiliaire $\hat h(\vec x,y)$
+qui renvoie le plus petit nombre~$d$ codant une suite telle que
+\begin{enumerate}
+\item $(d)_0=f(\vec x)$, et
+\item pour chaque $i<y$, $(d)_{i+1}=g(\vec x,i,(d)_i)$,
+\end{enumerate}
+où $(d)_i$ abrège maintenant $\beta(d,i)$. Autrement dit,
+$\hat h$ renvoie le code d'une suite commençant par
+$\tuple{h(\vec x,0),h(\vec x,1),\dots,h(\vec x,y)}$.
+Nous pouvons écrire
+\[
+\hat h(\vec x, y) = \umin{d}{(\beta(d,0) = f(\vec x) \land \bforall{i <
+  y}{\bigl(\beta(d,i+1) = g(\vec x,i,\beta(d,i))\bigr)})}.
+\]
+Aucune récurrence primitive n'est nécessaire ici : il suffit
+d'une minimisation. Le lemme de la fonction bêta
+\olref[bet]{lem:beta} garantit que la recherche est régulière,
+car toute suite finie des valeurs prescrites possède un code.
+
+Nous avons alors
+\[
+h(\vec x, y) = \beta(\hat h(\vec x, y), y),
+\]
+de sorte que $h$ se définit à partir de $f$, de $g$ et des
+fonctions de base par composition et minimisation régulière.
+\end{proof}
+
+\begin{explain}
+La condition testée par la minimisation fixe les valeurs
+décodées aux positions $0,\dots,y$. Une récurrence sur ces
+positions montre qu'elles valent $h(\vec x,0),\dots,h(\vec x,y)$
+pour tout code qui passe le test. Plusieurs codes peuvent
+convenir. La minimisation en choisit un et le décodage à la
+position~$y$ donne la même valeur pour chacun d'eux.
+\end{explain}
+
+\end{document}

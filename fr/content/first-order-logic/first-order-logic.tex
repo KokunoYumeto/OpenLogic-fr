@@ -1,0 +1,46 @@
+% Partie : logique du premier ordre
+
+\documentclass[../../include/open-logic-part]{subfiles}
+
+\begin{document}
+
+\begin{OLPartNotice}{\olpart{fol}{Logique du premier ordre}}
+Cette partie présente la syntaxe des langages du premier ordre, leurs
+structures et la relation de satisfaction. Les chapitres sur les
+systèmes de dérivation établissent la correction et conduisent au
+théorème de complétude.
+\end{OLPartNotice}
+
+\olimport[introduction]{introduction}
+
+\olimport[syntax-and-semantics]{syntax}
+
+\olimport[syntax-and-semantics]{semantics}
+
+\olimport[models-theories]{models-theories}
+
+\olimport[proof-systems]{proof-systems}
+
+\iftag{prfSC}{%
+  \olimport[sequent-calculus]{sequent-calculus}
+}{}
+
+\iftag{prfND}{%
+  \olimport[natural-deduction]{natural-deduction}
+}{}
+
+\iftag{prfTab}{%
+  \olimport[tableaux]{tableaux}
+}{}
+
+\iftag{prfAX}{%
+  \olimport[axiomatic-deduction]{axiomatic-deduction}
+}{}
+
+\olimport[completeness]{completeness}
+
+\olimport[beyond]{beyond}
+
+\OLEndPartHook
+
+\end{document}

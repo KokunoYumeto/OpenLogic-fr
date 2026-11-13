@@ -1,0 +1,252 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: unary-numbers
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{una}
+\olsection{Représentation unaire des nombres}
+
+\begin{explain}
+Les machines de Turing travaillent sur des suites de symboles
+inscrites sur leur ruban. Selon l'alphabet qu'emploie une machine,
+ces suites peuvent représenter diverses entrées et sorties. Les
+machines qui calculent des fonctions \emph{arithmétiques},
+c'est-à-dire des fonctions de nombres naturels, nous intéressent
+particulièrement. Une façon simple de représenter ces nombres
+consiste à les coder par des suites d'un seul symbole,~$\TMstroke$.
+Pour $n\in\Nat$, notons $\TMstroke^n$ la suite vide si $n=0$ et,
+sinon, la suite composée d'exactement $n$ symboles $\TMstroke$.
+\end{explain}
+
+\begin{defn}[Calcul]
+Une machine de Turing~$M$ \emph{calcule} la fonction
+$f\colon \Nat^k \to \Nat$ si, pour tous $n_1,\dots,n_k\in\Nat$,
+$M$ s'arrête sur l'entrée
+\[
+\TMstroke^{n_1} \TMblank \TMstroke^{n_2} \TMblank \dots \TMblank \TMstroke^{n_k}
+\]
+avec pour sortie $\TMstroke^{f(n_1, \dots, n_k)}$.
+\end{defn}
+
+\begin{prob}
+Définissez ce que signifie, pour une machine de Turing~$M$,
+calculer une fonction $f\colon \Nat^k \to \Nat^m$.
+\end{prob}
+
+\begin{ex}\ollabel{ex:adder}
+\emph{Addition} : construisons une machine qui calcule la fonction
+$f(n,m)=n+m$. Elle doit commencer avec deux blocs de symboles
+$\TMstroke$ de longueurs $n$ et~$m$ sur le ruban, puis s'arrêter
+avec un seul bloc de $n+m$ symboles $\TMstroke$. Les deux blocs
+de l'entrée sont séparés par un~$\TMblank$ : une méthode consiste
+à écrire un trait dans cette case, puis à effacer le dernier
+symbole~$\TMstroke$.\footnote{Correction éditoriale : dans le diagramme source, la lecture d'un trait dans $q_0$ mène à $q_1$. Elle doit rester dans $q_0$ pour atteindre et remplacer le séparateur ; nous corrigeons cette boucle.}
+\begin{figure}\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state]         (A)              {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+  \node[state]         (C) [right of=B] {$q_2$};
+
+  \path (A) edge node {\TMtrans{\TMblank}{\TMstroke}{\TMstay}} (B)
+           edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (A)
+        (B) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (B)
+            edge node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (C)
+        (C) edge [loop above] node {\TMtrans{\TMstroke}{\TMblank}{\TMstay}} (C);
+\end{tikzpicture}
+\]\caption{Machine calculant $f(x,y)=x+y$}
+\ollabel{fig:adder}
+\end{figure}
+\end{ex}
+
+\begin{prob}
+Suivez les configurations successives de la machine de
+l'\olref[tur][mac][una]{ex:adder} pour l'entrée~$\tuple{3,2}$.
+Que se passe-t-il si elle calcule $0+0$ ?
+\end{prob}
+
+\begin{explain}
+Dans l'\olref[rep]{ex:doubler}, nous avons présenté une machine
+de Turing qui reçoit une suite de symboles $\TMstroke$ et
+s'arrête avec deux fois plus de ces symboles sur le ruban :
+la machine doubleuse. Toutefois, sa sortie comporte des cases
+blanches à gauche du bloc de traits doublé. Contrairement à ce
+qu'on pourrait croire, elle ne calcule donc pas la fonction
+$f(x)=2x$ au sens de la définition précédente. Nous allons
+décrire deux façons de remédier à ce problème.
+\end{explain}
+
+\begin{ex}
+La machine de la \olref{fig:doubler-disc} calcule la fonction
+$f(x)=2x$. Au lieu d'effacer l'entrée et d'écrire deux traits
+tout à droite pour chaque trait lu dans l'entrée, comme le fait
+la machine de l'\olref[rep]{ex:doubler}, elle ajoute un seul trait
+à droite pour chacun de ces traits. Elle doit repérer où se
+termine l'entrée : elle laisse donc une case blanche entre
+l'entrée et les traits ajoutés, qu'elle remplit d'un trait à
+la toute fin. Pour « mémoriser » sa position dans l'entrée,
+elle remplace temporairement un trait du bloc initial par
+une case blanche.
+  \begin{figure}
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state] (0)              {$q_0$};
+  \node[state]         (1) [above of=0] {$q_1$};
+  \node[state]         (2) [above of=1] {$q_2$};
+  \node[state]         (3) [right of=2] {$q_3$};
+  \node[state]         (4) [below of=3] {$q_4$};
+  \node[state]         (5) [below of=4] {$q_5$};
+  \node[state]         (6) [above right of=4] {$q_6$};
+  \node[state]         (7) [below of=6] {$q_7$};
+  \node[state]         (8) [below of=7] {$q_8$};
+
+  \path (0) edge node {\TMtrans{\TMstroke}{\TMblank}{\TMright}} (1)
+%    (0) edge node {\TMtrans{\TMblank}{\TMblank}{\TMstay}} (h)
+    (1) edge [loop left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (1)
+      edge node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (2)
+    (2) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (2)
+        edge node {\TMtrans{\TMblank}{\TMstroke}{\TMleft}} (3)
+    (3) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (3)
+        edge node[left] {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (4)
+    (4) edge        node[left] {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (5)
+    (5) edge [loop below] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (5)
+        edge              node {\TMtrans{\TMblank}{\TMstroke}{\TMright}} (0)
+    (4) edge      node[sloped] {\TMtrans{\TMblank}{\TMstroke}{\TMright}} (6)
+    (6) edge              node {\TMtrans{\TMblank}{\TMstroke}{\TMright}} (7)
+    (7) edge [loop right] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (7)
+        edge              node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (8)
+    (8) edge [loop right] node {\TMtrans{\TMstroke}{\TMblank}{\TMstay}} (8);
+    \end{tikzpicture}
+\]
+\caption{Machine calculant $f(x)=2x$}
+\ollabel{fig:doubler-disc}
+\end{figure}
+\end{ex}
+
+\begin{ex}\ollabel{ex:mover}
+Une autre façon de calculer $f(x)=2x$ consiste à conserver la
+première machine doubleuse et à lui ajouter, à la fin, des
+états et des instructions qui déplacent le bloc doublé de
+traits tout à gauche du ruban. La machine de la \olref{fig:mover}
+accomplit cette seule dernière tâche : si elle démarre sur un
+ruban comportant un bloc de cases blanches suivi d'un bloc
+de traits, la tête étant placée n'importe où dans le bloc
+de cases blanches, elle efface les traits un à un et les écrit
+au début du ruban. Pour reconnaître qu'elle a terminé, elle
+marque d'abord la fin du bloc de traits avec un symbole
+$\TMendtape$, qu'elle efface ensuite. Nous avons commencé
+à numéroter ses états à~$q_6$ pour pouvoir les adjoindre à
+ceux de la machine doubleuse. Il suffit d'ajouter l'instruction
+$\delta(q_0,\TMblank)=\tuple{q_6,\TMblank,\TMstay}$,
+autrement dit une flèche de~$q_0$ vers~$q_6$ étiquetée
+$\TMtrans{\TMblank}{\TMblank}{\TMstay}$. Une difficulté
+subsiste : la machine ainsi obtenue ne fonctionne pas pour
+l'entrée~$x=0$. Nous en faisons un exercice.
+\begin{figure}
+  \[
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                      semithick]
+    \tikzstyle{every state}=[fill=none,draw=black,text=black]
+    \node[initial,state] (6)              {$q_6$};
+    \node[state]         (7) [right of=6] {$q_7$};
+    \node[state]         (8) [right of=7] {$q_8$};
+    \node[state]         (9) [below of=8] {$q_9$};
+    \node[state]         (10) [left of=9] {$q_{10}$};
+    \node[state]         (11) [left of=10]  {$q_{11}$};
+    \node[state]         (12) [below of=11]  {$q_{12}$};
+    \node[state]         (13) [right of=12] {$q_{13}$};
+    \node[state]         (14) [right of=13] {$q_{14}$};
+    \path
+    (6)  edge node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (7)
+    (7)  edge [loop above] node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (7)
+         edge node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (8)
+    (8)  edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (8)
+         edge node {\TMtrans{\TMblank}{\TMendtape}{\TMleft}} (9)
+    (9)  edge [loop right] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (9)
+         edge node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (10)
+    (10) edge node[above] {\TMtrans{\TMstroke}{\TMblank}{\TMleft}} (11)
+    (11) edge [loop above] node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (11)
+         edge node[left] {\begin{tabular}{@{}l@{}}
+          \TMtrans{\TMendtape}{\TMendtape}{\TMright}\\
+          \TMtrans{\TMstroke}{\TMstroke}{\TMright}
+         \end{tabular}} (12)
+    (12) edge node[] {\TMtrans{\TMblank}{\TMstroke}{\TMright}} (13)
+    (13) edge [loop below] node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (13)
+         edge node[sloped] {\TMtrans{\TMstroke}{\TMblank}{\TMleft}} (11)
+    (13) edge node {\TMtrans{\TMendtape}{\TMblank}{\TMstay}} (14);
+  \end{tikzpicture}
+  \]
+  \caption{Déplacement d'un bloc de symboles $\TMstroke$ vers la gauche}
+  \ollabel{fig:mover}
+\end{figure}
+\end{ex}
+
+\begin{prob}
+Dans l'\olref[tur][mac][una]{ex:mover}, nous avons décrit une
+machine obtenue en combinant la machine doubleuse de la
+\olref[tur][mac][rep]{fig:doubler} avec la machine qui
+déplace les traits de la \olref[tur][mac][una]{fig:mover}.
+Que se passe-t-il si cette machine combinée reçoit
+l'entrée~$x=0$, c'est-à-dire un ruban vide ? Comment la
+modifier pour qu'elle s'arrête alors avec la sortie~$2x=0$ ?
+Vous pouvez le faire en ajoutant un état et
+une transition, et en modifiant la transition qui appelle la machine de déplacement.\footnote{Corrections éditoriales : l'exercice source renvoie à la doubleuse déjà normalisée, plutôt qu'à la première doubleuse, et annonce seulement des ajouts. Le renvoi est rétabli ; une transition existante peut aussi être modifiée pour distinguer l'entrée vide avant le déplacement.}
+\end{prob}
+
+\begin{prob}
+\emph{Soustraction} : concevez une machine de Turing qui,
+sur une entrée formée de deux suites non vides de traits,
+de longueurs $n$ et~$m$ avec $n>m$, calcule la fonction
+$f(n,m)=n-m$.
+\end{prob}
+
+\begin{prob}
+\emph{Égalité} : concevez une machine de Turing qui
+calcule la fonction suivante :
+\[
+\fn{equality}(n,m) = 
+\begin{cases}
+  \text{1} & \text{si~$n = m$} \\
+  \text{0} & \text{si~$n \neq m$}
+\end{cases}
+\]
+où $n$ et~$m$ appartiennent à~$\PosInt$.
+\end{prob}
+
+\begin{prob}
+Concevez une machine de Turing qui calcule
+$\min(x,y)$ pour des entiers positifs $x$ et~$y$
+représentés sur le ruban par deux suites de traits
+séparées par un~$\TMblank$. Vous pouvez employer
+d'autres symboles dans l'alphabet de la machine.
+
+La fonction $\min$ retient le plus petit de ses
+arguments : $\min(3,5)=3$, $\min(20,16)=16$ et
+$\min(4,4)=4$, par exemple.
+\end{prob}
+
+\begin{defn}
+Une machine de Turing~$M$ calcule la fonction
+partielle $f\colon\Nat^k\pto\Nat$ si, pour toute
+entrée de la forme
+$\TMstroke^{n_1}\concat\TMblank\concat
+\dots\concat\TMblank\concat\TMstroke^{n_k}$ :
+\begin{enumerate}
+\item si $f(n_1,\dots,n_k)=m$, alors $M$ s'arrête
+  avec la sortie $\TMstroke^m$;
+\item si $f(n_1,\dots,n_k)$ n'est pas définie,
+  alors $M$ ne s'arrête pas, ou bien elle s'arrête
+  avec une sortie qui n'est pas un seul bloc de
+  symboles $\TMstroke$.
+\end{enumerate}
+La chaîne vide représente le bloc de zéro traits : une sortie vide signifie donc la valeur $0$, et ne peut servir de marqueur pour une valeur indéfinie. \end{defn}
+
+\end{document}

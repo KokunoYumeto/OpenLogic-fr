@@ -1,0 +1,77 @@
+% Partie : intuitionistic-logic
+% Chapitre : semantics
+% Section : relational-models
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sem}{rel}
+
+\olsection{\usetoken{P}{relational model}}
+
+Pour donner une sémantique précise à la logique propositionnelle
+intuitionniste, il faut définir les modèles relativement auxquels on
+peut évaluer les !!{formula}s. Cette définition permettra ensuite de
+préciser des notions sémantiques comme la validité et la conséquence.
+Une telle sémantique est fournie par les !!{relational model}s.
+
+\begin{defn}
+  !!^a{relational model} pour la logique propositionnelle
+  intuitionniste est un triplet $\mModel{M} = \tuple{W, R, V}$, où
+  \begin{enumerate}
+  \item $W$ est un ensemble non vide ;
+  \item $R$ est un ordre partiel sur~$W$ (une relation binaire réflexive,
+    antisymétrique et transitive) ;
+  \item $V$ est une fonction qui associe à chaque !!{propositional
+    variable}~$p$ un sous-ensemble de~$W$. La fonction
+    $V$ est monotone relativement à $R$ : si $w
+    \in V(p)$ et $Rww'$, alors $w' \in V(p)$.
+  \end{enumerate}
+\end{defn}
+
+\begin{defn}\ollabel{defn:true-at-w}
+  Nous définissons par induction ce que signifie que $!A$ est
+  \emph{vraie au monde $w$ dans $\mModel{M}$},
+  $\mSat{M}{!A}[w]$, comme suit :
+  \begin{enumerate}
+  \item \indcase{!A}{p}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $w \in V(p)$.}
+  \item \indcase{!A}{\lfalse}{$\mSat{M}{\indfrm}[w]$ est faux.}
+  \item \indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ si et seulement
+    s'il n'existe aucun $w'$ tel que $Rww'$ et
+    $\mSat{M}{!B}[w']$.}
+  \item \indcase{!A}{!B \land !C}{$\mSat{M}{\indfrm}[w]$ si et seulement
+    si $\mSat{M}{!B}[w]$ et $\mSat{M}{!C}[w]$.}
+  \item \indcase{!A}{!B \lor !C}{$\mSat{M}{\indfrm}[w]$ si et seulement
+    si $\mSat{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$ (ou les deux).}
+  \item \indcase{!A}{!B \lif !C}{$\mSat{M}{\indfrm}[w]$ si et seulement
+    si, pour tout $w'$ tel que $Rww'$, on n'a pas
+    $\mSat{M}{!B}[w']$ ou on a $\mSat{M}{!C}[w']$ (ou les deux).}
+  \end{enumerate}
+  Nous écrivons $\mSat/{M}{!A}[w]$ lorsque $\mSat{M}{!A}[w]$ est faux.
+  Si $\Gamma$ est un ensemble de !!{formula}s,
+  $\mSat{M}{\Gamma}[w]$ signifie que $\mSat{M}{!B}[w]$ pour tout
+  $!B \in \Gamma$.
+\end{defn}
+
+\begin{prob}
+  Montrez que, selon la \olref[int][sem][rel]{defn:true-at-w},
+  $\mSat{M}{\lnot !A}[w]$ si et seulement si
+  $\mSat{M}{!A \lif \lfalse}[w]$.
+\end{prob}
+
+\begin{prop}\ollabel{prop:true-monotonic}
+  La vérité aux mondes est monotone relativement à~$R$ : si
+  $\mSat{M}{!A}[w]$ et $Rww'$, alors $\mSat{M}{!A}[w']$.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrez la \olref[int][sem][rel]{prop:true-monotonic}.
+\end{prob}
+
+\end{document}

@@ -1,0 +1,88 @@
+% Partie : counterfactuals
+% Chapitre : introduction
+% Section : counterfactuals
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{int}{cnt}
+
+\olsection{Les conditionnels contrefactuels}
+
+En anglais, une forme très courante et importante des constructions
+« if \dots, then \dots » emploie une forme passée du subjonctif du
+verbe \emph{to be} : « if it were the case that \dots, then it would
+be the case that \dots ». Comme l'antécédent d'un tel conditionnel est
+généralement faux, c'est-à-dire contraire aux faits, on parle de
+\emph{conditionnels contrefactuels}. On les appelle aussi, en référence
+à leur forme grammaticale anglaise, \emph{conditionnels au
+  subjonctif}. Ils se distinguent des conditionnels \emph{à l'indicatif}, qui prennent la
+forme anglaise « if it is the case that \dots, then it is the case
+that \dots ». Leurs conditions de vérité diffèrent. Considérons le
+célèbre exemple d'Adams :
+\begin{quote}
+  Si Oswald n'a pas tué Kennedy, quelqu'un d'autre l'a fait.
+
+  Si Oswald n'avait pas tué Kennedy, quelqu'un d'autre l'aurait fait.
+\end{quote}
+Le premier énoncé est à l'indicatif, le second est contrefactuel. Le
+premier est manifestement vrai : nous savons que le président
+John~F. Kennedy a été tué par \emph{quelqu'un} et, si ce n'est pas
+Lee Harvey Oswald qui l'a tué, contrairement à ce qu'affirme le
+rapport Warren, c'est quelqu'un d'autre. Le second énoncé affirme
+autre chose : si Oswald n'avait pas tué Kennedy, autrement dit si les
+coups de feu à Dallas avaient été évités ou n'avaient pas atteint leur
+but, l'histoire aurait ensuite suivi un cours tel qu'un autre
+assassinat aurait réussi. Pour que cet énoncé soit vrai, il faudrait
+que des forces puissantes aient conspiré pour assurer la mort de
+Kennedy, comme le pensent de nombreux partisans des théories du
+complot à son sujet.
+
+La question de savoir si le conditionnel matériel rend correctement
+compte du conditionnel \emph{à l'indicatif} reste débattue. Il faut
+notamment déterminer si les paradoxes du conditionnel matériel
+peuvent recevoir une explication compatible avec l'idée qu'il donne
+les conditions de vérité des conditionnels anglais à l'indicatif. En
+revanche, il est incontesté que le conditionnel matériel ne permet
+pas de symboliser correctement les conditionnels contrefactuels. En
+effet, bien que leurs antécédents soient généralement faux, tous les
+conditionnels contrefactuels à antécédent faux ne sont pas vrais : si
+l'on accepte le rapport Warren et que l'on suppose qu'il n'existait
+aucun complot visant à assassiner Kennedy, le conditionnel
+contrefactuel d'Adams en fournit un exemple.
+
+Les conditionnels contrefactuels jouent un rôle important dans le
+raisonnement causal : ils servent notamment à exprimer des relations
+de cause à effet. Par exemple, frotter une allumette peut la faire
+s'enflammer, ce que l'on peut exprimer ainsi : « Si l'on frottait
+cette allumette, elle s'enflammerait. » Ni le conditionnel matériel
+ni, en général, les conditionnels à l'indicatif ne permettent
+d'exprimer cela : « cette allumette est frottée $\lif$ elle s'enflamme » est vrai
+si l'allumette n'est jamais frottée, indépendamment de ce qui se
+produirait si on la frottait. Pis encore, « cette allumette est frottée
+$\lif$ elle se transforme en bouquet de fleurs » est également vrai si
+elle n'est jamais frottée, alors qu'elle ne se transformerait certainement pas en
+bouquet de fleurs si on la frottait.
+
+La logique exacte des conditionnels contrefactuels reste elle aussi
+débattue. Stalnaker et Lewis en ont proposé des analyses influentes.
+Dans une première approximation commune à leurs analyses, on évalue
+un contrefactuel « s'il se produisait~$S$, alors il se
+produirait~$T$ » en examinant si~$T$ est vrai dans les situations
+contrefactuelles (les « mondes possibles ») pertinentes où~$S$ est
+vrai, compte tenu de leur proximité avec le monde actuel. Cette
+analyse est dite « ontique », car elle fait appel à une ontologie des
+mondes possibles. D'autres
+analyses utilisent les probabilités conditionnelles ou des théories
+de la révision des croyances. Les logiques proposées pour les
+conditionnels contrefactuels sont nombreuses. Il n'existe même pas
+une logique unique de Lewis et Stalnaker : bien que tous deux aient
+eu recours à des mondes possibles proches du monde actuel, leurs
+hypothèses distinctes conduisent à des inférences valides
+différentes. Dans la sémantique des sphères étudiée plus loin,
+plusieurs mondes peuvent se trouver au même degré de proximité.
+Il se peut même que les sphères où l'antécédent est vrai en un
+monde n'aient pas de plus petite sphère parmi elles.
+
+\end{document}

@@ -1,0 +1,71 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: lambda-definability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{rep}
+\olsection{Fonctions arithmétiques \texorpdfstring{$\lambd$}{λ}-définissables}
+
+Comment le lambda-calcul peut-il servir de modèle
+de calcul? À première vue, le sens même de cette
+question n'est pas clair. Pour parler de calculabilité
+sur les nombres naturels, il nous faut une représentation
+appropriée de ces nombres. En voici une qui fonctionne
+remarquablement bien.
+
+\begin{defn}
+Pour chaque entier naturel~$n$, le \emph{numéral de Church}
+$\num{n}$ est le lambda-terme
+$\lambd[x][\lambd[y][(x(x(x(\dots x(y)))))]]$,
+où le corps contient $n$ occurrences de~$x$. Pour $n=0$, il est
+simplement~$y$.
+\end{defn}
+
+Les termes $\num{n}$ sont des « itérateurs » :
+appliqué à~$f$, $\num{n}$ renvoie la fonction qui
+associe $f^n(y)$ à~$y$. Chaque numéral est sous
+forme normale. Nous pouvons maintenant préciser
+ce que signifie, pour un lambda-terme, « calculer »
+une fonction sur les nombres naturels.
+
+\begin{defn}
+Soit $f(x_0, \dots, x_{k-1})$ une fonction partielle
+à $k$ arguments de $\Nat^k$ dans~$\Nat$. Nous disons
+qu'un lambda-terme~$F$ \emph{définit}~$f$ si, pour
+toute suite d'entiers naturels $n_0$, \dots,~$n_{k-1}$,
+\[
+F\, \num{n_0}\, \num{n_1} \dots \num{n_{k-1}}
+\red \num{f(n_0, n_1, \dots, n_{k-1})}
+\]
+lorsque $f(n_0, \dots, n_{k-1})$ est défini;
+si cette valeur n'est pas définie, le terme
+$F\, \num{n_0}\, \num{n_1} \dots \num{n_{k-1}}$
+n'a pas de forme normale.
+\end{defn}
+
+\begin{thm}
+\ollabel{thm:lambda-def}
+Une fonction~$f$ est partielle calculable si
+et seulement si elle est définie par un lambda-terme.
+\end{thm}
+
+\begin{explain}
+Ce théorème est quelque peu frappant. Comme modèle
+de calcul, le lambda-calcul est fort simple : ses
+seules opérations sont l'abstraction lambda et
+l'application!{} Pourtant, avec des moyens aussi
+réduits, il permet de réaliser toute procédure de
+calcul.
+\end{explain}
+
+\begin{explain}
+Le terme appliqué reçoit exactement $k$ numéraux. Pour une
+entrée où $f$ est définie, il faut pouvoir atteindre le
+numéral de la valeur. Pour une entrée où $f$ est indéfinie,
+aucune suite de réductions ne doit aboutir à une forme normale.
+\end{explain}
+
+\end{document}

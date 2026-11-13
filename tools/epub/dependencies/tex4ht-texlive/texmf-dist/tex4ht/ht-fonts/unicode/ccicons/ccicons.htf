@@ -1,0 +1,18 @@
+ccicons 0 13
+'c' '1' c 0                  % generated from ccicons.tfm, 2025-11-27-15:17
+'b' '1' b 1                  % Copyright 2025 TeX Users Group
+'a' '1' a 2                  %
+'d' '1' d 3                  % This work may be distributed and/or modified under the
+'n' '1' n 4                  % conditions of the LaTeX Project Public License, either
+'e' '1' e 5                  % version 1.3c of this license or (at your option) any
+'y' '1' y 6                  % later version. The latest version of this license is in
+'p' '1' p 7                  %   http://www.latex-project.org/lppl.txt
+'z' '1' z 8                  % and version 1.3c or later is part of all distributions
+'m' '1' m 9                  % of LaTeX version 2005/12/01 or later.
+'s' '1' s 10                 %
+'r' '1' r 11                 % This work has the LPPL maintenance status "maintained".
+'&#x00A9;' '1' copyright 12  %
+'P' '1' P 13                 % The Current Maintainer of this work
+ccicons 0 13                % is the TeX4ht Project <http://tug.org/tex4ht>.
+htfcss:  ccicons  font-family: 'CCIcons', serif;
+

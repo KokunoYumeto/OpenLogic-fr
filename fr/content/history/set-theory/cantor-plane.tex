@@ -1,0 +1,102 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{his}{set}{cantorplane}
+\olsection{Cantor, la droite et le plan}
+
+Certaines circonstances entourant la démonstration du théorème de
+Schr\"oder--Bernstein se rattachent à l'histoire évoquée dans la
+\olref[his][set][pathology]{sec}. Rappelons qu'en 1877, Cantor
+démontra qu'un carré contient exactement autant de points que
+l'un de ses côtés. Nous allons présenter sa première tentative
+de démonstration.
+
+Soit $\unitline$ le segment unité, c'est-à-dire l'ensemble de
+points $[0,1]$, et soit $\unitsquare$ le carré unité, c'est-à-dire
+$\unitline \times \unitline$. Dans cette notation, Cantor démontra
+que $\cardeq{\unitline}{\unitsquare}$. Il envoya à Dedekind une
+note contenant, en substance, l'argument suivant.
+
+\begin{thm}\ollabel{thm:cantorplane}
+$\cardeq{\unitline}{\unitsquare}$
+\end{thm}
+
+\begin{proof}[Première partie de la démonstration]
+Fixons $a, b \in \unitline$ et écrivons-les en notation binaire.
+Pour tout nombre strictement inférieur à~$1$, choisissons le
+développement qui n'est pas ultimement constitué uniquement de~$1$ ;
+en particulier, choisissons le développement terminé par des~$0$
+lorsqu'il existe. Écrivons $1$ sous la forme $0.111\ldots$.\footnote{
+Précision de l'édition française : la source anglaise ne fixe pas
+la convention de développement binaire. La convention donnée ici
+définit l'application sur tout le segment $[0,1]$ et permet de
+justifier son injectivité.}
+Nous obtenons ainsi des suites infinies de~$0$ et de~$1$,
+$a_1$, $a_2$, \dots, et $b_1$, $b_2$, \dots, telles que :
+\begin{align*}
+a &= 0.a_1a_2a_3a_4\dots\\
+b &= 0.b_1b_2b_3b_4\dots
+\intertext{Considérons l'application $f \colon \unitsquare \to \unitline$ définie par}
+f(a, b) & = 0.a_1b_1a_2b_2a_3b_3a_4b_4\dots
+\end{align*}
+Le développement entrelacé n'est ultimement constitué uniquement
+de~$1$ que si $a=b=1$, auquel cas $f(a,b)=1$. Les images sont donc
+écrites selon la même convention. Par conséquent, $f$ est
+!!a{injection} : si $f(a, b) = f(c,d)$, l'unicité de ces
+développements donne $a_n = c_n$ et $b_n = d_n$ pour tout
+$n \in \Nat$, d'où $a = c$ et $b = d$.
+\end{proof}
+
+Malheureusement, comme Dedekind le fit remarquer à Cantor, cela ne
+répond pas à la question initiale. Avec la convention ci-dessus,
+considérons $y=0.00010101010\ldots$.\footnote{
+Correction mathématique de l'édition française : l'exemple de la
+source, $0.\dot{1}\dot{0}$, est bien l'image de $(1,0)$ lorsque
+$1$ est représenté par $0.111\ldots$, comme l'exige notre convention.
+Nous utilisons donc un autre développement pour montrer le défaut
+de surjectivité.}
+Pour avoir $f(a,b)=y$, il faudrait que les chiffres binaires
+de $a$ et de $b$ soient respectivement :
+\begin{align*}
+a&=0.000000\ldots=0,\\
+b&=0.011111\ldots=\tfrac{1}{2}.
+\end{align*}
+Mais le développement choisi pour $\tfrac{1}{2}$ est
+$0.100000\ldots$, et non $0.011111\ldots$. Ainsi,
+$f(0,\tfrac{1}{2})=0.010000\ldots$, et aucun couple
+$\tuple{a,b}$ n'a pour image~$y$. Le choix entre les deux
+développements possibles est essentiel : pour que $f$ soit une
+\emph{fonction}, il faut n'en utiliser qu'\emph{un} pour chaque
+nombre.
+
+Le problème signalé par Dedekind tient aux deux développements
+possibles d'un même nombre dyadique : l'application $f$
+de Cantor est !!a{injection}, mais \emph{pas} !!a{surjection}.
+Cantor avait seulement montré que
+$\cardle{\unitsquare}{\unitline}$, et \emph{non} que
+$\cardeq{\unitsquare}{\unitline}$.
+
+Cantor répondit presque immédiatement à Dedekind en suggérant,
+en substance, de compléter l'argument ainsi :
+
+\begin{proof}[Conclusion de la démonstration]
+Nous avons montré que $\cardle{\unitsquare}{\unitline}$.
+Il existe manifestement !!a{injection} de $\unitline$ dans
+$\unitsquare$ : il suffit de placer le segment le long d'un côté
+du carré. Nous avons donc $\cardle{\unitline}{\unitsquare}$ et
+$\cardle{\unitsquare}{\unitline}$. Par le théorème de
+Schr\"{o}der--Bernstein
+(\olref[sfr][siz][sb]{thm:schroder-bernstein}),
+$\cardeq{\unitline}{\unitsquare}$.
+\end{proof}
+
+Bien sûr, Cantor ne pouvait pas formuler la dernière étape en ces
+termes, puisque le théorème de Schr\"{o}der--Bernstein n'avait
+pas encore été démontré. Cantor l'énonça ensuite comme une
+conjecture générale, mais une démonstration satisfaisante ne fut
+obtenue qu'en 1897. Plus tard en 1877, il donna donc une autre
+démonstration du \olref{thm:cantorplane}, qui ne passait pas par
+Schr\"{o}der--Bernstein.
+
+\end{document}

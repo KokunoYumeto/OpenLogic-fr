@@ -1,0 +1,335 @@
+% Partie : théorie de la démonstration
+% Chapitre : déduction naturelle
+% Section : règles et preuves
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nat}{rp}
+
+\olsection{Règles et \usetoken{p}{proof}}
+
+Commençons par quelques définitions et précisons la terminologie.
+
+Considérons les deux règles de \Log{N1c} et de~\Log{N1i} qui
+font intervenir $!A \lif !B$.
+\[
+\bottomAlignProof
+\AxiomC{$\Discharge{!A}{x}$}
+\shortDeduce
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\DisplayProof
+\qquad
+\bottomAlignProof
+\AxiomC{$!A \lif !B$}
+\AxiomC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\]
+La règle \Elim{\lif} est simple. Les !!{formula}s situées
+au-dessus du trait sont les \emph{prémisses}. Celle de gauche,
+$!A \lif !B$, est la !!{formula} \emph{principale}. Chaque
+règle d'!!{elimination} possède une telle prémisse, toujours
+à l'extrême gauche : c'est la prémisse \emph{majeure} de
+l'inférence. Les autres prémisses, lorsqu'il y en a, comme ici,
+sont dites \emph{mineures}. Les prémisses des règles
+d'!!{introduction} sont également appelées prémisses majeures.
+La !!{formula} située sous le trait est la \emph{conclusion}.
+
+La règle \Intro{\lif} ne possède qu'une prémisse ; sa conclusion
+$!A \lif !B$ est la formule principale. Il en va ainsi de
+toutes les règles d'!!{introduction} : la conclusion est la
+formule principale et son opérateur principal est celui que
+l'on « introduit ».
+
+La notation $\Discharge{!A}{x}$ s'interprète comme suit.
+Dans !!a{proof}, l'inférence \Intro{\lif} s'applique à une
+prémisse~$!B$. La sous-!!{proof} qui se termine par~$!B$ comporte
+des !!{formula}s initiales, appelées \emph{hypothèses}.
+!!^a{proof} de~$!B$ à partir d'une ou de plusieurs hypothèses
+de la forme~$!A$ établit que $!A$ entraîne~$!B$, sous les
+autres hypothèses éventuellement encore ouvertes.
+L'application de \Intro{\lif} donne alors~$!A \lif !B$.
+Cette conclusion ne dépend plus des occurrences de
+l'hypothèse~$!A$ que l'on a choisies de décharger. Ces
+occurrences sont dites \emph{déchargées} ou \emph{fermées}
+dans la !!{proof} incluant l'inférence~\Intro{\lif}.
+La règle précise quelles hypothèses peuvent être déchargées.
+Pour \Intro{\lif}, avec conclusion $!A \lif !B$, ce sont les
+hypothèses de la forme~$!A$, c'est-à-dire celles qui coïncident
+avec l'antécédent de l'implication. L'étiquette de
+décharge~$x$ permet d'indiquer quelles occurrences sont
+déchargées par quelle inférence. Une règle qui décharge des
+hypothèses n'est pas tenue de décharger \emph{toutes} les
+occurrences de la forme requise ; elle peut même n'en
+décharger aucune. Par exemple, la !!{proof} suivante est
+correcte, bien que la première inférence \Intro{\lif} ne
+décharge aucune hypothèse :
+\[
+\AxiomC{$\Discharge{!A}{y}$}
+\RightLabel{\Intro{\lif}}
+\UnaryInfC{$!B \lif !A$}
+\DischargeRule{\Intro{\lif}}{y}
+\UnaryInfC{$!A \lif (!B \lif !A)$}
+\DisplayProof
+\]
+Lorsqu'une règle ne décharge aucune hypothèse, on peut omettre
+l'étiquette de décharge, comme dans cette première inférence.
+
+Dans la !!{proof}
+\[
+\AxiomC{$\Discharge{!A}{x}$}
+\AxiomC{$\Discharge{!A}{y}$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!A \land !A$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!A$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !A$}
+\DischargeRule{\Intro{\lif}}{y}
+\UnaryInfC{$!A \lif (!A \lif !A)$}
+\DisplayProof
+\]
+la première inférence \Intro{\lif} décharge l'hypothèse de
+gauche~$!A^x$, et la seconde celle de droite~$!A^y$.
+Toutes les hypothèses portant l'étiquette~$x$ sont déchargées
+par l'inférence \Intro{\lif} étiquetée~$x$ ; celles
+d'étiquette~$y$ le sont par l'inférence étiquetée~$y$.
+Cela exige que toutes les hypothèses de même étiquette
+soient aussi une même !!{formula}.
+
+Les règles de quantification sont un peu plus complexes.
+Par exemple, les règles de \Log{N1i} pour $\lexists$ sont :
+\[
+\bottomAlignProof
+\AxiomC{$!A(t)$}
+\RightLabel{\Intro{\lexists}}
+\UnaryInfC{$\lexists[x][!A(x)]$}
+\DisplayProof
+\qquad
+\bottomAlignProof
+\AxiomC{$\lexists[x][!A(x)]$} 
+\AxiomC{$\Discharge{!A(c)}{x}$}
+\shortDeduce
+\DeduceC{$!B$}
+\DischargeRule{\Elim{\lexists}}{x}
+\BinaryInfC{$!B$} \DisplayProof 
+\bottomAlignProof
+\]
+Dans \Intro{\lexists}, la prémisse est~$!A(t)$, où $t$ est
+un terme clos, c'est-à-dire sans variable. L'inférence est
+correcte --- elle est une instance du schéma
+\Intro{\lexists} --- s'il existe une !!{formula}~$!A$,
+une variable~$x$ et un terme clos~$t$ tels que la conclusion
+soit $\lexists[x][!A]$ et la prémisse~$\Subst{!A}{t}{x}$.
+La règle \Elim{\lexists} permet de décharger des hypothèses
+de la forme~$!A(c)$ : à chaque inférence correspond une
+!!{constant}~$c$, et les hypothèses déchargées sont de la
+forme $\Subst{!A}{c}{x}$. Elles doivent toutes employer la
+même constante~$c$. Celle-ci est appelée \emph{constante
+propre}, ou \emph{eigenvariable}, de l'inférence
+\Elim{\lexists}. L'inférence n'est correcte que si $c$
+est absente de toute hypothèse ouverte autre que les
+occurrences désignées de~$!A(c)$ qui sont déchargées,
+ainsi que de~$!B$ et de~$!A$. C'est la \emph{condition de
+la constante propre}.
+
+Les !!{proof}s de \Log{N1c} et de~\Log{N1i} sont des arbres
+finis de formules, construits inductivement à partir des
+hypothèses au moyen des règles d'inférence. Chaque feuille
+est une hypothèse, éventuellement munie d'une étiquette de
+décharge. Toute autre !!{formula} s'obtient par une règle du
+système à partir des !!{formula}s immédiatement au-dessus.
+Une occurrence d'hypothèse est dite \emph{ouverte} à une
+inférence si aucune inférence située sur la branche qui
+relie cette occurrence à l'inférence considérée ne l'a
+déchargée.
+
+\begin{defn}\ollabel{defn:proof}
+Les \emph{!!{proof}s} de \Log{N1c} et de~\Log{N1i} sont
+les arbres finis de !!{formula}s définis inductivement
+comme suit.
+\begin{enumerate}
+  \item\ollabel{defn:prf:assumption} Toute !!{formula},
+  munie d'une étiquette de décharge telle que $x$ ou $y$,
+  constitue à elle seule !!a{proof}. Dans !!a{proof}
+  réduite à une !!{formula}, celle-ci est une hypothèse ouverte.
+  \item\ollabel{defn:prf:one-prem} Soit $R$ une règle à une,
+  deux ou trois prémisses $!A_1$, $!A_2$, $!A_3$, de
+  conclusion~$!A$. Soient $\delta_1$, $\delta_2$,
+  $\delta_3$ des !!{proof}s se terminant respectivement
+  par $!A_1$, $!A_2$, $!A_3$. Alors les arbres
+\[
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!A_1$}
+  \RightLabel{$R$}
+  \UnaryInfC{$!A$}
+  \DisplayProof
+\qquad
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!A_1$}
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!A_2$}
+  \RightLabel{$R$}
+  \BinaryInfC{$!A$}
+  \DisplayProof
+\qquad
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!A_1$}
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!A_2$}
+  \AxiomC{}
+  \RightLabel{$\delta_3$}
+  \DeduceC{$!A_3$}
+  \RightLabel{$R$}
+  \TrinaryInfC{$!A$}
+  \DisplayProof
+  \]
+  sont respectivement des !!{proof}s, pourvu que les
+  étiquettes d'hypothèses soient compatibles --- deux
+  !!{formula}s différentes ne doivent pas porter la même
+  étiquette de décharge --- et que les inférences soient
+  des applications correctes de~$R$.
+  \item Les occurrences initiales de !!{formula}s dans
+  la nouvelle !!{proof} sont des \emph{hypothèses ouvertes}
+  si elles sont ouvertes dans $\delta_1$, $\delta_2$
+  ou~$\delta_3$, sauf celles que la règle décharge.
+  Lorsque la règle porte l'étiquette~$x$ (ou $x\, y$),
+  \Intro{\lif}, \Intro{\lnot} et \FalseCl déchargent
+  les hypothèses ouvertes de~$\delta_1$ étiquetées~$x$ ;
+  \Elim{\lexists} décharge celles de~$\delta_2$
+  étiquetées~$x$ ; \Elim{\lor} décharge celles
+  de~$\delta_2$ étiquetées~$x$ et celles de~$\delta_3$
+  étiquetées~$y$.
+\end{enumerate}
+\end{defn}
+
+Les !!{proof}s employées dans la construction inductive
+d'!!a{proof} sont ses \emph{sous-!!{proof}s}. Celles qui se
+terminent par les prémisses d'une inférence sont les
+\emph{sous-!!{proof}s immédiates} de cette inférence.
+Les règles de \Log{N1c} et de \Log{N1i} figurent dans le
+\olref{tab:N1}.
+
+\subfile{rules-N1}
+
+\begin{defn}
+La \emph{!!{height}}~$\pheight{\delta}$ d'!!a{proof}~$\delta$
+est définie inductivement comme suit.
+\begin{enumerate}
+  \item Si $\delta$ se réduit à une hypothèse,
+  $\pheight{\delta} = 0$.
+  \item Si $\delta$ se termine par une inférence à une
+  prémisse, de sous-!!{proof} immédiate~$\delta_1$, alors
+  $\pheight{\delta} = \pheight{\delta_1} + 1$.
+  \item Si $\delta$ se termine par une inférence à deux
+  prémisses, de sous-!!{proof}s immédiates~$\delta_1$
+  et~$\delta_2$, alors $\pheight{\delta} =
+  \max(\pheight{\delta_1}, \pheight{\delta_2}) + 1$.
+  \item Si $\delta$ se termine par \Elim{\lor}, de
+  sous-!!{proof}s immédiates~$\delta_1$, $\delta_2$
+  et~$\delta_3$, alors $\pheight{\delta} =
+  \max(\pheight{\delta_1}, \pheight{\delta_2}, \pheight{\delta_3}) + 1$.
+\end{enumerate}
+Pour un séquent~$S$ exprimant la conclusion et les hypothèses
+ouvertes d'!!a{proof}, on écrit $\Proves[n] S$ lorsqu'il
+existe une telle !!{proof} de hauteur $\le n$.
+\end{defn}
+
+\begin{ex}
+Dans \Log{N1i}, toute !!{formula} constitue !!a{proof} à
+partir d'elle-même prise comme hypothèse ouverte. Ainsi,
+\[
+(!A \land !B)^x
+\]
+est !!a{proof}~$\delta_1$, de hauteur~$0$.
+On en tire deux !!{proof}s~$\delta_2$ et~$\delta_3$ en
+appliquant respectivement les deux versions de~\Elim{\land} :
+\[
+\AxiomC{$(!A \land !B)^x$}
+\RightLabel{\Elim{\land}[2]}
+\UnaryInfC{$!B$}
+\DisplayProof
+\qquad
+\AxiomC{$(!A \land !B)^x$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!A$}
+\DisplayProof
+\]
+La sous-!!{proof} immédiate de la dernière inférence
+de~$\delta_2$ et de~$\delta_3$ est la même : $!A \land !B$.
+Les deux !!{proof}s ont cette occurrence de $!A\land !B$
+pour hypothèse ouverte. On a
+$\pheight{\delta_2} = \pheight{\delta_3} = 1$.
+
+La règle \Intro{\land} permet, à partir de deux prémisses
+$!B$ et $!A$, de conclure~$!B \land !A$. L'arbre suivant
+est donc !!a{proof}~$\delta_4$ :
+\[
+\AxiomC{$(!A \land !B)^x$}
+\RightLabel{\Elim{\land}[2]}
+\UnaryInfC{$!B$}
+\LeftSubproofLabel{$\delta_2$}
+\AxiomC{$(!A \land !B)^x$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!A$}
+\RightSubproofLabel{$\delta_3$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!B \land !A$}
+\DisplayProof
+\]
+Sa hauteur est $\pheight{\delta_4} = \max(\pheight{\delta_2},
+\pheight{\delta_3})+1 = \max(1,1) + 1 = 2$.
+Ses deux occurrences de $!A \land !B$ sont des
+hypothèses ouvertes.
+
+Enfin, on applique \Intro{\lif} pour obtenir $\delta_5$ :
+\[
+\AxiomC{$\Discharge{!A \land !B}{x}$}
+\RightLabel{\Elim{\land}[2]}
+\UnaryInfC{$!B$}
+\LeftSubproofLabel{$\delta_2$}
+\AxiomC{$\Discharge{!A \land !B}{x}$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!A$}
+\RightSubproofLabel{$\delta_3$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!B \land !A$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$(!A \land !B) \lif (!B \land !A)$}
+\DisplayProof
+\]
+Sa hauteur est $\pheight{\delta_4} + 1 = 3$.
+L'inférence \Intro{\lif} décharge toutes les occurrences
+d'hypothèses de la forme $!A \land !B$ étiquetées~$x$,
+c'est-à-dire les deux hypothèses jusque-là ouvertes de
+sa sous-preuve immédiate. Ce sont les seules hypothèses
+de $\delta_5$ ; celle-ci n'a donc plus d'hypothèse ouverte.
+Elle est une !!{proof} \emph{de} sa !!{formula} finale
+$(!A \land !B) \lif (!B \land !A)$.
+\end{ex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

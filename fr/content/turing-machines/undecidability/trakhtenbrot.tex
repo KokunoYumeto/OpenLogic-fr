@@ -1,0 +1,308 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: trakhtenbrot
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{tra}
+\olsection{Le théorème de Trakhtenbrot}
+
+\begin{explain}
+Dans la \olref[rep]{sec}, nous avons défini les !!{sentence}s
+$!T(M,w)$ et~$!E(M,w)$ associés à une machine de Turing~$M$ et
+à une entrée~$w$. Nous avons ensuite établi, dans
+le \olref[ver]{lem:valid-if-halt} et
+le \olref[ver]{lem:halt-if-valid}, que
+$!T(M,w)\lif !E(M,w)$ est valide si et seulement si~$M$
+finit par s'arrêter sur~$w$. L'insolubilité du problème de l'arrêt
+entraîne donc l'indécidabilité de la validité et de la
+satisfaisabilité des !!{sentence}s du premier ordre
+(\cref{tur:und:uns:thm:decision-prob,tur:und:uns:cor:undecidable-sat}).
+
+Ces deux notions portent toutefois sur des !!{structure}s
+arbitraires, finies ou infinies. On pourrait penser qu'il est plus
+facile de décider si !!a{sentence} est satisfaisable dans une
+!!{structure} finie, ou valide dans toutes les !!{structure}s
+finies. En adaptant la réduction précédente, nous allons montrer
+que ce n'est pas le cas.
+
+Revenons à la preuve du \olref[ver]{lem:halt-if-valid}.
+Nous y avons construit un modèle~$\Struct M$ de~$!T(M,w)$
+décrivant exactement l'exécution de~$M$ sur~$w$. Son domaine,
+$\Nat$, était infini. Si~$M$ s'arrête après $k$ étapes, nous
+pouvons construire de la même manière un modèle fini
+$\Struct{M'}$. Prenons
+$\Domain{M'}=\{0,\dots,N\}$ avec
+$N=\len{w}+k+2$.\footnote{Correction éditoriale : la borne source $\max(k,\len{w})$ peut confondre le dernier instant ou une case visitée avec le bord où le successeur boucle. Nous plaçons ce bord strictement au-delà de l'entrée, de toutes les positions visitées et de l'arrêt ; la même correction est utilisée pour $!T'(M,w)$.} Interprétons $\prime$ par la fonction successeur
+jusqu'à~$N$, puis par une boucle en~$N$ :
+\[
+\Assign{\prime}{M'}(x)=
+\begin{cases}
+  x+1 &\text{si $x<N$,}\\
+  N &\text{si $x=N$.}
+\end{cases}
+\]
+Interprétons~$<$ par l'ordre usuel auquel nous ajoutons
+$N<N$. Les prédicats d'état et de ruban décrivent la véritable
+exécution jusqu'à l'arrêt; ils sont faux aux instants ultérieurs.
+La borne~$N$ est strictement supérieure au dernier instant~$k$,
+à la dernière case de l'entrée et à toute case que la tête a pu
+visiter avant l'arrêt. La boucle en~$N$ satisfait l'axiome
+$\lforall[x][x<x']$ au bord du domaine, mais aucune transition
+réelle n'atteint ce bord. Ainsi, comme dans la preuve du
+\olref[ver]{lem:halt-if-valid},
+$\Sat{M'}{!T(M,w)}$ et, puisque~$M$ s'arrête sur~$w$,
+$\Sat{M'}{!E(M,w)}$. La structure~$\Struct{M'}$ est donc un
+modèle fini de $!T(M,w)\land !E(M,w)$ : l'implication a été
+remplacée ici par une conjonction.
+
+Nous avons établi une moitié du résultat : si~$M$ s'arrête sur~$w$,
+alors $!T(M,w)\land !E(M,w)$ possède un modèle fini. La réciproque
+est fausse. Considérons, par exemple, la machine~$M$ dont l'unique
+état est~$q_0$ et dont l'unique instruction est
+$\delta(q_0,\TMblank)=\tuple{q_0,\TMblank,\TMstay}$.
+Sur l'entrée vide~$w=\emptyseq$, elle ne s'arrête jamais : elle
+reste dans une boucle sans changer le ruban ni déplacer sa tête.
+Toutes les configurations sont identiques. Pourtant, on peut
+construire une !!{structure} finie~$\Struct{M''}$ qui satisfait
+$!T(M,\emptyseq)\land !E(M,\emptyseq)$ (exercice).
+Nous allons modifier~$!T(M,w)$ pour exclure ce type de
+!!{structure}s.
+
+\begin{prob}
+Soit~$M$ une machine de Turing ayant pour seul état~$q_0$
+et pour seule instruction
+$\delta(q_0,\TMblank)=\tuple{q_0,\TMblank,\TMstay}$.
+Prenez $\Domain{M''}=\{0,1,2\}$,
+$\Assign{\prime}{M''}(0)=\Assign{\prime}{M''}(1)=1$,
+$\Assign{\prime}{M''}(2)=2$, et\footnote{Corrections éditoriales : l'état cible de l'unique instruction est $q_0$, comme dans l'exemple précédent, et les deux affectations du successeur concernent $\Struct{M''}$ ; la source y écrit respectivement $q$ et $\Struct{M'}$.}
+$\Assign{<}{M''}=\{\tuple{0,1},\tuple{1,1},\tuple{2,2}\}$.
+Définissez les interprétations de~$\Obj Q_{q_0}$,
+$\Obj S_{\TMblank}$ et~$\Obj S_{\TMendtape}$ de façon à rendre
+vrais $!T(M,\emptyseq)$ et~$!E(M,\emptyseq)$; expliquez pourquoi
+ils le sont. Indication : $\delta(q_0,\TMendtape)$ n'est pas
+définie. Faites en sorte que
+\begin{align*}
+& \Obj Q_{q_0}(\num{1},\num{n})\land
+  \Obj S_{\TMendtape}(\num{0},\num{n})\land
+  \lforall[x][(\num{0}<x\lif
+  \Obj S_\TMblank(x,\num{n}))]
+  \text{\quad pour tout $n\in\Nat$}\\
+& \lexists[y][(\Obj Q_{q_0}(\num{0},y)\land
+  \Obj S_{\TMendtape}(\num{0},y))]
+\end{align*}
+soient tous deux vrais dans~$\Struct{M''}$.
+\end{prob}
+\end{explain}
+
+Considérons les !!{sentence}s décrivant le fonctionnement de~$M$
+sur l'entrée $w=\sigma_{i_1}\dots\sigma_{i_k}$ :
+\begin{enumerate}
+\item Les axiomes portant sur les nombres et sur~$<$, comme dans
+  la définition de~$!T(M,w)$ (\olref[rep]{sec}).
+\item Les axiomes décrivant la configuration initiale, comme
+  dans la définition de~$!T(M,w)$.
+\item Les axiomes décrivant le passage d'une configuration à la
+  suivante.
+
+Gardons la définition précédente de~$!A(x,y)$ et posons
+\[
+!B(y)\ident\lforall[x][(x<y\lif\eq/[x][y])].
+\]
+Ici $\eq/[x][y]$ signifie que $x$ est \emph{distinct} de~$y$.
+\begin{enumerate}
+\item \ollabel{rep-right} Pour chaque instruction
+  $\delta(q_i,\sigma)=\tuple{q_j,\sigma',\TMright}$,
+  l'!!{sentence} :
+\begin{align*}
+& \lforall[x][\lforall[y][(
+  (\Obj Q_{q_i}(x,y)\land\Obj S_\sigma(x,y))\lif {}]]\\
+&\qquad (\Obj Q_{q_j}(x',y')\land
+  \Obj S_{\sigma'}(x,y')\land !A(x,y)\land !B(y')))
+\end{align*}
+\item \ollabel{rep-left} Pour chaque instruction
+  $\delta(q_i,\sigma)=\tuple{q_j,\sigma',\TMleft}$,
+  l'!!{sentence} :
+\begin{align*}
+& \lforall[x][\lforall[y][(
+  (\Obj Q_{q_i}(x',y)\land\Obj S_\sigma(x',y))\lif {}]]\\
+&\qquad (\Obj Q_{q_j}(x,y')\land
+  \Obj S_{\sigma'}(x',y')\land
+  !A(x',y)\land !B(y')))\land {}\\
+& \lforall[y][(
+  (\Obj Q_{q_i}(\num{0},y)\land
+  \Obj S_\sigma(\num{0},y))\lif {}]\\
+&\qquad (\Obj Q_{q_j}(\num{0},y')\land
+  \Obj S_{\sigma'}(\num{0},y')\land
+  !A(\num{0},y)\land !B(y')))
+\end{align*}
+\item \ollabel{rep-stay} Pour chaque instruction
+  $\delta(q_i,\sigma)=\tuple{q_j,\sigma',\TMstay}$,
+  l'!!{sentence} :
+\begin{align*}
+& \lforall[x][\lforall[y][(
+  (\Obj Q_{q_i}(x,y)\land\Obj S_\sigma(x,y))\lif {}]]\\
+&\qquad (\Obj Q_{q_j}(x,y')\land
+  \Obj S_{\sigma'}(x,y')\land !A(x,y)\land !B(y')))
+\end{align*}
+\end{enumerate}
+Ces !!{sentence}s reprennent les clauses de transition de~$!T(M,w)$
+en leur ajoutant $!B(y')$.\footnote{Corrections éditoriales : dans le premier cas du déplacement gauche, la source emploie le terme de conservation $!A(x,y)$ et omet $!B(y')$. Nous écrivons $!A(x',y)$, qui exclut la case écrite, et ajoutons la condition de fraîcheur à ce cas aussi.} Cette dernière formule assure que
+l'instant~$y'$ de la nouvelle configuration diffère de tous les
+instants précédents~$\Obj 0$, $\Obj 0'$, \dots{}.
+% Conditions de cohérence proposées dans la source, mais inactives :
+% \item Énoncés assurant des conditions de cohérence :
+% \begin{enumerate}
+%   \item\ollabel{rep-con-symb}%
+%   !!^a{sentence} affirmant qu'aucune case ne porte deux symboles
+%   distincts au même instant :
+%   \[\lforall[x][\lforall[y][(\Obj S_\sigma(x,y) \lif
+%   \lnot\Obj S_{\sigma'}(x,y))]],\]
+%   pour deux symboles distincts $\sigma,\sigma'$.
+%   \item\ollabel{rep-con-state}%
+%   !!^a{sentence} affirmant que la machine n'a pas deux états
+%   distincts au même instant :
+%   \[\lforall[x][\lforall[y][(\Obj Q_q(x,y)\lif
+%   \lforall[z][\lnot\Obj Q_{q'}(z,y))]],\]
+%   pour deux états distincts $q,q'$.
+%   \item\ollabel{rep-con-tape}%
+%   !!^a{sentence} affirmant que la tête ne lit pas deux cases
+%   distinctes au même instant :
+%   \[\lforall[x][\lforall[y][(\Obj Q_q(x,y)\lif
+%   \lforall[z][\eq/[z][y]\lif\lnot\Obj Q_{q'}(z,y))]],\]
+%   pour deux états $q,q'$.
+% \end{enumerate}
+\end{enumerate}
+Notons $!T'(M,w)$ la conjonction de tous les !!{sentence}s
+précédents, pour la machine~$M$ et l'entrée~$w$.
+
+\begin{lem}\ollabel{lem:halts-sat}
+Si~$M$ s'arrête sur l'entrée~$w$, alors
+$!T'(M,w)\land !E(M,w)$ possède un modèle fini.
+\end{lem}
+
+\begin{proof}
+Supposons que~$M$ s'arrête pour la première fois après $k$ étapes.
+Construisons $\Struct{M'}$ comme la structure de la preuve du
+\olref[ver]{lem:halt-if-valid}, sauf que son domaine est fini :
+\begin{align*}
+\Domain{M'}&=\{0,\dots,N\},\\
+\Assign{\prime}{M'}(x)&=
+\begin{cases}
+  x+1 &\text{si $x<N$,}\\
+  N &\text{si $x=N$,}
+\end{cases}\\
+\tuple{x,y}\in\Assign{<}{M'}
+&\text{ si et seulement si $x<y$ ou $x=y=N$,}
+\end{align*}
+où $N=\len{w}+k+2$. Les autres symboles sont interprétés
+comme dans la structure décrivant l'exécution réelle de~$M$
+jusqu'à son arrêt; au-delà, les relations d'état et de ruban
+sont vides.
+
+Vérifions les points propres au domaine fini. L'axiome
+$\lforall[x][x<x']$ est satisfait, y compris pour $x=N$
+grâce à~$N<N$; la relation~$<$ reste transitive.
+La case~$N$ n'est jamais lue par la tête et l'instant~$N$
+n'est pas atteint avant l'arrêt. Ainsi, la boucle du
+successeur n'altère aucune transition réelle ni la conservation
+des symboles dans~$!A$. Pour chaque transition exécutée à
+l'instant~$y<k$, le nouvel instant~$y+1$ est inférieur à~$N$;
+la relation~$<$ est l'ordre usuel en deçà de~$N$, de sorte que
+$!B(y')$ est vrai. Les axiomes de la configuration initiale et
+les autres clauses de transition sont satisfaits comme dans
+$\Struct M$. Enfin, la configuration terminale satisfait
+$!E(M,w)$. Nous avons donc
+$\Sat{M'}{!T'(M,w)\land !E(M,w)}$.
+\end{proof}
+
+\begin{prob}
+Complétez la preuve du \olref[tur][und][tra]{lem:halts-sat}
+en vérifiant directement
+$\Sat{M'}{!T'(M,w)\land !E(M,w)}$, notamment la clause
+$!B(y')$ pour chaque transition effectivement exécutée.\footnote{Correction éditoriale : l'exercice source demande seulement $!T(M,w)\land !E(M,w)$. Le lemme porte sur $!T'(M,w)\land !E(M,w)$ ; la condition de fraîcheur doit donc aussi être vérifiée.}
+\end{prob}
+
+\begin{lem}\ollabel{lem:sat-halts}
+Si $!T'(M,w)\land !E(M,w)$ possède un modèle fini, alors~$M$
+s'arrête sur l'entrée~$w$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par contraposition. Supposons que~$M$ ne s'arrête pas
+sur~$w$. Montrons qu'aucun modèle de
+$!T'(M,w)\land !E(M,w)$ ne peut être fini. Soit~$\Struct M$
+un tel modèle, s'il en existe un.
+
+Comme dans la preuve du \olref[ver]{lem:config}, les clauses
+initiales et de transition entraînent
+$!T'(M,w)\Entails !C(M,w,n)$ pour tout~$n\in\Nat$.
+L'exécution ne s'arrêtant jamais, la transition de l'instant
+$n-1$ fournit en outre
+$!T'(M,w)\Entails !B(\num{n})$ pour chaque~$n\ge1$.
+D'après la \olref[rep]{prop:mlessk}, les axiomes d'ordre donnent
+$!T'(M,w)\Entails\num{k}<\num{n}$ pour tout $k<n$.
+Or $!B(\num{n})$ entraîne
+$\num{k}<\num{n}\lif\eq/[\num{k}][\num{n}]$.
+Par conséquent,
+$\Sat{M}{\eq/[\num{k}][\num{n}]}$ dès que $k<n$ :
+les termes $\num{0},\num{1},\dots$ prennent des valeurs
+deux à deux distinctes dans~$\Struct M$. Son domaine est donc
+infini. Aucun modèle fini de
+$!T'(M,w)\land !E(M,w)$ n'existe.
+\end{proof}
+
+\begin{prob}
+Complétez la preuve du \olref[tur][und][tra]{lem:sat-halts}
+en montrant que, si~$M$ ne s'arrête pas sur~$w$,
+$!T'(M,w)\Entails !B(\num{n})$ pour tout~$n\ge1$.
+Expliquez pourquoi le cas $n=0$ n'est pas nécessaire.\footnote{Correction éditoriale : $!B(\num{n})$ vient de la transition précédente ; la source l'affirme aussi pour $n=0$, alors qu'aucune condition de ce genre n'est imposée avant le premier pas. Pour distinguer $\num{k}$ et $\num{n}$ avec $k<n$, on a toujours $n\ge1$.}
+\end{prob}
+
+\begin{thm}[Théorème de Trakhtenbrot]
+\ollabel{thm:trakhtenbrodt}
+Le problème de savoir si un !!{sentence} arbitraire de logique
+du premier ordre possède un modèle fini, autrement dit s'il
+est finiment satisfaisable, est indécidable.
+\end{thm}
+
+\begin{proof}
+Supposons qu'une machine de Turing~$F$ décide la satisfaisabilité
+finie. Étant données une machine de Turing~$M$ et une entrée~$w$,
+nous pouvons calculer l'!!{sentence}
+$!T'(M,w)\land !E(M,w)$, puis demander à~$F$ s'il possède un
+modèle fini. D'après les
+\cref{tur:und:tra:lem:halts-sat,tur:und:tra:lem:sat-halts},
+la réponse est affirmative si et seulement si~$M$ s'arrête sur~$w$.
+La machine~$F$ permettrait donc de résoudre le problème de l'arrêt,
+ce qui est impossible.
+\end{proof}
+
+\begin{cor}\ollabel{cor:fproof-incomp}%
+Il n'existe aucun système de !!{derivation} dont les
+!!{derivation}s soient effectivement énumérables et qui soit
+à la fois correct et complet pour la \emph{validité finie}.\footnote{Précision éditoriale : l'exclusion concerne les systèmes effectifs. Sans énumérabilité effective des dérivations, l'ensemble de tous les énoncés valides dans les structures finies pourrait lui-même être pris pour ensemble d'axiomes.}
+Un tel système vérifierait, pour tout énoncé~$!B$,
+$\Proves !B$ si et seulement si
+$\Sat{M}{!B}$ pour toute !!{structure} finie~$\Struct M$.
+\end{cor}
+
+\begin{proof}
+La preuve est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrez le \olref[tur][und][tra]{cor:fproof-incomp}.
+Remarquez que~$!B$ est vrai dans toute !!{structure} finie
+si et seulement si~$\lnot !B$ n'est pas finiment satisfaisable.
+Expliquez pourquoi la satisfaisabilité finie est semi-décidable
+au sens du \olref[tur][und][uns]{thm:valid-ce}, en énumérant
+les interprétations finies pertinentes. Montrez ensuite que,
+si les !!{derivation}s d'un système correct et complet pour
+la validité finie étaient effectivement énumérables, la
+satisfaisabilité finie serait décidable.
+\end{prob}
+
+\end{document}

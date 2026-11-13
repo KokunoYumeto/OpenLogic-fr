@@ -1,0 +1,26 @@
+% Partie : lambda-calcul
+% Chapitre : introduction
+% Section : conversion
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{con}
+\olsection{Conversion et réduction}
+
+Le lambda-calcul fait intervenir trois transformations.
+Une réduction est orientée. Une conversion permet de parcourir
+les étapes dans les deux sens.
+
+L'$\alpha$-conversion renomme les variables liées sans changer
+les occurrences libres ni les liens entre lieurs et occurrences.
+Ainsi, $\lambda x.x$ et $\lambda y.y$ représentent tous deux
+la fonction identité. La \olref[lam][syn][alp]{sec} donne
+les conditions précises de ce renommage. La
+\olref[lam][syn][bet]{sec} présente la $\beta$-réduction.
+La \olref[lam][syn][eta]{sec} présente l'$\eta$-conversion.
+
+
+
+\end{document}

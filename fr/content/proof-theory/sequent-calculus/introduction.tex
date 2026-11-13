@@ -1,0 +1,168 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{seq}{int}
+
+\olsection{Introduction}
+
+Les calculs des séquents sont des systèmes de preuve
+introduits par Gerhard Gentzen dans les années~1930.
+Gentzen les employait surtout pour étudier la structure
+possible des preuves et leurs propriétés, plutôt que
+comme méthode pratique de démonstration. Ces questions
+sont précisément celles de la théorie de la démonstration.
+
+Ces calculs portent sur des \emph{séquents}, plutôt
+que sur des formules isolées. Un séquent est un couple
+de suites ou de multiensembles de formules.
+Les systèmes originaux de Gentzen, \Log{LK} et \Log{LJ},
+utilisaient des suites ; on emploie aujourd'hui souvent
+des multiensembles. Un multiensemble ressemble à un
+ensemble, mais un même élément peut y figurer plusieurs
+fois. L'ordre n'importe pas : $\{!A, !A, !B\}$ et
+$\{!A, !B, !A\}$ représentent le même multiensemble.
+Il est cependant différent de $\{!A, !B\}$ et
+de $\{!A, !A, !B, !B\}$, car les multiplicités
+de $!A$ et de $!B$ diffèrent.
+
+On désigne traditionnellement les multiensembles
+de formules par des lettres grecques majuscules :
+$\Gamma$, $\Delta$, $\Pi$, $\Lambda$, $\Theta$.
+Les formules appartiennent au langage logique
+considéré. Plutôt que d'écrire le couple
+$\tuple{\Gamma, \Delta}$, on sépare ses deux
+membres par un symbole de séquent, ici~$\Sequent$.
+
+\begin{defn}[Séquent]
+Un \emph{séquent} est une expression de la forme
+\[
+\Gamma \Sequent \Delta
+\]
+où $\Gamma$ et $\Delta$ sont des multiensembles
+finis, éventuellement vides, de formules.
+On appelle $\Gamma$ l'\emph{antécédent}
+et $\Delta$ le \emph{conséquent}.
+\end{defn}
+
+Soit $!G$ la conjonction des formules de~$\Gamma$,
+la conjonction vide valant~$\ltrue$, et soit
+$!D$ la disjonction des formules de~$\Delta$,
+la disjonction vide valant~$\lfalse$.
+Le séquent $\Gamma \Sequent \Delta$ est vrai
+dans une structure~$\Struct{M}$ si et seulement
+si $!G \lif !D$ y est vrai. En logique classique,
+cela signifie qu'au moins une formule de~$\Gamma$
+est fausse ou qu'au moins une formule de~$\Delta$
+est vraie.
+
+Si $\Gamma$ est un multiensemble de formules,
+on note $\Gamma, !A$, ou $!A, \Gamma$, le
+résultat de l'ajout d'une occurrence de $!A$
+à~$\Gamma$. Si $\Delta$ est aussi un multiensemble,
+$\Gamma, \Delta$ désigne leur union additive :
+si $!A$ a multiplicité~$n$ dans $\Gamma$,
+c'est-à-dire s'il y figure $n$ fois, et multiplicité~$m$
+dans $\Delta$, alors sa multiplicité dans
+$\Gamma, \Delta$ est $n+m$.
+Un membre vide est généralement laissé en blanc.
+Ainsi, $\Sequent !A$ a un antécédent vide
+et un conséquent contenant $!A$ avec multiplicité~$1$.
+
+Une preuve est un arbre de séquents. Ses séquents
+supérieurs, ou initiaux, sont des axiomes du système,
+et chaque autre séquent est la conclusion d'une règle
+d'inférence dont les prémisses se trouvent immédiatement
+au-dessus. Nous considérons d'abord
+deux calculs pour la logique classique :
+$\Log{G1c}$ et~$\Log{G3c}$. Leurs axiomes et
+règles figurent dans les
+\cref{pt:seq:int:tab:G1c,pt:seq:int:tab:G3c}.
+\oliflabeldef{fol:seq::chap}{ (Le système original
+\Log{LK} de Gentzen est présenté dans le
+\olref[fol][seq][]{chap}.)}{}
+
+\subfile{rules-G1c}
+\subfile{rules-G3c}
+
+Les différences entre ces systèmes ont des
+conséquences sur leurs propriétés de preuve.
+Les axiomes d'identité de \Log{G1c} sont
+$!A \Sequent !A$, sans formule de contexte.
+Ceux de \Log{G3c} ont la forme
+$!C, \Gamma \Sequent \Delta, !C$, avec des
+contextes $\Gamma$ et~$\Delta$ arbitraires,
+mais la formule~$!C$ commune aux deux membres
+doit être \emph{atomique}.
+\Log{G1c} a deux versions de $\LeftR{\land}$
+et de $\RightR{\lor}$, tandis que \Log{G3c}
+n'en a qu'une de chaque. \Log{G1c} possède
+aussi des règles \emph{structurelles} :
+la contraction, \LeftR{\Contraction}
+et \RightR{\Contraction}, et l'affaiblissement,
+\LeftR{\Weakening} et \RightR{\Weakening}.
+
+Les systèmes \Log{G1c} et \Log{G3c} sont
+corrects et complets pour la logique classique :
+tout séquent qu'ils prouvent est vrai dans
+toute structure, et tout séquent vrai dans
+toute structure possède une preuve.
+La question de l'existence d'une preuve
+peut donc aussi être étudiée par des
+méthodes sémantiques, notamment celles
+de la théorie des modèles. Les deux calculs
+prouvent exactement les mêmes séquents.
+
+La théorie de la démonstration étudie toutefois
+aussi \emph{comment} on prouve. Peut-on toujours
+éviter une règle ? Peut-on l'ajouter sans
+obtenir de nouveaux séquents prouvables ?
+Peut-on transformer les preuves d'un système
+en preuves d'un autre ? Une réponse positive
+se démontre souvent par récurrence sur
+la complexité ou sur la structure des preuves.
+Elle fournit alors non seulement un résultat,
+par exemple que \Log{G3c} prouve tout séquent
+prouvé par \Log{G1c}, mais aussi une procédure
+qui transforme une preuve de~\Log{G1c}
+en une preuve de~\Log{G3c}.
+
+Le \emph{théorème d'élimination des coupures}
+est un résultat central. On peut ajouter
+la règle de coupure
+\[
+\Axiom$\Gamma \fCenter \Delta, !A$
+\Axiom$!A, \Pi \fCenter \Lambda$
+\RightLabel{\Cut}
+\BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda$
+\DisplayProof
+\]
+sans augmenter l'ensemble des séquents
+prouvables. Sa démonstration fournit en outre
+une méthode qui transforme toute preuve
+utilisant les règles de \Log{G1c}, ou
+de \Log{G3c}, avec~\Cut{}, en une preuve
+qui n'utilise que les règles du calcul
+initial. Cette méthode \emph{élimine}
+donc les coupures.
+
+Les résultats classiques du premier ordre présentés
+ici concernent les séquents de formules closes sans
+égalité logique. Les règles quantifiées emploient des
+termes clos et des constantes propres. Le modèle de
+termes et la recherche de preuves suivent ces
+conventions. Pour des formules à variables libres,
+il faut aussi préciser les affectations et leurs
+effets sur l'instanciation.
+
+La validité caractérise les séquents prouvables.
+Au premier ordre, la recherche peut se poursuivre
+%
+%
+indéfiniment sur un séquent invalide.
+
+\end{document}

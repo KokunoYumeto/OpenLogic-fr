@@ -22,7 +22,7 @@ Soient $R$ et $S$ des relations, et $A$ un ensemble quelconque.
 La relation \emph{inverse} de $R$ est
 $R^{-1} = \Setabs{\tuple{y, x}}{\tuple{x, y} \in R}$.
 
-Le \emph{produit relatif} de $R$ et $S$ est
+Le \emph{produit relatif} de $R$ et $S$ compose $S$ après $R$ :
 $(R \mid S) = \{\tuple{x, z} : \exists y(Rxy \land Syz)\}$.
 
 La \emph{restriction} de $R$ à $A$ est
@@ -48,10 +48,10 @@ $\funimage{S}{\{1,2,3\}}$ est $\{2, 3, 4\}$.
 \end{ex}
 
 \begin{defn}[Clôture transitive]
-Soit $R \subseteq A^2$ une relation binaire.\footnote{Précision de notation :
-dans cette section, le signe plus en exposant désigne la clôture transitive.
-Il n’a donc pas le sens local de clôture réflexive employé dans la
-section sur les ordres. Les notations de l’original sont conservées.}
+Soit $R \subseteq A^2$ une relation binaire.
+Dans cette définition, le signe plus en exposant désigne la clôture
+transitive. Dans la section sur les ordres, cet exposant désignait la
+clôture réflexive.
 
 La \emph{clôture transitive} de~$R$ est
 $R^+ = \bigcup_{0 < n \in \Nat} R^n$, où l’on définit par récurrence

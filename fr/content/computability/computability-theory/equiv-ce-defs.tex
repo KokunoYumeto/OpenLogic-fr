@@ -1,0 +1,187 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: equiv-ce-defs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{eqc}
+\olsection[Définitions des ensembles effectivement énumérables]{Caractérisations équivalentes des ensembles effectivement énumérables}
+
+Les énoncés suivants donnent plusieurs façons
+importantes de caractériser les ensembles effectivement
+énumérables.
+
+\begin{thm}
+\ollabel{thm:ce-equiv}
+Soit $S$ un ensemble d'entiers naturels. Les propriétés
+suivantes sont équivalentes :
+\begin{enumerate}
+\item\ollabel{case:ce} $S$ est effectivement énumérable.
+\item\ollabel{case:ran-pc} $S$ est l'image d'une fonction
+  calculable \emph{partielle}.
+\item\ollabel{case:ran-prim} $S$ est vide ou l'image
+  d'une fonction récursive primitive.
+\item\ollabel{case:ce-domain} $S$ est le \emph{domaine}
+  d'une fonction calculable partielle.
+\end{enumerate}
+\end{thm}
+
+\begin{explain}
+Les trois premières propriétés disent qu'un ensemble
+effectivement énumérable non vide peut être énuméré
+aussi bien par une fonction calculable que par une
+fonction calculable partielle ou une fonction récursive
+primitive. La quatrième nous dit que, si $S$ est
+effectivement énumérable, il existe un indice~$e$ tel que
+\[
+S = \Setabs{x}{\cfind{e}(x) \fdefined}.
+\]
+Autrement dit, $S$ est l'ensemble des entrées sur
+lesquelles le calcul de $\cfind{e}$ s'arrête. C'est
+pourquoi on appelle aussi ces ensembles
+\emph{semi-décidables} : lorsqu'un nombre appartient à
+l'ensemble, on finit par obtenir « oui »; sinon,
+la procédure ne donne jamais « non ».
+\end{explain}
+
+\begin{proof}
+Toute fonction récursive primitive est calculable,
+et toute fonction calculable est, en particulier, une fonction partielle calculable.
+Ainsi, \olref{case:ran-prim} implique \olref{case:ce},
+qui implique à son tour \olref{case:ran-pc}.
+Si $S$ est vide, c'est l'image de la fonction calculable
+partielle qui n'est définie nulle part. Il suffit donc
+de montrer que \olref{case:ran-pc} implique
+\olref{case:ran-prim} pour établir l'équivalence
+des trois premières propriétés.
+
+Supposons que $S$ soit l'image de la fonction calculable
+partielle $\cfind{e}$. Si $S$ est vide, c'est fini.
+Sinon, choisissons $a\in S$. Par le théorème de forme
+normale de Kleene, on peut écrire
+\[
+\cfind{e}(x) \simeq U(\umin{s}{T(e, x, s)}).
+\]
+En particulier, $\cfind{e}(x) \fdefined$ et vaut~$y$
+si et seulement s'il existe un~$s$ tel que $T(e,x,s)$
+et $U(s)=y$. Définissons $f(z)$ par
+\[
+f(z) = \begin{cases}
+  U((z)_1) & \text{si $T(e, (z)_0, (z)_1)$} \\
+  a        & \text{sinon.}
+\end{cases}
+\]
+La fonction $f$ est récursive primitive, puisque
+$T$ et~$U$ le sont. \iftag{TMs}{En termes de machines
+  de Turing, on lit dans $z$ les valeurs $(z)_0$ et $(z)_1$.
+  Si $(z)_1$ décrit
+  un calcul qui s'arrête pour la machine~$M_e$ sur
+  l'entrée $(z)_0$, alors $f$ renvoie la sortie de ce
+  calcul; sinon, elle renvoie~$a$.}{}
+
+Montrons que l'image de $f$ est bien~$S$. Si $y\in S$,
+il existe $x$ et~$s$ tels que $T(e,x,s)$ et $U(s)=y$;
+on a donc $y=f(\tuple{x,s})$. Réciproquement, si $y$
+est dans l'image de $f$, alors soit $y=a$, soit il
+existe un~$z$ tel que $T(e,(z)_0,(z)_1)$ et
+$U((z)_1)=y$. Dans ce dernier cas,
+$\cfind{e}((z)_0)\fdefined=y$; dans les deux cas,
+$y\in S$.
+
+(La notation $\cfind{e}(x) \fdefined = y$ signifie
+« $\cfind{e}(x)$ est définie et vaut $y$ ». On
+pourrait aussi écrire $\cfind{e}(x)=y$, mais la
+flèche rappelle utilement qu'il s'agit d'une fonction
+partielle.)\footnote{Corrections éditoriales : dans le sens réciproque du raisonnement sur l'image de $f$, la source emploie un $x$ non fixé là où il faut $(z)_0$. Dans le passage de l'énumération au domaine, nous traitons aussi explicitement l'ensemble vide, qui ne peut être l'image d'une fonction totale sur $\Nat$. Nous écrivons $\simeq$ dans la forme normale pour couvrir les valeurs indéfinies.}
+
+Pour achever la preuve du \olref{thm:ce-equiv},
+montrons que \olref{case:ce} et
+\olref{case:ce-domain} sont équivalents. Supposons
+d'abord \olref{case:ce}. Si $S$ est vide, la
+fonction calculable partielle nulle part définie a
+pour domaine~$S$. Sinon, $S$ est l'image d'une
+fonction calculable~$f$, c'est-à-dire
+\[
+S = \Setabs{y}{\text{il existe $x$ tel que } f(x) = y}.
+\]
+Posons
+\[
+g(y) = \umin{x}{(f(x) = y)}.
+\]
+La fonction $g$ est calculable partielle, et $g(y)$
+est définie si et seulement s'il existe un~$x$ tel
+que $f(x)=y$. Son domaine est donc l'image de~$f$.
+\iftag{TMs}{En termes de machines de Turing, si une
+machine~$F$ énumère les éléments de~$S$, une machine~$G$
+semi-décide l'appartenance à~$S$ en cherchant un
+élément donné parmi les sorties de~$F$. Elle s'arrête
+si elle le trouve et poursuit la recherche indéfiniment
+sinon.}{}
+
+Enfin, supposons \olref{case:ce-domain} : $S$ est
+le domaine d'une fonction calculable partielle
+$\cfind{e}$, soit
+\[
+S = \Setabs{x}{\cfind{e}(x) \fdefined}.
+\]
+Si $S$ est vide, le résultat est immédiat. Sinon,
+choisissons $a\in S$ et définissons $f$ par
+\[
+f(z) = \begin{cases}
+(z)_0 & \text{si $T(e,(z)_0,(z)_1)$} \\
+a & \text{sinon.}
+\end{cases}
+\]
+Comme précédemment, un entier~$x$ appartient à
+l'image de~$f$ si et seulement si
+$\cfind{e}(x)\fdefined$, c'est-à-dire si et
+seulement si $x\in S$. \iftag{TMs}{En termes de
+machines de Turing, étant donnée une machine~$M_e$
+qui semi-décide~$S$, on énumère les éléments de~$S$
+en parcourant tous les calculs possibles et en
+renvoyant les entrées des calculs qui s'arrêtent.}{}
+\end{proof}
+
+La propriété~\olref{case:ce-domain} du
+\olref{thm:ce-equiv} permet d'énumérer commodément
+les ensembles effectivement énumérables : pour chaque
+$e$, notons $W_e$ le domaine de $\cfind{e}$, soit
+\[
+W_e = \Setabs{x}{\cfind{e}(x) \fdefined}.
+\]
+Tout ensemble effectivement énumérable~$A$ est alors
+égal à $W_e$ pour un certain~$e$.
+
+Le théorème suivant en donne encore une autre
+caractérisation.
+
+\begin{thm}
+\ollabel{thm:exists-char}
+Un ensemble~$S$ est effectivement énumérable si et
+seulement s'il existe une relation calculable~$R(x,y)$
+telle que
+\[
+S = \Setabs{ x }{ \lexists[y][R(x,y)] }.
+\]
+\end{thm}
+
+\begin{proof}
+Dans un sens, si $S$ est effectivement énumérable,
+il existe un~$e$ tel que $S=W_e$. Pour cet indice,
+on peut écrire
+\[
+S = \Setabs{ x }{ \lexists[y][T(e, x, y)] }.
+\]
+Dans l'autre sens, supposons
+$S=\Setabs{ x }{ \lexists[y][R(x, y)] }$.
+Définissons $f$ par
+\[
+f(x) \simeq \umin{y}{R(x, y)}.
+\]
+Alors $f$ est calculable partielle et son domaine
+est~$S$.
+\end{proof}
+
+\end{document}

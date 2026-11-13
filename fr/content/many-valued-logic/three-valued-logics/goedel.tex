@@ -1,0 +1,147 @@
+% Part: many-valued-logic
+% Chapter: three-valued-logics
+% Section: goedel
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{thr}{god}
+
+\olsection{Les logiques de G\"odel}
+
+Kurt G\"odel a introduit une suite
+de logiques à $n$ valeurs. Toutes les
+formules valides en logique
+intuitionniste y sont valides, et
+toutes les formules qui y sont valides
+le sont en logique classique. Voici
+le premier cas intéressant.
+
+\begin{defn}\ollabel{defn:goedel}
+La \emph{logique de G\"odel à trois
+valeurs}~$\LogGod$ est définie par
+la matrice suivante :
+\begin{enumerate}
+  \item Le langage propositionnel usuel
+  $\Lang L_0$ avec $\lfalse$,
+  $\lnot$, $\land$, $\lor$ et $\lif$.
+  \item L'ensemble des valeurs de vérité
+  $V=\{\True,\Undef,\False\}$.
+  \item $\True$ est la seule valeur
+  désignée, c'est-à-dire
+  $V^+=\{\True\}$.
+  \item Pour $\lfalse$, on a
+  $\tf{\lfalse}=\False$. Les fonctions
+  de vérité des autres connecteurs
+  sont données par les tables suivantes :
+  \begin{center}
+    \begin{tabular}{c|c}
+      $\tf{\lnot}[\LogGod]$ & \\
+      \hline
+      $\True$ & $\False$ \\
+      $\Undef$ & $\False$ \\
+      $\False$ & $\True$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\land}[\LogGod]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\False$ \\
+      $\Undef$ & $\Undef$ & $\Undef$ & $\False$ \\
+      $\False$ & $\False$ & $\False$ & $\False$
+    \end{tabular}
+    \\[2ex]
+    \begin{tabular}{c|ccc}
+      $\tf{\lor}[\LogGod]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\True$ & $\True$ \\
+      $\Undef$ & $\True$ & $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$ & $\Undef$ & $\False$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\lif}[\LogGod]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\False$ \\
+      $\Undef$ & $\True$ & $\True$ & $\False$ \\
+      $\False$ & $\True$ & $\True$ & $\True$
+    \end{tabular}
+  \end{center}
+\end{enumerate}
+\end{defn}
+
+Les tables de $\land$ et de~$\lor$ sont communes à la logique
+de G\"odel, à la logique de \L ukasiewicz et à la logique forte de
+Kleene. Les tables de $\lnot$ et de~$\lif$ de la logique de
+G\"odel diffèrent de celles des deux autres logiques.
+Dans la logique de G\"odel,
+$\tf{\lnot}(\Undef)=\False$.
+Contrairement aux logiques de
+\L ukasiewicz et de Kleene,
+$\tf{\lif}(\Undef,\False)=\False$;
+contrairement à la logique de Kleene,
+mais comme dans celle de \L ukasiewicz,
+$\tf{\lif}(\Undef,\Undef)=\True$.
+
+Comme le suggère le lien évoqué plus
+haut, $\LogGod[3]$ est proche de la
+logique intuitionniste. Toutes les
+formules valides intuitionnistement
+sont des tautologies de~$\LogGod[3]$;
+en revanche, nombre de tautologies
+classiques qui ne sont pas valides
+intuitionnistement ne sont pas non
+plus des tautologies de~$\LogGod[3]$.
+Par exemple, les formules suivantes
+ne sont pas des tautologies :
+\begin{align*}
+  & p\lor\lnot p && (p\lif q)\lif(\lnot p\lor q) \\
+  & \lnot\lnot p\lif p && \lnot(\lnot p\land\lnot q)\lif(p\lor q) \\
+  & ((p\lif q)\lif p)\lif p && \lnot(p\lif q)\lif(p\land\lnot q)
+\end{align*}
+Inversement, certaines tautologies
+de~$\LogGod[3]$ ne sont pas valides
+intuitionnistement, par exemple
+$\lnot\lnot p\lor\lnot p$ ou
+$(p\lif q)\lor(q\lif p)$.
+
+\begin{prob}
+  Donner des tables de vérité montrant
+  que les formules suivantes sont des
+  tautologies de~$\LogGod[3]$ :
+  \begin{align*}
+    & \lnot\lnot p\lor\lnot p \\
+    & (p\lif q)\lor(q\lif p) \\
+    & \lnot(p\land q)\lif(\lnot p\lor\lnot q) \\
+    & (p\lif q)\lor(q\lif r)\lor(r\lif s)
+  \end{align*}
+\end{prob}
+
+\begin{prob}
+  Donner des tables de vérité montrant
+  que les formules suivantes ne sont
+  pas des tautologies de~$\LogGod[3]$ :
+  \begin{align*}
+    & (p\lif q)\lif(\lnot p\lor q) \\
+    & \lnot(\lnot p\land\lnot q)\lif(p\lor q) \\
+    & ((p\lif q)\lif p)\lif p \\
+    & \lnot(p\lif q)\lif(p\land\lnot q)
+  \end{align*}
+\end{prob}
+
+\begin{prob}
+  Parmi les relations suivantes,
+  lesquelles valent dans la logique
+  de G\"odel? Donner une table de
+  vérité pour chacune.
+  \begin{enumerate}
+    \item $p,p\lif q\Entails q$;
+    \item $p\lor q,\lnot p\Entails q$;
+    \item $p\land q\Entails p$;
+    \item $p\Entails p\land p$;
+    \item $p\Entails p\lor q$.
+  \end{enumerate}
+\end{prob}
+
+\end{document}

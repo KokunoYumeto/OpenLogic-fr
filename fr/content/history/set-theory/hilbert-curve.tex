@@ -1,0 +1,209 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{his}{set}{hilbertcurve}
+
+\olsection{Annexe : les courbes de Hilbert remplissant l'espace}
+
+Dans la \olref[pathology]{sec}, nous avons indiqué que
+la démonstration de Cantor selon laquelle une ligne et un carré
+ont exactement le même nombre de points
+(\olref[his][set][cantorplane]{thm:cantorplane}) incita Peano à
+chercher une \emph{courbe} remplissant l'espace. Il en construisit
+une en 1890. Nous allons expliquer, de manière informelle, comment
+construire la courbe de Hilbert, avec une petite modification.\footnote{
+Pour une explication plus rigoureuse, voir \cite{Rose2010}. La
+modification consiste à ajouter les parties rouges des courbes
+ci-dessous, ce qui facilite un peu la vérification de leur
+continuité.}\footnote{Corrections mathématiques de l'édition
+française : la source donne à la variable de la limite le carré
+pour domaine, alors qu'il faut le segment. Elle ne précise pas
+la paramétrisation commune des approximations et son argument
+final ne démontre pas la continuité en chaque point du domaine.
+Nous rendons ici explicites la paramétrisation, la convergence
+uniforme et l'argument de surjectivité.}
+
+Nous devons définir une application $h$ comme limite d'une suite
+d'applications $h_1$, $h_2$, $h_3$, \dots\@ Nous décrirons d'abord
+la construction, puis montrerons que son image remplit le carré
+et qu'elle définit bien une courbe.
+
+L'image recherchée est le carré unité $\unitsquare$. Voici la
+première approximation de $h$, c'est-à-dire $h_1$ :
+\begin{center}
+	\begin{tikzpicture}
+	\draw[gray] (0pt, 0pt) rectangle (80pt, 80pt);
+	\draw[step = 40pt, gray, very thin] (0pt, 0pt) grid (80pt, 80pt);
+	\draw[oldiagcolorC, thick] (20pt, 0)--(20pt, 20pt);
+	\draw[oldiagcolorC, thick] (60pt, 0)--(60pt, 20pt);
+	\begin{scope}[xshift=20pt, yshift=20pt]
+	\draw [black, thick, l-system={Hilbert curve, step=40pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\end{tikzpicture}
+\end{center}
+Pour suivre la construction, nous avons superposé au carré une
+grille $2 \times 2$. La courbe commence dans le quart inférieur
+gauche, passe au quart supérieur gauche, puis au quart supérieur
+droit, et se termine dans le quart inférieur droit. Voici la
+deuxième étape, c'est-à-dire $h_2$ :
+\begin{center}
+	\begin{tikzpicture}
+	\draw[gray] (0pt, 0pt) rectangle (80pt, 80pt);
+	\draw[step = 20pt, gray, very thin] (0pt, 0pt) grid (80pt, 80pt);
+	\draw[oldiagcolorC, thick] (0pt, 10pt)--(10pt, 10pt);
+	\draw[oldiagcolorC, thick] (70pt, 10pt)--(80pt, 10pt);
+	\draw[thick, oldiagcolorE] (10pt, 30pt)--(10pt, 50pt);
+	\draw[thick, oldiagcolorE] (30pt, 50pt)--(50pt, 50pt);
+	\draw[thick, oldiagcolorE] (70pt, 50pt)--(70pt, 30pt); \begin{scope}[xshift=10pt, yshift=30pt]
+	\draw [thick, rotate=270,black, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=10pt, yshift=50pt]
+	\draw [thick, black, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=50pt, yshift=50pt]
+	\draw [thick, black, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=70pt, yshift=10pt]
+	\draw [thick, rotate=90,black, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=1}]  lindenmayer system;
+	\end{scope}
+	\end{tikzpicture}
+\end{center}
+Les couleurs expliquent la construction de $h_2$. Nous plaçons
+d'abord des copies réduites de la partie qui n'est pas
+!!{colorC} dans $h_1$ aux quatre quarts du carré, dans le même
+ordre : inférieur gauche, supérieur gauche, supérieur droit,
+inférieur droit. Ces copies sont dessinées en noir. Nous les
+relions ensuite par des segments !!{colorE}s, puis relions la
+figure au bord du carré par des segments !!{colorC}s.
+
+Passons à $h_3$. De même que $h_2$ était formée de quatre copies
+réduites et reliées de la partie non rouge de $h_1$, $h_3$ est
+formée de quatre copies réduites de la partie non rouge de $h_2$,
+dessinées en noir. Elles sont reliées par des segments !!{colorE}s,
+puis raccordées au bord du carré par des segments !!{colorC}s.
+\begin{center}
+	\begin{tikzpicture}
+	\draw[gray] (0pt, 0pt) rectangle (80pt, 80pt);
+	\draw[step = 10pt, gray, very thin] (0pt, 0pt) grid (80pt, 80pt);
+	\draw[thick, oldiagcolorC](5pt, 0pt)--(5pt, 5pt);
+	\draw[thick, oldiagcolorC] (75pt, 0pt)--(75pt, 5pt);
+	\draw[thick, oldiagcolorE] (75pt, 45pt)--(75pt, 35pt);
+	\draw[thick, oldiagcolorE] (5pt, 35pt)--(5pt, 45pt);
+	\draw[thick, oldiagcolorE] (35pt, 45pt)--(45pt, 45pt);
+	\draw[thick, oldiagcolorE] (75pt, 45pt)--(75pt, 35pt); \begin{scope}[xshift=5pt, yshift=35pt]
+	\draw [rotate=270, thick, black, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=2}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=5pt, yshift=45pt]
+	\draw [thick, black, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=2}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=45pt, yshift=45pt]
+	\draw [thick, black, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=2}]  lindenmayer system;
+	\end{scope}
+	\begin{scope}[xshift=75pt, yshift=5pt]
+	\draw [thick, rotate=90,black, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=2}]  lindenmayer system;
+	\end{scope}
+	\end{tikzpicture}
+\end{center}
+Le procédé général permettant de construire $h_{n+1}$ à partir
+de $h_n$ apparaît maintenant.
+
+Précisons comment ces dessins deviennent des applications définies
+sur le même segment $\unitline=[0,1]$. À l'étape $n$, le parcours
+visite successivement les $4^n$ cellules fermées de la grille
+$2^n \times 2^n$. Partageons $[0,1]$ en $4^n$ sous-intervalles
+égaux, dans cet ordre, et faisons parcourir de façon continue à
+$h_n$ la partie du tracé située dans la cellule correspondante
+pendant chacun de ces sous-intervalles. Les raccords entre
+cellules adjacentes assurent la continuité de $h_n$.
+Le raffinement partage ensuite chaque sous-intervalle en quatre
+et chacune des cellules correspondantes en quatre, selon les
+orientations indiquées par la construction. Ainsi, si $I$ est
+un sous-intervalle de l'étape $n$ associé à une cellule $Q$,
+toutes les étapes $m\geq n$ vérifient $h_m(I)\subseteq Q$.
+Aux extrémités communes des sous-intervalles, les raccords se
+trouvent sur les bords communs des cellules.
+
+Par le théorème de Pythagore, le diamètre de chaque cellule vaut :
+\[
+\sqrt{\left(\nicefrac{1}{2^{n}}\right)^2+\left(\nicefrac{1}{2^{n}}\right)^2} = 2^{(\frac{1}{2}-n)}.
+\]
+Pour un même $x\in\unitline$, les points $h_m(x)$ et $h_k(x)$
+appartiennent donc à une même cellule de l'étape $n$ dès que
+$m,k\geq n$. Leur distance est au plus
+$2^{(\frac{1}{2}-n)}$, indépendamment de~$x$. Les suites
+$h_n(x)$ sont ainsi de Cauchy, uniformément en~$x$, et convergent
+dans le carré fermé. Nous pouvons enfin définir la courbe
+\emph{elle-même}, pour chaque $x \in \unitline$, par :
+\begin{align*}
+	h(x) &= \lim_{n \rightarrow \infty} h_n(x).
+\end{align*}
+La même estimation donne
+$\|h(x)-h_n(x)\|\leq 2^{(\frac{1}{2}-n)}$ pour tout~$x$.
+La convergence est donc uniforme.
+
+Montrons que l'image de $h$ est tout le carré. Chaque tracé
+$h_n$ traverse toutes les cellules de la grille ; tout point du
+carré se trouve donc à une distance \emph{au plus} égale à
+$2^{(\frac{1}{2}-n)}$ d'un point de ce tracé. Fixons une cellule
+$Q$ de l'étape~$n$ et le sous-intervalle~$I$ qui lui correspond.
+Comme $Q$ est fermé, $h(I)\subseteq Q$. Montrons l'inclusion inverse.
+Pour tout point $p\in Q$, choisissons
+une suite de cellules fermées emboîtées $Q_k$ contenant~$p$,
+en commençant par $Q_n=Q$ et en prenant à chaque étape une
+des quatre sous-cellules. Les sous-intervalles fermés
+correspondants $I_k$ sont emboîtés, avec $I_n=I$, et ont pour
+longueurs $4^{-k}$. Leur intersection contient un unique
+point~$x$. Pour tout $k\geq n$, toutes les approximations
+d'ordre $m\geq k$ envoient $x$ dans $Q_k$, qui contient
+donc aussi leur limite $h(x)$. Comme le diamètre de $Q_k$
+tend vers zéro, $h(x)=p$. Ainsi, $h(I)=Q$ et chaque point du carré
+se trouve bien \emph{sur} la courbe. La distance maximale des
+points du carré à l'image de $h$ est donc nulle, conformément à :
+\[
+\lim_{n \rightarrow \infty} 2^{(\frac{1}{2}-n)} = 0.
+\]
+La courbe $h$ remplit le carré !
+
+Il reste à vérifier que $h$ est bien une \emph{courbe}, au sens
+précis de ce mot. La définition moderne s'appuie sur celle donnée
+par Jordan en 1887, quelques années seulement avant la première
+courbe remplissant l'espace :
+
+\begin{defn}
+Une courbe est une application continue de $\unitline$ dans
+$\Real^2$.
+\end{defn}
+
+Intuitivement, une courbe décrit un parcours continu dans le plan,
+paramétré par un segment. La continuité ne signifie pas que le
+parcours est lisse ou dérivable. Notre application $h$ a déjà
+pour domaine $\unitline$ et pour codomaine $\Real^2$ ; il reste
+à établir sa continuité.
+
+Nous avons défini la continuité dans la \olref[limits]{sec} à l'aide
+de la notation $\epsilon$/$\delta$. Fixons donc un point
+$x_0\in\unitline$ et une précision $\epsilon>0$, et posons
+$p=h(x_0)$. Il faut trouver $\delta>0$ tel que tous les
+$x\in\unitline$ satisfaisant $|x-x_0|<\delta$ aient leur image
+dans le disque de centre $p$ et de rayon $\epsilon$. Le disque
+peut déborder du carré sans que cela pose de problème.
+
+Choisissons $n$ assez grand pour que
+$2^{(\frac{1}{2}-n)}<\epsilon/3$. Puisque $h_n$ est continue,
+il existe $\delta>0$ tel que, pour tout $x\in\unitline$,
+$|x-x_0|<\delta$ implique
+$\|h_n(x)-h_n(x_0)\|<\epsilon/3$. L'estimation uniforme donne
+alors :
+\[
+\|h(x)-h(x_0)\|
+\leq \|h(x)-h_n(x)\|
++\|h_n(x)-h_n(x_0)\|
++\|h_n(x_0)-h(x_0)\|
+<\epsilon.
+\]
+C'est exactement la continuité de $h$ en~$x_0$. Le point
+$x_0$ étant arbitraire, $h$ est continue sur $\unitline$.
+Nous avons donc construit une courbe qui remplit le carré unité.
+
+\end{document}

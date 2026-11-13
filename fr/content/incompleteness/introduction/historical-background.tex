@@ -1,0 +1,249 @@
+% Part: incompleteness
+% Chapter: introduction
+% Section: historical-background
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{int}{bgr}
+
+\olsection{Repères historiques}
+
+Nous retracerons brièvement dans cette section quelques évolutions
+historiques qui aideront à situer les théorèmes d'incomplétude. Nous
+esquisserons d'abord l'histoire de la logique mathématique, puis nous
+dirons quelques mots de celle des fondements des mathématiques.
+
+\begin{digress}
+  L'expression « logique mathématique » est ambiguë. L'adjectif
+  « mathématique » peut qualifier l'objet étudié, comme dans « la
+  logique des mathématiques », c'est-à-dire les principes du
+  raisonnement mathématique; il peut aussi qualifier la méthode,
+  comme dans « une étude mathématique de la logique », c'est-à-dire
+  l'étude mathématique des principes du raisonnement. Le récit qui
+  suit concerne la logique mathématique dans les deux sens, souvent
+  à la fois.
+\end{digress}
+
+L'étude de la logique a commencé, pour l'essentiel, avec Aristote,
+qui vécut approximativement de 384 à 322 avant notre ère. Ses
+\emph{Catégories}, ses \emph{Premiers Analytiques} et ses
+\emph{Seconds Analytiques} comprennent des études systématiques des
+principes du raisonnement scientifique, dont une étude approfondie
+et méthodique du syllogisme.
+
+La logique d'Aristote a dominé la philosophie scolastique tout au
+long du Moyen Âge. Au XVIIIe siècle encore, Kant soutenait qu'elle
+était parfaite et n'avait pas besoin d'être révisée. Pourtant, la
+théorie du syllogisme est beaucoup trop limitée pour rendre compte
+d'autre chose que des aspects les plus superficiels du raisonnement
+mathématique. Un siècle auparavant, Leibniz, contemporain de Newton,
+avait imaginé un « calcul » complet du raisonnement logique et fait
+quelques premiers pas vers sa conception, décrivant en substance une
+forme de logique propositionnelle.
+
+Le XIXe siècle a marqué un tournant pour la logique. En 1854, George
+Boole publia \emph{The Laws of Thought}, une étude algébrique
+approfondie de la logique propositionnelle qui n'est guère éloignée
+des présentations modernes. En 1879, Gottlob Frege publia sa
+\emph{Begriffsschrift} (« Écriture conceptuelle »), qui étend la
+logique propositionnelle par les quantificateurs et les relations,
+et comprend donc la logique du premier ordre. En réalité, les
+systèmes logiques de Frege englobaient aussi la logique d'ordre
+supérieur, entre autres. Dans ses \emph{Grundgesetze der Arithmetik}
+(« Lois fondamentales de l'arithmétique »), Frege entreprit de
+montrer que toute l'arithmétique pouvait être déduite, dans sa
+\emph{Begriffsschrift}, d'hypothèses purement logiques. Ces
+hypothèses se révélèrent malheureusement contradictoires, comme
+Russell le signala à Frege en 1902. Mais, si l'on met de côté l'axiome en
+cause, Frege a pour ainsi dire inventé à lui seul la logique
+moderne, ce qui est un exploit saisissant. La logique des
+quantificateurs fut aussi développée indépendamment, dans le
+sillage de Boole, par des penseurs tournés vers l'algèbre, dont
+Peirce et Schr\"oder.
+
+Passons maintenant à l'histoire des fondements des mathématiques.
+Puisque la logique joue un rôle important en mathématiques, ces
+développements recoupent largement ceux que nous venons de décrire.
+Frege, par exemple, élabora sa logique dans le but explicite de
+montrer que toutes les mathématiques pouvaient reposer sur son seul
+cadre logique. Il voulait notamment établir que les mathématiques
+consistent en vérités \emph{analytiques} a priori, et non en
+vérités \emph{synthétiques} a priori, comme le soutenait Kant.
+
+On situe souvent la naissance des mathématiques proprement dites
+chez les Grecs. Les \emph{Éléments} d'Euclide, rédigés vers 300 avant
+notre ère, offrent déjà un exemple abouti des mathématiques
+grecques, soucieuses de rigueur et de précision. Les définitions et
+les preuves des \emph{Éléments} se retrouvent encore, à peu de
+chose près, dans les manuels scolaires de géométrie (dans la mesure
+où la géométrie est toujours enseignée à l'école). Ce modèle de
+raisonnement mathématique a été tenu pour un paradigme de
+l'argumentation rigoureuse, en mathématiques comme dans certaines
+branches de la philosophie. Spinoza alla jusqu'à présenter des
+arguments moraux et religieux à la manière d'Euclide, ce qui est
+surprenant à lire!
+
+Newton et Leibniz inventèrent le calcul infinitésimal au XVIIe
+siècle. Une âpre querelle de priorité dura des siècles, mais la
+plupart des spécialistes estiment aujourd'hui que leurs travaux
+furent, pour l'essentiel, indépendants. Le calcul infinitésimal
+fait intervenir, par exemple, des sommes infinies de quantités
+infiniment petites. Ces caractéristiques nourrirent les critiques
+de l'évêque Berkeley, selon qui croire en Dieu n'était pas moins
+rationnel que de croire aux mathématiques de son temps. Les méthodes
+du calcul infinitésimal furent largement employées au XVIIIe
+siècle, notamment par Leonhard Euler, qui obtint des résultats
+spectaculaires grâce à des calculs sur les sommes infinies.
+
+Au XIXe siècle, les mathématiciens cherchèrent à répondre aux
+critiques de Berkeley en donnant au calcul infinitésimal des
+fondements plus solides. Les travaux de Cauchy, Weierstrass,
+Bolzano et d'autres conduisirent aux définitions actuelles des
+limites, de la continuité, de la dérivation et de l'intégration en
+termes d'« epsilon et delta », sans aucune référence aux
+infinitésimaux. Plus tard dans le siècle, les mathématiciens
+tentèrent d'aller plus loin en expliquant tous les aspects du
+calcul infinitésimal, y compris les nombres réels eux-mêmes, à
+partir des nombres naturels. Comme le disait Kronecker : « Dieu a
+créé les nombres entiers; tout le reste est l'œuvre de l'homme. »
+En 1872, Dedekind rédigea « Continuité et nombres irrationnels »,
+où il montrait comment « construire » les nombres réels comme des
+ensembles de nombres rationnels (lesquels, comme vous le savez,
+peuvent être vus comme des couples de nombres naturels). En 1888,
+il écrivit \emph{Was sind und was sollen die Zahlen?} (« Que sont
+les nombres naturels et que doivent-ils être? », approximativement),
+dans le but d'expliquer les nombres naturels en termes purement
+« logiques ». En 1887, Kronecker écrivit \emph{\"Uber den
+Zahlbegriff} (« Sur le concept de nombre »), où il parlait de
+représenter tous les objets mathématiques au moyen des entiers. En
+1889, Giuseppe Peano donna des axiomes formels et symboliques pour
+les nombres naturels.
+
+La fin du XIXe siècle apporta aussi une audace nouvelle dans le
+traitement de l'infini. Jusqu'alors, on abordait avec prudence les
+objets et les structures infinis, comme l'ensemble des nombres
+naturels : « une infinité de » signifiait « autant que l'on veut »
+et « tendre vers une limite », « s'en approcher autant que l'on
+veut ». Georg Cantor montra qu'on pouvait au contraire prendre
+l'infini au pied de la lettre. Les travaux de Cantor, de Dedekind
+et d'autres contribuèrent à installer la conception ensembliste
+générale des mathématiques qui est aujourd'hui largement admise.
+
+Nous arrivons ainsi aux développements de la logique et des
+fondements au XXe siècle. En 1902, Russell signala à Frege le paradoxe
+présent dans son système logique.\footnote{Précision éditoriale : l'année~1902 renvoie ici à la lettre du~16~juin adressée à Frege ; la source la donne comme date de découverte. Voir la transcription conservée par les Archives Bertrand Russell, BRACERS~53946, \url{https://bracers.mcmaster.ca/53946}.} En 1904, Zermelo démontra
+le principe du bon ordre de Cantor en utilisant le « principe du
+choix », dit aussi « axiome du choix »; la légitimité de cet axiome
+suscita de nombreux débats. Entre 1910 et 1913 parurent les trois
+volumes des \emph{Principia Mathematica} de Russell et Whitehead,
+qui poursuivaient le programme de Frege visant à fonder les
+mathématiques sur la logique. Mais Russell et Whitehead durent
+adopter deux principes qu'il semblait difficile de justifier comme
+purement logiques : un axiome de l'infini et un axiome de
+« réductibilité ». Dans les années 1900, Poincar\'e critiqua
+l'emploi des « définitions imprédicatives » en mathématiques. Dans
+les années 1910, Brouwer commença à proposer de refonder toutes
+les mathématiques sur une base « intuitionniste » qui évitait le
+recours au principe du tiers exclu ($!A \lor \lnot !A$).
+
+Quelle époque étrange!{} Le programme de réduction de toutes les
+mathématiques à la logique porte aujourd'hui le nom de
+« logicisme » et est généralement considéré comme ayant échoué,
+en raison des difficultés déjà mentionnées. Celui qui consiste à
+développer les mathématiques à partir de constructions mentales
+intuitionnistes s'appelle « intuitionnisme »; on estime qu'il
+impose des restrictions excessives à la pratique ordinaire des
+mathématiques. Au tournant du siècle, David Hilbert, l'un des
+mathématiciens les plus influents de tous les temps, défendait
+ardemment les nouvelles méthodes abstraites introduites par Cantor
+et Dedekind : « Personne ne nous chassera du paradis que Cantor a
+créé pour nous. » Il était néanmoins sensible aux critiques des
+fondements adressées à ces méthodes, aujourd'hui appelées, assez
+curieusement, « classiques ». Il proposa de concilier les deux
+exigences :
+\begin{enumerate}
+\item Représenter les méthodes classiques par des axiomes et des
+  règles formelles; représenter les questions mathématiques par des
+  !!{formula}s dans un système axiomatique.
+\item Employer des méthodes sûres, « finitistes », pour démontrer
+  la cohérence de ces systèmes déductifs formels.
+\end{enumerate}
+
+Les travaux de Hilbert contribuèrent largement à réaliser le premier
+objectif. Dès 1899, il l'avait fait pour la géométrie dans son
+ouvrage célèbre, \emph{Fondements de la géométrie}. Dans les années
+suivantes, plusieurs de ses étudiants et collaborateurs travaillèrent
+avec lui à étendre à d'autres domaines des mathématiques ce qu'il
+avait fait pour la géométrie. Hilbert lui-même proposa des systèmes
+d'axiomes pour l'arithmétique et l'analyse. Zermelo axiomatisa la
+théorie des ensembles; Fraenkel, Skolem, von Neumann et d'autres
+développèrent ensuite son travail. Vers le milieu des années 1920,
+deux approches revendiquaient le titre d'axiomatisation de « toutes »
+les mathématiques : les \emph{Principia Mathematica} de Russell et
+Whitehead, et ce qu'on en vint à appeler la théorie des ensembles
+de Zermelo--Fraenkel.
+
+En 1921, Hilbert lança un programme de recherche visant à démontrer
+la cohérence de ces systèmes. Il fut aidé par plusieurs de ses
+étudiants, notamment Bernays, Ackermann et, plus tard, Gentzen.
+L'idée fondamentale était de reformuler la possibilité d'une
+!!{derivation} menant à une contradiction mathématique comme un
+problème combinatoire portant sur des suites de symboles. Il
+s'agissait de déterminer s'il pouvait exister une suite d'énoncés
+constituant une !!{derivation} correcte, à partir des axiomes de
+l'arithmétique, de l'analyse ou de la théorie des ensembles, d'une
+contradiction telle que $!A \land \lnot !A$. Une preuve qu'une telle
+suite de symboles est impossible serait elle-même une preuve
+mathématique et pourrait donc être formalisée dans ces systèmes
+axiomatiques. Autrement dit, il existerait un énoncé $\OCon$
+affirmant, par exemple, que l'arithmétique est cohérente. De plus,
+cet énoncé devrait être démontrable dans les systèmes en question,
+surtout si sa preuve ne requiert que des moyens « finitistes » très
+restreints.
+
+L'objectif de faire en sorte que les systèmes
+axiomatiques élaborés tranchent toute question mathématique peut
+être précisé de deux manières. D'abord : pour tout énoncé~$!A$ du
+langage d'un système axiomatique pour les mathématiques, ou bien
+$!A$, ou bien $\lnot !A$ est démontrable à partir des axiomes.
+Alors, chaque énoncé pourrait être démontré ou réfuté à partir
+des axiomes, et aucune question ne resterait sans réponse.
+Un système axiomatique qui possède cette propriété est dit
+\emph{complet}. Bien sûr, pour un énoncé donné, déterminer
+laquelle des deux possibilités se réalise pourrait rester difficile.
+Mais il devrait exister, en principe, une méthode pour le faire.
+En fait, pour les systèmes d'axiomes et de !!{derivation}s considérés
+par Hilbert, la complétude entraînerait l'existence d'une telle
+méthode, bien que Hilbert ne l'ait pas compris. La seconde manière
+de comprendre cet objectif consiste à poser une exigence plus forte :
+qu'il existe une méthode mécanique, calculatoire, permettant de
+déterminer si un énoncé~$!A$ donné est ou non déductible des
+axiomes.
+
+En 1931, G\"odel démontra les deux « théorèmes d'incomplétude »,
+qui montrèrent que ce programme ne pouvait aboutir. Sous les
+hypothèses des théorèmes, aucun système axiomatique des mathématiques
+ne peut être complet. En particulier, l'énoncé exprimant la
+cohérence des axiomes ne peut être démontré dans le système
+cohérent concerné; sa non-réfutabilité demande des hypothèses
+supplémentaires.\footnote{Précision éditoriale : ces résultats concernent les théories effectives ayant la force arithmétique requise. Le second théorème porte sur leur énoncé usuel de cohérence et exige des conditions de démontrabilité supplémentaires ; il n'affirme pas, sous la seule cohérence, que cet énoncé est aussi irréfutable.}
+
+Ce résultat porta un coup fatal au programme initial de Hilbert.
+Mais, comme il arrive souvent en mathématiques, il ouvrit aussi
+des voies de recherche passionnantes. S'il n'existe pas un unique
+système formel embrassant toutes les mathématiques, il est naturel
+d'élaborer des systèmes plus circonscrits et d'étudier ce qu'on
+peut y démontrer. Il est également naturel de développer des
+méthodes de preuve moins restrictives pour établir leur cohérence,
+et de chercher à mesurer la difficulté de cette preuve. Puisque
+G\"odel montra que les systèmes formels satisfaisant les hypothèses
+d'incomplétude ont des questions qu'ils ne peuvent trancher, il est pertinent de chercher
+des questions « intéressantes » qu'un système donné ne tranche pas
+et de déterminer la force requise d'un système pour les résoudre.
+Les logiciens poursuivent encore aujourd'hui ces recherches au
+sein d'une nouvelle discipline mathématique : la théorie de la
+démonstration.
+
+\end{document}

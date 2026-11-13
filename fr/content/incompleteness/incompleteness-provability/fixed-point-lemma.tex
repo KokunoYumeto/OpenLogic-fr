@@ -1,0 +1,173 @@
+% Part: incompleteness
+% Chapter: incompleteness-provability
+% Section: fixed-point-lemma
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{fix}
+
+\olsection{Le lemme du point fixe}
+
+\begin{explain}
+Le lemme du point fixe affirme que, pour toute
+!!{formula}~$!B(x)$ à une seule variable libre, il existe un !!{sentence}~$!A$
+tel que $\Th{T}\Proves !A\liff !B(\gn{!A})$,
+pourvu que $\Th{T}$ étende~$\Th{Q}$. Dans le cas de
+la phrase du menteur, nous voudrions que $!A$ soit
+équivalente, de façon démontrable dans~$\Th{T}$,
+à « $\gn{!A}$ est fausse », autrement dit à l'énoncé
+selon lequel $\Gn{!A}$ est le numéro de Gödel d'un
+!!{sentence} faux. Pour saisir l'idée de la preuve,
+comparons-la à la paraphrase informelle de~$!A$
+donnée par Quine : « donne une phrase fausse quand on
+le fait précéder de sa propre citation » donne une
+phrase fausse quand on le fait précéder de sa propre
+citation. On peut appeler \emph{diagonalisation}
+l'opération qui consiste à placer devant une
+expression sa propre citation pour former un
+!!{sentence}, et appeler le résultat sa diagonalisée.
+Ainsi, la diagonalisée de « donne une phrase fausse
+quand on le fait précéder de sa propre citation »
+est précisément la phrase de Quine. Remarquons que
+celle-ci n'est pas la diagonalisée de « donne une
+phrase fausse », mais de « donne une phrase fausse
+quand on le fait précéder de sa propre citation ».
+La propriété que l'on diagonalise fait donc
+elle-même intervenir la diagonalisation.
+
+Dans le langage de l'arithmétique, nous formons
+la citation d'une !!{formula} à une variable libre
+en calculant son numéro de Gödel, puis en substituant
+à la variable libre le numéral de ce nombre. La
+diagonalisée de~$!E(x)$ est $!E(\num{n})$, où
+$n=\Gn{!E(x)}$. Désormais, abrégeons
+$\num{\Gn{!E(x)}}$ en $\gn{!E(x)}$. Si $!B(x)$
+exprime « $x$ code un !!{sentence} faux », alors
+« donne une phrase fausse quand on le fait précéder
+de sa propre citation » revient à « donne un
+!!{sentence} faux quand on lui applique le numéro
+de Gödel de sa diagonalisée ». Supposons que nous
+disposions d'un symbole~$\Obj{diag}$ pour la fonction
+$\fn{diag}(n)$ qui calcule le numéro de Gödel de la
+diagonalisée de la !!{formula} de numéro~$n$.
+Nous pourrions écrire $!E(x)$ sous la forme
+$!B(\Obj{diag}(x))$. La phrase du menteur de Quine
+serait alors sa diagonalisée, à savoir
+$!E(\gn{!E(x)})$, ou encore
+$!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))$.
+La construction fonctionnerait pour toute autre
+propriété~$!B(x)$. Pour le théorème d'incomplétude,
+nous choisirons $!B(x)$ pour exprimer « $x$ n'est
+pas !!{derivable} dans~$\Th{T}$ ». Alors $!E(x)$
+exprimera « donne un !!{sentence} non
+!!{derivable} dans~$\Th{T}$ lorsqu'on lui applique
+le numéro de Gödel de sa diagonalisée ».
+
+Pour formaliser ce raisonnement dans~$\Th{T}$,
+il faut représenter la fonction~$\fn{diag}$.
+Elle est calculable, et même récursive primitive :
+si $n$ code une !!{formula}~$!E(x)$ dont les variables libres
+sont parmi~$x$, alors $\fn{diag}(n)$ renvoie
+le code de~$!E(\gn{!E(x)})$; sinon, posons $\fn{diag}(n)=0$.
+Rappelons que $\gn{!E(x)}$ est le numéral standard
+du nombre $\Gn{!E(x)}$, soit $\num{\Gn{!E(x)}}$.
+Si $\Obj{diag}$ était un symbole de fonction de
+$\Th{T}$ représentant $\fn{diag}$, nous pourrions
+prendre pour $!A$ la !!{formula}
+$!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))$.
+Observons que
+\begin{align*}
+\fn{diag}(\Gn{!B(\Obj{diag}(x))}) & =
+\Gn{!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))} \\
+& = \Gn{!A}.
+\end{align*}
+Si $\Th{T}$ peut démontrer
+\[
+\Obj{diag}(\gn{!B(\Obj{diag}(x))})=\gn{!A},
+\]
+elle peut aussi démontrer
+$!B(\Obj{diag}(\gn{!B(\Obj{diag}(x))}))
+\liff !B(\gn{!A})$. Or, par définition, le membre
+de gauche est~$!A$.
+
+Bien entendu, $\Obj{diag}$ n'est généralement pas
+un symbole de fonction du langage de~$\Th{T}$,
+et certainement pas de celui de~$\Th{Q}$.
+Mais $\fn{diag}$ étant calculable, une
+!!{formula}~$!D_{\fn{diag}}(x,y)$ la représente
+dans~$\Th{Q}$. Au lieu d'écrire
+$!B(\Obj{diag}(x))$, nous pouvons donc écrire
+$\lexists[y][(!D_{\fn{diag}}(x,y)\land !B(y))]$.
+Le reste de la preuve esquissée fonctionne alors,
+et fonctionne déjà dans~$\Th{Q}$.
+\end{explain}
+
+\begin{lem}
+\ollabel{lem:fixed-point}
+Soit $!B(x)$ une !!{formula} dont la seule variable
+libre est~$x$. Il existe un !!{sentence}~$!A$
+tel que $\Th{Q}\Proves !A\liff !B(\gn{!A})$.
+\end{lem}
+
+\begin{proof}
+Étant donnée $!B(x)$, posons
+$!E(x)=\lexists[y][(!D_{\fn{diag}}(x,y)\land !B(y))]$,\footnote{La variable~$y$ est distincte de~$x$. Les variables liées sont renommées au préalable pour que $!B(y)$ et les substitutions soient sans capture.}
+et prenons pour~$!A$ sa diagonalisée, c'est-à-dire
+$!E(\gn{!E(x)})$.
+
+Puisque $!D_{\fn{diag}}$ représente $\fn{diag}$ et
+que $\fn{diag}(\Gn{!E(x)})=\Gn{!A}$, $\Th{Q}$
+peut démontrer
+\begin{align}
+  & !D_{\fn{diag}}(\gn{!E(x)},\gn{!A})
+    \ollabel{repdiag1} \\
+  & \lforall[y][(!D_{\fn{diag}}(\gn{!E(x)},y)
+    \lif\eq[y][\gn{!A}])]. \ollabel{repdiag2}
+\end{align}
+Montrons que $\Th{Q}\Proves !A\liff !B(\gn{!A})$.
+Nous raisonnerons informellement, en n'utilisant que
+la logique et les faits démontrables dans~$\Th{Q}$.
+
+Supposons d'abord~$!A$, soit $!E(\gn{!E(x)})$.
+Par définition de~$!E(x)$, cet énoncé est
+\[
+\lexists[y][(!D_{\fn{diag}}(\gn{!E(x)},y)
+\land !B(y))].
+\]
+Prenons un tel~$y$. La condition d'unicité de la
+représentation donne $y=\gn{!A}$, comme l'indique
+la seconde formule ci-dessus (\olref{repdiag2}).
+De $!B(y)$, nous déduisons donc $!B(\gn{!A})$.
+
+Supposons maintenant $!B(\gn{!A})$. La première
+formule ci-dessus (\olref{repdiag1}) donne
+\begin{align*}
+& !D_{\fn{diag}}(\gn{!E(x)},\gn{!A})
+  \land !B(\gn{!A}).
+\intertext{Il s'ensuit que}
+& \lexists[y][(!D_{\fn{diag}}(\gn{!E(x)},y)
+  \land !B(y))].
+\end{align*}
+Mais c'est $!E(\gn{!E(x)})$, c'est-à-dire~$!A$.
+\end{proof}
+
+\begin{digress}
+Comparez cette preuve à celle du lemme du point
+fixe en théorie de la calculabilité. Ici, nous
+définissons un \emph{énoncé} à partir de lui-même,
+alors que, là, nous définissions une \emph{fonction}
+à partir d'elle-même. Hormis cette différence,
+l'idée est la même.
+\end{digress}
+
+\begin{prob}
+Une !!{formula}~$!A(x)$ est une \emph{définition
+de la vérité} si, pour tout !!{sentence}~$!B$,
+$\Th{Q}\Proves !B\liff !A(\gn{!B})$.
+Montrez, à l'aide du lemme du point fixe, qu'aucune
+!!{formula} n'est une définition de la vérité.
+\end{prob}
+
+\end{document}

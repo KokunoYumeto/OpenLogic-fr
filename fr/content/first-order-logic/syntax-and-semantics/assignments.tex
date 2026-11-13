@@ -1,0 +1,379 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: assignments
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{ass}
+
+\olsection{Assignations de variables}
+
+\begin{explain}
+Une assignation de !!{variable}s~$s$ donne une valeur à
+\emph{chaque} variable, alors qu'il y en a une infinité. Cette
+exigence n'est pas indispensable; nous l'adoptons parce qu'elle
+simplifie considérablement les choses. La valeur d'un terme~$t$
+ne dépend que des valeurs attribuées par~$s$ aux !!{variable}s de~$t$;
+de même, la satisfaction d'!!a{formula}~$!A$ dans !!a{structure}
+relativement à~$s$ ne dépend que des !!{variable}s libres de~$!A$.
+Les deux propositions suivantes expriment ces faits avec précision :
+deux assignations qui coïncident sur toutes les variables de~$t$
+donnent la même valeur à~$t$; si elles coïncident sur toutes les
+variables libres de~$!A$, la !!{formula} est satisfaite relativement
+à l'une si et seulement si elle l'est relativement à l'autre.
+\end{explain}
+
+\begin{prop}\ollabel{prop:valindep}
+Si les !!{variable}s d'un terme~$t$ figurent parmi
+$x_1$, \dots,~$x_n$ et si $s_1(x_i) = s_2(x_i)$ pour
+$i = 1$, \dots,~$n$, alors
+$\Value{t}{M}[s_1] = \Value{t}{M}[s_2]$.
+\end{prop}
+
+\begin{proof}
+Procédons par induction sur la complexité de~$t$. Au départ, $t$
+est soit !!a{constant}, soit l'une des variables
+$x_1$, \dots,~$x_n$. Si $t = c$, alors
+$\Value{t}{M}[s_1] = \Assign{c}{M} = \Value{t}{M}[s_2]$.
+Si $t = x_i$, l'hypothèse donne $s_1(x_i) = s_2(x_i)$, d'où
+$\Value{t}{M}[s_1] = s_1(x_i) = s_2(x_i) = \Value{t}{M}[s_2]$.
+
+Pour l'étape inductive, supposons que
+$t = \Atom{f}{t_1, \dots, t_k}$ et que l'énoncé vaille pour
+$t_1$, \dots, $t_k$. Alors
+\begin{align*}
+  \Value{t}{M}[s_1] & = \Value{\Atom{f}{t_1, \dots, t_k}}{M}[s_1] \\
+  & = \Assign{f}{M}(\Value{t_1}{M}[s_1], \dots, \Value{t_k}{M}[s_1]).
+\intertext{Pour $j = 1$, \dots,~$k$, les !!{variable}s de~$t_j$
+    figurent parmi $x_1$, \dots,~$x_n$. Par hypothèse d'induction,
+    $\Value{t_j}{M}[s_1] = \Value{t_j}{M}[s_2]$. Donc}
+\Value{t}{M}[s_1] & = \Value{\Atom{f}{t_1, \dots, t_k}}{M}[s_1] \\
+  & = \Assign{f}{M}(\Value{t_1}{M}[s_1], \dots, \Value{t_k}{M}[s_1]) \\
+  & = \Assign{f}{M}(\Value{t_1}{M}[s_2], \dots, \Value{t_k}{M}[s_2]) \\
+  & = \Value{\Atom{f}{t_1, \dots, t_k}}{M}[s_2] = \Value{t}{M}[s_2].
+\end{align*}
+\end{proof}
+
+\begin{prop}\ollabel{prop:satindep}
+Si les !!{variable}s libres de~$!A$ figurent parmi
+$x_1$, \dots,~$x_n$ et si $s_1(x_i) = s_2(x_i)$ pour
+$i = 1$, \dots,~$n$, alors $\Sat{M}{!A}[s_1]$ si et seulement si
+$\Sat{M}{!A}[s_2]$.
+\end{prop}
+
+\begin{proof}
+Procédons par induction sur la complexité de~$!A$. Dans le cas de
+base, où $!A$ est atomique, $!A$ peut être :
+\iftag{prvTrue}{$\ltrue$,}{}
+\iftag{prvFalse}{$\lfalse$,}{}
+$\Atom{R}{t_1, \dots, t_k}$, où $R$ est un !!{predicate} à $k$
+places et $t_1$, \dots,~$t_k$ des termes, ou encore
+$\eq[t_1][t_2]$, où $t_1$ et~$t_2$ sont des termes. Dans ces deux
+derniers cas, nous ne démontrons qu'un sens de l'!!{biconditional} :
+la preuve de la réciproque est symétrique.
+
+\begin{enumerate}
+\tagitem{prvTrue}{%
+  \indcase{!A}{\ltrue}{on a à la fois $\Sat{M}{\indfrm}[s_1]$ et
+    $\Sat{M}{\indfrm}[s_2]$.}}{}
+
+\tagitem{prvFalse}{%
+  \indcase{!A}{\lfalse}{on a à la fois $\Sat/{M}{!A}[s_1]$ et
+    $\Sat/{M}{!A}[s_2]$.}}{}
+
+\item
+  \indcase{!A}{\Atom{R}{t_1, \ldots, t_k}}{supposons
+    $\Sat{M}{\indfrm}[s_1]$. Alors
+    \[
+    \langle \Value{t_1}{M}[s_1], \ldots, \Value{t_k}{M}[s_1] \rangle
+    \in \Assign{R}{M}.
+    \]
+    Pour $i = 1$, \dots,~$k$, d'après la \olref{prop:valindep},
+    $\Value{t_i}{M}[s_1] = \Value{t_i}{M}[s_2]$. Par conséquent,
+    $\langle \Value{t_1}{M}[s_2], \ldots, \Value{t_k}{M}[s_2] \rangle
+    \in \Assign{R}{M}$, d'où $\Sat{M}{\indfrm}[s_2]$.}
+\item
+  \indcase{!A}{\eq[t_1][t_2]}{supposons $\Sat{M}{\indfrm}[s_1]$.
+    Alors $\Value{t_1}{M}[s_1] = \Value{t_2}{M}[s_1]$. Donc
+    \begin{align*}
+      \Value{t_1}{M}[s_2] & = \Value{t_1}{M}[s_1]
+      & \text{(d'après la \olref{prop:valindep})} \\
+      & = \Value{t_2}{M}[s_1] 
+      & \text{(car $\Sat{M}{\eq[t_1][t_2]}[s_1]$)}\\
+      &= \Value{t_2}{M}[s_2]
+      & \text{(d'après la \olref{prop:valindep}),}
+    \end{align*}
+    donc $\Sat{M}{\eq[t_1][t_2]}[s_2]$.}
+\end{enumerate}
+
+Supposons que le résultat vaille pour toute !!{formula}~$!B$ moins
+complexe que~$!A$ et pour toute paire d'assignations qui coïncident
+sur ses variables libres.\footnote{Précision éditoriale : l'hypothèse d'induction formulée dans la source doit couvrir toutes les paires d'assignations qui coïncident sur les variables libres de la sous-formule. Les cas quantifiés l'appliquent à des assignations modifiées, et non seulement aux deux assignations initiales.} L'étape inductive se divise selon l'opérateur principal
+de~$!A$. Nous ne démontrons dans chaque cas que le sens direct de
+l'!!{biconditional}; la réciproque est symétrique. Sauf dans les cas
+des quantificateurs, nous appliquons l'hypothèse d'induction aux
+sous-!!{formula}s~$!B$ de~$!A$. Les variables libres de~$!B$
+figurent alors parmi celles de~$!A$. Si $s_1$ et $s_2$ coïncident
+sur les variables libres de~$!A$, elles coïncident donc aussi sur
+celles de~$!B$, ce qui permet d'appliquer l'hypothèse d'induction.
+
+\begin{enumerate}
+\tagitem{defNot}{}{%
+  \iftag{probNot}{%
+    \indcase!{!A}{\lnot !B}{}}{%
+    \indcase{!A}{\lnot !B}{si $\Sat{M}{\indfrm}[s_1]$, alors
+      $\Sat/{M}{!B}[s_1]$; par hypothèse d'induction,
+      $\Sat/{M}{!B}[s_2]$, donc $\Sat{M}{\indfrm}[s_2]$.}}}
+
+\tagitem{defAnd}{}{%
+  \iftag{probAnd}{%
+    \indcase!{!A}{!B \land !C}{}}{%
+    \indcase{!A}{!B \land !C}{si $\Sat{M}{\indfrm}[s_1]$, alors
+      $\Sat{M}{!B}[s_1]$ et $\Sat{M}{!C}[s_1]$. L'hypothèse
+      d'induction donne $\Sat{M}{!B}[s_2]$ et $\Sat{M}{!C}[s_2]$;
+      ainsi $\Sat{M}{\indfrm}[s_2]$.}}}
+
+\tagitem{defOr}{}{%
+  \iftag{probOr}{%
+    \indcase!{!A}{!B \lor !C}{}}{%
+    \indcase{!A}{!B \lor !C}{si $\Sat{M}{\indfrm}[s_1]$, alors
+      $\Sat{M}{!B}[s_1]$ ou $\Sat{M}{!C}[s_1]$. Par hypothèse
+      d'induction, $\Sat{M}{!B}[s_2]$ ou $\Sat{M}{!C}[s_2]$;
+      donc $\Sat{M}{\indfrm}[s_2]$.}}}
+
+\tagitem{defIf}{}{%
+  \iftag{probIf}{%
+    \indcase!{!A}{!B \lif !C}{}}{%
+    \indcase{!A}{!B \lif !C}{si $\Sat{M}{\indfrm}[s_1]$, alors
+    $\Sat/{M}{!B}[s_1]$ ou $\Sat{M}{!C}[s_1]$. Par hypothèse
+    d'induction, $\Sat/{M}{!B}[s_2]$ ou $\Sat{M}{!C}[s_2]$;
+    donc $\Sat{M}{\indfrm}[s_2]$.}}}
+
+\tagitem{defIff}{}{%
+  \iftag{probIff}{%
+    \indcase!{!A}{!B \liff !C}{}}{%
+    \indcase{!A}{!B \liff !C}{si $\Sat{M}{\indfrm}[s_1]$, alors
+      soit $\Sat{M}{!B}[s_1]$ et $\Sat{M}{!C}[s_1]$, soit
+      $\Sat/{M}{!B}[s_1]$ et $\Sat/{M}{!C}[s_1]$. Par hypothèse
+      d'induction, soit $\Sat{M}{!B}[s_2]$ et $\Sat{M}{!C}[s_2]$,
+      soit $\Sat/{M}{!B}[s_2]$ et $\Sat/{M}{!C}[s_2]$. Dans les
+      deux cas, $\Sat{M}{\indfrm}[s_2]$.}}}
+
+\tagitem{defEx}{}{%
+  \iftag{probEx}{%
+    \indcase!{!A}{\lexists[x][!B]}{}}{%
+    \indcase{!A}{\lexists[x][!B]}{si $\Sat{M}{\indfrm}[s_1]$,
+      il existe $m \in \Domain{M}$ tel que
+      $\Sat{M}{!B}[\Subst{s_1}{m}{x}]$. Posons
+      $s_1' = \Subst{s_1}{m}{x}$ et $s_2' = \Subst{s_2}{m}{x}$.
+      Les variables libres de~$!B$ figurent parmi
+      $x_1$, \dots, $x_n$ et $x$. Pour chaque~$x_i$ distinct de~$x$,
+      $s_1'(x_i) = s_2'(x_i)$, car $s_1'$ et $s_2'$ sont
+      respectivement des variantes en~$x$ de $s_1$ et de~$s_2$,
+      et l'hypothèse donne $s_1(x_i) = s_2(x_i)$. Par définition,
+      $s_1'(x) = s_2'(x) = m$. L'hypothèse d'induction appliquée
+      à~$!B$ et aux assignations $s_1'$, $s_2'$ donne
+      $\Sat{M}{!B}[s_2']$. Comme $s_2' = \Subst{s_2}{m}{x}$,
+      il existe donc $m \in \Domain{M}$ tel que
+      $\Sat{M}{!B}[\Subst{s_2}{m}{x}]$; ainsi
+      $\Sat{M}{\indfrm}[s_2]$.}}}
+
+\tagitem{defAll}{}{%
+  \iftag{probAll}{%
+    \indcase!{!A}{\lforall[x][!B]}{}}{%
+    \indcase{!A}{\lforall[x][!B]}{si $\Sat{M}{\indfrm}[s_1]$,
+      alors $\Sat{M}{!B}[\Subst{s_1}{m}{x}]$ pour tout
+      $m \in \Domain{M}$. Nous devons établir de même
+      $\Sat{M}{!B}[\Subst{s_2}{m}{x}]$ pour tout
+      $m \in \Domain{M}$. Choisissons donc $m \in \Domain{M}$
+      arbitrairement et posons $s_1' = \Subst{s_1}{m}{x}$ et
+      $s_2' = \Subst{s_2}{m}{x}$. Nous avons
+      $\Sat{M}{!B}[s_1']$. Les variables libres de~$!B$
+      figurent parmi $x_1$, \dots, $x_n$ et $x$.
+      Pour chaque~$x_i$ distinct de~$x$, $s_1'(x_i) = s_2'(x_i)$, puisque
+      $s_1'$ et $s_2'$ sont respectivement des variantes en~$x$
+      de~$s_1$ et de~$s_2$ et que, par hypothèse,
+      $s_1(x_i) = s_2(x_i)$. De plus,
+      $s_1'(x) = s_2'(x) = m$ par définition. L'hypothèse
+      d'induction appliquée à~$!B$, $s_1'$ et $s_2'$ donne
+      $\Sat{M}{!B}[s_2']$. Le choix de~$m$ étant arbitraire,
+      $\Sat{M}{!B}[\Subst{s_2}{m}{x}]$ pour tout
+      $m \in \Domain{M}$, d'où $\Sat{M}{\indfrm}[s_2]$.}}}
+\end{enumerate}
+L'induction établit donc que $\Sat{M}{!A}[s_1]$ si et seulement si
+$\Sat{M}{!A}[s_2]$ lorsque les !!{variable}s libres de~$!A$
+figurent parmi $x_1$, \dots, $x_n$ et que
+$s_1(x_i)=s_2(x_i)$ pour $i = 1$, \dots,~$n$.
+\end{proof}
+
+\begin{probtag}{probNot,probOr,probAnd,probIf,probIff,probEx,probAll}
+Compléter la démonstration de la \olref[fol][syn][ass]{prop:satindep}.
+\end{probtag}
+
+\begin{explain}
+Les !!{sentence}s n'ont aucune variable libre. Deux assignations
+quelconques coïncident donc, trivialement, sur toutes les variables
+libres d'un !!{sentence}. La proposition précédente montre ainsi que
+la satisfaction d'!!a{sentence} dans une !!{structure} ne dépend
+pas de l'assignation choisie. Nous énonçons ce fait avant de définir
+la satisfaction d'!!a{sentence} dans !!a{structure} sans mentionner
+d'assignation.
+\end{explain}
+
+\begin{cor}
+\ollabel{cor:sat-sentence}
+Si $!A$ est !!a{sentence} et $s$ une assignation de variables,
+alors, pour toute assignation~$s'$,
+$\Sat{M}{!A}[s]$ si et seulement si $\Sat{M}{!A}[s']$.
+\end{cor}
+
+\begin{proof}
+  Soit $s'$ une assignation de variables quelconque. Comme $!A$ est
+  !!a{sentence}, il ne possède aucune variable libre; $s'$ et~$s$
+  coïncident donc trivialement sur toutes ses variables libres.
+  L'hypothèse de la \olref{prop:satindep} est satisfaite, d'où
+  $\Sat{M}{!A}[s]$ si et seulement si $\Sat{M}{!A}[s']$.
+\end{proof}
+
+\begin{defn}
+\ollabel{defn:satisfaction}
+Si $!A$ est !!a{sentence}, nous disons que la
+!!{structure}~$\Struct M$ \emph{satisfait}~$!A$, ce que nous notons
+$\Sat{M}{!A}$, si et seulement si $\Sat{M}{!A}[s]$ pour toute
+assignation de variables~$s$.
+\end{defn}
+
+Si $\Sat{M}{!A}$, nous disons aussi simplement que
+\emph{$!A$ est vrai dans~$\Struct{M}$.} La satisfaction s'étend
+naturellement des !!{sentence}s pris isolément à leurs ensembles.
+
+\begin{defn}
+\ollabel{defn:sat}
+Si $\Gamma$ est un ensemble d'!!{sentence}s, nous disons que
+la !!{structure}~$\Struct M$ \emph{satisfait}~$\Gamma$,
+ce que nous notons $\Sat{M}{\Gamma}$, si et seulement si
+$\Sat{M}{!A}$ pour tout $!A \in \Gamma$.
+\end{defn}
+
+\begin{prop}\ollabel{prop:sentence-sat-true}
+  Soient $\Struct{M}$ !!a{structure}, $!A$ !!a{sentence} et $s$
+  une assignation de variables. Alors $\Sat{M}{!A}$ si et seulement si
+  $\Sat{M}{!A}[s]$.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[fol][syn][ass]{prop:sentence-sat-true}.
+\end{prob}
+
+\begin{prop}\ollabel{prop:sat-quant}
+  Supposons que $!A(x)$ n'ait pas d'autre variable libre que~$x$
+  et que $\Struct M$ soit !!a{structure}. Alors :
+  \begin{tagenumerate}{prvEx,prvAll}
+    \tagitem{prvEx}{$\Sat{M}{\lexists[x][!A(x)]}$ si et seulement si
+      $\Sat{M}{!A(x)}[s]$ pour au moins une assignation de
+      variables~$s$.}{}
+    \tagitem{prvAll}{$\Sat{M}{\lforall[x][!A(x)]}$ si et seulement si
+      $\Sat{M}{!A(x)}[s]$ pour toute assignation de variables~$s$.}{}
+\end{tagenumerate}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[fol][syn][ass]{prop:sat-quant}.
+\end{prob}
+
+\begin{prob}
+\DeclareRobustCommand{\VDash}{\mathrel{||}\joinrel\Relbar}  
+Supposons que $\Lang L$ soit un langage sans !!{function}s, disposant d'une infinité de constantes.\footnote{Précision éditoriale : les clauses quantifiées ci-dessous nécessitent une constante absente de la matrice, et la dernière étape des constantes fraîches pour ses variables libres. Nous explicitons cette réserve de constantes ; avec un langage plus petit, il faut d'abord l'étendre.}
+Étant donnés une !!{structure}~$\Struct M$, une !!{constant}~$c$
+et $a \in \Domain M$, soit $\Struct M[a/c]$ la !!{structure}
+identique à~$\Struct M$, sauf que $\Assign{c}{M[a/c]} = a$.
+Pour les !!{sentence}s~$!A$, définissons
+$\Struct M \VDash !A$ comme suit :
+\begin{enumerate}
+\tagitem{prvFalse}{%
+  \indcase{!A}{\lfalse}{on n'a pas $\Struct{M} \VDash \indfrm$.}}{}
+
+\tagitem{prvTrue}{%
+  \indcase{!A}{\ltrue}{$\Struct{M} \VDash \indfrm$.}}{}
+
+\item \indcase{!A}{\Atom{R}{d_1, \dots, d_n}}{$\Struct M \VDash \indfrm$
+  si et seulement si $\langle \Assign{d_1}{M}, \dots, \Assign{d_n}{M} \rangle \in
+  \Assign{R}{M}$.}
+
+\item \indcase{!A}{\eq[d_1][d_2]}{$\Struct M \VDash \indfrm$
+  si et seulement si
+  $\Assign{d_1}{M} = \Assign{d_2}{M}$.}
+
+\tagitem{prvNot}{%
+  \indcase{!A}{\lnot !B}{$\Struct{M} \VDash \indfrm$
+    si et seulement si on n'a pas $\Struct{M} \VDash {!B}$.}}{}
+
+\tagitem{prvAnd}{%
+  \indcase{!A}{(!B \land !C)}{$\Struct{M} \VDash
+    \indfrm$ si et seulement si $\Struct{M} \VDash!B$ et
+    $\Struct{M} \VDash !C$.}}{}
+
+\tagitem{prvOr}{%
+  \indcase{!A}{(!B \lor !C)}{$\Struct{M} \VDash \indfrm$
+    si et seulement si $\Struct{M} \VDash !B$ ou
+    $\Struct{M} \VDash !C$ (ou les deux).}}{}
+
+\tagitem{prvIf}{%
+  \indcase{!A}{(!B \lif !C)}{$\Struct{M} \VDash \indfrm$
+    si et seulement si on n'a pas $\Struct {M} \VDash !B$ ou si
+    $\Struct M \VDash !C$ (ou les deux).}}{}
+
+\tagitem{prvIff}{%
+  \indcase{!A}{(!B \liff !C)}{$\Struct{M} \VDash {\indfrm}$
+    si et seulement si on a à la fois $\Struct{M} \VDash {!B}$ et
+    $\Struct{M} \VDash {!C}$, ou bien si l'on n'a ni
+    $\Struct{M} \VDash {!B}$ ni $\Struct{M} \VDash {!C}$.}}{}
+
+\tagitem{prvAll}{%
+  \indcase{!A}{\lforall[x][!B]}{$\Struct{M} \VDash {\indfrm}$
+    si et seulement si, pour tout $a \in \Domain{M}$,
+    $\Struct{M[a/c]} \VDash \Subst{!B}{c}{x}$, à condition que
+    $c$ n'apparaisse pas dans~$!B$.}}{}
+
+\tagitem{prvEx}{%
+  \indcase{!A}{\lexists[x][!B]}{$\Struct{M} \VDash
+  {\indfrm}$ si et seulement s'il existe $a \in \Domain M$ tel que
+  $\Struct{M[a/c]} \VDash \Subst{!B}{c}{x}$, à condition que
+  $c$ n'apparaisse pas dans~$!B$.}}{}
+\end{enumerate}
+Soient $x_1$, \dots, $x_n$ toutes les !!{variable}s libres de~$!A$,
+$c_1$, \dots, $c_n$ des symboles de constante deux à deux distincts et n'apparaissant pas
+dans~$!A$, et $a_1$, \dots, $a_n \in \Domain M$ avec
+$s(x_i) = a_i$.
+
+Montrer que $\Sat{M}{!A}[s]$ si et seulement si
+$\Struct M[a_1/c_1,\dots,a_n/c_n]
+\VDash \Subst{\Subst{!A}{c_1}{x_1}\dots}{c_n}{x_n}$.
+
+(Cet exercice montre qu'il est possible de définir la sémantique de
+la logique du premier ordre sans assignations de variables.)
+\end{prob}
+
+\begin{prob}
+Supposons que $f$ soit un symbole de fonction unaire n'apparaissant pas
+dans~$!A(x,y)$, dont les variables libres figurent parmi $x,y$. On suppose $f(x)$ !!{free for}~$y$ dans~$!A$, après renommage des variables liées au besoin.\footnote{Précision éditoriale : nous explicitons l'arité imposée par l'écriture de la fonction et l'absence d'autres variables libres, afin que les deux formules quantifiées de l'exercice soient bien des énoncés.} Montrer qu'il existe !!a{structure}~$\Struct{M}$
+telle que $\Sat{M}{\lforall[x][\lexists[y][!A(x,y)]]}$ si et
+seulement s'il existe une structure~$\Struct M'$ telle que
+$\Sat{M'}{\lforall[x][!A(x,f(x))]}$.
+
+(Cet exercice est un cas particulier du théorème de Skolem. Si la matrice est sans quantificateur,
+$\lforall[x][!A(x,f(x))]$ est une \emph{forme normale de Skolem} de
+$\lforall[x][\lexists[y][!A(x,y)]]$ ; sinon, il s'agit d'une étape de skolémisation.)\footnote{Précisions éditoriales : la substitution doit éviter la capture des variables, et le nom de forme normale suppose ici une matrice sans quantificateur. Ces conditions n'étaient pas explicitées dans la source.}
+\end{prob}
+
+\end{document}

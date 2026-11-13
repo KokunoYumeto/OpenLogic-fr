@@ -1,0 +1,183 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: pr-relations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{prr}
+\olsection{Relations récursives primitives}
+
+\begin{defn}
+Une relation $R(\vec x)$ est dite récursive primitive si sa
+fonction caractéristique
+\[
+\Char{R}(\vec x) = \left\{
+  \begin{array}{ll}
+  1 & \mbox{si $R(\vec x)$} \\
+  0 & \mbox{sinon}
+  \end{array}
+\right.
+\]
+est récursive primitive.
+\end{defn}
+
+Autrement dit, parler d'une relation récursive primitive
+$R(\vec x)$ revient à parler de la relation
+$\Char{R}(\vec x)=1$, où la fonction récursive primitive
+$\Char{R}$ renvoie $1$ ou $0$ pour toute entrée. Par exemple,
+la relation $\fn{IsZero}(x)$, qui vaut si et seulement si
+$x=0$, correspond à la fonction $\Char{\fn{IsZero}}$
+définie par récurrence primitive :
+\begin{align*}
+\Char{\fn{IsZero}}(0) & = 1,\\
+\Char{\fn{IsZero}}(x+1) & = 0.
+\end{align*}
+
+On peut aussi composer des relations avec d'autres fonctions
+récursives primitives. Les relations suivantes sont donc
+récursives primitives :
+\begin{enumerate}
+\item La relation d'égalité $x=y$, définie par
+  $\fn{IsZero}(\left|x-y\right|)$.
+\item La relation « inférieur ou égal » $x\leq y$, définie par
+  $\fn{IsZero}(x\tsub y)$.\footnote{Correction éditoriale : la source nomme cette relation « less-than », alors que la formule définit bien l'ordre large $x\leq y$.}
+\end{enumerate}
+
+\begin{prop}
+  L'ensemble des relations récursives primitives est clos
+  par les opérations booléennes : si $P(\vec x)$ et
+  $Q(\vec x)$ sont récursives primitives, les relations
+  suivantes le sont également :
+  \begin{enumerate}
+  \item $\lnot P(\vec x)$;
+  \item $P(\vec x)\land Q(\vec x)$;
+  \item $P(\vec x)\lor Q(\vec x)$;
+  \item $P(\vec x)\lif Q(\vec x)$.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  Supposons $P(\vec x)$ et $Q(\vec x)$ récursives
+  primitives, c'est-à-dire supposons que leurs fonctions
+  caractéristiques $\Char{P}$ et $\Char{Q}$ le soient.
+  Il faut montrer que les fonctions caractéristiques
+  de $\lnot P(\vec x)$, etc., sont aussi récursives
+  primitives. On a
+  \[
+  \Char{\lnot P}(\vec x) = \begin{cases}
+    0 & \text{si $\Char{P}(\vec x)=1$}\\
+    1 & \text{sinon}
+  \end{cases}
+  \]
+  et l'on peut définir $\Char{\lnot P}(\vec x)$ par
+  $1\tsub\Char{P}(\vec x)$. De même,
+  \[
+  \Char{P\land Q}(\vec x) = \begin{cases}
+    1 & \text{si $\Char{P}(\vec x)=\Char{Q}(\vec x)=1$}\\
+    0 & \text{sinon}
+  \end{cases}
+  \]
+  et l'on peut la définir par
+  $\Char{P}(\vec x)\cdot\Char{Q}(\vec x)$ ou par
+  $\fn{min}(\Char{P}(\vec x),\Char{Q}(\vec x))$.
+  Enfin,
+  \begin{align*}
+    \Char{P \lor Q}(\vec x) & = \fn{max}(\Char{P}(\vec x), \Char{Q}(\vec x)) \text{ et}\\
+    \Char{P \lif Q}(\vec x) & = \fn{max}(1 \tsub
+  \Char{P}(\vec x), \Char{Q}(\vec x)).
+  \end{align*}
+\end{proof}
+
+\begin{prop}
+  L'ensemble des relations récursives primitives est clos
+  par quantification bornée. Si $R(\vec x,z)$ est une
+  relation récursive primitive, les relations
+  \begin{align*}
+    & \bforall{z < y}{R(\vec x, z)} \text{ et}\\
+    & \bexists{z < y}{R(\vec x, z)}.
+  \end{align*}
+  le sont également. La première vaut pour $\vec x$ et
+  $y$ si et seulement si $R(\vec x,z)$ vaut pour tout
+  $z<y$; la seconde se comprend de même.
+\end{prop}
+
+\begin{proof}
+  Par convention, $\bforall{z < 0}{R(\vec x,z)}$ est
+  vrai, puisqu'il n'existe aucun $z<0$, et
+  $\bexists{z < 0}{R(\vec x,z)}$ est faux. Une
+  quantification universelle bornée se comporte comme
+  un produit fini ou un minimum itéré. Si
+  $P(\vec x,y)\defiff\bforall{z < y}{R(\vec x,z)}$,
+  on peut donc définir $\Char{P}(\vec x,y)$ par
+  \begin{align*}
+    \Char{P}(\vec x, 0) & = 1\\
+    \Char{P}(\vec x, y+1) & =
+    \fn{min}(\Char{P}(\vec x,y),\Char{R}(\vec x,y)).
+  \end{align*}
+  La quantification existentielle bornée se définit de
+  façon analogue au moyen de~$\fn{max}$. On peut aussi
+  la déduire de la quantification universelle bornée
+  grâce à l'équivalence
+  $\bexists{z < y}{R(\vec x,z)}
+  \liff\lnot\bforall{z < y}{\lnot R(\vec x,z)}$.
+  Notons, par exemple, que
+  $\bexists{x \leq y}{\dots x\dots}$
+  équivaut à $\bexists{x < y+1}{\dots x\dots}$.
+\end{proof}
+
+\begin{prob}
+  Montrer que la relation à trois arguments
+  $x\equiv y\mod n$ (congruence modulo~$n$)
+  est récursive primitive.
+\end{prob}
+
+Une autre fonction récursive primitive utile est
+la fonction conditionnelle $\fn{cond}(x,y,z)$,
+définie par
+\begin{align*}
+  \fn{cond}(x,y,z) & = \begin{cases}
+  y & \text{si $x=0$} \\
+  z & \text{sinon}.
+\end{cases}
+\intertext{Elle se définit récursivement par}
+\fn{cond}(0,y,z) & = y,\\
+\fn{cond}(x+1,y,z) & = z.
+\end{align*}
+Pour appliquer le schéma formel de récurrence primitive,
+on place l'argument~$x$ en dernière position, puis on
+permute les arguments par composition. On peut ainsi
+justifier les définitions par cas de fonctions récursives
+primitives à partir de relations récursives primitives.
+
+\begin{prop}
+Si $g_0(\vec x),\dots,g_m(\vec x)$ sont des fonctions
+récursives primitives et
+$R_0(\vec x),\dots,R_{m-1}(\vec x)$ des relations
+récursives primitives, la fonction $f$ définie par
+\[
+f(\vec x) = \begin{cases}
+    g_0(\vec x) & \text{si $R_0(\vec{x})$} \\
+    g_1(\vec x) & \text{si $R_1(\vec{x})$ et non $R_0(\vec{x})$} \\
+    \vdots & \\
+    g_{m-1}(\vec x) & \text{si $R_{m-1}(\vec{x})$ et si aucune
+      des précédentes ne vaut}
+    \\
+    g_m(\vec x) & \mbox{sinon}
+\end{cases}
+\]
+est également récursive primitive.
+\end{prop}
+
+\begin{proof}
+  Pour $m=1$, il s'agit simplement de la fonction
+  \[
+  f(\vec x) = \fn{cond}(\Char{\lnot R_0}(\vec x),g_0(\vec x),g_1(\vec
+  x)).
+  \]
+  Pour $m>1$, il suffit de composer des définitions
+  de cette forme.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,95 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: minimization
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{min}
+\olsection{Les fonctions \texorpdfstring{$\lambd$}{λ}-définissables et la minimisation}
+
+\begin{lem}
+Supposons que $f(x,y)$ soit totale et $\lambd$-définissable.
+Soit $g$ la fonction donnée par
+\[
+g(x)\simeq\umin{y}{f(x,y)}.
+\]
+Alors $g$ est $\lambd$-définissable.
+\end{lem}
+
+\begin{proof}
+Voici l'idée. Étant donné~$x$, nous utiliserons
+un combinateur de point fixe~$Y$ pour définir
+une fonction $h_x(n)$ qui cherche un~$y$ à partir
+de~$n$; alors $g(x)=h_x(0)$. La recherche
+séquentielle voulue s'exprime par
+\[
+h_x(n)\simeq
+\begin{cases}
+n & \text{si $f(x,n)=0$},\\
+h_x(n+1) & \text{si $f(x,n)$ est défini et non nul},\\
+\text{indéfini} & \text{si $f(x,n)$ est indéfini}.
+\end{cases}
+\]
+
+Passons aux détails. Puisque $f$ est
+$\lambd$-définissable par hypothèse, un
+terme~$F$ la définit. Rappelons le terme~$D$ :
+$D(M,N,\num{0})\red M$ et
+$D(M,N,\num{1})\red N$. La même définition
+donne $D(M,N,\num{r})\red N$ pour tout~$r\ge1$.
+Choisissons des variables $x$, $h$ et~$z$ distinctes, hors de $\FV{F}$. Pour définir $h_x$,
+cherchons un terme~$H$, qui dépend de~$x$, tel que
+\[
+H(\num{n})\equiv
+D(\num{n},H(\fn{Succ}(\num{n})),F(x,\num{n})).
+\]
+Prenons pour~$Y$ le combinateur de Turing
+de la section précédente. Définissons d'abord
+\[
+U\ident\lambd[h][\lambd[z][D(z,h(\fn{Succ}(z)),F(x,z))]],
+\]
+puis $H\ident YU$. Si~$F$ est fermé, la seule
+variable libre de~$H$ est~$x$. Comme
+le combinateur de Turing vérifie
+$Y U\red U(Y U)$, nous avons
+\[
+H=YU\red U(YU)=U(H).
+\]
+En particulier, pour tout entier naturel~$n$,
+\begin{align*}
+H(\num{n}) & \red U(H,\num{n}) \\
+& \red D(\num{n},H(\fn{Succ}(\num{n})),F(x,\num{n})),
+\end{align*}
+comme voulu. Si nous remplaçons~$x$ par un
+numéral~$\num{m}$, cette expression se réduit
+à~$\num{n}$ lorsque $F(\num{m},\num{n})$
+se réduit à~$\num{0}$; elle se réduit à
+$H(\fn{Succ}(\num{n}))$ lorsque
+$F(\num{m},\num{n})$ se réduit à un autre
+numéral.
+
+Enfin, posons $G\ident\lambd[x][H(\num{0})]$.
+Si la recherche trouve une première valeur nulle, $G(\num{m})$
+se réduit à $\num{g(m)}$. S'il n'y en a aucune, la réduction de
+tête enchaîne les tests sans atteindre une forme normale de tête.
+Pour justifier ce dernier point, on applique l'argument du
+\olref[lam][rep][par]{thm:partial-recursive-lambda} à la même
+sélection $D$ sur des numéraux issus d'un test total.
+\end{proof}
+
+Avec un test partiel, l'expression $D(M,N,F(x,\num{n}))$ peut
+sélectionner une branche alors que le troisième argument n'a pas
+de forme normale. Posons
+$B\ident\lambd[p][\lambd[q][p\Omega]]$,
+où $\Omega\ident(\lambd[z][zz])(\lambd[z][zz])$,
+et $F(x,n)\ident D(B,\num{0},n)$. Alors $F(x,\num{0})$
+n'a pas de forme normale et $F(x,\num{n})\red\num{0}$ pour
+tout~$n\ge1$. Pourtant, $D(\num{0},N,B)\red N$, car
+$K(N)$ efface $\Omega$. La recherche passe alors au test suivant,
+alors que la minimisation stricte est indéfinie dès ce premier
+test. La fermeture pour la minimisation stricte découle de
+la caractérisation par les fonctions récursives partielles.
+
+\end{document}

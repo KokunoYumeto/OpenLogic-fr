@@ -1,0 +1,151 @@
+% Part: first-order-logic
+% Chapter: models-theories
+% Section: theories
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{mat}{the}
+
+\olsection{Exemples de théories du premier ordre}
+
+\begin{ex}
+La théorie des ordres linéaires stricts dans le langage~$\Lang L_<$
+est axiomatisée par l'ensemble
+\begin{align*}
+\{\quad & \lforall[x][\lnot x < x], \\
+& \lforall[x][\lforall[y][((x < y \lor y <
+    x) \lor x = y)]], \\
+& \lforall[x][\lforall[y][\lforall[z][((x < y
+      \land y < z) \lif x < z)]]] \quad \}
+\end{align*}
+Il caractérise exactement les !!{structure}s visées : si $R$
+est un ordre linéaire strict sur un ensemble~$X$ non vide, la structure
+$\Struct M$ telle que $\Domain M = X$ et $\Assign{<}{M} = R$ est un modèle.
+Réciproquement, dans tout modèle de cette théorie, la relation
+$\Assign{<}{M}$ est un ordre linéaire strict sur son domaine.\footnote{Correction éditoriale : la source répète le sens direct après « réciproquement ». Nous énonçons ici la réciproque et rappelons que les domaines des structures sont non vides.}
+\end{ex}
+
+\begin{ex}
+La théorie des groupes, dans le langage comportant $\Obj 1$
+(!!{constant}) et $\cdot$ (!!{function} binaire), est axiomatisée
+par
+\begin{align*}
+& \lforall[x][\eq[(x \cdot \Obj 1)][x]]\\
+& \lforall[x][\lforall[y][\lforall[z][\eq[(x \cdot (y \cdot z))][((x
+          \cdot y) \cdot z)]]]]\\
+& \lforall[x][\lexists[y][\eq[(x \cdot y)][\Obj 1]]]
+\end{align*}
+\end{ex}
+
+\begin{ex}
+La théorie de l'arithmétique de Peano est axiomatisée par les
+énoncés suivants dans le langage de l'arithmétique~$\Lang L_A$.
+\begin{align*}
+& \lforall[x][\lforall[y][(\eq[x'][y'] \lif \eq[x][y])]]\\
+& \lforall[x][\eq/[\Obj 0][x']]\\
+& \lforall[x][\eq[(x + \Obj 0)][x]]\\
+& \lforall[x][\lforall[y][\eq[(x + y')][(x + y)']]]\\
+& \lforall[x][\eq[(x \times \Obj 0)][\Obj 0]]\\
+& \lforall[x][\lforall[y][\eq[(x \times y')][((x \times y) + x)]]]\\
+& \lforall[x][\lforall[y][(x < y \liff \lexists[z][\eq[(z' + x)][y])]]]\\
+\intertext{ainsi que tous les énoncés de la forme}
+& (!A(\Obj 0) \land \lforall[x][(!A(x) \lif !A(x'))]) \lif \lforall[x][!A(x)]
+\end{align*}
+Comme les énoncés de cette dernière forme sont en nombre infini,
+le système d'axiomes est infini. Cette dernière forme est appelée
+\emph{schéma d'induction}. (En réalité, le schéma d'induction est
+un peu plus complexe que cette présentation ne le laisse entendre.)\footnote{Précision éditoriale : la formule peut avoir, outre la variable d'induction, des variables libres servant de paramètres. On prend alors la clôture universelle de l'instance affichée par rapport à tous ces paramètres ; c'est ainsi que les instances sont des énoncés.}
+
+L'axiome relatif à~$<$, dernier avant le schéma d'induction, en donne
+une \emph{définition explicite}.
+\end{ex}
+
+\begin{ex}
+La théorie des ensembles purs joue un rôle important dans les
+fondements et la philosophie des mathématiques. Un ensemble est pur
+si tous ses !!{element}s sont eux aussi des ensembles purs.
+L'ensemble vide est donc pur, tandis qu'un ensemble qui contient
+comme !!a{element} un objet qui n'est pas un ensemble ne le serait
+pas. Les ensembles purs sont ainsi ceux qui se forment à partir du
+seul ensemble vide, sans « uréléments », c'est-à-dire sans objets
+qui ne soient pas eux-mêmes des ensembles.
+
+On pourrait envisager le système d'axiomes suivant pour une théorie
+des ensembles purs :
+\begin{align*}
+& \lexists[x][\lnot \lexists[y][y \in x]]\\
+& \lforall[x][\lforall[y][(\lforall[z](z \in x \liff z \in y) \lif 
+\eq[x][y])]]\\
+& \lforall[x][\lforall[y][\lexists[z][\lforall[u][(u \in z \liff
+(\eq[u][x] \lor \eq[u][y]))]]]]\\
+& \lforall[x][\lexists[y][\lforall[z][(z \in y \liff \lexists[u][(z \in
+        u \land u \in x)])]]]\\
+\intertext{ainsi que tous les énoncés de la forme} &
+\lexists[x][\lforall[y][(y \in x \liff !A(y))]]
+\end{align*}
+Le premier axiome affirme l'existence d'un ensemble sans
+!!{element}s, autrement dit de~$\emptyset$; le deuxième est
+l'axiome d'extensionnalité; le troisième affirme l'existence de
+$\{X, Y\}$ pour tous ensembles $X$ et $Y$; le quatrième affirme,
+pour tout ensemble~$X$, l'existence de $\cup X$, où $\cup X$
+désigne la réunion de tous les éléments de~$X$.
+
+Les derniers !!{sentence}s forment ensemble le \emph{schéma de
+compréhension naïve}. Celui-ci affirme essentiellement que, pour
+chaque $!A(x)$, l'ensemble $\Setabs{x}{!A(x)}$ existe. Au premier
+abord, cet axiome paraît vrai, utile, voire nécessaire. Il est dit
+« naïf » parce qu'il rend en réalité la théorie insatisfaisable :
+si l'on prend $!A(y)$ égal à $\lnot y \in y$, on obtient
+l'!!{sentence}
+\[
+\lexists[x][\lforall[y][(y \in x \liff \lnot y \in y)]]
+\]
+qui n'est satisfait dans aucune !!{structure}.
+\end{ex}
+
+\begin{ex}
+En \emph{méréologie}, la relation « être une partie de » est
+fondamentale. Comme pour les ensembles, il existe des théories de
+la relation de partie qui axiomatisent diverses conceptions,
+parfois incompatibles, de celle-ci.
+
+Le langage de la méréologie contient un unique symbole de
+prédicat binaire~$\Obj P$, et $\Atom{\Obj P}{x, y}$ « signifie »
+que $x$ est une partie de~$y$. Une !!{structure} pour ce langage
+est appelée \emph{structure de parties} lorsque nous retenons
+cette interprétation. Naturellement, toute structure pour un unique
+prédicat binaire ne mérite pas ce nom. Pour pouvoir rendre compte
+de la relation « être une partie de », $\Assign{\Obj P}{M}$ doit
+satisfaire certaines conditions, que nous pouvons poser comme
+axiomes d'une théorie de la relation de partie. Celle-ci est, par
+exemple, un ordre partiel sur les objets : tout objet est une
+partie, même \emph{impropre}, de lui-même; deux objets distincts ne
+peuvent être chacun une partie de l'autre; toute partie d'une
+partie d'un objet est une partie de cet objet. En ce sens, « être
+une partie de » ressemble à « être un sous-ensemble de », mais
+pas à « être un élément de », qui n'est ni réflexive ni transitive.
+\begin{align*}
+& \lforall[x][\Atom{\Obj P}{x,x}] \\
+& \lforall[x][\lforall[y][((\Part{x}{y} \land \Part{y}{x})
+      \lif \eq[x][y])]] \\
+& \lforall[x][\lforall[y][\lforall[z][((\Part{x}{y} \land
+        \Part{y}{z}) \lif \Part{x}{z})]]]\\
+\intertext{De plus, deux objets quelconques ont une somme méréologique (un objet
+  qui contient ces deux objets comme parties et qui est minimal à cet égard).}  &
+\lforall[x][\lforall[y][\lexists[z][\lforall[u][(\Part{z}{u} \liff
+        (\Part{x}{u} \land \Part{y}{u}))]]]]
+\end{align*}
+Ce ne sont là que quelques-uns des principes fondamentaux de la
+relation de partie envisagés par les métaphysiciens. D'autres
+principes deviennent toutefois rapidement difficiles à formuler,
+ou même à écrire, sans introduire d'abord certaines relations
+définies. Par exemple, la plupart des métaphysiciens qui étudient
+la méréologie tiennent aussi pour valide le principe suivant :
+chaque fois qu'un objet~$x$ possède une partie propre~$y$, il
+possède également une partie~$z$ qui n'a aucune partie en commun
+avec~$y$ et telle que la fusion de $y$ et de~$z$ soit~$x$.
+\end{ex}
+
+\end{document}

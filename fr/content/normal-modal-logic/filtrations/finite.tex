@@ -1,0 +1,46 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: finite
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{fin}
+
+\olsection{Filtrations par un ensemble fini}
+
+Nous avons défini les filtrations pour tout ensemble~$\Gamma$ clos par
+sous-!!{formula}s. Leur définition ne garantit pas à elle seule
+qu'elles soient finies. Lorsque $\Gamma$ est infini (par exemple,
+l'ensemble de toutes les !!{formula}s), une filtration peut en effet
+être infinie. En revanche, si $\Gamma$ est fini (par exemple, s'il
+est l'ensemble des sous-!!{formula}s d'une !!{formula}~$!A$ donnée),
+toute filtration par~$\Gamma$ est finie.
+
+\begin{prop}\ollabel{prop:filt-are-finite}
+  Si $\Gamma$ est fini, toute filtration $\mModel{M^*}$ d'un modèle
+  $\mModel{M}$ par $\Gamma$ est également finie.
+\end{prop}
+
+\begin{proof}
+  Le cardinal de $W^*$ est le nombre de classes~$[w]$ distinctes
+  pour la relation d'équivalence~$\equiv$. Deux mondes $u$, $v$
+  appartenant à une même classe, c'est-à-dire deux mondes $u$ et $v$
+  tels que~$u \equiv v$, s'accordent sur toutes les !!{formula}s~$!A$
+  de~$\Gamma$ : pour chaque $!A \in \Gamma$, $!A$ est vraie à la fois
+  en $u$ et en $v$, ou n'est vraie en aucun des deux. Chaque
+  classe~$[w]$ correspond donc à un sous-ensemble de~$\Gamma$ :
+  l'ensemble de toutes les $!A \in \Gamma$ qui sont vraies en
+  chaque monde de~$[w]$. Deux classes distinctes $[u]$ et $[v]$ ne peuvent
+  correspondre au même sous-ensemble de~$\Gamma$. En effet, si
+  $u$ et $v$ rendent vraies les mêmes !!{formula}s de~$\Gamma$, alors
+  ils s'accordent sur toutes
+  les formules de~$\Gamma$, c'est-à-dire $u \equiv v$. Mais alors
+  $[u] = [v]$. Il existe donc une fonction !!{injective} de $W^*$
+  vers $\Pow{\Gamma}$, et par conséquent
+  $\card{W^*} \le \card{\Pow{\Gamma}}$. Ainsi, si $\Gamma$ contient
+  $n$ formules, le cardinal de $W^*$ ne dépasse pas~$2^n$.
+\end{proof}
+
+\end{document}

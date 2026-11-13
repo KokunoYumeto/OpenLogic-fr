@@ -1,0 +1,81 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: comp-representable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{crq}
+\olsection{Les fonctions calculables sont représentables dans $\Th{Q}$}
+
+\begin{thm}
+Toute fonction totale calculable est représentable dans~$\Th{Q}$.
+\end{thm}
+
+\begin{proof}
+Pour fixer les idées, et conformément à la thèse de
+Church--Turing, appelons fonctions totales calculables les fonctions
+récursives générales. Celles-ci sont les fonctions que l'on peut obtenir à
+partir de la fonction nulle~$\Zero$, du successeur~$\Succ$ et des
+projections~$\Proj{n}{i}$ par composition, récurrence primitive
+et minimisation régulière. D'après le
+\olref[pri]{lem:prim-rec}, toute fonction~$h$ obtenue par
+récurrence primitive à partir de $f$ et de~$g$ peut également
+être définie, à partir de $f$, $g$, $\Zero$, $\Succ$,
+$\Proj{n}{i}$, $\Add$, $\Mult$ et $\Char{=}$, au moyen de
+la composition et de la minimisation régulière. Une fonction
+est donc récursive générale si et seulement si elle peut être
+obtenue à partir de $\Zero$, $\Succ$, $\Proj{n}{i}$, $\Add$,
+$\Mult$ et $\Char{=}$ par ces deux opérations.
+
+Nous avons montré que chacune de ces fonctions de base est
+représentable dans~$\Th{Q}$
+(\cref{inc:req:bre:prop:rep-zero,inc:req:bre:prop:rep-succ,inc:req:bre:prop:rep-proj,inc:req:bre:prop:rep-id,inc:req:bre:prop:rep-add,inc:req:bre:prop:rep-mult}).
+Nous avons aussi montré que la composition et la minimisation
+régulière de fonctions représentables restent représentables
+(\olref[cmp]{prop:rep-composition},
+\olref[min]{prop:rep-minimization}). Toute fonction récursive
+générale est donc représentable dans~$\Th{Q}$.
+\end{proof}
+
+\begin{explain}
+Nous avons ainsi caractérisé les fonctions calculables par leur
+représentabilité dans~$\Th{Q}$. La portée de l'argument est en
+réalité plus large. D'après la définition de la représentabilité,
+toute théorie qui étend~$\Th{Q}$, ou dans laquelle on peut
+interpréter~$\Th{Q}$, peut représenter les fonctions calculables.
+Réciproquement, supposons qu'une théorie cohérente démontre
+l'inégalité de deux numéraux distincts et que ses preuves
+soient effectivement vérifiables. Si une formule $!A_f$ y
+représente une fonction totale~$f$, énumérons les paires
+constituées d'un entier naturel $m$ et d'un code de preuve.
+Pour les arguments fixés, cherchons dans cette énumération une
+preuve de l'instance de~$!A_f$ de sortie~$\num m$. Il existe
+une telle preuve pour la valeur de~$f$, d'après la première
+condition de représentabilité. Si une preuve donnait une
+autre sortie, la seconde condition permettrait de démontrer
+l'égalité de deux numéraux distincts, en contradiction avec la
+cohérence. Le premier témoin rencontré donne donc la valeur
+de~$f$ et la recherche s'arrête pour tous les arguments.
+On peut donc, par exemple,
+caractériser les fonctions calculables comme celles qui sont
+représentables dans l'arithmétique de Peano, ou même dans la
+théorie des ensembles de Zermelo--Fraenkel, pourvu que ces théories soient cohérentes.
+
+Comme Gödel l'a remarqué, ce résultat peut surprendre. Nous
+verrons que, pour la démontrabilité, le choix de la théorie est
+déterminant : en gros, des axiomes plus forts permettent de
+démontrer davantage d'énoncés. Pourtant, dans une large classe
+de théories axiomatiques, les fonctions représentables sont
+exactement les fonctions calculables. Renforcer les axiomes
+n'ajoute aucune fonction représentable tant que la théorie
+reste cohérente, distingue les numéraux et dispose d'un système
+de démonstration effectif.
+\end{explain}
+
+Une théorie incohérente fournit un cas limite : elle démontre
+toutes les instances exigées par les deux conditions de
+représentabilité, y compris pour une fonction non calculable.
+
+\end{document}

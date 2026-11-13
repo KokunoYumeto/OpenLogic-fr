@@ -1,0 +1,54 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: church-turing-thesis
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{ctt}
+\olsection{La thèse de Church--Turing}
+
+Les machines de Turing visent à donner un sens précis à la
+notion intuitive de procédure effective. Turing pensait que
+quiconque comprend à la fois cette notion et le fonctionnement
+d'une machine de Turing reconnaîtrait intuitivement que tout
+ce qu'une procédure effective peut accomplir peut aussi
+l'être par une telle machine. Les autres modèles précis
+proposés pour formaliser les procédures effectives appuient
+cette idée : ils sont extensionnellement équivalents aux
+machines de Turing, c'est-à-dire qu'ils calculent exactement
+les mêmes fonctions. Cette affirmation est la
+\emph{thèse de Church--Turing}. Elle relie une notion
+intuitive à un modèle mathématique précis; ce n'est donc
+pas un théorème obtenu à partir de deux définitions formelles.
+
+\begin{defn}[Thèse de Church--Turing]
+La \emph{thèse de Church--Turing} affirme que tout ce
+qui est calculable par une procédure effective est
+calculable par une machine de Turing.
+\end{defn}
+
+On fait appel à la thèse de Church--Turing de deux façons.
+La première sert parfois de prétexte à la paresse.
+Supposons qu'une procédure effective permettant de calculer
+une fonction soit décrite, par exemple en « pseudocode ».
+La thèse permet alors d'affirmer qu'une machine de Turing
+calcule la même fonction, même si nous ne l'avons pas
+effectivement construite.
+
+Le second usage est plus intéressant du point de vue
+philosophique. On peut démontrer que certaines fonctions
+ne sont calculables par aucune machine de Turing. La thèse
+de Church--Turing permet alors de conclure qu'aucune
+procédure effective, quelle qu'elle soit, ne peut les
+calculer. En effet, s'il existait une telle procédure,
+la thèse entraînerait l'existence d'une machine de Turing
+qui calcule la même fonction. Ainsi, démontrer qu'aucune
+machine de Turing ne calcule une fonction exclut aussi
+toute procédure effective pour la calculer. On invoque
+notamment la thèse pour soutenir que le problème dit
+de l'arrêt n'est pas seulement insoluble par machine
+de Turing : il n'admet aucune solution effective.
+
+\end{document}

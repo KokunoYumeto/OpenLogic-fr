@@ -1,0 +1,263 @@
+% Part: first-order-logic
+% Chapter: beyond
+% Section: second-order-logic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{byd}{sol}
+
+\olsection{Logique du second ordre}
+
+Le langage de la logique du second ordre permet de quantifier non
+seulement sur un !!{domain} d'individus, mais aussi sur les relations
+définies sur ce !!{domain}. Étant donné un langage du premier ordre
+$\Lang{L}$, on ajoute, pour chaque $k$, des !!{variable}s $R$ qui
+parcourent les relations $k$-aires, et l'on permet de quantifier sur
+elles. Si $R$ est !!a{variable} de relation $k$-aire et si
+$t_1$, \dots,~$t_k$ sont des termes ordinaires (du premier ordre),
+$\Atom{R}{t_1,\dots,t_k}$ est !!a{formula} atomique. Pour le reste,
+les !!{formula}s sont définies comme en logique du premier ordre, en
+ajoutant les clauses de quantification du second ordre. Notons que
+l'!!{identity} ne s'applique primitivement qu'aux termes du premier
+ordre : si $R$ et $S$ sont des !!{variable}s de relation de même
+arité~$k$, nous pouvons définir $\eq[R][S]$ comme abréviation de
+\[
+\lforall[x_1 \dots][\lforall[x_k][(\Atom{R}{x_1, \dots, x_k} \liff
+  \Atom{S}{x_1, \dots, x_k})]].
+\]
+
+Les règles de la logique du second ordre étendent simplement celles
+des quantificateurs aux nouvelles variables. Il faut toutefois
+préciser comment celles-ci interagissent avec les !!{predicate}s
+de~$\Lang{L}$ et, plus généralement, avec les !!{formula}s
+de~$\Lang{L}$. Au
+minimum, les variables de relation comptent comme termes, de sorte
+qu'on dispose d'inférences de la forme
+\[
+!A(R) \Proves \lexists[R][!A(R)]
+\]
+Mais si $\Lang{L}$ est le langage de l'arithmétique muni d'un symbole
+de relation constant~$<$, on s'attend aussi à la validité de
+l'inférence
+\[
+x < y \Proves \lexists[R][\Atom{R}{x,y}]
+\]
+ou, pour une !!{formula}~$!A$ donnée, de
+\[
+!A(x_1, \dots, x_k) \Proves \lexists[R][\Atom{R}{x_1,\dots,x_k}]
+\]
+Plus généralement, nous pourrions admettre des inférences de la forme
+\[
+\Subst{!A}{\lambd[\vec x][!B(\vec x)]}{R} \Proves
+\lexists[R][!A]
+\]
+où $\Subst{!A}{\lambd[\vec x][!B(\vec x)]}{R}$ désigne le résultat du
+remplacement, dans~$!A$, de chaque !!{formula} atomique $\Atom{R}{t_1,\dots,t_k}$ où $R$ est libre,
+par $!B(t_1, \dots, t_k)$, sans capture de variables.\footnote{Précision éditoriale : la substitution ne remplace pas les occurrences de $R$ liées par un quantificateur intérieur. Les variables liées de la formule et de $!B$ sont renommées au besoin pour éviter toute capture. Nous rétablissons aussi la notation d'application atomique omise dans l'affichage de la source.} Cette dernière
+règle équivaut à un {\em schéma de compréhension}, c'est-à-dire à un
+axiome de la forme
+\[
+\lexists[R][\lforall[x_1, \dots, x_k][(!A(x_1, \dots, x_k) \liff
+\Atom{R}{x_1, \dots, x_k})]],
+\]
+pour chaque !!{formula}~$!A$ du langage du second ordre dans laquelle
+$R$ n'est pas libre. (Exercice : montrer que, si l'on autorise $R$ à
+figurer librement dans~$!A$, ce schéma devient contradictoire !)\footnote{Précision éditoriale : seules les occurrences libres de $R$ sont interdites ; la source omet ce mot dans l'exercice. On renomme les variables liées au besoin et l'on prend la clôture universelle des autres paramètres libres de l'instance pour obtenir un axiome qui soit un énoncé.}
+
+Lorsque les logiciens parlent des « axiomes de la logique du second
+ordre », ils entendent généralement l'extension minimale de la
+logique du premier ordre par les règles des quantificateurs du second
+ordre, à laquelle s'ajoute le schéma de compréhension. Il est
+toutefois souvent intéressant d'étudier des sous-systèmes plus
+faibles. Par exemple, dans toute sa généralité, le schéma de
+compréhension est \emph{imprédicatif} : il permet d'affirmer
+l'existence d'une relation $\Atom{R}{x_1, \dots, x_k}$
+« définie » par !!a{formula} comportant des quantificateurs du
+second ordre; or ceux-ci parcourent l'ensemble de toutes ces
+relations, qui comprend~$R$ elle-même !{} Au tournant du
+XX\textsuperscript{e} siècle, une réaction courante au paradoxe de
+Russell a consisté à incriminer de telles définitions et à les éviter
+dans l'élaboration des fondements des mathématiques. Si l'on interdit
+les quantificateurs du second ordre dans la !!{formula}~$!A$, on
+obtient une forme {\em prédicative} de compréhension, un peu plus
+faible.
+
+Du point de vue sémantique, on peut concevoir !!a{structure} du
+second ordre comme !!a{structure} du premier ordre pour le langage,
+accompagnée d'un ensemble de relations sur son !!{domain} que
+parcourent les quantificateurs du second ordre (plus précisément,
+d'un ensemble de relations d'arité~$k$ pour chaque $k$).
+Naturellement, si le système de !!{derivation} comprend la
+compréhension, la « partie du second ordre » doit comporter assez
+de relations pour satisfaire les axiomes correspondants; sans cela,
+le système de !!{derivation} ne serait pas correct !{} Une façon
+simple de s'en assurer consiste à prendre, pour cette seconde partie,
+\emph{toutes} les relations sur la partie du premier ordre. Une
+telle !!{structure} est dite \emph{pleine}; en un sens, c'est bien
+la « !!{structure} visée » du langage. Si nous nous limitons aux
+!!{structure}s pleines, nous obtenons ce qu'on appelle la
+\emph{sémantique pleine} du second ordre. Spécifier une
+!!{structure} revient alors à spécifier sa partie du premier ordre,
+puisque le contenu de la partie du second ordre s'en déduit
+implicitement.
+
+Ainsi, parler de logique du second ordre laisse place à une certaine
+ambiguïté. Pour le système de !!{derivation}, on peut envisager soit
+\begin{enumerate}
+\item un système de !!{derivation} du second ordre « minimal »,
+  accompagné de certains axiomes de compréhension;
+\item le système de !!{derivation} du second ordre « standard »,
+  avec compréhension pleine.
+\end{enumerate}
+Pour la sémantique, on peut s'intéresser soit à
+\begin{enumerate}
+\item une sémantique « faible », où !!a{structure} comporte une
+  partie du premier ordre et une partie du second ordre assez riche
+  pour satisfaire les axiomes de compréhension retenus;
+\item la sémantique « standard » du second ordre, où l'on ne
+  considère que les !!{structure}s pleines.
+\end{enumerate}
+Lorsque les logiciens ne précisent ni le système de !!{derivation}
+ni la sémantique qu'ils ont à l'esprit, ils désignent généralement
+le deuxième élément de chaque liste. Cette sémantique a l'avantage
+de fournir, comme nous le verrons, des descriptions catégoriques
+de nombreuses structures mathématiques naturelles. Le système de
+!!{derivation} est en même temps assez fort et correct pour elle.
+Son inconvénient est qu'il n'est \emph{pas} complet pour cette
+sémantique; en fait, \emph{aucun} système de !!{derivation}
+spécifié de manière effective n'est complet pour la sémantique pleine du
+second ordre. En revanche, nous verrons que ce système de
+!!{derivation} \emph{est} complet pour la sémantique affaiblie :
+si un énoncé n'est pas démontrable, il existe donc \emph{une}
+!!{structure}, qui n'est pas nécessairement pleine, dans laquelle
+il est faux.
+
+Le langage de la logique du second ordre est très riche. On peut
+identifier les relations unaires aux sous-ensembles du !!{domain} et
+quantifier ainsi sur ces ensembles. On peut, par exemple, exprimer
+la récurrence sur les entiers naturels par un seul axiome :
+\[
+\lforall[R][((\Atom{R}{\Obj{0}} \land \lforall[x][(\Atom{R}{x} \lif
+    \Atom{R}{x'})]) \lif \lforall[x][\Atom{R}{x}])].
+\]
+Si le langage de l'arithmétique possède les symboles $\Obj 0, \Obj \prime, +,
+\times$ et $<$, on peut ajouter les axiomes suivants pour décrire
+leur comportement :
+\begin{enumerate}
+\item $\lforall[x][\lnot x' = \Obj 0]$
+\item $\lforall[x][\lforall[y][(x' = y' \lif x = y)]]$
+\item $\lforall[x][(x + \Obj 0) = x]$
+\item $\lforall[x][\lforall[y][(x + y') = (x + y)']]$
+\item $\lforall[x][(x \times \Obj 0) = \Obj 0]$
+\item $\lforall[x][\lforall[y][(x \times y') = ((x \times y) + x)]]$
+\item $\lforall[x][\lforall[y][(x < y \liff \lexists[z][y = (x + z')])]]$
+\end{enumerate}
+Ces axiomes, avec celui de récurrence ci-dessus, donnent une
+description catégorique de la !!{structure}~$\Struct{N}$, le
+modèle standard de l'arithmétique, pourvu que l'on emploie la
+sémantique pleine du second ordre.\footnote{Correction éditoriale : l'axiome (2) est écrit avec le symbole de successeur $\prime$ annoncé dans le langage, au lieu du symbole $s$ non déclaré qu'emploie la source.} Soit !!a{structure}~$\Struct{M}$
+dans laquelle ces axiomes sont vrais. Définissons par récurrence
+ordinaire sur~$\Nat$ une fonction~$f$ de $\Nat$ vers le !!{domain}
+de~$\Struct{M}$, telle que $f(0) = \Assign{\Obj 0}{M}$ et
+$f(x+1) = \Assign{\prime}{M}(f(x))$. Une récurrence ordinaire
+sur~$\Nat$, jointe aux axiomes (1) et~(2) vrais dans~$\Struct M$,
+montre que $f$ est !!{injective}. Pour voir que $f$ est
+!!{surjective}, soit~$P$ l'ensemble des !!{element}s de
+$\Domain{M}$ qui appartiennent à l'image de~$f$. Puisque
+$\Struct M$ est pleine, $P$ appartient au !!{domain} du second
+ordre. Par construction de~$f$, nous savons que $\Assign{\Obj
+  0}{M}$ appartient à~$P$ et que $P$ est clos par
+$\Assign{\prime}{M}$. L'axiome de récurrence, vrai dans
+$\Struct M$ et appliqué en particulier à~$P$, garantit que
+$P$ est égal à tout le !!{domain} du premier ordre de~$\Struct M$.
+La fonction~$f$ est donc !!a{bijection}. On montre tout aussi
+facilement que $f$ est un homomorphisme, en appliquant plusieurs fois
+la récurrence ordinaire sur~$\Nat$.
+
+En théorie des ensembles, une fonction est simplement un type
+particulier de relation : une fonction unaire~$f$ peut, par exemple,
+être identifiée à une relation binaire~$R$ satisfaisant
+$\lforall[x][\lexists![y][R(x,y)]]$. On peut donc quantifier aussi
+sur les fonctions. Dans la sémantique pleine, on peut alors définir
+la classe des !!{structure}s dont le !!{domain} est
+\emph{infini au sens de Dedekind} : ce sont les !!{structure}s
+$\Struct M$ pour lesquelles il existe une fonction !!{injective}
+du !!{domain} de $\Struct M$ vers un sous-ensemble propre de lui-même :
+\[
+\lexists[f][(\lforall[x][\lforall[y][(\eq[f(x)][f(y)] \lif \eq[x][y])]]
+  \land \lexists[y][\lforall[x][\eq/[f(x)][y]]])].
+\]
+Sous un principe de choix suffisant, notamment l'axiome du choix
+dénombrable, cette notion coïncide avec l'infinitude ordinaire; la
+négation de l'énoncé définit alors la classe des !!{structure}s
+finies. Sans une telle hypothèse, cette négation exprime seulement
+la finitude au sens de Dedekind.
+
+On peut également définir la classe des bons ordres en ajoutant à
+la définition d'un ordre linéaire la condition suivante :
+\[
+\lforall[P][(\lexists[x][\Atom{P}{x}] \lif \lexists[x][(\Atom{P}{x}
+    \land \lforall[y][(y < x \lif \lnot \Atom{P}{y})])])].
+\]
+Elle affirme que tout ensemble non vide possède un plus petit
+élément, après identification des « ensembles » aux « relations
+unaires ». Autre exemple : on peut exprimer la connexité d'un
+graphe non orienté\footnote{Précision éditoriale : la relation d'arête $R$ est ici symétrique. Pour un graphe orienté, la même formule impose la connexité forte.} en disant qu'il n'existe aucune partition non triviale de ses
+sommets en parties sans arêtes entre elles :
+\[
+\lnot \lexists[A][(\lexists[x][A(x)] \land \lexists[y][\lnot A(y)]
+  \land \lforall[w][\lforall[z][((\Atom{A}{w} \land \lnot \Atom{A}{z})
+      \lif \lnot \Atom{R}{w,z})]])].
+\]
+À titre d'exercice, on peut encore chercher à définir la classe
+des !!{structure}s finies dont le !!{domain} a un nombre pair
+d'!!{element}s. Plus remarquable encore, on peut donner une
+description catégorique des nombres réels comme corps ordonné
+complet contenant les rationnels.
+
+La logique du second ordre est donc beaucoup plus expressive que
+celle du premier ordre. C'est son avantage; voici son revers. Nous
+avons déjà signalé qu'aucun système de !!{derivation} effectif
+n'est complet pour la sémantique pleine du second ordre. Bon nombre
+des propriétés de la logique du premier ordre lui font également
+défaut, notamment la compacité et les théorèmes de
+Löwenheim--Skolem.
+
+En revanche, si l'on renonce à la sémantique pleine au profit de la
+sémantique plus faible, le système de !!{derivation} minimal du
+second ordre est complet pour celle-ci. Autrement dit, si
+$\Proves$ signifie « démontre dans le système minimal » et
+$\Entails$ « entraîne logiquement dans la sémantique faible »,
+on peut montrer que $\Gamma \Entails !A$ implique
+$\Gamma \Proves !A$. Si l'on veut ajouter au système de
+!!{derivation} des axiomes particuliers de compréhension, il faut
+restreindre la sémantique aux structures du second ordre qui les
+satisfont. Ainsi, si $\Delta$ est un ensemble d'axiomes de
+compréhension, éventuellement tous, alors
+$\Gamma \cup \Delta \Entails !A$ implique
+$\Gamma \cup \Delta \Proves !A$. En particulier, si $!A$ n'est
+pas démontrable à partir des axiomes de compréhension retenus, il
+existe un modèle de $\lnot !A$ qui satisfait néanmoins ces axiomes.
+
+Le moyen le plus simple de comprendre la complétude de la sémantique
+faible consiste à considérer la logique du second ordre comme une
+logique multi-sortée. Une sorte correspond au !!{domain} ordinaire
+« du premier ordre »; pour chaque $k$, une autre sorte correspond
+au !!{domain} des « relations d'arité $k$ ». Le langage comporte
+des symboles de relation primitifs tels que
+« $\Atom{\Obj{true}_k}{R,x_1,\dots,x_k}$ », qui affirment que
+$R$ vaut pour $x_1$, \dots,~$x_k$, où $R$ est une variable de la
+sorte « relation $k$-aire » et $x_1$, \dots,~$x_k$ des objets de
+la sorte du premier ordre.
+
+Sous cette identification, la sémantique faible du second ordre est
+essentiellement la sémantique usuelle de la logique multi-sortée;
+or nous avons déjà vu que celle-ci peut être traduite en logique du
+premier ordre. À ces traductions près, la conception faible de la
+logique du second ordre est donc une forme de logique du premier
+ordre déguisée, dont le !!{domain} contient à la fois des « objets »
+et des « relations » soumis aux axiomes appropriés.
+
+\end{document}

@@ -1,0 +1,118 @@
+% Part: second-order-logic
+% Chapter: sol-and-sets
+% Section: cardinalities
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{set}{crd}
+
+\olsection{Cardinalités des ensembles}
+
+\begin{explain}
+De même que nous pouvons exprimer qu'un
+!!{domain} est fini ou infini, !!{enumerable}
+ou !!{nonenumerable}, nous pouvons définir
+ces propriétés pour un sous-ensemble de
+$\Domain{M}$.
+\end{explain}
+
+\begin{prop}
+La !!{formula} $\fn{Inf}(X)\ident$
+\begin{multline*}
+\lexists[u][(\lforall[x][(X(x)\lif X(u(x)))]\land{}\\
+\lforall[x][\lforall[y][((X(x)\land X(y)\land
+\eq[u(x)][u(y)])\lif\eq[x][y])]]\land{}\\
+\lexists[y][(X(y)\land\lforall[x][(X(x)
+\lif\eq/[y][u(x)])])])]
+\end{multline*}
+est satisfaite sous une assignation~$s$ si et
+seulement si $s(X)$ est infini au sens de
+Dedekind. En présence du choix dénombrable,
+cela équivaut à l'infinitude ordinaire.
+\end{prop}
+
+\begin{prop}
+La !!{formula} $\fn{Count}(X)\ident$
+\begin{multline*}
+\lnot\lexists[x][X(x)]\lor{}\\
+\lexists[z][\lexists[u][(X(z)\land
+\lforall[x][(X(x)\lif X(u(x)))]\land{}\\
+\lforall[Y][((Y\subseteq X\land Y(z)\land
+\lforall[x][(Y(x)\lif Y(u(x)))])\lif X=Y)]])]
+\end{multline*}
+est satisfaite sous une assignation~$s$ si et
+seulement si $s(X)$ est !!{enumerable}.
+Le premier terme de la disjonction couvre
+également l'ensemble vide.
+\end{prop}
+
+Le théorème de Cantor montre qu'il existe des
+ensembles !!{nonenumerable}. Il existe même
+une infinité de niveaux distincts parmi les
+cardinalités infinies. La théorie des ensembles
+développe une arithmétique de ces tailles et
+associe des nombres cardinaux infinis aux
+ensembles. Les entiers naturels servent de
+cardinaux pour les ensembles finis.
+La cardinalité des ensembles !!{denumerable}s
+est le premier cardinal infini, noté~$\aleph_0$
+(« aleph zéro »). Le cardinal infini suivant,
+$\aleph_1$, est le plus petit cardinal non
+dénombrable, dans le cadre usuel avec choix.
+
+Nous pouvons exprimer « $X$ est de cardinal
+$\aleph_0$ » par
+\[
+\fn{Aleph}_0(X)\liff
+\fn{Inf}(X)\land\fn{Count}(X).
+\]
+Sous la sémantique standard et avec l'axiome
+du choix, $X$ est de cardinal~$\aleph_1$ si
+et seulement s'il n'est pas !!{enumerable}
+et si chacun de ses sous-ensembles est soit
+!!{enumerable}, soit équipotent à~$X$.
+Nous pouvons donc poser
+\[
+\fn{Aleph}_1(X)\ident
+\lnot\fn{Count}(X)\land
+\lforall[Y][(Y\subseteq X\lif
+(\fn{Count}(Y)\lor\cardeq{Y}{X}))].
+\]
+On peut procéder de manière analogue pour
+$\aleph_2$ et les cardinaux suivants.
+
+Une taille présente un intérêt particulier :
+la cardinalité du \emph{continu}. C'est celle
+de $\Pow{\Nat}$ ou, de façon équivalente,
+de~$\Real$. La logique du second ordre peut
+aussi exprimer qu'un ensemble a cette taille,
+mais la construction demande davantage de
+travail.
+
+Dans $\fn{Inf}(X)$, les trois clauses disent que la
+restriction de $u$ à~$X$ envoie $X$ dans lui-même, est injective
+et omet au moins un élément de~$X$. Réciproquement, toute
+injection non surjective de $X$ dans lui-même se prolonge
+à une fonction sur le domaine en attribuant une valeur fixe
+à tous les arguments hors de~$X$.
+
+Pour $X$ non vide, $\fn{Count}(X)$ demande qu'il soit engendré
+par itération de $u$ à partir de~$z$. En effet, l'orbite
+$\{z,u(z),u(u(z)),\ldots\}$ est un sous-ensemble de $X$
+stable par $u$ et contenant~$z$. La quantification sur~$Y$
+impose que cette orbite soit~$X$. Réciproquement, toute
+énumération sans répétition de $X$ définit un tel successeur
+sur la liste. Si elle est finie, le successeur du dernier
+élément est ce dernier élément.
+
+La formule $\fn{Aleph}_1(X)$ s'appuie sur la comparaison
+des cardinaux sous l'axiome du choix. Un ensemble de cardinal
+$\aleph_1$ ne possède que des sous-ensembles au plus
+dénombrables ou de cardinal $\aleph_1$. Si le cardinal
+de~$X$ était strictement plus grand que $\aleph_1$, un
+sous-ensemble de cardinal $\aleph_1$ contredirait la condition
+sur~$Y$.
+
+\end{document}

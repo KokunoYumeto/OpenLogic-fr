@@ -118,8 +118,8 @@ Ces clauses correspondent aux tables de vérité suivantes :
 \end{explain}
 
 \begin{prob}
-On ajoute à $\Lang{L_0}$ un connecteur ternaire $\diamondsuit$ dont
-l'évaluation est donnée par
+Supposons que l'on ajoute à $\Lang{L_0}$ un connecteur ternaire
+$\diamondsuit$ dont l'évaluation est donnée par
 \begin{gather*}
   \pValue{v}(\diamondsuit( !A , !B , !C ) ) = \begin{cases}
     \pValue{v}( !B ) &
@@ -179,9 +179,9 @@ notée $\pSat{v}{!A}$, de la façon suivante.
     $\pSat/{v}{!B}$ ou $\pSat{v}{!C}$ (éventuellement les deux).}}{}
 
 \tagitem{prvIff}{%
-  \indcase{!A}{(!B \liff !C)}{$\pSat{v}{\indfrm}$ si et seulement si
-    $\pSat{v}{!B}$ et $\pSat{v}{!C}$ sont tous deux vrais, ou tous
-    deux faux.}}{}
+  \indcase{!A}{(!B \liff !C)}{$\pSat{v}{\indfrm}$ si et seulement si l'un
+    des deux cas se présente : $\pSat{v}{!B}$ et $\pSat{v}{!C}$,
+    ou bien $\pSat/{v}{!B}$ et $\pSat/{v}{!C}$.}}{}
 \end{enumerate}
 Si $\Gamma$ est un ensemble de !!{formula}s, $\pSat{v}{\Gamma}$
 si et seulement si $\pSat{v}{!A}$ pour toute~$!A \in \Gamma$.

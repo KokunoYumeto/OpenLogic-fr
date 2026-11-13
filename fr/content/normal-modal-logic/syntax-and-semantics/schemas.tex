@@ -1,0 +1,196 @@
+% Section: schemas
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{sch}
+
+\olsection{Schémas et validité}
+
+\begin{defn}
+  Un \emph{schéma} est un ensemble de !!{formula}s formé de
+  toutes les instances, et d'elles seules, obtenues par
+  substitution à partir d'une !!{formula} modale~$!C$, soit
+  \[
+  \Setabs{!B}{\lexists[!D_1], \dots, \lexists[!D_n] \left(!B =
+  \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \right) }.
+  \]
+  La !!{formula}~$!C$ est appelée \emph{formule caractéristique}
+  du schéma; elle est unique à un renommage des !!{propositional
+  variable}s près. Une !!{formula}~$!A$ est une \emph{instance}
+  d'un schéma si elle appartient à cet ensemble.
+\end{defn}
+
+Il est commode de désigner un schéma par l'expression métalinguistique
+obtenue en remplaçant les composantes atomiques de~$!C$ par
+« $!A$ », « $!B$ »,~\dots. Ainsi, « $!A$ »,
+« $!A \lif \Box!A$ » et « $!A \lif (!B \lif !A)$ »
+désignent des schémas. Leurs !!{formula}s caractéristiques sont
+respectivement $p$, $p \lif \Box p$ et $p \lif (q \lif p)$.
+Le schéma « $!A$ » désigne l'ensemble de \emph{toutes} les
+!!{formula}s.
+
+\begin{defn}
+  Un schéma est \emph{vrai} dans un modèle si et seulement si
+  toutes ses instances y sont vraies; il est \emph{valide} si et
+  seulement s'il est vrai dans tous les modèles.
+\end{defn}
+
+\begin{prop}\ollabel{prop:Kvalid}
+  Le schéma \Ax{K} suivant est valide :
+  \begin{equation*}
+  \Box(!A \lif !B) \lif (\Box !A \lif \Box !B). \tag{\Ax{K}}
+  \end{equation*}
+\end{prop}
+
+\begin{proof}
+  Nous devons montrer que toutes les instances du schéma sont
+  vraies en chaque monde de chaque modèle. Soient donc
+  $\mModel{M} = \tuple{W,R,V}$ et $w \in W$ arbitraires.
+  Pour établir qu'une implication est vraie en un monde, supposons
+  son antécédent vrai et montrons que son conséquent l'est aussi.
+  Supposons ici $\mSat{M}{\Box(!A \lif !B)}[w]$ et
+  $\mSat{M}{\Box !A}[w]$; il faut montrer
+  $\mSat{M}{\Box !B}[w]$. Soit $w'$ quelconque tel que $Rww'$.
+  La première hypothèse donne $\mSat{M}{!A \lif !B}[w']$,
+  et la seconde $\mSat{M}{!A}[w']$. Ainsi,
+  $\mSat{M}{!B}[w']$. Comme $w'$ était quelconque,
+  $\mSat{M}{\Box !B}[w]$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:Dual-valid}
+  Le schéma \Dual{} suivant est valide :
+  \begin{equation*}
+  \Diamond !A \liff \lnot\Box\lnot !A. \tag{\Dual}
+  \end{equation*}
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrez la \olref[nml][syn][sch]{prop:Dual-valid}.
+\end{prob}
+
+\begin{prop}\ollabel{prop:soundMP}
+  Si $!A$ et $!A \lif !B$ sont vraies en un monde d'un modèle,
+  alors $!B$ y est vraie aussi. Par conséquent, les !!{formula}s
+  valides sont closes par modus ponens.
+\end{prop}
+
+\begin{prop}\ollabel{prop:valid-instances}
+  Une !!{formula}~$!A$ est valide si et seulement si toutes ses
+  instances par substitution le sont. Autrement dit, un schéma
+  est valide si et seulement si sa !!{formula} caractéristique
+  l'est.
+\end{prop}
+
+\begin{proof}
+  Le sens « si » est immédiat, puisque $!A$ est une instance
+  d'elle-même par substitution.
+
+  Pour le sens « seulement si », établissons d'abord le fait
+  suivant. Soit $\mModel{M} = \tuple{W, R, V}$ un modèle modal,
+  et soit $!B \ident
+  \SSubst{!A}{\subst{!D_1}{p_1},\dots,\subst{!D_n}{p_n}}$ une
+  instance de~$!A$ par substitution. Définissons
+  $\mModel{M'} = \tuple{W, R, V'}$ en posant
+  $V'(p_i) = \Setabs{w}{\mSat{M}{!D_i}[w]}$, et en attribuant
+  arbitrairement des valeurs aux autres variables. Alors
+  $\mSat{M}{!B}[w]$ si et seulement si
+  $\mSat{M'}{!A}[w]$, pour tout~$w \in W$. (La démonstration
+  est laissée en exercice.) Supposons maintenant que $!A$ soit
+  valide, mais qu'une instance par substitution~$!B$ de~$!A$
+  ne le soit pas.
+  Il existe alors un modèle
+  $\mModel{M} = \tuple{W, R, V}$ et un monde $w \in W$ tels que
+  $\mSat/{M}{!B}[w]$. D'après le fait établi,
+  $\mSat/{M'}{!A}[w]$ : $!A$ n'est donc pas valide,
+  ce qui est contradictoire.
+\end{proof}
+
+\begin{prob}
+  Démontrez le fait utilisé dans le sens « seulement si » de
+  la preuve de la \olref[nml][syn][sch]{prop:valid-instances}.
+  (Indication : procédez par induction sur~$!A$.)
+\end{prob}
+
+En revanche, un schéma n'est pas nécessairement vrai dans un
+modèle lorsque sa formule caractéristique l'est. Le sens
+« seulement si » demeure : si toute instance de $!A$ est vraie
+dans~$\mModel{M}$, alors $!A$ elle-même est vraie
+dans~$\mModel{M}$.
+Mais $!A$ peut être vraie dans~$\mModel{M}$ alors qu'une
+instance de~$!A$ est fausse dans un monde de~$\mModel{M}$.
+Pour un contre-exemple simple, considérons~$p$ dans un modèle
+ayant pour seul monde~$w$ et tel que $V(p) = \{w\}$. Ainsi,
+$p$ est vraie en~$w$. Pourtant, $\lfalse$ est une instance
+de~$p$ et elle n'est pas vraie en~$w$.
+
+\begin{prob}
+  Montrez qu'aucune des !!{formula}s suivantes n'est valide :
+  \begin{enumerate}
+    \item[\Ax{D}:] \quad $\Box p \lif \Diamond p$;
+    \item[\Ax{T}:] \quad $\Box p \lif p$;
+    \item[\Ax{B}:] \quad $p \lif \Box\Diamond p$;
+    \item[\Ax{4}:] \quad $\Box p \lif \Box \Box p$;
+    \item[\Ax{5}:] \quad $\Diamond p \lif \Box \Diamond
+      p$.
+  \end{enumerate}
+\end{prob}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{| l || l |}
+      \hline
+      {\emph{Schémas valides}} & {\emph{Schémas non valides}} \\
+      \hline\hline
+      $\Box(!A \lif !B) \lif (\Diamond !A \lif \Diamond !B)$
+      & $\Box (!A \lor !B) \lif (\Box !A \lor \Box !B)$ \\
+      $\Diamond (!A \lif !B) \lif (\Box !A \lif \Diamond
+      !B)$
+      & $(\Diamond !A \land \Diamond !B) \lif \Diamond (!A
+      \land !B)$\\
+      $\Box (!A \land !B) \liff (\Box !A \land \Box !B)$
+      & $!A \lif \Box !A$ \\
+      $\Box !A \lif \Box (!B \lif !A)$
+      & $\Box \Diamond !A \lif !B$ \\
+      $\lnot \Diamond !A \lif \Box (!A \lif !B)$
+      & $\Box \Box !A \lif \Box !A$ \\
+      $\Diamond (!A \lor !B) \liff (\Diamond !A \lor
+      \Diamond !B)$
+      & $\Box \Diamond !A \lif \Diamond \Box !A$. \\
+      \hline
+    \end{tabular}
+    \caption{Schémas valides et non valides.}
+    \ollabel{tab:valid-invalidSchemas}
+\end{table}
+
+\begin{prob}%\ollabel{ex:in/validSchemas}
+  Montrez que les schémas de la première colonne du
+  \olref[nml][syn][sch]{tab:valid-invalidSchemas} sont valides,
+  tandis que ceux de la seconde ne le sont pas.
+\end{prob}
+
+\begin{prob}
+  Déterminez si les schémas suivants sont valides ou non :
+  \begin{enumerate}
+  \item $(\Diamond !A \lif \Box !B) \lif (\Box !A \lif \Box
+    !B)$;
+  \item $\Diamond(!A \lif !B) \lor \Box(!B \lif !A)$.
+  \end{enumerate}
+\end{prob}
+
+\begin{prob}
+  Pour chacun des schémas suivants, trouvez un modèle
+  $\mModel{M}$ tel que toute instance de la !!{formula} soit
+  vraie dans $\mModel{M}$ :
+  \begin{enumerate}
+  \item $p \lif \Diamond\Diamond p$;
+  \item $\Diamond p \lif \Box p$.
+  \end{enumerate}
+\end{prob}
+
+\end{document}

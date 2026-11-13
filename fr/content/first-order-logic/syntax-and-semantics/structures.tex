@@ -1,0 +1,118 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: Structures
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{str}
+
+\olsection{\printtoken{P}{structure} pour les langages du premier ordre}
+
+\begin{explain}
+Pris isolément, les langages du premier ordre ne sont \emph{pas
+interprétés} : leurs !!{constant}s, !!{function}s et !!{predicate}s
+n'ont pas de sens déterminé. On leur donne un sens en spécifiant
+!!a{structure}. Celle-ci fixe d'abord le \emph{domaine}, c'est-à-dire
+les objets désignés par les !!{constant}s, sur lesquels opèrent les
+!!{function}s et que parcourent les quantificateurs. Elle précise
+ensuite quel objet désigne chaque !!{constant}, comment chaque
+!!{function} associe des objets à d'autres objets, et à quels objets
+s'applique chaque !!{predicate}. Les !!{structure}s fondent les
+notions \emph{sémantiques} de la logique, notamment la conséquence,
+la validité et la satisfaisabilité. Selon les ouvrages, elles sont
+aussi appelées « interprétations » ou « modèles ».
+\end{explain}
+
+\begin{defn}[!!^{structure}s]
+Une \emph{!!{structure}}~$\Struct M$ pour un langage du premier
+ordre~$\Lang{L}$ se compose des données suivantes :
+\begin{enumerate}
+\item \emph{Domaine :} un ensemble non vide~$\Domain M$.
+\item \emph{Interprétation des !!{constant}s :} pour chaque
+  !!{constant}~$c$ de~$\Lang{L}$, !!a{element}
+  $\Assign{c}{M} \in \Domain M$.
+\item \emph{Interprétation des !!{predicate}s :} pour chaque
+  !!{predicate}~$R$ à $n$ places de~$\Lang{L}$, autre que~$\eq$,
+  une relation à $n$ places
+  $\Assign{R}{M} \subseteq \Domain{M}^n$.
+\item \emph{Interprétation des !!{function}s :} pour chaque
+  !!{function}~$f$ à $n$ places de~$\Lang{L}$, une fonction à
+  $n$ places $\Assign{f}{M} \colon \Domain{M}^n \to \Domain{M}$.
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+Une !!{structure}~$\Struct M$ pour le langage de l'arithmétique
+comprend un ensemble, un !!{element} de~$\Domain M$ noté
+$\Assign{\Obj 0}{M}$ qui interprète la !!{constant}~$\Obj 0$,
+une fonction unaire
+$\Assign{\Obj \prime}{M} \colon \Domain{M} \to \Domain M$,
+deux fonctions binaires $\Assign{\Obj +}{M}$ et
+$\Assign{\Obj \times}{M}$, toutes deux de
+$\Domain M^2 \to \Domain M$, et une relation binaire
+$\Assign{\Obj <}{M} \subseteq \Domain{M}^2$.
+
+En voici un exemple naturel :
+\begin{enumerate}
+\item $\Domain N = \Nat$
+\item $\Assign{\Obj 0}{N} = 0$
+\item $\Assign{\Obj \prime}{N}(n) = n + 1$ pour tout $n \in \Nat$
+\item $\Assign{\Obj +}{N}(n, m) = n + m$ pour tous $n, m \in \Nat$
+\item $\Assign{\Obj \times}{N}(n, m) = n\cdot m$ pour tous $n, m \in \Nat$
+\item $\Assign{\Obj <}{N} = \Setabs{\tuple{n, m}}{n \in \Nat, m \in
+  \Nat, n < m}$
+\end{enumerate}
+La !!{structure}~$\Struct N$ ainsi définie pour~$\Lang L_A$
+est appelée le \emph{modèle standard de l'arithmétique}, car elle
+interprète les symboles non logiques de~$\Lang L_A$ de la manière
+attendue.
+
+Il existe cependant beaucoup d'autres !!{structure}s pour
+$\Lang L_A$. Nous pourrions, par exemple, choisir comme domaine
+l'ensemble~$\Int$ des entiers relatifs au lieu de~$\Nat$ et définir
+en conséquence les interprétations de $\Obj 0$, $\Obj \prime$,
+$\Obj +$, $\Obj \times$ et~$\Obj <$.
+Nous pourrions même définir des !!{structure}s pour~$\Lang L_A$
+sans aucun rapport apparent avec les nombres.
+\end{ex}
+
+\begin{ex}
+Une !!{structure}~$\Struct M$ pour le langage de la théorie des
+ensembles~$\Lang L_Z$ exige seulement un ensemble et une relation
+binaire. On pourrait donc, techniquement, prendre pour~$\Lang L_Z$
+l'ensemble des personnes muni de la relation « $x$ est plus âgé que
+$y$ », ou encore~$\Nat$ muni de la relation $n \ge m$ pour
+$n, m \in \Nat$.
+
+Une !!{structure} particulièrement intéressante pour~$\Lang L_Z$
+est celle dans laquelle les !!{element}s du domaine sont réellement
+des ensembles et où $\Obj \in$ est interprété par la relation
+« $x$ est !!a{element} de~$y$ ». Il s'agit de la
+!!{structure}~$\Struct{{HF}}$ des \emph{ensembles héréditairement
+finis} :
+\begin{enumerate}
+\item $\Domain{{{HF}}} = \emptyset \cup \Pow{\emptyset} \cup
+  \Pow{\Pow{\emptyset}} \cup \Pow{\Pow{\Pow{\emptyset}}} \cup \dots$ ;
+\item $\Assign{\Obj \in}{{{HF}}} = \Setabs{\tuple{x, y}}{x, y \in
+  \Domain{{{HF}}}, x \in y}$.
+\end{enumerate}
+\end{ex}
+
+\begin{digress}
+Nos choix quant à ce qui constitue une !!{structure} influent sur
+notre logique. Ainsi, l'exclusion des domaines vides garantit, avec
+la définition usuelle de la satisfaction ou de la vérité des énoncés
+quantifiés, que $\lexists[x][(!A(x) \lor \lnot !A(x))]$ est valide,
+c'est-à-dire une vérité logique. De même, le fait que toute
+!!{constant} désigne un objet du domaine garantit la correction
+de la généralisation existentielle : de $!A(a)$, on peut inférer
+$\lexists[x][!A(x)]$. Si les noms pouvaient désigner des objets
+extérieurs au domaine ou ne rien désigner, nous nous rapprocherions
+d'une \emph{logique libre}, où la généralisation existentielle exige
+une prémisse supplémentaire : de $!A(a)$ et
+$\lexists[x][\eq[x][a]]$, on infère $\lexists[x][!A(x)]$.
+\end{digress}
+
+\end{document}

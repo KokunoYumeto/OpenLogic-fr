@@ -1,0 +1,141 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : traduction des preuves
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{seq}{tr}
+
+\olsection{Traduction entre \Log{G1c} et \Log{G3c}}
+
+Nous avons indiqué que \Log{G1c} et \Log{G3c} sont tous deux
+corrects et complets pour la logique classique : chacun prouve
+exactement les séquents vrais dans toute structure.
+Ils prouvent donc les mêmes séquents. Nous pouvons maintenant
+établir ce résultat par la seule théorie de la démonstration,
+sans passer par les théorèmes de correction et de complétude.
+Cette preuve fournit des \emph{transformations} des preuves
+de \Log{G1c} en preuves de \Log{G3c}, et réciproquement.
+
+\begin{prop}
+Si $\Log{G1c} \Proves S$, alors $\Log{G3c} \Proves S$.
+\end{prop}
+
+\begin{proof}
+Soit $\pi$ une preuve du séquent~$S$ dans \Log{G1c}.
+Nous construisons une preuve~$\pi'$ de~$S$ dans \Log{G3c},
+par récurrence sur $n = \pheight{\pi}$.
+
+Si $n = 0$, alors $\pi$ est un axiome.
+L'axiome $\lfalse \Sequent \quad$ est aussi un axiome de
+\Log{G3c}, en prenant les contextes $\Gamma, \Delta$ vides.
+C'est dans \Log{G1c} que les axiomes $!A \Sequent !A$
+sont permis pour une formule~$!A$ quelconque.
+Dans \Log{G3c}, les axiomes d'identité sont restreints
+aux formules atomiques. Cependant, nous avons montré dans la
+\olref[ex]{prop:G3c-axioms} que tous ces séquents d'identité
+sont prouvables dans~\Log{G3c}.
+
+Si $n>0$, la preuve~$\pi$ se termine par une règle~$R$.
+L'hypothèse de récurrence fournit des preuves des prémisses
+de cette inférence dans~\Log{G3c} : les sous-preuves immédiates
+possèdent donc des traductions. Lorsque la règle~$R$ est
+identique dans les deux calculs, on l'applique à ces preuves.
+
+Pour $\LeftR{\land}$ et $\RightR{\lor}$, la
+\olref[adm]{prop:lor-G3-adm} établit la dérivabilité des versions
+de \Log{G3c} dans \Log{G1c}. Dans le sens requis ici,
+on ajoute à la prémisse traduite, par affaiblissement admissible,
+le conjoint manquant à gauche, ou le disjoint manquant à droite ;
+puis on applique la règle correspondante de~\Log{G3c}.
+Pour une règle d'affaiblissement, on applique la
+\olref[adm]{prop:weak-G3c-adm}. Pour une règle de contraction,
+on applique la \olref[inv]{prop:G3c-cont-adm}.
+
+Il faut aussi traiter les deux règles quantifiées qui diffèrent.
+Pour \LeftR{\lforall}, on ajoute à l'antécédent de la prémisse
+traduite une occurrence de l'universelle principale, puis
+on applique la règle gauche de \Log{G3c}, qui conserve cette
+universelle dans sa prémisse. Pour \RightR{\lexists},
+on ajoute de même au conséquent une occurrence de
+l'existentielle principale, puis on applique la règle droite
+de~\Log{G3c}. Ces ajouts utilisent l'affaiblissement admissible,
+avec renommage préalable des constantes propres si nécessaire.
+Les instances restent celles des mêmes termes clos.
+Les deux autres règles quantifiées sont identiques dans les
+deux calculs, et leur constante propre reste absente de la
+conclusion inchangée. Tous les cas sont ainsi couverts.
+\end{proof}
+
+\begin{prop}
+Si $\Log{G3c} \Proves S$, alors $\Log{G1c} \Proves S$.
+\end{prop}
+
+\begin{proof}
+Nous raisonnons de nouveau par récurrence sur la hauteur
+d'une preuve~$\pi$ du séquent~$S$.
+Chaque axiome de \Log{G3c} se prouve dans~\Log{G1c}
+à partir d'un axiome suivi de plusieurs applications
+de \LeftR{\Weakening} et de \RightR{\Weakening} :
+\[
+  \Axiom$!C \fCenter !C$
+  \RightLabel{\LeftR{\Weakening}}
+  \Deduce$!C, \Gamma \fCenter !C$
+  \RightLabel{\RightR{\Weakening}}
+  \Deduce$!C, \Gamma \fCenter \Delta, !C$
+  \DisplayProof
+\qquad
+  \Axiom$\lfalse \fCenter$
+  \RightLabel{\LeftR{\Weakening}}
+  \Deduce$\lfalse, \Gamma \fCenter$
+  \RightLabel{\RightR{\Weakening}}
+  \Deduce$\lfalse, \Gamma \fCenter \Delta$
+  \DisplayProof
+  \]
+Si $\pi$ se termine par une règle~$R$, l'hypothèse de récurrence
+fournit des preuves de ses prémisses dans~\Log{G1c}.
+On applique la même règle~$R$ lorsque ses schémas sont identiques.
+Les règles \LeftR{\land} et \RightR{\lor} diffèrent entre
+\Log{G1c} et~\Log{G3c}. Leurs versions dans~\Log{G3c}
+sont dérivables dans~\Log{G1c} par les schémas suivants :
+\[
+  \Axiom$!A, !B, \Gamma \fCenter \Delta$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!A \land !B, !B, \Gamma \fCenter \Delta$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!A \land !B, !A \land !B, \Gamma \fCenter \Delta$
+  \RightLabel{\LeftR{\Contraction}}
+  \UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+    \DisplayProof
+\qquad
+  \Axiom$\Gamma \fCenter \Delta, !A, !B$
+  \RightLabel{\RightR{\lor}}
+  \UnaryInf$\Gamma \fCenter \Delta, !A \lor !B, !B$
+  \RightLabel{\RightR{\lor}}
+  \UnaryInf$\Gamma \fCenter \Delta, !A \lor !B, !A \lor !B$
+  \RightLabel{\RightR{\Contraction}}
+  \UnaryInf$\Gamma \fCenter \Delta, !A \lor !B$
+    \DisplayProof
+  \]
+Il reste les deux règles quantifiées qui conservent leur
+principale dans la prémisse de \Log{G3c}.
+Pour \LeftR{\lforall}, la prémisse traduite contient l'instance
+et une occurrence de l'universelle principale. On applique
+\LeftR{\lforall} de \Log{G1c} à l'instance en laissant
+l'universelle dans le contexte. La conclusion contient alors
+deux occurrences de cette universelle ; une contraction gauche
+redonne la conclusion recherchée. Pour \RightR{\lexists},
+on applique la règle de \Log{G1c} à l'instance en conservant
+l'existentielle principale dans le contexte du conséquent.
+Les deux occurrences obtenues sont ensuite contractées à droite.
+Les termes d'instanciation ne changent pas, et les autres
+règles quantifiées se traduisent directement.
+\end{proof}
+
+Ces transformations établissent l'existence d'une preuve
+dans l'autre calcul. Les étapes ajoutées peuvent augmenter
+sa hauteur : aucune conservation de hauteur n'est affirmée.
+
+\end{document}

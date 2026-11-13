@@ -1,0 +1,147 @@
+% Part: normal-modal-logic
+% Chapter: frame-correspondence
+% Section: equivalence-S5
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{frd}{es5}
+
+\olsection{Relations d'équivalence et \Log{S5}}
+
+La logique modale \Log{S5} se caractérise comme l'ensemble des
+!!{formula}s valides dans tous les cadres universels : chaque monde y
+est accessible depuis tout monde, y compris lui-même. Dans ce cas,
+$\Box$ correspond à la nécessité et $\Diamond$ à la possibilité :
+$\Box !A$ est vraie si $!A$ est vraie dans \emph{tous} les mondes, et
+$\Diamond !A$ est vraie si $!A$ est vraie dans \emph{au moins un} monde.
+Nous verrons que \Log{S5} se caractérise aussi comme l'ensemble des
+!!{formula}s valides dans tous les cadres réflexifs, symétriques et
+transitifs, c'est-à-dire ceux dont la relation d'accessibilité est
+une \emph{relation d'équivalence}.
+
+\begin{defn}
+  Une relation binaire~$R$ sur~$W$ est une \emph{relation
+  d'équivalence} si et seulement si elle est réflexive, symétrique et
+  transitive. Une relation~$R$ sur~$W$ est \emph{universelle} si et
+  seulement si $Ruv$ pour tous $u,v \in W$.
+\end{defn}
+
+Puisque \Ax{T}, \Ax{B} et \Ax{4} caractérisent respectivement les
+cadres réflexifs, symétriques et transitifs, les cadres dont la
+relation d'accessibilité est une relation d'équivalence sont
+exactement ceux où ces trois !!{formula}s sont valides. Les relations
+d'équivalence se caractérisent aussi par d'autres combinaisons de
+!!{formula}s : les conditions de leur définition sont équivalentes à
+d'autres combinaisons de propriétés connues de~$R$.
+
+\begin{prop}\ollabel{prop:equivalences}
+  Les conditions suivantes sont équivalentes :
+  \begin{enumerate}
+  \item $R$ est une relation d'équivalence;
+  \item $R$ est réflexive et euclidienne;
+  \item $R$ est sérielle, symétrique et euclidienne;
+  \item $R$ est sérielle, symétrique et transitive.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrer la \olref[nml][frd][es5]{prop:equivalences} en établissant que :
+  \begin{enumerate}
+  \item si $R$ est symétrique et transitive, elle est euclidienne;
+  \item si $R$ est réflexive, elle est sérielle;
+  \item si $R$ est réflexive et euclidienne, elle est symétrique;
+  \item si $R$ est symétrique et euclidienne, elle est transitive;
+  \item si $R$ est sérielle, symétrique et transitive, elle est réflexive.
+  \end{enumerate}
+  Expliquer pourquoi ces résultats suffisent à démontrer l'équivalence
+  des conditions.
+\end{prob}
+
+La \olref{prop:equivalences} est le pendant sémantique de la
+\olref[prf][prs]{prop:S5} : il donne une autre caractérisation de la
+logique modale des cadres sur lesquels $R$ est une relation
+d'équivalence, traditionnellement appelée \Log{S5}.
+
+Quel rapport y a-t-il entre relations universelles et relations
+d'équivalence? Toute relation universelle est une relation
+d'équivalence, mais la réciproque est fausse. Pourtant, les !!{formula}s
+valides dans tous les cadres à relation universelle sont exactement
+celles qui sont valides dans tous les cadres à relation d'équivalence.
+
+\begin{prop}
+  Soit $R$ une relation d'équivalence. Pour chaque $w \in W$,
+  définissons la \emph{classe d'équivalence} de $w$ par
+  $[w] = \{w'\in W : Rww'\}$. Alors :
+  \begin{enumerate}
+  \item $w \in [w]$;
+  \item $R$ est universelle sur chaque classe d'équivalence~$[w]$;
+  \item les classes d'équivalence forment une partition de~$W$ en
+    sous-ensembles deux à deux disjoints dont la réunion est~$W$.
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}\ollabel{prop:S5=univ}
+  !!^a{formula}~$!A$ est valide dans tous les cadres
+  $\mModel{F} =\tuple{W,R}$ où $R$ est une relation d'équivalence si et
+  seulement si elle est valide dans tous les cadres
+  $\mModel{F} =\tuple{W,R}$ où $R$ est universelle. La logique des
+  cadres universels est donc précisément \Log{S5}.
+\end{prop}
+
+\begin{proof}
+  Une relation universelle~$R$ sur~$W$ est évidemment une relation
+  d'équivalence. Si $!A$ est valide dans tous les cadres où $R$ est
+  une relation d'équivalence, elle est donc valide dans tous les
+  cadres universels. Pour l'autre sens, raisonnons par contraposée.
+  Supposons qu'une !!{formula}~$!B$ soit fausse en un monde~$w$ d'un
+  modèle $\mModel{M} = \tuple{W, R, V}$ fondé sur un cadre
+  $\tuple{W,R}$ où $R$ est une relation d'équivalence sur~$W$.
+  Ainsi, $\mSat/{M}{!B}[w]$. Définissons le modèle
+  $\mModel{M}' = \tuple{W', R', V'}$ de la manière suivante :
+  \begin{enumerate}
+  \item $W' = [w]$;
+  \item $R'$ est universelle sur $W'$;
+  \item $V'(p) = V(p) \cap W'$. 
+  \end{enumerate}
+  (L'ensemble~$W'$ des mondes de $\mModel{M}'$ correspond à la région
+  grisée de la \olref{fig:partition}.) Les relations $R$ et $R'$
+  coïncident sur~$W'$. Une récurrence sur la construction des
+  !!{formula}s montre alors que, pour tout $w' \in W'$ et toute
+  formule~$!A$, $\mSat{M'}{!A}[w']$ si et seulement si
+  $\mSat{M}{!A}[w']$; les deux expressions ont un sens puisque
+  $W' \subseteq W$. En particulier, $\mSat/{M'}{!B}[w]$ : la formule
+  $!B$ est donc fausse dans un modèle fondé sur un cadre universel.
+\end{proof}
+
+\begin{figure}[t]
+  \centering
+  \begin{tikzpicture}[node distance=2cm, auto, thick]
+    \clip [rounded corners] (0,0) -- (6,0) -- (6,4) -- (0,4) --  cycle;
+    \begin{scope}
+      \clip (0,0) -- (2,0)  .. controls (1.5,1.5) and (4.5,1.5)
+      .. (4,4) -- (0,4) -- (0,0) -- cycle;
+      \filldraw[fill=gray!40] (0,4) -- (0,2) .. controls (1.5,1.5)
+      and (4.5,1.5) .. (4.5,0) -- (6,0) -- (6,4) -- (0,4) --  cycle;
+    \end{scope}
+    \draw [name path=line1] (2,0) .. controls (1.5,1.5) and (4.5,1.5) .. (4,4);
+    \draw [name path=line2] (0,2)  .. controls (1.5,1.5) and (4.5,1.5) .. (4.5,0);
+    \path [name intersections={of=line1 and line2}];
+    \draw [rounded corners, use as bounding box, very thick] (0,0)
+    -- (6,0) -- (6,4) -- (0,4) --  cycle; 
+    \node at (2,3) {$[w]$} ;
+    \node at (1,1) {$[u]$} ;
+    \node at (3,0.75) {$[v]$} ;
+    \node at (4.75,2) {$[z]$} ;
+  \end{tikzpicture}
+  \caption{Une partition de $W$ en classes d'équivalence.}
+  \ollabel{fig:partition}
+\end{figure}
+
+\end{document}
+

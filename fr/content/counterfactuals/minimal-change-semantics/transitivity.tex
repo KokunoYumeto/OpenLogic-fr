@@ -1,0 +1,90 @@
+% Partie : counterfactuals
+% Chapitre : minimal-change-semantics
+% Section : transitivity
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{min}{tra}
+
+\olsection{Transitivité}
+
+Pour le conditionnel matériel, la règle de chaînage est valide :
+$!A \lif !B, !B \lif !C \Entails !A \lif !C$. Autrement dit, le
+conditionnel matériel est transitif. En va-t-il de même des
+conditionnels contrefactuels ? Considérons l'exemple suivant, dû à
+Stalnaker :
+\begin{quote}
+  Si J.~Edgar Hoover était né en Russie, il aurait été communiste.
+
+  Si J.~Edgar Hoover avait été communiste, il aurait été un traître.
+
+  Donc, si J.~Edgar Hoover était né en Russie, il aurait été un
+  traître.
+\end{quote}
+Si Hoover était né à la même date qu'en réalité, mais en Russie
+plutôt qu'aux États-Unis, il y aurait grandi et serait devenu
+communiste, supposons-le. La première prémisse est donc vraie. La
+seconde prémisse, prise isolément, est également vraie. La conclusion
+est pourtant fausse : selon toute vraisemblance, s'il était né en
+Russie, Hoover serait devenu un communiste convaincu, et non un
+traître à son pays. L'attribution intuitive de ces valeurs de vérité
+s'accorde avec l'analyse de Stalnaker et Lewis. Parmi les mondes
+possibles qui ne diffèrent du nôtre que par le lieu de naissance de
+Hoover, le plus proche est celui où il devient un citoyen loyal de
+l'URSS. Dans ce monde, le plus proche où l'antécédent de la première
+prémisse et celui de la conclusion sont vrais, Hoover est un membre
+loyal du parti communiste, et non un traître. Pour évaluer la seconde
+prémisse, il faut au contraire considérer un autre monde : le plus
+proche où Hoover est communiste, bien qu'il soit né aux États-Unis.
+Il se serait rallié au communisme et serait donc, selon l'hypothèse de
+l'exemple, un traître.\footnote{Pour apprécier la portée de
+  l'exemple, il faut bien sûr accepter certaines hypothèses
+  métaphysiques et politiques : par exemple, qu'il aurait été
+  possible que Hoover naisse de parents russes, ou que les
+  communistes vivant aux États-Unis dans les années 1950 aient été
+  des traîtres à leur pays.}
+
+\begin{prob}
+  Trouvez un exemple intuitif convaincant où la transitivité des
+  conditionnels contrefactuels échoue.
+\end{prob}
+
+\begin{ex}\ollabel{ex:trans-counterex}
+  La sémantique des sphères invalide cette inférence : on a $p
+  \cif q, q \cif r \Entails/ p \cif r$. Considérons le modèle
+  $\mModel{M} = \tuple{W, O, V}$ où $W = \{w, w_1, w_2\}$,
+  $O_w = \{\{w\}, \{w, w_1\}, \{w, w_1, w_2\}\}$,
+  $V(p) = \{w_2\}$, $V(q) = \{w_1, w_2\}$ et
+  $V(r) = \{w_1\}$. % Précision facultative conservée hors du texte traduit.
+%
+   Il existe une sphère admettant~$p$,
+  $S = \{w, w_1, w_2\}$, et $p \lif q$ est vrai dans tous ses mondes ;
+  donc $\mSat{M}{p \cif q}[w]$. Il existe aussi une sphère
+  admettant~$q$, $S' = \{w, w_1\}$, et $q \lif r$ est vrai dans tous
+  ses mondes ; donc $\mSat{M}{q \cif r}[w]$. En revanche, toute
+  sphère admettant~$p$ contient~$w_2$, puisque c'est le seul monde
+  où~$p$ est vrai. Or $\mSat/{M}{p \lif r}[w_2]$. Il existe
+  bien une sphère admettant~$p$, mais aucune ne vérifie le
+  conditionnel matériel en tous ses mondes. Le contrefactuel
+  de la conclusion est donc faux au monde central.
+\end{ex}
+
+\begin{prob}
+  Dessinez le système de sphères correspondant au contre-exemple de
+  l'\olref[cnt][min][tra]{ex:trans-counterex}.
+\end{prob}
+
+\begin{prob}
+  Dans l'\olref[cnt][min][tra]{ex:trans-counterex}, le monde~$w_2$ est
+  celui où Hoover naît en Russie, devient communiste et n'est pas un
+  traître ; $w_1$ est celui où il naît aux États-Unis, devient
+  communiste et est un traître. Dans ce modèle, $w_1$ est plus proche
+  de~$w$ que ne l'est~$w_2$. Est-ce nécessaire ? Pouvez-vous donner
+  un contre-exemple sans supposer que la naissance de Hoover en
+  Russie soit une possibilité plus éloignée que son adhésion au
+  communisme ?
+\end{prob}
+
+\end{document}

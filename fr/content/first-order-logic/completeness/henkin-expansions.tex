@@ -1,0 +1,243 @@
+% Part: first-order-logic
+% Chapter: completeness
+% Section: henkin-expansion
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{com}{hen}
+
+\olsection{Expansion de Henkin}
+
+\begin{explain}
+Une difficulté de la démonstration de complétude est que le modèle
+construit à partir d'un ensemble cohérent et complet~$\Gamma$ doit
+rendre vraies toutes les !!{formula}s quantifiées de~$\Gamma$.
+Pour le garantir, nous recourons à une méthode due à Leon Henkin.
+Elle consiste essentiellement à enrichir le langage d'une infinité
+de nouvelles !!{constant}s et à ajouter, pour chaque !!{formula}
+$!A(x)$ dont les variables libres appartiennent à~$\{x\}$, une
+!!{formula} de la forme
+\iftag{prvEx}
+      {$\lexists[x][!A(x)] \lif !A(c)$}
+      {$\lnot\lforall[x][!A(x)] \lif \lnot !A(c)$},
+où $c$ est l'une des nouvelles !!{constant}s. Dans la !!{structure}
+que nous construirons,
+\iftag{prvEx}
+{tout !!{sentence} existentiel vrai aura un témoin}
+{tout !!{sentence} universel faux aura un contre-exemple}
+parmi ces constantes.
+\end{explain}
+
+\begin{prop}
+\ollabel{prop:lang-exp}
+Si $\Gamma$ est cohérent dans $\Lang L$ et si $\Lang L'$ est obtenu
+en ajoutant à $\Lang L$ un ensemble infini dénombrable de nouvelles
+!!{constant}s $\Obj d_0$, $\Obj d_1$, \dots, alors $\Gamma$ reste
+cohérent dans~$\Lang L'$.
+\end{prop}
+
+\begin{proof}
+Pour comparer les deux langages, on dispose, dans les étapes
+intermédiaires des dérivations, d'une réserve infinie de constantes
+auxiliaires distinctes des constantes du langage des hypothèses
+et de la conclusion. Supposons qu'une dérivation de l'absurde
+à partir de~$\Gamma$ existe dans~$\Lang L'$. Elle n'utilise qu'un
+nombre fini de nouvelles constantes. Renommons-les uniformément
+par des constantes auxiliaires distinctes, choisies en dehors
+de celles qui figurent déjà dans la dérivation. Ce renommage
+préserve les instances des règles et leurs conditions de fraîcheur.
+Les hypothèses et l'absurde sont inchangés. Nous obtenons une
+dérivation de l'absurde à partir de~$\Gamma$ dans~$\Lang L$,
+ce qui contredit sa cohérence.
+\end{proof}
+
+\begin{defn}[Ensemble saturé]
+Un ensemble~$\Gamma$ de !!{formula}s d'un langage~$\Lang{L}$ est
+\emph{saturé} si et seulement si, pour chaque !!{formula}
+$!A(x)\in\Frm[L]$ dont les !!{variable}s libres appartiennent
+à~$\{x\}$, il existe !!a{constant}~$c\in\Lang{L}$ telle que
+\iftag{prvEx}
+      {$\lexists[x][!A(x)] \lif !A(c) \in \Gamma$}
+      {$\lnot\lforall[x][!A(x)] \lif \lnot !A(c) \in \Gamma$}.
+\end{defn}
+
+Nous utiliserons la définition suivante pour démontrer le résultat
+suivant.
+
+\begin{defn}
+\ollabel{defn:henkin-exp}
+Soit $\Lang L'$ le langage de la \olref{prop:lang-exp}. Fixons une
+énumération $!A_0(x_0)$, $!A_1(x_1)$, \dots des couples formés
+d'une !!{formula}~$!A_i(x_i)$ de~$\Lang L'$ et d'une
+!!{variable}~$x_i$ telle que l'ensemble des variables libres de
+la formule soit inclus dans~$\{x_i\}$. Comme le langage est au plus dénombrable,
+ces couples sont dénombrables. Nous définissons les
+!!{sentence}s~$!D_n$ par récurrence sur~$n$.
+
+Soit $c_0$ la première des !!{constant}s $\Obj d_i$ ajoutées à
+$\Lang{L}$ qui ne figure pas dans~$!A_0(x_0)$. Supposons
+$!D_0,\dots,!D_{n-1}$ déjà définies, et choisissons pour~$c_n$
+la première des nouvelles !!{constant}s~$\Obj d_i$ qui ne figure
+ni dans $!D_0,\dots,!D_{n-1}$, ni dans~$!A_n(x_n)$.
+
+Définissons alors la !!{formula}~$!D_n$ par
+\iftag{prvEx}
+{$\lexists[x_{n}][!A_{n}(x_{n})] \lif
+  !A_{n}(c_{n})$}{$\lnot\lforall[x_{n}][!A_{n}(x_{n})] \lif \lnot
+  !A_{n}(c_{n})$}.
+\end{defn}
+
+\begin{lem}
+\ollabel{lem:henkin}
+Tout ensemble cohérent~$\Gamma$ peut s'étendre en un ensemble
+cohérent et saturé~$\Gamma'$.
+\end{lem}
+
+\begin{proof}
+Partons d'un ensemble cohérent d'!!{sentence}s~$\Gamma$ dans un
+langage~$\Lang{L}$ et enrichissons ce langage d'un ensemble infini
+dénombrable de nouvelles !!{constant}s pour former~$\Lang{L'}$.
+Par la \olref{prop:lang-exp}, $\Gamma$ reste cohérent dans ce langage.
+Soient ensuite les $!D_i$ de la \olref{defn:henkin-exp}. Posons
+\begin{align*}
+\Gamma_0 & = \Gamma \\
+\Gamma_{n+1} & = \Gamma_n \cup \{!D_n \}
+\end{align*}
+autrement dit $\Gamma_{n+1}=\Gamma\cup\{!D_0,\dots,!D_n\}$,
+puis $\Gamma'=\bigcup_n\Gamma_n$. Par construction, $\Gamma'$
+est saturé.
+
+Si $\Gamma'$ était incohérent, un certain $\Gamma_n$ le serait aussi
+(exercice : expliquez pourquoi). Il suffit donc de montrer par
+récurrence sur~$n$ que tous les $\Gamma_n$ sont cohérents.
+
+Le cas de base est l'hypothèse même du lemme :
+$\Gamma_0=\Gamma$ est cohérent. Pour l'étape de récurrence,
+supposons $\Gamma_n$ cohérent, mais
+$\Gamma_{n+1}=\Gamma_n\cup\{!D_n\}$ incohérent. Rappelons que
+$!D_n$ vaut
+\iftag{prvEx}
+{$\lexists[x_{n}][!A_{n}(x_n)] \lif !A_{n}(c_{n})$}
+{$\lnot\lforall[x_{n}][!A_{n}(x_n)] \lif \lnot !A_{n}(c_{n})$},
+où $!A_n(x_n)$ est une !!{formula} de~$\Lang{L'}$ dont les
+!!{variable}s libres appartiennent à~$\{x_n\}$. Par le choix
+de~$c_n$ dans la
+\olref{defn:henkin-exp}, cette constante ne figure ni dans
+$!A_n(x_n)$, ni dans~$\Gamma_n$.
+
+Si $\Gamma_n\cup\{!D_n\}$ est incohérent, alors
+$\Gamma_n\Proves\lnot !D_n$. La négation de l'implication $!D_n$
+donne son antécédent et la négation de son conséquent%
+\iftag{prvEx}{.}{, puis la double négation du conséquent s'élimine.}
+\iftag{prvEx}{
+\[
+\Gamma_n \Proves \lexists[x_n][!A_n(x_n)]
+\qquad
+\Gamma_n \Proves \lnot !A_n(c_n)
+\]}{
+\[
+\Gamma_n \Proves \lnot\lforall[x_n][!A_n(x_n)]
+\qquad
+\Gamma_n \Proves !A_n(c_n)
+\]}
+Puisque $c_n$ ne figure ni dans $\Gamma_n$, ni dans~$!A_n(x_n)$,
+les \tagrefs{prfAX/{fol:axd:qpr:thm:strong-generalization},prfSC/{fol:seq:qpr:thm:strong-generalization},prfND/{fol:ntd:qpr:thm:strong-generalization},prfTab/{fol:tab:qpr:thm:strong-generalization}}
+s'appliquent. De
+\iftag{prvEx}
+{$\Gamma_n \Proves \lnot !A_n(c_n)$}
+{$\Gamma_n \Proves !A_n(c_n)$},
+nous déduisons
+\iftag{prvEx}
+{$\Gamma_n \Proves \lforall[x_n][\lnot !A_n(x_n)]$}
+{$\Gamma_n \Proves \lforall[x_n][!A_n(x_n)]$}.
+Ainsi, on aurait simultanément
+\iftag{prvEx}
+{$\Gamma_n \Proves \lexists[x_n][!A_n(x_n)]$ et
+$\Gamma_n \Proves \lforall[x_n][\lnot !A_n(x_n)]$}
+{$\Gamma_n \Proves \lnot\lforall[x_n][!A_n(x_n)]$ et
+$\Gamma_n \Proves \lforall[x_n][!A_n(x_n)]$},
+ce qui rendrait $\Gamma_n$ incohérent.
+\iftag{prvEx}
+{Notons que
+\iftag{prvAll}
+{$\lforall[x_n][\lnot !A_n(x_n)] \Proves
+  \lnot\lexists[x_n][!A_n(x_n)]$}
+{$\lforall[x_n][\lnot !A_n]$ est défini par
+  $\lnot\lexists[x_n][\lnot\lnot !A_n(x_n)]$ et que
+  $\lnot\lexists[x_n][\lnot\lnot !A_n(x_n)] \Proves
+  \lnot\lexists[x_n][!A_n(x_n)]$}.}{}
+Contradiction : $\Gamma_n$ était supposé cohérent. Donc
+$\Gamma_n\cup\{!D_n\}$ est cohérent.
+\end{proof}
+
+\begin{explain}
+Dans un ensemble cohérent, !!{complete} et saturé, l'appartenance
+d'un !!{sentence} quantifié dépend de celle de ses instances closes.
+\iftag{prvAll}{Un !!{sentence} universel appartient à l'ensemble si
+et seulement si toutes ses instances closes lui appartiennent.}{}
+\iftag{prvEx}{Un !!{sentence} existentiel appartient à l'ensemble si
+et seulement si au moins une instance close lui appartient.}{}
+Nous en déduirons que la !!{structure} construite à partir d'un tel
+ensemble rend vrais tous ses !!{sentence}s quantifiés.
+\end{explain}
+
+\begin{prop}\ollabel{prop:saturated-instances}
+Supposons $\Gamma$ complet, cohérent et saturé.
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{$\lexists[x][!A(x)] \in \Gamma$ si et seulement si
+  $!A(t) \in \Gamma$ pour au moins un terme clos~$t$.}{}
+\tagitem{prvAll}{$\lforall[x][!A(x)] \in \Gamma$ si et seulement si
+  $!A(t) \in \Gamma$ pour tout terme clos~$t$.}{}
+\end{tagenumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{tagenumerate}{prvEx,prvAll}
+  \tagitem{prvEx}{%
+    \iftag{probEx}{Exercice.}{Supposons d'abord
+      $\lexists[x][!A(x)]\in\Gamma$. Comme $\Gamma$ est saturé,
+      $(\lexists[x][!A(x)]\lif !A(c))\in\Gamma$ pour une
+      !!{constant}~$c$. D'après les
+      \tagrefs{prfAX/{fol:axd:ppr:prop:provability-lif},prfSC/{fol:seq:ppr:prop:provability-lif},prfND/{fol:ntd:ppr:prop:provability-lif},prfTab/{fol:tab:ppr:prop:provability-lif}}, point~(1),
+      et la \olref[ccs]{prop:ccs}\olref[ccs]{prop:ccs-prov-in},
+      $!A(c)\in\Gamma$.
+
+    Pour la réciproque, la saturation n'est pas nécessaire.
+    Supposons $!A(t)\in\Gamma$. Alors
+    $\Gamma\Proves\lexists[x][!A(x)]$ d'après les
+      \tagrefs{prfAX/{fol:axd:qpr:prop:provability-quantifiers},prfSC/{fol:seq:qpr:prop:provability-quantifiers},prfND/{fol:ntd:qpr:prop:provability-quantifiers},prfTab/{fol:tab:qpr:prop:provability-quantifiers}}, point~(1).
+    Par la \olref[ccs]{prop:ccs}\olref[ccs]{prop:ccs-prov-in},
+    $\lexists[x][!A(x)]\in\Gamma$.}}{}
+  \tagitem{prvAll}{%
+    \iftag{probAll}{Exercice.}{Supposons que $!A(t)\in\Gamma$ pour
+      tout terme clos~$t$. Par l'absurde, supposons
+      $\lforall[x][!A(x)]\notin\Gamma$. Puisque $\Gamma$ est
+      complet, $\lnot\lforall[x][!A(x)]\in\Gamma$. Par saturation,
+      \iftag{prvEx}{$(\lexists[x][\lnot !A(x)]\lif\lnot !A(c))
+        \in\Gamma$}{$(\lnot\lforall[x][!A(x)]\lif\lnot !A(c))
+        \in\Gamma$} pour une !!{constant}~$c$. Par hypothèse,
+      $!A(c)\in\Gamma$, car $c$ est un terme clos.
+      \iftag{prvEx}{Par dualité classique, $\lnot\lforall[x][!A(x)]$
+      donne $\lexists[x][\lnot !A(x)]$.}{}
+      Ces énoncés rendraient $\Gamma$ incohérent. (Exercice : donnez
+      la !!{derivation} montrant que
+      \[
+      \lnot \lforall[x][!A(x)],
+      \iftag{prvEx}{\lexists[x][\lnot !A(x)] \lif \lnot
+        !A(c)}{\lnot\lforall[x][!A(x)] \lif \lnot
+        !A(c)}, !A(c)
+      \]
+      est incohérent.)
+
+      Pour la réciproque, la saturation n'est pas nécessaire.
+      Supposons $\lforall[x][!A(x)]\in\Gamma$. Alors
+      $\Gamma\Proves !A(t)$ d'après les
+      \tagrefs{prfAX/{fol:axd:qpr:prop:provability-quantifiers},prfSC/{fol:seq:qpr:prop:provability-quantifiers},prfND/{fol:ntd:qpr:prop:provability-quantifiers},prfTab/{fol:tab:qpr:prop:provability-quantifiers}},
+      point~(2). Par la \olref[ccs]{prop:ccs}\olref[ccs]{prop:ccs-prov-in},
+      $!A(t)\in\Gamma$.}}{}
+  \end{tagenumerate}
+\end{proof}
+
+\end{document}

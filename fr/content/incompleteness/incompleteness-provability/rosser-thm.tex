@@ -1,0 +1,201 @@
+% Part: incompleteness
+% Chapter: incompleteness-provability
+% Section: rosser-thm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{ros}
+
+\olsection{Le théorème de Rosser}
+
+Peut-on renforcer la preuve de Gödel en remplaçant
+la « $\omega$-cohérence » par la seule « cohérence »?
+Oui, grâce à une astuce de Rosser : employer un
+prédicat de démontrabilité « modifié »
+$\ORProv_T(y)$ à la place de
+$\OProv[\Th{T}](y)$.
+
+\begin{thm}
+\ollabel{thm:rosser}
+Toute théorie~$\Th{T}$ cohérente,
+!!{axiomatizable} et étendant~$\Th{Q}$ est
+incomplète.
+\end{thm}
+
+\begin{proof}
+Rappelons que $\OProv[\Th{T}](y)$ est défini par
+$\lexists[x][\OPrf[\Th{T}](x,y)]$ : la
+!!{formula}~$\OPrf[\Th{T}](x,y)$ représente la
+relation décidable selon laquelle $x$ est le numéro
+de Gödel d'une !!{derivation}, dans~$\Th{T}$,
+de l'!!{sentence} de numéro~$y$.
+La relation qui dit que $x$ code une
+\emph{réfutation} de cet !!{sentence} est elle
+aussi décidable. Soit $\fn{not}(x)$ la fonction
+récursive primitive qui, si $x$ code une
+!!{formula}~$!A$, renvoie le code de~$\lnot !A$; sinon, elle renvoie $0$.
+Alors $\Refut[\Th{T}](x,y)$ vaut si et seulement
+si $\Prf[\Th{T}](x,\fn{not}(y))$ vaut.
+Notons $\ORefut[\Th{T}](x,y)$ une !!{formula}
+qui représente cette relation. Si
+$\Th{T}\Proves\lnot !A$ et si $\delta$ est une
+!!{derivation} correspondante, alors
+$\Th{Q}\Proves\ORefut[\Th{T}](\gn{\delta},\gn{!A})$.
+Définissons maintenant $\ORProv[\Th{T}](y)$ par
+\[
+\lexists[x][(\OPrf[\Th{T}](x,y)\land
+\lforall[z][(z<x\lif\lnot\ORefut[\Th{T}](z,y))])].
+\]
+Cette !!{formula} affirme approximativement qu'il
+existe une preuve de l'!!{sentence} de code~$y$
+dans~$\Th{T}$, mais aucune réfutation de code
+plus petit. Si $\Th{T}$ est cohérente,
+$\ORProv[\Th{T}](y)$ et $\OProv[\Th{T}](y)$
+sont vraies des mêmes nombres. Du point de vue de
+ce que $\Th{T}$ peut \emph{démontrer}, leurs
+propriétés diffèrent pourtant : vérité et
+démontrabilité ne se confondent pas. Si $\Th{T}$
+est \emph{incohérente}, la coïncidence des deux
+prédicats n'est plus garantie. On lit parfois
+$\ORProv[\Th{T}](y)$ « $y$ est démontrable au
+sens de Rosser ». Cette expression pourrait laisser
+croire qu'il s'agit d'une sorte particulière de
+démontrabilité; or, dans une théorie incohérente,
+certains !!{sentence}s peuvent être démontrables sans
+l'être au sens de Rosser. Pour éviter cette
+confusion, on pourrait lui donner un nom
+arbitraire, tel que « shmovable ».
+
+Par le lemme du point fixe, il existe un
+!!{sentence}~$!R_\Th{T}$ tel que
+\begin{equation}
+\Th{Q}\Proves !R_\Th{T}\liff
+\lnot\ORProv[\Th{T}](\gn{!R_\Th{T}}).
+\ollabel{RT}
+\end{equation}
+Contrairement à la preuve du premier théorème
+d'incomplétude (\olref[1in]{thm:first-incompleteness}),
+montrons qu'une théorie cohérente~$\Th{T}$ ne démontre ni
+$!R_\Th{T}$ ni $\lnot !R_\Th{T}$, sans supposer
+la $\omega$-cohérence.
+
+Montrons d'abord que $\Th{T}\Proves/ !R_{\Th{T}}$.
+Supposons le contraire et soit $n$ le numéro de
+Gödel d'une !!{derivation} de~$!R_{\Th{T}}$
+à partir de~$T$. Puisque $\OPrf[\Th{T}]$
+représente $\Prf[\Th{T}]$ dans~$\Th{Q}$,
+\[
+\Th{Q}\Proves
+\OPrf[\Th{T}](\num{n},\gn{!R_{\Th{T}}}).
+\]
+Comme $\Th{T}$ est cohérente, aucun entier
+$k<n$ ne code une !!{derivation} de
+$\lnot !R_{\Th{T}}$. Pour chacun de ces~$k$,
+$\Th{Q}\Proves\lnot\ORefut[\Th{T}](\num{k},
+\gn{!R_{\Th{T}}})$. La borne finie sur les
+entiers naturels
+(\olref[req][min]{lem:less-nsucc}) permet d'en
+déduire
+$\Th{Q}\Proves\lforall[z][(z<\num{n}\lif
+\lnot\ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))]$.
+Ainsi,
+\[
+\Th{Q}\Proves
+\lexists[x][(\OPrf[\Th{T}](x,\gn{!R_{\Th{T}}})
+\land\lforall[z][(z<x\lif
+\lnot\ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))])],
+\]
+c'est-à-dire $\ORProv[\Th{T}](\gn{!R_{\Th{T}}})$.
+L'équivalence ci-dessus (\olref{RT}) donne alors
+$\Th{Q}\Proves\lnot !R_{\Th{T}}$; puisque
+$\Th{T}$ étend~$\Th{Q}$, elle démontre aussi
+cette négation. Or nous avons supposé qu'elle
+démontre $!R_{\Th{T}}$. Sa cohérence serait
+contredite.
+
+Montrons ensuite que
+$\Th{T}\Proves/\lnot !R_{\Th{T}}$. Supposons
+qu'il existe une !!{derivation} de cette négation
+de numéro de Gödel~$n$. Alors
+$\Refut[\Th{T}](n,\Gn{!R_{\Th{T}}})$ vaut et,
+par représentation,
+$\Th{Q}\Proves\ORefut[\Th{T}](\num{n},
+\gn{!R_{\Th{T}}})$. Nous allons montrer que
+$\Th{T}$ démontrerait aussi $!R_{\Th{T}}$ et
+serait incohérente. Comme
+\begin{align*}
+\Th{Q} & \Proves !R_{\Th{T}}\liff
+\lnot\ORProv[\Th{T}](\gn{!R_{\Th{T}}}),
+\intertext{et que $\Th{T}$ étend $\Th{Q}$, il suffit d'établir}
+\Th{Q} & \Proves
+\lnot\ORProv[\Th{T}](\gn{!R_{\Th{T}}}).
+\end{align*}
+L'!!{sentence} $\lnot\ORProv[\Th{T}]
+(\gn{!R_{\Th{T}}})$, c'est-à-dire
+\begin{align*}
+\lnot & \lexists[x][(\OPrf[\Th{T}](x,
+\gn{!R_{\Th{T}}})\land
+\lforall[z][(z<x\lif
+\lnot\ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))])],
+\intertext{équivaut logiquement à}
+& \lforall[x][(\OPrf[\Th{T}](x,
+\gn{!R_{\Th{T}}})\lif
+\lexists[z][(z<x\land
+\ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))])].
+\end{align*}
+Raisonnons informellement à l'intérieur de
+$\Th{Q}$, en utilisant ce qu'elle démontre.
+Soit $x$ quelconque et supposons
+$\OPrf[\Th{T}](x,\gn{!R_{\Th{T}}})$.
+Nous savons déjà que
+$\Th{T}\Proves/ !R_{\Th{T}}$. Pour chaque entier
+fixé~$k$, la relation
+$\Prf[\Th{T}](k,\Gn{!R_{\Th{T}}})$ est donc
+fausse et, par représentation négative,
+$\Th{Q}\Proves\lnot\OPrf[\Th{T}](\num{k},
+\gn{!R_{\Th{T}}})$. Sous notre hypothèse sur~$x$,
+on en déduit $\eq/[x][\num{k}]$.
+Nous n'utiliserons que les cas finis $k=0,\dots,n$.
+En particulier, $x\ne\num{n}$; les cas
+$k<n$ donnent aussi
+$\lnot(\eq[x][\num{0}]\lor\eq[x][\num{1}]
+\lor\dots\lor\eq[x][\num{n-1}])$.
+La propriété des bornes finies
+(\olref[req][min]{lem:less-nsucc}) en tire
+$\lnot(x<\num{n})$. Avec la trichotomie
+(\olref[req][min]{lem:trichotomy}), il s'ensuit
+$\num{n}<x$. Puisque
+$\Th{Q}\Proves\ORefut[\Th{T}](\num{n},
+\gn{!R_{\Th{T}}})$, nous obtenons
+$\num{n}<x\land\ORefut[\Th{T}](\num{n},
+\gn{!R_{\Th{T}}})$, puis
+$\lexists[z][(z<x\land
+\ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))]$.
+Comme $x$ était quelconque, nous avons donc
+\[
+\lforall[x][(\OPrf[\Th{T}](x,
+\gn{!R_{\Th{T}}})\lif
+\lexists[z][(z<x\land
+\ORefut[\Th{T}](z,\gn{!R_{\Th{T}}}))])].
+\]
+C'est l'énoncé voulu.
+\end{proof}
+
+\begin{prob}
+Deux ensembles $A$ et $B$ d'entiers naturels sont
+\emph{effectivement inséparables} s'il n'existe
+aucun ensemble !!{decidable}~$X$ tel que
+$A\subseteq X$ et $B\subseteq\Complement{X}$,
+où $\Complement{X}=\Nat\setminus X$.
+Soit $\Th{T}$ une extension cohérente et
+!!{axiomatizable} de~$\Th{Q}$. Supposons que $A$
+soit l'ensemble des numéros de Gödel des
+!!{sentence}s démontrables dans~$\Th{T}$, et $B$
+celui des numéros de Gödel des !!{sentence}s
+réfutables dans~$\Th{T}$. Montrez que $A$ et~$B$
+sont effectivement inséparables.
+\end{prob}
+
+\end{document}

@@ -1,0 +1,55 @@
+% Partie : logique propositionnelle
+% Chapitre : syntaxe et sémantique
+% Section : correction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pl}{prp}{snd}
+
+\olsection{Correction de la logique propositionnelle}
+
+\begin{thm}[Correction]
+\ollabel{thm:soundness}
+Si $\Gamma\Proves !A$, alors
+$\Gamma\Entails !A$.
+\end{thm}
+
+\begin{proof}
+Procédons par récurrence sur la longueur d'une
+dérivation finie de~$!A$ à partir de~$\Gamma$.
+Les tables de vérité des schémas d'axiomes montrent
+que ceux-ci sont des tautologies. Leurs instances
+sont donc valides, et par conséquent des conséquences
+logiques de~$\Gamma$. Si $!A\in\Gamma$,
+toute valuation qui satisfait~$\Gamma$ satisfait
+également~$!A$.
+
+Pour le pas d'inférence, supposons que $!A$ soit
+obtenue par \emph{modus ponens} à partir de
+$!C$ et $!C\lif !A$. Par l'hypothèse de
+récurrence, $\Gamma\Entails !C$ et
+$\Gamma\Entails !C\lif !A$. La deuxième
+assertion de la
+\olref[pl][syn][sem]{prop:semanticalfacts}
+donne alors $\Gamma\Entails !A$.
+\end{proof}
+
+\begin{cor}
+Si $\Gamma$ est satisfaisable, alors $\Gamma$
+est cohérent. En particulier, la logique
+propositionnelle est cohérente.
+\end{cor}
+
+\begin{proof}
+Si $\Gamma$ était incohérent, il permettrait
+de dériver~$\lfalse$. Par correction,
+on aurait $\Gamma\Entails\lfalse$, ce qui
+contredit l'existence d'une valuation
+satisfaisant~$\Gamma$. L'ensemble vide est
+satisfaisable par toute valuation propositionnelle ;
+le système lui-même est donc cohérent.
+\end{proof}
+
+\end{document}

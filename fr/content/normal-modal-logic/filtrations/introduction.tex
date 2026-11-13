@@ -1,0 +1,143 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{int}
+
+\olsection{Introduction}
+
+Une question importante à propos d'une logique est toujours celle de
+sa décidabilité : existe-t-il une procédure effective qui réponde à
+la question « cette !!{formula} est-elle valide ? » La logique
+propositionnelle est décidable : pour déterminer si une !!{formula}
+est une tautologie, on peut construire sa table de vérité, laquelle
+est finie pour toute !!{formula} donnée. Mais il n'est pas évident de
+tester si une formule modale est vraie dans tous les modèles, car
+il en existe une infinité. Pour chaque taille finie, nous pouvons
+énumérer les modèles pertinents pour une formule donnée : seules
+comptent les affectations des ensembles de mondes aux
+!!{propositional variable}s qui figurent effectivement dans cette
+!!{formula}. Une fois fixée la relation d'accessibilité, les valeurs
+possibles de $V(p)$ sont les sous-ensembles de~$W$ ; si $\card{W} =
+n$, il y en a $2^n$. Si notre !!{formula}~$!A$ contient $m$
+!!{propositional variable}s, il existe donc $2^{nm}$ valuations
+différentes sur~$n$ mondes. Pour chacune de ces valuations, on peut tester
+si~$!A$ est vraie en tous les mondes en calculant la valeur de vérité
+de~$!A$ en chacun d'eux. Il faut aussi examiner les relations d'accessibilité possibles,
+mais leur nombre sur~$n$ mondes est fini : c'est le nombre de
+sous-ensembles de $W \times W$, soit $2^{n^2}$.
+
+Si nous étudions non pas \Log{K}, mais une logique définie par une
+classe de modèles, par exemple les modèles réflexifs et transitifs,
+il faut également pouvoir tester si la relation d'accessibilité est
+du type requis. C'est possible lorsque les cadres considérés sont
+définissables par une famille finie de !!{formula}s modales : on peut, par exemple,
+tester si \Ax{T} et \Ax{4} sont valides dans un cadre fini. L'idée
+serait donc de parcourir tous les cadres finis, de vérifier pour
+chacun s'il appartient à la classe voulue, puis d'énumérer tous les
+modèles possibles sur ce cadre et de tester si $!A$ est vraie dans
+chacun. Si ce n'est pas le cas, on s'arrête : $!A$ n'est pas valide
+dans la classe de modèles considérée.
+
+Cette idée présente une difficulté : nous ne savons pas quand nous
+pourrons cesser de chercher, ni même si cela arrivera. Si la
+!!{formula} possède un contre-modèle fini, la procédure le trouvera.
+Si elle n'en possède pas, nous n'obtiendrons pas de réponse. Cette !!{formula} peut
+être valide, sans aucun contre-modèle, ou n'avoir que des
+contre-modèles infinis, que nous n'examinerons jamais. Pour résoudre
+cette difficulté, il suffirait de montrer que toute !!{formula} ayant
+un contre-modèle en a un fini. Une logique qui possède cette propriété
+a la \emph{propriété du modèle fini}.
+
+Comment établir la propriété du modèle fini ? Une méthode consiste à
+transformer un (contre-)modèle infini de~$!A$ en un modèle fini. Si
+cette transformation est possible, tout modèle où $!A$ est fausse
+donne un modèle fini où $!A$ est également fausse. Ce dernier
+figurera dans notre énumération, qui finira donc par déceler la
+non-validité de toute formule non valide. En revanche, la procédure ne
+s'arrêtera pas si la formule est valide. Si nous obtenons en plus une
+borne effective sur la taille du modèle fini produit, ne dépendant
+que de la !!{formula}~$!A$, nous saurons jusqu'à quelle taille
+examiner les modèles finis pour chercher un contre-modèle. Si aucun
+n'apparaît avant cette borne, il n'en existe pas. La procédure pourra
+alors répondre, pour toute !!{formula}~$!A$, à la question : « $!A$ est-elle valide ? »
+
+Pour transformer une structure infinie en une structure finie, on
+peut souvent « identifier » les !!{element}s qui se comportent de la
+même manière sous les aspects pertinents. Si une infinité de mondes
+de~$\mModel{M}$ ont le même comportement pertinent, nous pouvons
+peut-être répartir \emph{tous} les mondes en un nombre fini de classes
+d'équivalence, dont certaines peuvent être infinies. Autrement dit,
+il faut définir une partition adéquate de l'ensemble des mondes :
+elle comporte un nombre fini de classes, chacune pouvant être finie
+ou infinie. On définit alors un nouveau modèle~$\mModel{M^*}$ dont
+les mondes sont ces classes. Leur nombre fini donne un modèle fini.
+La classe du monde~$w$ sera notée $[w]$. Nous voudrons avoir
+$\mSat{M}{!A}[w]$ si et seulement si
+$\mSat{M^*}{!A}[{[w]}]$, afin que le nouveau modèle soit un
+contre-modèle de~$!A$ dès que l'ancien l'est. Il faudra pour cela
+définir convenablement la partition et la relation d'accessibilité
+de~$\mModel{M^*}$.
+
+Pour comprendre le mécanisme, supposons d'abord que l'accessibilité
+soit universelle : tout monde accède à tout monde. Alors
+$\mSat{M}{\Box !B}[w]$ si et seulement si, pour tout $v \in W$,
+$\mSat{M}{!B}[v]$ ; il en va de même pour $\mModel{M^*}$, en
+remplaçant les mondes par leurs classes $[w]$ et $[v]$. Comme première
+idée, disons que deux mondes $u$ et $v$ sont équivalents, c'est-à-dire
+appartiennent à la même classe, s'ils s'accordent sur toutes les
+!!{propositional variable}s de~$\mModel{M}$ pertinentes pour la formule étudiée :
+$\mSat{M}{p}[u]$ si et seulement si $\mSat{M}{p}[v]$ pour chacune de
+ces variables. Posons, pour toute variable propositionnelle,
+$V^*(p) = \Setabs{[w]}{\mSat{M}{p}[w]}$. Nous voulons montrer que
+$\mSat{M}{!A}[w]$ si et seulement si
+$\mSat{M^*}{!A}[{[w]}]$. Une récurrence convient. Dans le cas de
+base, $!A \equiv p$. Supposons d'abord $\mSat{M}{p}[w]$. Par
+définition, $[w] \in V^*(p)$ ; donc $\mSat{M^*}{p}[{[w]}]$.
+Réciproquement, si $\mSat{M^*}{p}[{[w]}]$, alors $[w] \in V^*(p)$ :
+il existe donc un $v$ équivalent à~$w$ tel que $\mSat{M}{p}[v]$.
+Dire que $w$ est équivalent à $v$ signifie que $w$ et $v$ rendent vraies les
+mêmes !!{propositional variable}s pertinentes ; d'où
+$\mSat{M}{p}[w]$. Pour l'étape de récurrence, considérons par exemple
+$!A \ident \lnot !B$. On a $\mSat{M}{\lnot !B}[w]$ si et seulement si
+$\mSat/{M}{!B}[w]$, si et seulement si
+$\mSat/{M^*}{!B}[{[w]}]$ par hypothèse de récurrence, si et seulement
+si $\mSat{M^*}{\lnot !B}[{[w]}]$. Les autres connecteurs non modaux
+se traitent de même. Le cas de $\Box$ fonctionne également : si
+$\mSat{M^*}{\Box !B}[{[w]}]$, alors, pour tout $[u]$,
+$\mSat{M^*}{!B}[{[u]}]$. L'hypothèse de récurrence donne, pour tout
+$u$, $\mSat{M}{!B}[u]$ ; donc $\mSat{M}{\Box !B}[w]$. La
+réciproque se montre de la même manière.
+
+Dans le cas général, où il faut également définir la relation
+d'accessibilité du modèle~$\mModel{M^*}$, la situation est plus
+délicate. Nous appellerons \emph{filtration} un modèle~$\mModel{M^*}$
+dont la relation d'accessibilité~$R^*$ satisfait les conditions
+nécessaires à la récurrence précédente. Toute filtration~$\mModel{M^*}$
+rend $!A$ vraie en~$[w]$ si et seulement si $\mModel{M}$ rend
+$!A$ vraie en~$w$. Il faut
+toutefois prouver que de telles filtrations \emph{existent}, autrement
+dit que l'on peut définir~$R^*$ de façon à satisfaire ces conditions.
+Pour cela, les mondes $u$ et $v$ doivent être équivalents non seulement
+lorsqu'ils s'accordent sur les !!{propositional variable}s, mais
+lorsqu'ils s'accordent sur toutes les sous-!!{formula}s de~$!A$.
+Comme $!A$ n'a qu'un nombre fini de sous-!!{formula}s, la filtration
+reste finie. Il existe plusieurs façons de définir une filtration ;
+pour que sa relation d'accessibilité ait les propriétés requises,
+par exemple la réflexivité ou la transitivité, il faudra choisir
+judicieusement la définition de~$R^*$.
+\begin{explain}
+Pour une formule à $m$ variables et une taille $n$ fixée,
+on examine $2^{n^2}$ relations et, pour chacune,
+$2^{nm}$ valuations sur les variables pertinentes. Une borne
+effective sur la taille des contre-modèles transforme cette
+énumération en un test fini. Dans l'exemple où l'accessibilité
+est universelle, tout monde accède à tous les autres, ainsi
+qu'à lui-même. La vérité d'une nécessité ne dépend donc pas
+du monde où on l'évalue.
+\end{explain}
+\end{document}

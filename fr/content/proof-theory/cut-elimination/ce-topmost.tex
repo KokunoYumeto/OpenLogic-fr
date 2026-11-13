@@ -1,0 +1,732 @@
+% Part: proof-theory
+% Chapter: cut-elimination
+% Section: ce-topmost
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{cut}{top}
+
+\olsection{Élimination des coupures les plus hautes}
+
+On élimine d'abord une coupure dont les deux prémisses ont
+des preuves sans coupure, puis on répète cette opération.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{defn}
+Considérons une !!{proof}~$\pi$ qui se termine par une règle
+\CutCS
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta, !A$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$!A, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+et ne contient aucune autre inférence \CutCS.
+La \emph{hauteur de coupure} de~$\pi$ est
+$\cheight{\pi}=\pheight{\pi_1}+\pheight{\pi_2}$.
+Son \emph{rang de coupure} est
+$\cutrank{\pi}=\depth{!A}$.
+\end{defn}
+
+\begin{lem}\ollabel{lem:cut-adm-G3c}
+La règle \CutCS est admissible dans~\Log{G3c}.
+Autrement dit, si $\pi$ est une !!{proof} qui se termine
+par une unique inférence~\CutCS et ne comporte ailleurs
+que des règles de~$\Log{G3c}$, il existe une !!{proof}~$\pi'$
+du même séquent final dans~\Log{G3c}.
+\end{lem}
+
+\begin{proof}
+Nous raisonnons par double récurrence lexicographique,
+d'abord sur le rang de coupure, puis sur sa !!{height}.
+La !!{proof}~$\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta, !A$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$!A, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+
+Au cas initial, $\cheight{\pi}=0$ et $\cutrank{\pi}=0$.
+Puisque $\cheight{\pi}=\pheight{\pi_1}+\pheight{\pi_2}=0$,
+les séquents $\Gamma\Sequent\Delta,!A$ et
+$!A,\Gamma\Sequent\Delta$ sont tous deux des axiomes.
+Pour les axiomes d'identité, deux cas se présentent :
+(a)~$!A$ n'est pas principal dans
+l'un d'eux, ou (b)~$!A$ est principal dans les deux.
+Nous montrerons ci-dessous que, dans chaque cas,
+$\Gamma\Sequent\Delta$ est un axiome, sans utiliser
+l'hypothèse de récurrence. Les axiomes de fausseté sont
+traités dans la variante qui suit.
+
+Distinguons maintenant les cas suivant que $\pi_1$ et $\pi_2$
+sont des axiomes ou se terminent par une inférence, et suivant
+que $!A$ y est principal ou non.
+Les cas A et~B couvrent le cas initial.
+À l'étape de récurrence, $\cheight{\pi}>0$ ou
+$\cutrank{\pi}>0$, ou les deux. L'hypothèse de récurrence
+permet de supprimer l'unique coupure finale d'une !!{proof}
+si son rang est $=\cutrank{\pi}$ et sa hauteur de coupure
+est $<\cheight{\pi}$, ou si son rang est~$<\cutrank{\pi}$.
+Dans cette dernière situation, sa hauteur de coupure peut
+être quelconque. Le cas $\cheight{\pi}=0$ est couvert
+par A et~B, et les cas $\cheight{\pi}>0$ par C--E.
+
+\paragraph{Cas A.}
+Une formule $!B$ figure à la fois dans $\Gamma$ et dans~$\Delta$.
+Alors $\Gamma\Sequent\Delta$ est un axiome si $!B$ est atomique;
+sinon, \olref[seq][ex]{prop:G3c-axioms} en fournit une
+!!{proof}~$\pi'$ dans \Log{G3c}, sans \CutCS.
+Cela couvre le cas~(a) initial pour les axiomes d'identité :
+si les deux prémisses sont des axiomes d'identité et que $!A$ n'est pas principal dans
+$\Gamma\Sequent\Delta,!A$ ou dans
+$!A,\Gamma\Sequent\Delta$, un autre atome~$!B$ figure
+des deux côtés. Cela couvre aussi l'étape de récurrence
+lorsqu'une prémisse est un axiome d'identité où $!A$ n'est pas principal,
+même si l'autre prémisse est la conclusion d'une règle.
+
+\paragraph{Cas B.}
+Les deux prémisses sont des axiomes d'identité et $!A$ est principal,
+donc atomique. Dans la prémisse gauche,
+$\Gamma\Sequent\Delta,!A$, la formule $!A$ doit aussi
+figurer dans $\Gamma$, sans quoi ce séquent ne serait pas
+un axiome. De même, la prémisse droite
+$!A,\Gamma\Sequent\Delta$ exige que $!A$ figure dans $\Delta$.
+La formule atomique $!A$ se trouve donc dans $\Gamma$
+et dans $\Delta$; $\Gamma\Sequent\Delta$ est un axiome.
+Cela couvre le cas~(b) initial.
+
+\begin{center}
+Variante des cas A et B
+\end{center}
+
+\paragraph{Cas A.}
+Une prémisse de la coupure est un axiome
+$!C,\Gamma'\Sequent\Delta',!C$, avec $!C$ atomique.
+Si $!C$ n'est pas la !!{formula} coupée~$!A$, il figure
+dans $\Gamma$ et dans~$\Delta$.
+Le séquent $\Gamma\Sequent\Delta$ est alors un axiome
+et constitue la preuve~$\pi'$ recherchée.
+Si $!C\ident!A$, deux possibilités se présentent.
+Lorsque la prémisse gauche est l'axiome, on a
+$!A\in\Gamma$ et $\Gamma=\Gamma',!A$.
+La preuve $\pi_2$ porte alors sur
+$!A,!A,\Gamma'\Sequent\Delta$;
+l'admissibilité de \LeftR{\Contraction},
+\olref[seq][inv]{prop:G3c-cont-adm}, donne une preuve
+de $\Gamma\Sequent\Delta$.
+Lorsque la prémisse droite est l'axiome, on a
+$!A\in\Delta$ et $\Delta=\Delta',!A$.
+C'est alors $\pi_1$ qui !!{prove}s
+$\Gamma\Sequent\Delta',!A,!A$.
+L'admissibilité de $\RightR{\Contraction}$ donne
+$\Gamma\Sequent\Delta$.
+
+\paragraph{Cas B.}
+Une prémisse est un axiome de la forme
+$\lfalse,\Gamma'\Sequent\Delta'$.
+Si c'est la prémisse gauche, $\lfalse\in\Gamma$
+et $\Gamma\Sequent\Delta$ est aussi un axiome.
+Si c'est la prémisse droite, soit $\lfalse\in\Gamma$,
+et le résultat est encore immédiat, soit $!A\ident\lfalse$.
+Dans ce dernier cas, $\pi_1$ !!{prove}s
+$\Gamma\Sequent\Delta,\lfalse$.
+On obtient une !!{proof} de~$\Gamma\Sequent\Delta$
+en supprimant une copie suivie de~$\lfalse$ à droite
+dans chaque séquent de~$\pi_1$.
+Vérifier ce fait par récurrence sur~$\pheight{\pi_1}$ :
+aucune de ces occurrences n'est principale et les axiomes
+restent des axiomes.
+
+Supposons désormais que ni A ni B ne s'applique.
+On a $\cheight{\pi}>0$ : au moins une prémisse
+est la conclusion d'une inférence.
+
+\paragraph{Cas C et D : permutation des coupures.}
+Ces cas suivent un même schéma.
+Une règle~$R$ précède la coupure \CutCS, et la !!{formula}
+coupée~$!A$ n'est pas principale dans cette règle;
+une autre formule~$!D$ l'est.
+Schématiquement :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta', !D, !A$
+\AxiomC{}
+\RightLabel{$\pi_3$}
+\Deduce$!A, \Gamma, \Pi \fCenter \Delta', \Lambda$
+\RightLabel{$R$}
+\UnaryInf$!A, \Gamma \fCenter \Delta', !D$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta', !D$
+\DisplayProof
+\]
+Ce diagramme représente seulement une règle droite~$R$
+à une prémisse. La formule $!A$ n'est pas principale,
+et la !!{formula} principale~$!D$ figure dans le succédent
+de la prémisse droite de \CutCS.
+Si $!D$ figurait dans l'antécédent, ou si $R$ s'appliquait
+dans la prémisse gauche de la coupure, le diagramme serait
+différent. Les !!{formula}s de $\Pi$ et de~$\Lambda$
+sont les formules actives de~$R$.
+
+Inversons l'ordre de ces deux inférences :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$\Gamma, \Pi \fCenter \Delta', !D, \Lambda, !A$
+\AxiomC{}
+\RightLabel{$\pi_3'$}
+\Deduce$!A, \Gamma, \Pi \fCenter \Delta', !D, \Lambda$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma, \Pi \fCenter \Delta', !D, \Lambda$
+\RightLabel{$R$}
+\UnaryInf$\Gamma \fCenter \Delta', !D, !D$
+\DisplayProof
+\]
+Les preuves $ \pi_1'$ et $\pi_3'$ sont obtenues à partir
+de $\pi_1$ et de $\pi_3$ par affaiblissement sans
+augmentation de hauteur.
+
+On dit qu'on \emph{permute la coupure vers le haut à travers~$R$}.
+La sous-!!{proof} conduisant à la prémisse droite de la
+nouvelle coupure perd une inférence.
+Les hauteurs des deux sous-!!{proof}s de cette coupure
+ne dépassent donc pas celles de $\pi_1$ et de $\pi_3$;
+la hauteur de coupure diminue.
+L'hypothèse de récurrence permet de supprimer la coupure.
+On réapplique ensuite la règle et on supprime la copie
+supplémentaire de~$!D$ par admissibilité de
+\RightR{\Contraction}.
+
+\paragraph{Cas C.}
+Au moins une des preuves $\pi_1$, $\pi_2$ se termine
+par une règle~$R$ à une prémisse où $!A$ n'est pas principal.
+Il y a 18 cas : deux choix du côté de la coupure et neuf
+choix de règle, à savoir \LeftR{\lnot}, \RightR{\lnot},
+\RightR{\lor}, \LeftR{\land}, \RightR{\lif} et les quatre
+règles quantifiées. Nous traitons deux exemples où
+$!A$ n'est pas principal dans la dernière inférence
+de~$\pi_2$ : \RightR{\lif} et \LeftR{\lexists}.
+Les autres cas sont analogues et laissés en exercice.
+
+Supposons que $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta', !B \lif !C, !A$
+\AxiomC{}
+\RightLabel{$\pi_3$}
+\Deduce$!A, !B, \Gamma \fCenter \Delta', !C$
+\RightLabel{$\RightR{\lif}$}
+\UnaryInf$!A, \Gamma \fCenter \Delta', !B \lif !C$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta', !B \lif !C$
+\DisplayProof
+\]
+où $\Delta=\Delta',!B\lif!C$.
+L'affaiblissement sans augmentation de hauteur,
+\olref[seq][adm]{prop:weak-G3c-adm}, transforme $\pi_1$
+en une !!{proof} $\pi_1'$ de
+$!B,\Gamma\fCenter\Delta',!B\lif!C,!C,!A$,
+en ajoutant $!B$ à gauche et $!C$ à droite.
+De même, \olref[seq][adm]{prop:weak-G3c-adm}
+transforme~$\pi_3$ en une !!{proof}~$\pi_3'$ de
+$!A,!B,\Gamma\fCenter\Delta',!B\lif!C,!C$,
+en ajoutant $!B\lif!C$ à droite.
+L'hypothèse de récurrence s'applique à
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta', !B \lif !C, !C, !A$
+\AxiomC{}
+\RightLabel{$\pi_3'$}
+\Deduce$!A, !B, \Gamma \fCenter \Delta', !B \lif !C, !C$
+\RightLabel{\CutCS}
+\BinaryInf$!B, \Gamma \fCenter \Delta', !B \lif !C, !C$
+\DisplayProof
+\]
+La !!{formula} coupée est $!A$; le rang est inchangé,
+mais la hauteur de coupure a diminué.
+On obtient une !!{proof}~$\pi_4$ dans \Log{G3c}
+de~$!B,\Gamma\fCenter\Delta',!B\lif!C,!C$.
+La règle $\RightR{\lif}$ donne
+$\Gamma\fCenter\Delta',!B\lif!C,!B\lif!C$ :
+\[
+\AxiomC{}
+\RightLabel{$\pi_4$}
+\Deduce$!B, \Gamma \fCenter \Delta', !B \lif !C, !C$
+\RightLabel{$\RightR{\lif}$}
+\UnaryInf$\Gamma \fCenter \Delta', !B \lif !C, !B \lif !C$
+\DisplayProof
+\]
+Enfin, \olref[seq][inv]{prop:G3c-cont-adm} supprime la
+copie supplémentaire et fournit une !!{proof}~$\pi'$
+de $\Gamma\Sequent\Delta$, c'est-à-dire
+$\Gamma\fCenter\Delta',!B\lif!C$.
+
+Supposons maintenant que $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\lexists[x][!B(x)], \Gamma' \fCenter \Delta, !A$
+\AxiomC{}
+\RightLabel{$\pi_3$}
+\Deduce$!A, !B(c), \Gamma' \fCenter \Delta$
+\RightLabel{$\LeftR{\lexists}$}
+\UnaryInf$!A, \lexists[x][!B(x)], \Gamma' \fCenter \Delta$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\CutCS}
+\BinaryInf$\lexists[x][!B(x)], \Gamma' \fCenter \Delta$
+\DisplayProof
+\]
+L'hypothèse de récurrence s'applique de nouveau à la
+coupure du diagramme suivant :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1[!B(c) \Sequent {}]$}
+\Deduce$\lexists[x][!B(x)], !B(c), \Gamma' \fCenter \Delta, !A$
+\AxiomC{}
+\LeftLabel{$\pi_3[\lexists[x][!B(x)] \Sequent {}]$}
+\Deduce$!A, \lexists[x][!B(x)], !B(c), \Gamma' \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\lexists[x][!B(x)], !B(c), \Gamma' \fCenter \Delta$
+\RightLabel{\LeftR{\lexists}}
+\UnaryInf$\lexists[x][!B(x)], \lexists[x][!B(x)], \Gamma' \fCenter \Delta$
+\DisplayProof
+\]
+La condition de variable propre de
+\LeftR{\lexists} dans~$\pi_2$ garantit que $c$
+n'apparaît ni dans $\lexists[x][!B(x)]$, ni dans
+$\Gamma'$, ni dans~$\Delta$.
+La même condition est donc satisfaite dans la règle
+reconstruite. On termine par la
+\olref[seq][inv]{prop:G3c-cont-adm}.
+
+\paragraph{Cas D.}
+Au moins une des preuves $\pi_1$, $\pi_2$ se termine
+par une règle~$R$ à deux prémisses où $!A$ n'est pas principal.
+Il y a six cas. Traitons celui où $\pi_2$ se termine
+par~$\RightR{\land}$; les autres sont analogues.
+
+Supposons que $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$\Gamma \fCenter \Delta', !B \land !C, !A$
+\AxiomC{}
+\RightLabel{$\pi_3$}
+\Deduce$!A, \Gamma \fCenter \Delta', !B$
+\AxiomC{}
+\RightLabel{$\pi_4$}
+\Deduce$!A, \Gamma \fCenter \Delta', !C$
+\RightLabel{$\RightR{\land}$}
+\BinaryInf$!A, \Gamma \fCenter \Delta', !B \land !C$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+L'hypothèse de récurrence s'applique aux !!{proof}s
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$\Gamma \fCenter \Delta', !B \land !C, !B, !A$
+\AxiomC{}
+\RightLabel{$\pi_3'$}
+\Deduce$!A, \Gamma \fCenter \Delta', !B \land !C, !B$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta', !B \land !C, !B$
+\DisplayProof
+\]
+et
+\[
+\AxiomC{}
+\RightLabel{$\pi_1''$}
+\Deduce$\Gamma \fCenter \Delta', !B \land !C, !C, !A$
+\AxiomC{}
+\RightLabel{$\pi_4'$}
+\Deduce$!A, \Gamma \fCenter \Delta', !B \land !C, !C$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta', !B \land !C, !C$
+\DisplayProof
+\]
+Les !!{proof}s de \Log{G3c} $\pi_1'$ et $\pi_1''$
+proviennent de~$\pi_1$ par affaiblissement sans
+augmentation de hauteur,
+\olref[seq][adm]{prop:weak-G3c-adm} :
+on ajoute respectivement $!B$ et $!C$ à droite.
+Les !!{proof}s $\pi_3'$ et~$\pi_4'$ proviennent de
+$\pi_3$ et de~$\pi_4$ par le même affaiblissement,
+en ajoutant $!B\land!C$ à droite.
+
+L'hypothèse de récurrence fournit des !!{proof}s
+$\pi_5$ et~$\pi_6$ dans \Log{G3c} de
+$\Gamma\fCenter\Delta',!B\land!C,!B$ et
+$\Gamma\fCenter\Delta',!B\land!C,!C$.
+On les réunit par la règle $\RightR{\land}$ pour
+obtenir $\Gamma\Sequent\Delta',!B\land!C,!B\land!C$ :
+\[
+\AxiomC{}
+\RightLabel{$\pi_5$}
+\Deduce$\Gamma \fCenter \Delta', !B \land !C, !B$
+\AxiomC{}
+\RightLabel{$\pi_6$}
+\Deduce$\Gamma \fCenter \Delta', !B \land !C, !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma \fCenter \Delta', !B \land !C, !B \land !C$
+\DisplayProof
+\]
+On applique enfin \olref[seq][inv]{prop:G3c-cont-adm}
+pour obtenir une !!{proof} de $\Gamma\Sequent\Delta$,
+c'est-à-dire $\Gamma\fCenter\Delta',!B\land!C$.
+
+\paragraph{Cas E : réduction des coupures.}
+Les preuves $\pi_1$ et $\pi_2$ se terminent toutes deux
+par des inférences où $!A$ est principal.
+Il y a six cas, un pour chaque !!{main operator} possible.
+Dans chacun d'eux, on remplace la coupure sur~$!A$
+par une ou plusieurs coupures sur ses sous-!!{formula}s,
+qui sont les formules actives des inférences précédentes.
+On parle de \emph{réduction} ou de \emph{conversion}
+de l'inférence de coupure.
+
+\begin{enumerate}
+\item Si $!A\ident\lnot!B$, la preuve $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta$
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\Gamma \fCenter \Delta, \lnot !B$
+\LeftSubproofLabel{$\pi_1$}
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$\Gamma \fCenter \Delta, !B$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !B, \Gamma \fCenter \Delta$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+L'hypothèse de récurrence permet de supprimer \CutCS de
+\[
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$\Gamma \fCenter \Delta, !B$
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+
+\item Si $!A\ident(!B\lor!C)$, la preuve $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$\Gamma \fCenter \Delta, !B, !C$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$\Gamma \fCenter \Delta, !B \lor !C$
+\LeftSubproofLabel{$\pi_1$}
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$!B, \Gamma \fCenter \Delta$
+\AxiomC{}
+\RightLabel{$\pi_2''$}
+\Deduce$!C, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$!B \lor !C, \Gamma \fCenter \Delta$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Considérons la !!{proof} qui se termine par \CutCS :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$\Gamma \fCenter \Delta, !B, !C$
+\AxiomC{}
+\RightLabel{$\pi_2'''$}
+\Deduce$!C, \Gamma \fCenter \Delta, !B$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta, !B$
+\DisplayProof
+\]
+La preuve $\pi_2'''$ est obtenue à partir de $\pi_2''$
+par affaiblissement sans augmentation de hauteur.
+Le rang de coupure est $<\cutr{\pi}$, puisque
+$\depth{!C}<\depth{!B\lor!C}$.
+L'hypothèse de récurrence fournit donc une !!{proof}
+$\pi_1''$ dans \Log{G3c} de
+$\Gamma\fCenter\Delta,!B$.
+Considérons ensuite
+\[
+\AxiomC{}
+\RightLabel{$\pi_1''$}
+\Deduce$\Gamma \fCenter \Delta, !B$
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$!B, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Le rang de cette nouvelle coupure est
+$=\depth{!B}<\depth{!B\lor!C}$.
+La récurrence donne donc une !!{proof} $\pi'$
+de $\Gamma\fCenter\Delta$.
+
+\item $!A\ident(!B\land!C)$. Exercice.
+
+\item Si $!A\ident(!B\lif!C)$, la preuve $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta, !C$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$\Gamma \fCenter \Delta, !B \lif !C$
+\LeftSubproofLabel{$\pi_1$}
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$\Gamma \fCenter \Delta, !B$
+\AxiomC{}
+\RightLabel{$\pi_2''$}
+\Deduce$!C, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$!B \lif !C, \Gamma \fCenter \Delta$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+La !!{proof} suivante se termine par une coupure de rang inférieur :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta, !C$
+\AxiomC{}
+\RightLabel{$\pi_2''[!B \Sequent {}]$}
+\Deduce$!C, !B, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$!B, \Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Dans la seconde prémisse, l'annotation
+$\pi_2''[!B\Sequent{}]$ indique l'affaiblissement
+de la preuve $\pi_2''$ par $!B$ à gauche, sans augmentation
+de hauteur. Les deux prémisses ont ainsi le même contexte.
+L'hypothèse de récurrence fournit une !!{proof}~$\pi_1''$
+de $!B,\Gamma\fCenter\Delta$.
+Considérons ensuite
+\[
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$\Gamma \fCenter \Delta, !B$
+\AxiomC{}
+\RightLabel{$\pi_1''$}
+\Deduce$!B, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Son rang de coupure est aussi plus petit que celui de~$\pi$.
+La récurrence fournit donc une !!{proof}~$\pi'$
+de $\Gamma\fCenter\Delta$ dans \Log{G3c}.
+
+\item Si $!A\ident\lforall[x][!B(x)]$, la preuve $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$\Gamma \fCenter \Delta, !B(c)$
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$\Gamma \fCenter \Delta, \lforall[x][!B(x)]$
+\LeftSubproofLabel{$\pi_1$}
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$!B(t), \lforall[x][!B(x)], \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lforall}}
+\UnaryInf$\lforall[x][!B(x)], \Gamma \fCenter \Delta$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+L'hypothèse de récurrence permet de supprimer \CutCS de
+\[
+\AxiomC{}
+\RightLabel{$\pi_1''$}
+\Deduce$!B(t), \Gamma \fCenter \Delta, \lforall[x][!B(x)]$
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$!B(t), \lforall[x][!B(x)], \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$!B(t), \Gamma \fCenter \Delta$
+\DisplayProof
+\]
+La preuve $\pi_1''$ provient de $\pi_1$, et non de~$\pi_1'$,
+par affaiblissement sans augmentation de hauteur.
+Le rang de cette coupure est inchangé, mais sa hauteur
+est plus petite. On obtient une !!{proof}~$\pi_2''$
+de $!B(t),\Gamma\fCenter\Delta$.
+
+La !!{proof}~$\pi_1'$ a pour séquent final
+$\Gamma\Sequent\Delta,!B(c)$, où $c$ est la variable
+propre d'une inférence~$\RightR{\lforall}$.
+Ainsi, $c$ n'apparaît ni dans~$!B(x)$, ni dans
+$\Gamma$, ni dans~$\Delta$.
+Nous supposons la preuve~$\pi$ régulière :
+la constante $c$ n'est la variable propre que de cette
+inférence universelle, et elle apparaît seulement
+au-dessus d'elle, donc dans~$\pi_1'$.
+Elle n'est la variable propre d'aucune inférence
+interne à cette sous-preuve.
+Puisque $c$ n'apparaît pas dans~$\pi_2$, elle ne figure
+pas dans~$t$. La régularité de toute la preuve garantit
+aussi que ce terme de la seconde branche ne contient
+aucune variable propre de la première.
+Par le \olref[seq][qua]{lem:subst-regular},
+$\Subst{\pi_1'}{t}{c}$ est une !!{proof} de
+$\Gamma\Sequent\Delta,!B(t)$.
+L'hypothèse de récurrence s'applique maintenant à
+\[
+\AxiomC{}
+\RightLabel{$\Subst{\pi_1'}{t}{c}$}
+\Deduce$\Gamma \fCenter \Delta, !B(t)$
+\AxiomC{}
+\RightLabel{$\pi_2''$}
+\Deduce$!B(t), \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Sa !!{formula} de coupure est~$!B(t)$ :
+son rang est strictement inférieur à celui de~$\pi$.
+
+\item Le cas $!A\ident\lexists[x][!B(x)]$ est laissé en exercice.
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Vérifier le sous-cas du cas~D dans la preuve du
+\olref{lem:cut-adm-G3c} où $!A$ n'est pas principal
+dans la dernière inférence de~$\pi_1$, qui se termine
+par~$\LeftR{\lif}$.
+Une partie de l'exercice consiste à énoncer précisément
+ce qu'il faut démontrer, c'est-à-dire la forme de $\pi$
+dans ce cas.
+\end{prob}
+
+\begin{prob}
+Vérifier le sous-cas du cas~C dans la preuve du
+\olref{lem:cut-adm-G3c} où $!A$ n'est pas principal
+dans la dernière inférence de~$\pi_1$, qui se termine
+par~$\LeftR{\lforall}$.
+\end{prob}
+
+\begin{prob}
+Vérifier le sous-cas du cas~E dans la preuve du
+\olref{lem:cut-adm-G3c} où $!A$ est principal
+dans les dernières inférences de $\pi_1$ et de $\pi_2$,
+et où $!A\ident(!B\land!C)$.
+\end{prob}
+
+\begin{prob}
+Vérifier le sous-cas du cas~E dans la preuve du
+\olref{lem:cut-adm-G3c} où $!A$ est principal
+dans les dernières inférences de $\pi_1$ et de $\pi_2$,
+et où $!A\ident\lexists[x][!B(x)]$.
+\end{prob}
+
+Dans le cas~E, la hauteur de coupure à laquelle on
+applique la récurrence peut dépasser celle de la preuve
+initiale. Par exemple, pour $!A\ident(!B\lif!C)$,
+nous avons transformé $\pi$ en une !!{proof} avec
+deux inférences \CutCS :
+\[
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$\Gamma \fCenter \Delta, !B$
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta, !C$
+\AxiomC{}
+\RightLabel{$\pi_2''[!B \Sequent {}]$}
+\Deduce$!C, !B, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$!B, \Gamma \fCenter \Delta$
+\RightSubproofLabel{$\pi_1''$}
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+La coupure supérieure, entre $\pi_1'$ et la preuve
+affaiblie $\pi_2''$, a un rang et une hauteur de coupure
+plus petits que ceux de~$\pi$.
+Mais la !!{proof}~$\pi_1''$ obtenue par récurrence
+peut avoir une hauteur supérieure.
+La coupure inférieure porte toutefois sur la
+!!{formula} $!B$, et son \emph{rang} reste inférieur
+à celui de~$\pi$. C'est pourquoi la récurrence
+lexicographique privilégie le rang.
+
+Le \olref{lem:cut-adm-G3c} permet de supprimer une unique
+inférence \CutCS la plus haute d'une !!{proof}.
+On peut éliminer un nombre quelconque de telles
+inférences en appliquant successivement le lemme
+aux sous-!!{proof}s qui se terminent par une coupure
+la plus haute.
+
+\begin{thm}\ollabel{thm:cut-elim-G3c-topmost}
+Toute !!{proof} $\pi$ dans $\Log{G3c}+\CutCS$
+peut être transformée en une !!{proof} dans~\Log{G3c}
+du même séquent final.
+\end{thm}
+
+\begin{proof}
+Raisonnons par récurrence sur le nombre~$n$
+d'inférences \CutCS dans~$\pi$.
+Si $n=0$, la preuve est déjà dans~\Log{G3c}.
+Sinon, choisissons la sous-!!{proof}~$\pi'$
+qui se termine par une coupure la plus haute.
+Elle ne contient qu'une seule inférence \CutCS,
+qui est sa dernière inférence.
+Par le \olref{lem:cut-adm-G3c}, on la transforme
+en une preuve~$\pi''$ sans coupure.
+Remplaçons $\pi'$ par $\pi''$ dans la preuve entière :
+la nouvelle !!{proof} contient $n-1$ inférences \CutCS,
+et l'hypothèse de récurrence s'applique.
+\end{proof}
+
+\end{document}

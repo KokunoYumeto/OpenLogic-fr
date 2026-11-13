@@ -22,11 +22,11 @@ plus bas dans la preuve achevée. Il est également utile d'anticiper
 la forme du séquent initial. Ici, celui-ci devra être de la forme
 $!A(a) \Sequent !A(a)$. Lorsque nous appliquerons les règles pour
 les quantificateurs à rebours, nous devrons donc choisir le même
-terme, que nous noterons $a$, pour les règles de $\lforall$ et
-de $\lexists$. Avec deux termes différents, nous aboutirions à un
-séquent tel que $!A(a) \Sequent !A(b)$, qui n'est pas dérivable en
-général.\footnote{Note de l'édition française : « en général » précise
-la portée du schéma ; certaines instances particulières sont dérivables.}
+terme pour les règles de $\lforall$ et de $\lexists$. Choisissons une
+constante $a$ absente du séquent final. Avec deux constantes distinctes
+$a$ et $b$, nous obtiendrions $!A(a) \Sequent !A(b)$, qui n'est pas
+dérivable en général. Un prédicat peut être vrai de l'objet désigné
+par $a$ et faux de celui désigné par $b$.
 
 Comme d'habitude, commençons par écrire :
 \begin{prooftree}
@@ -56,11 +56,11 @@ nous obtenons :
 \RightLabel{\LeftR{\lexists}}
 \UnaryInf$ \lexists[x] \lnot !A(x) \fCenter \lnot \lforall[x] !A(x)$
 \end{prooftree}
-Il nous reste à appliquer \LeftR{\forall}. Cette règle n'est pas
-soumise à la condition sur l'eigenvariable, et nous pouvons donc
-choisir le terme voulu. Puisque nous cherchons un séquent initial
-de la forme $!A(a) \Sequent !A(a)$, choisissons $a$ comme argument
-de $!A$ lors de cette application.
+Il nous reste à appliquer \LeftR{\forall}. On peut y choisir
+n'importe quel terme clos. Puisque nous cherchons le séquent initial
+$!A(a) \Sequent !A(a)$, prenons pour terme la constante $a$ déjà
+choisie : une constante est un terme clos. Nous obtenons alors
+l'arbre suivant :
 \begin{prooftree}
 \Axiom$!A(a) \fCenter !A(a)$
 \RightLabel{\LeftR{\lforall}}
@@ -104,7 +104,7 @@ Construire des !!{derivation}s des séquents suivants :
 \item $(\lforall[x][!A(x)] \lif !B) \Sequent \lexists[y][(!A(y) \lif !B)]$.
 \item $\Sequent \lexists[x][(!A(x) \lif \lforall[y][!A(y)])]$.
 \end{enumerate}
-(Tous requièrent la règle $\RightR{\Contraction}$.)
+(On pourra utiliser la règle $\RightR{\Contraction}$.)
 \end{prob}
 
 \end{document}

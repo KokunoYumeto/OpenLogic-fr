@@ -1,0 +1,231 @@
+% Part: model-theory
+% Chapter: lindstrom
+% Section: abstract-logics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{lin}{alg}
+\olsection{Logiques abstraites}
+
+\begin{defn}
+Une \emph{logique abstraite} est une paire
+$\tuple{L,\models_L}$, où~$L$ associe
+à chaque !!{language}~$\Lang{L}$ un
+ensemble $L(\Lang{L})$ d'énoncés,
+et où~$\models_L$ est une relation
+de satisfaction entre les
+!!{structure}s de~$\Lang{L}$ et les
+éléments de~$L(\Lang{L})$.
+En particulier, $\tuple{F,\models}$
+désigne la logique ordinaire du premier
+ordre : $F(\Lang{L})$ est l'ensemble
+des !!{sentence}s du premier ordre
+construites dans~$\Lang{L}$, et
+$\models$ est leur relation habituelle
+de satisfaction.
+\end{defn}
+
+Nous conservons la notion de
+!!{structure} d'un !!{language} du
+premier ordre. En revanche, nous
+n'imposons ni que les énoncés de
+$L(\Lang{L})$ soient construits
+de la manière habituelle à partir
+des symboles de~$\Lang{L}$, ni
+que leur satisfaction soit définie
+récursivement comme au premier ordre.
+Cette définition générale admet,
+par exemple, des conjonctions ou
+disjonctions infinies, des
+quantificateurs autres que~$\lexists$
+et~$\lforall$ (comme « il existe
+une infinité de~$x$ tels que… »),
+ou encore des préfixes infinis de
+quantificateurs. Pour distinguer
+ces énoncés des formules ordinaires,
+nous les noterons $!E,!F,\dots$;
+les lettres $!A,!B,\dots$ seront
+réservées aux !!{formula}s du
+premier ordre.
+
+\begin{defn}
+Notons $\Mod(L){!E}$ la classe
+$\Setabs{\Struct{M}}{\Struct{M}\models_L !E}$.
+Lorsque le langage doit être précisé,
+écrivons $\Mod[L](L){!E}$.
+Deux !!{structure}s $\Struct{M}$ et
+$\Struct{N}$ de~$\Lang{L}$ sont
+\emph{élémentairement équivalentes
+dans} $\tuple{L,\models_L}$,
+ce que l'on note
+$\Struct{M}\elemequiv[L]\Struct{N}$,
+si les mêmes énoncés de
+$L(\Lang{L})$ sont vrais dans
+l'une et dans l'autre.
+\end{defn}
+
+\begin{defn}
+Une logique abstraite
+$\tuple{L,\models_L}$ est dite
+\emph{normale} si elle possède
+les propriétés suivantes :
+\begin{enumerate}
+\item (\emph{Monotonie de~$L$})
+  Si $\Lang{L}\subseteq\Lang{L}'$,
+  alors $L(\Lang{L})\subseteq
+  L(\Lang{L}')$; pour un énoncé
+  du plus petit langage, l'expansion
+  d'une structure aux symboles
+  supplémentaires ne change pas
+  sa vérité.\footnote{Complément éditorial : la source énonce ici l'inclusion des ensembles d'énoncés. Nous explicitons aussi l'invariance de leur vérité lorsque l'on ajoute des symboles inutilisés.}
+\item (\emph{Propriété d'expansion,
+  ou dépendance finie}) Pour tout
+  $!E\in L(\Lang{L})$, il existe
+  un sous-langage \emph{fini}
+  $\Lang{L}'\subseteq\Lang{L}$
+  et un énoncé $!E'\in L(\Lang{L}')$
+  tels que, pour toute
+  $\Lang{L}$-structure $\Struct{M}$,
+  \[
+    \Struct{M}\models_L !E
+    \quad\text{si et seulement si}\quad
+    \Struct{M}|_{\Lang{L}'}\models_L !E'.
+  \]
+  Ainsi, deux
+  structures ayant le même réduit
+  à~$\Lang{L}'$ satisfont toutes
+  deux~$!E$ ou aucune ne le satisfait.\footnote{Complément éditorial : outre la dépendance de la vérité à un nombre fini de symboles, nous demandons un représentant dans ce sous-langage fini. La source ne formule que la dépendance, mais utilise ensuite un tel représentant dans les preuves.}
+\item (\emph{Invariance par
+  isomorphisme}) Si
+  $\Struct{M}\models_L !E$ et
+  $\Struct{M}\simeq\Struct{N}$,
+  alors $\Struct{N}\models_L !E$.
+\item (\emph{Invariance par
+  renommage}) Un renommage bijectif
+  des symboles, préservant leur
+  nature et leur arité, transporte
+  les énoncés et leurs modèles :
+  si $\Lang{L}'$ est le langage
+  renommé, $!E'$ le renommage de
+  $!E$ et $\Struct{M}'$ la structure
+  correspondante, alors
+  $\Struct{M}\models_L !E$ si et
+  seulement si
+  $\Struct{M}'\models_L !E'$.
+\item (\emph{Clôture booléenne})
+  Pour tout $!E\in L(\Lang{L})$,
+  il existe un énoncé~$!F$ du même
+  langage tel que
+  $\Struct{M}\models_L !F$ si et
+  seulement si
+  $\Struct{M}\not\models_L !E$.
+  Pour $!E$ et~$!F$, il existe
+  aussi un énoncé~$!G$ tel que
+  $\Mod(L){!G}=\Mod(L){!E}\cap
+  \Mod(L){!F}$. La logique représente
+  de même les énoncés atomiques
+  clos du premier ordre et les autres
+  connecteurs booléens.
+\item (\emph{Propriété des
+  quantificateurs}) Soient une
+  constante $c\in\Lang{L}$,
+  $!E\in L(\Lang{L})$ et
+  $\Lang{L}'=\Lang{L}\setminus\{c\}$.
+  Il existe un énoncé
+  $!F\in L(\Lang{L}')$ tel que
+  \[
+  \Mod[L'](L){!F}=
+    \Setabs{\Struct{M}}{
+    \Expan{M}{a}\in\Mod[L](L){!E}
+    \text{ pour un }a\in\Domain{M}},
+  \]
+  où $\Expan{M}{a}$ est l'expansion
+  de~$\Struct{M}$ qui interprète~$c$
+  par~$a$.\footnote{Correction éditoriale : l'énoncé $!F$ appartient au langage réduit $\Lang{L}'$, et non au langage initial indiqué par la source, puisque ses modèles sont des $\Lang{L}'$-structures.}
+\item (\emph{Propriété de
+  relativisation}) Soient
+  $!E\in L(\Lang{L})$ et des
+  symboles nouveaux $R,c_1,\dots,c_n$,
+  où~$R$ a $n+1$ places. Il existe
+  un énoncé
+  $!F\in L(\Lang{L}\cup
+  \{R,c_1,\dots,c_n\})$, appelé
+  \emph{relativisation} de~$!E$
+  à $\Atom{R}{x,c_1,\dots,c_n}$,
+  tel que, pour toute expansion
+  $\Expan{M}{X,b_1,\dots,b_n}$
+  où
+  \[
+    D=\Setabs{a\in\Domain{M}}{
+      (a,b_1,\dots,b_n)\in X}
+  \]
+  est non vide et contient les valeurs de toutes les constantes de~$\Lang{L}$ ; il définit alors le domaine d'une
+  sous-structure~$\Struct{N}$
+  de~$\Struct{M}$, on ait
+  \[
+    \Expan{M}{X,b_1,\dots,b_n}
+      \models_L !F
+    \quad\text{si et seulement si}\quad
+    \Struct{N}\models_L !E.
+  \]
+  Ici $R$ est interprété par
+  $X\subseteq\Domain{M}^{n+1}$
+  et $c_i$ par~$b_i$; la
+  sous-structure induite est celle
+  de l'\olref[bas][sub]{rem:substructure}.\footnote{Correction éditoriale : le prédicat nouveau $R$ est interprété par $X$ dans l'expansion ; il n'a pas d'interprétation dans la structure de base $\Struct{M}$, contrairement à la notation de la source.}
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+Soient deux logiques abstraites
+$\tuple{L_1,\models_{L_1}}$ et
+$\tuple{L_2,\models_{L_2}}$.
+La seconde est \emph{au moins aussi
+expressive} que la première, ce
+que l'on note
+$\tuple{L_1,\models_{L_1}}
+\leq\tuple{L_2,\models_{L_2}}$,
+si, pour tout !!{language}~$\Lang{L}$
+et tout $!E\in L_1(\Lang{L})$,
+il existe $!F\in L_2(\Lang{L})$
+tel que
+$\Mod[L](L_1){!E}=
+\Mod[L](L_2){!F}$.
+Les deux logiques sont
+\emph{équivalentes} si chacune
+est au moins aussi expressive
+que l'autre.
+\end{defn}
+
+\begin{rem}
+La logique du premier ordre
+$\tuple{F,\models}$ est normale.
+Les propriétés ci-dessus sont
+pour l'essentiel immédiates dans
+ce cas. La dépendance finie tient
+au fait que la vérité d'un énoncé
+ne dépend que de l'interprétation
+de ses symboles. Pour relativiser
+$!E$ à $\Atom{R}{x,c_1,\dots,c_n}$,
+on relativise récursivement ses
+sous-formules : une quantification
+$\lforall[x][!F]$ devient
+$\lforall[x][(\Atom{R}{x,c_1,\dots,c_n}
+\lif !F)]$, où~$!F$ a déjà été
+relativisée. Les autres cas se
+traitent de la même manière ; $\lexists[x][!F]$ devient $\lexists[x][(\Atom{R}{x,c_1,\dots,c_n}\land !F)]$, avec $!F$ déjà relativisée.
+Enfin, si $\tuple{L,\models_L}$
+est normale, une récurrence sur
+les !!{formula}s du premier ordre
+montre que
+$\tuple{F,\models}\leq
+\tuple{L,\models_L}$.
+On peut donc, à équivalence
+sémantique près, représenter
+tout énoncé du premier ordre
+dans chaque logique normale.\footnote{Précision éditoriale : les opérations de normalité fournissent des représentants sémantiquement équivalents des énoncés du premier ordre. Leur identité syntaxique avec des éléments de $L(\Lang{L})$ ne découle pas de la seule comparaison d'expressivité ; elle requerrait un choix de représentation.}
+\end{rem}
+
+\end{document}

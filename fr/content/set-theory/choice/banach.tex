@@ -1,0 +1,150 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{choice}{banach}
+\olsection{Le paradoxe de Banach--Tarski}
+
+Nous pourrions aussi tenter de justifier
+l'axiome du choix, comme Boolos a tenté
+de justifier le remplacement, en invoquant
+des considérations \emph{extrinsèques}
+(voir la \olref[replacement][extrinsic]{sec}).
+Après tout, l'adoption du choix a de
+nombreuses conséquences souhaitables :
+on peut comparer tous les cardinaux,
+bien ordonner tous les ensembles,
+traiter les cardinaux comme une sorte
+particulière d'ordinaux, et ainsi de suite.
+
+On affirme parfois, cependant, que le choix
+a des conséquences \emph{indésirables}.
+Cette objection s'appuie surtout sur un
+résultat de \cite{BanachTarski1924}.
+
+\begin{thm}[Paradoxe de Banach--Tarski
+(dans $\ZFC$)]
+Toute boule de l'espace euclidien de
+dimension trois peut être décomposée en
+un nombre fini de parties que l'on peut
+réassembler, par rotations et translations,
+pour former deux copies de cette boule.\footnote{
+Note de l'édition française : l'original
+dit seulement «~toute boule~» ;
+nous explicitons l'espace euclidien
+à trois dimensions de cet énoncé.}
+\end{thm}
+\noindent
+À première vue, c'est étonnant.
+Les deux boules ont évidemment
+\emph{deux fois} le volume de la boule
+initiale. Pourtant, les déplacements
+rigides — rotations et translations —
+ne changent pas le volume. Le paradoxe
+de Banach--Tarski semble donc nous
+permettre de faire apparaître de la
+matière comme par magie.
+
+Il y a pire.\footnote{Voir
+\citet[Theorem 3.12]{Wagon2016}.}
+Un raisonnement analogue montre
+qu'on peut découper un petit pois
+en un nombre fini de parties et
+les réassembler, par rotations et
+translations, en un objet ayant
+la forme et la taille de Big Ben.
+
+Rien de tout cela, cependant, ne
+se démontre dans $\ZF$ seule.\footnote{
+Le paradoxe de Banach--Tarski peut
+néanmoins être démontré à partir
+de principes strictement plus faibles
+que l'axiome du choix ; voir
+\citet[303]{Wagon2016}.}
+Il nous faut donc choisir : rejeter
+l'axiome du choix, ou apprendre à vivre
+avec ce «~paradoxe~».
+
+Nous allons suggérer qu'il faut apprendre
+à vivre avec lui. Nous pensons même
+qu'il n'a pas grand-chose de paradoxal.
+En particulier, nous ne voyons pas
+pourquoi il serait plus ou moins
+paradoxal que les résultats
+suivants :\footnote{
+\citet[276--7]{Potter2004},
+\citet[16]{Weston2003} et
+\citet[31, 308--9]{Wagon2016}
+avancent des remarques semblables
+à partir d'autres exemples.}
+\begin{enumerate}
+	\item L'intervalle $(0,1)$ a autant
+	de points que $\Real$.
+	\\\emph{Démonstration} : considérons
+	$\tan(\pi(r-\nicefrac{1}{2}))$.\footnote{
+	Note de l'édition française : une
+	parenthèse fermante supplémentaire
+	figure dans la formule de l'original.}
+	\item Une droite et un carré ont
+	autant de points.
+	\\Voir la \olref[his][set][pathology]{sec}
+	et la \olref[his][set][cantorplane]{sec}.
+	\item Il existe des courbes qui
+	remplissent l'espace.
+	\\Voir la \olref[his][set][pathology]{sec}
+	et la \olref[his][set][hilbertcurve]{sec}.
+\end{enumerate}
+Aucun de ces trois résultats ne requiert
+l'axiome du choix. Nous les considérons
+aujourd'hui comme de beaux résultats
+mathématiques, certes surprenants.
+Peut-être devrions-nous adopter la
+même attitude envers le paradoxe
+de Banach--Tarski.
+
+Une précision technique s'impose
+néanmoins, mais il suffit de garder
+la tête froide. Les déplacements
+rigides préservent le volume.
+Par conséquent, les cinq\footnote{
+Nous avons énoncé le paradoxe avec
+«~un nombre fini de parties~».
+En fait, \citet{Robinson1947} a montré
+que la décomposition peut se faire
+en \emph{cinq} parties, mais pas moins.
+Pour une démonstration, voir
+\citet[pp.~66--7]{Wagon2016}.}
+parties obtenues en décomposant
+la boule ne peuvent pas être
+\emph{toutes mesurables}.
+En gros, on ne peut donc attribuer
+un volume au sens usuel à chacune
+de ces parties. Il faut les imaginer
+comme des «~éparpillements infinis~»
+de points impossibles à représenter.
+Il est peut-être «~étrange~»
+de concevoir de tels ensembles
+«~infiniment dispersés~».
+Mais leur existence semble découler
+de l'injonction, exprimée par
+\stagesacc{}, de former \emph{toutes
+les collections possibles}
+d'ensembles déjà disponibles.
+
+Si tout cela ne convainc pas,
+voici un dernier argument,
+extrinsèque, en faveur de
+l'acceptation du paradoxe
+de Banach--Tarski : il entraîne
+immédiatement la meilleure
+plaisanterie mathématique
+de tous les temps.
+\begin{enumerate}
+	\item[] \emph{Question}.
+	Quelle est l'anagramme de
+	«~Banach--Tarski~» ?
+	\item[] \emph{Réponse}.
+	«~Banach--Tarski Banach--Tarski~».
+\end{enumerate}
+
+\end{document}

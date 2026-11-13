@@ -14,9 +14,9 @@
 
 \begin{explain}
 Un système de !!{derivation}, tel que le calcul des séquents, est
-\emph{correct} s'il ne permet pas de !!{derive} des résultats qui
-ne sont pas effectivement vrais. La correction constitue ainsi une
-garantie pour un système de !!{derivation}. Selon la notion syntaxique
+\emph{correct} si les conclusions qu'il permet de !!{derive} sont
+des conséquences logiques de leurs hypothèses. La correction constitue
+ainsi une garantie pour un système de !!{derivation}. Selon la notion syntaxique
 considérée, nous souhaitons notamment savoir que :
 \begin{enumerate}
 \item tout énoncé~$!A$ !!{derivable} sans hypothèses est
@@ -68,10 +68,10 @@ $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$.
 également valide, puisque $\ltrue$ est toujours vrai.}{}
 \iftag{prvFalse}{De même, $\lfalse \Sequent \quad$ est valide,
 puisque $\lfalse$ est toujours faux.}{}
-\footnote{Note de l'édition française : les cas des séquents initiaux
-pour les constantes logiques, lorsqu'ils sont présents, ainsi que
-les cas de l'échange et de la contraction ci-dessous, sont explicités ;
-la source ne les traite pas séparément.}
+%
+%
+%
+%
 
 Si le nombre d'inférences est strictement positif, distinguons les cas
 selon la dernière inférence. Par hypothèse de récurrence, ses prémisses
@@ -114,10 +114,10 @@ conditions de satisfaction de la prémisse et de la conclusion sont
   Nous avons donc soit $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!C}$
   pour un certain $!C \in \Theta$, soit
   $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!C}$ pour un certain $!C \in \Xi$.
-  Ainsi, $\Theta \Sequent \Xi$ est valide.\footnote{Note de l'édition
-  française : l'égalité $\Theta = !A, \Gamma$ donnée par la source
-  ne vaut que pour l'affaiblissement à gauche. L'argument est explicité
-  pour les deux règles.}
+  Ainsi, $\Theta \Sequent \Xi$ est valide.
+%
+%
+%
 \item La dernière inférence est \LeftR{\lnot}. Sa prémisse est
   $\Gamma \Sequent \Delta, !A$ et sa conclusion est
   $\lnot !A, \Gamma \Sequent \Delta$. La !!{derivation} se termine par :
@@ -177,9 +177,9 @@ conditions de satisfaction de la prémisse et de la conclusion sont
   \iftag{FOL}{$\Struct M$}{$\pAssign{v}$} satisfait donc
   $!A \land !B, \Gamma \Sequent \Delta$.
   Puisque \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} était arbitraire,
-  $!A \land !B, \Gamma \Sequent \Delta$ est valide.\footnote{Note de
-  l'édition française : la conclusion de cet argument rétablit
-  la formule principale $!A \land !B$, omise à cet endroit dans la source.}
+  $!A \land !B, \Gamma \Sequent \Delta$ est valide.
+%
+%
   Le cas où $!A \land !B$ est introduit à partir de $!B$ se traite
   de même, en remplaçant $!A$ par $!B$.
 \item La dernière inférence est \RightR{\lor}. Il y a deux variantes :
@@ -332,9 +332,9 @@ Considérons maintenant les inférences à deux prémisses.
   $\Gamma \Sequent \Delta$, et satisfait alors aussi la conclusion.
   Dans le cas (b), pour satisfaire la prémisse de droite,
   \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} doit satisfaire
-  $\Pi \Sequent \Lambda$.\footnote{Note de l'édition française :
-  le signe de différence ensembliste de la source est remplacé ici
-  par le signe de séquent, conformément au raisonnement.}
+  $\Pi \Sequent \Lambda$.
+%
+%
   Là encore, \iftag{FOL}{$\Struct{M}$}{$\pAssign{v}$} satisfait la conclusion.
 \item La dernière inférence est \RightR{\land}. Alors $\pi$ se termine par :
   \begin{prooftree}

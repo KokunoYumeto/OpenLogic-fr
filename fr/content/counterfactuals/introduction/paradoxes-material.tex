@@ -1,0 +1,61 @@
+% Partie : counterfactuals
+% Chapitre : introduction
+% Section : paradoxes-material
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{int}{par}
+
+\olsection{Paradoxes du conditionnel matériel}
+
+C.~I. Lewis fut l'un des premiers à critiquer l'emploi de
+$!A \lif !B$ pour symboliser les énoncés anglais de la forme
+« If \dots then \dots ». Il visait notamment le conditionnel
+matériel des \emph{Principia Mathematica} de Whitehead et Russell,
+qui lisaient $\lif$ « implique ». Lewis objectait à juste titre
+que, si $\lif$ signifiait « implique », toute proposition
+fausse~$p$ impliquerait que $p$ implique~$q$, puisque
+$p \lif (p \lif q)$ est vraie lorsque~$p$ est fausse ; de même,
+toute proposition vraie~$q$ impliquerait que $p$ implique~$q$,
+puisque $q \lif (p \lif q)$ est vraie lorsque~$q$ est vraie.
+
+L'\emph{implication} au sens de la conséquence logique est une
+relation entre des !!{formula}s ou des énoncés, et non le
+connecteur du conditionnel matériel. Pour éviter la confusion, il
+vaut donc mieux ne pas lire $\lif$ « implique ».\footnote{La
+  lecture de « $\lif$ »
+  comme « implique » reste courante chez les mathématiciens et les
+  informaticiens. Les philosophes emploient parfois « seulement si »
+  (en anglais, « only if ») pour éviter la confusion relevée par
+  Lewis.} Dès que cette distinction est faite, l'objection précise
+de Lewis disparaît : $p$ n'« implique » pas~$q$ simplement parce
+que l'énoncé anglais représenté par~$p$ se trouve être faux. Pour
+savoir si $p \Entails q$, il faut considérer \emph{toutes} les
+!!{valuation}s ; on a $p \Entails/ q$ même si~$p$ représente un
+énoncé qui, de fait, est faux.
+
+Il reste pourtant quelque chose d'étrange dans des conditionnels de
+la forme « si \dots, alors \dots », comme l'exemple de Lewis :
+\begin{quote}
+Si la Lune est faite de fromage vert, alors $2+2=4$.
+\end{quote}
+Il en va de même des inférences suivantes :
+\begin{quote}
+  La Lune n'est pas faite de fromage vert. Donc, si la Lune est faite
+  de fromage vert, alors $2+2=4$.
+
+  $2+2 = 4$. Donc, si la Lune est faite de fromage vert, alors
+  $2+2=4$.
+\end{quote}
+Pourtant, si « si \dots, alors \dots » exprimait simplement
+$\lif$, cet énoncé serait vrai sans difficulté et ces inférences
+seraient valides sans difficulté.
+
+Une autre difficulté vient de la tautologie $(!A \lif !B) \lor
+(!B \lif !A)$. Elle suggérerait que, si l'on choisissait au hasard
+deux énoncés déclaratifs~$S$ et $T$ dans un journal, l'énoncé
+« Si $S$, alors $T$, ou bien si $T$, alors $S$ » devrait être vrai.
+
+\end{document}

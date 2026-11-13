@@ -1,0 +1,75 @@
+% Part: first-order-logic
+% Chapter: beyond
+% Section: many-sorted-logic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{byd}{msl}
+
+\olsection{Logique multi-sortée}
+
+En logique du premier ordre, les variables et les quantificateurs
+parcourent un unique !!{domain}. Il est pourtant souvent utile de
+disposer de plusieurs !!{domain}s disjoints : on peut, par exemple,
+vouloir un !!{domain} de nombres, un autre d'objets géométriques,
+un autre de fonctions des nombres vers les nombres, un autre encore
+de groupes abéliens, et ainsi de suite.
+
+La logique multi-sortée fournit un tel cadre. On commence par une liste
+de « sortes » : la sorte d'un objet indique le « !!{domain} »
+auquel il est censé appartenir. On dispose alors de !!{variable}s et
+de quantificateurs pour chaque sorte et, en général, d'une relation
+d'!!{identity} pour chaque sorte. Les fonctions et les relations
+sont elles aussi typées selon les sortes des objets qu'elles peuvent
+recevoir comme arguments ; les fonctions ont aussi une sorte de résultat. Pour le reste, on conserve les règles
+usuelles de la logique du premier ordre, en répétant les règles des
+quantificateurs pour chaque sorte.
+
+Par exemple, pour étudier les relations internationales, nous
+pourrions choisir un langage comportant deux sortes d'objets : les
+citoyens français et les citoyens allemands. Nous pourrions avoir une
+relation unaire « boit du vin » pour les objets de la première sorte,
+une autre, « mange de la saucisse », pour ceux de la seconde, et une
+relation binaire « forme un couple marié multinational » dont le
+premier argument est de la première sorte et le second de la seconde.
+Si les variables $a$, $b$, $c$ parcourent les citoyens français et
+$x$, $y$, $z$ les citoyens allemands, alors
+\[
+\lforall[a][\lforall[x][(\Atom{\Obj{MarriedTo}}{a,x} \lif
+(\Atom{\Obj{DrinksWine}}{a} \lor \lnot \Atom{\Obj{EatsWurst}}{x}))]]
+\]
+affirme que, si une personne française est mariée à une personne
+allemande, alors la première boit du vin ou la seconde ne mange pas
+de saucisse.\footnote{Correction éditoriale : nous rétablissons dans l'affichage les arguments du quantificateur intérieur, mal délimités dans la source, ainsi que la parenthèse extérieure omise. Pour obtenir des sortes disjointes, on distingue ici les objets par leur étiquette de sorte ; une même personne ayant les deux nationalités peut ainsi avoir une copie dans chaque sorte.}
+
+On peut traduire naturellement la logique multi-sortée en logique du
+premier ordre : on réunit tous les objets de ses différents
+!!{domain}s dans un seul !!{domain} du premier ordre, on utilise des
+!!{predicate}s unaires pour distinguer les sortes et l'on relativise
+les quantificateurs. Ainsi, le langage du premier ordre correspondant
+à l'exemple précédent aurait, outre les autres relations décrites,
+les !!{predicate}s unaires « $\Obj{German}$ » et
+« $\Obj{French}$ », les contraintes de sorte sur les autres
+symboles ayant été effacées. Un quantificateur portant sur une sorte
+$\lforall[x][!A]$, où $x$ est !!a{variable} de la sorte des citoyens allemands,
+se traduit par
+\[
+\lforall[x][(\Atom{\Obj{German}}{x} \lif !A)].
+\]
+Il faut ajouter des axiomes garantissant que les sortes sont
+distinctes, par exemple
+$\lforall[x][\lnot (\Atom{\Obj{German}}{x} \land
+  \Atom{\Obj{French}}{x})]$, ainsi que des axiomes assurant que
+« boit du vin » ne vaut que des objets qui satisfont le prédicat
+$\Atom{\Obj{French}}{x}$, et ainsi de suite. Avec ces conventions
+et ces axiomes, on montre sans difficulté que les !!{sentence}s de
+la logique multi-sortée se traduisent en !!{sentence}s du premier
+ordre, et ses !!{derivation}s en !!{derivation}s du premier ordre.
+De même, les !!{structure}s multi-sortées se « traduisent » en
+!!{structure}s du premier ordre correspondantes et réciproquement;
+on obtient donc aussi un théorème de complétude pour la logique
+multi-sortée.\footnote{Précision éditoriale : dans cet exemple à deux sortes, la correspondance avec l'union disjointe suppose aussi que chaque sorte soit non vide et que leur réunion soit le domaine. Les constantes doivent appartenir à leur sorte ; les fonctions doivent envoyer les tuples d'arguments des sortes prescrites dans leur sorte de résultat. Un existentiel se relativise par $\lexists[x][(\Atom{\Obj{German}}{x}\land !A)]$, avec une conjonction. Ces conditions complètent l'esquisse de la source.}
+
+\end{document}

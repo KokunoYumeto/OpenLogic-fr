@@ -1,0 +1,46 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: composition
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{com}
+\olsection{Les fonctions \texorpdfstring{$\lambd$}{λ}-définissables sont fermées par composition}
+
+\begin{lem}
+Les fonctions totales $\lambd$-définissables sont
+fermées par composition.
+\end{lem}
+
+\begin{proof}
+Supposons que $f$ soit définie par composition
+à partir de $h$, $g_0$, \dots,~$g_{k-1}$.
+Si $h$, $g_0$, \dots,~$g_{k-1}$ sont respectivement
+définies par les termes $H$, $G_0$, \dots,~$G_{k-1}$,
+nous cherchons un terme~$F$ qui définisse~$f$.
+Posons
+\[
+F(x_0, \dots, x_{l-1}) = H(G_0(x_0, \dots, x_{l-1}),
+\dots, G_{k-1}(x_0, \dots, x_{l-1})).
+\]
+Lorsque toutes les valeurs intermédiaires existent,
+ce terme donne bien la valeur de la composition.
+La notation du lambda-calcul se prête ainsi
+à la représentation de la composition.
+\end{proof}
+
+Pour des fonctions partielles, la composition exige que tous les
+arguments de la fonction extérieure soient définis. Posons
+$\Omega\ident(\lambd[z][zz])(\lambd[z][zz])$,
+$H(v)\ident\num{0}$ et $G_0(u)\ident\Omega$.
+La composition stricte de ces fonctions est indéfinie partout,
+tandis que $H(G_0(x))$ se réduit à~$\num{0}$. La fermeture de la
+classe des fonctions partielles $\lambd$-définissables découle
+des deux théorèmes de représentation
+(\olref[lam][rep][par]{thm:partial-recursive-lambda} et
+\olref[lam][rep][ldr]{thm:lambda-computable}) et de la clôture
+des fonctions récursives partielles par composition.
+
+\end{document}

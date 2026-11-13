@@ -1,0 +1,52 @@
+% Partie : applied-modal-logics
+% Chapitre : epistemic-logic
+% Section : relational-models
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{el}{rel}
+
+\olsection{Modèles relationnels}
+
+La notion sémantique de base des logiques épistémiques est la même
+que celle des logiques modales ordinaires. Un modèle relationnel
+comprend toujours un ensemble de mondes et une valuation qui détermine
+quelles !!{propositional variable}s sont vraies en quels mondes.
+Si nous ne considérons qu'un seul agent, nous avons, comme d'habitude,
+une seule relation d'accessibilité. Dans une logique épistémique à
+plusieurs agents, cette relation est remplacée par une famille de
+relations d'accessibilité, une pour chaque~$a$ de notre ensemble de
+symboles d'agents~$G$.
+
+Un \emph{modèle relationnel} comprend un ensemble de mondes reliés
+par des relations d'accessibilité binaires, une pour chaque agent,
+ainsi qu'une valuation qui détermine quelles
+!!{propositional variable}s sont vraies en quels mondes.
+
+\begin{defn}
+  Un \emph{modèle} du langage épistémique à plusieurs agents est un
+  triplet $\mModel{M} = \tuple{W, R, V}$, où :
+  \begin{enumerate}
+  \item $W$ est un ensemble non vide de « mondes » ;
+  \item pour chaque $a \in G$, ${R}_a$ est une relation
+  d'accessibilité binaire sur~$W$ ; la deuxième composante du triplet
+  désigne cette famille de relations ;
+  \item $V$ est une fonction qui associe à chaque
+  !!{propositional variable}~$p$ un ensemble $V(p)$ de mondes possibles.
+  \end{enumerate}
+  Lorsque $R_a ww'$ est vérifiée, on dit que $w'$ est
+  \emph{accessible par l'agent a depuis}~$w$.
+  Lorsque $w \in V(p)$, on dit que $p$ est \emph{vraie en}~$w$.
+\end{defn}
+
+Le fonctionnement est celui de la logique modale normale, avec
+plusieurs relations d'accessibilité. Pour un agent donné, sa relation
+d'accessibilité représente généralement un aspect de son état
+d'information. Par exemple, on interprète souvent $R_a ww'$ en
+disant que $w'$ est compatible avec l'information dont dispose~$a$
+en~$w$. Autrement dit, en~$w$, cet agent ne peut pas distinguer le
+monde $w$ du monde~$w'$.
+
+\end{document}

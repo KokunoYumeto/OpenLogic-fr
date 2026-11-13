@@ -93,15 +93,15 @@ $A \times B$ a $n\cdot m$ éléments.
 \end{prop}
 
 \begin{proof}
-Pour chaque !!{element}~$x$ de~$A$, il y a $m$ !!{element}s
-de la forme $\tuple{x, y} \in A \times B$.
-Posons $B_x = \Setabs{\tuple{x, y}}{y \in B}$.
-Puisque $x_1 \neq x_2$ entraîne
-$\tuple{x_1, y} \neq \tuple{x_2, y}$, on a
-$B_{x_1} \cap B_{x_2} = \emptyset$.
-Si $A = \{x_1, \dots, x_n\}$, alors
-$A \times B = B_{x_1} \cup \dots \cup B_{x_n}$,
-qui possède donc $n\cdot m$ !!{element}s.
+Si $n=0$ ou $m=0$, le produit est vide. Supposons $n,m>0$.
+Pour $x\in A$, posons $B_x = \Setabs{\tuple{x, y}}{y \in B}$.
+L'application $y\mapsto \tuple{x,y}$ est une bijection de $B$
+sur $B_x$, qui a donc $m$ !!{element}s.
+Si $x_1\neq x_2$, les couples $\tuple{x_1,y_1}$ et $\tuple{x_2,y_2}$
+sont distincts quels que soient $y_1,y_2\in B$.
+Ainsi, les $B_x$ sont deux à deux disjoints. Pour $A=\{x_1,\dots,x_n\}$,
+le produit $A \times B$ est leur réunion $B_{x_1} \cup \dots \cup B_{x_n}$.
+Il a donc $n\cdot m$ !!{element}s.
 
 Pour le visualiser, disposons les !!{element}s de~$A \times B$
 dans un tableau :
@@ -129,23 +129,23 @@ finie d'!!{element}s de~$A$. Une telle suite peut être considérée
 comme un $n$-uplet d'!!{element}s de~$A$. Par exemple, si
 $A = \{a, b, c\}$, la suite «~$bac$~» peut être considérée
 comme le triplet~$\tuple{b, a, c}$.
-Les mots, c'est-à-dire les suites de symboles, jouent un rôle
-essentiel en informatique. Par convention, on considère les
-!!{element}s de~$A$ comme des suites de longueur~$1$,
-et $\emptyset$ comme la suite de longueur~$0$.
-Avec ce codage, l'ensemble des représentations de \emph{tous}
-les mots sur~$A$ s'écrit alors\footnote{Précision de l'édition
-française : pour un alphabet arbitraire, ce codage peut identifier
-des mots de longueurs différentes. Par exemple, si le symbole
-$\emptyset$ appartient à $A$, le mot vide et le mot d'une seule
-lettre $\emptyset$ ont la même représentation. Pour représenter
-les mots sans ambiguïté, on associe en général à chaque
-représentation la longueur du mot. La formule de l'original
-est conservée ci-dessous comme description des représentations
-non munies de leur longueur.}
+Les suites finies de symboles jouent un rôle essentiel en informatique.
+Un élément de $A^n$ code un mot de longueur $n\ge 1$. On utilise
+$\emptyset$ comme code du mot vide. Pour identifier le mot à partir
+de son code, on conserve aussi sa longueur. On peut ainsi représenter
+l'ensemble des mots sur~$A$ par l'ensemble
 \[
-A^* = \{\emptyset\} \cup A \cup A^2 \cup A^3 \cup \dots
+A^* = \{\tuple{0,\emptyset}\}
+      \cup \bigcup_{n\ge 1} \bigl(\{n\}\times A^n\bigr).
 \]
+Si l'on omet la longueur, l'ensemble des codes obtenus est
+$\{\emptyset\} \cup A \cup A^2 \cup A^3 \cup \dots$.
+Par exemple, lorsque $\emptyset\in A$, le code $\emptyset$
+apparaît pour le mot vide et pour le mot d'une lettre
+dont le symbole est $\emptyset$. Les longueurs $0$ et $1$
+distinguent les deux mots.
+%
+%
 \end{ex}
 
 \end{document}

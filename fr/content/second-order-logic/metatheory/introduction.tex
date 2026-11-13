@@ -1,0 +1,71 @@
+% Part: second-order-logic
+% Chapter: metatheory
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{met}{int}
+
+\olsection{Introduction}
+
+La logique du premier ordre possède plusieurs
+propriétés remarquables. Nous savons qu'elle
+n'est pas décidable, mais elle est du moins
+axiomatisable. Il existe en effet des systèmes
+de preuve corrects et complets pour cette
+logique : ils définissent une relation de
+!!{derivability}~$\Proves$ telle que, pour
+tout ensemble d'!!{sentence}s~$\Gamma$ et
+tout !!{sentence}~$!A$,
+$\Gamma\Entails !A$ si et seulement si
+$\Gamma\Proves !A$.
+En particulier, pour un langage fixé dont
+les symboles sont effectivement codés, les
+!!{sentence}s valides du premier ordre sont
+!!{computably enumerable}s. Il existe une
+fonction calculable
+$f\colon\Nat\to\Sent[L]$ dont les valeurs
+sont exactement les !!{sentence}s valides de
+$\Lang{L}$. En effet, on peut énumérer les
+!!{derivation}s sans hypothèses, puis associer à chacune de
+celles qui concluent un seul !!{sentence}
+cet !!{sentence}. La logique du second ordre
+est plus expressive que celle du premier ordre;
+ses validités sont donc en général plus difficiles
+à caractériser. Nous montrerons même que, sous
+la sémantique standard, elles ne sont pas seulement
+indécidables : elles ne sont pas
+!!{computably enumerable}s. Il n'existe donc
+aucun système de preuve effectif à la fois correct et
+complet pour cette logique, bien que des systèmes
+corrects mais incomplets existent et constituent
+d'importants objets de recherche.
+
+La logique du premier ordre possède encore deux
+propriétés : la compacité (si chaque sous-ensemble
+fini d'un ensemble~$\Gamma$ d'!!{sentence}s est
+satisfaisable, alors $\Gamma$ lui-même est
+satisfaisable) et, pour les langages au plus
+dénombrables, la propriété de Löwenheim--Skolem
+(si $\Gamma$ possède un modèle infini, elle
+possède un modèle !!{denumerable}). Ces deux
+propriétés échouent au second ordre, sous la
+sémantique standard. Là encore, la raison est
+que cette logique peut exprimer sur la taille
+des !!{domain}s des faits que le premier ordre
+ne peut pas exprimer.
+
+\begin{editorial}
+La source énonce l'énumération calculable des
+validités et la forme dénombrable du théorème
+de Löwenheim--Skolem sans préciser les conditions
+sur le langage. Nous indiquons respectivement
+le codage effectif des symboles et la borne
+dénombrable sur le langage. Les échecs annoncés
+pour la logique du second ordre concernent sa
+sémantique standard.
+\end{editorial}
+
+\end{document}

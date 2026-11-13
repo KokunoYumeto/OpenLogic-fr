@@ -1,0 +1,89 @@
+\begin{editorial}
+Ce fragment présente des permutations et réductions locales
+de la coupure ordinaire avec des succédents multiples. Dans le
+premier arbre, la règle d'implication à gauche conserve la formule
+principale dans sa première prémisse, contrairement au schéma de
+\Log{G3c} défini dans ce chapitre. La portée du fragment se limite
+aux manipulations affichées.
+\end{editorial}
+
+
+
+
+
+
+Si $!A \ident (!B \lif !C)$, alors $\pi$ se termine par
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta, !C$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$\Gamma \fCenter \Delta, !B \lif !C$
+\LeftSubproofLabel{$\pi_1$}
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$!B \lif !C, \Pi \fCenter \Lambda, !B$
+\AxiomC{}
+\RightLabel{$\pi_2''$}
+\Deduce$!C, \Pi \fCenter \Lambda$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$!B \lif !C, \Pi \fCenter \Lambda$
+\RightSubproofLabel{$\pi_2$}
+\RightLabel{\Cut}
+\BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda$
+\DisplayProof
+\]
+La !!{proof} suivante, qui se termine par \Cut,
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta, !C$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$\Gamma \fCenter \Delta, !B \lif !C$
+\LeftSubproofLabel{$\pi_1$}
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$!B \lif !C, \Pi \fCenter \Lambda, !B$
+\RightLabel{\Cut}
+\BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda, !B$
+\DisplayProof
+\]
+a une !!{height} de coupure inférieure à celle de~$\pi$.
+L'hypothèse de récurrence fournit une !!{proof}~$\pi_1''$ de
+$\Gamma, \Pi \fCenter \Delta, \Lambda, !B$.
+Considérons aussi la !!{proof} qui se termine par \Cut :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1'$}
+\Deduce$!B, \Gamma \fCenter \Delta, !C$
+\AxiomC{}
+\RightLabel{$\pi_2''$}
+\Deduce$!C, \Pi \fCenter \Lambda$
+\RightLabel{\Cut}
+\BinaryInf$!B, \Gamma, \Pi \fCenter \Delta, \Lambda$
+\DisplayProof
+\]
+Son rang et sa !!{height} de coupure sont inférieurs au rang
+et à la !!{height} de coupure de~$\pi$.
+L'hypothèse de récurrence fournirait donc une
+\Log{G3c}-!!{proof}~$\pi_2'''$ de
+$!B, \Gamma, \Pi \fCenter \Delta, \Lambda$ ; cette désignation
+du calcul est celle de la source et reste soumise à la réserve
+initiale. Appliquons alors l'hypothèse de récurrence à la
+!!{proof} qui se termine par \Cut :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1''$}
+\Deduce$\Gamma, \Pi \fCenter \Delta, \Lambda, !B$
+\AxiomC{}
+\RightLabel{$\pi_2'''$}
+\Deduce$!B, \Gamma, \Pi \fCenter \Delta, \Lambda$
+\RightLabel{\Cut}
+\BinaryInf$\Gamma, \Gamma, \Pi, \Pi \fCenter \Delta, \Delta, \Lambda, \Lambda$
+\DisplayProof
+\]
+Son rang de coupure est $< \cutr{\pi}$.
+Nous obtenons ainsi une !!{proof} de
+$\Gamma, \Gamma, \Pi, \Pi \fCenter \Delta, \Delta, \Lambda, \Lambda$.
+L'application de la \olref[seq][inv]{prop:G3c-cont-adm} donne enfin
+la !!{proof} $\pi'$ de $\Gamma, \Pi \fCenter \Delta, \Lambda$.

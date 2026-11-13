@@ -1,0 +1,70 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{replacement}{limofsize}
+\olsection{Limitation de taille}
+
+La tentative peut-être la plus courante de justification
+«~intrinsèque~» du remplacement passe par le principe suivant :
+\begin{enumerate}
+	\item[] \limofsize. Des objets quelconques forment un ensemble,
+	pourvu qu'ils ne soient pas trop nombreux.
+\end{enumerate}
+Sous l'axiome de choix, ce principe justifie immédiatement le remplacement. Un ensemble formé par remplacement ne peut
+alors pas être plus grand que l'ensemble à partir duquel il a été formé. Plus précisément, supposons
+que le remplacement permette de former l'ensemble $\funimage{\tau}{A} = \Setabs{\tau(x)}{x \in A}$ ; sous cette hypothèse, $\cardle{\funimage{\tau}{A}}{A}$.\footnote{Note
+de l'édition française : la comparaison source est définie par l'existence d'une injection. Sans hypothèse supplémentaire, la
+surjection de $A$ sur son image ne suffit pas en général à fournir une injection en sens
+inverse ; le choix suffit ici. Pour des contre-exemples dans $\ZF$, voir G. Shen, \emph{Cantor's theorem may
+fail for finitary partitions} (2023), théorème 3.3 et corollaire 4.17, \url{https://arxiv.org/abs/2309.00235}.} Si les !!{element}s de $A$ n'étaient
+pas trop nombreux pour former un ensemble, leurs images ne sont alors pas trop nombreuses pour former $\funimage{\tau}{A}$.
+
+La difficulté évidente, lorsqu'on invoque \limofsize{} pour
+justifier le remplacement, est que nous n'avons \emph{pas}
+encore posé de principe tel que \limofsize. De plus, dans
+notre récit de la conception cumulative et itérative des
+ensembles, présenté dans les \crefrange{sth:story::chap}{sth:z::chap},
+rien ne \emph{suggérait} \limofsize. C'est précisément
+pourquoi Boolos a écrit un jour : «~Peut-être peut-on conclure
+qu'il y a au moins deux idées “derrière” la théorie des
+ensembles~» \citeyearpar[p.~19]{Boolos1989}. D'un côté, les
+idées qui sous-tendent la conception cumulative et itérative
+des ensembles sont censées justifier~$\Z$. De l'autre,
+\limofsize{} est censée justifier le remplacement.
+
+La difficulté n'est cependant pas seulement que nous sommes
+restés jusqu'ici \emph{silencieux} sur \limofsize. C'est aussi
+que \limofsize{} (sous la forme que nous venons de lui donner)
+semble assez mal s'accorder avec la conception cumulative et
+itérative des ensembles. Après tout, ce principe ne dit rien
+de la formation des ensembles par \emph{étapes}.
+
+Ce décalage n'a rien de très surprenant, étant donné l'histoire
+de ces «~deux idées~» (la conception cumulative et itérative des
+ensembles et \limofsize). Elles correspondent, en fin de compte,
+à deux projets assez différents pour écarter les paradoxes de
+la théorie des ensembles. La conception cumulative et itérative
+écarte le paradoxe de Russell en disant, en gros :
+\emph{nous n'aurions jamais dû nous attendre à ce qu'un ensemble
+de Russell existe, puisqu'il ne serait «~formé~» à aucune étape}.
+En revanche, \limofsize{} entend exclure cet ensemble en disant,
+en gros : \emph{nous n'aurions jamais dû nous attendre à ce qu'un
+ensemble de Russell existe, puisqu'il serait trop grand}.
+
+Présentons les choses sans détour : envisagée comme une réponse
+aux paradoxes, \limofsize{} demande \emph{beaucoup} plus de
+justification. Considérons, par exemple, cette version du
+paradoxe de Russell : \emph{aucun carlin ne renifle exactement
+les carlins qui ne se reniflent pas eux-mêmes} (voir la
+\olref[sth][story][rus]{sec}). Si vous demandez «~pourquoi
+n'existe-t-il pas un tel carlin ?~», répondre qu'il lui
+faudrait renifler trop de carlins n'est pas une bonne réponse.
+Pourquoi serait-ce alors une bonne explication intuitive
+de la non-existence d'un ensemble de Russell que de dire
+qu'il serait «~trop grand~» pour exister ?
+
+En somme, on peut vous pardonner de rester quelque peu perplexe
+devant la motivation «~intuitive~» de \limofsize.
+
+\end{document}

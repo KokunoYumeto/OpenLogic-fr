@@ -1,0 +1,243 @@
+% Partie : incomplétude
+% Chapitre : représentabilité dans Q
+% Section : représentabilité des fonctions de C
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{cre}
+\olsection{Les fonctions de $C$ sont représentables dans $\Th{Q}$}
+
+Nous devons montrer que toute fonction de $C$ est représentable
+dans $\Th{Q}$. Il s'agit, en définitive, d'associer à chaque
+fonction d'arité $k$, $f(x_0,\dots,x_{k-1})$, appartenant à $C$,
+une formule $!A_f(x_0,\dots,x_{k-1},y)$ qui la représente.
+
+\begin{lem}
+Pour tous entiers naturels $n$ et $m$, si $n\neq m$, alors
+$Q\Proves\num n\neq\num m$.
+\end{lem}
+
+\begin{proof}
+Montrons par induction sur $n$ que, pour tout $m$, si
+$n\neq m$, alors $Q\Proves\eq/[\num n][\num m]$.
+
+Dans le cas de base, $n=0$. Si $m$ est différent de $0$,
+alors $m=k+1$ pour un certain entier naturel $k$.
+Nous disposons de l'axiome $\lforall[x][\eq/[0][x']]$.
+Un axiome de quantification permet d'y remplacer $x$ par
+$\num k$ et d'en déduire $\eq/[0][\num k']$.
+Or $\num k'$ est précisément $\num m$.
+
+Pour l'étape d'induction, supposons la propriété établie
+pour $n$ et considérons $n+1$. Soit $m$ un entier naturel
+quelconque. Deux cas sont possibles : soit $m=0$, soit
+$m=k+1$ pour un certain $k$. Le premier cas se traite comme
+ci-dessus. Dans le second, supposons que $n+1\neq k+1$.
+Alors $n\neq k$. L'hypothèse d'induction pour $n$ donne
+$\Th{Q}\Proves\eq/[\num n][\num k]$.
+Nous disposons de l'axiome
+$\lforall[x][\lforall[y][\eq[x'][y']\lif\eq[x][y]]]$.
+Un axiome de quantification donne
+$\eq[\num n'][\num k']\lif\eq[\num n][\num k]$.
+La logique propositionnelle permet alors de déduire, dans
+$\Th{Q}$,
+$\eq/[\num n][\num k]\lif\eq/[\num n'][\num k']$.
+Par modus ponens, nous obtenons
+$\eq/[\num n'][\num k']$, ce qui est le résultat voulu,
+puisque $\num k'$ est $\num m$.
+\end{proof}
+
+Le lemme affirme, au fond, assez peu de chose :
+$\Th{Q}$ peut démontrer que des numéraux distincts désignent
+des objets distincts. Par exemple, $\Th{Q}$ démontre
+$0''\neq 0'''$. Il faut néanmoins procéder avec soin pour
+l'établir en général. Remarquons aussi que l'induction
+employée ici est une induction \emph{extérieure} à
+$\Th{Q}$.
+
+Nous pourrons représenter la fonction nulle, le successeur,
+l'addition, la multiplication, la fonction caractéristique
+de l'égalité et les projections. Dans chaque cas, la formule
+représentante est très simple. Par exemple, la fonction
+nulle est représentée par la formule
+\[
+y = 0,
+\]
+le successeur par la formule
+\[
+x_0' = y,
+\]
+et l'addition par la formule
+\[
+x_0 + x_1 = y.
+\]
+Le travail consiste à montrer que $\Th{Q}$ peut démontrer
+les énoncés requis. Ainsi, affirmer que la formule précédente
+représente l'addition revient à montrer que, pour tous
+entiers naturels $m$ et $n$, $\Th{Q}$ démontre
+\[
+\eq[\num n + \num m][\num {n+m}]
+\]
+et
+\[
+\lforall[y][(\eq[(\num n + \num m)][y] \lif \eq[y][\num {n+m}])].
+\]
+
+Qu'en est-il de la composition ? Supposons que $h$ soit
+définie par
+\[
+h(x_0,\dots,x_{l-1}) = f(g_0(x_0,\dots,x_{l-1}), \dots,
+g_{k-1}(x_0,\dots,x_{l-1})).
+\]
+Nous avons déjà trouvé des formules
+$!A_f, !A_{g_0}, \dots, !A_{g_{k-1}}$ représentant
+respectivement les fonctions $f,g_0,\dots,g_{k-1}$.
+Nous pouvons alors définir une formule $!A_h$ représentant
+$h$ en posant $!A_h(x_0,\dots,x_{l-1},y)$ égale à
+\begin{multline*}
+  \lexists[z_0\dots][\lexists[z_{k-1}][(!A_{g_0}(x_0,\dots,x_{l-1},z_0) \land
+  \dots \land !A_{g_{k-1}}(x_0,\dots,x_{l-1},z_{k-1}) \land]]\\
+  !A_f(z_0,\dots,z_{k-1},y)).
+\end{multline*}
+
+Considérons enfin la recherche non bornée.
+Supposons que $g(x,\vec z)$ soit régulière et représentable
+dans $\Th{Q}$, par exemple par la formule
+$!A_g(x,\vec z,y)$. Définissons $f$ par
+$f(\vec z)=\mu x\;g(x,\vec z)$.
+Nous cherchons une formule $!A_f(\vec z,y)$ qui représente
+$f$. Le choix suivant est naturel :
+\[
+!A_f(\vec z,y) \ident !A_g(y,\vec z,0) \land \lforall[w][(w < y
+\lif \lnot !A_g(w,\vec z,0))].
+\]
+
+On peut montrer que cette formule convient à l'aide de
+quelques lemmes supplémentaires, par exemple :
+
+\begin{lem}
+Pour toute variable $x$ et tout entier naturel $n$,
+$\Th{Q}$ démontre $\eq[(x'+\num n)][(x+\num n)']$.
+\end{lem}
+
+Cet énoncé pour chaque numéral fixé est plus faible que
+l'énoncé universel
+$\lforall[x][\lforall[y][(x'+y)=(x+y)']]$,
+que $\Th{Q}$ ne démontre pas.
+
+\begin{proof}
+La démonstration se fait, comme d'habitude, par induction
+sur $n$. Dans le cas de base, $n=0$, nous devons montrer
+que $\Th{Q}$ démontre $\eq[(x'+0)][(x+0)']$.
+Or nous avons :
+\begin{eqnarray*}
+& & \eq[(x' + 0)][x'] \quad \text{par l'axiome 4} \\
+& & \eq[(x + 0)][x] \quad \text{par l'axiome 4} \\
+& & \eq[(x+0)'][x'] \quad \text{par la ligne 2} \\
+& & \eq[(x' + 0)][(x + 0)'] \quad \text{par les lignes 1 et 3}
+\end{eqnarray*}
+Pour l'étape d'induction, supposons que nous ayons démontré
+$\eq[(x'+\num n)][(x+\num n)']$ dans $\Th{Q}$.
+Puisque $\num{n+1}$ est $\num n'$, il nous faut montrer
+que $\Th{Q}$ démontre
+$\eq[(x'+\num n')][(x+\num n')']$.
+La chaîne d'égalités suivante est démontrable dans $\Th{Q}$ :
+\begin{eqnarray*}
+(x' + \num n') & \eq & (x' + \num n)' \quad \text{axiome 5} \\
+& \eq & (x + \num n')' \quad \text{hypothèse d'induction et axiome 5}
+\end{eqnarray*}
+La dernière ligne utilise aussi l'axiome 5 pour réécrire
+le successeur de la somme.\footnote{Précision de l'édition
+française : la source ne mentionne que l'hypothèse
+d'induction pour cette ligne ; l'axiome 5 est également
+nécessaire.}
+\end{proof}
+
+\begin{lem}
+\begin{enumerate}
+\item $\Th{Q}$ démontre $\lnot(x<\num 0)$.
+\item Pour tout entier naturel $n$, $\Th{Q}$ démontre
+\[
+x < \num {n+1} \lif (\eq[x][\num 0] \lor \dots \lor \eq[x][\num n]).
+\]
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Traitons le point 1 et une partie du point 2 de façon
+informelle : nous donnons seulement des indications pour
+construire la !!{derivation} formelle.
+
+Pour le point 1, la définition de $<$ nous ramène à
+démontrer $\lnot\lexists[y][\eq[(y'+x)][0]]$ dans
+$\Th{Q}$. D'après les axiomes et les règles de la logique
+du premier ordre, cela équivaut à
+$\lforall[y][\eq/[(y'+x)][0]]$.
+Voici l'idée : supposons que $\eq[(y'+x)][0]$.
+Si $x$ vaut 0, nous avons $\eq[(y'+0)][0]$.
+Mais l'axiome 4 de $\Th{Q}$ donne $\eq[(y'+0)][y']$,
+tandis que l'axiome 2 donne $\eq/[y'][0]$ :
+nous obtenons une contradiction.
+Si $x$ est différent de $0$, l'axiome 3 fournit un $z$
+tel que $\eq[x][z']$. Nous avons alors
+$\eq[(y'+z')][0]$ ; l'axiome 5 donne
+$\eq[(y'+z)'][0]$, ce qui contredit de nouveau
+l'axiome 2. Les deux cas conduisent donc à une contradiction,
+et nous pouvons conclure
+$\lforall[y][\eq/[(y'+x)][0]]$.\footnote{Correction de
+l'édition française : la source place cette conclusion
+universelle après le premier cas seulement. Elle est ici
+placée après l'examen des deux cas.}
+
+Pour le point 2, procédons par induction sur $n$.
+Considérons le cas de base, $n=0$.
+Il faut montrer que $x<\num 1\lif\eq[x][\num 0]$.
+Supposons que $x<\num 1$. L'axiome définissant $<$ donne
+$\lexists[y][\eq[(y'+x)][0']]$.
+Soit $y$ possédant cette propriété ; nous avons donc
+$\eq[y'+x][0']$.
+
+Nous devons montrer que $\eq[x][0]$.
+Si $x$ est différent de 0, l'axiome 3 indique qu'il est
+égal à $z'$ pour un certain $z$. Nous avons alors
+$\eq[(y'+z')][0']$.
+L'axiome 5 de $\Th{Q}$ donne
+$\eq[(y'+z)'][0']$, puis l'axiome 1 donne
+$\eq[(y'+z)][0]$. Par définition, cela signifie
+$z<0$, contrairement au point 1.
+\end{proof}
+
+\begin{explain}
+Nous avons caractérisé les fonctions calculables comme
+les fonctions représentables dans $\Th{Q}$.
+L'argument a, en réalité, une portée plus générale.
+D'après la définition de la représentabilité, toute théorie
+qui étend $\Th{Q}$, ou dans laquelle on peut interpréter
+$\Th{Q}$, peut représenter les fonctions calculables.
+Réciproquement, si une théorie est cohérente, distingue
+démontrablement les numéraux distincts et dispose d'un système
+de !!{derivation}s dont les preuves sont effectivement
+vérifiables, toute fonction qu'elle représente est
+calculable.\footnote{Qualification de l'édition française :
+la source omet ici la cohérence de la théorie et la distinction
+démontrable des numéraux. Ces conditions garantissent que
+la recherche effective de preuves retrouve la valeur correcte.
+Une théorie incohérente satisfait trivialement les conditions
+de représentabilité pour toute fonction, même non calculable.
+Les caractérisations qui suivent supposent ces conditions.}
+Ainsi, les fonctions calculables peuvent aussi être
+caractérisées comme celles qui sont représentables dans
+l'arithmétique de Peano, ou même dans la théorie des
+ensembles de Zermelo--Fraenkel.
+Comme Gödel l'a remarqué, ce résultat peut surprendre.
+Nous verrons que les questions de démontrabilité dépendent
+étroitement de la théorie considérée : en gros, des axiomes
+plus forts permettent de démontrer davantage.
+Pourtant, dans une large classe de théories axiomatiques
+satisfaisant les conditions précédentes, les fonctions
+représentables sont exactement les fonctions calculables.
+\end{explain}
+
+\end{document}

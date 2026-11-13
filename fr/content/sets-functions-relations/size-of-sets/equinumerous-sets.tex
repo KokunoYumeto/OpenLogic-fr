@@ -68,13 +68,13 @@ Si $\cardeq{A}{B}$, alors $A$ est !!{enumerable} si et seulement si
 $B$ l'est.
 \end{prop}
 
-\begin{editorial}
-La démonstration suivante utilise la \olref[enm]{defn:enumerable}
-si la \olref[enm]{sec} est incluse, et la
-\olref[enm-alt]{defn:enumerable} dans le cas contraire.
-Dans le lecteur complet, les deux versions sont présentées ci-dessous,
-avec leurs définitions respectives de l'énumération.
-\end{editorial}
+\begin{explain}
+Pour transporter une énumération de~$A$ à~$B$, on la compose avec la
+bijection de~$A$ sur~$B$. Que l'énumération soit définie par surjection
+\oliflabeldef{sfr:siz:enm:defn:enumerable}{(\olref[enm]{defn:enumerable})}{} ou par bijection
+\oliflabeldef{sfr:siz:enm-alt:defn:enumerable}{(\olref[enm-alt]{defn:enumerable})}{},
+la composée garde le type de l'énumération. Le cas vide se traite à part.
+\end{explain}
 
 \begin{proof}
 Supposons que $\cardeq{A}{B}$, donc qu'il existe une !!{bijection}
@@ -84,10 +84,10 @@ $f \colon A \to B$, et que $A$ soit !!{enumerable}.
   !!{surjective} $g\colon \PosInt \to A$. Si $A = \emptyset$,
   alors $B = \emptyset$ aussi : sinon il existerait un élément
   $y \in B$ mais aucun $x \in A$ tel que $f(x) = y$,
-  contrairement à la surjectivité de~$f$.\footnote{Note de traduction :
-  dans les deux versions de cette démonstration, l'original écrit
-  $g(x) = y$ dans l'argument relatif au cas vide. C'est la fonction
-  $f\colon A \to B$ qui doit intervenir ici.}
+  contrairement à la surjectivité de~$f$.
+  %
+  %
+  %
   Si, en revanche, $g\colon \PosInt \to A$ est !!{surjective},
   alors $\comp{g}{f} \colon \PosInt \to B$ est !!{surjective}.
   En effet, soit $y \in B$. La surjectivité de $f$ fournit un
@@ -104,10 +104,10 @@ une énumération de~$B$, donc $B$ est !!{enumerable}.}
   initial des entiers naturels. Si $A = \emptyset$, alors
   $B = \emptyset$ aussi : sinon il existerait un $y \in B$ sans
   aucun $x \in A$ tel que $f(x) = y$, contrairement à la
-  surjectivité de~$f$.\footnote{Note de traduction : l'original
-  écrit $g(x) = y$ dans le cas vide ; c'est $f\colon A \to B$
-  qui doit intervenir. La même correction figure dans l'autre
-  version de la démonstration.}
+  surjectivité de~$f$.
+  %
+  %
+  %
   Supposons donc donnée la !!{bijection}~$g$. Alors $\comp{g}{f}$
   est une !!{bijection} d'image~$B$ et de même domaine que~$g$
   (c'est-à-dire $\Nat$ ou l'un de ses segments initiaux).

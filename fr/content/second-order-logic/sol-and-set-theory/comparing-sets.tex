@@ -1,0 +1,110 @@
+% Part: second-order-logic
+% Chapter: sol-and-sets
+% Section: comparing-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{set}{cmp}
+
+\olsection{Comparer les ensembles}
+
+\begin{prop}
+La !!{formula}~$\lforall[x][(X(x)\lif Y(x))]$
+définit l'inclusion :
+$\Sat{M}{\lforall[x][(X(x)\lif Y(x))]}[s]$
+si et seulement si $s(X)\subseteq s(Y)$.
+\end{prop}
+
+\begin{prop}
+La !!{formula}~$\lforall[x][(X(x)\liff Y(x))]$
+définit l'égalité des ensembles :
+$\Sat{M}{\lforall[x][(X(x)\liff Y(x))]}[s]$
+si et seulement si $s(X)=s(Y)$.
+\end{prop}
+
+\begin{prop}
+La !!{formula}~$\lexists[x][X(x)]$ définit
+la propriété d'être non vide :
+$\Sat{M}{\lexists[x][X(x)]}[s]$
+si et seulement si $s(X)\neq\emptyset$.
+\end{prop}
+
+Un ensemble~$X$ n'est pas plus grand qu'un
+ensemble~$Y$, ce que l'on note
+$\cardle{X}{Y}$, s'il existe une fonction
+!!{injective} $f\colon X\to Y$.
+La logique du second ordre peut exprimer que
+la restriction d'une fonction au sous-ensemble
+$X$ est !!{injective} et que ses valeurs sur~$X$
+appartiennent à~$Y$. Elle peut donc définir cette
+relation entre sous-ensembles du !!{domain}.
+
+\begin{prop}
+La !!{formula}
+\begin{multline*}
+\lexists[u][(\lforall[x][(X(x)\lif Y(u(x)))]\land{}\\
+\lforall[x][\lforall[y][((X(x)\land X(y)\land
+\eq[u(x)][u(y)])\lif\eq[x][y])]])]
+\end{multline*}
+définit la relation $\cardle{X}{Y}$.
+\end{prop}
+
+Deux ensembles ont la même taille, ou sont
+\emph{équipotents}, ce que l'on note
+$\cardeq{X}{Y}$, s'il existe une
+!!{bijection} $f\colon X\to Y$.
+
+\begin{prop}
+La !!{formula}
+\begin{multline*}
+\lexists[u][(\lforall[x][(X(x)\lif Y(u(x)))]\land{}\\
+\lforall[x][\lforall[y][((X(x)\land X(y)\land
+\eq[u(x)][u(y)])\lif\eq[x][y])]]\land{}\\
+\lforall[y][(Y(y)\lif\lexists[x][(X(x)
+\land\eq[y][u(x)])])])]
+\end{multline*}
+définit la relation $\cardeq{X}{Y}$.
+\end{prop}
+
+Nous abrégerons désormais ces !!{formula}s,
+dans cet ordre, par $X\subseteq Y$, $X=Y$,
+$X\neq\emptyset$, $\cardle{X}{Y}$ et
+$\cardeq{X}{Y}$. Cette notation peut prêter
+à confusion, puisque nous l'employons aussi
+pour parler informellement des ensembles~$X$
+et~$Y$. Ici, elle abrège des !!{formula}s du
+second ordre contenant les !!{variable}s de
+relation unaires $X$ et~$Y$.
+
+\begin{prop}
+L'!!{sentence}
+$\lforall[X][\lforall[Y][((\cardle{X}{Y}\land
+\cardle{Y}{X})\lif\cardeq{X}{Y})]]$
+est valide.
+\end{prop}
+
+\begin{proof}
+Dans toute !!{structure}~$\Struct{M}$,
+pour tous $X,Y\subseteq\Domain{M}$,
+si $\cardle{X}{Y}$ et $\cardle{Y}{X}$,
+alors $\cardeq{X}{Y}$. C'est le théorème
+de Schröder--Bernstein, valable pour tous
+ensembles~$X$ et~$Y$.
+\end{proof}
+
+L'injectivité requise dans ces deux formules porte sur les
+arguments de~$X$. Toute fonction de $X$ dans~$Y$ se prolonge
+au !!{domain} entier en donnant à tous les arguments hors
+de~$X$ une même valeur de ce domaine, qui est non vide.
+Le prolongement n'a pas à être injectif hors de~$X$.
+
+Par exemple, pour $\Domain{M}=\Nat$, les ensembles
+$X=\Nat\setminus\{0\}$ et $Y=\Nat$ sont équipotents.
+Une bijection de $X$ sur~$Y$ utilise déjà tous les éléments de
+$\Nat$ comme valeurs sur~$X$. Si son prolongement devait être
+injectif sur tout le domaine, aucune valeur ne serait disponible
+pour l'argument~$0$.
+
+\end{document}

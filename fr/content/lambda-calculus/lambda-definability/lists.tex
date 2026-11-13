@@ -1,0 +1,55 @@
+% Partie : lambda-calcul
+% Chapitre : lambda-définissabilité
+% Section : listes
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{ldf}{lst}
+\olsection{Listes}
+
+Soient $s$ et $z$ deux variables distinctes qui n'apparaissent libres dans aucun des $M_i$. On peut alors définir la liste $[M_1,M_2,\ldots,M_n]$ par :
+\[
+  [M_1, M_2, \ldots, M_n] \ident \lambd[sz][s M_1 (s M_2 (\ldots (s M_n z)))]
+\]
+Informellement, le terme représentant une liste est sa
+fonction d'accumulation. Il reçoit deux termes : le premier
+est une fonction qui reçoit un élément et une valeur
+accumulée, puis renvoie la nouvelle valeur accumulée ;
+le second est la valeur accumulée initiale. La fonction
+d'accumulation combine les éléments un à un et renvoie
+finalement le résultat.
+
+\begin{digress}
+Si vous connaissez la programmation fonctionnelle, vous
+reconnaîtrez une définition semblable au \emph{pliage à
+droite}, ou \texttt{fold\_right} : une liste est définie
+comme la fonction de pliage à droite de ses éléments.
+\end{digress}
+
+Ce codage permet de définir facilement quelques fonctions
+utiles :
+\begin{align*}
+  \fn{Sum} & \ident
+  \lambd[l][l \, (\lambd[xa][\fn{Add} \, x \, a])\,  \num{0}]\\
+  \fn{Len} & \ident
+  \lambd[l][l \, (\lambd[xa][\fn{Add} \, a \, \num{1}]) \num{0}]
+\end{align*}
+
+$\fn{Sum}$ calcule la somme d'une liste de numéraux de Church.
+Elle procède par accumulation sur la liste : la valeur
+initiale est $\num{0}$ et, pour chaque élément, la nouvelle
+valeur accumulée est $\fn{Add}\,x\,a$, où $x$ est l'élément
+considéré et $a$ la valeur accumulée. Le résultat est la
+somme de tous les éléments.
+
+\begin{prob}
+Que fait $\fn{Len}$ ? Expliquer.
+\end{prob}
+
+\begin{prob}
+Définir une fonction qui renverse une liste.
+\end{prob}
+
+\end{document}

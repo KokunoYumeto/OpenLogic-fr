@@ -8,9 +8,9 @@
 
 \olfileid[fr]{fol}{tab}{ide}
 
-\olsection{\usetoken{P}{tableau} avec \usetoken{S}{identity}}
+\olsection{\usetoken{P}{tableau} avec \usetoken{s}{identity}}
 
-Les !!^{tableau}s avec !!{identity} exigent des règles d'inférence
+Les !!{tableau}s avec !!{identity} exigent des règles d'inférence
 supplémentaires. Les règles de~$\eq$ sont les suivantes, où $t$,
 $t_1$ et $t_2$ sont des termes clos :
 
@@ -34,10 +34,10 @@ $t_1$ et $t_2$ sont des termes clos :
 \UnaryInfC{\sFmla{\False}{!A(t_2)}}
 \DisplayProof
 \end{defish}
-Contrairement à toutes les autres règles, $\TRule{\True}{\eq}$ et
-$\TRule{\False}{\eq}$ exigent que \emph{deux} !!{signed formula}s
-figurent déjà sur la branche, à savoir
-$\sFmla{\True}{\eq[t_1][t_2]}$ et $\sFmla{S}{!A(t_1)}$.
+La réflexivité permet d'ajouter $\sFmla{\True}{\eq[t][t]}$
+sans prémisse. Chacune des règles $\TRule{\True}{\eq}$ et
+$\TRule{\False}{\eq}$ requiert deux !!{signed formula}s sur la même
+branche : $\sFmla{\True}{\eq[t_1][t_2]}$ et $\sFmla{S}{!A(t_1)}$.
 
 \begin{ex}
 Si $s$ et $t$ sont des termes clos, alors
@@ -51,10 +51,10 @@ $\eq[s][t], !A(s) \Proves !A(t)$ :
     ]
   ]
 \end{oltableau}
-On reconnaît ici le principe de substituabilité des identiques,
+On reconnaît ici le principe de substituabilité des égaux,
 ou loi de Leibniz.
 
-Les !!^{tableau}s montrent aussi que $\eq$ est symétrique, c'est-à-dire
+Les !!{tableau}s montrent aussi que $\eq$ est symétrique, c'est-à-dire
 que $\eq[s_1][s_2] \Proves \eq[s_2][s_1]$ :
 \begin{oltableau}
   [\sFmla{\False}{\eq[s_2][s_1]}, just = \TAss
@@ -93,14 +93,14 @@ ligne~$2$, et $!A(s_3)$ devient la !!{formula}~$\eq[s_1][s_3]$ de la
 conclusion.
 \end{ex}
 
-\begin{editorial}
-Dans l'explication de la symétrie, la source donne par erreur la forme
-$\sFmla{\True}{!A(s_2)}$ à la seconde formule requise de la ligne~$3$;
-il s'agit de $\sFmla{\True}{!A(s_1)}$. Dans l'explication de la
-transitivité, $!A(s_2)$ est rétabli comme $\eq[s_1][s_2]$, conformément
-à la ligne~$2$, plutôt que comme l'égalité générique
-$\eq[t_1][t_2]$ qui désigne ici la ligne~$3$.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
+%
 
 \begin{prob}
 Construire un !!{tableau} fermé pour chacun des ensembles suivants :

@@ -1,0 +1,86 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: applications-fixed-point
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{apf}
+\olsection{Applications du théorème du point fixe}
+
+Le théorème du point fixe permet, pour l'essentiel,
+de définir des fonctions calculables partielles
+à partir de leurs propres indices. Par exemple,
+on peut trouver un indice~$e$ tel que, pour
+tout~$y$,
+\[
+\cfind{e}(y) = e + y.
+\]
+La preuve du théorème permet aussi de construire,
+en Java ou en C++, un programme qui affiche
+son propre texte.
+
+Rappelons que $W_e$ désigne le domaine de
+$\cfind{e}$ et que la suite $W_0$, $W_1$,
+$W_2$,~\dots énumère les ensembles effectivement
+énumérables. Certains de ces ensembles sont
+calculables. Existe-t-il un algorithme qui,
+à partir d'un indice~$x$, renvoie un indice
+de la fonction caractéristique de~$W_x$
+lorsque cet ensemble est calculable ?
+La réponse est négative.
+
+\begin{thm}
+Il n'existe aucune fonction calculable partielle~$f$
+ayant la propriété suivante : chaque fois que
+$W_e$ est calculable, $f(e)$ est définie et
+$\cfind{f(e)}$ est la fonction caractéristique
+de~$W_e$.
+\end{thm}
+
+\begin{proof}
+Supposons, pour obtenir une contradiction, qu'une
+fonction calculable partielle~$f$ possède cette
+propriété. Le théorème du point fixe fournit un
+indice~$e$ tel que
+\[
+\cfind{e}(y) \simeq
+\begin{cases}
+0 & \text{si $y=0$ et $\cfind{f(e)}(0) \fdefined = 0$} \\
+\text{indéfinie} & \text{sinon.}
+\end{cases}
+\]
+En effet, on l'applique à la fonction
+\[
+g(x,y) \simeq
+\begin{cases}
+0 & \text{si $y=0$ et $\cfind{f(x)}(0) \fdefined = 0$} \\
+\text{indéfinie} & \text{sinon.}
+\end{cases}
+\]
+La fonction~$g$ est calculable partielle :
+sur l'entrée $(x,y)$, on vérifie d'abord si
+$y=0$. Si oui, on calcule $f(x)$, puis on
+utilise la fonction universelle pour calculer
+$\cfind{f(x)}(0)$. Si ce dernier calcul
+s'arrête avec la valeur~$0$, on renvoie~$0$.
+Dans tous les autres cas, y compris lorsque
+$f(x)$ n'est pas définie, la procédure ne
+s'arrête pas.
+
+Si $f(e)$ est définie et si
+$\cfind{f(e)}(0)\fdefined=0$, alors
+$\cfind{e}$ n'est définie qu'en~$0$ et
+$W_e=\{0\}$. Sinon, $W_e=\emptyset$.
+Dans les deux cas, $W_e$ est calculable.
+L'hypothèse sur~$f$ impose donc que $f(e)$
+soit définie et que $\cfind{f(e)}$ soit la
+fonction caractéristique de~$W_e$. Or, dans
+le premier cas, elle répond~$0$ à l'entrée~$0$
+alors que $0\in W_e$; dans le second, elle ne
+répond pas~$0$ à cette entrée alors que
+$0\notin W_e$. C'est contradictoire.\footnote{Correction éditoriale : la source commence la preuve avec une fonction $f$ calculable totale, alors que l'énoncé exclut aussi les fonctions calculables partielles. Nous conservons cette portée et incluons le cas où $f(e)$ est indéfinie.}
+\end{proof}
+
+\end{document}

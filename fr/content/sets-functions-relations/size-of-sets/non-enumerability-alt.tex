@@ -29,12 +29,12 @@ qu'il est !!{nonenumerable} signifie qu'il n'existe \emph{aucune}
 !!{bijection} $f\colon \Nat \to A$ ; autrement dit, aucune
 fonction des entiers naturels dans~$A$ ne peut atteindre tous
 les éléments de~$A$. Il y a donc, en ce sens, « davantage »
-d'éléments de~$A$ que d'entiers naturels.\footnote{Note de traduction :
-l'original omet ici l'hypothèse que $A$ est infini. Un ensemble
-fini non vide n'est pas en bijection avec $\Nat$, mais peut être
-l'image d'une surjection depuis $\Nat$ ; l'ensemble vide est
-lui aussi au plus dénombrable par définition. La comparaison
-générale des tailles relève du cadre de choix précisé plus haut.}
+d'éléments de~$A$ que d'entiers naturels. Les ensembles finis sont
+au plus dénombrables, y compris l’ensemble vide. Tout ensemble fini
+non vide est l’image d’une surjection depuis $\Nat$ en répétant
+le dernier terme d’une liste finie. La comparaison générale des
+tailles relève du cadre de choix précisé plus haut.
+%
 
 Pour prouver qu'un ensemble infini est !!{nonenumerable}, il faut
 montrer qu'aucune !!{bijection} appropriée ne peut exister. Une
@@ -68,19 +68,19 @@ $\Bin^\omega$ est !!{nonenumerable}.
 \end{thm}
 
 \begin{proof}
+L’ensemble $\Bin^\omega$ est infini, puisque les suites comportant
+un unique $1$ à des indices différents sont toutes distinctes.
+Il suffit donc d’exclure les listes indexées par $\Nat$.
 Considérons une liste quelconque $s_{0}$, $s_{1}$, $s_{2}$, \dots{}
-de suites infinies de $0$ et de~$1$, donc d'éléments d'une partie
-de $\Bin^\omega$.\footnote{Précision éditoriale : $\Bin^\omega$
-est infini, puisque les suites comportant un unique $1$ à des
-indices différents sont toutes distinctes. Pour exclure une
-énumération au sens bijectif, il suffit donc de traiter les listes
-indexées par $\Nat$.}
+d’éléments de $\Bin^\omega$, c’est-à-dire de suites de $0$ et de~$1$.
 Notons $s_n(m)$ le terme d'indice $m$ de la suite d'indice $n$.
-On peut représenter cette liste par un tableau : $s_n(m)$ occupe
-la ligne d'indice $n$ et la colonne d'indice $m$.\footnote{Note de
-traduction : la première explication de $s_n(m)$ dans l'original
-inverse les rôles de $n$ et de $m$. Nous suivons le tableau et
-l'usage de cette notation dans la suite de la démonstration.}
+On peut représenter cette liste par un tableau. Le terme $s_n(m)$
+occupe la ligne d'indice $n$ et la colonne d'indice $m$.
+%
+%
+%
+%
+%
 \[
 \begin{array}{c|c|c|c|c|c}
 & 0 & 1 & 2 & 3 & \dots \\\hline
@@ -96,9 +96,9 @@ pas dans cette liste. Pour cela, précisons chacun de ses termes,
 c'est-à-dire $d(n)$ pour tout $n \in \Nat$. Intuitivement, on
 parcourt la diagonale du tableau, d'où le nom de « méthode
 diagonale », puis on remplace chaque $1$ par $0$ et chaque $0$
-par~$1$.\footnote{Note de traduction : l'original répète deux fois
-le remplacement de $1$ par $0$. Le second remplacement est
-corrigé conformément à la définition par cas qui suit.}
+par~$1$.
+%
+%
 Plus formellement, $d(n)$ vaut $0$ ou $1$ selon que le terme
 diagonal $s_n(n)$ vaut $1$ ou $0$ :
 \[
@@ -165,11 +165,11 @@ $\{2,3,4,\dots\}$, le tableau commence ainsi :
   &\vdots & & & & & & \ddots\phantom{\}}
 \end{array}
 \]
-\footnote{Note de traduction : l'original laisse vides les colonnes
-$3$, $4$ et $5$ de la ligne $N_0=\Nat$, ainsi que la colonne $5$
-de la ligne $N_3=\{2,3,4,\dots\}$. Nous rétablissons ces quatre
-valeurs pour respecter la représentation par appartenance annoncée
-dans le texte.}
+%
+%
+%
+%
+%
 On obtient alors $D$ en parcourant la diagonale : on met $n$
 dans $D$ si et seulement si $n$ \emph{ne figure pas} à sa place
 sur la diagonale. Dans cet exemple, on exclut donc $0$ et $1$,

@@ -1,0 +1,202 @@
+% Section: definability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{frd}{def}
+
+\olsection{Définissabilité des classes de cadres}
+
+Bien que les réciproques du \olref[acc]{thm:soundschemas}
+échouent pour les modèles, elles valent pour les cadres :
+pour chacune des propriétés considérées dans le
+\olref[acc]{thm:soundschemas}, si la !!{formula} correspondante
+est valide dans un \emph{cadre}, alors la relation d'accessibilité
+de ce cadre possède la propriété en question. Les !!{formula}s
+considérées \emph{définissent} donc les classes de cadres qui
+possèdent ces propriétés.
+
+\begin{defn}
+  Si $\mClass{F}$ est une classe de cadres, nous disons que
+  $!A$ \emph{définit}~$\mClass{F}$ si et seulement si
+  $\mModel{F} \Entails !A$ pour tous les cadres
+  $\mModel{F} \in \mClass{F}$, et pour eux seuls.
+\end{defn}
+
+Établissons maintenant les résultats complets de
+définissabilité pour les cadres.
+
+\begin{thm}\ollabel{thm:fullCorrespondence}
+Si la !!{formula} indiquée à droite dans le
+\olref[acc]{tab:five} est valide dans un cadre~$\mModel{F}$,
+alors $\mModel{F}$ possède la propriété correspondante
+indiquée à gauche.
+\end{thm}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Supposons \Ax{D} valide dans
+    $\mModel{F} = \tuple{W, R}$, c'est-à-dire
+    $\mModel{F} \Entails \Box p \lif \Diamond p$. Soient
+    $\mModel{M} = \tuple{W, R, V}$ un modèle fondé
+    sur~$\mModel{F}$ et $w \in W$. Il faut trouver un monde
+    $v$ tel que~$Rwv$. Supposons qu'il n'en existe aucun.
+    Alors, pour toute~$!A$, y compris~$p$,
+    $\mSat{M}{\Box !A}[w]$ et
+    $\mSat/{M}{\Diamond !A}[w]$. Il s'ensuit
+    $\mSat/{M}{\Box p \lif \Diamond p}[w]$,
+    contrairement à $\mModel{F} \Entails \Box p \lif \Diamond p$.
+  \item Supposons \Ax{T} valide dans $\mModel{F}$,
+    c'est-à-dire $\mModel{F} \Entails \Box p \lif p$.
+    Soit $w \in W$ quelconque; montrons $Rww$.
+    Choisissons $V$ de sorte que, pour tout monde~$u$,
+    $u \in V(p)$ si et seulement si $Rwu$
+    (pour toute variable $q$ distincte de~$p$, $V(q)$ est
+    arbitraire; prenons, par exemple, $V(q) = \emptyset$).
+    Posons $\mModel{M} = \tuple{W, R, V}$. Par construction,
+    pour tout $u$ tel que $Rwu$, nous avons
+    $\mSat{M}{p}[u]$ et donc $\mSat{M}{\Box p}[w]$.
+    Or, par hypothèse, $\Box p \lif p$ est vraie en~$w$;
+    ainsi $\mSat{M}{p}[w]$. Par définition de~$V$,
+    cela n'est possible que si~$Rww$.
+  \item Raisonnons par contraposition. Supposons
+    $\mModel{F}= \tuple{W, R}$ non symétrique; montrons
+    que \Ax{B}, soit $p \lif \Box\Diamond p$, n'y est pas
+    valide. Il existe alors $u$, $v \in W$ tels que $Ruv$,
+    mais pas $Rvu$. Définissons $V$ par la condition
+    suivante : pour tout monde~$w$, $w \in V(p)$ si et
+    seulement si $Rvw$ ne vaut pas (et choisissons
+    arbitrairement les valeurs des autres
+    variables). Soit $\mModel{M} =\tuple{W, R, V}$.
+    Par définition de~$V$, $\mSat{M}{p}[w]$ pour tout
+    $w$ tel que $Rvw$ ne vaut pas; en particulier,
+    $\mSat{M}{p}[u]$, car $Rvu$ ne vaut pas.
+    En outre, $Rvw$ si et seulement si $w \notin V(p)$;
+    aucun monde~$w$ ne satisfait donc à la fois $Rvw$
+    et $\mSat{M}{p}[w]$. Ainsi,
+    $\mSat/{M}{\Diamond p}[v]$. Puisque~$Ruv$,
+    $\mSat/{M}{\Box\Diamond p}[u]$ également. Par
+    conséquent, $\mSat/{M}{p \lif \Box\Diamond p}[u]$,
+    et \Ax{B} n'est pas valide dans~$\mModel{F}$.
+  \item Supposons \Ax{4} valide dans
+    $\mModel{F} = \tuple{W,R}$, autrement dit
+    $\mModel{F} \Entails \Box p \lif \Box\Box p$.
+    Soient $u$, $v$, $w \in W$ tels que $Ruv$ et $Rvw$;
+    montrons $Ruw$. Définissons $V$ de sorte que,
+    pour tout monde~$z$, $z \in V(p)$ si et seulement si
+    $Ruz$ (et choisissons
+    arbitrairement les valeurs des autres variables). Soit
+    $\mModel{M} =\tuple{W, R, V}$. Par définition de~$V$,
+    $\mSat{M}{p}[z]$ pour tout $z$ tel que $Ruz$,
+    et donc $\mSat{M}{\Box p}[u]$. Mais, par hypothèse,
+    \Ax{4}, soit $\Box p \lif \Box \Box p$, est vraie
+    en~$u$; ainsi $\mSat{M}{\Box \Box p}[u]$.
+    Comme $Ruv$ et $Rvw$, il en découle
+    $\mSat{M}{p}[w]$. Par définition de~$V$, cela
+    n'est possible que si $Ruw$, comme voulu.
+  \item Procédons par contraposition. Supposons le cadre
+    $\mModel{F} = \tuple{W, R}$ non euclidien et montrons
+    qu'il falsifie~\Ax{5}, c'est-à-dire
+    $\mModel{F} \Entails/ \Diamond p \lif \Box\Diamond p$.
+    Il existe donc des mondes $u$, $v$, $w \in W$ tels que
+    $Rwu$ et $Rwv$, mais pas~$Ruv$. Définissons $V$ de
+    sorte que, pour tout monde $z$, $z \in V(p)$ si et
+    seulement si $Ruz$ ne vaut \emph{pas}. Soit
+    $\mModel{M} =\tuple{W, R, V}$. L'hypothèse donne
+    $\mSat{M}{p}[v]$ et, puisque $Rwv$,
+    $\mSat{M}{\Diamond p}[w]$. En revanche, aucun monde
+    $y$ ne satisfait à la fois $Ruy$ et
+    $\mSat{M}{p}[y]$; donc
+    $\mSat/{M}{\Diamond p}[u]$. Comme $Rwu$, il en
+    résulte $\mSat/{M}{\Box\Diamond p}[w]$ : \Ax{5},
+    soit $\Diamond p \lif \Box\Diamond p$, échoue
+    en~$w$.
+  \end{enumerate}
+\end{proof}
+
+La preuve pour \Ax{D} diffère des autres cas : elle n'utilise
+aucune propriété de l'attribution~$V$. Nous avons en effet montré
+que, si $\mSat{M}{\Box p \lif \Diamond p}$, alors la relation
+du modèle~$\mModel{M}$ est sérielle. \Ax{D} caractérise donc
+également les \emph{modèles} sériels, et pas seulement les cadres
+sériels.
+
+\begin{cor}\ollabel{prop:D-serial}
+  Tout modèle dans lequel \Ax{D} est vraie est sériel.
+\end{cor}
+
+\begin{cor}
+Chacune des !!{formula}s indiquées à droite dans le
+\olref[acc]{tab:five} définit la classe des cadres qui
+possèdent la propriété correspondante indiquée à gauche.
+\end{cor}
+
+\begin{proof}
+  Dans le \olref[acc]{thm:soundschemas}, nous avons prouvé que,
+  si la relation d'un modèle possède la propriété indiquée
+  à gauche, la !!{formula} correspondante est vraie dans ce
+  modèle. Ainsi, si un cadre~$\mModel{F}$ possède cette
+  propriété, la !!{formula} correspondante est valide
+  dans~$\mModel{F}$. Le
+  \olref{thm:fullCorrespondence} établit la réciproque :
+  si la !!{formula} indiquée à droite est valide
+  dans~$\mModel{F}$, ce cadre possède la propriété
+  indiquée à gauche.
+\end{proof}
+
+\begin{prob}
+Montrez que, si une !!{formula} indiquée à droite dans le
+\olref[nml][frd][acc]{tab:anotherfive} est valide dans un
+cadre~$\mModel{F}$, alors ce cadre possède la propriété
+correspondante indiquée à gauche. Pour cela, considérez un
+cadre qui ne possède \emph{pas} cette propriété et
+choisissez une attribution~$V$ telle que la !!{formula}
+correspondante soit fausse en un monde.
+\end{prob}
+
+Le \olref{thm:fullCorrespondence} montre aussi que les propriétés
+peuvent se combiner : si \Ax{B} et \Ax{4} sont toutes deux
+valides dans~$\mModel{F}$, par exemple, ce cadre est à la fois
+symétrique et transitif. De nombreuses logiques modales
+importantes sont constituées des !!{formula}s valides dans tous
+les cadres réunissant certaines propriétés. On peut donc
+également les caractériser comme les ensembles de !!{formula}s
+valides dans tous les cadres où les formules qui définissent
+ces propriétés sont valides. Ainsi, le système classique
+\Log{S4} est l'ensemble de toutes les !!{formula}s valides dans tous
+les cadres réflexifs et transitifs, c'est-à-dire dans tous
+les cadres où \Ax{T} et~\Ax{4} sont valides. Le système
+\Log{S5} est l'ensemble de toutes les formules valides dans tous les
+cadres réflexifs, symétriques et euclidiens, c'est-à-dire
+dans ceux où \Ax{T}, \Ax{B} et \Ax{5} sont valides.
+
+Les relations logiques entre propriétés de $R$ se reflètent
+généralement dans les relations entre les !!{formula}s qui
+les définissent. Par exemple, toute relation réflexive est
+sérielle : si \Ax{T} est valide dans un cadre, \Ax{D} y est
+donc valide aussi. (Il ne s'agit \emph{pas} ici d'une relation
+de conséquence logique entre ces formules : il peut arriver que
+$\mSat{M}{\Box p \lif p}[w]$ sans que
+$\mSat{M}{\Box p \lif \Diamond p}[w]$.) Voici quelques
+relations de ce type.
+
+\begin{prop}\ollabel{prop:relation-facts}
+  Soit $R$ une relation binaire sur un ensemble $W$. Alors :
+  \begin{enumerate}
+  \item Si $R$ est réflexive, elle est sérielle.
+  \item Si $R$ est symétrique, elle est transitive si et
+    seulement si elle est euclidienne.
+  \item Si $R$ est symétrique ou euclidienne, elle est
+    faiblement dirigée (elle possède la « propriété du
+    diamant »).
+  \item Si $R$ est euclidienne, elle est faiblement connexe.
+  \item Si $R$ est fonctionnelle, elle est sérielle.
+  \end{enumerate}
+\end{prop}
+
+\begin{prob}
+  Démontrez la \olref[nml][frd][def]{prop:relation-facts}.
+\end{prob}
+\begin{editorial}Dans le cas de la sérialité, la source omettait un indice de monde dans l’assertion portant sur la nécessité ; il est rétabli, car l’argument porte sur le monde choisi. Une parenthèse du cas de la réflexivité est aussi replacée hors de l’expression mathématique. Les occurrences de satisfaction portant sur les noms des axiomes sont développées avec leurs formules, sans changer les conclusions.\end{editorial}
+\end{document}

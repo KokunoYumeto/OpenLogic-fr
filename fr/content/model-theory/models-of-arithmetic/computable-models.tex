@@ -1,0 +1,165 @@
+% Part: model-theory
+% Chapter: models-of-arithmetic
+% Section: computable-models
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{mar}{cmp}
+\section{Modèles calculables de l'arithmétique}
+
+\begin{explain}
+Le modèle standard~$\Struct{N}$ possède
+deux propriétés intéressantes. Son domaine
+est l'ensemble~$\Nat$ des entiers naturels :
+ses éléments sont précisément les objets
+dont traite le langage de l'arithmétique,
+et le numéral standard~$\num{n}$ y désigne
+effectivement~$n$. De plus, les
+interprétations de tous les symboles
+non logiques de~$\Lang{L_A}$ sont
+\emph{calculables}. Les fonctions
+successeur, addition et multiplication
+qui interprètent $\prime$, $+$ et
+$\times$ sont calculables, par exemple
+par des machines de Turing ou par
+récursion primitive. La relation
+$\Assign{<}{N}$ est décidable.
+
+Les modèles non standards de théories
+arithmétiques comme $\Th{Q}$ et $\Th{PA}$
+contiennent nécessairement des éléments
+non standards. On les représente souvent
+avec un domaine qui contient~$\Nat$
+et d'autres éléments. Cependant, toute
+!!{structure} !!{enumerable} infinie
+peut être transportée sur n'importe
+quel ensemble !!{denumerable}, notamment
+sur~$\Nat$.\footnote{Précision éditoriale : le transport sur $\Nat$ exige un domaine infini dénombrable. La source dit seulement « dénombrable » ; une structure finie ne peut être transportée par une bijection sur $\Nat$.} Il existe donc aussi des
+modèles non standards de domaine~$\Nat$.
+Dans un tel modèle~$\Struct{M}$, certains
+entiers naturels jouent un rôle différent
+de leur rôle habituel : il existe un~$k$
+qui n'est égal à
+$\Value{\num{n}}{M}$ pour aucun
+$n\in\Nat$.
+\end{explain}
+
+\begin{defn}
+Une !!{structure}~$\Struct{M}$
+pour~$\Lang{L_A}$ est \emph{calculable}
+si $\Domain{M}=\Nat$, si les fonctions
+$\Assign{\prime}{M}$,
+$\Assign{+}{M}$ et
+$\Assign{\times}{M}$ sont calculables,
+et si la relation $\Assign{<}{M}$
+est décidable.
+\end{defn}
+
+\begin{ex}
+\ollabel{ex:comp-model-q}
+Reprenons la !!{structure}~$\Struct{K}$
+de l'\olref[mod][mar][mdq]{ex:model-K-of-Q}.
+Son domaine était
+$\Domain{K}=\Nat\cup\{a\}$,
+avec les interprétations
+\begin{align*}
+  \Assign{\Obj{0}}{K} & = 0\\
+  \Assign{\prime}{K}(x) & =
+  \begin{cases}
+    x+1 & \text{si $x\in\Nat$}\\
+    a & \text{si $x=a$}
+  \end{cases}\\
+  \Assign{+}{K}(x,y) & =
+  \begin{cases}
+    x+y & \text{si $x,y\in\Nat$}\\
+    a & \text{sinon}
+  \end{cases}\\
+  \Assign{\times}{K}(x,y) & =
+  \begin{cases}
+    xy & \text{si $x,y\in\Nat$}\\
+    0 & \text{si $x=0$ ou $y=0$}\\
+    a & \text{sinon}
+  \end{cases}\\
+  \Assign{<}{K} & =
+  \Setabs{\tuple{x,y}}{x,y\in\Nat
+    \text{ et }x<y}
+  \cup
+  \Setabs{\tuple{x,a}}{x\in\Domain{K}}.
+\end{align*}
+L'ensemble $\Domain{K}$ est
+!!{denumerable} et peut donc être mis
+en bijection avec~$\Nat$. Par exemple,
+$g\colon\Nat\to\Domain{K}$, défini par
+$g(0)=a$ et $g(n)=n-1$ pour $n>0$,
+est une bijection.\footnote{Corrections éditoriales : la source propose $g(n)=n+1$ pour $n>0$, qui omet $0$ et $1$ du domaine cible ; $g(n)=n-1$ correspond aux opérations affichées. Dans la définition répétée de l'ordre sur $\Struct{K}$, nous rétablissons aussi la variable $x$ à la place de $n$ dans la condition d'appartenance.} Transportons les
+interprétations de~$\Struct{K}$ par~$g$
+pour obtenir une !!{structure}~$\Struct{K'}$
+de domaine~$\Nat$, isomorphe
+à~$\Struct{K}$ et donc modèle de~$\Th{Q}$.
+Les fonctions et relations de~$\Lang{L_A}$
+y ont des interprétations différentes,
+puisque les éléments de~$\Nat$ n'y jouent
+plus tous leur rôle standard.
+
+En particulier, $0$ joue désormais
+le rôle de~$a$, tandis que $1$ joue
+le rôle du plus petit entier standard.
+Ainsi $\Assign{\Obj{0}}{K'}=1$.
+La fonction successeur satisfait
+$\Assign{\prime}{K'}(0)=0$
+et $\Assign{\prime}{K'}(n)=n+1$
+pour $n>0$. Pour l'addition et
+la multiplication, on obtient
+\begin{align*}
+\Assign{+}{K'}(x,y) & =
+  \begin{cases}
+    x+y-1 & \text{si $x,y>0$}\\
+    0 & \text{sinon}
+  \end{cases}\\
+\Assign{\times}{K'}(x,y) & =
+  \begin{cases}
+    1 & \text{si $x=1$ ou $y=1$}\\
+    xy-x-y+2 & \text{si $x,y>1$}\\
+    0 & \text{sinon}.
+  \end{cases}
+\end{align*}
+Enfin,
+$\tuple{x,y}\in\Assign{<}{K'}$
+si et seulement si
+$(x>0\land y>0\land x<y)$
+ou $y=0$. En particulier, $0<0$
+est vrai \emph{dans}~$\Struct{K'}$,
+car $a<a$ l'était dans~$\Struct{K}$.
+
+Toutes ces fonctions sont calculables
+sur~$\Nat$, et $\Assign{<}{K'}$
+est une relation décidable. Ce ne
+sont cependant pas les opérations
+usuelles de~$\Nat$, ni son ordre usuel.
+\end{ex}
+
+\begin{prob}
+Construire une !!{structure}~$\Struct{L'}$
+de domaine~$\Nat$ qui soit isomorphe
+à la !!{structure}~$\Struct{L}$ de
+l'\olref[mod][mar][mdq]{ex:model-L-of-Q}.
+\end{prob}
+
+\begin{explain}
+L'\olref{ex:comp-model-q} montre que
+$\Th{Q}$ possède des modèles non standards
+calculables de domaine~$\Nat$.
+Le résultat suivant interdit cela
+pour~$\Th{PA}$, donc aussi
+pour~$\Th{TA}$.
+\end{explain}
+
+\begin{thm}[Théorème de Tennenbaum]
+Tout modèle calculable de~$\Th{PA}$
+est isomorphe au modèle standard
+$\Struct{N}$.\footnote{Précision éditoriale : « le seul » dans la source est compris à isomorphisme près. Une renumérotation calculable du modèle standard donne une structure calculable distincte, mais isomorphe à $\Struct{N}$.}
+\end{thm}
+
+\end{document}

@@ -51,13 +51,13 @@ $\sFmla{\False}{!A(c)}$ après les hypothèses.
         [][][]]]]]]
 \end{tableau}
 \end{center}
-Le tableau demeure fermé, puisque tous les !!{sentence}s qui figuraient
-auparavant parmi les hypothèses sont encore disponibles en haut du
-!!{tableau}. La ligne insérée résulte d'une application correcte de
-$\TRule{\False}{\lforall}$ : la !!{constant}~$c$ ne figure ni dans
-$!B_1$, \dots, $!B_n$, ni dans $\lforall[x][!A(x)]$, donc elle ne
-figure nulle part au-dessus de la ligne insérée dans le nouveau
-!!{tableau}.
+La ligne insérée résulte de $\TRule{\False}{\lforall}$ :
+la !!{constant}~$c$ est absente de $!B_1$, \dots, $!B_n$ et de
+$\lforall[x][!A(x)]$. Si le témoin est vide, cette ligne suit
+immédiatement l'hypothèse unique. Toutes les anciennes hypothèses
+sont maintenant disponibles. La nouvelle universelle n'introduit
+aucune constante absente de $!A(c)$. Les inférences qui suivent
+restent donc correctes et le !!{tableau} demeure fermé.
 \end{proof}
 
 \begin{prop}
@@ -89,9 +89,9 @@ Pour tout terme clos~$t$, on a :
 \end{tagenumerate}
 \end{proof}
 
-\begin{editorial}
-La fermeture du terme~$t$, exigée par les règles de quantification de
-ce système, est rappelée explicitement dans l'énoncé de la proposition.
-\end{editorial}
+%
+%
+%
+%
 
 \end{document}

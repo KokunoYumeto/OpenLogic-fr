@@ -1,0 +1,128 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{replacement}{absinf}
+\olsection{Le remplacement et l'«~infini absolu~»}
+
+Laissons maintenant \limofsize{} de côté pour explorer une autre
+famille de tentatives de justification (intrinsèque) du remplacement.
+Celles-ci prennent au sérieux l'idée que les ensembles se forment
+par étapes.
+
+Lorsque nous avons esquissé pour la première fois le processus
+itératif, nous avons proposé des principes qui expliquaient ce
+qui se passe à chaque étape : \stageshier, \stagesord{} et
+\stagesacc. Plus tard, nous avons ajouté des principes portant
+sur le nombre d'étapes : \stagessucc{} disait que le processus
+de formation des ensembles ne s'arrête jamais, et \stagesinf{}
+qu'il atteint une étape d'indice infini.
+
+On peut raisonnablement suggérer que ces deux derniers principes
+découlent d'un principe plus général, tel que :
+\begin{enumerate}
+	\item[] \stagesinex. Il y a une infinité absolue d'étapes ;
+	la hiérarchie est aussi haute qu'elle pourrait l'être.
+\end{enumerate}
+Il s'agit évidemment d'un principe informel. Mais, même s'il ne
+\emph{découle} pas immédiatement de la conception cumulative et
+itérative des ensembles, il paraît certainement \emph{compatible}
+avec elle. À tout le moins, et à la différence de \limofsize,
+il conserve l'idée que les ensembles se forment étape par étape.
+
+Nous espérons maintenant tirer de \stagesinex{} une justification
+du remplacement. Voyons comment.
+
+Dans la \olref[ordinals][idea]{sec}, nous avons vu qu'il est facile
+de construire un bon ordre qui devrait, intuitivement, être
+isomorphe à $\omega+\omega$. Autrement dit, nous pouvons aisément
+imaginer un processus itératif étape par étape dont le type
+d'ordre serait, intuitivement, $\omega+\omega$. Si nous avons
+accepté \stagesinex, nous devrions donc sûrement admettre
+qu'il y a au moins une étape $\omega+\omega$-ième de la
+hiérarchie, c'est-à-dire $V_{\omega+\omega}$ : la hiérarchie
+\emph{pourrait} certainement aller jusque-là.
+
+Cette idée se généralise : pour tout bon ordre, la construction
+de la hiérarchie itérative devrait se poursuivre au moins aussi
+loin que ce bon ordre. Il suffirait, pour le garantir, de traiter
+le \olref[ordinals][ordtype]{thmOrdinalRepresentation} comme un
+\emph{axiome}. Celui-ci nous dirait que tout bon ordre est
+isomorphe à un ordinal de von Neumann. Puisque chaque ordinal
+de von Neumann est égal à son propre rang,
+le \olref[ordinals][ordtype]{thmOrdinalRepresentation} nous
+dirait alors que, chaque fois que nous pouvons décrire un bon
+ordre dans notre théorie des ensembles, le processus itératif
+de formation des ensembles doit dépasser ce bon ordre.
+
+Cette idée paraît certainement découler de \stagesinex.
+Malheureusement, si notre but est d'en déduire le remplacement,
+un obstacle technique simple se présente : le remplacement est
+strictement plus fort que le
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}.
+(C'est ce que remarque \citet[\S13.2]{Potter2004} ; nous le
+démontrerons dans la
+\olref[sth][replacement][finiteaxiomatizability]{sec}.)
+
+Ainsi, si nous voulons comprendre \stagesinex{} d'une manière
+qui permette d'obtenir le remplacement, ce principe ne peut
+\emph{pas se contenter} de dire que la hiérarchie dépasse tout
+bon ordre. Il doit affirmer davantage. À cette fin,
+\cite{Shoenfield:AST} a proposé un renforcement très naturel :
+aucun ensemble n'est \emph{cofinal} dans la hiérarchie.\footnote{
+G\"odel semble avoir proposé une idée voisine ; voir
+\citet[p.~223]{Potter2004}. Pour une discussion de G\"odel
+et de \citeauthor{Shoenfield:AST}, voir
+\citet[90--5]{Incurvati2020}.}
+Plus précisément, si $\tau$ est une opération définissable qui, à des
+ensembles, associe des étapes de la hiérarchie, l'image de tout
+ensemble $A$ par $\tau$ n'épuise pas la hiérarchie. Autrement
+dit (de manière schématique) :
+\begin{enumerate}
+	\item[] \stagescofin. Si $A$ est un ensemble et si
+	$\tau(x)$ est une étape pour tout $x \in A$, alors il
+	existe une étape qui vient après chacune des $\tau(x)$,
+	pour $x \in A$.
+\end{enumerate}
+Il est évident que $\ZF$ démontre une version convenablement
+formalisée de \stagescofin. Inversement, on peut soutenir
+informellement que \stagescofin{} justifie le remplacement.
+\footnote{Il serait plus difficile de démontrer le remplacement
+à partir d'une formalisation de \stagescofin, car $\Z$ seule
+n'est pas assez forte pour définir les étapes ; la manière
+de formaliser \stagescofin{} n'est donc pas claire. Une possibilité
+serait toutefois de travailler dans une extension de $\LT$,
+comme nous l'avons évoqué dans la
+\olref[sth][replacement][extrinsic]{sec}.}
+Supposons en effet que
+$(\forall x \in A)\lexists![y][\phi(x,y)]$. Pour chaque
+$x \in A$, soit $\sigma(x)$ l'unique $y$ tel que $\phi(x,y)$,
+et soit $\tau(x)$ l'étape où $\sigma(x)$ se forme pour la
+première fois. D'après \stagescofin, il existe une étape $V$
+telle que $(\forall x \in A)\tau(x)\in V$. Puisque chaque
+$\tau(x) \in V$ et que $\sigma(x) \subseteq \tau(x)$,
+la séparation permet d'obtenir
+$\Setabs{y \in V}{(\exists x \in A)\sigma(x) = y}
+= \Setabs{y}{(\exists x \in A)\phi(x,y)}$.
+
+\begin{prob}
+	Formalisez \stagescofin{} dans $\ZF$.
+\end{prob}
+
+Ainsi, \stagescofin{} justifie le remplacement. Il est au moins
+plausible que \stagesinex{} justifie à son tour \stagescofin.
+Supposons en effet que \stagescofin{} soit faux. La hiérarchie
+admet alors un ensemble cofinal~$A$ : il existe une opération définissable
+$\tau$ telle que, pour toute étape~$S$, il y ait un $x \in A$
+tel que $S \in \tau(x)$. Dans ce cas, nous disposons bien
+d'un moyen de saisir le prétendu «~infini absolu~» de la
+hiérarchie : il est \emph{épuisé} par l'image de $A$ sous
+$\tau$. Cela compromet l'idée que la hiérarchie est
+«~absolument infinie~». Par contraposition, \stagesinex{}
+entraîne \stagescofin, qui justifie à son tour le remplacement.
+
+Voilà une tentative réellement prometteuse de fournir une
+justification intrinsèque du remplacement. Mais c'est à vous
+de décider si elle réussit en définitive.
+
+\end{document}

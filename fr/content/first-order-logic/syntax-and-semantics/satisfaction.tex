@@ -1,0 +1,442 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: satisfaction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{sat}
+
+\olsection{Satisfaction des \printtoken{p}{formula}
+  dans les \printtoken{p}{structure}}
+
+\begin{explain}
+Les notions fondamentales qui relient les expressions, notamment les
+termes et les !!{formula}s, aux !!{structure}s sont la
+\emph{!!{value}} d'un terme et la \emph{satisfaction} d'!!a{formula}.
+Informellement, la !!{value} d'un terme est un !!{element} d'!!a{structure} :
+si le terme est simplement une constante, sa !!{value} est l'objet
+que la !!{structure} attribue à cette constante; s'il est formé à
+l'aide de !!{function}s, sa !!{value} se calcule à partir des
+!!{value}s des constantes et des fonctions que la !!{structure}
+attribue aux symboles figurant dans le terme. Une !!{formula} est
+\emph{satisfaite} dans !!a{structure} si l'interprétation des
+!!{predicate}s rend la !!{formula} vraie dans le !!{domain} de la
+!!{structure}. La satisfaction est définie inductivement : la
+!!{structure} détermine directement quand les !!{formula}s atomiques
+sont satisfaites; pour une !!{formula} complexe, la définition dépend
+de son connecteur ou quantificateur principal et de la satisfaction,
+ou non, de ses !!{subformula}s immédiates.
+
+Le cas des quantificateurs est plus délicat : la !!{subformula}
+immédiate d'une !!{formula} quantifiée peut contenir une !!{variable}
+libre, dont la !!{value} n'est pas spécifiée par la !!{structure}.\footnote{Précision éditoriale : la source affirme la présence d'une variable libre. La quantification peut cependant être vacuante, puisque les règles de formation n'exigent pas que la variable quantifiée apparaisse dans la formule.}
+Pour traiter cette difficulté, nous introduisons des
+\emph{assignations de variables} et définissons la satisfaction
+relativement à la fois à !!a{structure} et à une assignation de
+!!{variable}s.
+\end{explain}
+
+\begin{defn}[Assignation de variables]
+Une \emph{assignation de variables}~$s$ pour !!a{structure}~$\Struct{M}$
+est une fonction qui associe à chaque !!{variable} un !!{element}
+de~$\Domain M$, autrement dit $s\colon \Var \to \Domain M$.
+\end{defn}
+
+\begin{explain}
+Une !!{structure} attribue une !!{value} à chaque !!{constant}, et une
+assignation attribue une valeur à chaque !!{variable}. Nous voulons aussi que
+les termes construits à partir de ces symboles désignent des
+!!{element}s du !!{domain}. Nous définissons donc inductivement la
+!!{value} des termes. Pour une !!{constant} ou une variable, elle
+est celle que spécifie respectivement la !!{structure} ou l'assignation;
+pour un terme plus complexe, elle se calcule récursivement au moyen des
+fonctions attribuées aux !!{function}s par la !!{structure}.
+\end{explain}
+
+\begin{defn}[!!^{value} des termes]
+Si $t$ est un terme du langage~$\Lang L$, si $\Struct M$ est une
+!!{structure} pour~$\Lang L$ et si $s$ est une assignation de
+!!{variable}s pour~$\Struct M$, la \emph{!!{value}}~$\Value{t}{M}[s]$
+est définie comme suit :
+\begin{enumerate}
+\item \indcase{t}{c}{$\Value{\indfrm}{M}[s] = \Assign{\indcomplex}{M}$.}
+\item \indcase{t}{x}{$\Value{\indfrm}{M}[s] = s(\indcomplex)$.}
+\item \indcase{t}{\Atom{f}{t_1, \ldots, t_n}}{
+\[
+\Value{\indfrm}{M}[s] = \Assign{f}{M}(\Value{t_1}{M}[s], \ldots,
+\Value{t_n}{M}[s]).
+\]}
+\end{enumerate}
+\end{defn}
+
+\begin{defn}[Variante en~$x$]
+Soit $s$ une assignation de !!{variable}s pour !!a{structure}~$\Struct M$.
+Toute assignation~$s'$ pour~$\Struct M$ qui ne diffère de~$s$ que,
+éventuellement, par la !!{value} attribuée à~$x$ est appelée
+\emph{variante en~$x$} de~$s$. Si $s'$ est une telle variante,
+nous écrivons $\varAssign{s'}{s}{x}$.
+\end{defn}
+
+\begin{explain}
+Une variante en~$x$ de l'assignation~$s$ n'attribue pas
+\emph{nécessairement} une valeur différente à~$x$. Toute assignation
+est donc une variante en~$x$ d'elle-même.
+\end{explain}
+
+\begin{defn}
+  Si $s$ est une assignation de !!{variable}s pour
+  !!a{structure}~$\Struct M$, si $x$ est une !!{variable} et si
+  $m \in \Domain{M}$, alors l'assignation~$\Subst{s}{m}{x}$ est définie par
+  \[\Subst{s}{m}{x}(y) = \begin{cases}
+    m & \text{si } y \ident x\\
+    s(y) & \text{sinon}.
+  \end{cases}\]
+\end{defn}
+
+Autrement dit, $\Subst{s}{m}{x}$ est la variante en~$x$ de~$s$ qui
+attribue à~$x$ l'!!{element}~$m$ du !!{domain} et qui conserve les
+valeurs attribuées par~$s$ aux autres !!{variable}s.
+
+\begin{defn}[Satisfaction]
+\ollabel{defn:satisfaction}
+La satisfaction d'!!a{formula}~$!A$ dans !!a{structure}~$\Struct M$
+relativement à une assignation de !!{variable}s~$s$, notée
+$\Sat{M}{!A}[s]$, est définie récursivement comme suit. (Nous
+écrivons $\Sat/{M}{!A}[s]$ pour signifier « $\Sat{M}{!A}[s]$
+ne vaut pas ».)
+\begin{enumerate}
+\tagitem{prvFalse}{%
+  \indcase{!A}{\lfalse}{$\Sat/{M}{\indfrm}[s]$.}}{}
+
+\tagitem{prvTrue}{%
+  \indcase{!A}{\ltrue}{$\Sat{M}{\indfrm}[s]$.}}{}
+
+\item \indcase{!A}{\Atom{R}{t_1, \dots, t_n}}{$\Sat{M}{\indfrm}[s]$
+  si et seulement si $\langle \Value{t_1}{M}[s], \dots, \Value{t_n}{M}[s] \rangle \in
+  \Assign{R}{M}$.}
+
+\item \indcase{!A}{\eq[t_1][t_2]}{$\Sat{M}{\indfrm}[s]$ si et seulement si
+  $\Value{t_1}{M}[s] = \Value{t_2}{M}[s]$.}
+
+\tagitem{prvNot}{%
+  \indcase{!A}{\lnot !B}{$\Sat{M}{\indfrm}[s]$ si et seulement si
+    $\Sat/{M}{!B}[s]$.}}{}
+
+\tagitem{prvAnd}{%
+  \indcase{!A}{(!B \land !C)}{$\Sat{M}{\indfrm}[s]$ si et seulement si
+    $\Sat{M}{!B}[s]$ et $\Sat{M}{!C}[s]$.}}{}
+
+\tagitem{prvOr}{%
+  \indcase{!A}{(!B \lor !C)}{$\Sat{M}{\indfrm}[s]$ si et seulement si
+    $\Sat{M}{!B}[s]$ ou $\Sat{M}{!C}[s]$ (ou les deux).}}{}
+
+\tagitem{prvIf}{%
+  \indcase{!A}{(!B \lif !C)}{$\Sat{M}{\indfrm}[s]$ si et seulement si
+    $\Sat/{M}{!B}[s]$ ou $\Sat{M}{!C}[s]$ (ou les deux).}}{}
+
+\tagitem{prvIff}{%
+  \indcase{!A}{(!B \liff !C)}{$\Sat{M}{\indfrm}[s]$ si et seulement si
+    $\Sat{M}{!B}[s]$ et $\Sat{M}{!C}[s]$ valent tous deux, ou si ni
+    $\Sat{M}{!B}[s]$ ni $\Sat{M}{!C}[s]$ ne vaut.}}{}
+
+\tagitem{prvAll}{%
+  \indcase{!A}{\lforall[x][!B]}{$\Sat{M}{\indfrm}[s]$ si et seulement si,
+    pour tout
+    !!{element}~$m \in \Domain M$, $\Sat{M}{!B}[\Subst{s}{m}{x}]$.}}{}
+
+\tagitem{prvEx}{%
+  \indcase{!A}{\lexists[x][!B]}{$\Sat{M}{\indfrm}[s]$ si et seulement si,
+  pour au moins un !!{element}~$m \in \Domain M$,
+  $\Sat{M}{!B}[\Subst{s}{m}{x}]$.}}{}
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+Les assignations de variables interviennent dans
+\iftag{notprvEx,notprvAll}{la dernière clause}{les deux dernières clauses}.
+\iftag{prvAll}{ Nous ne pouvons pas définir la satisfaction de
+$\lforall[x][!B(x)]$ en disant « pour tout $m \in \Domain{M}$,
+$\Sat{M}{!B(m)}$ ».}{}\iftag{prvEx}{ Nous ne pouvons pas définir la
+satisfaction de $\lexists[x][!B(x)]$ en disant « pour au moins un
+$m \in \Domain{M}$, $\Sat{M}{!B(m)}$ ».}{} En effet, si
+$m \in \Domain M$, alors $m$ n'est pas un symbole du langage et
+$!B(m)$ n'est donc pas !!a{formula} (autrement dit,
+$\Subst{!B}{m}{x}$ n'est pas défini). Nous ne pouvons pas non plus
+supposer qu'il existe assez de !!{constant}s ou de termes pour
+désigner tous les !!{element}s de~$\Struct{M}$ : la définition d'une
+!!{structure} ne l'exige pas. Dans le langage standard, l'ensemble
+des !!{constant}s est !!{denumerable}; si $\Domain{M}$ n'est pas
+!!{enumerable}, il n'y a même pas assez de !!{constant}s pour nommer
+chaque objet.
+
+Nous résolvons cette difficulté en introduisant les assignations de
+!!{variable}s, qui relient directement les variables aux !!{element}s
+du !!{domain}. Au lieu de dire, par exemple, que
+\iftag{prvEx}{$\lexists[x][!B(x)]$}{$\lforall[x][!B(x)]$} est satisfaite
+dans~$\Struct M$ si et seulement si
+\iftag{prvEx}{pour au moins un $m \in \Domain{M}$, $\Sat{M}{!B(m)}$}
+{pour tout $m \in \Domain{M}$, $\Sat{M}{!B(m)}$}, nous disons qu'elle
+est satisfaite dans~$\Struct M$ \emph{relativement à}~$s$ si et
+seulement si $!B(x)$ est satisfaite relativement
+à~$\Subst{s}{m}{x}$ \iftag{prvEx}{pour au moins un}{pour tout}
+$m \in \Domain M$.
+\end{explain}
+
+\begin{ex}
+Soit $\Lang{L} = \{a, b, f, R\}$, où $a$ et $b$ sont des
+!!{constant}s, $f$ un !!{function} binaire et $R$ un !!{predicate}
+binaire. Considérons la !!{structure}~$\Struct{M}$ définie par :
+\begin{enumerate}
+\item $\Domain M = \{1, 2, 3, 4\}$
+\item $\Assign{a}{M} = 1$
+\item $\Assign{b}{M} = 2$
+\item $\Assign{f}{M}(x, y) = x+y$ si $x+y \le 3$, et vaut~$3$ sinon.
+\item $\Assign{R}{M} = \{\tuple{1, 1}, \tuple{1, 2}, \tuple{2, 3}, \tuple{2, 4}\}$
+\end{enumerate}
+La fonction $s(x) = 1$, qui attribue $1 \in \Domain{M}$ à chaque
+!!{variable}, est une assignation de variables pour~$\Struct{M}$.
+
+On a alors
+\begin{align*}
+\Value{f(a,b)}{M}[s] & = \Assign{f}{M}(\Value{a}{M}[s], \Value{b}{M}[s]).
+\intertext{Puisque $a$ et $b$ sont des !!{constant}s, $\Value{a}{M}[s]
+  = \Assign{a}{M} = 1$ et $\Value{b}{M}[s] = \Assign{b}{M} = 2$. Donc}
+\Value{f(a,b)}{M}[s] & = \Assign{f}{M}(1, 2) = 1+2 = 3.
+\intertext{Pour calculer la valeur de $f(f(a,b),a)$, nous considérons}
+\Value{f(f(a,b),a)}{M}[s] & = \Assign{f}{M}(\Value{f(a, b)}{M}[s],
+\Value{a}{M}[s]) = \Assign{f}{M}(3, 1) = 3,
+\intertext{car $3+1 > 3$. Comme $s(x) = 1$ et $\Value{x}{M}[s] =
+  s(x)$, nous avons aussi}
+\Value{f(f(a,b),x)}{M}[s] & = \Assign{f}{M}(\Value{f(a, b)}{M}[s],
+\Value{x}{M}[s]) = \Assign{f}{M}(3, 1) = 3,
+\end{align*}
+
+Une !!{formula} atomique~$R(t_1, t_2)$ est satisfaite si le couple
+des valeurs de ses arguments, soit $\tuple{\Value{t_1}{M}[s],
+  \Value{t_2}{M}[s]}$, appartient à~$\Assign{R}{M}$. Ainsi,
+$\Sat{M}{R(b,f(a,b))}[s]$, car $\tuple{\Value{b}{M},
+  \Value{f(a,b)}{M}} = \tuple{2, 3} \in \Assign{R}{M}$, mais
+$\Sat/{M}{R(x, f(a,b))}[s]$, car
+$\tuple{1, 3} \notin \Assign{R}{M}$.
+
+Pour déterminer si une !!{formula} non atomique~$!A$ est satisfaite,
+on applique la clause de la définition inductive correspondant à son
+connecteur principal. Par exemple, le connecteur principal de
+$R(a, a) \lif (R(b, x) \lor R(x, b))$ est~$\lif$, d'où
+\begin{align*}
+  & \Sat{M}{R(a, a) \lif (R(b, x) \lor R(x, b))}[s]
+    \text{ si et seulement si }\\
+  & \qquad
+  \Sat/{M}{R(a,a)}[s] \text{ ou } \Sat{M}{R(b, x) \lor R(x, b)}[s]
+  \intertext{Comme $\Sat{M}{R(a,a)}[s]$ (car $\tuple{1,1} \in
+    \Assign{R}{M}$), nous devons encore déterminer si
+    $\Sat{M}{R(b, x) \lor R(x, b)}[s]$ :}
+  & \Sat{M}{R(b, x) \lor R(x, b)}[s]
+    \text{ si et seulement si }\\
+  & \qquad \Sat{M}{R(b,x)}[s] \text{ ou } \Sat{M}{R(x, b)}[s]
+  \intertext{C'est bien le cas, puisque $\Sat{M}{R(x, b)}[s]$
+    (car $\tuple{1,2} \in \Assign{R}{M}$).}
+\end{align*}
+
+Rappelons qu'une variante en~$x$ de~$s$ est une assignation de
+variables qui ne diffère de~$s$ que, éventuellement, par la valeur
+attribuée à~$x$. Chaque !!{element} de~$\Domain{M}$ détermine une
+telle variante :
+\begin{align*}
+  s_1 & = \Subst{s}{1}{x}, &
+  s_2 & = \Subst{s}{2}{x},\\
+  s_3 & = \Subst{s}{3}{x}, &
+  s_4 & = \Subst{s}{4}{x}.
+\end{align*}
+Par exemple, $s_2(x) = 2$ et $s_2(y) = s(y) = 1$ pour toute
+variable~$y$ autre que~$x$. Comme $\Domain{M} = \{1, 2, 3, 4\}$,
+ce sont toutes les variantes en~$x$ de~$s$ pour~$\Struct{M}$.
+En particulier, $s_1 = s$ : $s$ est toujours une variante en~$x$
+d'elle-même.
+
+\iftag{prvEx}{Pour déterminer si la !!{formula} existentielle
+  $\lexists[x][!A(x)]$ est satisfaite, il faut vérifier si
+  $\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$ pour au moins un
+  $m \in \Domain M$. Ainsi,
+  \[
+  \Sat{M}{\lexists[x][(R(b,x) \lor R(x,b))]}[s],
+  \]
+  car $\Sat{M}{R(b,x) \lor R(x, b)}[\Subst{s}{1}{x}]$
+  (la variante $\Subst{s}{3}{x}$ conviendrait aussi). En revanche,
+  \[
+  \Sat/{M}{\lexists[x][(R(b,x) \land R(x,b))]}[s]
+  \]
+  car, quel que soit $m \in \Domain{M}$,
+  $\Sat/{M}{R(b,x) \land R(x,b)}[\Subst{s}{m}{x}]$.}{}
+
+\iftag{prvAll}{Pour déterminer si la !!{formula} universelle
+  $\lforall[x][!A(x)]$ est satisfaite, il faut vérifier si
+  $\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$ pour tout $m \in \Domain M$.
+  Ainsi,
+  \[
+  \Sat{M}{\lforall[x][(R(x,a) \lif R(a,x))]}[s],
+  \]
+  car $\Sat{M}{R(x,a) \lif R(a,x)}[\Subst{s}{m}{x}]$ pour tout
+  $m \in \Domain M$. Si $m = 1$, alors
+  $\Sat{M}{R(a,x)}[\Subst{s}{1}{x}]$ : le conséquent est vrai.
+  Si $m = 2$, $3$ ou~$4$, alors
+  $\Sat/{M}{R(x,a)}[\Subst{s}{m}{x}]$ : l'antécédent est faux.
+  En revanche,
+  \[
+  \Sat/{M}{\lforall[x][(R(a,x) \lif R(x,a))]}[s]
+  \]
+  car $\Sat/{M}{R(a,x) \lif R(x,a)}[\Subst{s}{2}{x}]$ :
+  $\Sat{M}{R(a, x)}[\Subst{s}{2}{x}]$, tandis que
+  $\Sat/{M}{R(x, a)}[\Subst{s}{2}{x}]$.}{}
+
+\iftag{defEx}{Pour déterminer si la !!{formula} existentielle
+  $\lexists[x][!A(x)]$ est satisfaite, il faut vérifier si
+  $\Sat{M}{\lnot \lforall[x][\lnot !A(x)]}[s]$. Ainsi,
+  \[
+  \Sat{M}{\lexists[x][(R(b,x) \lor R(x,b))]}[s].
+  \]
+  D'abord, $\Sat{M}{R(b,x) \lor R(x, b)}[\Subst{s}{1}{x}]$
+  (la variante $\Subst{s}{3}{x}$ conviendrait aussi). Donc
+  $\Sat/{M}{\lnot(R(b,x) \lor R(x,b))}[\Subst{s}{1}{x}]$, puis
+  $\Sat/{M}{\lforall[x][\lnot(R(b,x) \lor R(x,b))]}[s]$ et,
+  finalement, $\Sat{M}{\lnot\lforall[x][\lnot(R(b,x) \lor
+  R(x,b))]}[s]$. En revanche,
+  \[
+  \Sat/{M}{\lexists[x][(R(b,x) \land R(x,b))]}[s].
+  \]
+  En effet, $\Sat{M}{\lforall[x][\lnot(R(b,x) \land
+  R(x,b))]}[s]$, car il n'existe aucun $m \in \Domain M$ tel que
+  $\Sat{M}{R(b,x) \land R(x,b)}[\Subst{s}{m}{x}]$. Ces exemples
+  suggèrent que $\Sat{M}{\lexists[x][!A(x)]}[s]$ si et seulement si
+  $\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$ pour au moins un
+  $m \in \Domain M$.}{}
+
+\iftag{defAll}{Pour déterminer si la !!{formula} universelle
+  $\lforall[x][!A(x)]$ est satisfaite, il faut vérifier si
+  $\Sat{M}{\lnot\lexists[x][\lnot !A(x)]}[s]$. Par exemple,
+  \[
+  \Sat{M}{\lforall[x][(R(x,a) \lif R(a,x))]}[s],
+  \]
+  D'abord, $\Sat{M}{R(x,a) \lif R(a,x)}[\Subst{s}{m}{x}]$ pour tout
+  $m \in \Domain M$ : $\Sat{M}{R(a,x)}[\Subst{s}{1}{x}]$, tandis que
+  $\Sat/{M}{R(x,a)}[\Subst{s}{m}{x}]$ pour $m = 2$, $3$ ou~$4$.
+  Il n'existe donc aucun $m \in \Domain M$ tel que
+  $\Sat{M}{\lnot(R(x,a) \lif R(a,x))}[\Subst{s}{m}{x}]$;
+  par suite, $\Sat/{M}{\lexists[x][\lnot(R(x,a) \lif R(a,x))]}[s]$.
+  Nous obtenons ainsi
+  $\Sat{M}{\lnot\lexists[x][\lnot(R(x,a) \lif R(a,x))]}[s]$.
+  En revanche,
+  \[
+  \Sat/{M}{\lforall[x][(R(a,x) \lif R(x,a))]}[s],
+  \]
+  puisque $\Sat/{M}{R(a,x) \lif R(x,a)}[\Subst{s}{2}{x}]$ et donc
+  $\Sat{M}{\lexists[x][\lnot(R(a,x) \lif R(x,a))]}[s]$. Ces exemples
+  suggèrent que $\Sat{M}{\lforall[x][!A(x)]}[s]$ si et seulement si
+  $\Sat{M}{!A(x)}[\Subst{s}{m}{x}]$ pour tout
+  $m \in \Domain M$.}{}
+
+Considérons maintenant un cas plus complexe :
+\[
+\lforall[x][(R(a,x) \lif \lexists[y][R(x,y)])].
+\]
+Puisque $\Sat/{M}{R(a,x)}[\Subst{s}{3}{x}]$ et
+$\Sat/{M}{R(a,x)}[\Subst{s}{4}{x}]$, seuls les cas $m = 1$ et
+$m = 2$ exigent d'examiner le conséquent de l'implication.
+A-t-on $\Sat{M}{\lexists[y][R(x,y)]}[\Subst{s}{1}{x}]$ ? Il suffit
+qu'il existe au moins un $n \in \Domain M$ tel que
+$\Sat{M}{R(x,y)}[\Subst{\Subst{s}{1}{x}}{n}{y}]$. Pour $n = 1$,
+nous avons $\Subst{\Subst{s}{1}{x}}{n}{y} = \Subst{s}{1}{y} = s$.
+Comme $s(x) = 1$, $s(y) = 1$ et $\tuple{1,1} \in \Assign{R}{M}$,
+la réponse est affirmative.
+
+Reste à vérifier
+$\Sat{M}{\lexists[y][R(x,y)]}[\Subst{s}{2}{x}]$.
+Examinons les assignations de !!{variable}s
+$\Subst{\Subst{s}{2}{x}}{n}{y}$. Pour $n = 1$, cette assignation
+est~$s_2 = \Subst{s}{2}{x}$, qui ne satisfait pas $R(x,y)$ :
+$s_2(x) = 2$, $s_2(y) = 1$ et
+$\tuple{2,1}\notin \Assign{R}{M}$. En revanche, considérons
+$\Subst{\Subst{s}{2}{x}}{3}{y} = \Subst{s_2}{3}{y}$.
+Nous avons $\Sat{M}{R(x,y)}[\Subst{s_2}{3}{y}]$ puisque
+$\tuple{2,3} \in \Assign{R}{M}$; donc
+$\Sat{M}{\lexists[y][R(x,y)]}[s_2]$.
+
+Ainsi, pour tout $m \in \Domain M$, ou bien
+$\Sat/{M}{R(a,x)}[\Subst{s}{m}{x}]$ (si $m = 3$ ou~$4$), ou bien
+$\Sat{M}{\lexists[y][R(x,y)]}[\Subst{s}{m}{x}]$ (si $m = 1$ ou~$2$).
+Par conséquent,
+\[
+\Sat{M}{\lforall[x][(R(a,x) \lif \lexists[y][R(x,y)])]}[s].
+\]
+En revanche,
+\[
+\Sat/{M}{\lexists[x][(R(a,x) \land \lforall[y][R(x,y)])]}[s].
+\]
+La relation $\Sat{M}{R(a,x)}[\Subst{s}{m}{x}]$ ne vaut que pour
+$m = 1$ ou $m = 2$. Pour chacun de ces deux cas, il existe pourtant
+un $n \in \Domain M$ tel que
+$\Sat/{M}{R(x,y)}[\Subst{\Subst{s}{m}{x}}{n}{y}]$ : on peut prendre
+$n = 4$ lorsque $m = 1$, et $n = 1$ lorsque $m = 2$.
+Ainsi $\Sat/{M}{\lforall[y][R(x,y)]}[\Subst{s}{m}{x}]$ pour
+$m = 1$ et $m = 2$. Il n'existe donc aucun $m \in \Domain M$ tel que
+$\Sat{M}{R(a,x) \land \lforall[y][R(x,y)]}[\Subst{s}{m}{x}]$.
+\end{ex}
+
+\iftag{defEx}{%
+\begin{prop}\ollabel{prop:sat-ex}
+$\Sat{M}{\lexists[x][!B(x)]}[s]$ si et seulement s'il existe une
+variante en~$x$ de~$s$, notée~$s'$, telle que $\Sat{M}{!B(x)}[s']$.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+}{}
+
+\tagprob{defEx}
+\begin{prob}
+  Démontrer la \olref[fol][syn][sat]{prop:sat-ex}.
+\end{prob}
+\tagendprob
+
+\iftag{defAll}{%
+\begin{prop}\ollabel{prop:sat-all}
+$\Sat{M}{\lforall[x][!B(x)]}[s]$ si et seulement si, pour toute
+variante en~$x$ de~$s$, notée~$s'$, $\Sat{M}{!B(x)}[s']$.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+}{}
+
+\tagprob{defAll}
+\begin{prob}
+  Démontrer la \olref[fol][syn][sat]{prop:sat-all}.
+\end{prob}
+\tagendprob
+
+\begin{prob}
+Soit $\Lang L = \{c, f, A\}$, avec une !!{constant}, un
+!!{function} unaire et un !!{predicate} binaire. Soit la
+!!{structure}~$\Struct{M}$ définie par
+\begin{enumerate}
+\item $\Domain M = \{1, 2, 3\}$
+\item $\Assign{c}{M} = 3$
+\item $\Assign{f}{M}(1) = 2, \Assign{f}{M}(2) = 3, \Assign{f}{M}(3) = 2$
+\item $\Assign{A}{M} = \{\tuple{1, 2}, \tuple{2, 3}, \tuple{3, 3}\}$
+\end{enumerate}
+(a) Soit $s(v) = 1$ pour toute !!{variable}~$v$. Déterminer si
+\[
+\Sat{M}{\lexists[x][(A(f(z), c) \lif \lforall[y][(A(y, x) \lor A(f(y),
+      x))])]}[s]
+\]
+Justifier la réponse.
+
+(b) Donner une autre !!{structure} et une assignation de
+!!{variable}s dans lesquelles la !!{formula} n'est pas satisfaite.
+\end{prob}
+
+\end{document}

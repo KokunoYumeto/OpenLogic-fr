@@ -1,0 +1,388 @@
+% Partie : méthodes
+% Chapitre : démonstrations
+% Section : démonstration par l'absurde
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{prf}{con}
+
+\olsection{Démonstration par l'absurde}
+
+La démonstration par l'absurde est d'abord un schéma
+d'inférence destiné à établir des énoncés négatifs.
+Supposons que vous vouliez montrer qu'un énoncé~$p$
+est \emph{faux}, autrement dit établir~$\lnot p$.
+La stratégie la plus prometteuse est de
+(a) supposer $p$ vrai, puis de (b) montrer
+que cette hypothèse conduit à quelque chose
+que vous savez être faux. Ce résultat peut
+contredire $p$ lui-même ou une autre hypothèse
+de l'énoncé étudié. Par exemple, pour démontrer
+«~si $q$, alors $\lnot p$~», on suppose $q$
+et on en déduit~$\lnot p$. Si l'on établit
+$\lnot p$ par l'absurde, on ajoute
+temporairement l'hypothèse~$p$. Si, avec cette
+hypothèse, on déduit $\lnot q$, cette conclusion
+contredit l'hypothèse~$q$. Il faudra bien sûr aussi utiliser
+d'autres schémas d'inférence et déplier
+des définitions pour parvenir à la
+contradiction. Voici un exemple.
+
+\begin{prop}
+  Si $A \subseteq B$ et $B = \emptyset$,
+  alors $A$ n'a aucun !!{element}.
+\end{prop}
+
+\begin{proof}
+  Supposons $A \subseteq B$ et
+  $B = \emptyset$. Nous voulons montrer
+  que $A$ n'a aucun !!{element}.
+  \begin{quote}
+    L'énoncé est une implication :
+    nous supposons son antécédent et
+    cherchons à démontrer son conséquent.
+    Celui-ci dit que $A$ n'a aucun
+    !!{element}. Reformulons-le plus
+    explicitement : il est faux qu'il
+    existe un~$x \in A$.
+  \end{quote}
+  $A$ n'a aucun !!{element} si et
+  seulement s'il n'existe pas de~$x$
+  tel que $x \in A$.
+  \begin{quote}
+    Nous voulons donc démontrer un
+    énoncé négatif~$\lnot p$ :
+    il est faux qu'il existe un
+    $x \in A$. Pour procéder par
+    l'absurde, supposons l'énoncé
+    positif correspondant~$p$,
+    c'est-à-dire l'existence d'un
+    $x \in A$, puis tirons-en
+    une contradiction. Nous annonçons
+    cette démarche par «~supposons,
+    pour obtenir une contradiction,
+    que…~», ou simplement par
+    «~supposons le contraire~».
+  \end{quote}
+  Supposons le contraire :
+  il existe un $x \in A$.
+  \begin{quote}
+    C'est notre nouvelle hypothèse
+    pour obtenir une contradiction.
+    Nous avons aussi $A \subseteq B$
+    et $B = \emptyset$. La première
+    donne $x \in B$ :
+  \end{quote}
+  Puisque $A \subseteq B$, $x \in B$.
+  \begin{quote}
+    Mais comme $B = \emptyset$,
+    tout !!{element} de~$B$,
+    notamment $x$, doit aussi être
+    !!a{element} de~$\emptyset$.
+  \end{quote}
+  Puisque $B = \emptyset$,
+  $x \in \emptyset$. C'est une
+  contradiction : par définition,
+  $\emptyset$ n'a aucun !!{element}.
+  \begin{quote}
+    La démonstration est déjà achevée :
+    nos hypothèses ont conduit à une
+    contradiction et ne peuvent donc
+    être toutes vraies. Puisque les
+    deux premières, $A \subseteq B$
+    et $B = \emptyset$, ne sont pas
+    mises en cause, c'est la dernière,
+    l'existence d'un $x \in A$, qui
+    doit être fausse. Nous pouvons
+    expliciter cette conclusion.
+  \end{quote}
+  Ainsi, l'hypothèse qu'il existe
+  un $x \in A$ est fausse ; par
+  l'absurde, $A$ n'a donc aucun
+  !!{element}.
+\end{proof}
+
+En logique classique, tout énoncé positif
+est équivalent à un énoncé négatif :
+$p$ si et seulement si $\lnot\lnot p$.
+On peut donc aussi établir un énoncé
+positif \emph{indirectement}, par l'absurde.
+Pour démontrer~$p$, considérons l'énoncé
+négatif $\lnot\lnot p$. Si l'hypothèse
+$\lnot p$ conduit à une contradiction,
+nous avons démontré $\lnot\lnot p$,
+et par conséquent~$p$.
+
+Dans l'exemple précédent, notre objectif
+était négatif : montrer que $A$ n'a
+aucun !!{element}. L'hypothèse ajoutée
+pour la démonstration par l'absurde,
+l'existence d'un $x \in A$, était
+donc positive. Elle nous a donné
+un point de départ concret,
+l'appartenance hypothétique $x \in A$,
+à partir de laquelle nous avons
+raisonné jusqu'à $x \in \emptyset$.
+
+Pour démontrer indirectement un énoncé
+positif, on commence au contraire par
+une hypothèse négative. Mais on peut
+souvent reformuler facilement un énoncé
+positif comme un énoncé négatif, et
+inversement. La démonstration précédente
+aurait été essentiellement la même si
+nous avions cherché à établir
+«~$A = \emptyset$~» plutôt que
+«~$A$ n'a aucun !!{element}~».
+Par définition de~$=$,
+«~$A = \emptyset$~» est un énoncé
+universel : il se déplie en
+«~tout !!{element} de~$A$ est
+!!{element} de~$\emptyset$,
+et réciproquement~».
+Mais il est facile de voir qu'il
+équivaut à l'énoncé négatif
+«~il n'existe pas de $x \in A$~».
+
+Il est parfois plus facile de partir
+de l'hypothèse $\lnot p$ que de
+démontrer directement~$p$. Même
+lorsqu'une démonstration directe serait
+aussi simple, voire plus simple,
+certains préfèrent l'argument indirect.
+Si la double négation vous déroute,
+retenez les deux points de départ.
+Pour démontrer $\lnot p$, on suppose
+$p$ et on en tire une contradiction.
+Pour démontrer $p$ en logique classique,
+on tire une contradiction de sa
+\emph{négation}~$\lnot p$.
+
+\begin{prop}
+$A \subseteq A \cup B$.
+\end{prop}
+
+\begin{proof}
+  Nous voulons montrer
+  $A \subseteq A \cup B$.
+  \begin{quote}
+    À première vue, c'est un
+    énoncé positif : tout
+    $x \in A$ appartient aussi
+    à $A \cup B$. Sa négation
+    dit qu'un certain $x \in A$
+    n'appartient pas à $A \cup B$.
+    Nous pouvons donc supposer
+    cette négation et montrer
+    qu'elle mène à une contradiction.
+  \end{quote}
+  Supposons le contraire,
+  c'est-à-dire
+  $A \nsubseteq A \cup B$.
+  \begin{quote}
+    Par définition,
+    $A \subseteq A \cup B$
+    signifie que tout $x \in A$
+    appartient aussi à $A \cup B$.
+    Pour comprendre
+    $A \nsubseteq A \cup B$,
+    nions correctement cet
+    énoncé universel :
+    il est faux que tout
+    $x \in A$ appartienne
+    à $A \cup B$ si et
+    seulement s'il existe
+    \emph{un certain}~$x \in A$
+    tel que $x \notin A \cup B$.
+    Il faut être attentif :
+    beaucoup de tentatives de
+    démonstration par l'absurde
+    échouent parce qu'elles
+    nient incorrectement un
+    énoncé comme «~tous les
+    $A$ sont des $B$~».
+    Autrement dit,
+    $A \nsubseteq A \cup B$
+    si et seulement s'il
+    existe un $x$ tel que
+    $x \in A$ et
+    $x \notin A \cup B$.
+    La suite est facile.
+  \end{quote}
+  Il existe donc un $x \in A$
+  tel que $x \notin A \cup B$.
+  Par définition de~$\cup$,
+  $x \in A \cup B$ si et
+  seulement si $x \in A$
+  ou $x \in B$. Puisque
+  $x \in A$, nous avons
+  $x \in A \cup B$.
+  Cela contredit
+  $x \notin A \cup B$.
+\end{proof}
+
+\begin{prob}
+Démontrez \emph{indirectement}
+que $A \cap B \subseteq A$.
+\end{prob}
+
+\begin{prop}
+Si $A \subseteq B$ et
+$B \subseteq C$, alors
+$A \subseteq C$.
+\end{prop}
+
+\begin{proof}
+  Supposons $A \subseteq B$
+  et $B \subseteq C$. Nous
+  voulons montrer
+  $A \subseteq C$.
+  \begin{quote}
+    Procédons indirectement :
+    supposons la négation
+    de notre objectif.
+  \end{quote}
+  Supposons donc le contraire,
+  $A \nsubseteq C$.
+  \begin{quote}
+    Comme auparavant,
+    $A \nsubseteq C$ signifie
+    qu'il n'est pas vrai
+    que tout $x \in A$
+    appartienne aussi à~$C$ :
+    il existe donc un
+    $x \in A$ tel que
+    $x \notin C$. Avec
+    l'habitude, ce dépliage
+    des négations deviendra
+    immédiat.
+  \end{quote}
+  Autrement dit, il existe
+  un~$x$ tel que
+  $x \in A$ et
+  $x \notin C$.
+  \begin{quote}
+    Nous pouvons maintenant
+    tirer une contradiction,
+    en utilisant bien sûr
+    les deux autres hypothèses.
+  \end{quote}
+  Puisque $A \subseteq B$,
+  $x \in B$. Puisque
+  $B \subseteq C$,
+  $x \in C$. Cela
+  contredit $x \notin C$.
+\end{proof}
+
+\begin{prop}
+Si $A \cup B = A \cap B$,
+alors $A = B$.
+\end{prop}
+
+\begin{proof}
+  Supposons
+  $A \cup B = A \cap B$.
+  Nous voulons montrer
+  $A = B$.
+  \begin{quote}
+    Le début de la
+    démonstration est
+    désormais familier :
+  \end{quote}
+  Supposons, pour obtenir
+  une contradiction,
+  que $A \neq B$.
+  \begin{quote}
+    Notre hypothèse
+    provisoire est
+    $A \neq B$. Or
+    $A = B$ si et
+    seulement si
+    $A \subseteq B$
+    \emph{et}
+    $B \subseteq A$.
+    Par négation,
+    $A \neq B$ si et
+    seulement si
+    $A \nsubseteq B$
+    \emph{ou}
+    $B \nsubseteq A$.
+    Il faut être
+    attentif lorsqu'on
+    nie une conjonction !{}
+    Pour tirer une
+    contradiction de
+    cette disjonction,
+    distinguons deux
+    cas et obtenons-en
+    une dans chacun.
+  \end{quote}
+  $A \neq B$ si et
+  seulement si
+  $A \nsubseteq B$
+  ou $B \nsubseteq A$.
+  Distinguons deux cas.
+  \begin{quote}
+    Dans le premier,
+    $A \nsubseteq B$ :
+    un certain $x$
+    appartient à~$A$,
+    mais pas à~$B$.
+    L'intersection
+    $A \cap B$ contient
+    les !!{element}s
+    communs à $A$
+    et à $B$ :
+    ce qui manque
+    dans l'un ne
+    peut appartenir
+    à leur intersection.
+    L'union $A \cup B$
+    contient, elle,
+    tout ce qui
+    appartient à
+    l'un ou l'autre.
+    Ainsi,
+    $x \in A \cup B$
+    mais
+    $x \notin A \cap B$,
+    d'où
+    $A \cap B \neq A \cup B$.
+  \end{quote}
+
+  Cas 1 :
+  $A \nsubseteq B$.
+  Il existe alors
+  un $x \in A$
+  tel que
+  $x \notin B$.
+  Puisque
+  $x \notin B$,
+  $x \notin A \cap B$.
+  Puisque $x \in A$,
+  $x \in A \cup B$.
+  Donc
+  $A \cap B \neq A \cup B$,
+  contrairement à
+  l'hypothèse
+  $A \cap B = A \cup B$.
+
+  Cas 2 :
+  $B \nsubseteq A$.
+  Il existe alors
+  un $y \in B$
+  tel que
+  $y \notin A$.
+  Comme précédemment,
+  $y \in A \cup B$,
+  mais
+  $y \notin A \cap B$.
+  Donc
+  $A \cap B \neq A \cup B$,
+  contrairement à
+  l'hypothèse
+  $A \cap B = A \cup B$.
+\end{proof}
+
+\end{document}

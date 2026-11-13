@@ -1,0 +1,144 @@
+% Partie : méthodes
+% Chapitre : démonstrations
+% Section : second exemple
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{prf}{ex2}
+
+\olsection{Un autre exemple}
+
+\begin{prop}
+Si $A \subseteq C$, alors
+$A \cup (C \setminus A) = C$.
+\end{prop}
+
+\begin{proof}
+  Supposons $A \subseteq C$. Nous voulons
+  montrer $A \cup (C \setminus A) = C$.
+  \begin{quote}
+    Observons d'abord que l'énoncé est une
+    implication. Un quantificateur universel
+    y est sous-entendu : la proposition vaut
+    pour tous ensembles $A$ et $C$. Ces lettres
+    désignent donc des ensembles arbitraires.
+    Pour démontrer l'implication, nous supposons
+    son antécédent et établissons son conséquent.
+
+    Utilisons l'hypothèse $A \subseteq C$.
+    Par définition de~$\subseteq$, cette inclusion signifie que tous
+    les !!{element}s de~$A$ sont aussi !!{element}s de~$C$.
+    Notons ce fait important, qui servira
+    pendant toute la démonstration.
+  \end{quote}
+  Par définition de~$\subseteq$, puisque
+  $A \subseteq C$, pour tout $z$, si
+  $z \in A$, alors $z \in C$.
+  \begin{quote}
+    Nous avons déplié toutes les définitions
+    présentes dans l'hypothèse. Passons à la
+    conclusion $A \cup (C \setminus A) = C$.
+    Comme dans l'exemple précédent, nous
+    montrons que tout !!{element} de
+    $A \cup (C \setminus A)$ est
+    !!a{element} de~$C$ et,
+    réciproquement, que tout !!{element}
+    de~$C$ est !!a{element} de
+    $A \cup (C \setminus A)$.
+    Cela peut s'abréger en
+    $A \cup (C \setminus A) \subseteq C$
+    et $C \subseteq A \cup (C \setminus A)$.
+    Nous faisons ici l'inverse du dépliage
+    d'une définition pour rendre la
+    démonstration plus facile à lire.
+    Cette conjonction exige d'établir
+    ses deux membres. Pour le premier,
+    il faut montrer que tout !!{element}
+    de $A \cup (C \setminus A)$ est
+    !!a{element} de~$C$. Prenons donc
+    un $z$ arbitraire appartenant à
+    $A \cup (C \setminus A)$ et montrons
+    qu'il appartient à~$C$. Par définition
+    de $\cup$, nous pouvons conclure que
+    $z \in A$ ou $z \in C \setminus A$.
+    Vous commencez sans doute à voir
+    comment procéder.
+  \end{quote}
+  $A \cup (C \setminus A) = C$ si et
+  seulement si
+  $A \cup (C \setminus A) \subseteq C$
+  et $C \subseteq A \cup (C \setminus A)$.
+  Montrons d'abord
+  $A \cup (C \setminus A) \subseteq C$.
+  Soit $z \in A \cup (C \setminus A)$.
+  Alors $z \in A$ ou $z \in C \setminus A$.
+  \begin{quote}
+    Nous avons une disjonction et voulons
+    en déduire $z \in C$. Distinguons
+    donc deux cas.
+  \end{quote}
+  Cas 1 : $z \in A$. Comme nous savons
+  que, pour tout $z$, $z \in A$ implique
+  $z \in C$, nous obtenons $z \in C$.
+  \begin{quote}
+    Nous avons utilisé le fait tiré plus
+    haut de l'hypothèse $A \subseteq C$.
+    Le premier cas est achevé. Dans le
+    second, $z \in C \setminus A$.
+    Rappelons que $C \setminus A$ désigne
+    la \emph{différence} des deux ensembles :
+    l'ensemble des !!{element}s de~$C$
+    qui ne sont pas !!{element}s de~$A$.
+    Tout !!{element} de $C$ qui n'est
+    pas dans~$A$ est, en particulier,
+    !!a{element} de~$C$.
+  \end{quote}
+  Cas 2 : $z \in C \setminus A$. Cela
+  signifie que $z \in C$ et
+  $z \notin A$. En particulier,
+  $z \in C$.
+  \begin{quote}
+    La première inclusion est démontrée.
+    Passons à la seconde,
+    $C \subseteq A \cup (C \setminus A)$.
+    Supposons donc $z \in C$ et montrons
+    que $z \in A \cup (C \setminus A)$.
+  \end{quote}
+  Soit maintenant $z \in C$. Nous
+  devons montrer $z \in A$ ou
+  $z \in C \setminus A$.
+  \begin{quote}
+    Puisque tous les !!{element}s de~$A$
+    sont aussi !!{element}s de~$C$, et
+    puisque $C \setminus A$ réunit les
+    !!{element}s de~$C$ qui ne sont pas
+    dans~$A$, il s'ensuit que $z$ est
+    dans~$A$ ou dans $C \setminus A$.
+    Si cette conclusion ne vous paraît
+    pas déjà évidente, mieux vaut la
+    démontrer étape par étape. Utilisons
+    un fait simple que nous admettons :
+    $z \in A$ ou $z \notin A$.
+    C'est le «~principe du tiers exclu~» :
+    pour tout énoncé~$p$, soit $p$ est
+    vrai, soit sa négation est vraie.
+    Ici, $p$ est l'énoncé $z \in A$.
+    Cette disjonction nous permet de
+    distinguer à nouveau deux cas.
+  \end{quote}
+  Soit $z \in A$, soit $z \notin A$.
+  Dans le premier cas,
+  $z \in A \cup (C \setminus A)$.
+  Dans le second, $z \in C$ et
+  $z \notin A$, donc
+  $z \in C \setminus A$ et, par suite,
+  $z \in A \cup (C \setminus A)$.
+  \begin{quote}
+    La démonstration est terminée :
+    nous avons établi
+    $A \cup (C \setminus A) = C$.
+  \end{quote}
+\end{proof}
+
+\end{document}

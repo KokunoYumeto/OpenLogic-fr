@@ -1,0 +1,192 @@
+% Partie : intuitionistic-logic
+% Chapitre : introduction
+% Section : bhk-interpretation
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{int}{bhk}
+
+\olsection{L'interprétation de Brouwer--Heyting--Kolmogorov}
+
+Les constructions des exemples suivent la forme des formules.
+Un couple fournit les deux constructions d'une conjonction.
+Une disjonction exige le choix d'un membre et une construction
+de ce membre. Une implication demande un procédé qui transforme
+une construction de l'antécédent en une construction du conséquent.
+
+Les connecteurs intuitionnistes admettent une interprétation
+constructive informelle, généralement appelée interprétation de
+Brouwer--Heyting--Kolmogorov. Elle repose sur la notion de
+« construction », que l'on peut comprendre comme une preuve
+constructive. Nous évitons toutefois le mot « preuve » dans cette
+interprétation pour ne pas confondre cette notion avec celle d'%
+!!a{derivation} dans un système formel de !!{derivation}.
+À partir de cette notion intuitive, l'interprétation BHK explique
+le sens des connecteurs intuitionnistes. Les fonctions utilisées
+ci-dessous sont des procédés effectifs de transformation des
+constructions ; il ne suffit pas d'affirmer l'existence d'une
+fonction ensembliste quelconque.
+
+\begin{enumerate}
+\item Nous supposons savoir ce qui constitue une construction
+  d'un énoncé atomique.
+\item Une construction de $!A_1 \land !A_2$ est un couple
+  $\tuple{M_1, M_2}$, où $M_1$ est une construction de~$!A_1$
+  et $M_2$ une construction de~$!A_2$.
+\item Une construction de $!A_1 \lor !A_2$ est un couple
+  $\tuple{s, M}$, où soit $s$ vaut~$1$ et $M$ est une construction
+  de~$!A_1$, soit $s$ vaut~$2$ et $M$ est une construction de~$!A_2$.
+\item Une construction de $!A \lif !B$ est une fonction qui
+  transforme une construction de~$!A$ en une construction de~$!B$.
+\item Il n'existe aucune construction de~$\lfalse$ (l'absurde).
+\item $\lnot !A$ est défini comme synonyme de $!A \lif \lfalse$.
+  Autrement dit, une construction de $\lnot !A$ est une fonction
+  qui transforme une construction de~$!A$ en une construction
+  de~$\lfalse$.
+\end{enumerate}
+
+\begin{ex}
+Prenons $\lnot \lfalse$. Une construction de cette formule est
+une fonction qui, recevant une construction de $\lfalse$, renvoie
+une construction de~$\lfalse$. La fonction identité~$\Id{}$
+convient : si l'on lui donne une construction~$M$ de~$\lfalse$,
+alors $\Id{}(M) = M$ fournit une construction de~$\lfalse$.
+Cette condition sur les entrées n'affirme pas qu'une telle entrée
+existe : l'absurde n'a aucune construction.
+\end{ex}
+
+De manière générale, $\lnot !A$ signifie : « Une construction
+de $!A$ est impossible ». Cette impossibilité est établie par un
+procédé conduisant à l'absurde, et ne se réduit pas à l'absence
+d'une construction actuellement connue.
+
+\begin{ex}
+Donnons une construction de $!A \lif \lnot \lnot !A$, pour toute
+proposition~$!A$, c'est-à-dire de
+$!A \lif ((!A \lif \lfalse) \lif \lfalse)$.
+Il faut une fonction~$f$ qui, recevant une construction~$M$
+de $!A$, renvoie une construction~$f(M)$ de
+$(!A \lif \lfalse) \lif \lfalse$.
+Pour définir $f(M)$, qui doit être une construction de
+$(!A \lif \lfalse) \lif \lfalse$, nous définissons
+une fonction $g$ qui, recevant une construction~$h$
+de $!A \lif \lfalse$, renvoie une construction de~$\lfalse$.
+La fonction $g$ applique~$h$ à la construction~$M$ de $!A$
+reçue auparavant. Le résultat~$h(M)$ de $h$ est alors une
+construction de $\lfalse$. Ainsi, $f(M)(h) = h(M)$ est une
+construction de~$\lfalse$ dès lors que $M$ est une construction
+de~$!A$. La fonction renvoyée par la première étape attend donc
+la construction d'une négation comme deuxième entrée.
+\end{ex}
+
+\begin{ex}
+Donnons une construction de $\lnot(!A \land \lnot !A)$,
+c'est-à-dire de $(!A \land (!A \lif \lfalse)) \lif \lfalse$.
+Il s'agit d'une fonction~$f$ qui, recevant une construction~$M$
+de $!A \land (!A \lif \lfalse)$, renvoie une construction
+de~$\lfalse$. Une construction d'une conjonction
+$!B_1 \land !B_2$ est un couple $\tuple{N_1, N_2}$, où
+$N_1$ est une construction de~$!B_1$ et $N_2$ une construction
+de~$!B_2$. Les fonctions $p_1$ et $p_2$ extraient d'une
+construction de $!B_1 \land !B_2$ les constructions de
+$!B_1$ et de $!B_2$, respectivement :
+\begin{align*}
+  p_1(\tuple{N_1, N_2}) &= N_1\\
+  p_2(\tuple{N_1, N_2}) &= N_2
+\end{align*}
+Voici ce que fait $f$. Il applique d'abord $p_1$ à son entrée~$M$,
+ce qui donne une construction de~$!A$. Puis il applique $p_2$
+à~$M$, ce qui donne une construction de~$!A \lif \lfalse$.
+Cette dernière est une fonction~$p_2(M)$ qui, recevant une
+construction de~$!A$, renvoie une construction de~$\lfalse$.
+L'application de $p_2(M)$ à $p_1(M)$ donne donc une construction
+de~$\lfalse$. Nous pouvons ainsi définir
+$f(M) = p_2(M)(p_1(M))$.
+\end{ex}
+
+\begin{ex}
+Donnons une construction de $((!A \land !B) \lif !C) \lif (!A \lif
+(!B \lif !C))$ : une fonction $f$ transformant une construction~$g$
+de $(!A \land !B) \lif !C$ en une construction de
+$(!A \lif (!B \lif !C))$. La construction $g$ est elle-même
+une fonction, qui transforme des constructions de $!A \land !B$
+en constructions de~$!C$. Son image $f(g)$ doit être une
+fonction~$h_g$ qui transforme des constructions de $!A$ en
+fonctions allant des constructions de~$!B$ aux constructions de~$!C$.
+
+Décomposons cette construction en trois étapes. Nous devons définir
+une fonction $h_g$, qui sera le résultat de $f$ appliqué à~$g$.
+L'entrée de~$h_g$ est une construction~$M$ de~$!A$.
+Le résultat de $h_g(M)$ doit être une fonction~$k_{g,M}$
+transformant des constructions~$N$ de~$!B$ en constructions
+de~$!C$. Posons $k_{g,M}(N) = g(\tuple{M, N})$.
+Le couple $\tuple{M, N}$ est une construction de~$!A \land !B$.
+Ainsi, $k_{g,M}$ est une construction de $!B \lif !C$ : elle
+transforme les constructions~$N$ de~$!B$ en constructions de~$!C$.
+Posons ensuite $h_g(M) = k_{g,M}$. Cette fonction associe aux
+constructions~$M$ de~$!A$ des constructions $k_{g,M}$ de
+$!B \lif !C$. Posons enfin $f(g) = h_g$. Cette fonction
+transforme les constructions $g$ de $(!A \land !B) \lif !C$
+en constructions de $!A \lif (!B \lif !C)$.
+Les trois paramètres sont introduits successivement ; les fonctions
+intermédiaires conservent les paramètres déjà reçus.
+\end{ex}
+
+L'énoncé $!A \lor \lnot !A$ exprime le principe du tiers exclu.
+On peut en construire certaines instances, pour des propositions
+$!A$ particulières, par exemple $\lfalse \lor \lnot \lfalse$,
+mais on ne dispose pas d'une construction intuitionniste uniforme
+de toutes ses instances. La construction d'une disjonction doit
+indiquer quel membre est construit ; on ne peut donc obtenir ce
+principe simplement en affirmant que toute proposition est vraie
+ou fausse. Les énoncés pour lesquels nous ne connaissons ni
+démonstration ni réfutation, comme la conjecture binaire de Goldbach,
+illustrent cette différence, sans constituer à eux seuls une preuve
+de non-dérivabilité. En revanche, la double négation du tiers exclu
+est constructible : $\lnot \lnot (!A \lor \lnot !A)$ est valide.
+
+\begin{ex}
+Pour construire $\lnot \lnot (!A \lor \lnot !A)$, il nous faut
+une fonction~$f$ qui transforme une construction de
+$\lnot(!A \lor \lnot !A)$, c'est-à-dire de
+$(!A \lor (!A \lif \lfalse)) \lif \lfalse$, en une construction
+de~$\lfalse$. Autrement dit, il faut une fonction $f$ telle que
+$f(g)$ soit une construction de~$\lfalse$ dès lors que $g$ est
+une construction de $\lnot(!A \lor \lnot !A)$.
+
+Supposons que $g$ soit une construction de $\lnot(!A \lor \lnot !A)$,
+donc une fonction transformant une construction de $!A \lor \lnot !A$
+en une construction de~$\lfalse$. Une construction de $!A \lor \lnot !A$
+est un couple $\tuple{s, M}$, où soit $s = 1$ et $M$ est une
+construction de $!A$, soit $s = 2$ et $M$ est une construction
+de $\lnot !A$. Soit $h_1$ la fonction transformant une construction~$M_1$
+de $!A$ en une construction de $!A \lor \lnot !A$ : elle
+associe à $M_1$ le couple $\tuple{1, M_1}$.
+Soit $h_2$ la fonction transformant une construction~$M_2$
+de $\lnot !A$ en une construction de $!A \lor \lnot !A$ :
+elle associe à $M_2$ le couple $\tuple{2, M_2}$.
+
+Posons $k = \comp{h_1}{g}$. Cette fonction transforme une
+construction de~$!A$ en une construction de~$\lfalse$ : c'est
+donc une construction de~$!A \lif \lfalse$, ou de $\lnot !A$.
+Posons ensuite $l = \comp{h_2}{g}$. Cette fonction transforme
+une construction de $\lnot !A$ en une construction de~$\lfalse$.
+Comme $k$ est une construction de $\lnot !A$, le résultat
+$l(k)$ est une construction de~$\lfalse$.
+
+Nous avons ainsi expliqué comment transformer une construction~$g$
+de $\lnot(!A \lor \lnot !A)$ en une construction de~$\lfalse$.
+La fonction $f$ associant à une construction~$g$ de
+$\lnot(!A \lor \lnot !A)$ la construction $l(k)$ de~$\lfalse$
+est donc une construction de $\lnot\lnot(!A \lor \lnot !A)$.
+\end{ex}
+
+Comme on le voit, utiliser l'interprétation BHK pour établir la
+validité intuitionniste de !!{formula}s devient vite laborieux
+et difficile à suivre. Heureusement, il existe des systèmes de
+!!{derivation} plus commodes pour la logique intuitionniste,
+ainsi que des interprétations sémantiques plus précises.
+
+\end{document}

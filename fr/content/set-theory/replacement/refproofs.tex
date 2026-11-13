@@ -1,0 +1,236 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{replacement}{refproofs}
+\olsection{Annexe : résultats autour du remplacement}
+
+Dans cette section, nous démontrerons le schéma de réflexion
+dans $\ZF$. Nous établirons aussi en quel sens la réflexion
+équivaut au remplacement. Enfin, nous démontrerons une conséquence
+intéressante de ces résultats concernant la force de la
+réflexion et du remplacement. \emph{Attention : il s'agit
+de loin des mathématiques les plus avancées de ce manuel.}
+
+Commençons par un lemme qui, pour alléger la notation, emploie
+une \emph{barre suscrite} pour désigner des suites de variables
+ou d'objets. Ainsi, «~$\overline{a}_k$~» abrège
+«~$a_{k_1}$, \dots, $a_{k_n}$~», où $n$ est déterminé
+par le contexte.
+
+\begin{lem}\ollabel{lemreflection}
+Pour chaque $1 \leq i \leq k$, soit
+$\phi_i(\overline{v}_i, x)$ une formule. Alors, pour tout
+$\alpha$, il existe un $\beta > \alpha$ tel que,
+quels que soient $\overline{a}_1, \ldots,
+\overline{a}_k \in V_\beta$ et quel que soit
+$1 \leq i \leq k$ :
+\[
+	\exists x\phi_i(\overline{a}_i, x) \rightarrow
+	(\exists x \in V_\beta) \phi_i(\overline{a}_i, x)
+\]
+\end{lem}
+
+\begin{proof}
+Définissons un terme $\mu$ comme suit :
+$\mu(\overline{a}_1, \ldots, \overline{a}_k)$
+est la première étape $V$ qui satisfait, pour
+$1 \leq i \leq k$, toutes les implications suivantes :
+\[
+\exists x\phi_i(\overline{a}_i, x) \rightarrow
+(\exists x \in V) \phi_i(\overline{a}_i, x)
+\]
+On vérifie aisément que
+$\mu(\overline{a}_1, \ldots, \overline{a}_k)$
+existe quels que soient $\overline{a}_1, \ldots,
+\overline{a}_k$. En utilisant le remplacement et notre
+théorème de récursion, définissons :
+\begin{align*}
+	S_0 & = V_{\alpha+1}\\
+	S_{n+1} & = S_n \cup \bigcup
+	\Setabs{\mu(\overline{a}_1, \ldots, \overline{a}_k)}
+	{\overline{a}_1, \ldots, \overline{a}_k \in S_n} \\
+	S &= \bigcup_{m < \omega} S_m.
+\end{align*}
+Chaque $S_n$, et donc $S$ lui-même, est une étape
+postérieure à $V_\alpha$.\footnote{Note de l'édition française :
+dans l'original, la condition définissant $\mu$ comporte
+une parenthèse fermante en trop, et la dernière ligne de la
+définition de $S$ porte $S_n$ au lieu de $S_m$ sous l'indice
+$m$. Ces deux coquilles sont corrigées ici.}
+Fixons $\overline{a}_1$, \dots,~
+$\overline{a}_k \in S$ ; il existe donc un
+$n < \omega$ tel que $\overline{a}_1$, \dots,
+$\overline{a}_k \in S_n$. Fixons $1 \leq i \leq k$
+et supposons $\exists x\phi_i(\overline{a}_i,x)$.
+Par construction,
+$(\exists x \in \mu(\overline{a}_1,
+\ldots, \overline{a}_k))\phi_i(\overline{a}_i, x)$.
+Il s'ensuit que
+$(\exists x \in S_{n+1})\phi_i(\overline{a}_i, x)$,
+et donc que $(\exists x \in S)\phi_i(\overline{a}_i, x)$.
+Ainsi, $S$ est le $V_\beta$ recherché.
+\end{proof}
+\noindent
+Nous pouvons maintenant démontrer le
+\olref[sth][replacement][ref]{reflectionschema}
+assez directement :
+
+\begin{proof}[Démonstration]
+Fixons $\alpha$. Sans perte de généralité, nous pouvons
+supposer que les seuls opérateurs logiques de $\phi$ sont
+$\exists$, $\lnot$ et $\land$ (puisqu'ils suffisent
+à tout exprimer). Énumérons les sous-formules de $\phi$
+par ordre de complexité : $\psi_1, \ldots, \psi_k$,
+avec $\psi_k = \phi$. D'après le \olref{lemreflection},
+il existe un $\beta > \alpha$ tel que, quels que soient
+$\overline{a}_i \in V_\beta$ et $1 \leq i \leq k$ :
+\begin{align}\label{reflectionnicelybehaved}
+	\exists x\psi_i(\overline{a}_i, x) \rightarrow
+	(\exists x \in V_\beta) \psi_i(\overline{a}_i, x)\tag{*}
+\end{align}
+Par récurrence sur la complexité de $\psi_i$, montrons que
+$\psi_i(\overline{a}_i) \leftrightarrow
+\psi_i^{V_\beta}(\overline{a}_i)$ pour tout
+$\overline{a}_i \in V_\beta$. Si $\psi_i$ est atomique,
+c'est immédiat. Si $\psi_i$ est une négation ou une
+conjonction de sous-formules qui vérifient cette
+propriété, $\psi_i$ la vérifie également.
+Le seul cas intéressant est donc celui de
+la quantification. Fixons
+$\overline{a}_i \in V_\beta$ ; alors :
+\begin{align*}
+	(\exists x \psi_i(\overline{a}_i, x))^{V_\beta}
+	&\text{ ssi }
+	(\exists x \in V_\beta)\psi_i^{V_\beta}(\overline{a}_i, x)
+	&&\text{par définition}\\
+	&\text{ ssi }
+	(\exists x \in V_\beta)\psi_i(\overline{a}_i,  x)
+	&&\text{par hypothèse}\\
+	&\text{ ssi }
+	\exists x \psi_i(\overline{a}_i, x)
+	&&\text{par \eqref{reflectionnicelybehaved}}
+\end{align*}
+La récurrence est ainsi achevée ; le résultat suit de
+$\psi_k = \phi$.
+\end{proof}
+
+Nous avons démontré la réflexion dans $\ZF$.
+Notre démonstration suit pour l'essentiel
+\citet{Montague1961}. Nous voulons maintenant
+montrer, dans $\Z$, que la réflexion entraîne
+le remplacement. La démonstration suit
+\citet{Levy1960}, moyennant une simplification.
+
+Puisque nous travaillons dans $\Z$, nous ne pouvons
+pas présenter la réflexion exactement sous la forme
+ci-dessus. Nous l'avons en effet formulée au moyen de
+la notation «~$V_\alpha$~», qui ne peut être définie
+dans $\Z$ (voir la \olref[sth][spine][zf]{sec}).
+Nous proposerons donc à la place la formulation
+apparemment plus faible suivante de la réflexion :
+\footnote{Note de l'édition française : l'original dit ici
+«~du remplacement~», mais la définition qui suit est celle
+de la réflexion faible.}
+
+\begin{defish}
+\emph{Réflexion faible.} Pour toute formule $\phi$,
+il existe un ensemble transitif $S$ tel que $0$, $1$
+et tous les paramètres de $\phi$ soient des !!{element}s
+de $S$, et
+$(\forall \overline{x} \in S)(\phi \liff \phi^S)$.
+\end{defish}
+
+Pour en déduire le remplacement, suivons d'abord
+\citet[première partie du théorème 2]{Levy1960} et montrons
+que nous pouvons «~réfléchir~» deux formules à la fois :
+
+\begin{lem}[dans $\Z + \text{Réflexion faible}$]\ollabel{lem:reflect}
+Pour toutes formules $\psi, \chi$, il existe un ensemble
+transitif $S$ tel que $0$ et $1$ (ainsi que tous les
+paramètres des formules) soient des !!{element}s de $S$,
+et que
+$(\forall \overline{x} \in S)((\psi \liff \psi^S)
+\land (\chi \liff \chi^S))$.
+\end{lem}
+
+\begin{proof}
+Soit $\phi$ la formule
+$(z = 0 \land \psi) \lor (z = 1 \land \chi)$, où $z$ ne figure pas librement dans $\psi$ ni dans $\chi$.
+
+Nous employons ici une abréviation : il faudrait écrire
+«~$z = 0$~» sous la forme
+«~$\forall t\, t \notin z$~», et «~$z =1$~»
+sous la forme
+«~$\forall s(s \in z \liff \forall t\, t \notin s)$~».
+Mais puisque $0, 1 \in S$ et que $S$ est transitif,
+ces formules sont \emph{absolues} pour $S$ :
+elles s'appliquent au même objet, que l'on restreigne
+ou non leurs quantificateurs à $S$.\footnote{Plus
+formellement, pour $z \in S$, si $\xi$ est l'une de ces deux formules,
+$\xi(z) \liff \xi^S(z)$.}
+
+Par réflexion faible, nous obtenons un ensemble $S$
+approprié tel que :
+\begin{align*}
+	(\forall z, \overline{x} \in S)(&\phi \liff \phi^S)\\
+	\text{soit }(\forall z, \overline{x} \in S)(&((z = 0 \land \psi) \lor (z = 1 \land \chi)) \liff {}\\
+	&\phantom{(}((z = 0 \land \psi) \lor (z = 1 \land \chi))^S)\\
+	\text{soit }(\forall z, \overline{x} \in S)(&((z = 0 \land \psi) \lor (z = 1 \land \chi))\liff {}\\
+	&\phantom{(}((z = 0 \land \psi^S) \lor (z = 1 \land \chi^S)))\\
+	\text{soit }(\forall \overline{x} \in S)(&(\psi \liff \psi^S) \land (\chi \liff \chi^S))
+\end{align*}
+La deuxième assertion entraîne la troisième parce que
+«~$z = 0$~» et «~$z=1$~» sont absolues pour $S$ ;
+la quatrième suit de $0 \neq 1$.
+\end{proof}\noindent
+Nous pouvons maintenant obtenir le remplacement en
+suivant et en simplifiant
+\citet[théorème 6]{Levy1960} :
+
+\begin{thm}[dans $\Z$ + Réflexion faible]\label{thm:replacement}
+Pour toute formule $\phi(v,w)$ et tout $A$, si
+$(\forall x \in A)\lexists![y][\phi(x,y)]$, alors
+l'ensemble $\Setabs{y}{(\exists x \in A)\phi(x,y)}$
+existe.\footnote{Note de l'édition française : il manque
+une parenthèse fermante dans l'expression de l'ensemble
+dans l'original ; elle est rétablie ici.}
+\end{thm}
+
+\begin{proof}
+Fixons $A$ tel que
+$(\forall x \in A)\lexists![y][\phi(x,y)]$,
+et définissons les formules :
+\begin{align*}
+	\psi &\text{ est } (\phi(x, z) \land A = A)\\
+	\chi &\text{ est } \lexists[y][\phi(x, y)]
+\end{align*}
+Puisque $A$ est un paramètre de $\psi$, le
+\olref{lem:reflect} fournit un ensemble
+transitif~$S$ tel que $0, 1, A \in S$ (ainsi
+que tout autre paramètre), et tel que :
+\[
+	(\forall x,z \in S)((\psi \liff \psi^S)
+	\land (\chi \liff \chi^S))
+\]
+En particulier :
+\begin{align*}
+	(\forall  x, z \in S)(&\phi(x, z) \liff \phi^S(x, z))\\
+	(\forall x \in S)(&\exists y\phi(x, y) \liff
+	(\exists y \in S)\phi^S(x, y))
+\end{align*}
+En combinant ces énoncés et en remarquant que
+$A \subseteq S$, puisque $A \in S$ et que
+$S$ est transitif, on obtient :
+\begin{align*}
+	(\forall x \in A)(&\exists y\phi(x, y) \liff
+	(\exists y \in S)\phi(x, y))
+\end{align*}
+Or $(\forall x \in A)(\lexists![y \in S])\phi(x, y)$,
+car $(\forall x \in A)\lexists![y][\phi(x, y)]$.
+La séparation fournit donc
+$\Setabs{y \in S}{(\exists x \in A) \phi(x, y)}
+= \Setabs{y}{(\exists x \in A) \phi(x, y)}$.
+\end{proof}
+
+\end{document}

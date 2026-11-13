@@ -1,0 +1,348 @@
+% Part: model-theory
+% Chapter: models-of-arithmetic
+% Section: models-of-pa
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{mar}{mpa}
+\section{Modèles de $\Th{PA}$}
+
+\begin{explain}
+Tout modèle non standard de~$\Th{TA}$ est également
+un modèle de~$\Th{PA}$. Nous savons que de tels
+modèles existent et qu'ils contiennent des
+« nombres » non standards, situés au-delà de
+tous les nombres standards. Comment ces éléments
+sont-ils ordonnés, et combien y en a-t-il ?
+La théorie plus faible~$\Th{Q}$ admet des modèles
+avec un seul nombre non standard; ces !!{structure}s
+simples ne sont cependant des modèles ni
+de~$\Th{PA}$ ni de~$\Th{TA}$.
+
+Pour comprendre les modèles de~$\Th{PA}$ et
+de~$\Th{TA}$, examinons les faits !!{derivable}s
+dans ces théories. Par exemple, $\Th{PA}$ démontre
+déjà $\lforall[x][\eq/[x][x']]$ ainsi que
+$\lforall[x][\lforall[y][\eq[(x+y)][(y+x)]]]$.
+Ces énoncés excluent les !!{structure}s simples
+où ils sont faux.
+
+Soit $\Struct{M}$ un modèle de~$\Th{PA}$.
+Chaque fois que $\Th{PA}\Proves !A$, on a
+$\Sat{M}{!A}$. Notons de nouveau
+$\nszero=\Assign{\Obj{0}}{M}$,
+$\nssucc=\Assign{\prime}{M}$,
+$\nsplus=\Assign{+}{M}$,
+$\nstimes=\Assign{\times}{M}$ et
+$\nsless=\Assign{<}{M}$. Un !!{sentence}~$!A$
+impose alors une condition à ces interprétations.
+Ainsi, si $\Sat{M}{!Q_1}$, c'est-à-dire
+si
+$\Sat{M}{\lforall[x][\lforall[y][
+(\eq[x'][y']\lif\eq[x][y])]]}$,
+la fonction $\nssucc$ doit être !!{injective}.
+\end{explain}
+
+\begin{prop}
+Dans $\Struct{M}$, la relation $\nsless$ est
+un ordre linéaire strict :
+\begin{enumerate}
+\item aucun $x\in\Domain{M}$ ne satisfait
+  $x\nsless x$;
+\item si $x\nsless y$ et $y\nsless z$,
+  alors $x\nsless z$;
+\item pour $x\neq y$, on a
+  $x\nsless y$ ou $y\nsless x$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+La théorie $\Th{PA}$ démontre respectivement :
+\begin{enumerate}
+\item $\lforall[x][\lnot x<x]$;
+\item $\lforall[x][\lforall[y][\lforall[z][
+  ((x<y\land y<z)\lif x<z)]]]$;
+\item $\lforall[x][\lforall[y][
+  ((x<y\lor y<x)\lor\eq[x][y])]]$.\footnote{Correction éditoriale : nous supprimons la parenthèse fermante excédentaire dans le troisième énoncé affiché de la source.}
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:M-discrete}
+Dans l'ordre $\nsless$, $\nszero$ est le plus
+petit élément de~$\Domain{M}$. Pour tout~$x$,
+$x\nsless x^\nssucc$, et $x^\nssucc$ est
+le plus petit élément strictement supérieur
+à~$x$. Tout $x\neq\nszero$ possède un
+unique $y$ tel que $y^\nssucc=x$.
+On appelle $y$ le \emph{prédécesseur} de~$x$
+dans~$\Struct{M}$ et on le note~$^\nssucc x$.\footnote{Correction éditoriale : la source attribue un prédécesseur à tout élément. Nous excluons $\nszero$, qui n'est le successeur d'aucun élément ; dans les blocs non standards, les prédécesseurs successifs restent non standards.}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Trouver des !!{sentence}s de~$\Lang{L_A}$
+!!{derivable}s dans~$\Th{PA}$, donc vrais
+dans~$\Struct{N}$, qui garantissent les
+propriétés de $\nszero$, $\nssucc$ et
+$\nsless$ énoncées dans la
+\olref[mod][mar][mpa]{prop:M-discrete}.
+\end{prob}
+
+\begin{prop}
+Tous les !!{element}s standards de~$\Struct{M}$
+précèdent, selon~$\nsless$, tous ses
+!!{element}s non standards.
+\end{prop}
+
+\begin{proof}
+Écrivons $n$ pour
+$\Value{\num{n}}{M}$, élément standard
+de~$\Struct{M}$. La théorie $\Th{Q}$ démontre,
+pour chaque $n\in\Nat$,
+$\lforall[x][(x<\num{n}'\lif
+(\eq[x][\num{0}]\lor\eq[x][\num{1}]
+\lor\dots\lor\eq[x][\num{n}]))]$.
+Aucun élément n'est $\nsless$-inférieur
+à~$\nszero$. Si $x$ est non standard,
+il ne peut donc vérifier $x\nsless n$
+pour aucun~$n$. Par définition,
+$x\neq n$ également. Comme $\nsless$
+est un ordre linéaire, $n\nsless x$.
+\end{proof}
+
+\begin{prop}
+Chaque !!{element} non standard~$x$ de
+$\Domain{M}$ appartient à la suite
+\[
+\dots {}^{\nssucc\nssucc\nssucc}x
+\nsless {}^{\nssucc\nssucc}x
+\nsless {}^{\nssucc}x
+\nsless x
+\nsless x^{\nssucc}
+\nsless x^{\nssucc\nssucc}
+\nsless x^{\nssucc\nssucc\nssucc}
+\nsless\dots
+\]
+L'ensemble ainsi obtenu est le
+\emph{bloc de~$x$}, noté~$[x]$.
+Il n'a ni plus petit ni plus grand élément.
+Il est constitué exactement des
+$y\in\Domain{M}$ pour lesquels il existe
+un entier standard~$n$ tel que
+$x\nsplus n=y$ ou $y\nsplus n=x$.
+\end{prop}
+
+\begin{proof}
+Chaque élément non nul possède un unique
+prédécesseur et chaque élément possède
+un unique successeur. Les prédécesseurs
+successifs d'un élément non standard
+restent non standards : s'ils atteignaient
+un numéral standard après un nombre fini
+d'étapes, l'élément initial serait aussi
+standard. On peut donc prolonger la suite
+dans les deux sens sans rencontrer de borne.
+Les identités
+$\Th{PA}\Proves
+\lforall[x][\eq[x^{\prime\dots\prime}]
+[(x+\num{n})]]$,
+où figurent $n$ symboles~$\prime$,
+donnent la caractérisation par l'addition.
+Elles montrent aussi que si $y\in[x]$,\footnote{Corrections éditoriales : la preuve distingue les prédécesseurs non nuls de zéro. Nous réparons en outre, dans la traduction, le second argument de la macro d'égalité de l'identité affichée ; la formule anglaise était correcte.}
+alors $x\in[y]$ et $[x]=[y]$.
+\end{proof}
+
+\begin{prop}
+Si $[x]\neq[y]$ et $x\nsless y$,
+alors $u\nsless v$ pour tous
+$u\in[x]$ et $v\in[y]$.
+\end{prop}
+
+\begin{proof}
+Puisque les blocs sont distincts,
+$x\nsplus k\nsless y$ pour tout
+entier standard~$k$ : l'égalité
+$x\nsplus k=y$ placerait $y$ dans~$[x]$,
+et l'ordre ne peut être inversé entre
+$x\nsless y$ et un de ses successeurs.
+Soient $u\in[x]$ et $v\in[y]$.
+Il existe des entiers standards~$m,n$
+tels que $u\leq x\nsplus m$ et
+$y\leq v\nsplus n$ dans l'ordre
+de~$\Struct{M}$. Par conséquent,
+\[
+u\nsplus n
+\leq x\nsplus(m+n)
+\nsless y
+\leq v\nsplus n.
+\]
+La compatibilité de l'ordre avec l'addition
+et la simplification additive, démontrables
+dans~$\Th{PA}$, donnent $u\nsless v$.
+\end{proof}
+
+\begin{cor}
+Si $[x]\neq[y]$, alors
+$[x]\cap[y]=\emptyset$.
+\end{cor}
+
+\begin{proof}
+L'ordre linéaire place $x$ avant~$y$
+ou $y$ avant~$x$. La proposition
+précédente placerait alors tout élément
+commun strictement avant lui-même,
+ce qui est impossible.
+\end{proof}
+
+\begin{explain}
+Les blocs distincts héritent ainsi
+de l'ordre~$\nsless$ : on écrit
+$[x]\nsless[y]$ lorsque $[x]\neq[y]$
+et que $x\nsless y$; cela revient à
+demander $u\nsless v$ pour tous
+$u\in[x]$ et $v\in[y]$.
+Notons $[0]$ l'ensemble des valeurs
+des numéraux standards. C'est le premier
+bloc; il ne rencontre aucun bloc
+non standard. Deux blocs non standards
+distincts ne se rencontrent pas non plus.
+Un nombre fini de successeurs ou de
+prédécesseurs ne permet jamais de passer
+d'un bloc à un autre.\footnote{Précision éditoriale : la comparaison stricte de blocs exige $[x]\neq[y]$, condition omise dans la définition de la source. Deux éléments d'un même bloc peuvent être strictement ordonnés sans que ce bloc soit inférieur à lui-même.}
+\end{explain}
+
+\begin{prop}
+Si $x$ et $y$ sont non standards,
+alors $x\nsless x\nsplus y$ et
+$x\nsplus y\notin[x]$.
+\end{prop}
+
+\begin{proof}
+Un élément non standard~$y$ n'est pas
+$\nszero$. La théorie $\Th{PA}$ démontre
+$\lforall[x][\lforall[y][
+(y\neq\Obj{0}\lif x<(x+y))]]$.
+Si $x\nsplus y$ appartenait à~$[x]$,
+l'inégalité impliquerait
+$x\nsplus y=x\nsplus n^\nssucc$
+pour un entier standard~$n$.
+La loi de simplification additive,
+démontrable dans~$\Th{PA}$, donnerait
+$y=n^\nssucc$, contrairement à
+l'hypothèse.
+\end{proof}
+
+\begin{prop}
+Il n'existe pas de plus petit bloc
+non standard.
+\end{prop}
+
+\begin{proof}
+La théorie $\Th{PA}$ démontre que tout
+$x$ est de la forme $y\nsplus y$
+ou $(y\nsplus y)^\nssucc$ pour un~$y$.
+Si $x$ est non standard, $y$ l'est aussi.
+La proposition précédente donne
+$y\nsless y\nsplus y$ et
+$y\nsplus y\notin[y]$. Dans les deux
+cas, $y\nsless x$ et $y\notin[x]$.
+Le bloc~$[y]$ précède donc
+strictement~$[x]$.
+\end{proof}
+
+\begin{prop}
+Dans tout modèle non standard
+de~$\Th{PA}$, il n'existe pas
+de plus grand bloc.\footnote{Précision éditoriale : la source omet ici l'hypothèse de non-standardité. Dans le modèle standard, le seul bloc $[0]$ est bien le plus grand ; l'exercice suivant contient déjà l'hypothèse nécessaire.}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Montrer que, dans un modèle non standard
+de~$\Th{PA}$, il n'existe pas de
+plus grand bloc.
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:blocks-dense}
+L'ordre des blocs est dense :
+si $x\nsless y$ et $[x]\neq[y]$,
+il existe un bloc~$[z]$, distinct
+de ces deux blocs, situé entre eux.
+\end{prop}
+
+\begin{proof}
+La théorie $\Th{PA}$ démontre que
+$x\nsplus y$ est de la forme
+$z\nsplus z$ ou
+$(z\nsplus z)^\nssucc$.
+Prenons ce $z$, la partie entière
+de la moyenne de $x$ et~$y$.
+Comme $[x]\neq[y]$, pour tout entier
+standard~$n$, on a
+$x\nsplus(2n+2)\nsless y$.
+Les lois de l'ordre et de l'addition
+dans~$\Th{PA}$ permettent alors
+de déduire
+$x\nsplus n\nsless z$ et
+$z\nsplus n\nsless y$.
+Ainsi $[x]\nsless[z]\nsless[y]$.\footnote{Complément éditorial : la source utilise ici un autre symbole d'addition et ne justifie pas que le point moyen sorte des deux blocs. Nous utilisons $\nsplus$ et les inégalités valables pour chaque décalage standard ; la démonstration détaillée demandée ensuite reste un exercice.}
+\end{proof}
+
+\begin{prob}
+Rédiger une démonstration détaillée de la
+\olref[mod][mar][mpa]{prop:blocks-dense}.
+Quel !!{sentence} $\Th{PA}$ doit-elle
+!!{derive} pour garantir l'existence
+de~$z$ ? Pourquoi $x\nsless z$
+et $z\nsless y$ ? Pourquoi enfin
+$[x]\neq[z]$ et $[z]\neq[y]$ ?
+\end{prob}
+
+\begin{explain}
+Dans un modèle non standard
+!!{denumerable}, les blocs non standards
+forment donc un ordre linéaire dense
+!!{denumerable} sans extrémités.\footnote{Précision éditoriale : la source affirme cette cardinalité sans restreindre le modèle. Nous ajoutons l'hypothèse dénombrable ; chaque bloc non standard est une copie de $\Int$, et l'absence d'extrémités assure une infinité de blocs.}
+Tout ordre de ce type est isomorphe
+à l'ordre des rationnels. Il s'ensuit
+que deux modèles non standards
+!!{enumerable}s~$\Struct{M}_1$ et
+$\Struct{M}_2$ de l'arithmétique vraie
+ont des réduits isomorphes au langage
+qui ne contient que~$<$ et l'égalité.
+Les parties standards se correspondent
+comme deux copies de~$\Struct{N}$.
+Un isomorphisme entre les ordres
+des blocs non standards s'étend
+à l'intérieur de chaque bloc :
+on choisit un élément dans chacun
+des deux blocs correspondants, puis
+on fait correspondre leurs successeurs
+et leurs prédécesseurs respectifs.
+
+Cela n'implique pas que
+$\Struct{M}_1$ et $\Struct{M}_2$
+soient isomorphes dans tout le langage
+de l'arithmétique. L'isomorphisme
+dépend du langage considéré : les
+interprétations de l'addition et de la
+multiplication peuvent différer.
+Le théorème de Vaught, selon lequel
+une théorie complète dans un langage dénombrable ne peut avoir
+exactement deux modèles !!{enumerable}s
+à isomorphisme près, confirme cette conclusion : l'arithmétique vraie possède
+son modèle standard et un modèle non standard dénombrable, donc au moins un troisième
+modèle dénombrable ; les deux modèles non standards ainsi obtenus ne sont pas isomorphes.
+\end{explain}
+
+\end{document}

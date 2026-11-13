@@ -1,0 +1,47 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: computably-axiomatizable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{cax}
+
+\olsection{Théories axiomatisables}
+
+Une théorie~$\Th{T}$ est dite \emph{!!{axiomatizable}}
+si elle admet un ensemble calculable d'axiomes~$A$.
+Dire que~$A$ est un ensemble d'axiomes de~$\Th{T}$
+signifie que $T=\Setabs{!A}{A \Proves !A}$.
+Toute axiomatisation « raisonnable » des entiers
+naturels possède cette propriété. En particulier,
+toute théorie axiomatisée par un ensemble fini est
+!!{axiomatizable}.
+
+\begin{lem}
+Toute théorie !!{axiomatizable}~$\Th{T}$ est
+!!{computably enumerable}.
+\end{lem}
+
+\begin{proof}
+Supposons que~$A$ soit un ensemble calculable
+d'axiomes de~$\Th{T}$. Pour reconnaître qu'un
+!!{sentence}~$!A$ appartient à~$T$, cherchons une
+!!{derivation} de~$!A$ à partir de ces axiomes.
+Cette recherche aboutit lorsque $!A\in T$.
+
+Autrement dit, $!A$ appartient à~$\Th{T}$ si et
+seulement s'il existe une liste finie d'axiomes
+$!B_1$, \dots, $!B_k$ de~$A$ et une
+!!{derivation}, en logique du premier ordre, de
+$(!B_1\land\dots\land !B_k)\lif !A$ (la conjonction vide vaut $\ltrue$).
+Nous savons qu'un ensemble défini par une condition
+de la forme « il existe \dots\ tel que \dots » est
+!!{c.e.} dès lors que la condition placée après
+« tel que » est calculable. C'est le cas ici, puisque
+l'appartenance à~$A$ et la vérification d'une
+!!{derivation} sont calculables.
+\end{proof}
+
+\end{document}

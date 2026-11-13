@@ -1,0 +1,143 @@
+% Partie : théorie de la démonstration
+% Chapitre : recherche de preuves
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{ps}{int}
+
+\olsection{Introduction}
+
+Les axiomes et les règles d'inférence de systèmes tels que
+\Log{G3c} ou \Log{N1i} déterminent quels arbres de séquents ou
+de formules constituent des preuves correctes. Lorsqu'un tel
+arbre est donné, avec, si nécessaire, l'indication des règles
+appliquées et les étiquettes des hypothèses et de leurs décharges,
+ces définitions permettent de vérifier qu'il s'agit bien d'une
+preuve. \emph{Trouver} une preuve d'un séquent, ou d'une formule
+à partir d'hypothèses données, est un autre problème, généralement
+plus difficile : celui de la \emph{recherche de preuves}.
+
+Une procédure élémentaire consiste à énumérer les preuves.
+On peut représenter les formules par des suites de symboles
+sur un alphabet fini, en codant au besoin les noms et les indices.
+On peut également coder les séquents et les arbres de séquents
+ou de formules par de telles suites, avec des délimiteurs
+pour indiquer les ramifications. Les axiomes et les règles
+permettent alors de vérifier mécaniquement si une suite donnée
+code une preuve correcte. Il suffit donc d'énumérer toutes
+les suites finies de symboles et de ne retenir que celles
+qui codent des preuves. Pour chercher une preuve du séquent
+donné, on poursuit cette énumération jusqu'à en trouver une
+dont il soit la conclusion. Pour une formule et des hypothèses
+données, on demande de même que les hypothèses ouvertes
+appartiennent à l'ensemble autorisé ; cette vérification est
+mécanique lorsque l'appartenance à cet ensemble est décidable,
+en particulier lorsqu'il est fini.
+
+Une méthode plus directe reprend la démarche usuelle d'une
+recherche à la main. On part du séquent final, on choisit une
+formule et on applique une règle d'inférence \emph{à rebours}.
+On obtient ainsi une ou plusieurs prémisses : leurs preuves,
+suivies de cette inférence, donneraient une preuve du séquent
+cherché. On peut procéder de manière analogue en déduction
+naturelle, bien que la recherche y soit plus complexe.
+
+Cette méthode ne garantit pourtant pas à elle seule le succès.
+Un mauvais choix de règle, ou un mauvais ordre de traitement
+des formules, peut conduire à une impasse. La procédure n'est
+pas non plus entièrement déterminée : plusieurs formules
+ou plusieurs règles peuvent être disponibles à une étape.
+Un \emph{algorithme de recherche de preuves} précise tous ces
+choix. Nous dirons qu'il est \emph{complet} s'il trouve une
+preuve dès qu'il en existe une.
+
+Certains systèmes se prêtent mieux que d'autres à la recherche
+de preuves. Dans les calculs des séquents, l'opérateur principal
+d'une formule et le membre où elle figure indiquent la règle
+logique à appliquer à rebours. Ainsi, pour chercher une preuve
+de $\Gamma \Sequent \Delta, !A \land !B$, où $!A \land !B$
+figure dans le conséquent, on peut appliquer
+\RightR{\land} à rebours et obtenir les deux prémisses
+$\Gamma \Sequent \Delta, !A$ et $\Gamma \Sequent \Delta, !B$.
+Dans \Log{G1c}, la contraction multiplie toutefois les choix.
+On peut aussi appliquer \RightR{\Contraction} à rebours
+et obtenir $\Gamma \Sequent \Delta, !A \land !B, !A \land !B$,
+puis $\Gamma \Sequent \Delta, !A \land !B, !A \land !B, !A \land !B$,
+et ainsi de suite.
+
+Dans \Log{G2c}, l'application à rebours de \RightR{\land}
+exige en outre de répartir les contextes : il faut choisir
+$\Gamma_1$, $\Gamma_2$ tels que $\Gamma = \Gamma_1 \uplus \Gamma_2$
+et $\Delta_1$, $\Delta_2$ tels que $\Delta = \Delta_1 \uplus \Delta_2$,
+où l'union des multiensembles additionne les multiplicités.
+On cherche ensuite des preuves de
+$\Gamma_1 \Sequent \Delta_1, !A$ et
+$\Gamma_2 \Sequent \Delta_2, !B$.
+Une répartition mal choisie peut conduire à une impasse et
+obliger à revenir en arrière pour choisir d'autres
+$\Gamma_1$, $\Gamma_2$, $\Delta_1$, $\Delta_2$.
+Si la formule principale est $!A \lor !B$, il faut choisir
+l'une des deux règles \RightR{\lor}, donnant pour prémisse
+$\Gamma \Sequent \Delta, !A$ ou $\Gamma \Sequent \Delta, !B$.
+Un mauvais choix peut, là encore, imposer un retour en arrière.
+
+Le système \Log{G3c} évite ces difficultés. Il ne comporte
+pas de règles structurelles, et l'opérateur principal ainsi
+que le membre où figure la formule déterminent la règle
+logique à appliquer. Il se prête donc mieux à la recherche
+que \Log{G1c} ou \Log{G2c}. Une recherche réussie fournit
+une preuve dans \Log{G3c}, que l'on peut ensuite traduire
+dans \Log{G1c}, \Log{G2c}, ou encore \Log{N1c}.
+Un algorithme de recherche pour \Log{G3c}, associé à ces
+traductions de preuves, fournit ainsi une méthode de recherche
+pour les autres systèmes.
+
+Comment établir la complétude d'un algorithme de recherche ?
+Il faut montrer que, s'il ne trouve aucune preuve, aucune
+preuve n'existe. Un algorithme mal conçu peut manquer une
+preuve existante. L'énumération exhaustive évite ce défaut,
+puisqu'elle examine toutes les preuves possibles, mais
+elle est peu efficace. On souhaite une procédure qui réduise
+le travail de recherche ; la complétude ne garantit à elle
+seule ni l'efficacité ni un effort minimal.
+
+L'idée essentielle est de tirer du déroulement d'une recherche
+infructueuse un \emph{contre-modèle} du séquent initial.
+En logique classique du premier ordre, $\Gamma \Sequent \Delta$
+est valide si, dans toute structure, au moins une formule
+de $\Gamma$ est fausse ou au moins une formule de~$\Delta$
+est vraie. Le calcul \Log{G3c} est \emph{correct} :
+il ne prouve que des séquents valides. On l'établit par
+récurrence sur les preuves. Les axiomes sont valides
+et une règle à prémisses valides a une conclusion valide.
+Pour établir la complétude de la recherche, on montre que,
+si elle ne trouve pas de preuve de $\Gamma \Sequent \Delta$,
+on peut définir une structure dans laquelle toutes les
+formules de $\Gamma$ sont vraies et toutes celles
+de~$\Delta$ sont fausses. Le séquent
+$\Gamma \Sequent \Delta$ est donc invalide
+et, par correction du calcul, il n'a pas de preuve.
+Cela établit aussi la \emph{complétude} de \Log{G3c} :
+si $\Gamma \Sequent \Delta$ est valide, il possède une
+preuve dans ce calcul. Toute recherche menée selon
+l'algorithme complet décrit ci-dessous réussit donc sur
+un séquent valide.
+
+La procédure et le modèle de termes de ce chapitre portent
+sur des séquents de formules closes, dans un langage sans
+égalité logique. Les constantes servent de paramètres
+et les termes d'instanciation sont clos. En présence de
+variables libres ou d'égalité logique, il faut des
+conventions ou des règles supplémentaires.
+
+Une recherche infructueuse peut se poursuivre indéfiniment.
+L'argument du contre-modèle établit alors l'invalidité du
+séquent, même si la procédure poursuit la recherche.
+
+
+
+
+\end{document}

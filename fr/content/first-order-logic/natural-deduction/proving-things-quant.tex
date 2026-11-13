@@ -67,12 +67,12 @@ $\lnot !A(a)$, qui sera déchargée par l'inférence
 \DischargeRule{\Intro{\lif}}{1}
 \UnaryInfC{$\lexists[x][\lnot !A(x)]\lif \lnot \lforall[x][!A(x)]$}
 \end{prooftree}
-Nous sommes près d'obtenir une contradiction. La règle la plus
-simple à appliquer est \Elim{\lforall}, qui n'impose aucune
-condition sur une eigenvariable. Nous pouvons remplacer la
-variable universellement quantifiée~$x$ par n'importe quel terme
-clos. Il est donc judicieux d'utiliser encore~$a$ pour obtenir
-la contradiction recherchée.
+Nous sommes près d'obtenir une contradiction. La règle
+\Elim{\lforall} permet d'instancier l'universelle par n'importe
+quel terme clos, sans condition sur une eigenvariable.
+Choisissons la constante~$a$ déjà utilisée dans cette branche.
+Nous obtenons ainsi~$!A(a)$, qui contredit~$\lnot !A(a)$.
+%
 \begin{prooftree}
 \AxiomC{$\Discharge{\lexists[x][\lnot !A(x)]}{1}$}
 \AxiomC{$\Discharge{\lnot !A(a)}{2}$}
@@ -181,8 +181,8 @@ notre but.
 \insertBetweenHyps{\hspace{-5em}}
 \BinaryInfC{$\lexists[x][!C(x,b)]$}
 \end{prooftree}
-Nous avons veillé à chaque étape à respecter les conditions sur
-les eigenvariables. La !!{derivation} obtenue est donc correcte.
+L'inférence \Elim{\lexists} décharge l'hypothèse étiquetée~$1$. La constante~$a$ est
+absente de la prémisse existentielle, de la conclusion et des deux hypothèses ouvertes.
 \end{ex}
 
 \begin{ex}
@@ -255,21 +255,21 @@ Donner des !!{derivation}s établissant les résultats suivants :
 \item $(\lforall[x][!A(x)] \lif !B) \Proves \lexists[y][(!A(y) \lif !B)]$.
 \item $\Proves \lexists[x][(!A(x) \lif \lforall[y][!A(y)])]$.
 \end{enumerate}
-(Tous ces résultats nécessitent la règle~$\FalseCl$.)
+(Dans ce système, une dérivation uniforme de chacun de ces
+schémas exige la règle~$\FalseCl$.)
 \end{prob}
-
-\begin{editorial}
-Dans le premier exemple, la source suppose qu'aucune constante ne
-figure dans les formules; pour une formule schématique arbitraire,
-il faut plutôt choisir une constante fraîche. La prémisse
-existentielle est écrite ici avec sa négation, conformément à
-l'arbre, et le rappel de la condition inclut la conclusion.
-Tout terme utilisé pour l'élimination universelle reste clos.
-Dans le deuxième exemple, la fraîcheur de $a$, notamment par
-rapport à $b$, est explicitée; les deux hypothèses de départ
-restent disponibles pendant la construction. Une parenthèse mal placée dans
-la prémisse existentielle du troisième arbre de cet exemple est
-rétablie avant le crochet fermant l'argument du quantificateur.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
 
 \end{document}

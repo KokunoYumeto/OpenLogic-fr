@@ -1,0 +1,278 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{choice}{countablechoice}
+\olsection{Le choix dénombrable}
+
+Sans recourir au choix ni au bon ordre,
+il est facile de démontrer ceci :
+
+\begin{lem}[dans $\Zminus$]
+Tout ensemble fini admet une fonction de choix.
+\end{lem}
+
+\begin{proof}
+Soit $a = \{b_1, \ldots, b_n\}$.
+Supposons, pour simplifier, que chaque
+$b_i \neq \emptyset$. Il existe alors
+des objets $c_1, \ldots, c_n$ tels que
+$c_1 \in b_1, \ldots, c_n \in b_n$.
+D'après la
+\olref[z][pairs]{prop:pairsconsequences},
+l'ensemble
+$\{\langle b_1, c_1\rangle , \ldots,
+\langle b_n, c_n\rangle\}$ existe ;
+c'est une fonction de choix pour~$a$.
+\end{proof}
+
+Mais dès que nous considérons des ensembles
+infinis, les choses deviennent moins claires.
+Prenons, par exemple, cette extension
+«~minimale~» du résultat précédent :
+
+\begin{defish}
+\emph{Choix dénombrable.} Tout ensemble
+\emph{dénombrable} admet une fonction de choix.
+\end{defish}
+
+Il s'agit d'un cas particulier de l'axiome
+du choix. Or ce principe a été invoqué
+assez souvent, sans que son emploi soit
+toujours clairement perçu. En voici deux
+exemples instructifs.\footnote{Ils sont
+dus à \citet[\S9.4]{Potter2004}
+et à Luca Incurvati.}
+
+\begin{ex}
+Voici une idée naturelle : pour tout ensemble
+$A$, soit $\cardle{\omega}{A}$, soit
+$\cardeq{A}{n}$ pour un certain
+$n \in \omega$. C'est une façon
+d'exprimer l'idée intuitive selon laquelle
+tout ensemble est fini ou infini.
+Cantor, comme bien d'autres mathématiciens,
+a formulé cette affirmation sans la démontrer.
+Pour notre part, nous l'avons démontrée
+dans le
+\olref[cardinals][classing]{generalinfinitycharacter}.
+Mais nous y travaillions dans $\ZFC$ :
+nous supposions que tout ensemble $A$
+peut être bien ordonné et que
+$\card{A}$ existe donc nécessairement.
+Autrement dit, nous avions explicitement
+supposé l'axiome du choix.
+
+En fait, \citet{Dedekind1888} a proposé
+sa propre démonstration de cette affirmation :
+
+\begin{thm}[dans $\Zminus +
+\text{choix dénombrable}$]
+Pour tout $A$, soit
+$\cardle{\omega}{A}$, soit
+$\cardeq{A}{n}$ pour un certain
+$n \in \omega$.
+\end{thm}
+
+\begin{proof}
+Supposons que $\cardneq{A}{n}$ pour
+tout $n \in \omega$. Alors, pour chaque
+$n < \omega$, il existe en particulier
+un sous-ensemble $A_n \subseteq A$
+ayant exactement $\cardexpo{2}{n}$
+éléments. À partir de la suite
+$A_0, A_1, A_2, \ldots$, définissons
+pour chaque $n$ :
+\[
+	B_n = A_n \setminus
+	\bigcup_{i < n} A_i.
+\]
+Remarquons que :
+\begin{align*}
+	\card{\bigcup_{i < n}A_i}
+	&\leq \card{A_0} + \card{A_1}
+	+ \ldots + \card{A_{n-1}}\\
+	&=1 + 2 + \ldots + 2^{n-1}\\
+	& = 2^n - 1\\
+	& < 2^n = \card{A_n}
+\end{align*}
+\footnote{Note de l'édition française :
+l'original écrit $A_n$ sous le signe
+d'union dans la première ligne ;
+la borne porte sur l'union des $A_i$
+pour $i<n$.}
+Chaque $B_n$ possède donc au moins
+un élément $c_n$. De plus, les $B_n$
+sont deux à deux disjoints : si
+$c_n=c_m$, alors $n=m$.
+Or tous les $c_n$ appartiennent à $A$.
+La fonction $f(n)=c_n$ est donc une
+injection de $\omega$ dans $A$.
+\end{proof}
+\noindent
+Dedekind n'a pas signalé qu'il avait
+utilisé le choix dénombrable.
+Mais \emph{vous}, avez-vous repéré
+où il intervient ? Relisez la
+démonstration. (Vraiment :
+\emph{relisez-la}.)
+
+Elle utilise deux fois le choix
+dénombrable : d'abord pour obtenir
+la suite d'ensembles
+$A_0, A_1, A_2, \ldots$,
+puis pour choisir un élément $c_n$
+dans chaque~$B_n$. Cet usage du choix
+est en outre indispensable.
+\citet[p.~138]{Cohen1966} a montré
+que le résultat peut échouer en l'absence
+de toute forme de choix : il est
+compatible avec $\ZF$ qu'il existe
+des ensembles \emph{incomparables}
+à~$\omega$.
+\end{ex}
+
+\begin{ex}
+En \citeyear{Cantor1878}, Cantor a affirmé
+qu'une union dénombrable d'ensembles
+dénombrables est dénombrable.
+Il n'a pas donné de démonstration,
+ce qui suggère peut-être qu'elle
+lui paraissait évidente. Pour notre
+part, nous avons démontré une version
+plus générale de ce résultat dans la
+\olref[card-arithmetic][simp]{kappaunionkappasize}.
+Mais notre démonstration supposait
+explicitement l'axiome du choix.
+Même la démonstration du résultat moins général
+fait appel au choix dénombrable.
+
+\begin{thm}[dans $\Zminus +
+\text{choix dénombrable}$]
+Si $A_n$ est dénombrable pour chaque
+$n \in \omega$, alors
+$\bigcup_{n < \omega} A_n$
+est dénombrable.
+\end{thm}
+
+\begin{proof}
+Sans perte de généralité, supposons
+que chaque $A_n \neq \emptyset$.
+Pour chaque $n \in \omega$, il existe
+alors !!a{surjection}
+$f_n \colon \omega \to A_n$.
+Définissons
+$f \colon \omega \times \omega
+\to \bigcup_{n < \omega} A_n$
+par $f(m,n)=f_n(m)$.
+Le résultat suit du fait que
+$\omega \times \omega$ est
+dénombrable
+(\olref[sfr][siz][zigzag]{natsquaredenumerable})
+et que $f$ est !!a{surjection}.
+\end{proof}
+\noindent
+Avez-vous repéré l'emploi du choix
+dénombrable ? Il sert à choisir
+la suite de fonctions
+$f_0, f_1, f_2, \dots$\footnote{
+Un usage semblable du choix figurait
+dans la
+\olref[card-arithmetic][simp]{kappaunionkappasize},
+lorsque nous avons demandé :
+«~Pour chaque
+$\beta \in \cardfont{a}$,
+fixons !!a{injection} $f_\beta$~».}
+Là encore, le résultat peut échouer
+en l'absence de tout principe de choix.
+Plus précisément,
+\citet{FefermanLevy1963} ont démontré
+qu'il est compatible avec $\ZF$
+qu'une union dénombrable d'ensembles
+dénombrables soit équipotente à
+$\Pow{\omega}$.\footnote{Note de l'édition
+française : l'original exprime cette taille
+par $\beth_1$. Sans l'axiome du choix,
+$\Pow{\omega}$ peut ne pas être
+bien ordonnable, et la définition
+antérieure de $\beth_1$ comme cardinal
+ordinal ne s'applique alors pas.
+L'énoncé d'équipotence évite cette
+présupposition.}
+Mais Russell a exprimé cette idée
+de manière bien plus amusante :
+\begin{quote}
+	C'est ce qu'illustre le millionnaire
+	qui achetait une paire de chaussettes
+	chaque fois qu'il achetait une paire
+	de bottes, et jamais à une autre
+	occasion. Il avait une telle passion
+	pour ces achats qu'il finit par
+	posséder $\aleph_0$ paires de bottes
+	et $\aleph_0$ paires de chaussettes
+	\dots\@ Parmi les bottes, nous
+	pouvons distinguer la droite de la
+	gauche et choisir ainsi une botte
+	dans chaque paire : toutes les bottes
+	droites, ou toutes les gauches.
+	Avec les chaussettes, aucun principe
+	de sélection semblable ne se présente
+	à nous. Sans supposer l'axiome
+	multiplicatif [c'est-à-dire,
+	en substance, l'axiome du choix],
+	nous ne pouvons être certains
+	qu'il existe une classe contenant
+	une chaussette de chaque paire.
+	\citep[p.~126]{Russell1919}
+\end{quote}
+Autrement dit, une certaine forme
+de choix est nécessaire pour
+démontrer que, si l'on possède
+une infinité dénombrable de paires
+de chaussettes, on possède un ensemble
+dénombrable de chaussettes.
+En effet, sans le choix dénombrable
+(ou un principe équivalent), une union
+dénombrable d'ensembles dénombrables
+peut ne pas être dénombrable.
+\end{ex}
+
+La leçon est que le choix dénombrable
+a été utilisé à maintes reprises
+sans que ses utilisateurs en aient
+toujours conscience. La question
+philosophique est de savoir comment
+nous pourrions le \emph{justifier}.
+
+Une tentative de justification
+intuitive pourrait invoquer une
+supertâche. Supposons que nous
+fassions le premier choix en
+$\nicefrac{1}{2}$ minute,
+le deuxième en $\nicefrac{1}{4}$
+minute, \dots, le $n$-ième en
+$\nicefrac{1}{2^n}$ minute,
+\dots\@ En $1$~minute, nous aurions
+effectué une suite de choix de
+longueur $\omega$ et défini une
+fonction de choix.
+
+Mais que pourrait réellement nous
+apprendre cette expérience de pensée ?
+D'abord, elle prend l'idée de
+«~choisir~» au pied de la lettre.
+Ensuite, elle semble lier les
+mathématiques à la possibilité
+métaphysique.
+
+Surtout, elle ne justifie nullement
+le choix \emph{tout court}, au-delà
+du \emph{seul} choix dénombrable.
+Car, si \emph{tout} ensemble doit
+admettre une fonction de choix,
+il nous faudrait pouvoir accomplir
+une «~supertâche de longueur ordinale
+arbitraire~». Franchement, cette
+idée est risible.
+
+\end{document}

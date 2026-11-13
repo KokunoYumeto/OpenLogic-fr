@@ -1,0 +1,118 @@
+% Partie : counterfactuals
+% Chapitre : minimal-change-semantics
+% Section : true-false
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{min}{tf}
+
+\olsection{Vérité et fausseté des conditionnels contrefactuels}
+
+Un conditionnel contrefactuel $!A \cif !B$ est vrai autrement que par
+vacuité lorsque tous les mondes-$!A$ les plus proches sont des
+mondes-$!B$, comme le montre la \olref{fig:true}.
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=.7]\small
+  \spheresystem{5}
+  \draw (0,0) node {$w$};
+  \propositionintersect{0}{4}{40}{3.5}
+  {\tikzset{proposition/.append={smooth,tension=1.4}}
+  \proposition[shift={(1.6,-1)}]{90}{1}{30}{4}}
+  \path (1.5,3) node[below] {$\formula{B}$};
+  \path (3,0) node {$\formula{A}$};
+\end{tikzpicture}
+\caption{Conditionnel contrefactuel vrai autrement que par vacuité}
+\ollabel{fig:true}
+\end{center}
+\end{figure}
+Un conditionnel contrefactuel est également vrai en~$w$ si le système
+de sphères autour de~$w$ ne contient aucune sphère admettant~$!A$.
+Dans ce cas, il est vrai \emph{par vacuité} (voir
+la \olref{fig:vacuous}).
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=.7]\small
+  \spheresystem{5}
+  \draw (0,0) node {$w$};
+  \proposition{0}{6.5}{40}{3.5}
+  {\tikzset{proposition/.append={smooth,tension=1.4}}
+  \proposition[shift={(1.2,-1)}]{90}{1}{30}{4}}
+  \path (1.5,3) node[below] {$\formula{B}$};
+  \spherepos{0}{7}{node {$\formula{A}$}}
+\end{tikzpicture}
+\caption{Conditionnel contrefactuel vrai par vacuité}
+\ollabel{fig:vacuous}
+\end{center}
+\end{figure}
+
+Lorsqu'il existe des mondes-$!A$ les plus proches, un conditionnel
+contrefactuel peut être faux de deux façons. Il se peut d'abord que
+certains de ces mondes, mais pas tous, soient des mondes-$!B$. Dans ce
+cas, $!A \cif \lnot !B$ est également faux (voir
+la \olref{fig:false}).
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=.7]\small
+  \spheresystem{5}
+  \draw (0,0) node {$w$};
+  \propositionintersect{0}{4}{40}{3.5}
+  {\tikzset{proposition/.append={smooth,tension=1.4}}
+  \proposition[shift={(1.6,0)}]{90}{1}{30}{3}}
+  \path (1.5,3) node[below] {$\formula{B}$};
+  \path (3,0) node {$\formula{A}$};
+\end{tikzpicture}
+\caption{Contrefactuel faux, version à conséquent nié fausse}
+\ollabel{fig:false}
+\end{center}
+\end{figure}
+Si, au contraire, aucun des mondes-$!A$ les plus proches n'est un
+monde-$!B$, alors $!A \cif !B$ est faux. Mais tous les mondes-$!A$ les
+plus proches sont des mondes-$\lnot !B$ ; par conséquent,
+$!A \cif \lnot !B$ est vrai
+(voir la \olref{fig:false-opposite}).
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=.7]\small
+  \spheresystem{5}
+  \draw (0,0) node {$w$};
+  \propositionintersect{0}{4}{40}{3.5}
+  {\tikzset{proposition/.append={smooth,tension=1.4}}
+  \proposition[shift={(-1,0)}]{90}{1}{30}{3}}
+  \path (-1,3) node[below] {$\formula{B}$};
+  \path (3,0) node {$\formula{A}$};
+\end{tikzpicture}
+\caption{Contrefactuel faux, version à conséquent nié vraie}
+\ollabel{fig:false-opposite}
+\end{center}
+\end{figure}
+
+Contrairement aux conditionnels stricts, les conditionnels
+contrefactuels peuvent être contingents. Considérons le modèle à
+sphères de la \olref{fig:contingent}. Les mondes-$!A$ les plus proches
+de~$u$ sont tous des mondes-$!B$ ; ainsi, $\mSat{M}{!A \cif
+  !B}[u]$. Mais certains mondes-$!A$ les plus proches de~$v$ ne sont
+pas des mondes-$!B$ ; ainsi, $\mSat/{M}{!A \cif !B}[v]$.
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=.6]\small
+  \spheresystem{7}
+  \spheresystem[shift={(0:3.1)},dashed]{4}
+  \propositionintersect{45}{4}{40}{4.5}
+  \begin{scope}
+    \clip \propositionplot{45}{4}{40}{4.5} ;
+    \spherelayer[shift={(0:3.1)}]{3}
+  \end{scope}
+  \proposition[shift={(1.4,-.5)}]{90}{1}{35}{5}
+  \path (0,0) node {$u$};
+  \path (0:3.1) node {$v$};
+  \spherepos{35}{9}{node {$\formula{A}$}}
+  \spherepos{80}{9}{node {$\formula{B}$}}
+\end{tikzpicture}
+\end{center}
+\caption{Conditionnel contrefactuel contingent}
+\ollabel{fig:contingent}
+\end{figure}
+\end{document}

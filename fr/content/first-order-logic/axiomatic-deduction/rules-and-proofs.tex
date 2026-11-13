@@ -14,26 +14,35 @@
 
 \begin{explain}
 Les !!{derivation}s axiomatiques constituent peut-être le système de
-!!{derivation} le plus simple pour la logique. !!^a{derivation} n'est
-qu'une suite de !!{formula}s. Pour être une !!{derivation}, chaque
-!!{formula} de la suite doit soit être une instance d'un axiome, soit
-découler, par une règle d'inférence, d'une ou de plusieurs !!{formula}s
-qui la précèdent dans la suite. La dernière !!{formula}
+!!{derivation} le plus simple pour la logique. Une dérivation est une
+suite de !!{formula}s. Chacune est une hypothèse admise, une instance
+d'un axiome ou une conséquence de !!{formula}s qui la précèdent dans
+la suite, obtenue par une règle d'inférence. La dernière !!{formula}
 d'!!a{derivation} est celle qu'elle permet de !!{derive}.
+%
 \end{explain}
 
-\begin{defn}[!!^{derivability}]
+\begin{defn}[!!^{derivation}]
 Si $\Gamma$ est un ensemble de !!{formula}s de $\Lang L$, une
-\emph{!!{derivation} à partir de~$\Gamma$} est une suite finie
+\emph{!!{derivation} à partir de~$\Gamma$} est une suite finie non vide
 $!A_1$, \dots,~$!A_n$ de !!{formula}s telle que, pour chaque
-$i \le n$, l'une des conditions suivantes soit satisfaite :
+$1 \le i \le n$, on donne l'une des justifications suivantes :
 \begin{enumerate}
 \item $!A_i \in \Gamma$;
 \item $!A_i$ est un axiome;
 \item $!A_i$ découle, par une règle d'inférence, d'une formule~$!A_j$
   (et d'une formule~$!A_k$) telles que $j < i$ (et $k < i$).
 \end{enumerate}
+Les \emph{hypothèses de la dérivation} sont les formules dont la ligne
+est justifiée par la première clause. Elles forment une partie finie
+de~$\Gamma$.
 \end{defn}
+
+\iftag{FOL}{Les dérivations disposent de la réserve de constantes du
+langage standard. Si le langage de~$\Gamma$ et de la conclusion
+contient moins de constantes, on peut l'étendre par de nouveaux
+symboles dans les lignes intermédiaires. Les hypothèses et la conclusion
+restent dans le langage de départ.}{}
 
 Ce qui constitue une !!{derivation} correcte dépend des règles
 d'inférence que nous admettons, ainsi, bien entendu, que des axiomes
@@ -66,10 +75,10 @@ considérée sont plus intéressantes. La règle suivante s'appelle le
   Si $!B \lif !A$ et $!B$ figurent plus haut dans la !!{derivation},
   alors~$!A$ est une étape d'inférence correcte.
 \end{quote}
-Si le modus ponens est la seule règle d'inférence, la définition
-précédente revient à dire que $!A_1$, \dots,~$!A_n$ est une
-!!{derivation} si et seulement si, pour chaque $i \le n$, l'une des
-conditions suivantes est satisfaite :
+Si le modus ponens est la seule règle qui fait appel aux formules
+antérieures, la suite non vide $!A_1$, \dots,~$!A_n$ est une
+!!{derivation} si et seulement si, pour chaque $1 \le i \le n$,
+l'une des conditions suivantes est satisfaite :
 \begin{enumerate}
 \item $!A_i \in \Gamma$;
 \item $!A_i$ est un axiome;

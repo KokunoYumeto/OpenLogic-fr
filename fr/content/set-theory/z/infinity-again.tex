@@ -1,0 +1,156 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{z}{infinity-again}	
+\olsection{Infini}
+
+Nous disposons déjà d'assez d'axiomes pour assurer qu'il existe une
+infinité d'ensembles (s'il en existe au moins un). Supposons en effet
+qu'un ensemble existe : alors $\emptyset$ existe (par la
+\olref[sth][z][sep]{prop:emptyexists}). Or, pour tout ensemble~$x$,
+l'ensemble $x \cup \{x\}$ existe par la
+\olref[sth][z][pairs]{prop:pairsconsequences}. En répétant cette
+opération quelques fois, nous obtenons les ensembles suivants :
+\begin{enumerate}
+	\item[0.] $\emptyset$ %& $0$ & étape $0$\\
+	\item[1.] $ \{\emptyset\}$ %& $1$ & étape $1$\\
+	\item[2.] $\{\emptyset, \{\emptyset\}\}$ %& $2$ & étape $2$\\
+	\item[3.] $\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}$ %&$3$ & étape $3$\\
+	\item[4.] $\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}, \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}\}$% & $4$ & étape $4$
+\end{enumerate}
+On peut vérifier que ces ensembles sont tous distincts.
+
+Nous avons commencé la numérotation à $0$ pour plusieurs raisons.
+En voici une : l'ensemble auquel nous avons attribué l'étiquette
+«~$n$~» possède exactement $n$ !!{element}s et se forme,
+intuitivement, à la $n$-ième étape.
+
+Mais voilà : nous obtenons ainsi une \emph{infinité d'ensembles}, sans
+pour autant garantir l'existence d'un \emph{ensemble infini}, c'est-à-dire
+d'un ensemble qui possède une infinité d'!!{element}s. La distinction
+est essentielle : sans ensemble infini (au sens de Dedekind), nous ne
+pouvons pas construire d'algèbre de Dedekind. Or nous voulons une
+telle algèbre pour la considérer comme l'ensemble des nombres naturels.
+(Voir la \olref[sfr][infinite][dedekindsproof]{sec}.)
+
+Les axiomes posés jusqu'ici ne garantissent \emph{pas} l'existence
+d'un ensemble infini. Nous devons donc ajouter un axiome :
+
+\begin{axiom}[Infini]
+Il existe un ensemble $I$ tel que $\emptyset \in I$ et que
+$x \cup \{x\} \in I$ chaque fois que $x \in I$.
+\begin{align*}
+	\exists I( & (\exists o \in I)\forall x\ x \notin o \land {}\\
+	& (\forall x \in I)(\exists s \in I)\forall z(z \in s \liff (z \in x \lor z = x)))
+\end{align*}
+\end{axiom}
+
+L'ensemble $I$ fourni par l'axiome de l'infini est infini au sens de
+Dedekind. Soit $s(x)=x\cup\{x\}$ et soit $\omega$ la plus petite partie
+de $I$ qui contient $\emptyset$ et qui est stable par $s$.
+L'ensemble vide est transitif. Si $x$ est transitif, tout élément de
+$s(x)$ est inclus dans $x$, puisqu'il appartient à $x$ ou est égal à
+$x$. Donc $s(x)$ est transitif et, par récurrence, tout élément de
+$\omega$ l'est. Pour $x\in\omega$, on a $\bigcup s(x)=x$ puisque
+$\bigcup x\subseteq x$. Ainsi $s$ est injective sur $\omega$. De plus,
+$x\in s(x)$, donc son image omet $\emptyset$.
+L'application égale à $s$ sur $\omega$ et à l'identité sur
+$I\setminus\omega$ est alors une injection de $I$ dans lui-même dont
+l'image omet $\emptyset$.
+
+Le \olref[sfr][infinite][dedekind]{thm:DedekindInfiniteAlgebra} donne alors une algèbre de Dedekind.
+Nous prenons pour ensemble des nombres naturels $\omega$, avec
+$\emptyset$ comme élément initial et la restriction de $s$ comme
+successeur.
+\begin{defn}\ollabel{defnomega}
+Soit $I$ un ensemble quelconque fourni par l'axiome de l'infini. Soit
+$s$ la fonction $s(x) = x \cup \{x\}$. Posons $\omega =
+\closureofunder{s}{\emptyset}$. Nous appelons les !!{element}s de
+$\omega$ les \emph{nombres naturels} et disons que $n$ résulte de
+$n$ applications de $s$ à $\emptyset$.
+\end{defn}
+
+Nous pouvons maintenant revenir aux exemples précédents et vérifier
+que l'ensemble étiqueté «~$n$~» y sera considéré \emph{comme} le
+nombre $n$.
+
+Nous discuterons la portée de cette convention à la
+\olref[sth][z][nat]{sec}. Pour l'instant, elle nous permet de
+démontrer un résultat intuitif :
+
+\begin{prop}\ollabel{naturalnumbersarentinfinite}
+Aucun nombre naturel n'est infini au sens de Dedekind.
+\end{prop}
+
+\begin{proof}
+La démonstration procède par récurrence, selon la
+\olref[sfr][infinite][induction]{thm:dedinfiniteinduction}. Il est
+clair que $0 = \emptyset$ n'est pas infini au sens de Dedekind. Pour
+l'étape de récurrence, établissons la contraposée : si, par impossible,
+$s(n)$ est infini au sens de Dedekind, alors $n$ l'est aussi.
+
+Supposons donc que $s(n)$ soit infini au sens de Dedekind : il existe
+une !!{injection} $f$ telle que
+$\ran{f}\subsetneq \dom{f} = s(n) = n \cup \{n\}$. Il y a deux cas.
+
+\emph{Premier cas : $n \notin \ran{f}$.} Alors $\ran{f} \subseteq n$
+et $f(n) \in n$. Posons $g = \funrestrictionto{f}{n}$ ; nous avons
+$\ran{g} = \ran{f} \setminus \{f(n)\} \subsetneq n = \dom{g}$.
+Donc $n$ est infini au sens de Dedekind.
+
+\emph{Second cas : $n \in \ran{f}$.} Choisissons
+$m \in \dom{f} \setminus \ran{f}$ et définissons une fonction $h$
+de domaine $s(n) = n \cup \{n\}$ par :
+\[
+h(x) =
+	\begin{cases}
+		f(x) & \text{si }f(x) \neq n\\
+		m & \text{si }f(x)=n
+	\end{cases}
+\]
+Les fonctions $h$ et $f$ coïncident partout sauf au point où
+$h(f^{-1}(n)) = m \neq n = f(f^{-1}(n))$. Comme $m$ n'appartient pas
+à l'image de l'!!{injection} $f$, l'application $h$ est injective.
+Son image omet $n$, donc $\ran{h} \subsetneq \dom{h} = s(n)$.
+L'argument du premier cas montre alors que $n$ est infini au sens
+de Dedekind.
+\end{proof}
+
+Reste cependant à savoir comment \emph{justifier} l'axiome de l'infini.
+La réponse courte est qu'il faut ajouter un autre principe au récit
+que nous avons présenté. Le voici :
+\begin{enumerate}
+	\item[] \stagesinf. Il existe une étape infinie, c'est-à-dire une
+	étape qui (a) n'est pas la première, (b) est précédée d'autres
+	étapes, mais (c) n'a pas de prédécesseur immédiat.
+\end{enumerate}
+L'axiome de l'infini découle directement de ce principe. Nous savons
+que le nombre naturel $n$ se forme à l'étape $n$. L'ensemble $\omega$
+se forme donc à la première étape infinie. Et $\omega$ lui-même
+témoigne de l'axiome de l'infini.
+
+Cela ne fait pourtant que reporter la question : comment justifier
+\stagesinf{} ? Comme \stagessucc, ce principe ne faisait pas
+explicitement partie de notre récit de la hiérarchie cumulative et
+itérative. Mais il y a plus : rien, dans l'idée même d'une hiérarchie
+itérative où les ensembles se forment étape par étape, ne nous oblige
+à penser que ce processus comporte une étape \emph{infinie}. On peut
+concevoir sans contradiction apparente que les étapes soient ordonnées
+comme les nombres naturels.
+
+Cela soulève toutefois un problème évident. À la
+\olref[sfr][infinite][dedekindsproof]{sec}, nous avons examiné la
+«~preuve~» de Dedekind selon laquelle il existe un ensemble infini au
+sens de Dedekind (composé de pensées). Elle ne vous a peut-être pas
+paru très convaincante. Mais si \stagesinf{} ne nous est pas «~imposé~»
+par la conception itérative des ensembles (ou par les «~lois de la
+pensée~»), nous restons sans justification intrinsèque de l'existence
+d'un ensemble infini au sens de Dedekind.
+
+Il y aurait, bien sûr, beaucoup d'autres choses à dire. Mais nous
+espérons que vous pouvez maintenant commencer à réfléchir à ce qu'il
+\emph{faudrait} pour justifier un axiome (ou un principe). Dans la
+suite, nous admettrons simplement \stagesinf{}.
+
+\end{document}

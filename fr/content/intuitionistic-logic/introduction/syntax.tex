@@ -1,0 +1,77 @@
+% Partie : intuitionistic-logic
+% Chapitre : introduction
+% Section : syntax
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{int}{syn}
+
+\olsection{Syntaxe de la logique intuitionniste}
+
+La syntaxe de la logique intuitionniste est la même que celle de la
+logique propositionnelle. En logique propositionnelle classique, on
+peut définir certains connecteurs au moyen des autres : par exemple,
+$!A \lif !B$ par $\lnot !A \lor !B$, ou $!A \lor !B$ par
+$\lnot(\lnot !A \land \lnot !B)$. Aussi les présentations de la logique
+classique introduisent-elles souvent certains connecteurs comme des
+abréviations de ces définitions. Ces définitions ne conviennent pas
+en logique intuitionniste, avec deux exceptions : $\lnot !A$ peut
+être défini, et l'est souvent, comme une abréviation de
+$!A \lif \lfalse$. Dans ce cas, bien entendu, $\lfalse$ doit lui-même
+rester primitif !{} De plus, on peut définir $!A \liff !B$, comme
+en logique classique, par $(!A \lif !B) \land (!B \lif !A)$.
+
+Les !!{formula}s de la logique propositionnelle intuitionniste
+se construisent à partir de \emph{!!{propositional variable}s} et
+de la constante propositionnelle~$\lfalse$, à l'aide de
+\emph{connecteurs logiques}. Nous disposons des symboles suivants :
+
+\begin{enumerate}
+\item Un ensemble !!{denumerable}~$\PVar$ de !!{propositional variable}s
+  $\Obj p_0$, $\Obj p_1$, \dots.
+\item La constante propositionnelle de !!{falsity}~$\lfalse$.
+\item Les connecteurs logiques : $\land$ (conjonction),
+  $\lor$ (disjonction) et $\lif$ (implication).
+\item Les signes de ponctuation : (, ), ainsi que la virgule.
+\end{enumerate}
+
+\begin{defn}[Formule]
+\ollabel{defn:formulas} L'ensemble~$\Frm[L_0]$ des
+\emph{!!{formula}s} de la logique propositionnelle intuitionniste
+est défini inductivement comme suit :
+\begin{enumerate}
+\item $\lfalse$ est une !!{formula} atomique.
+
+\item Toute !!{propositional variable}~$\Obj p_i$ est une
+  !!{formula} atomique.
+
+\item Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \land !B)$
+  est !!a{formula}.
+
+\item Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \lor !B)$
+  est !!a{formula}.
+
+\item Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \lif !B)$
+  est !!a{formula}.
+
+\tagitem{limitClause}{Rien d'autre n'est !!a{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+Outre les connecteurs primitifs introduits ci-dessus, nous utilisons
+les symboles \emph{définis} suivants : $\lnot$ (négation) et $\liff$
+(!!{biconditional}). Les formules contenant ces opérateurs définis
+s'interprètent comme suit :
+\begin{enumerate}
+\item $\lnot !A$ abrège $!A \lif \lfalse$.
+
+\item $!A \liff !B$ abrège $(!A \lif !B) \land (!B \lif !A)$.
+\end{enumerate}
+
+Bien que $\lnot$ soit officiellement une abréviation, nous donnerons
+parfois des règles explicites ou des clauses de définition pour~$\lnot$,
+comme s'il était primitif. Cela permet surtout de proposer des exercices.
+
+\end{document}

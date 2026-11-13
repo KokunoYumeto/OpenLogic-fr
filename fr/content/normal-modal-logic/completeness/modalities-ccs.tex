@@ -1,0 +1,260 @@
+% Part: normal-modal-logic
+% Chapter: completeness
+% Section: modalities-ccs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{com}{mod}
+
+\olsection{Modalités et ensembles cohérents complets}
+
+\begin{explain}
+Lorsque nous construisons un modèle~$\mModel{M^\Sigma}$ dont les mondes
+sont les ensembles $\Sigma$-cohérents complets~$\Delta$ d'une logique
+modale normale~$\Sigma$, nous devons aussi définir une relation
+d'accessibilité~$R^\Sigma$ entre ces « mondes ». Nous voulons définir
+cette relation (ainsi que la valuation $V^\Sigma$) de telle sorte que
+$\mSat{M^\Sigma}{!A}[\Delta]$ si et seulement si $!A \in
+\Delta$. Comment faire ?
+
+Une fois la relation d'accessibilité définie, la définition de la
+vérité en un monde assure que \iftag{prvBox}{$\mSat{M^\Sigma}{\Box!A}[\Delta]$
+  si et seulement si $\mSat{M^\Sigma}{!A}[\Delta']$ pour tout $\Delta'$ tel que
+  $R^\Sigma\Delta\Delta'$}{$\mSat{M^\Sigma}{\Diamond!A}[\Delta]$ si et seulement si
+  $\mSat{M^\Sigma}{!A}[\Delta']$ pour au moins un $\Delta'$ tel que
+  $R^\Sigma\Delta\Delta'$}. La démonstration de
+$\mSat{M^\Sigma}{!A}[\Delta]$ si et seulement si $!A \in \Delta$ exige
+que cela vaille notamment pour les !!{formula}s commençant par un
+opérateur modal, c'est-à-dire \iftag{prvBox}{$\mSat{M^\Sigma}{\Box!A}[\Delta]$
+  si et seulement si $\Box !A
+  \in \Delta$}{$\mSat{M^\Sigma}{\Diamond!A}[\Delta]$ si et seulement si $\Diamond !A
+  \in \Delta$}. En combinant cette exigence avec la définition de la
+vérité en un monde pour \iftag{prvBox}{$\Box !A$}{$\Diamond !A$}, nous
+obtenons :
+\[
+\iftag{prvBox}{%
+  \Box!A \in \Delta \text{ ssi } !A \in \Delta' \text{
+    pour tout $\Delta'$ tel que } R^\Sigma\Delta\Delta'}{%
+  \Diamond!A \in \Delta \text{ ssi } !A \in \Delta' \text{ pour au
+    moins un } \Delta' \text{ tel que } R^\Sigma\Delta\Delta'}
+\]
+\iftag{prvBox}{Considérons l'implication de gauche à droite : si
+  $\Box !A \in \Delta$, alors $!A \in \Delta'$ pour tout $!A$ et tout
+  $\Delta'$ tels que $R^\Sigma\Delta\Delta'$. Si nous stipulons que
+  $R^\Sigma\Delta\Delta'$ si et seulement si $!A \in \Delta'$ pour tout
+  $\Box!A \in \Delta$, cette implication est satisfaite. La condition
+  à droite de « si et seulement si » s'écrit plus brièvement
+  $\Setabs{!A}{\Box!A \in \Delta} \subseteq \Delta'$.}{Considérons
+  l'implication de droite à gauche : si $!A \in \Delta'$, alors
+  $\Diamond!A \in \Delta$, pour tout $!A$ et tout $\Delta'$ tels que
+  $R^\Sigma\Delta\Delta'$. Si nous stipulons que
+  $R^\Sigma\Delta\Delta'$ vaut si et seulement si $\Diamond!A \in \Delta$ pour
+  tout $!A \in \Delta'$, cette implication est satisfaite. La
+  condition à droite de « si et seulement si » s'écrit plus brièvement
+  $\Setabs{\Diamond!A}{!A \in \Delta'} \subseteq \Delta$.}
+
+La question est donc de savoir si cette définition de $R^\Sigma$
+garantit effectivement que \iftag{prvBox}{$\Box !A \in \Delta$ si et seulement si
+  $\mSat{M^\Sigma}{\Box !A}[\Delta]$ ? \iftag{prvDiamond}{Garantit-elle aussi
+    que }{}}{}\iftag{prvDiamond}{$\Diamond !A \in \Delta$
+  si et seulement si $\mSat{M^\Sigma}{\Diamond !A}[\Delta]$ ?}{} Les résultats
+suivants l'établiront.
+\end{explain}
+
+\begin{defn}
+  Si $\Gamma$ est un ensemble de !!{formula}s, posons
+  \begin{align*}
+    \Box\Gamma & = \Setabs{\Box !B}{!B \in \Gamma}\\
+    \Diamond\Gamma & = \Setabs{\Diamond !B}{!B \in \Gamma}\\
+    \intertext{et}
+    \Box^{-1}\Gamma & = \Setabs{!B}{\Box !B \in \Gamma}\\
+    \Diamond^{-1}\Gamma & = \Setabs{!B}{\Diamond !B \in \Gamma}\\
+  \end{align*}
+\end{defn}
+
+Autrement dit, $\Box\Gamma$ s'obtient à partir de~$\Gamma$ en préfixant de $\Box$ chaque
+!!{formula} de~$\Gamma$ ; $\Box^{-1}\Gamma$ s'obtient en retirant le
+$\Box$ initial de toutes les !!{formula}s de~$\Gamma$ qui commencent
+par~$\Box$. Cette définition n'est pas très importante en elle-même, mais elle
+simplifiera considérablement la notation.
+
+Remarquons que $\Box\Box^{-1}\Gamma \subseteq \Gamma$ :
+\[
+\Box\Box^{-1}\Gamma = \Setabs{\Box!B}{\Box!B \in \Gamma}
+\]
+Il s'agit simplement de l'ensemble des !!{formula}s de~$\Gamma$ qui
+commencent par~$\Box$.
+
+\begin{lem}\ollabel{lem:box1}
+  Si $\Gamma \Proves[\Sigma] !A$, alors $\Box\Gamma \Proves[\Sigma] \Box
+  !A$.
+\end{lem}
+
+\begin{proof}
+  Si $\Gamma \Proves[\Sigma] !A$, il existe $!B_1$, \dots, $!B_k
+  \in \Gamma$ tels que $\Sigma \Proves !B_1 \lif (!B_2 \lif \cdots
+  (!B_k \lif !A)\cdots)$. Puisque la logique~$\Sigma$ est normale, la règle \RK{}
+  donne $\Sigma \Proves \Box!B_1 \lif (\Box!B_2 \lif \cdots (\Box!B_k \lif
+  \Box!A)\cdots)$. Or $\Box!B_1$, \dots, $\Box!B_k \in
+  \Box\Gamma$. Par définition, $\Box\Gamma \Proves[\Sigma] \Box
+  !A$.
+\end{proof}
+
+\begin{lem}\ollabel{lem:box2}
+  Si $\Box^{-1} \Gamma \Proves[\Sigma] !A$, alors $\Gamma
+  \Proves[\Sigma] \Box!A$.
+\end{lem}
+
+\begin{proof}
+  Supposons $\Box^{-1}\Gamma \Proves[\Sigma] !A$ ; d'après le
+  \olref{lem:box1}, $\Box\Box^{-1}\Gamma \Proves[\Sigma] \Box!A$.
+  Puisque $\Box\Box^{-1}\Gamma \subseteq \Gamma$, la monotonie donne
+  aussi $\Gamma \Proves[\Sigma] \Box!A$.
+\end{proof}
+
+\iftag{prvBox}{%
+% Box is primitive
+
+\begin{prop}\ollabel{prop:box}
+  Si $\Gamma$ est $\Sigma$-cohérent complet, alors $\Box !A \in
+  \Gamma$ si et seulement si, pour tout ensemble $\Sigma$-cohérent
+  complet $\Delta$ tel que $\Box^{-1} \Gamma \subseteq \Delta$, on a
+  $!A \in \Delta$.
+\end{prop}
+
+\begin{proof}
+  Supposons $\Gamma$ $\Sigma$-cohérent complet. L'implication directe
+  est immédiate : supposons $\Box !A \in \Gamma$ et
+  $\Box^{-1}\Gamma \subseteq \Delta$. Puisque $\Box!A \in \Gamma$, on a
+  $!A \in \Box^{-1}\Gamma \subseteq \Delta$, donc $!A \in \Delta$.
+
+  Pour la réciproque, raisonnons par contraposition. Supposons
+  $\Box!A \notin \Gamma$. Puisque $\Gamma$ est $\Sigma$-cohérent
+  complet, il est déductivement clos ; donc $\Gamma
+  \Proves/[\Sigma] \Box !A$. D'après le \olref{lem:box2},
+  $\Box^{-1}\Gamma \Proves/[\Sigma] !A$. D'après la
+  \olref[prf][con]{prop:consistencyfacts}\olref[prf][con]{prop:consistencyfacts-b},
+  $\Box^{-1}\Gamma \cup \{ \lnot!A \}$ est $\Sigma$-cohérent. Par le
+  lemme de Lindenbaum, il existe un ensemble $\Sigma$-cohérent complet
+  $\Delta$ tel que $\Box^{-1}\Gamma \cup \{ \lnot!A \} \subseteq
+  \Delta$. Par cohérence, $!A \notin \Delta$.
+\end{proof}
+}{%
+% Box is not primitive, only Diamond is
+
+\begin{prop}\ollabel{prop:diamond}
+  Si $\Gamma$ est $\Sigma$-cohérent complet, alors $\Diamond !A \in
+  \Gamma$ si et seulement s'il existe un ensemble $\Sigma$-cohérent
+  complet $\Delta$ tel que $\Diamond\Delta \subseteq
+  \Gamma$ et $!A \in \Delta$.
+\end{prop}
+
+\begin{proof}
+  Supposons $\Gamma$ $\Sigma$-cohérent complet. L'implication de
+  droite à gauche est immédiate : soit $\Delta$ $\Sigma$-cohérent
+  complet tel que $\Diamond\Delta \subseteq \Gamma$ et $!A \in \Delta$.
+  Alors $\Diamond!A \in \Diamond\Delta \subseteq \Gamma$, autrement
+  dit $\Diamond!A \in \Gamma$.
+
+  Pour l'implication de gauche à droite, supposons $\Diamond !A \in
+  \Gamma$. Il faut trouver un ensemble $\Sigma$-cohérent complet
+  $\Delta$ tel que $!A \in \Delta$ et $\Diamond\Delta \subseteq \Gamma$.
+  Puisque $\Diamond !A \in \Gamma$ et que $\Gamma$ est
+  $\Sigma$-cohérent, $\Box\lnot !A \notin \Gamma$. Comme $\Gamma$ est
+  $\Sigma$-cohérent complet, il est déductivement clos ; donc $\Gamma
+  \Proves/[\Sigma] \Box\lnot !A$. D'après le \olref{lem:box2},
+  $\Box^{-1}\Gamma \Proves/[\Sigma] \lnot !A$. D'après la
+  \olref[prf][con]{prop:consistencyfacts}\olref[prf][con]{prop:consistencyfacts-b},
+  $\Box^{-1}\Gamma \cup \{ !A \}$ est $\Sigma$-cohérent. Le lemme de
+  Lindenbaum fournit un ensemble $\Sigma$-cohérent complet
+  $\Delta$ tel que $\Box^{-1}\Gamma \cup \{ !A \} \subseteq
+  \Delta$. Il est clair que $!A \in \Delta$. Pour montrer
+  $\Diamond\Delta \subseteq \Gamma$, supposons le contraire : pour un
+  certain $!B \in \Delta$, on aurait $\Diamond !B \notin \Gamma$.
+  Puisque $\Gamma$ est $\Sigma$-cohérent complet, on aurait alors
+  $\Box\lnot !B \in \Gamma$. Mais $\lnot
+  !B \in \Box^{-1}\Gamma \subseteq \Delta$, ce qui rendrait $\Delta$
+  incohérent.
+\end{proof}
+}
+
+\begin{lem}\ollabel{lem:box-iff-diamond}
+  Supposons $\Gamma$ et $\Delta$ $\Sigma$-cohérents complets. Alors
+  $\Box^{-1}\Gamma \subseteq \Delta$ si et seulement si
+  $\Diamond\Delta \subseteq \Gamma$.
+\end{lem}
+
+\begin{proof}
+  Implication directe : supposons $\Box^{-1}\Gamma \subseteq \Delta$
+  et $\Diamond!A \in \Diamond\Delta$, c'est-à-dire $!A \in \Delta$.
+  Pour établir $\Diamond!A \in \Gamma$, il suffit de montrer
+  $\Box\lnot!A \notin \Gamma$ : la maximalité donnera alors
+  $\lnot\Box\lnot
+  !A \in \Gamma$. Or, si $\Box\lnot!A \in \Gamma$, notre hypothèse
+  entraînerait $\lnot!A \in \Delta$, ce qui contredirait la cohérence
+  de $\Delta$, puisque $!A \in \Delta$. Donc $\Box\lnot!A \notin
+  \Gamma$, comme requis.
+
+  Réciproquement, supposons $\Diamond\Delta
+  \subseteq \Gamma$. Raisonnons par contraposition : supposons $!A
+  \notin \Delta$ et montrons que $\Box!A \notin \Gamma$. De $!A \notin
+  \Delta$, la maximalité donne $\lnot!A \in \Delta$, et notre hypothèse
+  donne alors $\Diamond\lnot!A \in \Gamma$. Dans une logique modale
+  normale, $\Diamond\lnot!A$ équivaut à $\lnot\Box !A$ ; puisque cette
+  dernière formule appartient à $\Gamma$, la cohérence impose
+  $\Box!A \notin\Gamma$, comme requis.
+\end{proof}
+
+\iftag{prvBox}{%
+  \iftag{prvDiamond}{%
+% Box and Diamond are both primitive; prove
+% prop:diamond using lem:box-iff-diamond
+
+\begin{prop}\ollabel{prop:diamond}
+  Si $\Gamma$ est $\Sigma$-cohérent complet, alors $\Diamond !A \in
+  \Gamma$ si et seulement s'il existe un ensemble $\Sigma$-cohérent
+  complet $\Delta$ tel que $\Diamond\Delta \subseteq
+  \Gamma$ et $!A \in \Delta$.
+\end{prop}
+
+\begin{proof}
+Supposons $\Gamma$ $\Sigma$-cohérent complet. $\Diamond!A \in
+\Gamma$ si et seulement si $\lnot\Box\lnot !A \in \Gamma$, par \Dual{}
+et clôture déductive. Ensuite, $\lnot\Box\lnot !A \in \Gamma$ si et
+seulement si $\Box\lnot !A \notin \Gamma$, d'après la
+\olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lnot}, puisque
+$\Gamma$ est $\Sigma$-cohérent complet. D'après la \olref{prop:box},
+$\Box\lnot !A \notin \Gamma$ si et seulement s'il existe un ensemble
+$\Sigma$-cohérent complet $\Delta$ tel que $\Box^{-1}\Gamma \subseteq
+\Delta$ et $\lnot!A \notin \Delta$. Considérons un tel~$\Delta$.
+D'après le \olref{lem:box-iff-diamond}, $\Box^{-1}\Gamma \subseteq \Delta$
+si et seulement si $\Diamond\Delta \subseteq \Gamma$. De plus,
+$\lnot !A \notin \Delta$ si et seulement si $!A \in \Delta$, d'après la
+\olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lnot}. Donc
+$\Diamond!A \in \Gamma$ si et seulement s'il existe un ensemble
+$\Sigma$-cohérent complet $\Delta$ tel que $\Diamond\Delta \subseteq
+\Gamma$ et $!A \in \Delta$.
+\end{proof}
+
+}{}}{}
+
+\begin{prob}
+  Montrer que, si $\Gamma$ est $\Sigma$-cohérent complet, alors
+  \iftag{prvBox}{$\Diamond !A \in \Gamma$ si et seulement s'il existe un
+    ensemble $\Sigma$-cohérent complet $\Delta$ tel que $\Box^{-1}\Gamma
+    \subseteq \Delta$ et $!A \in \Delta$.}{$\Box !A \in
+    \Gamma$ si et seulement si, pour tout ensemble $\Sigma$-cohérent
+    complet $\Delta$ tel que $\Box^{-1} \Gamma \subseteq \Delta$, on a
+    $!A \in \Delta$.} \emph{Le faire sans utiliser le
+    \olref[nml][com][mod]{lem:box-iff-diamond}}.
+\end{prob}
+\begin{explain}
+Dans la présentation où seule la possibilité est primitive,
+$R^\Sigma\Delta\Delta'$ équivaut à l'inclusion
+$\Diamond\Delta'\subseteq\Delta$. L'inclusion est donc à la
+fois nécessaire et suffisante pour que $\Delta'$ soit
+accessible depuis~$\Delta$.
+\end{explain}
+\end{document}

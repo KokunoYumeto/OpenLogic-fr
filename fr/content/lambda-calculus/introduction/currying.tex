@@ -1,0 +1,111 @@
+% Part: lambda-calculus
+% Chapter: representability
+% Section: currying
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{cur}
+\olsection{Curryfication}
+
+Une abstraction $\lambd[x][M]$ représente
+une fonction d'un seul argument. C'est une
+limite lorsque nous voulons définir des
+fonctions à plusieurs arguments. Nous
+pourrions étendre le lambda-calcul aux
+couples, aux triplets, etc. Une fonction
+de trois arguments, écrite sous la forme
+$\lambd[x][M]$, attendrait alors un triplet
+comme argument. La \emph{curryfication} offre
+une manière plus commode de procéder.
+
+Considérons un exemple. Supposons un instant
+que le lambda-calcul dispose d'une opération
+$+$. L'addition prend deux arguments, mais
+une abstraction lambda ne définit directement
+qu'une fonction d'un seul argument : la
+syntaxe n'autorise pas une expression telle
+que $\lambd[(x,y)][(x+y)]$. Nous pouvons
+toutefois considérer la fonction unaire
+$f_x(y)$ donnée par $\lambd[y][(x+y)]$,
+qui ajoute~$x$ à son argument~$y$. Il ne
+s'agit pas d'une fonction unique, mais
+d'une famille de fonctions « ajouter~$x$ »,
+une pour chaque nombre~$x$. Définissons
+maintenant une autre fonction unaire~$g$
+par $\lambd[x][f_x]$. Appliquée à~$x$,
+elle renvoie la fonction~$f_x$ : ses
+valeurs sont donc elles-mêmes des fonctions.
+Si nous appliquons ensuite le résultat à~$y$,
+nous obtenons $(g(x))y=f_x(y)=x+y$. Ainsi,
+la fonction unaire~$g$ remplit le rôle
+de l'addition binaire. La « curryfication »
+consiste précisément à représenter une
+fonction de deux arguments par une fonction
+d'un seul argument dont les valeurs sont
+elles-mêmes des fonctions unaires.
+
+Voici maintenant un exemple dans la syntaxe
+du lambda-calcul. Comment représenter
+$f(x,y)=x$? Une fonction qui reçoit deux
+arguments et renvoie le premier s'écrit
+$\lambd[x][\lambd[y][x]]$. Elle reçoit
+d'abord~$x$ et renvoie la fonction
+$\lambd[y][x]$; celle-ci reçoit~$y$,
+l'ignore et renvoie toujours~$x$.
+Supposons, pour le calcul suivant, que~$y$
+ne figure pas libre dans~$M$; sinon,
+renommons d'abord cette variable liée.
+L'application à deux arguments donne
+\begin{align*}
+(\lambd[x][\lambd[y][x]])MN
+&\bredone (\lambd[y][M])N \\
+&\bredone M.
+\end{align*}
+
+En général, pour représenter une fonction
+d'arguments $x_1$, \dots,~$x_n$ définie
+par un terme~$N$, nous pouvons écrire
+$\lambd[x_1][\lambd[x_2][\ldots
+\lambd[x_n][N]]]$. Soient $M_1$,
+\dots,~$M_n$ les arguments. Renommons au
+besoin les variables liées $x_1$, \dots,
+$x_n$ pour qu'elles soient distinctes et
+qu'aucune ne figure libre dans ces arguments.
+Posons $N_0\ident N$ et, pour $1\le i\le n$,
+\[
+N_i\ident\Subst{N_{i-1}}{M_i}{x_i}.
+\]
+Pour $n\ge2$, la première contraction est
+\begin{multline*}
+(\lambd[x_1][\lambd[x_2][\ldots
+\lambd[x_n][N]]])M_1\dots M_n\bredone{}\\
+(\lambd[x_2][\ldots\lambd[x_n][N_1]])
+M_2\dots M_n.
+\end{multline*}
+Après toutes les applications, on obtient
+\[
+(\lambd[x_1][\lambd[x_2][\ldots
+\lambd[x_n][N]]])M_1\dots M_n\red N_n.
+\]
+Pour $n=1$, ce dernier résultat est
+simplement la première contraction. Les
+substitutions successives insèrent donc
+chaque~$M_i$ à la place de~$x_i$ dans
+le corps de la définition, comme le demande
+l'application d'une fonction à plusieurs
+arguments.
+
+Par exemple, pour appliquer la première projection
+à la variable libre $y$ et à un terme $N$,
+choisissons un nom $z$ absent des termes en jeu.
+Après renommage du second lieur, le calcul est
+\[
+(\lambd[x][\lambd[z][x]])yN
+\bredone (\lambd[z][y])N
+\bredone y.
+\]
+La variable $y$ reste libre tout au long du calcul.
+
+\end{document}

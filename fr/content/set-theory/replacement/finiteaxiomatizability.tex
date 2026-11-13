@@ -1,0 +1,158 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{replacement}{finiteaxiomatizability}
+\olsection{Annexe : axiomatisabilité finie}
+
+Terminons ce chapitre en tirant quelques résultats du remplacement.
+Le premier est dû à \citet{Montague1961} ; remarquons qu'il ne s'agit
+pas d'une démonstration \emph{dans} $\ZF$, mais d'une démonstration
+\emph{à propos de} $\ZF$ :
+\begin{thm}\ollabel{zfnotfinitely}
+	Si $\ZF$ est cohérente, elle n'est pas finiment axiomatisable. Plus généralement,
+	si $\Th{T}$ est fini et si $\Th{T} \Proves \ZF$,
+	alors $\Th{T}$ est incohérent.
+
+	(Ici, nous nous limitons tacitement aux énoncés du premier ordre
+	dont le seul symbole primitif non logique est $\in$, et nous
+	écrivons $\Th{T} \Proves \ZF$ pour signifier que
+	$\Th{T} \Proves \phi$ pour tout $\phi \in \ZF$.)
+\end{thm}
+\begin{proof}
+	Fixons un $\Th{T}$ fini tel que $\Th{T} \Proves \ZF$.
+	Ainsi, $\Th{T}$ démontre la réflexion, c'est-à-dire le
+	\olref[sth][replacement][ref]{reflectionschema}.
+	Puisque $\Th{T}$ est fini, nous pouvons en faire une
+	conjonction unique, $\theta$. En appliquant la réflexion
+	à cette formule,
+	$\Th{T} \Proves \exists \beta(\theta \liff
+	\theta^{V_\beta})$. Comme, trivialement,
+	$\Th{T} \Proves \theta$, nous obtenons
+	$\Th{T} \Proves \exists \beta\ \theta^{V_\beta}$.
+
+	Soit maintenant $\psi(X)$ l'abréviation de :
+	\[
+		\theta^X \land X\text{ est transitif} \land
+		(\forall Y \in X)(Y\text{ est transitif}
+		\lif \lnot \theta^{Y})
+	\]
+	En gros, cela signifie que $X$ est un modèle transitif
+	de $\theta$, minimal pour $\in$ parmi ces modèles.
+	Puisque $\Th{T} \Proves \exists \beta\
+	\theta^{V_\beta}$, les propriétés élémentaires des
+	rangs dans $\ZF$, donc dans $\Th{T}$, donnent :
+	\begin{equation}
+		\Th{T} \Proves \exists M \psi(M).
+		\tag{*}\label{Mpsi}
+	\end{equation}
+	Par le premier conjonctif de $\psi(X)$, chaque fois que
+	$\Th{T} \Proves \sigma$, on a
+	$\Th{T} \Proves \forall X(\psi(X) \lif \sigma^X)$.
+	Par conséquent, d'après \eqref{Mpsi} :
+	\begin{align*}
+		\Th{T} &\Proves \forall X(\psi(X)
+		\lif (\exists N \psi(N))^X)\\
+		\intertext{À partir de là et, de nouveau, de \eqref{Mpsi} :}
+		\Th{T} &\Proves \exists M(\psi(M)
+		\land (\exists N \psi(N))^M)
+		\intertext{Il s'ensuit en particulier que :}
+		\Th{T} &\Proves \exists M(\psi(M)
+		\land (\exists N \in M)((N\text{ est transitif})^M
+		\land (\theta^N)^M))
+		\intertext{Puis, par un raisonnement élémentaire sur la transitivité :}
+		\Th{T} &\Proves \exists M(\psi(M)
+		\land (\exists N \in M)(N\text{ est transitif}
+		\land \theta^N))
+	\end{align*}
+	$\Th{T}$ est donc incohérent.\footnote{Ce
+	«~raisonnement élémentaire~» exige de démontrer
+	certains faits d'«~absoluité~» pour les ensembles
+	transitifs. Note de l'édition française : la relativisation extérieure de la transitivité de $N$ est à $M$, et non à $N$ comme dans l'original ; cet indice est corrigé.}
+\end{proof}
+
+Voici un résultat analogue, signalé par
+\citet[223]{Potter2004} :
+
+\begin{prop}\ollabel{finiteextensionofZ}
+	Soit $\Th{T}$ une extension de $\Z$ obtenue par
+	l'ajout d'un nombre fini de nouveaux axiomes.
+	Si $\Th{T} \Proves \ZF$, alors $\Th{T}$ est
+	incohérent. (Nous adoptons ici les mêmes restrictions
+	tacites que dans le \olref{zfnotfinitely}.)
+\end{prop}
+\begin{proof}
+	Notons $\theta$ la conjonction de tous les axiomes
+	de $\Th{T}$, à l'exception des instances (en
+	nombre infini) de la séparation. En définissant
+	$\psi$ à partir de $\theta$ comme dans le
+	\olref{zfnotfinitely}, mais en remplaçant «~transitif~» par «~transitif et potent~» dans ses deux occurrences, nous pouvons montrer que
+	$\Th{T} \Proves \exists M \psi(M)$.
+
+	Comme dans le \olref{zfnotfinitely}, nous pouvons
+	établir le schéma suivant : chaque fois que
+	$\Th{T} \Proves \sigma$, on a
+	$\Th{T} \Proves \forall X(\psi(X) \lif \sigma^X)$.
+	L'absoluité de la potence de $N \in M$, lorsque $M$ est transitif et potent, permet alors de conclure
+	comme dans le \olref{zfnotfinitely}.
+
+	Cependant, établir ce schéma demande un peu plus
+	de travail que dans le \olref{zfnotfinitely}. En effet,
+	les instances de la séparation appartiennent à
+	$\Th{T}$, mais ne sont pas des conjonctifs de
+	$\theta$. Nous pouvons surmonter cet obstacle
+	en démontrant, pour chaque instance $\sigma$
+	de la séparation, que
+	$\Th{T} \Proves \forall X(X\text{ est transitif et potent}
+	\lif \sigma^X)$. Nous laissons cette vérification
+	au lecteur.\footnote{Note de l'édition française : la transitivité seule, exigée dans l'original, ne suffit pas à hériter de la séparation. Par exemple, l'ordinal $3$ est transitif et contient $2$, mais pas le sous-ensemble $\{1\}$ de $2$. La preuve et l'exercice sont donc restreints aux ensembles transitifs et potents, et $\psi$ est ajustée en conséquence.}
+\end{proof}
+\begin{prob}
+	Montrez que, pour chaque instance $\sigma$ de la
+	séparation, on a
+	\[
+	  \Z \Proves \forall X(X\text{ est transitif et potent}
+	  \lif \sigma^X)\,.
+	\]
+	(Nous avons employé ce schéma
+	dans la
+	\olref[sth][replacement][finiteaxiomatizability]{finiteextensionofZ}.)
+\end{prob}
+\begin{prob}
+	Montrez que, pour tout $\phi \in \Z$, on a
+	$\ZF \Proves \phi^{V_{\omega+\omega}}$.
+\end{prob}
+\begin{prob}
+	Vérifiez les autres résultats schématiques invoqués
+	dans les démonstrations du
+	\olref[sth][replacement][finiteaxiomatizability]{zfnotfinitely}
+	et de la
+	\olref[sth][replacement][finiteaxiomatizability]{finiteextensionofZ}.
+\end{prob}
+
+Comme nous l'avons remarqué dans la
+\olref[sth][replacement][absinf]{sec}, cela montre
+que le remplacement est strictement plus fort que le
+\olref[ordinals][ordtype]{thmOrdinalRepresentation}.
+Ou, plus précisément : si $\Z$ augmenté de l'énoncé
+«~tout bon ordre est isomorphe à un unique ordinal~»
+est cohérent, alors cette théorie ne démontre pas
+au moins une instance du remplacement.
+
+	% Par hypothèse, $\psi^{V_\alpha}$ est de la forme :
+	% \[
+	%	(\forall A \in V_\alpha)(\exists S \in V_\alpha)
+	%	(\forall x \in V_\alpha)(x \in S \liff
+	%	(\phi^{V_\alpha}(x) \land x \in A))
+	% \]
+	% Pour le montrer, fixons $A \in V_\alpha$. Par
+	% séparation, obtenons :
+	% \[
+	%	S = \Setabs{x \in A}{\phi^{V_\alpha}(x)}
+	% \]
+	% Alors $S \in V_\alpha$, puisque
+	% $S \subseteq A \in V_\alpha$, et il est clair que
+	% $(\forall x \in V_\alpha)(x \in S \liff
+	% (\phi^{V_\alpha}(x) \land x \in A)$.
+
+\end{document}

@@ -1,0 +1,80 @@
+OrnementsADF 0 75
+'' ''
+'&#x2B98;' '' parenleft 1    % Copyright 2026 TeX Users Group
+'&#x2B9A;' '' parenright 2   %
+'&#x273F;' '' zero 3         % This work may be distributed and/or modified under the
+'&#x2748;' '' one 4          % conditions of the LaTeX Project Public License, either
+'&#x2747;' '' two 5          % version 1.3c of this license or (at your option) any
+'&#x274A;' '' three 6        % later version. The latest version of this license is in
+'&#x274B;' '' four 7         %   http://www.latex-project.org/lppl.txt
+'&#x2747;' '' five 8         % and version 1.3c or later is part of all distributions
+'&#x2748;' '' six 9          % of LaTeX version 2005/12/01 or later.
+'&#x274A;' '' seven 10       %
+'&#x273F;' '' eight 11       % This work has the LPPL maintenance status "maintained".
+'&#x273F;' '' nine 12        %
+'&#x2619;' '' less 13     % The Current Maintainer of this work
+'&#x2B26;' '' equal 14       % is the TeX4ht Project <http://tug.org/tex4ht>.
+'&#x2767;' '' greater 15  %
+'&#x2FFFE;' '1' A 16           % If you modify this program, changing the
+'&#x2FFFE;' '1' B 17           % version identification would be appreciated.
+'&#x2FFFE;' '1' C 18
+'&#x2FFFE;' '1' D 19
+'&#x2FFFE;' '1' E 20
+'&#x2FFFE;' '1' F 21
+'&#x2FFFE;' '1' G 22
+'&#x2FFFE;' '1' H 23
+'&#x2FFFE;' '1' I 24
+'&#x2FFFE;' '1' J 25
+'&#x2FFFE;' '1' K 26
+'&#x1F654;' '' L 27
+'&#x1F654;' '' M 28
+'&#x1F65B;' '' N 29
+'&#x2767;' '' O 30
+'&#x2767;' '' P 31
+'&#x1F660;' '' Q 32
+'&#x2766;' '' R 33
+'&#x2767;' '' S 34
+'&#x2766;' '' T 35
+'&#x2767;' '' U 36
+'&#x2767;' '' V 37
+'&#x2767;' '' W 38
+'&#x2766;' '' X 39
+'&#x2767;' '' Y 40
+'&#x2767;' '' Z 41
+'&#x2B9C;' '' bracketleft 42
+'&#x2B9E;' '' bracketright 43
+'&#x2FFFF;' '1' a 44
+'&#x2FFFF;' '1' b 45
+'&#x2FFFF;' '1' c 46
+'&#x2FFFF;' '1' d 47
+'&#x2FFFF;' '1' e 48
+'&#x2FFFF;' '1' f 49
+'&#x2FFFF;' '1' g 50
+'&#x2FFFF;' '1' h 51
+'&#x2FFFF;' '1' i 52
+'&#x2FFFF;' '1' j 53
+'&#x2FFFF;' '1' k 54
+'&#x1F651;' '' l 55
+'&#x1F651;' '' m 56
+'&#x1F658;;' '' n 57
+'&#x2619;' '' o 58
+'&#x2619;' '' p 59
+'&#x1F662;' '' q 60
+'&#x2766;' '' r 61
+'&#x2619;' '' s 62
+'&#x2766;' '' t 63
+'&#x2619;' '' u 64
+'&#x2619;' '' v 65
+'&#x2619;' '' w 66
+'&#x2619;' '' x 67
+'&#x2619;' '' y 68
+'&#x2619;' '' z 69
+'&#x1F66C;' '' braceleft 70
+'&#x274F;' '' bar 71
+'&#x1F66E;' '' braceright 72
+'&#x2022;' '' bullet 73
+'&#x00A7;' '' section 74
+'&#x2761;' '' paragraph 75
+OrnementsADF 0 75
+htfcss:  OrnementsADF  font-family: 'Ornements ADF', serif;
+

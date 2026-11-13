@@ -1,0 +1,77 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{story}{rus}
+\olsection{Le paradoxe de Russell (à nouveau)}
+
+Dans la \olref[sfr][][]{part}, nous avons travaillé avec une théorie
+naïve des ensembles. Mais, selon une conception \emph{très}
+naïve, les ensembles ne sont que les extensions des prédicats. Cette
+idée naïve imposerait le principe suivant :
+
+\begin{defish}
+  \emph{Compréhension naïve.} $\Setabs{x}{\phi(x)}$ existe pour toute formule $\phi$.
+\end{defish}
+
+Si séduisant que soit ce principe, on peut démontrer qu'il est
+contradictoire.
+Nous l'avons vu à la \olref[sfr][set][rus]{sec}, mais ce résultat est
+si important et si simple qu'il vaut la peine de le répéter. Mot pour
+mot.
+
+\begin{thm}[Paradoxe de Russell]
+Il n'existe pas d'ensemble $R = \Setabs{x}{x \notin x}$.
+\end{thm}
+
+\begin{proof}
+Si $R = \Setabs{x}{x \notin x}$ existe, alors $R \in R$ si et
+seulement si $R \notin R$, ce qui est contradictoire.
+\end{proof}
+
+Russell découvrit ce résultat en juin 1901. (Il ne formula cependant
+pas le paradoxe tout à fait sous la forme que nous venons de présenter,
+puisqu'il examinait la théorie des ensembles de Frege, telle qu'elle
+est exposée dans les \emph{Grundgesetze}. Nous y reviendrons à la
+\olref[blv]{sec}.) Russell écrivit à Frege le 16 juin 1902 pour lui
+expliquer la contradiction dans son système. Pour leur correspondance
+et quelques éléments de contexte, voir \citet[pp.~124--8]{Heijenoort1967}.
+
+Soulignons que cette démonstration de deux lignes relève de la
+\emph{logique pure}. Certes, notre notation $\Setabs{x}{x \notin x}$
+fait implicitement appel à un axiome (non logique ?)\ :
+l'extensionnalité. En effet, $\Setabs{x}{\phi(x)}$ désigne
+\emph{l'unique} ensemble (par extensionnalité) des objets qui
+satisfont~$\phi$, s'il en existe un. Mais nous pouvons éviter jusqu'à
+cette trace d'extensionnalité en énonçant simplement le résultat ainsi :
+\emph{il n'existe aucun ensemble dont les membres soient exactement
+les ensembles qui ne s'appartiennent pas à eux-mêmes}. Cela n'a
+d'ailleurs pas grand-chose à voir avec les ensembles. Comme Russell
+l'observait lui-même, le même raisonnement conduit à conclure :
+\emph{aucun homme ne rase exactement les hommes qui ne se rasent pas
+eux-mêmes}. Ou encore : \emph{aucun carlin ne renifle exactement les
+carlins qui ne se reniflent pas eux-mêmes}. Et ainsi de suite. Sous
+une forme schématique, le résultat est simplement :
+\[
+\lnot \exists x \forall z(Rzx \liff \lnot R zz).
+\]
+Il s'agit là d'un théorème (schéma) de la logique du premier ordre.
+Par conséquent, modifier seulement notre théorie des ensembles ne
+suffirait pas à éviter le paradoxe de Russell : il surgit avant même
+que nous \emph{n'abordions} la théorie des ensembles. Si nous
+utilisons la logique du premier ordre (classique), nous devons
+simplement \emph{accepter} qu'il n'existe pas d'ensemble
+$R = \Setabs{x}{x\notin x}$.
+
+Il en résulte ceci. Si l'on veut admettre la compréhension naïve tout
+en \emph{évitant} la contradiction, on ne peut pas se contenter de
+modifier la \emph{théorie des ensembles}. Il faudrait plutôt remanier
+la \emph{logique} elle-même.
+
+Bien sûr, des théories des ensembles fondées sur des logiques non
+classiques ont été proposées. Mais elles sont, pour le moins, non
+standard. L'approche habituelle du paradoxe de Russell consiste à le
+traiter comme une simple démonstration de non-existence, puis à
+chercher comment en tenir compte. C'est l'approche que nous suivrons.
+
+\end{document}

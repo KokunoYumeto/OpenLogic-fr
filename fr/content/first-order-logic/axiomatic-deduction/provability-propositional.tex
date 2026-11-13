@@ -54,7 +54,8 @@ nécessaires à la preuve du théorème de complétude.
   déduction donne donc
   $\{\lnot !A\} \Proves !A \lif \lfalse$ et
   $\{\lnot !B\} \Proves !B \lif \lfalse$. À partir de
-  l'\olref[prp]{ax:lor3}, nous obtenons
+  l'\olref[prp]{ax:lor3} et des deux implications précédentes, par
+  monotonie puis par deux applications du modus ponens, nous obtenons
   $\{\lnot !A, \lnot !B\} \Proves (!A \lor !B) \lif \lfalse$.
   Le théorème de la déduction donne alors
   $\{!A \lor !B, \lnot !A, \lnot !B\} \Proves \lfalse$.
@@ -87,14 +88,5 @@ nécessaires à la preuve du théorème de complétude.
   de la déduction.
 \end{enumerate}
 \end{proof}
-
-\begin{editorial}
-Dans la preuve de la première proposition, la source renvoie deux fois à
-l'\olref[prp]{ax:land1}; le second renvoi doit viser
-l'\olref[prp]{ax:land2}. Dans celle de la disjonction, elle cite
-l'\olref[prp]{ax:lnot1}, alors que les deux formules affichées sont des
-instances de l'\olref[prp]{ax:lnot2}. Nous avons rectifié ces renvois sans
-modifier les formules ni les conclusions.
-\end{editorial}
 
 \end{document}

@@ -1,0 +1,106 @@
+% Part: normal-modal-logic
+% Chapter: syntax-and-semantics
+% Section: substitution
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{sub}
+
+\olsection{Substitution simultanée}
+
+Une \emph{instance} d'!!a{formula}~$!A$ s'obtient en remplaçant
+toutes les occurrences d'!!a{propositional variable} dans~$!A$
+par une autre !!{formula}. Nous parlerons souvent d'instances de
+!!{formula}s, aussi bien à propos de la validité que de
+l'!!{derivability}. Il est donc utile de définir précisément cette
+notion.
+
+\begin{defn}\ollabel{def:subst-inst}
+  Soit $!A$ une !!{formula} modale. Soient $p_1$, \dots, $p_n$ des
+  !!{propositional variable}s deux à deux distinctes et $!D_1$, \dots,
+  $!D_n$ des !!{formula}s modales. Nous définissons
+  $\SSubst{!A}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ comme le
+  résultat de la substitution simultanée de chaque $!D_i$ à~$p_i$
+  dans~$!A$. Formellement, la définition se fait par induction
+  sur~$!A$ :
+  \begin{enumerate}
+    \tagitem{prvFalse}{\indcase{!A}{\lfalse}{%
+        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}$ vaut $\lfalse$.}}{}
+    \tagitem{prvTrue}{\indcase{!A}{\ltrue}{%
+        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}$ vaut $\ltrue$.}}{}
+    \item \indcase{!A}{q}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
+        \subst{!D_n}{p_n}}$ vaut $q$, à condition que $q \not\ident p_i$ pour $i
+      = 1$, \dots,~$n$.}
+    \item \indcase{!A}{p_i}{$\SSubst{\indfrm}{\subst{!D_1}{p_1},
+        \dots, \subst{!D_n}{p_n}}$ vaut $!D_i$.}
+    \tagitem{prvNot}{\indcase{!A}{\lnot !B}{%
+        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ vaut
+        $\lnot \SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$.}}{}
+    \tagitem{prvAnd}{\indcase{!A}{(!B \land
+        !C)}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}$ vaut
+        \[(\SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \land
+          \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}).\]}}{}
+    \tagitem{prvOr}{\indcase{!A}{(!B \lor
+          !C)}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}$ vaut
+        \[(\SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \lor
+          \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}).\]}}{}
+    \tagitem{prvIf}{\indcase{!A}{(!B \lif
+          !C)}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}$ vaut
+        \[(\SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \lif
+          \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}).\]}}{}
+    \tagitem{prvIff}{\indcase{!A}{(!B \liff
+          !C)}{$\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}$ vaut
+        \[(\SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \liff
+          \SSubst{!C}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}).\]}}{}
+    \tagitem{prvBox}{\indcase{!A}{\Box !B}{%
+        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ vaut
+        $\Box
+        \SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}.$}}{}
+    \tagitem{prvDiamond}{\indcase{!A}{\Diamond !B}{%
+        $\SSubst{\indfrm}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}$ vaut
+        $\Diamond
+        \SSubst{!B}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}}.$}}{}
+  \end{enumerate}
+  La !!{formula} $\SSubst{!A}{\subst{!D_1}{p_1}, \dots,
+    \subst{!D_n}{p_n}}$ est appelée \emph{instance de substitution}
+  de~$!A$.
+\end{defn}
+
+\begin{ex}
+  Supposons que $!A$ soit $p_1 \lif \Box(p_1 \land p_2)$,
+  que $!D_1$ soit $\Diamond(p_2 \lif p_3)$ et que $!D_2$
+  soit $\lnot\Box p_1$. Alors
+  $\SSubst{!A}{\subst{!D_1}{p_1}, \subst{!D_2}{p_2}}$ vaut
+  \begin{align*}
+    \Diamond(p_2 \lif p_3) &
+    \lif \Box(\Diamond(p_2 \lif p_3) \land \lnot\Box p_1)
+    \intertext{tandis que $\SSubst{!A}{\subst{!D_2}{p_1}, \subst{!D_1}{p_2}}$ vaut}
+    \lnot\Box p_1 &
+    \lif \Box(\lnot\Box p_1 \land \Diamond(p_2 \lif p_3))
+    \intertext{La substitution simultanée diffère en général de la
+      substitution successive.\newline Dans
+      $\Subst{(\Subst{!A}{!D_1}{p_1})}{!D_2}{p_2}$, la seconde
+      substitution modifie aussi les occurrences de $p_2$
+      introduites par~$!D_1$; le résultat est :}
+    \Diamond(\lnot\Box p_1 \lif p_3) &
+    \lif \Box(\Diamond(\lnot\Box p_1
+    \lif p_3) \land \lnot\Box p_1)\\
+    \intertext{Avec
+      $\Subst{(\Subst{!A}{!D_2}{p_2})}{!D_1}{p_1}$, la seconde
+      substitution modifie aussi les occurrences de $p_1$
+      introduites par~$!D_2$; nous obtenons :}
+    \Diamond(p_2 \lif p_3) &
+    \lif \Box(\Diamond(p_2
+    \lif p_3) \land \lnot\Box\Diamond(p_2 \lif p_3)).
+  \end{align*}
+\end{ex}
+
+\end{document}

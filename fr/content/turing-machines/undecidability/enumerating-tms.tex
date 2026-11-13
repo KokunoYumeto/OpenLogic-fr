@@ -1,0 +1,162 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: enumerating-tms
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{enu}
+\olsection{Énumération des machines de Turing}
+
+\begin{explain}
+Nous pouvons montrer que l'ensemble des machines de Turing, à renommage près, est
+!!{enumerable}. Chaque machine possède en effet une description
+finie. Son ensemble d'états et son alphabet de ruban sont finis.
+La fonction de transition est une fonction partielle de
+$Q \times \Sigma$ dans
+$Q \times \Sigma \times \{\TMleft, \TMright, \TMstay\}$;
+on peut donc aussi la décrire en donnant ses valeurs pour les
+couples d'arguments, en nombre fini, où elle est définie.
+
+Une subtilité demeure. Notre définition ne restreint pas les
+!!{element}s qui peuvent constituer les états ou l'alphabet du
+ruban : techniquement, pour chaque nombre réel, il existe par
+exemple une machine qui l'emploie comme état. Pris à la lettre,
+l'ensemble des machines munies de telles étiquettes arbitraires
+ne serait donc pas dénombrable.\footnote{Précision éditoriale : la première affirmation source doit être comprise à renommage des états et symboles près. Les étiquettes réelles fournissent déjà une famille non dénombrable de tuples littéralement distincts.} Mais le \emph{comportement} d'une
+machine ne dépend pas des objets choisis pour nommer ses états
+et ses symboles. Considérons les deux machines représentées en
+\olref{fig:variants}.
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state]         (A)              {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+
+  \path (A) edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (B)
+        (B) edge [loop above] node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (B)
+            edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (A);
+\end{tikzpicture}\\
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+  semithick]
+\tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+\node[initial,state]         (A)              {$s$};
+\node[state]         (B) [right of=A] {$h$};
+
+\path (A) edge [bend left] node {\TMtrans{A}{A}{\TMright}} (B)
+(B) edge [loop above] node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (B)
+edge [bend left] node {\TMtrans{A}{A}{\TMright}} (A);
+\end{tikzpicture}
+\end{center}
+\caption{Deux variantes de la \emph{machine paire}}
+\ollabel{fig:variants}
+\end{figure}
+Ces diagrammes définissent deux machines : $M$, dont l'alphabet
+est $\Sigma = \{\TMendtape,\TMblank,\TMstroke\}$ et l'ensemble
+d'états $\{q_0,q_1\}$, et $M'$, dont l'alphabet est
+$\Sigma' = \{\TMendtape,\TMblank,A\}$ et les états sont
+$\{s,h\}$. Leurs instructions sont par ailleurs identiques :
+$M$ s'arrête sur une suite de $n$ symboles $\TMstroke$ si et
+seulement si $n$ est pair, et $M'$ s'arrête sur une suite
+de $n$ symboles~$A$ si et seulement si $n$ est pair.
+Nous avons seulement renommé
+$\TMstroke$ en~$A$, $q_0$ en~$s$ et $q_1$ en~$h$. Cet exemple
+se généralise : nous pouvons identifier deux machines qui ne
+diffèrent que par un tel renommage de leurs symboles et états.
+Nous pouvons alors choisir des entiers positifs pour nommer
+tous ces symboles et états : $1$ à la place de $\sigma_0$,
+$2$ à la place de $\sigma_1$, et ainsi de suite; $\TMendtape$
+devient~$1$, $\TMblank$ devient~$2$, etc. La \emph{machine paire}
+prend alors la forme représentée en \olref{fig:standard-even}.
+\begin{figure}
+\[\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+  semithick]
+\tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+\node[initial,state]         (A)              {$1$};
+\node[state]         (B) [right of=A] {$2$};
+
+\path (A) edge [bend left] node {\TMtrans{3}{3}{\TMright}} (B)
+(B) edge [loop above] node {\TMtrans{2}{2}{\TMright}} (B)
+edge [bend left] node {\TMtrans{3}{3}{\TMright}} (A);
+\end{tikzpicture}
+\]
+\caption{Une \emph{machine paire} standard}
+\ollabel{fig:standard-even}
+\end{figure}
+Nous appellerons \emph{standard} une machine dont les états et les
+symboles sont des entiers positifs, et pourrons désormais nous
+limiter à ces machines.\footnote{Cette appellation de « machine
+standard » n'est pas consacrée par l'usage.}
+
+Nous voulions établir que l'ensemble des machines de Turing est
+!!{enumerable}; compte tenu de cette identification par renommage,
+il suffit d'établir que l'ensemble des machines standard est
+!!{enumerable}. Soit donc une telle
+machine $M = \tuple{Q, \Sigma, q_0, \delta}$. Comment la décrire
+par une suite finie d'entiers positifs ? Indiquons d'abord le
+nombre d'états, puis les états eux-mêmes, le nombre de symboles,
+les symboles eux-mêmes et l'état initial. Tous sont des entiers
+positifs, puisque $M$ est standard. Pour décrire~$\delta$,
+remarquons que son ensemble d'arguments possibles, les couples
+$\tuple{q,\sigma}$, est fini parce que $Q$ et~$\Sigma$ le sont.
+Les informations sur~$\delta$ se ramènent donc à la liste finie
+des quintuplets
+$\tuple{q, \sigma, q', \sigma', d}$ pour lesquels
+$\delta(q,\sigma) = \tuple{q', \sigma', D}$, où $d$ code
+la direction~$D$ : par exemple, $1$ pour~$\TMleft$,
+$2$ pour~$\TMright$ et $3$ pour~$\TMstay$.
+
+Chaque machine standard est ainsi décrite par une liste finie
+d'entiers positifs, c'est-à-dire une suite $s_M \in
+(\PosInt)^*$. Par exemple, la \emph{machine paire} standard est
+codée par la suite
+\[
+2, \underbrace{1, 2}_Q, 3, \overbrace{1, 2, 3}^\Sigma, 1, \underbrace{1, 3, 2, 3, 2}_{\delta(1,3) = \tuple{2,3,R}},
+\overbrace{2, 2, 2, 2, 2}^{\delta(2,2) = \tuple{2,2,R}},
+\underbrace{2, 3, 1, 3, 2}_{\delta(2,3) = \tuple{1,3,R}}.
+\]
+\end{explain}
+
+\begin{thm}
+Il existe des fonctions de $\Nat$ vers~$\Nat$ qui ne sont
+pas calculables par machine de Turing.
+\end{thm}
+
+\begin{proof}
+L'ensemble $(\PosInt)^*$ des suites finies d'entiers positifs
+est !!{enumerable} (\cref{sfr:siz:zigzag:prob:posint-star}).
+L'ensemble des descriptions de machines standard, qui est une
+partie de~$(\PosInt)^*$, est donc lui aussi dénombrable. Toute fonction
+calculable par machine de Turing de $\Nat$ vers~$\Nat$ est
+calculée par au moins une machine de Turing, et même par
+plusieurs. En renommant ses états et ses symboles par des
+entiers positifs --- notamment $\TMendtape$ par~$1$,
+$\TMblank$ par~$2$ et $\TMstroke$ par~$3$ ---, nous obtenons
+une machine standard qui calcule la même fonction sous ce
+codage. L'ensemble des fonctions de $\Nat$ vers~$\Nat$
+calculables par machine de Turing est donc dénombrable.
+
+En revanche, l'ensemble de \emph{toutes} les fonctions de
+$\Nat$ vers~$\Nat$ n'est pas !!{enumerable}
+(\cref{sfr:siz:red:prob:nat-nat}). Si chacune de ces fonctions
+était calculée par une machine de Turing, les descriptions
+des machines qui les calculent permettraient de les énumérer
+toutes. Certaines fonctions ne sont donc pas calculables par
+machine de Turing.
+\end{proof}
+
+\begin{prob}
+  Pouvez-vous décrire les machines de Turing sans devoir
+  énumérer explicitement leurs états et les symboles de leur
+  alphabet ? Vous pouvez proposer votre propre notion de machine
+  « standard », mais expliquez pourquoi toute machine de Turing
+  peut être simulée par une machine « standard » au sens choisi.
+\end{prob}
+
+\end{document}

@@ -1,0 +1,180 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: primitive-recursion
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{pr}
+\olsection{Les fonctions \texorpdfstring{$\lambd$}{λ}-définissables et la récurrence primitive}
+
+Pour la récurrence primitive, un travail supplémentaire
+s'impose. Nous procéderons par étapes. Supposons donnés
+des termes $G'$ et~$H'$ qui définissent respectivement
+les fonctions $g$ et~$h$. Nous cherchons un terme~$F$
+qui définisse la fonction~$f$ donnée par
+\begin{align*}
+f(0, \vec z) & = g(\vec z) \\
+f(x+1, \vec z) & = h(x, f(x,\vec z), \vec z).
+\end{align*}
+Il suffit donc de construire~$F$ tel que, pour tout
+entier naturel~$n$,
+\begin{align*}
+F(\num{0}, \vec z) & \equiv G'(\vec z) \\
+F(\num{n+1}, \vec z) & \equiv
+  H'(\num{n}, F(\num{n}, \vec z), \vec z).
+\end{align*}
+Ici et dans la suite, $\equiv$ désigne
+l'équivalence~$\beta$. Lorsque nous remplaçons
+$\vec z$ par des numéraux $\num{\vec m}$, le fait
+que $G'$ et~$H'$ définissent $g$ et~$h$ donne alors
+la valeur attendue, pourvu que les calculs
+intermédiaires soient définis.
+
+Nous pouvons absorber les paramètres supplémentaires
+$\vec z$ dans des abstractions. Posons
+\begin{align*}
+G & = \lambd[\vec z][G'(\vec z)], \\
+H(u,v) & = \lambd[\vec z][H'(u,v(\vec z),\vec z)].
+\end{align*}
+Il suffit alors de trouver~$F$ satisfaisant
+\begin{align*}
+F(\num{0}) & \equiv G, \\
+F(\num{n+1}) & \equiv H(\num{n},F(\num{n}))
+\end{align*}
+pour tout~$n$. Cette curryfication nous dispense
+de manipuler explicitement les paramètres~$\vec z$
+à chaque étape.
+
+Avant de définir~$F$, construisons un terme qui
+représente les couples ordonnés.
+
+\begin{lem}
+Il existe un lambda-terme~$D$ tel que, pour tous
+termes $M$ et~$N$,
+$D(M,N)(\num{0})\red M$ et
+$D(M,N)(\num{1})\red N$.
+\end{lem}
+
+\begin{proof}
+Définissons d'abord le terme~$K$ par
+\[
+K(y)=\lambd[x][y].
+\]
+Autrement dit, $K=\lambd[y][\lambd[x][y]]$.
+Pour tout~$M$, $K(M)$ est donc la fonction
+constante qui renvoie~$M$ quel que soit son
+argument.
+
+Définissons maintenant $D(x,y,z)$ par
+$D(x,y,z)=z(K(y))x$. Alors
+\begin{align*}
+D(M,N,\num{0}) & \red \num{0}(K(N))M \red M,
+  \quad\text{et}\\
+D(M,N,\num{1}) & \red \num{1}(K(N))M
+  \red K(N)M \red N,
+\end{align*}
+comme voulu.
+\end{proof}
+
+Le terme $D(M,N)$ représente donc le couple
+$\tuple{M,N}$. Si $P$ représente un tel couple,
+$P(\num{0})$ et $P(\num{1})$ en donnent les
+projections gauche et droite. Nous noterons
+celles-ci $(P)_0$ et $(P)_1$.
+
+\begin{lem}
+Les fonctions totales $\lambd$-définissables sont
+fermées par récurrence primitive.
+\end{lem}
+
+\begin{proof}
+Étant donnés des termes $G$ et~$H$, nous cherchons
+un terme~$F$ tel que
+\begin{align*}
+F(\num{0}) & \equiv G, \\
+F(\num{n+1}) & \equiv H(\num{n},F(\num{n}))
+\end{align*}
+pour chaque entier naturel~$n$. L'idée est de
+calculer, en utilisant les numéraux comme
+itérateurs, la suite de \emph{couples}
+\[
+\tuple{\num{0},F(\num{0})},
+\tuple{\num{1},F(\num{1})},\dots.
+\]
+Le premier couple est $\tuple{\num{0},G}$.
+À partir de $\tuple{\num{n},F(\num{n})}$,
+le couple suivant doit être équivalent à
+$\tuple{\num{n+1},H(\num{n},F(\num{n}))}$.
+Nous allons définir un terme~$T$ qui effectue
+cette transition.
+
+Posons
+\[
+T(u)=\tuple{\fn{Succ}((u)_0),H((u)_0,(u)_1)}.
+\]
+Pour tout~$n$ et tout terme~$M$, on vérifie que
+\[
+T(\tuple{\num{n},M})
+\red\tuple{\num{n+1},H(\num{n},M)}.
+\]
+Étant donnés $G$ et~$H$, définissons~$F(u)$ par
+\[
+F(u)=(u(T,\tuple{\num{0},G}))_1.
+\]
+Sur l'entrée~$\num{n}$, $F$ applique donc~$T$
+$n$~fois au couple $\tuple{\num{0},G}$, puis
+renvoie la seconde composante. Au départ,
+\begin{enumerate}
+\item $\num{0}(T,\tuple{\num{0},G})
+  \equiv\tuple{\num{0},G}$;
+\item $F(\num{0})\equiv G$.
+\end{enumerate}
+Par récurrence sur~$n$, montrons les deux
+relations suivantes :
+\begin{enumerate}
+\item $\num{n+1}(T,\tuple{\num{0},G})
+  \equiv\tuple{\num{n+1},F(\num{n+1})}$;
+\item $F(\num{n+1})
+  \equiv H(\num{n},F(\num{n}))$.
+\end{enumerate}
+Pour la seconde, nous avons
+\begin{align*}
+F(\num{n+1})
+&\red(\num{n+1}(T,\tuple{\num{0},G}))_1 \\
+&\equiv(T(\num{n}(T,\tuple{\num{0},G})))_1 \\
+&\equiv(T(\tuple{\num{n},F(\num{n})}))_1 \\
+&\equiv(\tuple{\num{n+1},H(\num{n},F(\num{n}))})_1 \\
+&\equiv H(\num{n},F(\num{n})).
+\end{align*}
+Le remplacement de l'itération par le couple utilise
+l'hypothèse de récurrence. Pour la première
+relation, nous avons
+\begin{align*}
+\num{n+1}(T,\tuple{\num{0},G})
+&\equiv T(\num{n}(T,\tuple{\num{0},G})) \\
+&\equiv T(\tuple{\num{n},F(\num{n})}) \\
+&\equiv\tuple{\num{n+1},H(\num{n},F(\num{n}))} \\
+&\equiv\tuple{\num{n+1},F(\num{n+1})}.
+\end{align*}
+La dernière ligne utilise la seconde relation.
+Nous avons ainsi établi $F(\num{0})\equiv G$
+et, pour tout~$n$,
+$F(\num{n+1})\equiv H(\num{n},F(\num{n}))$,
+comme souhaité.
+\end{proof}
+
+La construction ci-dessus donne la valeur attendue dès que tous
+les calculs intermédiaires sont définis. Avec des fonctions
+partielles, la récurrence stricte peut être indéfinie même si le
+terme obtenu possède une forme normale. Si $g$ est partout
+indéfinie et $h$ constante zéro, $f(1,\vec z)$ est indéfinie.
+Pourtant, le terme~$H$ de la construction peut effacer le résultat
+de $F(\num{0},\vec z)$ et renvoyer~$\num{0}$.
+Pour la fermeture de la classe des fonctions partielles
+$\lambd$-définissables, on utilise leur caractérisation par les
+fonctions récursives partielles et la clôture de cette dernière
+classe par récurrence primitive.
+
+\end{document}

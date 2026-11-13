@@ -1,0 +1,79 @@
+% Partie : counterfactuals
+% Chapitre : minimal-change-semantics
+% Section : antecedent-strengthening
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{min}{agg}
+
+\olsection{Renforcement de l'antécédent}
+
+Le « renforcement de l'antécédent » désigne l'inférence
+$!A \lif !C \Entails (!A \land !B) \lif !C$. Elle est valide pour le
+conditionnel matériel, mais pas pour les conditionnels
+contrefactuels. Supposons qu'il soit vrai que, si je frottais cette
+allumette, elle s'enflammerait : ni l'allumette ni la surface du
+carnet d'allumettes ne présentent de défaut, je ne casserais pas
+l'allumette, etc. Il n'est pourtant pas vrai que, si je frottais
+cette allumette dans le vide spatial, elle s'enflammerait. L'inférence
+suivante n'est donc pas valide :
+\begin{quote}
+  Si l'on frottait cette allumette, elle s'enflammerait.
+
+  Donc, si l'on frottait cette allumette dans le vide spatial, elle
+  s'enflammerait.
+\end{quote}
+
+L'analyse de Lewis et Stalnaker explique cette différence : le monde
+le plus proche où je frotte l'allumette dans le vide spatial est
+beaucoup plus éloigné du monde actuel que le monde le plus proche où
+je me contente de frotter l'allumette. Aussi, bien qu'elle
+s'enflamme dans ce dernier monde, elle ne s'enflamme pas dans le
+premier. C'est bien le résultat attendu.
+
+\begin{ex}
+  La sémantique des sphères invalide cette inférence : on a $p
+  \cif r \Entails/ (p \land q) \cif r$. Considérons le modèle
+  $\mModel{M} = \tuple{W, O, V}$ où $W = \{w, w_1, w_2\}$,
+  $O_w = \{\{w\}, \{w, w_1\}, \{w, w_1, w_2\}\}$,
+  $V(p) = \{w_1, w_2\}$, $V(q) = \{w_2\}$ et $V(r) = \{w_1\}$.
+  % Précision facultative conservée hors du texte traduit.
+%
+   Il existe une sphère
+  admettant~$p$, à savoir $S = \{w, w_1\}$, et $p \lif r$ est vrai
+  dans tous ses mondes ; donc $\mSat{M}{p \cif r}[w]$. Il existe
+  aussi une sphère admettant~$(p \land q)$, soit
+  $S' = \{w, w_1, w_2\}$, mais
+  $\mSat/{M}{(p \land q) \lif r}[w_2]$ ; ainsi,
+  $\mSat/{M}{(p \land q) \cif r}[w]$ (voir
+  la \olref{fig:antecedent-strengthening}).
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[layerwidth=1.5,scale=.6]\tiny
+  \spheresystem{3}
+  \propositionintersect{-10}{3}{30}{5}
+  \begin{scope}
+    \clip plot[smooth,tension=1] coordinates
+          {(0,4.5) (30:.95) (4.5,-3.5)} -- (4.5,4.5) ;
+    \spherefill{2}
+  \end{scope}
+  \draw[proposition] plot[dashed,smooth,tension=1] coordinates
+          {(0,4.5) (30:.95) (4.5,-3.5)} ;
+  \proposition{30}{2}{30}{5}
+  \path (0,0) node[world] {$w$};
+  \spherepos{30}{2}{node[world] {$w_1$}}
+  \spherepos{-10}{3}{node[world] {$w_2$}}
+  \spherepos{-10}{4}{node {$q$}}
+  \spherepos{30}{4}{node {$r$}}
+  \draw (1,4.5) node[below] {$p$};
+\end{tikzpicture}
+\caption{Contre-exemple au renforcement de l'antécédent}
+\ollabel{fig:antecedent-strengthening}
+\end{center}
+\end{figure}
+\end{ex}
+
+\end{document}

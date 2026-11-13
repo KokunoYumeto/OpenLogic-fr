@@ -1,0 +1,95 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{int}
+
+\olsection{Introduction}
+
+Nous disposons d'une sémantique du langage modal de base fondée sur
+les modèles modaux. Une !!{formula} est \emph{valide} si elle est vraie
+en tout monde de tout modèle; elle est valide relativement à une
+classe de modèles ou de cadres si elle est vraie en tout monde de tout
+modèle de la classe ou fondé sur un cadre de celle-ci. En logique, on
+relie généralement ces caractérisations sémantiques de la validité à
+une notion, issue de la théorie de la démonstration, de
+!!{derivability}. Notre but est de définir, dans un système, une
+notion de !!{derivability} telle qu'une !!{formula} soit
+!!{derivable} si et seulement si elle est valide.
+
+Les systèmes de !!{derivation} les plus simples et les plus anciens
+sont les systèmes axiomatiques, dits \emph{de type Hilbert}. Pour de
+nombreuses logiques modales, ils sont relativement faciles à
+construire et simples à étudier sur le plan métathéorique, par
+exemple pour démontrer leur correction et leur complétude. En
+revanche, ils sont bien moins commodes que les systèmes de déduction
+naturelle pour démontrer des !!{formula}s.
+
+Dans un système de !!{derivation} de type Hilbert, une
+!!{derivation} d'une !!{formula} est une suite de !!{formula}s qui
+conduit de certains axiomes à cette formule au moyen de quelques
+règles d'inférence. Pour que le système corresponde à la sémantique,
+les formules !!{derivable}s doivent être vraies dans tous les modèles,
+ou dans tous les modèles où les axiomes sont vrais. Nous isolerons
+d'abord les propriétés requises des logiques modales dites
+\emph{normales}. Pour ces logiques, deux règles d'inférence suffisent :
+le modus ponens et la nécessitation. Les axiomes comprennent toutes
+les instances par substitution des tautologies et, selon la logique
+modale considérée, certains axiomes modaux. Même si nous ne retenons
+que la classe de tous les modèles, il faut aussi compter comme axiomes
+toutes les instances par substitution de~$\Ax{K}$\iftag{prvDiamond}{ et de~$\Dual$}{}.
+On obtient ainsi la plus petite logique modale normale,~$\Log K$.
+
+\begin{defn}
+La règle du \emph{modus ponens} est le schéma d'inférence
+\begin{prooftree}
+\AxiomC{$!A$}
+\AxiomC{$!A \lif !B$}
+\RightLabel{\MP}
+\BinaryInfC{$!B$}
+\end{prooftree}
+Nous disons que la !!{formula}~$!B$ \emph{découle de}~$!A$ et $!C$
+par modus ponens si et seulement si $!C \ident !A \lif !B$.
+\end{defn}
+
+\begin{defn}
+La règle de \emph{nécessitation} est le schéma d'inférence
+\begin{prooftree}
+\AxiomC{$!A$}
+\RightLabel{\Nec}
+\UnaryInfC{$\Box !A$}
+\end{prooftree}
+Nous disons que la !!{formula}~$!B$ découle de la !!{formula}~$!A$
+par nécessitation si et seulement si $!B \ident \Box !A$.
+\end{defn}
+
+\begin{defn}
+Une \emph{!!{derivation}} à partir d'un ensemble d'axiomes~$\Sigma$
+est une suite de !!{formula}s $!B_1$, $!B_2$, \dots, $!B_n$ où chaque
+$!B_i$ est :
+\begin{enumerate}
+\item une instance par substitution d'une tautologie;
+\item une instance par substitution d'une !!{formula} de~$\Sigma$;
+\item une formule qui découle de deux !!{formula}s $!B_j$, $!B_k$
+  avec $j$, $k < i$ par modus ponens;
+\item une formule qui découle d'une !!{formula}~$!B_j$ avec $j < i$
+  par nécessitation.
+\end{enumerate}
+S'il existe une telle !!{derivation} avec $!B_n \ident !A$, nous
+disons que $!A$ est \emph{!!{derivable} de $\Sigma$}, ce que nous
+notons $\Sigma \Proves !A$.
+\end{defn}
+
+Lorsque $\Sigma$ contient~$\Ax{K}$\iftag{prvDiamond}{ et~$\Dual$}{},
+les formules !!{derivable}s de~$\Sigma$ forment une logique modale
+normale. Plus généralement, soit un modèle dans lequel toutes les
+instances de substitution des axiomes de~$\Sigma$ sont vraies en
+chaque monde. Toute !!{formula} !!{derivable} de~$\Sigma$ est alors
+vraie dans ce modèle. C'est la \emph{correction} de la dérivation.
+La \emph{complétude} consiste à établir la réciproque pour le
+système considéré.
+\end{document}

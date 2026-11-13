@@ -60,9 +60,39 @@ $\Delta \Proves !A$.
 \end{prop}
 
 \begin{proof}
-Toute !!{derivation} de~$!A$ à partir de~$\Gamma$ est aussi une
-!!{derivation} de~$!A$ à partir de~$\Delta$.
+Une !!{derivation} à partir de~$\Gamma$ reste une !!{derivation} à
+partir de~$\Delta$, puisque toutes les hypothèses qu'elle utilise
+appartiennent à~$\Delta$ et que les justifications des lignes sont
+inchangées.
 \end{proof}
+
+\iftag{FOL}{
+\begin{lem}[Renommage des constantes propres]
+\ollabel{lem:renaming-parameters}
+Soit $S$ un ensemble fini de constantes. Toute !!{derivation} peut
+être remplacée par une !!{derivation} de même conclusion, dont les
+hypothèses sont des hypothèses de la !!{derivation} initiale et dont
+les constantes propres sont absentes de~$S$.
+\end{lem}
+
+\begin{proof}
+Ajoutons d'abord à~$S$ les constantes des hypothèses initiales.
+Procédons par récurrence sur la longueur. Si la dernière ligne est
+une hypothèse ou un axiome, cette seule ligne suffit. Si elle résulte
+d'un modus ponens, appliquons l'hypothèse de récurrence aux deux
+préfixes qui se terminent par les prémisses. Réunissons les deux
+!!{derivation}s obtenues et appliquons le modus ponens. Comme leurs
+constantes propres évitent~$S$, les hypothèses réunies respectent
+encore la condition de fraîcheur.
+
+Si la dernière ligne résulte de~\QR, soit $a$ sa constante propre.
+Si $a$ appartient à~$S$, échangeons uniformément $a$ avec une constante
+$b$ absente de la !!{derivation} et de~$S$. La règle garantit que
+l'échange fixe les hypothèses et la conclusion de l'inférence.
+Appliquons l'hypothèse de récurrence au préfixe qui établit la
+prémisse, puis appliquons~\QR{} avec la constante ainsi choisie.
+\end{proof}
+}{}
 
 \begin{prop}[Transitivité]
 \ollabel{prop:transitivity}
@@ -71,21 +101,24 @@ $\Gamma \cup \Delta \Proves !B$.
 \end{prop}
 
 \begin{proof}
-Supposons $\{!A\} \cup \Delta \Proves !B$. Il existe alors une
-!!{derivation} $!B_1$, \dots, $!B_l = !B$ à partir de
-$\{!A\} \cup \Delta$. Certaines étapes de cette !!{derivation} sont
-correctes parce qu'une règle renvoie à une ligne antérieure
-$!B_i = !A$. Par hypothèse, il existe une !!{derivation} de~$!A$ à
-partir de~$\Gamma$, c'est-à-dire une !!{derivation} $!A_1$, \dots,
-$!A_k = !A$ dans laquelle chaque $!A_i$ est un axiome, !!a{element}
-de~$\Gamma$, ou une étape correcte d'après une règle d'inférence.
-Considérons maintenant la suite
+Soit $!B_1$, \dots, $!B_l = !B$ une !!{derivation} à partir de
+$\{!A\} \cup \Delta$. Soit $!A_1$, \dots, $!A_k = !A$ une
+!!{derivation} à partir de~$\Gamma$.
+\iftag{FOL}{Par le \olref{lem:renaming-parameters}, choisissons les
+constantes propres des deux !!{derivation}s en dehors de l'ensemble
+fini des constantes de leurs hypothèses réunies.}{}
+Considérons la suite
 \[
 !A_1, \dots, !A_k = !A, !B_1, \dots, !B_l = !B.
 \]
-C'est une !!{derivation} correcte de~$!B$ à partir de
-$\Gamma \cup \Delta$ : toute ligne $!B_i = !A$ peut désormais recevoir
-la même justification que la ligne~$!A_k = !A$.
+Renouvelons à chaque ligne $!B_i$ qui prenait $!A$ pour hypothèse la
+justification donnée à la ligne~$!A_k$, en citant, si nécessaire,
+les prémisses de cette justification dans le premier bloc. Les
+autres lignes gardent leur justification après renumérotation.
+\iftag{FOL}{Les hypothèses de la suite réunie sont parmi celles des
+deux blocs. Le choix des constantes propres préserve donc toutes
+les applications de~\QR.}{} Nous avons ainsi une !!{derivation}
+de~$!B$ à partir de~$\Gamma \cup \Delta$.
 \end{proof}
 
 En particulier, si $\Gamma \Proves !A$ et $!A \Proves !B$, alors
@@ -127,24 +160,13 @@ Démontrer la \olref[pl][axd][ptn]{prop:incons}.
 
 \begin{proof}
 \begin{enumerate}
-\item Si $\Gamma \Proves !A$, il existe une suite finie de !!{formula}s
-  $!A_1$, \dots,~$!A_n$ telle que $!A \ident !A_n$ et que chaque
-  $!A_i$ soit un axiome logique, !!a{element} de~$\Gamma$, ou découle
-  de !!{formula}s antérieures
-  \iftag{FOL}{par une règle d'inférence}{par modus ponens}. Prenons pour
-  $\Gamma_0$ l'ensemble des $!A_i$ qui appartiennent à~$\Gamma$.
-  La même !!{derivation} est alors une !!{derivation} à partir de
-  $\Gamma_0$, et donc $\Gamma_0 \Proves !A$.
+\item Si $\Gamma \Proves !A$, soit $\Gamma_0$ l'ensemble fini des
+  hypothèses d'une !!{derivation} de~$!A$ à partir de~$\Gamma$.
+  Nous avons $\Gamma_0\subseteq\Gamma$. Les mêmes lignes, avec les
+  mêmes justifications, donnent $\Gamma_0 \Proves !A$.
 \item C'est la contraposée de~(1) dans le cas particulier où
   $!A \ident \lfalse$.
 \end{enumerate}
 \end{proof}
-
-\iftag{FOL}{\begin{editorial}
-Dans la preuve de compacité, la source ne mentionne que les étapes
-obtenues par modus ponens. La version avec la balise FOL admet aussi
-les règles~\QR. La formulation « par une règle d'inférence » rétablit
-la portée commune de la preuve; son argument de finitude est inchangé.
-\end{editorial}}{}
 
 \end{document}

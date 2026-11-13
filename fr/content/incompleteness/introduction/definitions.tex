@@ -1,0 +1,314 @@
+% Part: incompleteness
+% Chapter: introduction
+% Section: definitions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{int}{def}
+
+\olsection{Définitions}
+
+Pour mener à bien le projet de Hilbert, qui consistait à formaliser
+les mathématiques puis à montrer que cette formalisation est cohérente
+et complète, il faut d'abord choisir un langage, un cadre logique et
+un système d'axiomes. Supposons, pour notre propos, que les
+mathématiques puissent être formalisées dans un langage du premier
+ordre : il existe alors un ensemble de !!{constant}s, de
+!!{function}s et de !!{predicate}s qui, avec les connecteurs et les
+quantificateurs de la logique du premier ordre, permettent d'exprimer
+les assertions mathématiques. On admet généralement l'existence d'un
+tel langage : celui de la théorie des ensembles, dont~$\in$ est le
+seul symbole non logique. Qu'un langage si simple soit aussi expressif
+semble d'abord peu plausible; il a fallu beaucoup de travail pour
+établir que presque toutes les mathématiques peuvent se formuler dans
+ce vocabulaire austère. Pour simplifier, limitons-nous à présent à
+l'arithmétique, c'est-à-dire à la partie des mathématiques qui traite
+des nombres naturels~$\Nat$. Nous retiendrons pour exprimer les
+faits arithmétiques le langage~$\Lang L_A$. Il contient un seul !!{predicate}
+binaire~$<$, une seule !!{constant}~$\Obj 0$, un !!{function} unaire
+$\prime$, et deux !!{function}s binaires~$+$ et~$\times$.
+
+\begin{defn}
+Un ensemble d'!!{sentence}s~$\Gamma$ est une \emph{théorie} s'il est
+fermé par conséquence logique, c'est-à-dire si
+$\Gamma=\Setabs{!A}{\Gamma\Entails !A}$.
+\end{defn}
+
+On peut définir une théorie de deux façons simples. La première
+consiste à prendre l'ensemble des !!{sentence}s vrais dans une
+!!{structure}. Considérons, par exemple, la !!{structure} du
+langage~$\Lang L_A$ dont le !!{domain} est~$\Nat$ et dans laquelle
+chaque symbole non logique reçoit son interprétation usuelle.
+
+\begin{defn}\ollabel{def:standard-model}
+Le \emph{modèle standard de l'arithmétique} est la !!{structure}~$\Struct
+N$ définie ainsi :
+\begin{enumerate}
+\item $\Domain N = \Nat$
+\item $\Assign{\Obj 0}{N} = 0$
+\item $\Assign{\Obj \prime}{N}(n) = n + 1$ pour tout $n \in \Nat$
+\item $\Assign{\Obj +}{N}(n, m) = n + m$ pour tous $n, m \in \Nat$
+\item $\Assign{\Obj \times}{N}(n, m) = n\cdot m$ pour tous $n, m \in \Nat$
+\item $\Assign{\Obj <}{N} = \Setabs{\tuple{n, m}}{n \in \Nat, m \in
+  \Nat, n < m}$
+\end{enumerate}
+\end{defn}
+
+Distinguons $\times$ de~$\cdot$. Le premier est un symbole du langage
+arithmétique. Il évoque certes la multiplication, mais ce n'est pas
+l'opération de multiplication : c'est un symbole de fonction binaire
+(officiellement, $\Obj f^2_1$). En revanche, $\cdot$ est la fonction
+ordinaire de multiplication. Ainsi, $n\cdot m$ désigne le produit des
+nombres $n$ et~$m$, tandis que $x\times y$ est un terme du langage
+arithmétique. Dans le modèle standard, le symbole de fonction~$\times$
+est interprété par la fonction~$\cdot$ sur les nombres naturels.
+Pour l'addition, nous employons~$+$ aussi bien pour le symbole de
+fonction du langage que pour l'opération sur les nombres naturels;
+le contexte indique lequel des deux est visé.
+
+\begin{defn}
+La théorie de l'\emph{arithmétique vraie} est l'ensemble des
+!!{sentence}s satisfaits dans le modèle standard de l'arithmétique :
+\[
+\Th{TA} = \Setabs{!A}{\Sat{N}{!A}}.
+\]
+\end{defn}
+
+$\Th{TA}$ est bien une théorie. En effet, si $\Th{TA}\Entails !A$,
+alors~$!A$ est satisfait dans toute !!{structure} qui satisfait
+$\Th{TA}$. Or $\Sat{N}{\Th{TA}}$; donc $\Sat{N}{!A}$ et
+$!A\in\Th{TA}$.
+
+La seconde façon de définir une théorie~$\Gamma$ consiste à prendre
+l'ensemble des !!{sentence}s qui découlent d'un ensemble
+d'énoncés~$\Gamma_0$. $\Gamma$ est alors la « clôture » de~$\Gamma_0$
+par conséquence logique. Cette présentation n'est intéressante que
+si~$\Gamma_0$ est donné explicitement, par exemple par une liste ou
+un schéma d'axiomes. Pour les axiomatisations effectives étudiées ici, nous demandons que~$\Gamma_0$ soit
+décidable\footnote{Précision éditoriale : la source présente cette exigence comme une condition de toute axiomatisation. La définition abstraite qui suit n'impose aucune effectivité à~$\Gamma_0$ ; celle-ci intervient dans la notion d'axiomatisabilité retenue plus bas.} : il doit exister un test calculable permettant de savoir
+si un !!{sentence} appartient à~$\Gamma_0$. Les !!{sentence}s
+de~$\Gamma_0$ sont appelés \emph{axiomes} de~$\Gamma$, et l'on dit
+que~$\Gamma$ est \emph{axiomatisée} par~$\Gamma_0$.
+
+\begin{defn}
+Une théorie~$\Gamma$ est \emph{axiomatisée} par~$\Gamma_0$ si et
+seulement si
+\[
+\Gamma = \Setabs{!A}{\Gamma_0 \Entails !A}
+\]
+\end{defn}
+
+\begin{defn}
+La théorie $\Th{Q}$ axiomatisée par les !!{sentence}s suivants
+s'appelle \emph{arithmétique de Robinson}; c'est une théorie
+arithmétique très simple.
+\begin{align*}
+& \lforall[x][\lforall[y][(\eq[x'][y'] \lif \eq[x][y])]] \tag{$!Q_1$}\\
+& \lforall[x][\eq/[\Obj 0][x']] \tag{$!Q_2$}\\
+& \lforall[x][(\eq[x][\Obj 0] \lor \lexists[y][\eq[x][y']])] \tag{$!Q_3$}\\
+& \lforall[x][\eq[(x + \Obj 0)][x]] \tag{$!Q_4$}\\
+& \lforall[x][\lforall[y][\eq[(x + y')][(x + y)']]] \tag{$!Q_5$}\\
+& \lforall[x][\eq[(x \times \Obj 0)][\Obj 0]] \tag{$!Q_6$}\\
+& \lforall[x][\lforall[y][\eq[(x \times y')][((x \times y) + x)]]] \tag{$!Q_7$}\\
+& \lforall[x][\lforall[y][(x < y \liff \lexists[z][\eq[(z' + x)][y]])]] \tag{$!Q_8$}
+\end{align*}
+Les !!{sentence}s $\{!Q_1,\dots,!Q_8\}$ sont les axiomes de
+$\Th{Q}$; cette théorie contient donc tous les !!{sentence}s qui
+en découlent :
+\[
+\Th{Q} = \Setabs{!A}{\{!Q_1, \dots, !Q_8\} \Entails !A}.
+\]
+\end{defn}
+
+\begin{defn}
+Soit $!A(x)$ une !!{formula} de~$\Lang L_A$ dont les variables libres
+sont~$x$ et $y_1$, \dots, $y_n$. Tout !!{sentence} de la forme
+\[
+\lforall[y_1][\dots\lforall[y_n][((!A(\Obj 0) \land \lforall[x][(!A(x)
+\lif !A(x'))]) \lif \lforall[x][!A(x)])]]
+\]
+est une instance du \emph{schéma d'induction}. Les paramètres
+$y_1$, \dots, $y_n$ de~$!A$ sont sous-entendus dans les occurrences
+$!A(\Obj 0)$, $!A(x)$ et $!A(x')$.
+
+L'\emph{arithmétique de Peano}~$\Th{PA}$ est la théorie axiomatisée
+par les axiomes de~$\Th{Q}$ et toutes les instances du schéma
+d'induction.
+\end{defn}
+
+\begin{explain}
+Toute instance du schéma d'induction est vraie dans~$\Struct{N}$.
+Le cas le plus simple est celui où la !!{formula}~$!A$ n'a que la
+variable libre~$x$. Alors $!A(x)$ définit un sous-ensemble~$X_{!A}$
+de~$\Nat$ dans~$\Struct{N}$ : il contient précisément les
+$n\in\Nat$ tels que $\Sat{N}{!A(x)}[s]$ lorsque $s(x)=n$.
+L'instance correspondante du schéma est
+\[
+((!A(\Obj 0) \land \lforall[x][(!A(x) \lif !A(x'))]) \lif
+  \lforall[x][!A(x)]).
+\]
+Si son antécédent est vrai dans~$\Struct{N}$, alors $0\in X_{!A}$
+et, dès que $n\in X_{!A}$, on a aussi $n+1\in X_{!A}$. De
+$0\in X_{!A}$ on déduit $1\in X_{!A}$, puis $2\in X_{!A}$,
+et ainsi de suite. Donc tout $n\in\Nat$ appartient à~$X_{!A}$,
+ce qui signifie que $\lforall[x][!A(x)]$ est satisfait
+dans~$\Struct{N}$.
+\end{explain}
+
+$\Th{Q}$ et $\Th{PA}$ sont toutes deux des théories axiomatisées.
+Mais quelle est leur force ? $\Th{PA}$ peut-elle, par exemple,
+démontrer toutes les vérités sur~$\Nat$ exprimables dans~$\Lang L_A$ ?
+Ses axiomes tranchent-ils toutes les questions formulables dans ce
+langage ?
+
+Autrement dit, a-t-on $\Th{PA}=\Th{TA}$ ? La théorie~$\Th{TA}$
+contient, par définition, toutes les vérités sur~$\Nat$ et tranche
+toutes les questions exprimables dans~$\Lang L_A$ : pour tout
+!!{sentence}~$!A$ de ce langage, on a soit $\Sat{N}{!A}$, soit
+$\Sat{N}{\lnot !A}$, et donc soit $\Th{TA}\Entails !A$, soit
+$\Th{TA}\Entails\lnot !A$. On appelle une telle théorie
+\emph{complète}.
+
+\begin{defn}
+Une théorie~$\Gamma$ est \emph{complète} si et seulement si, pour
+chaque !!{sentence}~$!A$ de son langage, on a
+$\Gamma\Entails !A$ ou $\Gamma\Entails\lnot !A$.
+\end{defn}
+
+\begin{explain}
+Par le théorème de complétude, $\Gamma\Entails !A$ si et seulement
+si $\Gamma\Proves !A$. Ainsi, une théorie~$\Gamma$ est complète si
+et seulement si, pour chaque !!{sentence}~$!A$ de son langage,
+$\Gamma\Proves !A$ ou $\Gamma\Proves\lnot !A$.
+\end{explain}
+
+Une autre question se pose : existe-t-il une procédure calculable
+qui permette de déterminer si un !!{sentence} appartient
+à~$\Th{TA}$, à~$\Th{PA}$, ou même seulement à~$\Th{Q}$ ? Pour
+la formuler précisément, définissons ce que signifie être
+!!{decidable} pour un ensemble, par exemple un ensemble
+d'!!{sentence}s.
+
+\begin{defn}
+Un ensemble~$X$ est \emph{!!{decidable}} s'il existe une procédure
+calculable qui, recevant~$x$ en entrée, renvoie~$1$ si $x\in X$
+et~$0$ sinon.
+\end{defn}
+
+La question devient donc : $\Th{TA}$, $\Th{PA}$ ou~$\Th{Q}$
+sont-elles !!{decidable}s ?
+
+La réponse est négative dans les trois cas. Mais ce phénomène ne
+concerne pas seulement ces théories : \emph{toute} théorie qui
+satisfait certaines conditions y est soumise. L'une d'elles,
+vérifiée par $\Th{Q}$ et~$\Th{PA}$, est de posséder un ensemble
+!!{decidable} d'axiomes.
+
+\begin{defn}
+Une théorie est \emph{!!{axiomatizable}} si elle admet un ensemble
+!!{decidable} d'axiomes qui l'axiomatise.
+\end{defn}
+
+\begin{ex}
+Toute théorie axiomatisée par un ensemble fini d'!!{sentence}s est
+!!{axiomatizable}, car tout ensemble fini est !!{decidable}.
+$\Th{Q}$, par exemple, est donc !!{axiomatizable}.
+
+Les théories axiomatisées par schéma, comme~$\Th{PA}$, sont elles
+aussi !!{axiomatizable}s. Pour tester si~$!B$ est un axiome
+de~$\Th{PA}$, c'est-à-dire calculer la fonction~$\Char{X}$ qui vaut
+$\Char{X}(!B)=1$ si~$!B$ en est un et~$0$ sinon, procédons ainsi.
+Vérifions d'abord si~$!B$ est l'un des axiomes de~$\Th{Q}$ : si oui,
+la réponse est « oui » et $\Char{X}(!B)=1$. Sinon, vérifions si~$!B$
+est une instance du schéma d'induction. Cela se fait mécaniquement.
+Toute instance commence par un nombre éventuellement nul de
+quantificateurs universels, suivi d'une sous-!!{formula} qui est une
+implication. Le conséquent de cette implication est
+$\lforall[x][!A(x,y_1,\dots,y_n)]$, où $x,y_1,\dots,y_n$ sont les
+variables libres de~$!A$; les quantificateurs initiaux de~$!B$
+lient~$y_1,\dots,y_n$. Après avoir extrait~$!A$ et vérifié que ses
+variables libres correspondent à celles liées par les quantificateurs
+initiaux et par~$\lforall[x]$, on vérifie que l'antécédent est bien
+\[
+!A(\Obj 0, y_1, \dots, y_n) \land \lforall[x][(!A(x, y_1, \dots, y_n)
+\lif !A(x', y_1, \dots, y_n))]
+\]
+Si c'est le cas, $!B$ est une instance du schéma; sinon,
+il n'en est pas une.
+\end{ex}
+
+Pour répondre à cette question, et plus généralement pour savoir
+quelles théories sont complètes ou décidables, la définition suivante
+sera utile. Rappelons qu'un ensemble~$X$ est !!{enumerable} s'il est
+vide ou s'il existe une fonction surjective~$f\colon\Nat\to X$;
+on appelle cette fonction une \emph{énumération} de~$X$.
+
+\begin{defn}
+Un ensemble~$X$ est \emph{!!{computably enumerable}}
+(\emph{e.é.} en abrégé) si et seulement s'il est vide ou admet une
+énumération calculable.
+\end{defn}
+
+Outre l'axiomatisabilité, une autre condition nécessaire à
+l'application des théorèmes d'incomplétude est que les théories
+soient assez fortes pour démontrer des faits élémentaires sur les
+fonctions calculables et les relations !!{decidable}s. Par « faits
+élémentaires », nous entendons des !!{sentence}s qui expriment les
+valeurs des fonctions calculables pour chacun de leurs arguments.
+Être « assez forte » signifie que la théorie compte ces
+!!{sentence}s parmi ses théorèmes. Prenons, par exemple, l'addition.
+La valeur de~$+$ pour les arguments~$2$ et~$3$ est~$5$, soit
+$2+3=5$. Le langage arithmétique exprime ce fait par l'!!{sentence}
+$(\num{2}+\num{3})=\num{5}$, que~$\Th{Q}$ démontre.
+Plus généralement, pour chaque fonction calculable~$f(x_1,x_2)$,
+nous voudrions disposer d'une !!{formula}~$!A_f(x_1,x_2,y)$
+de~$\Lang{L_A}$ telle que $\Th{Q}\Proves
+!A_f(\num{n_1},\num{n_2},\num{m})$ dès que $f(n_1,n_2)=m$.
+Ainsi, $\Th{Q}$ démontre que la valeur de~$f$ en $n_1,n_2$
+est~$m$. Nous exigerons en réalité davantage : que la théorie
+démontre qu'aucun autre nombre n'est cette valeur.\footnote{Il s'agit ici de fonctions totales. La représentation exige ces preuves pour chaque tuple fixé de numéraux ; elle n'exige pas une preuve unique, dans la théorie, de la totalité de la fonction pour tous les arguments.} Il en va de
+même des relations !!{decidable}s. Les deux définitions suivantes
+précisent ces exigences.
+
+\begin{defn}
+Une !!{formula}~$!A(x_1,\dots,x_k,y)$ \emph{!!{represents}} la
+fonction $f\colon\Nat^k\to\Nat$ dans~$\Gamma$ si et seulement si,
+lorsque $f(n_1,\dots,n_k)=m$, on a :
+\begin{enumerate}
+\item $\Gamma \Proves !A(\num{n_1}, \dots, \num{n_k}, \num{m})$, et
+\item $\Gamma \Proves \lforall[y](!A(\num{n_1}, \dots, \num{n_k},
+y) \lif y = \num{m})$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+Une !!{formula}~$!A(x_1,\dots,x_k)$ \emph{!!{represents}} la
+relation $R\subseteq\Nat^k$ \emph{dans~$\Gamma$} si et seulement si\footnote{Précision éditoriale : la source sous-entend ici~$\Gamma$ ; nous rappelons explicitement que la représentation est relative à la théorie.} :
+\begin{enumerate}
+\item si $R(n_1,\dots,n_k)$, alors $\Gamma \Proves !A(\num{n_1},
+\dots, \num{n_k})$;
+\item si $R(n_1,\dots,n_k)$ ne vaut pas, alors $\Gamma \Proves \lnot
+!A(\num{n_1}, \dots, \num{n_k})$.
+\end{enumerate}
+\end{defn}
+
+Une théorie est « assez forte » pour les théorèmes d'incomplétude si
+elle !!{represents} toutes les fonctions calculables et toutes les
+relations !!{decidable}s. $\Th{Q}$ et ses extensions satisfont cette
+condition, mais il nous faudra du temps pour le démontrer. C'est un
+fait non trivial sur ce que~$\Th{Q}$ peut prouver, d'autant que cette
+théorie ne possède qu'un petit nombre d'axiomes. $\Th{Q}$ est
+pourtant très faible. Bien qu'il soit difficile d'établir qu'elle
+représente toutes les fonctions calculables, la plupart des théories
+intéressantes sont plus fortes qu'elle : elles démontrent au moins
+tout ce qu'elle démontre. Toute extension de~$\Th{Q}$ représente donc
+elle aussi toutes les fonctions calculables et les relations
+!!{decidable}s. Beaucoup de théories intéressantes remplissent
+ainsi les hypothèses des théorèmes d'incomplétude. En particulier,
+toute théorie censée formaliser « toutes les mathématiques » doit
+rendre compte des calculs élémentaires ; nous demanderons ici qu'elle
+étende~$\Th{Q}$, en plus des autres hypothèses des théorèmes.\footnote{Précision éditoriale : démontrer des calculs sur des numéraux ne suffit pas, à lui seul, à déduire tous les axiomes universels de~$\Th{Q}$. Pour une théorie formulée dans un autre langage, le critère analogue passe par une interprétation de l'arithmétique requise ; les hypothèses des théorèmes doivent alors être vérifiées dans ce cadre.}
+
+\end{document}

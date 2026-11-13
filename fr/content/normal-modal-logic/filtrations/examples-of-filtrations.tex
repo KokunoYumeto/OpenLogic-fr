@@ -1,0 +1,240 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: examples-of-filtrations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{exf}
+
+\olsection{Exemples de filtrations}
+
+Nous n'avons pas encore montré qu'il existe des filtrations. Pourtant,
+pour tout modèle $\mModel{M}$, il existe au moins une filtration par
+$\Gamma$. Nous définirons deux filtrations extrêmes : la plus fine et
+la plus grossière, qui peuvent coïncider. Les filtrations d'un même modèle
+diffèrent par leur relation d'accessibilité (puisque
+la \olref[fil]{defn:filtration} fixe directement $W^*$ et~$V^*$). Dans la
+filtration la plus fine, aussi peu de mondes que possible sont reliés ;
+dans la plus grossière, autant que possible le sont.
+
+\begin{defn}
+  Si $\Gamma$ est clos par sous-formules, la filtration \emph{la plus
+  fine} $\mModel{M^*}$ d'un modèle $\mModel{M}$ est définie par :
+  \[
+  R^*[u][v] \quad \text{si et seulement si} \quad \exists u'\in [u] \;
+  \exists v' \in [v] : Ru'v'.
+  \]
+\end{defn}
+
+\begin{prop}\ollabel{prop:finest}
+  La filtration la plus fine $\mModel{M^*}$ est bien une filtration.
+\end{prop}
+
+\begin{proof}
+  Vérifions que la relation $R^*$ ainsi définie satisfait
+  la \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R}, en
+  examinant successivement les trois conditions.
+
+  Si $Ruv$, comme $u \in [u]$ et $v \in [v]$, on a aussi
+  $R^*[u][v]$ ; \olref[fil]{defn:filtration-R1} est donc satisfaite.
+
+  \iftag{prvBox}{\iftag{probBox}{Nous laissons en exercice la
+      vérification de \olref[fil]{defn:filtration-R2}.}{Pour
+        \olref[fil]{defn:filtration-R2}, supposons
+        $\Box!A \in \Gamma$, $R^*[u][v]$ et
+        $\mSat{M}{\Box!A}[u]$. Par définition de $R^*$, il existe
+        $u' \equiv u$ et $v' \equiv v$ tels que $Ru'v'$.
+        Comme $u$ et $u'$ s'accordent sur $\Gamma$, on a aussi
+        $\mSat{M}{\Box!A}[u']$, d'où $\mSat{M}{!A}[v']$. Puisque
+        $\Gamma$ est clos par sous-!!{formula}s, $v$ et $v'$ s'accordent
+        sur $!A$ ; donc $\mSat{M}{!A}[v]$, comme voulu.}}{}
+
+  \iftag{prvDiamond}{\iftag{probDiamond}{Nous laissons en exercice la
+      vérification de \olref[fil]{defn:filtration-R3}.}{Pour vérifier
+        \olref[fil]{defn:filtration-R3}, supposons $\Diamond!A \in
+        \Gamma$, $R^*[u][v]$ et $\mSat{M}{!A}[v]$. Par définition de
+        $R^*$, il existe $u' \equiv u$ et $v' \equiv v$ tels que
+        $Ru'v'$. Comme $v$ et $v'$ s'accordent sur~$\Gamma$ et que
+        $\Gamma$ est clos par sous-!!{formula}s, on a aussi
+        $\mSat{M}{!A}[v']$, d'où
+        $\mSat{M}{\Diamond !A}[u']$. Comme $u$ et $u'$ s'accordent
+        également sur $\Gamma$, on a
+        $\mSat{M}{\Diamond !A}[u]$.}}{}
+\end{proof}
+
+\begin{probtag}{probBox,probDiamond}
+  Complétez la démonstration de la \olref[nml][fil][exf]{prop:finest}.
+\end{probtag}
+
+\begin{defn}
+  Si $\Gamma$ est clos par sous-formules, la filtration \emph{la plus
+  grossière}~$\mModel{M^*}$ d'un modèle~$\mModel{M}$ est définie en
+  posant $R^*[u][v]$ si et seulement si
+  \iftag{notprvBox,notprvDiamond}{la condition suivante est
+    satisfaite :}{\emph{les deux} conditions suivantes sont satisfaites :}
+  \begin{tagenumerate}{prvBox,prvDiamond}
+  \tagitem{prvBox}{\ollabel{defn:coarsest-Box}Si $\Box!A \in \Gamma$
+    et $\mSat{M}{\Box!A}[u]$, alors
+    $\mSat{M}{!A}[v]$\iftag{prvDiamond}{ ;}{.}}{}
+  \tagitem{prvDiamond}{\ollabel{defn:coarsest-Diamond}Si $\Diamond!A
+    \in \Gamma$ et $\mSat{M}{!A}[v]$, alors
+    $\mSat{M}{\Diamond!A}[u]$.}{}
+  \end{tagenumerate}
+\end{defn}
+
+\begin{prop}
+  La filtration la plus grossière $\mModel{M^*}$ est bien une
+  filtration.
+\end{prop}
+
+\begin{proof}
+  D'après la définition de $R^*$, il ne reste à vérifier que
+  l'implication de $Ruv$ vers $R^*[u][v]$. Supposons donc
+  $Ruv$. \iftag{prvBox}{Supposons $\Box!A \in \Gamma$ et
+    $\mSat{M}{\Box!A}[u]$ ; on a alors évidemment
+    $\mSat{M}{!A}[v]$\iftag{prvDiamond}{, ce qui satisfait
+      \olref{defn:coarsest-Box}. }{.}}{}\iftag{prvDiamond}{Supposons
+    $\Diamond!A \in \Gamma$ et $\mSat{M}{!A}[v]$. Alors
+    $\mSat{M}{\Diamond!A}[u]$ puisque~$Ruv$\iftag{prvBox}{, ce qui
+      satisfait \olref{defn:coarsest-Diamond}}{}.}{}
+\end{proof}
+
+\begin{ex}
+  Soit $W = \PosInt$, soit $Rnm$ si et seulement si $m = n + 1$, et
+  soit $V(p) = \Setabs{2n}{n \in
+    \PosInt}$. Le modèle $\mModel{M} = \tuple{W, R, V}$ est représenté
+  dans la \olref{fig:ex-filtration}. Ses mondes sont $1$, $2$, etc. ;
+  chaque monde accède à un seul autre monde, son successeur, et $p$
+  est vraie exactement aux nombres pairs.
+
+  \begin{figure}
+    \centering
+    \begin{tikzpicture}[modal]
+      \node[world] (1) [label=below:\mFalse{p}] {$1$};
+      \node[world] (2) [label=below:\mTrue{p}, right=of 1] {$2$};
+      \node[world] (3) [label=below:\mFalse{p}, right=of 2] {$3$};
+      \node[world] (4) [label=below:\mTrue{p}, right=of 3] {$4$};
+      \node[phantom] (5) [right=of 4] {};
+      \draw[->] (1) to (2);
+      \draw[->] (2) to (3);
+      \draw[->] (3) to (4);
+      \draw[dotted] (4) to (5);
+    \end{tikzpicture}
+
+    \begin{tikzpicture}[modal]
+      \node[world] (1) [label=below:\mFalse{p}] {$[1]$};
+      \node[world] (2) [label=below:\mTrue{p}, right=of 1] {$[2]$};
+      \draw[->,bend left] (1) to (2);
+      \draw[->,bend left] (2) to (1);
+
+      \node[world] (3) [label=below:\mFalse{p},right=of 2] {$[1]$};
+      \node[world] (4) [label=below:\mTrue{p}, right=of 3] {$[2]$};
+      \draw[->,bend left] (3) to (4);
+      \draw[->,bend left] (4) to (3);
+      \draw[->,reflexive above] (4) to (4);
+    \end{tikzpicture}
+    \caption{Un modèle infini et ses filtrations.}
+    \ollabel{fig:ex-filtration}
+  \end{figure}
+
+  Soit maintenant $\Gamma$ l'ensemble des sous-!!{formula}s de~$\Box p \lif p$,
+  à savoir $\{p, \Box p, \Box p \lif p\}$. $p$ est vraie exactement
+  aux nombres pairs, tandis que $\Box p$ est vraie exactement aux
+  nombres impairs. Ainsi, $\Box p \lif p$ est vraie exactement aux
+  nombres pairs. Autrement dit, tout nombre impair rend $\Box p$
+  vraie, mais $p$ et $\Box p \lif p$ fausses ; tout nombre pair rend
+  $p$ et $\Box p \lif p$ vraies, mais $\Box p$ fausse. On a donc
+  $W^* = \{ [1], [2] \}$, où $[1] = \{1, 3, 5, \dots\}$ et
+  $[2] = \{2, 4, 6, \dots\}$. Puisque $2 \in V(p)$,
+  $[2] \in V^*(p)$ ; puisque $1 \notin V(p)$,
+  $[1] \notin V^*(p)$. Par conséquent, $V^*(p) = \{[2]\}$.
+
+  Sur $W^*$, la relation d'accessibilité doit contenir
+  $\tuple{[1], [2]}, \tuple{[2],[1]}$ : puisque $R12$,
+  on doit avoir $R^*[1][2]$ par la
+  \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R1} ; et,
+  puisque $R23$, on doit avoir $R^*[2][3]$, avec $[3]=[1]$. Elle ne
+  peut pas contenir $\tuple{[1],[1]}$ : sinon, on aurait
+  $R^*[1][1]$, $\mSat{M}{\Box p}[1]$ mais
+  $\mSat/{M}{p}[1]$, en contradiction avec
+  \olref[fil]{defn:filtration-R2}. Rien n'impose ni n'interdit
+  $R^*[2][2]$. Il y a donc deux filtrations possibles de~$\mModel{M}$,
+  correspondant aux deux relations d'accessibilité
+  \[
+  \{\tuple{[1],[2]}, \tuple{[2],[1]}\} \text{ et }
+  \{\tuple{[1],[2]}, \tuple{[2],[1]}, \tuple{[2],[2]}\}.
+  \]
+  Dans les deux cas, $p$ et $\Box p \lif p$ sont fausses et
+  $\Box p$ est vraie en~$[1]$ ; $p$ et $\Box p \lif p$ sont vraies et
+  $\Box p$ est fausse en~$[2]$.
+\end{ex}
+
+\begin{prob}
+  Considérez le modèle suivant $\mModel{M} = \tuple{W, R, V}$, où
+  $W = \Setabs{0\sigma}{\sigma \in \Bin^*}$ est l'ensemble des suites
+  de $0$ et de~$1$ commençant par~$0$, où $R\sigma\sigma'$ si et
+  seulement si $\sigma' = \sigma 0$ ou $\sigma' = \sigma 1$, et où
+  $V(p) = W \cap \Setabs{\sigma
+    0}{\sigma \in \Bin^*}$ et
+  $V(q) = W \cap \Setabs{\sigma 1}{\sigma \in
+    \Bin^* \setminus \{1\}}$. Voici une représentation :
+  \begin{center}
+    \begin{tikzpicture}[modal,
+        node distance=2cm
+      ]
+
+      \node[world] (0) [label={below:\mTrue{p}\\\mFalse{q}},font=\tiny] {$0$};
+      \node[world] (00) [label={below:\mTrue{p}\\\mFalse{q}},
+        above right=of 0,font=\tiny] {$00$};
+      \node[world] (000) [label={below:\mTrue{p}\\\mFalse{q}},
+        right=of 00, yshift=.8cm, font=\tiny] {$000$};
+      \node[phantom] (0000) [right=of 000, yshift=.5cm] {};
+      \node[phantom] (0001) [right=of 000, yshift=-.5cm] {};
+      \node[world] (001) [label={below:\mFalse{p}\\\mTrue{q}},
+        right=of 00, yshift=-.8cm, font=\tiny] {$001$};
+      \node[phantom](0010) [right=of 001, yshift=.5cm] {};
+      \node[phantom](0011) [right=of 001, yshift=-.5cm] {};
+      \node[world] (01) [label={below:\mFalse{p}\\\mTrue{q}},
+        below right=of 0,font=\tiny] {$01$};
+      \node[world] (010) [label={below:\mTrue{p}\\\mFalse{q}},
+        right=of 01, yshift=.8cm,font=\tiny] {$010$};
+      \node[phantom] (0100) [right=of 010, yshift=.5cm] {};
+      \node[phantom] (0101) [right=of 010, yshift=-.5cm] {};
+      \node[world] (011) [label={below:\mFalse{p}\\\mTrue{q}},
+        right=of 01, yshift=-.8cm,font=\tiny] {$011$};
+      \node[phantom] (0110) [right=of 011, yshift=.5cm] {};
+      \node[phantom] (0111) [right=of 011, yshift=-.5cm] {};
+
+      \draw[->] (0) to (00);
+      \draw[->] (0) to (01);
+      \draw[->] (00) to (000);
+      \draw[dotted] (000) to (0000);
+      \draw[dotted] (000) to (0001);
+      \draw[->] (00) to (001);
+      \draw[dotted] (001) to (0010);
+      \draw[dotted] (001) to (0011);
+      \draw[->] (01) to (010);
+      \draw[dotted] (010) to (0100);
+      \draw[dotted] (010) to (0101);
+      \draw[->] (01) to (011);
+      \draw[dotted] (011) to (0110);
+      \draw[dotted] (011) to (0111);
+    \end{tikzpicture}
+  \end{center}
+  On a $\mSat/{M}{\Box(p \lor q) \lif (\Box p \lor \Box q)}[w]$
+  pour tout~$w$.
+
+  Soit $\Gamma$ l'ensemble des sous-!!{formula}s de~$\Box(p \lor q) \lif
+  (\Box p \lor \Box q)$. Quels sont $W^*$ et~$V^*$ ? Quelle est la
+  relation d'accessibilité de la filtration la plus fine de~$\mModel{M}$ ?
+  Et de la plus grossière ?
+\end{prob}
+\begin{explain}
+La filtration la plus fine conserve les flèches héritées
+du modèle. La plus grossière ajoute toutes les flèches que
+permettent les conditions de filtration. Elles coïncident
+lorsque les flèches héritées épuisent les flèches permises.
+\end{explain}
+\end{document}

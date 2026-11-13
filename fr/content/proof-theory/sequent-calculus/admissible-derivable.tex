@@ -1,0 +1,321 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : règles admissibles et dérivables
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{seq}{adm}
+
+\olsection{Règles admissibles et dérivables}
+
+De nombreux résultats de théorie de la démonstration portent
+sur la possibilité de se passer d'une règle, ou utilisent
+un tel résultat. Le théorème d'élimination des coupures
+en est l'exemple le plus connu : tout séquent prouvable
+dans un calcul muni de~\Cut{} peut aussi être prouvé
+sans~\Cut. Cette propriété a un nom.
+
+\begin{defn}
+Une règle~$R$ est \emph{admissible} dans un calcul
+des séquents si tout séquent prouvable dans ce calcul
+augmenté de~$R$ est déjà prouvable sans~$R$.
+\end{defn}
+
+\begin{ex}\ollabel{ex:land-deriv}
+La règle $\LeftR{\land}$ a des formes différentes
+dans \Log{G1c} et \Log{G3c}. Dans \Log{G1c},
+ses deux versions ont dans la prémisse soit
+le premier conjoint $!A$ de la formule principale
+$!A \land !B$, soit le second conjoint~$!B$ :
+\[
+\Axiom$ !A, \Gamma \fCenter \Delta$
+\RightLabel{$\LeftR{\land}_1$}
+\UnaryInf$ !A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\qquad
+\Axiom$!B, \Gamma \fCenter \Delta$
+\RightLabel{$\LeftR{\land}_2$}
+\UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Dans \Log{G3c}, il n'y a qu'une seule règle :
+\[
+\Axiom$ !A, !B, \Gamma \fCenter \Delta$
+\RightLabel{$\LeftR{\land}_3$}
+\UnaryInf$ !A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\]
+La règle $\LeftR{\land}_3$ de \Log{G3c} est-elle
+admissible dans \Log{G1c} ? Oui : toute inférence
+par $\LeftR{\land}_3$ peut être remplacée par
+une suite d'inférences de~\Log{G1c}. Outre
+$\LeftR{\land}_1$ et $\LeftR{\land}_2$, on
+emploie la règle structurelle~$\LeftR{\Contraction}$ :
+\[
+\Axiom$!A, !B, \Gamma \fCenter \Delta$
+\RightLabel{$\LeftR{\land}_1$}
+\UnaryInf$!A \land !B, !B, \Gamma \fCenter \Delta$
+\RightLabel{$\LeftR{\land}_2$}
+\UnaryInf$!A \land !B, !A \land !B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\Contraction}}
+\UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\]
+\end{ex}
+
+Remplacer chaque application d'une règle par des
+inférences des autres règles est une façon de
+prouver son admissibilité. Ce n'est pas la seule :
+certaines règles admissibles ne peuvent pas
+être remplacées de cette manière. Celles qui
+le peuvent sont dites \emph{dérivables}.
+
+\begin{defn}
+Une règle~$R$,
+\[
+\AxiomC{$S_1$}
+\AxiomC{$\dots$}
+\AxiomC{$S_n$}
+\RightLabel{$R$}
+\TrinaryInfC{$S$}
+\DisplayProof
+\]
+est \emph{dérivable} dans un système s'il existe
+un schéma de preuve du séquent~$S$ utilisant
+les axiomes et les règles du système, ainsi
+que des séquents initiaux supplémentaires
+de la forme $S_1$, \dots,~$S_n$.
+\end{defn}
+
+La preuve de l'\olref{ex:land-deriv} montre que
+$\LeftR{\land}_3$ est dérivable dans~\Log{G1c}.
+Elle donne un schéma de preuve de sa conclusion
+à partir des prémisses de $\LeftR{\land}_3$,
+prises comme séquents initiaux, par les seules
+règles de \Log{G1c}. Aucun axiome de \Log{G1c}
+n'y est employé.
+
+\begin{prop}\ollabel{prop:lor-G3-adm}
+Les règles $\LeftR{\land}$ et $\RightR{\lor}$
+de~\Log{G3c} sont dérivables dans~\Log{G1c}.
+\end{prop}
+
+\begin{proof}
+Le cas $\LeftR{\land}$ est établi dans
+l'\olref{ex:land-deriv}. Le cas $\RightR{\lor}$
+est laissé en exercice.
+\end{proof}
+
+\begin{prob}
+Montrer que la règle $\RightR{\lor}$ de
+\Log{G3c} est dérivable dans~\Log{G1c}.
+\end{prob}
+
+\begin{prob}
+Supposons que $\liff$ soit un opérateur défini :
+$!A \liff !B$ abrège $(!A \lif !B) \land (!B \lif !A)$.
+Établir l'admissibilité des deux règles dans \Log{G1c} et \Log{G3c}.
+Donner un schéma de dérivation de la règle droite.
+\begin{enumerate}
+\item \Axiom$\Gamma, !A, !B \fCenter \Delta$
+\Axiom$\Gamma \fCenter \Delta, !A, !B$
+\RightLabel{\LeftR{\liff}}
+\BinaryInf$!A \liff !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\item
+\Axiom$!A, \Gamma \fCenter \Delta, !B$
+\Axiom$!B, \Gamma \fCenter \Delta, !A$
+\RightLabel{\RightR{\liff}}
+\BinaryInf$\Gamma \fCenter \Delta, !A \liff !B$
+\DisplayProof
+\end{enumerate}
+\end{prob}
+
+\begin{ex}\ollabel{ex:weak-adm}
+La règle $\RightR{\Weakening}$ de \Log{G1c},
+\[
+\Axiom$ \Gamma \fCenter \Delta$
+\RightLabel{\RightR{\Weakening}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A$
+\DisplayProof
+\]
+est admissible dans~\Log{G3c}.
+Supposons donnée une preuve~$\pi$ de la prémisse
+$\Gamma \Sequent \Delta$. Après avoir renommé
+ses constantes propres pour qu'elles soient
+absentes de~$!A$, on ajoute $!A$ au conséquent
+de chaque séquent de~$\pi$. Les axiomes restent
+des axiomes et les inférences restent correctes,
+y compris les inférences quantifiées.
+Le séquent final devient $\Gamma \Sequent \Delta, !A$.
+
+La règle $\RightR{\Weakening}$ n'est pourtant
+pas dérivable dans~\Log{G3c}. Supposons qu'il
+existe un schéma uniforme de preuve de
+$\Gamma \Sequent \Delta, !A$ utilisant les
+axiomes et règles de~\Log{G3c}, avec éventuellement
+$\Gamma \Sequent \Delta$ comme séquent initial
+supplémentaire. En donnant à $\Gamma$ et~$\Delta$
+la valeur vide, ce schéma fournirait une
+preuve de~$\Sequent !A$.
+Les séquents initiaux supplémentaires
+$\Gamma \Sequent \Delta$ deviendraient alors
+le séquent vide~$\quad \Sequent \quad$.
+Or toutes les règles de~\Log{G3c} exigent
+au moins une formule active dans leurs
+prémisses. Un séquent vide ne peut donc
+être prémisse d'aucune de ces inférences.
+Il ne peut pas non plus être le séquent
+final recherché. Le schéma ne peut donc
+effectivement utiliser le séquent supplémentaire
+$\Gamma \Sequent \Delta$.
+Il donnerait une preuve de
+$\Gamma \Sequent \Delta, !A$ par les seuls
+axiomes et règles de~\Log{G3c}, pour toute
+valeur de ces paramètres. C'est impossible :
+par correction, \Log{G3c} ne prouve que
+des séquents valides. Pour $\Gamma = \Delta = \emptyset$
+et $!A \ident \lfalse$, il devrait notamment
+prouver $\quad \Sequent \lfalse$.
+\end{ex}
+
+On peut donner une preuve par récurrence
+de l'admissibilité de l'affaiblissement.
+L'argument précédent établit même davantage :
+l'ajout de $!A$ à tous les conséquents
+de~$\pi$ conserve la structure de l'arbre,
+et donc sa hauteur. Cette propriété mérite
+une définition.
+
+\begin{defn}
+Une règle~$R$,
+\[
+\AxiomC{$S_1$}
+\AxiomC{$\dots$}
+\AxiomC{$S_n$}
+\RightLabel{$R$}
+\TrinaryInfC{$S$}
+\DisplayProof
+\]
+est \emph{admissible sans augmentation de hauteur},
+ou \emph{hp-admissible}, si $\Proves[h_i] S_i$
+pour $i = 1$, \dots,~$n$ entraîne $\Proves[m] S$,
+où $m = \max(h_1, \dots, h_n)$.
+\end{defn}
+
+Il suffit donc que, pour des preuves~$\pi_i$
+des prémisses~$S_i$ de hauteurs
+$h_i = \pheight{\pi_i}$, on puisse construire
+une preuve~$\pi$ de la conclusion dont la
+hauteur~$\pheight{\pi}$ ne dépasse pas
+le maximum des~$h_i$.
+Pour une seule prémisse~$S_1$, la condition
+est $\pheight{\pi} \le \pheight{\pi_1}$.
+Pour $\RightR{\Weakening}$ et $\LeftR{\Weakening}$,
+la construction donne même
+$\pheight{\pi} = \pheight{\pi_1}$,
+mais cette égalité n'est pas exigée
+par la définition générale.
+
+\begin{prop}\ollabel{prop:weak-G3c-adm}
+Les règles $\RightR{\Weakening}$ et $\LeftR{\Weakening}$
+de \Log{G1c} sont admissibles sans augmentation
+de hauteur dans~\Log{G3c}.
+\end{prop}
+
+\begin{proof}
+Supposons $\Log{G3c} \Proves \Gamma \Sequent \Delta$
+avec une preuve~$\pi$ de hauteur~$\pheight{\pi} = n$.
+Après renommage de ses constantes propres,
+qui conserve sa hauteur et son séquent final,
+on les suppose absentes de la formule ajoutée.
+Il faut construire une preuve~$\pi'$ de
+$\Gamma \Sequent \Delta, !A$ dans \Log{G3c},
+avec $\pheight{\pi'} = n$.
+On raisonne par récurrence sur~$n$.
+
+Si $n=0$, $\pi$ est l'axiome
+$\Gamma \Sequent \Delta$ : soit une même
+formule atomique~$!C$ figure dans $\Gamma$
+et~$\Delta$, soit l'antécédent contient
+l'absurde. Dans les deux cas,
+$\Gamma \Sequent \Delta, !A$ reste un axiome.
+
+Si $n = \pheight{\pi} >0$, on distingue
+les dernières inférences. Voici le cas
+$\RightR{\land}$. On a $\Delta = \Delta', !B \land !C$,
+et les sous-preuves immédiates $\pi_1$ et~$\pi_2$
+se terminent respectivement par
+$\Gamma \Sequent \Delta', !B$ et
+$\Gamma \Sequent \Delta', !C$.
+La preuve $\pi$ a donc la forme suivante :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$\Gamma \fCenter \Delta', !B$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$\Gamma \fCenter \Delta', !C$
+  \RightLabel{\RightR{\land}}
+  \BinaryInf$\Gamma \fCenter \Delta', !B \land !C$
+  \DisplayProof
+\]
+Comme $n = \max(\pheight{\pi_1}, \pheight{\pi_2}) + 1$,
+on a $\pheight{\pi_1} < n$ et $\pheight{\pi_2} < n$.
+L'hypothèse de récurrence fournit des preuves
+$\pi_1'$ et~$\pi_2'$ de
+$\Gamma \Sequent \Delta', !B, !A$ et
+$\Gamma \Sequent \Delta', !C, !A$.
+Par $\RightR{\land}$, on obtient une preuve~$\pi'$
+de $\Gamma \Sequent \Delta', !B \land !C, !A$ :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1'$}
+  \Deduce$\Gamma \fCenter \Delta', !B, !A$
+  \AxiomC{}
+  \RightLabel{$\pi_2'$}
+  \Deduce$\Gamma \fCenter \Delta', !C, !A$
+  \RightLabel{\RightR{\land}}
+  \BinaryInf$\Gamma \fCenter \Delta', !B \land !C, !A$
+  \DisplayProof
+\]
+Sa hauteur est
+$\pheight{\pi'} = \max(\pheight{\pi_1'}, \pheight{\pi_2'}) + 1
+= \max(\pheight{\pi_1}, \pheight{\pi_2}) + 1 = \pheight{\pi}$.
+Les autres règles se traitent de la même manière :
+on garde l'inférence et on ajoute la formule
+au contexte des prémisses et de la conclusion.
+Pour les règles à constante propre, le renommage
+préalable assure toujours leur condition.
+L'affaiblissement à gauche se prouve de même.
+\end{proof}
+
+La \olref{prop:weak-G3c-adm}
+sera souvent utilisée. On note
+$\pi[\Pi \Sequent \Lambda]$ le résultat
+de l'application répétée de l'affaiblissement
+admissible à une preuve~$\pi$ de
+$\Gamma \Sequent \Delta$ : on ajoute
+à gauche les formules de~$\Pi$, et à droite
+celles de~$\Lambda$. On obtient ainsi une
+preuve de $\Gamma, \Pi \Sequent \Delta, \Lambda$.
+
+Le renommage des constantes propres s'applique aussi
+lorsque les formules ajoutées sont closes. Une telle
+formule peut contenir une constante employée comme
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+constante propre dans une inférence intérieure.
+
+\end{document}

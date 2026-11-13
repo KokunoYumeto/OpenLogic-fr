@@ -1,0 +1,128 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: primitive-recursion
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{pre}
+\olsection{Récurrence primitive}
+
+Tout entier naturel s'obtient à partir de~$0$ par un nombre fini
+d'applications de l'opération successeur~$+1$ : c'est~$0$, ou le
+successeur de~$0$, ou le successeur du successeur de~$0$, et ainsi
+de suite. On peut tirer parti de cette propriété pour définir une
+fonction $h\colon\Nat\to\Nat$ : (a)~on précise la valeur de $h$
+en~$0$; (b)~on indique comment calculer $h(x+1)$ à partir de
+$h(x)$. La première instruction donne directement $h(0)$ : la
+fonction est donc définie en~$0$. La seconde, appliquée avec $x=0$,
+permet de calculer $h(1)=h(0+1)$ à partir de~$h(0)$. Appliquée avec
+$x=1$, elle donne $h(2)=h(1+1)$ à partir de~$h(1)$, et ainsi de
+suite. Pour tout entier naturel~$x$, on parvient en un nombre fini
+d'étapes à celle qui définit $h(x+1)$ à partir de~$h(x)$; la fonction
+est donc définie sur tout~$\Nat$.\footnote{Correction éditoriale : la source inverse ici le sens du calcul en disant que $h(x)$ est défini à partir de $h(x+1)$. Les équations et la construction calculent au contraire $h(x+1)$ à partir de $h(x)$.}
+
+Supposons par exemple que la fonction $h\colon\Nat\to\Nat$ soit
+donnée par les deux équations suivantes :
+\begin{align*}
+h(0) & =  1\\
+h(x+1) & =  2 \cdot h(x)
+\end{align*}
+Si nous savons déjà multiplier, ces équations fournissent les
+informations requises en (a) et en~(b). En appliquant successivement
+la seconde, nous obtenons :
+\begin{align*}
+  h(1) & = 2\cdot h(0) = 2,\\
+  h(2) & = 2\cdot h(1) = 2\cdot 2,\\
+  h(3) & = 2 \cdot h(2) = 2\cdot 2 \cdot 2,\\
+  & \vdots
+\end{align*}
+La fonction ainsi définie est $h(x)=2^x$.
+
+La propriété des entiers naturels rappelée plus haut garantit
+l'unicité de la fonction~$h$ qui satisfait ces deux équations. Une
+paire d'équations de ce type constitue une \emph{définition par
+récurrence primitive} de~$h$. Elle est dite « récursive » parce que
+la définition, et plus précisément sa seconde équation, fait
+intervenir~$h$ elle-même dans le membre de droite. Elle est dite
+« primitive » parce que, pour définir $h(x+1)$, elle n'utilise que
+la valeur immédiatement précédente~$h(x)$. C'est le schéma le plus
+simple de définition récursive d'une fonction sur~$\Nat$.
+
+On peut aussi définir par récurrence primitive des fonctions plus
+fondamentales, comme l'addition et la multiplication. Cette fois,
+les fonctions ont deux arguments. On fixe l'un d'eux et l'on fait
+porter la récurrence sur l'autre. Pour définir $\Add(x,y)$, par
+exemple, on fixe~$x$ et l'on précise d'abord la valeur pour $y=0$,
+puis celle pour $y+1$ à partir de celle pour~$y$. L'argument~$x$
+étant fixé, il figure dans les deux membres des équations :
+\begin{align*}
+\Add(x,0) & =  x\\
+\Add(x,y+1) & =  \Add(x,y)+1
+\end{align*}
+Ces équations déterminent $\Add(x,y)$ pour tous $x$ \emph{et}~$y$.
+Pour calculer $\Add(2,3)$, par exemple, on les applique en fixant
+$x=2$ : la première donne $\Add(2,0)=2$, puis la seconde donne
+successivement $\Add(2,1)=2+1=3$, $\Add(2,2)=3+1=4$ et
+$\Add(2,3)=4+1=5$.
+
+Dans la seconde équation définissant $\Add$, le signe~$+$ du membre
+de droite ne sert qu'à ajouter~$1$. Autrement dit, nous appliquons
+la fonction successeur $\Succ(z)=z+1$ à la valeur précédente
+$\Add(x,y)$ pour définir $\Add(x,y+1)$. On peut donc concevoir
+cette définition récursive au moyen d'une seule fonction appliquée
+à la valeur précédente. Il est toutefois sans inconvénient, et
+parfois nécessaire, que cette fonction dépende aussi de $x$ et
+de~$y$. Considérons :
+\begin{align*}
+  \Mult(x,0) & =  0 \\
+  \Mult(x,y+1) & =  \Add(\Mult(x,y),x)
+\end{align*}
+Cette définition par récurrence primitive applique $\Add$ à la
+valeur précédente $\Mult(x,y)$ et au premier argument~$x$. Elle
+définit elle aussi $\Mult(x,y)$ pour tous $x$ et~$y$. On détermine
+par exemple $\Mult(2,3)$ en calculant successivement $\Mult(2,0)$,
+$\Mult(2,1)$, $\Mult(2,2)$ et~$\Mult(2,3)$ :
+\begin{align*}
+  \Mult(2,0) & = 0\\
+  \Mult(2,1) & = \Mult(2,0+1) =
+  \Add(\Mult(2,0), 2) = \Add(0, 2) = 2\\
+  \Mult(2,2) & = \Mult(2,1+1) =
+  \Add(\Mult(2,1), 2) = \Add(2, 2) = 4\\
+  \Mult(2,3) & = \Mult(2,2+1) =
+  \Add(\Mult(2,2), 2) = \Add(4, 2) = 6
+\end{align*}
+
+Voici le schéma général. Pour définir par récurrence primitive une
+fonction $h(x_0,\dots,x_{k-1},y)$, on donne deux équations. La
+première définit $h(x_0,\dots,x_{k-1},0)$ sans faire appel à~$h$.
+La seconde définit $h(x_0,\dots,x_{k-1},y+1)$ à partir de la
+valeur précédente $h(x_0,\dots,x_{k-1},y)$, des autres arguments
+$x_0,\dots,x_{k-1}$ et de~$y$. Seule cette valeur immédiatement
+précédente de~$h$ peut intervenir dans la seconde équation. Si les
+opérations données par les membres de droite sont elles-mêmes des
+fonctions $f$ et~$g$, le schéma prend la forme suivante :
+\begin{align*}
+  h(x_0, \dots, x_{k-1}, 0) & = f(x_0, \dots, x_{k-1})\\
+  h(x_0, \dots, x_{k-1}, y+1) & =
+  g(x_0, \dots, x_{k-1}, y, h(x_0, \dots, x_{k-1}, y))
+\end{align*}
+Pour $\Add$, on a $k=1$, $f(x_0)=x_0$ (la fonction identité) et
+$g(x_0,y,z)=z+1$ (la fonction à trois arguments qui renvoie le
+successeur du troisième) :
+\begin{align*}
+  \Add(x_0, 0) & = f(x_0) = x_0\\
+  \Add(x_0, y+1) & = g(x_0, y, \Add(x_0, y)) =
+  \Succ(\Add(x_0, y))
+\end{align*}
+Pour $\Mult$, on a $f(x_0)=0$ (la fonction constante de valeur~$0$)
+et $g(x_0,y,z)=\Add(z,x_0)$ (la fonction à trois arguments qui
+renvoie la somme du dernier et du premier) :
+\begin{align*}
+  \Mult(x_0,0) & =  f(x_0) = 0 \\
+  \Mult(x_0,y+1) & =  g(x_0, y, \Mult(x_0,y)) =
+  \Add(\Mult(x_0,y), x_0)
+\end{align*}
+
+\end{document}

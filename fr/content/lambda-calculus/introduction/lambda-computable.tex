@@ -1,0 +1,54 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: lambda-computable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{cmp}
+\olsection{Les fonctions \texorpdfstring{$\lambd$}{λ}-définissables sont calculables}
+
+\begin{thm}
+\ollabel{thm:lambda-computable}
+Toute fonction partielle~$f$ définie par un lambda-terme
+est partielle calculable.
+\end{thm}
+
+\begin{proof}
+Supposons que la fonction~$f$ soit définie par un
+lambda-terme~$X$. Décrivons une procédure informelle
+pour calculer~$f$. Étant donnés $m_0$, \dots,
+$m_{n-1}$, écrivons le terme
+$X\,\num{m_0}\,\dots\,\num{m_{n-1}}$.
+Construisons un arbre : plaçons d'abord toutes les
+réductions en une étape du terme initial, puis, au
+niveau suivant, toutes les réductions en une étape
+de ces termes, c'est-à-dire les réductions en deux
+étapes du terme initial, et poursuivons ainsi.
+Parcourons l'arbre niveau par niveau, en commençant par le terme initial. Si nous atteignons
+un numéral, à $\alpha$-équivalence près, renvoyons l'entier qu'il représente.
+Si aucun numéral n'est jamais atteint, la recherche
+continue indéfiniment : $f$ n'est pas définie pour
+ces arguments.
+
+En invoquant la thèse de Church, nous pouvons conclure
+que cette fonction est partielle calculable. Une
+meilleure démonstration donnerait une description
+récursive de cette recherche. On pourrait, par exemple,
+définir une suite de fonctions et de relations primitives
+récursives, « $\fn{IsASubterm}$ »,
+« $\fn{Substitute}$ »,
+« $\fn{ReducesToInOneStep}$ »,
+« $\fn{ReductionSequence}$ »,
+« $\fn{Numeral}$ », etc. Pour calculer
+$f(m_0, \dots, m_{n-1})$, la procédure récursive
+partielle recherche alors une suite de réductions
+en une étape qui part de
+$X\,\num{m_0}\,\dots\,\num{m_{n-1}}$ et aboutit
+à un numéral, puis renvoie l'entier correspondant.
+Les détails sont longs et fastidieux, mais ne présentent
+pas d'autre difficulté.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,53 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: normal-form
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{nft}
+\olsection{Le théorème de forme normale}
+
+\begin{thm}[Théorème de forme normale de Kleene]
+\ollabel{thm:kleene-nf}
+Il existe une relation récursive primitive $T(e,x,s)$ et une
+fonction récursive primitive $U(s)$ ayant la propriété suivante :
+pour toute fonction récursive partielle \emph{unaire}~$f$,
+il existe un entier~$e$ tel que
+\[
+f(x) \simeq U(\umin{s}{T(e, x, s)})
+\]
+pour tout~$x$. Les fonctions de plusieurs arguments peuvent
+être traitées en codant leurs tuples d'arguments dans~$x$,
+ou au moyen d'une relation~$T$ adaptée à chaque arité.\footnote{Précision éditoriale : la formule source prend un seul argument $x$. Nous explicitons cette arité ; elle représente les autres arités après codage des tuples.}
+\end{thm}
+
+\begin{explain}
+La démonstration du théorème est complexe, mais son idée
+fondamentale est simple. Toute fonction récursive partielle
+possède un \emph{indice}~$e$, c'est-à-dire, intuitivement,
+un entier qui code son programme ou sa définition. Lorsque
+$f(x) \fdefined$, on peut enregistrer systématiquement
+son calcul et coder cet enregistrement par un entier~$s$.
+Une fonction récursive primitive peut vérifier, à partir de
+$x$ et de la définition codée par~$e$, que $s$ est bien
+le code d'un calcul terminé. La relation~$T$, qui exprime que
+« la fonction d'indice~$e$ possède un calcul sur l'entrée~$x$
+et que $s$ code ce calcul », est donc récursive primitive.
+Le résultat du calcul, c'est-à-dire la valeur de~$f(x)$,
+se déduit lui aussi récursivement primitivement de
+l'enregistrement complet~$s$.
+
+Le théorème montre qu'une seule recherche non bornée suffit
+à définir toute fonction récursive partielle. Il suffit de
+parcourir les entiers jusqu'à trouver le code d'un calcul
+de la fonction d'indice~$e$ sur l'entrée~$x$. Nous pouvons
+donc employer les entiers~$e$ comme « noms » de fonctions
+récursives partielles et noter $\cfind{e}$ la fonction~$f$
+définie par l'équation du théorème. Une même fonction peut
+avoir plusieurs indices; en fait, toute fonction récursive
+partielle en a une infinité dans le codage usuel des programmes, où l'on peut ajouter des instructions inutiles.
+\end{explain}
+
+\end{document}

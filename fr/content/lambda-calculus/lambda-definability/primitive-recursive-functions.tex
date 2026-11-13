@@ -1,0 +1,197 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: primitive-recursive-functions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{prf}
+\olsection{Fonctions récursives primitives \texorpdfstring{$\lambda$}{λ}-définissables}
+
+Rappelons que les fonctions récursives
+primitives s'obtiennent à partir des
+fonctions initiales $\Zero$, $\Succ$ et
+$\Proj{n}{i}$ par composition et par
+récurrence primitive.
+
+\begin{lem}
+\ollabel{lem:basic}
+Les fonctions initiales $\Zero$,
+$\Succ$ et les projections
+$\Proj{n}{i}$ sont $\lambda$-définissables.
+\end{lem}
+
+\begin{proof}
+Les termes suivants les définissent :
+\begin{align*}
+  \fn{Zero} & \ident
+    \lambd[a][\lambd[fx][x]]\\
+  \fn{Succ} & \ident
+    \lambd[a][\lambd[fx][f(a f x)]]\\
+  \fn{Proj}^n_i & \ident
+    \lambd[x_0\dots x_{n-1}][x_i].
+\end{align*}
+\end{proof}
+
+\begin{lem}
+\ollabel{lem:comp}
+Supposons que $f$ soit une fonction
+totale à $k$ arguments et que
+$g_0,\dots,g_{k-1}$ soient des fonctions
+totales à $n$ arguments, toutes
+$\lambda$-définissables respectivement
+par $F$ et $G_0,\dots,G_{k-1}$.
+La fonction $h$ obtenue par composition
+est alors $\lambda$-définissable.
+\end{lem}
+
+\begin{proof}
+Un terme qui définit~$h$ est
+\[
+  H \ident
+  \lambd[x_0\dots x_{n-1}]
+    [F\,(G_0 x_0\dots x_{n-1})
+       \dots(G_{k-1}x_0\dots x_{n-1})].
+\]
+La vérification est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Compléter la preuve du
+\olref[lam][rep][prf]{lem:comp} : montrer
+que, pour tous $m_0,\dots,m_{n-1}$,
+$H\,\num{m_0}\dots\num{m_{n-1}}
+\red\num{h(m_0,\dots,m_{n-1})}$.
+\end{prob}
+
+Le \olref{lem:comp} n'exige pas
+que $f$ ou les $g_i$ soient récursives
+primitives. Pour l'argument donné ici,
+leur totalité et leur
+$\lambda$-définissabilité suffisent.
+
+\begin{lem}\ollabel{lem:prim}
+Supposons que $f$ soit une fonction
+totale à $n$ arguments et~$g$ une
+fonction totale à $n+2$ arguments,
+$\lambda$-définies par $F$ et~$G$.
+Si $h$ est obtenue de $f$ et~$g$
+par récurrence primitive, alors $h$
+est $\lambda$-définissable.
+\end{lem}
+
+\begin{proof}
+La fonction~$h$ est déterminée par
+\begin{align*}
+  h(x_1,\dots,x_n,0)
+    &=f(x_1,\dots,x_n),\\
+  h(x_1,\dots,x_n,y+1)
+    &=g(x_1,\dots,x_n,y,
+        h(x_1,\dots,x_n,y)).
+\end{align*}
+La définition itère une transition
+qui emploie l'indice courant et la
+valeur déjà obtenue. Un numéral de
+Church peut compter ces itérations.
+
+Pour alléger l'écriture, traitons
+un seul paramètre~$x$ en plus de
+l'argument de récurrence~$y$.
+Notons $D_x$ la transition sur les
+couples et posons
+\begin{align*}
+  D_x &\ident
+    \lambd[p][\tuple{
+      \fn{Succ}(\fn{Fst}\,p),
+      G\,x\,(\fn{Fst}\,p)\,(\fn{Snd}\,p)}],\\
+  H &\ident
+    \lambd[x][\lambd[y][
+      \fn{Snd}(y D_x
+      \tuple{\num{0},F\,x})]].
+\end{align*}
+L'état est un couple dont la première
+composante est l'indice courant et la
+seconde la valeur correspondante de~$h$.
+Chaque application de $D_x$ augmente
+l'indice et calcule la valeur suivante;
+à la fin, $\fn{Snd}$ renvoie cette valeur.
+
+Fixons $n$ et écrivons $D_n$ pour le
+terme obtenu de $D_x$ en remplaçant
+$x$ par~$\num{n}$. Montrons par
+récurrence sur~$m$ que
+\[
+  D_n^m\tuple{\num{0},F\,\num{n}}
+  \red\tuple{\num{m},\num{h(n,m)}}.
+\]
+Pour $m=0$, le terme de gauche est
+$\tuple{\num{0},F\,\num{n}}$.
+Puisque $F$ définit~$f$, il se réduit
+à $\tuple{\num{0},\num{f(n)}}$,
+soit $\tuple{\num{0},\num{h(n,0)}}$.
+
+Supposons maintenant l'énoncé vrai
+pour~$m$. L'application de $D_n$
+au couple obtenu donne
+\begin{align*}
+  D_n^{m+1}\tuple{\num{0},F\,\num{n}}
+    &\red D_n\,
+      \tuple{\num{m},\num{h(n,m)}}\\
+    &\red
+      \tuple{\fn{Succ}(\num{m}),
+        G\,\num{n}\,\num{m}\,
+          \num{h(n,m)}}\\
+    &\red
+      \tuple{\num{m+1},
+        \num{g(n,m,h(n,m))}}\\
+    &\ident
+      \tuple{\num{m+1},
+        \num{h(n,m+1)}}.
+\end{align*}
+Le troisième pas utilise les termes
+qui définissent $\Succ$ et~$g$;
+la dernière égalité est l'équation
+de récurrence. L'invariant est établi.
+
+Enfin, sur les entrées~$\num{n}$ et
+$\num{m}$, le terme~$H$ donne
+\begin{align*}
+  H\,\num{n}\,\num{m}
+    &\red \fn{Snd}
+      (\num{m}D_n
+        \tuple{\num{0},F\,\num{n}})\\
+    &\red \fn{Snd}
+      (D_n^m\tuple{\num{0},F\,\num{n}})\\
+    &\red \fn{Snd}
+      \tuple{\num{m},\num{h(n,m)}}\\
+    &\red \num{h(n,m)}.
+\end{align*}
+Il définit donc~$h$ dans ce cas;
+les autres paramètres se traitent
+de la même manière.
+\end{proof}
+
+\begin{prop}
+Toute fonction récursive primitive
+est $\lambda$-définissable.
+\end{prop}
+
+\begin{proof}
+Les fonctions initiales sont
+$\lambda$-définissables par le
+\olref{lem:basic}. Le
+\olref{lem:comp} et le \olref{lem:prim}
+donnent la fermeture par composition
+et par récurrence primitive.
+\end{proof}
+
+À chaque étape de la récurrence, le couple fournit le
+numéral du résultat précédent. Dans une récurrence partielle stricte,
+un résultat précédent indéfini doit rendre la nouvelle
+valeur indéfinie. Un terme représentant $g$ peut ignorer
+l'argument qui lui transmet ce résultat et produire une
+forme normale. La construction de ce lemme garantit donc
+la récurrence des fonctions totales.
+
+\end{document}

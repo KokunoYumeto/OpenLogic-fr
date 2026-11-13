@@ -1,0 +1,258 @@
+% Part: many-valued-logic
+% Chapter: three-valued-logics
+% Section: kleene
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{thr}{skl}
+
+\olsection{Les logiques de Kleene}
+
+Stephen Kleene a introduit deux
+logiques à trois valeurs motivées
+par une interprétation où les valeurs
+de vérité sont les résultats de
+procédures de calcul. Une procédure
+peut fournir $\True$ ou $\False$,
+mais elle peut aussi ne pas terminer.
+Dans ce dernier cas, la valeur de
+vérité correspondante est indéfinie,
+ce que représente~$\Undef$.
+
+Pour calculer la négation d'une
+proposition~$!A$, on calculerait
+d'abord la valeur de~$!A$, puis on
+renverrait la valeur opposée. Si le
+calcul de~$!A$ ne termine pas,
+l'ensemble de la procédure ne termine
+pas non plus : la négation de~$\Undef$
+est donc~$\Undef$.
+
+Pour calculer une conjonction
+$!A\land !B$, deux approches sont
+possibles. On peut d'abord calculer
+$!A$, puis $!B$; le résultat est
+$\True$ si les deux calculs donnent
+$\True$, et $\False$ sinon. Si
+l'un des calculs ne termine pas,
+l'ensemble de la procédure ne termine
+pas non plus. Dans cette approche,
+une conjonction est donc indéfinie
+dès que l'un de ses membres l'est;
+il en va de même pour la disjonction.
+
+Si, en revanche, nous pouvons évaluer
+$!A$ et $!B$ en parallèle, nous
+pouvons faire mieux. Dès qu'une des
+deux procédures termine avec le
+résultat~$\False$, nous pouvons
+arrêter le calcul d'une conjonction :
+son résultat doit être faux, même si
+l'autre membre est indéfini. De même,
+pour une disjonction calculée en
+parallèle, nous pouvons nous arrêter
+dès que l'une des procédures renvoie
+$\True$ : le résultat doit être vrai.
+Dans cette approche, nous pouvons
+donc connaître la valeur d'un énoncé
+composé même si celle d'un de ses
+composants est indéfinie. Nous pouvons
+alors lire $\Undef$ comme «~inconnue~»
+plutôt que comme «~indéfinie~».
+
+L'évaluation qui attend les deux résultats correspond aux tables
+de la logique faible de Kleene. Celle qui peut s'arrêter dès
+qu'un résultat suffit correspond aux tables de la logique forte.
+Dans les deux cas, le conditionnel $!A\lif !B$ se définit par
+$\lnot !A\lor !B$.
+
+\begin{defn}
+La \emph{logique forte de Kleene}
+$\LogKs$ est définie par la matrice
+suivante :
+\begin{enumerate}
+  \item Le fragment de $\Lang L_0$ dont les connecteurs sont $\lnot$,
+  $\land$, $\lor$ et $\lif$.
+  \item L'ensemble des valeurs de vérité
+  $V=\{\True,\Undef,\False\}$.
+  \item $\True$ est la seule valeur
+  désignée, c'est-à-dire
+  $V^+=\{\True\}$.
+  \item Les fonctions de vérité sont
+  données par les tables suivantes :
+  \begin{center}
+    \begin{tabular}{c|c}
+      $\tf{\lnot}$ & \\
+      \hline
+      $\True$ & $\False$ \\
+      $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\land}[\LogKs]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\False$ \\
+      $\Undef$ & $\Undef$ & $\Undef$ & $\False$ \\
+      $\False$ & $\False$ & $\False$ & $\False$
+    \end{tabular}
+    \\[2ex]
+    \begin{tabular}{c|ccc}
+      $\tf{\lor}[\LogKs]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\True$ & $\True$ \\
+      $\Undef$ & $\True$ & $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$ & $\Undef$ & $\False$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\lif}[\LogKs]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\False$ \\
+      $\Undef$ & $\True$ & $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$ & $\True$ & $\True$
+    \end{tabular}
+  \end{center}
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+La \emph{logique faible de Kleene}
+$\LogKw$ est définie par la matrice
+suivante :
+\begin{enumerate}
+  \item Le fragment de $\Lang L_0$ dont les connecteurs sont $\lnot$,
+  $\land$, $\lor$ et $\lif$.
+  \item L'ensemble des valeurs de vérité
+  $V=\{\True,\Undef,\False\}$.
+  \item $\True$ est la seule valeur
+  désignée, c'est-à-dire
+  $V^+=\{\True\}$.
+  \item Les fonctions de vérité sont
+  données par les tables suivantes :
+  \begin{center}
+    \begin{tabular}{c|c}
+      $\tf{\lnot}$ & \\
+      \hline
+      $\True$ & $\False$ \\
+      $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\land}[\LogKw]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\False$ \\
+      $\Undef$ & $\Undef$ & $\Undef$ & $\Undef$ \\
+      $\False$ & $\False$ & $\Undef$ & $\False$
+    \end{tabular}
+    \\[2ex]
+    \begin{tabular}{c|ccc}
+      $\tf{\lor}[\LogKw]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\True$ \\
+      $\Undef$ & $\Undef$ & $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$ & $\Undef$ & $\False$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\lif}[\LogKw]$ & $\True$ & $\Undef$ & $\False$ \\
+      \hline
+      $\True$ & $\True$ & $\Undef$ & $\False$ \\
+      $\Undef$ & $\Undef$ & $\Undef$ & $\Undef$ \\
+      $\False$ & $\True$ & $\Undef$ & $\True$
+    \end{tabular}
+  \end{center}
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+  $\LogKs$ et $\LogKw$ n'ont aucune tautologie dans le langage sans
+  constantes des deux matrices.
+\end{prop}
+
+\begin{proof}
+  Si $\pAssign{v}(p)=\Undef$ pour
+  toute variable propositionnelle~$p$,
+  alors toute formule~$!A$ a la
+  valeur $\pValue{v}(!A)=\Undef$,
+  car, dans les deux logiques,
+  \[
+    \tf{\lnot}(\Undef)
+    =\tf{\lor}(\Undef,\Undef)
+    =\tf{\land}(\Undef,\Undef)
+    =\tf{\lif}(\Undef,\Undef)
+    =\Undef.
+  \]
+  Or $\Undef\notin V^+$ pour
+  $\LogKs$ comme pour $\LogKw$;
+  $!A$ n'est donc pas désignée
+  dans cette valuation.
+\end{proof}
+
+Bien que les logiques forte et faible
+de Kleene n'aient aucune tautologie,
+leurs relations de conséquence ne
+sont pas triviales.
+
+\begin{prob}
+  Parmi les relations suivantes,
+  lesquelles valent (a) dans la logique
+  forte et (b) dans la logique faible
+  de Kleene? Donner une table de vérité
+  pour chacune.
+  \begin{enumerate}
+    \item $p,p\lif q\Entails q$;
+    \item $p\lor q,\lnot p\Entails q$;
+    \item $p\land q\Entails p$;
+    \item $p\Entails p\land p$;
+    \item $p\Entails p\lor q$.
+  \end{enumerate}
+\end{prob}
+
+Dmitry Bochvar interprétait $\Undef$
+comme «~dépourvu de sens~» et tenta
+de s'en servir pour résoudre des
+paradoxes tels que celui du Menteur,
+en stipulant que les énoncés
+paradoxaux prennent la valeur~$\Undef$.
+Il introduisit une logique qui est
+essentiellement la logique faible de
+Kleene étendue par des connecteurs
+supplémentaires, dont deux sont la
+«~négation externe~» et l'opérateur
+«~est indéfini~» :
+\begin{center}
+  \begin{tabular}{c|c}
+    $\tf{\sim}$ & \\
+    \hline
+    $\True$ & $\False$ \\
+    $\Undef$ & $\True$ \\
+    $\False$ & $\True$
+  \end{tabular}
+  \quad
+  \begin{tabular}{c|c}
+    $\tf{+}$ & \\
+    \hline
+    $\True$ & $\False$ \\
+    $\Undef$ & $\True$ \\
+    $\False$ & $\False$
+  \end{tabular}
+\end{center}
+
+\begin{prob}
+  Peut-on définir $\sim$ dans la
+  logique de Bochvar à partir de
+  $\lnot$ et de~$+$? Autrement dit,
+  peut-on trouver une formule contenant
+  seulement la variable propositionnelle
+  $p$, mais pas~$\sim$, et prenant
+  toujours la même valeur de vérité
+  que~$\mathord{\sim}p$? Donner une
+  table de vérité pour justifier
+  votre réponse.
+\end{prob}
+
+\end{document}

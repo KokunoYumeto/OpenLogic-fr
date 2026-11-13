@@ -1,0 +1,45 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{int}
+
+\olsection{Introduction}
+
+Ce chapitre étudie la calculabilité d'ensembles d'énoncés
+à partir de leur codage arithmétique.
+
+Nous disposons maintenant des résultats suivants :
+\begin{enumerate}
+\item une définition de la représentabilité d'une fonction totale
+  dans~$\Th{Q}$
+  (\olref[req][int]{defn:representable-fn});
+\item une définition de la représentabilité d'une relation
+  dans~$\Th{Q}$
+  (\olref[req][rel]{defn:representing-relations});
+\item un théorème selon lequel les fonctions totales représentables
+  dans~$\Th{Q}$ sont exactement les fonctions totales calculables
+  (\olref[req][int]{thm:representable-iff-comp});
+\item un théorème selon lequel les relations représentables
+  dans~$\Th{Q}$ sont exactement les relations calculables
+  (\olref[req][rel]{thm:representing-rels}).
+\end{enumerate}
+
+Une {\em théorie} est un ensemble d'!!{sentence}s clos par
+déduction : si $T$ démontre~$!A$, alors $!A$ appartient à~$T$.
+On peut voir une théorie comme un ensemble d'!!{sentence}s
+auquel on a ajouté toutes leurs conséquences.
+Désormais, $\Th{Q}$ désignera la {\em théorie} constituée
+de tous les !!{sentence}s déductibles des huit axiomes
+donnés en \olref[req][int]{sec}.
+Rappelons que nous pouvons coder les !!{formula}s de
+$\Th{Q}$ par des nombres; si $!A$ est une telle
+!!{formula}, $\Gn{!A}$ désigne son numéro de Gödel.
+Grâce à ce codage, nous pouvons demander si divers
+ensembles de !!{formula}s sont calculables.
+
+\end{document}

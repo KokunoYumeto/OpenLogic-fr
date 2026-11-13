@@ -72,12 +72,12 @@ $\Nat \times \Nat$ est !!{enumerable}.
 
 \begin{proof}
 Soit $f \colon \Nat \to \Nat\times\Nat$ la fonction qui associe
-à chaque $k \in \Nat$ le couple $\tuple{n,m} \in \Nat \times \Nat$
-dont la case, à la ligne d’indice~$n$ et à la colonne d’indice~$m$,
-porte le numéro~$k$ dans le tableau en zigzag de Cantor.
-Chaque couple est atteint : il se trouve sur la diagonale finie
-où la somme des deux coordonnées vaut $n+m$, après un nombre fini
-de diagonales finies. La fonction $f$ est donc surjective.
+à chaque $k \in \Nat$ le couple dont la case porte le numéro~$k$.
+La diagonale $n+m=s$ compte $s+1$ cases et commence au numéro
+$s(s+1)/2$, qui est le nombre de cases des diagonales précédentes.
+Les diagonales successives couvrent ainsi chaque numéro exactement
+une fois. Chaque couple est atteint sur la diagonale de ses indices.
+La fonction $f$ est donc surjective.
 \end{proof}
 
 \begin{explain}
@@ -112,14 +112,14 @@ un axe suit l’énumération de $\Nat$ et l’autre celle de $\Nat^2$ :
 \end{array}
 \]
 En parcourant ce tableau par la méthode en zigzag de Cantor,
-on obtient donc une énumération de~$\Nat^3$. On peut poursuivre
-de même et construire une énumération de $\Nat^n$ pour tout entier
-naturel~$n$. Pour $n=0$, on adopte la convention selon laquelle
-$\Nat^0$ ne contient que le $0$-uplet, c’est-à-dire la suite
-vide.\footnote{Convention explicitée par l’édition française :
-la définition antérieure des puissances cartésiennes commençait
-à l’exposant~$1$ ; l’énoncé suivant inclut aussi l’exposant~$0$.}
-On a ainsi :
+on obtient une énumération de~$\Nat^3$. Par récurrence, une fois
+$\Nat^n$ énuméré, on procède de même avec le produit de $\Nat^n$
+par $\Nat$ pour énumérer $\Nat^{n+1}$. Pour $n=0$, on adopte
+la convention selon laquelle $\Nat^0$ contient exactement
+la suite vide, l’unique suite de longueur nulle.
+%
+%
+On a ainsi le résultat suivant.
 \end{explain}
 
 \begin{prop}

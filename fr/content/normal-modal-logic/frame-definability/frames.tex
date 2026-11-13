@@ -1,0 +1,59 @@
+% Section: frames
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{frd}{fra}
+
+\olsection{Cadres}
+
+\begin{defn}
+  Un \emph{cadre} est une paire $\mModel{F} = \tuple{W,R}$,
+  où $W$ est un ensemble non vide de mondes et $R$ une relation
+  binaire sur~$W$. Un modèle $\mModel{M}$ est \emph{fondé sur}
+  le cadre $\mModel{F} = \tuple{W,R}$ si et seulement si
+  $\mModel{M} = \tuple{W, R, V}$ pour une certaine attribution~$V$.
+\end{defn}
+
+\begin{defn}
+  Si $\mModel{F}$ est un cadre, nous disons que $!A$ est
+  \emph{valide dans~$\mModel{F}$}, ce que nous notons
+  $\mModel{F} \Entails !A$, si $\mSat{M}{!A}$ pour tout
+  modèle~$\mModel{M}$ fondé sur~$\mModel{F}$.
+
+  Si $\mClass{F}$ est une classe de cadres, nous disons que
+  $!A$ est \emph{valide dans~$\mClass{F}$}, ce que nous notons
+  $\mClass{F} \Entails !A$, si et seulement si
+  $\mModel{F} \Entails !A$ pour tout
+  cadre~$\mModel{F} \in \mClass{F}$.
+\end{defn}
+
+La vérité d'un schéma dans un modèle porte sur la valuation
+de ce modèle. Sa validité dans un cadre porte sur toutes
+les valuations sur ce cadre. Cette quantification permet d'établir
+les correspondances entre schémas et propriétés de la relation
+d'accessibilité~$R$. Ainsi, le schéma \Ax{T} est valide dans un
+cadre si et seulement si le cadre est réflexif. Il est donc vrai
+dans tous les modèles réflexifs, et il peut aussi être vrai dans
+un modèle non réflexif. Prenons deux mondes dont chacun a pour
+seul successeur l'autre, et donnons à chaque variable
+propositionnelle la même valeur dans les deux mondes. Par
+induction sur les formules, toute formule a la même valeur dans
+les deux mondes, puisque leurs successeurs s'échangent.
+Ainsi, toute instance de \Ax{T} est vraie dans ce modèle.
+
+\begin{rem}
+La validité dans une classe de cadres est un cas particulier
+de la validité dans une classe de modèles :
+$\mClass{F} \Entails !A$ si et seulement si
+$\mClass{C} \Entails !A$, où $\mClass{C}$ est la classe
+de tous les modèles fondés sur un cadre de~$\mClass{F}$.
+
+Si une !!{formula} ou un schéma est valide, c'est-à-dire
+valide relativement à la classe de \emph{tous} les modèles,
+il est aussi valide relativement à toute classe~$\mClass{F}$
+de cadres.
+\end{rem}
+
+\end{document}

@@ -12,10 +12,10 @@
       
 \olsection{Notions de théorie de la démonstration}
 
-\begin{editorial}
-Cette section rassemble les définitions de la relation de
-!!{derivability} et de la cohérence pour les tableaux.
-\end{editorial}
+Pour établir une conclusion par les !!{tableau}x, on choisit
+un nombre fini de prémisses, signées vraies, et on signe
+la conclusion fausse. La !!{derivability} est établie
+si l'on peut fermer toutes les branches du !!{tableau}.
 
 \begin{explain}
 Nous avons défini plusieurs notions sémantiques importantes : validité,
@@ -31,8 +31,8 @@ notions constitue une découverte importante : c'est le contenu des
 
 \begin{defn}[Théorèmes]
 Un !!{sentence}~$!A$ est un \emph{théorème} s'il existe un
-!!{tableau} fermé pour~$\sFmla{\False}{!A}$. On écrit $\Proves !A$
-si $!A$ est un théorème, et $\Proves/ !A$ dans le cas contraire.
+!!{tableau} fermé ayant pour seule hypothèse $\sFmla{\False}{!A}$.
+On écrit $\Proves !A$ dans ce cas, et $\Proves/ !A$ sinon.
 \end{defn}
 
 \begin{defn}[!!^{derivability}]
@@ -113,6 +113,14 @@ $\Delta_0 = \{!C_1, \dots, !C_n\} \subseteq \Delta$ telle que
 \end{align*}
 possède un !!{tableau} fermé.
 
+\iftag{FOL}{Avant de greffer les deux tableaux, renommons au besoin
+leurs constantes propres. Pour chaque inférence qui introduit une
+telle constante, choisissons un symbole encore inutilisé dans les
+tableaux et dans les hypothèses du tableau final. Remplaçons la
+constante par ce symbole dans le sous-arbre issu de l'inférence.
+Les constantes propres restent ainsi absentes des formules qui
+précèdent leurs inférences.}{}
+
 Considérons maintenant le !!{tableau} ayant pour hypothèses
 \[
 \sFmla{\False}{!B},
@@ -139,14 +147,6 @@ et obtenir un !!{tableau} fermé. Cela montre que
 $\Gamma \cup \Delta \Proves !B$.
 \end{proof}
 
-\begin{editorial}
-Dans le paragraphe introductif, la mention des structures dans la
-source est adaptée en valuations pour la présentation propositionnelle.
-Dans la preuve de transitivité, la source écrit par erreur
-$!D_1, \dots, !D_m \subseteq \Gamma$. Les accolades rétablissent la
-partie finie $\{!D_1, \dots, !D_m\} \subseteq \Gamma$ exigée par la
-définition de la dérivabilité.
-\end{editorial}
 
 Remarquons que cela signifie en particulier que, si
 $\Gamma \Proves !A$ et $!A \Proves !B$, alors $\Gamma \Proves !B$.

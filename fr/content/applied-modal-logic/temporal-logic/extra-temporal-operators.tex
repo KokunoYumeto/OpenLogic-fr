@@ -1,0 +1,45 @@
+% Part: applied-modal-logics
+% Chapter: temporal-logic
+% Section: extra-operators
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{tl}{ext}
+
+\olsection{Autres opérateurs de la logique temporelle}
+
+Outre les opérateurs unaires du passé et du futur, les logiques
+temporelles comprennent parfois des opérateurs binaires $\Since $
+et~$\Until$, destinés à exprimer «~depuis~» (\emph{since}) et
+«~jusqu'à~» (\emph{until}). Il faut alors ajouter $\Since $ et~$\Until$
+au langage de la logique temporelle, ainsi que la clause suivante à
+la définition d'une !!{formula} temporelle :
+
+\begin{itemize}
+\item[] Si $!A$ et $!B$ sont des !!{formula}s, alors $(\Since  !A !B)$
+  et $(\Until !A !B)$ sont toutes deux des !!{formula}s.
+\end{itemize}
+
+La sémantique de ces opérateurs est définie comme suit :
+
+\begin{defn}\ollabel{defn:since-until}
+  \emph{Vérité d'!!a{formula}~$!A$ à l'instant~$t$} dans un modèle~$\mModel M$ :
+  \begin{enumerate}
+  \item\ollabel{defn:sub:mmodels-since} \indcase{!A}{\Since  !B
+    !C}{$\mSat{M}{\indfrm}[t]$ si et seulement s'il existe $t' \in T$
+    tel que $t' \prec t$, avec $\mSat{M}{!B}[t']$ et, pour tout $s$
+    tel que $t' \prec s \prec t$, $\mSat{M}{!C}[s]$}
+  \item\ollabel{defn:sub:mmodels-until} \indcase{!A}{\Until !B
+    !C}{$\mSat{M}{\indfrm}[t]$ si et seulement s'il existe $t' \in T$
+    tel que $t \prec t'$, avec $\mSat{M}{!B}[t']$ et, pour tout $s$
+    tel que $t \prec s \prec t'$, $\mSat{M}{!C}[s]$}
+  \end{enumerate}
+\end{defn}
+
+La lecture intuitive de $\Since  !B !C$ est «~Depuis que $!B$ a été
+le cas, $!C$~a été le cas.~» Celle de $\Until !B !C$ est «~Jusqu'à
+ce que $!B$ soit le cas, $!C$~sera le cas.~»
+
+\end{document}

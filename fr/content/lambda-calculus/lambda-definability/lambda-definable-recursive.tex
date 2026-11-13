@@ -1,0 +1,82 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: lambda-definable-recursive
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{ldr}
+\olsection{Les fonctions \texorpdfstring{$\lambda$}{λ}-définissables sont récursives}
+
+Toutes les fonctions récursives
+partielles sont $\lambda$-définissables,
+et la réciproque est également vraie :
+toute fonction $\lambda$-définissable
+est récursive partielle.
+
+\begin{thm}
+\ollabel{thm:lambda-computable}
+Si une fonction partielle~$f$ est
+$\lambda$-définissable, alors elle
+est récursive partielle.
+\end{thm}
+
+\begin{proof}
+Esquissons seulement la preuve.
+Commençons par arithmétiser les
+lambda-termes : attribuons-leur
+systématiquement des numéros de Gödel,
+en utilisant le codage usuel des suites
+par les puissances de nombres premiers.
+Définissons ensuite une fonction
+récursive partielle $\fn{normalize}(t)$
+qui reçoit le numéro de Gödel~$t$
+d'un lambda-terme et renvoie celui
+de sa forme normale si elle existe;
+sinon, elle est indéfinie. Une recherche
+effective de réduction en ordre normal
+fournit cette fonction, en utilisant le
+fait qu'un terme ayant une forme normale
+est normalisé par cette stratégie.
+Définissons aussi deux fonctions
+récursives partielles :
+$\fn{toChurch}$ envoie un entier naturel
+sur le numéro de Gödel du numéral de
+Church correspondant, et
+$\fn{fromChurch}$ effectue l'opération
+inverse sur les codes de ces numéraux.
+
+Soit maintenant~$F$ un lambda-terme
+qui définit~$f$. Pour calculer
+$f(n_1,\dots,n_k)$, obtenons d'abord
+les codes des numéraux correspondants
+au moyen de $\fn{toChurch}(n_i)$.
+À partir de ces codes et de~$\Gn{F}$,
+construisons effectivement le code
+du terme $F\num{n_1}\dots\num{n_k}$.
+Appliquons-lui ensuite
+$\fn{normalize}$. Si $f(n_1,\dots,n_k)$
+est définie, ce terme a pour forme
+normale un numéral de Church; sinon,
+il n'a pas de forme normale et
+\[
+  \fn{normalize}
+    (\Gn{F\num{n_1}\dots\num{n_k}})
+\]
+est indéfinie. Dans le premier cas,
+$\fn{fromChurch}$ appliquée au code
+obtenu rend la valeur~$f(n_1,\dots,n_k)$.
+Cette composition de fonctions
+récursives partielles calcule donc~$f$.
+\end{proof}
+
+La procédure utilise la stratégie externe gauche pour calculer
+la forme normale lorsqu'elle existe. La standardisation est
+énoncée dans la preuve du
+\olref[lam][rep][par]{thm:partial-recursive-lambda}.
+Pour reconnaître un numéral et en lire l'entier, on peut employer
+les indices de de Bruijn, qui rendent la reconnaissance
+indépendante des noms des variables liées.
+
+\end{document}

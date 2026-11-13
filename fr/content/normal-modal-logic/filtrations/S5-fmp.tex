@@ -1,0 +1,95 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: S5-fmp
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{fmp}
+
+\olsection{\Log{K} et \Log{S5} ont la propriété du modèle fini}
+
+\begin{defn}
+  Un système $\Sigma$ de logique modale possède la \emph{propriété du
+    modèle fini} si, dès qu'une !!{formula}~$!A$ est vraie en un monde
+  d'un modèle de $\Sigma$, alors $!A$ est également vraie en un monde d'un
+  modèle \emph{fini} de~$\Sigma$.
+\end{defn}
+
+\begin{prop}\ollabel{prop:K-fmp}
+  \Log{K} possède la propriété du modèle fini.
+\end{prop}
+
+\begin{proof}
+  \Log{K} est l'ensemble des !!{formula}s valides : tout modèle est
+  donc un modèle de~\Log{K}. Par le \olref[fil]{thm:filtrations}, si
+  $\mSat{M}{!A}[w]$, alors $\mSat{M^*}{!A}[{[w]}]$ pour toute
+  filtration de~$\mModel{M}$ par l'ensemble $\Gamma$ des
+  sous-!!{formula}s de~$!A$. Toute !!{formula} n'a qu'un nombre fini
+  de sous-!!{formula}s ; $\Gamma$ est donc fini. Par la
+  \olref[fin]{prop:filt-are-finite}, $\card{W^*} \le 2^n$, où $n$
+  est le nombre de !!{formula}s de~$\Gamma$. Comme \Log{K} n'impose
+  aucune restriction aux modèles, $\mModel{M^*}$ est lui aussi un
+  modèle de \Log{K}.
+\end{proof}
+
+Pour établir par filtration qu'une logique~\Log{L} possède la
+propriété du modèle fini, il faut que la filtration d'un modèle de
+\Log{L} soit elle-même un modèle de \Log{L}. Cela demande souvent un
+travail considérable : toute filtration d'un modèle de \Log{L} n'est
+pas nécessairement un modèle de \Log{L}. Pour les modèles universels,
+toutefois, cette préservation a lieu.
+
+\begin{prop}\ollabel{prop:univ-fin}
+  Soit $\mClass{U}$ la classe des modèles universels (voir la
+  \olref[frd][es5]{prop:S5=univ}) et $\mClass{U}_\mathrm{Fin}$ la
+  classe des modèles universels finis. Toute !!{formula}~$!A$ est
+  valide dans $\mClass{U}$ si et seulement si elle est valide dans
+  $\mClass{U}_\mathrm{Fin}$.
+\end{prop}
+
+\begin{proof}
+  Tout modèle universel fini est universel ; l'implication directe est
+  donc immédiate. Pour la réciproque, supposons que~$!A$ soit fausse
+  en un monde $w$ d'un modèle universel $\mModel{M}$. Soit
+  $\Gamma$ l'ensemble formé de $!A$ et de toutes ses sous-formules ;
+  $\Gamma$ est manifestement fini. Prenons une filtration $\mModel{M^*}$ de
+  $\mModel{M}$ : le modèle $\mModel{M^*}$ est fini par la
+  \olref[fin]{prop:filt-are-finite}, et, par le
+  \olref[fil]{thm:filtrations}, $!A$ est fausse en $[w]$ dans
+  $\mModel{M^*}$. Il reste à voir que $\mModel{M^*}$ est aussi
+  universel : pour tous $u$ et $v$, on a $Ruv$ par hypothèse, donc
+  $R^*[u][v]$ par la
+  \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R}.
+\end{proof}
+
+\begin{cor}\ollabel{cor:S5fmp}
+  \Log{S5} possède la propriété du modèle fini.
+\end{cor}
+
+\begin{proof}
+  La complétude permet de réaliser dans un modèle réflexif et euclidien toute formule satisfiable dans un modèle de~\Log{S5}. Par la \olref[frd][es5]{prop:S5=univ}, appliquée à la négation de la
+  formule, si $!A$ est vraie en un monde
+  d'un modèle réflexif et euclidien, elle l'est aussi en un monde d'un
+  modèle universel. Par la \olref{prop:univ-fin}, elle est vraie en un
+  monde d'un modèle universel fini (une filtration du modèle universel
+  par l'ensemble des sous-!!{formula}s de~$!A$). Tout modèle
+  universel est aussi réflexif et euclidien ; $!A$ est donc vraie en
+  un monde d'un modèle réflexif et euclidien fini.
+\end{proof}
+
+\begin{prob}
+  Montrez que toute filtration d'un modèle sériel ou réflexif est,
+  respectivement, sérielle ou réflexive.
+\end{prob}
+
+\begin{prob}
+  Trouvez une filtration non symétrique (non transitive, non
+  euclidienne) d'un modèle symétrique (transitif, euclidien).
+\end{prob}
+Les deux passages entre classes de modèles s'obtiennent en
+appliquant les équivalences de validité à $\lnot !A$.
+En effet, dire qu'un monde satisfait $!A$ revient à dire que
+ce monde réfute $\lnot !A$.
+\end{document}

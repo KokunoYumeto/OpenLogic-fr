@@ -1,0 +1,70 @@
+% Part: first-order-logic
+% Chapter: models-theories
+% Section: expressing-props-of-structures
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{mat}{exs}
+
+\olsection{Exprimer des propriétés des structures}
+
+\begin{explain}
+Il est souvent utile et important d'énoncer des conditions portant
+sur des fonctions et des relations, ou, plus généralement, de dire
+que les fonctions et les relations d'une structure satisfont à ces
+conditions. Nous voudrions, par exemple, distinguer les
+!!{structure}s d'un langage qui « rendent compte » du sens que nous
+voulons donner aux !!{predicate}s de celles qui ne le font pas.
+Nous sommes bien sûr entièrement libres de préciser quelles
+!!{structure}s nous « visons » : nous pouvons exiger que
+l'interprétation du !!{predicate}~$\le$ soit un ordre, ou ne nous
+intéresser qu'aux interprétations de~$\Lang L$ dont le domaine est
+formé d'ensembles et où $\Obj \in$ désigne la relation
+« est !!a{element} de ». Mais pouvons-nous formuler ces exigences
+au moyen d'!!{sentence}s du langage ? En d'autres termes, quelles
+conditions sur !!a{structure}~$\Struct M$ peut-on exprimer par
+!!a{sentence}, ou éventuellement par un ensemble d'!!{sentence}s,
+du langage de~$\Struct M$ ? Certaines conditions ne peuvent pas
+l'être. Par exemple, aucun énoncé satisfaisable de~$\Lang L_A$ ne peut imposer\footnote{Précision éditoriale : nous excluons les énoncés insatisfaisables, pour lesquels toute restriction sur les modèles serait vraie par vacuité.}
+qu'une !!{structure}~$\Struct M$ dans laquelle il est vrai ait
+$\Domain M = \Nat$. Nous ne pouvons pas exprimer
+« le domaine ne contient que les nombres naturels ». Mais nous
+pouvons peut-être exprimer certaines « propriétés structurelles »
+des !!{structure}s. Lesquelles peut-on exprimer par des
+!!{sentence}s ? Ou, ce qui revient au même, quelles collections de
+!!{structure}s peut-on décrire comme celles qui satisfont
+!!a{sentence}, ou un ensemble d'!!{sentence}s ?
+\end{explain}
+
+\begin{defn}[Modèle d'un ensemble]
+Soit $\Gamma$ un ensemble d'!!{sentence}s d'un langage~$\Lang L$.
+Nous disons qu'!!a{structure}~$\Struct M$ \emph{est un modèle
+de}~$\Gamma$ si $\Sat{M}{!A}$ pour tout $!A \in \Gamma$.
+\end{defn}
+
+\begin{ex}
+L'énoncé $\lforall[x][x \le x]$ est vrai dans~$\Struct M$ si et
+seulement si $\Assign{\le}{M}$ est une relation réflexive. L'énoncé
+$\lforall[x][\lforall[y][((x \le y \land y \le x) \lif x = y)]]$
+est vrai dans~$\Struct M$ si et seulement si $\Assign{\le}{M}$
+est antisymétrique. L'énoncé
+$\lforall[x][\lforall[y][\lforall[z][((x \le y \land y \le z)
+      \lif x \le z)]]]$ est vrai dans~$\Struct M$ si et seulement si
+$\Assign{\le}{M}$ est transitive. Les modèles de
+\begin{align*}
+\{\quad &\lforall[x][x \le x], \\
+   & \lforall[x][\lforall[y][((x \le y \land y \le
+    x) \lif x = y)]], \\
+   &\lforall[x][\lforall[y][\lforall[z][((x \le y
+      \land y \le z) \lif x \le z)]]] \quad \}
+\end{align*}
+sont donc exactement les structures dans lesquelles
+$\Assign{\le}{M}$ est réflexive, antisymétrique et transitive,
+c'est-à-dire un ordre partiel. Nous pouvons donc prendre ces énoncés
+comme axiomes de la \emph{théorie du premier ordre des ordres
+partiels}.
+\end{ex}
+
+\end{document}

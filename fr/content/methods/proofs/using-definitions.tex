@@ -1,0 +1,219 @@
+% Partie : méthodes
+% Chapitre : démonstrations
+% Section : employer les définitions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mth}{prf}{def}
+
+\olsection{Employer les définitions}
+
+Nous avons dit qu'il faut connaître
+toutes les définitions susceptibles
+d'intervenir dans une démonstration
+et savoir les appliquer correctement.
+Ce point est essentiel ; examinons-le
+de plus près. Les définitions servent
+à abréger des propriétés et des
+relations pour que nous puissions
+en parler plus succinctement.
+L'expression introduite est le
+\emph{definiendum} ; ce qu'elle
+abrège est le \emph{definiens}.
+Dans une démonstration, nous devons
+souvent revenir à la manière dont
+le definiendum a été introduit :
+pour avancer, il faut exploiter
+la structure logique du definiens,
+c'est-à-dire de la version longue
+abrégée par le terme défini.
+Déplier les définitions permet
+ainsi d'atteindre le cœur du
+raisonnement logique.
+
+Commençons par un exemple.
+Supposons que vous vouliez
+démontrer l'énoncé suivant :
+
+\begin{prop}
+Pour tous ensembles $A$ et $B$,
+$A \cup B = B \cup A$.
+\end{prop}
+
+Pour commencer, examinons le signe «~$=$~» dans cette égalité.
+L'extensionnalité donne un critère d'égalité des ensembles.
+Deux ensembles sont identiques si et seulement s'ils ont les
+mêmes !!{element}s. Nous utiliserons ce critère sous la forme
+suivante :
+
+\begin{defn}
+Les ensembles $A$ et $B$ sont
+\emph{identiques}, $A = B$,
+si et seulement si tout !!{element}
+de~$A$ est !!a{element} de~$B$,
+et réciproquement.
+\end{defn}
+
+Dans ce critère, $A$ et~$B$ désignent des ensembles quelconques.
+L'expression «~$A = B$~» joue le rôle du \emph{definiendum}.
+Nous la remplaçons par la condition suivante :
+«~tout !!{element} de~$A$
+est !!a{element} de~$B$,
+et réciproquement~».
+Cette condition est le
+\emph{definiens}.\footnote{
+Dans ce cas particulier — et
+c'est assez déroutant —, si
+$A = B$, les ensembles $A$
+et $B$ ne sont qu'un seul
+et même ensemble, bien que
+nous lui donnions des lettres
+différentes à gauche et à
+droite. Mais les manières de
+désigner cet ensemble peuvent
+différer, ce qui rend la
+définition non triviale.}
+La définition dit que
+$A = B$ est vraie si et
+seulement si la condition
+est remplie. Nous abrégeons
+«~si et seulement si~»
+par «~ssi~».
+
+Pour appliquer la définition,
+il faut faire correspondre
+ses variables $A$ et $B$
+aux expressions du cas traité.
+Ici, pour que
+$A \cup B = B \cup A$
+soit vraie, chaque
+$z \in A \cup B$ doit
+aussi appartenir à
+$B \cup A$, et
+réciproquement. Dans
+la proposition,
+$A \cup B$ joue le rôle
+du~$A$ de la définition,
+et $B \cup A$ celui
+du~$B$. Puisque les mêmes
+lettres $A$ et $B$
+figurent dans la définition
+et dans la proposition,
+mais avec des fonctions
+différentes, il faut veiller
+à ne pas les confondre.
+Ce serait, par exemple,
+une erreur de penser qu'il
+suffit de montrer que
+tout !!{element} de~$A$
+est !!a{element} de~$B$,
+et réciproquement :
+cela démontrerait $A = B$,
+et non
+$A \cup B = B \cup A$.
+Comme $A$ et $B$ peuvent
+être deux ensembles quelconques,
+on ne pourrait d'ailleurs
+pas aller loin sans hypothèse
+supplémentaire : ils peuvent
+très bien être différents.
+
+Notre démonstration utilise
+également des notions
+ensemblistes comme l'union :
+il nous faut donc connaître
+le sens du symbole $\cup$
+pour savoir comment procéder.
+Il arrive que le dépliage
+d'une définition en appelle
+d'autres. Ainsi,
+$A \cup B$ est défini
+comme
+$\Setabs{z}{z \in A
+\text{ ou } z \in B}$.
+Pour démontrer que
+$x \in A \cup B$,
+le dépliage de la définition
+de $\cup$ montre qu'il
+faut établir
+$x \in \Setabs{z}{z \in A
+\text{ ou } z \in B}$.
+Il faut alors se rappeler
+que
+$x \in \Setabs{z}{\dots z\dots}$
+si et seulement si
+$\dots x\dots$.
+En dépliant aussi la
+notation
+$\Setabs{z}{\dots z \dots}$,
+nous voyons que ce qu'il
+faut montrer est
+$x \in A$ ou $x \in B$.
+Ainsi, «~tout !!{element}
+de $A \cup B$ est aussi
+!!a{element} de $B \cup A$~»
+signifie en réalité :
+«~pour tout $x$, si
+$x \in A$ ou $x \in B$,
+alors $x \in B$ ou
+$x \in A$~».
+Si nous déplions toutes
+les définitions de la
+proposition, voici ce
+qu'il faut démontrer :
+
+\begin{prop}
+Pour tous ensembles $A$
+et $B$ : (a) pour tout
+$x$, si $x \in A$ ou
+$x \in B$, alors
+$x \in B$ ou
+$x \in A$ ; et
+(b) pour tout $x$,
+si $x \in B$ ou
+$x \in A$, alors
+$x \in A$ ou
+$x \in B$.
+\end{prop}
+
+L'essentiel est que déplier
+les définitions constitue
+une étape nécessaire dans
+la construction d'une
+démonstration. Ce n'est
+pas toujours facile :
+il faut distinguer avec
+soin les variables de
+la définition et les
+termes de l'énoncé à
+démontrer, puis les faire
+correspondre. Pour réussir,
+il faut comprendre la
+question posée et le
+sens de tous les termes
+qu'elle emploie. Souvent,
+il faut déplier plus
+d'une définition.
+Dans les démonstrations
+simples qui suivent,
+la solution découle
+presque immédiatement
+des définitions.
+Ce ne sera évidemment
+pas toujours aussi simple.
+
+\begin{prob}
+Supposons que l'on vous
+demande de démontrer que
+$A \cap B \neq \emptyset$.
+Dépliez toutes les
+définitions qui interviennent,
+c'est-à-dire reformulez
+cet énoncé sans employer
+«~$\cap$~», «~$=$~»
+ni «~$\emptyset$~».
+\end{prob}
+
+\end{document}

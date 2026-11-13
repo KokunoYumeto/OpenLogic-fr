@@ -1,0 +1,53 @@
+% Part: many-valued-logic
+% Chapter: sequent-calculus
+% Section: structural-rules
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{seq}{str}
+
+\olsection{Règles structurelles}
+
+Les règles structurelles du calcul des séquents à $n$ places
+fonctionnent comme dans le cas classique, mais s'appliquent à
+chacune des places~$i$.
+
+\begin{defish}
+\begin{center}
+\AxiomC{$ \Gamma_1 \nSequent \dots \nSequent \phantom{!A,}\Gamma_i \nSequent \dots \nSequent \Gamma_n $}
+\RightLabel{$\iR{\Weakening}{i}$}
+\UnaryInfC{$\Gamma_1 \nSequent \dots \nSequent !A, \Gamma_i \nSequent \dots \nSequent \Gamma_n$}
+\DisplayProof
+\\[2ex]
+\AxiomC{$ \Gamma_1 \nSequent \dots \nSequent !A, !A, \Gamma_i \nSequent \dots \nSequent \Gamma_n $}
+\RightLabel{$\iR{\Contraction}{i}$}
+\UnaryInfC{$\Gamma_1 \nSequent \dots \nSequent \phantom{!A,}!A, \Gamma_i \nSequent
+\dots \nSequent \Gamma_n$}
+\DisplayProof
+\\[2ex]
+\AxiomC{$ \Gamma_1 \nSequent \dots \nSequent \Gamma_i, !A, !B, \Gamma_i' \nSequent \dots \nSequent \Gamma_n $}
+\RightLabel{$\iR{\Exchange}{i}$}
+\UnaryInfC{$\Gamma_1 \nSequent \dots \nSequent \Gamma_i, !B, !A, \Gamma_i' \nSequent \dots
+\nSequent \Gamma_n$}
+\DisplayProof
+\end{center}
+\end{defish}
+
+Une suite d'applications des règles d'affaiblissement, de contraction
+et d'échange sera souvent indiquée par un double trait d'inférence.
+
+La règle \Cut{} possède plusieurs formes, une pour chaque paire de
+places distinctes du séquent, $i\neq j$ :
+\begin{defish}
+\[
+\AxiomC{$ \Gamma_1 \nSequent \dots \nSequent !A, \Gamma_i \nSequent \dots \nSequent \Gamma_n $}
+\AxiomC{$ \Delta_1 \nSequent \dots \nSequent !A, \Delta_j \nSequent \dots \nSequent \Delta_n $}
+\RightLabel{$\iR{\Cut}{i,j}$}
+\BinaryInfC{$\Gamma_1,\Delta_1 \nSequent \dots \nSequent \Gamma_n, \Delta_n$}
+\DisplayProof
+\]
+\end{defish}
+
+\end{document}

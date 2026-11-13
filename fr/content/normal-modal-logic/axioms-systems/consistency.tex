@@ -1,0 +1,64 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: consistency
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{con}
+
+\olsection{Cohérence}
+
+La cohérence est une propriété importante des ensembles de
+!!{formula}s. Un ensemble de !!{formula}s est incohérent si l'on peut
+en !!{derive} une contradiction, telle que~$\lfalse$ ; sinon, il est
+cohérent. Si un ensemble est incohérent, ses !!{formula}s ne peuvent
+pas être toutes vraies en un même monde d'un modèle où toutes les instances des axiomes du système sont vraies. Pour le théorème
+de complétude, nous démontrerons la réciproque : tout ensemble cohérent
+est vrai en un monde d'un modèle, à savoir le « modèle canonique ».
+
+\begin{defn}
+  Un ensemble $\Gamma$ est \emph{cohérent} relativement à un
+  système~$\Sigma$, ou, comme nous le dirons, $\Sigma$-cohérent, si et
+  seulement si $\Gamma \Proves/[\Sigma] \lfalse$.
+\end{defn}
+
+Par exemple, l'ensemble $\{ \Box(p \lif q), \Box p, \lnot\Box q \}$
+est cohérent relativement à la logique propositionnelle, mais n'est
+pas \Log{K}-cohérent. De même, l'ensemble
+$\{ \Diamond p, \Box\Diamond p \lif q, \lnot q \}$ n'est pas
+\Log{K5}-cohérent.
+
+\begin{prop}\ollabel{prop:consistencyfacts}
+  Soit $\Gamma$ un ensemble de !!{formula}s. Alors :
+  \begin{enumerate}
+  \item $\Gamma$ est $\Sigma$-cohérent si et seulement s'il existe
+    une !!{formula}~$!A$ telle que $\Gamma \Proves/[\Sigma]
+    !A$.
+  \item \ollabel{prop:consistencyfacts-b}%
+    $\Gamma \Proves[\Sigma] !A$ si et seulement si $\Gamma \cup \{
+    \lnot!A \}$ n'est pas $\Sigma$-cohérent.
+  \item \ollabel{prop:consistencyfacts-c}%
+    Si $\Gamma$ est $\Sigma$-cohérent, alors, pour toute !!{formula}
+    $!A$, au moins l'un des deux ensembles $\Gamma \cup \{ !A \}$
+    et $\Gamma \cup \{ \lnot!A \}$ est $\Sigma$-cohérent.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  Ces faits découlent aisément de la logique propositionnelle
+  classique. Démontrons le point \olref{prop:consistencyfacts-c} par
+  contraposition. Supposons que ni $\Gamma \cup \{ !A \}$ ni
+  $\Gamma \cup \{ \lnot!A \}$ ne soient $\Sigma$-cohérents. Par la
+  définition de la cohérence, on a alors à la fois
+  $\Gamma, !A \Proves[\Sigma] \lfalse$ et
+  $\Gamma, \lnot !A \Proves[\Sigma] \lfalse$. Le théorème de
+  déduction donne $\Gamma \Proves[\Sigma] !A \to \lfalse$ et
+  $\Gamma \Proves[\Sigma] \lnot!A \lif \lfalse$. Or
+  $(!A \lif \lfalse) \lif ((\lnot!A \lif \lfalse) \lif \lfalse)$ est une
+  instance de tautologie ; donc, d'après
+  la \olref[prp]{prop:derivabilityfacts}\olref[prp]{prop:derivabilityfacts-ruleT},
+  $\Gamma \Proves[\Sigma] \lfalse$.
+\end{proof}
+\end{document}

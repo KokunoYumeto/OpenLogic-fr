@@ -1,0 +1,290 @@
+% Part: normal-modal-logic
+% Chapter: tableaux
+% Section: completeness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{tab}{cpl}
+
+\olsection{Complétude pour \Log{K}}
+
+\begin{explain}
+  Pour montrer que la méthode des !!{tableau}s est complète, nous
+  devons établir que, s'il n'existe aucun !!{tableau} fermé démontrant
+  $\Gamma \Proves !A$, alors $\Gamma \Entails/ !A$ : il existe un
+  contre-modèle. L'absence de !!{tableau} fermé signifie que toute
+  tentative de construction laisse au moins une branche ouverte.
+  L'idée est d'adopter une procédure \emph{systématique et exhaustive}
+  d'application des règles. Si un !!{tableau} fermé existe, cette
+  procédure finit aussi par fermer toutes ses branches. Si elle ne
+  ferme pas toutes les branches,
+  une branche ouverte complète fournit les données nécessaires à un
+  contre-modèle. Les mondes de ce modèle seront tous les préfixes de
+  cette branche, et !!a{propositional variable}~$p$ sera vraie au monde
+  $\sigma$ si et seulement si $\sFmla{\True}{p}[\sigma]$ y figure.
+\end{explain}
+
+\begin{defn}
+  Une branche d'!!a{tableau} est dite complète si elle est fermée ou
+  si, chaque fois qu'elle contient une !!{formula} préfixée
+  $\sFmla{S}{!A}[\sigma]$ à laquelle une règle peut s'appliquer, elle
+  contient aussi :
+  \begin{enumerate}
+    \item les !!{formula}s préfixées qui sont les conclusions de la
+      règle, pour les règles propositionnelles sans bifurcation ;
+    \item toutes les !!{formula}s conclusives d’au moins l’une des branches produites, pour
+      les règles propositionnelles avec bifurcation ;
+    \item au moins une conclusion possible, pour les règles modales
+      qui exigent un nouveau préfixe ;
+    \item la conclusion correspondante pour chaque préfixe successeur
+      de la forme $\sigma.n$ déjà utilisé sur la branche, pour les
+      règles modales qui exigent un tel préfixe.
+  \end{enumerate}
+\end{defn}
+
+\begin{explain}
+Par exemple, une branche complète contient $\sFmla{\True}{!B}[\sigma]$
+et $\sFmla{\True}{!C}[\sigma]$ chaque fois qu'elle contient
+$\sFmla{\True}{!B \land !C}[\sigma]$. Si elle contient
+$\sFmla{\True}{!B \lor !C}[\sigma]$, elle contient au moins l'une
+des formules $\sFmla{\True}{!B}[\sigma]$ et
+$\sFmla{\True}{!C}[\sigma]$. Si elle contient \iftag{prvBox}
+{$\sFmla{\False}{\Box !B}[\sigma]$} {$\sFmla{\True}{\Diamond !B}[\sigma]$},
+elle contient également \iftag{prvBox}
+{$\sFmla{\False}{!B}[\sigma.n]$}
+{$\sFmla{\True}{!B}[\sigma.n]$} pour au moins un~$n$. Enfin,
+si elle contient \iftag{prvBox} {$\sFmla{\True}{\Box !B}[\sigma]$}
+{$\sFmla{\False}{\Diamond !B}[\sigma]$}, elle contient également \iftag{prvBox}
+{$\sFmla{\True}{!B}[\sigma.n]$}
+{$\sFmla{\False}{!B}[\sigma.n]$} pour chaque~$n$ tel que
+$\sigma.n$ est déjà utilisé sur la branche.
+\end{explain}
+
+\begin{prop}\ollabel{prop:complete-tableau}
+  Tout ensemble fini $\Gamma$ admet !!a{tableau} dont chaque branche
+  est complète.
+\end{prop}
+
+\begin{proof}
+  Considérons une branche ouverte d'!!a{tableau} pour~$\Gamma$. À
+  chaque étape, elle contient un nombre fini de !!{formula}s préfixées
+  auxquelles une règle peut s'appliquer. Dans un ordre fixé, par
+  exemple de haut en bas, examinons chacune de ces !!{formula}s
+  préfixées. Pour chaque !!{formula} pour laquelle les conditions
+  (1)--(4) ne sont pas déjà remplies, appliquons les règles
+  pertinentes. Lorsqu'une règle scinde la branche, nous
+  poursuivons sur chacune des deux branches résultantes. Nous
+  répétons l'opération sur toute branche encore ouverte et
+  incomplète.
+
+  Si $\Gamma$ est vide, aucune règle ne s'applique. Sinon,
+  soit $d(!A)$ la profondeur modale de~$!A$, et soit $D$
+  le maximum de $|\sigma|+d(!A)$ pour les formules signées
+  $\sFmla{S}{!A}[\sigma]$ de~$\Gamma$, où $|\sigma|$ désigne
+  la longueur du préfixe. Les règles propositionnelles conservent
+  le préfixe et ne font pas croître la profondeur modale. Les
+  règles modales passent de $\sigma$ à $\sigma.n$ en supprimant
+  une modalité extérieure. La somme reste donc au plus égale
+  à~$D$.
+
+  Sur une branche, les formules à chaque préfixe proviennent de
+  l'ensemble fini des sous-formules signées de~$\Gamma$. Chacune
+  des formules qui exigent un témoin ne peut créer qu'un
+  successeur à ce préfixe, car le premier témoin satisfait
+  déjà la condition (3). Aux successeurs ainsi créés s'ajoutent
+  seulement ceux qui sont présents dès le départ. Le nombre de
+  successeurs immédiats est donc uniformément borné, et la
+  longueur des préfixes est bornée par~$D$. Il ne peut y avoir
+  qu'un nombre fini de préfixes sur une branche. Chaque
+  prolongement ajoute au moins une formule signée à chacun de
+  ses résultats, et il n'y a qu'un nombre fini de ces formules
+  à chaque préfixe. La construction se termine. À la fin, toute branche est
+  fermée ou satisfait les conditions (1)--(4) : elle est donc
+  complète.
+\end{proof}
+
+\begin{thm}[Complétude]
+  \ollabel{thm:tableau-completeness}
+  Si $\Gamma$ n'admet aucun !!{tableau} fermé, $\Gamma$ est
+  satisfaisable.
+\end{thm}
+
+\begin{proof}
+Si $\Gamma$ est vide, un modèle à un monde et l’interprétation vide le satisfont. Supposons donc $\Gamma$ fini et non vide. D'après la proposition, il admet
+!!a{tableau} dont chaque branche est complète. Puisqu'aucun
+!!{tableau} pour~$\Gamma$ n'est fermé, il existe !!a{tableau} avec
+au moins une branche ouverte et complète. Soit $\Delta$ l'ensemble
+des !!{formula}s préfixées de cette branche, et $P(\Delta)$ l'ensemble
+des préfixes qui y figurent.
+
+Définissons le modèle~$\mModel{M(\Delta)} = \tuple{P(\Delta), R, V}$.
+Ses mondes sont les préfixes de~$\Delta$, sa relation d'accessibilité
+est définie par
+\[
+R\sigma\sigma' \quad \text{si et seulement si} \quad
+\sigma'=\sigma.n \quad \text{pour un certain } n
+\]
+et
+\[
+V(p) = \Setabs{\sigma}{\sFmla{\True}{p}[\sigma] \in \Delta}.
+\]
+Montrons par récurrence sur~$!A$ que, si $\sFmla{\True}{!A}[\sigma] \in
+\Delta$, alors $\mSat{M(\Delta)}{!A}[\sigma]$, et que, si
+$\sFmla{\False}{!A}[\sigma] \in \Delta$, alors
+$\mSat/{M(\Delta)}{!A}[\sigma]$.
+
+\begin{enumerate} \iftag{prvFalse}{\item \indcase{!A}{\lfalse}{Le signe vrai fermerait la branche ; le signe faux est satisfait dans tout monde.}}{} \iftag{prvTrue}{\item \indcase{!A}{\ltrue}{Le signe faux fermerait la branche ; le signe vrai est satisfait dans tout monde.}}{} \iftag{prvIff}{\item \indcase{!A}{!B\liff!C}{Par complétude de la branche, le signe vrai donne soit les deux opérandes vrais, soit les deux opérandes faux ; le signe faux donne des signes opposés. L’hypothèse de récurrence sur les deux opérandes établit exactement la valeur du biconditionnel.}}{}
+  \item \indcase{!A}{p}{Si $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$,
+    alors $\sigma \in V(p)$ par définition de~$V$, d'où
+    $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
+
+    Si $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, alors
+    $\sFmla{\True}{\indfrm}[\sigma] \notin \Delta$, car la branche
+    serait autrement fermée. Ainsi, $\sigma \notin V(p)$, et donc
+    $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}
+  \item \indcase{!A}{\lnot !B}{\iftag{probNot}{Exercice.}{Si
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, alors
+      $\sFmla{\False}{!B}[\sigma] \in \Delta$, puisque la branche est
+      complète. Par hypothèse de récurrence,
+      $\mSat/{M(\Delta)}{!B}[\sigma]$, et donc
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
+
+      Si $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, alors
+      $\sFmla{\True}{!B}[\sigma] \in \Delta$ puisque la branche est
+      complète. Par hypothèse de récurrence,
+      $\mSat{M(\Delta)}{!B}[\sigma]$, et donc
+      $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
+  \item \indcase{!A}{!B \land !C}{\iftag{probAnd}{Exercice.}{Si
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, alors
+      $\sFmla{\True}{!B}[\sigma] \in \Delta$ et
+      $\sFmla{\True}{!C}[\sigma] \in \Delta$, puisque la branche est
+      complète. Par hypothèse de récurrence,
+      $\mSat{M(\Delta)}{!B}[\sigma]$ et
+      $\mSat{M(\Delta)}{!C}[\sigma]$. Donc
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
+
+      Si $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, alors
+      $\sFmla{\False}{!B}[\sigma] \in \Delta$ ou
+      $\sFmla{\False}{!C}[\sigma] \in \Delta$, puisque la branche est
+      complète. Par hypothèse de récurrence,
+      $\mSat/{M(\Delta)}{!B}[\sigma]$ ou
+      $\mSat/{M(\Delta)}{!C}[\sigma]$. Donc
+      $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
+  \item \indcase{!A}{!B \lor !C}{\iftag{probOr}{Exercice.}{Si
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, alors
+      $\sFmla{\True}{!B}[\sigma] \in \Delta$ ou
+      $\sFmla{\True}{!C}[\sigma] \in \Delta$, puisque la branche est
+      complète. Par hypothèse de récurrence,
+      $\mSat{M(\Delta)}{!B}[\sigma]$ ou
+      $\mSat{M(\Delta)}{!C}[\sigma]$. Donc
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
+
+      Si $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, alors
+      $\sFmla{\False}{!B}[\sigma] \in \Delta$ et
+      $\sFmla{\False}{!C}[\sigma] \in \Delta$, puisque la branche est
+      complète. Par hypothèse de récurrence,
+      $\mSat/{M(\Delta)}{!B}[\sigma]$ et
+      $\mSat/{M(\Delta)}{!C}[\sigma]$. Donc
+      $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
+  \item \indcase{!A}{!B \lif !C}{\iftag{probIf}{Exercice.}{Si
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, alors
+      $\sFmla{\False}{!B}[\sigma] \in \Delta$ ou
+      $\sFmla{\True}{!C}[\sigma] \in \Delta$, puisque la branche est
+      complète. Par hypothèse de récurrence,
+      $\mSat/{M(\Delta)}{!B}[\sigma]$ ou
+      $\mSat{M(\Delta)}{!C}[\sigma]$. Donc
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
+
+      Si $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, alors
+      $\sFmla{\True}{!B}[\sigma] \in \Delta$ et
+      $\sFmla{\False}{!C}[\sigma] \in \Delta$, puisque la branche est
+      complète. Par hypothèse de récurrence,
+      $\mSat{M(\Delta)}{!B}[\sigma]$ et
+      $\mSat/{M(\Delta)}{!C}[\sigma]$. Donc
+      $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
+  \item \indcase{!A}{\Box !B}{\iftag{probBox}{Exercice.}{Si
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, alors, comme la
+      branche est complète, $\sFmla{\True}{!B}[\sigma.n] \in \Delta$
+      pour chaque $\sigma.n$ déjà utilisé sur la branche, c'est-à-dire
+      pour chaque $\sigma' \in P(\Delta)$ tel que $R\sigma\sigma'$.
+      Par hypothèse de récurrence, $\mSat{M(\Delta)}{!B}[\sigma']$
+      pour chaque $\sigma'$ tel que $R\sigma\sigma'$. Par conséquent,
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
+
+      Si $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, alors il existe
+      un $\sigma.n$ tel que $\sFmla{\False}{!B}[\sigma.n] \in \Delta$,
+      puisque la branche est complète. Par hypothèse de récurrence,
+      $\mSat/{M(\Delta)}{!B}[\sigma.n]$. Comme $R\sigma(\sigma.n)$,
+      il existe un~$\sigma'$ tel que
+      $\mSat/{M(\Delta)}{!B}[\sigma']$. Donc
+      $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
+  \item \indcase{!A}{\Diamond !B}{\iftag{probDiamond}{Exercice.}{Si
+      $\sFmla{\True}{\indfrm}[\sigma] \in \Delta$, alors il existe
+      un $\sigma.n$ tel que $\sFmla{\True}{!B}[\sigma.n] \in \Delta$,
+      puisque la branche est complète. Par hypothèse de récurrence,
+      $\mSat{M(\Delta)}{!B}[\sigma.n]$. Comme $R\sigma(\sigma.n)$,
+      il existe un~$\sigma'$ tel que
+      $\mSat{M(\Delta)}{!B}[\sigma']$. Donc
+      $\mSat{M(\Delta)}{\indfrm}[\sigma]$.
+
+      Si $\sFmla{\False}{\indfrm}[\sigma] \in \Delta$, alors, comme la
+      branche est complète, $\sFmla{\False}{!B}[\sigma.n] \in \Delta$
+      pour chaque $\sigma.n$ déjà utilisé sur la branche, c'est-à-dire
+      pour chaque $\sigma' \in P(\Delta)$ tel que $R\sigma\sigma'$.
+      Par hypothèse de récurrence,
+      $\mSat/{M(\Delta)}{!B}[\sigma']$ pour chaque
+      $\sigma'$ tel que $R\sigma\sigma'$. Par conséquent,
+      $\mSat/{M(\Delta)}{\indfrm}[\sigma]$.}}
+\end{enumerate}
+L'identité sur~$P(\Delta)$ est une interprétation des préfixes dans
+$\mModel{M(\Delta)}$. Comme $\Gamma \subseteq \Delta$,
+$\mSat{M(\Delta)}{\Gamma}[\mathrm{id}]$.
+
+Si $\Gamma$ est infini et n'admet aucun tableau fermé, toute
+partie finie de~$\Gamma$ est satisfaisable d'après le cas fini.
+Dans le langage de la traduction standard, introduisons une
+constante $c_\sigma$ pour chaque $\sigma\in P(\Gamma)$. À
+chaque formule signée au préfixe $\sigma$, associons la
+traduction de la formule au monde $c_\sigma$, précédée d'une
+négation si le signe est $\False$. Ajoutons
+$\Atom{Q}{c_\sigma,c_{\sigma.n}}$ chaque fois que les deux
+préfixes appartiennent à~$P(\Gamma)$, où $Q$ désigne la relation
+d'accessibilité.
+
+Considérons une partie finie de cet ensemble d'énoncés. Dans
+$\Gamma$, prenons les formules signées dont elle contient la
+traduction et, pour chaque préfixe nommé dans une contrainte
+d'accessibilité de cette partie, une formule de~$\Gamma$ qui
+porte ce préfixe. Cet ensemble fini est satisfaisable.
+L'interprétation de ses préfixes fournit la valeur des
+constantes considérées et vérifie les contraintes
+d'accessibilité entre elles. On obtient ainsi un modèle de la
+partie finie. Par compacité du premier ordre, l'ensemble des
+énoncés admet un modèle. Les interprétations des constantes
+$c_\sigma$ y donnent une interprétation des préfixes qui
+satisfait~$\Gamma$.
+\end{proof}
+
+\begin{prob}
+Complétez la démonstration du \olref[nml][tab][cpl]{thm:tableau-completeness}.
+\end{prob}
+
+\begin{cor}
+\ollabel{cor:entailment-completeness}
+Si $\Gamma \Entails !A$, alors $\Gamma \Proves !A$.
+\end{cor}
+
+\begin{cor}
+\ollabel{cor:weak-completeness}
+Si $!A$ est vraie dans tous les modèles, alors $\Proves !A$.
+\end{cor}
+\begin{explain}
+La saturation des branches fournit une procédure finie lorsque
+les hypothèses sont en nombre fini. Pour un ensemble infini,
+la compacité donne l'existence d'un modèle en réunissant dans
+une même interprétation les contraintes exprimées par les
+formules signées et par les relations entre préfixes.
+\end{explain}
+\end{document}

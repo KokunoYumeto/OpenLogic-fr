@@ -33,8 +33,8 @@ d'inférence supplémentaires.
 \end{tabular}
 \end{defish}
 Dans ces règles, $t$, $t_1$ et $t_2$ sont des termes clos.
-La règle \Intro{\eq} permet de !!{derive} directement tout énoncé
-d'égalité de la forme $\eq[t][t]$, sans aucune hypothèse.
+L'introduction de $\eq$ est une inférence sans prémisse. Elle ajoute
+aux arbres des feuilles de la forme $\eq[t][t]$, sans hypothèse.
 
 \begin{ex}
 Si $s$ et $t$ sont des termes clos, alors
@@ -77,9 +77,9 @@ qui ne figurent pas dans cette hypothèse, puis construisons la
 \RightLabel{\Intro{\lforall}}
 \UnaryInfC{$\lforall[x][\lforall[y][((!A(x) \land !A(y)) \lif \eq[x][y])]]$}
 \end{prooftree}
-Il faut maintenant utiliser l'hypothèse principale. Comme c'est
-une !!{formula} existentielle, nous appliquons \Elim{\lexists}
-pour !!{derive} la conclusion intermédiaire $\eq[a][b]$.
+Appliquons \Elim{\lexists} à l'hypothèse principale pour
+!!{derive} la conclusion intermédiaire $\eq[a][b]$. La constante
+$c$ est absente de cette conclusion et des autres hypothèses ouvertes.
 \begin{prooftree}
 \AxiomC{$\lexists[x][\lforall[y][(!A(y) \lif \eq[y][x])]]$}
 \AxiomC{$\Discharge{\lforall[y][(!A(y) \lif \eq[y][c])]}{2}$}
@@ -110,7 +110,8 @@ est la suivante :
 \BinaryInfC{$\eq[a][c]$}
 \end{prooftree}
 À partir de $\eq[a][c]$ et $\eq[b][c]$, on !!{derive}
-$\eq[a][b]$ par \Elim{\eq}.
+$\eq[a][b]$ par \Elim{\eq}, avec la formule $a = x$.
+L'inférence remplace $c$ par $b$ dans $a = c$.
 \end{ex}
 
 \begin{prob}
@@ -123,15 +124,14 @@ Donner des !!{derivation}s des !!{formula}s suivantes :
 \end{enumerate}
 \end{prob}
 
-\begin{editorial}
-Dans l'exercice sur la transitivité, le troisième quantificateur
-de la source n'encadre pas correctement son argument; les crochets
-sont rétablis. Dans deux arbres du deuxième exemple, la parenthèse
-de l'hypothèse universelle est replacée à l'intérieur de l'argument
-du quantificateur. Le choix de trois constantes fraîches et
-distinctes, nécessaire aux conditions sur les eigenvariables,
-est explicité. Les deux orientations de l'élimination de l'égalité
-sont conservées.
-\end{editorial}
-
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
 \end{document}

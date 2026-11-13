@@ -1,0 +1,234 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{card-arithmetic}{ch}
+
+\olsection{L'hypothèse du continu}
+
+Le résultat précédent suggère, à juste titre,
+que l'exponentiation cardinale serait assez
+\emph{simple} si les cardinaux infinis se comportaient
+de façon «~régulière~» vis-à-vis des puissances de $2$,
+c'est-à-dire, d'après le
+\olref[opps]{lem:SizePowerset2Exp}, vis-à-vis
+de l'opération qui forme l'ensemble des parties.
+Nous ne pouvons toutefois pas supposer qu'ils
+se comportent \emph{effectivement} ainsi.
+
+Pour commencer à éclaircir la question,
+introduisons une notation commode.
+
+\begin{defn}
+Si $\cardsucc{\cardfont{a}}$ désigne le plus
+petit cardinal strictement supérieur à
+$\cardfont{a}$, nous définissons deux suites
+transfinies :
+\begin{align*}
+	\aleph_{0} &\defis \omega &
+	\beth_{0} &\defis \omega\\
+	\aleph_{\alpha \ordplus 1}
+	&\defis \cardsucc{(\aleph_{\alpha})} &
+	\beth_{\alpha+1}
+	&\defis \cardexpo{2}{\beth_{\alpha}}\\
+	\aleph_{\alpha}
+	&\defis \bigcup_{\beta< \alpha} \aleph_{\beta} &
+	\beth_{\alpha}
+	&\defis \bigcup_{\beta < \alpha}\beth_{\beta}
+	& \text{si $\alpha$ est un ordinal limite}.
+\end{align*}
+\end{defn}
+
+La définition de $\cardsucc{\cardfont{a}}$
+est légitime : d'après le
+\olref[cardinals][classing]{lem:NoLargestCardinal},
+pour chaque cardinal $\cardfont{a}$,
+il existe un cardinal qui lui est supérieur ;
+la récurrence transfinie garantit qu'il en
+existe un \emph{plus petit}.
+
+
+
+
+Le reste de la définition de ces deux suites
+est donné par récursion transfinie.
+
+Cantor a introduit la notation «~$\aleph$~».
+Il s'agit de l'\emph{aleph}, première lettre
+de l'alphabet hébreu et du mot hébreu signifiant
+«~infini~». Peirce a introduit la notation
+«~$\beth$~» : le \emph{beth} est la deuxième
+lettre de l'alphabet hébreu.\footnote{
+Peirce a employé cette notation dans une lettre
+à Cantor datée de décembre 1900. Malheureusement,
+il y donnait aussi un mauvais argument selon
+lequel $\beth_\alpha$ n'existerait pas
+pour $\alpha \geq \omega$.}
+Ces notations nous fournissent des cardinaux
+infinis.
+
+\begin{prop}
+$\aleph_\alpha$ et $\beth_\alpha$ sont
+des cardinaux pour tout ordinal $\alpha$.
+\end{prop}
+
+\begin{proof}
+Les deux assertions se démontrent par une
+récurrence transfinie simple.
+$\aleph_0 = \beth_0 = \omega$ est un cardinal
+par le \olref[cardinals][classing]{omegaisacardinal}.
+Si $\aleph_\alpha$ et $\beth_\alpha$ sont des
+cardinaux, alors $\aleph_{\alpha+1}$ et
+$\beth_{\alpha+1}$ sont explicitement définis
+comme des cardinaux. Enfin, l'union d'un ensemble
+de cardinaux est un cardinal, d'après la
+\olref[cardinals][classing]{unioncardinalscardinal}.
+\end{proof}
+\noindent
+De plus, tout cardinal infini est un aleph :
+
+\begin{prop}
+Si $\cardfont{a}$ est un cardinal infini,
+alors $\cardfont{a} = \aleph_\gamma$
+pour un unique $\gamma$.
+\end{prop}
+
+\begin{proof}
+Raisonnons par récurrence transfinie sur les
+cardinaux infinis. Le cas initial est
+$\omega=\aleph_0$. Pour l'étape de récurrence,
+supposons que, pour tout cardinal infini
+$\cardfont{b} < \cardfont{a}$, on ait
+$\cardfont{b} = \aleph_{\gamma_\cardfont{b}}$.
+Si $\cardfont{a} =
+\cardsucc{\cardfont{b}}$ pour un tel
+$\cardfont{b}$, alors
+$\cardfont{a} =
+\cardsucc{(\aleph_{\gamma_\cardfont{b}})}
+= \aleph_{\gamma_\cardfont{b}+1}$.
+Si $\cardfont{a}$ n'est le successeur d'aucun
+cardinal, alors, puisque les cardinaux sont des
+ordinaux,
+$\cardfont{a}
+= \bigcup_{\omega \leq \cardfont{b} < \cardfont{a}}
+\cardfont{b}
+= \bigcup_{\omega \leq \cardfont{b} < \cardfont{a}}
+{\aleph_{\gamma_\cardfont{b}}}$ ;
+donc $\cardfont{a} = \aleph_\gamma$, où
+$\gamma =
+\bigcup_{\omega \leq \cardfont{b} < \cardfont{a}}
+\gamma_\cardfont{b}$.
+%
+%
+\footnote{Note de l'édition française : l'original
+omet le cas initial $\omega$, puis emploie
+$\gamma_\cardfont{b}$ pour des cardinaux
+éventuellement finis, auxquels l'hypothèse
+de récurrence ne s'applique pas. La récurrence
+est ici restreinte aux cardinaux infinis,
+avec son cas initial.}
+\end{proof}
+
+Puisque tout cardinal infini est un aleph,
+une question se pose : tout cardinal infini
+est-il aussi un beth ? Si \emph{tel était}
+le cas, les cardinaux infinis se comporteraient
+effectivement de façon «~régulière~»
+vis-à-vis des ensembles de parties.
+Nous aurions alors :
+
+\begin{defish}
+\emph{Hypothèse généralisée du continu} (GCH).
+$\aleph_\alpha = \beth_\alpha$ pour tout $\alpha$.
+\end{defish}
+
+De plus, si la GCH était vraie, nous pourrions
+simplifier considérablement l'exponentiation
+cardinale. En particulier, pour un cardinal
+infini $\cardfont{a}$ et $0<\cardfont{b}<\cardfont{a}$,
+nous pourrions montrer que
+$\cardfont{a}
+\leq \cardexpo{\cardfont{a}}{\cardfont{b}}
+\leq \cardsucc{\cardfont{a}}$.\footnote{
+Note de l'édition française : l'original énonce
+cette borne sans préciser que l'exposant doit
+être non nul ; pour $\cardfont{b}=0$,
+$\cardexpo{\cardfont{a}}{0}=1$,
+et la borne inférieure échoue. Le cardinal
+$\cardfont{a}$ est ici infini.}
+Nous pourrions ensuite donner des conditions
+précises permettant de savoir laquelle des
+deux possibilités se réalise, à savoir
+$\cardfont{a}
+= \cardexpo{\cardfont{a}}{\cardfont{b}}$
+ou
+$\cardexpo{\cardfont{a}}{\cardfont{b}}
+= \cardsucc{\cardfont{a}}$.\footnote{
+La condition dépend de la \emph{cofinalité}.}
+
+Mais la GCH est une \emph{hypothèse}, et non
+un \emph{théorème}. En fait, \citet{Godel1938}
+a démontré que si $\ZFC$ est cohérente, alors
+$\ZFC + \text{GCH}$ l'est aussi. On a découvert
+par la suite que l'on pouvait tout autant ajouter
+$\lnot$GCH à $\ZFC$. Considérons en effet le
+plus simple cas \emph{non trivial} de la GCH :
+
+\begin{defish}
+\emph{Hypothèse du continu} (CH).
+$\aleph_1 = \beth_1$.
+\end{defish}
+
+\citet{Cohen1963} a démontré que, si $\ZFC$
+est cohérente, alors
+$\ZFC + \lnot\text{CH}$ l'est aussi.
+L'hypothèse du continu est donc indépendante
+de $\ZFC$.
+
+Elle tire son nom du fait que «~le continu~»
+est un autre nom de la droite réelle, $\Real$.
+Le \olref[opps]{continuumis2aleph0} nous dit que
+$\card{\Real} = \beth_1$. L'hypothèse du continu
+affirme donc qu'il n'existe aucun cardinal
+strictement compris entre celui des nombres
+naturels, $\aleph_0 = \beth_0$, et celui
+du continu, $\beth_1$.
+
+Étant donné l'\emph{indépendance} de la (G)CH
+par rapport à $\ZFC$, que dire de sa
+\emph{vérité} ? Il y aurait \emph{beaucoup}
+à dire : de nombreux travaux récents et féconds
+en théorie des ensembles portent précisément
+sur ces questions. Deux remarques rapides
+méritent néanmoins d'être soulignées.
+
+Premièrement, ces résultats formels
+d'indépendance n'impliquent \emph{pas
+immédiatement} que la vérité de la GCH
+ou de la CH soit \emph{indéterminée}.
+Peut-être faut-il seulement ajouter des
+axiomes qui nous paraissent naturels et
+qui trancheront la question dans un sens
+ou dans l'autre. Gödel lui-même pensait
+que c'était la bonne réponse.
+
+Deuxièmement, l'indépendance de la CH
+par rapport à $\ZFC$ est assurément
+\emph{frappante}, mais elle n'a rien
+d'\emph{incroyable}, au sens littéral.
+Simplement, d'après tout ce que nous dit
+$\ZFC$, passer d'un cardinal à son
+successeur peut demander un outil plus
+fin que la seule opération qui forme
+l'ensemble des parties.
+% L'opération de formation de l'ensemble des parties
+% fait passer d'une étape de la hiérarchie à la suivante
+% (de $V_{\alpha}$ à $V_{\alpha+1}$).
+
+Ces deux remarques faites, pour en savoir
+plus, il vous faudra vous tourner vers les
+philosophes et les mathématiciens engagés
+dans ce débat.\footnote{Vous pourriez
+commencer par lire \citet[\S15.6]{Potter2004}.}
+
+\end{document}

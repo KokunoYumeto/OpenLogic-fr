@@ -1,0 +1,89 @@
+% Part: many-valued-logic
+% Chapter: sequent-calculus
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{seq}{int}
+
+\olsection{Introduction}
+
+Le calcul des séquents de la logique classique est un système de
+!!{derivation} simple et efficace. Lorsqu'une logique plurivalente est
+définie par une matrice dont l'ensemble des valeurs de vérité~$V$ est
+fini, on peut également lui associer un calcul des séquents. Pour voir
+comment le construire, partons du sens des séquents et de la forme des
+règles d'inférence dans le cas classique.
+
+Rappelons qu'un séquent
+\begin{align*}
+    !A_1, \dots, !A_m & \Sequent !B_1, \dots, !B_n
+\intertext{peut s'interpréter comme la !!{formula}}
+    (!A_1 \land \cdots \land !A_m) & \lif (!B_1 \lor \cdots \lor
+!B_n)
+\end{align*}
+La conjonction vide vaut $\True$ et la disjonction vide vaut $\False$.
+Autrement dit, !!^a{valuation}~$\pAssign{v}$ \emph{satisfait} un
+séquent $\Gamma \Sequent \Delta$ si et seulement si
+$\pValue{v}(!A)=\False$ pour au moins une formule $!A\in\Gamma$,
+ou $\pValue{v}(!A)=\True$ pour au moins une formule $!A\in\Delta$.
+Dans cette interprétation, les séquents initiaux
+$!A \Sequent !A$ sont toujours satisfaits : on a soit
+$\pValue{v}(!A)=\True$, soit $\pValue{v}(!A)=\False$.
+
+Voici les règles d'inférence pour l'implication dans~$\Log{LK}$,
+en omettant les formules de contexte $\Gamma$ et~$\Delta$ :
+
+\begin{defish}
+    \Axiom$ \fCenter !A$
+    \Axiom$ !B \fCenter $
+    \RightLabel{\LeftR{\lif}}
+    \BinaryInf$ !A \lif !B \fCenter $
+    \DisplayProof
+    \hfill
+    \Axiom$ !A \fCenter !B$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$ \fCenter !A \lif !B $
+    \DisplayProof
+\end{defish}
+
+Selon l'interprétation sémantique précédente, la règle
+$\LeftR{\lif}$ dit que, si $\pValue{v}(!A)=\True$ et
+$\pValue{v}(!B)=\False$, alors
+$\pValue{v}(!A\lif !B)=\False$. De même, la règle
+$\RightR{\lif}$ dit que, si $\pValue{v}(!A)=\False$ ou
+$\pValue{v}(!B)=\True$, alors
+$\pValue{v}(!A\lif !B)=\True$. En fait, ces deux implications
+sémantiques sont des équivalences. Pour les formulations usuelles des
+règles $\LeftR{\land}$ et $\RightR{\lor}$, les implications
+correspondantes ne seraient pas des équivalences. Mais elles le
+deviennent avec les variantes suivantes :
+
+\begin{defish}
+    \Axiom$!A, !B, \Gamma \fCenter \Delta$
+    \RightLabel{\LeftR{\land}}
+    \UnaryInf$!A \land !B, \Gamma \fCenter \Delta$
+    \DisplayProof
+    \hfill
+    \Axiom$ \Gamma \fCenter \Delta, !A, !B$
+    \RightLabel{\RightR{\lor}}
+    \UnaryInf$ \Gamma \fCenter \Delta, !A \lor !B$
+    \DisplayProof
+\end{defish}
+
+En appliquant cette idée à une logique à $n$ valeurs, on obtient un
+calcul des séquents à $n$ places plutôt qu'à deux, une pour chaque
+valeur de vérité. Pour une logique à trois valeurs avec
+$V=\{\False,\Undef,\True\}$, un séquent est une expression
+$\Gamma\mid\Pi\mid\Delta$. Il est satisfait par
+!!a{valuation}~$\pAssign{v}$ si et seulement si
+$\pValue{v}(!A)=\False$ pour au moins une formule $!A\in\Gamma$,
+ou $\pValue{v}(!A)=\True$ pour au moins une formule $!A\in\Delta$,
+ou encore $\pValue{v}(!A)=\Undef$ pour au moins une formule
+$!A\in\Pi$. Dans un séquent initial $!A\mid !A\mid !A$, quelle que
+soit la valeur de~$!A$, la place qui lui correspond contient~$!A$.
+Toute valuation satisfait donc ce séquent.
+
+\end{document}

@@ -1,0 +1,54 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: first-incompleteness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{inc}
+
+\olsection{$\Th{Q}$ n'admet aucune extension complète, cohérente et axiomatisable}
+
+\begin{thm}
+\ollabel{thm:first-incompleteness}
+Il n'existe aucune extension de~$\Th{Q}$ qui soit
+à la fois complète, cohérente et !!{axiomatizable}.
+\end{thm}
+
+\begin{proof}
+Nous savons déjà qu'aucune extension cohérente
+de~$\Th{Q}$ n'est décidable. Or toute théorie
+complète et !!{axiomatizable} est décidable.
+\end{proof}
+
+\begin{explain}
+Ce théorème est proche de la formulation originale,
+due à Gödel en 1931, du premier théorème
+d'incomplétude. Outre une terminologie plus moderne,
+les différences essentielles sont les suivantes :
+Gödel supposait la « $\omega$-cohérence » plutôt que
+la simple « cohérence »; il ne pouvait pas non plus
+parler de théorie « !!{axiomatizable} » en toute
+généralité, car la notion formelle de calculabilité
+n'existait pas encore. Les modèles formels du calcul
+ont été développés pendant la décennie suivante,
+notamment par Gödel, en grande partie pour
+caractériser les théories auxquelles s'applique
+le phénomène d'incomplétude.
+
+Le théorème affirme que la complétude, la cohérence
+et l'existence d'une axiomatisation calculable ne
+peuvent être réunies. Chacune peut cependant être
+abandonnée tout en conservant les deux autres :
+$\Th{Q}$ est cohérente et axiomatisée par un ensemble
+calculable, mais elle n'est pas complète; la théorie
+incohérente est complète et admet une axiomatisation
+calculable, par exemple $\{\eq/[0][0]\}$, mais elle
+n'est pas cohérente; enfin, l'ensemble des
+!!{sentence}s arithmétiques vrais est complet et
+cohérent, mais il n'admet pas d'axiomatisation
+calculable.
+\end{explain}
+
+\end{document}

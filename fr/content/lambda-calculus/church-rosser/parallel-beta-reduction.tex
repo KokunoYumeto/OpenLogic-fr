@@ -1,0 +1,270 @@
+% Part: lambda-calculus
+% Chapter: church-rosser
+% Section: parallel-beta-reduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{cr}{pb}
+\olsection{Réduction~\texorpdfstring{$\beta$}{β} parallèle}
+
+Nous introduisons la \emph{réduction~$\beta$
+parallèle} et montrons qu'elle vérifie la
+propriété de Church--Rosser. Les règles portent
+sur les classes d'$\alpha$-équivalence. On peut
+renommer les lieurs dans les représentants.
+La substitution utilisée dans la règle de
+contraction est celle du \olref[lam][syn][alp]{cor:sub}.
+
+\begin{defn}[Réduction~$\beta$ parallèle, $\bredpar$]
+\ollabel{defn:bredpar}
+La réduction parallèle ($\bredpar$) des
+termes est définie inductivement par les
+règles suivantes :
+\begin{enumerate}
+\item \ollabel{defn:bredpar1} $x \bredpar x$.
+\item \ollabel{defn:bredpar2}
+  Si $N \bredpar N'$, alors
+  $\lambd[x][N] \bredpar \lambd[x][N']$.
+\item \ollabel{defn:bredpar3}
+  Si $P \bredpar P'$ et $Q \bredpar Q'$,
+  alors $PQ \bredpar P'Q'$.
+\item \ollabel{defn:bredpar4}
+  Si $N \bredpar N'$ et $Q \bredpar Q'$,
+  alors $(\lambd[x][N])Q \bredpar
+  \Subst{N'}{Q'}{x}$.
+\end{enumerate}
+\end{defn}
+
+La règle pour l'abstraction permet de conserver le corps
+de celle-ci. Par exemple, la première règle donne
+$x\bredpar x$ et la deuxième donne alors
+$\lambd[x][x]\bredpar\lambd[x][x]$.
+
+La réduction~$\beta$ parallèle permet de
+contracter en une étape un nombre quelconque
+de rédex présents dans le terme initial.
+Elle ne contracte pas dans cette même étape
+un rédex qui vient seulement d'être créé.
+Ainsi, $(\lambd[f][fx])(\lambd[y][y])$
+se réduit parallèlement à lui-même ou à
+$(\lambd[y][y])x$, mais pas directement
+à~$x$. Le rédex dont la contraction donne
+$x$ n'apparaît qu'après la première étape;
+une seconde étape parallèle suffit.
+La réduction~$\beta$ ordinaire, avec
+plusieurs étapes, conduit bien à~$x$.
+
+\begin{thm}\ollabel{thm:refl}
+$M \bredpar M$.
+\end{thm}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[lam][cr][pb]{thm:refl}.
+\end{prob}
+
+\begin{defn}[Développement~$\beta$ complet]
+\ollabel{defn:bcd}
+Le \emph{développement~$\beta$ complet}
+$\bcd{M}$ de $M$ est défini inductivement
+par les clauses suivantes :
+\begin{align}
+  \bcd{x} &= x \ollabel{defn:bcd1} \\
+  \bcd{(\lambd[x][N])}
+    &= \lambd[x][\bcd{N}] \ollabel{defn:bcd2}\\
+  \bcd{(PQ)} &= \bcd{P}\bcd{Q}
+    && \text{si $P$ n'est pas une abstraction $\lambd$}
+    \ollabel{defn:bcd3} \\
+  \bcd{((\lambd[x][N])Q)}
+    &= \Subst{\bcd{N}}{\bcd{Q}}{x}
+    \ollabel{defn:bcd4}
+\end{align}
+\end{defn}
+
+Comme son nom l'indique, le développement
+$\beta$ complet contracte en parallèle
+tous les rédex du terme initial. La
+réduction parallèle permet au contraire
+d'en laisser certains intacts. Ainsi, le
+développement complet de
+$(\lambd[f][fx])(\lambd[y][y])$ est
+$(\lambd[y][y])x$, et non le terme initial.
+
+Chaque appel récursif de la définition de $\bcd{M}$
+porte sur un sous-terme strict de $M$, dont le nombre
+de nœuds est inférieur. La dernière clause applique
+la substitution aux développements déjà obtenus.
+Elle se lit à $\alpha$-équivalence près, avec un
+représentant qui rend la substitution définie.
+
+\begin{lem}\ollabel{lem:comp}
+Si $M \bredpar M'$ et $R \bredpar R'$,
+alors $\Subst{M}{R}{y} \bredpar
+\Subst{M'}{R'}{y}$.
+\end{lem}
+
+\begin{proof}
+Pour composer les substitutions, on utilise
+l'identité suivante, à $\alpha$-équivalence près.
+Si $x\neq y$ et $x\notin\FV{V}$, alors
+\[
+  \Subst{\Subst{U}{W}{x}}{V}{y}
+  \aeq
+  \Subst{\Subst{U}{V}{y}}{\Subst{W}{V}{y}}{x}.
+\]
+Pour le voir, choisissons dans $U$ et $W$ des noms de
+lieurs distincts de $x$, de $y$ et de toutes les variables
+libres de $U$, $W$ et $V$. Dans l'arbre étiqueté de $U$
+utilisé dans la preuve du \olref[lam][syn][alp]{thm:sub},
+le membre gauche insère $W$ aux feuilles libres de nom $x$,
+puis $V$ aux feuilles libres de nom $y$, y compris celles
+des copies insérées de $W$. Le membre droit remplace
+d'abord les feuilles libres de nom $y$ par $V$ et insère
+ensuite, aux feuilles libres de nom $x$, des copies de
+$\Subst{W}{V}{y}$. Aucune copie de $V$ n'ajoute de feuille
+libre de nom $x$. Les deux opérations produisent donc le
+même arbre étiqueté.
+
+Raisonnons par induction sur la dérivation
+de $M \bredpar M'$.
+\begin{enumerate}
+\item Si la dernière étape applique la règle
+  \olref{defn:bredpar1}, on a $M=M'=z$ pour une
+  variable $z$. Si $z=y$, la conclusion est
+  $R\bredpar R'$. Si $z\neq y$, c'est
+  $z\bredpar z$.
+\item Si la dernière étape applique la règle
+  \olref{defn:bredpar2}, alors
+  $M=\lambd[x][N]$ et
+  $M'=\lambd[x][N']$, avec
+  $N\bredpar N'$. En prenant un représentant
+  dont $x$ est frais pour $y$, $R$ et $R'$,
+  l'objectif devient
+  $\lambd[x][\Subst{N}{R}{y}]
+  \bredpar
+  \lambd[x][\Subst{N'}{R'}{y}]$.
+  Il découle de l'hypothèse d'induction
+  et de la règle \olref{defn:bredpar2}.
+\item Si la dernière étape applique la règle
+  \olref{defn:bredpar3}, les hypothèses d'induction
+  s'appliquent aux deux termes de l'application.
+  La même règle réunit les deux réductions obtenues.
+\item Si la dernière étape applique la règle
+  \olref{defn:bredpar4}, alors
+  $M=(\lambd[x][N])Q$ et
+  $M'=\Subst{N'}{Q'}{x}$.
+  Prenons encore $x$ frais pour $y$, $R$
+  et $R'$. Les hypothèses d'induction
+  donnent
+  $\Subst{N}{R}{y}\bredpar
+  \Subst{N'}{R'}{y}$ et
+  $\Subst{Q}{R}{y}\bredpar
+  \Subst{Q'}{R'}{y}$.
+  La règle \olref{defn:bredpar4} donne
+  alors
+  \[
+    (\lambd[x][\Subst{N}{R}{y}])
+    \Subst{Q}{R}{y}
+    \bredpar
+    \Subst{\Subst{N'}{R'}{y}}
+          {\Subst{Q'}{R'}{y}}{x}.
+  \]
+  Par composition, ce dernier terme est
+  $\alpha$-équivalent à
+  $\Subst{\Subst{N'}{Q'}{x}}{R'}{y}$,
+  comme le montrent les conditions $x\neq y$
+  et $x\notin\FV{R'}$ vérifiées par le choix de~$x$.
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Dans le \olref[lam][cr][pb]{lem:comp}, écrire
+explicitement les deux applications de l'hypothèse
+d'induction lorsque la dernière règle porte sur une
+application. Vérifier le rôle de $x\notin\FV{V}$ dans
+l'identité de composition en prenant $U=y$.
+\end{prob}
+
+\begin{lem}\ollabel{lem:cont}
+Si $M \bredpar M'$, alors
+$M' \bredpar \bcd{M}$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par induction sur la dérivation
+de $M \bredpar M'$.
+\begin{enumerate}
+\item Si la dernière étape applique la règle
+  \olref{defn:bredpar1}, c'est un exercice.
+\item Si la dernière étape applique la règle
+  \olref{defn:bredpar2}, alors
+  $M=\lambd[x][N]$ et
+  $M'=\lambd[x][N']$, avec
+  $N\bredpar N'$. Par l'hypothèse
+  d'induction et la règle \olref{defn:bredpar2},
+  $\lambd[x][N']\bredpar
+  \lambd[x][\bcd{N}]$; la cible est
+  $\bcd{(\lambd[x][N])}$ par
+  l'\olref{defn:bcd2}.
+\item Si la dernière étape applique la règle
+  \olref{defn:bredpar3}, alors
+  $M=PQ$ et $M'=P'Q'$, où
+  $P\bredpar P'$ et $Q\bredpar Q'$.
+  Les hypothèses d'induction donnent
+  $P'\bredpar\bcd{P}$ et
+  $Q'\bredpar\bcd{Q}$.
+  \begin{enumerate}
+  \item Si $P=\lambd[x][N]$, alors
+    $P'=\lambd[x][N']$ pour un $N'$
+    tel que $N\bredpar N'$. Puisque
+    $N'\bredpar\bcd{N}$ et
+    $Q'\bredpar\bcd{Q}$, la règle
+    \olref{defn:bredpar4} donne
+    $(\lambd[x][N'])Q'\bredpar
+    \Subst{\bcd{N}}{\bcd{Q}}{x}$.
+  \item Si $P$ n'est pas une abstraction
+    $\lambd$, la règle
+    \olref{defn:bredpar3} donne
+    $P'Q'\bredpar\bcd{P}\bcd{Q}$,
+    qui est $\bcd{PQ}$ par
+    l'\olref{defn:bcd3}.
+  \end{enumerate}
+\item Si la dernière étape applique la règle
+  \olref{defn:bredpar4}, alors
+  $M=(\lambd[x][N])Q$ et
+  $M'=\Subst{N'}{Q'}{x}$, avec
+  $N\bredpar N'$ et $Q\bredpar Q'$.
+  Par l'hypothèse d'induction,
+  $N'\bredpar\bcd{N}$ et
+  $Q'\bredpar\bcd{Q}$. Le
+  \olref{lem:comp} donne
+  $\Subst{N'}{Q'}{x}\bredpar
+  \Subst{\bcd{N}}{\bcd{Q}}{x}$;
+  le terme de droite est précisément
+  $\bcd{((\lambd[x][N])Q)}$.
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Compléter la preuve du \olref[lam][cr][pb]{lem:cont}.
+\end{prob}
+
+\begin{thm}\ollabel{thm:cr}
+$\bredpar$ vérifie la propriété de
+Church--Rosser.
+\end{thm}
+
+\begin{proof}
+Si $M\bredpar P$ et $M\bredpar Q$,
+le \olref{lem:cont} donne
+$P\bredpar\bcd{M}$ et
+$Q\bredpar\bcd{M}$. Ce terme est le
+sommet commun requis.
+\end{proof}
+
+\end{document}

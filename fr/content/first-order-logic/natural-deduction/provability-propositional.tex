@@ -56,7 +56,7 @@ du théorème de complétude.
 
 \begin{prop}\ollabel{prop:provability-lor}
   \begin{enumerate}
-  \item $!A \lor !B, \lnot !A, \lnot !B$ est incohérent.
+  \item L'ensemble $\{!A \lor !B, \lnot !A, \lnot !B\}$ est incohérent.
   \item On a à la fois $!A \Proves !A \lor !B$ et
     $!B \Proves !A \lor !B$.
   \end{enumerate}
@@ -126,8 +126,8 @@ C'est une !!{derivation} de~$\lfalse$ dont les hypothèses
       \RightLabel{\Intro{\lif}}
       \UnaryInfC{$!A \lif !B$}
     \end{prooftree}
-Remarquons que $\Intro{\lif}$ permet de !!{discharge}
-    l'hypothèse~$!A$, sans l'exiger.
+Dans l'arbre de gauche, $\Intro{\lif}$ décharge l'hypothèse~$!A$.
+Dans celui de droite, la même règle s'applique avec une décharge vide.
   \end{enumerate}
 \end{proof}
 

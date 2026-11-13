@@ -1,0 +1,145 @@
+% Partie : logique intuitionniste
+% Chapitre : propositions comme types
+% Section : déduction naturelle en séquents
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{pty}{snd}
+
+\olsection{Déduction naturelle en séquents}
+
+Nous écrivons $\Gamma \Sequent !A$ lorsqu'il existe
+une dérivation en déduction naturelle de conclusion $!A$
+dont les hypothèses non déchargées sont parmi celles de~$\Gamma$.
+Le contexte peut donc contenir des hypothèses inutilisées.
+Lorsque $\Gamma$ est vide, nous écrivons $\Sequent !A$.
+
+La notation $\Gamma, !A_1, \dots, !A_n$ désigne
+$\Gamma \cup \{!A_1, \dots, !A_n\}$ ;
+$\Gamma, \Delta$ désigne $\Gamma \cup \Delta$.
+Il s'agit ici d'ensembles d'hypothèses : leur réunion n'additionne
+pas des multiplicités.
+
+Si $\Gamma \Sequent !A \land !B$, il existe une dérivation
+dont les hypothèses non déchargées sont parmi~$\Gamma$
+et dont la formule finale est $!A \land !B$.
+En appliquant $\Elim{\land}$ à la fin, on obtient une
+dérivation de $!A$ à partir des mêmes hypothèses disponibles.
+Autrement dit, $\Gamma \Sequent !A \land !B$ entraîne
+$\Gamma \Sequent !A$. L'autre projection donne~$!B$ :
+\begin{prooftree}
+  \Axiom$\Gamma \fCenter !A \land !B$
+  \RightLabel{$\Elim{\land}$}
+  \UnaryInf$\Gamma \fCenter !A$
+  \DisplayProof\qquad\bottomAlignProof
+  \Axiom$\Gamma \fCenter !A \land !B$
+  \RightLabel{$\Elim{\land}$}
+  \UnaryInf$\Gamma \fCenter !B$
+\end{prooftree}
+L'étiquette $\Elim{\land}$ rappelle la règle correspondante
+de la déduction naturelle.
+
+De même, $\Gamma, !A \Sequent !B$ indique une dérivation
+de~$!B$ dont les hypothèses non déchargées sont parmi
+$\Gamma, !A$. Appliquer $\Intro{\lif}$ permet de décharger
+les occurrences distinguées de l'hypothèse $!A$.
+On obtient une dérivation à partir de~$\Gamma$ de conclusion
+$!A \lif !B$, c'est-à-dire $\Gamma \Sequent !A \lif !B$.
+Cette notation rend explicite la décharge des hypothèses :
+\begin{prooftree}
+  \Axiom $\Gamma, !A \fCenter !B$
+  \RightLabel{$\Intro{\lif}$}
+  \UnaryInf $\Gamma \fCenter !A \lif !B$
+\end{prooftree}
+
+Les autres règles donnent de même les schémas suivants :
+\begin{gather*}
+  \Axiom $\Gamma \fCenter !A$
+  \Axiom $\Delta \fCenter !B$
+  \RightLabel{$\Intro{\land}$}
+  \BinaryInf $\Gamma,\Delta \fCenter !A \land !B$
+  \DisplayProof\\
+  \Axiom $\Gamma \fCenter !A \land !B$
+  \RightLabel{$\Elim{\land}_1$}
+  \UnaryInf $\Gamma \fCenter !A$
+  \DisplayProof
+  \qquad
+  \Axiom $\Gamma \fCenter !A \land !B$
+  \RightLabel{$\Elim{\land}_2$}
+  \UnaryInf $\Gamma \fCenter !B$
+  \DisplayProof
+  \\
+  \Axiom $\Gamma \fCenter !A$
+  \RightLabel{$\Intro{\lor}_1$}
+  \UnaryInf $\Gamma \fCenter !A \lor !B$
+  \DisplayProof\qquad
+  \Axiom $\Gamma \fCenter !B$
+  \RightLabel{$\Intro{\lor}_2$}
+  \UnaryInf $\Gamma \fCenter !A \lor !B$
+  \DisplayProof\\
+  \Axiom $\Gamma \fCenter !A \lor !B$
+  \Axiom $\Delta, !A \fCenter !C$
+  \Axiom $\Delta', !B \fCenter !C$
+  \RightLabel{$\Elim{\lor}$}
+  \TrinaryInf $\Gamma, \Delta, \Delta' \fCenter !C$
+  \DisplayProof
+  \\
+  \Axiom $\Gamma, !A \fCenter !B$
+  \RightLabel{$\Intro{\lif}$}
+  \UnaryInf $\Gamma \fCenter !A \lif !B$
+  \DisplayProof
+  \qquad
+  \Axiom $\Delta \fCenter !A \lif !B$
+  \Axiom $\Gamma \fCenter !A$
+  \RightLabel{$\Elim{\lif}$}
+  \BinaryInf $\Gamma, \Delta \fCenter !B$
+  \DisplayProof
+  \\
+  \Axiom $\Gamma \fCenter \lfalse$
+  \RightLabel{$\FalseInt$}
+  \UnaryInf $\Gamma \fCenter !A$
+  \DisplayProof
+\end{gather*}
+
+Une hypothèse constitue à elle seule une dérivation de
+$!A$ à partir de~$!A$ ; on a toujours $!A \Sequent !A$ :
+\begin{prooftree}
+  \AxiomC{$ $}
+  \UnaryInfC{$!A \fCenter !A$}
+\end{prooftree}
+
+Ces règles définissent un calcul qui décrit l'existence
+de dérivations en déduction naturelle.
+On peut aussi les lire comme une autre notation pour
+ces dérivations : chaque étape indique la formule dérivée
+et les hypothèses disponibles à partir desquelles elle est dérivée.
+Les contextes présentés ci-dessus sont des ensembles de formules ;
+pour suivre les décharges individuelles et leur traduction en
+termes, on étiquette les hypothèses par des variables distinctes,
+comme dans la présentation suivante du chapitre.
+
+Voici un exemple :
+\begin{prooftree}
+  \Axiom$!A \fCenter !A$
+  \RightLabel{\Intro{\lor}[1]}
+  \UnaryInf$!A \fCenter !A \lor (!A \lif \lfalse)$
+  \Axiom$!B \fCenter !B$
+  \RightLabel{\Elim{\lif}}
+  \BinaryInf$!A, !B \fCenter \lfalse$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$!B \fCenter !A \lif \lfalse$
+  \RightLabel{\Intro{\lor}[2]}
+  \UnaryInf$!B \fCenter !A \lor (!A \lif \lfalse)$
+  \Axiom$!B \fCenter !B$
+  \RightLabel{\Elim{\lif}}
+  \BinaryInf$!B \fCenter \lfalse$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\fCenter !B \lif \lfalse$
+\end{prooftree}
+où $!B$ abrège $(!A \lor (!A \lif \lfalse))\lif \lfalse$.
+En lisant $\lnot !C$ comme $!C \lif \lfalse$, on reconnaît
+dans la conclusion la double négation du tiers exclu.
+
+\end{document}

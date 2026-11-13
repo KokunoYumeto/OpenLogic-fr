@@ -1,0 +1,38 @@
+% Part: incompleteness
+% Chapter: arithmetization-syntax
+
+\documentclass[../../../include/open-logic-chapter]{subfiles}
+
+\begin{document}
+
+\olchapter{inc}{art}{Arithmétisation de la syntaxe}
+
+L'arithmétisation associe des entiers naturels aux symboles, aux termes
+et aux formules. Elle permet aussi de coder la substitution et les
+démonstrations des systèmes présentés dans ce chapitre.
+
+\olimport{introduction}
+
+\olimport{coding-symbols}
+
+\olimport{coding-terms}
+
+\olimport{coding-formulas}
+
+\olimport{substitution}
+
+\iftag{prfSC}{%
+  \olimport{proofs-in-lk}
+}{}
+
+\iftag{prfND}{%
+  \olimport{proofs-in-nd}
+}{}
+
+\iftag{prfAX}{
+  \olimport{proofs-in-ax}
+}{}
+
+\OLEndChapterHook
+
+\end{document}

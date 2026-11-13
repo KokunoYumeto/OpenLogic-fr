@@ -1,0 +1,74 @@
+% Partie : intuitionistic-logic
+% Chapitre : introduction
+% Section : axiomatic-derivations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{int}{axd}
+
+\olsection{\usetoken{P}{derivation} axiomatiques}
+
+Les !!{derivation}s axiomatiques pour la logique propositionnelle
+intuitionniste constituent les systèmes de !!{derivation}
+conceptuellement les plus simples et historiquement les premiers.
+Leur fonctionnement est le même qu'en logique propositionnelle classique.
+
+\begin{defn}[!!^{derivability}]
+Soit $\Gamma$ un ensemble de !!{formula}s du langage $\Lang L$.
+Une \emph{!!{derivation}} à partir de $\Gamma$ est une suite finie
+$!A_1$, \dots,~$!A_n$ de !!{formula}s telle que, pour chaque
+$i \le n$, l'une des conditions suivantes soit remplie :
+\begin{enumerate}
+\item $!A_i \in \Gamma$ ; ou
+\item $!A_i$ est un axiome ; ou
+\item $!A_i$ découle par modus ponens de formules précédentes
+  $!A_j$ et $!A_k$, avec $j < i$ et $k < i$ ; autrement dit,
+  $!A_k \ident !A_j \lif !A_i$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}[Axiomes]
+L'ensemble $\PAx$ des \emph{axiomes} de la logique propositionnelle
+intuitionniste comprend toutes les !!{formula}s des formes suivantes :
+\begin{align}
+  & (!A \land !B) \lif !A \ollabel{ax:land1}\\
+  & (!A \land !B) \lif !B \ollabel{ax:land2}\\
+  & !A \lif (!B \lif (!A \land !B)) \ollabel{ax:land3}\\
+  & !A \lif (!A \lor !B) \ollabel{ax:lor1}\\
+  & !A \lif (!B \lor !A) \ollabel{ax:lor2}\\
+  & (!A \lif !C) \lif ((!B \lif !C) \lif ((!A \lor !B) \lif !C)) \ollabel{ax:lor3}\\
+  & !A \lif (!B \lif !A) \ollabel{ax:lif1}\\
+  & (!A \lif (!B \lif !C)) \lif ((!A \lif !B) \lif (!A \lif !C)) \ollabel{ax:lif2}\\
+  & \lfalse \lif !A \ollabel{ax:lfalse1}
+\end{align}
+\end{defn}
+
+\begin{defn}[!!^{derivability}]
+Une !!{formula}~$!A$ est \emph{!!{derivable}} à partir de
+$\Gamma$, ce que l'on note $\Gamma \Proves !A$, s'il existe une
+!!{derivation} à partir de $\Gamma$ dont la dernière formule est $!A$.
+\end{defn}
+
+\begin{defn}[Théorèmes]
+Une !!{formula}~$!A$ est un \emph{théorème} s'il existe une
+!!{derivation} de~$!A$ à partir de l'ensemble vide. Nous écrivons
+$\Proves !A$ si $!A$ est un théorème, et $\Proves/ !A$ sinon.
+\end{defn}
+
+\begin{prop}
+  Si $\Gamma \Proves !A$ dans ce système de !!{derivation}
+  axiomatique intuitionniste, alors $\Gamma \Proves !A$ aussi
+  en logique classique. En particulier, tout théorème
+  intuitionniste $!A$ est également un théorème classique.
+\end{prop}
+
+\begin{proof}
+  Chacun des axiomes intuitionnistes figure aussi parmi les
+  axiomes du système classique considéré ici ; la règle de
+  modus ponens est la même. Toute !!{derivation} intuitionniste
+  est donc aussi une !!{derivation} classique.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,99 @@
+% Part: normal-modal-logic
+% Chapter: tableaux
+% Section: simple-S5
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{tab}{s5}
+
+\olsection{\usetoken{P}{tableau} simplifiés pour \Log{S5}}
+
+\Log{S5} est correct et complet relativement à la classe des modèles
+universels, c'est-à-dire des modèles dans lesquels tout monde est
+accessible depuis chaque monde. Dans ces modèles, la relation
+d'accessibilité n'apporte aucune information supplémentaire :
+« il existe un monde~$w$ tel que $\mSat{M}{!A}[w]$ » équivaut à
+« il existe un tel $w$ accessible depuis~$u$ ». Pour \Log{S5}, nous
+pouvons donc travailler avec des modèles universels décrits par un
+ensemble de mondes et une valuation~$V$. Chaque classe d'équivalence
+d'un cadre de \Log{S5} forme un cadre universel. Lorsqu'on restreint
+le modèle à la classe d'un monde, on restreint aussi la valuation,
+et chaque monde de la classe garde exactement les mêmes successeurs.
+La vérité des !!{formula}s y est donc préservée, par récurrence sur
+leur construction.
+
+On peut ainsi simplifier les règles des !!{tableau}s. Dans le cas général, les préfixes sont des suites
+d'entiers strictement positifs qui permettent de repérer les mondes
+accessibles depuis d'autres : $\sigma.n$ désigne un monde accessible
+depuis~$\sigma$. Dans les modèles universels utilisés pour \Log{S5}, tout monde est accessible depuis chaque
+monde ; il est donc inutile de coder cette information dans les
+préfixes. Nous pouvons prendre de simples entiers strictement
+positifs comme préfixes. Les règles simplifiées figurent dans le
+\olref{tab:rules-S5}.
+
+\begin{table}
+  \begin{center}
+    \def\arraystretch{3}\def\fCenter{}
+    \begin{tabular}{|c|c|}
+    \hline
+    \iftag{prvBox}{
+      \AxiomC{\sFmla{\True}{\Box !A}[n]}
+      \RightLabel{\TRule{\True}{\Box}}
+      \UnaryInfC{\sFmla{\True}{!A}[m]}
+      \DisplayProof
+      &
+      \AxiomC{\sFmla{\False}{\Box !A}[n]}
+      \RightLabel{\TRule{\False}{\Box}}
+      \UnaryInfC{\sFmla{\False}{!A}[m]}
+      \DisplayProof\\
+      $m$ est utilisé & $m$ est nouveau
+      \\[1ex]
+      \hline}{}
+    \iftag{prvDiamond}{
+      \AxiomC{\sFmla{\True}{\Diamond !A}[n]}
+      \RightLabel{\TRule{\True}{\Diamond}}
+      \UnaryInfC{\sFmla{\True}{!A}[m]}
+      \DisplayProof
+      &
+      \AxiomC{\sFmla{\False}{\Diamond !A}[n]}
+      \RightLabel{\TRule{\False}{\Diamond}}
+      \UnaryInfC{\sFmla{\False}{!A}[m]}
+      \DisplayProof\\
+      $m$ est nouveau & $m$ est utilisé
+      \\[1ex]
+      \hline}{}
+    \end{tabular}
+  \end{center}
+  \caption{Règles simplifiées pour \Log{S5}.}
+  \ollabel{tab:rules-S5}
+\end{table}
+
+\begin{ex}
+  Voici un tableau simplifié et fermé qui démontre $\Log{S5} \Proves
+  \Ax{5}$, c'est-à-dire $\Diamond!A \lif \Box\Diamond!A$.
+  \begin{oltableau}
+    [\pFmla{\False}{\Diamond\formula{A} \lif \Box\Diamond \formula{A}}{1},
+      just = \TAss
+      [\pFmla{\True}{\Diamond \formula{A}}{1}, just = {\TRule{\False}{\lif}[1]}
+        [\pFmla{\False}{\Box\Diamond \formula{A}}{1},
+          just = {\TRule{\False}{\lif}[1]}
+          [\pFmla{\False}{\Diamond \formula{A}}{2},
+            just = {\TRule{\False}{\Box}[3]}
+            [\pFmla{\True}{\formula{A}}{3},
+              just = {\TRule{\True}{\Diamond}[2]}
+                [\pFmla{\False}{\formula{A}}{3},
+                  just = {\TRule{\False}{\Diamond}[4]}, close]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  Les préfixes~$2$ et~$3$ sont introduits pour désigner des mondes
+  témoins. La dernière règle s'applique au préfixe~$3$, déjà utilisé,
+  et y donne l'opérande faux, qui ferme la branche.
+\end{ex}
+
+\end{document}

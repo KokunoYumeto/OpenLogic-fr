@@ -1,0 +1,4348 @@
+{
+  "source_revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
+  "manifest_sha256": "5a6fef5c16c15a5b2f90f874c268512cfd6ed2e846bdfa850a67304a4c05a155",
+  "reader_source_sha256": "9ad0a1e82201dbc81156bd417940f507c1c6051cbe5bf4c868922137e8d9cccb",
+  "units": [
+    {
+      "unit_id": "OLP-0001",
+      "path": "content/open-logic-about.tex",
+      "french_sha256": "8259a8692426f8762b15868e8a83a7fbc42af69035844c14d4d57b2ddc3c6502",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0002",
+      "path": "content/content.tex",
+      "french_sha256": "51a8bf8b832c8d32e1defa10030063d4834733ebf1a8f81b621d2e13f2f711bf",
+      "loaded": false
+    },
+    {
+      "unit_id": "OLP-0003",
+      "path": "content/sets-functions-relations/sets-functions-relations-complete.tex",
+      "french_sha256": "0372b726e50be9e0c55d22a1d95d0f6748fe0d7896c80863786061d468aeb201",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0004",
+      "path": "content/sets-functions-relations/sets/sets.tex",
+      "french_sha256": "96eaf83db6070e8e680db7a17c5badad86d7f49c0eef33b1db12f68966cb4f01",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0005",
+      "path": "content/sets-functions-relations/sets/basics.tex",
+      "french_sha256": "8cfaaa0a8018d46e69f13f53c7ba2581926c9c2b4d199ec59227f60333fc63c0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0006",
+      "path": "content/sets-functions-relations/sets/subsets.tex",
+      "french_sha256": "70ad6a7d9a0d501195115a25ba434b9ed1ad77fe449fcf6ef012615c903bf4b8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0007",
+      "path": "content/sets-functions-relations/sets/important-sets.tex",
+      "french_sha256": "4fa2ad19c5512d49db7bd686744588075a78084725a0e9beefe42a3880ab0c41",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0008",
+      "path": "content/sets-functions-relations/sets/unions-and-intersections.tex",
+      "french_sha256": "4125301de7205e36bdf84603e565546d65681e5d3c6004c3fab28a0d7e320510",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0009",
+      "path": "content/sets-functions-relations/sets/pairs-and-products.tex",
+      "french_sha256": "02110af48f7e09ed67a49256907cb6f76c2e486c085b0e453418a2b376ef305d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0010",
+      "path": "content/sets-functions-relations/sets/russells-paradox.tex",
+      "french_sha256": "ff887365640fb7715533f02fe35e8588150f0c61740a807bcabc76bd4fec6954",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0011",
+      "path": "content/sets-functions-relations/relations/relations-complete.tex",
+      "french_sha256": "661c2c5caf54df3804ed164bbe4b1d35e5e1dc3cf3ff388eb96fe90c7372dc56",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0012",
+      "path": "content/sets-functions-relations/relations/relations-as-sets.tex",
+      "french_sha256": "2ce4c04141b8a306f4eb921114f820b6b54ceea9f8b07ca326b9d297cdd5196c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0013",
+      "path": "content/sets-functions-relations/relations/reflections.tex",
+      "french_sha256": "b028172423542f549f76e8fa6aaac00f27e04a9118c1bb3c09a4012827287db6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0014",
+      "path": "content/sets-functions-relations/relations/special-properties.tex",
+      "french_sha256": "fcc52508a76c67d3327f81a1762028be4d3185d1b756af817ef74b4ff6acbeda",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0015",
+      "path": "content/sets-functions-relations/relations/equivalence-relations.tex",
+      "french_sha256": "540e514fc2bc04e1f5e20de09dd2f0aa9794328f922ccbc90ac9710f6bad0e50",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0016",
+      "path": "content/sets-functions-relations/relations/orders.tex",
+      "french_sha256": "f05bbf45897a8c4a5870bc30cdb79815687a4ea892a8982261a70ef8d7b6674b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0017",
+      "path": "content/sets-functions-relations/relations/graphs.tex",
+      "french_sha256": "ed9e3536db05f46318e5fb2e2184c9341a086c5f100505efb66707699fddb410",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0018",
+      "path": "content/sets-functions-relations/relations/trees.tex",
+      "french_sha256": "90bbf3bd39f270dfd4c3a05538df6bd9a555d3808b1cb1351b2754b822c68753",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0019",
+      "path": "content/sets-functions-relations/relations/operations.tex",
+      "french_sha256": "3e3319230fac3fc0f71f44231e6e5e04df1abe96a55b06837a53a0eaac16b26f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0020",
+      "path": "content/sets-functions-relations/functions/functions.tex",
+      "french_sha256": "5500b55f06fba2e5151fe12df4cabf21cb5f06a412a94ce71d18970d10f5abb2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0021",
+      "path": "content/sets-functions-relations/functions/function-basics.tex",
+      "french_sha256": "ab3895efdf3abfb88f1d5b6d17fe67d42ccbe4aaef55a077e34c4d0acf526a03",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0022",
+      "path": "content/sets-functions-relations/functions/function-kinds.tex",
+      "french_sha256": "9042ddfce1911e7539aeb33e1a3cfe35f62a58feb7b5205565cfdf635ad5d44a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0023",
+      "path": "content/sets-functions-relations/functions/functions-relations.tex",
+      "french_sha256": "8ee42bb8b5c58cbf244fdc4693aaaf6900666bc6c7dee60f27d755ae7c0c4199",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0024",
+      "path": "content/sets-functions-relations/functions/inverses.tex",
+      "french_sha256": "d89be7209064802a3433c13b5521d907c2e245cda7b1f39b884ef04a40dd5a93",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0025",
+      "path": "content/sets-functions-relations/functions/composition.tex",
+      "french_sha256": "89346062ef5fd99955b7c5b8d2c5b3b210a977d55693abc4b01eb914423d396f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0026",
+      "path": "content/sets-functions-relations/functions/partial-functions.tex",
+      "french_sha256": "5f9509624e10771e33638812851fcb5a4baaeeae7d1aed467b5e11bf17c9b205",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0027",
+      "path": "content/sets-functions-relations/size-of-sets/size-of-sets-complete.tex",
+      "french_sha256": "278668868c175a3da6583f587f244cbddd1c58fe876493badda6e79dbdc268bc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0028",
+      "path": "content/sets-functions-relations/size-of-sets/introduction.tex",
+      "french_sha256": "d6066a342c0ee74164ec8c40d2d562a5a28472f8a240cc7e389f4833f82e0fd2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0029",
+      "path": "content/sets-functions-relations/size-of-sets/enumerability.tex",
+      "french_sha256": "25c48ed596060b83d4559adfb82b637e53d9aa54b7fa3cd72143f3b29ff0a524",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0030",
+      "path": "content/sets-functions-relations/size-of-sets/zig-zag.tex",
+      "french_sha256": "9ae5247a3981780d3fe2326079dbc8dfba74a80149b7abcf33e77e37c49f3981",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0031",
+      "path": "content/sets-functions-relations/size-of-sets/pairing.tex",
+      "french_sha256": "b6d7f9a0b137637a71f4b813a8391fcb3bf99556804dae4a2600360544b38aca",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0032",
+      "path": "content/sets-functions-relations/size-of-sets/pairing-alt.tex",
+      "french_sha256": "8a6f2f1df3dca089ba1af7bd08de58c7c9d3371dc95d00e1e25c4b609c46529b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0033",
+      "path": "content/sets-functions-relations/size-of-sets/non-enumerability.tex",
+      "french_sha256": "adbdf55986e833ba9fa9c12b24a96f39af375cb63797e43873367ca58bf1317e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0034",
+      "path": "content/sets-functions-relations/size-of-sets/reduction.tex",
+      "french_sha256": "588e53941e056285fc879228d03ed015fe1178841250b8ca549144cd5064bd63",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0035",
+      "path": "content/sets-functions-relations/size-of-sets/equinumerous-sets.tex",
+      "french_sha256": "17c49f5b2df8485ce7b225cf2a2e380c3e898c547de7371962b36f67c40fcead",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0036",
+      "path": "content/sets-functions-relations/size-of-sets/comparing-size.tex",
+      "french_sha256": "8ead784110ceb6493b3bd6e7ec0e0309bba4ff5a1722b7db6baf5c27718e9011",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0037",
+      "path": "content/sets-functions-relations/size-of-sets/schroder-bernstein.tex",
+      "french_sha256": "e0731e9e62e4be88ada3a8845b729490d295f7d3c6661ee236b26626a0c3d428",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0038",
+      "path": "content/sets-functions-relations/size-of-sets/enumerability-alt.tex",
+      "french_sha256": "d7ad27e2dd11bb92c2e588415986204a92bcc207d2aed9fa57a12ff5f06b8db1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0039",
+      "path": "content/sets-functions-relations/size-of-sets/non-enumerability-alt.tex",
+      "french_sha256": "b006b7263dfafcc31d3ded6e07b52656f2d9af8dd2e4c998b244cee998482e5e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0040",
+      "path": "content/sets-functions-relations/size-of-sets/reduction-alt.tex",
+      "french_sha256": "9ebdd2aa539974acaa588e956464f8530772c109990f60affb56875fdca5529c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0041",
+      "path": "content/sets-functions-relations/arithmetization/arithmetization.tex",
+      "french_sha256": "3153423a812db8d44f202e0f57ec2cd0f424413e23c0b7e619f3e0cb32c001e4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0042",
+      "path": "content/sets-functions-relations/arithmetization/integers.tex",
+      "french_sha256": "2c6a8bb5d8d7191a0c85f87816ad7e9b5480a32d90cd19c7e786c0d8204bcba4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0043",
+      "path": "content/sets-functions-relations/arithmetization/rationals.tex",
+      "french_sha256": "c755afc6d8a9992a2da3a13bca7a18bf65b0301f2dc16729fb00c0ab860da346",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0044",
+      "path": "content/sets-functions-relations/arithmetization/reals.tex",
+      "french_sha256": "87e62fd9dda5c5e9e1f1f4371696dfbda11f8d5e95e4f9b3bc351fb35d3f5b0b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0045",
+      "path": "content/sets-functions-relations/arithmetization/cuts.tex",
+      "french_sha256": "3460ad5f67a1d8ff350c62730178ed25e98578ebd5985eb13ab7cfa318e71a89",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0046",
+      "path": "content/sets-functions-relations/arithmetization/reflections.tex",
+      "french_sha256": "19a2efe75997376196e0902b175201e83a965f4d13aa8197dd8e9519c050d0e0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0047",
+      "path": "content/sets-functions-relations/arithmetization/checking-details.tex",
+      "french_sha256": "0dde7695ddaeb6ed9f46a84ebd1be9c10d14f93301a36d5b9be00e8564aff487",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0048",
+      "path": "content/sets-functions-relations/arithmetization/cauchy.tex",
+      "french_sha256": "241ed3a94d42cd2a9375dbc6d6bb6e1216872512e96d40887cd3ccc2d9e93d4e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0049",
+      "path": "content/sets-functions-relations/infinite/infinite.tex",
+      "french_sha256": "344a5c7a7f94435805fd1794affc0150a07cd27cbb8feceba17d530b43fd70d5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0050",
+      "path": "content/sets-functions-relations/infinite/hilberts-hotel.tex",
+      "french_sha256": "5c71916fd5c18591bb0d7d6544c5ed29001fd43ac9f210a006105fe9a19ccd5a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0051",
+      "path": "content/sets-functions-relations/infinite/dedekind-algebra.tex",
+      "french_sha256": "5af1486fb58293b08817c7976c2d50b71fe110b7787878f84bec2370d2c82839",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0052",
+      "path": "content/sets-functions-relations/infinite/dedekind-induction.tex",
+      "french_sha256": "458684299dc8ec423cbb861d21fb0a0d84755f95192c9f75f1b845dc5f8e20e4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0053",
+      "path": "content/sets-functions-relations/infinite/dedekinds-proof.tex",
+      "french_sha256": "7f858755cd5dfae293d9ade352c1ef3e484cde5367c1b19ff077eafa4a79e161",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0054",
+      "path": "content/sets-functions-relations/infinite/card-sb.tex",
+      "french_sha256": "5da982ff68d05ee6fbb26d3dca298a0f70d201f52b051e83c4a9dfbcbb451dec",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0055",
+      "path": "content/propositional-logic/propositional-logic.tex",
+      "french_sha256": "8810835640773eb68c24c25b80cd66a2473b7768bed6ca25800243f01cc3ef13",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0056",
+      "path": "content/propositional-logic/syntax-and-semantics/syntax-and-semantics.tex",
+      "french_sha256": "f09a8bddc0924bc14672a74e15ee27c2a6f4b382a61312b51a093fb7216d1c87",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0057",
+      "path": "content/propositional-logic/syntax-and-semantics/introduction.tex",
+      "french_sha256": "3a56e4d38b438e837e279506dc5307acca26dc9a8bbcb0dce0630afedb7295c7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0058",
+      "path": "content/propositional-logic/syntax-and-semantics/formulas.tex",
+      "french_sha256": "1e14050371f2f5acfbdf401985932a4ba1f2b0ba3cebe8a61e5ee86fc0c4b036",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0059",
+      "path": "content/propositional-logic/syntax-and-semantics/preliminaries.tex",
+      "french_sha256": "3f27d31ab157775af18fd142561c4956482ec184c23e4a2168eefb74e294132d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0060",
+      "path": "content/propositional-logic/syntax-and-semantics/formation-sequences.tex",
+      "french_sha256": "b7d6252641c16ca015a97fdac11f748a885c1d10daaa5f644a2a6505e3a259a1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0061",
+      "path": "content/propositional-logic/syntax-and-semantics/valuations-sat.tex",
+      "french_sha256": "f43fab25fe447e0b73eacff5e7941df7fbe352d66f247a46e981770b76226785",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0062",
+      "path": "content/propositional-logic/syntax-and-semantics/semantic-notions.tex",
+      "french_sha256": "94120db7389f615012b1837a888fdf3c188b2aac70c1cda8b8c3268d23a6c251",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0063",
+      "path": "content/first-order-logic/proof-systems/proof-systems.tex",
+      "french_sha256": "168aad98614f866fdf541076683e806b9048a57afa3bfca4964c9ce239cd51ab",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0064",
+      "path": "content/first-order-logic/proof-systems/introduction.tex",
+      "french_sha256": "09b34299a09bafb2df6eb55f1ca52ac694deed082cbbe05430022aad6c64c48d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0065",
+      "path": "content/first-order-logic/proof-systems/sequent-calculus.tex",
+      "french_sha256": "222fc2a5d070eb453b40477c58026f6700acc2ba1ed3621a0f1cc222b7c4ea36",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0066",
+      "path": "content/first-order-logic/proof-systems/natural-deduction.tex",
+      "french_sha256": "df243067f711fa6bb353b7d1fc56afa116df848e6cb86c85970dc9fe06515b78",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0067",
+      "path": "content/first-order-logic/proof-systems/tableaux.tex",
+      "french_sha256": "d6894e668d86707b1ae4d6f673c3a2fcece75b0a1eed771340778c3dee2be2f4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0068",
+      "path": "content/first-order-logic/proof-systems/axiomatic-deduction.tex",
+      "french_sha256": "5f8ec8a98004f4826471b928b66fd40a92d33c18bb6bc963e02a8e00409698b8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0069",
+      "path": "content/first-order-logic/sequent-calculus/sequent-calculus.tex",
+      "french_sha256": "b5f91792be601dc2d3a626e8aac10f9dae7651bb0b9e64b97357666ba2a843a5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0070",
+      "path": "content/first-order-logic/sequent-calculus/rules-and-proofs.tex",
+      "french_sha256": "415f85dd6822903abdee8dd3339430d4742c372a068919937a15a665212fc5fa",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0071",
+      "path": "content/first-order-logic/sequent-calculus/propositional-rules.tex",
+      "french_sha256": "31204fc7a5d4e77dc905ffcde4c8ae1d033ed978dd803962a39e588a5435b0fd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0072",
+      "path": "content/first-order-logic/sequent-calculus/quantifier-rules.tex",
+      "french_sha256": "d74bf5808a3cf412a866c7de9023aa09ab2bef9268271a283fc5b509c84b4b7f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0073",
+      "path": "content/first-order-logic/sequent-calculus/structural-rules.tex",
+      "french_sha256": "8ce48eb82976c4d3ac42c12c72801328dd2f252e4f855667398d9e5770d58706",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0074",
+      "path": "content/first-order-logic/sequent-calculus/derivations.tex",
+      "french_sha256": "e1ce474d03764dcc9c18e85a406e4dcd5ea84aab144a64658e5a611e23e33113",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0075",
+      "path": "content/first-order-logic/sequent-calculus/proving-things.tex",
+      "french_sha256": "41c7344e078cc0572dd698c3eba57936ac6dad81febec605e3d242dd7ac71832",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0076",
+      "path": "content/first-order-logic/sequent-calculus/proving-things-quant.tex",
+      "french_sha256": "5391f7f3aa19dd5a99467618f44a2268bce9cd1fd22b91314d2ea41d130fcced",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0077",
+      "path": "content/first-order-logic/sequent-calculus/proof-theoretic-notions.tex",
+      "french_sha256": "f78e5eb2bd56f4f85f88b2d39b856731d381ae165389010c008e3618ebbf00e2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0078",
+      "path": "content/first-order-logic/sequent-calculus/provability-consistency.tex",
+      "french_sha256": "03eb966de1b3309aea14c1084f63f43741b71db53860ef8fa3775024d4db3983",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0079",
+      "path": "content/first-order-logic/sequent-calculus/provability-propositional.tex",
+      "french_sha256": "edaf5767bf3b33cabbcccc4cc31fb1cac3a66237953cf8a8e5eb0c009f7a1eb7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0080",
+      "path": "content/first-order-logic/sequent-calculus/provability-quantifiers.tex",
+      "french_sha256": "7c160d4d2316ce62ebe18c7ff60bf932f2a0ce5a86f7c9b3c4820f33b8154cab",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0081",
+      "path": "content/first-order-logic/sequent-calculus/soundness.tex",
+      "french_sha256": "595d9462bf94bd0b229b6dba68c384850fd87131798f5b1c6a6fc669cfb5921a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0082",
+      "path": "content/first-order-logic/sequent-calculus/identity.tex",
+      "french_sha256": "b26648e5103c33073d7faeaed5f50b4b8fbb727d12082821bf01074491914e00",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0083",
+      "path": "content/first-order-logic/sequent-calculus/soundness-identity.tex",
+      "french_sha256": "26662af0abed6335c6c032a360fc4434d93b042c6fa3d2136af7f9edd6b3b612",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0084",
+      "path": "content/first-order-logic/natural-deduction/natural-deduction.tex",
+      "french_sha256": "5cefb9fab640e699b24fca76b9db6a11f29d270cd57a9337ffee9b51e0f64782",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0085",
+      "path": "content/first-order-logic/natural-deduction/rules-and-proofs.tex",
+      "french_sha256": "d316c95340076c6f5208c61100ff3628f13d4d4270213881dff1e23ba7ffaba5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0086",
+      "path": "content/first-order-logic/natural-deduction/propositional-rules.tex",
+      "french_sha256": "5ef3ccf39388659ef54c364426e4dac893c4b8cde749495f3cc2f8f2f6a38116",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0087",
+      "path": "content/first-order-logic/natural-deduction/quantifier-rules.tex",
+      "french_sha256": "45030b33025e44523c0ea2cf337a0d0fe4ca3bb60aef95fd92c4b8990c800512",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0088",
+      "path": "content/first-order-logic/natural-deduction/derivations.tex",
+      "french_sha256": "fb5cc9dfe1856cee0178d51ff7624db2a51877b0f8f5d7bd94ee995c8e41bcc3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0089",
+      "path": "content/first-order-logic/natural-deduction/proving-things.tex",
+      "french_sha256": "41f0c4e563bdd2264742033e36e6749c6b80042b00b51bea9e009e44bdba3a52",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0090",
+      "path": "content/first-order-logic/natural-deduction/proving-things-quant.tex",
+      "french_sha256": "79b2fdb236fb54ead976c49a09d4f8605745b5d8713548e06cdf8c13cb7b86d8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0091",
+      "path": "content/first-order-logic/natural-deduction/proof-theoretic-notions.tex",
+      "french_sha256": "6e8360517a6c515b0cfcf1baa8fedb85b79f64f6147b5109c96272e1fc28530e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0092",
+      "path": "content/first-order-logic/natural-deduction/provability-consistency.tex",
+      "french_sha256": "5cb674556e34dae71d991af26a29e51bc712ba0766c34f055b8f05c19af424d7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0093",
+      "path": "content/first-order-logic/natural-deduction/provability-propositional.tex",
+      "french_sha256": "5cf47663832dd9a64b5c2afdeb3e265940df90d42c5c24f0b14fd2e8c927a56a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0094",
+      "path": "content/first-order-logic/natural-deduction/provability-quantifiers.tex",
+      "french_sha256": "270bb5df3a4baf9c1b1dc78e1f1b3970eb07e16022c2afc8fc741111be65d5c2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0095",
+      "path": "content/first-order-logic/natural-deduction/soundness.tex",
+      "french_sha256": "a6bc38456094bf236302aa122a4de549bb35ce5fe3c26a30faaaba44d5810609",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0096",
+      "path": "content/first-order-logic/natural-deduction/identity.tex",
+      "french_sha256": "5b535edcd729ce2700ea8e9addbde311e6d5e6cbec38e789dcfb919073f21254",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0097",
+      "path": "content/first-order-logic/natural-deduction/soundness-identity.tex",
+      "french_sha256": "069213eff09b5d16b5e3b116a4ff7c4afe532e9eaead95907df7cebc240896b2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0098",
+      "path": "content/first-order-logic/tableaux/tableaux.tex",
+      "french_sha256": "a8acdc48d4d2ac7992a18dca9beaa52101f79cb5372b3f80f4a84e8342b9dad5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0099",
+      "path": "content/first-order-logic/tableaux/rules-and-proofs.tex",
+      "french_sha256": "4361c4e45162e99985b5f5f3162c750d15f19bca662ed2de5bddafcc5daa70ca",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0100",
+      "path": "content/first-order-logic/tableaux/propositional-rules.tex",
+      "french_sha256": "03511758f4eb4a420e15a8d27865f0c9fd67454668aaf88da4f163f9f7b9930f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0101",
+      "path": "content/first-order-logic/tableaux/quantifier-rules.tex",
+      "french_sha256": "b124315d83c1941c7b34772e5d9d31ac7c4d1a4b01f64f13bc2a7e8773a5f3c8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0102",
+      "path": "content/first-order-logic/tableaux/derivations.tex",
+      "french_sha256": "af75ad325f89d1cad8efb1d2518c9314d53938dd2a0bc1dfd83ef9441c6ccf16",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0103",
+      "path": "content/first-order-logic/tableaux/proving-things.tex",
+      "french_sha256": "9f574b95a4bccd18200ec898582227f6ed8abebbcd98e16350691b72b1d49015",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0104",
+      "path": "content/first-order-logic/tableaux/proving-things-quant.tex",
+      "french_sha256": "4244b7531b1910fa2457a307a65a345fb0a55789f8b30e2cc5f1a13fc7fa3f23",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0105",
+      "path": "content/first-order-logic/tableaux/proof-theoretic-notions.tex",
+      "french_sha256": "a901f593a4259a95c097cd3163437a02bd3aae8616b3968e4677b05ae88fe6de",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0106",
+      "path": "content/first-order-logic/tableaux/provability-consistency.tex",
+      "french_sha256": "c171a6f1acfe2f20632420efa5497f4d3456fc2753bcb40fdde2cb2c295960d3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0107",
+      "path": "content/first-order-logic/tableaux/provability-propositional.tex",
+      "french_sha256": "a2c74b0d30112174d469010f3b42a755a2eb2b6a42cc10ab67f199b68833b3bf",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0108",
+      "path": "content/first-order-logic/tableaux/provability-quantifiers.tex",
+      "french_sha256": "1d48ea5de60c07bc3631df2feba3d73c5553c3ed6506594cf569376b38f0adaf",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0109",
+      "path": "content/first-order-logic/tableaux/soundness.tex",
+      "french_sha256": "7b35df9f441dd1cca6d2efa1710bcec4ea8780251bd629c44f195847616a2f4f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0110",
+      "path": "content/first-order-logic/tableaux/identity.tex",
+      "french_sha256": "de87e0b6d4d95661f43a4dbfadc4a142738e999f3b8d41956eb900b5166421e3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0111",
+      "path": "content/first-order-logic/tableaux/soundness-identity.tex",
+      "french_sha256": "fdd1d48d214ad45891835665f0ffa3c5fdb1fe397634788ebd79c72a35107fa3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0112",
+      "path": "content/first-order-logic/axiomatic-deduction/axiomatic-deduction.tex",
+      "french_sha256": "83fd29b155c499505146e8aac62322cc29779a0f93d4e0abd3845196781d3045",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0113",
+      "path": "content/first-order-logic/axiomatic-deduction/rules-and-proofs.tex",
+      "french_sha256": "c1873dcd76930e225694e8eeed0c5d4560200bf73fa22eb53d7c2ae38cc17e72",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0114",
+      "path": "content/first-order-logic/axiomatic-deduction/axioms-rules-propositional.tex",
+      "french_sha256": "539eeabeba6071c10c111cd8256f838a5a9645adbdd6abc5a6efefaedce3455b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0115",
+      "path": "content/first-order-logic/axiomatic-deduction/axioms-rules-quantifiers.tex",
+      "french_sha256": "aec35051475a1d3c366ff9cc747283e852abc1788d891843c8bff9f494261af4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0116",
+      "path": "content/first-order-logic/axiomatic-deduction/proving-things.tex",
+      "french_sha256": "766668c119dd786e19b66e7b4f1097b2eb08c0aa67a0981b89169213cf172c49",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0117",
+      "path": "content/first-order-logic/axiomatic-deduction/proving-things-quant.tex",
+      "french_sha256": "f6749f3707f669f14c1f5434d7e6d71fb0ad98989a203f451bbd4ff90249f279",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0118",
+      "path": "content/first-order-logic/axiomatic-deduction/proof-theoretic-notions.tex",
+      "french_sha256": "b2bcd3e55d994f32d1a5b2808834a9f7e0f17ad1fde8a91504d56a6f343c4b29",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0119",
+      "path": "content/first-order-logic/axiomatic-deduction/deduction-theorem.tex",
+      "french_sha256": "a08c47c050e61db20874ba47b22e9ba0b23953f72092d86ca6fd1c73b79c75f4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0120",
+      "path": "content/first-order-logic/axiomatic-deduction/deduction-theorem-quantifiers.tex",
+      "french_sha256": "1c795474d919e7df7adfe330bc519ac3699d36692687dec95dfe07f5672f99a3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0121",
+      "path": "content/first-order-logic/axiomatic-deduction/provability-consistency.tex",
+      "french_sha256": "d2ff7f8b80c3b5c76709eba1a0315c0d01970a5cf92d67684a7dbe23a3f0a8ec",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0122",
+      "path": "content/first-order-logic/axiomatic-deduction/provability-propositional.tex",
+      "french_sha256": "8145d382808bb6512787d4dd92d0974af23a0fb117e391d316ee8e5529ddaed5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0123",
+      "path": "content/first-order-logic/axiomatic-deduction/provability-quantifiers.tex",
+      "french_sha256": "c3675e23ba9f850a6025d5d62c6ef2c9f33ff1316261010bd63d3bc667b84883",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0124",
+      "path": "content/first-order-logic/axiomatic-deduction/soundness.tex",
+      "french_sha256": "5faa5516dd18b943f8d04901b268581e46c6df0c7537a7957464d412c627a3b0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0125",
+      "path": "content/first-order-logic/axiomatic-deduction/identity.tex",
+      "french_sha256": "e985eb05c673eb79f2c8de3c6d24f9438eb6252b342c33a766d5e3f7a627cab4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0126",
+      "path": "content/first-order-logic/completeness/completeness.tex",
+      "french_sha256": "57cacadb0e8acab88fa9700d1e71510ca8b62309310734d4a14ec837f4b9b837",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0127",
+      "path": "content/first-order-logic/completeness/introduction.tex",
+      "french_sha256": "80c0dbf29799add6d26a351c623d9f9db1e0f28dc159ba9b56b2d20af5a7a263",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0128",
+      "path": "content/first-order-logic/completeness/outline.tex",
+      "french_sha256": "62222097a1c028fa438cd85c17190ed0b35dacb2d0289638f81a87dea025abee",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0129",
+      "path": "content/first-order-logic/completeness/complete-consistent-sets.tex",
+      "french_sha256": "6513e16fe51d042c4825ed46313930a1b375a510f2b4de7d12bafd19335646f5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0130",
+      "path": "content/first-order-logic/completeness/henkin-expansions.tex",
+      "french_sha256": "b4ae0540a770be931b5302fe99b3aecc230577f7641290290cb8ab03c19cb470",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0131",
+      "path": "content/first-order-logic/completeness/lindenbaums-lemma.tex",
+      "french_sha256": "f147538f3dabde9bc3ec39cc46726f41cd37e5c68224ed6c2dae220434afb5fa",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0132",
+      "path": "content/first-order-logic/completeness/construction-of-model.tex",
+      "french_sha256": "ac497e696b4edf01fc050e06faba3f500bbb04f1496530bada2d41ce2b12feaf",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0133",
+      "path": "content/first-order-logic/completeness/identity.tex",
+      "french_sha256": "ec2aa5ba30062893200f53df2a58d8eb1342f8c7a8626103c3e1c0dff025f851",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0134",
+      "path": "content/first-order-logic/completeness/completeness-thm.tex",
+      "french_sha256": "c86f17f58721633de3f1855a667b0cd6a114e865f7905ea135c0ecde279f6f9a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0135",
+      "path": "content/first-order-logic/completeness/compactness.tex",
+      "french_sha256": "55aaec945e82f1527fcc1dc6cc45fb4b2158bddbba2fe59c82e7f6e0f2cdd018",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0136",
+      "path": "content/first-order-logic/completeness/compactness-direct.tex",
+      "french_sha256": "8b787e9d254ef3e7933a19a66f407f372c1dc3922a8d02e31b7730d54315ca8f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0137",
+      "path": "content/first-order-logic/completeness/downward-ls.tex",
+      "french_sha256": "e285883151667994a89c13441c5f20dab0a599466ebed9d2c74e2935c3abca40",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0138",
+      "path": "content/first-order-logic/first-order-logic.tex",
+      "french_sha256": "8f272359f6417456d26e12cbf4c9eab968ee0da9b0bd9867150265e86a8b42f0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0139",
+      "path": "content/first-order-logic/introduction/introduction.tex",
+      "french_sha256": "3f24f8aeddd4bb426800f278fbdddaf1380deb5d6ee0cbb9862d1abe2f620ced",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0140",
+      "path": "content/first-order-logic/introduction/first-order-logic.tex",
+      "french_sha256": "7602f10613c93b5980b7c8f57405d1faa9c931339b8a2d9b3b466a1c3df40c1c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0141",
+      "path": "content/first-order-logic/introduction/syntax.tex",
+      "french_sha256": "624052ec98da9af767147408bbbcdc4f4a33803ea5a910061c4d184b86e67bb4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0142",
+      "path": "content/first-order-logic/introduction/formulas.tex",
+      "french_sha256": "e06f7a2431055299b74a0403a1215ec82c2f03e321c0965b3d76fbace2352a56",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0143",
+      "path": "content/first-order-logic/introduction/satisfaction.tex",
+      "french_sha256": "498b21ae8e16ee9226121a4196c1de564e5040713fee931530cda3e95be64c08",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0144",
+      "path": "content/first-order-logic/introduction/sentences.tex",
+      "french_sha256": "381abc434cb1b2147175b86e0a85d43f615c874bf8bdff5f951b592cc02ce327",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0145",
+      "path": "content/first-order-logic/introduction/semantic-notions.tex",
+      "french_sha256": "1f02ec262ca480db4dc4ef4382e88d941032dc2a4dca79cffd2f61ba979497b9",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0146",
+      "path": "content/first-order-logic/introduction/substitution.tex",
+      "french_sha256": "d85831d43d4bf64ff56c4f515bd317859ff5dcb208b3b36d681e9e65bdab322c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0147",
+      "path": "content/first-order-logic/introduction/models-theories.tex",
+      "french_sha256": "7e7aeec67addeefaa806355378f1b627d42906322938b2ca19da8a10d8084ee4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0148",
+      "path": "content/first-order-logic/introduction/soundness-completeness.tex",
+      "french_sha256": "73855c2f17b2109426e5eccd8a19a524320d621e330e494ec9cce6636629a12b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0149",
+      "path": "content/first-order-logic/syntax-and-semantics/syntax.tex",
+      "french_sha256": "90f3e152daf213a586a1fbbc9cee416e21d33cbd32d9ff5e542094c511828704",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0150",
+      "path": "content/first-order-logic/syntax-and-semantics/intro-syntax.tex",
+      "french_sha256": "7b0d013e4ef9d5885278a6c56b700f505ea318b393b81480a0c1a09967216bee",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0151",
+      "path": "content/first-order-logic/syntax-and-semantics/first-order-languages.tex",
+      "french_sha256": "dfde872f0a5d407a4b968dd4b8c8d75a6de537aecc4d164dff58d13f4fcf49fc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0152",
+      "path": "content/first-order-logic/syntax-and-semantics/terms-formulas.tex",
+      "french_sha256": "57f806bb389f0451e4afff2aa1c2a88ff3e403f85c5ebd832abef7f3e176af17",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0153",
+      "path": "content/first-order-logic/syntax-and-semantics/unique-readability.tex",
+      "french_sha256": "e669465599929cd6f7346643ba91009f18ad32ccb6df860130b48b2bcaa99abc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0154",
+      "path": "content/first-order-logic/syntax-and-semantics/main-operator.tex",
+      "french_sha256": "3d1ec590e25fe3bc9d3866937ba10d9a22ffc25bd9c224996a02c79e8af75707",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0155",
+      "path": "content/first-order-logic/syntax-and-semantics/subformulas.tex",
+      "french_sha256": "0dd839265b63449cb5ff0e419857ca92df22f57802db839992ddc6ede2228a12",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0156",
+      "path": "content/first-order-logic/syntax-and-semantics/formation-sequences.tex",
+      "french_sha256": "77dd358839c550e8057ccb1e82b45da611a16e52f47442716986e74925ad8122",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0157",
+      "path": "content/first-order-logic/syntax-and-semantics/free-vars-sentences.tex",
+      "french_sha256": "ca10eb886efcbfe822a3ce156ea1949ba099b3b8f823609d6b16a7d0dd95e267",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0158",
+      "path": "content/first-order-logic/syntax-and-semantics/substitution.tex",
+      "french_sha256": "a545fb6cda002d4760e80ba0037272e4649f8228be6606f56c9ddbf9bb1eef0f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0159",
+      "path": "content/first-order-logic/syntax-and-semantics/semantics.tex",
+      "french_sha256": "60ce4cfbebf720ad764a03622473961828dc124ea212022bce8a4343f6904f31",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0160",
+      "path": "content/first-order-logic/syntax-and-semantics/intro-semantics.tex",
+      "french_sha256": "c7fc51344053fd339fc65c43fd0f9e615172eb21528ec83db05ae3331fbe6463",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0161",
+      "path": "content/first-order-logic/syntax-and-semantics/structures.tex",
+      "french_sha256": "ec809103061bbc93c9f2fe94851a9a74d690e786e8d7154aa7502e1e6b653e9b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0162",
+      "path": "content/first-order-logic/syntax-and-semantics/covered-structures.tex",
+      "french_sha256": "d49d4c7b46472851849639c8a2cfc38d25df43620c23a49353103da8b72d5532",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0163",
+      "path": "content/first-order-logic/syntax-and-semantics/satisfaction.tex",
+      "french_sha256": "7089219c8015652737137700fc77c083728a252f68f4a989724d19ca2ac5d8fa",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0164",
+      "path": "content/first-order-logic/syntax-and-semantics/assignments.tex",
+      "french_sha256": "55ed6ed2a7868d1b6d9bc37552cec2cc8527d211052021e16c1c8f262fd6c54a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0165",
+      "path": "content/first-order-logic/syntax-and-semantics/extensionality.tex",
+      "french_sha256": "b934df1507ac8fc2bcfebb0fb5fb84a06353cf8d6b661df38024030395df637d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0166",
+      "path": "content/first-order-logic/syntax-and-semantics/semantic-notions.tex",
+      "french_sha256": "47d426a671541c7ba07bc91f6a56c9230270f52b607822b1d0dae0a32838217a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0167",
+      "path": "content/first-order-logic/models-theories/models-theories.tex",
+      "french_sha256": "2cb64b97d4ff893d1ac0048ff249fbaf8e8bcbddcc9ebd7c51153794d62676f5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0168",
+      "path": "content/first-order-logic/models-theories/introduction.tex",
+      "french_sha256": "2e1b1b7cbdb76095525ceac854cdc1c537f79f32c05c2239881b25b3e51df265",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0169",
+      "path": "content/first-order-logic/models-theories/expressing-props-of-structures.tex",
+      "french_sha256": "4a057ceb5ae5cb48dac9c2ed1136e9f2cadaa2e0ceb088b860173fc4f2a14a02",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0170",
+      "path": "content/first-order-logic/models-theories/theories.tex",
+      "french_sha256": "838fae9b274fca5dc34eb83ffcc6d59472f6552e5b0c7740459bb167eb0df542",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0171",
+      "path": "content/first-order-logic/models-theories/expressing-relations.tex",
+      "french_sha256": "14f10a88a113ddc2629ad4c41093f521671c7631f9defd6b7e9b627a85db437e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0172",
+      "path": "content/first-order-logic/models-theories/set-theory.tex",
+      "french_sha256": "fc98566ab2869a5d224fdc309314d01eb984fd19111501d3919cf4f76011e90a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0173",
+      "path": "content/first-order-logic/models-theories/size-of-structures.tex",
+      "french_sha256": "8c7d942d759d5f57883b862f75a63accc1f270502e046386fde44f9187d0baf1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0174",
+      "path": "content/first-order-logic/beyond/beyond.tex",
+      "french_sha256": "a76ad0bfcb8c554ef17dac097af892d2972e548b310be016c02fd117251d6a66",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0175",
+      "path": "content/first-order-logic/beyond/introduction.tex",
+      "french_sha256": "7550f9167f7bd71f1bb8fd2ea6bf2cdcbfd59525cf0d402ee55fbd4af485ff8e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0176",
+      "path": "content/first-order-logic/beyond/many-sorted-logic.tex",
+      "french_sha256": "2be8c5a7cd97f08b7919b0ea507f1279f8fb0596dfb35205bb015b27d07c9075",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0177",
+      "path": "content/first-order-logic/beyond/second-order-logic.tex",
+      "french_sha256": "6e3a6cda0fbc17256861ee6c549ace43e3e65fb517a99fb1c355588ce09315ce",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0178",
+      "path": "content/first-order-logic/beyond/higher-order-logic.tex",
+      "french_sha256": "5c02f26b3e472eb4d9b36fd3c0ea750e4dec68b5c2badc50f374ceed2752195c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0179",
+      "path": "content/first-order-logic/beyond/intuitionistic-logic.tex",
+      "french_sha256": "466886cf0c9a2e17ca5c567a9e02fa68bdfbabde75690c10bf9906b1a252a60e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0180",
+      "path": "content/first-order-logic/beyond/modal-logics.tex",
+      "french_sha256": "7a2f0ca344d73bfac18d69aca5e2621047ad07d0af9c1e642845c8a99b595d50",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0181",
+      "path": "content/first-order-logic/beyond/other-logics.tex",
+      "french_sha256": "b9be449ae545f235ac2563fbe2b7cddb8db9e75f0f0752676a717433c94349dc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0182",
+      "path": "content/model-theory/model-theory.tex",
+      "french_sha256": "238c1002dd001345551f773ed546a2bef68c6be0872707f1b0a1a3fb3e046249",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0183",
+      "path": "content/model-theory/basics/basics.tex",
+      "french_sha256": "50a00fa744e3eca462ccb61d78235ee64f6cc123ed9c6c465a003f36557b5d22",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0184",
+      "path": "content/model-theory/basics/reducts-and-expansions.tex",
+      "french_sha256": "b44a597b6c4d08f471990df5dbf12872f60e7493ced5278dfa447d57950cdd98",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0185",
+      "path": "content/model-theory/basics/substructures.tex",
+      "french_sha256": "a715cce0c541006f841340968beefc5f5e90f7c13ab80259fd312ee892131180",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0186",
+      "path": "content/model-theory/basics/overspill.tex",
+      "french_sha256": "ecd938cfc068944baa7f80a932906689615365b8ec8aa131cf5b4a0b24a1aca7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0187",
+      "path": "content/model-theory/basics/isomorphism.tex",
+      "french_sha256": "eefa71b6c456605cd67aa1342ee7fb1539da0a33c0c8fd757baeb852eb1babfc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0188",
+      "path": "content/model-theory/basics/theory-of-m.tex",
+      "french_sha256": "a0554323d576ac21b1e5a596953bb19da56b5588609557d3d22bbcb916cfa5c4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0189",
+      "path": "content/model-theory/basics/partial-iso.tex",
+      "french_sha256": "70cd2e86a23bef060a762f6f4ab3fd9abb3e35eb3c8f8e03ac29dd37fd18ce0c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0190",
+      "path": "content/model-theory/basics/dlo.tex",
+      "french_sha256": "5e12267ba9444ad36fe1e7c7ac313526944982d81147807ad2b5baf913c65c36",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0191",
+      "path": "content/model-theory/models-of-arithmetic/models-of-arithmetic.tex",
+      "french_sha256": "c5797e73d93dce9f2fa72a4bde1f2b3738c819b1602d1b5241c6f0518563435c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0192",
+      "path": "content/model-theory/models-of-arithmetic/introduction.tex",
+      "french_sha256": "55dc0704f9d3368458ac47cf32073139891eea0382193649aa1a73ca8691f698",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0193",
+      "path": "content/model-theory/models-of-arithmetic/standard-models.tex",
+      "french_sha256": "bff4360d003e5259992f636584e42d3fb512dac1be9ba983a619920b3bdf1456",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0194",
+      "path": "content/model-theory/models-of-arithmetic/non-standard-models.tex",
+      "french_sha256": "88a8817c711ecbf36e43da56d94bb36e590721221350b5cab6d13c48616f0c7c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0195",
+      "path": "content/model-theory/models-of-arithmetic/models-of-q.tex",
+      "french_sha256": "436f3d55a784dbf651d85632b1573489ce8cc992ae0558a5acdc18015d45274c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0196",
+      "path": "content/model-theory/models-of-arithmetic/models-of-pa.tex",
+      "french_sha256": "e86dbeb86c40e0a298eea2871f51d4e19eaa6db70359173036f7d27751989740",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0197",
+      "path": "content/model-theory/models-of-arithmetic/computable-models.tex",
+      "french_sha256": "6c4bcdb977fc0c3fcbfd005e27807b518f3a697cff39421bc0a9e137a4e48c33",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0198",
+      "path": "content/model-theory/interpolation/interpolation.tex",
+      "french_sha256": "1e6042fc96dd0a11a6f1bb3dad30715f9ae4b0706fa8a76d6379aae812300168",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0199",
+      "path": "content/model-theory/interpolation/introduction.tex",
+      "french_sha256": "0a575a9115f037a0a288c909794f3612b19b0ef683f9e781c83fa9d5e2872d5d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0200",
+      "path": "content/model-theory/interpolation/separation.tex",
+      "french_sha256": "d12bca3bd3c6a286f2ba834698f98761d97e2530f30075e94caf8ee22f1708dd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0201",
+      "path": "content/model-theory/interpolation/interpolation-proof.tex",
+      "french_sha256": "89bbb36dc298d2a72abaa399ac74757926e97a5c8fcbdcc30cbe39f0842f4c8b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0202",
+      "path": "content/model-theory/interpolation/definability.tex",
+      "french_sha256": "ea4733d0137c05fa5cf6d81e7add6c1182fd2fd5ac03bb030a9caeb4eeb4e673",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0203",
+      "path": "content/model-theory/lindstrom/lindstrom.tex",
+      "french_sha256": "f6593cd588ef680fe42f9d3a801f3e0ceef414f530d5fbecd1bca78b2ce236b1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0204",
+      "path": "content/model-theory/lindstrom/introduction.tex",
+      "french_sha256": "925c56df6f5eec976f8e23fdfaeae0a23ba00c047d0a50495a375c70dec24717",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0205",
+      "path": "content/model-theory/lindstrom/abstract-logics.tex",
+      "french_sha256": "b17e421262c36f598e7ea5a9d3234951882ad9c6385a2da24a491155e85b20ce",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0206",
+      "path": "content/model-theory/lindstrom/ls-property.tex",
+      "french_sha256": "82b511893e559e3604f6235779024ce40593749075648f2736baf54393dcde9a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0207",
+      "path": "content/model-theory/lindstrom/lindstrom-proof.tex",
+      "french_sha256": "b6c6ac5dbe88deaea46a3c3096c82aa265b50c6489ed97541b779e8724b3d912",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0208",
+      "path": "content/computability/computability.tex",
+      "french_sha256": "89baeccbb5617235004e741771cd44dfa8e42aca96a8066b30aa869b30fa7c73",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0209",
+      "path": "content/computability/recursive-functions/recursive-functions.tex",
+      "french_sha256": "780d2a6c23e9313a333c8210531ae37ed073da1dba63170a1fc1fbd829696322",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0210",
+      "path": "content/computability/recursive-functions/introduction.tex",
+      "french_sha256": "40a3fabd0e9af1646ea98a8fafe532f8a704f60ab69e363f29365cc045994b4f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0211",
+      "path": "content/computability/recursive-functions/primitive-recursion.tex",
+      "french_sha256": "9eed700e65452a5c32e1855abdf1ee9597e02a9dc5f362d9c498be97f1e30ead",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0212",
+      "path": "content/computability/recursive-functions/composition.tex",
+      "french_sha256": "fb1c57f2335d1bc3ca068a4a691b089feb1af9c79a48002a5fa2854b568edefb",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0213",
+      "path": "content/computability/recursive-functions/pr-functions.tex",
+      "french_sha256": "1ed877e122889a0441597acf200ac4784ed0294f1dc4691e5031d9a8c5c32731",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0214",
+      "path": "content/computability/recursive-functions/notation-pr-functions.tex",
+      "french_sha256": "bb6c0ecfa875d410929feaa8f59fe45a3af80da89666db79b719db24584ee000",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0215",
+      "path": "content/computability/recursive-functions/pr-functions-computable.tex",
+      "french_sha256": "6ac57152b6ec0e91aba37fa702b746a0c89c77676c1df1c995af02d3c4c04f82",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0216",
+      "path": "content/computability/recursive-functions/examples.tex",
+      "french_sha256": "a779856546feb7c394030f60be6c59a6997fb4d33072812a0f87c1be8739d4cf",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0217",
+      "path": "content/computability/recursive-functions/pr-relations.tex",
+      "french_sha256": "6ef575f7f040d81b51e7a01403aab28717a118f40592f6214fe4ea63f9a87e94",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0218",
+      "path": "content/computability/recursive-functions/bounded-minimization.tex",
+      "french_sha256": "ceba515180248d00118946ab56e6c5621e9122614146644199878a20666518b0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0219",
+      "path": "content/computability/recursive-functions/primes.tex",
+      "french_sha256": "c561480b917b326f51cef99bce7d1119ffafcb4bc7259bb59df3bf0e8b9cc239",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0220",
+      "path": "content/computability/recursive-functions/sequences.tex",
+      "french_sha256": "34fc13e199c84aa594edc4f25f8c50ebc69889aeebce5d845c7015301f66795f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0221",
+      "path": "content/computability/recursive-functions/trees.tex",
+      "french_sha256": "7d37fbf0f85b1d91fcc4c4f0c3e8b5a1102f5108ca56ae7e294bfbdc6ddcbc5b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0222",
+      "path": "content/computability/recursive-functions/other-recursions.tex",
+      "french_sha256": "39098d0d61f1ccff124d586319356885eb1a2fc08f91707206dbb008bd2679af",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0223",
+      "path": "content/computability/recursive-functions/non-pr-functions.tex",
+      "french_sha256": "3711d642c38d94e3a67fb063b2c54233ad699dea737a06277e2bab695fea5e04",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0224",
+      "path": "content/computability/recursive-functions/partial-functions.tex",
+      "french_sha256": "6daf44d88235ea98e925143ca29de21518c4a930755a8e63a4960499df63ad3a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0225",
+      "path": "content/computability/recursive-functions/normal-form.tex",
+      "french_sha256": "4f36fd45668e380aab7b6cc865d3742ab07297e6d53104da9c0561cc87c72281",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0226",
+      "path": "content/computability/recursive-functions/halting-problem.tex",
+      "french_sha256": "5e62da5d9df5381a8abdee0ed1c59780a98c97a91f7c3e2935914aba7fd7c013",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0227",
+      "path": "content/computability/recursive-functions/general-recursive-functions.tex",
+      "french_sha256": "e55c85caaef4a89e4c6d4c50053c125d9a7532da4d36daedf57aa2056144658c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0228",
+      "path": "content/computability/computability-theory/computability-theory.tex",
+      "french_sha256": "84268a5ce078c1071466976afd2c35235acc5af5efbd1994fe948bbe8be8c724",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0229",
+      "path": "content/computability/computability-theory/introduction.tex",
+      "french_sha256": "459122de68d7251218033aa977b4c98096731b647a69699aa283e3b3d55da791",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0230",
+      "path": "content/computability/computability-theory/coding-computations.tex",
+      "french_sha256": "ee323e4e4d73107fa9b0ae36d70d643ff95baec3f2225fb34fe12254d468d6ce",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0231",
+      "path": "content/computability/computability-theory/normal-form.tex",
+      "french_sha256": "73b23e90d53d97be7dc9a41b5a1c3a9b61b331aa7043c346ad9199d2473ea814",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0232",
+      "path": "content/computability/computability-theory/s-m-n.tex",
+      "french_sha256": "bddbec30b1f876211d169adc69f41a0624afa391b33e2d3978726f46ef76386b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0233",
+      "path": "content/computability/computability-theory/universal-part-function.tex",
+      "french_sha256": "818c23653d55d35fe7591ea26c0a22b40ade0c45f2911b1527fd4d020ddc6d0a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0234",
+      "path": "content/computability/computability-theory/no-universal-function.tex",
+      "french_sha256": "3fc4b6a8cebc2940a16dbf26334cecfb8b386b4c86a263b807f1389a956944a6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0235",
+      "path": "content/computability/computability-theory/halting-problem.tex",
+      "french_sha256": "dde9086332ff14c1174fe7a77ee47e3f25f06883a21b5dddd239b6955e2acec2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0236",
+      "path": "content/computability/computability-theory/russells-paradox.tex",
+      "french_sha256": "067dfa7dc47e12728fec511185146fa85e7a4c0a6ab2dbaeb4ce88643e8219f1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0237",
+      "path": "content/computability/computability-theory/computable-sets.tex",
+      "french_sha256": "032eb2840f892e642200450968f089bed5760a40859c1a4a3d21f831e5055975",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0238",
+      "path": "content/computability/computability-theory/ce-sets.tex",
+      "french_sha256": "0da2ea32f903e8ea4524c3c621379c5a6d239ff6c487d066f5f15470b6c6e782",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0239",
+      "path": "content/computability/computability-theory/equiv-ce-defs.tex",
+      "french_sha256": "5e771191b13b9893edf9784199ce80a40a10d908177575a7de9e10b2a96f8d0a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0240",
+      "path": "content/computability/computability-theory/non-comp-set.tex",
+      "french_sha256": "e09d08617719b92dcc1d3e9689077c4050c1b168b09fa124e1e64d9374fe5809",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0241",
+      "path": "content/computability/computability-theory/ce-closed-cup-cap.tex",
+      "french_sha256": "889816fe9b7cd95c834991ea1d683219b6af4b4f0be0e2f48f18c91511ef2c0e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0242",
+      "path": "content/computability/computability-theory/complement-ce.tex",
+      "french_sha256": "fdce006766f5be1ed469d9f2ee181838c8420f3d7675e345e59aeef5bbe8a4c4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0243",
+      "path": "content/computability/computability-theory/reducibility.tex",
+      "french_sha256": "141063c12d0c0be106aaa33c00bdc07a37abccb17ca2786a81a2b4777cccf420",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0244",
+      "path": "content/computability/computability-theory/prop-reduce.tex",
+      "french_sha256": "23a5716d86aba772ac1a0828bf1047b247f1c316b1b66fbe0e70895c6b35d7cc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0245",
+      "path": "content/computability/computability-theory/complete-ce-sets.tex",
+      "french_sha256": "bdc54d09ebf8e249fa5e38ca415f696de82286af53427c8594290f32a7028da1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0246",
+      "path": "content/computability/computability-theory/k-1.tex",
+      "french_sha256": "72aa7cdfe0d68a905b8b9d7fad68f17eac38f935f08d0e4e6906827b0b4a4d7c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0247",
+      "path": "content/computability/computability-theory/total.tex",
+      "french_sha256": "7d625fcbefaae3c9ef30880ce700dc9aa170fbb2df07c2f2be03eb9f3f3aadae",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0248",
+      "path": "content/computability/computability-theory/rice-theorem.tex",
+      "french_sha256": "f3898e6113b71ace0a0956150c672ad34abe87f7d2193350e4a215d47d0e34e8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0249",
+      "path": "content/computability/computability-theory/fixed-point-thm.tex",
+      "french_sha256": "a8f87685a1e97144ade735a1aaccd9e6384b24e6d927893d669254a9642cb477",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0250",
+      "path": "content/computability/computability-theory/application-fixed-point.tex",
+      "french_sha256": "8e95366d1b7ae5fe5ddefcb6bf885a8b7b307737b7a2f2b8ecb598bde1bb9648",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0251",
+      "path": "content/computability/computability-theory/def-functions-self-reference.tex",
+      "french_sha256": "8997f14ebc22d966d9cb73c304b0c6faf83dae1ae9aa3e2c4b21bbfd67dc45b3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0252",
+      "path": "content/turing-machines/turing-machines.tex",
+      "french_sha256": "aeec5f1c8b1b629e241c21e07b94c7a18dcb97135c17951f1a95ecc8acaa4370",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0253",
+      "path": "content/turing-machines/machines-computations/machines-computations.tex",
+      "french_sha256": "fe2d398284c11d9006da04c376d737ffe3a43f444937a899f5a7003fb3435f82",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0254",
+      "path": "content/turing-machines/machines-computations/introduction.tex",
+      "french_sha256": "16df3045e42a4d33e481981b4d71c942f5788e0f25f48cea850158caebbbcffa",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0255",
+      "path": "content/turing-machines/machines-computations/representing-tms.tex",
+      "french_sha256": "541a3fef48303a7f08af39b7c02a96bfc6cdba48d46b94d6d15243862e22963d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0256",
+      "path": "content/turing-machines/machines-computations/turing-machines.tex",
+      "french_sha256": "9c48f8c128697f617b1f49f625fd4c55a7bf6f2da884c22b9a7824fdb19d6ffe",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0257",
+      "path": "content/turing-machines/machines-computations/configuration.tex",
+      "french_sha256": "312a2fc0e6ba379927a6b0e17554d9b46685141097f556ff3fcad07ed98bd627",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0258",
+      "path": "content/turing-machines/machines-computations/unary-numbers.tex",
+      "french_sha256": "82e29b10fac406211092543dade85f3a707e2b8dde000a62067b3b4df787085f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0259",
+      "path": "content/turing-machines/machines-computations/halting-states.tex",
+      "french_sha256": "1af120ad33919c0b33f6226a5f3d968202c4f2a6aec6820cb0094a33a7829d1b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0260",
+      "path": "content/turing-machines/machines-computations/disciplined-machines.tex",
+      "french_sha256": "be04992591325f7db379a115fe578b01f3fddcf059d8f9e0f57c92d7d7bc84ce",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0261",
+      "path": "content/turing-machines/machines-computations/combining-machines.tex",
+      "french_sha256": "e3c490ae66ece64016835254ce802231a04ced753197f2174614d03c87cc0bf9",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0262",
+      "path": "content/turing-machines/machines-computations/variants.tex",
+      "french_sha256": "54813f349ac1c7e7ccd548cd3622e5e3d6e69a053f421ee9ccb65577dccf9d18",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0263",
+      "path": "content/turing-machines/machines-computations/church-turing-thesis.tex",
+      "french_sha256": "508a9f259ef94f7693c11bf4a6544b4c0c9b17e92d6492990acbfc566d52d965",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0264",
+      "path": "content/turing-machines/undecidability/undecidability.tex",
+      "french_sha256": "a52079eea7e0dfed23345c2d37be96e3b11ac641dcca875c2a47550b3ef8558c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0265",
+      "path": "content/turing-machines/undecidability/introduction.tex",
+      "french_sha256": "4158c7587cb0f475ace69846477dd52e3a340e5e40e11b6b065d8fa788023732",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0266",
+      "path": "content/turing-machines/undecidability/enumerating-tms.tex",
+      "french_sha256": "d852bad9472b263becb9df0103ac8c62ea51d2ce2b651a81587fd0c1fb920afc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0267",
+      "path": "content/turing-machines/undecidability/universal-tm.tex",
+      "french_sha256": "2dddc0e2a4ea29c583cadcf89abbae0a4769cc2231c44e8f002949c82f189240",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0268",
+      "path": "content/turing-machines/undecidability/halting-problem.tex",
+      "french_sha256": "0975c9655f6df124a9236d54cc3086abc4c87313bda5fe65b81750e1be801e13",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0269",
+      "path": "content/turing-machines/undecidability/decision-problem.tex",
+      "french_sha256": "8694f177db101bdf696092c4fa2af9739cf01096b339a68df207ca9478e63c65",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0270",
+      "path": "content/turing-machines/undecidability/representing-tms.tex",
+      "french_sha256": "3de51b8de75e8232843bbe158a9a42f5912c89e7970cd01b8f4d98b40d344a5c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0271",
+      "path": "content/turing-machines/undecidability/verification.tex",
+      "french_sha256": "d0f35725355cee7823138f0dcedcc2361870b5ab18bd50895fba0e29fcb3b359",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0272",
+      "path": "content/turing-machines/undecidability/unsolvability-decision-problem.tex",
+      "french_sha256": "454a6c8cbe2374e8e67850d3b438e002680914f21b44591b418c9b50082e3a8b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0273",
+      "path": "content/turing-machines/undecidability/trakhtenbrot.tex",
+      "french_sha256": "f2a263125ccd05d7e7c91bad81d06c26802b02e6868c3b00d8c4b15dc9188f67",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0274",
+      "path": "content/incompleteness/incompleteness.tex",
+      "french_sha256": "ac94f3868958471a7f0ddde20d555c4690652aab187cb3d9c4b8fca0bfa6f1d8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0275",
+      "path": "content/incompleteness/introduction/introduction.tex",
+      "french_sha256": "06a1835959174989d38185dae8628fbf5731ec238b925fae86157ddf6d98bec4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0276",
+      "path": "content/incompleteness/introduction/historical-background.tex",
+      "french_sha256": "eabd57381662a3a3f7d85d6849ba306eecadd1ad6df3c717e73791fbeee29b29",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0277",
+      "path": "content/incompleteness/introduction/definitions.tex",
+      "french_sha256": "52657453ac8bd669aaec744ae28f69f9d329739f66f8a583316a1081e47d1aa2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0278",
+      "path": "content/incompleteness/introduction/overview.tex",
+      "french_sha256": "01027eea002bbf2a6285216ae614759c980fb30666dd18f47955fb1052618f65",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0279",
+      "path": "content/incompleteness/introduction/undecidability.tex",
+      "french_sha256": "2983897952b938d59e4e092562373b2bcee49eae9a842e8deca397d110157fc5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0280",
+      "path": "content/incompleteness/arithmetization-syntax/arithmetization-syntax.tex",
+      "french_sha256": "8cbf6fe94e3207e1d278263bb84de9805c81213ccf663771d033687127661a25",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0281",
+      "path": "content/incompleteness/arithmetization-syntax/introduction.tex",
+      "french_sha256": "ea19276472eafd941b2409226cec7b724fb2274103f797b86655074470a5c3d7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0282",
+      "path": "content/incompleteness/arithmetization-syntax/coding-symbols.tex",
+      "french_sha256": "1e17a7e2af59c1844d24509150aad84abf4b4bba50c3e477a5f1e0a059a5cc01",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0283",
+      "path": "content/incompleteness/arithmetization-syntax/coding-terms.tex",
+      "french_sha256": "d38cc7cc942506319b9a61f5e3dc5a540b146f3403d5685e6ba8d54a28ea363a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0284",
+      "path": "content/incompleteness/arithmetization-syntax/coding-formulas.tex",
+      "french_sha256": "0b76591dd2cfbfbdd7c2ec44814f9eca1882704c75818d2fd1dc73030160cc77",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0285",
+      "path": "content/incompleteness/arithmetization-syntax/substitution.tex",
+      "french_sha256": "5d13f5974a1bbcfb49b672c75ba4e0525f86b379d19274db9543d49d40cb2c59",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0286",
+      "path": "content/incompleteness/arithmetization-syntax/proofs-in-lk.tex",
+      "french_sha256": "af67e9da5037ae82f9dea270d67f977f5d1d9e06595255db2d0f1c3928286890",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0287",
+      "path": "content/incompleteness/arithmetization-syntax/proofs-in-nd.tex",
+      "french_sha256": "3d28e9a915174358e96b81edef35c53c8c3113396f6ead6d7c97c746c24b38fc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0288",
+      "path": "content/incompleteness/arithmetization-syntax/proofs-in-ax.tex",
+      "french_sha256": "e7c6738a44f4101b5dd01b347a823f4634209cd036b2fcb21c0a43caec1467f4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0289",
+      "path": "content/incompleteness/representability-in-q/representability-in-q.tex",
+      "french_sha256": "1a96645076f200cfdfa864eb563b532b40c2860df4a20a519d25a741a6b6a9ec",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0290",
+      "path": "content/incompleteness/representability-in-q/introduction.tex",
+      "french_sha256": "24a097697d6fe4a9480533454579d41831b87502ca37b684a01c3ba6a5f8e4a1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0291",
+      "path": "content/incompleteness/representability-in-q/representable-comp.tex",
+      "french_sha256": "de506219148d57af651c581ea72a3a706406490d79ce4393e4fdab77b16a6e05",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0292",
+      "path": "content/incompleteness/representability-in-q/beta-function.tex",
+      "french_sha256": "7f528d6bf44c253e786a86c49b64c56c3864495a6f090e1d658f9ddb88c0f03a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0293",
+      "path": "content/incompleteness/representability-in-q/prim-rec.tex",
+      "french_sha256": "bbc32e4a8341d10b49e894702d3c409b8c04b7b946e45b6b1144e1910d108ec0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0294",
+      "path": "content/incompleteness/representability-in-q/basic-representable.tex",
+      "french_sha256": "ab92a17fa88e2f6986249fb08b3c38fabde9a3ed94829b7ae484c7d5e50f6bec",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0295",
+      "path": "content/incompleteness/representability-in-q/composition-representable.tex",
+      "french_sha256": "dcaf1cbaa4bef5d66c18b5ab6e726684c1f0edbd4adc67fce86766be55cecba3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0296",
+      "path": "content/incompleteness/representability-in-q/minimization-representable.tex",
+      "french_sha256": "37c4c12f7539545efdb944973344f07c2f8ddca1306fe50e05a23803a9d5410a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0297",
+      "path": "content/incompleteness/representability-in-q/comp-representable.tex",
+      "french_sha256": "e23ccdce39f23eda578f5f5077823b1b8d1d57482916c4bee6c728f7fd645ae1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0298",
+      "path": "content/incompleteness/representability-in-q/representing-relations.tex",
+      "french_sha256": "bb8f98bb579de8892c41d25fce77242a181ff95dd8784303012bed91ddd414ea",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0299",
+      "path": "content/incompleteness/representability-in-q/undecidability.tex",
+      "french_sha256": "f94f5113c08429ede286b40ca786d6b9c80420c01673ef5f0f9643aa058a70e5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0300",
+      "path": "content/incompleteness/representability-in-q/sigma1-completeness.tex",
+      "french_sha256": "ced11633203a0bdc356c06185d1e8f584c75326260b2aad7ad2b8cfd675e7c2e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0301",
+      "path": "content/incompleteness/theories-computability/theories-computability.tex",
+      "french_sha256": "4c208c9000c74c45c2feb991d674d6167299730e2e8141fea897fd4d2cd42f04",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0302",
+      "path": "content/incompleteness/theories-computability/introduction.tex",
+      "french_sha256": "d01dabe6e396f97f3466daec4e8c76e4b8fec24c0d4ced2242d9356abfe0327d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0303",
+      "path": "content/incompleteness/theories-computability/q-is-ce.tex",
+      "french_sha256": "f64ae27b1a26d986d7b0054251dcfd3f0dabce4ef28d5e7708351ba003dc71e1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0304",
+      "path": "content/incompleteness/theories-computability/oconsis-ext-of-q-undec.tex",
+      "french_sha256": "7396736ef51bd228f0674fb960d2d573f3d81dbd67178e449fff1bad8d9437af",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0305",
+      "path": "content/incompleteness/theories-computability/extensions-of-q-not-decidable.tex",
+      "french_sha256": "57df7eb38cabbeeb01b74c3a570fc25dd34f167a755e3f5ee79eb2bd409a86c1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0306",
+      "path": "content/incompleteness/theories-computability/computably-axiomatizable.tex",
+      "french_sha256": "07a291b08fbbdda64934ae7149f68fa106f9ace78c467d027f2542c7d99683b4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0307",
+      "path": "content/incompleteness/theories-computability/complete-decidable.tex",
+      "french_sha256": "680b180199d8ed3e4730e9fe0e5777501b70d6f02dc0000c4a607624d999ab03",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0308",
+      "path": "content/incompleteness/theories-computability/first-incompleteness.tex",
+      "french_sha256": "1d479b1348c89178194e776a2b6446c058635838368d761c9c39341e5215023c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0309",
+      "path": "content/incompleteness/theories-computability/inseparability.tex",
+      "french_sha256": "832f10de904556e4eb632251cf7ca936688ffdc827892bdfb9d621b0409416be",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0310",
+      "path": "content/incompleteness/theories-computability/consis-with-q.tex",
+      "french_sha256": "4f0fce0aab0e7fa58f4e9ebf54c770208b99579a79a3728858e2c6df3ff3eae9",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0311",
+      "path": "content/incompleteness/theories-computability/interpretability.tex",
+      "french_sha256": "72c6cd19406db5c889ffe76c34b65e3410f36d88321b8fbbbb6c5f8a9ab7329d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0312",
+      "path": "content/incompleteness/incompleteness-provability/incompleteness-provability.tex",
+      "french_sha256": "307260819fad093f093fea256bcce8c714345e0561f16c4cd7158c1bb67acab5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0313",
+      "path": "content/incompleteness/incompleteness-provability/introduction.tex",
+      "french_sha256": "ff1f979ac1cd96ac80f6393eb50e90949822ac7b0c5352a7bea2a0095590e11b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0314",
+      "path": "content/incompleteness/incompleteness-provability/fixed-point-lemma.tex",
+      "french_sha256": "ebaed32b363737381350338997b3972fb7dd728be4725b12d76d62515e3a8062",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0315",
+      "path": "content/incompleteness/incompleteness-provability/first-incompleteness-thm.tex",
+      "french_sha256": "43d0200e6f6119c7a40ab18e856a6c7740971b24f01643bdf9cbdc0b07166fcd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0316",
+      "path": "content/incompleteness/incompleteness-provability/rosser-thm.tex",
+      "french_sha256": "5a801c51fb03afd0ddb4c8a44c3f4218140027d5f8428a62897b2e5bfc123958",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0317",
+      "path": "content/incompleteness/incompleteness-provability/godels-paper.tex",
+      "french_sha256": "a114595697efdb7767fb741689a51215d97aaff28b7a455319a764ab25a6d6c0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0318",
+      "path": "content/incompleteness/incompleteness-provability/provability-conditions.tex",
+      "french_sha256": "5908ac0258c4a1a6078e5da5ba115efca95c839b58ec6e013213ec77e403c8fb",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0319",
+      "path": "content/incompleteness/incompleteness-provability/second-incompleteness-thm.tex",
+      "french_sha256": "1ffdc6da1a455f20d4804e15b64be5382fc80b2a79ae891e1e0259377093e7dd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0320",
+      "path": "content/incompleteness/incompleteness-provability/lob-thm.tex",
+      "french_sha256": "64adb75f74085dae4fcaf26496586cf467bc9a158185dee5b6bf09bd39b7b5d5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0321",
+      "path": "content/incompleteness/incompleteness-provability/tarski-thm.tex",
+      "french_sha256": "91c4b4049caeaf17d6497445f17fcb95a966665565468d95c87eb6ce0922aaed",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0322",
+      "path": "content/second-order-logic/second-order-logic.tex",
+      "french_sha256": "550b910cda0ef2e784584a9b8cc2a24731f18669f9f2257ffb65ddd6f0cb7136",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0323",
+      "path": "content/second-order-logic/syntax-and-semantics/syntax-and-semantics.tex",
+      "french_sha256": "586483da67f38fcf8ec9b556f22acfa87a9f129379419e4a35a4c809390c901a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0324",
+      "path": "content/second-order-logic/syntax-and-semantics/introduction.tex",
+      "french_sha256": "34d59502fef8727de7cbe7f9c89c11946dd25e73f75cbb56a461eb232e9f8be2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0325",
+      "path": "content/second-order-logic/syntax-and-semantics/terms-formulas.tex",
+      "french_sha256": "70d5a1c9f2a241b0d0cbfe18e635d4d244b66c774660099e8aa88e3a4fbb5a01",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0326",
+      "path": "content/second-order-logic/syntax-and-semantics/satisfaction.tex",
+      "french_sha256": "526a6f1f70066fc6981efd08e803b45a4eef4051252fc6d66f104618b562abb6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0327",
+      "path": "content/second-order-logic/syntax-and-semantics/semantic-notions.tex",
+      "french_sha256": "69266602d13287565107b00fe70d905613ec77bd3c756365a3674197aed87062",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0328",
+      "path": "content/second-order-logic/syntax-and-semantics/expressive-power.tex",
+      "french_sha256": "6abdec3d6865b07b31862e4a3332cc69dd2f6c72d437a92c86274b80bc3acbd6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0329",
+      "path": "content/second-order-logic/syntax-and-semantics/inf-count.tex",
+      "french_sha256": "1b3db1f67d150e3bd1af46444858b626920e481df5699ee691016015887761ab",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0330",
+      "path": "content/second-order-logic/metatheory/metatheory.tex",
+      "french_sha256": "ae3dc3dce2050778e0b4375d4bd5da470393c4e2fb794f43790dcbc39c08e321",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0331",
+      "path": "content/second-order-logic/metatheory/introduction.tex",
+      "french_sha256": "4639b9e425e9f00a7074254072355eef9152e15911342f210b65c4dcb54f7b80",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0332",
+      "path": "content/second-order-logic/metatheory/second-order-arithmetic.tex",
+      "french_sha256": "847323928861afad90e3984f2e17c77c762baaac1d45bd2fcc2364e366112b77",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0333",
+      "path": "content/second-order-logic/metatheory/undecidability-and-axiomatizability.tex",
+      "french_sha256": "a49a6e6c17986daef230ca28d088eba5771a62ee39bc863f2738f47658796ac3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0334",
+      "path": "content/second-order-logic/metatheory/compactness.tex",
+      "french_sha256": "affe92f41905be94e06eeb75356de72cc52eca5ef44f2889a1d94999a99e7c9f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0335",
+      "path": "content/second-order-logic/metatheory/loewenheim-skolem.tex",
+      "french_sha256": "29accb5e7272686f3ac5673666ecc2f901fb494a5343909c64cf869476607f09",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0336",
+      "path": "content/second-order-logic/sol-and-set-theory/sol-and-set-theory.tex",
+      "french_sha256": "766e9e48a9493091d07ed9aeff14a9b095401ee069dbe68a27e9811977a5ba29",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0337",
+      "path": "content/second-order-logic/sol-and-set-theory/introduction.tex",
+      "french_sha256": "773c0f0fd83f8b760a8138a50e454c764b7e53c70e9b02ce2bda49e9418353e1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0338",
+      "path": "content/second-order-logic/sol-and-set-theory/comparing-sets.tex",
+      "french_sha256": "b612f20cb13c3e9c78aa0846b08fcd669ee27bccbba52257bbb08e78bd435c1d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0339",
+      "path": "content/second-order-logic/sol-and-set-theory/cardinalities.tex",
+      "french_sha256": "4fc2d8c1c888cafea7f55cc603eca83b82ae9fad20948334b04feb3cf4bd013e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0340",
+      "path": "content/second-order-logic/sol-and-set-theory/power-of-continuum.tex",
+      "french_sha256": "c8bfe75c5089e5c3b67a2b27009cd2bb397a017363809cdb9306c38ae7882626",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0341",
+      "path": "content/lambda-calculus/lambda-calculus.tex",
+      "french_sha256": "797fd61b0a9def077d884db47297587f83479e3dbdaf162ccc5e927ff8f56fe7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0342",
+      "path": "content/lambda-calculus/introduction/introduction.tex",
+      "french_sha256": "427fe69f0de86f604f7435f1894ba9a276222adca32fb03734d4c19144ff0358",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0343",
+      "path": "content/lambda-calculus/introduction/overview.tex",
+      "french_sha256": "13abb2377e83ad73af10877f4d7c3ab223b6b42c113f7bdfc77f4c5a61e92ec7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0344",
+      "path": "content/lambda-calculus/introduction/syntax.tex",
+      "french_sha256": "4a0497458d2941947de7454241e513b025e3bcc52e19e2a09b30914fded88e27",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0345",
+      "path": "content/lambda-calculus/introduction/reduction.tex",
+      "french_sha256": "886440f3a5178fb762aa164785969c239724c380b8ae6fe96a0ed1f12d301eed",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0346",
+      "path": "content/lambda-calculus/introduction/church-rosser.tex",
+      "french_sha256": "82c7d9cb6ec209354c9ec9dbba3cb99406b82ab290a97258b45f1bf88e0fb980",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0347",
+      "path": "content/lambda-calculus/introduction/currying.tex",
+      "french_sha256": "63311fae5bdd9a42c95ca7f72d90c262f8450455cd2d3f61b373296129b9fbcc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0348",
+      "path": "content/lambda-calculus/introduction/lambda-definability.tex",
+      "french_sha256": "87485dc7f1c96be5fe0d0df5e5559937013ab3d1a4d7f01bdeac4667ee977f67",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0349",
+      "path": "content/lambda-calculus/introduction/lambda-computable.tex",
+      "french_sha256": "66b9956b25b249ae578ea850957cad1c049115af438dfb47f330f5ac5329ef63",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0350",
+      "path": "content/lambda-calculus/introduction/computable-lambda.tex",
+      "french_sha256": "b72c67b69947fa3b5f9303bd582e63a082253c889d0e2aa54e14f9733574caee",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0351",
+      "path": "content/lambda-calculus/introduction/basic-pr-lambda.tex",
+      "french_sha256": "6f1457936bba3bef63c9191c574423cb0a680cf65621665b10e1346644c4f08a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0352",
+      "path": "content/lambda-calculus/introduction/composition.tex",
+      "french_sha256": "07ca8ff09d2d8051b01f7418e7a9fa108117c8468d10390e27a6220a6d74b34f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0353",
+      "path": "content/lambda-calculus/introduction/primitive-recursion.tex",
+      "french_sha256": "b11f6bac8fbccbe6be1bac44768d1a47357e8b1462c51916150bd912f2eb59c1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0354",
+      "path": "content/lambda-calculus/introduction/fixed-point-combinator.tex",
+      "french_sha256": "04576957523625d555b808908029348cf6056a15c93ea630de8beeef90e113fd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0355",
+      "path": "content/lambda-calculus/introduction/minimization.tex",
+      "french_sha256": "57fe4444a2aec4473438af62f7073d841dbc6e90f17f0df910c9389f33022cf1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0356",
+      "path": "content/lambda-calculus/syntax/syntax.tex",
+      "french_sha256": "488c616cfa5fa6c39efa1f27a9f9d0a7cebe56eef86e9f0bc6ac8618d3b15d9c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0357",
+      "path": "content/lambda-calculus/syntax/terms.tex",
+      "french_sha256": "39fc59532ab5f00987def9bec3a7166bbd199f2e1da05396085f12d74a8aecf8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0358",
+      "path": "content/lambda-calculus/syntax/unique-readability.tex",
+      "french_sha256": "738fe391c614393397f85df39007de6d95f95133cdd60521eb79f4ae78d3dfd7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0359",
+      "path": "content/lambda-calculus/syntax/abbreviated-syntax.tex",
+      "french_sha256": "91a1088a03521bd7d13aec9baeda8a7df02f8d21447d221421d3f8a9d96b6b7f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0360",
+      "path": "content/lambda-calculus/syntax/free-variables.tex",
+      "french_sha256": "e548b203813b3a0b3c70d59a67f033cf19c5b8ead072b776538586b72271e4b3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0361",
+      "path": "content/lambda-calculus/syntax/substitution.tex",
+      "french_sha256": "a8aef96d1402efc46ee772341e4bb7c163dc3447cb6969ce47ae3b79ae582845",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0362",
+      "path": "content/lambda-calculus/syntax/alpha.tex",
+      "french_sha256": "8c47e35f3746f6255140f7058edac5ed3e96359359a268a1ad3e22df9ea49638",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0363",
+      "path": "content/lambda-calculus/syntax/de-bruijn.tex",
+      "french_sha256": "e45fa11ac276ab25f5766fb4b8a354a5283856dae37c0e0d72e4c0d956784720",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0364",
+      "path": "content/lambda-calculus/syntax/term-revisited.tex",
+      "french_sha256": "51cca770d754c5015dcaf59730672cbc343740fa0d04fae65e163dda524a352d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0365",
+      "path": "content/lambda-calculus/syntax/beta.tex",
+      "french_sha256": "5cdc8f1e579baef26d80835e9d36fe12be4a91bc0b5d84afb38c00ff68bdab59",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0366",
+      "path": "content/lambda-calculus/syntax/eta.tex",
+      "french_sha256": "d4af02a4f86694d6d0075ef36129de9ca126914428ecc86d0e592bf5644243c2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0367",
+      "path": "content/lambda-calculus/church-rosser/church-rosser.tex",
+      "french_sha256": "69c8053997f7a8ca85216fe989df91406cc88384a9ad921395cb1d6d5984e260",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0368",
+      "path": "content/lambda-calculus/church-rosser/definitions-and-properties.tex",
+      "french_sha256": "d896e1c6e383aea7f1ed97ba462624784982555a30b801cea85412e4edbf5a73",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0369",
+      "path": "content/lambda-calculus/church-rosser/parallel-beta-reduction.tex",
+      "french_sha256": "802a47a6e26710b892f0f3a75454d51d5a44af9ddb700bf5950c966090978335",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0370",
+      "path": "content/lambda-calculus/church-rosser/beta-reduction.tex",
+      "french_sha256": "e26309e5d135f44d323ba51534a07022c574c558bb3da8c15fb21d8de665a08b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0371",
+      "path": "content/lambda-calculus/church-rosser/parallel-beta-eta-reduction.tex",
+      "french_sha256": "0f92871f842102728ad25c1065b7780700e4ceb109bf801161a231df6eb0feb7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0372",
+      "path": "content/lambda-calculus/church-rosser/beta-eta-reduction.tex",
+      "french_sha256": "4aed63d1c7abf7276802575682c49f6c6f0418d59331f77ca853c0a4a52d7137",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0373",
+      "path": "content/lambda-calculus/lambda-definability/lambda-definability.tex",
+      "french_sha256": "7142f3e87d2e4f45d5200b962da85646ef8e20ae86d16ec4a9b6441bfc3cb67b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0374",
+      "path": "content/lambda-calculus/lambda-definability/introduction.tex",
+      "french_sha256": "def3585af933651f8c86d92d6937e28a428ca13f88e2ec0d6dfc3e047cac699e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0375",
+      "path": "content/lambda-calculus/lambda-definability/arithmetical-functions.tex",
+      "french_sha256": "6043304c062a5a335e4488607b6813ae9b19571860c2c0ea09f9cca963410624",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0376",
+      "path": "content/lambda-calculus/lambda-definability/pairs.tex",
+      "french_sha256": "bff386dc0859ce93e9c0300ef24f38ff04c15fe18c815f60a02ce96aea7d6d4d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0377",
+      "path": "content/lambda-calculus/lambda-definability/truth-values.tex",
+      "french_sha256": "acb21a04b006e62d2692ca340e4b6a1c5837ef7adb48da46af505ebac14a0566",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0378",
+      "path": "content/lambda-calculus/lambda-definability/primitive-recursive-functions.tex",
+      "french_sha256": "4b74a72a892624a2cf02de6aee8f90af5970bdad67cf67bfc57c18c900ff8d9b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0379",
+      "path": "content/lambda-calculus/lambda-definability/fixpoints.tex",
+      "french_sha256": "047f0f3a064b3f89e3fd9e2a7b4293ddbda78288cf71bc420290f3c28a68cc5c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0380",
+      "path": "content/lambda-calculus/lambda-definability/minimization.tex",
+      "french_sha256": "5a3848be37304398ef328d38f8e69c2daa9ffa9c2eed15045794b822db517494",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0381",
+      "path": "content/lambda-calculus/lambda-definability/partial-recursive-functions.tex",
+      "french_sha256": "ce7a4d795328570ad32ced2eb174ce02fc2f0c43c817b78b1855e064fab29623",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0382",
+      "path": "content/lambda-calculus/lambda-definability/lambda-definable-recursive.tex",
+      "french_sha256": "6b4d7d1cf4fb45bd7f4ebf1d066aa17ea8dc17d09fdce5f20c8c8ec4d98a4655",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0383",
+      "path": "content/many-valued-logic/many-valued-logic.tex",
+      "french_sha256": "1b4f2aa1a305ee75a7e5baf1a1efa669cfbcdb83ae57deb863762bfebf4892a3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0384",
+      "path": "content/many-valued-logic/syntax-and-semantics/syntax-and-semantics.tex",
+      "french_sha256": "94e58f880d0f4778cdef92f678577b55838be65da269e4c6bc0fbdb31a01306b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0385",
+      "path": "content/many-valued-logic/syntax-and-semantics/introduction.tex",
+      "french_sha256": "5aa85dc9bfb35acdef6c343fb629fc0d261a5c44ea89fae8bfcae47fd18a53d9",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0386",
+      "path": "content/many-valued-logic/syntax-and-semantics/connectives.tex",
+      "french_sha256": "2a5119d9a68aa60860bcce64e65c666b83a42db428ca34a9423fe447fd665df4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0387",
+      "path": "content/many-valued-logic/syntax-and-semantics/formulas.tex",
+      "french_sha256": "dff4cda0305a1eed9bb15d40264b438038de94a8fc411019e7b1380e1dae32f6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0388",
+      "path": "content/many-valued-logic/syntax-and-semantics/matrices.tex",
+      "french_sha256": "8d07ca283b552916b18434e4362bd8fe9ee858d81f45d6533296b7175c4d044b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0389",
+      "path": "content/many-valued-logic/syntax-and-semantics/valuations-sat.tex",
+      "french_sha256": "1bbf540a6037d3b2696c4fbae108f70c358c5e0139f4a4e465acf4fccdd10ec3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0390",
+      "path": "content/many-valued-logic/syntax-and-semantics/semantic-notions.tex",
+      "french_sha256": "64a9a114625811599341f3ec584be7cc26bda4e6c7410d793e1597322fee3c9f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0391",
+      "path": "content/many-valued-logic/syntax-and-semantics/sublogics.tex",
+      "french_sha256": "b33f634879c8a61f79054905c8827dbe59baca9c24a87c3352281d6e0537feb6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0392",
+      "path": "content/many-valued-logic/three-valued-logics/three-valued-logics.tex",
+      "french_sha256": "62b88d8bb8b6e3ef09cd4412381685aabfd466b6a9dc0638075dc249a81d0fe1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0393",
+      "path": "content/many-valued-logic/three-valued-logics/introduction.tex",
+      "french_sha256": "7aaec18490449cc5add2b47e9541dbb2ca9e55bfd1f68b6aa3844f312517de98",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0394",
+      "path": "content/many-valued-logic/three-valued-logics/lukasiewicz.tex",
+      "french_sha256": "6966ce6075bf53856a32c90cf6a8223e5a5b7c8ab90d7c8a48bc30630899f493",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0395",
+      "path": "content/many-valued-logic/three-valued-logics/kleene.tex",
+      "french_sha256": "23586d120700846daf072b496185e526b26d8e79c15999d3c9bd4f221683538a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0396",
+      "path": "content/many-valued-logic/three-valued-logics/goedel.tex",
+      "french_sha256": "083f410e63a8f5b022c9c3c7e601284579e437d8a9fa8f7ff9e373e696d42305",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0397",
+      "path": "content/many-valued-logic/three-valued-logics/multiple-designation.tex",
+      "french_sha256": "de1850710218b2432dae53e1d2414583212c47ec71e13e7f0a3e826339d59125",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0398",
+      "path": "content/many-valued-logic/infinite-valued-logics/infinite-valued-logics.tex",
+      "french_sha256": "457240f6cb6a4b020cd228cea9d907e0430144a6a7d0e4f095a19175444cb79c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0399",
+      "path": "content/many-valued-logic/infinite-valued-logics/introduction.tex",
+      "french_sha256": "9d979fd674012123321c1e8ee324e4c396bf0f0f30ac92f8ceed588e2e3f2b06",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0400",
+      "path": "content/many-valued-logic/infinite-valued-logics/lukasiewicz.tex",
+      "french_sha256": "a62d953b2a0648634281fb291f90142b84d0ed6161636a6811968f3f8ad0ead5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0401",
+      "path": "content/many-valued-logic/infinite-valued-logics/goedel.tex",
+      "french_sha256": "0e163d24d5533a489da55779eb2d1f08d4f4343f0ac83777a14a6f536d36a232",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0402",
+      "path": "content/many-valued-logic/sequent-calculus/sequent-calculus.tex",
+      "french_sha256": "8d6afb693e3523232a57a18a207cb68702cffeeaad884c867691537bc1ccbf7e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0403",
+      "path": "content/many-valued-logic/sequent-calculus/introduction.tex",
+      "french_sha256": "4271985d001788537593c1b6624e4debe650c7ae92f8cfcd7ad2b6cdf3615459",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0404",
+      "path": "content/many-valued-logic/sequent-calculus/rules-and-proofs.tex",
+      "french_sha256": "6d761a4beebe47cd21c49a65e7bfa9ebcbbb9facbb31abe62b6d66dd93b827ce",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0405",
+      "path": "content/many-valued-logic/sequent-calculus/structural-rules.tex",
+      "french_sha256": "6e636c5955560e784bb237fb761ec445f206f7a36ee6bfb51482675a4af8e570",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0406",
+      "path": "content/many-valued-logic/sequent-calculus/propositional-rules.tex",
+      "french_sha256": "66768aec6728a5c4d40ec45055dc08a182f3a0c8fdd0bbb2188e5283dd13ada0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0407",
+      "path": "content/normal-modal-logic/normal-modal-logic.tex",
+      "french_sha256": "60b3d943b3d36592a472f8d3b90f53ce59bd8d38a693277f92d0372621bd511e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0408",
+      "path": "content/normal-modal-logic/syntax-and-semantics/syntax-and-semantics.tex",
+      "french_sha256": "c34719836b963efda58f3b9fd16144653e3ffdcdb5605432de17050a7ac4dd9a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0409",
+      "path": "content/normal-modal-logic/syntax-and-semantics/introduction.tex",
+      "french_sha256": "63fa549d40d175cc722221e30ba0db2f52f36f01452a3a12a84ff5a9474b4dc7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0410",
+      "path": "content/normal-modal-logic/syntax-and-semantics/language-modal-logic.tex",
+      "french_sha256": "510bf3c16d246bff7ee1ff1c4aa23e84aa18eafd9bb08958d787fda461bd22a0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0411",
+      "path": "content/normal-modal-logic/syntax-and-semantics/substitution.tex",
+      "french_sha256": "9640aeffda5762ff2610e87d3efc3e8db65360d75b654adc2e4a0a390c7680cf",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0412",
+      "path": "content/normal-modal-logic/syntax-and-semantics/relational-models.tex",
+      "french_sha256": "7110d384fe9dd7d3b072f46df179bde134c971d0f60d7c76bf566b4bef3a8fe0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0413",
+      "path": "content/normal-modal-logic/syntax-and-semantics/truth-at-w.tex",
+      "french_sha256": "3348f67c1fecf5445990c119347cda5ce7a836e1ef1e2093d352c20b9dd9539b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0414",
+      "path": "content/normal-modal-logic/syntax-and-semantics/truth-in-model.tex",
+      "french_sha256": "0410fae8cc748ed1da8f3ccb0229a6e94faf6da25773a1fbfc6099bf4f6716d0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0415",
+      "path": "content/normal-modal-logic/syntax-and-semantics/modal-validity.tex",
+      "french_sha256": "59a266c39d112ae766e7a5122eee047dd36283d0f885d5ce964857224e93674c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0416",
+      "path": "content/normal-modal-logic/syntax-and-semantics/tautological-instances.tex",
+      "french_sha256": "3d62ee2167c3a4c4a96db77f569b282cf1ba14fa04705f37281675680cc45aa5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0417",
+      "path": "content/normal-modal-logic/syntax-and-semantics/schemas.tex",
+      "french_sha256": "a98a3939d0aaa10fe2374d7ccea4b36fc5213afcdcf826a074489b4e4e4e057c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0418",
+      "path": "content/normal-modal-logic/syntax-and-semantics/entailment.tex",
+      "french_sha256": "2ef3443e0f40e4d7a26897a6b0ff1581e6ac18b261c7bfbf3b8c794c8eec7807",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0419",
+      "path": "content/normal-modal-logic/frame-definability/frame-definability.tex",
+      "french_sha256": "0cb8fa01a8bab29e5348914b77f2518f75f25c61f9481ab432358ce9dd68ace7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0420",
+      "path": "content/normal-modal-logic/frame-definability/introduction.tex",
+      "french_sha256": "8fdfc0b83209ce1468b0bb457a7078727a4221e969c54d3a046434af531d6b5e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0421",
+      "path": "content/normal-modal-logic/frame-definability/properties-accessibility.tex",
+      "french_sha256": "3e5815a539a52123ccf4d9703c3b9f2bc921244a9333723f3bcc80b942d364fc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0422",
+      "path": "content/normal-modal-logic/frame-definability/frames.tex",
+      "french_sha256": "2d1148d8fe0c3743871f31f349ac4f7aa8d2ce8cecb65eaf496089719639b490",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0423",
+      "path": "content/normal-modal-logic/frame-definability/definability.tex",
+      "french_sha256": "a22167caee73e62d1a90b511c62a09c6d898a28fc4155337b528930bbf1ba8ed",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0424",
+      "path": "content/normal-modal-logic/frame-definability/first-order-definability.tex",
+      "french_sha256": "53125679621b6293a5164d09b6b7b8bd436a433cc8954209037703acc5bef1ee",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0425",
+      "path": "content/normal-modal-logic/frame-definability/equivalence-S5.tex",
+      "french_sha256": "83f69fdc6596cfb2591852090627f6ef0f41f096907e42002ed256e4670be74a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0426",
+      "path": "content/normal-modal-logic/frame-definability/second-order-definability.tex",
+      "french_sha256": "06c750d5ee877becbab1a0fc81b6e9c32aa1300d853627b976882393b0b6a5ad",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0427",
+      "path": "content/normal-modal-logic/axioms-systems/axioms-systems.tex",
+      "french_sha256": "7dc97bde8e22dc4f485c3dfb981ec12f6959ed56c1975177397372ca0305e634",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0428",
+      "path": "content/normal-modal-logic/axioms-systems/introduction.tex",
+      "french_sha256": "2abc2492fd552d208938b40acb0f109c4169f4998e7adcdd2bf2ce36f6d1c3fe",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0429",
+      "path": "content/normal-modal-logic/axioms-systems/normal-logics.tex",
+      "french_sha256": "5a8dda8ed6666ed43ca22be8cbb2b1e8c2935a75e674c9d1f2b01de613f625a8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0430",
+      "path": "content/normal-modal-logic/axioms-systems/logics-proofs.tex",
+      "french_sha256": "dcd2eb70fab46b3313356c73c7d18011479ee53f923c5256a92248ef33bf9e2c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0431",
+      "path": "content/normal-modal-logic/axioms-systems/proofs-in-K.tex",
+      "french_sha256": "bdf78a0d67f93f16aae080d0c55e7bb013afef6fe473caeb866df703879efb0f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0432",
+      "path": "content/normal-modal-logic/axioms-systems/derived-rules.tex",
+      "french_sha256": "af5680c9653dc552c92fb9473a0999af031bbde7ff71155f44f63b251b0d997c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0433",
+      "path": "content/normal-modal-logic/axioms-systems/more-proofs-in-K.tex",
+      "french_sha256": "f160506c8bfc0ca52d9983e6f3a4db257f9f7a5320ec98abb58c48f6cf34eee7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0434",
+      "path": "content/normal-modal-logic/axioms-systems/duals.tex",
+      "french_sha256": "8778f33a0a89cc65f4cb1d74a043921fde3bd1969a7741371a806eded7b908a2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0435",
+      "path": "content/normal-modal-logic/axioms-systems/proofs-modal-systems.tex",
+      "french_sha256": "1e0bac63dc5996dca18ba90d27b5c638ed3ec182cf71e228a68a699379e045d3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0436",
+      "path": "content/normal-modal-logic/axioms-systems/soundness.tex",
+      "french_sha256": "95708c72446df6dcbbd16d2789978e2699965383aab0aa97eac8ed23fafb9fd1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0437",
+      "path": "content/normal-modal-logic/axioms-systems/systems-distinct.tex",
+      "french_sha256": "a0aa57a056a57f99fc161b70479c5e69ec1794d5c90087048b50fad09804c778",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0438",
+      "path": "content/normal-modal-logic/axioms-systems/provability-from-set.tex",
+      "french_sha256": "00087a3332d4a0553a26867d91cf0be9aed39fed286701761ab789a1b7bb26e9",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0439",
+      "path": "content/normal-modal-logic/axioms-systems/provability-properties.tex",
+      "french_sha256": "a7ee236fa9b8b95d10230cdae28a4ead971ebb68b581f7d3c255aa62fe23e9f8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0440",
+      "path": "content/normal-modal-logic/axioms-systems/consistency.tex",
+      "french_sha256": "533b8d1d45140b4592b4062908636eca04105ba10600b2d446c2fd54f1f7af35",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0441",
+      "path": "content/normal-modal-logic/completeness/completeness.tex",
+      "french_sha256": "5386f85ff7d447b88c7430dd60469c14c13e4ea65c0766afb0fcacfc286e8d84",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0442",
+      "path": "content/normal-modal-logic/completeness/introduction.tex",
+      "french_sha256": "acea8ab545ce9ce53eb2747ee303db904887eb823ffd10d1792de896f3fc39ba",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0443",
+      "path": "content/normal-modal-logic/completeness/complete-consistent-sets.tex",
+      "french_sha256": "b25598053a87729ac1f81ba5a171e55a5d1646ea7398cfdf85706250b5a99dd1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0444",
+      "path": "content/normal-modal-logic/completeness/lindenbaums-lemma.tex",
+      "french_sha256": "0345a1fff21d4e204b3148c81eca87bf45b43090977e93d0537c6c9cf4db1559",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0445",
+      "path": "content/normal-modal-logic/completeness/modalities-ccs.tex",
+      "french_sha256": "16976bbcdcb76464a9cea9e72de77fbef4b17869ba5fc33422ab7dbe3c25c06d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0446",
+      "path": "content/normal-modal-logic/completeness/canonical-models.tex",
+      "french_sha256": "529a2940e7f13d8942357431ce15cd183378a6012444b25fac2a2ffda974a60e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0447",
+      "path": "content/normal-modal-logic/completeness/truth-lemma.tex",
+      "french_sha256": "7fbd85b5ab89774259f58be7eeb253a3b983f41c7bd30823ca2dd86461e56ddd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0448",
+      "path": "content/normal-modal-logic/completeness/completeness-K.tex",
+      "french_sha256": "3724615bf51a4cc3cd78b9776e322285fefa4f9f31a4a3e26850b713b3a58c39",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0449",
+      "path": "content/normal-modal-logic/completeness/frame-completeness.tex",
+      "french_sha256": "d65ee7bc3374b541839e4425337e9cb713a1fe5e038aa910e213b2e41cc5597f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0450",
+      "path": "content/normal-modal-logic/filtrations/filtrations.tex",
+      "french_sha256": "c8dc9a5f7501d5fcd977c6ad40c5a72c6bb9ac4965958e366a6092cfdc8a3db4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0451",
+      "path": "content/normal-modal-logic/filtrations/introduction.tex",
+      "french_sha256": "70b7ba47f8b303cc16819416d27f6ea1bd54befbee6ddce99c8e097a31710910",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0452",
+      "path": "content/normal-modal-logic/filtrations/preliminaries.tex",
+      "french_sha256": "b9a1104a1fc89a50a8e48cb00cde2bbf6f3a8278df91fd15b7a98cadda525f96",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0453",
+      "path": "content/normal-modal-logic/filtrations/filtrations-def.tex",
+      "french_sha256": "3fa7aff19fe6850e3650c23b8d2427f9a79fad0a7e0fa228676ad2fbdc97f947",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0454",
+      "path": "content/normal-modal-logic/filtrations/examples-of-filtrations.tex",
+      "french_sha256": "3310bd27bdf4f1c32a19abe76312c7490fa3aeb0dda4e3729aa2c1e66251733b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0455",
+      "path": "content/normal-modal-logic/filtrations/finite.tex",
+      "french_sha256": "63509c598500c9d0b6771de0db1dfc7d8fd9f1d24886e8a28473fd9239bcfa6d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0456",
+      "path": "content/normal-modal-logic/filtrations/S5-fmp.tex",
+      "french_sha256": "f5600aac8a0182fabc87ab316a11defbf2fe6df8a7c87b368f89a13e3b6fd864",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0457",
+      "path": "content/normal-modal-logic/filtrations/S5-decidable.tex",
+      "french_sha256": "986ffa2b56fe8999feab3c23683910525fe7b2ddf67950a1d0e90aaaff4a4fe1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0458",
+      "path": "content/normal-modal-logic/filtrations/more-filtrations.tex",
+      "french_sha256": "3b3acd352c8566436cc648774964d218861eb0e718f876283337b2b0e975d9e1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0459",
+      "path": "content/normal-modal-logic/filtrations/euclidean-filtrations.tex",
+      "french_sha256": "e76daffcbf8f79a1dc65311e9ef248e4867ae5e71870d0ce733eb4e6f3046e78",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0460",
+      "path": "content/normal-modal-logic/tableaux/tableaux.tex",
+      "french_sha256": "5bfe901ae1616e27583d8cf618f938f2b7867d2981aa032bf1299ab2a17e67b6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0461",
+      "path": "content/normal-modal-logic/tableaux/introduction.tex",
+      "french_sha256": "0711e6e16a6a350a55b6a46d04ab2d01fe8371c4f24e46932a411851f91d48fc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0462",
+      "path": "content/normal-modal-logic/tableaux/rules-for-K.tex",
+      "french_sha256": "485b5f9427bf28c3fb37adfee7e2ceeda4e213016833291aa050845522e27d7e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0463",
+      "path": "content/normal-modal-logic/tableaux/proofs-in-K.tex",
+      "french_sha256": "9883a31ffba52baf48b63c312d46350b28ed344c33a66c8143e89bbc9f05cfa6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0464",
+      "path": "content/normal-modal-logic/tableaux/soundness.tex",
+      "french_sha256": "3ba47959ecfc4e6d834e43f2d472ddf09ac4c683e2d7130bbd2de1dd06ab0532",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0465",
+      "path": "content/normal-modal-logic/tableaux/more-rules.tex",
+      "french_sha256": "a21bc605a7c3952af50d1ee3d2894a77cfe6edaa1ccad48ebcaa2dbdfd6d3bff",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0466",
+      "path": "content/normal-modal-logic/tableaux/more-soundness.tex",
+      "french_sha256": "05f3c46a7edecf11d5551b108639077bd825de2296d59cf18b793089c36d81da",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0467",
+      "path": "content/normal-modal-logic/tableaux/simple-S5.tex",
+      "french_sha256": "6118dbeb9d00f9528fbbf400e27dfd9851862d7b34e0fb8ac8b9d25d0dd8609b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0468",
+      "path": "content/normal-modal-logic/tableaux/completeness.tex",
+      "french_sha256": "0643a17118a50358324a9c48e31641cc529c2aa1f7bf1eb3b006b7f33227b0cc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0469",
+      "path": "content/normal-modal-logic/tableaux/countermodels.tex",
+      "french_sha256": "27391a395c1867873d9acf88d94a08025d719aaf27db66ddee2a14b900af479b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0470",
+      "path": "content/normal-modal-logic/sequent-calculus/sequent-calculus.tex",
+      "french_sha256": "95b2d456f5aa26bc40957767cd292c646c403b66dfd3902b2e03e0faa7173bad",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0471",
+      "path": "content/normal-modal-logic/sequent-calculus/introduction.tex",
+      "french_sha256": "bb1e18c8525c5c287262a1d09ed62dc23574ee2ba815b508a78745d1ff409bdb",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0472",
+      "path": "content/normal-modal-logic/sequent-calculus/rules-for-K.tex",
+      "french_sha256": "8b35a063c1e4fcda962d1a82e03a0de349abca62628214840dc3b269c52ebe83",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0473",
+      "path": "content/normal-modal-logic/sequent-calculus/proofs-in-K.tex",
+      "french_sha256": "69f3b898069f80217f1ca7b3d4413fd1497e7eb6ef16a48e8711caab15ec21c7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0474",
+      "path": "content/normal-modal-logic/sequent-calculus/more-rules.tex",
+      "french_sha256": "58264368bdcdabe83f0275f6dabca40305ef48a15eef4df63fab6bf57a974515",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0475",
+      "path": "content/applied-modal-logic/applied-modal-logic.tex",
+      "french_sha256": "8933c7466bdf5f91b7d0a161e59d305f0bfcd2b549ae07504cef8ff9275c1d0c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0476",
+      "path": "content/applied-modal-logic/temporal-logic/temporal-logic.tex",
+      "french_sha256": "f823fe879a8256b3c465d6becefe9a3e6dee0a42e595ac548a1105190582f88c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0477",
+      "path": "content/applied-modal-logic/temporal-logic/introduction.tex",
+      "french_sha256": "80c128f35d5e4554afeec85e3a1f7a5e6457b3809fede5ff18262e76292d0693",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0478",
+      "path": "content/applied-modal-logic/temporal-logic/temporal-logic-semantics.tex",
+      "french_sha256": "aa18b8926d71ce27fdfdc5a466049073cc13ab6862854e9969adfebd615dea1e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0479",
+      "path": "content/applied-modal-logic/temporal-logic/properties-accessibility.tex",
+      "french_sha256": "7b12ef6f670d53a7ed4c5f9d67cdfd7413903cfe0a0a7f6156ea805cfc8ebf77",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0480",
+      "path": "content/applied-modal-logic/temporal-logic/extra-temporal-operators.tex",
+      "french_sha256": "45bf35b02346a665daf6d65da3cc0aa6d2f02adae14ad83064b4fe5b8aa24426",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0481",
+      "path": "content/applied-modal-logic/temporal-logic/possible-histories.tex",
+      "french_sha256": "4d8cac5ff5eb24089c437a1655268d4fb9c00e82bd195a82cefaf524a3022e9c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0482",
+      "path": "content/applied-modal-logic/epistemic-logic/epistemic-logic.tex",
+      "french_sha256": "8cfd1c3b45233fe1d8d10c9f8e4c336457ebd9819af36fde88ca79dc42796dba",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0483",
+      "path": "content/applied-modal-logic/epistemic-logic/introduction.tex",
+      "french_sha256": "876f498014e317d906a32158fe442332ce84af1533f5fbb05e489845a360e28a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0484",
+      "path": "content/applied-modal-logic/epistemic-logic/language-epistemic-logic.tex",
+      "french_sha256": "d9171023f54570a59df0d401a35bb0d58c28d85624c2d5e01f7d4ac6861f894d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0485",
+      "path": "content/applied-modal-logic/epistemic-logic/relational-models.tex",
+      "french_sha256": "ce808c458d5f264c041797c40ab3b57519bcc32cacd853536e84b4c6c182059b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0486",
+      "path": "content/applied-modal-logic/epistemic-logic/truth-at-w.tex",
+      "french_sha256": "c3be2754b9aa1762286f425f6eb8ee791e2a2d230acfb6fb46c3422c7ce5d533",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0487",
+      "path": "content/applied-modal-logic/epistemic-logic/properties-accessibility.tex",
+      "french_sha256": "20c4fd0ba8fdc22032a8f99605493309b95de13aac722c3bf3cf0c668abd8ce3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0488",
+      "path": "content/applied-modal-logic/epistemic-logic/bisimulations.tex",
+      "french_sha256": "da8ac47504008130aaa261e6023a6138d89d2992a362e63e4c238f80f7485620",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0489",
+      "path": "content/applied-modal-logic/epistemic-logic/public-announcement-logic-lang.tex",
+      "french_sha256": "6986156a11bdfc7a41bc93d52de15c2c762c239653d168cce69c56d96b391c30",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0490",
+      "path": "content/applied-modal-logic/epistemic-logic/public-announcement-logic-semantics.tex",
+      "french_sha256": "27c93bb7cd6ff7116f57461d08c409c0c0d5386fd3bc489ed2fb774a99599a41",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0491",
+      "path": "content/intuitionistic-logic/intuitionistic-logic.tex",
+      "french_sha256": "2e0099db73553a8a093799b7feee6ef75d0e178280a260313c93104a193d09a5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0492",
+      "path": "content/intuitionistic-logic/introduction/introduction.tex",
+      "french_sha256": "5bf23e92234b7afacfa7c9b2be970ee29adc6e598dcabd7a9234b7dfa7c948f4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0493",
+      "path": "content/intuitionistic-logic/introduction/constructive-reasoning.tex",
+      "french_sha256": "9f7c5b0ebd46bb7f846cf41c55c70d538a0910540720a8efb65c45611cb3930a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0494",
+      "path": "content/intuitionistic-logic/introduction/syntax.tex",
+      "french_sha256": "3060b981741a207343119e2a5abcc4753d671a41f7d76761f77ee02299a19e7c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0495",
+      "path": "content/intuitionistic-logic/introduction/bhk-interpretation.tex",
+      "french_sha256": "16edd6a731dccb6c653eff90df9d8273622d4e154f78c326dca653d3a1980235",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0496",
+      "path": "content/intuitionistic-logic/introduction/natural-deduction.tex",
+      "french_sha256": "46377c13924605916d4e355e9266ca9143ec3e0402d49de08a65adb5050f8e9b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0497",
+      "path": "content/intuitionistic-logic/introduction/axiomatic-derivations.tex",
+      "french_sha256": "eb00ebad019c81a466a147876bab4c8a7b95618238d9a87284202c740483e983",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0498",
+      "path": "content/intuitionistic-logic/semantics/semantics.tex",
+      "french_sha256": "71d9032b81133017474cd2e8f7e8e0b037c1683a306da30602e8f4924cd1db2f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0499",
+      "path": "content/intuitionistic-logic/semantics/introduction.tex",
+      "french_sha256": "2a6b68d661f050c173efb7976c81f772d9a5f214494da325e8fdbcda1f10000b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0500",
+      "path": "content/intuitionistic-logic/semantics/relational-models.tex",
+      "french_sha256": "eb7d850715995bb146b02ba66117c2e80ad2ff8d1e84a0b46fa3c4d548da108c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0501",
+      "path": "content/intuitionistic-logic/semantics/semantic-notions.tex",
+      "french_sha256": "53427d2995207d37e8902163a3543b77c6828bc8f666e84f222c028852009483",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0502",
+      "path": "content/intuitionistic-logic/semantics/topological-semantics.tex",
+      "french_sha256": "dacd85e5f2bdfd712722519f31870e228a3cb996cb84736a3dc69cc615be0cdf",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0503",
+      "path": "content/intuitionistic-logic/soundness-completeness/soundness-completeness.tex",
+      "french_sha256": "44749d048df72e14ebfb73da82e4fa3e867233cbdaac1d3d4613844ac1ccffbb",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0504",
+      "path": "content/intuitionistic-logic/soundness-completeness/soundness-axd.tex",
+      "french_sha256": "8f677d4a0d877b799ab5490251e7bfb7ebfc9061509f0b26fd316b23066a24bc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0505",
+      "path": "content/intuitionistic-logic/soundness-completeness/soundness-nd.tex",
+      "french_sha256": "5a5487072080bee72edf1a3a5dd28655fe9b947f6540a4ca497b8ebaa3c43151",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0506",
+      "path": "content/intuitionistic-logic/soundness-completeness/lindenbaum.tex",
+      "french_sha256": "53c83216db1b046cc18959c3d800253ab8ef7439a64cf5b3b694be3e932784f7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0507",
+      "path": "content/intuitionistic-logic/soundness-completeness/canonical-model.tex",
+      "french_sha256": "b3245d543aa036aea3e6f687dbb3890c791c70975033299ecda9cc58a69cd924",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0508",
+      "path": "content/intuitionistic-logic/soundness-completeness/truth-lemma.tex",
+      "french_sha256": "ace6671cc4c84173da8363ec9b0eb6596bb4c65f601c33e2621f1c0a88b16244",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0509",
+      "path": "content/intuitionistic-logic/soundness-completeness/completeness-thm.tex",
+      "french_sha256": "77bce913ec56ea9ed1b5409169bd1e0f424629b10b3909caa3f9e1e799bc8ea2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0510",
+      "path": "content/intuitionistic-logic/soundness-completeness/decidability.tex",
+      "french_sha256": "65f3e7ba81b582f9cc229576bb8fb63ee82c9c45a357f3546bfc5c33475b64e2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0511",
+      "path": "content/intuitionistic-logic/tableaux/tableaux.tex",
+      "french_sha256": "4517adb91dbf4b9dda3ab57695a370d08154e0f98a6c3b256c32e8339f2e6450",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0512",
+      "path": "content/intuitionistic-logic/tableaux/introduction.tex",
+      "french_sha256": "41bed31e066bcea67bf968af27852eadf7c9d3e3ecc2144331087aadf6182af2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0513",
+      "path": "content/intuitionistic-logic/tableaux/rules.tex",
+      "french_sha256": "10a91370bf521e415f918b92f0e9e963cf7131016699d68a981557a86a5ba4b6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0514",
+      "path": "content/intuitionistic-logic/tableaux/proofs.tex",
+      "french_sha256": "9b33a149102786eaccf14096992bd733ecc1fc6291c032ba470e96fa4567c90f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0515",
+      "path": "content/intuitionistic-logic/tableaux/soundness.tex",
+      "french_sha256": "86cbc0cc9771f69e882ba16c3b05ce0d6936f2621f965608d800be4791383677",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0516",
+      "path": "content/counterfactuals/counterfactuals.tex",
+      "french_sha256": "7f187e6ce34b741c621b51d3b700eb03388fc006a3f17d4a766b974bc806b896",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0517",
+      "path": "content/counterfactuals/introduction/introduction.tex",
+      "french_sha256": "e38aeeea4cc5ce6af6226a480aced5a637a7c852a4656899dc4376caf4e72fd8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0518",
+      "path": "content/counterfactuals/introduction/material-conditional.tex",
+      "french_sha256": "0d08ddabe4acfc8875fff71bb76e9cc097c2e5afd9562a8a6018c118b5df8d41",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0519",
+      "path": "content/counterfactuals/introduction/paradoxes-material.tex",
+      "french_sha256": "590b8ee8fd5567b332a5cd1e3c23d0e7da04ba4744f7147f5a8b606562a73c7e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0520",
+      "path": "content/counterfactuals/introduction/strict-conditional.tex",
+      "french_sha256": "7783c4ff8c5c307862822809bf7d31cf7dadf2574b7851eda7e4008305de02c5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0521",
+      "path": "content/counterfactuals/introduction/counterfactuals.tex",
+      "french_sha256": "4b315561a81d00791622f9fe29615d471f3c5a988a4ae70d18c4ca6df41acd29",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0522",
+      "path": "content/counterfactuals/minimal-change-semantics/minimal-change-semantics.tex",
+      "french_sha256": "087f3677c71bdf7a9ad13be2197b6c5d44e15f080a161273288d30072560bf07",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0523",
+      "path": "content/counterfactuals/minimal-change-semantics/introduction.tex",
+      "french_sha256": "f2f7fe0a3ffc15742318a78597c799d68d3dbe91d7292b88a05720a9a7120dca",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0524",
+      "path": "content/counterfactuals/minimal-change-semantics/sphere-models.tex",
+      "french_sha256": "4015f0e18af01ca6c14650269c48b95ef8fcf4b6472c902db45ffd05dc20bd16",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0525",
+      "path": "content/counterfactuals/minimal-change-semantics/true-false.tex",
+      "french_sha256": "3247552d286972f62b1fd33310f4297a181d3723068972f31a2807f6d790e59e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0526",
+      "path": "content/counterfactuals/minimal-change-semantics/antecedent-strengthening.tex",
+      "french_sha256": "505e63f439f6955153a4ad2007a1efc2731cfb99e35ff3e55b4fcaddfdeed84c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0527",
+      "path": "content/counterfactuals/minimal-change-semantics/transitivity.tex",
+      "french_sha256": "e7a35474817d48005d2c0a9019fc4d759f414cc96a15784ad5f30c8281eb7abd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0528",
+      "path": "content/counterfactuals/minimal-change-semantics/contraposition.tex",
+      "french_sha256": "940b563588468b2ee709eb7067bdd9ca947cb210099f9a39424a489c109557f4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0529",
+      "path": "content/set-theory/set-theory.tex",
+      "french_sha256": "7afbda364e1dee425418938d6c71602df46c11a7354140f763e1c5385ef82243",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0530",
+      "path": "content/set-theory/story/story.tex",
+      "french_sha256": "a239442df1465173f2d27d664912ad18232f9953ca679a9a35a79485c47a55ae",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0531",
+      "path": "content/set-theory/story/extensionality.tex",
+      "french_sha256": "c6c61a92ec48678d4e718d7e5f68be9d804b053ce0375c744e3b07483ce2b6cd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0532",
+      "path": "content/set-theory/story/russells-paradox-again.tex",
+      "french_sha256": "03b78c11c50461f6d0282041b819b0d3e7589ca17e870725c2205485dfd57f1e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0533",
+      "path": "content/set-theory/story/predicativity.tex",
+      "french_sha256": "fcd0f1bed994d5f7a7a89fb44c3a96bc2f95f12d4a81307bdbd96c0705b2987b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0534",
+      "path": "content/set-theory/story/cumulative-approach.tex",
+      "french_sha256": "27dad09c9b5f3b780b2474d00d6093d405bb58a6a2ba6100143ae1d216813952",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0535",
+      "path": "content/set-theory/story/urelements.tex",
+      "french_sha256": "97c73de978427992af98fdd61d394e30525f0146a47b91d7b889cfa88e4ddb4d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0536",
+      "path": "content/set-theory/story/grundgesetze.tex",
+      "french_sha256": "edd3ad316932dd1867454c8688c205a2f67e32ae545a57af56dcb60b07f6e105",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0537",
+      "path": "content/set-theory/z/z.tex",
+      "french_sha256": "4b4fab72480393aec9d0871f16ee4c7f13de82408981e42cc185138a7ff8cbb0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0538",
+      "path": "content/set-theory/z/story.tex",
+      "french_sha256": "142c4dfdde6f7b6726cea3c1c0e42bdc9c6b747f5fb5a5132157c6f27017f33a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0539",
+      "path": "content/set-theory/z/separation.tex",
+      "french_sha256": "3d88d7ebb89b861cc20fc8a7d3b546fbf1b92c6bc2222d6d9d879823e9cdd5bd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0540",
+      "path": "content/set-theory/z/union.tex",
+      "french_sha256": "142f6fcdac365797a2cedf0b6b21991755f3336c164d08fdb721f25719729a56",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0541",
+      "path": "content/set-theory/z/pairs.tex",
+      "french_sha256": "ceea651d3b22c1d74056c12346bde69f65489372591ed4ce19a25ee9619d7941",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0542",
+      "path": "content/set-theory/z/powerset.tex",
+      "french_sha256": "d916ce68abf4c4b11db67fb41b31209dca0ab61cb88e691a3caa7c185060f0ac",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0543",
+      "path": "content/set-theory/z/infinity-again.tex",
+      "french_sha256": "3ff563e7bfcac84dd822399c4d86e98a59cec6ba484324c7a715b63205340426",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0544",
+      "path": "content/set-theory/z/milestone.tex",
+      "french_sha256": "1fc539e4b609431acf4ff52026e82e407ab4a7380dac4657b965f842c60e3935",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0545",
+      "path": "content/set-theory/z/nat.tex",
+      "french_sha256": "f6f545a4246b54d1e2f5f5ac9f5192847aadc3d00a062aad7e8c6fc016def67c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0546",
+      "path": "content/set-theory/z/arbintersections.tex",
+      "french_sha256": "e3f9329cea3e6df6f2e34a4ea61c386ac7113f5e1467b9253969c3d141678075",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0547",
+      "path": "content/set-theory/ordinals/ordinals.tex",
+      "french_sha256": "f2bdc3c0510dfe4c3a6fd5c9ffa5f756726de170924f677d515bd47047ae6f14",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0548",
+      "path": "content/set-theory/ordinals/introduction.tex",
+      "french_sha256": "baa9fcdbddfbb48e98e5807a811859607923ffbce393f83cfa0f4c2c2bd801de",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0549",
+      "path": "content/set-theory/ordinals/idea.tex",
+      "french_sha256": "89eb1b2487ba5f19f5ad37f492008c605de44a232f6a94d9e1524168f4efffc8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0550",
+      "path": "content/set-theory/ordinals/wo.tex",
+      "french_sha256": "0dee4f595b0b89f968651665f5d5522d4fd3ca3ad7730bca571bfe3f269dc356",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0551",
+      "path": "content/set-theory/ordinals/iso.tex",
+      "french_sha256": "a08d35033e9eff6ae6c9b21bf8b8e7476c6bba49adcbf5cbc2948b1eac194a0e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0552",
+      "path": "content/set-theory/ordinals/vn.tex",
+      "french_sha256": "a08580cab20d2a2bcd5a4790e988cdeab6e88a3eaa67024fc3ac9a3c002b5c83",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0553",
+      "path": "content/set-theory/ordinals/basic.tex",
+      "french_sha256": "61c6d84a80906c29d745e9ff05a60fb2cd420043bbc9ae41b81d542fa91fea1a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0554",
+      "path": "content/set-theory/ordinals/replacement.tex",
+      "french_sha256": "1df9e22248eb34c5efcac9cbb2c642c025bd444910b2527ed289c6a5df27d167",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0555",
+      "path": "content/set-theory/ordinals/milestone.tex",
+      "french_sha256": "edf27fbecabe5f81a8a6ff715114eb6ce947bbef86f532334a6dbc5b88584225",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0556",
+      "path": "content/set-theory/ordinals/ordtype.tex",
+      "french_sha256": "2f40dc84b31541d25acbe3640d9aaae290abd28fbf1faf39008db134d9fc8a5c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0557",
+      "path": "content/set-theory/ordinals/opps.tex",
+      "french_sha256": "f31c0f40368f84be3e051c06d9555e92958eeb939cab5f422c423f3b9a0a88bb",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0558",
+      "path": "content/set-theory/spine/spine.tex",
+      "french_sha256": "97b85163e19cc81adba0286a4c13717104c7a4fbb7090e40cdbb5958df824b7a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0559",
+      "path": "content/set-theory/spine/idea.tex",
+      "french_sha256": "9acf84e623a1eb1924ba119038ed6694934a45603dd20e23fb2b6d8a3d225aad",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0560",
+      "path": "content/set-theory/spine/recursion.tex",
+      "french_sha256": "dc3e9bbe8ec95573c4bbfcbc92794c0e765dac65f69a4a6cbe4ea3aa00e2211c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0561",
+      "path": "content/set-theory/spine/stagesbasics.tex",
+      "french_sha256": "a6765cc7872a6e7a90c376b2567e2dbb5d2d1c40086b43d18bf7a070137bb7cd",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0562",
+      "path": "content/set-theory/spine/foundation.tex",
+      "french_sha256": "ebee69d9ef90115bdaa5d37dac879c2c20b32679e7c693439c7ee53b693cf436",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0563",
+      "path": "content/set-theory/spine/zf.tex",
+      "french_sha256": "04744a643e78f4fb8eea20847ee108ec6819d80afd9ae12dbf2bd49329d64706",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0564",
+      "path": "content/set-theory/spine/rank.tex",
+      "french_sha256": "1dc48ecfcd6047296f8267fd3a609951728b5e22c6d1487e9b076ea95531331a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0565",
+      "path": "content/set-theory/replacement/replacement.tex",
+      "french_sha256": "12ebcbd80f56c7447bc473cca782c911f6cac40ee989c8ae4997fc53bb28b0fa",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0566",
+      "path": "content/set-theory/replacement/introduction.tex",
+      "french_sha256": "7ab3e81624d490a7b91e2d249f1181aa8fd8ec679a7963457784929ebf73f675",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0567",
+      "path": "content/set-theory/replacement/strength.tex",
+      "french_sha256": "81d0e6a3c92c8fa1b3435a1794115b9920ccff020dfc1cfb639ed44d62ee5a71",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0568",
+      "path": "content/set-theory/replacement/extrinsic.tex",
+      "french_sha256": "ac6535dbb1ee70ab2787b5ef2c4ed0ccd225de551aa69a61f9e95181c36e83f7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0569",
+      "path": "content/set-theory/replacement/limofsize.tex",
+      "french_sha256": "45b307f60523db861be5ce5e0fe0ab91ef76a10c88ca65f4b567501b4e3b05c2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0570",
+      "path": "content/set-theory/replacement/absinf.tex",
+      "french_sha256": "afe9a26ce2a20d87e835babcc87bed3696dd2a384dbac9203bed2046950eb1b8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0571",
+      "path": "content/set-theory/replacement/ref.tex",
+      "french_sha256": "2707ddffebd73e9b2bec41208e23c1055e2bd8d66d8f965c3f9994bf188d7cb5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0572",
+      "path": "content/set-theory/replacement/refproofs.tex",
+      "french_sha256": "1260e613f0f2b163c9330875d0d7799ea70c80322d6e493cfdc31e644a506716",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0573",
+      "path": "content/set-theory/replacement/finiteaxiomatizability.tex",
+      "french_sha256": "14e612a825f718779dda9c279386d030df24f7e128135b1cd95f84fbfd188569",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0574",
+      "path": "content/set-theory/ord-arithmetic/ord-arithmetic.tex",
+      "french_sha256": "92172ca32c4eaca02ce549b5f07542bd340b8637097e7662f33b77542f52727a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0575",
+      "path": "content/set-theory/ord-arithmetic/introduction.tex",
+      "french_sha256": "67d740cc18e7b975ccb18b38a6a4254370b613e5bdb0451394bb78240e297f59",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0576",
+      "path": "content/set-theory/ord-arithmetic/addition.tex",
+      "french_sha256": "4a4f5f608174a5c485d639d451af40fb610c2f2f81822183d9bd547f272d32e5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0577",
+      "path": "content/set-theory/ord-arithmetic/using-addition.tex",
+      "french_sha256": "6e299d22a67fcc594317f3eac1bc442f0449e282c5c9d38079e45567be0bbb66",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0578",
+      "path": "content/set-theory/ord-arithmetic/multiplication.tex",
+      "french_sha256": "ffceab27ed117fb77486372340873dc8964ffc3883780b175a593d0ce3e01eb1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0579",
+      "path": "content/set-theory/ord-arithmetic/exponentiation.tex",
+      "french_sha256": "a356dda5bc10cdee5931b189dbb895296bd8743337360f8d36ecd61579176610",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0580",
+      "path": "content/set-theory/cardinals/cardinals.tex",
+      "french_sha256": "763147d82542eb3c57e95c1252e973e7de52ac2af9566beb4fcc8dd2a5593700",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0581",
+      "path": "content/set-theory/cardinals/cp.tex",
+      "french_sha256": "2bc14b51daa5423fd6226921dfc2c93449348584f06d9e9812bf18cae538dfb8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0582",
+      "path": "content/set-theory/cardinals/cardsasords.tex",
+      "french_sha256": "8c121da67536d9b7dab7b5ddd785c1c95b2a4c12eace64aebaae1656b52262a1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0583",
+      "path": "content/set-theory/cardinals/milestone.tex",
+      "french_sha256": "9a72f81f4397c5739e64e8e13fe47b8f2a35b4c5d52e0f778247d03b7c747545",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0584",
+      "path": "content/set-theory/cardinals/classing.tex",
+      "french_sha256": "c138a60101d03edfce2c7ce1879f1670064cc0b4cfbba345432d9b48891daa70",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0585",
+      "path": "content/set-theory/cardinals/hp.tex",
+      "french_sha256": "c0ca49a3d83eb9584a7e6ba0fe47eb18999b739e4729c7d4ebdc1ccdae376b50",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0586",
+      "path": "content/set-theory/card-arithmetic/card-arithmetic.tex",
+      "french_sha256": "f1f132bdfc07fcd5e440355b6bc87c90d72713f3fb2425182f1413baba00b478",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0587",
+      "path": "content/set-theory/card-arithmetic/opps.tex",
+      "french_sha256": "67e589f583113904462aacaa39a65d27d736c951c7b0bb8b85809587effe0822",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0588",
+      "path": "content/set-theory/card-arithmetic/simp.tex",
+      "french_sha256": "98cb637f7aead8f08256b0fb04bce1129368a73b02076b815f7244e5441b0fd0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0589",
+      "path": "content/set-theory/card-arithmetic/expotough.tex",
+      "french_sha256": "2f09423dd63eb064f9ec08029d812be99fe696639dbdfe8329e68ff843961526",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0590",
+      "path": "content/set-theory/card-arithmetic/ch.tex",
+      "french_sha256": "58f68adbc202e2fda0a8ef3d5939e7cd532b95934dfdce36c43e0f4e89c603c1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0591",
+      "path": "content/set-theory/card-arithmetic/fix.tex",
+      "french_sha256": "0c6c706fa203cbd512d7ad1032853e8c51e7e3340742712b190f1a9af8a7e57a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0592",
+      "path": "content/set-theory/choice/choice.tex",
+      "french_sha256": "8f0b50507d0f7648997afc35c529ae9c0d6f1695c422192c4a9bc40e85d210f4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0593",
+      "path": "content/set-theory/choice/introduction.tex",
+      "french_sha256": "1591e8ca52395ef293780c417a510cf8eb5efac889efb5ea068a2ddee98f8611",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0594",
+      "path": "content/set-theory/choice/tarskiscott.tex",
+      "french_sha256": "24cb3a9cd7fefc50de6322cbbd18db151e1e0eabe1abff39b15daa355a916857",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0595",
+      "path": "content/set-theory/choice/hartogs.tex",
+      "french_sha256": "d79727d842550ddd83c0f047f107493d4463b69a4406e9e4a560cc51a47c0258",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0596",
+      "path": "content/set-theory/choice/wellorderingproblem.tex",
+      "french_sha256": "58e3b503d406330986ea3173589da913e30bc6552343eddbdb259bd0f677caad",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0597",
+      "path": "content/set-theory/choice/countablechoice.tex",
+      "french_sha256": "057c74e3b14b7de6d9a5cf963f4fa4edc3c3da16c6a02164a0f00d7d2558ed47",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0598",
+      "path": "content/set-theory/choice/justifications.tex",
+      "french_sha256": "3acfb32f0e12d833c5720b3342249f938486aaf91e26038485a2bc9f3248c5e4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0599",
+      "path": "content/set-theory/choice/banach.tex",
+      "french_sha256": "12b0d46abc4f80ac7e999f26f44b52df765f465b02ee8702fc5c8665b02976af",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0600",
+      "path": "content/set-theory/choice/vitali.tex",
+      "french_sha256": "a57738dd4e545a1a5d0af512a2814aa5fca9bf76a3573923364a168f209c478d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0601",
+      "path": "content/methods/methods.tex",
+      "french_sha256": "5a0e48aa732e8e60d72ff34d89d5922e95aa35720189fdafc575c46196e78bb8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0602",
+      "path": "content/methods/proofs/proofs.tex",
+      "french_sha256": "389ebddf05f717294aa2b30ecd3581b37d3bb3f23686fd314701862fbbb4d518",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0603",
+      "path": "content/methods/proofs/introduction.tex",
+      "french_sha256": "358fb73932925ecb52db2f4d8baf394e98ea0e8ccb1c51d666ab0150d55b74f8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0604",
+      "path": "content/methods/proofs/starting-proofs.tex",
+      "french_sha256": "4e21762401ab95e8a3bc905f87711a017c8aea4448fc9dfc4bbf8cfdda799a90",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0605",
+      "path": "content/methods/proofs/using-definitions.tex",
+      "french_sha256": "11155e281942b613dc7b87ffbc904034d296d6f1a3cd3c008fb6ae554df98037",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0606",
+      "path": "content/methods/proofs/inference-patterns.tex",
+      "french_sha256": "073919c35fae8a69175b638ed2150e347d57671abb8ee32900f8c5274373c414",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0607",
+      "path": "content/methods/proofs/example-1.tex",
+      "french_sha256": "5476221b56a45bdf29ae2461a38090741c7f1d9d8de581a0f008fd504ad001d6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0608",
+      "path": "content/methods/proofs/example-2.tex",
+      "french_sha256": "861612a3973865a11d3ce97d040568da320beef5ced3fb8a7c833c967b017865",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0609",
+      "path": "content/methods/proofs/proof-by-contradiction.tex",
+      "french_sha256": "90bca0a39794fb7ccad0cdce66a8827677141686e09e59f688b920640fed0cf2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0610",
+      "path": "content/methods/proofs/reading-proofs.tex",
+      "french_sha256": "937f9978dd840dafdbd9ef68eb84716a1d5ab85e677bde37825a60135295cfe3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0611",
+      "path": "content/methods/proofs/cant-do-it.tex",
+      "french_sha256": "98405febfcc0a2f0ba4cbdc8bd6393e8e0bf5086b2a766788798f63800a7ae8b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0612",
+      "path": "content/methods/proofs/resources.tex",
+      "french_sha256": "acdab2f55bd6b85ff367f5e61c6fa27573a5bc801ab9be93fababf049801d9e2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0613",
+      "path": "content/methods/induction/induction.tex",
+      "french_sha256": "0a94e855eceec91eb7189515fc46f055a844e9868590fb988361830e4e9eddab",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0614",
+      "path": "content/methods/induction/introduction.tex",
+      "french_sha256": "d9c818f6fd640efd0def176a244b9b243ae4d18102b72d1816b9fbfa03c2e9a1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0615",
+      "path": "content/methods/induction/induction-on-N.tex",
+      "french_sha256": "85e97253c707bef4954b9dafbc1134ae1e036b87ffff157a76dc0d031bc8ca8a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0616",
+      "path": "content/methods/induction/strong-induction.tex",
+      "french_sha256": "21ac9f5b9abd446c4b39483b1756bf948485dc142d9b43de0f34f5f487dd81b6",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0617",
+      "path": "content/methods/induction/inductive-definitions.tex",
+      "french_sha256": "c84b0d54d7e845b0c0e545e9764b0ce0097d9220daded77e3e1fd9bf56429825",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0618",
+      "path": "content/methods/induction/structural-induction.tex",
+      "french_sha256": "194bd4d5fbcc75166a924772cd1cc59bb0ce1fd6ba0c889b61c795113f26f15c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0619",
+      "path": "content/methods/induction/relations.tex",
+      "french_sha256": "62dedf5bdb6df7effde5041d9c6c6165fe76dfb11c1a68d59d2d099a4725b21f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0620",
+      "path": "content/history/history.tex",
+      "french_sha256": "fe7c7abf243fcb9196fa92cd612551fb4ef3b960115bcd05bf930b7b514a3afe",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0621",
+      "path": "content/history/biographies/biographies.tex",
+      "french_sha256": "635d8dbe8c41acd579cb3064f7a3d1d217f8833c3e4322fa2ec9a01c9aea7a28",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0622",
+      "path": "content/history/biographies/georg-cantor.tex",
+      "french_sha256": "d25ebc02dbe8af41564081a8c227d8c7bb72426d474d7ce1d205818e01632b9c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0623",
+      "path": "content/history/biographies/alonzo-church.tex",
+      "french_sha256": "92936c58c629ed236edabed50a43a0ce6397c862b397df3f307c38bce3e5107b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0624",
+      "path": "content/history/biographies/gerhard-gentzen.tex",
+      "french_sha256": "dc8b9fac14ca6ab9f2adaab4cabe9b69014506bf329c78957e2b6a4621107205",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0625",
+      "path": "content/history/biographies/kurt-goedel.tex",
+      "french_sha256": "73c6c3f2c0732cfd874f2537967a6b1938540fc9fcf6e6ecd951128f93694a0f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0626",
+      "path": "content/history/biographies/emmy-noether.tex",
+      "french_sha256": "65c9dc7a61b78d794dbad77c667ca07210a7eeb94653d244197738ebe9c44fb3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0627",
+      "path": "content/history/biographies/rozsa-peter.tex",
+      "french_sha256": "e13b37777c0550c62d2c41fcbdda322dc9575273aa53646834748db9f27c0c06",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0628",
+      "path": "content/history/biographies/julia-robinson.tex",
+      "french_sha256": "8ca691714a320ce5f51928dbc9ca32df4865f16fb56671a6eb622fc730da2043",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0629",
+      "path": "content/history/biographies/bertrand-russell.tex",
+      "french_sha256": "d89d280d8cbb3c57a999c662a68968b206d5e9cbfb607d024e2673ebdb778389",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0630",
+      "path": "content/history/biographies/alfred-tarski.tex",
+      "french_sha256": "c91a10ac577d0d5626588b9815bd3661c4cbdbe0691cb6d7ad6a8fb1905150c9",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0631",
+      "path": "content/history/biographies/alan-turing.tex",
+      "french_sha256": "9103bd672638fdd6141693b8c21569a3c0a314f4863a04a4258291836575fb0d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0632",
+      "path": "content/history/biographies/ernst-zermelo.tex",
+      "french_sha256": "e9f110d93aa82db643313b891924dd0724989ee251baf2141177f8321071ad66",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0633",
+      "path": "content/history/set-theory/set-theory.tex",
+      "french_sha256": "dc22927061518a671f58d1e84cf6b408398cbdb46fb0fa177dfc2e19cd442301",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0634",
+      "path": "content/history/set-theory/infinitesimals.tex",
+      "french_sha256": "9b4320a37ec71ca4afaff183c02833cfa30846a66db748ee97c5472f85c09558",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0635",
+      "path": "content/history/set-theory/limits.tex",
+      "french_sha256": "51014ebc523508ccce2a96fc514291d9e8ecaa0520fdae5b545d94e58291c93e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0636",
+      "path": "content/history/set-theory/pathologies.tex",
+      "french_sha256": "86da708c746a0395785ff0735b6c0c4d90526fb8ea23c8105e47bd819ac2db6e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0637",
+      "path": "content/history/set-theory/mythology.tex",
+      "french_sha256": "1d56c7e7045829d2dd60176d374a4cf7c2840433a4d3fdd991411f3b8ba13cbe",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0638",
+      "path": "content/history/set-theory/cantor-plane.tex",
+      "french_sha256": "f8d1fd6af6dccc6b12b97bc553bb898aaf30969863ebd0caf37cd1fd4812baf0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0639",
+      "path": "content/history/set-theory/hilbert-curve.tex",
+      "french_sha256": "65ee05f0725c872972cf5d982da606e3f604ec90fa5a1a6abae5a8891fe9e1f5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0640",
+      "path": "content/reference/reference.tex",
+      "french_sha256": "bfd7dfa0de877f07c5d47d5f21339fd8bc23034bc7dd6f3237c90cf12ef06055",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0641",
+      "path": "content/reference/greek-alphabet/greek-alphabet.tex",
+      "french_sha256": "4cf478f84cc65334899fa29b629a4bc872eaa2aa587086e1edf032bd05af3eed",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0642",
+      "path": "content/reference/fraktur-alphabet/fraktur-alphabet.tex",
+      "french_sha256": "187c0c01fcf764b47cb13acbabb2ac7e69ccb4da2f7552a7d0b6a6b0b728dda8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0643",
+      "path": "content/first-order-logic/axiomatic-deduction/provability.tex",
+      "french_sha256": "ec38e56c6b4bdfaa67e8d3cd91efd2c8b7ff8882c3b9662823ad9985476580e8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0644",
+      "path": "content/first-order-logic/completeness/maximally-consistent-sets.tex",
+      "french_sha256": "d6a9872ce14d99b4763f6c1275ef1cb4c41948a842fb0cd96f4b0de3e4e9a67c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0645",
+      "path": "content/first-order-logic/syntax-and-semantics/introduction.tex",
+      "french_sha256": "5636b04dbccbc72a733489df7d708f70750a382b24fac818a2bab67b1998ece3",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0646",
+      "path": "content/first-order-logic/syntax-and-semantics/syntax-and-semantics.tex",
+      "french_sha256": "fe9843e27c2bab047150dadb498bc9e6b11ab57ca7a16bc5fc5ae5e3801eecf2",
+      "loaded": false
+    },
+    {
+      "unit_id": "OLP-0647",
+      "path": "content/incompleteness/representability-in-q/c-representable.tex",
+      "french_sha256": "26a1a1f0cd96c12dd8047801da6fad6a995958a3bd59871c1ea133cb237d3dd0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0648",
+      "path": "content/incompleteness/representability-in-q/c.tex",
+      "french_sha256": "860148bf6f124af4e8d616cfc85fdbb3f28cfb64f03d357d66c73f262b9dfd2d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0649",
+      "path": "content/intuitionistic-logic/semantics/propositions.tex",
+      "french_sha256": "43599b47343106891c7b093aa25d711cac4684b780d58f64c633b2128a62b4ca",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0650",
+      "path": "content/lambda-calculus/lambda-definability/lists.tex",
+      "french_sha256": "02acdf8147b8c7f6ce5eb453a64b96588ad849e8190b71df5563bfcd54bda077",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0651",
+      "path": "content/lambda-calculus/syntax/conversion.tex",
+      "french_sha256": "c474067ee4f2e71fbae3f9d7282a7219ba279eb77d4c8cd19140e28f718e8c4c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0652",
+      "path": "content/many-valued-logic/sequent-calculus/proof-theoretic-notions.tex",
+      "french_sha256": "47d65959d50c2b51217cb94f87ddc669547628eb143332f3caf8b0a07acdcbdf",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0653",
+      "path": "content/model-theory/basics/nonstandard-arithmetic.tex",
+      "french_sha256": "ffb058abf547af58590a7e2410d800fceaeeec6396d4c5464a9bf85b4b732b72",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0654",
+      "path": "content/normal-modal-logic/syntax-and-semantics/normal-modal-logics.tex",
+      "french_sha256": "3493e745634180dbddbf19039f93c047508d473d10bd2026a71117416d52ecc5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0655",
+      "path": "content/proof-theory/cut-elimination/ce-largest.tex",
+      "french_sha256": "a748f42e51b9470984c231dd58e2029dd098580292d6fc6f64377a0bda7cac54",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0656",
+      "path": "content/proof-theory/cut-elimination/ce-topmost.tex",
+      "french_sha256": "f1aa14d0561583281589be7b0b525a92260015d3e59066d1c29668a34a0d0edf",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0657",
+      "path": "content/proof-theory/cut-elimination/cut-elimination.tex",
+      "french_sha256": "4d977d31c1b71b85b0f12f33e16be61eb8ee1a9db27172c0f513c6050cb7e463",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0658",
+      "path": "content/proof-theory/cut-elimination/interpolation.tex",
+      "french_sha256": "ded0648ee9e443167c9230fc9832377586b4dd5c7ed50a57eac97dd0a62dbade",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0659",
+      "path": "content/proof-theory/cut-elimination/introduction.tex",
+      "french_sha256": "b08ac3972de2ba3e0320110e0011d27a45d0fab6640b86762a4a036d6700fe45",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0660",
+      "path": "content/proof-theory/cut-elimination/intuitionistic.tex",
+      "french_sha256": "1b5cdd993b2fe2efbb89fe36850544ae511b518c312a3b52a63fed61147802b5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0661",
+      "path": "content/proof-theory/cut-elimination/midsequent.tex",
+      "french_sha256": "3da5deb7a74e314def1117137294c3a2e9396ec8555abc40d15093e006838fa0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0662",
+      "path": "content/proof-theory/natural-deduction/grafting.tex",
+      "french_sha256": "45e21fc61058cf5adc5c468a3ae66324c3f9e9e2815ef365279d01d0ddec8440",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0663",
+      "path": "content/proof-theory/natural-deduction/introduction.tex",
+      "french_sha256": "56bfd95859931fcada728556df567ec15b94dab8902951f48359c7781d754203",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0664",
+      "path": "content/proof-theory/natural-deduction/natural-deduction.tex",
+      "french_sha256": "4a5b1b93fe07c6b1ffc9095573684db4616e1a7486da16afb67cacb684a06236",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0665",
+      "path": "content/proof-theory/natural-deduction/quantifiers.tex",
+      "french_sha256": "bf4672340a4cf771ec3ff61ab2009586bba0e23c68fba2bc9403f8ef2325ebda",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0666",
+      "path": "content/proof-theory/natural-deduction/rules-N1.tex",
+      "french_sha256": "207b782d780dab805eb9a82b24d475dff54523ec1367881681ee5db8ff1d3982",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0667",
+      "path": "content/proof-theory/natural-deduction/rules-N2.tex",
+      "french_sha256": "88c2ed7f01dd363ea2b35022be07e423db2367c452f7dcfbd2936d700db80113",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0668",
+      "path": "content/proof-theory/natural-deduction/rules-proofs.tex",
+      "french_sha256": "66064c76440cc44e7a0c3e31b0bcd1a09d9c2910fb663923bb74ecee1f32a6eb",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0669",
+      "path": "content/proof-theory/natural-deduction/sequents.tex",
+      "french_sha256": "28d155f92514bd531b8ce560b1a26cc14bb40da12533381af7d784379cec52cc",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0670",
+      "path": "content/proof-theory/natural-deduction/translation-G2i.tex",
+      "french_sha256": "8077838703aecedd6c78b1f4d21a2809b3186b8997c4c645c47583740afb1113",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0671",
+      "path": "content/proof-theory/natural-deduction/translation-N2i.tex",
+      "french_sha256": "94ef593d39b0b03af2968b2dd9ad0e76e6e263337750bb026682ccdbbd6ea57d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0672",
+      "path": "content/proof-theory/normalization/introduction.tex",
+      "french_sha256": "72e86f4e5a7c1a40537e32091ff536b6e1ea710d31f5c99c9e03abcafa5b6d14",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0673",
+      "path": "content/proof-theory/normalization/normalization-thm.tex",
+      "french_sha256": "a14a0ccc5e6fd39e3fcf2aec3b9db32ef0544b1f8170123848289961234986c8",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0674",
+      "path": "content/proof-theory/normalization/normalization.tex",
+      "french_sha256": "dadb5139c0ff60e6125b0aab4dc53e450ac4074acd46f9526987b9438c904d2c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0675",
+      "path": "content/proof-theory/normalization/permutations.tex",
+      "french_sha256": "9aa7703fc7e390d1de1b44d867c649c7ec1f02256024206721faebcb9aff030d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0676",
+      "path": "content/proof-theory/normalization/reductions.tex",
+      "french_sha256": "a801ee76199208021f8259173550a158e1aa034d0f3ccaa161e7ec37a7c4b807",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0677",
+      "path": "content/proof-theory/normalization/segments.tex",
+      "french_sha256": "7dd3ab1a4081ac8bf0031e964ed8c0308b365b6f1b08a0cba9819522eadeddd4",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0678",
+      "path": "content/proof-theory/normalization/translations.tex",
+      "french_sha256": "ebb636c3c6259d0d1eb664f5eba4e8c29ede1cb0b8732915789ee619b6768c77",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0679",
+      "path": "content/proof-theory/proof-search/completeness.tex",
+      "french_sha256": "90c4d9d01871ee9df2690655329cd070ce6bd9adc8ce135c66a2ac8754e32a2b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0680",
+      "path": "content/proof-theory/proof-search/introduction.tex",
+      "french_sha256": "f63cdf464da3aa7452cc8ba781e7fa465697daefcfbb43287d0d7c2a16ad7a1e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0681",
+      "path": "content/proof-theory/proof-search/proof-search.tex",
+      "french_sha256": "c763c42e02e13f9b060e73dfacdc66e71f7e4ee7f940b78357869bdf21a59a48",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0682",
+      "path": "content/proof-theory/proof-search/rules-Tc.tex",
+      "french_sha256": "948b76eb181eb3e66cbde582de746572c009cc93c2b99d5acf3e7da948a0b5d5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0683",
+      "path": "content/proof-theory/proof-search/search-algorithm.tex",
+      "french_sha256": "a9a06e07251ebda91262d3962a9fdb8d3858a705ab2b2198ca110a472939f96c",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0684",
+      "path": "content/proof-theory/proof-search/tableaux.tex",
+      "french_sha256": "d31aa737cba5b1539bb7ea244ff7c463c0d20906443bc80a97e2909dc93b2f5a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0685",
+      "path": "content/proof-theory/proof-theory.tex",
+      "french_sha256": "60bcdac054fa8434dfd996d6ad0cacfb6fda24f5e64011f454d89660566328e2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0686",
+      "path": "content/proof-theory/propositions-as-types/introduction.tex",
+      "french_sha256": "10b1981d1de74119b5b2999dd8e3f608145236d8d84bf549f5158809d9c195c0",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0687",
+      "path": "content/proof-theory/propositions-as-types/normalization.tex",
+      "french_sha256": "0d9f8c2bd35538212ce14613fe5c23feae578d309de68c529bb11b37feafa454",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0688",
+      "path": "content/proof-theory/propositions-as-types/proof-terms.tex",
+      "french_sha256": "768eaeaee540dec07d9b40abe46dfe46c1da505bbd0cfb07a516c5212a3adc84",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0689",
+      "path": "content/proof-theory/propositions-as-types/proofs-to-terms.tex",
+      "french_sha256": "152661f44923f35512dfc54f51554b2d47b62bb56efd7703ee53976cdb6a91d7",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0690",
+      "path": "content/proof-theory/propositions-as-types/propositions-as-types.tex",
+      "french_sha256": "3f9cc1481695d1e165e1504ba28ce1dda6713bb7db7396e3043c3a846ce1ef33",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0691",
+      "path": "content/proof-theory/propositions-as-types/reduction.tex",
+      "french_sha256": "ce932cb727fd3f98b74d97ae613a9c52686ecf0a07fae6dc6d29671bccc02706",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0692",
+      "path": "content/proof-theory/propositions-as-types/rules-tN2.tex",
+      "french_sha256": "d171ed90efaa99f8603de7966d03bac3ab5a3e6d605fd6a7d1f454fce95cd092",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0693",
+      "path": "content/proof-theory/propositions-as-types/rules-tN3.tex",
+      "french_sha256": "9e70cb75d0852fdbeec36711f43f9ad3d1deeada78c36a3284ef70bad8b7ffd5",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0694",
+      "path": "content/proof-theory/propositions-as-types/sequent-natural-deduction.tex",
+      "french_sha256": "6584bee9f08cbdf9f047a13b026d3260b8c55cb27b92c2e69ffad626db88d684",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0695",
+      "path": "content/proof-theory/propositions-as-types/terms-to-proofs.tex",
+      "french_sha256": "9e65414273540fca5664151e13a89c776c98fb5448bdca58904819a6a620d7c9",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0696",
+      "path": "content/proof-theory/propositions-as-types/type-preservation.tex",
+      "french_sha256": "8aef7259912daf99d960f1d02f1cd949f6ef26b34ee08c73a41b6e367ca3d79e",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0697",
+      "path": "content/proof-theory/propositions-as-types/types.tex",
+      "french_sha256": "27f341b81022b7058130593dcc54a27abe5e2103ce9f491c8973e94ff7ae943a",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0698",
+      "path": "content/proof-theory/sequent-calculus/admissible-derivable.tex",
+      "french_sha256": "cb321184e69bf2d001bd55aa8ed51b315e4ab13f7f1332b9eec9cd8fe1849914",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0699",
+      "path": "content/proof-theory/sequent-calculus/interpretation-rules.tex",
+      "french_sha256": "93b13a45066c0f08291dafe8246bdcda7e284f88bc6e063c9ab467a9827d9ddb",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0700",
+      "path": "content/proof-theory/sequent-calculus/introduction.tex",
+      "french_sha256": "f0081c18f33e2e09c69f521cc1c83d02a39dc7c2432399a6b09412c3df54ff4f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0701",
+      "path": "content/proof-theory/sequent-calculus/invertibility.tex",
+      "french_sha256": "047bdcfac965320bdc1ddd4922fcc886c00c7dbafe2bbad84cc50bae7f3f6667",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0702",
+      "path": "content/proof-theory/sequent-calculus/proof-examples.tex",
+      "french_sha256": "e50eb67fbe0840ff124e717d5c37293d6da998d64193f1c85c79ec0ca375176d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0703",
+      "path": "content/proof-theory/sequent-calculus/quantifiers.tex",
+      "french_sha256": "7dbd32778f5fcae8381b89528828799b471e27ddb36ee8979c06c761e16c3b74",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0704",
+      "path": "content/proof-theory/sequent-calculus/rules-G1c.tex",
+      "french_sha256": "721477ea74bdd0ea7333f5fa8fbb6e98e780954f7e36591059555462ea130c6d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0705",
+      "path": "content/proof-theory/sequent-calculus/rules-G1i.tex",
+      "french_sha256": "b685c01e7503848c68b5cea6049562bd6a04201d2a62063b9c14303f3e49ba70",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0706",
+      "path": "content/proof-theory/sequent-calculus/rules-G2c.tex",
+      "french_sha256": "bd442b1a639b0e1573c54a9e42eb855a041e30c84d45233f63e74c5495569ea2",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0707",
+      "path": "content/proof-theory/sequent-calculus/rules-G3c.tex",
+      "french_sha256": "8dcf585e368c14c625eb80519816124e8906c35f355f8177eccc89c389dbf394",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0708",
+      "path": "content/proof-theory/sequent-calculus/rules-G3i.tex",
+      "french_sha256": "5e422653a7d7e19dc89dfc8cc9323be51dc417cd980dd3e301093ab80811ee23",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0709",
+      "path": "content/proof-theory/sequent-calculus/rules-LK.tex",
+      "french_sha256": "339c883fc3f1c0354c142ade2af9f95e62061cd0e56bcde299d7b842f3c20554",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0710",
+      "path": "content/proof-theory/sequent-calculus/rules-mG3i.tex",
+      "french_sha256": "41c2ec480c47d4ab9c263f1c006ee29c0e8fad0d1c3578b197ff3d0355581744",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0711",
+      "path": "content/proof-theory/sequent-calculus/rules-proofs.tex",
+      "french_sha256": "bd00aec3688ca0b46a504d1530a99689ef2ece19014bb85da62fbe115fb6171d",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0712",
+      "path": "content/proof-theory/sequent-calculus/sequent-calculus.tex",
+      "french_sha256": "635ec5b4e15a67ceaffe8d71a288eb68b507c4e4fe860264dd6381ade3fc4951",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0713",
+      "path": "content/proof-theory/sequent-calculus/translations.tex",
+      "french_sha256": "9ca0057e92a763c2f01dca16790d6970900957dc87757b18667498e222690947",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0714",
+      "path": "content/propositional-logic/syntax-and-semantics/completeness.tex",
+      "french_sha256": "7be68ab636b1a1d59b844ff6c9f7770a30313168334becd03a7b3073675ddc32",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0715",
+      "path": "content/propositional-logic/syntax-and-semantics/soundness.tex",
+      "french_sha256": "18d48c979319930740632f5546f153914498ffedab418d16d4b92be2949f8b76",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0716",
+      "path": "content/second-order-logic/syntax-and-semantics/language-of-sol.tex",
+      "french_sha256": "0058974f0925c4b3ddaf62de782894f541ecc9e9d6b25d12d458706894793be1",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0717",
+      "path": "content/sets-functions-relations/functions/isomorphic-functions.tex",
+      "french_sha256": "acdafb28a859ec29174ca1b52e6a315a0f765ae05a4871cf0eb3280643ca052f",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0718",
+      "path": "content/sets-functions-relations/inductive-defs-proofs/introduction.tex",
+      "french_sha256": "f34d27b3d1f1622da4c50b318e5a88e8c09879ecf788d19427dad96f87613a92",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0719",
+      "path": "content/sets-functions-relations/relations/relations.tex",
+      "french_sha256": "1c11d0ef727a94d20108024eb994e3707e39198c656882a2120457fa29f7f3b8",
+      "loaded": false
+    },
+    {
+      "unit_id": "OLP-0720",
+      "path": "content/sets-functions-relations/sets-functions-relations.tex",
+      "french_sha256": "5de8f714180359a00724a46d82e880465a2861c7bd01e272574d8ee4fd01607d",
+      "loaded": false
+    },
+    {
+      "unit_id": "OLP-0721",
+      "path": "content/sets-functions-relations/sets/proofs-about-sets.tex",
+      "french_sha256": "022d838c611a672bdcd9d9ecbceb0445326970fdd6b3b1f0383907ca677b321b",
+      "loaded": true
+    },
+    {
+      "unit_id": "OLP-0722",
+      "path": "content/sets-functions-relations/size-of-sets/size-of-sets.tex",
+      "french_sha256": "22cfc440a2417a31792d67169b76056429a1d61782d3109e3f67acdf5c53324d",
+      "loaded": false
+    }
+  ],
+  "extra_french_source_sha256": {
+    "open-logic-config.sty": "f0a6c37a909ba7221c2549eea05a1f1c5b2c0c25ab6e6c9ce7cedec8ac38156c",
+    "open-logic-envs.sty": "04ce1bac88e9639640f4e0b91f4a4bc93dc398336287020b74449b5ce4dc4118",
+    "open-logic-locale.sty": "998a9b1de4e6d242c3ff3095702e17e82145d8998994b001e84d158a0084d706",
+    "reader-full.tex": "9ad0a1e82201dbc81156bd417940f507c1c6051cbe5bf4c868922137e8d9cccb",
+    "reader-partial-references.tex": "423db1bbccdc0bd8b1e6a164e7f77cc2384fb740b987d787b9c2baee7a6b29be",
+    "content/supplements/supplements.tex": "ce100200812e6800571f3df32323b96943c7a4583097fa896da238c4383fc273",
+    "bib/open-logic.bib": "dd86f223c07027c53a5367d8c3951f238e9fec4bc99f17458737702897197f61"
+  }
+}

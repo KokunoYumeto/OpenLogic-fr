@@ -1,0 +1,136 @@
+% Partie : counterfactuals
+% Chapitre : minimal-change-semantics
+% Section : sphere-models
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{min}{sph}
+
+\olsection{Les modèles à sphères}
+
+Pour donner une sémantique formelle des conditionnels contrefactuels,
+on peut transformer l'analyse informelle de Lewis en structure
+mathématique. Les sphères autour d'un monde~$w$ sont alors des
+ensembles de mondes. Puisqu'elles sont emboîtées, ces ensembles
+autour de~$w$ doivent être totalement ordonnés par l'inclusion.
+
+\begin{defn}
+  Un \emph{modèle à sphères} est un triplet~$\mModel{M} = \tuple{W, O, V}$
+  où $W$ est un ensemble non vide de mondes, $V\colon \PVar \to \Pow{W}$
+  est une valuation, et $O\colon W \to \Pow{\Pow{W}}$ associe à chaque
+  monde~$w$ un \emph{système de sphères}~$O_w$. Pour chaque~$w$,
+  $O_w$ est un ensemble d'ensembles de mondes qui doit satisfaire les
+  conditions suivantes :
+  \begin{enumerate}
+  \item $O_w$ est \emph{centré} sur~$w$ : $\{w\} \in O_w$ ; aucune
+    sphère du système n'est vide.
+  \item $O_w$ est \emph{emboîté} : si $S_1$, $S_2 \in O_w$, alors $S_1
+    \subseteq S_2$ ou $S_2 \subseteq S_1$ ; autrement dit, $O_w$ est
+    totalement ordonné par~$\subseteq$.
+  \item $O_w$ est stable par réunion de toute sous-famille non vide.
+  \item $O_w$ est stable par intersection de toute sous-famille non vide.
+  \end{enumerate}
+\end{defn}
+
+L'idée qui sous-tend $O_w$ est que les mondes « autour » de~$w$ sont
+répartis selon leur distance à~$w$. La sphère la plus intérieure ne
+contient que~$w$, c'est-à-dire l'ensemble~$\{w\}$ : $w$ est plus proche
+de~$w$ que n'importe quel autre monde figurant dans les sphères. Si
+$S \subsetneq S'$,
+les mondes de $S' \setminus S$ sont plus éloignés de~$w$ que ceux de~$S$ :
+$S' \setminus S$ forme la « couche » comprise entre~$S$ et les mondes
+extérieurs à~$S'$. Il faut donc concevoir les sphères comme contenant
+tous les mondes situés à l'intérieur de leur frontière, et non
+simplement les mondes d'une couche donnée.
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[layerwidth=1.5,scale=.6]\tiny
+  \spheresystem{3}
+  \propositionintersect{0}{3}{60}{6}
+  \path (0,0) node[world] {$w$};
+  \spherepos{-30}{2}{node[world] {$w_2$}}
+  \spherepos{220}{2}{node[world] {$w_3$}}
+  \spherepos{90}{2}{node[world] {$w_1$}}
+  \spherepos[shift={(.1,0)}]{10}{3}{node[world] {$w_5$}}
+  \spherepos[shift={(.1,0)}]{-10}{3}{node[world] {$w_6$}}
+  \spherepos{225}{3}{node[world] {$w_4$}}
+  \spherepos{20}{4}{node[world] {$w_7$}}
+  \path (5,0) node[left] {$p$};
+\end{tikzpicture}
+\caption{Schéma d'un modèle à sphères}
+\ollabel{fig:sphere-model}
+\end{center}
+\end{figure}
+
+Le schéma de la \olref{fig:sphere-model} représente le modèle à
+sphères où $W = \{w, w_1, \dots, w_7\}$ et $V(p) = \{w_5, w_6,
+w_7\}$. La sphère la plus intérieure est $S_1 = \{w\}$. Les mondes
+les plus proches de~$w$, hormis le monde central lui-même, sont
+$w_1, w_2, w_3$ ; la sphère suivante est donc
+$S_2 = \{w, w_1, w_2, w_3\}$. Plus loin se
+trouvent $w_4$, $w_5$ et~$w_6$ ; la sphère extérieure est donc
+$S_3 = \{w, w_1, \dots, w_6\}$. Le système de sphères autour de~$w$
+est $O_w = \{S_1, S_2, S_3\}$. Le monde~$w_7$ n'appartient à aucune
+sphère autour de~$w$. Les mondes les plus proches où~$p$ est vraie
+sont $w_5$ et~$w_6$ ; la plus petite sphère contenant des mondes
+où~$p$ est vraie est donc~$S_3$.
+
+Pour définir la satisfaction d'une formule~$!A$ au monde~$w$ dans un
+modèle à sphères~$\mModel M$, soit $\mSat{M}{!A}[w]$, nous ajoutons à
+la définition donnée pour les !!{formula}s modales une clause pour
+$!B \cif !C$ :
+
+\begin{defn}
+  $\mSat{M}{!B \cif !C}[w]$ si et seulement si l'une des deux
+  conditions suivantes est remplie :
+  \begin{enumerate}
+  \item\ollabel{sphere-vac} Pour tout $u \in \bigcup O_w$,
+    $\mSat/{M}{!B}[u]$, ou
+  \item\ollabel{sphere-nonvac} pour une certaine sphère $S \in O_w$,
+    \begin{enumerate}
+      \item $\mSat{M}{!B}[u]$ pour au moins un $u \in S$, et
+      \item pour tout $v \in S$, soit $\mSat/{M}{!B}[v]$, soit
+        $\mSat{M}{!C}[v]$.
+    \end{enumerate}
+  \end{enumerate}
+\end{defn}
+
+Selon cette définition, $\mSat{M}{!B \cif !C}[w]$ si et seulement si
+l'antécédent~$!B$ est faux partout dans les sphères autour de~$w$,
+ou s'il existe une sphère~$S$ dans laquelle $!B$ est vraie et où le
+conditionnel matériel $!B \lif !C$ est vrai dans tous les mondes de
+cette sphère « admettant~$!B$ ». La définition n'exige pas, contrairement
+à ce que pourrait suggérer l'explication intuitive, que~$S$ soit la
+plus petite sphère \emph{admettant~$!B$}. Toutefois, si la condition
+de l'\olref{sphere-nonvac} est remplie pour une sphère~$S$, elle
+l'est aussi pour toute sphère contenue dans~$S$ \emph{qui admet
+  aussi l'antécédent} et donc, si elle existe, pour la plus petite sphère de
+ce type.
+
+Une plus petite sphère admettant~$!B$ peut ne pas exister.
+Prenons $W=\{w\}\cup\{u_1,u_2,\ldots\}$ et les sphères
+$S_i=\{w\}\cup\{u_j:j\ge i\}$, pour $i\ge 1$. Au monde~$w$,
+le système est constitué des~$S_i$ et de~$\{w\}$. Au monde~$u_i$,
+prenons le système réduit à la sphère~$\{u_i\}$. Au centre~$w$,
+la réunion d'une famille contenant des~$S_i$ est le~$S_i$ de plus
+petit indice dans la famille. Si la famille ne contient que des
+$S_i$, son intersection est le~$S_i$ de plus grand indice
+lorsqu'il existe, et $\{w\}$ sinon. La présence de~$\{w\}$ rend
+l'intersection égale à~$\{w\}$. Le système satisfait donc les
+conditions de fermeture.
+
+Supposons que $!B$ soit vrai à tous les~$u_i$ et faux en~$w$.
+Toutes les sphères $S_i$ admettent~$!B$, et chacune contient
+une sphère plus petite qui l'admet encore. Leur intersection
+$\{w\}$ n'admet pas~$!B$. Dans cet exemple, le contrefactuel
+est donc vrai en~$w$ si et seulement si $!C$ est vrai en tous
+les~$u_j$ à partir d'un certain indice. Plus généralement, on
+peut tester une suite décroissante de sphères admettant~$!B$
+lorsque toute sphère admettant~$!B$ contient au moins un terme
+de la suite. Tout témoin donné par la définition contient alors
+un terme de la suite qui est aussi un témoin.
+
+\end{document}

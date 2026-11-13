@@ -1,0 +1,117 @@
+% Part: incompleteness
+% Chapter: arithmetization-syntax
+% Section: coding-symbols
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{art}{cod}
+\olsection{Codage des symboles}
+
+Le langage de base~$\Lang L$ de la logique du premier ordre emploie les
+symboles
+\[
+\lfalse \quad \lnot \quad \lor \quad \land \quad \lif \quad \lforall
+\quad \lexists \quad \eq \quad ( \quad ) \quad , \quad \ltrue \quad \liff
+\]
+ainsi que des ensembles !!{enumerable}s de variables et de
+!!{constant}s, et des ensembles !!{enumerable}s de !!{function}s et
+de !!{predicate}s d'arité quelconque. Nous pouvons attribuer un
+\emph{code} à chacun de ces symboles de façon que chaque symbole
+reçoive un nombre unique et que deux symboles distincts ne reçoivent
+jamais le même nombre. Cela est possible puisque l'ensemble de tous
+les symboles est !!{enumerable} : il existe donc !!a{bijection}
+entre cet ensemble et celui des nombres naturels. Mais nous voulons
+aussi pouvoir retrouver par calcul le symbole à partir de son code,
+ainsi que certaines informations le concernant, par exemple l'arité
+d'!!a{function}. Il existe bien des façons d'y parvenir. En voici
+une qui utilise des fonctions récursives primitives. Rappelons que
+$\tuple{n_0, \dots, n_k}$ est le nombre codant la suite de nombres
+$n_0$, \dots, $n_k$.
+
+\begin{defn}
+Si $s$ est un symbole de~$\Lang L$, son \emph{code de symbole}~$\scode s$
+est défini comme suit\footnote{Complément éditorial : la source omet $\ltrue$ et $\liff$ de la liste et du tableau, bien qu'ils figurent parmi les variantes primitives de sa syntaxe. Nous leur réservons les codes $\tuple{0,11}$ et $\tuple{0,12}$, sans modifier les autres codes. Les arités des familles de fonctions et de prédicats sont positives, comme dans la définition du langage standard ; nous rendons cette restriction explicite dans les tests de codage.} :
+\begin{enumerate}
+\item Si $s$ est l'un des symboles logiques, $\scode s$ est donné
+  par le tableau suivant :
+\[
+\begin{array}{cccccccccc}
+  \lfalse & \lnot & \lor & \land & \lif & \lforall \\
+\tuple{0, 0} & \tuple{0, 1} & \tuple{0, 2} & \tuple{0, 3} &
+\tuple{0, 4} & \tuple{0, 5} \\
+\lexists & \eq & ( & ) & , & \ltrue & \liff\\
+\tuple{0, 6} & \tuple{0, 7} &
+\tuple{0, 8} & \tuple{0, 9} & \tuple{0, 10} & \tuple{0, 11} & \tuple{0, 12}
+\end{array}
+\]
+\item Si $s$ est la $i$-ième variable $\Obj v_i$, alors
+  $\scode s = \tuple{1, i}$.
+\item Si $s$ est la $i$-ième !!{constant}~$\Obj c_i$, alors
+  $\scode s = \tuple{2, i}$.
+\item Si $s$ est le $i$-ième !!{function} d'arité~$n$, $\Obj f_i^n$,
+  alors $\scode s = \tuple{3, n, i}$.
+\item Si $s$ est le $i$-ième !!{predicate} d'arité~$n$, $\Obj P_i^n$,
+  alors $\scode s = \tuple{4, n, i}$.
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+Pour $n>0$, les relations suivantes sont récursives primitives :
+\begin{enumerate}
+\item $\fn{Fn}(x, n)$ si et seulement si $x$ est le code de
+  $\Obj f^n_i$ pour un certain~$i$, c'est-à-dire que $x$ est le code
+  d'!!a{function} d'arité~$n$.
+\item $\fn{Pred}(x, n)$ si et seulement si $x$ est le code de
+  $\Obj P^n_i$ pour un certain~$i$, ou bien si $x$ est le code de $\eq$
+  et $n = 2$, c'est-à-dire que $x$ est le code d'!!a{predicate}
+  d'arité~$n$.
+\end{enumerate}
+\end{prop}
+
+\begin{defn}
+Si $s_0, \dots, s_{n-1}$ est une suite de symboles, son
+\emph{numéro de G\"odel} est
+$\tuple{\scode{s_0}, \dots, \scode{s_{n-1}}}$.
+\end{defn}
+
+\begin{explain}
+Il faut distinguer les \emph{codes} des \emph{numéros de G\"odel}.
+Par exemple, la variable~$\Obj v_5$ a pour code~$\scode{\Obj
+  v_5} = \tuple{1, 5} = 2^2\cdot 3^6$. Mais, considérée comme un
+terme, la variable~$\Obj v_5$ est aussi une suite de symboles, de
+longueur~$1$. Le \emph{numéro de G\"odel}~$\Gn{\Obj v_5}$ du
+\emph{terme}~$\Obj v_5$ est $\tuple{\scode{\Obj v_5}} = 2^{\scode{\Obj
+    v_5} + 1} = 2^{2^2\cdot 3^6 + 1}$.
+\end{explain}
+
+\begin{ex}
+Rappelons que, si $k_0$, \dots, $k_{n-1}$ est une suite de nombres,
+le code de la suite $\tuple{k_0, \dots, k_{n-1}}$, dans le codage
+par puissances de nombres premiers, est
+\[
+2^{k_0+1}\cdot3^{k_1+1}\cdot \dots \cdot p_{n-1}^{k_{n-1}+1},
+\]
+où $p_i$ est le $i$-ième nombre premier, avec $p_0 = 2$. Ainsi, par
+exemple, la formule $\eq[\Obj v_0][\Obj 0]$, ou, plus explicitement,
+${\eq}(\Obj v_0,\Obj c_0)$, a pour numéro de G\"odel
+\[
+\tuple{\scode{\eq},\scode{(},\scode{\Obj v_0},\scode{,}, \scode{\Obj
+    c_0},\scode{)}}.
+\]
+Ici, $\scode{\eq}$ vaut $\tuple{0,7} = 2^{0+1}\cdot
+3^{7+1}$, $\scode{\Obj v_0}$ vaut $\tuple{1,0} = 2^{1+1}\cdot3^{0+1}$,
+et ainsi de suite. Par conséquent, $\Gn{=(\Obj v_0,\Obj c_0)}$ vaut
+\begin{multline*}
+2^{\scode{=} + 1}\cdot 3^{\scode{(}+1}\cdot 5^{\scode{\Obj v_0}+1}
+\cdot 7^{\scode{,} + 1} \cdot 11^{\scode{\Obj c_0}+1} \cdot
+13^{\scode{)}+1} = \\
+2^{2^1\cdot 3^8 + 1}\cdot 3^{2^1\cdot 3^9+1}\cdot 5^{2^2\cdot 3^1+1}
+\cdot 7^{2^1\cdot 3^{11} + 1} \cdot 11^{2^3\cdot3^1+1} \cdot
+13^{2^1\cdot3^{10}+1} = \\
+2^{13\,123}\cdot 3^{39\,367}\cdot 5^{13}\cdot 7^{354\,295}\cdot11^{25}\cdot13^{118\,099}.
+\end{multline*}
+\end{ex}
+
+\end{document}

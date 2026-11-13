@@ -1,0 +1,92 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: overview
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{ovr}
+\olsection{Vue d'ensemble}
+
+Alonzo Church a conçu le lambda-calcul au début
+des années 1930 comme fondement d'une logique
+constructive, et \emph{non} comme modèle des
+fonctions calculables. On a cependant vite montré
+qu'il équivalait à d'autres définitions de la
+calculabilité, notamment celles qui reposent sur
+les fonctions calculables par machine de Turing
+et sur les fonctions récursives partielles. Que
+cette équivalence ait d'abord suscité une certaine
+surprise rend la caractérisation d'autant plus
+intéressante.
+
+La notation lambda offre un moyen commode de
+désigner une fonction par une expression
+symbolique qui la définit, sans lui donner
+d'abord un nom. Au lieu
+de dire « Soit $f$ la fonction définie par
+$f(x)=x+3$ », on peut dire « Soit $f$ la fonction
+$\lambd[x][(x+3)]$ ». Autrement dit,
+$\lambd[x][(x+3)]$ est simplement un \emph{nom}
+de la fonction qui ajoute trois à son argument.
+Dans cette expression, $x$ est une variable liée par l'abstraction.
+On peut la renommer en~$y$ et désigner la même fonction par
+$\lambd[y][(y+3)]$. La notation admet aussi des
+paramètres supplémentaires. Supposons, par
+exemple, que $g(x,y)$ soit une fonction de deux
+variables et que $k$ soit un entier naturel.
+Alors $\lambd[x][g(x,k)]$ est la fonction qui
+envoie chaque~$x$ sur~$g(x,k)$.
+
+Cette manière de définir une fonction à partir
+d'une expression symbolique s'appelle
+l'\emph{abstraction lambda}. Son opération
+complémentaire est l'\emph{application} : si
+l'on dispose d'une fonction~$f$ (définie, par
+exemple, sur les entiers naturels), on peut
+l'appliquer à une valeur telle que~$2$. Dans
+la notation usuelle, le résultat s'écrit~$f(2)$.
+
+L'application d'une abstraction se simplifie en substituant
+l'argument aux occurrences de la variable liées par cette
+abstraction. On renomme au besoin des variables liées dans
+le corps pour éviter de capturer une variable libre de l'argument. Par exemple,
+\[
+(\lambd[x][(x+3)])(2)
+\]
+se simplifie en~$2+3$.
+
+Jusqu'ici, nous avons seulement introduit de
+nouvelles notations pour des notions usuelles.
+Le lambda-calcul s'écarte cependant plus
+radicalement du point de vue de la théorie des
+ensembles. Dans ce cadre :
+\begin{enumerate}
+\item Tout désigne une fonction.
+\item On peut définir des fonctions par
+      abstraction lambda.
+\item Tout terme peut être appliqué à tout autre terme.
+\end{enumerate}
+En particulier, pour tout terme~$F$ du lambda-calcul,
+l'auto-application $F(F)$ est un terme bien formé. On
+parle de \emph{lambda-calcul non typé}, puisque la
+formation d'une application ne dépend d'aucun type.
+
+\begin{digress}
+Il existe aussi un \emph{lambda-calcul typé}, variante
+importante du système non typé. Il lui ressemble à
+bien des égards, mais s'accorde beaucoup plus
+facilement avec le cadre classique de la théorie
+des ensembles et possède certaines propriétés
+très différentes.
+
+Les recherches sur le lambda-calcul ont joué un
+rôle central en informatique théorique et dans
+la conception des langages de programmation.
+LISP, conçu par John McCarthy dans les années
+1950, est un exemple ancien de langage influencé
+par ces idées.
+\end{digress}
+
+\end{document}

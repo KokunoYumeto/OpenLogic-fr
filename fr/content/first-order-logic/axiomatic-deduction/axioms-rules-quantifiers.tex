@@ -11,33 +11,34 @@
 \olsection{Axiomes et règles pour les quantificateurs}
 
 \begin{defn}[Axiomes des quantificateurs]
-Les \emph{axiomes} qui régissent les quantificateurs sont toutes les
-instances des schémas suivants :
+Pour tout terme clos~$t$, les schémas d'axiomes sont les suivants.
+On note $!B(t)$ la substitution $\Subst{!B}{t}{x}$.
 \begin{align}
 \ollabel{ax:q1} & \lforall[x][!B] \lif !B(t), \\
 \ollabel{ax:q2} & !B(t) \lif \lexists[x][!B].
 \end{align}
-où $t$ est un terme clos quelconque.
 \end{defn}
 
 \begin{defn}[Règles des quantificateurs]
+Soit $a$ une constante. Chacune des règles exige que $a$ soit absente
+de toutes les hypothèses de la !!{derivation}.
 \begin{enumerate}
 \item Si $!B \lif !A(a)$ figure déjà dans la !!{derivation} et si $a$
-  ne figure ni dans~$\Gamma$ ni dans~$!B$, alors
+  ne figure ni dans~$!B$ ni dans~$!A(x)$, alors
   $!B \lif \lforall[x][!A(x)]$ est une étape d'inférence correcte.
 \item Si $!A(a) \lif !B$ figure déjà dans la !!{derivation} et si $a$
-  ne figure ni dans~$\Gamma$ ni dans~$!B$, alors
+  ne figure ni dans~$!B$ ni dans~$!A(x)$, alors
   $\lexists[x][!A(x)] \lif !B$ est une étape d'inférence correcte.
 \end{enumerate}
 \end{defn}
 
-Nous abrégerons chacune de ces deux règles par « \QR ».
+Nous abrégerons chacune de ces deux règles par « \QR{} ».
 
-\begin{editorial}
-Dans la source, les deux clauses de la définition précédente sont des
-commandes \texttt{\string\item} placées hors de tout environnement de
-liste. L'énumération attendue a été rétablie; les deux règles et leurs
-conditions de fraîcheur sont inchangées.
-\end{editorial}
+\begin{explain}
+La condition sur $!A(x)$ est nécessaire. Prenons
+$!A(x)=\Atom{\Obj P}{x}\lif\Atom{\Obj P}{a}$ et $!B=\ltrue$.
+La prémisse $!B\lif !A(a)$ est valide. Sur un domaine de deux objets,
+si seul l'objet que $a$ ne désigne pas satisfait~$\Obj P$, la conclusion est fausse.
+\end{explain}
 
 \end{document}

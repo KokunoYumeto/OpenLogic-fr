@@ -1,0 +1,306 @@
+% Partie : théorie de la démonstration
+% Chapitre : élimination des coupures
+% Section : séquent médian
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{cut}{mid}
+
+\olsection{Théorème du séquent médian et théorème de Herbrand}
+
+Le théorème du séquent médian est une conséquence importante de
+l'élimination des coupures. Il affirme que, s'il existe une
+!!{proof}~$\pi$ de~$\Gamma \Sequent \Delta$ dont toutes les formules
+du séquent final sont prénexes, il existe une !!{proof}~$\pi'$
+contenant un séquent $S \ident \Pi \Sequent \Lambda$, appelé
+\emph{séquent médian}, tel que les inférences situées au-dessus de~$S$
+soient propositionnelles et celles situées au-dessous soient
+des inférences de quantification.
+
+Une !!{formula}~$!A$ est \emph{prénexe}, ou \emph{en forme prénexe},
+si elle est de la forme
+\[\mathsf{Q}_1x_1\dots\mathsf{Q}_nx_n\,!B(x_1,\dots,x_n)\]
+où chaque $\mathsf{Q}_i$ est $\lforall$ ou~$\lexists$,
+et où la matrice est sans quantificateurs.
+
+Le théorème du séquent médian a pour conséquence importante le
+théorème de Herbrand. Son cas général est plus délicat à formuler.
+Schématiquement, à tout !!{sentence} démontrable~$!A$ de logique
+du premier ordre correspond une tautologie propositionnelle~$!A'$
+permettant de démontrer $!A$ par les instanciations et inférences
+de quantification appropriées. Voici la version pour les
+!!{sentence}s de la forme~$\lexists[x][!B(x)]$, avec $!B$
+sans quantificateurs.
+
+\begin{thm}[Théorème de Herbrand]
+Dans le calcul sans égalité logique, supposons que $!B(x)$ soit sans
+quantificateurs et que $\Proves \lexists[x][!B(x)]$. Il existe alors une
+liste non vide de termes clos~$t_1$, \dots, $t_n$ telle que
+$\Proves !B(t_1) \lor \dots \lor !B(t_n)$.
+\end{thm}
+
+La !!{formula}~$!B(t_1) \lor \dots \lor !B(t_n)$ est appelée
+\emph{disjonction de Herbrand} de~$\lexists[x][!B(x)]$.
+Puisque $!B$ est sans quantificateurs, cette disjonction l'est
+également. Si elle est !!{provable}, l'élimination des coupures
+et la propriété des sous-formules fournissent une preuve sans
+coupure ne comportant que des inférences propositionnelles.
+Elle est donc une tautologie.
+
+La difficulté du théorème de Herbrand est d'établir l'existence
+d'une disjonction de Herbrand pour toute formule démontrable
+$\lexists[x][!B(x)]$. La réciproque est facile : si
+$\lexists[x][!B(x)]$ possède une disjonction de Herbrand
+démontrable, cette formule existentielle est démontrable.
+La disjonction entraîne en effet $\lexists[x][!B(x)]$.
+Voici une preuve dans~$\Log{G3c}$ lorsque $n=2$ ;
+les deux séquents du haut sont dérivables par identité et
+affaiblissement :
+\[
+\Axiom$!B(t_1) \fCenter \lexists[x][!B(x)], !B(t_1), !B(t_2)$
+\Axiom$!B(t_2) \fCenter \lexists[x][!B(x)], !B(t_1), !B(t_2)$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$!B(t_1) \lor !B(t_2) \fCenter \lexists[x][!B(x)], !B(t_1), !B(t_2)$
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$!B(t_1) \lor !B(t_2) \fCenter \lexists[x][!B(x)], !B(t_2)$
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$!B(t_1) \lor !B(t_2) \fCenter \lexists[x][!B(x)]$
+\DisplayProof
+\]
+
+Pour extraire une disjonction de Herbrand d'une !!{proof}~$\pi$
+de~$\Sequent \lexists[x][!B(x)]$, considérons d'abord le cas
+où toutes les inférences $\RightR{\lexists}$ de la preuve sans
+coupure~$\pi$ sont regroupées à la fin :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$ \fCenter \lexists[x][!B(x)], !B(t_1), \dots, !B(t_n)$
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$ \fCenter \lexists[x][!B(x)], !B(t_2), \dots, !B(t_n)$
+\RightLabel{$(n-1) \times \RightR{\lexists}$}
+\Deduce$ \fCenter \lexists[x][!B(x)]$
+\DisplayProof
+\]
+Si ce sont toutes les inférences $\RightR{\lexists}$ de~$\pi$
+qui portent sur $\lexists[x][!B(x)]$, la sous-preuve~$\pi_1$
+ne contient aucune autre inférence quantifiée : $!B(x)$ n'a pas
+de quantificateurs, et le séquent final n'a aucune formule à gauche.
+Ainsi, $ \fCenter \lexists[x][!B(x)], !B(t_1),
+\dots, !B(t_n)$ est le séquent médian de~$\pi$.
+
+Au-dessus de ce séquent, il n'y a pas d'inférence quantifiée.
+Les occurrences de $\lexists[x][!B(x)]$ n'y sont donc ni actives
+ni principales. Supprimons les occurrences de cette formule
+dans la sous-preuve~$\pi_1$ : nous obtenons une preuve de
+$\fCenter !B(t_1), \dots, !B(t_n)$, puis, par $n-1$ applications
+de $\RightR{\lor}$, une preuve de la disjonction
+$\Sequent !B(t_1) \lor \dots \lor !B(t_n)$.
+
+Cependant, même dans une preuve sans coupure de
+$\Sequent \lexists[x][!B(x)]$, les inférences
+\RightR{\lexists} ne sont pas nécessairement regroupées à la fin.
+Entre elles peuvent s'intercaler des inférences dont la formule
+principale est une instance $!B(t_i)$.
+D'où la nécessité du théorème du séquent médian.
+
+\begin{thm}[Théorème du séquent médian]\ollabel{thm:midsequent}
+S'il existe une !!{proof}~$\pi$ dans \Log{G3c} de
+$\Gamma \Sequent \Delta$, où toutes les formules de $\Gamma$
+et de $\Delta$ sont prénexes, il existe une !!{proof}~$\pi'$
+contenant un séquent $\Pi \Sequent \Lambda$ tel que les inférences
+au-dessous soient quantifiées et les inférences au-dessus
+propositionnelles.
+\end{thm}
+
+\begin{proof}
+Définissons l'\emph{ordre} d'une inférence quantifiée de~$\pi$
+comme le nombre d'inférences propositionnelles situées au-dessous.
+L'ordre~$o(\pi)$ de $\pi$ est la somme des ordres de ses inférences
+quantifiées. Nous raisonnons par récurrence sur cet ordre.
+
+Si $o(\pi) = 0$, aucune inférence quantifiée n'a d'inférence
+propositionnelle au-dessous. Si la preuve ne contient aucune
+inférence quantifiée, son séquent final est un séquent médian.
+Sinon, comme chaque inférence quantifiée possède une seule
+prémisse, ces inférences forment une chaîne finale. La prémisse
+de la plus haute d'entre elles est le séquent médian recherché.
+
+Si $o(\pi) > 0$, choisissons une inférence quantifiée d'ordre $>0$
+la plus basse possible. Une inférence propositionnelle se trouve
+au-dessous. La conclusion de l'inférence choisie ne peut être
+la prémisse d'une autre inférence quantifiée : cette inférence
+plus basse aurait elle aussi une inférence propositionnelle
+au-dessous, contrairement au choix effectué.
+Nous distinguons les cas selon les deux règles successives.
+
+Puisque le séquent final ne contient que des formules prénexes,
+la formule principale de l'inférence quantifiée ne peut être
+active dans l'inférence propositionnelle suivante. Sinon,
+la formule principale de cette dernière contiendrait un
+quantificateur dans la portée d'un connecteur propositionnel.
+La propriété des sous-!!{formula}s, prise avec les instances
+de termes qu'autorise ce calcul, imposerait alors une telle
+configuration dans une !!{formula} du séquent final.
+La formule principale quantifiée appartient donc au contexte
+de l'inférence propositionnelle inférieure.
+
+Voici deux exemples.
+
+Supposons d'abord que $\RightR{\lforall}$ aboutisse à la prémisse
+droite de $\LeftR{\lif}$. La sous-!!{proof} pertinente,
+notée~$\pi_1$, se termine ainsi :
+\[
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$\Gamma' \fCenter \Delta', \lforall[x][!A(x)], !B$
+\AxiomC{}
+\RightLabel{$\pi_3$}
+\Deduce$!C, \Gamma' \fCenter \Delta', !A(c)$
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$!C, \Gamma' \fCenter \Delta', \lforall[x][!A(x)]$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$!B \lif !C, \Gamma' \fCenter \Delta', \lforall[x][!A(x)]$
+\DisplayProof
+\]
+Nous pouvons supposer toute la preuve~$\pi$ régulière.
+La constante propre~$c$ n'apparaît donc pas en dehors de~$\pi_3$,
+en particulier ni dans $!B \lif !C$ ni dans~$\pi_2$.
+Considérons la preuve~$\pi_1'$ :
+\[
+\AxiomC{}
+\RightLabel{$\pi_2'$}
+\Deduce$\Gamma' \fCenter \Delta', \lforall[x][!A(x)], !A(c), !B$
+\AxiomC{}
+\RightLabel{$\pi_3[\Sequent \lforall[x][!A(x)]]$}
+\Deduce$!C, \Gamma' \fCenter \Delta', \lforall[x][!A(x)], !A(c)$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$!B \lif !C, \Gamma' \fCenter \Delta', \lforall[x][!A(x)], !A(c)$
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$!B \lif !C, \Gamma' \fCenter \Delta', \lforall[x][!A(x)], \lforall[x][!A(x)]$
+\DisplayProof
+\]
+La preuve~$\pi_2'$ s'obtient à partir de~$\pi_2$ par affaiblissement
+à droite avec~$!A(c)$. La prémisse issue de~$\pi_3$ est également
+affaiblie à droite avec la formule universelle, comme l'indique
+son annotation. Ces affaiblissements n'ajoutent aucune inférence
+et ne modifient donc pas l'ordre. La régularisation préalable
+permet d'éviter les conflits avec les constantes propres des
+sous-preuves. La condition de constante propre de
+\RightR{\lforall} reste satisfaite : $c$ n'apparaît pas
+dans~$!B \lif !C$ ni dans le contexte final.
+
+L'admissibilité de la contraction fournit alors une
+!!{proof}~$\pi_1''$ de
+$!B \lif !C, \Gamma' \fCenter \Delta', \lforall[x][!A(x)]$.
+La preuve de l'admissibilité de $\RightR{\Contraction}$ pour
+$\lforall[x][!A(x)]$, ainsi que l'inversion de
+$\RightR{\lforall}$ qu'elle utilise, conservent les inférences
+restantes dans le même ordre relatif et peuvent en supprimer.
+Elles n'augmentent donc ni le nombre d'inférences quantifiées
+ni le nombre d'inférences propositionnelles situées sous chacune.
+L'inférence \RightR{\lforall} permutée avait une
+\LeftR{\lif} au-dessous ; cette inférence propositionnelle
+est maintenant au-dessus. En remplaçant $\pi_1$ dans $\pi$
+par $\pi_1''$, l'ordre total diminue. Si l'inférence permutée
+subsiste, son ordre a diminué d'au moins~$1$. Si elle disparaît,
+sa contribution positive a été supprimée. La récurrence s'applique.
+
+Le cas de \RightR{\lexists} est plus simple : aucune contraction
+n'est nécessaire et cette règle n'impose pas de condition de
+constante propre. Supposons, par exemple, que
+$\RightR{\lexists}$ soit suivie de $\RightR{\land}$,
+cette fois dans sa prémisse gauche. La sous-!!{proof}~$\pi_1$ est
+\[
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !A(t), !B$
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !B$
+\AxiomC{}
+\RightLabel{$\pi_3$}
+\Deduce$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !B \land !C$
+\DisplayProof
+\]
+Remplaçons $\pi_1$ dans~$\pi$ par $\pi_1'$ :
+\[
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !A(t), !B$
+\AxiomC{}
+\RightLabel{$\pi_3'$}
+\Deduce$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !A(t), !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !A(t), !B \land !C$
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$\Gamma' \fCenter \Delta', \lexists[x][!A(x)], !B \land !C$
+\DisplayProof
+\]
+La preuve~$\pi_3'$ s'obtient à partir de $\pi_3$ par affaiblissement
+à droite avec~$!A(t)$. Après régularisation appropriée des constantes
+propres, cet affaiblissement ajoute seulement $!A(t)$ à droite
+dans les séquents de~$\pi_3$ ; il ne change donc pas l'ordre
+des inférences quantifiées.
+
+L'ordre des autres inférences quantifiées reste inchangé dans~$\pi'$.
+Celui de l'inférence \RightR{\lexists} permutée avec
+\RightR{\land} diminue de~$1$.
+L'hypothèse de récurrence s'applique.
+\end{proof}
+
+\begin{prob}
+Décrire les cas de la preuve du \olref{thm:midsequent} où
+\LeftR{\lexists} aboutit à la prémisse de~\RightR{\lif},
+et où \LeftR{\lforall} aboutit à la prémisse gauche
+de~\LeftR{\lor}.
+\end{prob}
+
+\begin{proof}[Preuve du théorème de Herbrand]
+Supposons que $\pi$ se termine par
+$\Sequent \lexists[x][!A(x)]$, avec une matrice sans quantificateurs.
+Par le \olref{thm:midsequent}, nous pouvons transformer $\pi$
+en une !!{proof}~$\pi'$ possédant un séquent médian~$S$,
+nécessairement de la forme
+\[\Sequent
+\lexists[x][!A(x)], !A(t_1), \dots, !A(t_n).\]
+Comme toutes les inférences au-dessus de $S$ sont propositionnelles,
+$\lexists[x][!A(x)]$ ne peut y être principale dans une inférence.
+Elle n'est pas atomique et ne peut donc être la formule
+d'identité d'un axiome. Puisque la matrice $!A(x)$ est sans
+quantificateurs, la formule existentielle ne peut pas non plus
+être une sous-formule propre de $!A(t_1)$, ni d'une autre instance,
+et elle ne peut être active au-dessus de~$S$.
+
+La suppression des occurrences de $\lexists[x][!A(x)]$ dans la
+sous-!!{proof} se terminant en~$S$ donne donc une preuve correcte
+de $\Sequent !A(t_1), \dots, !A(t_n)$.
+Par $n-1$ inférences $\RightR{\lor}$, nous obtenons une preuve de
+$\Sequent !A(t_1) \lor \dots \lor !A(t_n)$.
+\end{proof}
+
+% \begin{prob}
+% Trouver une disjonction de Herbrand de $\lexists[x][\lforall[y][(!A(x) \lif
+% !A(y))]]$ en construisant une preuve sans coupure de $\Sequent
+% \lexists[x][\lforall[y][(!A(x) \lif !A(y))]]$, puis en appliquant
+% la transformation de \olref{thm:midsequent} pour obtenir un
+% séquent médian si nécessaire.
+% \end{prob}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

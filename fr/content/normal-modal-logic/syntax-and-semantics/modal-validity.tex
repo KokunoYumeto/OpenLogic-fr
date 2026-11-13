@@ -1,0 +1,78 @@
+% Section: modal-validity
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{val}
+
+\olsection{Validité}
+
+\begin{explain}
+  Les !!{formula}s vraies dans tous les modèles, c'est-à-dire en
+  chaque monde de chaque modèle, présentent un intérêt particulier.
+  Elles expriment des propositions modales vraies quelle que soit
+  l'interprétation de $\Box$ et de $\Diamond$, pourvu que cette
+  interprétation soit « normale » : elle est déterminée par une
+  relation d'accessibilité entre mondes possibles. Nous appelons
+  ces !!{formula}s \emph{valides}. Par exemple,
+  $\Box(p \land q) \lif \Box p$ est valide. En revanche, certaines
+  !!{formula}s que l'interprétation aléthique de $\Box$ pourrait
+  laisser croire valides, comme $\Box p \lif p$, ne le sont pas.
+  L'intérêt des modèles relationnels tient notamment au fait que
+  différents types de relations d'accessibilité permettent de
+  représenter différentes interprétations de $\Box$ et de
+  $\Diamond$. Cela suggère de définir la validité non seulement
+  relativement à \emph{tous} les modèles, mais aussi relativement
+  à tous les modèles \emph{d'un certain type}. Il apparaîtra, par
+  exemple, que $\Box p \lif p$ est vraie dans tous les modèles où
+  chaque monde est accessible depuis lui-même, autrement dit où
+  $R$ est réflexive. Une définition relative aux classes de
+  modèles permet de l'énoncer succinctement :
+  $\Box p \lif p$ est valide dans la classe des modèles réflexifs.
+\end{explain}
+
+\begin{defn}
+  !!^a{formula}~$!A$ est \emph{valide} dans une classe
+  $\mClass{C}$ de modèles si elle est vraie dans chaque modèle
+  de~$\mClass{C}$ (c'est-à-dire en chaque monde de chaque modèle
+  de~$\mClass{C}$). Si $!A$ est valide dans~$\mClass{C}$, nous
+  écrivons $\mClass{C} \Entails !A$; nous écrivons $\Entails !A$
+  si $!A$ est valide dans la classe de \emph{tous} les modèles.
+\end{defn}
+
+\begin{prop}\ollabel{prop:subset-class}
+  Si $!A$ est valide dans $\mClass{C}$, elle est aussi valide dans
+  toute classe $\mClass{C}' \subseteq \mClass{C}$.
+\end{prop}
+
+\begin{prop}\ollabel{prop:Nec-rule}
+  Si $!A$ est valide, $\Box!A$ l'est également.
+\end{prop}
+
+\begin{proof}
+  Supposons $\Entails !A$. Pour montrer $\Entails \Box!A$, soient
+  $\mModel{M} = \tuple{W, R, V}$ un modèle et $w \in W$. Si $Rww'$,
+  alors $\mSat{M}{!A}[w']$, puisque $!A$ est valide. Ainsi,
+  $\mSat{M}{\Box!A}[w]$. Comme $\mModel{M}$ et $w$ étaient
+  arbitraires, $\Entails \Box!A$.
+\end{proof}
+
+\begin{prob}
+  Montrez que les !!{formula}s suivantes sont valides :
+  \begin{enumerate}
+  \item $\Box p \lif \Box (q \lif p)$;
+  \item $\Box \lnot \lfalse$;
+  \item $\Box p \lif (\Box q \lif \Box p)$.
+  \end{enumerate}
+\end{prob}
+
+\begin{prob}
+  Montrez que $!A \lif \Box!A$ est valide dans la classe
+  $\mClass{C}$ des modèles $\mModel{M} = \tuple{W, R, V}$ tels
+  que $W = \{w\}$. Montrez de même que $!B \lif \Box !A$ et
+  $\Diamond !A \lif !B$ sont valides dans la classe des modèles
+  $\mModel{M} = \tuple{W, R, V}$ tels que $R = \emptyset$.
+\end{prob}
+
+\end{document}

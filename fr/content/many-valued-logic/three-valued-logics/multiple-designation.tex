@@ -1,0 +1,373 @@
+% Part: many-valued-logic
+% Chapter: three-valued-logics
+% Section: multiple-designation
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{thr}{mul}
+
+\olsection{Désigner d'autres valeurs que~\texorpdfstring{$\True$}{𝕋}}
+
+Dans toutes les logiques rencontrées
+jusqu'ici, l'ensemble des valeurs de
+vérité désignées était
+$V^+=\{\True\}$ : un énoncé comptait
+comme vrai si et seulement si sa
+valeur de vérité était~$\True$.
+Mais on pourrait aussi compter un
+énoncé comme vrai dès lors que sa
+valeur n'est pas~$\False$. On peut
+ainsi obtenir une logique en posant,
+par exemple, $V^+=\{\True,\Undef\}$
+dans sa matrice.
+
+\begin{defn}
+La \emph{logique du paradoxe}~$\LogLP$
+est définie par la matrice suivante :
+\begin{enumerate}
+  \item Le langage propositionnel usuel
+  $\Lang L_0$ avec $\lnot$, $\land$,
+  $\lor$ et $\lif$.
+  \item L'ensemble des valeurs de vérité
+  $V=\{\True,\Undef,\False\}$.
+  \item $\True$ et $\Undef$ sont
+  désignées, c'est-à-dire
+  $V^+=\{\True,\Undef\}$.
+  \item Les fonctions de vérité sont
+  celles de la logique forte de Kleene.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+La \emph{logique du non-sens}
+de Halld\'en~$\LogHal$ est définie
+par la matrice suivante :
+\begin{enumerate}
+  \item Le langage propositionnel usuel
+  $\Lang L_0$ avec $\lnot$, $\land$,
+  $\lor$, $\lif$ et un connecteur
+  unaire~$+$.
+  \item L'ensemble des valeurs de vérité
+  $V=\{\True,\Undef,\False\}$.
+  \item $\True$ et $\Undef$ sont
+  désignées, c'est-à-dire
+  $V^+=\{\True,\Undef\}$.
+  \item Les fonctions de vérité sont
+  celles de la logique faible de
+  Kleene, auxquelles s'ajoute
+  l'opérateur «~est dépourvu de sens~» :
+  \begin{center}
+    \begin{tabular}{c|c}
+      $\tf{+}$ & \\
+      \hline
+      $\True$ & $\False$ \\
+      $\Undef$ & $\True$ \\
+      $\False$ & $\False$
+    \end{tabular}
+  \end{center}
+\end{enumerate}
+\end{defn}
+
+Contrairement aux logiques de Kleene
+dont elles reprennent les tables de
+vérité, ces logiques \emph{ont} des
+tautologies.
+
+\begin{prop}\ollabel{prop:LP-taut-CL}
+Les tautologies de~$\LogLP$ sont
+exactement celles de la logique
+propositionnelle classique, sur leur
+langage commun.
+\end{prop}
+
+\begin{proof}
+  D'après la \olref[syn][sub]{prop:mvl-cl},
+  si $\Entails[\LogLP] !A$, alors
+  $\Entails[\LogCL] !A$. Pour établir
+  la réciproque, montrons que, s'il
+  existe une valuation
+  $\pAssign{v}\colon\PVar\to
+  \{\False,\True,\Undef\}$ telle que
+  $\pValue{v}(!A)[\LogKs]=\False$,
+  il existe une valuation classique
+  $\pAssign{v'}\colon\PVar\to
+  \{\False,\True\}$ telle que
+  $\pValue{v'}(!A)[\LogCL]=\False$.
+  Cela suffit pour~$\LogLP$ : elle a
+  les mêmes fonctions de vérité que
+  $\LogKs$, et $\False$ est sa seule
+  valeur non désignée. En effet, si
+  $\Entails/[\LogLP] !A$, une valuation
+  $\pAssign{v}$ donne
+  $\pValue{v}(!A)[\LogLP]
+  =\pValue{v}(!A)[\LogKs]=\False$.
+  L'affirmation à démontrer fournit
+  alors une valuation classique
+  $\pAssign{v'}$ pour laquelle
+  $\pValue{v'}(!A)[\LogCL]=\False$;
+  par conséquent,
+  $\Entails/[\LogCL] !A$.
+
+  Pour prouver cette affirmation,
+  définissons d'abord $\pAssign{v'}$
+  par
+  \[
+    \pAssign{v'}(p)=
+    \begin{cases}
+      \True & \text{si }\pAssign{v}(p)
+        \in\{\True,\Undef\},\\
+      \False & \text{sinon.}
+    \end{cases}
+  \]
+  Nous montrons par induction sur~$!A$
+  que (a) si
+  $\pValue{v}(!A)[\LogKs]=\False$,
+  alors
+  $\pValue{v'}(!A)[\LogCL]=\False$,
+  et que (b) si
+  $\pValue{v}(!A)[\LogKs]=\True$,
+  alors
+  $\pValue{v'}(!A)[\LogCL]=\True$.
+  \begin{enumerate}
+    \item Cas de base : $!A\ident p$.
+    D'après la \olref[syn][val]{defn:pValue},
+    $\pValue{v}(p)[\LogKs]
+    =\pAssign{v}(p)$ et
+    $\pValue{v'}(p)[\LogCL]
+    =\pAssign{v'}(p)$. Si la première
+    valeur est $\False$, la seconde
+    l'est aussi par définition de
+    $\pAssign{v'}$; si elle est
+    $\True$, la seconde l'est aussi.
+    Ainsi (a) et (b) sont établies.
+
+    Pour l'hérédité, examinons les cas
+    suivants.
+    \item $!A\ident\lnot !B$.
+    \begin{enumerate}
+      \item Supposons que
+      $\pValue{v}(\lnot !B)[\LogKs]
+      =\False$. D'après la définition
+      de $\tf{\lnot}[\LogKs]$,
+      $\pValue{v}(!B)[\LogKs]=\True$.
+      L'hypothèse d'induction~(b)
+      donne
+      $\pValue{v'}(!B)[\LogCL]=\True$,
+      donc
+      $\pValue{v'}(\lnot !B)[\LogCL]
+      =\False$.
+      \item Supposons que
+      $\pValue{v}(\lnot !B)[\LogKs]
+      =\True$. Alors
+      $\pValue{v}(!B)[\LogKs]=\False$.
+      L'hypothèse d'induction~(a)
+      donne
+      $\pValue{v'}(!B)[\LogCL]=\False$,
+      donc
+      $\pValue{v'}(\lnot !B)[\LogCL]
+      =\True$.
+    \end{enumerate}
+
+    \item $!A\ident(!B\land !C)$.
+    \begin{enumerate}
+      \item Supposons que
+      $\pValue{v}(!B\land !C)[\LogKs]
+      =\False$. Alors
+      $\pValue{v}(!B)[\LogKs]=\False$
+      ou
+      $\pValue{v}(!C)[\LogKs]=\False$.
+      L'hypothèse d'induction~(a)
+      donne, respectivement,
+      $\pValue{v'}(!B)[\LogCL]=\False$
+      ou
+      $\pValue{v'}(!C)[\LogCL]=\False$;
+      ainsi
+      $\pValue{v'}(!B\land !C)[\LogCL]
+      =\False$.
+      \item Supposons que
+      $\pValue{v}(!B\land !C)[\LogKs]
+      =\True$. Alors
+      $\pValue{v}(!B)[\LogKs]=\True$
+      et
+      $\pValue{v}(!C)[\LogKs]=\True$.
+      L'hypothèse d'induction~(b)
+      donne
+      $\pValue{v'}(!B)[\LogCL]=\True$
+      et
+      $\pValue{v'}(!C)[\LogCL]=\True$;
+      ainsi
+      $\pValue{v'}(!B\land !C)[\LogCL]
+      =\True$.
+    \end{enumerate}
+  \end{enumerate}
+
+  Les deux autres cas se traitent de
+  manière analogue et sont laissés
+  en exercice. On peut aussi remarquer
+  que la démonstration précédente
+  établit le résultat pour les formules
+  ne contenant que $\lnot$ et~$\land$.
+  Dans $\LogKs$ comme dans $\LogCL$,
+  et pour toute valuation~$\pAssign{v}$,
+  $\pValue{v}(!B\lor !C)
+  =\pValue{v}(\lnot(\lnot !B\land
+  \lnot !C))$ et
+  $\pValue{v}(!B\lif !C)
+  =\pValue{v}(\lnot(!B\land
+  \lnot !C))$.
+\end{proof}
+
+\begin{prob}
+  Compléter la preuve de la
+  \olref[mvl][thr][mul]{prop:LP-taut-CL},
+  c'est-à-dire établir (a) et (b)
+  pour les cas
+  $!A\ident(!B\lor !C)$ et
+  $!A\ident(!B\lif !C)$.
+\end{prob}
+
+\begin{prob}
+Montrer que toute tautologie classique
+est une tautologie de~$\LogHal$.
+\end{prob}
+
+Bien qu'elles aient les mêmes
+tautologies que la logique classique
+sur le langage commun des quatre
+connecteurs, leurs relations de
+conséquence diffèrent. Ainsi,
+$\LogLP$ est \emph{paraconsistante} :
+$\lnot p,p\Entails/ q$. Le principe
+d'explosion
+$\lnot !A,!A\Entails !B$
+ne vaut donc pas en général. Il vaut
+dans certains cas, par exemple si
+$!B$ est une tautologie.
+
+\begin{prob}
+  Parmi les relations suivantes,
+  lesquelles valent (a) dans~$\LogLP$
+  et (b) dans~$\LogHal$? Donner une
+  table de vérité pour chacune.
+  \begin{enumerate}
+    \item $p,p\lif q\Entails q$;
+    \item $\lnot q,p\lif q\Entails\lnot p$;
+    \item $p\lor q,\lnot p\Entails q$;
+    \item $\lnot p,p\Entails q$;
+    \item $p\Entails p\lor q$;
+    \item $p\lif q,q\lif r\Entails p\lif r$.
+  \end{enumerate}
+\end{prob}
+
+Que se passe-t-il si l'on désigne
+également $\Undef$ dans~$\LogLuk[3]$?
+
+\begin{defn}
+  La \emph{variante de \L ukasiewicz à deux valeurs
+  désignées}~$\LogLuk[3]^{+}$ est définie
+  par la matrice suivante :
+  \begin{enumerate}
+    \item Le langage propositionnel usuel
+    $\Lang L_0$ avec $\lfalse$,
+    $\lnot$, $\land$, $\lor$ et $\lif$.
+    \item L'ensemble des valeurs de vérité
+    $V=\{\True,\Undef,\False\}$.
+    \item $\True$ et $\Undef$ sont
+    désignées, c'est-à-dire
+    $V^+=\{\True,\Undef\}$.
+    \item On prend
+    $\tf{\lfalse}=\False$; les
+    fonctions de vérité des autres
+    connecteurs sont celles de la
+    logique de \L ukasiewicz~$\LogLuk[3]$.
+  \end{enumerate}
+\end{defn}
+
+\begin{prob}
+  Parmi les relations suivantes,
+  lesquelles valent dans~$\LogLuk[3]^{+}$?
+  \begin{enumerate}
+    \item $p,p\lif q\Entails q$;
+    \item $p\lor q,\lnot p\Entails q$;
+    \item $\lnot p,p\Entails q$;
+    \item $p\Entails p\lor q$.
+  \end{enumerate}
+\end{prob}
+
+Des tables de vérité différentes
+peuvent parfois définir la même
+logique, c'est-à-dire la même relation
+de conséquence, selon le choix des
+valeurs désignées. C'est par exemple
+le cas si, dans la logique de G\"odel,
+on prend
+$V^+=\{\True,\Undef\}$
+au lieu de~$\{\True\}$.
+
+\begin{prop}\ollabel{prop:gl-udes}
+  La matrice ayant
+  $V=\{\False,\Undef,\True\}$,
+  $V^+=\{\True,\Undef\}$ et les
+  fonctions de vérité de la logique
+  de G\"odel à trois valeurs définit
+  la logique classique.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrer la \olref[mvl][thr][mul]{prop:gl-udes}
+  en montrant que, pour la logique
+  $\Log L$ définie comme celle de
+  G\"odel mais avec
+  $V^+=\{\True,\Undef\}$, si
+  $\Gamma\Entails/[\Log L] !B$,
+  alors
+  $\Gamma\Entails/[\LogCL] !B$.
+  S'inspirer de la
+  \olref[mvl][thr][mul]{prop:LP-taut-CL},
+  mais montrer, au lieu des propriétés
+  (a) et (b), que
+  $\pValue{v}(!A)[\LogGod]=\False$
+  si et seulement si
+  $\pValue{v'}(!A)[\LogCL]=\False$;
+  il s'ensuit que
+  $\pValue{v}(!A)[\LogGod]
+  \in\{\True,\Undef\}$ si et
+  seulement si
+  $\pValue{v'}(!A)[\LogCL]=\True$.
+  Expliquer pourquoi cela établit
+  la proposition.
+\end{prob}
+
+\begin{editorial}
+La preuve de la proposition sur
+$\LogLP$ est formulée sur le langage
+commun des quatre connecteurs :
+l'opérateur~$+$ de~$\LogHal$ ne
+fait pas partie du langage classique
+ainsi comparé. Dans le cas de base
+de l'induction, la source affirme
+à tort l'égalité des valeurs des
+variables sous $\pAssign{v}$ et
+$\pAssign{v'}$ même lorsque la
+première vaut $\Undef$; seules les
+deux implications conditionnelles
+(a) et (b) sont nécessaires.
+Dans le cas de la conjonction,
+la source répète $!B$ là où elle
+doit aussi considérer~$!C$.
+La source appelle $\LogRM[3]$ cette variante,
+notée ici $\LogLuk[3]^{+}$; nous conservons ses tables
+et complétons sa constante absente de $\LogLuk[3]$ par $\tf{\lfalse}=\False$.
+Elle diffère de la logique usuelle R-Mingle~3 :
+pour $(\True,\Undef)$, $(\Undef,\False)$ et $(\Undef,\Undef)$,
+son conditionnel donne $\Undef$, $\Undef$ et $\True$ au lieu de $\False$, $\False$ et $\Undef$.
+Voir \href{https://cdn.aaai.org/ocs/15415/15415-68643-1-PB.pdf}{Sutcliffe, Pelletier et Hazen (2017), table~1}.
+\end{editorial}
+
+\end{document}

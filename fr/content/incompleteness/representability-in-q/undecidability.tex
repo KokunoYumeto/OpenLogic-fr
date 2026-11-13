@@ -1,0 +1,89 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: undecidability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{und}
+\olsection{Indécidabilité}
+
+Une théorie~$\Th{T}$ est dite \emph{indécidable} s'il n'existe
+aucune procédure de calcul qui, en un nombre fini d'étapes,
+réponde toujours correctement à la question « $\Th{T}$
+démontre-t-elle~$!A$ ? » pour tout !!{sentence}~$!A$ de son
+langage. Ainsi, $\Th{Q}$ serait décidable s'il existait une
+procédure qui, à partir d'un !!{sentence}~$!A$ du langage de
+l'arithmétique, décide si $\Th{Q}\Proves !A$. Plus
+précisément : la relation $\Prov[\Th{Q}](y)$, vraie si et
+seulement si $y$ est le numéro de Gödel d'un !!{sentence}
+démontrable dans~$\Th{Q}$, est-elle récursive ? Non.
+
+\begin{thm}
+$\Th{Q}$ est indécidable : la relation
+\[
+\Prov[\Th{Q}](y) \defiff \fn{Sent}(y) \land
+\lexists[x][\Prf[\Th{Q}](x, y)]
+\]
+n'est pas récursive.
+\end{thm}
+
+\begin{proof}
+Supposons qu'elle le soit. Nous pourrions alors résoudre le
+problème de l'arrêt. Étant donnés $e,n$, nous savons que
+$\cfind{e}(n)\fdefined$ si et seulement s'il existe un~$s$
+tel que $T(e,n,s)$, où $T$ est le prédicat de Kleene du
+\olref[cmp][rec][nft]{thm:kleene-nf}. Puisque $T$ est
+récursif primitif, une !!{formula}~$!B_T$ le représente
+dans~$\Th{Q}$. Ainsi, si $T(e,n,s)$ est vraie, alors
+$\Th{Q}\Proves !B_T(\num e,\num n,\num s)$; si elle est
+fausse, $\Th{Q}\Proves\lnot !B_T(\num e,\num n,\num s)$.
+La cohérence de $\Th{Q}$ donne également
+$\Th{Q}\Proves !B_T(\num e,\num n,\num s)$ si et seulement
+si $T(e,n,s)$. Une instance positive permet de conclure
+$\Th{Q}\Proves\lexists[y][!B_T(\num e,\num n,y)]$.
+
+Si aucun~$s$ ne satisfait $T(e,n,s)$, alors
+$\Th{Q}\Proves\lnot !B_T(\num e,\num n,\num s)$
+pour tout~$s$. Or $\Th{Q}$ est $\omega$-cohérente : si,
+pour chaque $n\in\Nat$,
+$\Th{Q}\Proves\lnot !A(\num n)$, alors
+$\Th{Q}\Proves/\lexists[y][!A(y)]$.
+Cela découle du fait que les axiomes de $\Th{Q}$ sont vrais
+dans le modèle standard~$\Struct{N}$. Donc
+$\Th{Q}\Proves/\lexists[y][!B_T(\num e,\num n,y)]$.
+En somme, $\Th{Q}$ démontre cette existentiale si et
+seulement s'il existe un~$s$ tel que $T(e,n,s)$, autrement
+dit si et seulement si $\cfind{e}(n)\fdefined$.
+
+À partir de $e,n$, on peut calculer
+$\Gn{\lexists[y][!B_T(\num e,\num n,y)]}$; notons
+$g(e,n)$ la fonction récursive primitive qui le fait.
+Alors
+\[
+h(e, n) =
+\begin{cases}
+1 & \text{si $\Prov[\Th{Q}](g(e, n))$}\\
+0 & \text{sinon}.
+\end{cases}
+\]
+Si $\Prov[\Th{Q}]$ était récursive, $h$ le serait
+aussi. Mais \olref[cmp][rec][hlt]{thm:halting-problem}
+établit que $h$ ne l'est pas. La relation
+$\Prov[\Th{Q}]$ ne peut donc pas être récursive.
+\end{proof}
+
+\begin{cor}
+La logique du premier ordre est indécidable.
+\end{cor}
+
+\begin{proof}
+Si la logique du premier ordre était décidable, la
+démontrabilité dans~$\Th{Q}$ le serait aussi, puisque
+$\Th{Q}\Proves !A$ si et seulement si
+$\Proves !T\lif !A$, où $!T$ est la conjonction des axiomes
+de~$\Th{Q}$.
+\end{proof}
+
+\end{document}

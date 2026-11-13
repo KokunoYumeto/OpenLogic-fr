@@ -8,7 +8,7 @@
 \begin{document}
 
 \olfileid[fr]{sfr}{arith}{int}
-\olsection{De $\Nat$ à $\Int$}
+\olsection{De \texorpdfstring{$\Nat$}{ℕ} à \texorpdfstring{$\Int$}{ℤ}}
 
 Partons de deux observations simples :
 	\begin{enumerate}
@@ -52,11 +52,11 @@ Posons maintenant :
 		\equivrep{a, b}{\Intequiv} \times \equivrep{c, d}{\Intequiv} &= \equivrep{a c + b  d, a  d + b c}{\Intequiv}\\
 		\equivrep{a, b}{\Intequiv} \leq \equivrep{c, d}{\Intequiv} &\liff a + d \leq b + c
 	\end{align*}
-(Comme il est d'usage, nous écrivons $ab$ pour $(a \times b)$ afin d'alléger les axiomes.) Il reste à nous assurer que ces définitions ont bien les propriétés \emph{attendues}. Préciser ces propriétés et les vérifier demande un travail assez long ; les détails sont reportés à la \olref[check]{sec}. Retenons pour l'instant que tout fonctionne !{}
+(Comme il est d'usage, nous écrivons $ab$ pour $(a \times b)$ afin d'alléger les formules.) Il reste à nous assurer que ces définitions ont bien les propriétés \emph{attendues}. Préciser ces propriétés et les vérifier demande un travail assez long ; les détails sont reportés à la \olref[check]{sec}. Retenons pour l'instant que tout fonctionne !{}
 
-Il reste un dernier point. Nous avons construit les entiers relatifs à partir
-des nombres naturels. Dans cette construction, les nombres naturels
-\emph{ne sont pas eux-mêmes des entiers relatifs}.\footnote{Précision éditoriale : il s'agit de distinguer les objets de départ des classes que l'on vient de construire, avant l'identification naturelle décrite ci-dessous ; cette phrase ne pose pas une impossibilité d'inclusion pour toute représentation ensembliste des nombres.}
+Il reste un dernier point. Dans cette construction, les nombres
+naturels sont les objets de départ. Les entiers relatifs sont les
+classes d’équivalence que nous venons de construire.
 Nous reviendrons sur la portée philosophique de cette distinction dans la
 \olref[ref]{sec}. Du point de vue technique, il nous faut cependant un moyen
 de traiter les nombres naturels \emph{comme} des entiers relatifs. L'idée

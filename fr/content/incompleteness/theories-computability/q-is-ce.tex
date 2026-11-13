@@ -1,0 +1,76 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: q-is-ce
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{qce}
+
+\olsection{$\Th{Q}$ est complète parmi les ensembles effectivement énumérables}
+
+\begin{thm}
+L'ensemble des codes des théorèmes de~$\Th{Q}$ est
+!!{c.e.}, mais non décidable. Il est même complet,
+pour la réduction plusieurs-vers-un, parmi les
+ensembles !!{c.e.}s.
+\end{thm}
+
+\begin{proof}
+L'ensemble des codes des théorèmes de~$\Th{Q}$ est
+!!{c.e.} : ce sont les codes~$y$ pour lesquels il
+existe un témoin de preuve~$x$ dans~$\Th{Q}$,
+autrement dit, en identifiant la théorie à cet
+ensemble de codes,
+\[
+Q = \Setabs{y}{\lexists[x][\Prf[\Th{Q}](x,y)]}.
+\]
+La relation $\Prf[\Th{Q}](x,y)$ est calculable,
+même récursive primitive; la projection existentielle
+d'une telle relation est effectivement énumérable.
+La non-décidabilité a été démontrée à la
+\olref[req][und]{sec}.
+
+Être complet parmi les ensembles !!{c.e.}s revient
+ici à montrer $K\leq_m Q$, où
+$K=\Setabs{x}{!A_x(x)\downarrow}$ est le problème
+diagonal de l'arrêt. Le prédicat de Kleene $T(e,x,s)$
+étant récursif primitif, une !!{formula}~$!A_T$ le
+représente dans~$\Th{Q}$. Pour tout~$x$, nous avons
+\begin{align*}
+x \in K & \liff \lexists[s][T(x,x,s)] \\
+& \liff \lexists[s][(\Th{Q} \Proves !A_T(\num x,\num x, \num s))]
+  \\
+& \liff \Th{Q} \Proves \lexists[s][!A_T(\num x, \num x, s)].
+\end{align*}
+Expliquons le dernier sens réciproque. Si
+$\Th{Q}\Proves\lexists[s][!A_T(\num x,\num x,s)]$,
+la correction de~$\Th{Q}$ dans le modèle standard
+donne un entier naturel~$n$ tel que
+$\Sat{N}{!A_T(\num x,\num x,\num n)}$.
+Si $T(x,x,n)$ était fausse, la condition négative
+de représentation de~$T$ donnerait
+$\Th{Q}\Proves\lnot !A_T(\num x,\num x,\num n)$.
+La correction de~$\Th{Q}$ rendrait alors vraie
+dans~$\Struct{N}$ la négation de cette instance,
+contradiction. Donc $T(x,x,n)$ est vraie et
+$x\in K$.
+
+Enfin, à partir de~$x$, on peut calculer le code
+de l'!!{sentence}
+$\lexists[s][!A_T(\num x,\num x,s)]$.
+La fonction qui envoie~$x$ sur ce code est une
+réduction plusieurs-vers-un de~$K$ à l'ensemble
+des codes des théorèmes de~$\Th{Q}$.
+\end{proof}
+
+\begin{explain}
+La réduction associe à chaque entrée un énoncé du langage de
+l'arithmétique. Le prédicat de Kleene intervient dans le
+raisonnement sur la calculabilité. C'est sa formule
+représentante $!A_T$ qui figure dans l'énoncé dont on code
+la démonstrabilité.
+\end{explain}
+
+\end{document}

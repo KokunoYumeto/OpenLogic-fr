@@ -1,0 +1,45 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: fixed-point-combinator
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{fix}
+\olsection{Combinateurs de point fixe}
+
+Supposons donné un lambda-terme~$g$ et cherchons
+un autre terme~$k$ tel que $k$ soit
+$\beta$-équivalent à~$gk$. Définissons
+\[
+\fn{diag}(x)=xx
+\]
+et
+\[
+l(x)=g(\fn{diag}(x))
+\]
+en choisissant $x\notin\FV{g}$. Autrement dit,
+$l$ est le terme $\lambd[x][g(xx)]$. Prenons
+$k=ll$. Nous obtenons
+\begin{align*}
+k & = (\lambd[x][g(xx)])(\lambd[x][g(xx)]) \\
+& \red g((\lambd[x][g(xx)])(\lambd[x][g(xx)])) \\
+& = gk.
+\end{align*}
+Si nous prenons
+\[
+Y=\lambd[g][((\lambd[x][g(xx)])(\lambd[x][g(xx)]))],
+\]
+alors $Yg$ et $g(Yg)$ se réduisent à un même
+terme; ainsi $Yg\equiv_\beta g(Yg)$. C'est
+le \emph{combinateur de Curry}. Si, au contraire,
+nous prenons
+\[
+Y=(\lambd[xg][g(xxg)])(\lambd[xg][g(xxg)]),
+\]
+alors $Yg$ se réduit à $g(Yg)$, ce qui est
+plus fort. Cette seconde version de~$Y$
+est le \emph{combinateur de Turing}.
+
+\end{document}

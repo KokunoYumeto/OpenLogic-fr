@@ -1,0 +1,69 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{z}{power}
+\olsection{Ensembles des parties}
+
+Passons à un autre axiome :
+
+\begin{axiom}[Ensemble des parties]
+Pour tout ensemble $A$, l'ensemble
+$\Pow{A} = \Setabs{x}{x \subseteq A}$ existe.
+\[
+	\forall A \exists P \forall x(x \in P \liff (\forall z \in x)z \in A)
+\]
+\end{axiom}
+
+La justification est assez directe. Supposons que $A$ soit formé à
+l'étape $S$. Tous les !!{element}s de $A$ étaient alors disponibles
+avant $S$ (par \stagesacc). Ainsi, en raisonnant comme pour justifier
+la séparation, tout sous-ensemble de $A$ est formé au plus tard à
+l'étape $S$. Tous ces sous-ensembles sont donc disponibles pour être
+réunis en un ensemble à n'importe quelle étape postérieure à $S$.
+Or nous savons qu'une telle étape existe, puisque $S$ n'est pas la
+dernière (par \stagessucc). Ainsi, $\Pow{A}$ existe.
+
+Voici une conséquence intéressante de l'axiome de l'ensemble des
+parties :
+
+\begin{prop}\label{thm:Products}
+Quels que soient les ensembles $A, B$, leur produit cartésien
+$A \times B$ existe.
+\end{prop}
+
+\begin{proof}
+L'ensemble $\Pow{\Pow{A \cup B}}$ existe par l'axiome de l'ensemble
+des parties et par la
+\olref[sth][z][pairs]{prop:pairsconsequences}. Par séparation,
+l'ensemble suivant existe donc :
+\[
+	C = \Setabs{z \in \Pow{\Pow{A \cup B}}}{(\exists x \in A)(\exists y \in B) z = \tuple{x, y}}.
+\]
+Or, pour tous $x \in A$ et $y \in B$, l'ensemble $\tuple{x, y}$ existe
+par la \olref[sth][z][pairs]{prop:pairsconsequences}. De plus, puisque
+$x, y \in A \cup B$, nous avons
+$\{x\}, \{x, y\} \in \Pow{A \cup B}$, puis
+$\tuple{x,y} \in \Pow{\Pow{A \cup B}}$. Ainsi, $A \times B = C$.
+\end{proof}
+
+Dans cette démonstration, l'axiome de l'ensemble des parties intervient
+avec la séparation. Rien d'étonnant à cela : sans la séparation,
+l'axiome de l'ensemble des parties ne serait pas très \emph{puissant}.
+Après tout, c'est la séparation qui nous dit quels sous-ensembles d'un
+ensemble existent et qui détermine ainsi à quel point chaque ensemble
+des parties est «~gros~».
+
+\begin{prob}
+Montrez que, pour tous ensembles $A, B$ : (i) l'ensemble de toutes
+les relations de domaine $A$ et d'image $B$ existe ; et (ii)
+l'ensemble de toutes les fonctions de $A$ vers $B$ existe.
+\end{prob}
+
+\begin{prob}
+Soit $A$ un ensemble, et soit $\sim$ une relation d'équivalence sur
+$A$. Démontrez que l'ensemble des classes d'équivalence modulo
+$\sim$ sur $A$, c'est-à-dire $\equivclass{A}{\sim}$, existe.
+\end{prob}
+
+\end{document}

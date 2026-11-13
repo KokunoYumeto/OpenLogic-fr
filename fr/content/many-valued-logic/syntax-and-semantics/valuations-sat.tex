@@ -1,0 +1,68 @@
+% Part: many-valued-logic
+% Chapter: syntax-and-semantics
+% Section: valuations-sat
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{syn}{val}
+
+\olsection{Valuations et satisfaction}
+
+\begin{defn}[Valuations]
+Soit~$V$ un ensemble de valeurs de
+vérité. Une \emph{valuation} du
+langage~$\Lang{L}$ dans~$V$ est
+une fonction~$\pAssign{v}$ qui
+attribue à chaque variable
+propositionnelle une valeur de~$V$ :
+$\pAssign{v}\colon\PVar\to V$.
+\end{defn}
+
+\begin{defn}\ollabel{defn:pValue}
+Étant donnée une valuation
+$\pAssign{v}$ dans l'ensemble~$V$
+des valeurs de vérité d'une logique
+plurivalente~$\Log L$, définissons
+par induction la fonction d'évaluation
+$\pValue{v}\colon\Frm[L]\to V$ :
+\begin{enumerate}
+\item $\pValue{v}(\Obj p_n)
+  =\pAssign{v}(\Obj p_n)$;
+\item si $\star$ est un connecteur
+  d'arité~$0$, alors
+  $\pValue{v}(\star)
+    =\tf{\star}[\Log L]$;
+\item si $\star$ est un connecteur
+  d'arité~$n\geq1$, alors
+  \[
+    \pValue{v}(\star(!A_1,\dots,!A_n))
+      =\tf{\star}[\Log L]
+        (\pValue{v}(!A_1),\dots,
+         \pValue{v}(!A_n)).
+  \]
+\end{enumerate}
+\end{defn}
+
+\begin{defn}[Satisfaction]
+\ollabel{defn:satisfaction}
+La formule~$!A$ est \emph{satisfaite}
+par la valuation~$\pAssign{v}$
+dans la logique~$\Log L$,
+$\pSat{v}{!A}[\Log L]$, si et
+seulement si
+$\pValue{v}(!A)[\Log L]\in V^+$,
+où~$V^+$ est l'ensemble des valeurs
+de vérité désignées de~$\Log L$.
+
+La notation $\pSat/{v}{!A}[\Log L]$
+signifie que $\pSat{v}{!A}[\Log L]$
+ne vaut pas. Si~$\Gamma$ est un
+ensemble de formules, alors
+$\pSat{v}{\Gamma}[\Log L]$ si et
+seulement si $\pSat{v}{!A}[\Log L]$
+pour toute formule~$!A\in\Gamma$.
+\end{defn}
+
+\end{document}

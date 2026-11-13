@@ -1,0 +1,319 @@
+% Part: normal-modal-logic
+% Chapter: tableaux
+% Section: countermodels
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{tab}{cou}
+      
+\olsection{Contre-modèles obtenus à partir de \usetoken{p}{tableau}}
+
+\begin{explain}
+  La démonstration du théorème de complétude établit que
+  $\Entails !A$ entraîne $\Proves !A$, mais fournit aussi une méthode
+  pour construire un contre-modèle de~$!A$ lorsque $\Entails/ !A$.
+  Dans~$\Log{K}$, cette méthode constitue une \emph{procédure de
+    décision}. Supposons en effet $\Entails/ !A$. La preuve de la
+  \olref[cpl]{prop:complete-tableau} indique comment construire un
+  !!{tableau} complet, et cette construction se termine toujours.
+  Les règles propositionnelles de~$\Log{K}$ n'ajoutent que des
+  !!{formula}s préfixées de complexité moindre : pour une formule
+  signée $\sFmla{S}{!A}[\sigma]$ donnée, il suffit donc d'appliquer
+  chaque règle propositionnelle une seule fois sur une branche. Les
+  nouveaux préfixes ne proviennent que de
+  \iftag{prvBox}{$\TRule{\False}{\Box}$}{}\iftag{notprvBox,notprvDiamond}{}{
+    et }\iftag{prvDiamond}{$\TRule{\True}{\Diamond}$}{}
+  \iftag{notprvBox,notprvDiamond}{, règle qu'il suffit}{, règles qu'il suffit}
+  d'appliquer une seule fois par formule signée ; chaque application
+  crée un seul nouveau préfixe.
+  \iftag{prvBox}{$\TRule{\True}{\Box}$}{}\iftag{notprvBox,notprvDiamond}{}{
+    et }\iftag{prvDiamond}{$\TRule{\False}{\Diamond}$}{}
+  \iftag{notprvBox,notprvDiamond}{peut}{peuvent} devoir s'appliquer
+  plusieurs fois, mais une seule fois par préfixe utilisé. Comme il
+  n'y a qu'un nombre fini de nouveaux préfixes, la construction
+  aboutit en un nombre fini d'étapes à un arbre fermé ou à une
+  branche ouverte complète.
+
+  Dès qu'une branche ouverte complète est obtenue, la preuve du
+  \olref[cpl]{thm:tableau-completeness} donne un modèle explicite qui
+  satisfait l'ensemble initial des !!{formula}s préfixées. Pour décider une conséquence à partir d’un ensemble fini~$\Gamma$, si
+  $\Gamma \Entails !A$, il existe un !!{tableau} fermé et
+  $\Gamma \Proves !A$. Si la recherche d'un !!{tableau} fermé aboutit plutôt
+  à un !!{tableau} complet et ouvert, nous savons que
+  $\Gamma \Entails/ !A$ et pouvons construire un contre-modèle.
+\end{explain}
+
+\iftag{prvBox}{
+\begin{ex}
+  Nous savons que $\Proves/ \Box(p \lor q) \lif (\Box p \lor \Box
+  q)$. Commençons la construction d'un tableau :
+  \begin{oltableau}
+    [\pFmla{\False}{\Box(p \lor q) \lif (\Box p \lor \Box q)}{1},
+      just = \TAss, checked
+      [\pFmla{\True}{\Box(p \lor q)}{1},
+        just = {\TRule{\False}{\lif}[1]}, 
+        [\pFmla{\False}{\Box p \lor \Box q}{1},
+          just = {\TRule{\False}{\lif}[1]}, checked
+          [\pFmla{\False}{\Box p}{1},
+            just = {\TRule{\False}{\lor}[3]}, checked
+            [\pFmla{\False}{\Box q}{1},
+              just = {\TRule{\False}{\lor}[3]}, checked
+              [\pFmla{\False}{p}{1.1}, 
+                just = {\TRule{\False}{\Box}[4]}, checked
+                [\pFmla{\False}{q}{1.2}, 
+                  just = {\TRule{\False}{\Box}[5]}, checked
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  Le !!{tableau} n'est pas encore terminé. Examinons la seule ligne
+  non cochée : la !!{formula} préfixée
+  $\sFmla{\True}{\Box(p \lor q)}[1]$ à la ligne~$2$. La construction
+  systématique impose d'appliquer $\TRule{\True}{\Box}$ à chaque
+  préfixe successeur déjà utilisé sur cette branche, donc à $1.1$
+  et à $1.2$ :
+  \begin{oltableau}
+    [\pFmla{\False}{\Box(p \lor q) \lif (\Box p \lor \Box q)}{1},
+      just = \TAss, checked
+      [\pFmla{\True}{\Box(p \lor q)}{1},
+        just = {\TRule{\False}{\lif}[1]}, 
+        [\pFmla{\False}{\Box p \lor \Box q}{1},
+          just = {\TRule{\False}{\lif}[1]}, checked
+          [\pFmla{\False}{\Box p}{1},
+            just = {\TRule{\False}{\lor}[3]}, checked
+            [\pFmla{\False}{\Box q}{1},
+              just = {\TRule{\False}{\lor}[3]}, checked
+              [\pFmla{\False}{p}{1.1}, 
+                just = {\TRule{\False}{\Box}[4]}, checked
+                [\pFmla{\False}{q}{1.2}, 
+                  just = {\TRule{\False}{\Box}[5]}, checked
+                  [\pFmla{\True}{p \lor q}{1.1}, 
+                    just = {\TRule{\True}{\Box}[2]}
+                    [\pFmla{\True}{p \lor q}{1.2}, 
+                      just = {\TRule{\True}{\Box}[2]}
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  Les lignes 2, 8 et 9 ne sont pas encore cochées. Aucun nouveau
+  préfixe n'ayant été ajouté, appliquons $\TRule{\True}{\lor}$ aux
+  lignes~8 et~9 sur toutes les branches qui restent ouvertes :
+  \begin{oltableau}
+    [\pFmla{\False}{\Box(p \lor q) \lif (\Box p \lor \Box q)}{1},
+      just = \TAss, checked
+      [\pFmla{\True}{\Box(p \lor q)}{1},
+        just = {\TRule{\False}{\lif}[1]}, checked
+        [\pFmla{\False}{\Box p \lor \Box q}{1},
+          just = {\TRule{\False}{\lif}[1]}, checked
+          [\pFmla{\False}{\Box p}{1},
+            just = {\TRule{\False}{\lor}[3]}, checked
+            [\pFmla{\False}{\Box q}{1},
+              just = {\TRule{\False}{\lor}[3]}, checked
+              [\pFmla{\False}{p}{1.1}, 
+                just = {\TRule{\False}{\Box}[4]}, checked
+                [\pFmla{\False}{q}{1.2}, 
+                  just = {\TRule{\False}{\Box}[5]}, checked
+                  [\pFmla{\True}{p \lor q}{1.1}, 
+                    just = {\TRule{\True}{\Box}[2]}, checked
+                    [\pFmla{\True}{p \lor q}{1.2}, 
+                      just = {\TRule{\True}{\Box}[2]}, checked
+                      [\pFmla{\True}{p}{1.1},
+                        just = {\TRule{\True}{\lor}[8]}, checked, close
+                      ]
+                      [\pFmla{\True}{q}{1.1},
+                        just = {\TRule{\True}{\lor}[8]}, checked
+                        [\pFmla{\True}{p}{1.2},
+                          just = {\TRule{\True}{\lor}[9]}, checked]
+                        [\pFmla{\True}{q}{1.2},
+                          just = {\TRule{\True}{\lor}[9]}, checked, close]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  Il reste une branche ouverte, qui est complète. Elle définit un
+  modèle dont les mondes sont $W = \{1, 1.1, 1.2\}$, les seuls
+  préfixes de cette branche. Sa relation d'accessibilité est
+  $R = \{\tuple{1, 1.1}, \tuple{1, 1.2}\}$. Sa valuation est $V(p) =
+  \{1.2\}$, car la ligne~11 contient $\sFmla{\True}{p}[1.2]$, et
+  $V(q) = \{1.1\}$, car la ligne~10 contient
+  $\sFmla{\True}{q}[1.1]$. Le modèle est représenté dans la
+  \olref{fig:counter-Box} ; on peut vérifier qu'il réfute
+  $\Box(p \lor q) \lif (\Box p \lor \Box q)$.
+  \begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[modal]
+      \node[world] (w1) [label={[align=right]right:\mFalse{p}\\ \mFalse{q}}]{$1$}; 
+      \node[world] (w2) [label={[align=right]right:\mFalse{p}\\ \mTrue{q}},
+        above left=of w1]{$1.1$}; 
+      \node[world] (w3) [label={[align=right]right:\mTrue{p}\\ \mFalse{q}},
+        above right=of w1] {$1.2$};
+      \draw[->] (w1) to (w2);
+      \draw[->] (w1) to (w3);
+    \end{tikzpicture}
+  \end{center}
+  \caption{Un contre-modèle de $\Box(p \lor q) \lif (\Box p \lor \Box
+    q)$.}
+  \ollabel{fig:counter-Box}
+\end{figure}
+\end{ex}          
+}
+{
+\begin{ex}
+  Nous savons que $\Proves/ (\Diamond p \land \Diamond q) \lif \Diamond(p
+  \land q)$. Commençons la construction d'un tableau :
+  \begin{oltableau}
+    [\pFmla{\False}{(\Diamond p \land \Diamond q) \lif \Diamond(p \land q)}{1},
+      just = \TAss, checked
+      [\pFmla{\True}{\Diamond p \land \Diamond q}{1},
+        just = {\TRule{\False}{\lif}[1]}, checked
+        [\pFmla{\False}{\Diamond(p \land q)}{1},
+          just = {\TRule{\False}{\lif}[1]}
+          [\pFmla{\True}{\Diamond p}{1},
+            just = {\TRule{\True}{\land}[2]}, checked
+            [\pFmla{\True}{\Diamond q}{1},
+              just = {\TRule{\True}{\land}[2]}, checked
+              [\pFmla{\True}{p}{1.1}, 
+                just = {\TRule{\True}{\Diamond}[4]}, checked
+                [\pFmla{\True}{q}{1.2}, 
+                  just = {\TRule{\True}{\Diamond}[5]}, checked
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  Le !!{tableau} n'est pas encore terminé. Examinons la seule ligne
+  non cochée : la !!{formula} préfixée
+  $\sFmla{\False}{\Diamond(p \land q)}[1]$ à la ligne~$3$. La
+  construction systématique impose d'appliquer
+  $\TRule{\False}{\Diamond}$ à chaque préfixe successeur déjà utilisé
+  sur cette branche, donc à $1.1$ et à $1.2$ :
+  \begin{oltableau}
+    [\pFmla{\False}{(\Diamond p \land \Diamond q) \lif \Diamond(p \land q)}{1},
+      just = \TAss, checked
+      [\pFmla{\True}{\Diamond p \land \Diamond q}{1},
+        just = {\TRule{\False}{\lif}[1]}, checked
+        [\pFmla{\False}{\Diamond (p \land q)}{1},
+          just = {\TRule{\False}{\lif}[1]}
+          [\pFmla{\True}{\Diamond p}{1},
+            just = {\TRule{\True}{\land}[2]}, checked
+            [\pFmla{\True}{\Diamond q}{1},
+              just = {\TRule{\True}{\land}[2]}, checked
+              [\pFmla{\True}{p}{1.1}, 
+                just = {\TRule{\True}{\Diamond}[4]}, checked
+                [\pFmla{\True}{q}{1.2}, 
+                  just = {\TRule{\True}{\Diamond}[5]}, checked
+                  [\pFmla{\False}{p \land q}{1.1}, 
+                    just = {\TRule{\False}{\Diamond}[3]}
+                    [\pFmla{\False}{p \land q}{1.2}, 
+                      just = {\TRule{\False}{\Diamond}[3]}
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  Les lignes 3, 8 et 9 ne sont pas encore cochées. Aucun nouveau
+  préfixe n'ayant été ajouté, appliquons $\TRule{\False}{\land}$ aux
+  lignes~8 et~9 sur toutes les branches qui restent ouvertes :
+  \begin{oltableau}
+    [\pFmla{\False}{(\Diamond p \land \Diamond q) \lif \Diamond(p \land q)}{1},
+      just = \TAss, checked
+      [\pFmla{\True}{\Diamond p \land \Diamond q}{1},
+        just = {\TRule{\False}{\lif}[1]}, checked
+        [\pFmla{\False}{\Diamond(p \land q)}{1},
+          just = {\TRule{\False}{\lif}[1]}, checked
+          [\pFmla{\True}{\Diamond p}{1},
+            just = {\TRule{\True}{\land}[2]}, checked
+            [\pFmla{\True}{\Diamond q}{1},
+              just = {\TRule{\True}{\land}[2]}, checked
+              [\pFmla{\True}{p}{1.1}, 
+                just = {\TRule{\True}{\Diamond}[4]}, checked
+                [\pFmla{\True}{q}{1.2}, 
+                  just = {\TRule{\True}{\Diamond}[5]}, checked
+                  [\pFmla{\False}{p \land q}{1.1}, 
+                    just = {\TRule{\False}{\Diamond}[3]}, checked
+                    [\pFmla{\False}{p \land q}{1.2}, 
+                      just = {\TRule{\False}{\Diamond}[3]}, checked
+                      [\pFmla{\False}{p}{1.1},
+                        just = {\TRule{\False}{\land}[8]}, checked, close
+                      ]
+                      [\pFmla{\False}{q}{1.1},
+                        just = {\TRule{\False}{\land}[8]}, checked
+                        [\pFmla{\False}{p}{1.2},
+                          just = {\TRule{\False}{\land}[9]}, checked]
+                        [\pFmla{\False}{q}{1.2},
+                          just = {\TRule{\False}{\land}[9]}, checked, close]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  Il reste une branche ouverte, qui est complète. Elle définit un
+  modèle dont les mondes sont $W = \{1, 1.1, 1.2\}$, les seuls
+  préfixes de cette branche. Sa relation d'accessibilité est
+  $R = \{\tuple{1, 1.1}, \tuple{1, 1.2}\}$. Sa valuation est $V(p) =
+  \{1.1\}$, car la ligne~6 contient $\sFmla{\True}{p}[1.1]$, et
+  $V(q) = \{1.2\}$, car la ligne~7 contient
+  $\sFmla{\True}{q}[1.2]$. Le modèle est représenté dans la
+  \olref{fig:counter-Diamond} ; on peut vérifier qu'il réfute
+  $(\Diamond p \land \Diamond q) \lif \Diamond (p \land q)$.
+  \begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[modal]
+      \node[world] (w1) [label={[align=right]right:\mFalse{p}\\ \mFalse{q}}]{$1$}; 
+      \node[world] (w2) [label={[align=right]right:\mTrue{p}\\ \mFalse{q}},
+        above left=of w1]{$1.1$}; 
+      \node[world] (w3) [label={[align=right]right:\mFalse{p}\\ \mTrue{q}},
+        above right=of w1] {$1.2$};
+      \draw[->] (w1) to (w2);
+      \draw[->] (w1) to (w3);
+    \end{tikzpicture}
+  \end{center}
+  \caption{Un contre-modèle de $(\Diamond p \land \Diamond q) \lif
+    \Diamond (p \land q)$.}
+  \ollabel{fig:counter-Diamond}
+\end{figure}
+\end{ex}          
+}
+\begin{explain}
+Dans les deux exemples, les mondes du contre-modèle sont
+les trois préfixes de la branche ouverte complète. Pour
+déterminer la valuation d'une variable, on relève les
+préfixes auxquels cette variable figure avec le signe
+$\True$ sur la branche. Les formules signées au préfixe~$1$
+donnent alors la valeur des hypothèses et de la conclusion
+au monde initial.
+\end{explain}
+\end{document}

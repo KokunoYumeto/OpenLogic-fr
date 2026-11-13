@@ -1,0 +1,67 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: oconsis-ext-of-q-undec
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{oqn}
+
+\olsection{Les extensions \texorpdfstring{$\omega$}{ω}-cohérentes de $\Th{Q}$ sont indécidables}
+
+\begin{explain}
+La preuve que l'ensemble des théorèmes de~$\Th{Q}$ est
+complet parmi les ensembles effectivement énumérables
+utilisait le fait que tout !!{sentence} démontrable
+dans~$\Th{Q}$ est « vrai » dans les entiers naturels.
+La définition et le théorème suivants renforcent ce
+résultat en isolant la seule propriété de cette vérité
+dont la preuve avait besoin. Il n'est pourtant pas
+nécessaire de s'y attarder : nous obtiendrons bientôt
+un résultat plus fort. Nous présentons surtout celui-ci
+pour des raisons historiques. L'article original de
+Gödel employait la $\omega$-cohérence, mais son résultat
+a rapidement été renforcé en ne supposant que la
+cohérence ordinaire.
+\end{explain}
+
+\begin{defn}
+
+Une théorie~$\Th{T}$ est \emph{$\omega$-cohérente} si,
+pour tout !!{sentence} de la forme
+$\lexists[x][!A(x)]$, lorsque $\Th{T}$ démontre
+$\lnot !A(\num 0)$, $\lnot !A(\num 1)$,
+$\lnot !A(\num 2)$, \dots, elle ne démontre pas
+$\lexists[x][!A(x)]$.
+\end{defn}
+
+\begin{thm}\ollabel{thm:oconsis-q}
+Toute théorie~$\Th{T}$ qui contient~$\Th{Q}$ et qui
+est $\omega$-cohérente est indécidable.\footnote{Dans la source, le renvoi à ce théorème est attaché à la définition précédente; sa destination a été corrigée.}
+\end{thm}
+
+\begin{proof}
+Puisque $\Th{T}$ contient~$\Th{Q}$, elle représente
+les fonctions et les relations calculables.
+Reprenons la réduction précédente. Si $x\in K$,
+$\Th{T}$ démontre
+$\lexists[s][!A_T(\num x,\num x,s)]$.
+Réciproquement, supposons qu'elle démontre cet
+!!{sentence}. Si $x\notin K$, la machine de code~$x$
+ne s'arrête pas sur l'entrée~$x$. Comme $!A_T$
+représente la relation de Kleene~$T$,
+$\Th{Q}$, et donc $\Th{T}$, démontre chacune
+des !!{sentence}s
+$\lnot !A_T(\num x,\num x,\num 0)$,
+$\lnot !A_T(\num x,\num x,\num 1)$, \dots.
+En démontrant aussi l'existentielle, $\Th{T}$
+serait $\omega$-incohérente. Donc $x\in K$
+si et seulement si $\Th{T}$ démontre
+$\lexists[s][!A_T(\num x,\num x,s)]$.
+Le code de cet !!{sentence} se calcule à partir
+de~$x$; si $\Th{T}$ était décidable, $K$ le
+serait aussi, ce qui est impossible.
+\end{proof}
+
+\end{document}

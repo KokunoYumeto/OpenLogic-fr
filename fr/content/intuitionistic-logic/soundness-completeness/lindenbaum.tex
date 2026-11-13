@@ -1,0 +1,166 @@
+% Partie : intuitionistic-logic
+% Chapitre : soundness-completeness
+% Section : lindenbaum
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sc}{lin}
+
+\olsection{Lemme de Lindenbaum}
+
+Pour démontrer le théorème de complétude de la logique intuitionniste,
+on part de $\Gamma \Proves/ !A$ et l'on construit un modèle~$\mModel{M}$
+possédant un monde~$w$ tel que $\mSat{M}{\Gamma}[w]$
+et~$\mSat/{M}{!A}[w]$.
+
+En logique classique, la relation de !!{derivability} se ramène à la
+notion de cohérence : !!a{formula}~$!A$ est !!{derivable} d'un
+ensemble de !!{formula}s si et seulement si cet ensemble, augmenté
+de la négation de~$!A$, est incohérent. Ce raisonnement ne fonctionne
+pas en logique intuitionniste. Si $\Gamma \cup \{\lnot !A\}$
+est incohérent, l'introduction de la négation donne
+$\Gamma \Proves \lnot\lnot !A$. L'élimination de la double
+négation n'étant pas valide en général, cette déduction ne
+permet pas à elle seule de conclure $\Gamma \Proves !A$.
+
+Pour construire le modèle~$\mModel{M}$, il faut donc conserver la
+non-!!{derivability} de la !!{formula}~$!A$. Nous ne pouvons pas
+simplement utiliser un ensemble complet
+$\Gamma^* \supseteq \Gamma$ pour construire $\mModel{M}$ : dans tout ensemble complet
+$\Gamma^*$, on a $\Gamma^* \Proves !A \lor \lnot !A$.
+
+Au lieu d'un ensemble complet~$\Gamma^*$, utilisons la notion
+d'ensemble premier de formules.
+
+\begin{defn}\ollabel{defn:prime}
+  Un ensemble de !!{formula}s~$\Gamma$ est \emph{premier} si et
+  seulement si :
+  \begin{enumerate}
+  \item\ollabel{defn:prime1} $\Gamma$ est cohérent, c'est-à-dire
+    $\Gamma \Proves/ \lfalse$ ;
+  \item\ollabel{defn:prime2} si $\Gamma \Proves !A$, alors
+    $!A \in \Gamma$ ;
+  \item\ollabel{defn:prime3} si $!A \lor !B \in \Gamma$, alors
+    $!A \in \Gamma$ ou $!B \in \Gamma$.
+  \end{enumerate}
+\end{defn}
+
+\begin{lem}[Lemme de Lindenbaum]
+  \ollabel{lem:lindenbaum} Si $\Gamma \Proves/ !A$, il existe
+  $\Gamma^* \supseteq \Gamma$ tel que $\Gamma^*$ soit premier et
+  $\Gamma^* \Proves/ !A$.
+\end{lem}
+
+\begin{proof}
+  Soit $!B_1 \lor !C_1$, $!B_2 \lor !C_2$, \dots, une énumération
+  de toutes les !!{formula}s de la forme~$!B \lor !C$. Nous allons
+  définir une suite croissante d'ensembles de !!{formula}s~$\Gamma_n$
+  où chaque $\Gamma_{n+1}$ s'obtient de $\Gamma_n$ en ajoutant au
+  plus une nouvelle !!{formula}. L'ensemble $\Gamma^*$ sera la
+  réunion de tous les~$\Gamma_n$. Le choix des nouvelles
+  !!{formula}s doit rendre $\Gamma^*$ premier tout en maintenant
+  $\Gamma^* \Proves/ !A$. À chaque étape, cherchons donc la première
+  disjonction~$!B_i \lor !C_i$ telle que :
+  \begin{enumerate}
+  \item\ollabel{gamma-1} $\Gamma_n \Proves !B_i \lor !C_i$ ;
+  \item\ollabel{gamma-2} $!B_i \notin \Gamma_n$ et
+    $!C_i \notin \Gamma_n$.
+  \end{enumerate}
+  Nous ajoutons à $\Gamma_n$ soit $!B_i$ si
+  $\Gamma_n \cup \{!B_i\} \Proves/ !A$, soit $!C_i$ sinon. Il faudra
+  montrer que ce choix convient. Définissons pour l'instant $i(n)$
+  comme le plus petit $i$ satisfaisant \olref{gamma-1} et
+  \olref{gamma-2}.
+
+  Posons $\Gamma_0 = \Gamma$ et
+  \[
+  \Gamma_{n+1} = \begin{cases}
+    \Gamma_n \cup \{!B_{i(n)}\} &
+    \text{si $\Gamma_n \cup \{!B_{i(n)}\} \Proves/ !A$} \\
+    \Gamma_n \cup \{!C_{i(n)}\} & \text{sinon}
+    \end{cases}
+  \]
+  Si $i(n)$ n'est pas défini, c'est-à-dire si, dès que
+  $\Gamma_n \Proves !B \lor !C$, on a $!B \in \Gamma_n$ ou
+  $!C \in \Gamma_n$, nous posons $\Gamma_{n+1} = \Gamma_n$.
+  Enfin, posons $\Gamma^* = \bigcup_{n=0}^\infty \Gamma_n$.
+
+  Montrons d'abord que pour tout $n$, $\Gamma_n \Proves/ !A$.
+  Nous raisonnons par récurrence sur~$n$. Pour $n = 0$, cela résulte
+  de l'hypothèse du lemme, $\Gamma \Proves/ !A$. Pour $n\ge0$,
+  supposons $\Gamma_n \Proves/ !A$ et montrons
+  $\Gamma_{n+1} \Proves/ !A$. Si $i(n)$ n'est pas défini, alors
+  $\Gamma_{n+1} = \Gamma_n$ et il n'y a rien à démontrer. Supposons
+  donc $i(n)$ défini et, pour simplifier, écrivons $i = i(n)$.
+
+  Prouvons la contraposée. Supposons $\Gamma_{n+1} \Proves !A$.
+  Par construction, $\Gamma_{n+1} = \Gamma_n \cup \{!B_i\}$ si
+  $\Gamma_n \cup \{!B_i\} \Proves/ !A$ ; sinon,
+  $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\}$. Le premier cas est
+  impossible, puisqu'il donnerait $\Gamma_{n+1} \Proves/ !A$.
+  Il s'ensuit que $\Gamma_n \cup \{!B_i\} \Proves !A$ et
+  $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\}$. Par la définition de
+  $i(n)$, nous avons $\Gamma _n \Proves !B_i \lor !C_i$.
+  Nous avons aussi $\Gamma_n \cup \{!B_i\} \Proves !A$ et
+  $\Gamma_{n+1} = \Gamma_n \cup \{!C_i\} \Proves !A$.
+  L'élimination de la disjonction donne donc $\Gamma_n \Proves !A$,
+  ce qui prouve la contraposée.
+
+  Si $\Gamma^* \Proves !A$, il existerait un sous-ensemble fini
+  $\Gamma' \subseteq \Gamma^*$ tel que $\Gamma' \Proves !A$.
+  Chaque $!D \in \Gamma'$ appartient à un certain $\Gamma_i$ pour un
+  indice~$i$.
+  Prenons $n$ plus grand que tous ces indices. Puisque
+  $\Gamma_i \subseteq \Gamma_n$ lorsque $i \le n$, nous avons
+  $\Gamma' \subseteq \Gamma_n$. Mais alors $\Gamma_n \Proves !A$,
+  contrairement à $\Gamma_n \Proves/ !A$.
+
+  Enfin, vérifions que $\Gamma^*$ est premier, c'est-à-dire qu'il
+  satisfait \olref{defn:prime1}, \olref{defn:prime2} et
+  \olref{defn:prime3} de la \olref{defn:prime}.
+
+  D'abord, $\Gamma^* \Proves/ !A$ entraîne que $\Gamma^*$ est
+  cohérent : de l'absurde on pourrait en effet déduire la formule visée.
+  Ainsi, \olref{defn:prime1} est vérifiée.
+
+  Montrons maintenant que si $\Gamma^* \Proves !B \lor !C$, alors
+  $!B \in \Gamma^*$ ou $!C \in \Gamma^*$. Cela établit
+  \olref{defn:prime3}, puisque $!B \lor !C \in \Gamma^*$ implique
+  $\Gamma^* \Proves !B \lor !C$. Supposons donc
+  $\Gamma^* \Proves !B \lor !C$, mais $!B \notin \Gamma^*$ et
+  $!C \notin \Gamma^*$. Comme $\Gamma^* \Proves !B \lor !C$,
+  on a $\Gamma_n \Proves !B \lor !C$ pour un certain~$n$.
+  La disjonction $!B \lor !C$ figure dans l'énumération, disons
+  sous la forme $!B_j \lor !C_j$. Cette disjonction
+  $!B_j \lor !C_j$ satisfait les conditions de
+  la définition de $i(n)$ : nous avons
+  $\Gamma_n \Proves !B_j \lor !C_j$, tandis que
+  $!B_j \notin \Gamma_n$ et $!C_j \notin \Gamma_n$.
+  Chaque fois que nous choisissons une disjonction
+  $!B_i \lor !C_i$, elle cesse définitivement de satisfaire ces
+  conditions, puisque nous ajoutons $!B_i$ ou $!C_i$. Comme les
+  ensembles $\Gamma_m$ sont croissants, $!B_j \lor !C_j$ demeure
+  candidate à chaque étape $m\ge n$ sous notre hypothèse.
+  Par minimalité, $i(m)\le j$. Chacun des $j-1$ indices strictement
+  inférieurs à~$j$ peut être choisi au plus une fois. Après au plus
+  $j-1$ de ces choix, une étape~$m$ satisfait
+  donc $j = i(m)$. Mais alors $!B \in \Gamma_{m+1}$ ou
+  $!C \in \Gamma_{m+1}$, contrairement à l'hypothèse
+  $!B \notin \Gamma^*$ et $!C \notin \Gamma^*$.
+
+  Enfin, supposons $\Gamma^* \Proves !B$. Alors
+  $\Gamma^* \Proves !B \lor !B$. Nous venons de montrer que si
+  $\Gamma^* \Proves !B \lor !B$, alors $!B \in \Gamma^*$.
+  Ainsi, $\Gamma^*$ satisfait \olref{defn:prime2} de la
+  \olref{defn:prime}.
+\end{proof}
+
+\begin{prob}
+Montrez que si $\Gamma \Proves/ \bot$, alors $\Gamma$ est cohérent
+en logique classique : il existe une valuation rendant vraies toutes
+les formules de~$\Gamma$.
+\end{prob}
+
+\end{document}

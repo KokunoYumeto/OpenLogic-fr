@@ -1,0 +1,138 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ord-arithmetic}{mult}
+\olsection{Multiplication ordinale}
+
+Passons à la multiplication ordinale, que nous aborderons
+à peu près comme l'addition. Supposons donc que nous
+voulions multiplier $\alpha$ par~$\beta$. On peut
+imaginer une grille rectangulaire, de largeur $\alpha$
+et de hauteur $\beta$ : le produit de $\alpha$ et de
+$\beta$ est obtenu en parcourant chaque rangée, puis
+la suivante\ldots jusqu'à avoir parcouru la grille
+entière. Autrement dit, le produit de $\alpha$ et
+de $\beta$ s'obtient en remplaçant \emph{chaque}
+élément de $\beta$ par une copie de $\alpha$.
+
+Pour formaliser cette idée, employons simplement
+l'ordre lexicographique inverse sur le produit
+cartésien de $\alpha$ et de $\beta$ :
+
+\begin{defn}
+Pour tous ordinaux $\alpha, \beta$, leur produit est
+$\alpha \ordtimes \beta =
+\ordtype{\alpha \times \beta, \rlexless}$.
+\end{defn}
+\noindent
+Il nous faut à nouveau vérifier que cette définition
+est correcte :
+
+\begin{lem}\ollabel{ordtimeslessiswo}
+Pour tous ordinaux $\alpha$ et $\beta$,
+$\tuple{\alpha \times \beta, \rlexless}$
+est un bon ordre.
+\end{lem}
+
+\begin{proof}
+Exactement comme pour le \olref[add]{ordsumlessiswo}.
+\end{proof}
+\noindent
+Il n'est pas difficile non plus de démontrer que la
+multiplication satisfait les équations suivantes :
+
+\begin{lem}\ollabel{ordtimesrecursion}
+Pour tous ordinaux $\alpha, \beta$ :
+\begin{align*}
+	\alpha \ordtimes 0 &= 0\\
+	\alpha \ordtimes (\beta \ordplus 1)
+	&= (\alpha \ordtimes \beta) \ordplus \alpha\\
+	\alpha \ordtimes \beta
+	&= \bigcup_{\delta < \beta}
+	(\alpha \ordtimes \delta)
+	&& \text{si $\beta$ est un ordinal limite}.\footnotemark
+\end{align*}
+\footnotetext{Note de l'édition française : la borne supérieure stricte de l'original donnerait $1$ pour $0\ordtimes\beta$ lorsque $\beta$ est limite. L'union des produits antérieurs vaut $0$, conformément à la définition par produit cartésien, et convient aussi aux facteurs non nuls.}\end{lem}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+Comme pour l'addition, nous aurions d'ailleurs pu
+définir la multiplication ordinale à l'aide de ces
+équations de récursion, sans en donner directement
+une définition. Comme pour l'addition encore,
+certaines propriétés nous sont familières :
+
+\begin{lem}\ollabel{ordinalmultiplicationisnice}
+Si $\alpha, \beta, \gamma$ sont des ordinaux, alors :
+\begin{enumerate}
+	\item\ollabel{ordtimes1}
+	si $\alpha \neq 0$ et $\beta < \gamma$,
+	alors $\alpha \ordtimes \beta <
+	\alpha \ordtimes \gamma$ ;
+	\item\ollabel{ordtimes2}
+	si $\alpha \neq 0$ et
+	$\alpha \ordtimes \beta =
+	\alpha\ordtimes\gamma$, alors $\beta = \gamma$ ;
+	\item\ollabel{ordtimes3}
+	$\alpha \ordtimes (\beta \ordtimes \gamma)
+	= (\alpha \ordtimes \beta) \ordtimes \gamma$ ;
+	\item\ollabel{ordtimes4}
+	si $\alpha \leq \beta$, alors
+	$\alpha \ordtimes \gamma
+	\leq \beta \ordtimes \gamma$ ;
+	\item\ollabel{ordtimes5}
+	$\alpha \ordtimes (\beta \ordplus \gamma)
+	= (\alpha \ordtimes \beta)
+	\ordplus (\alpha\ordtimes \gamma)$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+
+Vous pouvez démontrer d'autres résultats, ou les
+chercher dans la littérature, à votre guise.
+Mais, compte tenu de la
+\olref[ord-arithmetic][add]{ordsumnotcommute},
+le résultat suivant ne devrait pas surprendre :
+
+\begin{prop}
+La multiplication ordinale n'est pas commutative :
+$2 \ordtimes \omega = \omega <
+\omega \ordtimes 2$.
+\end{prop}
+
+\begin{proof}
+$2 \ordtimes \omega =
+\supstrict_{n < \omega}(2\ordtimes n)
+= \omega \in
+\supstrict_{n < \omega}(\omega \ordplus n)
+= \omega \ordplus \omega
+= \omega \ordtimes 2$.
+\end{proof}
+\noindent
+L'explication intuitive est, là encore, assez simple.
+Pour calculer $2 \ordtimes \omega$, on remplace
+chaque nombre naturel par deux objets. On obtiendrait
+le même type d'ordre en insérant dans les naturels
+tous les nombres «~demi-entiers~», autrement dit
+en considérant l'ordre usuel sur
+$\Setabs{\nicefrac{n}{2}}{n \in \omega}$.
+Sous cette forme, il est clair que le type d'ordre
+est celui de $\omega$ lui-même. Pour calculer
+$\omega \ordtimes 2$, en revanche, on place deux
+copies de $\omega$ l'une après l'autre.
+
+\begin{prob}
+Démontrez le
+\olref[sth][ord-arithmetic][mult]{ordtimeslessiswo},
+le \olref[sth][ord-arithmetic][mult]{ordtimesrecursion}
+et le
+\olref[sth][ord-arithmetic][mult]{ordinalmultiplicationisnice}.
+\end{prob}
+
+\end{document}

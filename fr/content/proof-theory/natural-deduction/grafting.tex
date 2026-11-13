@@ -1,0 +1,118 @@
+% Partie : théorie de la démonstration
+% Chapitre : déduction naturelle
+% Section : greffe
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nat}{gra}
+
+\olsection{Greffe de preuves}
+
+Les !!{proof}s de \Log{N1c} et de~\Log{N1i} établissent des
+!!{formula}s~$!A$ à partir d'hypothèses~$!B$.
+Supposons que $!B$ possède elle-même une preuve.
+Comment combiner la preuve de~$!B$ avec celle de $!A$ à partir
+de~$!B$ pour obtenir une preuve de~$!A$ qui ne dépende plus
+de cette hypothèse~$!B$ ?
+
+Une possibilité consiste à décharger l'hypothèse~$!B$ dans la
+preuve de~$!A$ par~\Intro{\lif}. On combine ensuite la preuve
+de~$!B \lif !A$ ainsi obtenue avec celle de~$!B$ :
+\[
+\AxiomC{$\Discharge{!B}{x}$}
+\DeduceC{$!A$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!B \lif !A$}
+\AxiomC{}
+\DeduceC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!A$}
+\DisplayProof
+\]
+Cette construction est simple, mais peu élégante :
+pourquoi introduire $\lif$ pour l'éliminer aussitôt ?
+Il devrait être possible d'éviter ce détour par $!B \lif !A$.
+Le théorème de normalisation affirme précisément que de tels
+détours peuvent toujours être évités.
+
+Dans \Log{N1c} et~\Log{N1i}, nous pouvons facilement éviter celui-ci :
+il suffit de remplacer les hypothèses~$!B^x$ par la preuve entière
+de~$!B$. Cette \emph{greffe} d'une preuve sur les hypothèses d'une
+autre sera utile ; donnons-en la définition.
+
+\begin{defn}
+Si $\delta_1$ est une preuve de~$!A$ dans \Log{N1c}, ou dans
+\Log{N1i}, à partir de l'hypothèse ouverte~$!B^x$, et si $\delta_2$
+est une preuve de~$!B$ dans le même système, alors
+$\Subst{\delta_1}{\delta_2}{!B^x}$ s'obtient en remplaçant
+chaque occurrence non déchargée de~$!B^x$ dans~$\delta_1$
+par~$\delta_2$.
+\end{defn}
+
+Il faut prendre deux précautions. Des formules d'hypothèse
+différentes ne doivent pas porter la même étiquette, et aucune
+étiquette de décharge de~$\delta_1$ ne doit capturer une hypothèse
+ouverte de~$\delta_2$. Un renommage préalable des étiquettes
+permet de satisfaire ces conditions. De plus, aucune hypothèse
+ouverte de~$\delta_2$ ne doit contenir une constante propre
+de~$\delta_1$. On peut renommer les constantes propres
+de~$\delta_1$ pour satisfaire cette dernière condition.
+
+Sous ces précautions, $\Subst{\delta_1}{\delta_2}{!B^x}$
+est une preuve correcte. Ses hypothèses ouvertes sont celles
+de $\delta_1$ autres que la classe remplacée, auxquelles s'ajoutent
+celles de~$\delta_2$ lorsque la greffe est effectivement utilisée.
+Le fait que les deux preuves soient des sous-preuves d'une même
+preuve garantit la compatibilité de leurs formules étiquetées,
+mais ne dispense pas de prévenir la capture par une décharge.
+
+Une définition correspondante s'applique à \Log{N2c} et~\Log{N2i},
+avec les mêmes précautions de renommage.
+
+\begin{defn}
+Si $\delta_1$ est une preuve dans \Log{N2c}, ou dans \Log{N2i},
+de~$x:!B, \Gamma_1 \Sequent !A$, et si $\delta_2$ est une preuve
+dans \Log{N2c}, respectivement \Log{N2i},
+de~$\Gamma_2 \Sequent !B$, alors
+$\Subst{\delta_1}{\delta_2}{x:!B}$ s'obtient en remplaçant
+par~$\delta_2$ les axiomes $x:!B \Sequent !B$ dont l'hypothèse
+reste ouverte dans~$\delta_1$ entière. On recalcule les contextes
+au-dessous des feuilles remplacées par les mêmes unions et décharges
+qu'auparavant. Les autres contextes sont conservés.
+\end{defn}
+
+\begin{prop}
+Si $\delta_1 \Proves x:!B, \Gamma_1 \Sequent !A$
+et $\delta_2 \Proves \Gamma_2 \Sequent !B$, alors
+$\Subst{\delta_1}{\delta_2}{x:!B} \Proves
+\Gamma_1, \Gamma_2 \Sequent !A$,
+pourvu qu'aucune constante propre de~$\delta_1$ n'apparaisse
+dans~$\Gamma_2$, et que les étiquettes aient été renommées
+pour prévenir toute capture par une décharge.
+Le contexte~$\Gamma_1$ désigne ici les hypothèses autres que
+la classe remplacée.
+\end{prop}
+
+\begin{proof}
+Par récurrence sur $\pheight{\delta_1}$.
+Une feuille désignée devient la preuve à greffer. Les autres
+feuilles sont conservées. À chaque règle, le contexte est donné
+par l'union des contextes des prémisses et les décharges prévues.
+Les renommages préservent les décharges et les constantes propres.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

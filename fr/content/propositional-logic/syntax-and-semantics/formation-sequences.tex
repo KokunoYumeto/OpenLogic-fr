@@ -136,25 +136,25 @@ $j,k < n$ tels que l'un des cas suivants se présente :
     \tagitem{prvIf}{$!A_n \ident (!A_j \lif !A_k)$.}{}%
     \tagitem{prvIff}{$!A_n \ident (!A_j \liff !A_k)$.}{}%
 \end{enumerate}
-Raisonnons par cas. Si $!A_n$ est atomique, alors
-$!A_n \in \Frm[L_0]$. Supposons plutôt que
-$!A \ident (!A_j \land !A_k)$. D'après le
-\olref[pl][syn][fseq]{lem:fseq-init},
-$\tuple{!A_0,\dotsc,!A_j}$ et $\tuple{!A_0,\dotsc,!A_k}$
-sont des suites de formation de $!A_j$ et de~$!A_k$ respectivement.
-Ce sont des préfixes propres de la suite de formation de~$!A$ :
-leurs derniers indices $j$ et $k$ sont strictement inférieurs
-à~$n$. L'hypothèse de récurrence donne donc
-$!A_j,!A_k \in \Frm[L_0]$. Par définition d'une !!{formula},
-$(!A_j \land !A_k)$ appartient lui aussi à $\Frm[L_0]$.
-Les autres cas se traitent de la même manière.
+Si $!A_n$ est atomique, alors $!A_n \in \Frm[L_0]$. C'est en
+particulier le seul cas possible lorsque $n=0$. Dans les autres cas,
+d'après le \olref[pl][syn][fseq]{lem:fseq-init},
+$\tuple{!A_0,\dotsc,!A_j}$ est une suite de formation de $!A_j$.
+Si le connecteur est binaire, $\tuple{!A_0,\dotsc,!A_k}$ est de
+même une suite de formation de $!A_k$. Ces préfixes ont pour derniers
+indices $j$ et, le cas échéant, $k$, strictement inférieurs à~$n$.
+Les constituants immédiats de $!A_n$ appartiennent donc à $\Frm[L_0]$
+par l'hypothèse de récurrence. Ainsi, si $!A_n \ident (!A_j \land !A_k)$,
+la clause de formation de la conjonction donne
+$(!A_j \land !A_k)\in\Frm[L_0]$. Les autres clauses s'appliquent de même,
+avec un seul constituant dans le cas de la négation. Comme
+$!A\ident !A_n$, on obtient bien $!A\in\Frm[L_0]$.
 \end{proof}
-\begin{editorial}
-La suite indexée de $0$ à $n$ a $n+1$ termes. La source confond
-par endroits longueur et dernier indice. La preuve ci-dessus
-utilise uniformément le dernier indice pour la récurrence.
-Le symbole isolé $\equiv$ de la source y est également remplacé
-par le symbole d'identité syntaxique $\ident$.
-\end{editorial}
+%
+%
+%
+%
+%
+%
 
 \end{document}

@@ -1,0 +1,79 @@
+% Partie : applied-modal-logics
+% Chapitre : epistemic-logic
+% Section : properties-accessibility
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{el}{acc}
+
+\olsection{Relations d'accessibilité et principes épistémiques}
+
+À partir de ce que nous savons déjà de la correspondance entre
+formules et cadres en logique modale normale, nous pouvons examiner
+les !!{formula}s caractéristiques sous une interprétation épistémique.
+Nous avons indiqué que les logiques épistémiques sont souvent
+interprétées dans S5. Voyons donc comment divers principes épistémiques
+sont représentés et quelles conditions sur les cadres leur correspondent.
+
+Rappelons qu'en logique modale normale, différentes !!{formula}s
+modales caractérisent différentes propriétés des relations
+d'accessibilité. Le tableau suivant présente quelques principes
+épistémiques et les conditions correspondantes.
+
+\begin{table}[t]
+    \begin{tabular}{| p{\dimexpr.5\linewidth-2\tabcolsep-2\arrayrulewidth-.5\doublerulesep\relax} || p{\dimexpr.5\linewidth-2\tabcolsep-2\arrayrulewidth-.5\doublerulesep\relax} |}
+      \hline
+      {\emph{Si $R$ est \dots}} & {\emph{alors \dots est vraie en tout monde de~$\mModel{M}$ :}} \\
+      \hline \hline
+
+      quelconque & $\Knows (p \lif q) \lif (\Knows p \lif \Knows q)$
+      \hfill \newline{(Clôture)} \\
+      \hline
+      \emph{réflexive} : $\forall w Rww$
+      & $\Knows p \lif p$ \hfill \newline{(Vérité de la connaissance)} \\
+      \hline
+      \emph{transitive} : \newline
+      $\forall u \forall v \forall w ((Ruv \land Rvw) \lif Ruw)$ &
+      $\Knows p \lif \Knows \Knows p$ \hfill
+           \newline{(Introspection positive)} \\
+      \hline
+      \emph{euclidienne} : \newline
+      $\forall w \forall u \forall v ((Rwu \land Rwv) \lif Ruv)$ &
+      $\lnot \Knows p \lif \Knows \neg \Knows p$ \hfill
+        \newline{(Introspection négative)} \\
+      \hline
+    \end{tabular}
+    \caption{Quatre principes épistémiques.}
+    \ollabel{tab:four}
+  \end{table}
+
+Le principe de vérité de la connaissance, qui correspond à l'axiome
+$T$, est souvent considéré comme le moins controversé de ces
+principes : si !!a{formula} est connue, elle doit être vraie. La clôture ainsi que
+l'introspection positive et l'introspection négative sont beaucoup
+plus discutées.
+
+La clôture, qui correspond à l'axiome $K$, exprime l'idée qu'un agent
+connaissant une implication et son antécédent en connaît aussi le
+conséquent. Cela peut paraître plausible dans certains cas. Par
+exemple, je peux savoir que, si je suis à Victoria, je suis sur
+l'île de Vancouver. Sauf à envisager d'étranges scénarios sceptiques,
+je sais que je suis à Victoria ; je devrais donc savoir aussi que
+je suis sur l'île de Vancouver. Dans ce cas, la clôture logique de
+mes connaissances peut sembler assez intuitive. En revanche, nous
+ne tirons pas toujours toutes les conséquences de ce que nous savons,
+ce qui peut rendre le principe moins intuitif dans d'autres cas.
+
+L'introspection positive, parfois appelée principe KK, affirme que,
+si je sais quelque chose, je sais que je le sais. C'est le pendant
+épistémique de l'axiome 4. L'introspection négative affirme que,
+si je \emph{ne sais pas} quelque chose, je sais que je ne le sais pas ;
+c'est le pendant de l'axiome 5. Ces deux principes semblent admettre des contre-exemples assez
+ordinaires, dans lesquels je ne suis pas certain de savoir ou non
+quelque chose que je sais en fait.
+%
+%
+
+\end{document}

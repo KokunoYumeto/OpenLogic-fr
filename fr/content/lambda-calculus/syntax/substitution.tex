@@ -1,0 +1,247 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: substitution
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{sub}
+\olsection{Substitution}
+
+\begin{explain}
+Les variables libres renvoient à des variables
+de l'environnement. Il est donc naturel de
+remplacer une variable libre par une valeur
+particulière. Par exemple, on peut vouloir
+remplacer $f$ dans $\lambd[x][f x]$ par
+un terme donné, tel que la fonction identité
+$\lambd[y][y]$. On obtient alors
+$\lambd[x][(\lambd[y][y]) x]$. Cette opération,
+qui remplace des variables libres par des
+lambda-termes, s'appelle \emph{substitution}.
+\end{explain}
+
+\begin{defn}[Substitution] \ollabel{defn:substitution}
+La \emph{substitution} d'un terme $N$ à une
+variable $x$ dans un terme $M$,
+$\Subst{M}{N}{x}$, est définie inductivement
+par :
+\begin{enumerate}
+  \item $\Subst{x}{N}{x} = N$.
+    \ollabel{defn:substitution-1}
+  \item $\Subst{y}{N}{x} = y$ si $x \neq y$.
+    \ollabel{defn:substitution-2}
+  \item $\Subst{PQ}{N}{x} =
+    (\Subst{P}{N}{x})(\Subst{Q}{N}{x})$.
+    \ollabel{def:substitution-3}
+  \item $\Subst{(\lambd[y][P])}{N}{x} =
+    \lambd[y][\Subst{P}{N}{x}]$ si
+    $x \neq y$ et $y \notin \FV{N}$;
+    dans les autres cas, la substitution
+    n'est pas définie.
+    \ollabel{defn:substitution-4}
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+Dans la \olref{defn:substitution}\olref{defn:substitution-4},
+la condition $x \neq y$ empêche de remplacer
+par~$N$ les occurrences \emph{liées} de la
+variable~$x$ dans~$M$. Par exemple, si l'on
+considère la substitution
+$\Subst{\lambd[x][x]}{y}{x}$, son résultat
+devrait être $\lambd[x][x]$, et non
+$\lambd[x][y]$.
+
+Quand on substitue $N$ à~$x$ dans
+$\lambd[y][P]$, on exige aussi que
+$y \notin \FV{N}$. Par exemple, on ne peut
+pas substituer $y$ à $x$ dans
+$\lambd[y][x]$, c'est-à-dire former
+$\Subst{\lambd[y][x]}{y}{x}$ selon la règle
+ci-dessus : on obtiendrait
+$\lambd[y][y]$, terme qui désigne la
+fonction renvoyant directement l'argument
+qu'elle reçoit. Or $\lambd[y][x]$ désigne
+une fonction qui renvoie toujours le terme~$x$
+(ou la valeur désignée par $x$). Le résultat
+recherché serait donc une fonction qui reçoit
+un argument, l'ignore et renvoie la variable
+d'environnement~$y$. Pour construire ce résultat
+correctement, il faudrait d'abord « renommer »
+la variable liée~$y$.
+\end{explain}
+
+\begin{explain}
+La définition donne une opération partielle. Lorsque le lieur
+porte le nom~$x$, la quatrième clause ne s'applique pas, même
+si l'opération usuelle sur les occurrences libres laisserait
+l'abstraction intacte. Lorsqu'un lieur risque de capturer une
+variable libre de~$N$, il faut d'abord renommer ce lieur.
+La section suivante expliquera comment choisir un représentant
+pour lequel la substitution est définie.
+\end{explain}
+
+\begin{prob}
+Quels sont les résultats des substitutions
+suivantes, lorsqu'elles sont définies?
+\begin{enumerate}
+  \item $\Subst{\lambd[y][x(\lambd[w][vwx])]}{(uv)}{x}$
+  \item $\Subst{\lambd[y][x(\lambd[x][x])]}{(\lambd[y][xy])}{x}$
+  \item $\Subst{y(\lambd[v][xv])}{(\lambd[y][vy])}{x}$
+\end{enumerate}
+\end{prob}
+
+\begin{thm} \ollabel{thm:notinfv}
+Si $x \notin \FV{M}$, alors
+$\FV{\Subst{M}{N}{x}} = \FV{M}$,
+pourvu que la substitution soit définie.
+\end{thm}
+
+\begin{proof}
+Raisonnons par induction sur la formation de $M$.
+\begin{enumerate}
+\item $M$ est une variable : exercice.
+\item $M$ est de la forme $(PQ)$ : exercice.
+\item $M$ est de la forme $\lambd[y][P]$.
+  Puisque $\Subst{\lambd[y][P]}{N}{x}$ est
+  définie, elle vaut
+  $\lambd[y][\Subst{P}{N}{x}]$.
+  La substitution $\Subst{P}{N}{x}$ est donc
+  définie; de plus, $x \neq y$ et
+  $x \notin \FV{P}$. Ainsi :
+  \begin{align*}
+    \FV{\Subst{\lambd[y][P]}{N}{x}}
+    &= \FV{\lambd[y][\Subst{P}{N}{x}]}
+       && \text{par \olref{defn:substitution-4}}\\
+    &= \FV{\Subst{P}{N}{x}} \setminus \{y\}
+       && \text{par la \olref[fv]{def:fv}\olref[fv]{def:fv2}}\\
+    &= \FV{P} \setminus \{y\}
+       && \text{par l'hypothèse d'induction}\\
+    &= \FV{\lambd[y][P]}
+       && \text{par la \olref[fv]{def:fv}\olref[fv]{def:fv2}}.
+  \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{explain}
+Dans le cas de l'abstraction, $x$ et $y$ sont distinctes.
+L'absence de~$x$ parmi les variables libres de l'abstraction
+entraîne alors son absence parmi celles du corps~$P$.
+\end{explain}
+
+\begin{prob}
+Compléter la preuve du
+\olref[lam][syn][sub]{thm:notinfv}.
+\end{prob}
+
+\begin{thm} \ollabel{thm:infv}
+Si $x \in \FV{M}$, alors
+$\FV{\Subst{M}{N}{x}} =
+(\FV{M} \setminus \{x\}) \cup \FV{N}$,
+pourvu que la substitution soit définie.
+\end{thm}
+
+\begin{proof}
+Raisonnons par induction sur la formation de $M$.
+\begin{enumerate}
+\item $M$ est une variable : exercice.
+\item $M$ est de la forme $PQ$. Puisque
+  $\Subst{(PQ)}{N}{x}$ est définie, elle vaut
+  $(\Subst{P}{N}{x})(\Subst{Q}{N}{x})$,
+  les deux substitutions étant définies.
+  Comme $x \in \FV{PQ}$, on a soit
+  $x \in \FV{P}$, soit $x \in \FV{Q}$,
+  soit les deux. La suite est laissée
+  en exercice.
+\item $M$ est de la forme $\lambd[y][P]$.
+  Puisque $\Subst{\lambd[y][P]}{N}{x}$ est
+  définie, elle vaut
+  $\lambd[y][\Subst{P}{N}{x}]$,
+  avec $\Subst{P}{N}{x}$ définie,
+  $x \neq y$ et $y \notin \FV{N}$.
+  Puisque $x \in \FV{\lambd[y][P]}$,
+  on a aussi $x \in \FV{P}$. Dès lors :
+  \begin{align*}
+    \FV{\Subst{(\lambd[y][P])}{N}{x}}
+    &= \FV{\lambd[y][\Subst{P}{N}{x}]}\\
+    &= \FV{\Subst{P}{N}{x}} \setminus \{y\}\\
+    &= ((\FV{P} \setminus \{x\}) \cup \FV{N})
+       \setminus \{y\}
+       && \text{par l'hypothèse d'induction}\\
+    &= (\FV{P} \setminus \{x,y\}) \cup \FV{N}
+       && \text{car }y \notin \FV{N}\\
+    &= (\FV{\lambd[y][P]} \setminus \{x\})
+       \cup \FV{N}.
+  \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{explain}
+Dans le calcul sous l'abstraction, $x$ est retirée des variables
+libres du corps lors de la substitution. Le lieur retire
+ensuite~$y$. Comme $y\notin\FV{N}$, il ne retire aucune des
+variables libres apportées par~$N$.
+\end{explain}
+
+\begin{prob}
+Compléter la preuve du
+\olref[lam][syn][sub]{thm:infv}.
+\end{prob}
+
+\begin{thm}\ollabel{thm:clr}
+Si $x \notin \FV{N}$ et si
+$\Subst{M}{N}{x}$ est définie, alors
+$x \notin \FV{\Subst{M}{N}{x}}$.
+\end{thm}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[lam][syn][sub]{thm:clr}.
+\end{prob}
+
+\begin{thm}\ollabel{thm:inv}
+Si $\Subst{M}{y}{x}$ est définie et
+$y \notin \FV{M}$, alors
+$\Subst{\Subst{M}{y}{x}}{x}{y} = M$.
+\end{thm}
+
+\begin{proof}
+Raisonnons par induction sur la formation de $M$.
+\begin{enumerate}
+\item $M$ est une variable $z$ : exercice.
+\item $M$ est de la forme $(PQ)$. Alors :
+  \begin{align*}
+    \Subst{\Subst{(PQ)}{y}{x}}{x}{y}
+    &=\Subst{((\Subst{P}{y}{x})(\Subst{Q}{y}{x}))}{x}{y} \\
+    &= (\Subst{\Subst{P}{y}{x}}{x}{y})
+       (\Subst{\Subst{Q}{y}{x}}{x}{y}) \\
+    &= (PQ) && \text{par l'hypothèse d'induction}.
+  \end{align*}
+\item $M$ est de la forme $\lambd[z][N]$.
+  Puisque $\Subst{\lambd[z][N]}{y}{x}$
+  est définie, on a $z \neq x$ et $z \neq y$.
+  De plus, $y \notin \FV{M}$ entraîne
+  $y \notin \FV{N}$. L'hypothèse d'induction
+  assure que la substitution inverse sur~$N$
+  est définie. Ainsi :
+  \begin{align*}
+    \Subst{\Subst{(\lambd[z][N])}{y}{x}}{x}{y}
+    &= \Subst{(\lambd[z][\Subst{N}{y}{x}])}{x}{y} \\
+    &= \lambd[z][\Subst{\Subst{N}{y}{x}}{x}{y}] \\
+    &= \lambd[z][N]
+       && \text{par l'hypothèse d'induction}.
+  \end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Compléter la preuve du
+\olref[lam][syn][sub]{thm:inv}.
+\end{prob}
+
+\end{document}

@@ -1,0 +1,92 @@
+% Part: second-order-logic
+% Chapter: metatheory
+% Section: undecidability-and-axiomatizability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{met}{nax}
+
+\olsection{La logique du second ordre n'est pas
+  effectivement axiomatisable}
+
+\begin{thm}
+\ollabel{thm:sol-undecidable}
+La logique du second ordre est indécidable.
+\end{thm}
+
+\begin{proof}
+Un !!{sentence} du premier ordre est valide en
+logique du premier ordre si et seulement s'il
+est valide en logique du second ordre. Or la
+validité au premier ordre est indécidable.
+\end{proof}
+
+\begin{thm}
+\ollabel{cor:sol-not-axiomatizable}
+Il n'existe aucun système de !!{derivation}
+effectif, à la fois correct et complet, pour
+la logique du second ordre sous sa sémantique
+standard.
+\end{thm}
+
+\begin{proof}
+Soit $!A$ un !!{sentence} du premier ordre dans
+le langage de l'arithmétique. Par la catégoricité
+de~$\Th{PA^2}$ établie en
+\olref[sol][met][spa]{cor:sol-pa-categorical},
+\[
+\Sat{N}{!A}\quad\text{si et seulement si}\quad
+\Th{PA^2}\Entails !A.
+\]
+Soit $!P$ la conjonction des neuf axiomes
+de~$\Th{PA^2}$. La dernière condition équivaut
+à $\Entails !P\lif !A$ : pour toute
+!!{structure} arithmétique~$\Struct{M}$,
+on a $\Sat{M}{!P\lif !A}$.
+
+Choisissons $z$, $u$, $u'$, $u''$ et $L$ de leurs sortes
+respectives, absentes de $!P$ et de~$!A$. Remplaçons dans
+$!P\lif !A$ la
+constante~$\Obj{0}$ par la !!{variable}
+individuelle~$z$, le successeur~$\prime$
+par la !!{variable} de fonction unaire~$u$,
+$+$ et $\times$ par les !!{variable}s de
+fonctions binaires $u'$ et~$u''$, et $<$ par la
+!!{variable} de relation binaire~$L$.
+Notons $!P'$ et $!A'$ les résultats de ces
+substitutions. L'!!{sentence} de logique pure
+du second ordre
+\[
+\lforall[z][\lforall[u][\lforall[u'][\lforall[u''][\lforall[L][(!P' \lif !A')]]]]]
+\]
+est valide si et seulement si $\Entails !P\lif !A$,
+donc si et seulement si $\Sat{N}{!A}$.
+
+Supposons qu'il existe un système de preuve effectif, correct et
+complet pour la logique du second ordre. Énumérons ses
+démonstrations sans hypothèses et les !!{sentence}s
+arithmétiques. Pour chaque paire constituée d'une démonstration
+et d'un !!{sentence} arithmétique, comparons la conclusion de
+la démonstration à la transformée de l'énoncé. Si elles
+coïncident, renvoyons le code de l'énoncé ; sinon, renvoyons
+celui de $\Obj{0}=\Obj{0}$. La correction garantit que tous les
+codes renvoyés sont ceux d'énoncés vrais. La complétude
+garantit que chaque énoncé vrai apparaît ainsi.
+
+Nous obtenons donc une fonction calculable totale dont l'image
+est l'ensemble des codes des !!{sentence}s vrais dans~$\Struct{N}$.
+La fonction qui associe à chaque indice le code renvoyé est
+représentable dans~$\Th{Q}$ par une !!{formula} du premier
+ordre~$!B_f(x,y)$. Alors $\lexists[x][!B_f(x,y)]$ définirait
+cet ensemble dans~$\Struct{N}$, ce qui contredit le théorème de
+Tarski.
+\end{proof}
+
+L'effectivité est essentielle à l'argument. Avec une règle
+autorisant comme axiome tout énoncé valide, on obtiendrait
+un système correct et complet, mais sans énumération
+calculable de ses démonstrations.
+
+\end{document}

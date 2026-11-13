@@ -1,0 +1,162 @@
+% Section: tautological-instances
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{tau}
+
+\olsection{Instances tautologiques}
+
+\begin{explain}
+Une formule sans opérateur modal est une tautologie si elle est vraie
+pour toute attribution de valeurs de vérité. Toute tautologie est
+donc vraie en chaque monde de chaque modèle. Mais la notion de
+tautologie n'est pas définie pour les !!{formula}s contenant
+$\Box$ ou~$\Diamond$. Par exemple, $\Box p \lor \lnot \Box p$,
+qui est une instance du principe du tiers exclu, est-elle valide ?
+La notion d'\emph{instance tautologique} permet de répondre :
+il s'agit d'une !!{formula} obtenue par substitution à partir d'une
+tautologie sans opérateur modal. Toute instance tautologique est
+valide, ce qui n'a rien de surprenant, mais demande une preuve.
+\end{explain}
+
+\begin{defn}
+  Une !!{formula} modale~$!B$ est une \emph{instance tautologique}
+  si et seulement s'il existe une tautologie sans opérateur
+  modal~$!A$, dont les !!{propositional variable}s sont $p_1$,
+  \dots,~$p_n$, et des !!{formula}s $!D_1$, \dots,~$!D_n$ telles
+  que $!B \ident \SSubst{!A}{\subst{!D_1}{p_1},
+    \dots, \subst{!D_n}{p_n}}$.
+\end{defn}
+
+\begin{lem}\ollabel{lem:valid-taut}
+  Soit $!A$ une !!{formula} sans opérateur modal dont les
+  !!{propositional variable}s sont $p_1$, \dots, $p_n$, et
+  soient $!D_1$, \dots, $!D_n$ des !!{formula}s modales.
+  Pour toute attribution $\pAssign{v}$, tout modèle
+  $\mModel{M} = \tuple{W, R, V}$ et tout $w \in W$ tels que
+  $\pAssign{v}(p_i) = \True$ si et seulement si
+  $\mSat{M}{!D_i}[w]$, nous avons $\pSat{v}{!A}$ si et seulement si
+  $\mSat{M}{\SSubst{!A}{\subst{!D_1}{p_1}, \dots,
+      \subst{!D_n}{p_n}}}[w]$.
+\end{lem}
+
+\begin{proof}
+  Par induction sur~$!A$.
+  \begin{enumerate}
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{On a à la fois
+      $\pSat/{v}{\lfalse}$ et $\mSat/{M}{\lfalse}[w]$}.}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{On a à la fois
+      $\pSat{v}{\ltrue}$ et $\mSat{M}{\ltrue}[w]$}.}{}
+  \item \indcase{!A}{p_i}{%
+    \begin{align*}
+      \pSat{v}{p_i} \Leftrightarrow {} & \pAssign{v}(p_i) = \True \\
+      & \qquad \text{par définition de $\pSat{v}{p_i}$}\\
+      \Leftrightarrow {} & \mSat{M}{!D_i}[w] \\
+      &\qquad \text{par hypothèse}\\
+      \Leftrightarrow {} & \mSat{M}{\SSubst{p_i}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+      &\qquad \text{car $\SSubst{p_i}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}} \ident !D_i$}.
+      \end{align*}}
+  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{%
+      \begin{align*}
+        \pSat{v}{\lnot !B} \Leftrightarrow {} & \pSat/{v}{!B}\\
+        &\qquad \text{par définition de $\pSat{v}{}$};\\
+        \Leftrightarrow {} & \mSat/{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par hypothèse d'induction}\\
+        \Leftrightarrow {} &
+        \mSat{M}{\SSubst{\lnot !B}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par définition de $\mSat{M}{}[w]$}.
+      \end{align*}}}{}
+  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{%
+      \begin{align*}
+        \pSat{v}{!B \land !C} \Leftrightarrow {} &
+        \pSat{v}{!B} \text{ et } \pSat{v}{!C}\\
+        &\qquad \text{par définition de $\pSat{v}{}$}\\
+        \Leftrightarrow {} &
+        \mSat{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
+            \subst{!D_n}{p_n}}}[w] \text{ et } \\
+        & \mSat{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par hypothèse d'induction}\\
+        \Leftrightarrow{} &
+        \mSat{M}{\SSubst{(!B \land !C)}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par définition de $\mSat{M}{}[w]$}.
+      \end{align*}}}{}
+  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{%
+      \begin{align*}
+        \pSat{v}{!B \lor !C} \Leftrightarrow{} &
+        \pSat{v}{!B} \text{ ou } \pSat{v}{!C}\\
+        &\qquad \text{par définition de $\pSat{v}{}$};\\
+        \Leftrightarrow{} & \mSat{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
+            \subst{!D_n}{p_n}}}[w] \text{ ou }\\
+        & \mSat{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par hypothèse d'induction}\\
+        \Leftrightarrow{} &
+        \mSat{M}{\SSubst{(!B \lor !C)}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par définition de $\mSat{M}{}[w]$}.
+      \end{align*}}}{}
+  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{%
+      \begin{align*}
+        \pSat{v}{!B \lif !C} \Leftrightarrow{} &
+        \pSat/{v}{!B} \text{ ou } \pSat{v}{!C}\\
+        &\qquad \text{par définition de $\pSat{v}{}$}\\
+        \Leftrightarrow{} &
+        \mSat/{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
+            \subst{!D_n}{p_n}}}[w] \text{ ou }\\
+        & \mSat{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par hypothèse d'induction}\\
+        \Leftrightarrow{} &
+        \mSat{M}{\SSubst{(!B \lif !C)}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par définition de $\mSat{M}{}[w]$}.
+      \end{align*}}}{}
+  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{%
+      \begin{align*}
+        \pSat{v}{!B \liff !C} \Leftrightarrow {} &
+        \text{soit } \pSat{v}{!B} \text{ et } \pSat{v}{!C}\\
+        & \text{soit } \pSat/{v}{!B} \text{ et } \pSat/{v}{!C}\\
+        &\qquad \text{par définition de $\pSat{v}{}$}\\
+        \Leftrightarrow {} &
+        \text{soit } \mSat{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
+            \subst{!D_n}{p_n}}}[w] \text{ et }\\
+        & \qquad \mSat{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\ 
+        &  \text{soit } \mSat/{M}{\SSubst{!B}{\subst{!D_1}{p_1}, \dots,
+            \subst{!D_n}{p_n}}}[w] \text{ et }\\
+        & \qquad \mSat/{M}{\SSubst{!C}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad\text{par hypothèse d'induction}\\
+        \Leftrightarrow {} &
+        \mSat{M}{\SSubst{(!B \liff !C)}{\subst{!D_1}{p_1}, \dots,
+          \subst{!D_n}{p_n}}}[w]\\
+        &\qquad \text{par définition de $\mSat{M}{}[w]$}.
+      \end{align*}}}{}
+  \end{enumerate}
+  \end{proof}
+
+\begin{prop}\ollabel{prop:valid-taut}
+  Toutes les instances tautologiques sont valides.
+\end{prop}
+
+\begin{proof}
+  Raisonnons par contraposition. Supposons qu'il existe $!A$ tel que
+  $\mSat/{M}{\SSubst{!A}{\subst{!D_1}{p_1}, \dots,
+  \subst{!D_n}{p_n}}}[w]$, pour un certain modèle $\mModel{M}$ et
+  un certain monde~$w$. Définissons une attribution $\pAssign{v}$
+  telle que $\pAssign{v}(p_i) = \True$ si et seulement si
+  $\mSat{M}{!D_i}[w]$ (et $\pAssign{v}$ attribue des valeurs
+  arbitraires aux $q \notin \{p_1, \dots, p_n \}$). D'après le
+  \olref{lem:valid-taut}, $\pSat/{v}{!A}$; donc $!A$ n'est pas une
+  tautologie.
+\end{proof}
+\begin{editorial}Dans la preuve du lemme, le cas de la négation portait dans la source le tag de la constante fausse ; il est replacé sous la négation. Sa dernière justification renvoyait à la satisfaction propositionnelle, au lieu de la satisfaction dans un modèle en un monde. Enfin, la première ligne du cas du biconditionnel affichait le conditionnel. Ces trois indications sont corrigées ; les étapes restantes et la conclusion sont conservées.\end{editorial}
+\end{document}

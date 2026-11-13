@@ -1,0 +1,75 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: complement-ce
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{cmp}
+\olsection{Les ensembles effectivement énumérables ne sont pas stables par complémentation}
+
+Si $A$ est effectivement énumérable, son complémentaire
+$\Complement{A}=\Nat\setminus A$ l'est-il toujours ?
+Le théorème et le corollaire suivants répondent
+par la négative.
+
+\begin{thm}
+\ollabel{thm:ce-comp}
+Soit $A$ un ensemble quelconque d'entiers naturels.
+Alors $A$ est calculable si et seulement si $A$
+et $\Complement{A}$ sont tous deux effectivement
+énumérables.
+\end{thm}
+
+\begin{proof}
+Dans un sens, c'est immédiat : si $A$ est calculable,
+$\Complement{A}$ l'est aussi
+($\Char{A}=1\tsub\Char{\Complement{A}}$), et
+les deux ensembles sont donc effectivement
+énumérables.
+
+Réciproquement, supposons que $A$ et
+$\Complement{A}$ soient effectivement énumérables.
+Soient $A$ le domaine de $\cfind{d}$ et
+$\Complement{A}$ le domaine de $\cfind{e}$.
+Définissons $h$ par
+\[
+h(x) = \umin{s}{(T(d,x,s) \lor T(e,x,s))}.
+\]
+Sur l'entrée~$x$, la fonction $h$ cherche donc un
+calcul de $\cfind{d}$ ou de $\cfind{e}$ qui
+s'arrête. Si $x\in A$, la première recherche
+réussit; si $x\in\Complement{A}$, c'est la
+seconde. Ainsi $h$ est totale et calculable.
+Pour tout~$x$, on a alors $x\in A$ si et seulement
+si $T(d,x,h(x))$, c'est-à-dire si le calcul de
+$\cfind{d}$ s'arrête. Comme
+$T(d,x,h(x))$ est une relation calculable,
+$A$ est calculable.\footnote{Corrections éditoriales : l'indice $d$ désigne le domaine $A$, et $e$ son complémentaire. La source écrit à tort $T(e,x,h(x))$ dans le test d'appartenance à $A$ ; nous employons $T(d,x,h(x))$. Le commentaire utilise aussi les indices $d,e$ fixés dans la preuve, plutôt que les $e,f$ de la source.}
+\end{proof}
+
+\begin{explain}
+On peut aussi le voir directement : pour décider
+si $x\in A$, on cherche en parallèle des calculs
+qui s'arrêtent pour $\cfind{d}$ et $\cfind{e}$.
+L'un des deux doit être trouvé. Si c'est celui
+de $\cfind{d}$, alors $x\in A$; sinon,
+$x\in\Complement{A}$.
+\end{explain}
+
+\begin{cor}
+\ollabel{cor:comp-k}
+$\Complement{K_0}$ n'est pas effectivement
+énumérable.
+\end{cor}
+
+\begin{proof}
+Nous savons que $K_0$ est effectivement énumérable
+mais non calculable. Si $\Complement{K_0}$ était
+également effectivement énumérable, $K_0$ serait
+calculable par le \olref{thm:ce-comp}, contrairement
+au \olref[ncp]{thm:K-0}.
+\end{proof}
+
+\end{document}

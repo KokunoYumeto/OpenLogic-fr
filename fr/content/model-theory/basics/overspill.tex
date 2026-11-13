@@ -1,0 +1,48 @@
+% Part: first-order-logic
+% Chapter: model-theory
+% Section: overspill
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{bas}{ove}
+\olsection{Débordement}
+
+\begin{thm}
+\ollabel{overspill}
+Si un ensemble $\Gamma$ d'énoncés possède des modèles finis de
+cardinalités arbitrairement grandes, il possède un modèle infini.
+\end{thm}
+
+\begin{proof}
+Élargissons le langage de $\Gamma$ en lui ajoutant une infinité
+dénombrable de nouvelles constantes $c_0$, $c_1$, \dots, et
+considérons l'ensemble $\Gamma \cup \{c_i \neq c_j : i \neq j\}$.
+Dire que $\Gamma$ possède des modèles finis de cardinalités
+arbitrairement grandes signifie que, pour tout $m >0$, il existe
+$n\ge m$ tel que $\Gamma$ ait un modèle de cardinalité~$n$.
+Il s'ensuit que tout sous-ensemble fini de $\Gamma \cup
+\{c_i \neq c_j : i \neq j\}$ est satisfaisable. Par le théorème de
+compacité, $\Gamma \cup \{c_i \neq c_j : i \neq j\}$ possède un
+modèle $\Struct M$ dont le
+!!{domain} est nécessairement infini, puisqu'il satisfait toutes
+les inégalités $c_i \neq c_j$.
+\end{proof}
+
+\begin{prop}
+\ollabel{inf-not-fo}
+Il n'existe, dans aucun langage du premier ordre, d'énoncé $!A$ qui
+soit vrai dans !!a{structure}~$\Struct M$ si et seulement si le
+!!{domain} $\Domain{M}$ de cette !!{structure} est infini.
+\end{prop}
+
+\begin{proof}
+S'il existait un tel énoncé~$!A$, sa négation $\lnot !A$ serait vraie
+dans toutes les !!{structure}s finies et seulement dans celles-ci.
+Elle aurait donc des modèles finis de cardinalités arbitrairement
+grandes, mais aucun modèle infini, ce qui contredirait
+\olref{overspill}.
+\end{proof}
+
+\end{document}

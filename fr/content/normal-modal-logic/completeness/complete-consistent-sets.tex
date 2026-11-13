@@ -1,0 +1,144 @@
+% Part: normal-modal-logic
+% Chapter: completeness
+% Section: complete-consistent-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{com}{ccs}
+
+\olsection{Ensembles \texorpdfstring{$\Sigma$}{Σ}-cohérents complets}
+
+Supposons que $\Sigma$ soit un ensemble de !!{formula}s modales : on
+peut les considérer comme les axiomes ou les principes définissant une
+logique modale normale. Un ensemble $\Gamma$ est $\Sigma$-cohérent si
+et seulement si $\Gamma \Proves/[\Sigma] \lfalse$, c'est-à-dire s'il
+n'existe aucune !!{derivation} de~$!A_1 \lif (!A_2 \lif \cdots (!A_n \lif
+\lfalse)\dots)$ à partir de $\Sigma$, où chaque $!A_i \in \Gamma$.
+Nous construirons un modèle « canonique » dans lequel chaque monde est
+un ensemble $\Sigma$-cohérent d'un type particulier : il est non
+seulement $\Sigma$-cohérent, mais maximal en ce sens qu'il détermine la
+valeur de vérité de toute !!{formula} modale. Pour chaque $!A$, ou bien
+$!A \in \Gamma$, ou bien $\lnot !A \in \Gamma$ :
+
+\begin{defn}
+  Un ensemble $\Gamma$ est \emph{$\Sigma$-cohérent complet} si et
+  seulement s'il est $\Sigma$-cohérent et si, pour tout~$!A$, ou bien
+  $!A \in \Gamma$, ou bien $\lnot !A \in \Gamma$.
+\end{defn}
+
+Les ensembles $\Sigma$-cohérents complets, tels que $\Gamma$, ont plusieurs
+propriétés utiles. D'abord, ils sont déductivement clos : si $\Gamma
+\Proves[\Sigma] !A$, alors $!A \in \Gamma$. En particulier, toute
+instance par substitution d'une !!{formula}~$!A \in \Sigma$ appartient aussi à~$\Gamma$. De plus,
+l'appartenance à $\Gamma$ reflète les conditions de vérité des
+connecteurs propositionnels. Ce sera important lorsque nous définirons
+le « modèle canonique ».
+
+\begin{prop}\ollabel{prop:ccs-properties}
+  Supposons que $\Gamma$ soit $\Sigma$-cohérent complet. Alors :
+  \begin{enumerate}
+  \item \ollabel{prop:ccs-closed}%
+    $\Gamma$ est déductivement clos dans~$\Sigma$.
+  \item \ollabel{prop:ccs-sigma}%
+    $\Sigma \subseteq \Gamma$.
+  \tagitem{prvFalse}{\ollabel{prop:ccs-lfalse}%
+    $\lfalse \notin \Gamma$}{}
+  \tagitem{prvTrue}{\ollabel{prop:ccs-ltrue}%
+    $\ltrue \in \Gamma$}{}
+  \item \ollabel{prop:ccs-lnot}%
+    $\lnot!A \in \Gamma$ si et seulement si $!A \notin
+    \Gamma$.
+  \tagitem{prvAnd}{\ollabel{prop:ccs-land}%
+    $!A \land !B \in \Gamma$ si et seulement si $!A \in \Gamma$ et $!B \in \Gamma$}{}
+  \tagitem{prvOr}{\ollabel{prop:ccs-lor}%
+    $!A \lor !B \in \Gamma$ si et seulement si $!A \in \Gamma$ ou $!B \in \Gamma$}{}
+  \tagitem{prvIf}{\ollabel{prop:ccs-lif}%
+    $!A \lif !B \in \Gamma$ si et seulement si $!A \notin \Gamma$ ou $!B \in \Gamma$}{}
+  \tagitem{prvIff}{\ollabel{prop:ccs-liff}%
+    $!A \liff !B \in \Gamma$ si et seulement si l'on a soit $!A \in \Gamma$ et $!B \in
+    \Gamma$, soit $!A \notin \Gamma$ et $!B \notin \Gamma$}{}
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Supposons que $\Gamma \Proves[\Sigma] !A$, mais que $!A \notin
+    \Gamma$. Puisque $\Gamma$ est $\Sigma$-cohérent complet, on a
+    $\lnot!A \in \Gamma$. L'ensemble $\Gamma$ serait alors incohérent,
+    car $!A, \lnot !A \Proves[\Sigma] \lfalse$.
+
+  \item Si $!A \in \Sigma$, alors $\Gamma \Proves[\Sigma] !A$ ; donc $!A
+    \in \Gamma$ par clôture déductive, c'est-à-dire d'après le
+    point~\olref{prop:ccs-closed}.
+
+  \tagitem{prvFalse}{Si $\lfalse \in \Gamma$, alors $\Gamma
+    \Proves[\Sigma] \lfalse$ ; donc $\Gamma$ serait
+    $\Sigma$-incohérent.}{}
+
+  \tagitem{prvTrue}{On a $\Gamma \Proves[\Sigma] \ltrue$ ; donc $\ltrue \in
+    \Gamma$ par clôture déductive, c'est-à-dire d'après le
+    point~\olref{prop:ccs-closed}.}{}
+
+  \item Si $\lnot!A \in \Gamma$, alors la cohérence impose $!A \notin
+    \Gamma$ ; réciproquement, si $!A \notin \Gamma$, alors
+    $\lnot!A \in \Gamma$, puisque $\Gamma$ est $\Sigma$-cohérent complet.
+
+  \tagitem{prvAnd}{\iftag{probAnd}{Exercice.}{Supposons que $!A \land !B \in
+      \Gamma$. Puisque $(!A \land !B) \lif !A$ est une instance de
+      tautologie, $!A \in \Gamma$ par clôture déductive, c'est-à-dire
+      d'après le point~\olref{prop:ccs-closed}. De même, $!B \in \Gamma$.
+      Réciproquement, supposons que $!A \in \Gamma$ et $!B \in
+      \Gamma$. La clôture déductive entraîne alors que $(!A \land !B) \in
+      \Gamma$, puisque $!A \lif (!B \lif (!A \land !B))$ est une
+      instance de tautologie.}}{}
+
+  \tagitem{prvOr}{\iftag{probOr}{Exercice.}{Supposons que $!A \lor !B \in
+      \Gamma$, tandis que $!A \notin \Gamma$ et $!B \notin \Gamma$.
+      Puisque $\Gamma$ est $\Sigma$-cohérent complet, $\lnot!A \in \Gamma$
+      et $\lnot !B \in \Gamma$. Dès lors, $\lnot(!A \lor !B) \in \Gamma$,
+      car $\lnot !A \lif (\lnot !B \lif \lnot (!A \lor !B))$ est une
+      instance de tautologie. L'ensemble $\Gamma$ serait donc
+      $\Sigma$-incohérent, contradiction. Réciproquement, si $!A \in \Gamma$ ou $!B \in \Gamma$, les instances tautologiques $!A \lif (!A \lor !B)$ et $!B \lif (!A \lor !B)$ donnent $!A \lor !B \in \Gamma$ par clôture déductive.}}{}
+
+  \tagitem{prvIf}{\iftag{probIf}{Exercice.}{Supposons que $!A \lif !B \in
+      \Gamma$ et $!A \in \Gamma$ ; alors $\Gamma \Proves[\Sigma] !B$,
+      d'où $!B \in \Gamma$ par clôture déductive. Réciproquement, si $!A
+      \lif !B \notin \Gamma$, alors, puisque $\Gamma$ est
+      $\Sigma$-cohérent complet, $\lnot (!A \lif !B) \in \Gamma$. Comme
+      $\lnot(!A \lif !B) \lif !A$ est une instance de tautologie, $!A \in
+      \Gamma$ par clôture déductive. Comme $\lnot(!A \lif !B) \lif
+      \lnot !B$ est une instance de tautologie, $\lnot !B \in
+      \Gamma$. Donc $!B \notin \Gamma$, puisque $\Gamma$ est
+      $\Sigma$-cohérent.}}{}
+
+  \tagitem{prvIff}{\iftag{probIff}{Exercice.}{Supposons que $!A \liff !B \in
+      \Gamma$. Si $!A \in \Gamma$, alors $!B \in \Gamma$, car $(!A
+      \liff !B) \lif (!A \lif !B)$ est une instance de
+      tautologie. De même, si $!B \in \Gamma$, alors $!A \in \Gamma$.
+      Ainsi, ou bien $!A \in \Gamma$ et $!B \in \Gamma$, ou bien
+      $!A \notin \Gamma$ et $!B \notin \Gamma$.
+
+      Réciproquement, supposons que $!A \liff !B \notin \Gamma$. Puisque $\Gamma$
+      est $\Sigma$-cohérent complet, $\lnot (!A \liff !B) \in
+      \Gamma$. Comme $\lnot(!A \liff !B) \lif (!A \lif \lnot !B)$ est une
+      instance de tautologie, si $!A \in \Gamma$, alors $\lnot !B \in
+      \Gamma$ et, puisque $\Gamma$ est $\Sigma$-cohérent, $!B \notin
+      \Gamma$. De même, si $!B \in \Gamma$, alors $!A \notin \Gamma$.
+      Ainsi, les deux formules ne peuvent appartenir à~$\Gamma$. Si elles en étaient toutes deux absentes, $\lnot!A \in \Gamma$ et la tautologie
+      $\lnot(!A \liff !B) \lif (\lnot!A \lif !B)$ donneraient $!B \in \Gamma$, contradiction.}}{}
+  \end{enumerate}
+\end{proof}
+
+\begin{probtag}{probAnd,probOr,probIf,probIff}
+  Compléter la démonstration de la \olref[nml][com][ccs]{prop:ccs-properties}.
+\end{probtag}
+\begin{explain}
+La complétude impose l'appartenance d'au moins une des formules
+$!A$ et $\lnot!A$. La cohérence interdit qu'elles appartiennent
+toutes deux à~$\Gamma$. La clôture déductive permet alors
+d'utiliser les instances de tautologies pour établir les lois
+d'appartenance des autres connecteurs.
+\end{explain}
+\end{document}

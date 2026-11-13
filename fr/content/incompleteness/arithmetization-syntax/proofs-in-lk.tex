@@ -1,0 +1,304 @@
+% Part: incompleteness
+% Chapter: arithmetization-syntax
+% Section: proofs-in-lk
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{art}{plk}
+\olsection{\usetoken{P}{derivation} dans $\Log{LK}$}
+
+\begin{explain}
+Pour arithmétiser les !!{derivation}s, nous devons les représenter
+par des nombres. Une !!{derivation} est un arbre de séquents dont
+chaque inférence porte aussi une étiquette. Une représentation
+récursive s'impose donc : nous représentons une !!{derivation} par
+un uplet dont les composantes sont le séquent final, l'étiquette
+et les représentations des sous-!!{derivation}s qui aboutissent aux
+prémisses de la dernière inférence.
+\end{explain}
+
+\begin{defn}
+Si $\Gamma$ est une suite finie d'!!{sentence}s,
+$\Gamma = \tuple{!A_1, \dots, !A_n}$, alors
+$\Gn{\Gamma} = \tuple{\Gn{!A_1}, \dots, \Gn{!A_n}}$.
+
+Si $\Gamma \Sequent \Delta$ est un séquent, son numéro de G\"odel est
+\[
+\Gn{\Gamma \Sequent \Delta} = \tuple{\Gn{\Gamma}, \Gn{\Delta}}
+\]
+
+Si $\pi$ est !!a{derivation} dans $\Log{LK}$, son numéro de
+G\"odel $\Gn{\pi}$ est défini comme suit :
+\begin{enumerate}
+\item Si $\pi$ se réduit au séquent initial
+  $\Gamma \Sequent \Delta$, alors $\Gn{\pi}$ vaut
+  \[
+    \tuple{0, \Gn{\Gamma \Sequent \Delta}}.
+  \]
+\item Si $\pi$ se termine par une inférence à une ou deux prémisses,
+  de conclusion $\Gamma \Sequent \Delta$, et si $\pi_1$ et $\pi_2$
+  désignent les sous-dérivations immédiates aboutissant aux prémisses
+  de cette dernière inférence, alors $\Gn{\pi}$ vaut respectivement
+  \begin{align*}
+    & \tuple{1, \Gn{\pi_1}, \Gn{\Gamma \Sequent \Delta}, k} \text{ ou}\\
+    & \tuple{2, \Gn{\pi_1}, \Gn{\pi_2}, \Gn{\Gamma \Sequent \Delta}, k},
+  \end{align*}
+  où $k$ est déterminé, selon la règle employée dans la dernière
+  inférence, par le tableau suivant :
+
+  \begin{tabular}{lccccccc}
+    \text{Règle :} & \LeftR{\Weakening} & \RightR{\Weakening} &
+    \LeftR{\Contraction} & \RightR{\Contraction} &
+    \LeftR{\Exchange} & \RightR{\Exchange} \\
+    $k$: & 1 & 2 & 3 & 4 & 5 & 6 \\[2ex]
+    \text{Règle :} & \LeftR{\lnot} & \RightR{\lnot} &
+    \LeftR{\land} & \RightR{\land} &
+    \LeftR{\lor} & \RightR{\lor} \\
+    $k$: & 7 & 8 & 9 & 10 & 11 & 12 \\[2ex]
+    \text{Règle :} & \LeftR{\lif} & \RightR{\lif} &
+    \LeftR{\lforall} & \RightR{\lforall} &
+    \LeftR{\lexists} & \RightR{\lexists} \\
+    $k$: & 13 & 14 & 15 & 16 & 17 & 18 \\[2ex]
+    \text{Règle :} & \Cut & = \\
+    $k$: & 19 & 20
+  \end{tabular}
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+  Considérons la !!{derivation} très simple
+  \begin{prooftree}
+    \Axiom$!A \fCenter !A$
+    \RightLabel{\LeftR{\land}}
+    \UnaryInf$!A \land !B \fCenter !A$
+    \RightLabel{\RightR{\lif}}
+    \UnaryInf$\fCenter (!A \land !B) \lif !A$
+  \end{prooftree}
+  Le numéro de G\"odel de la dérivation réduite au séquent initial
+  est $p_0 = \tuple{0, \Gn{!A \Sequent !A}}$. Le numéro de G\"odel
+  de la !!{derivation} dont la conclusion résulte de
+  $\LeftR{\land}$ est
+  $p_1 = \tuple{1, p_0, \Gn{!A \land !B \Sequent !A}, 9}$ : le
+  $1$ indique que $\LeftR{\land}$ a une seule prémisse; viennent
+  ensuite le numéro de G\"odel de la conclusion
+  $!A \land !B \Sequent !A$ et le $9$ qui code $\LeftR{\land}$.
+  Le numéro de G\"odel de la !!{derivation} entière est donc
+  $\tuple{1, p_1, \Gn{\Sequent (!A \land !B) \lif !A}, 14}$,
+  c'est-à-dire
+  \[
+  \tuple{1, \tuple{1, \tuple{0, \Gn{!A \Sequent !A}}, \Gn{!A \land !B \Sequent !A}, 9},
+    \Gn{\Sequent (!A \land !B) \lif !A}, 14}.
+  \]
+\end{ex}
+
+\begin{explain}
+Une fois cette représentation des !!{derivation}s fixée, nous devons
+montrer que nous pouvons les manipuler par des opérations récursives
+primitives et exprimer de la même façon leurs propriétés et relations
+essentielles. Certaines opérations sont simples : si $p$ est le
+numéro de G\"odel d'!!a{derivation},
+$\fn{EndSequent}(p) = (p)_{(p)_0+1}$ donne le numéro de G\"odel de
+son séquent final et $\fn{LastRule}(p) = (p)_{(p)_0+2}$ le code de sa
+dernière règle. La propriété $\fn{Sequent}(s)$, définie par
+\begin{multline*}
+  \fn{SeqCode}(s)\land\len{s}=2\land\fn{SeqCode}((s)_0)\land\fn{SeqCode}((s)_1)\land{}\\ \bforall{i<\len{(s)_0} + \len{(s)_1}}{\fn{Sent}(((s)_0 \concat (s)_1)_i)}
+\end{multline*}
+est vraie de $s$ si et seulement si $s$ est le numéro de G\"odel
+d'un séquent composé d'!!{sentence}s. D'autres propriétés sont bien
+plus difficiles à traiter; nous en esquisserons au moins la méthode.
+Notre objectif est de montrer que la relation « $\pi$ est
+!!a{derivation} de~$!A$ à partir de~$\Gamma$ » est récursive
+primitive sur les numéros de G\"odel de $\pi$ et de~$!A$.
+\end{explain}
+
+\begin{prop}\ollabel{prop:followsby}
+  La propriété $\fn{Correct}(p)$, vraie si et seulement si la
+  dernière inférence de la !!{derivation}~$\pi$ de numéro de
+  G\"odel~$p$ est correcte, est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  $\Gamma \Sequent \Delta$ est un séquent initial s'il existe soit
+  !!a{sentence}~$!A$ tel que ce séquent soit $!A \Sequent !A$,
+  soit un terme clos~$t$ tel qu'il soit $\emptyset \Sequent \eq[t][t]$.
+  En termes de numéros de G\"odel, $\fn{InitSeq}(s)$ est vraie si et
+  seulement si
+  \begin{align*}
+  \bexists{x < s}{} (\fn{Sent}(x) & \land
+  s = \tuple{\tuple{x},\tuple{x}})
+  \lor {}\\
+  \bexists{t<s}{} (\fn{ClTerm}(t) & \land
+  s = \tuple{0, \tuple{\Gn{{\eq}(} \concat t \concat \Gn{,} \concat t \concat \Gn{)}}}).
+  \end{align*}
+
+  Il faut encore montrer que, pour chaque règle d'inférence~$R$,
+  la relation $\fn{FollowsBy}_R(p)$ est récursive primitive. Elle
+  est vraie si et seulement si $p$ est le numéro de G\"odel
+  d'!!a{derivation}~$\pi$ dont le séquent final résulte d'une
+  application correcte de~$R$ aux sous-!!{derivation}s immédiates
+  de~$\pi$.
+
+  Le cas de la règle \RightR{\land} est simple. Si $\pi$ se termine
+  par une application correcte de cette règle, elle a la forme
+  \begin{prooftree}
+    \AxiomC{}
+    \RightLabel{$\pi_1$}
+    \Deduce$\Gamma \fCenter \Delta, !A$
+
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$\Gamma \fCenter \Delta, !B$
+
+    \RightLabel{\RightR\land}
+    \BinaryInf$\Gamma \fCenter \Delta, !A \land !B$
+  \end{prooftree}
+  La dernière inférence de la !!{derivation}~$\pi$ est donc une
+  application correcte de $\RightR{\land}$ s'il existe des suites
+  d'!!{sentence}s $\Gamma$ et $\Delta$ et deux !!{sentence}s $!A$
+  et~$!B$ tels que le séquent final de $\pi_1$ soit
+  $\Gamma \Sequent \Delta, !A$, celui de $\pi_2$ soit
+  $\Gamma \Sequent \Delta, !B$, et celui de $\pi$ soit
+  $\Gamma \Sequent \Delta, !A \land !B$. Il reste à traduire ces
+  conditions en numéros de G\"odel. Si
+  $s = \Gn{\Gamma \Sequent \Delta}$, alors
+  $(s)_0 = \Gn{\Gamma}$ et $(s)_1 = \Gn{\Delta}$. Par conséquent,
+  $\fn{FollowsBy}_{\RightR{\land}}(p)$ est vraie si et seulement si
+\begin{align*}
+& \bexists{g < p}{\bexists{d < p}{\bexists{a < p}{\bexists{b < p}{\quad}}}} \\
+& \qquad \fn{EndSequent}(p) =
+  \tuple{g, d \concat
+    \tuple{\Gn{(} \concat a \concat \Gn{\land} \concat b \concat \Gn{)}}} \land {} \\
+& \qquad \fn{EndSequent}((p)_1) = \tuple{g, d \concat \tuple{a}} \land {}\\
+& \qquad \fn{EndSequent}((p)_2) = \tuple{g, d \concat \tuple{b}} \land {}\\
+& \qquad (p)_0 = 2 \land \fn{LastRule}(p) = 10.
+\end{align*}
+Les lignes successives expriment l'existence d'une suite~$\Gamma$
+de numéro de G\"odel~$g$, d'une suite~$\Delta$ de numéro~$d$,
+d'!!a{formula}~$!A$ de numéro~$a$ et d'!!a{formula}~$!B$ de
+numéro~$b$; puis que le séquent final de $\pi$ est
+$\Gamma \Sequent \Delta, !A \land !B$, celui de $\pi_1$ est
+$\Gamma \Sequent \Delta, !A$, celui de $\pi_2$ est
+$\Gamma \Sequent \Delta, !B$; enfin, que $\pi$ possède deux
+sous-dérivations immédiates et que sa dernière règle est
+$\RightR\land$, codée par~$10$.
+
+La dernière inférence de~$\pi$ est une application correcte de
+$\RightR\lexists$ s'il existe des suites $\Gamma$ et $\Delta$,
+!!a{formula}~$!A$, une variable~$x$ et un terme~$t$, tels que
+le séquent final de $\pi$ soit
+$\Gamma \Sequent \Delta, \lexists[x][!A]$ et celui de $\pi_1$
+soit $\Gamma \Sequent \Delta, \Subst{!A}{t}{x}$. En numéros de
+G\"odel, $\fn{FollowsBy}_{\RightR\lexists}(p)$ est donc vraie si et
+seulement si
+\begin{align*}
+  & \bexists{g<p}{\bexists{d<p}{\bexists{a<p}{\bexists{x<p}{\bexists{t<p}{\quad}}}}}\\
+  & \qquad \fn{EndSequent}(p) =
+  \tuple{
+    g,
+    d \concat \tuple{\Gn{\lexists} \concat x \concat a}
+  } \land {}\\
+  & \qquad \fn{EndSequent}((p)_1) =
+  \tuple{
+    g,
+    d \concat \tuple{\fn{Subst}(a, t, x)}
+  } \land {}\\
+  & \qquad \fn{Frm}(a)\land\fn{Var}(x)\land\fn{ClTerm}(t)\land{}\\ & \qquad (p)_0 = 1 \land \fn{LastRule}(p) = 18.
+\end{align*}
+Appelons $\fn{ShapeLK}(p)$ la condition $\fn{SeqCode}(p)$ et, selon $(p)_0=0,1,2$, respectivement $\len{p}=2,4,5$ ; toute autre arité est exclue. Nous définissons alors $\fn{Correct}(p)$ par
+\begin{multline*}
+  \fn{ShapeLK}(p)\land\fn{Sequent}(\fn{EndSequent}(p)) \land {}\\
+  [(\fn{LastRule}(p) = 1 \land
+  \fn{FollowsBy}_{\LeftR\Weakening}(p)) \lor \dots \lor {}\\
+  (\fn{LastRule}(p) = 20 \land \fn{FollowsBy}_{\eq}(p)) \lor {}\\
+  (p)_0 = 0 \land \fn{InitSeq}(\fn{EndSequent}(p))]
+\end{multline*}
+La première ligne garantit que le séquent final de la dérivation
+codée par~$p$ est bien composé d'!!{sentence}s. La dernière traite
+le cas où $p$ code uniquement un séquent initial.
+\end{proof}
+
+\begin{prob}
+  Définir les propriétés suivantes, comme dans la
+  \olref[inc][art][plk]{prop:followsby} :
+  \begin{enumerate}
+  \item $\fn{FollowsBy}_{\Cut}(p)$;
+  \item $\fn{FollowsBy}_{\LeftR\lif}(p)$;
+  \item $\fn{FollowsBy}_{\eq}(p)$;
+  \item $\fn{FollowsBy}_{\RightR{\lforall}}(p)$.
+  \end{enumerate}
+  Pour la dernière, il faudra aussi montrer qu'on peut vérifier de
+  façon récursive primitive si la dernière inférence de la
+  !!{derivation} de numéro de G\"odel~$p$ satisfait la condition sur
+  la variable propre : la constante propre~$a$ de
+  $\RightR{\lforall}$ ne doit pas apparaître dans le séquent final.
+\end{prob}
+
+\begin{prop}
+  \ollabel{prop:deriv}
+  La relation $\fn{Deriv}(p)$, vraie si et seulement si $p$ est le
+  numéro de G\"odel d'!!a{derivation} correcte~$\pi$, est
+  récursive primitive.
+\end{prop}
+
+\begin{proof}
+  !!^a{derivation}~$\pi$ est correcte si chacune de ses inférences
+  est une application correcte d'une règle, autrement dit si chacune
+  de ses sous-!!{derivation}s se termine par une inférence correcte.
+  Ainsi, $\fn{Deriv}(p)$ est vraie si et seulement si
+  \[
+  \bforall{i<\len{\fn{SubtreeSeq}(p)}}{\fn{Correct}((\fn{SubtreeSeq}(p))_i)}.
+  \]
+\end{proof}
+
+\begin{prop}
+Supposons que $\Gamma$ soit un ensemble récursif primitif
+d'!!{sentence}s. Alors la relation $\Prf[\Gamma](x, y)$, exprimant
+que « $x$ est le code d'!!a{derivation}~$\pi$ de
+$\Gamma_0 \Sequent !A$ pour un certain ensemble fini
+$\Gamma_0 \subseteq \Gamma$, et $y$ est le numéro de G\"odel de~$!A$ »,
+est récursive primitive.
+\end{prop}
+
+\begin{proof}
+Supposons que l'appartenance à~$\Gamma$ soit donnée, sur les codes,
+par le prédicat récursif primitif~$R_\Gamma(y)$. Nous devons montrer
+que $\Prf[\Gamma](x, y)$, vraie si et seulement si $y$ est le
+numéro de G\"odel d'un énoncé~$!A$ et que $x$ est le code d'!!a{derivation}
+dans $\Log{LK}$ dont le séquent final est
+$\Gamma_0 \Sequent !A$, est récursive primitive.
+
+D'après la proposition précédente, la propriété $\fn{Deriv}(x)$,
+qui dit que $x$ est le code d'!!a{derivation} correcte~$\pi$ dans
+$\Log{LK}$, est récursive primitive. Si $x$ est un tel code,
+$\fn{EndSequent}(x)$ code le séquent final de~$\pi$; ainsi,
+$(\fn{EndSequent}(x))_0$ code son côté gauche et
+$(\fn{EndSequent}(x))_1$ son côté droit. Nous pouvons donc exprimer
+« le côté droit du séquent final de~$\pi$ est~$!A$ » par
+$\len{(\fn{EndSequent}(x))_1} = 1 \land ((\fn{EndSequent}(x))_1)_0 =
+y$. Le côté gauche est nécessairement fini; il reste seulement à
+exprimer que chacun de ses énoncés appartient à~$\Gamma$. Nous
+pouvons ainsi définir $\Prf[\Gamma](x, y)$ par
+\begin{align*}
+\Prf[\Gamma](x, y) \defiff {}&
+\fn{Deriv}(x) \land {} \\
+& \bforall{i <
+  \len{(\fn{EndSequent}(x))_0}}{R_\Gamma(((\fn{EndSequent}(x))_0)_i)} \land {}\\
+& \len{(\fn{EndSequent}(x))_1} = 1 \land ((\fn{EndSequent}(x))_1)_0 = y.
+\end{align*}
+\end{proof}
+
+\begin{explain}
+Pour vérifier un code de dérivation, on contrôle d'abord la forme du
+tuple à chaque nœud, puis les deux suites d'énoncés qui composent
+son séquent. À un nœud initial, on vérifie le séquent initial.
+Aux autres nœuds, on vérifie la règle indiquée par le dernier
+champ du tuple à partir des séquents des prémisses. Les schémas
+qui emploient un terme clos exigent le test $\fn{ClTerm}$ sur
+son code. Enfin, pour $\Prf[\Gamma](x,y)$, le séquent final doit
+avoir pour seul énoncé à droite celui de code~$y$ et pour
+énoncés à gauche des éléments de~$\Gamma$.
+\end{explain}
+
+\end{document}

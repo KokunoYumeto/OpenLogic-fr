@@ -1,0 +1,90 @@
+% Part: many-valued-logic
+% Chapter: syntax-and-semantics
+% Section: connectives
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{syn}{con}
+
+\olsection{Langages et connecteurs}
+
+La logique propositionnelle classique,
+comme beaucoup d'autres logiques,
+dispose de constantes propositionnelles
+et de connecteurs. Nous prenons, par
+exemple, les symboles primitifs suivants :
+\begin{enumerate}
+\tagitem{prvFalse}{La constante propositionnelle
+  de la fausseté~$\lfalse$.}{}
+\tagitem{prvTrue}{La constante propositionnelle
+  de la vérité~$\ltrue$.}{}
+\item Les connecteurs logiques :
+  \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{prvIf}{\ycomma $\lif$ (conditionnel)}{}%
+  \iftag{prvIff}{\ycomma $\liff$ (biconditionnel)}{}%
+\end{enumerate}
+\iftag{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}{%
+Outre les connecteurs primitifs, nous
+employons aussi des symboles définis
+comme abréviations, tels que
+\startycommalist
+  \iftag{defNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{defAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{defOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{defIf}{\ycomma $\lif$ (conditionnel)}{}%
+  \iftag{defIff}{\ycomma $\liff$ (biconditionnel)}{}%
+  \iftag{defFalse}{\ycomma $\lfalse$ (fausseté)}{}%
+  \iftag{defTrue}{\ycomma $\ltrue$ (vérité)}{}.}{}
+
+Les mêmes connecteurs peuvent figurer
+dans les logiques plurivalentes. Il
+est toutefois parfois utile d'inclure
+dans un même langage plusieurs versions,
+par exemple, de la conjonction. Il
+faut alors des symboles distincts pour
+les distinguer. Certaines logiques
+plurivalentes ont aussi des connecteurs
+sans équivalent classique. Nous adopterons
+donc une notion de langage plus générale.
+
+\begin{defn}
+Un \emph{langage propositionnel} est
+formé d'un ensemble~$\Lang L$ de
+\emph{connecteurs}. Chaque connecteur
+$\star$ possède une \emph{arité};
+s'il est d'arité~$n$, on dit qu'il
+est \emph{$n$-aire}. Les connecteurs
+d'arité~$0$ sont aussi appelés
+\emph{constantes}; ceux d'arité~$1$
+sont \emph{unaires}, et ceux d'arité~$2$
+\emph{binaires}.
+\end{defn}
+
+\begin{ex}
+Le langage propositionnel usuel
+$\Lang L_0$ comprend les connecteurs
+suivants, avec leur arité :
+$\lfalse$~($0$),
+$\lnot$~($1$),
+$\land$~($2$),
+$\lor$~($2$) et
+$\lif$~($2$).
+La plupart des logiques étudiées ici
+utilisent ce langage. Certaines,
+par tradition ou par convention,
+emploient d'autres symboles : dans
+la logique produit, par exemple,
+la conjonction se note souvent
+$\odot$ plutôt que~$\land$.
+Il est parfois commode d'ajouter
+un opérateur nouveau, tel que
+l'opérateur de détermination
+$\triangle$, d'arité~$1$.
+\end{ex}
+
+\end{document}

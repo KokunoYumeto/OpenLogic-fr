@@ -1,6 +1,18 @@
 % Formes effectivement nécessaires aux chapitres intégrés.
 \RequirePackage{needspace}
+% Intitulés des trois principes informels de la construction par étapes.
+\renewcommand{\stageshier}{\emph{«~Les étapes sont essentielles~»}}
+\renewcommand{\stagesord}{\emph{«~Les étapes sont ordonnées~»}}
+\renewcommand{\stagesacc}{\emph{«~Les ensembles s'accumulent par étapes~»}}
+\renewcommand{\stagessucc}{\emph{«~Les étapes se poursuivent~»}}
+\renewcommand{\stagesinf}{\emph{«~Les étapes atteignent l'infini~»}}
+\renewcommand{\limofsize}{\emph{Limitation de taille}}
+\renewcommand{\stagesinex}{\emph{«~Les étapes sont inépuisables~»}}
+\renewcommand{\stagescofin}{\emph{«~Aucun ensemble n'est cofinal dans les étapes~»}}
 \settexttoken{element}{élément}{éléments}[Élément][Éléments]
+\settexttoken{colorC}{rouge}{rouges}[Rouge][Rouges]
+\settexttoken{colorD}{bleu}{bleus}[Bleu][Bleus]
+\settexttoken{colorE}{vert}{verts}[Vert][Verts]
 \definetoken{a}{element}{un}
 \definetoken{A}{element}{Un}
 \settexttoken{formula}{formule}{formules}[Formule][Formules]
@@ -15,6 +27,9 @@
 \settexttoken{structure}{structure}{structures}[Structure][Structures]
 \definetoken{a}{structure}{une}
 \definetoken{A}{structure}{Une}
+\settexttoken{relational model}{modèle relationnel}{modèles relationnels}[Modèle relationnel][Modèles relationnels]
+\definetoken{a}{relational model}{un}
+\definetoken{A}{relational model}{Un}
 \settexttoken{identity}{égalité}{égalités}[Égalité][Égalités]
 \settexttoken{conditional}{implication matérielle}{implications matérielles}[Implication matérielle][Implications matérielles]
 \settexttoken{biconditional}{équivalence matérielle}{équivalences matérielles}[Équivalence matérielle][Équivalences matérielles]
@@ -24,6 +39,10 @@
 \protected\def\FRoperator#1#2{\iftag{FOL}{#1}{#2}}
 \settexttoken{operator}{\FRoperator{opérateur}{connecteur}}{\FRoperator{opérateurs}{connecteurs}}[\FRoperator{Opérateur}{Connecteur}][\FRoperator{Opérateurs}{Connecteurs}]
 \settexttoken{main operator}{opérateur principal}{opérateurs principaux}[Opérateur principal][Opérateurs principaux]
+\settexttoken{subformula}{sous-formule}{sous-formules}[Sous-formule][Sous-formules]
+\definetoken{a}{subformula}{une}
+\definetoken{A}{subformula}{Une}
+\settexttoken{free for}{libre pour}{libres pour}[Libre pour][Libres pour]
 \settexttoken{constant}{constante}{constantes}[Constante][Constantes]
 \definetoken{a}{constant}{une}
 \definetoken{A}{constant}{Une}
@@ -48,10 +67,34 @@
 \settexttoken{sentence}{énoncé}{énoncés}[Énoncé][Énoncés]
 \definetoken{a}{sentence}{un}
 \definetoken{A}{sentence}{Un}
+% « complete » qualifie ici un ensemble; les rares sujets féminins sont
+% accordés dans leurs passages français plutôt que par ce jeton commun.
+\settexttoken{complete}{complet}{complets}[Complet][Complets]
+\settexttoken{language}{langage}{langages}[Langage][Langages]
+\definetoken{a}{language}{un}
+\definetoken{A}{language}{Un}
+\settexttoken{axiomatizable}{axiomatisable}{axiomatisables}[Axiomatisable][Axiomatisables]
+\settexttoken{decidable}{décidable}{décidables}[Décidable][Décidables]
+\settexttoken{computably enumerable}{effectivement énumérable}{effectivement énumérables}[Effectivement énumérable][Effectivement énumérables]
+\settexttoken{c.e.}{effectivement énumérable}{effectivement énumérables}[Effectivement énumérable][Effectivement énumérables]
+\settexttoken{represents}{représente}{représentent}[Représente][Représentent]
 \settexttoken{derive}{dériver}{dérive}[Dériver][Dérive]
 \settexttoken{derivable}{dérivable}{dérivables}[Dérivable][Dérivables]
 \settexttoken{derivability}{dérivabilité}{dérivabilités}[Dérivabilité][Dérivabilités]
 \settexttoken{nonderivability}{non-dérivabilité}{non-dérivabilités}[Non-dérivabilité][Non-dérivabilités]
+% Les jetons de théorie de la démonstration sont autonomes dans l'amont.
+% Traduire derivation/derive ne traduit pas automatiquement leurs cognats.
+\settexttoken{proof}{preuve}{preuves}[Preuve][Preuves]
+\settexttoken{introduction}{introduction}{introductions}[Introduction][Introductions]
+\settexttoken{elimination}{élimination}{éliminations}[Élimination][Éliminations]
+\definetoken{a}{proof}{une}
+\definetoken{A}{proof}{Une}
+\settexttoken{prove}{prouver}{prouve}[Prouver][Prouve]
+\settexttoken{proving}{démontrer}{démontrer}[Démontrer][Démontrer]
+\settexttoken{provable}{démontrable}{démontrables}[Démontrable][Démontrables]
+\settexttoken{provability}{démontrabilité}{démontrabilités}[Démontrabilité][Démontrabilités]
+\settexttoken{nonprovability}{non-démontrabilité}{non-démontrabilités}[Non-démontrabilité][Non-démontrabilités]
+\settexttoken{height}{hauteur}{hauteurs}[Hauteur][Hauteurs]
 \settexttoken{tableau}{tableau}{tableaux}[Tableau][Tableaux]
 \definetoken{a}{tableau}{un}
 \definetoken{A}{tableau}{Un}
@@ -61,6 +104,16 @@
 \settexttoken{discharge}{décharger}{décharge}[Décharger][Décharge]
 \settexttoken{discharged}{déchargée}{déchargées}[Déchargée][Déchargées]
 \settexttoken{undischarged}{non déchargée}{non déchargées}[Non déchargée][Non déchargées]
+% Même structure de cas inductif que la macro amont, avec l'invite d'exercice en français.
+\RenewDocumentCommand \indcase { s t{!} m m +m }{%
+  \DeclareDocumentMacro \indfrm {#3}%
+  \DeclareDocumentMacro \indfrmp {#3}%
+  \DeclareDocumentMacro \indcomplex {#4}%
+  \IfBooleanTF{#1}
+     {$#3$ est atomique : }{$#3 \ident #4$ : }%
+  \IfBooleanTF{#2}
+     {exercice.}
+     {#5}}
 \settexttoken{injective}{injective}{injectives}[Injective][Injectives]
 \settexttoken{surjective}{surjective}{surjectives}[Surjective][Surjectives]
 \settexttoken{bijective}{bijective}{bijectives}[Bijective][Bijectives]
@@ -86,3 +139,26 @@
     \par\medskip\noindent\emph{#2}\par\nobreak #5%
   \else\oliflabeldef{#3}{#4}{#5}\fi}
 \renewcommand{\TAss}{Hypothèse}
+
+% Sur papier, placer la notice sur la page de titre de la partie.
+\newbox\OLPartNoticeBox
+\NewDocumentEnvironment{OLPartNotice}{m}{%
+  \ifdefined\HCode
+    #1%
+  \else
+    \def\OLPartNoticeHeading{#1}%
+    \setbox\OLPartNoticeBox=\vbox\bgroup
+  \fi
+}{%
+  \ifdefined\HCode\else
+    \egroup
+    \let\OLPartNoticeAfterSkip\afterpartskip
+    \renewcommand*{\afterpartskip}{%
+      \ifdim\ht\OLPartNoticeBox>0pt\relax
+        \par\bigskip\unvbox\OLPartNoticeBox
+      \fi
+      \OLPartNoticeAfterSkip
+    }%
+    \OLPartNoticeHeading
+  \fi
+}

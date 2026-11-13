@@ -1,0 +1,49 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: basic-pr-lambda
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{bas}
+\olsection{Les fonctions récursives primitives de base sont \texorpdfstring{$\lambd$}{λ}-définissables}
+
+\begin{lem}
+Les fonctions $\Zero$, $\Succ$ et $\Proj{n}{i}$ sont
+$\lambd$-définissables.
+\end{lem}
+
+\begin{proof}
+La fonction nulle~$\Zero$ est unaire : pour tout~$u$,
+elle renvoie le numéral de Church
+$\num{0}=\lambd[x][\lambd[y][y]]$.
+Elle est donc définie par le terme
+\[
+Z\ident\lambd[u][\num{0}].
+\]
+
+La fonction successeur~$\Succ$ est définie par le terme
+\[
+\fn{Succ}\ident\lambd[u][\lambd[x][\lambd[y][x(uxy)]]].
+\]
+Pour un numéral~$\num{n}$, l'application
+$\fn{Succ}\,\num{n}$ se réduit à
+$\lambd[x][\lambd[y][x(\num{n}xy)]]$.
+Le sous-terme $\num{n}xy$ applique $x$ exactement $n$~fois à~$y$.
+L'application extérieure de $x$ ajoute une itération.
+On obtient ainsi le numéral~$\num{n+1}$ par réduction~$\beta$.
+
+Les projections ne présentent pas de difficulté :
+$\fn{Proj}^n_i(x_0,\dots,x_{n-1})=x_i$.
+Autrement dit, selon nos conventions,
+$\fn{Proj}^n_i$ est le lambda-terme
+$\lambd[x_0][\dots\lambd[x_{n-1}][x_i]]$.
+\end{proof}
+
+On peut distinguer le numéral~$\num{0}$ du terme~$Z$
+en les appliquant tous deux à~$\num{1}$.
+Le terme $\num{0}\,\num{1}$ se réduit à $\lambd[y][y]$,
+tandis que $Z\,\num{1}$ se réduit au numéral~$\num{0}$.
+
+\end{document}

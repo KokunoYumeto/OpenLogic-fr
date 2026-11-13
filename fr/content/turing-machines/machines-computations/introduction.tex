@@ -1,0 +1,160 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{int}
+\olsection{Introduction}
+
+Que signifie, pour une fonction de $\Nat$ dans
+$\Nat$ par exemple, être \emph{calculable} ?
+L'une des premières réponses, et la plus connue,
+est qu'une fonction est calculable si une machine
+de Turing peut la calculer. Alan Turing a proposé
+cette notion en 1936. Les machines de Turing sont
+un \emph{modèle de calcul} : elles donnent un sens
+mathématiquement précis à l'idée de « procédure
+de calcul ». La portée exacte de cette expression
+fait débat, mais on admet largement qu'une machine
+de Turing permet de spécifier une telle procédure.
+Bien que l'expression « machine de Turing » évoque
+un appareil physique pourvu de pièces mobiles,
+une telle machine est, à strictement parler,
+un objet purement mathématique. Elle idéalise
+donc la notion de procédure de calcul. Nous
+n'imposons, par exemple, aucune limite au temps
+ni à la mémoire dont elle dispose : elle peut
+calculer un résultat même si le calcul exigeait
+plus d'emplacements de mémoire ou plus d'étapes
+qu'il n'existe d'atomes dans l'univers.
+
+\begin{explain}
+Il est peut-être plus simple de concevoir une
+machine de Turing comme le programme d'un mécanisme
+imaginaire particulier. Ce mécanisme comprend un
+\emph{ruban} et une \emph{tête de lecture-écriture}.
+Dans notre version, le ruban est infini dans une
+seule direction, vers la droite, et se divise en
+\emph{cases}. Chacune peut contenir un symbole
+appartenant à un \emph{alphabet} fini. Cet alphabet
+peut comporter autant de symboles différents que
+l'on veut, mais nous emploierons surtout les trois
+symboles $\TMendtape$, $\TMblank$ et~$\TMstroke$.
+Au démarrage, le ruban est vide, c'est-à-dire que
+chaque case contient $\TMblank$, sauf la case la
+plus à gauche, qui contient $\TMendtape$, et un
+nombre fini de cases contenant l'\emph{entrée}.
+À chaque instant, le mécanisme se trouve dans un
+état pris parmi un nombre fini d'\emph{états}. Au départ, la tête
+lit la première case à droite du marqueur de début
+de ruban et la machine se trouve
+dans un \emph{état initial} spécifié.\footnote{Correction éditoriale : l'introduction source place la tête sur la case du marqueur, mais la définition formelle et les exemples la placent dans la case suivante. Nous retenons cette seconde convention ; sinon la machine paire s'arrêterait immédiatement sur toute entrée.} À chaque étape,
+le contenu de la case lue, l'état courant et le
+programme déterminent ensemble l'action suivante.
+Le programme est donné par une fonction partielle
+qui, à un état~$q$ et un symbole~$\sigma$, associe
+un triplet $\tuple{q', \sigma', D}$. Lorsque le
+mécanisme est dans l'état~$q$ et lit~$\sigma$,
+il remplace ce symbole par~$\sigma'$, déplace la
+tête vers la gauche, vers la droite ou la laisse
+sur place selon que $D$ vaut $\TMleft$, $\TMright$
+ou $\TMstay$, puis passe dans l'état~$q'$.
+
+Considérons par exemple la situation représentée
+dans la \olref{fig:tm}.
+\begin{figure}
+  \olasset{\olpath/assets/diagrams/turing-machine.tikz}
+  \caption{Une machine de Turing qui exécute son programme.}
+  \ollabel{fig:tm}
+\end{figure}
+La partie visible du ruban porte le symbole de
+début de ruban $\TMendtape$ dans la case la plus
+à gauche, suivi de trois $1$, d'un $0$, puis de
+quatre autres $1$. La tête lit la troisième case
+à partir de la gauche, qui contient un~$1$, et
+la machine est dans l'état~$q_1$ : nous disons
+qu'elle « lit un $1$ dans l'état~$q_1$ ».
+Si, pour l'entrée $\tuple{q_1,1}$, le programme
+renvoie $\tuple{q_2,0,\TMstay}$, la machine
+remplace ce~$1$ par un~$0$, laisse la tête sur
+la même case et passe dans l'état~$q_2$.
+Si le programme renvoie ensuite
+$\tuple{q_3,0,\TMright}$ pour l'entrée
+$\tuple{q_2,0}$, la machine réécrit le~$0$ par
+un~$0$, sans changer en pratique le contenu de
+la case, déplace la tête d'une case vers la
+droite et passe dans l'état~$q_3$. Et ainsi
+de suite.
+
+La machine \emph{s'arrête} lorsqu'elle rencontre
+un état~$q_n$ et un symbole~$\sigma$ pour lesquels
+aucune instruction n'est prévue pour
+$\tuple{q_n,\sigma}$, autrement dit
+lorsque la fonction de transition n'est pas
+définie sur $\tuple{q_n,\sigma}$. Elle n'a
+alors plus d'instruction à exécuter. On peut
+aussi représenter l'arrêt au moyen d'un état
+spécial~$h$. Nous y reviendrons plus en détail.
+\end{explain}
+
+\begin{digress}
+L'intérêt de l'article de Turing, « On computable
+numbers », tient à ce qu'il présente une définition
+formelle, mais aussi un argument selon lequel
+cette définition saisit la notion intuitive de
+calculabilité. Il paraît clair, d'après la
+définition, qu'une fonction calculable par une
+machine de Turing est calculable au sens intuitif.
+Pour défendre la réciproque, à savoir que toute
+fonction que nous jugerions naturellement calculable
+l'est par une telle machine, Turing propose trois
+types d'arguments, dans ses propres termes :
+\begin{enumerate}
+\item Un appel direct à l'intuition.
+\item Une preuve de l'équivalence de deux définitions
+  (au cas où la nouvelle définition aurait un attrait
+  intuitif plus grand).
+\item Des exemples de vastes classes de nombres
+  calculables.
+\end{enumerate}
+Nous cherchons à définir la calculabilité « en
+principe », sans tenir compte des limites pratiques
+de temps et d'espace. Une fois cette notion générale
+en place, on peut étudier les calculs qui disposent
+de ressources bornées : c'est le cœur de la
+\emph{complexité algorithmique}.
+\end{digress}
+
+\begin{history}
+Alan Turing a introduit les machines de Turing en
+1936. Il s'intéressait alors à la décidabilité de
+la logique du premier ordre, mais son article est
+également considéré comme fondateur pour la
+conception des ordinateurs. Il y étudie surtout
+les nombres réels calculables, dont on peut
+produire le développement décimal, et remarque
+que ses notions s'adaptent aux fonctions sur
+les entiers naturels.
+
+Cette publication précède de cinq ans le Z3
+programmable de Konrad Zuse (1941), de sept ans
+les premiers essais du Colossus conçu par Tommy
+Flowers (fin 1943, avant sa mise en service à
+Bletchley Park en 1944), de neuf ans l'achèvement
+de l'ENIAC américain (1945), de douze ans le
+prototype britannique Manchester Small-Scale
+Experimental Machine (1948) et de treize ans les
+premiers essais du BINAC américain (1949).
+La machine expérimentale de Manchester fut la
+première à exécuter un programme conservé dans
+une mémoire électronique. À la différence de
+nombre de machines antérieures, elle conservait
+ainsi ses instructions en mémoire, sans qu'il
+faille reconfigurer physiquement son câblage
+pour chaque nouveau programme.\footnote{Corrections historiques : nous distinguons le Z3 de 1941 des machines antérieures de Zuse, attribuons Colossus à Tommy Flowers et distinguons ses essais de fin 1943 de son fonctionnement à Bletchley Park en 1944. La priorité de Manchester porte sur un programme conservé en mémoire électronique ; les machines précédentes n'exigeaient pas toutes un recâblage. Voir le National Museum of Computing, \url{https://www.tnmoc.org/colossus}, et le Computer History Museum, \url{https://www.computerhistory.org/timeline/1941/} et \url{https://www.computerhistory.org/revolution/story/87}.}
+\end{history}
+
+\end{document}

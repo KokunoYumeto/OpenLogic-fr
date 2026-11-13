@@ -1,0 +1,74 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: inseparability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{ins}
+
+\olsection{Inséparabilité effective des énoncés démontrables et réfutables dans $\Th{Q}$}
+
+Notons $\Th{\bar Q}$ l'ensemble des !!{sentence}s
+dont la \emph{négation} est démontrable dans
+$\Th{Q}$, c'est-à-dire
+$\Th{\bar Q}=\Setabs{!A}{\Th{Q}\Proves\lnot !A}$.
+Rappelons que deux ensembles disjoints $A$ et $B$
+sont dits \emph{effectivement inséparables} s'il
+n'existe aucun ensemble calculable~$C$ tel que
+$A\subseteq C$ et $B\subseteq\Complement{C}$.
+La cohérence de~$\Th{Q}$ assure ici que
+$\Th{Q}$ et $\Th{\bar Q}$ sont disjoints.
+
+\begin{lem}
+$\Th{Q}$ et $\Th{\bar Q}$ sont effectivement
+inséparables.
+\end{lem}
+
+\begin{proof}
+Supposons qu'il existe un ensemble calculable~$C$
+tel que $\Th{Q}\subseteq C$ et
+$\Th{\bar Q}\subseteq\Complement{C}$.
+Définissons la relation $R(x,y)$ par
+\begin{quote}
+$x$ code une !!{formula}~$!D(u)$ sans variable libre autre que~$u$,
+et $!D(\num y)$ appartient à~$C$.
+\end{quote}
+La syntaxe, les variables libres et la substitution sont calculables,
+comme l'appartenance à~$C$; $R$ est donc calculable, et fausse pour tout code ne satisfaisant pas la condition annoncée.
+Nous allons montrer qu'elle est universelle,
+ce qui donnera une contradiction.
+
+Soit $S(y)$ une relation calculable, représentée
+dans~$\Th{Q}$ par $!D_S(u)$. Pour chaque entier~$n$,
+\begin{eqnarray*}
+S(n) & \liff & \Th{Q}\Proves !D_S(\num n) \\
+& \liff & !D_S(\num n)\in C,
+\end{eqnarray*}
+et
+\begin{eqnarray*}
+\lnot S(n) & \liff & \Th{Q}\Proves\lnot !D_S(\num n) \\
+& \liff & !D_S(\num n)\in\Th{\bar Q} \\
+& \liff & !D_S(\num n)\not\in C.
+\end{eqnarray*}
+La représentation et les deux inclusions donnent les
+implications directes. Pour les réciproques,
+si $S(n)$ était fausse, la représentation négative
+placerait $!D_S(\num n)$ hors de~$C$; si $S(n)$
+était vraie, sa représentation positive la
+placerait dans~$C$. Ainsi, pour tout~$y$,
+$S(y)$ équivaut à $R(\Gn{!D_S(u)},y)$.
+C'est la relation calculable universelle interdite
+par le lemme précédent.
+\end{proof}
+
+\begin{explain}
+Dans la relation universelle, le premier argument code la
+formule $!D_S(u)$ avec sa variable d'argument. Le deuxième
+argument donne l'entier dont le numéral remplace~$u$.
+La séparation supposée permettrait de décider ainsi toute
+relation calculable à partir du code de sa formule représentante.
+\end{explain}
+
+\end{document}

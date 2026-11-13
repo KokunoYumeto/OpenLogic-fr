@@ -1,0 +1,250 @@
+% Part: model-theory
+% Chapter: lindstrom
+% Section: lindstrom-proof
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{lin}{prf}
+
+\olsection{Le théorème de Lindström}
+
+\begin{lem}
+\ollabel{lem:lindstrom}
+Soit $!E\in L(\Lang{L})$, où
+$\Lang{L}$ est fini. Supposons
+qu'il existe $n\in\Nat$ tel que,
+pour toutes !!{structure}s
+$\Struct{M}$ et~$\Struct{N}$,
+$\Struct{M}\equiv_n\Struct{N}$
+et $\Struct{M}\models_L !E$
+entraînent
+$\Struct{N}\models_L !E$.
+Alors~$!E$ est équivalent à un
+!!{sentence}~$!D$ du premier ordre :
+$\Mod(L){!E}=\Mod(F){!D}$.
+\end{lem}
+
+\begin{proof}
+Fixons un tel~$n$. La
+\olref[bas][pis]{prop:qr-finite}
+montre que, dans un langage
+relationnel fini, les énoncés
+du premier ordre de rang de
+quantification au plus~$n$
+ont seulement un nombre fini
+de classes d'équivalence logique.
+Pour toute !!{structure}~$\Struct{M}$,
+choisissons des représentants de
+ces classes et notons
+$!D_{\Struct{M}}$ la conjonction
+de ceux qui sont vrais dans
+$\Struct{M}$. Ainsi,
+$\Struct{N}\models !D_{\Struct{M}}$
+si et seulement si
+$\Struct{N}\equiv_n\Struct{M}$.
+
+Parmi les types ainsi obtenus,
+retenons ceux des structures qui
+satisfont~$!E$, puis prenons la
+disjonction finie correspondante :
+\[
+!D=\bigvee
+  \Setabs{!D_{\Struct{M}}}{
+    \Struct{M}\models_L !E},
+\]
+où l'on ne garde qu'un représentant
+par classe; la disjonction vide
+désigne une contradiction. Si
+$\Struct{N}\models !D$, elle
+est $n$-équivalente à une
+structure satisfaisant~$!E$;
+l'hypothèse donne donc
+$\Struct{N}\models_L !E$.
+Réciproquement, si
+$\Struct{N}\models_L !E$, son
+type est l'un des disjoints de
+$!D$, et $\Struct{N}\models !D$.
+Les deux classes de modèles
+coïncident.\footnote{Corrections éditoriales : les conjonctions et disjonctions portent sur un nombre fini de représentants modulo l'équivalence logique, et non sur toutes les formules syntaxiques. Nous distinguons aussi la classe de modèles de $!E$ dans la logique abstraite de celle de $!D$ dans la logique du premier ordre.}
+\end{proof}
+
+\begin{thm}[Théorème de Lindström]
+\ollabel{thm:lindstrom}
+Si une logique abstraite
+\emph{normale} $\tuple{L,\models_L}$
+possède la propriété de compacité
+et la propriété de Löwenheim--Skolem
+descendante dénombrable, alors
+$\tuple{L,\models_L}\leq
+\tuple{F,\models}$. Comme la
+normalité donne l'inégalité
+inverse, les deux logiques
+sont équivalentes.\footnote{Précision éditoriale : nous rétablissons la normalité, omise dans l'énoncé source mais utilisée dans sa preuve pour la dépendance finie, le renommage, la relativisation et la représentation du premier ordre.}
+\end{thm}
+
+\begin{proof}
+Par la dépendance finie, il
+suffit de traiter un énoncé
+$!E\in L(\Lang{L})$ dans un
+langage relationnel \emph{fini}.
+Le \olref{lem:lindstrom} ramène
+la preuve à l'existence d'un
+rang~$n$ tel que deux structures
+$n$-équivalentes s'accordent
+sur~$!E$. Pour un langage fini
+et relationnel, le
+\olref[bas][pis]{thm:b-n-f}
+exprime cette équivalence par
+le va-et-vient de rang~$n$,
+$I_n(\emptyset,\emptyset)$, en incluant les constantes dans toutes les clauses atomiques de base.
+
+Supposons par l'absurde qu'aucun
+rang ne suffise. Pour tout
+$n\in\Nat$, choisissons des
+structures $\Struct{M}_n$ et
+$\Struct{N}_n$ telles que
+$I_n(\emptyset,\emptyset)$,
+$\Struct{M}_n\models_L !E$ et
+$\Struct{N}_n\not\models_L !E$.
+Nous allons coder simultanément
+deux structures et la hauteur
+disponible du va-et-vient dans
+un langage auxiliaire au plus
+dénombrable.\footnote{Adaptation de la preuve : nous explicitons le codage par une relation $H_k$ pour chaque longueur usuelle et par une théorie dénombrable de hauteurs. La source condense ce mécanisme en un énoncé et une relation sur des suites. Nous utilisons chaque paire de modèles séparément pour les tests finis ; la réunion proposée dans la source peut également être construite en choisissant des copies disjointes hors des valeurs communes des constantes, avec les mêmes relations sur celles-ci.}
+
+Ce langage comporte deux copies
+de~$\Lang{L}$, des !!{predicate}s
+unaires $U,V,T$ pour les deux
+domaines et les hauteurs, une
+relation d'ordre~$<$ sur~$T$,
+des constantes $0,t^*$, et,
+pour chaque $k\geq0$, un
+!!{predicate}~$H_k$ à $1+2k$
+places. L'énoncé
+$H_k(t,\mathbf a,\mathbf b)$
+signifie que les $k$-uplets
+$\mathbf a\in U^k$ et
+$\mathbf b\in V^k$ disposent
+encore d'une hauteur~$t$
+de va-et-vient.\footnote{Précision du codage : la hauteur diminue, mais les deux domaines comparés restent fixes. Dans la construction source, le même indice désigne la paire de modèles et le rang ; son remplacement par $n^*-k$ ne garantit pas que les tuples restent dans la paire choisie à l'indice $n^*$. Le codage ci-dessous sépare ces rôles.} Pour $k=0$,
+$H_0(t)$ concerne les deux
+uplets vides. Le renommage et
+la relativisation fournissent
+des énoncés $!E_U,!E_V$
+signifiant que les structures
+des côtés~$U,V$ satisfont~$!E$.
+
+Considérons la théorie~$\Theta$
+qui contient $!E_U$ et
+$\lnot !E_V$, ainsi que les
+clauses suivantes, toutes
+représentables dans la logique
+normale par des énoncés du
+premier ordre :
+\begin{enumerate}
+\item $U,V,T$ sont des parties non vides
+  disjointes, avec $0,t^*\in T$; les constantes et
+  relations des deux copies
+  donnent des sous-structures
+  sur~$U$ et~$V$.
+\item $(T,<,0)$ est un ordre
+  linéaire discret de premier
+  élément~$0$, sans dernier
+  élément; chaque hauteur possède
+  un successeur immédiat et
+  chaque hauteur non nulle un
+  prédécesseur immédiat unique.
+\item Pour chaque entier naturel
+  usuel~$m$, $t^*$ se trouve
+  au-delà du $m$-ième successeur
+  de~$0$; cette condition est
+  un schéma dénombrable d'%
+  !!{sentence}s du premier ordre.
+  On ajoute $H_0(t^*)$.
+\item Pour tout~$k$ et toute
+  hauteur~$t$, $H_k(t,\mathbf a,
+  \mathbf b)$ impose $t\in T$, $\mathbf a\in U^k$ et $\mathbf b\in V^k$, ainsi que la
+  correspondance des égalités,
+  des constantes et des formules
+  atomiques du langage fini.
+  Si $t>0$ et~$s$ est son
+  prédécesseur immédiat, il
+  impose aussi les deux clauses
+  de va-et-vient :
+  \begin{align*}
+  (\forall a\in U)(\exists b\in V)
+    H_{k+1}(s,\mathbf a a,\mathbf b b),\\
+  (\forall b\in V)(\exists a\in U)
+    H_{k+1}(s,\mathbf a a,\mathbf b b).
+  \end{align*}
+\end{enumerate}
+Chaque clause du dernier type
+est du premier ordre. Comme
+$\Lang{L}$ est fini, les
+conditions atomiques pour une
+longueur de tuple fixée sont
+finies; $\Theta$ est donc
+une théorie dénombrable.
+
+Montrons qu'elle est finiment
+satisfaisable. Une partie finie
+ne demande que $t^*$ soit
+au-delà d'un nombre fini de
+successeurs de~$0$. Choisissons
+$n$ plus grand que ces bornes,
+prenons $T=\Nat$, $t^*=n$,
+et plaçons les copies de
+$\Struct{M}_n,\Struct{N}_n$
+sur~$U,V$. Pour $t\leq n$,
+interprétons $H_k(t,\mathbf a,
+\mathbf b)$ par la relation
+de va-et-vient de rang~$t$
+sur ces $k$-uplets; pour
+$t>n$, déclarons-la fausse.
+Les définitions récursives
+des relations de va-et-vient
+vérifient toutes les clauses,
+et $H_0(n)$ vaut par le choix
+des deux structures. Cette
+interprétation satisfait même
+toutes les clauses de~$\Theta$
+à l'exception éventuelle des
+bornes $t^*>m$ non retenues.
+
+Par compacité, $\Theta$ possède
+un modèle~$\Struct{C}$. Sa
+hauteur~$t^*$ a plus de
+prédécesseurs que tout entier
+usuel. Partant de
+$t_0=t^*$, définissons, pour
+chaque entier usuel~$k$,
+$t_{k+1}$ comme le prédécesseur
+immédiat de~$t_k$.
+Aucun~$t_k$ n'est nul : sinon
+$t^*$ serait le $k$-ième
+successeur de~$0$, contrairement
+aux bornes de~$\Theta$.
+Pour chaque~$k$, retenons les
+couples de $k$-uplets tels que
+$H_k(t_k,\mathbf a,\mathbf b)$.
+Ils décrivent des isomorphismes
+partiels, contiennent la paire
+vide par $H_0(t^*)$, et les
+clauses de~$\Theta$ donnent
+le va-et-vient de chaque paire
+vers la longueur suivante.
+Les deux sous-structures sur
+$U,V$ sont donc partiellement
+isomorphes. Par le
+\olref[lsp]{thm:abstract-p-isom},
+elles s'accordent sur~$!E$.
+Mais $\Struct{C}\models_L !E_U$
+et $\Struct{C}\models_L\lnot !E_V$,
+contradiction. Le rang~$n$
+recherché existe; le lemme
+conclut la preuve.
+\end{proof}
+
+\end{document}

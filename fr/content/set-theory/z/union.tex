@@ -1,0 +1,28 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{z}{union}
+\olsection{Union}
+
+La \olref[sth][z][sep]{prop:intersectionsexist} nous a donné les
+intersections. Mais si nous voulons que les unions arbitraires existent,
+il nous faut poser un autre axiome :
+
+\begin{axiom}[Union] Pour tout ensemble $A$, l'ensemble $\bigcup A =
+\Setabs{x}{(\exists b \in A) x \in b}$ existe.
+\[
+	\forall A \exists U \forall x(x \in U \liff (\exists b \in A)x \in b)
+\]
+\end{axiom}
+
+Cet axiome aussi se justifie par la conception cumulative et
+itérative. Soit $A$ un ensemble : $A$ est donc formé à une certaine
+étape $S$ (par \stageshier). Chaque !!{element} de $A$ a été formé
+\emph{avant} $S$ (par \stagesacc) ; par un raisonnement semblable,
+chaque !!{element} de chaque !!{element} de $A$ a donc été formé
+avant $S$. Tous \emph{ces} ensembles sont ainsi disponibles avant
+$S$, pour être réunis en un ensemble à l'étape $S$. Cet ensemble
+n'est autre que $\bigcup A$.
+
+\end{document}

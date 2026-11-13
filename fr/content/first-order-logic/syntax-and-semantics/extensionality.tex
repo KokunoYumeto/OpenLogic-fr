@@ -1,0 +1,146 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: substitution
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{ext}
+
+\olsection{Extensionalité}
+
+\begin{explain}
+L'extensionalité, parfois appelée pertinence, s'exprime
+informellement ainsi : les seuls facteurs qui influent sur la
+satisfaction d'!!a{formula}~$!A$ dans !!a{structure}~$\Struct M$
+relativement à une assignation de variables~$s$ sont le
+!!{domain}\footnote{Précision éditoriale : la source dit « taille du domaine ». Le résultat énoncé ci-dessous compare des structures ayant le même domaine, ce qui est plus précis que l'égalité de leurs cardinalités.} et les valeurs que~$\Struct M$ et~$s$ attribuent aux
+éléments du langage qui apparaissent effectivement dans~$!A$.
+
+Il en résulte immédiatement que si deux !!{structure}s~$\Struct M$
+et~$\Struct M'$ ont le même domaine et s'accordent sur tous les
+éléments du langage apparaissant dans un !!{sentence}~$!A$, elles
+s'accordent aussi sur la vérité de~$!A$.
+\end{explain}
+
+\begin{prop}[Extensionalité]
+  \ollabel{prop:extensionality}
+  Soient $!A$ !!a{formula}, $\Struct M_1$ et $\Struct M_2$ deux
+  !!{structure}s telles que $\Domain{M_1} = \Domain{M_2}$, et $s$
+  une assignation de variables sur ce domaine commun. Si
+  $\Assign{c}{M_1} = \Assign{c}{M_2}$, $\Assign{R}{M_1}=\Assign{R}{M_2}$,
+  et $\Assign{f}{M_1} = \Assign{f}{M_2}$ pour toute !!{constant}~$c$,
+  tout symbole de relation~$R$ et tout !!{function}~$f$ apparaissant
+  dans~$!A$, alors $\Sat{M_1}{!A}[s]$ si et seulement si
+  $\Sat{M_2}{!A}[s]$.
+\end{prop}
+
+\begin{proof}
+  Montrons d'abord, par induction sur~$t$, que pour tout terme~$t$
+  apparaissant dans~$!A$,
+  $\Value{t}{M_1}[s] = \Value{t}{M_2}[s]$. Démontrons ensuite la
+  proposition par induction sur~$!A$, en utilisant ce résultat
+  dans le cas de base où $!A$ est atomique.
+\end{proof}
+
+\begin{prob}
+Détailler la démonstration de la
+\olref[fol][syn][ext]{prop:extensionality}.
+\end{prob}
+
+\begin{cor}[Extensionalité pour les !!{sentence}s]
+  \ollabel{cor:extensionality-sent}
+  Soient $!A$ !!a{sentence} et $\Struct{M_1}$, $\Struct{M_2}$
+  comme dans la \olref{prop:extensionality}. Alors
+  $\Sat{M_1}{!A}$ si et seulement si $\Sat{M_2}{!A}$.
+\end{cor}
+
+\begin{proof}
+Cela découle de la \olref{prop:extensionality} et du
+\olref[ass]{cor:sat-sentence}.
+\end{proof}
+
+En outre, la valeur d'un terme et la satisfaction d'!!a{formula}
+dans !!a{structure} ne dépendent que des valeurs des sous-termes
+pertinents.
+
+\begin{prop}\ollabel{prop:ext-terms}
+Soient $\Struct M$ !!a{structure}, $t$ et $t'$ deux termes, et $s$
+une assignation de variables. Alors
+$\Value{\Subst{t}{t'}{x}}{M}[s] =
+\Value{t}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$.
+\end{prop}
+
+\begin{proof}
+Procédons par induction sur~$t$.
+\begin{enumerate}
+\item Si $t$ est une !!{constant}, disons $t\ident c$, alors
+  $\Subst{t}{t'}{x} = c$ et
+  $\Value{c}{M}[s] = \Assign{c}{M} =
+  \Value{c}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$.
+
+\item Si $t$ est une !!{variable} différente de~$x$, disons
+  $t \ident y$, alors $\Subst{t}{t'}{x} = y$ et
+  $\Value{y}{M}[s] =
+  \Value{y}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$, puisque
+  $\varAssign{s}{\Subst{s}{\Value{t'}{M}[s]}{x}}{x}$.
+
+\item Si $t \ident x$, alors $\Subst{t}{t'}{x} = t'$. Or
+  $\Value{x}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}] = \Value{t'}{M}[s]$ par
+  définition de~$\Subst{s}{\Value{t'}{M}[s]}{x}$.
+
+\item Si $t \ident \Atom{f}{t_1,\dots,t_n}$, alors :
+\begin{multline*}
+  \Value{\Subst{t}{t'}{x}}{M}[s]  = \\
+  \begin{aligned}[b]
+& \Value{\Atom{f}{\Subst{t_1}{t'}{x}, \dots, \Subst{t_n}{t'}{x}}}{M}[s]\\
+& \qquad    \text{ par définition de $\Subst{t}{t'}{x}$}\\
+& = \Assign{f}{M}(\Value{\Subst{t_1}{t'}{x}}{M}[s], \dots,
+    \Value{\Subst{t_n}{t'}{x}}{M}[s])\\
+    & \qquad  \text{ par définition de $\Value{\Atom{f}{\dots}}{M}[s]$}\\
+& = \Assign{f}{M}(\Value{t_1}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}], \dots,
+   \Value{t_n}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}])\\
+& \qquad    \text{ par hypothèse d'induction}\\
+& = \Value{t}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]
+    \text{ par définition de $\Value{\Atom{f}{\dots}}{M}[\Subst{s}{\Value{t'}{M}[s]}{x}]$}
+  \end{aligned}
+\end{multline*}
+\end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:ext-formulas} Soient $\Struct M$
+!!a{structure}, $!A$ !!a{formula}, $t'$~un terme et $s$~une
+assignation de variables. Si $t'$ est !!{free for} $x$ dans~$!A$,
+alors $\Sat{M}{\Subst{!A}{t'}{x}}[s]$ si et seulement si
+$\Sat{M}{!A}[\Subst{s}{\Value{t'}{M}[s]}{x}]$.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[fol][syn][ext]{prop:ext-formulas}.
+\end{prob}
+
+\begin{explain}
+  Voici la portée des
+  \cref{fol:syn:ext:prop:ext-terms,fol:syn:ext:prop:ext-formulas}.
+  Supposons donnés un terme~$t$ ou !!a{formula}~$!A$, ainsi qu'un
+  terme~$t'$, supposé !!{free for}~$x$ dans~$!A$ dans le cas d'une formule. Nous voulons connaître la valeur de
+  $\Subst{t}{t'}{x}$ ou savoir si $\Subst{!A}{t'}{x}$ est satisfaite
+  dans !!a{structure}~$\Struct M$ relativement à une assignation
+  de variables~$s$. Nous pouvons d'abord effectuer la substitution,
+  puis considérer la valeur ou la satisfaction relativement à
+  $\Struct{M}$ et à~$s$. Nous pouvons aussi commencer par calculer
+  la valeur $m = \Value{t'}{M}[s]$ de~$t'$ dans $\Struct{M}$
+  relativement à~$s$, remplacer l'assignation par~$\Subst{s}{m}{x}$,
+  puis considérer la valeur de~$t$ dans $\Struct{M}$ relativement
+  à~$\Subst{s}{m}{x}$, ou vérifier
+  $\Sat{M}{!A}[\Subst{s}{m}{x}]$.
+  Les \Cref{fol:syn:ext:prop:ext-terms,fol:syn:ext:prop:ext-formulas}
+  garantissent que les deux méthodes donnent la même réponse.
+\end{explain}
+
+\end{document}

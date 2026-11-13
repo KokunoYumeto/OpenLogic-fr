@@ -1,0 +1,139 @@
+% Part: incompleteness
+% Chapter: introduction
+% Section: decidability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{int}{dec}
+
+\olsection{Indécidabilité et incomplétude}
+
+La démonstration des théorèmes d'incomplétude de Gödel exige une
+arithmétisation de la syntaxe. Pourtant, même sans celle-ci, nous
+pouvons déjà obtenir des résultats intéressants en supposant seulement
+qu'une théorie !!{represents} toutes les relations !!{decidable}s.
+Cette preuve repose sur un argument diagonal analogue à celui qui
+établit l'indécidabilité du problème de l'arrêt.
+
+\begin{thm}
+Si $\Gamma$ est une théorie cohérente qui !!{represents} toute
+relation !!{decidable}, alors $\Gamma$ n'est pas !!{decidable}.
+\end{thm}
+
+\begin{proof}
+Supposons $\Gamma$ !!{decidable}. Nous allons montrer que si
+$\Gamma$ !!{represents} toute relation !!{decidable}, elle est
+incohérente.
+
+Les propriétés décidables (relations unaires) sont représentées
+par des !!{formula}s ayant pour seule variable libre~$x$. Soit
+$!A_0(x)$, $!A_1(x)$, \dots, une énumération calculable de toutes
+les !!{formula}s de ce langage ayant cette variable libre, qu'elles représentent ou non une propriété !!{decidable}.\footnote{Précision éditoriale : l'énumération porte sur la syntaxe des formules, dont la reconnaissance est effective, et non sur la classe sémantique des seules représentations de propriétés décidables.} Considérons alors l'ensemble $D\subseteq\Nat$ :
+\[
+D = \Setabs{n}{\Gamma \Proves \lnot !A_n(\num{n})}
+\]
+$D$ est !!{decidable} : pour savoir si $n\in D$, nous calculons
+d'abord $!A_n(x)$, puis $\lnot !A_n(\num{n})$. La substitution du
+terme $\num{n}$ à chaque occurrence libre de~$x$ dans $!A_n(x)$,
+puis l'ajout de $\lnot$ devant $!A_n(\num{n})$, sont des opérations
+mécaniques.\footnote{Correction éditoriale : dans deux occurrences du calcul source, $!A$ doit rester $!A_n$ ; l'indice est conservé dans toute la substitution et le test d'appartenance.} Par hypothèse, $\Gamma$ est !!{decidable} : nous pouvons
+donc déterminer si $\lnot !A_n(\num{n})\in\Gamma$. Si oui,
+$n\in D$; sinon, $n\notin D$. Ainsi, $D$ est !!{decidable}.
+
+Puisque $\Gamma$ !!{represents} toutes les propriétés !!{decidable}s,
+elle !!{represents}~$D$. Toute !!{formula} qui représente~$D$
+dans~$\Gamma$ figure parmi $!A_0(x)$, $!A_1(x)$, \dots.
+Choisissons donc $d$ tel que $!A_d(x)$ représente~$D$ dans~$\Gamma$.
+Si $d\notin D$, la représentation de~$D$ donne
+$\Gamma\Proves\lnot !A_d(\num{d})$. Or cela signifie, par la définition
+de~$D$, que $d\in D$, contrairement à notre hypothèse. Donc
+$d\in D$.
+
+Puisque $d\in D$, la définition de~$D$ donne
+$\Gamma\Proves\lnot !A_d(\num{d})$. D'autre part, comme
+$!A_d(x)$ représente~$D$ dans~$\Gamma$, nous avons
+$\Gamma\Proves !A_d(\num{d})$. Ainsi, $\Gamma$ est incohérente.
+\end{proof}
+
+\begin{explain}
+Ce théorème montre qu'aucune théorie cohérente représentant toutes
+les relations !!{decidable}s ne peut être !!{decidable}. Nous
+montrerons que $\Th{Q}$ !!{represents} effectivement toutes ces
+relations ; toute extension de~$\Th{Q}$ les représente donc aussi.
+Toute extension \emph{cohérente} de~$\Th{Q}$ est ainsi indécidable.\footnote{Précision éditoriale : la source ne précise pas ici la cohérence et semble attribuer un modèle standard à toutes les extensions. La vérité dans le modèle standard concerne les trois théories citées ; une extension arbitraire de~$\Th{Q}$ peut être incohérente et donc décidable.}
+En particulier, tous les énoncés de $\Th{Q}$, $\Th{PA}$ et $\Th{TA}$ sont vrais
+dans le modèle standard ; ces trois théories sont donc cohérentes et indécidables.
+
+Nous pouvons aussi en déduire une forme faible du premier théorème
+d'incomplétude. Toute théorie !!{axiomatizable} et complète est
+!!{decidable}. Une théorie cohérente qui est !!{axiomatizable} et
+représente toutes les propriétés !!{decidable}s ne peut donc pas être
+complète.
+\end{explain}
+
+\begin{thm}
+Si $\Gamma$ est !!{axiomatizable} et complète, elle est
+!!{decidable}.
+\end{thm}
+
+\begin{proof}
+Toute théorie incohérente est !!{decidable}, puisqu'elle contient
+tous les !!{sentence}s : à la question « $!A\in\Gamma$ ? », on
+répond toujours « oui ».
+
+Supposons donc $\Gamma$ cohérente, !!{axiomatizable} et complète.
+Comme elle est !!{axiomatizable}, l'ensemble de ses théorèmes est
+!!{computably enumerable}. En effet, une procédure calculable peut
+énumérer toutes les !!{derivation}s correctes à partir des axiomes
+de~$\Gamma$. De chacune, on peut calculer l'!!{sentence} dérivé;
+on obtient ainsi une énumération calculable des théorèmes de~$\Gamma$.
+Puisque $\Gamma$ est cohérente et complète, $!A$ est un théorème
+si et seulement si $\lnot !A$ n'en est pas un. Pour décider si
+$!A\in\Gamma$, énumérons alors les théorèmes de~$\Gamma$.
+Si $!A$ apparaît, nous savons que $\Gamma\Proves !A$;
+si $\lnot !A$ apparaît, nous savons que $\Gamma\Proves/ !A$.
+L'un de ces deux cas finit nécessairement par se produire, puisque
+$\Gamma$ est complète. La procédure donne donc toujours une réponse.
+\end{proof}
+
+\begin{cor}
+\ollabel{cor:incompleteness}
+Si $\Gamma$ est cohérente, !!{axiomatizable} et représente toute
+propriété !!{decidable}, elle n'est pas complète.
+\end{cor}
+
+\begin{proof}
+Si $\Gamma$ était complète, le théorème précédent montrerait qu'elle
+est !!{decidable}, puisqu'elle est !!{axiomatizable} et cohérente.
+Mais le premier théorème montre qu'une théorie qui représente toute
+propriété !!{decidable} n'est pas !!{decidable}. Contradiction.
+\end{proof}
+
+\begin{prob}
+Montrez que $\Th{TA}=\Setabs{!A}{\Sat{N}{!A}}$ n'est pas
+!!{axiomatizable}. Vous pouvez admettre que $\Th{TA}$ représente
+toutes les propriétés décidables.
+\end{prob}
+
+Une fois établi que $\Th{Q}$ représente toutes les propriétés
+!!{decidable}s, le corollaire montrera que $\Th{Q}$ est incomplète.
+Cependant, sa preuve ne donne aucun exemple d'!!{sentence}
+indépendant : elle montre seulement qu'il en existe. Pour en construire
+un sous la seule cohérence, il faudra arithmétiser la syntaxe et utiliser
+la construction de Rosser, issue de l'idée originale de Gödel. Il restera aussi à démontrer que $\Th{Q}$ représente
+effectivement toutes les propriétés !!{decidable}s.
+
+Toute théorie mathématiquement \emph{intéressante} n'est cependant pas
+nécessairement incomplète ou indécidable. Nombre de théories assez
+riches pour décrire des faits mathématiques intéressants ne satisfont
+pas les hypothèses du résultat de Gödel. Par exemple, la théorie
+$\Th{Pres}=\Setabs{!A\in\Lang{L_{A^+}}}{\Sat{N}{!A}}$, constituée
+des !!{sentence}s du langage de l'arithmétique sans~$\times$ qui sont
+vrais dans le modèle standard, est à la fois complète et !!{decidable}.
+C'est l'\emph{arithmétique de Presburger}; elle démontre toutes les
+vérités sur les nombres naturels exprimables avec les seuls symboles
+$\Obj{0}$, $\prime$ et~$+$. Le symbole~$<$ qui figure dans~$\Lang{L_{A^+}}$ est définissable à partir de ces symboles.
+
+\end{document}

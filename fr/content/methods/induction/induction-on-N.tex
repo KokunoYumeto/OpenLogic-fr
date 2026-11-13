@@ -1,0 +1,280 @@
+% Partie : méthodes
+% Chapitre : induction mathématique
+% Section : récurrence sur les nombres naturels
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{ind}{inN}
+
+\olsection{Récurrence sur~\texorpdfstring{$\Nat$}{ℕ}}
+
+La récurrence sur les entiers naturels permet d'établir
+qu'une propriété vaut pour chacun d'eux. Elle utilise
+le fait qu'en partant de~$0$
+et en ajoutant~$1$ de façon
+répétée, on atteint finalement
+chaque nombre naturel.
+Pour montrer qu'une propriété
+vaut pour tous ces nombres,
+on peut donc
+(1)~établir qu'elle vaut
+pour~$0$, puis
+(2)~montrer que, chaque fois
+qu'elle vaut pour un nombre~$n$,
+elle vaut aussi pour le
+suivant, $n+1$.
+Abrégeons «~le nombre~$n$
+possède la propriété~$P$~»
+par $P(n)$, et de même
+pour $P(k)$, etc.
+Une démonstration par
+récurrence de $P(n)$
+pour tout $n \in \Nat$
+comprend alors :
+\begin{enumerate}
+\item une démonstration de $P(0)$ ;
+\item une démonstration que,
+  pour tout~$k$, si $P(k)$,
+  alors $P(k+1)$.
+\end{enumerate}
+Examinons précisément pourquoi
+ces deux étapes suffisent.
+La première donne~$P(0)$.
+La seconde, appliquée avec
+$k=0$, donne
+«~si $P(0)$, alors $P(0+1)$~»,
+c'est-à-dire
+«~si $P(0)$, alors $P(1)$~».
+Par modus ponens, nous
+obtenons~$P(1)$.
+En appliquant de nouveau
+la seconde étape, cette
+fois avec $k=1$,
+nous obtenons
+«~si $P(1)$, alors $P(2)$~».
+Puisque nous venons
+d'établir $P(1)$,
+un autre modus ponens
+donne~$P(2)$.
+Et ainsi de suite :
+pour tout~$n$, après
+avoir répété l'étape
+$n$~fois, nous obtenons
+finalement~$P(n)$.
+Les deux étapes établissent
+donc $P(n)$ pour tout
+$n \in \Nat$.
+
+Prenons un exemple.
+Combien de sommes différentes
+peut-on obtenir en lançant
+$n$ dés ? Commençons,
+même si cela paraît étrange,
+avec $0$ dé. Sans dés,
+il n'y a qu'une somme
+possible : aucun point,
+soit~$0$. Le nombre
+de sommes possibles est
+donc~$1$. Avec un seul
+dé, $n=1$, on obtient
+six valeurs, de $1$ à~$6$.
+Avec deux dés, toutes
+les sommes de $2$ à
+$12$ sont possibles :
+il y en a~$11$.
+Avec trois dés, on
+peut obtenir toutes
+les sommes de $3$
+à $18$, soit~$16$.
+La suite $1$, $6$,
+$11$, $16$ suggère
+une règle : la réponse
+serait-elle $5n+1$ ?
+C'est en tout cas le
+nombre maximal de
+valeurs distinctes
+possibles, car il y
+a précisément $5n+1$
+entiers entre $n$,
+la plus petite somme
+possible avec $n$
+dés (tous montrant~$1$),
+et $6n$, la plus
+grande (tous
+montrant~$6$).
+
+\begin{thm}
+  Avec $n$ dés, on peut
+  obtenir chacune des
+  $5n+1$ valeurs
+  comprises entre
+  $n$ et $6n$.
+\end{thm}
+
+\begin{proof}
+Notons $P(n)$ l'énoncé :
+«~Avec $n$ dés,
+on peut obtenir
+tout entier compris
+entre $n$ et~$6n$.~»
+Le cas sans dé a été établi ci-dessus.
+Pour démontrer cet énoncé
+par récurrence, établissons :
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+\begin{enumerate}
+\item la \emph{base de la récurrence}
+  $P(1)$ : avec un seul dé,
+  toutes les sommes de
+  $1$ à $6$ sont possibles ;
+\item l'\emph{étape de récurrence} :
+  pour tout $k$,
+  si $P(k)$, alors~$P(k+1)$.
+\end{enumerate}
+
+Pour (1), il suffit d'examiner
+un dé à six faces : chacune
+des valeurs de $1$ à~$6$
+figure sur l'une de ses faces.
+Un seul dé permet donc
+d'obtenir toutes les valeurs
+de cet intervalle.
+
+Pour (2), supposons
+l'antécédent de l'implication,
+$P(k)$. Cette supposition
+s'appelle l'\emph{hypothèse
+de récurrence}.
+Nous l'utiliserons pour
+démontrer~$P(k+1)$.
+La difficulté consiste
+à exprimer les sommes
+obtenues avec $k+1$ dés
+à partir de celles que
+l'on peut obtenir avec
+$k$ dés et de la valeur
+du dé supplémentaire :
+c'est ainsi que nous
+pourrons exploiter
+l'hypothèse de récurrence.
+
+Celle-ci dit qu'avec
+$k$ dés, on peut obtenir
+tous les entiers de
+$k$ à~$6k$. Si le
+$(k+1)$-ième dé montre~$1$,
+on ajoute~$1$ à la
+somme : toutes les
+valeurs de $k+1$
+à $6k+1$ sont donc
+possibles. Il reste
+les valeurs de $6k+2$
+à~$6k+6$. Pour les obtenir, il suffit d'avoir~$6$ sur
+chacun des $k$ premiers dés et la valeur voulue,
+comprise entre $2$ et~$6$, sur le dernier.
+Avec $k+1$ dés,
+on peut ainsi obtenir
+tous les entiers de
+$k+1$ à $6(k+1)$ :
+nous avons démontré
+$P(k+1)$ à partir
+de l'hypothèse~$P(k)$.
+\end{proof}
+
+Très souvent, on recourt
+à la récurrence pour
+démontrer un résultat
+concernant une suite
+d'objets (nombres,
+ensembles, etc.) qui
+est elle-même définie
+«~par récurrence~» :
+le $(n+1)$-ième objet
+est défini à partir
+du $n$-ième.
+Par exemple, la
+somme~$s_n$ des
+nombres naturels
+jusqu'à~$n$ peut
+être définie par
+\begin{align*}
+  s_0 & = 0\\
+  s_{n+1} & = s_n + (n+1).
+\end{align*}
+Cette définition donne :
+\begin{align*}
+  s_0 & = 0,\\
+  s_1 & = s_0 + 1 && = 1,\\
+  s_2 & = s_1 + 2 && = 1 + 2 = 3,\\
+  s_3 & = s_2 + 3 && = 1 + 2 + 3 = 6,
+  \text{ etc.}
+\end{align*}
+Nous pouvons maintenant
+démontrer par récurrence
+que $s_n=n(n+1)/2$.
+
+\begin{prop}
+  $s_n = n(n+1)/2$.
+\end{prop}
+
+\begin{proof}
+  Il faut démontrer
+  (1) $s_0=0\cdot(0+1)/2$
+  et
+  (2) si
+  $s_k=k(k+1)/2$,
+  alors
+  $s_{k+1}=(k+1)(k+2)/2$.
+  L'assertion (1)
+  est immédiate.
+  Pour (2), supposons
+  l'hypothèse de récurrence
+  $s_k=k(k+1)/2$.
+  Nous devons en déduire
+  $s_{k+1}=(k+1)(k+2)/2$.
+
+  Que vaut $s_{k+1}$ ?
+  Par définition,
+  $s_{k+1}=s_k+(k+1)$.
+  En substituant
+  $s_k=k(k+1)/2$
+  et en calculant,
+  nous obtenons :
+  \begin{align*}
+    s_{k+1}
+      & = \frac{k(k+1)}{2}+(k+1)\\
+      & = \frac{k(k+1)}{2}
+        +\frac{2(k+1)}{2}\\
+      & = \frac{k(k+1)+2(k+1)}{2}\\
+      & = \frac{(k+2)(k+1)}{2}.
+  \end{align*}
+\end{proof}
+
+La leçon importante est
+la suivante : lorsqu'on
+étudie une suite~$a_n$
+définie par récurrence,
+une démonstration par
+récurrence est la
+méthode naturelle.
+Même si la suite des
+objets n'est pas
+définie de cette
+manière, comme dans
+l'exemple des dés,
+on peut utiliser
+la récurrence dès
+qu'on sait relier
+le cas~$k+1$ au
+cas~$k$.
+
+\end{document}

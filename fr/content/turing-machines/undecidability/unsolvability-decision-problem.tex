@@ -1,0 +1,97 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: unsolvability-decision-problem
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{uns}
+\olsection{L'insolubilité du problème de la décision}
+
+\begin{thm}
+\ollabel{thm:decision-prob}
+Le problème de la décision est insoluble : il n'existe aucune machine
+de Turing~$D$ qui, lancée sur un ruban portant en entrée
+!!a{sentence} de logique du premier ordre~$!B$, s'arrête toujours
+et produit~$1$ si et seulement si $!B$ est valide, et~$0$ sinon.
+\end{thm}
+
+\begin{proof}
+Supposons que le problème de la décision soit soluble, et soit~$D$
+une machine qui le résout. Nous pourrions alors résoudre le problème
+de l'arrêt comme suit. Construisons une machine de Turing~$E$ qui,
+recevant l'indice~$e$ de la machine~$M_e$ et l'entrée~$w$, calcule
+l'!!{sentence} correspondant $!T(M_e,w) \lif !E(M_e,w)$, puis s'arrête,
+sa tête lisant la première case du ruban.\footnote{Correction éditoriale : la source fait revenir la tête sur la case la plus à gauche, d'indice $0$. Pour lancer $D$ sur l'énoncé codé, elle doit lire la case $1$, à droite du marqueur. Les alphabets du codeur et du décideur sont rendus communs comme pour le raccordement précédent.} Lancée sur~$e$ et~$w$,
+la machine raccordée $E \concat D$ calcule d'abord
+$!T(M_e,w) \lif !E(M_e,w)$, puis soumet cet énoncé à~$D$.
+Cette dernière s'arrête avec la sortie~$1$ si et seulement si
+$!T(M_e,w) \lif !E(M_e,w)$ est valide, et avec la sortie~$0$
+sinon. D'après le \olref[ver]{lem:halt-if-valid} et
+le \olref[ver]{lem:valid-if-halt}, cet énoncé est valide si et seulement
+si~$M_e$ s'arrête sur l'entrée~$w$. Ainsi, $E \concat D$ s'arrête
+avec la sortie~$1$ si~$M_e$ s'arrête sur~$w$, et avec la sortie~$0$
+sinon : elle résoudrait le problème de l'arrêt. Or, d'après
+le \olref[hal]{thm:halting-problem}, aucune machine de Turing ne peut
+le résoudre.
+\end{proof}
+
+\begin{cor}\ollabel{cor:undecidable-sat}%
+Le problème de savoir si un !!{sentence} arbitraire de logique du
+premier ordre est satisfaisable est indécidable.
+\end{cor}
+
+\begin{proof}
+Supposons qu'une machine de Turing~$S$ décide la satisfaisabilité.
+Nous pourrions résoudre le problème de la décision de la manière
+suivante. Étant donné en entrée !!a{sentence}~$!B$, décalons-le
+d'une case vers la droite. Revenons à la case~$1$ et inscrivons-y
+le symbole~$\lnot$.
+
+Lançons maintenant~$S$. Elle finit par s'arrêter avec la sortie~$1$
+si~$\lnot !B$ est satisfaisable, et avec la sortie~$0$ sinon. Nous choisissons $S$ disciplinée, pour que sa tête lise alors la case~$1$.
+Si la case~$1$ porte un symbole~$\TMstroke$, effaçons-le; si elle
+est vide, inscrivons-y un symbole~$\TMstroke$, puis arrêtons-nous.
+
+La machine ainsi construite s'arrête toujours. Elle produit~$1$
+si et seulement si $\lnot !B$ est insatisfaisable, et~$0$ sinon.
+Comme $!B$ est valide si et seulement si $\lnot !B$ est
+insatisfaisable, elle produirait~$1$ exactement lorsque $!B$ est
+valide, et~$0$ sinon. Elle résoudrait donc le problème de la décision.
+\end{proof}
+
+\begin{explain}
+Aucune machine de Turing ne peut donc toujours répondre correctement
+« oui » ou « non » à la question : « $!B$ est-il un !!{sentence}
+valide de logique du premier ordre ? » Il \emph{existe} pourtant une machine
+qui répond correctement « oui » lorsque la réponse est affirmative,
+mais qui ne s'arrête pas lorsque la réponse est négative. Cela
+résulte des théorèmes de correction et de complétude de la logique
+du premier ordre, ainsi que de la possibilité d'énumérer
+effectivement les !!{derivation}s.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:valid-ce}%
+La validité des !!{sentence}s du premier ordre est semi-décidable :
+il existe une machine de Turing~$E$ qui, lancée sur un ruban portant
+en entrée !!a{sentence} de logique du premier ordre~$!B$, s'arrête
+avec la sortie~$1$ si et seulement si $!B$ est valide, et ne
+s'arrête pas sinon.
+\end{thm}
+
+\begin{proof}
+Un algorithme effectif peut engendrer successivement toutes les
+!!{derivation}s possibles en logique du premier ordre. La
+machine~$E$ les énumère et, dès qu'elle trouve !!a{derivation}
+établissant $\Proves !B$, elle s'arrête avec la sortie~$1$.
+Par le théorème de correction, si~$E$ s'arrête ainsi, alors
+$\Entails !B$. Réciproquement, si $\Entails !B$, le théorème de
+complétude assure l'existence d'!!a{derivation} établissant
+$\Proves !B$. Puisque~$E$ engendre systématiquement toutes les
+!!{derivation}s possibles, elle finira par trouver celle-ci et
+s'arrêtera avec la sortie~$1$.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,41 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: computable-lambda
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{lrp}
+\olsection{Les fonctions calculables sont \texorpdfstring{$\lambd$}{λ}-définissables}
+
+\begin{thm}
+\ollabel{thm:computable-lambda}
+Toute fonction partielle calculable est
+$\lambd$-définissable.
+\end{thm}
+
+\begin{proof}
+Par l'équivalence des modèles de calcul, il suffit de traiter les
+fonctions récursives partielles. Le
+\olref[lam][rep][par]{thm:partial-recursive-lambda} les représente
+par des lambda-termes au moyen de la forme normale de Kleene.
+Les sections qui suivent donnent les constructions élémentaires
+utilisées pour les fonctions récursives primitives.
+\end{proof}
+
+Nous emploierons désormais une notation plus
+classique pour rendre la suite de la preuve plus
+lisible. Nous écrirons, par exemple, $M(x,y,z)$
+au lieu de $Mxyz$. Cette notation est suggestive,
+mais rappelons que les termes du lambda-calcul non
+typé n'ont pas d'arité attachée : pour le même terme~$M$,
+$M(x,y)$ et $M(x,y,z,w)$ ont tout autant de sens.
+Écrire $M(x,y,z)$ indique toutefois que nous considérons
+$M$ comme une fonction de trois arguments et rend plus
+claire l'intention des définitions. De même, nous dirons
+« définissons~$M$ par $M(x,y,z)=\dots$ » plutôt que
+« définissons~$M$ par
+$M=\lambd[x][\lambd[y][\lambd[z][\dots]]]$ ».
+
+\end{document}

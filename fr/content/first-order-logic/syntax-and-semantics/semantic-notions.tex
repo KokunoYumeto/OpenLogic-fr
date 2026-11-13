@@ -1,0 +1,175 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: Semantic Notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{sem}
+\olsection{Notions sémantiques}
+
+\begin{explain}
+La définition des !!{structure}s pour les langages du premier ordre
+permet de formuler des propriétés sémantiques fondamentales des
+énoncés et des relations entre eux. La plus simple est la
+\emph{validité} d'un énoncé : il est valide s'il est satisfait dans
+toute !!{structure}. Sa satisfaction ne dépend donc pas de la façon
+dont ses symboles non logiques sont interprétés. Les énoncés valides
+sont aussi appelés \emph{vérités logiques} : ils sont vrais,
+c'est-à-dire satisfaits, dans toute !!{structure}. Leur vérité
+ne dépend que des symboles logiques qu'ils contiennent et de leur
+structure syntaxique, et non des symboles non logiques ni de leur
+interprétation.
+\end{explain}
+
+\begin{defn}[Validité]
+Un énoncé~$!A$ est \emph{valide}, ce que nous notons $\Entails !A$,
+si et seulement si $\Sat{M}{!A}$ pour toute
+!!{structure}~$\Struct M$.
+\end{defn}
+
+\begin{defn}[Conséquence logique]
+Un ensemble d'énoncés~$\Gamma$ \emph{entraîne} un énoncé~$!A$,
+ce que nous notons $\Gamma \Entails !A$, si et seulement si, pour
+toute !!{structure}~$\Struct M$ telle que $\Sat{M}{\Gamma}$,
+on a $\Sat{M}{!A}$.
+\end{defn}
+
+
+\begin{defn}[Satisfaisabilité]
+Un ensemble d'énoncés~$\Gamma$ est \emph{satisfaisable} s'il existe
+!!a{structure}~$\Struct M$ telle que $\Sat{M}{\Gamma}$. S'il n'est
+pas satisfaisable, il est dit \emph{insatisfaisable}.
+\end{defn}
+
+\begin{prop}
+Un énoncé~$!A$ est valide si et seulement si
+$\Gamma \Entails !A$ pour tout ensemble d'énoncés~$\Gamma$.
+\end{prop}
+
+\begin{proof}
+Dans le sens direct, supposons $!A$ valide et soit $\Gamma$ un
+ensemble d'énoncés. Si une !!{structure}~$\Struct M$ satisfait
+$\Gamma$, alors $\Sat{M}{!A}$ par validité de~$!A$; donc
+$\Gamma \Entails !A$.
+
+Pour la contraposée du sens réciproque, supposons $!A$ non valide.
+Il existe alors !!a{structure}~$\Struct M$ telle que
+$\Sat/{M}{!A}$. Prenons $\Gamma = \{ \ltrue \}$. Comme
+$\ltrue$ est valide, $\Sat{M}{\Gamma}$. Cette !!{structure}
+satisfait donc~$\Gamma$ sans satisfaire~$!A$ :
+$\Gamma$ n'entraîne pas~$!A$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:entails-unsat}
+$\Gamma \Entails !A$ si et seulement si
+$\Gamma \cup \{\lnot !A\}$ est insatisfaisable.
+\end{prop}
+
+\begin{proof}
+Dans le sens direct, supposons $\Gamma \Entails !A$ et, par
+l'absurde, qu'il existe !!a{structure}~$\Struct M$ telle que
+$\Sat{M}{\Gamma \cup \{ \lnot !A \}}$. Puisque
+$\Sat{M}{\Gamma}$ et $\Gamma \Entails !A$, nous avons
+$\Sat{M}{!A}$. Mais $\Sat{M}{\Gamma\cup \{ \lnot !A \}}$ donne
+aussi $\Sat{M}{\lnot !A}$, donc $\Sat/{M}{!A}$ : contradiction.
+Une telle !!{structure}~$\Struct M$ n'existe pas; l'ensemble
+$\Gamma \cup \{ \lnot !A \}$ est insatisfaisable.
+
+Réciproquement, supposons $\Gamma \cup \{ \lnot !A \}$
+insatisfaisable. Pour toute !!{structure}~$\Struct M$, on a alors
+$\Sat/{M}{\Gamma}$ ou $\Sat{M}{!A}$. Ainsi, toute !!{structure}
+$\Struct M$ qui satisfait~$\Gamma$ satisfait aussi~$!A$;
+donc $\Gamma \Entails !A$.
+\end{proof}
+
+\begin{prob}
+\begin{enumerate}
+\item Montrer que $\Gamma \Entails \bot$ si et seulement si
+  $\Gamma$ est insatisfaisable.
+\item Montrer que $\Gamma \cup \{!A\} \Entails \bot$ si et seulement si
+  $\Gamma \Entails \lnot !A$.
+\item Supposons que $!A$ n'ait pas de variable libre autre que $x$ et que $c$ soit une constante n'apparaissant ni dans~$!A$ ni dans~$\Gamma$.\footnote{Précision éditoriale : la conséquence logique a été définie ici pour des énoncés. Cette condition garantit que la quantification et le remplacement par la constante produisent bien des énoncés.}
+  Montrer que $\Gamma \Entails \lforall[x][!A]$ si et seulement si
+  $\Gamma \Entails
+  \Subst{!A}{c}{x}$.
+\end{enumerate}
+\end{prob}
+
+\begin{prop}
+Si $\Gamma \subseteq \Gamma'$ et $\Gamma \Entails !A$, alors
+$\Gamma' \Entails !A$.
+\end{prop}
+
+\begin{proof}
+Supposons $\Gamma \subseteq \Gamma'$ et $\Gamma \Entails !A$.
+Soit $\Struct M$ une structure telle que $\Sat{M}{\Gamma'}$.
+Alors $\Sat{M}{\Gamma}$ et, puisque $\Gamma \Entails !A$,
+on obtient $\Sat{M}{!A}$. Toute structure satisfaisant~$\Gamma'$
+satisfait donc~$!A$, ce qui donne $\Gamma' \Entails !A$.
+\end{proof}
+
+
+\begin{thm}[Théorème sémantique de déduction]
+\ollabel{thm:sem-deduction}
+$\Gamma \cup \{!A\} \Entails !B$ si et seulement si
+$\Gamma \Entails !A \lif !B$.
+\end{thm}
+
+\begin{proof}
+Dans le sens direct, supposons
+$\Gamma \cup \{ !A \} \Entails !B$ et soit $\Struct M$ une
+!!{structure} telle que $\Sat{M}{\Gamma}$. Si $\Sat{M}{!A}$,
+alors $\Sat{M}{\Gamma \cup \{ !A \} }$; l'hypothèse donne donc
+$\Sat{M}{!B}$. Par conséquent, $\Sat{M}{!A \lif !B}$ et
+$\Gamma \Entails !A \lif !B$.
+
+Réciproquement, supposons $\Gamma \Entails !A \lif !B$ et soit
+$\Struct M$ une !!{structure} telle que
+$\Sat{M}{\Gamma \cup \{ !A \}}$. Alors $\Sat{M}{\Gamma}$,
+donc $\Sat{M}{!A \lif !B}$. Puisque $\Sat{M}{!A}$ également,
+on a $\Sat{M}{!B}$. Toute structure satisfaisant
+$\Gamma \cup \{ !A \}$ satisfait donc~$!B$ :
+$\Gamma \cup \{ !A \} \Entails !B$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:quant-terms}
+  Soient $\Struct{M}$ !!a{structure}, $!A(x)$ !!a{formula} dont
+  la seule variable libre est~$x$, et $t$~un terme clos. Alors :
+  \begin{tagenumerate}{prvEx,prvAll}
+    \tagitem{prvEx}{$!A(t) \Entails \lexists[x][!A(x)]$}{}
+    \tagitem{prvAll}{$\lforall[x][!A(x)] \Entails !A(t)$}{}
+  \end{tagenumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{tagenumerate}{prvEx,prvAll}
+    \tagitem{prvEx}{%
+      \iftag{probEx}{Exercice.}{Supposons $\Sat{M}{!A(t)}$.
+        Soit $s$ une assignation de variables telle que
+        $s(x) = \Value{t}{M}$. Comme $!A(t)$ est !!a{sentence},
+        $\Sat{M}{!A(t)}[s]$. D'après la
+        \olref[ext]{prop:ext-formulas}, $\Sat{M}{!A(x)}[s]$; puis,
+        d'après la
+        \olref[ass]{prop:sat-quant},
+        $\Sat{M}{\lexists[x][!A(x)]}$.}}{}
+    \tagitem{prvAll}{%
+      \iftag{probAll}{Exercice.}{Supposons
+        $\Sat{M}{\lforall[x][!A(x)]}$. Soit $s$ une assignation
+        de variables telle que $s(x) = \Value{t}{M}$. D'après la
+        \olref[ass]{prop:sat-quant}, $\Sat{M}{!A(x)}[s]$; puis,
+        d'après la \olref[ext]{prop:ext-formulas},
+        $\Sat{M}{!A(t)}[s]$. Puisque $!A(t)$ est !!a{sentence},
+        \olref[ass]{prop:sentence-sat-true} donne
+        $\Sat{M}{!A(t)}$.}}{}
+  \end{tagenumerate}
+\end{proof}
+
+\begin{probtag}{probEx,probAll}
+  Compléter la démonstration de la
+  \olref[fol][syn][sem]{prop:quant-terms}.
+\end{probtag} 
+
+\end{document}

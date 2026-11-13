@@ -1,0 +1,201 @@
+% Partie : méthodes
+% Chapitre : démonstrations
+% Section : lire des démonstrations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{prf}{rea}
+\olsection{Lire des démonstrations}
+
+Dans les manuels et les articles, les
+démonstrations donnent rarement autant
+de détails que les exemples étudiés
+jusqu'ici. Les auteurs ne signalent
+pas toujours qu'ils distinguent des
+cas, qu'ils procèdent indirectement
+ou qu'ils appliquent une définition.
+Lorsque vous lisez une démonstration,
+vous devez donc souvent reconstituer
+vous-même ces étapes pour la comprendre.
+C'est aussi un bon exercice pour apprendre à reconnaître les étapes
+d'un raisonnement.
+Examinons un exemple.
+
+\begin{prop}[Absorption]
+Pour tous ensembles $A$ et $B$,
+\[
+A \cap (A \cup B) = A.
+\]
+\end{prop}
+
+\begin{proof}
+Si $z \in A \cap (A \cup B)$,
+alors $z \in A$ ; ainsi,
+$A \cap (A \cup B) \subseteq A$.
+Supposons maintenant $z \in A$.
+Alors $z \in A \cup B$, donc
+$z \in A \cap (A \cup B)$.
+\end{proof}
+
+Cette démonstration de la loi
+d'absorption est très condensée.
+Elle ne nomme pas les définitions
+utilisées et ne dit pas «~nous
+devons montrer que…~» avant de
+démontrer chaque étape. Déplions-la.
+La proposition concerne tous
+ensembles $A$ et $B$ ; dans la
+démonstration, ces lettres désignent
+des ensembles arbitraires.
+Les énoncés généraux qu'elle établit
+sont exactement ceux qu'exige
+l'égalité des ensembles : tout
+!!{element} du membre gauche est
+!!a{element} du membre droit,
+et réciproquement.
+
+\begin{quote}
+«~Si $z \in A \cap (A \cup B)$,
+alors $z \in A$ ; ainsi,
+$A \cap (A \cup B) \subseteq A$.~»
+\end{quote}
+
+Voilà la première moitié de la
+démonstration : si un~$z$ arbitraire
+est !!a{element} du membre gauche,
+il est aussi !!a{element} du membre
+droit, d'où
+$A \cap (A \cup B) \subseteq A$.
+Supposons $z \in A \cap (A \cup B)$.
+Un objet est !!{element} de
+l'intersection de deux ensembles
+si et seulement s'il est
+!!{element} de chacun
+d'eux. Nous pouvons donc conclure
+que $z \in A$ et $z \in A \cup B$.
+En particulier, $z \in A$,
+comme il fallait le montrer.
+La première moitié étant achevée,
+le reste doit démontrer
+$A \subseteq A \cap (A \cup B)$.
+
+\begin{quote}
+«~Supposons maintenant $z \in A$.
+Alors $z \in A \cup B$, donc
+$z \in A \cap (A \cup B)$.~»
+\end{quote}
+
+Nous commençons par supposer
+$z \in A$, car il faut montrer
+que, pour tout~$z$, si
+$z \in A$, alors
+$z \in A \cap (A \cup B)$.
+Pour établir cette dernière
+appartenance, la définition
+de~$\cap$ demande
+(i) $z \in A$ et
+(ii) $z \in A \cup B$.
+La condition (i) est notre
+hypothèse : il n'y a rien
+à ajouter, ce qui explique
+que la démonstration ne la
+mentionne plus. Pour (ii),
+rappelons qu'un objet est
+!!a{element} d'une union
+si et seulement s'il est
+!!{element} d'au moins un
+des ensembles réunis.
+Comme $z \in A$ et que
+$A \cup B$ est l'union
+de $A$ et de $B$, nous
+avons bien $z \in A \cup B$.
+Les conditions (i) et (ii)
+sont établies ; par définition
+de~$\cap$,
+$z \in A \cap (A \cup B)$.
+La démonstration initiale
+ne cite aucune de ces
+définitions : elle suppose
+que le lecteur les a déjà
+assimilées. Sinon, il faut
+y revenir, puis reconnaître
+pourquoi $z \in A$ entraîne
+$z \in A \cup B$ et pourquoi
+$z \in A$ avec
+$z \in A \cup B$ entraîne
+$z \in A \cap (A \cup B)$.
+
+Voici une version de la même
+démonstration où toutes les
+étapes sont explicitées :
+\begin{proof}{}
+[Par définition de l'égalité des
+ensembles, pour démontrer
+$A \cap (A \cup B) = A$,
+il faut établir
+(a) $A \cap (A \cup B) \subseteq A$
+et
+(b) $A \subseteq A \cap (A \cup B)$.
+Pour (a), la définition de
+$\subseteq$ nous demande
+de montrer que
+$z \in A \cap (A \cup B)$
+implique $z \in A$.]
+Si $z \in A \cap (A \cup B)$,
+alors $z \in A$
+[car, par définition de
+$\cap$, $z$ appartient à
+$A \cap (A \cup B)$
+si et seulement s'il
+appartient à $A$ et
+à $A \cup B$] ;
+donc
+$A \cap (A \cup B) \subseteq A$.
+[(b) : par définition de
+$\subseteq$, il faut
+montrer que $z \in A$
+implique
+$z \in A \cap (A \cup B)$.]
+Supposons maintenant
+[(1)] $z \in A$.
+Alors
+[(2)] $z \in A \cup B$
+[puisque, d'après (1),
+$z \in A$ ou $z \in B$,
+ce qui signifie
+$z \in A \cup B$
+par définition de~$\cup$] ;
+par conséquent,
+$z \in A \cap (A \cup B)$
+[car la définition
+de~$\cap$ exige
+$z \in A$, c'est-à-dire
+(1), et
+$z \in A \cup B$,
+c'est-à-dire (2)].
+\end{proof}
+
+\begin{prob}
+Développez la démonstration
+suivante de
+$A \cup (A \cap B) = A$.
+Mentionnez tous les schémas
+d'inférence utilisés,
+expliquez pourquoi chaque
+étape découle des hypothèses
+ou des conclusions déjà
+établies, et précisez
+les définitions invoquées.
+\begin{proof}
+  Si $z \in A \cup (A \cap B)$,
+  alors $z \in A$ ou
+  $z \in A \cap B$.
+  Si $z \in A \cap B$,
+  alors $z \in A$.
+  Tout $z \in A$ appartient
+  aussi à $A \cup (A \cap B)$.
+\end{proof}
+\end{prob}
+
+\end{document}

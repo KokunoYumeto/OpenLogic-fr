@@ -15,12 +15,12 @@ Cette section définit les énumérations d’ensembles comme des surjections
 de $\PosInt$ sur ces ensembles. Elle procède progressivement, pour
 les lecteurs ayant peu de connaissances mathématiques préalables.
 La \olref[enm-alt]{sec} propose une présentation plus concise, fondée
-sur une autre définition : une bijection avec $\Nat$ ou avec un segment
-initial. Dans cette édition, \emph{au plus dénombrable} inclut les
-ensembles finis et l’ensemble vide.\footnote{Convention éditoriale :
-le mot anglais \emph{enumerable} est employé ici sans condition de
-calculabilité. Une énumération n’est pas nécessairement donnée par
-un algorithme ; il ne s’agit pas d’énumérabilité calculable.}
+sur une autre définition, par bijection avec $\Nat$ ou avec un
+segment initial non vide. Un ensemble \emph{au plus dénombrable} peut être fini,
+y compris vide, ou infini. Il suffit qu’il existe une énumération
+au sens ensembliste, avec le cas de la liste vide. Une telle
+énumération est définie ici sans condition de
+calculabilité.
 \end{editorial}
 
 \begin{explain}
@@ -46,10 +46,10 @@ Précisons quelques points sur les énumérations :
   en outre qu’il n’y ait qu’un nombre fini d’éléments entre le premier
   !!{element} et tout autre !!{element} de la liste. Ainsi, chaque
   !!{element} de l’énumération occupe une position finie : le premier
-  est en position~$1$, le deuxième en position~$2$, etc.\footnote{Précision
-  éditoriale : l’original présente ces deux conditions comme équivalentes.
-  L’existence d’un prédécesseur immédiat ne suffit pas, à elle seule,
-  à assurer que chaque terme occupe une position finie.}
+  est en position~$1$, le deuxième en position~$2$, etc.
+  La finitude de la position est une condition supplémentaire à
+  l’existence d’un prédécesseur immédiat.
+%
 \item Un même ensemble~$A$ peut avoir plusieurs énumérations, où les
   !!{element}s apparaissent dans des ordres différents : $4$, $1$,
   $25$, $16$,~$9$ énumère les cinq premiers carrés strictement positifs
@@ -161,8 +161,8 @@ f(1) & f(2) & f(3) & f(4) & f(5) & f(6) & f(7) & \dots \\ \\
 0 & 1 & -1 & 2 & -2 & 3 & -3 & \dots
 \end{array}
 \]
-\footnote{Correction éditoriale : on rétablit la valeur $-3$ sous
-$f(7)$ dans la dernière ligne du tableau ; elle manquait dans l’original.}
+%
+%
 On peut également définir $f$ par cas :
 \[
 f(n) = \begin{cases}
@@ -254,11 +254,11 @@ $f(2)$, \dots{} contient un !!{element} de~$A$ qui ne figure pas encore
 parmi $g(1)$, \dots, $g(i)$. On obtient alors une fonction
 $g\colon \PosInt \to A$.
 
-La fonction $g$ est !!{surjective} : tout élément de~$A$ apparaît
-parmi $f(1)$, $f(2)$, \dots{}, puisque $f$ est !!{surjective}, et finit
-donc par être une valeur $g(i)$. Elle est aussi !!{injective} : s’il
-existait $j < i$ tel que $g(j) = g(i)$, la valeur $g(i)$ figurerait déjà
-parmi $g(1)$, \dots, $g(i-1)$, contrairement à la définition de~$g$.
+Pour tout $a \in A$, soit $k$ son premier indice dans la liste de $f$.
+Tant que $a$ n’a pas été retenu, la récurrence choisit une valeur
+nouvelle parmi les $k$ premières. Ainsi, $a$ est retenu au plus tard
+au $k$-ième choix et $g$ est !!{surjective}. Elle est !!{injective}
+puisque chaque valeur retenue est nouvelle, par définition de~$g$.
 \end{proof}
 
 \begin{cor}\ollabel{cor:enum-nat-bij}

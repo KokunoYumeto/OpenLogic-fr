@@ -1,0 +1,96 @@
+% Part: lambda-calculus
+% Chapter: church-rosser
+% Section: beta-eta-reduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{cr}{be}
+\olsection{\texorpdfstring{$\beta\eta$}{βη}-réduction}
+
+La propriété de Church--Rosser vaut pour
+la réduction~$\beta\eta$ ($\bered$).
+
+Dans cette section, $M\beredone M'$ désigne
+une contraction en un pas :
+$M\bredone M'$ ou $M\eredone M'$.
+
+\begin{lem}\ollabel{lem:one-par}
+Si $M \beredone M'$, alors
+$M \beredpar M'$.
+\end{lem}
+
+\begin{proof}
+Raisonnons sur la dérivation de
+$M\beredone M'$. Une contraction~$\beta$
+à la racine est un cas de la quatrième
+règle de $\beredpar$, par le
+\olref[pbe]{thm:refl}; ses cas de contexte
+suivent des règles d'abstraction et
+d'application. De même, une contraction~$\eta$
+à la racine a la forme
+$\lambd[x][Nx]\eredone N$, avec
+$x\notin\FV{N}$, conformément à la
+\olref[syn][eta]{defn:beredone}.
+La réflexivité $N\beredpar N$ et la règle
+\olref[pbe]{defn:beredpar5} donnent
+$\lambd[x][Nx]\beredpar N$.
+Les contractions~$\eta$ dans une
+abstraction ou une application se
+traitent par induction et par les règles
+de congruence, comme dans le
+\olref[b]{lem:one-par}.
+\end{proof}
+
+\begin{lem}\ollabel{lem:par-red}
+Si $M \beredpar M'$, alors
+$M \bered M'$.
+\end{lem}
+
+\begin{proof}
+Procédons par induction sur la dérivation
+de $M\beredpar M'$. Pour les quatre
+premières règles, la construction du
+\olref[b]{lem:par-red} s'applique :
+les pas~$\beta$ et les réductions dans
+les sous-termes sont inclus dans~$\bered$.
+
+Si la dernière étape applique la règle
+\olref[pbe]{defn:beredpar5}, alors
+$M=\lambd[x][Nx]$ et $M'=N'$, avec
+$x\notin\FV{N}$ et $N\beredpar N'$.
+La contraction~$\eta$ donne
+$\lambd[x][Nx]\eredone N$;
+l'hypothèse d'induction donne
+$N\bered N'$. Ainsi,
+$M\bered N'$, par transitivité.
+\end{proof}
+
+\begin{lem}\ollabel{lem:str}
+$\bered$ est la plus petite relation
+transitive qui contient $\beredpar$.
+\end{lem}
+
+\begin{proof}
+On reprend les deux inclusions du
+\olref[b]{lem:str}, en utilisant ici
+les deux lemmes précédents. Le cas
+d'une réduction de longueur zéro est
+couvert par la réflexivité de $\beredpar$
+énoncée dans le \olref[pbe]{thm:refl}.
+\end{proof}
+
+\begin{thm}\ollabel{thm:cr}
+$\bered$ vérifie la propriété de
+Church--Rosser.
+\end{thm}
+
+\begin{proof}
+D'après le \olref[pbe]{thm:cr}, la relation $\beredpar$
+vérifie la propriété de Church--Rosser. Le \olref{lem:str}
+identifie $\bered$ à sa clôture transitive. Le
+\olref[dap]{thm:str} donne alors la propriété pour $\bered$.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,155 @@
+% Partie : logique intuitionniste
+% Chapitre : propositions comme types
+% Section : termes de preuve
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{pty}{ter}
+
+\olsection{Termes de preuve}
+
+Dans \Log{N1i}, nous étiquetons les hypothèses par des variables,
+par exemple $!A^x$, pour indiquer leur décharge.
+Dans \Log{N2i}, le contexte~$\Gamma$ à gauche de chaque
+séquent $\Gamma \Sequent !A$ est constitué de couples
+variable--formule. Chaque séquent d'une preuve indique donc
+la formule déjà prouvée, $!A$, et les hypothèses ouvertes
+à ce stade, $\Gamma$.
+Nous nous limitons au fragment engendré par les atomes,
+l'absurde, l'implication, la conjonction et la disjonction.
+Les termes ci-dessous correspondent aux règles de ce fragment.
+Ajoutons à chaque séquent une information sur la manière
+dont $!A$ a été prouvée. Nous obtenons un système
+\emph{étiqueté par des termes}, \Log{tN2i}, dont les séquents
+ont la forme $\Gamma \Sequent N : !A$.
+Comme auparavant, $\Gamma$ est un ensemble de couples
+$x: !B$, et $!A$ est la formule que la sous-preuve
+achevée par ce séquent établit à partir des hypothèses
+de~$\Gamma$. Le terme $N$ encode cette sous-preuve.
+
+Les termes attribués aux séquents sont construits à partir
+des variables $x$, $y$, \dots, à l'aide de symboles de fonction
+qui encodent les inférences effectuées.
+Chaque règle d'inférence reçoit son propre symbole.
+Ceux associés aux règles d'introduction sont des
+« constructeurs » ; ceux associés aux règles d'élimination,
+des « destructeurs ». Le nombre d'arguments d'un symbole
+correspond au nombre de prémisses de la règle.
+Ainsi, pour \Intro{\land} et \Elim{\land}[1], on pourrait
+employer respectivement $c^\land$, d'arité deux,
+et $d^\land_1$, d'arité un.
+Les règles correspondantes de \Log{tN2i} seraient :
+\[
+\Axiom$\Gamma_1 \fCenter N: !A$
+\Axiom$\Gamma_2 \fCenter M: !B$
+\RightLabel{\Intro{\land}}
+\BinaryInf$\Gamma_1, \Gamma_2 \fCenter c^\land(N, M) : !A \land !B $
+\DisplayProof
+\quad
+\Axiom$\Gamma \fCenter N: !A \land !B$
+\RightLabel{\Elim{\land}[1]}
+\UnaryInf$\Gamma \fCenter d^\land_1(N) : !A$
+\DisplayProof
+\]
+Lorsqu'une règle décharge une hypothèse, le terme de preuve
+doit également l'indiquer : une formule étiquetée~$x:!A$
+figure dans une prémisse mais n'est plus une hypothèse
+ouverte dans la conclusion. Les symboles associés à ces
+règles \emph{lient} les variables correspondantes.
+Par exemple, \Intro{\lif} passe de
+$x:!A, \Gamma \Sequent !B$ à $\Gamma \Sequent !A \lif !B$.
+Le constructeur $c^{\lif}$ prend un argument et indique
+que la variable $x$ devient liée : c'est ainsi que le terme
+encode la décharge de l'hypothèse étiquetée par~$x$.
+Si le terme de preuve de la prémisse est~$N$, celui de
+la conclusion peut s'écrire $c^{\lif}([x]N)$ :
+\[
+\Axiom$x:!A, \Gamma \fCenter N: !B$
+\RightLabel{\Intro{\lif}}
+\UnaryInf$\Gamma \fCenter c^{\lif}([x]N) : !A \lif !B$
+\DisplayProof
+\]
+
+Pour reconstruire toute la preuve, une fois connu le
+contexte des variables libres, certaines annotations
+supplémentaires sont nécessaires. Lorsque les formules
+des prémisses ne déterminent pas entièrement celle de
+la conclusion, il faut enregistrer l'information manquante
+dans le terme. C'est le cas de \Intro{\lif}, pour laquelle
+nous écrivons $c^{\lif}([x:!A]N)$.
+C'est aussi le cas de \Intro{\lor} et de~\FalseInt :
+\[
+\Axiom$\Gamma \fCenter N:!A$
+\RightLabel{\Intro{\lor}[1]}
+\UnaryInf$\Gamma \fCenter c^{\lor{!B}}_1(N):!A \lor !B$
+\DisplayProof
+\quad
+\Axiom$\Gamma \fCenter N:\lfalse$
+\RightLabel{\FalseInt}
+\UnaryInf$\Gamma \fCenter d^\lfalse_{!A}(N):!A$
+\DisplayProof
+\]
+
+On peut ainsi définir une présentation séquentielle de
+la déduction naturelle dont tous les séquents ont la forme
+$\Gamma \Sequent N : !A$, où $N$ est un \emph{terme de preuve}.
+
+Ces termes sont étroitement liés aux termes du
+\emph{lambda-calcul typé}. Pour faire apparaître ce lien,
+nous utiliserons les notations usuelles du lambda-calcul
+plutôt que les symboles génériques précédents.
+Nous écrirons $\lambd[\typeof{x}{!A}][N]$ à la place de
+$c^{\lif}([x:!A]N)$, $(NM)$ à la place de $d^{\lif}(N,M)$,
+$\pair{N}{M}$ à la place de $c^\land(N,M)$, et $\proj{i}{N}$
+à la place de~$d^\land_i(N)$.
+
+\begin{defn}
+Les termes de preuve sont engendrés inductivement par
+les règles suivantes :
+\begin{enumerate}
+\item Toute variable $x$ est un terme de preuve (axiomes).
+\item Si $x$ est une variable, $!A$ une formule et $N$
+  un terme de preuve, alors $\lambd[\typeof{x}{!A}][N]$
+  est un terme de preuve~(\Intro\lif).
+\item Si $N$ et $M$ sont des termes de preuve, alors $(NM)$
+  est un terme de preuve~(\Elim\lif).
+\item Si $N$ et $M$ sont des termes de preuve, alors
+  $\pair{N}{M}$ est un terme de preuve~(\Intro\land).
+\item Si $N$ est un terme de preuve, alors $\proj{i}{N}$
+  est un terme de preuve, pour $i$ égal à $1$ ou à~$2$
+  ~(\Elim\land[i]).
+\item Si $N$ est un terme de preuve et $!A$ une formule,
+  alors $\inj[!A]{i}{N}$ est un terme de preuve,
+  pour $i$ égal à $1$ ou à~$2$~(\Intro\lor[i]).
+\item Si $M$, $N_1$ et $N_2$ sont des termes de preuve,
+  et $x_1$, $x_2$ des variables, alors
+  $\dcase{M}{x_1}{N_1}{x_2}{N_2}$ est un terme de preuve
+  ~(\Elim\lor).
+\item Si $N$ est un terme de preuve et $!A$ une formule,
+  alors $\abort{!A}{N}$ est un terme de preuve~(\FalseInt).
+\end{enumerate}
+\end{defn}
+
+Dans l'abstraction, la variable indiquée est liée dans le corps.
+Dans l'analyse par cas, chaque variable de branche est liée
+uniquement dans le terme de sa propre branche ; elle n'est
+pas liée dans le terme analysé ni dans l'autre branche.
+Les variables liées peuvent être renommées pour éviter
+la capture et les conflits avec les variables du contexte.
+
+Tout terme de preuve ainsi construit n'encode pas
+nécessairement une preuve correcte.
+Par exemple, $\pair{N}{M}$ encode une preuve dont la
+dernière inférence est \Intro{\land}, et dont la formule
+finale est donc une conjonction $!A \land !B$.
+Elle ne peut pas servir de prémisse majeure à \Elim{\lif}.
+Le terme $(\pair{N}{M}P)$ ne peut donc pas être le terme
+d'une preuve correcte. Les termes \emph{corrects}
+sont ceux qui respectent les règles de \Log{tN2ip},
+données dans le \olref{tab:tN2ip}.
+
+\subfile{rules-tN2}
+
+\end{document}

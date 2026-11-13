@@ -1,0 +1,112 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: intepretability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{itp}
+
+\olsection{Les théories dans lesquelles $\Th{Q}$ est interprétable sont indécidables}
+
+Nous pouvons renforcer encore ces résultats.
+Informellement, interpréter un langage~$\Lang{L_1}$
+dans un langage~$\Lang{L_2}$ consiste à définir,
+au moyen de !!{formula}s de~$\Lang{L_2}$,
+un domaine non vide ainsi que les symboles de relation et
+de fonction de~$\Lang{L_1}$, par une traduction calculable qui préserve la déduction.
+Les conditions assurant que les fonctions sont bien définies font partie de l'interprétation; nous ne la formaliserons pas ici.
+
+\begin{thm}
+Supposons que $\Th{T}$ soit une théorie dans un
+langage où l'on peut interpréter le langage de
+l'arithmétique de telle sorte que $\Th{T}$ soit
+cohérente avec l'interprétation de~$\Th{Q}$.
+Alors $\Th{T}$ est indécidable. Si $\Th{T}$
+démontre l'interprétation des axiomes de~$\Th{Q}$,
+aucune extension cohérente de~$\Th{T}$ n'est
+décidable.
+\end{thm}
+
+\begin{proof}
+Notons $!A^I$ la traduction d'un énoncé arithmétique~$!A$,
+et soit $!E$ la conjonction des huit axiomes de~$\Th{Q}$.
+Si $\Th{T}$ était décidable, on pourrait décider
+l'appartenance à l'ensemble
+\[
+C=\Setabs{!A}{\Th{T}\Proves !E^I\lif !A^I}
+\]
+des énoncés arithmétiques qui satisfont cette condition.
+En effet, la reconnaissance des énoncés et la traduction
+sont calculables.
+Si $\Th{Q}\Proves !A$, le théorème de la déduction et
+l'interprétation donnent $\Th{T}\Proves !E^I\lif !A^I$.
+Si $\Th{Q}\Proves\lnot !A$, ils donnent
+$\Th{T}\Proves !E^I\lif\lnot !A^I$. Dans ce second cas,
+$!A$ ne peut appartenir à~$C$, car $\Th{T}$ serait alors
+incohérente avec $!E^I$. Ainsi, $C$ séparerait les
+énoncés démontrables dans~$\Th{Q}$ de ses énoncés
+réfutables, contrairement au lemme d'inséparabilité.
+Si les axiomes interprétés sont déjà démontrables dans~$\Th{T}$,
+toute extension cohérente de~$\Th{T}$ reste cohérente
+avec eux. Le premier résultat s'applique donc à cette extension.
+\end{proof}
+La théorie des ensembles de Zermelo--Fraenkel avec
+l'axiome du choix, $\Th{ZFC}$, peut servir de
+fondement axiomatique assez puissant pour développer
+une grande partie des mathématiques ordinaires.
+On peut y définir les entiers naturels et y démontrer,
+sous cette interprétation, les axiomes de~$\Th{Q}$.
+Nous obtenons donc les corollaires suivants.
+
+\begin{cor}
+Aucune extension cohérente de~$\Th{ZFC}$ n'est
+décidable.
+\end{cor}
+
+\begin{cor}
+Il n'existe aucune extension de~$\Th{ZFC}$ qui soit
+complète, cohérente et admette une axiomatisation
+calculable.
+\end{cor}
+
+Le langage de~$\Th{ZFC}$ ne contient qu'un symbole
+de relation binaire, $\in$; l'égalité elle-même
+n'est pas nécessaire. Un résultat de codage des langages donne aussi :\footnote{L'indécidabilité de la logique pure s'établit par réduction de langages, indépendamment de la cohérence de~$\Th{ZFC}$.}
+
+\begin{cor}
+La logique du premier ordre de tout langage qui
+possède un symbole de relation binaire est
+indécidable.
+\end{cor}
+
+Ce résultat s'étend aux langages avec égalité et deux symboles
+de fonction unaires, qui permettent de simuler un
+symbole de relation binaire. Les résultats précédents
+sont précis quant à la frontière : la logique du
+premier ordre, avec égalité, d'un langage dont les seuls symboles non logiques sont
+des relations \emph{unaires}, des constantes et au plus un symbole de
+fonction \emph{unaire} est décidable.
+
+Encore une remarque. Nous savons que l'ensemble des
+!!{sentence}s vrais dans le modèle standard, dans
+le langage $\Obj 0$, $'$, $+$, $\times$, $<$,
+est indécidable. On peut définir $<$ au moyen des
+autres symboles, puis $+$ au moyen de $\times$ et
+de~$'$. L'ensemble des !!{sentence}s vrais dans
+le langage $\Obj 0$, $'$, $\times$ est donc
+indécidable. En revanche, Presburger a montré que
+l'ensemble des !!{sentence}s du langage $\Obj 0$,
+$'$, $+$ vrais dans l'arithmétique standard est
+décidable, bien que le coût du calcul soit très élevé
+dans le pire des cas.
+
+\begin{explain}
+La cohérence exclut le cas où tous les énoncés sont
+démontrables. Pour une extension cohérente, les axiomes
+arithmétiques interprétés restent démontrables, et le résultat
+d'indécidabilité s'applique à cette extension.
+\end{explain}
+
+\end{document}

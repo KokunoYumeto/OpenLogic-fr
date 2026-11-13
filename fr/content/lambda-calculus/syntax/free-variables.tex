@@ -1,0 +1,154 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: free-variables
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{fv}
+\olsection{Variables libres}
+
+Le lambda-calcul porte sur les fonctions,
+et l'abstraction lambda permet de les former.
+Intuitivement, $\lambd[x][M]$ est la fonction
+dont les valeurs sont données par~$M$ lorsqu'on
+attribue l'argument de cette fonction à~$x$.
+Mais toutes les occurrences de~$x$ dans~$M$
+ne jouent pas ce rôle : si $M$ contient une autre
+abstraction $\lambd[x][N]$, les occurrences de $x$
+dans~$N$ relèvent de $\lambd[x][N]$, et non de
+$\lambd[x][M]$. Ainsi, le $\lambd[x]$ initial de
+$\lambd[x][M]$ \emph{lie} les occurrences de $x$
+dans~$M$ que ne lie pas déjà une autre
+abstraction : les occurrences \emph{libres}
+de~$x$ dans~$M$.
+
+\begin{defn}[Portée]
+Si $\lambd[x][M]$ figure dans un terme~$N$,
+l'occurrence correspondante de~$M$ est la
+\emph{portée} du~$\lambd[x]$.
+\end{defn}
+
+Par exemple, dans $(\lambd[x][x])y$, la portée de
+$\lambd[x]$ se réduit à l'occurrence de $x$ dans
+son corps. L'argument $y$ est en dehors de cette portée.
+
+\begin{defn}[Occurrence libre et occurrence liée]
+Une occurrence de la variable $x$ (comme sous-terme, et non comme paramètre d'une abstraction) dans un
+terme~$M$ est \emph{libre} si elle ne se trouve
+dans la portée d'aucun $\lambd[x]$, et
+\emph{liée} dans le cas contraire. Une occurrence
+de la variable~$x$ située dans le corps de
+$\lambd[x][M]$ est liée par le $\lambd[x]$
+initial si et seulement si cette occurrence de
+$x$ est libre dans~$M$.
+\end{defn}
+
+\begin{ex}
+Dans $\lambd[x][x y]$, $x$ et $y$ sont tous
+deux dans la portée de $\lambd[x]$; $x$ est
+donc lié par $\lambd[x]$. Comme $y$ n'est
+dans la portée d'aucun $\lambd[y]$, il est
+libre. Dans $\lambd[x][x x]$, les deux
+occurrences de $x$ sont liées par~$\lambd[x]$,
+car toutes deux sont libres dans $xx$. Dans
+$((\lambd[x][xx])x)$, la dernière occurrence
+de~$x$ est libre, car elle n'est dans la portée
+d'aucun $\lambd[x]$. Dans
+$\lambd[x][(\lambd[x][x])x]$, la portée du
+premier $\lambd[x]$ est $(\lambd[x][x])x$,
+et celle du second $\lambd[x]$ est
+l'avant-dernière occurrence de~$x$. Dans
+$(\lambd[x][x])x$, la dernière occurrence de
+$x$ est libre et l'avant-dernière est liée.
+Ainsi, l'avant-dernière occurrence de $x$
+dans $\lambd[x][(\lambd[x][x])x]$ est liée
+par le second $\lambd[x]$, et la dernière,
+par le premier $\lambd[x]$.
+\end{ex}
+
+Pour un terme $P$, on peut examiner toutes
+ses occurrences de variables et former
+l'ensemble de ses variables libres. Cet
+ensemble se note $\FV{P}$ et se définit
+naturellement comme suit.
+
+\begin{defn}[Variables libres d'un terme] \ollabel{def:fv}
+L'ensemble des \emph{variables libres} d'un
+terme est défini inductivement par :
+\begin{enumerate}
+  \item $\FV{x} = \{x\}$ \ollabel{def:fv1}
+  \item $\FV{\lambd[x][N]} = \FV{N} \setminus \{x\}$ \ollabel{def:fv2}
+  \item $\FV{PQ} = \FV{P} \cup \FV{Q}$ \ollabel{def:fv3}
+\end{enumerate}
+\end{defn}
+
+\begin{prob}
+\begin{enumerate}
+\item Déterminer les portées de $\lambd[g]$
+  et des deux $\lambd[x]$ dans le terme
+  \[
+    \lambd[g][(\lambd[x][g (x x)]) \lambd[x][g (x x)]]\,.
+  \]
+\item Dans $\lambd[g][(\lambd[x][g (x x)]) \lambd[x][g (x x)]]$,
+  toutes les occurrences de variables sont-elles
+  liées? Par quelles abstractions le sont-elles
+  respectivement?
+\item Déterminer
+  $\FV{\lambd[x][(\lambd[y][(\lambd[z][x y]) z]) y]}$.
+\end{enumerate}
+\end{prob}
+
+\begin{explain}
+Une variable libre est comme une référence au
+monde extérieur (l'\emph{environnement}). Un
+terme contenant des variables libres peut être
+considéré comme partiellement spécifié, car son
+comportement dépend de la façon dont cet
+environnement est fixé. Par exemple, dans le
+terme $\lambd[x][f x]$, qui reçoit un
+argument~$x$ et renvoie le résultat de
+l'application de~$f$ à cet argument, la
+variable~$f$ est libre. La valeur de ce terme
+dépend donc de son environnement, en particulier
+de la valeur de $f$ dans cet environnement.
+
+Si l'on abstrait ce terme une fois de plus,
+on obtient $\lambd[f][\lambd[x][f x]]$.
+Ce terme ne dépend plus de la variable
+d'environnement $f$, car il désigne désormais
+une fonction qui reçoit successivement deux
+arguments et renvoie le résultat de
+l'application du premier au second. Modifier
+$f$ dans l'environnement n'aura aucun effet
+sur le comportement de ce terme : celui-ci
+utilise seulement la valeur reçue comme argument,
+et non la valeur de $f$ dans l'environnement.
+\end{explain}
+
+\begin{defn}[Terme clos, combinateur]
+Un terme sans variable libre est appelé
+\emph{terme clos} ou \emph{combinateur}.
+\end{defn}
+
+\begin{lem}\ollabel{lem:fv}
+\begin{enumerate}
+  \item \ollabel{lem:fv-abs} Si $y \neq x$, alors
+    $y \in \FV{\lambd[x][N]}$ si et seulement si
+    $y \in \FV{N}$.
+  \item \ollabel{lem:fv-app} $y \in \FV{PQ}$ si et
+    seulement si $y \in \FV{P}$ ou
+    $y \in \FV{Q}$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[lam][syn][fv]{lem:fv}.
+\end{prob}
+
+\end{document}

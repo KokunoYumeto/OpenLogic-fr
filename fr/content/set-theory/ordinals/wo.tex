@@ -1,0 +1,78 @@
+% Partie : set-theory
+% Chapitre : ordinals
+% Section : wo
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ordinals}{wo}
+\olsection{Bons ordres}
+
+La notion fondamentale est la suivante :
+
+\begin{defn}
+La relation $<$ \emph{définit un bon ordre} sur $A$ si et seulement si
+elle satisfait aux deux conditions suivantes :
+\begin{enumerate}
+	\item $<$ est connexe, c'est-à-dire que, pour tous $a, b \in A$,
+	soit $a < b$, soit $a = b$, soit $b < a$ ;
+	\item tout sous-ensemble non vide de $A$ possède un !!{element}
+	minimal pour $<$, c'est-à-dire que, si $\emptyset \neq X \subseteq A$,
+	alors $(\exists m \in X)(\forall z \in X)z \nless m$.
+\end{enumerate}
+\end{defn}
+
+On voit aisément que les trois exemples considérés à la section
+précédente sont bien des relations de bon ordre.
+
+\begin{prob}
+La \olref[sth][ordinals][idea]{sec} présente trois exemples d'ordres
+sur les nombres naturels. Vérifiez que chacun est un bon ordre.
+\end{prob}
+
+Voici quelques observations élémentaires, mais extrêmement importantes,
+sur les bons ordres.
+
+\begin{prop}\ollabel{wo:strictorder}
+Si $<$ définit un bon ordre sur $A$, alors tout sous-ensemble non vide
+de $A$ possède un unique plus petit élément pour $<$, et $<$ est
+irréflexive, asymétrique et transitive.
+\end{prop}
+
+\begin{proof}
+Si $X$ est un sous-ensemble non vide de $A$, il possède un !!{element}
+minimal $m$ pour $<$, c'est-à-dire que $(\forall z \in X)z \nless m$.
+Comme $<$ est connexe, $(\forall z \in X)m \leq z$. Ainsi, $m$ est le
+plus petit !!{element} de $X$ pour $<$.
+
+Pour l'irréflexivité, fixons $a \in A$ : le plus petit !!{element} de
+$\{a\}$ pour $<$ est $a$, donc $a \nless a$. Pour la transitivité,
+si $a < b < c$, alors, puisque $\{a, b, c\}$ possède un plus petit
+!!{element} pour $<$, on a $a < c$. L'asymétrie découle de
+l'irréflexivité et de la transitivité.
+\end{proof}
+
+\begin{prop}\ollabel{propwoinduction}
+Si $<$ définit un bon ordre sur $A$, alors, pour toute formule $\phi(x)$ :
+\[
+	\text{si }(\forall a \in A)((\forall b < a)\phi(b) \lif
+		\phi(a))\text{, alors }(\forall a \in A)\phi(a).
+\]
+\end{prop}
+
+\begin{proof}
+Nous allons démontrer la contraposée. Supposons que
+$\lnot(\forall a \in A)\phi(a)$, c'est-à-dire que
+$X = \Setabs{x \in A}{\lnot\phi(x)} \neq \emptyset$. Alors $X$
+possède un !!{element} minimal pour $<$, disons $a$. Nous avons donc
+$(\forall b < a)\phi(b)$, mais $\lnot \phi(a)$.
+\end{proof}\noindent Cette dernière propriété devrait rappeler le
+principe de récurrence forte sur les nombres naturels : si
+$(\forall n \in \omega)((\forall m < n)\phi(m) \lif \phi(n))$, alors
+$(\forall n \in \omega)\phi(n)$. C'est cette propriété qui fait de
+la notion de bon ordre une notion très \emph{robuste}.\footnote{Rappelons
+que toutes les formules peuvent contenir des paramètres, sauf indication
+contraire explicite.}
+
+\end{document}

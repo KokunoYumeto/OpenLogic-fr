@@ -1,0 +1,75 @@
+% Partie : counterfactuals
+% Chapitre : introduction
+% Section : material-conditional
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{int}{mat}
+
+\olsection{Le conditionnel matériel}
+
+En anglais, la forme la plus simple d'un énoncé conditionnel est « If
+\dots then \dots » (en français, « Si \dots, alors \dots ») : les
+pointillés représentent eux-mêmes des énoncés. Par exemple : « Si le
+majordome est le coupable, alors le jardinier est innocent. » Dans un
+cours élémentaire de logique, on apprend à symboliser ces
+conditionnels au moyen du connecteur~$\lif$ : les parties indiquées
+par les pointillés sont représentées, par exemple, par les
+!!{formula}s $!A$ et~$!B$, et le conditionnel entier par
+$!A \lif !B$.
+
+Le connecteur~$\lif$ est \emph{vérifonctionnel} : la valeur de
+vérité---$\True$ ou $\False$---de $!A \lif !B$ est déterminée par
+les valeurs de vérité de $!A$ et de~$!B$. La formule $!A \lif !B$
+est vraie si et seulement si $!A$ est fausse ou $!B$ est vraie ; elle
+est fausse dans le seul autre cas. Pour une valuation~$\pAssign v$,
+nous définissons $\pSat{v}{!A \lif !B}$ si et seulement si
+$\pSat/{v}{!A}$ ou $\pSat{v}{!B}$. Le connecteur~$\lif$ ainsi
+interprété est appelé \emph{conditionnel matériel}.
+
+Cette définition entraîne plusieurs faits logiques élémentaires.
+D'abord, le théorème de déduction vaut pour le conditionnel matériel :
+\begin{align}
+  \text{Si } \Gamma, !A \Entails !B \text{ alors } \Gamma \Entails !A \lif !B
+\end{align}
+Il est vérifonctionnel : $!A \lif !B$ et $\lnot !A \lor !B$ sont
+équivalents :
+\begin{align}
+  !A \lif !B & \Entails \lnot !A \lor !B\\
+  \lnot !A \lor !B & \Entails !A \lif !B
+  \intertext{Un conditionnel matériel découle de son conséquent et de
+    la négation de son antécédent :}
+  !B & \Entails !A \lif !B\\
+  \lnot !A & \Entails !A \lif !B
+  \intertext{La négation d'un conditionnel matériel équivaut à la
+    conjonction de son antécédent et de la négation de son conséquent :
+    si $!A \lif !B$ est faux, $!A \land \lnot !B$ est vrai, et
+    réciproquement :}
+  \lnot(!A \lif !B) & \Entails !A \land \lnot !B\\
+  !A \land \lnot !B & \Entails \lnot(!A \lif !B)
+  \intertext{Le conditionnel matériel admet le modus ponens :}
+  !A, !A \lif !B & \Entails !B
+  \intertext{Il permet de regrouper les conséquents :}
+  !A \lif !B,  !A \lif !C & \Entails !A \lif (!B \land !C)
+  \intertext{On peut toujours renforcer l'antécédent (propriété dite
+    ici de \emph{monotonie}) :}
+  !A \lif !B & \Entails (!A \land !C) \lif !B
+  \intertext{Le conditionnel matériel est transitif : la règle
+    d'enchaînement est valide :}
+  !A \lif !B, !B \lif !C & \Entails !A \lif !C
+  \intertext{Il équivaut à sa contraposée :}
+  !A \lif !B & \Entails \lnot !B \lif \lnot !A\\
+  \lnot !B \lif \lnot !A & \Entails !A \lif !B
+\end{align}
+
+Toutes ces inférences sont utiles et ne posent pas de difficulté dans
+le raisonnement mathématique. Dans la littérature philosophique et
+linguistique, on trouve toutefois de nombreux contre-exemples
+allégués aux inférences correspondantes dans des contextes non
+mathématiques. Ils suggèrent que le conditionnel matériel~$\lif$
+n'est pas---ou du moins pas toujours---le connecteur approprié pour
+symboliser les énoncés anglais de la forme « If \dots then \dots ».
+
+\end{document}

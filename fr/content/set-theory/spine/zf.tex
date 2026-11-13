@@ -1,0 +1,54 @@
+% Partie : set-theory
+% Chapitre : spine
+% Section : zf
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{spine}{zf}
+\olsection{\texorpdfstring{$\Z$}{Z} et \texorpdfstring{$\ZF$}{ZF} : un jalon}
+
+Avec la fondation, nous franchissons un autre jalon important. Nous
+avons étudié les théories $\Zminus$ et $\ZFminus$, dont nous disions
+qu'il leur manquait quelque chose. Ce quelque chose est la fondation.
+Ainsi :
+
+\begin{defn}
+La théorie $\Z$ ajoute la fondation à $\Zminus$. Elle a donc pour
+axiomes l'extensionnalité, l'union, la paire, l'ensemble des parties,
+l'infini, la fondation et toutes les instances du schéma de
+séparation.
+
+La théorie $\ZF$ ajoute la fondation à $\ZFminus$. Autrement dit,
+$\ZF$ ajoute à~$\Z$ toutes les instances du schéma de remplacement.
+\end{defn}
+
+Une question a pourtant pu vous venir à l'esprit. Si la régularité
+est équivalente à la fondation dans $\ZFminus$, et que la
+justification de la régularité est claire, pourquoi ce détour ?
+Pourquoi retenir la fondation, plutôt que la régularité, comme axiome
+de base ?
+
+Si l'on laisse de côté les raisons historiques (qui tiennent à savoir
+qui a formulé quoi, et quand), la raison essentielle est que la
+fondation peut être énoncée sans faire appel à la définition des
+$V_\alpha$. Cette définition reposait sur tout le travail de la
+\olref[recursion]{sec} : il a fallu démontrer le théorème de
+récursion transfinie pour la justifier. Or notre démonstration de ce
+théorème utilisait le \emph{remplacement}. Ainsi, bien que la
+fondation et la régularité soient équivalentes modulo $\ZFminus$,
+elles ne le sont pas modulo $\Zminus$.
+
+La situation est même plus radicale que ne le laisse penser cette
+remarque. Bien que cela dépasse largement le propos de ce livre, il
+s'avère que $\Zminus$ et $\Z$ sont toutes deux trop faibles pour
+définir les $V_\alpha$. Si nous ne travaillons que dans $\Z$, la
+régularité, telle que nous l'avons formulée, n'a donc même pas de
+\emph{sens}. C'est pourquoi notre axiome officiel est la fondation,
+et non la régularité.
+
+Désormais, sauf indication contraire, nous travaillerons dans $\ZF$
+sans autre précision.
+
+\end{document}

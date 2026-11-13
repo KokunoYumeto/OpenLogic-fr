@@ -1,0 +1,131 @@
+% Partie : théorie de la démonstration
+% Chapitre : déduction naturelle
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nat}{int}
+
+\olsection{Introduction}
+
+La déduction naturelle est une famille de systèmes de preuve
+dans lesquels chaque connecteur logique ou quantificateur possède
+deux types d'inférence : une règle qui l'introduit et une règle
+qui l'élimine. Par exemple, \Intro{\lif} conclut à une formule
+de la forme~$!A \lif !B$, tandis que \Elim{\lif} a une formule
+de la forme~$!A \lif !B$ parmi ses prémisses.
+
+Les deux premières versions de la déduction naturelle ont été
+introduites dans les années 1930 par Gerhard Gentzen et
+Stanisław Jaśkowski. Le système de Gentzen est celui qu'étudie
+le plus souvent la théorie de la démonstration ; celui de Jaśkowski
+est à l'origine des systèmes les plus employés dans l'enseignement.
+Dans les deux cas, on peut partir d'\emph{hypothèses} :
+des formules qui n'ont pas à être démontrées, mais qui peuvent
+servir à en démontrer d'autres. Une preuve entière peut dépendre
+de telles hypothèses. Comme celles-ci ne sont pas démontrées,
+la preuve n'établit pas sa conclusion, ou \emph{formule finale},
+indépendamment d'elles : elle établit que cette conclusion
+en découle.
+
+Certaines règles permettent de conclure sans dépendre de certaines
+hypothèses : elles les \emph{déchargent}. Ainsi, \Intro{\lif}
+prend une preuve de la conclusion~$!B$ sous l'hypothèse~$!A$
+et conclut à $!A \lif !B$. La preuve se terminant par $!A \lif !B$
+ne dépend plus de l'hypothèse $!A$, qui a été déchargée.
+Dans les systèmes de Gentzen, les preuves sont des arbres de formules,
+les hypothèses figurent en haut, et des étiquettes portées par
+les règles telles que~\Intro{\lif} désignent les hypothèses
+déchargées. Dans les systèmes de Jaśkowski, les parties d'une
+preuve dépendant d'une hypothèse sont délimitées, par exemple
+par une indentation derrière un trait vertical ou par un cadre.
+L'hypothèse~$!A$ déchargée et le conséquent $!B$ de l'implication
+figurent à la première et à la dernière ligne de ce cadre ;
+la conclusion~$!A \lif !B$ de \Intro{\lif} se trouve à l'extérieur.
+
+Ces systèmes sont dits naturels parce que leurs règles reflètent
+les formes usuelles du raisonnement mathématique.
+Pour établir une implication, on suppose son antécédent et
+l'on s'en sert pour démontrer son conséquent : c'est
+\Intro{\lif}. Si l'on connaît une implication $!A \lif !B$
+et son antécédent~$!A$, on conclut à~$!B$ : c'est \Elim{\lif}.
+Une preuve par cas permet de tirer une conclusion commune
+d'une disjonction~$!A \lor !B$ : c'est \Elim{\lor}.
+Pour établir un énoncé général~$\lforall[x][!A(x)]$,
+on démontre $!A(c)$ pour un paramètre arbitraire~$c$,
+respectant la condition de constante propre :
+c'est \Intro{\lforall}. Et ainsi de suite.
+
+Voici, par exemple, une preuve simple de~$!A \lif (!A \lor !B)$
+en déduction naturelle à la Gentzen :
+\[
+\AxiomC{$\Discharge{!A}{x}$}
+\RightLabel{\Intro{\lor}}
+\UnaryInfC{$!A \lor !B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif (!A \lor !B)$}
+\DisplayProof
+\]
+Elle part de l'hypothèse~$!A$, applique \Intro{\lor} pour
+obtenir~$!A \lor !B$, puis \Intro{\lif} pour conclure
+à~$!A \lif (!A \lor !B)$. L'inférence \Intro{\lif}
+décharge l'hypothèse~$!A$, comme l'indique l'étiquette~$x$.
+
+La théorie de la démonstration emploie surtout les systèmes
+originaux de Gentzen, fondés sur des arbres de formules.
+Une variante présente cependant aussi un intérêt.
+Une preuve de~$!A$ sous les hypothèses~$\Gamma$ montre que
+$!A$ découle de~$\Gamma$, c'est-à-dire que
+$\Gamma \Entails !A$. On peut donc lire les règles de déduction
+naturelle comme des règles portant sur ces conséquences logiques.
+Ainsi, \Intro{\lif} exprime que, si
+$\Gamma \cup \{!A\} \Entails !B$, alors
+$\Gamma \Entails !A \lif !B$.
+
+Il est naturel de formuler directement les règles de façon
+qu'elles portent à la fois sur les hypothèses et sur la conclusion
+qui en découle, dans leurs prémisses et leur conclusion :
+elles opèrent alors sur des séquents $\Gamma \Sequent !A$.
+La preuve simple ci-dessus s'écrit ainsi dans un tel système :
+\[
+\Axiom$x:!A \fCenter !A$
+\RightLabel{\Intro{\lor}}
+\UnaryInf$x:!A \fCenter !A \lor !B$
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInf$\fCenter !A \lif (!A \lor !B)$
+\DisplayProof
+\]
+Les règles sont les mêmes : elles agissent sur la formule
+à droite de~$\Sequent$, tandis que les formules à gauche
+énumèrent les hypothèses dont chaque étape dépend.
+
+L'ensemble des règles d'introduction et d'élimination ne suffit
+pas à lui seul à la complétude pour la logique classique.
+Il faut ajouter deux règles liées à~$\lfalse$.
+La première est la \emph{règle d'absurdité intuitionniste}~\FalseInt,
+ou \emph{explosion} : de $\lfalse$, on peut déduire n'importe
+quelle formule. La seconde est le principe classique de
+preuve indirecte~\FalseCl, ou \emph{règle d'absurdité classique} :
+si l'on démontre~$\lfalse$ à partir de~$\lnot !A$,
+on peut conclure à~$!A$ en déchargeant cette hypothèse.
+Sans \FalseCl, on obtient la logique intuitionniste.
+Sans ces deux règles, on obtient la \emph{logique minimale}.
+
+Nous étudierons la déduction naturelle à la Gentzen pour
+les logiques classique et intuitionniste, dans les systèmes
+\Log{N1c} et \Log{N1i}. Les systèmes \Log{N2c} et \Log{N2i}
+sont leurs versions correspondantes sur les séquents
+$\Gamma \Sequent !A$, plutôt que sur les seules formules~$!A$.
+
+
+
+
+
+
+
+
+
+
+\end{document}

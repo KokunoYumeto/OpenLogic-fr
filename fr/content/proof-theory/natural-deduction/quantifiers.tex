@@ -1,0 +1,243 @@
+% Partie : théorie de la démonstration
+% Chapitre : déduction naturelle
+% Section : régularité et substitution
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nat}{qua}
+
+\olsection{Preuves régulières et substitution}
+
+Les règles de quantification demandent quelques précautions en raison
+des conditions de constante propre, aussi appelées conditions
+d'\emph{eigenvariable}, de \Elim{\lexists} et de~\Intro{\lforall}.
+On peut résoudre la plupart des difficultés en veillant à ne jamais
+réutiliser la !!{constant}~$c$ de ces inférences. Donnons une définition
+précise.
+
+\begin{defn}
+Une preuve de déduction naturelle~$\delta$ est \emph{régulière} si :
+\begin{enumerate}
+\item aucune constante propre~$a$ ne sert de constante propre à
+plus d'une inférence \Elim{\lexists} ou~\Intro{\lforall} ;
+\item si $a$ est la constante propre d'une inférence
+\Elim{\lexists} ou~\Intro{\lforall}, elle n'apparaît que dans la
+sous-preuve immédiate menant, respectivement, à la prémisse mineure
+ou à l'unique prémisse.
+\end{enumerate}
+\end{defn}
+
+\begin{lem}\ollabel{lem:subst-regular}
+Supposons que $\delta$ soit régulière et se termine par~$!C$,
+que $c$ soit une !!{constant} qui ne sert pas de constante propre
+dans~$\delta$, et que $t$ soit un terme clos ne contenant aucune
+constante propre de~$\delta$. Alors $\Subst{\delta}{t}{c}$,
+obtenue en remplaçant toutes les occurrences de~$c$ par~$t$
+dans~$\delta$, est une preuve régulière. Les substitutions
+se font sans capture, conformément aux conventions du calcul.
+Sa formule finale est $\Subst{!C}{t}{c}$.
+Si $!A^x$ est une hypothèse ouverte de~$\delta$,
+$\Subst{!A}{t}{c}^x$ est une hypothèse ouverte de
+$\Subst{\delta}{t}{c}$.
+\end{lem}
+
+\begin{proof}
+Par récurrence sur $\pheight{\delta}$.
+Si $\pheight{\delta} = 0$, la preuve consiste en une seule
+hypothèse~$!A^x$ ; $\Subst{\delta}{t}{c}$ est alors
+$\Subst{!A}{t}{c}^x$.
+
+Si $\pheight{\delta} > 0$, nous distinguons les cas selon
+la dernière inférence de~$\delta$. Les règles propositionnelles
+se traitent directement et sont laissées en exercice.
+Considérons les règles de quantification.
+\begin{enumerate}
+\item Si la dernière inférence est $\Intro{\lforall}$,
+$\delta$ a la forme
+\[
+    \AxiomC{}
+    \RightLabel{$\delta'$}
+    \DeduceC{$!A(a,c)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x,c)]$}
+    \DisplayProof
+    \]
+L'hypothèse de récurrence donne une preuve régulière
+$\Subst{\delta'}{t}{c}$ de $!A(a,t)$.
+Comme $a$ est une constante propre de~$\delta$, elle n'apparaît
+pas dans~$t$. La dernière inférence de
+$\Subst{\delta}{t}{c}$,
+\[
+    \AxiomC{}
+    \RightLabel{$\Subst{\delta'}{t}{c}$}
+    \DeduceC{$!A(a,t)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x,t)]$}
+    \DisplayProof
+    \]
+est donc correcte : la substitution n'introduit~$a$ ni dans
+la conclusion ni dans les hypothèses ouvertes, où elle était
+déjà absente par la condition de constante propre.
+
+\item Si la dernière inférence est $\Elim{\lforall}$,
+$\delta$ a la forme
+\[
+    \AxiomC{}
+    \RightLabel{$\delta'$}
+    \DeduceC{$\lforall[x][!A(x,c)]$}
+    \RightLabel{\Elim{\lforall}}
+    \UnaryInfC{$!A(s(c),c)$}
+    \DisplayProof
+    \]
+L'hypothèse de récurrence donne une preuve régulière
+$\Subst{\delta'}{t}{c}$ de $\lforall[x][!A(x,t)]$.
+Le terme~$s(c)$ de la conclusion peut contenir~$c$, mais
+ce n'est pas obligatoire. La dernière inférence de
+$\Subst{\delta}{t}{c}$,
+\[
+    \AxiomC{}
+    \RightLabel{$\Subst{\delta'}{t}{c}$}
+    \DeduceC{$\lforall[x][!A(x,t)]$}
+    \RightLabel{\Elim{\lforall}}
+    \UnaryInfC{$!A(s(t),t)$}
+    \DisplayProof
+    \]
+est correcte, et
+$!A(s(t),t) \ident \Subst{!A(s(c),c)}{t}{c}$.
+Le cas de \Intro{\lexists} est analogue.
+
+\item Si la dernière inférence est $\Elim{\lexists}$,
+$\delta$ a la forme
+\[
+    \AxiomC{}
+    \RightLabel{$\delta_1'$}
+    \DeduceC{$\lexists[x][!A(x,c)]$}
+    \AxiomC{$\Discharge{!A(a,c)}{x}$}
+    \RightLabel{$\delta_2'$}
+    \DeduceC{$!C$}
+    \DischargeRule{\Elim{\lexists}}{x}
+    \BinaryInfC{$!C$}
+    \DisplayProof
+    \]
+L'hypothèse de récurrence fournit les deux preuves régulières
+$\Subst{\delta_1'}{t}{c}$ et $\Subst{\delta_2'}{t}{c}$,
+avec substitution dans leurs conclusions et leurs hypothèses.
+La première conclut à la formule existentielle substituée ;
+la seconde conclut à la substitution de~$!C$, sous l'hypothèse
+ouverte~$!A(a,t)$.
+
+Puisque $a$ est une constante propre de~$\delta$, elle n'apparaît
+pas dans~$t$. La dernière inférence de
+$\Subst{\delta}{t}{c}$ est donc
+\[
+    \AxiomC{}
+    \RightLabel{$\Subst{\delta_1'}{t}{c}$}
+    \DeduceC{$\lexists[x][!A(x,t)]$}
+    \AxiomC{$\Discharge{!A(a,t)}{x}$}
+    \RightLabel{$\Subst{\delta_2'}{t}{c}$}
+    \DeduceC{$\Subst{!C}{t}{c}$}
+    \DischargeRule{\Elim{\lexists}}{x}
+    \BinaryInfC{$\Subst{!C}{t}{c}$}
+    \DisplayProof
+    \]
+et elle est correcte :
+$\Subst{!A(x,t)}{a}{x} \ident \Subst{!A(a,c)}{t}{c}$.
+La constante~$a$ n'apparaît ni dans la conclusion substituée,
+ni dans la prémisse majeure, ni dans les hypothèses ouvertes
+autres que la classe déchargée, car elle était absente
+des formules correspondantes avant substitution et n'est
+pas introduite par~$t$.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}\ollabel{prop:regular}
+Si $\delta$ est une preuve dans \Log{N1c} ou \Log{N1i},
+il existe une preuve régulière~$\delta'$ de même structure,
+donc de même hauteur, qui ne diffère de $\delta$
+que par le remplacement de constantes propres.
+\end{prop}
+
+\begin{proof}
+Pour cette preuve seulement, disons qu'une inférence à constante
+propre de~$\delta$ est \emph{propre} si sa constante n'est
+la constante propre d'aucune autre inférence et n'apparaît
+ailleurs dans~$\delta$ que dans la sous-preuve immédiate
+autorisée par la définition de régularité.
+Dans le cas contraire, disons qu'elle est \emph{sale}.
+
+Soit $n$ le nombre d'inférences sales de~$\delta$.
+Nous raisonnons par récurrence sur~$n$.
+Si $n=0$, toutes les inférences à constante propre sont propres :
+$\delta$ est régulière et il n'y a rien à modifier.
+Sinon, choisissons une inférence \emph{sale} la plus haute possible,
+par exemple une \Intro{\lforall}.
+La sous-preuve~$\delta_1$ qui se termine par cette inférence
+a la forme
+\[
+    \AxiomC{}
+    \RightLabel{$\delta_2$}
+    \DeduceC{$!A(c)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x)]$}
+    \DisplayProof
+    \]
+La condition de constante propre garantit que $c$ n'apparaît
+ni dans~$\lforall[x][!A(x)]$ ni dans une hypothèse ouverte.
+La preuve $\delta_2$ est régulière : toutes ses inférences
+à constante propre sont propres, puisque l'inférence sale
+choisie est la plus haute. De plus, $c$ ne sert pas de
+constante propre dans~$\delta_2$ : une telle réutilisation
+rendrait sale l'inférence correspondante.
+
+
+Soit $a$ une !!{constant} n'apparaissant pas dans~$\delta$.
+Par le \olref{lem:subst-regular}, $\Subst{\delta_2}{a}{c}$
+est une preuve régulière de $!A(a)$.
+Comme aucune hypothèse ouverte de~$\delta_2$ ne contient~$c$,
+aucune hypothèse ouverte de~$\Subst{\delta_2}{a}{c}$
+ne contient~$a$. Nous pouvons donc appliquer~$\Intro{\lforall}$.
+Remplaçons $\delta_1$ dans~$\delta$ par la preuve $\delta_1'$ :
+\[
+    \AxiomC{}
+    \RightLabel{$\Subst{\delta_2}{a}{c}$}
+    \DeduceC{$!A(a)$}
+    \RightLabel{\Intro{\lforall}}
+    \UnaryInfC{$\lforall[x][!A(x)]$}
+    \DisplayProof
+    \]
+L'inférence sale choisie est devenue propre ; seul le paramètre
+$c$ a été remplacé par~$a$ dans sa sous-preuve.
+Ce renommage ne rend sale aucune inférence auparavant propre.
+La preuve résultante possède donc au plus $n-1$ inférences sales,
+et l'hypothèse de récurrence s'applique.
+\end{proof}
+
+\begin{prob}
+Décrire le cas de la preuve de la \olref{prop:regular}
+où l'inférence sale la plus haute est~\Elim{\lexists}.
+\end{prob}
+
+Nous n'invoquerons plus explicitement cette proposition :
+nous supposerons les preuves considérées régulières.
+Au besoin, leurs constantes propres peuvent être renommées
+pour les rendre régulières.
+
+Le \olref{lem:subst-regular} et la \olref{prop:regular} valent aussi
+pour \Log{N2c} et~\Log{N2i}. Les preuves sont laissées en exercice.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

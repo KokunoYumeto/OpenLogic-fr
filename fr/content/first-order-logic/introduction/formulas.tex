@@ -12,25 +12,23 @@
 
 Voici la méthode que nous suivrons pour définir rigoureusement les
 !!{sentence}s de la logique du premier ordre et traiter les difficultés
-liées à l'emploi des !!{variable}s. Nous commençons par définir un
-ensemble \emph{différent} d'expressions : les !!{formula}s. Nous
-pourrons ensuite examiner le rôle qu'y jouent les !!{variable}s et, à
-partir des notions de !!{variable} « libre » et « liée », définir ce
-qu'est !!a{sentence}, à savoir !!a{formula} sans !!{variable} libre.
+liées à l'emploi des !!{variable}s. Commençons par définir les
+!!{formula}s. Les notions d'occurrence libre et d'occurrence liée
+permettent ensuite de définir un !!{sentence} comme une
+!!{formula} sans !!{variable} libre.
 Cette démarche ne rend pas seulement la définition d'« !!{sentence} »
 plus maniable : elle sera aussi essentielle à notre définition de la
 notion sémantique de satisfaction.
 
 Définissons « !!{formula} » pour un langage du premier ordre simple,
-qui ne contient qu'!!a{predicate}~$\Obj P$, !!a{constant}~$\Obj a$ et
-les seuls symboles logiques $\lnot$, $\land$ et~$\lexists$. Nos
+avec un seul !!{predicate} unaire~$\Obj P$, une seule
+!!{constant}~$\Obj a$ et les symboles logiques $\lnot$, $\land$ et~$\lexists$. Nos
 définitions complètes seront beaucoup plus générales : elles
 autoriseront une infinité de !!{predicate}s et de !!{constant}s. Nous
 considérerons aussi des !!{function}s qui, combinés avec des
 !!{constant}s et des !!{variable}s, forment des « termes ». Pour
 l'instant, $\Obj a$ et les variables seront nos seuls termes. Il nous
-faut une infinité de !!{variable}s. Nous prendrons officiellement pour
-variables les symboles $\Obj v_0$, $\Obj v_1$, \dots.
+faut une infinité de !!{variable}s. Prenons pour variables les symboles $\Obj v_0$, $\Obj v_1$, \dots.
 
 \begin{defn}
 L'ensemble des \emph{!!{formula}s}~$\Frm$ est défini comme suit :
@@ -62,7 +60,8 @@ $\lnot \Atom{\Obj P}{\Obj v_2}$ est !!a{formula}, puisque
 $\Atom{\Obj P}{\Obj v_2}$ est déjà !!a{formula} d'après la
 clause~\olref{fmls-atom}. La clause~\olref{fmls-ex} montre ensuite que
 $\lexists[\Obj v_2][\lnot \Atom{\Obj P}{\Obj v_2}]$ est une autre
-!!{formula}, et ainsi de suite. La clause~\olref{fmls-limit} affirme que
+!!{formula}, et ainsi de suite.
+\iftag{limitClause}{La clause~\olref{fmls-limit} précise que}{Par définition,}
 \emph{seules} les chaînes obtenues de cette manière sont des
 !!{formula}s. En particulier,
 $\lexists[\Obj v_0][\Atom{\Obj P}{\Obj a}]$ et

@@ -1,0 +1,48 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: S5-decidable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{dec}
+
+\olsection{\Log{S5} est décidable}
+
+Pour une classe de modèles dont les modèles finis sont effectivement énumérables,
+la propriété du modèle fini, avec une axiomatisation effective, la correction
+et la complétude, montre que le système est \emph{décidable} :
+il existe une procédure calculable qui détermine si une !!{formula}
+est !!{derivable} dans le système.
+
+\begin{thm}
+  \Log{S5} est décidable.
+\end{thm}
+
+\begin{proof}
+  Soit $!A$ donnée, et supposons que les !!{propositional variable}s
+  qui figurent dans $!A$ soient parmi $p_1$, \dots, $p_k$. Pour
+  chaque $n$, il n'existe qu'un nombre fini de modèles à $n$ mondes
+  attribuant des valeurs à $p_1$, \dots, $p_k$. Nous pouvons donc
+  mener \emph{en parallèle} deux énumérations : celle de tous les
+  théorèmes de \Log{S5}, en engendrant systématiquement les
+  démonstrations, et celle des modèles universels finis à $1$, $2$,
+  \dots{} mondes, en vérifiant si $!A$ est fausse dans l'un de leurs
+  mondes. L'un de ces deux procédés donnera nécessairement une réponse :
+  par le \olref[com][fra]{thm:generaldet} et le
+  \olref[fmp]{cor:S5fmp}, soit $!A$ est !!{derivable}, soit elle est
+  fausse dans un modèle universel fini.
+\end{proof}
+
+Cette démonstration fonctionne pour \Log{S5}, car les filtrations de
+modèles universels sont toujours universelles. Il en va de même de la
+réflexivité et de la sérialité, mais d'autres propriétés demandent
+davantage de travail.
+Le contre-modèle doit être cherché parmi les modèles de
+$\Log{S5}$. Par exemple, la formule $\Box p\lif p$ est
+un théorème de $\Log{S5}$, mais elle est fausse dans un
+modèle à un monde sans flèche, lorsque $p$ y est fausse.
+Les modèles universels finis énumérés dans la preuve
+valident tous les théorèmes de~$\Log{S5}$.
+\end{document}

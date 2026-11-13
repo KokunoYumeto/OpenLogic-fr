@@ -1,0 +1,110 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{choice}{justifications}
+\olsection{Considérations intrinsèques sur le choix}
+
+La question plus générale est donc de savoir
+si l'on peut justifier l'axiome du bon ordre,
+l'axiome du choix ou même la comparabilité
+de tous les ensembles quant à leur taille :
+peu importe lequel de ces principes
+on choisit.
+
+Voici une tentative de justification
+\emph{intrinsèque}. Dans la
+\olref[z][story]{sec}, nous avons
+introduit plusieurs principes concernant
+la hiérarchie. Il vaut la peine de
+rappeler l'un d'eux :
+\begin{enumerate}
+	\item[] \stagesacc. Pour toute étape $S$,
+	et pour tous ensembles formés
+	\emph{avant} $S$, il se forme à l'étape
+	$S$ un ensemble dont les éléments
+	sont exactement ces ensembles-là.
+	Rien d'autre ne se forme à
+	l'étape~$S$.
+\end{enumerate}
+De nombreux auteurs ont suggéré que
+l'axiome du choix pouvait se justifier
+à partir d'un principe de ce genre.
+Nous allons en donner un bref aperçu.
+
+Commençons par un petit résultat simple,
+qui fournit \emph{encore un autre}
+équivalent de l'axiome du choix :
+
+\begin{thm}[dans $\ZF$]\ollabel{choiceset}
+L'axiome du choix est équivalent au
+principe suivant. Si les !!{element}s
+de $A$ sont disjoints et non vides,
+alors il existe un ensemble $C$
+tel que $C \cap x$ soit un singleton
+pour tout $x \in A$. (Nous appelons
+un tel $C$ un {ensemble de choix}
+pour $A$.)
+\end{thm}
+
+La démonstration est simple ; nous
+la laissons en exercice.
+
+\begin{prob}
+Démontrez le
+\olref[sth][choice][justifications]{choiceset}.
+Si vous rencontrez des difficultés,
+vous trouverez une démonstration dans
+\cite[pp.~242--3]{Potter2004}.
+\end{prob}
+
+Le point essentiel est que la partie
+d'un ensemble de choix $C$ contenue
+dans $\bigcup A$ est l'image d'une
+fonction de choix pour $A$ ; inversement,
+toute telle image est un ensemble de
+choix pour $A$.\footnote{Note de l'édition
+française : l'original identifie directement
+$C$ à l'image d'une fonction de choix.
+La définition permet pourtant à $C$
+de contenir des objets hors de
+$\bigcup A$ ; il faut prendre
+$C\cap\bigcup A$.}
+Pour justifier l'axiome du choix,
+nous pouvons donc tenter de justifier
+sa formulation équivalente en termes
+d'existence d'ensembles de choix.
+C'est ce que nous allons faire.
+
+Supposons que les !!{element}s de $A$
+soient disjoints et non vides.
+D'après \stageshier{}
+(voir la \olref[z][story]{sec}),
+$A$ se forme à une certaine étape~$S$.
+Tous les !!{element}s de $\bigcup A$
+sont alors disponibles avant l'étape
+$S$. Or, d'après \stagesacc{},
+pour \emph{tous} les ensembles formés
+avant~$S$, il se forme un ensemble
+dont les éléments sont exactement
+ceux-là. Autrement dit, toute
+collection \emph{possible}
+d'ensembles déjà disponibles existera
+à l'étape~$S$. Il est certainement
+\emph{possible} de sélectionner
+des objets qui formeraient un ensemble
+de choix pour~$A$ : il s'agirait
+simplement d'un sous-ensemble bien
+particulier de $\bigcup A$.
+Un tel ensemble de choix existe
+donc, comme souhaité.
+
+Voilà une tentative \emph{très}
+rapide de justifier l'axiome
+du choix à partir de considérations
+intrinsèques. Pour approfondir
+cette idée, vous pouvez lire
+l'élégant développement qu'en donne
+Potter (\citeyear[\S14.8]{Potter2004}).
+
+\end{document}

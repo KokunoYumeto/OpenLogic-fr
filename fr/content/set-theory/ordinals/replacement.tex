@@ -1,0 +1,92 @@
+% Partie : set-theory
+% Chapitre : ordinals
+% Section : replacement
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ordinals}{replacement}
+\olsection{Remplacement}
+
+Dans la \olref[sth][ordinals][vn]{sec}, nous avons motivé l'introduction
+des ordinaux en proposant de les traiter comme des types d'ordre,
+c'est-à-dire comme des représentants canoniques des bons ordres. Pour
+que cette idée fonctionne, il faudrait démontrer que \emph{tout bon
+ordre est isomorphe à un ordinal}. Nous pourrions alors définir
+$\ordtype{A, <}$ comme l'ordinal $\alpha$ tel que
+$\tuple{A, <} \isomorphic \alpha$.
+
+Malheureusement, nous ne \emph{pouvons pas} démontrer ce résultat à
+partir des seuls axiomes introduits jusqu'ici. (Nous verrons pourquoi
+dans la \olref[replacement][strength]{sec} ; pour l'instant, retenons
+simplement que nous ne le pouvons pas.) Il nous faut une nouvelle
+idée, que voici :
+
+\begin{axiom}[Schéma de remplacement]
+Pour toute formule $\phi(x, y)$, l'énoncé suivant est un axiome :
+\begin{quote}
+	pour tout $A$, si $(\forall x \in A)\lexists![y][\phi(x,y)]$,
+	alors $\Setabs{y}{(\exists x \in A)\phi(x,y)}$ existe.
+\end{quote}
+\end{axiom}
+\noindent
+Comme pour la séparation, il s'agit d'un schéma : il fournit une
+infinité d'axiomes, un pour chacune des différentes formules
+$\phi$, qui sont en nombre infini. On peut aussi l'écrire, comme on
+le fait habituellement, sous la forme suivante :
+
+\begin{defish}
+Pour toute formule $\phi(x,y)$ qui ne contient pas «~$B$~»,
+l'énoncé suivant est un axiome :
+\[
+\forall A[(\forall x \in A)\lexists![y][\phi(x,y)] \lif \exists B\forall y (y \in B \liff (\exists x \in A)\phi(x,y))]
+\]
+\end{defish}
+
+À première vue, cette formule est toutefois assez complexe. La
+conséquence immédiate du remplacement qui suit exprime peut-être
+\emph{plus clairement} l'idée intuitive en jeu :\footnote{Un terme
+est une expression qui désigne exactement un objet, quelle que soit
+l'attribution de valeurs à ses variables libres. Par exemple,
+«~$\emptyset$~» est un terme qui désigne l'ensemble vide ;
+«~$\{x\}$~» est un terme qui désigne le singleton de $x$, quel que
+soit $x$ ; «~$x \cup y$~» est un terme qui désigne l'union de $x$ et de
+$y$, quels qu'ils soient.}
+
+\begin{cor}
+Pour tout terme $\tau(x)$ et tout ensemble $A$, l'ensemble suivant
+existe :
+\[
+	\Setabs{\tau(x)}{x \in A} = \Setabs{y}{(\exists x \in A)y = \tau(x)}.
+\]
+\end{cor}
+
+\begin{proof}
+Puisque $\tau$ est un \emph{terme},
+$\forall x \lexists![y][\tau(x) = y]$. A fortiori,
+$(\forall x \in A)\lexists![y][\tau(x) = y]$. Par remplacement,
+$\Setabs{y}{(\exists x \in A)\tau(x) = y}$ existe.
+\end{proof}
+\noindent
+Cela suggère que «~remplacement~» est un nom approprié pour cet
+axiome : étant donné un ensemble $A$, on peut former un nouvel
+ensemble, $\Setabs{\tau(x)}{x \in A}$, en remplaçant chaque élément
+de $A$ par son image par~$\tau$. À l'image de la notation pour
+l'image d'un ensemble par une fonction, nous pourrions écrire
+$\funimage{\tau}{A}$ pour $\Setabs{\tau(x)}{x \in A}$.
+
+Il est toutefois essentiel que $\tau$ soit un \emph{terme}. Il
+n'est pas nécessaire qu'il soit, ni qu'il désigne, une
+\emph{fonction} au sens de la \olref[sfr][fun][rel]{sec}, c'est-à-dire
+un certain ensemble de couples ordonnés. En effet, si $f$ est une
+fonction en ce sens, l'ensemble
+$\funimage{f}{A} = \Setabs{f(x)}{x \in A}$ n'est qu'un sous-ensemble
+particulier de $\ran{f}$ ; son existence est déjà garantie par les
+seuls axiomes de~$\Zminus$.\footnote{Il suffit de considérer
+$\Setabs{y \in \bigcup \bigcup f}{(\exists x \in A)y = f(x)}$.}
+En revanche, le remplacement est un ajout \emph{puissant} à nos
+axiomes, comme nous le verrons dans le
+\olref[sth][replacement][]{chap}.
+
+\end{document}

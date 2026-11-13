@@ -1,0 +1,151 @@
+% Partie : set-theory
+% Chapitre : spine
+% Section : rank
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{spine}{rank}
+\olsection{Rang}
+
+Maintenant que nous avons défini les étapes comme les $V_\alpha$ et
+que nous savons que tout ensemble est un sous-ensemble d'une certaine
+étape, nous pouvons définir le \emph{rang} d'un ensemble.
+Intuitivement, le rang de $A$ est le premier moment où $A$ se forme.
+Plus précisément :
+
+\begin{defn}\ollabel{defnsetrank}
+Pour chaque ensemble $A$, $\setrank{A}$ est le plus petit ordinal
+$\alpha$ tel que $A \subseteq V_\alpha$.
+\end{defn}
+\begin{prop}\ollabel{ranksexist}
+$\setrank{A}$ existe pour tout ensemble $A$.
+\end{prop}
+\begin{proof}
+La démonstration est laissée en exercice.
+\end{proof}
+\begin{prob}
+Démontrez la \olref[sth][spine][rank]{ranksexist}.
+\end{prob}
+\noindent
+Le bon ordre des rangs permet d'établir quelques résultats importants :
+\begin{prop}\ollabel{valphalowerrank}
+Pour tout ordinal $\alpha$,
+$V_\alpha = \Setabs{x}{\setrank{x} \in \alpha}$.
+\end{prop}
+
+\begin{proof}
+Si $\setrank{x} \in \alpha$, alors
+$x \subseteq V_{\setrank{x}} \in V_\alpha$ ; donc
+$x \in V_\alpha$ puisque $V_\alpha$ est potent (en appliquant
+plusieurs fois le \olref[Valphabasic]{Valphabasicprops}).
+Réciproquement, si $x \in V_\alpha$, alors
+$x \subseteq V_\alpha$, donc $\setrank{x} \leq \alpha$. Une
+récurrence transfinie simple montre en fait que
+$\setrank{x} \in \alpha$.\footnote{Note de l'édition française :
+l'original conclut ici que $x \notin V_\alpha$, ce qui contredit
+l'hypothèse $x \in V_\alpha$. La récurrence doit établir
+$\setrank{x} \in \alpha$ ; ses trois cas sont laissés à l'exercice
+suivant.}
+\end{proof}
+\begin{prob}
+Complétez la récurrence transfinie simple mentionnée dans la
+\olref[sth][spine][rank]{valphalowerrank}.
+\end{prob}
+
+\begin{prop}\ollabel{rankmemberslower}
+Si $B \in A$, alors $\setrank{B} \in \setrank{A}$.
+\end{prop}
+
+\begin{proof}
+$A \subseteq V_{\setrank{A}} =
+\Setabs{x}{\setrank{x} \in \setrank{A}}$ par la
+\olref{valphalowerrank}.
+\end{proof}
+\noindent
+Ce fait permet d'établir un résultat grâce auquel nous pourrons
+démontrer des propriétés de \emph{tous les ensembles} par une forme
+de récurrence :
+
+\begin{thm}[Schéma de récurrence sur $\in$]
+Pour toute formule $\phi$ :
+\[
+	\forall A((\forall x \in A)\phi(x) \lif \phi(A)) \lif \forall A \phi(A).
+\]
+\end{thm}
+
+\begin{proof}
+Nous démontrons la contraposée. Supposons donc
+$\lnot \forall A \phi(A)$. Par récurrence transfinie
+(\olref[ordinals][basic]{ordinductionschema}), il existe un ensemble
+qui ne vérifie pas $\phi$ et dont le rang est le plus petit possible :
+un ensemble $A$ tel que $\lnot \phi(A)$ et
+$\forall x(\setrank{x} \in \setrank{A} \lif \phi(x))$. Or, si
+$x \in A$, alors $\setrank{x} \in \setrank{A}$ par la
+\olref{rankmemberslower}, donc $\phi(x)$. Ainsi,
+$(\forall x \in A)\phi(x) \land \lnot \phi(A)$.
+\end{proof}\noindent On peut présenter ce puissant résultat de manière
+informelle. Disons que $\phi$ est \emph{héréditaire} si, dès que tous
+les !!{element}s d'un ensemble vérifient $\phi$, l'ensemble lui-même
+la vérifie. La récurrence sur $\in$ dit alors : si $\phi$ est
+héréditaire, tout ensemble vérifie $\phi$.
+
+Pour terminer, pour l'instant, notre étude des rangs, démontrons
+quelques affirmations annoncées plus haut.
+
+\begin{prop}\ollabel{ranksupstrict}
+$\setrank{A} = \supstrict_{x \in A}\setrank{x}$.
+\end{prop}
+
+\begin{proof}
+Posons $\alpha = \supstrict_{x \in A}\setrank{x}$. Par la
+\olref{rankmemberslower}, $\alpha \leq \setrank{A}$. Mais, si
+$x \in A$, alors $\setrank{x} \in \alpha$ ; donc
+$x \in V_\alpha$ par la \olref{valphalowerrank}, et par suite
+$A \subseteq V_\alpha$, c'est-à-dire
+$\setrank{A} \leq \alpha$. Ainsi, $\setrank{A} = \alpha$.
+\end{proof}
+
+\begin{cor}\ollabel{ordsetrankalpha}
+Pour tout ordinal $\alpha$, $\setrank{\alpha} = \alpha$.
+\end{cor}
+
+\begin{proof}
+Comme hypothèse de récurrence transfinie, supposons que
+$\setrank{\beta} = \beta$ pour tout $\beta \in \alpha$. Alors
+$\setrank{\alpha} = \supstrict_{\beta \in \alpha}\setrank{\beta}
+= \supstrict_{\beta \in \alpha}\beta = \alpha$ par la
+\olref{ranksupstrict}.
+% Notons d'abord que \setrank{\alpha} \neq \beta pour tout
+% \beta \in \alpha. Sinon, \beta = \setrank{\beta} \in
+% \setrank{\alpha} = \beta par \olref{rankmemberslower}, soit
+% \beta \in \beta, contradiction.
+%
+% Notons ensuite que \alpha \subseteq V_\alpha. En effet,
+% \alpha = \Setabs{\beta}{\beta \in \alpha} par
+% \olref[sfr][ordinals][basic]{ordissetofsmallerord}. Si
+% \beta \in \alpha, alors \beta \subseteq V_{\setrank{\beta}} =
+% V_\beta \in V_\alpha, donc \beta \in V_\alpha par
+% \olref[sfr][spine][Valphabasic]{Valphabasicprops} deux fois.
+\end{proof}
+
+Enfin, voici une courte démonstration du résultat promis à la fin de la
+\olref[foundation]{sec} : $\ZFminus$ démontre l'implication
+$\emph{Régularité} \Rightarrow \emph{Fondation}$. (Notons que la
+notion de «~rang~» et la \olref{rankmemberslower} peuvent servir ici :
+comme nous l'avons indiqué au début de cette section, ils sont
+disponibles dans $\ZFminus + \text{Régularité}$.)
+
+\begin{prop}[dans $\ZFminus + \text{Régularité}$]\ollabel{zfminusregularityfoundation}
+La fondation est vraie.
+\end{prop}
+
+\begin{proof}
+Fixons $A \neq \emptyset$ et choisissons un
+$B \in A$ de rang aussi petit que possible. Si $c \in B$, alors
+$\setrank{c} \in \setrank{B}$ par la \olref{rankmemberslower} ; donc
+$c \notin A$ par le choix de $B$.
+\end{proof}
+
+\end{document}

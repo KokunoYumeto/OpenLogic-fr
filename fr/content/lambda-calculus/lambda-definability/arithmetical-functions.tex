@@ -1,0 +1,193 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: arithmetical-functions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{arf}
+\olsection{Fonctions arithmétiques \texorpdfstring{$\lambda$}{λ}-définissables}
+
+\begin{prop}
+\ollabel{prop:succ-ld}
+La fonction successeur~$\Succ$ est
+$\lambda$-définissable.
+\end{prop}
+
+\begin{proof}
+Le terme suivant $\lambda$-définit
+la fonction successeur :
+\begin{align*}
+  \fn{Succ} & \ident
+    \lambd[a][\lambd[fx][f ({a} f x)]].
+  \intertext{Avec nos conventions, cette
+    expression abrège :}
+  \fn{Succ} & \ident
+    \lambd[a][\lambd[f][\lambd[x][(f (({a} f) x))]]].
+  \intertext{Le terme $\fn{Succ}$ reçoit un
+    nombre~$a$ et renvoie la fonction
+    $\lambd[fx][f ({a} f x)]$. Cette fonction
+    n'est pas elle-même un numéral de Church.
+    Cependant, si $a$ est un numéral de Church,
+    l'application se réduit à un tel numéral :}
+  (\lambd[a][\lambd[fx][f ({a} f x)]])\,\num{n}
+    & \redone \lambd[fx][f ({\num{n}} f x)].
+  \intertext{Le sous-terme $\num{n}fx$ se
+    réduit à $f^n(x)$ en deux contractions
+    à la racine, puisque
+    $\num{n}=\lambd[fx][f^n(x)]$. Ainsi :}
+  \fn{Succ}\,\num{n}
+    & \red \lambd[fx][f(f^n(x))],
+\end{align*}
+c'est-à-dire à~$\num{n+1}$.
+\end{proof}
+
+\begin{ex}
+Calculons $\fn{Succ}$ appliqué à~$\num{0}$,
+c'est-à-dire à $\lambd[fx][x]$, en écrivant
+les termes sans abréviation :
+\begin{align*}
+  \fn{Succ}\,\num{0}
+    & \ident
+    (\lambd[a][\lambd[f][\lambd[x][(f (({a} f) x))]]])
+    (\lambd[f][\lambd[x][x]]) \\
+  & \redone
+    \lambd[f][\lambd[x][(f (({(\lambd[f][\lambd[x][x]])} f) x))]] \\
+  & \redone
+    \lambd[f][\lambd[x][(f ({(\lambd[x][x])} x))]] \\
+  & \redone \lambd[f][\lambd[x][(f x)]]
+    \ident \num{1}.
+\end{align*}
+\end{ex}
+
+\begin{prob}
+Le terme
+\begin{align*}
+  \fn{Succ}' & \ident
+    \lambd[{n}][\lambd[fx][{n} f (f x)]]
+\end{align*}
+$\lambda$-définit aussi la fonction
+successeur. Expliquer pourquoi.
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:add-ld}
+La fonction addition~$\Add$ est
+$\lambda$-définissable.
+\end{prop}
+
+\begin{proof}
+L'addition est $\lambda$-définie
+par l'un ou l'autre des termes :
+\begin{align*}
+  \fn{Add} & \ident
+    \lambd[{a}{b}][\lambd[fx][{a} f ({b} f x)]]
+\intertext{ou bien :}
+  \fn{Add}' & \ident
+    \lambd[{a}{b}][{a}\,\fn{Succ}\,{b}].
+\intertext{Le premier terme reçoit deux
+  numéraux $a$ et~$b$, puis renvoie une
+  fonction qui reçoit $f$ et~$x$ et produit
+  $af(bfx)$. Pour $a=\num{n}$ et
+  $b=\num{m}$, cela donne
+  $f^n(f^m(x))=f^{n+m}(x)$. En détail :}
+  (\lambd[{a}{b}][\lambd[fx][{a} f ({b} f x)]])
+    \num{n}\,\num{m}
+    & \red \lambd[fx][\num{n}\,f(\num{m}\,f x)] \\
+  & \red \lambd[fx][\num{n}\,f(f^m x)] \\
+  & \red \lambd[fx][f^n(f^m x)]
+    \ident \num{n+m}.
+\intertext{La seconde représentation
+  fonctionne autrement. Appliquée à
+  $\num{n}$ et $\num{m}$, elle donne :}
+  \fn{Add}'\,\num{n}\,\num{m}
+    & \red \num{n}\,\fn{Succ}\,\num{m}.
+\intertext{Or $\num{n}f x$ se réduit à
+  $f^n(x)$. Par conséquent :}
+  \num{n}\,\fn{Succ}\,\num{m}
+    & \red \fn{Succ}^n(\num{m}).
+\end{align*}
+Comme $\fn{Succ}$ $\lambda$-définit
+la fonction successeur, $n$ itérations
+à partir de~$m$ conduisent à~$n+m$;
+le terme se réduit donc à~$\num{n+m}$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:mult-ld}
+La multiplication est $\lambda$-définie
+par le terme
+\[
+  \fn{Mult} \ident
+  \lambd[ab][\lambd[fx][a (b f) x]].
+\]
+\end{prop}
+
+\begin{proof}
+Appliquons $\fn{Mult}$ aux numéraux
+$\num{n}$ et $\num{m}$. On obtient
+$\lambd[fx][\num{n}(\num{m}\,f)x]$.
+Le terme $\num{m}f$ est une fonction
+qui applique~$f$ $m$ fois à son argument;
+$\num{n}(\num{m}f)x$ itère cette fonction
+$n$ fois à partir de~$x$. Il applique
+donc~$f$ à~$x$ $n\cdot m$ fois, et la
+forme normale obtenue est $\num{nm}$.
+\end{proof}
+
+Le terme définissant la multiplication
+admet une contraction~$\eta$, puisque $x$
+n'est pas libre dans $a(bf)$ :
+\[
+  \fn{Mult} \eredone
+  \lambd[ab][\lambd[f][a (b f)]].
+\]
+
+\begin{prob}
+La multiplication peut aussi être
+$\lambda$-définie par
+\[
+  \fn{Mult}' \ident
+  \lambd[ab][a (\fn{Add}\, b) \num{0}].
+\]
+Expliquer pourquoi ce terme convient.
+\end{prob}
+
+Une vérification de l'arité consiste à comparer
+$\fn{Mult}'\,\num{2}\,\num{3}$ et
+$\fn{Mult}'\,\num{2}\,\num{4}$.
+Le deuxième argument fixe l'addend et le premier
+fixe le nombre d'additions.
+
+La définition de l'exponentiation par
+un lambda-terme est étonnamment simple :
+\[
+  \fn{Exp} \ident \lambd[be][\lambd[fx][e b f x]].
+\]
+Le premier argument~$b$ est la base, le second~$e$ l'exposant.
+Pour $b=\num{n}$, l'application de $b$ à un itérateur $g$
+donne un itérateur qui effectue $n$ applications de $g$.
+Partons de l'itérateur $f$. Après $k$ applications de $b$,
+l'itérateur obtenu effectue $n^k$ applications de $f$.
+Au départ, il effectue une application de $f$. À chaque étape,
+le nombre d'applications est multiplié par $n$.
+Ainsi, avec $e=\num{k}$, le terme $e b f x$ se réduit
+à $f^{n^k}(x)$ et $\fn{Exp}\,b\,e$ se réduit au numéral
+$\num{n^k}$. On peut aussi définir l'exponentiation
+par des multiplications répétées :
+\[
+  \fn{Exp}' \ident
+  \lambd[be][e (\fn{Mult}\, b) \num{1}].
+\]
+Pour un exposant nul, $\num{0}bfx$ se réduit à $fx$.
+On obtient ainsi $\fn{Exp}\,b\,\num{0}\red\num{1}$,
+même si $b=\num{0}$. Dans la deuxième définition,
+l'itération comporte zéro multiplication et laisse
+la valeur initiale $\num{1}$.
+Le prédécesseur et la soustraction sont
+moins faciles à représenter avec les
+numéraux de Church : ils demandent un
+codage des paires.
+
+\end{document}

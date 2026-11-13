@@ -1,0 +1,150 @@
+% Part: model-theory
+% Chapter: models-of-arithmetic
+% Section: non-standard-models
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{mar}{nst}
+\section{Modèles non standards}
+
+\begin{explain}
+Une !!{structure} pour $\Lang{L_A}$ est dite standard
+si elle est isomorphe à~$\Struct{N}$; sinon, on
+la dit non standard.
+\end{explain}
+
+\begin{defn}
+Une !!{structure}~$\Struct{M}$ pour $\Lang{L_A}$
+est \emph{non standard} si elle n'est pas isomorphe
+à~$\Struct{N}$. Les !!{element}s $x\in\Domain{M}$
+qui sont égaux à $\Value{\num{n}}{M}$ pour un certain
+$n\in\Nat$ sont les \emph{nombres standards}
+de~$\Struct{M}$; les autres sont ses
+\emph{nombres non standards}.
+\end{defn}
+
+\begin{explain}
+D'après la \olref[stm]{prop:standard-domain}, une
+!!{structure} standard ne contient que des nombres
+standards. La réciproque est fausse pour une
+!!{structure} arbitraire, comme le montre l'exercice
+suivant cette proposition : une !!{structure} non
+standard peut avoir tous ses éléments nommés par
+des numéraux. Si elle est en outre un modèle
+de~$\Th{Q}$, \olref[stm]{prop:thq-standard} exclut
+ce cas. En revanche, la présence d'un nombre
+non standard suffit toujours à montrer que
+la !!{structure} est non standard.\footnote{Correction éditoriale : la source affirme aussi qu'une structure non standard contient nécessairement un élément non nommé par un numéral. Cette réciproque est fausse pour les structures arbitraires ; elle devient vraie pour les modèles de $\Th{Q}$ par la proposition citée.}
+\end{explain}
+
+\begin{prop}
+Si une !!{structure}~$\Struct{M}$ pour $\Lang{L_A}$
+contient un nombre non standard, elle est non standard.
+\end{prop}
+
+\begin{proof}
+Supposons au contraire que $\Struct{M}$ soit
+standard et contienne un nombre non standard~$x$.
+Soit $g\colon\Nat\to\Domain{M}$ un isomorphisme.
+Par récurrence sur~$n$,
+$g(\Value{\num{n}}{N})=\Value{\num{n}}{M}$ :
+$g$ envoie donc les nombres standards de~$\Struct{N}$
+sur les nombres standards de~$\Struct{M}$. Comme
+tout élément de~$\Nat$ est la valeur d'un numéral,
+$x$ n'appartient pas à l'image de~$g$. Cela
+contredit la surjectivité de~$g$.
+\end{proof}
+
+\begin{prob}
+Rappelons que $\Th{Q}$ contient les axiomes
+\begin{align*}
+& \lforall[x][\lforall[y][(\eq[x'][y'] \lif \eq[x][y])]]
+  \tag{$!Q_1$}\\
+& \lforall[x][\eq/[\Obj 0][x']] \tag{$!Q_2$}\\
+& \lforall[x][(\eq[x][\Obj 0]\lor
+  \lexists[y][\eq[x][y']])] \tag{$!Q_3$}.
+\end{align*}
+Donner trois !!{structure}s
+$\Struct{M_1}$, $\Struct{M_2}$ et $\Struct{M_3}$
+telles que
+\begin{enumerate}
+\item $\Sat{M_1}{!Q_1}$, $\Sat{M_1}{!Q_2}$,
+  $\Sat/{M_1}{!Q_3}$;
+\item $\Sat{M_2}{!Q_1}$, $\Sat/{M_2}{!Q_2}$,
+  $\Sat{M_2}{!Q_3}$;
+\item $\Sat/{M_3}{!Q_1}$, $\Sat{M_3}{!Q_2}$,
+  $\Sat{M_3}{!Q_3}$.
+\end{enumerate}
+Il suffit de préciser, pour chaque~$i$, les valeurs
+de $\Assign{\Obj{0}}{M_i}$ et
+de~$\Assign{\prime}{M_i}$.
+\end{prob}
+
+\begin{explain}
+Il est facile de décrire une !!{structure} non standard
+pour $\Lang{L_A}$ : prenons $\Int$ comme domaine et
+interprétons tous les symboles non logiques de la façon
+habituelle. Aucun entier négatif n'est la valeur
+d'un numéral~$\num{n}$; cette !!{structure} est donc
+non standard. Elle n'est cependant pas un modèle
+d'une théorie arithmétique qui rende vrais les
+mêmes !!{sentence}s que~$\Struct{N}$.
+Par exemple,
+$\lforall[x][\eq/[x'][\Obj{0}]]$
+y est faux, car $(-1)'=0$. La compacité permet
+néanmoins de construire des modèles non standards
+de l'arithmétique.
+\end{explain}
+
+\begin{prop}
+Soit
+$\Th{TA}=\Setabs{!A}{\Sat{N}{!A}}$
+la théorie de~$\Struct{N}$.
+La théorie $\Th{TA}$ possède un modèle non standard
+!!{enumerable}.
+\end{prop}
+
+\begin{proof}
+Ajoutons au !!{language}~$\Lang{L_A}$ une nouvelle
+!!{constant}~$c$ et considérons
+\[
+  \Gamma=\Th{TA}\cup
+  \{\eq/[c][\num{0}],\eq/[c][\num{1}],
+    \eq/[c][\num{2}],\dots\}.
+\]
+Dans tout modèle~$\Struct{M^c}$ de~$\Gamma$,
+l'élément $x=\Assign{c}{M^c}$ est distinct de
+$\Value{\num{n}}{M^c}$ pour tout~$n$.
+Le réduit~$\Struct{M}$ de $\Struct{M^c}$ au
+!!{language}~$\Lang{L_A}$ contient toujours
+cet élément non standard et satisfait~$\Th{TA}$,
+car $c$ n'apparaît dans aucun de ses énoncés.\footnote{Correction éditoriale : la constante nouvelle $c$ est interprétée dans $\Struct{M^c}$ ; elle n'appartient pas au langage du réduit $\Struct{M}$, contrairement à la notation de la source.}
+
+Montrons donc que $\Gamma$ a un modèle.
+Soit $\Gamma_0\subseteq\Gamma$ fini. Si
+$\Gamma_0$ contient des inégalités
+$\eq/[c][\num{n}]$, choisissons~$k$ plus
+grand que tous les indices~$n$ qui y figurent;
+s'il n'en contient aucune, choisissons par exemple
+$k=0$.\footnote{Complément éditorial : la source choisit le plus grand indice d'une inégalité ; nous traitons aussi les sous-ensembles finis qui n'en contiennent aucune.} Développons $\Struct{N}$ en
+$\Struct{N_k}$ en posant
+$\Assign{c}{N_k}=k+1$.
+Tous les énoncés de
+$\Gamma_0\cap\Th{TA}$ y sont vrais, car
+$c$ n'y apparaît pas. Les inégalités de
+$\Gamma_0$ y sont vraies aussi, puisque leurs
+indices sont inférieurs à~$k+1$.
+Ainsi, tout sous-ensemble fini de~$\Gamma$
+est satisfaisable; par compacité, $\Gamma$
+possède un modèle. Enfin, le langage étendu
+est dénombrable et tout modèle de~$\Gamma$
+est infini, puisque les numéraux y désignent
+des éléments distincts. Le théorème de
+L\"owenheim--Skolem descendant fournit donc
+un modèle dénombrable de~$\Gamma$; son réduit
+à $\Lang{L_A}$ est le modèle annoncé.\footnote{Complément éditorial : la preuve source s'arrête à l'existence d'un modèle. Le recours au théorème descendant fournit la cardinalité dénombrable annoncée ; le modèle du langage étendu conserve l'interprétation de $c$ et donc l'élément non standard.}
+\end{proof}
+
+\end{document}

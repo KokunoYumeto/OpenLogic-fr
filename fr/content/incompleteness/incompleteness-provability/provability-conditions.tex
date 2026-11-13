@@ -1,0 +1,110 @@
+% Part: incompleteness
+% Chapter: incompleteness-provability
+% Section: provability-conditions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{prc}
+
+\olsection{Les conditions de dérivabilité pour $\Th{PA}$}
+
+L'arithmétique de Peano, $\Th{PA}$, étend
+$\Th{Q}$ en lui ajoutant les axiomes d'induction
+pour toutes les !!{formula}s. Autrement dit, pour
+chaque !!{formula}~$!A$, nous ajoutons la clôture universelle sur ses paramètres libres
+d'une instance de la forme
+\[
+(!A(0)\land\lforall[x][(!A(x)\lif !A(x'))])
+\lif\lforall[x][!A(x)].
+\]
+Il s'agit bien d'un \emph{schéma}, donc d'une
+infinité d'axiomes; $\Th{PA}$ n'est d'ailleurs
+pas finiment axiomatisable. Toutefois, on peut
+décider effectivement si une chaîne de symboles
+est une instance du schéma d'induction. L'ensemble
+des axiomes de~$\Th{PA}$ est donc calculable.
+Cette théorie est beaucoup plus puissante que
+$\Th{Q}$. Par exemple, l'induction usuelle
+permet d'y démontrer facilement la commutativité
+de l'addition et de la multiplication. La plupart
+des raisonnements finitaires d'arithmétique et de
+combinatoire peuvent même s'y formaliser.
+
+Puisque $\Th{PA}$ admet une axiomatisation
+calculable, la relation de vérification des preuves
+$\Prf[\Th{PA}](x,y)$ est calculable et donc
+représentable dans~$\Th{Q}$, et a fortiori dans
+$\Th{PA}$. Comme auparavant,
+$\OPrf[\Th{PA}](x,y)$ désignera la !!{formula}
+qui représente cette relation. Posons
+$\OProv[\Th{PA}](y)=
+\lexists[x][\OPrf[\Th{PA}](x,y)]$.
+Intuitivement, cette !!{formula} dit que la !!{formula} de code~$y$ est démontrable à partir
+des axiomes de~$\Th{PA}$. Nous avons besoin d'une
+théorie un peu plus forte que~$\Th{Q}$ afin de
+démontrer certains faits fondamentaux sur ce
+prédicat de démontrabilité. Pour des !!{formula}s $!A$ et $!B$, voici
+les conditions qu'il nous faut :
+\begin{enumerate}
+\item[P1.] Si $\Th{PA}\Proves !A$, alors
+  $\Th{PA}\Proves\OProv[\Th{PA}](\gn{!A})$.
+\item[P2.] Pour toutes !!{formula}s $!A$ et $!B$,
+  \[
+  \Th{PA}\Proves\OProv[\Th{PA}](\gn{!A\lif !B})
+  \lif(\OProv[\Th{PA}](\gn{!A})
+  \lif\OProv[\Th{PA}](\gn{!B})).
+  \]
+\item[P3.] Pour toute !!{formula}~$!A$,
+  \[
+  \Th{PA}\Proves\OProv[\Th{PA}](\gn{!A})
+  \lif\OProv[\Th{PA}]
+  (\gn{\OProv[\Th{PA}](\gn{!A})}).
+  \]
+\end{enumerate}
+Pour P1, une démonstration effective de~$!A$ fournit un code
+numérique précis. La représentabilité donne alors une preuve
+de l'instance de~$\OPrf[\Th{PA}]$ portant sur ce code et celui
+de~$!A$. L'introduction du quantificateur existentiel donne
+$\OProv[\Th{PA}](\gn{!A})$. Pour P2, il faut formaliser
+dans~$\Th{PA}$ l'opération qui combine une démonstration
+de~$!A\lif !B$ et une démonstration de~$!A$, puis ajoute
+une application du modus ponens.
+
+Pour P3, on choisit un prédicat usuel de démontrabilité de
+classe~$\Sigma_1$. On utilise alors la complétude
+$\Sigma_1$ formalisée dans~$\Th{PA}$ : pour chaque énoncé
+$!C$ de cette classe, $\Th{PA}$ démontre
+$!C\lif\OProv[\Th{PA}](\gn{!C})$. On l'applique à
+$!C\ident\OProv[\Th{PA}](\gn{!A})$. Une représentation
+ponctuelle de la relation de preuve suffit pour l'argument de
+P1, mais P2 et P3 demandent des vérifications internes à
+$\Th{PA}$. Nous admettrons ici ces vérifications pour le
+codage usuel des démonstrations.
+Un choix raisonnable de $\OProv[\Th{PA}](y)$
+satisfait également :
+\begin{enumerate}
+\item[P4.] Si
+  $\Th{PA}\Proves\OProv[\Th{PA}](\gn{!A})$,
+  alors $\Th{PA}\Proves !A$.
+\end{enumerate}
+Pour le prédicat usuel, la correction de~$\Th{PA}$ dans le
+modèle standard justifie P4. Si la théorie démontre l'énoncé
+$\OProv[\Th{PA}](\gn{!A})$, il existe réellement un code
+de démonstration de~$!A$. P4 est une règle au sujet de ce que
+la théorie démontre. Les deux théorèmes qui suivent utilisent
+seulement P1--P3.
+
+\begin{digress}
+Gödel lui-même a été, sur ce point, aussi peu
+disert que nous. À la fin de son article de 1931,
+il esquisse la preuve du second théorème
+d'incomplétude et promet d'en donner les détails
+dans un article ultérieur. Il ne l'a jamais fait :
+les lecteurs qui comprenaient l'argument étaient
+convaincus qu'il pouvait être mené à bien, si bien
+qu'il n'avait pas besoin d'en rédiger les détails.
+\end{digress}
+
+\end{document}

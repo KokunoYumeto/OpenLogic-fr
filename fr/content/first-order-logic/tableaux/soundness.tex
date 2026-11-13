@@ -14,13 +14,13 @@
 
 \begin{explain}
 Un système de !!{derivation}, tel que celui des tableaux, est
-\emph{correct} s'il ne permet pas de !!{derive} des résultats qui ne
-valent pas réellement. La correction constitue ainsi une garantie de
-fiabilité pour les systèmes de !!{derivation}. Selon la propriété de
-théorie de la démonstration considérée, nous voulons notamment savoir
-que :
+\emph{correct} si les conclusions qu'il permet de !!{derive} sont
+des conséquences logiques de leurs hypothèses. La correction
+garantit ainsi la fiabilité du système. Selon la propriété considérée,
+nous voulons notamment savoir que :
 \begin{enumerate}
-\item tout $!A$ !!{derivable} est \iftag{FOL}{valide}{une tautologie};
+\item tout $!A$ !!{derivable} sans hypothèses est
+  \iftag{FOL}{valide}{une tautologie} ;
 \item si !!a{sentence} est !!{derivable} à partir d'autres, il en est
   aussi une conséquence;
 \item si un ensemble d'!!{sentence}s est incohérent, il est
@@ -46,10 +46,10 @@ hypothèses. Les propriétés (1)--(3) en découleront comme corollaires.
 $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$, et satisfait
 $\sFmla{\False}{!A}$ si et seulement si
 $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A}$. $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$
-satisfait un ensemble d'!!{signed formula}s~$\Gamma$ si et seulement
-s'il satisfait chaque $\sFmla{S}{!A} \in \Gamma$. L'ensemble
-$\Gamma$ est \emph{satisfaisable} s'il existe
-\iftag{FOL}{!!a{structure}}{!!a{valuation}} qui le satisfait, et
+  satisfait un ensemble d'!!{signed formula}s~$\Gamma$ si et seulement
+  si elle satisfait chaque $\sFmla{S}{!A} \in \Gamma$. L'ensemble
+  $\Gamma$ est \emph{satisfaisable} s'il existe
+  \iftag{FOL}{!!a{structure}}{!!a{valuation}} qui le satisfait, et
 \emph{insatisfaisable} dans le cas contraire.
 \end{defn}
 
@@ -85,13 +85,13 @@ considérée, cette branche demeure satisfaisable dans le !!{tableau}
 prolongé; celui-ci est donc satisfaisable. Il suffit par conséquent
 d'examiner le cas où la règle est appliquée à une branche satisfaisable.
 
-Soit $\Gamma$ l'ensemble des !!{signed formula}s de cette branche, et
-soit $\sFmla{S}{!A} \in \Gamma$ la !!{signed formula} à laquelle la
-règle est appliquée. Si la règle ne provoque pas de ramification, il
-faut montrer que la branche prolongée, c'est-à-dire $\Gamma$ avec les
-conclusions de la règle, demeure satisfaisable. Si la règle provoque
-une ramification, il faut montrer qu'au moins l'une des deux branches
-obtenues est satisfaisable.
+Soit $\Gamma$ l'ensemble des !!{signed formula}s de cette branche.
+Lorsqu'une règle s'applique à une !!{signed formula}, celle-ci
+appartient à $\Gamma$. Si la règle ne provoque pas de ramification,
+il faut montrer que la branche prolongée, formée de $\Gamma$ et des
+conclusions de la règle, demeure satisfaisable. En cas de
+ramification, il suffit qu'au moins l'une des deux branches
+obtenues soit satisfaisable.
   
 Considérons d'abord les inférences qui ne provoquent pas de ramification.
 \begin{enumerate}
@@ -137,8 +137,8 @@ Considérons d'abord les inférences qui ne provoquent pas de ramification.
 \iftag{FOL}{%
 \item La branche est prolongée par l'application de
   $\TRule{\True}{\lforall}$ à
-  $\sFmla{\True}{\lforall[x][!A(x)]} \in \Gamma$. La nouvelle
-  !!{signed formula}~$\sFmla{\True}{!A(t)}$ est ajoutée à la branche.
+  $\sFmla{\True}{\lforall[x][!A(x)]} \in \Gamma$. La règle ajoute
+  $\sFmla{\True}{!A(t)}$ pour un terme clos~$t$.
   Supposons $\Sat{M}{\Gamma}$, et en particulier
   $\Sat{M}{\lforall[x][!A(x)]}$. D'après la
   \olref[syn][sem]{prop:quant-terms}, $\Sat{M}{!A(t)}$. Par conséquent,
@@ -165,13 +165,13 @@ Considérons d'abord les inférences qui ne provoquent pas de ramification.
   $\sFmla{\False}{!C} \in \Gamma$, on a $\Sat/{M'}{!C}$, puisque $a$
   ne figure pas dans~$\Gamma$.
 
-  D'après la \olref[syn][ext]{prop:extensionality},
-  $\Sat/{M'}{!A(x)}[s]$. Puis
-  \olref[syn][ext]{prop:ext-formulas} donne
-  $\Sat/{M'}{!A(a)}[s]$. Comme $!A(a)$ est !!a{sentence},
-  \olref[syn][ass]{prop:sentence-sat-true} entraîne
-  $\Sat/{M'}{!A(a)}$. Autrement dit, $\Struct{M'}$ satisfait
-  $\sFmla{\False}{!A(a)}$.
+  Comme $a$ est absent de $!A(x)$, la
+  \olref[syn][ext]{prop:extensionality} donne $\Sat/{M'}{!A(x)}[s]$.
+  On a $\Value{a}{M'}[s]=s(x)$, de sorte que l'assignation modifiée
+  est encore $s$. La \olref[syn][ext]{prop:ext-formulas} donne alors
+  $\Sat/{M'}{!A(a)}[s]$. Pour cet énoncé, la
+  \olref[syn][ass]{prop:sentence-sat-true} entraîne $\Sat/{M'}{!A(a)}$.
+  Ainsi, $\Struct{M'}$ satisfait $\sFmla{\False}{!A(a)}$.
 \item La branche est prolongée par l'application de
   $\TRule{\True}{\lexists}$ à
   $\sFmla{\True}{\lexists[x][!B(x)]} \in \Gamma$ : exercice.
@@ -212,14 +212,14 @@ Considérons maintenant les inférences qui provoquent une ramification.
 \end{enumerate}
 \end{proof}
 
-\begin{editorial}
-Dans les deux cas consacrés à $\lforall$, la source commence avec
-$!B(x)$, puis poursuit le même argument avec $!A(x)$ et ses instances.
-La lettre~$A$ est rétablie dans les prémisses afin que chaque règle et
-chaque calcul sémantique portent sur une seule formule. Dans le passage
-commun aux présentations propositionnelle et du premier ordre,
-« structure » est adapté en « valuation » pour la première.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
+%
 
 \tagprob{FOL}
 \begin{prob}

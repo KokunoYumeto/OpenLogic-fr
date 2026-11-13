@@ -25,8 +25,8 @@ Commençons par écrire le séquent final recherché au bas de la
 Cherchons ensuite une inférence dont le séquent inférieur pourrait
 avoir cette forme. Une règle structurelle conviendrait peut-être,
 mais il est judicieux de commencer par chercher une règle logique.
-Le seul connecteur logique qui figure dans le séquent inférieur
-est $\land$ : nous cherchons donc une règle pour $\land$.
+Dans le schéma du séquent inférieur, le seul connecteur principal
+visible est $\land$ : cherchons donc une règle pour $\land$.
 Comme ce symbole figure dans l'antécédent, examinons la règle
 \LeftR{\land}.
 \begin{prooftree}
@@ -76,10 +76,10 @@ avoir la forme suivante :
 
 En déplaçant $\lnot !A \lor !B$ à l'extrémité gauche de l'antécédent,
 nous pouvons appliquer \LeftR{\lor}. Le schéma de cette règle nous
-conduit aux deux prémisses suivantes :\footnote{Note de l'édition française :
-dans cet exemple, quatre étapes échangent deux énoncés de l'antécédent.
-Leurs étiquettes $\RightR{\Exchange}$ dans la source sont corrigées
-en $\LeftR{\Exchange}$.}
+conduit aux deux prémisses suivantes. L'échange se fait dans
+l'antécédent, de sorte que l'arbre emploie $\LeftR{\Exchange}$ :
+%
+%
 \begin{prooftree}
 \AxiomC{}
 \UnaryInf$\lnot !A, !A \fCenter !B$
@@ -179,10 +179,10 @@ Nous avons maintenant le choix entre \LeftR{\land} et \LeftR{\lor}.
 Essayons \LeftR{\land}. Nous pouvons partir du séquent
 $!A, \lnot !A \lor \lnot !B \Sequent \quad$ ou du séquent
 $!B, \lnot !A \lor \lnot !B \Sequent \quad$.
-La situation étant symétrique en $!A$ et $!B$, choisissons le premier :\footnote{Note
-de l'édition française : les deux prémisses proposées dans la prose source
-omettent la négation devant $!B$ dans la disjonction. Elle est rétablie
-ici, conformément aux arbres de la source.}
+La situation étant symétrique en $!A$ et $!B$, choisissons le premier :
+%
+%
+%
 \begin{prooftree}
 \AxiomC{}
 \UnaryInf$!A, \lnot !A \lor \lnot !B \fCenter $
@@ -211,14 +211,14 @@ une difficulté :
 \RightLabel{\RightR{\lnot}}
 \UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
 \end{prooftree}
-En général, le séquent au sommet de la branche de droite ne peut être
-réduit davantage ni obtenu à partir d'un séquent initial par des
-inférences structurelles. Cette voie ne convient donc pas : nous avons
-appliqué \LeftR{\land} trop tôt. Revenons à l'étape précédente et
-appliquons plutôt \LeftR{\lor} :\footnote{Note de l'édition française :
-l'échec décrit concerne le schéma général. Certaines instances
-particulières de $!A \Sequent !B$, notamment lorsque $!A$ et $!B$
-sont identiques, sont dérivables.}
+Pour deux atomes $!A$ et $!B$ auxquels on peut donner
+respectivement les valeurs vrai et faux, le séquent au sommet
+de la branche de droite n'est pas valide. Aucune règle logique
+ne le réduit et des inférences structurelles ne suffisent pas à
+l'obtenir à partir d'un séquent initial. Si $!A$ et $!B$ sont
+identiques, il est déjà initial. La recherche échoue donc pour
+le schéma général. Revenons avant \LeftR{\land} et appliquons
+plutôt \LeftR{\lor} :
 \begin{prooftree}
 \AxiomC{}
 \UnaryInf$\lnot !A, !A \land !B \fCenter $
@@ -254,9 +254,9 @@ En achevant chaque branche comme précédemment, nous obtenons :
 \RightLabel{\RightR{\lnot}}
 \UnaryInf$\lnot !A \lor \lnot !B \fCenter \lnot (!A \land !B)$
 \end{prooftree}
-(On aurait aussi pu placer les règles pour $\land$ plus bas que les
-règles pour $\lnot$ dans ces étapes et obtenir une !!{derivation}
-correcte.)
+(On peut aussi placer les règles pour $\land$ plus bas que celles
+pour $\lnot$, en effectuant les échanges à gauche nécessaires pour
+placer la formule principale à l'extrémité de l'antécédent.)
 \end{ex}
 
 \begin{ex}
@@ -350,6 +350,6 @@ Construire des !!{derivation}s des séquents suivants :
 \item $(!A \lif !B) \lif !A \Sequent !A$.
 \item $\Sequent (!A \lif !B) \lor (!B \lif !C)$.
 \end{enumerate}
-(Tous requièrent la règle $\RightR{\Contraction}$.)
+(On pourra utiliser la règle $\RightR{\Contraction}$.)
 \end{prob}
 \end{document}

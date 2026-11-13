@@ -1,0 +1,237 @@
+% Partie : théorie de la démonstration
+% Chapitre : recherche de preuves
+% Section : algorithme
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{ps}{sal}
+
+\olsection{Algorithme de recherche pour \Log{G3c}}
+
+Nous décrivons un algorithme de recherche pour \Log{G3c}.
+Ce n'est ni le seul possible ni le plus efficace. Il est
+cependant complet : si $\Gamma \Sequent \Delta$ possède
+une preuve, il finit par la trouver et s'arrête.
+S'il s'arrête sans succès, ou ne s'arrête jamais, alors
+$\Gamma \Sequent \Delta$ est invalide. Ce dernier résultat
+sera établi dans la section suivante.
+
+L'algorithme doit garantir que toute formule non atomique
+de $\Gamma \Sequent \Delta$, ou d'un séquent produit au
+cours de la recherche, soit \emph{réduite} : elle doit
+devenir la formule principale d'une règle appliquée
+à rebours, autant de fois que nécessaire. Cette exigence
+est celle de l'\emph{équité}.
+
+La recherche procède par étapes. Chaque étape produit
+un arbre de séquents. À l'étape suivante, on réduit une
+formule dans chaque séquent supérieur dont la recherche
+n'est pas déjà close.
+
+À l'étape $0$, on part de $\Gamma \Sequent \Delta$.
+Pour assurer l'équité, on attribue aux occurrences de
+formules de $\Gamma$ et $\Delta$ des indices numériques
+distincts, par exemple en les comptant de gauche à droite.
+Ces indices sont écrits en exposant. Pour chercher une
+preuve de $!A, !B \Sequent !C$, on peut ainsi partir,
+à l'étape~$0$, de $!A^1, !B^2 \Sequent !C^3$.
+Le plus grand exposant~$n$ d'un séquent indexé est
+son \emph{indice maximal} : $3$ dans cet exemple.
+Deux occurrences d'une même formule reçoivent elles
+aussi des indices distincts.
+
+En présence de quantificateurs, il faut également choisir
+les termes employés pour réduire $\lexists[x][!A(x)]$
+à droite ou $\lforall[x][!A(x)]$ à gauche.
+Il suffit de termes construits à partir des constantes
+$\Obj c_0$, $\Obj c_1$, $\Obj c_2$, \dots, et des symboles
+de fonction présents dans~$\Gamma$ et $\Delta$.
+On fixe une énumération effective de ces termes, dans
+laquelle chaque terme a un rang fini, et une énumération
+effective des constantes. On peut ainsi choisir la première
+constante absente de $\Gamma \Sequent \Delta$.
+À chaque séquent indexé est associé un ensemble
+de constantes. À l'étape~$0$, il contient toutes
+les constantes du séquent initial s'il y en a,
+et vaut $\{\Obj c_0\}$ sinon.
+
+Supposons qu'un arbre de séquents indexés, munis de
+leurs ensembles de constantes, soit construit à
+l'étape~$n$. À l'étape~$n+1$, on traite chacun des
+séquents supérieurs comme suit.
+
+Si une même formule~$!A$ figure à gauche et à droite,
+ou si le membre gauche contient~$\lfalse$, on clôt
+la recherche sur cette feuille et on ne la développe
+plus. Un tel séquent possède une preuve dans \Log{G3c}.
+La clôture sur une formule composée demandera de
+greffer une preuve d'identité lors de la reconstruction
+de la preuve finale.
+
+Si la feuille n'est pas close et ne contient aucune
+formule non atomique, l'algorithme s'arrête sans succès.
+Le séquent initial $\Gamma \Sequent \Delta$ n'a pas
+de preuve, comme l'établira le contre-modèle de la
+section suivante.
+
+Sinon, on choisit la formule non atomique~$!A$
+d'indice~$i$ minimal. Le séquent considéré est alors
+$!A^i, \Pi \Sequent \Lambda$ ou $\Pi \Sequent \Lambda, !A^i$.
+On note $k$ le premier indice neuf, égal à l'indice
+maximal du séquent augmenté de un, et $C$ l'ensemble
+de constantes associé à ce séquent.
+
+Réduire $!A^i$ consiste à engendrer les prémisses
+de la règle déterminée par son opérateur principal
+et par le membre, gauche ou droit, où elle figure.
+
+\begin{enumerate}
+  \item Si $!A \ident !B \land !C$ figure à gauche,
+  on ajoute une seule prémisse au-dessus de
+  $(!B \land !C)^i, \Pi \Sequent \Lambda$ :
+  \[
+  \Axiom$!B^k, !C^{k+1}, \Pi \fCenter \Lambda$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$(!B \land !C)^i, \Pi \fCenter \Lambda$
+  \DisplayProof
+  \]
+  L'ensemble de constantes de cette prémisse reste~$C$.
+
+  \item Si $!A \ident !B \land !C$ figure à droite,
+  on ajoute deux prémisses au-dessus de
+  $\Pi \Sequent \Lambda, (!B \land !C)^i$ :
+  \[
+  \Axiom$\Pi \fCenter \Lambda, !B^k$
+  \Axiom$\Pi \fCenter \Lambda, !C^k$
+  \RightLabel{\RightR{\land}}
+  \BinaryInf$\Pi \fCenter \Lambda, (!B \land !C)^i$
+  \DisplayProof
+  \]
+  L'ensemble de constantes de chaque prémisse reste~$C$.
+
+  \item Les cas $!A \ident \lnot !B$, $!A \ident !B \lor !C$
+  et $!A \ident !B \lif !C$ sont analogues.
+  Leur mise en forme détaillée est laissée en exercice ;
+  les choix de prémisses sont précisés ci-dessous.
+
+  \item Si $!A \ident \lexists[x][!B(x)]$ figure à gauche,
+  on ajoute une prémisse au-dessus de
+  $\lexists[x][!B(x)]^i, \Pi \Sequent \Lambda$ :
+  \[
+  \Axiom$!B(c)^k, \Pi \fCenter \Lambda$
+  \RightLabel{\LeftR{\lexists}}
+  \UnaryInf$\lexists[x][!B(x)]^i, \Pi \fCenter \Lambda$
+  \DisplayProof
+  \]
+  où $c$ est la première constante absente de~$C$.
+  L'ensemble de constantes de la prémisse est $C \cup \{c\}$.
+
+  \item Si $!A \ident \lexists[x][!B(x)]$ figure à droite,
+  on ajoute une prémisse au-dessus de
+  $\Pi \Sequent \Lambda, \lexists[x][!B(x)]$ :
+  \[
+  \Axiom$\Pi \fCenter \Lambda, \lexists[x][!B(x)]^k, !B(t)^{k+1}$
+  \RightLabel{\RightR{\lexists}}
+  \UnaryInf$\Pi \fCenter \Lambda, \lexists[x][!B(x)]^i$
+  \DisplayProof
+  \]
+  Le terme $t$ est le premier terme de l'énumération
+  dont les constantes appartiennent à~$C$ et qui n'a
+  pas encore été employé pour cette occurrence de
+  $\lexists[x][!B(x)]$ à droite, sur la branche considérée.
+  Si tous ces termes ont déjà été employés, on reprend
+  la première constante de~$C$. Cet ensemble est
+  toujours non vide. L'ensemble de constantes associé
+  à la prémisse reste $C$.
+
+  \item Les cas $!A \ident \lforall[x][!B(x)]$ sont
+  analogues et leur mise en forme détaillée est laissée
+  en exercice.
+\end{enumerate}
+
+Les autres cas se lisent dans les règles de \Log{G3c}.
+Les contextes sont conservés. Sauf dans les deux cas
+quantifiés réutilisables, on retire l'occurrence principale
+et on ajoute les formules actives dans les prémisses.
+
+Une négation $\lnot !B$ à gauche ajoute $!B$ à droite ;
+à droite, elle ajoute $!B$ à gauche.
+Une disjonction $!B \lor !C$ à gauche donne deux
+prémisses, avec respectivement $!B$ et $!C$ à gauche ;
+à droite, elle ajoute les deux formules à droite.
+Une implication $!B \lif !C$ à gauche donne deux
+prémisses, avec $!B$ à droite dans la première
+et $!C$ à gauche dans la seconde ; à droite,
+elle ajoute $!B$ à gauche et $!C$ à droite dans
+une seule prémisse.
+Une universelle $\lforall[x][!B(x)]$ à gauche est
+conservée et réindexée, et l'on ajoute $!B(t)$
+à gauche, en choisissant le terme et en conservant
+son historique comme pour l'existentielle à droite.
+À droite, on la remplace par $!B(c)$, avec la
+première constante absente de $C$, que l'on ajoute
+à l'ensemble associé.
+
+Dans chaque prémisse, une seule nouvelle occurrence
+reçoit l'indice $k$ ; lorsqu'il y en a deux, elles
+reçoivent, dans l'ordre où elles viennent d'être
+indiquées, $k$ et $k+1$. Pour les quantificateurs
+conservés, l'occurrence réindexée reçoit $k$ et
+l'instance reçoit $k+1$. Les autres indices sont
+inchangés. Les ensembles de constantes restent
+inchangés sauf lors de l'introduction d'une constante
+propre. L'absurde est ici une formule atomique
+du point de vue de la réduction : à gauche,
+il clôt la feuille ; à droite, il n'est pas réduit.
+
+Chaque occurrence quantifiée réutilisable possède,
+sur sa branche, l'historique des termes déjà employés.
+Cet historique est transmis à l'occurrence réindexée.
+Lors d'une ramification, les occurrences du contexte
+et leurs historiques sont copiés dans les deux
+prémisses. Une nouvelle occurrence quantifiée
+commence avec un historique vide. Sans symbole de fonction
+d'arité positive, les termes disponibles sont les constantes
+de~$C$ et l'on peut vérifier si elles ont toutes été utilisées.
+Avec un tel symbole, on peut former une infinité de termes
+sur~$C$ : l'historique étant fini, le parcours finit par
+trouver un terme disponible encore inutilisé. Le rang fini
+de chaque terme assure l'équité lorsque~$C$ croît.
+
+La clôture sur une formule composée utilise la
+\olref[pt][seq][ex]{prop:G3c-axioms} : ce séquent
+d'identité est prouvable, même lorsqu'il n'est pas
+lui-même un axiome atomique. On greffe cette preuve
+à la feuille correspondante pour obtenir un arbre
+%
+de preuve de \Log{G3c}.
+
+Si, à l'étape $n+1$, aucun séquent supérieur n'a
+été développé, toutes les feuilles sont closes :
+l'algorithme s'arrête avec succès. On obtient
+une preuve de~$\Gamma \Sequent \Delta$ en effaçant
+les indices de l'arbre de l'étape $n+1$ et en
+greffant les preuves d'identité nécessaires.
+Les feuilles de recherche ont toutes la forme
+$!A, \Pi \Sequent \Lambda, !A$ ou
+$\lfalse, \Pi \Sequent \Lambda$.
+Après ces greffes, les feuilles sont des axiomes
+et toutes les inférences sont des instances correctes
+des règles de \Log{G3c}. C'est immédiat pour les
+règles propositionnelles. À chaque étape, l'ensemble~$C$
+associé à un séquent contient toutes les constantes
+de ce séquent. Pour \LeftR{\lexists} et \RightR{\lforall},
+la constante propre~$c$ est choisie hors de~$C$ :
+elle est donc absente du séquent conclusion, ce
+qui vérifie la condition de constante propre.
+Nous avons ainsi le résultat suivant.
+
+\begin{prop}
+L'algorithme de recherche pour \Log{G3c} est correct :
+s'il s'arrête avec succès, le séquent initial
+$\Gamma \Sequent \Delta$ possède une preuve.
+\end{prop}
+
+\end{document}

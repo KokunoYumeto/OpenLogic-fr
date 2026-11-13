@@ -1,0 +1,111 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: subformulas
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{sbf}
+
+\olsection{\printtoken{P}{subformula}}
+
+\begin{explain}
+Il est souvent utile de parler des !!{formula}s qui « composent »
+une !!{formula} donnée. Nous les appelons ses
+\emph{!!{subformula}s}. Toute !!{formula} est !!a{subformula}
+d'elle-même ; une sous-formule de~$!A$ distincte de~$!A$ est une
+\emph{!!{subformula} propre}.
+\end{explain}
+
+\begin{defn}[Sous-formules immédiates]
+Si $!A$ est !!a{formula}, les \emph{!!{subformula}s immédiates de~$!A$}
+sont définies inductivement comme suit :
+\begin{enumerate}
+\item Une !!{formula} atomique n'a aucune !!{subformula} immédiate.
+
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{la seule !!{subformula}
+    immédiate de $\indfrm$ est~$!B$.}}{}
+
+\item \indcase{!A}{(!B \ast !C)}{les !!{subformula}s immédiates de
+  $\indfrm$ sont $!B$ et $!C$ ($\ast$ désigne n'importe quel
+  connecteur binaire).}
+
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{la seule
+    !!{subformula} immédiate de $\indfrm$ est~$!B$.}}{}
+
+\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{la seule
+    !!{subformula} immédiate de $\indfrm$ est~$!B$.}}{}
+\end{enumerate}
+\end{defn}
+
+\begin{defn}[Sous-formules propres]
+Si $!A$ est !!a{formula}, les \emph{!!{subformula}s propres de~$!A$}
+sont définies récursivement comme suit :
+\begin{enumerate}
+\item Une !!{formula} atomique n'a aucune !!{subformula} propre.
+
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{les !!{subformula}s propres
+    de $\indfrm$ sont~$!B$ ainsi que toutes les !!{subformula}s
+    propres de~$!B$.}}{}
+
+\item \indcase{!A}{(!B \ast !C)}{les !!{subformula}s propres de
+  $\indfrm$ sont $!B$ et $!C$, ainsi que toutes les !!{subformula}s
+  propres de~$!B$ et de~$!C$.}
+
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{les
+    !!{subformula}s propres de $\indfrm$ sont~$!B$ ainsi que toutes
+    les !!{subformula}s propres de~$!B$.}}{}
+
+\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{les
+    !!{subformula}s propres de $\indfrm$ sont~$!B$ ainsi que toutes
+    les !!{subformula}s propres de~$!B$.}}{}
+\end{enumerate}
+\end{defn}
+
+\begin{defn}[Sous-formules]
+Les !!{subformula}s de~$!A$ sont $!A$ elle-même et toutes ses
+!!{subformula}s propres.
+\end{defn}
+
+\begin{explain}
+Remarquons la différence subtile entre ces deux définitions. Dans le
+premier cas, nous avons directement indiqué les !!{subformula}s
+immédiates de~$!A$ pour chacune des formes possibles de~$!A$. Cette
+définition explicite par cas reproduit les clauses de la définition
+inductive de l'ensemble des !!{formula}s. Dans le second cas, nous
+avons aussi suivi ces clauses, mais en ajoutant, pour chaque cas,
+les !!{subformula}s propres des !!{formula}s plus petites $!B$ et
+$!C$, en plus de $!B$ et~$!C$ elles-mêmes. La définition est donc
+\emph{récursive}. En général, une définition d'une fonction sur un
+ensemble défini inductivement, ici celui des !!{formula}s, est
+récursive si ses clauses font appel à la fonction elle-même. Pour
+qu'elle soit bien définie, ces appels ne doivent porter que sur des
+arguments qui viennent « avant » celui dont nous définissons la
+valeur. Ainsi, pour déterminer les !!{subformula}s propres de
+$(!B \ast !C)$, nous utilisons seulement celles des !!{formula}s
+antérieures en question.
+\end{explain}
+
+\begin{prop}
+\ollabel{prop:subfrm-trans}
+Si $!B$ est !!a{subformula} de~$!A$ et $!C$ !!a{subformula} de~$!B$,
+alors $!C$ est !!a{subformula} de~$!A$. Autrement dit, la relation
+« être une sous-formule de » est transitive.
+\end{prop}
+
+\begin{prob}
+Démontrer la \olref[fol][syn][sbf]{prop:subfrm-trans}.
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:count-subfrms}
+Si $!A$ est une !!{formula} contenant $n$ connecteurs et
+quantificateurs, alors $!A$ possède au plus $2n+1$ !!{subformula}s.
+\end{prop}
+
+\begin{prob}
+Démontrer la \olref[fol][syn][sbf]{prop:count-subfrms}.
+\end{prob}
+
+\end{document}

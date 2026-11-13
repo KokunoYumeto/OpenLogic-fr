@@ -1,0 +1,94 @@
+% Section: entailment
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{ent}
+
+\olsection{Conséquence logique}
+
+\begin{explain}
+  La notion de vérité en un monde permet de définir une relation
+  de conséquence logique entre !!{formula}s. Une !!{formula}~$!B$
+  entraîne~$!A$ si et seulement si, chaque fois que $!B$ est vraie,
+  $!A$ l'est aussi. « Chaque fois » signifie ici : quel que soit
+  le modèle considéré et quel que soit le monde considéré dans ce
+  modèle.
+\end{explain}
+
+\begin{defn}
+  Si $\Gamma$ est un ensemble de !!{formula}s et $!A$ une
+  !!{formula}, alors $\Gamma$ \emph{entraîne}~$!A$, ce que nous
+  notons $\Gamma \Entails !A$, si et seulement si, pour tout
+  modèle $\mModel{M} = \tuple{W, R, V}$ et tout monde $w \in W$,
+  dès que $\mSat{M}{!B}[w]$ pour chaque $!B \in \Gamma$, on a
+  $\mSat{M}{!A}[w]$. Si $\Gamma$ ne contient qu'une
+  !!{formula}~$!B$, nous écrivons $!B \Entails !A$.
+\end{defn}
+
+\begin{ex}
+  Pour montrer qu'une !!{formula} en entraîne une autre, il faut
+  raisonner sur tous les modèles à partir de la définition de
+  $\mSat{M}{}[w]$. Montrons par exemple que
+  $p \lif \Diamond p \Entails \Box\lnot p \lif \lnot p$.
+  Soient un modèle $\mModel{M} = \tuple{W, R,
+    V}$ et un monde $w \in W$, et supposons
+  $\mSat{M}{p \lif \Diamond p}[w]$. Il faut établir
+  $\mSat{M}{\Box\lnot p \lif \lnot p}[w]$. Supposons le contraire.
+  Alors $\mSat{M}{\Box\lnot p}[w]$ et
+  $\mSat/{M}{\lnot p}[w]$. Puisque
+  $\mSat/{M}{\lnot p}[w]$, nous déduisons
+  $\mSat{M}{p}[w]$. Par hypothèse,
+  $\mSat{M}{p \lif \Diamond p}[w]$, donc
+  $\mSat{M}{\Diamond p}[w]$. Par définition de
+  $\mSat{M}{\Diamond p}[w]$, il existe un monde $w'$ tel que
+  $Rww'$ et $\mSat{M}{p}[w']$. Or
+  $\mSat{M}{\Box \lnot p}[w]$ donne aussi
+  $\mSat{M}{\lnot p}[w']$, contradiction.
+
+  Pour montrer qu'une !!{formula}~$!B$ n'en entraîne pas une
+  autre~$!A$, il faut un contre-exemple : un modèle
+  $\mModel{M} = \tuple{W, R, V}$ et un monde~$w \in W$ tels que
+  $\mSat{M}{!B}[w]$, mais $\mSat/{M}{!A}[w]$.
+  Montrons ainsi que $p \lif \Diamond p \Entails/
+  \Box p \lif p$. Considérons le modèle de la
+  \olref{fig:counterex}. Nous avons
+  $\mSat{M}{\Diamond p}[w_1]$, donc
+  $\mSat{M}{p \lif \Diamond p}[w_1]$. Toutefois,
+  $\mSat{M}{\Box p}[w_1]$ et $\mSat/{M}{p}[w_1]$;
+  par conséquent, $\mSat/{M}{\Box p \lif p}[w_1]$.
+  \begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[modal]
+      \node[world] (w1) [label=right:\mFalse{p}]{$w_1$}; 
+      \node[world] (w2) [label=right:\mTrue{p}, above left=of w1]{$w_2$}; 
+      \node[world] (w3) [label=right:\mTrue{p}, above right=of w1] {$w_3$};
+      \draw[->] (w1) to (w2);
+      \draw[->] (w1) to (w3);
+    \end{tikzpicture}
+  \end{center}
+  \caption{Contre-exemple à $p \lif \Diamond p
+  \Entails/ \Box p \lif p$.}
+  \ollabel{fig:counterex}
+  \end{figure}
+  
+  Des contre-exemples très simples suffisent souvent. Le modèle
+  $\mModel{M'} = \tuple{W', R', V'}$ avec $W' = \{w\}$,
+  $R' = \emptyset$ et $V'(p) = \emptyset$ en fournit un autre.
+  En effet, comme $\mSat/{M'}{p}[w]$,
+  $\mSat{M'}{p \lif \Diamond p}[w]$. Aucun monde n'étant
+  accessible depuis~$w$, nous avons $\mSat{M'}{\Box p}[w]$,
+  donc $\mSat/{M'}{\Box p \lif p}[w]$.
+\end{ex}
+
+\begin{prob}
+  Montrez que $\Box (!A \land !B) \Entails \Box !A$.
+\end{prob}
+
+\begin{prob}
+  Montrez que $\Box (p \lif q) \Entails/ p \lif \Box q$ et que
+  $p \lif \Box q \Entails/\Box (p \lif q)$.
+\end{prob}
+\begin{editorial}La légende du contre-exemple affichait dans la source le symbole de conséquence logique ; elle porte ici celui de non-conséquence, conformément au texte et au modèle. Le modèle à un seul monde était écrit comme un ensemble de trois composantes ; il est écrit ici comme le triplet ordonné prévu par la définition.\end{editorial}
+\end{document}

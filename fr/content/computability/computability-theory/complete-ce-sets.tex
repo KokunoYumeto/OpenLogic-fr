@@ -1,0 +1,86 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: complete-ce-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{cce}
+\olsection{Ensembles effectivement énumérables complets}
+
+\begin{defn}
+Un ensemble~$A$ est dit \emph{effectivement
+énumérable complet} pour la réductibilité
+many-one si
+\begin{enumerate}
+\item $A$ est effectivement énumérable;
+\item pour tout autre ensemble effectivement
+  énumérable~$B$, on a $B\leq_m A$.
+\end{enumerate}
+\end{defn}
+
+Autrement dit, les ensembles effectivement
+énumérables complets sont les plus « difficiles »
+de cette classe. Ils permettent de répondre aux
+questions concernant \emph{n'importe quel}
+ensemble effectivement énumérable.
+
+\begin{thm}
+Les ensembles $K$, $K_0$ et~$K_1$ sont tous
+effectivement énumérables complets.
+\end{thm}
+
+\begin{proof}
+Pour montrer que $K_0$ est complet, soit $B$
+un ensemble effectivement énumérable quelconque.
+Il existe alors un indice~$e$ tel que
+\[
+B = W_e = \Setabs{x}{\cfind{e}(x) \fdefined}.
+\]
+Posons $f(x)=\tuple{e,x}$. Pour tout~$x$,
+on a $x\in B$ si et seulement si $f(x)\in K_0$.
+Ainsi $f$ réduit $B$ à~$K_0$.
+
+Dans la preuve de la \olref[k1]{prop:k1}, on réduit
+$K_0$ à~$K_1$. La transitivité
+(\olref[ppr]{prop:trans-red}) montre donc que
+tout ensemble effectivement énumérable se
+réduit à~$K_1$, qui est lui-même effectivement
+énumérable par cette proposition.
+
+Pour $K$, il faut réduire $K_0$ à~$K$ dans ce
+sens. Considérons la fonction calculable partielle
+ternaire $q(e,x,z)\simeq\cfind{e}(x)$, qui ignore
+$z$, et choisissons un indice~$u$ de~$q$.
+Le théorème $s$-$m$-$n$ donne une fonction
+totale calculable $r(e,x)=s^2_1(u,e,x)$ telle que,
+pour tout~$z$,
+$\cfind{r(e,x)}(z)\simeq\cfind{e}(x)$.
+En prenant $z=r(e,x)$, on obtient
+$\tuple{e,x}\in K_0$ si et seulement si
+$r(e,x)\in K$. Fixons aussi un indice de la
+fonction nulle part définie. La fonction qui
+associe $r((w)_0,(w)_1)$ à chaque code de
+paire~$w$ et cet indice à tout autre entier
+réduit donc $K_0$ à~$K$. Comme $K$ est
+effectivement énumérable, cela prouve sa
+complétude.\footnote{Correction éditoriale : la source invoque ici la réduction de $K$ à $K_0$, qui ne prouve pas la complétude de $K$. Nous construisons la réduction nécessaire de $K_0$ à $K$, en traitant aussi les entiers qui ne codent pas une paire.}
+\end{proof}
+
+\begin{prob}
+Donner une réduction de $K$ à~$K_0$.
+\end{prob}
+
+\begin{digress}
+Tous les exemples d'ensembles effectivement
+énumérables rencontrés jusqu'ici sont donc soit
+calculables, soit complets. C'est surprenant :
+existe-t-il des ensembles effectivement
+énumérables qui ne sont ni calculables ni
+complets pour la réduction many-one ? Oui : les ensembles simples de Post en fournissent des exemples.
+Le résultat obtenu au milieu des années 1950, indépendamment
+par Friedberg et Muchnik, concerne la non-complétude pour la réduction de Turing.\footnote{Correction éditoriale : la source confond les deux notions de complétude. Sur la non-complétude des ensembles simples pour des réductions même plus générales que many-one, voir An.~A.~Muchnik et S.~E.~Positsel'skii, « A class of enumerable sets », \emph{Russian Mathematical Surveys} 54(3), 1999, p.~640, théorème~1, \url{https://doi.org/10.1070/rm1999v054n03ABEH000163}.}
+\end{digress}
+
+\end{document}

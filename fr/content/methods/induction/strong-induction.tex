@@ -1,0 +1,143 @@
+% Partie : méthodes
+% Chapitre : induction mathématique
+% Section : récurrence forte
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{ind}{str}
+
+\olsection{Récurrence forte}
+
+Dans le principe de récurrence
+étudié ci-dessus, nous
+démontrons $P(0)$ et
+l'implication
+«~si $P(k)$, alors
+$P(k+1)$~». Pour cette
+seconde étape, nous
+supposons $P(k)$ et
+nous nous en servons
+pour démontrer $P(k+1)$.
+De manière équivalente,
+pour $k\ge1$, nous
+pourrions supposer
+$P(k-1)$ et en
+déduire $P(k)$.
+L'essentiel est de
+pouvoir passer d'un
+nombre quelconque
+à son successeur :
+démontrer l'énoncé
+pour chaque nombre
+en supposant qu'il
+vaut pour son
+prédécesseur.
+
+Il existe une variante
+du principe de récurrence
+dans laquelle, pour
+établir $P(k)$,
+nous ne supposons pas
+seulement que la
+propriété vaut pour
+le prédécesseur
+$k-1$, mais pour
+tous les
+nombres inférieurs
+à~$k$. Cette méthode
+établit également
+$P(n)$ pour tout
+$n \in \Nat$.
+En effet, une fois
+$P(0)$ établi,
+la propriété vaut
+pour tous les
+nombres inférieurs
+à~$1$. Si nous
+avons aussi montré
+que $P(k)$ découle
+de $P(l)$ pour
+tout $l<k$,
+appliquons ce
+résultat à $k=1$ :
+nous obtenons~$P(1)$.
+Nous avons alors
+$P(0)$ et $P(1)$,
+soit $P(l)$ pour
+tout $l<2$.
+La même implication,
+appliquée à $k=2$,
+donne~$P(2)$,
+et ainsi de suite.
+
+En réalité, si nous
+pouvons établir la
+condition générale
+«~pour tout~$k$,
+si $P(l)$ vaut
+pour tout $l<k$,
+alors $P(k)$~»,
+il n'est plus
+nécessaire de
+démontrer $P(0)$
+séparément : elle
+en découle déjà.
+Rappelons qu'un
+énoncé universel
+comme «~pour tout
+$l<k$, $P(l)$~»
+est vrai lorsqu'il
+n'existe aucun
+$l<k$. C'est
+un cas de vérité
+par vacuité d'un
+énoncé universel :
+«~tous les $A$
+sont des $B$~»
+est vrai s'il
+n'existe aucun~$A$ ;
+$\lforall[x][(!A(x) \lif !B(x))]$
+est vrai si aucun
+$x$ ne satisfait~$!A(x)$.
+Ici, la version
+formalisée est
+$\lforall[l][(l < k \lif P(l))]$ ;
+elle est vraie
+s'il n'existe
+aucun $l<k$.
+Or c'est précisément
+le cas pour $k=0$ :
+il n'existe aucun
+$l<0$. L'énoncé
+«~pour tout
+$l<0$, $P(l)$~»
+est donc vrai,
+quelle que soit~$P$.\footnote{
+Correction de l'édition française :
+à cet endroit, la source anglaise
+écrit «~$P(0)$~» au lieu de
+«~$P(l)$~» dans l'hypothèse
+universelle ; la vacuité
+demeure, mais le schéma
+formel porte sur~$P(l)$.}
+La démonstration
+de «~si $P(l)$
+vaut pour tout
+$l<k$, alors
+$P(k)$~» établit
+donc automatiquement
+$P(0)$.
+
+Cette variante est
+utile lorsqu'on
+ne peut pas établir
+$P(k)$ à partir
+du seul cas $k-1$,
+mais qu'on a besoin
+de supposer la
+propriété pour
+un ou plusieurs
+nombres $l<k$.
+
+\end{document}

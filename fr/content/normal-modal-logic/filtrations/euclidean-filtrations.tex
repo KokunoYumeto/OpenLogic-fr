@@ -1,0 +1,150 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: euclidean-filtrations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{euc}
+
+\olsection{Filtrations de modèles euclidiens}
+
+La méthode de la \olref[acc]{sec} ne fonctionne pas pour les modèles
+euclidiens, ni pour les modèles à la fois sériels et euclidiens.
+Considérons le modèle en haut de la \olref{fig:ser-eucl} : il est à la
+fois euclidien et sériel. Soit $\Gamma = \{p, \Box p \}$. Dans une
+filtration par $\Gamma$, on a $[w_1] = [w_3]$, car $w_1$ et $w_3$
+sont les seuls mondes qui s'accordent sur~$\Gamma$. Toute filtration
+doit aussi conserver les flèches héritées de $\mModel{M}$, comme dans la
+\olref{fig:ser-eucl2}. Les classes $[w_2]$ et $[w_4]$ ont le prédécesseur
+commun $[w_1]$. Dans une relation euclidienne, chacune
+devrait donc accéder à l'autre. En particulier, $[w_4]$
+accéderait à $[w_2]$ et à $[w_5]$, de sorte que $[w_2]$
+devrait accéder à $[w_5]$. Or la filtration doit rendre
+$\Box p$ vraie en~$[w_2]$ et $p$ fausse en~$[w_5]$.
+Cette flèche est donc interdite par la condition de filtration.
+Aucune relation euclidienne ne convient.
+
+\begin{figure}[htpb]
+  \centering
+  \begin{tikzpicture}[modal]
+    \node[world] (w1)
+          [label={left: \mFalse{p}},
+            label={below: $\mSat{{}}{\Box p}$}] {$w_1$};
+    \node[world] (w2)
+          [label={right: \mTrue{p}},
+            label = {below: $\mSat{{}}{\Box p}$},
+            right=of w1] {$w_2$};
+    \draw[->] (w1) to (w2);
+    \draw[reflexive above] (w2) to (w2);
+    \node[world] (w3)
+          [label={left: \mFalse{p}},
+            label={below: $\mSat{{}}{\Box p}$},
+            below=of w1] {$w_3$};
+    \node[world] (w4)
+          [label={right:\mTrue{p}},
+            label={below: $\mSat/{{}}{\Box p}$},
+            right=of w3] {$w_4$};
+    \draw[->] (w3) to (w4);
+    \draw[reflexive above] (w4) to (w4);
+    \node[world] (w5)
+          [label={right: \mFalse{p}},
+            label=below:$\mSat/{{}}{\Box p}$,
+            right=of w4] {$w_5$};
+    \draw[->, bend left] (w4) to (w5);
+    \draw[->, bend left] (w5) to (w4);
+    \draw[reflexive above] (w5) to (w5);
+  \end{tikzpicture}
+  \caption{Un modèle sériel et euclidien.}
+  \ollabel{fig:ser-eucl}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[modal,every text node part/.style={align=center}]
+    \node[world] (w1)
+          [label={left: \mFalse{p}},
+            label={above left:$[w_1]=[w_3]$},
+            label={below: $\mSat{{}}{\Box p}$}] {$[w_1]$};
+    \node[world] (w2)
+         [label={right: \mTrue{p}},
+           label = {below: $\mSat{{}}{\Box p}$},
+           right=of w1, yshift=1.5cm] {$[w_2]$};
+    \draw[->] (w1) to (w2);
+    \draw[reflexive above] (w2) to (w2);
+    \node[world] (w4)
+         [label={right:\mTrue{p}},
+           label={below: $\mSat/{{}}{\Box p}$},
+           right=of w1,yshift=-1.5cm] {$[w_4]$};
+    \draw[->] (w1) to (w4);
+    \draw[reflexive above] (w4) to (w4);
+    \node[world] (w5)
+         [label={right: \mFalse{p}},
+             label=below:$\mSat/{{}}{\Box p}$,
+             right=of w4] {$[w_5]$};
+    \draw[->, bend left] (w4) to (w5);
+    \draw[->, bend left] (w5) to (w4);
+    \draw[reflexive above] (w5) to (w5);
+  \end{tikzpicture}
+  \caption{La filtration du modèle de la \olref{fig:ser-eucl}.}
+  \ollabel{fig:ser-eucl2}
+\end{figure}
+
+En particulier, pour obtenir une filtration euclidienne, il ne suffit
+pas de filtrer par un ensemble $\Gamma$ quelconque clos par
+sous-!!{formula}s. Il faut plutôt considérer des ensembles $\Gamma$
+\emph{modalement clos} (voir la \olref[pre]{defn:modallyclosed}). Ces
+ensembles de formules, s’ils sont non vides, sont infinis et ne donnent donc pas immédiatement
+la propriété du modèle fini ni la décidabilité du système correspondant.
+
+\begin{thm}\ollabel{thm:modal-closed-filt}
+  Supposons $\Gamma$ modalement clos,
+  $\mModel{M}=\tuple{W,R,V}$, et
+  $\mModel{M^*} = \tuple{W^*,R^*,V^*}$ une filtration la plus grossière
+  de $\mModel{M}$.
+  \begin{enumerate}
+  \item Si $\mModel{M}$ est symétrique, $\mModel{M^*}$ l'est aussi.
+  \item Si $\mModel{M}$ est transitif, $\mModel{M^*}$ l'est aussi.
+  \item Si $\mModel{M}$ est euclidien, $\mModel{M^*}$ l'est aussi.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+\begin{enumerate}
+  \item Exercice. Utilisez le fait que \Ax{B} et $\Ax{B_\Diamond}$
+    sont valides dans tous les modèles symétriques.
+  \item Puisque $\mModel{M^*}$ est une filtration la plus grossière,
+    on a par définition $R^*[u][v]$ si et seulement si $C_1(u,v)$.
+    Pour la transitivité, supposons $C_1(u,v)$ et $C_1(v,w)$ ; il
+    faut montrer $C_1(u,w)$. \iftag{prvBox}{Supposons
+      $\mSat{M}{\Box !A}[u]$ ; alors
+      $\mSat{M}{\Box\Box!A}[u]$ puisque \Ax{4} est valide dans tous
+      les modèles transitifs. Comme $\Box\Box!A \in \Gamma$ par
+      clôture modale, $C_1(u,v)$ donne
+      $\mSat{M}{\Box!A}[v]$, puis $C_1(v,w)$ donne
+      $\mSat{M}{!A}[w]$. }{}\iftag{prvDiamond}{Supposons
+      $\mSat{M}{!A}[w]$ ; alors
+      $\mSat{M}{\Diamond !A}[v]$ par $C_1(v,w)$, puisque
+      $\Diamond !A \in \Gamma$ par clôture modale. Par $C_1(u,v)$,
+      on obtient $\mSat{M}{\Diamond\Diamond !A}[u]$, puisque
+      $\Diamond\Diamond!A \in \Gamma$ par clôture modale. Comme
+      $\Ax{4}_\Diamond$ est valide dans tous les modèles transitifs,
+      $\mSat{M}{\Diamond!A}[u]$.}{}
+  \item Exercice. Utilisez le fait que \Ax{5} et $\Ax{5_\Diamond}$
+    sont valides dans tous les modèles euclidiens.
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+  Complétez la démonstration du \olref[nml][fil][euc]{thm:modal-closed-filt}.
+\end{prob}
+\begin{explain}
+Dans la \olref{fig:ser-eucl}, le monde~$w_2$ a pour seul
+successeur lui-même. Ce successeur suffit à satisfaire la
+sérialité en~$w_2$ et impose sa boucle par la propriété
+euclidienne appliquée à la flèche de~$w_1$ vers~$w_2$.
+La flèche héritée figure aussi sur la classe de~$w_2$
+dans la \olref{fig:ser-eucl2}.
+\end{explain}
+\end{document}

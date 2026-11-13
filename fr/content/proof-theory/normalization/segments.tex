@@ -1,0 +1,134 @@
+% Partie : théorie de la démonstration
+% Chapitre : normalisation
+% Section : segments et coupures
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nor}{seg}
+
+\olsection{Segments et coupures}
+
+Une règle d'introduction suivie d'une règle d'élimination
+constitue un détour dans une !!{proof} ; normaliser la preuve
+consiste à supprimer ces détours. Les règles \Elim{\lor}
+et \Elim{\lexists} compliquent toutefois la définition.
+L'élimination ne suit pas nécessairement
+\emph{immédiatement} l'introduction : une application de
+\Elim{\lor} ou de \Elim{\lexists} peut les séparer.
+Par exemple :
+\[
+\AxiomC{}
+\DeduceC{$\lexists[x][!C(x)]$}
+\AxiomC{$\Discharge{!A}{x}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lexists}}{y}
+\BinaryInfC{$!A \lif !B$}
+\AxiomC{}
+\DeduceC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\]
+Un nombre quelconque de ces règles peut même séparer
+\Intro{\lif} de \Elim{\lif}, comme dans l'arbre suivant :
+\[
+\AxiomC{}
+\DeduceC{$\lexists[x][!C(x)]$}
+\AxiomC{}
+\DeduceC{$!D \lor !E$}
+\AxiomC{$\Discharge{!A}{x}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{$\Discharge{!A}{x}$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\RightLabel{\Elim{\lor}}
+\TrinaryInfC{$!A \lif !B$}
+\DischargeRule{\Elim{\lexists}}{y}
+\BinaryInfC{$!A \lif !B$}
+\AxiomC{}
+\DeduceC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\]
+Une même application de \Elim{\lif} peut donc participer
+à plusieurs détours, puisqu'elle se trouve au-dessous de
+plusieurs applications de \Intro{\lif}.
+Pour décrire ces situations, nous considérons des suites
+d'occurrences de !!{formula}s dans une preuve de \Log{N1i},
+appelées \emph{segments}. Dans le deuxième arbre, les
+occurrences de~$!A \lif !B$ se suivent d'une prémisse
+mineure de $\Elim{\lor}$ ou de $\Elim{\lexists}$ à la
+conclusion de cette inférence. Deux segments de ce type
+comportent chacun trois occurrences de~$!A \lif !B$.
+
+\begin{defn}
+Un \emph{segment} d'une !!{proof}~$\delta$ de \Log{N1i}
+est une suite non vide d'occurrences $!A_1$, \dots, $!A_n$
+d'une même !!{formula}~$!A$ dans~$\delta$, telle que :
+\begin{enumerate}
+  \item $!A_1$ n'est la conclusion ni de \Elim{\lor}
+  ni de \Elim{\lexists} ;
+  \item $!A_n$ n'est une prémisse mineure ni de \Elim{\lor}
+  ni de \Elim{\lexists} ;
+  \item pour $i = 1$, \dots,~$n-1$, $!A_i$ est une
+  prémisse mineure d'une application de \Elim{\lor}
+  ou de \Elim{\lexists}, et $!A_{i+1}$ est la conclusion
+  de cette même application.
+\end{enumerate}
+La \emph{longueur} du segment est~$n$.
+\end{defn}
+
+Tous les segments ne constituent pas des détours à
+supprimer. Ceux qui en constituent sont appelés
+\emph{coupures}.
+
+\begin{defn}
+Une \emph{coupure} est un segment dont la dernière
+occurrence~$!A_n$ est la prémisse majeure d'une règle
+d'élimination et qui satisfait l'une des deux conditions
+suivantes : soit $n=1$ et $!A_1 = !A_n$ est la
+conclusion d'une règle d'introduction ou de~\FalseInt,
+soit~$n>1$.
+\end{defn}
+
+Un segment de coupure de longueur supérieure à un
+ne commence donc pas nécessairement par la conclusion
+d'une règle d'introduction. Pour une coupure de
+longueur~$1$, en revanche, l'unique occurrence doit
+être la conclusion d'une introduction \emph{ou
+de~\FalseInt}, conformément à la définition.
+
+\begin{defn}
+Le \emph{rang} d'une coupure sur~$!A$ est~$\depth{!A}$.
+Le \emph{rang de coupure}~$\cutrank{\delta}$ d'une
+!!{proof}~$\delta$ est le rang maximal de ses coupures.
+Une coupure est \emph{maximale} dans~$\delta$ si son
+rang est~$\cutrank{\delta}$.
+La \emph{longueur de coupure} de~$\delta$ est la somme
+des longueurs de toutes ses coupures maximales.
+Si la preuve ne comporte aucune coupure, nous
+convenons que son rang et sa longueur de coupure
+valent tous deux zéro.
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

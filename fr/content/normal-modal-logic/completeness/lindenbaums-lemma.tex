@@ -1,0 +1,111 @@
+% Part: normal-modal-logic
+% Chapter: completeness
+% Section: lindenbaums-lemma
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{com}{lin}
+
+\olsection{Lemme de Lindenbaum}
+
+Le lemme de Lindenbaum établit que tout ensemble $\Sigma$-cohérent de
+!!{formula}s est contenu dans au moins un ensemble $\Sigma$-cohérent
+\emph{complet}. La construction du modèle canonique montrera qu'à
+chaque ensemble $\Sigma$-cohérent complet~$\Delta$ correspond un monde
+du modèle canonique où les !!{formula}s vraies sont exactement celles
+de~$\Delta$. Le lemme de Lindenbaum garantit donc que, pour tout
+ensemble $\Sigma$-cohérent, il existe un monde du modèle canonique où
+toutes les formules de cet ensemble sont vraies.
+
+\begin{thm}[Lemme de Lindenbaum]\ollabel{thm:lindenbaum}
+  Si $\Gamma$ est $\Sigma$-cohérent, il existe un ensemble
+  $\Sigma$-cohérent complet $\Delta$ qui prolonge~$\Gamma$.
+\end{thm}
+
+\begin{proof}
+Énumérons toutes les formules du langage sous la forme $!A_0$,
+$!A_1$, \dots{} ; les répétitions sont permises. On peut, par exemple,
+commencer par $\Obj p_0$ et, à chaque étape $n \ge 1$, énumérer les
+formules, en nombre fini, de longueur au plus~$n$ qui n'utilisent que
+les variables parmi $\Obj p_0$, \dots,~$\Obj p_n$. Nous définissons
+des ensembles de !!{formula}s $\Delta_n$ par récurrence sur~$n$, puis
+posons $\Delta = \bigcup_n \Delta_n$. D'abord, $\Delta_0 = \Gamma$.
+Une fois $\Delta_n$ défini, nous définissons $\Delta_{n+1}$ par :
+\[
+\Delta_{n+1} =
+\begin{cases}
+  \Delta_n \cup \{!A_n\}, & \text{si $\Delta_n \cup \{ !A_n\}$
+    est $\Sigma$-cohérent ;} \\
+  \Delta_n \cup \{ \lnot !A_n\}, & \text{sinon.}
+\end{cases}
+\]
+Posons alors $\Delta = \bigcup_{n=0}^\infty \Delta_n$.
+
+Il faut vérifier que cette définition produit bien un ensemble $\Delta$
+ayant les propriétés requises, à savoir $\Gamma \subseteq \Delta$ et
+que $\Delta$ est $\Sigma$-cohérent complet.
+
+L'inclusion $\Gamma \subseteq \Delta$ est immédiate : par
+construction, $\Delta_0 \subseteq \Delta$ et $\Delta_0 = \Gamma$. En
+fait, $\Delta_n \subseteq \Delta$ pour tout~$n$, puisque $\Delta$ est la
+réunion de tous les~$\Delta_n$. (À chaque étape, nous ajoutons une
+!!{formula} à l'ensemble déjà construit, donc $\Delta_n \subseteq
+\Delta_{n+1}$. Par transitivité de $\subseteq$, on a aussi $\Delta_n
+\subseteq \Delta_{m}$ dès que $n \le m$.) À chaque étape de la
+construction, nous ajoutons soit $!A_n$, soit $\lnot !A_n$, et toute
+!!{formula} figure au moins une fois dans la liste des~$!A_n$. Ainsi,
+pour tout $!A$, soit $!A \in \Delta$, soit $\lnot !A \in \Delta$ ; par
+définition, $\Delta$ est donc complet.
+
+Enfin, il reste à montrer que $\Delta$ est $\Sigma$-cohérent. Nous
+établissons pour cela (a) que si $\Delta$ était $\Sigma$-incohérent,
+alors un certain $\Delta_n$ serait $\Sigma$-incohérent, et (b) que tous les
+$\Delta_n$ sont $\Sigma$-cohérents.
+
+Supposons donc que $\Delta$ soit $\Sigma$-incohérent. On a alors
+$\Delta \Proves[\Sigma] \lfalse$ : il existe des formules $!A_1$,
+\dots,~$!A_k \in \Delta$ telles que $\Sigma \Proves !A_1 \lif (!A_2
+\lif \cdots (!A_k \lif \lfalse)\dots)$. Puisque $\Delta =
+\bigcup_{n=0}^\infty \Delta_n$, chaque $!A_i \in \Delta_{n_i}$ pour un
+certain~$n_i$. Prenons $n=\max(\{0\}\cup\{n_i : 1\le i\le k\})$. Comme $n_i \le
+n$, on a $\Delta_{n_i} \subseteq \Delta_n$. Toutes les $!A_i$
+appartiennent donc à un même~$\Delta_n$. Il s'ensuit que $\Delta_n
+\Proves[\Sigma] \lfalse$, autrement dit que $\Delta_n$ est
+$\Sigma$-incohérent.
+
+Pour montrer que chaque $\Delta_n$ est $\Sigma$-cohérent, procédons
+par récurrence sur~$n$. On a $\Delta_0 = \Gamma$, et $\Gamma$ est
+$\Sigma$-cohérent par hypothèse ; la propriété vaut donc pour $n = 0$.
+Supposons-la vraie au rang $n$, c'est-à-dire supposons $\Delta_n$
+$\Sigma$-cohérent. L'ensemble $\Delta_{n+1}$ est soit
+$\Delta_n \cup \{!A_n\}$ si celui-ci est $\Sigma$-cohérent, soit
+$\Delta_n \cup \{\lnot!A_n\}$ sinon. Dans le premier cas,
+$\Delta_{n+1}$ est évidemment $\Sigma$-cohérent. Or, d'après la
+\olref[prf][con]{prop:consistencyfacts}\olref[prf][con]{prop:consistencyfacts-c},
+l'un au moins des ensembles $\Delta_n \cup \{!A_n\}$ et
+$\Delta_n \cup \{\lnot!A_n\}$ est cohérent ; $\Delta_{n+1}$ l'est
+donc dans l'autre cas également.
+\end{proof}
+
+\begin{cor}\ollabel{cor:provability-characterization}
+  $\Gamma \Proves[\Sigma] !A$ si et seulement si $!A \in \Delta$ pour
+  tout ensemble $\Sigma$-cohérent complet $\Delta$ qui prolonge
+  $\Gamma$ (y compris lorsque $\Gamma = \emptyset$, ce qui donne une
+  autre caractérisation du système modal $\Sigma$).
+\end{cor}
+
+\begin{proof}
+  Supposons $\Gamma \Proves[\Sigma] !A$ et soit $\Delta$ un ensemble
+  $\Sigma$-cohérent complet quelconque qui prolonge $\Gamma$. Si $!A
+  \notin \Delta$, alors, par maximalité, $\lnot!A \in \Delta$. On a
+  donc $\Delta \Proves[\Sigma] !A$ par monotonie et $\Delta
+  \Proves[\Sigma] \lnot!A$ par réflexivité, ce qui rendrait $\Delta$
+  incohérent. Réciproquement, si $\Gamma \Proves/[\Sigma] !A$, alors
+  $\Gamma \cup \{ \lnot!A\}$ est $\Sigma$-cohérent ; par le lemme de
+  Lindenbaum, il existe un ensemble cohérent complet $\Delta$ qui
+  prolonge $\Gamma \cup \{ \lnot!A \}$. Par cohérence, $!A
+  \notin \Delta$.
+\end{proof}
+\end{document}

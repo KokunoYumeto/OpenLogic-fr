@@ -1,0 +1,121 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: eta
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{eta}
+\olsection{\texorpdfstring{$\eta$}{η}-conversion}
+
+Il existe une autre relation sur les
+lambda-termes. Dans la \olref[fv]{sec}, nous
+avons considéré $\lambd[x][(fx)]$, qui
+reçoit un argument et lui applique~$f$.
+Si $x$ n'est pas libre dans~$f$, ce terme
+représente donc la même fonction que~$f$ :
+$\lambd[x][(fx)]N$ et $fN$ se réduisent
+tous deux à~$fN$. La réduction~$\eta$
+et son inverse, l'extension~$\eta$,
+formalisent cette idée.
+
+\begin{defn}[Contraction~$\eta$, $\eredone$]
+\ollabel{defn:beredone}
+La \emph{contraction~$\eta$} ($\eredone$)
+est la plus petite relation compatible sur
+les termes qui satisfait la condition :
+\[
+  \lambd[x][M x] \eredone M
+  \quad\text{si }x \notin \FV{M}.
+\]
+\end{defn}
+
+\begin{defn}[Réduction~$\beta\eta$, $\bered$]
+\ollabel{defn:bered}
+La \emph{réduction~$\beta\eta$} ($\bered$)
+est la plus petite relation réflexive et
+transitive sur les termes qui contient
+$\bredone$ et $\eredone$. Outre la
+réflexivité et la transitivité, elle
+comprend les deux règles suivantes :
+\begin{enumerate}
+\item Si $M \bredone N$, alors $M \bered N$.
+  \ollabel{defn:bered3}
+\item Si $M \eredone N$, alors $M \bered N$.
+  \ollabel{defn:bered4}
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+Nous étendons la relation d'équivalence
+$\equal$ par la règle de conversion~$\eta$ :
+\[
+  \lambd[x][M x] \equal M
+  \quad\text{si }x \notin \FV{M}.
+\]
+La relation étendue se note $\equal[\eta]$.
+\end{defn}
+
+La condition $x\notin\FV{M}$ empêche la contraction
+d'une abstraction dont le paramètre est libre dans $M$.
+Dans $\lambd[x][x x]$, les deux occurrences de $x$
+dans le corps sont liées par la même abstraction.
+Contracter ce terme en $x$ rendrait une occurrence
+de $x$ libre.
+
+L'$\eta$-équivalence est importante par son
+lien avec l'extensionnalité des lambda-termes.
+
+\begin{defn}[Extensionnalité]
+Nous étendons la relation d'équivalence
+$\equal$ par la règle (\ext) :
+\begin{center}
+Si $Mx \equal Nx$, alors $M \equal N$,
+à condition que $x \notin \FV{MN}$.
+\end{center}
+La relation étendue se note $\equal[\ext]$.
+\end{defn}
+
+En termes informels, deux termes vus comme
+des fonctions sont égaux lorsqu'ils se
+comportent de la même manière pour un même
+argument frais.
+
+Nous allons montrer que la règle~$\eta$
+exprime exactement cette extensionnalité,
+sans ajouter d'autres égalités.
+
+\begin{thm}
+$M \equal[\ext] N$ si et seulement si
+$M \equal[\eta] N$.
+\end{thm}
+
+\begin{proof}
+Montrons d'abord, par induction sur la
+dérivation, que $\equal[\eta]$ est stable
+par la règle d'extensionnalité. Supposons
+une application de (\ext) dont la prémisse
+est $Mx \equal[\eta] Nx$ par hypothèse
+d'induction, avec $x \notin \FV{MN}$.
+La compatibilité de $\equal[\eta]$ donne
+$\lambd[x][Mx] \equal[\eta]
+\lambd[x][Nx]$. Comme $x$ n'est libre
+ni dans $M$ ni dans $N$, une contraction~$\eta$
+de chaque côté donne $M \equal[\eta] N$.
+Ainsi, $\equal[\eta]$ contient
+$\equal[\ext]$.
+
+Réciproquement, montrons que la règle~$\eta$
+est déjà admise par $\equal[\ext]$.
+Si $x \notin \FV{M}$, la contraction~$\beta$
+donne $(\lambd[x][Mx])x \equal[\ext] Mx$.
+De plus, $x$ n'est libre ni dans
+$\lambd[x][Mx]$ ni dans~$M$. La règle (\ext)
+donne donc $\lambd[x][Mx] \equal[\ext] M$.
+La relation $\equal[\ext]$ contient ainsi
+la règle~$\eta$, d'où l'égalité annoncée
+des deux relations.
+\end{proof}
+
+\end{document}

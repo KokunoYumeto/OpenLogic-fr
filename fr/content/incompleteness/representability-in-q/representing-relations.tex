@@ -1,0 +1,75 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: representing-relations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{rel}
+
+\olsection{Représentation des relations}
+
+Précisons ce que signifie représenter une \emph{relation}.
+
+\begin{defn}
+\ollabel{defn:representing-relations}
+Une relation $R(x_0,\dots,x_k)$ sur les entiers naturels est
+{\em représentable dans $\Th{Q}$} s'il existe une
+!!{formula}~$!A_R(x_0,\dots,x_k)$ telle que, pour tous
+$n_0,\dots,n_k$, $\Th{Q}$ démontre
+$!A_R(\num{n_0},\dots,\num{n_k})$ si
+$R(n_0,\dots,n_k)$ est vraie, et démontre
+$\lnot !A_R(\num{n_0},\dots,\num{n_k})$ si elle est fausse.
+\end{defn}
+
+\begin{thm}
+\ollabel{thm:representing-rels}
+Une relation est représentable dans~$\Th{Q}$ si et seulement
+si elle est calculable.
+\end{thm}
+
+\begin{proof}
+Pour le sens direct, supposons que la
+!!{formula}~$!A_R(x_0,\dots,x_k)$ représente
+$R(x_0,\dots,x_k)$. Voici un algorithme qui décide~$R$ :
+sur l'entrée $n_0,\dots,n_k$, recherchons en parallèle une
+preuve de $!A_R(\num{n_0},\dots,\num{n_k})$ et une preuve
+de $\lnot !A_R(\num{n_0},\dots,\num{n_k})$.
+L'hypothèse de représentabilité garantit que l'une des deux
+recherches aboutit. Si la première aboutit, répondons « oui »;
+si c'est la seconde, répondons « non ». La cohérence de
+$\Th{Q}$ exclut que les deux réponses soient démontrables.
+
+Réciproquement, supposons $R(x_0,\dots,x_k)$ calculable.
+Par définition, sa fonction caractéristique
+$\Char{R}(x_0,\dots,x_k)$ est calculable. D'après le
+\olref[int]{thm:representable-iff-comp}, elle est
+représentée par une !!{formula}, notée
+$!A_{\Char{R}}(x_0,\dots,x_k,y)$. Prenons pour
+$!A_R(x_0,\dots,x_k)$ la !!{formula}
+$!A_{\Char{R}}(x_0,\dots,x_k,\num{1})$.
+
+Si $R(n_0,\dots,n_k)$ est vraie, alors
+$\Char{R}(n_0,\dots,n_k)=1$. La théorie $\Th{Q}$ démontre
+donc $!A_{\Char{R}}(\num{n_0},\dots,\num{n_k},\num{1})$,
+c'est-à-dire $!A_R(\num{n_0},\dots,\num{n_k})$.
+Si, au contraire, $R(n_0,\dots,n_k)$ est fausse, alors
+$\Char{R}(n_0,\dots,n_k)=0$. La seconde condition de
+représentabilité de cette fonction donne
+\[
+\lforall[y][(!A_{\Char{R}}(\num{n_0}, \dots, \num{n_k}, y) \lif y =
+  \num{0})].
+\]
+Puisque $\Th{Q}$ démontre aussi
+$\eq/[\num{0}][\num{1}]$, elle démontre
+$\lnot !A_{\Char{R}}(\num{n_0},\dots,\num{n_k},\num{1})$,
+donc $\lnot !A_R(\num{n_0},\dots,\num{n_k})$.
+\end{proof}
+
+\begin{prob}
+Montrez que, si $R$ est représentable dans~$\Th{Q}$,
+sa fonction caractéristique $\Char{R}$ l'est aussi.
+\end{prob}
+
+\end{document}

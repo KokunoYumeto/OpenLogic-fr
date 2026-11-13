@@ -1,0 +1,115 @@
+% Part: second-order-logic
+% Chapter: metatheory
+% Section: compactness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{met}{com}
+
+\olsection{La logique du second ordre n'est pas compacte}
+
+\begin{explain}
+Un ensemble d'!!{sentence}s~$\Gamma$ est
+\emph{finiment satisfaisable} si chacun de ses
+sous-ensembles finis est satisfaisable.
+La logique du premier ordre possède la propriété
+suivante : tout ensemble finiment satisfaisable
+d'!!{sentence}s est satisfaisable. On l'appelle
+\emph{compacité}. Une formulation équivalente
+concerne la conséquence logique : si
+$\Gamma\Entails !A$, il existe déjà un
+sous-ensemble fini $\Gamma_0\subseteq\Gamma$
+tel que $\Gamma_0\Entails !A$.
+Sous cette forme, la compacité découle aussitôt
+du théorème de complétude. En effet, de
+$\Gamma\Entails !A$ on déduit
+$\Gamma\Proves !A$, et une !!{derivation}
+ne peut utiliser qu'un nombre fini
+d'!!{sentence}s de~$\Gamma$.
+
+La compacité échoue pour la logique du second
+ordre sous sa sémantique standard. Certains
+ensembles d'!!{sentence}s du second ordre
+sont finiment satisfaisables sans être
+satisfaisables; ils impliquent alors un
+!!{sentence}~$!A$ sans qu'aucun de leurs
+sous-ensembles finis ne l'implique.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:sol-not-compact}
+La logique du second ordre n'est pas compacte.
+\end{thm}
+
+\begin{proof}
+Rappelons l'!!{sentence}
+\[
+\fn{Inf} \ident \lexists[u][(\lforall[x][\lforall[y][(\eq[u(x)][u(y)]
+      \lif \eq[x][y])]] \land \lexists[y][\lforall[x][\eq/[y][u(x)]]])].
+\]
+Il est satisfait dans une !!{structure} si et
+seulement si son !!{domain} est infini au sens
+de Dedekind. Dans le cadre usuel admettant
+l'axiome du choix dénombrable, cela équivaut
+à l'infinitude ordinaire.
+
+Pour $n\ge 1$, soit $!A^{\ge n}$ un
+!!{sentence} qui affirme que le !!{domain}
+possède au moins $n$ !!{element}s distincts.
+Par exemple, en écrivant une suite de
+quantificateurs existentiels, on peut poser
+\[
+!A^{\ge n}\ident
+\lexists[x_1][\dots\lexists[x_n][
+\bigwedge_{1\le i<j\le n}\eq/[x_i][x_j]]].
+\]
+Considérons l'ensemble d'!!{sentence}s
+\[
+\Gamma=\{\lnot\fn{Inf},
+!A^{\ge1},!A^{\ge2},!A^{\ge3},\dots\}.
+\]
+Il est finiment satisfaisable. En effet, pour
+un sous-ensemble fini~$\Gamma_0$, prenons
+$k\ge1$ au moins aussi grand que tous les
+indices~$n$ tels que $!A^{\ge n}\in\Gamma_0$.
+Une !!{structure} dont le !!{domain} a exactement
+$k$ !!{element}s satisfait~$\Gamma_0$.
+
+En revanche, $\Gamma$ n'est pas satisfaisable.
+Si $\Sat{M}{\lnot\fn{Inf}}$, le !!{domain}
+est fini dans le cadre précisé, disons de
+cardinal~$k$. Mais alors
+$\Sat/{M}{!A^{\ge k+1}}$, tandis que cet
+!!{sentence} appartient à~$\Gamma$.
+\end{proof}
+
+\begin{editorial}
+La source étiquette ce théorème par le même
+identifiant que celui d'indécidabilité; nous
+employons un identifiant distinct.
+Son exemple de $!A^{\ge n}$ abrège par des
+points de suspension les inégalités entre
+!!{variable}s. Nous rendons explicite la
+conjonction sur toutes les paires $i<j$, afin
+que les $n$ valeurs soient bien distinctes.
+Dans l'argument de
+satisfaisabilité finie, la borne des indices
+concerne $\Gamma_0$, et non l'ensemble
+infini~$\Gamma$ comme l'écrit la source.
+Enfin, l'équivalence entre l'infinitude au
+sens de Dedekind et l'infinitude ordinaire
+utilise ici le choix dénombrable, comme dans
+la section précédente.
+\end{editorial}
+
+\begin{prob}
+Donnez un ensemble~$\Gamma$ et un
+!!{sentence}~$!A$ tels que
+$\Gamma\Entails !A$, mais que
+$\Gamma_0\Entails/ !A$ pour tout
+sous-ensemble fini $\Gamma_0\subseteq\Gamma$.
+\end{prob}
+
+\end{document}

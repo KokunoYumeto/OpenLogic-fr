@@ -1,0 +1,123 @@
+% Partie : set-theory
+% Chapitre : spine
+% Section : stagesbasics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{spine}{Valphabasic}
+\olsection{Propriétés élémentaires des étapes}
+
+Pour faire ressortir l'importance fondamentale de la définition des
+$V_\alpha$, nous allons présenter quelques résultats élémentaires à
+leur sujet. Commençons par une définition :\footnote{Il n'existe pas
+de terminologie consacrée pour «~potent~» ; c'est le terme employé
+par \citet{ButtonLT1}.}
+\begin{defn}
+L'ensemble $A$ est \emph{potent} si et seulement si
+$\forall x((\exists y \in A)x \subseteq y \lif x \in A)$.
+\end{defn}
+\begin{lem}\ollabel{Valphabasicprops}
+Pour chaque ordinal $\alpha$ :
+\begin{enumerate}
+	\item\ollabel{Valphatrans} $V_\alpha$ est transitif.
+	\item\ollabel{Valphapotent} $V_\alpha$ est potent.
+	\item\ollabel{Valphacum} Si $\gamma \in \alpha$, alors
+	$V_\gamma \in V_\alpha$ (et donc aussi
+	$V_\gamma \subseteq V_\alpha$ par \olref{Valphatrans}).
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Nous démontrons ces affirmations simultanément par récurrence
+transfinie. Supposons, comme hypothèse de récurrence, que
+\olref{Valphatrans}--\olref{Valphacum} valent pour tout ordinal
+$\beta < \alpha$.
+
+Le cas $\alpha = \emptyset$ est immédiat.
+
+Supposons $\alpha = \ordsucc{\beta}$. Pour établir
+\olref{Valphacum}, si $\gamma \in \alpha$, alors
+$V_\gamma \subseteq V_\beta$,
+par l'hypothèse de récurrence
+ou par égalité,
+et donc
+$V_\gamma \in \Pow{V_\beta} = V_\alpha$. Pour établir
+\olref{Valphapotent}, supposons $A \subseteq B \in V_\alpha$,
+c'est-à-dire $A \subseteq B \subseteq V_\beta$. Alors
+$A \subseteq V_\beta$, donc $A \in V_\alpha$. Pour établir
+\olref{Valphatrans}, remarquons que, si $x \in A \in V_\alpha$,
+alors $A \subseteq V_\beta$, donc $x \in V_\beta$. Comme
+$V_\beta$ est transitif par hypothèse, $x \subseteq V_\beta$ et,
+par conséquent, $x \in V_\alpha$.
+
+Supposons que $\alpha$ soit un ordinal limite. Pour établir
+\olref{Valphacum}, si $\gamma \in \alpha$, alors
+$\gamma \in \ordsucc{\gamma} \in \alpha$. Par hypothèse,
+$V_\gamma \in V_{\ordsucc{\gamma}}$ et donc
+$V_\gamma \in \bigcup_{\beta \in \alpha} V_\beta = V_\alpha$.
+Pour établir \olref{Valphatrans} et \olref{Valphapotent}, il suffit
+d'observer qu'une union d'ensembles transitifs, ou respectivement
+potents, est transitive, ou respectivement potente.
+\end{proof}
+
+\begin{lem}\ollabel{Valphanotref}
+Pour chaque ordinal $\alpha$, $V_\alpha \notin V_\alpha$.
+\end{lem}
+
+\begin{proof}
+Procédons par récurrence transfinie. Il est évident que
+$V_\emptyset \notin V_\emptyset$.
+
+Si $V_{\ordsucc{\alpha}} \in V_{\ordsucc{\alpha}} =
+\Pow{V_\alpha}$, alors
+$V_{\ordsucc{\alpha}} \subseteq V_\alpha$. Or
+$V_\alpha \in V_{\ordsucc{\alpha}}$ par le
+\olref{Valphabasicprops}, d'où $V_\alpha \in V_\alpha$.
+Par contraposée, si $V_\alpha \notin V_\alpha$, alors
+$V_{\ordsucc{\alpha}} \notin V_{\ordsucc{\alpha}}$.
+
+Si $\alpha$ est un ordinal limite et si
+$V_\alpha \in V_\alpha = \bigcup_{\beta \in \alpha}V_\beta$,
+alors $V_\alpha \in V_\beta$ pour un certain $\beta \in \alpha$.
+Mais nous avons aussi $V_\beta \in V_\alpha$ ; par le
+\olref{Valphabasicprops} appliqué deux fois, il s'ensuit que
+$V_\beta \in V_\beta$. Par contraposée, si
+$V_\beta \notin V_\beta$ pour tout $\beta \in \alpha$, alors
+$V_\alpha \notin V_\alpha$.
+\end{proof}
+
+\begin{cor}
+Pour tous ordinaux $\alpha, \beta$ :
+$\alpha \in \beta$ si et seulement si $V_\alpha \in V_\beta$.
+\end{cor}
+
+\begin{proof}
+Le \olref{Valphabasicprops} donne un sens de l'équivalence.
+Réciproquement, supposons $V_\alpha \in V_\beta$. Alors
+$\alpha \neq \beta$ par le \olref{Valphanotref}. De plus,
+$\beta \notin \alpha$ : sinon, nous aurions
+$V_\beta \in V_\alpha$, puis $V_\beta \in V_\beta$ par le
+\olref{Valphabasicprops} appliqué deux fois, en contradiction avec
+le \olref{Valphanotref}. Donc $\alpha \in \beta$ par trichotomie.
+\end{proof}
+\noindent
+Tout cela permet de voir en $V_\alpha$ l'étape d'indice $\alpha$ de
+la hiérarchie. En voici la raison.
+
+Nous pouvons assurément concevoir la formation des $V_\alpha$
+comme un processus \emph{itératif} : les ordinaux rendent compte de
+l'itération. De plus, si une étape se forme avant une autre,
+c'est-à-dire si $V_\beta \in V_\alpha$, donc si
+$\beta \in \alpha$, le processus est \emph{cumulatif}, puisque
+$V_\beta \subseteq V_\alpha$. Enfin, nous formons bien \emph{toutes}
+les collections possibles d'ensembles disponibles à une étape
+antérieure : toute étape successeur $V_{\ordsucc{\alpha}}$ est
+l'ensemble des parties de sa devancière $V_\alpha$.
+
+Bref, dans $\ZFminus$, nous avons \emph{presque} entièrement précisé
+notre conception de la hiérarchie cumulative et itérative des
+ensembles. (Il reste évidemment à justifier le remplacement.)
+
+\end{document}

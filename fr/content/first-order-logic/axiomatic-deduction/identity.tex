@@ -10,17 +10,16 @@
 
 \olsection{\usetoken{P}{derivation} avec l'\usetoken{s}{identity}}
 
-Pour prendre en charge~$\eq$ dans les !!{derivation}s, il suffit
-d'ajouter de nouveaux schémas d'axiomes. La définition d'une
-!!{derivation} et celle de~$\Proves$ restent inchangées; nous
-admettons simplement ces axiomes supplémentaires.
+Les !!{derivation}s avec égalité utilisent les mêmes règles
+d'inférence et les schémas d'axiomes supplémentaires ci-dessous.
 
-\begin{defn}[Axiomes de l'!!{identity}]
+\begin{defn}[Axiomes de l'égalité]
+Pour des termes clos $t$, $t_1$ et~$t_2$, les schémas sont les
+suivants. On note $!B(t_i)$ la substitution $\Subst{!B}{t_i}{x}$.
 \begin{align}
 \ollabel{ax:id1} & \eq[t][t], \\
 \ollabel{ax:id2} & \eq[t_1][t_2] \lif (!B(t_1) \lif !B(t_2)),
 \end{align}
-pour tous termes clos $t$, $t_1$ et~$t_2$.
 \end{defn}
 
 \begin{prop}\ollabel{prop:sound}
@@ -54,12 +53,5 @@ La !!{formula}
 est une instance de l'\olref{ax:id2}. La conclusion découle de deux
 applications de~\MP.
 \end{proof}
-
-\begin{editorial}
-La définition source réserve les deux axiomes aux termes clos, mais
-les deux propositions suivantes parlent ensuite de termes quelconques.
-Le qualificatif « clos » y est rétabli afin que leurs conclusions
-soient bien des instances des axiomes énoncés.
-\end{editorial}
 
 \end{document}

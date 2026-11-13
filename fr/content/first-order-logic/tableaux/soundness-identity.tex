@@ -8,19 +8,19 @@
 
 \olfileid[fr]{fol}{tab}{sid}
 
-\olsection{Correction avec \usetoken{S}{identity}}
+\olsection{Correction avec \usetoken{s}{identity}}
 
 \begin{prop}
-Les !!^{tableau}s munis des règles de l'identité sont corrects : aucun
-!!{tableau} fermé n'est satisfaisable.
+Les !!{tableau}s munis des règles de l'égalité sont corrects.
+Aucun !!{tableau} fermé n'est satisfaisable.
 \end{prop}
 
 \begin{proof}
-Comme précédemment, il suffit de montrer que, si !!a{tableau} possède
-une branche satisfaisable, la branche obtenue en appliquant à celle-ci
-l'une des règles de~$\eq$ est encore satisfaisable. Soit $\Gamma$
-l'ensemble des !!{signed formula}s de cette branche, et soit $\Struct{M}$
-!!a{structure} qui satisfait~$\Gamma$.
+Reprenons l'argument du \olref[fol][tab][sou]{thm:tableau-soundness}.
+Il suffit de montrer que chacune des règles de~$\eq$ préserve la
+satisfaisabilité de la branche qu'elle prolonge. Soit $\Gamma$
+l'ensemble des !!{signed formula}s de cette branche et soit
+$\Struct{M}$ une !!{structure} qui satisfait~$\Gamma$.
 
 Supposons que la branche soit prolongée au moyen de~$\eq$, c'est-à-dire
 par l'ajout de la !!{formula} signée
@@ -33,24 +33,24 @@ ajoutons la !!{formula} signée $\sFmla{\True}{!A(t_2)}$, tandis que
 $\Gamma$ contient déjà $\sFmla{\True}{\eq[t_1][t_2]}$ et
 $\sFmla{\True}{!A(t_1)}$. Nous avons donc
 $\Sat{M}{\eq[t_1][t_2]}$ et $\Sat{M}{!A(t_1)}$. Soit $s$ une
-assignation de variables telle que $s(x) = \Value{t_1}{M}$. D'après
+assignation de variables telle que $s(x) = \Value{t_1}{M}$. D'après la
 \olref[syn][ass]{prop:sentence-sat-true}, $\Sat{M}{!A(t_1)}[s]$.
 Comme $\varAssign{s}{s}{x}$, la
 \olref[syn][ext]{prop:ext-formulas} donne $\Sat{M}{!A(x)}[s]$.
 Puisque $\Sat{M}{\eq[t_1][t_2]}$, on a
 $\Value{t_1}{M} = \Value{t_2}{M}$, et donc
-$s(x) = \Value{t_2}{M}$. Une nouvelle application de
+$s(x) = \Value{t_2}{M}$. Une nouvelle application de la
 \olref[syn][ext]{prop:ext-formulas} donne alors
-$\Sat{M}{!A(t_2)}[s]$. Enfin,
+$\Sat{M}{!A(t_2)}[s]$. Enfin, la
 \olref[syn][ass]{prop:sentence-sat-true} entraîne
-$\Sat{M}{!A(t_2)}$. Le cas de $\TRule{\False}{\eq}$ se traite de la
-même manière.
+$\Sat{M}{!A(t_2)}$. Pour $\TRule{\False}{\eq}$, la même chaîne
+d'équivalences transmet la fausseté de $!A(t_1)$ à $!A(t_2)$.
+Le signe de l'instance est donc conservé dans les deux cas.
 \end{proof}
-
-\begin{editorial}
-Dans le cas de $\TRule{\True}{\eq}$, la source donne le signe
-générique~$S$ à la conclusion. Le signe~$\True$ exigé par la règle est
-rétabli; le cas du signe~$\False$ reste traité séparément par analogie.
-\end{editorial}
+%
+%
+%
+%
+%
 
 \end{document}

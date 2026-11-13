@@ -1,0 +1,77 @@
+% Part: first-order-logic
+% Chapter: completeness
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{com}{int}}
+      {\olfileid[fr]{pl}{com}{int}}
+
+\olsection{Introduction}
+
+Le théorème de complétude est l'un des résultats fondamentaux de la
+logique. Il admet deux formulations dont nous démontrerons
+l'équivalence. Dans la première, il exprime un lien essentiel entre
+la conséquence sémantique et notre système de !!{derivation}s : si
+\iftag{FOL}{!!a{sentence}}{!!a{formula}}~$!A$ est une conséquence \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}~$\Gamma$,
+il existe aussi !!a{derivation} établissant
+$\Gamma\Proves !A$. Le système de !!{derivation}s est donc aussi
+puissant qu'il peut l'être sans démontrer de \iftag{FOL}{énoncés}{formules} qui ne découlent
+pas des hypothèses.
+
+Selon la seconde formulation, le théorème affirme l'existence de
+modèles : tout ensemble cohérent \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} est satisfaisable.
+La cohérence est une notion de théorie de la démonstration.
+Elle signifie que l'absurde ne se dérive pas à partir de~$\Gamma$.
+Pourquoi cette propriété garantirait-elle qu'il existe
+\iftag{FOL}{!!a{structure}~$\Struct{M}$ telle que
+$\Sat{M}{\Gamma}$}{!!a{valuation}~$\pAssign{v}$ telle que
+$\pSat{v}{\Gamma}$} ? Avant la première démonstration du théorème
+de complétude, et même avant l'apparition des systèmes de
+!!{derivation}s que nous utilisons aujourd'hui, le mathématicien
+allemand David Hilbert défendait l'idée que la cohérence des théories
+mathématiques garantit l'existence des objets dont elles parlent.
+Dans une lettre à Gottlob Frege, il l'exprima ainsi :
+\begin{quote}
+  Si les axiomes posés arbitrairement ne se contredisent pas, avec
+  toutes leurs conséquences, alors ils sont vrais et les choses
+  définies par ces axiomes existent. C'est pour moi le critère de la
+  vérité et de l'existence.
+\end{quote}
+Frege s'y opposait fermement. La seconde formulation du théorème de
+complétude montre que Hilbert avait raison au moins en ce sens : si
+les axiomes sont cohérents, il existe \emph{au moins une}
+\iftag{FOL}{!!{structure}}{!!{valuation}} qui les rend tous vrais.
+
+Ce ne sont pas les seules raisons de l'importance du théorème de
+complétude ou, plus exactement, de sa démonstration. Celle-ci a
+plusieurs conséquences importantes, dont certaines seront étudiées
+séparément. Par exemple, toute !!{derivation} qui établit
+$\Gamma\Proves !A$ n'utilise qu'un nombre fini \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}
+de~$\Gamma$. Par complétude, puis par correction,
+si $!A$ est une conséquence de~$\Gamma$, elle est déjà une
+conséquence d'un sous-ensemble fini de~$\Gamma$. C'est la
+\emph{compacité}. Grâce à l'équivalence entre cohérence et
+satisfaisabilité, on peut aussi dire que $\Gamma$ est cohérent
+dès que tous ses sous-ensembles finis le sont.
+
+Bien que le théorème de compacité découle ainsi de la complétude par
+l'intermédiaire des !!{derivation}s, on peut aussi l'établir
+directement au moyen de la \emph{démonstration} du théorème de
+complétude. Cette démonstration part d'un ensemble cohérent
+\iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} et construit
+\iftag{FOL}{une !!{structure}}{une !!{valuation}} qui le satisfait.
+Presque la même construction établit directement la compacité en
+partant d'un ensemble \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} \emph{finiment satisfaisable}.
+\iftag{FOL}{La construction a d'autres conséquences. Elle montre par
+exemple que tout ensemble satisfaisable d'!!{sentence}s possède un
+modèle fini ou infini dénombrable dans le langage au plus dénombrable
+fixé ici. Ce résultat est appelé le théorème de
+L\"owenheim--Skolem. Plus généralement, construire des
+!!{structure}s à partir d'ensembles d'!!{sentence}s est une méthode
+fréquente en logique et parfois même en philosophie.}{}
+
+\end{document}

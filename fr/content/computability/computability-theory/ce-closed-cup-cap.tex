@@ -1,0 +1,101 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: ce-closed-cup-cap
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{clo}
+\olsection[Réunion et intersection d'ensembles effectivement énumérables]{Stabilité des ensembles effectivement énumérables par réunion et intersection}
+
+Le théorème suivant donne deux propriétés de
+stabilité des ensembles effectivement énumérables.
+
+\begin{thm}
+Si $A$ et~$B$ sont effectivement énumérables,
+$A\cap B$ et $A\cup B$ le sont aussi.
+\end{thm}
+
+\begin{proof}
+Le \olref[eqc]{thm:ce-equiv} permet d'utiliser
+diverses caractérisations de ces ensembles.
+Nous allons donner plusieurs démonstrations.
+Si $A$ ou~$B$ est vide, l'intersection est vide
+et la réunion est l'autre ensemble : le résultat
+est immédiat. Supposons donc $A$ et~$B$ non vides
+pour les constructions qui suivent.\footnote{Complément éditorial : les deux premières constructions source utilisent des fonctions totales qui énumèrent $A$ et $B$, ce qui exige qu'ils soient non vides. Nous séparons les cas vides avant de les appliquer.}
+
+Pour la première preuve, supposons que $f$ énumère
+$A$ et que $g$ énumère~$B$, avec $f$ et~$g$
+calculables. Posons
+\begin{align*}
+h(x) & = \umin{y}{(f(y) = x \lor g(y) = x)} \text{ et}\\
+j(x) & = \umin{y}{(f((y)_0) = x \land g((y)_1) = x)}.
+\end{align*}
+Alors $A\cup B$ est le domaine de~$h$ et
+$A\cap B$ celui de~$j$.
+
+\begin{explain}
+En termes de calcul, si des procédures énumèrent
+$A$ et~$B$, on peut semi-décider l'appartenance
+d'un élément~$x$ à $A\cup B$ en le cherchant dans
+l'une ou l'autre énumération; pour $A\cap B$, on
+le cherche simultanément dans les deux.
+\end{explain}
+
+Pour la deuxième preuve, supposons encore que
+$f$ énumère $A$ et que $g$ énumère~$B$. Posons
+\[
+k(x) = \begin{cases}
+f(x/2) & \text{si $x$ est pair} \\
+g((x-1)/2) & \text{si $x$ est impair.}
+\end{cases}
+\]
+La fonction $k$ énumère $A\cup B$ en alternant
+les valeurs fournies par $f$ et~$g$. Pour
+$A\cap B$, la construction est plus délicate.
+Si l'intersection est vide, elle est effectivement
+énumérable par définition. Sinon, choisissons
+$c\in A\cap B$ et définissons $l$ par
+\[
+l(x) = \begin{cases}
+f((x)_0) & \text{si $f((x)_0) = g((x)_1)$} \\
+c & \text{sinon.}
+\end{cases}
+\]
+La fonction $l$ parcourt les paires de valeurs
+produites par $f$ et~$g$, et renvoie chaque valeur
+commune; en l'absence de coïncidence, elle renvoie~$c$.
+
+Pour la dernière preuve, supposons que $A$ soit
+le \emph{domaine} d'une fonction calculable partielle
+$m(x)$ et $B$ celui d'une fonction calculable
+partielle $n(x)$. Alors $A\cap B$ est le domaine
+de la fonction partielle $m(x)+n(x)$.
+
+\begin{explain}
+En termes de calcul, si $A$ est l'ensemble des
+entrées sur lesquelles $m$ s'arrête et $B$ celui
+des entrées sur lesquelles $n$ s'arrête, leur
+intersection est l'ensemble des entrées où les
+deux procédures s'arrêtent.
+\end{explain}
+
+Exprimer $A\cup B$ comme domaine d'une fonction
+calculable partielle exige de simuler $m$ et~$n$
+en parallèle. Soient $d$ et~$e$ des indices de
+$m$ et~$n$, respectivement, donc
+$m\simeq\cfind{d}$ et $n\simeq\cfind{e}$.
+Alors $A\cup B$ est le domaine de la fonction
+\[
+p(x) = \umin{y}{(T(d,x,y) \lor T(e,x,y))}.
+\]
+\begin{explain}
+Sur l'entrée~$x$, la fonction $p$ cherche un
+calcul qui s'arrête pour $m$ ou pour~$n$, et
+est définie si elle en trouve un.
+\end{explain}
+\end{proof}
+
+\end{document}

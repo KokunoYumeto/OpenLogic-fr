@@ -1,0 +1,103 @@
+% Part: incompleteness
+% Chapter: introduction
+% Section: overview
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{int}{ovr}
+
+\olsection{Vue d'ensemble des résultats d'incomplétude}
+
+Hilbert espérait formaliser les mathématiques dans une théorie
+!!{axiomatizable} dont on pourrait démontrer qu'elle est complète
+et !!{decidable}. Il voulait en outre établir sa cohérence par des
+moyens très faibles, dits « finitistes », afin de défendre les
+mathématiques classiques contre les objections intuitionnistes.
+Les théorèmes d'incomplétude de Gödel ont montré que ces objectifs
+ne pouvaient être atteints ensemble.
+
+Le premier théorème d'incomplétude de Gödel montrait qu'une version
+des \emph{Principia Mathematica} de Russell et Whitehead n'est pas
+complète. Mais sa preuve était assez générale pour s'appliquer à
+une grande variété de théories. Le problème ne tenait donc pas
+seulement à ce que les \emph{Principia Mathematica} n'avaient pas
+réussi à saisir intégralement les mathématiques : aucune théorie
+répondant aux conditions du théorème ne peut être complète. Il a
+fallu du temps pour isoler les propriétés des théories qui suffisent
+à l'application des théorèmes d'incomplétude et pour reformuler la
+preuve de Gödel en fonction de ces seules propriétés. Nous pouvons
+maintenant énoncer une version très générale du premier théorème
+pour les théories du langage arithmétique~$\Lang L_A$.
+
+\begin{thm}
+Si $\Gamma$ est une théorie cohérente et !!{axiomatizable}
+dans~$\Lang L_A$ qui !!{represents} toutes les fonctions calculables
+et toutes les relations !!{decidable}s, alors $\Gamma$ n'est pas
+complète.
+\end{thm}
+
+Dire que $\Gamma$ n'est pas complète signifie qu'il existe au moins
+un !!{sentence}~$!A$ tel que $\Gamma\Proves/ !A$ et
+$\Gamma\Proves/\lnot !A$. Un tel !!{sentence} est dit
+\emph{indépendant} de~$\Gamma$. Nous pourrons montrer assez vite
+qu'il en existe. La force de la méthode de Gödel tient toutefois à
+ce qu'elle construit explicitement un !!{sentence}~$!G_\Gamma$,
+appelé \emph{énoncé de Gödel} pour~$\Gamma$, qui n'est pas
+démontrable : dans~$\Gamma$, $!G_\Gamma$ équivaut à l'affirmation
+que $!G_\Gamma$ n'est pas démontrable. Pour construire un énoncé indépendant
+sous la seule hypothèse de cohérence, on utilise la variante
+de Rosser, qui construit un autre énoncé ; la non-réfutabilité de l'énoncé original de Gödel demande une hypothèse
+plus forte.\footnote{Précision éditoriale : la source passe sans qualification de l'énoncé de Gödel à l'indépendance. Nous distinguons les deux constructions et leurs hypothèses.} La construction de l'énoncé de Gödel est \emph{effective} : à partir d'une
+axiomatisation de~$\Gamma$ et d'une description du système de
+!!{derivation}, la preuve fournit une méthode pour écrire
+effectivement~$!G_\Gamma$.
+
+La construction exige que le langage~$\Lang L_A$ puisse exprimer
+des propriétés des termes et des !!{formula}s de~$\Lang L_A$
+lui-même, ainsi que des opérations sur ces objets. Il faut par
+exemple pouvoir exprimer « $!A$ est un !!{sentence} »,
+« $\delta$ est une !!{derivation} de~$!A$ », ou l'opération
+$\Subst{!A}{t}{x}$. Pour cela, il faut, premièrement, coder les
+symboles et leurs suites finies, dont sont formés termes,
+!!{formula}s et !!{derivation}s, par des nombres naturels : ce sont
+les objets dont $\Lang L_A$ peut parler. Deuxièmement, ce codage
+doit permettre à~$\Gamma$ de démontrer les faits pertinents. Nous
+devrons donc vérifier que les propriétés en jeu correspondent à des
+propriétés !!{decidable}s des nombres naturels et que les opérations
+correspondent à des fonctions calculables. C'est ce qu'on appelle
+l'\emph{arithmétisation de la syntaxe}.
+
+Il faut aussi examiner la condition selon
+laquelle $\Gamma$ est « assez forte », c'est-à-dire !!{represents}
+toutes les fonctions calculables et les relations !!{decidable}s.
+Elle suppose une définition précise de « calculable ». On peut en
+donner plusieurs, par exemple au moyen des machines de Turing ou des
+programmes écrits dans un langage de programmation général. Mais,
+puisque nous voulons représenter ces fonctions et relations dans
+une théorie du langage~$\Lang L_A$, il est préférable de choisir
+une définition simple de la calculabilité des fonctions numériques :
+celle des \emph{fonctions récursives}, déjà étudiées dans la partie sur la calculabilité.
+Après l'arithmétisation de la syntaxe, nous montrerons que $\Th{Q}$ représente déjà toutes les
+fonctions et relations récursives.\footnote{Adaptation éditoriale : les fonctions récursives précèdent cette partie dans le lecteur ; les chapitres qui suivent traitent d'abord de l'arithmétisation, puis de la représentation dans~$\Th{Q}$.} Nous pourrons alors appliquer le
+théorème d'incomplétude à des théories précises comme $\Th{Q}$ et
+$\Th{PA}$, puisqu'elles satisfont la condition de force requise.
+
+L'arithmétisation de la syntaxe aboutira à une !!{formula}
+$\OProv[\Gamma](x)$ qui, grâce au codage numérique des !!{formula}s,
+exprime la démontrabilité à partir des axiomes de~$\Gamma$. Si
+$!A$ a pour code le nombre~$n$ et si $\Gamma\Proves !A$, alors
+$\Gamma\Proves\Prov[\Gamma](\num{n})$. Ce \emph{prédicat de
+démontrabilité} permet aussi, en un certain sens, d'exprimer la
+cohérence de~$\Gamma$ par un !!{sentence} de~$\Lang L_A$.
+Choisissons pour~$n$ le code d'une contradiction, par exemple
+de~$\lfalse$ : l'\emph{énoncé de cohérence} de~$\Gamma$ sera
+$\lnot\Prov[\Gamma](\num{n})$. Le second théorème d'incomplétude
+affirme qu'une théorie cohérente et !!{axiomatizable} ne démontre pas
+non plus son propre énoncé de cohérence, sous des hypothèses un peu
+plus exigeantes que la seule représentation de toutes les fonctions
+calculables et relations !!{decidable}s, notamment les conditions de démontrabilité du prédicat usuel. Nous montrerons que
+$\Th{PA}$ satisfait ces hypothèses.
+
+\end{document}

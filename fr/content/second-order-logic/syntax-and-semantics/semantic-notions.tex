@@ -1,0 +1,44 @@
+% Part: second-order-logic
+% Chapter: syntax-and-semantics
+% Section: semantic-notions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{syn}{sem}
+\olsection{Notions sémantiques}
+
+\begin{explain}
+Comme au premier ordre, la relation de satisfaction permet de définir
+la \emph{validité}, la \emph{conséquence logique} et la
+\emph{satisfaisabilité}. On emploie ici la relation de satisfaction
+des !!{formula}s du second ordre. Un !!{sentence} du second ordre
+est une !!{formula} sans occurrence libre d'!!a{variable}, qu'il
+s'agisse d'une variable individuelle, de prédicat ou de fonction.
+\end{explain}
+
+\begin{defn}[Validité]
+Un énoncé~$!A$ est \emph{valide}, ce que nous
+notons $\Entails !A$, si et seulement si
+$\Sat{M}{!A}$ pour toute
+!!{structure}~$\Struct M$.
+\end{defn}
+
+\begin{defn}[Conséquence logique]
+Un ensemble d'énoncés~$\Gamma$ \emph{entraîne}
+un énoncé~$!A$, ce que nous notons
+$\Gamma\Entails !A$, si et seulement si,
+pour toute !!{structure}~$\Struct M$ telle que
+$\Sat{M}{\Gamma}$, on a $\Sat{M}{!A}$.
+\end{defn}
+
+\begin{defn}[Satisfaisabilité]
+Un ensemble d'énoncés~$\Gamma$ est
+\emph{satisfaisable} s'il existe une
+!!{structure}~$\Struct M$ telle que
+$\Sat{M}{\Gamma}$. S'il n'est pas satisfaisable,
+il est dit \emph{insatisfaisable}.
+\end{defn}
+
+\end{document}

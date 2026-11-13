@@ -1,28 +1,24 @@
-# Reconstruire cette édition française
+# Reconstruire l’édition française d’OpenLogic
 
-Cette livraison comprend treize chapitres, 98 sections, 106 exercices et 111 unités du projet OpenLogic figé à la révision `9620cc73f9c8e0ad003c514a5d3748f29611c4c0`. Le PDF compte 159 pages. Les 132 unités françaises rédigées figurent dans `fr/content/` ; la présence des sources anglaises dans `upstream/` ne les transforme pas en traductions.
-
-Le fichier `fr/reader-cumulative.tex` contient le texte complet des 111 unités du volume. Il utilise les classes, styles, macros, bibliographie et figures fournis dans cette archive. Le fichier `fr/reader.tex` conserve l’organisation modulaire. Le registre `provenance/EDITION.json` indique les unités intégrées et les vingt et un brouillons exclus : OLP-0055, OLP-0072, OLP-0076, OLP-0080, OLP-0082, OLP-0083, OLP-0087, OLP-0090, OLP-0094, OLP-0096, OLP-0097, OLP-0101, OLP-0104, OLP-0108, OLP-0110, OLP-0111, OLP-0115, OLP-0117, OLP-0120, OLP-0123 et OLP-0125. Les vingt sections propres au premier ordre des systèmes de preuve attendent les chapitres complets de syntaxe et de sémantique auxquels elles renvoient ; OLP-0055 est un pilote formel sans prose propre à ajouter au lecteur.
+Le fichier `fr/reader-full.tex` assemble le lecteur. Les 722 unités françaises éditables se trouvent dans `fr/content/`. Cinq pilotes de compilation alternatifs sont conservés dans les sources. Le lecteur charge les 717 autres unités. Les fichiers `provenance/SOURCE_MANIFEST.jsonl` et `provenance/FULL_READER_INPUTS.json` donnent la révision d’origine, les chemins et les empreintes utilisés pour vérifier les entrées.
 
 ## Environnement
 
-Utiliser Windows, Python 3 avec `lxml`, MiKTeX avec XeLaTeX, BibTeX et les polices TeX Gyre. Les exécutables doivent être dans `PATH`. Les dépendances TeX4ht, make4ht et tex4ebook sont incluses sous `tools/epub/dependencies/`, avec leurs licences. Ne pas lancer les commandes TeX directement : le garde acquiert `Global\InterlanguageTeXSlotV1`, démarre le processus suspendu dans un Job Object sans échappement et conserve le verrou jusqu’à la fin de tous les descendants et des contrôles de journal. L’acquisition est bornée à 45 secondes ; le PDF est borné à 420 secondes et l’EPUB à 600 secondes. Un reçu `slot_occupied` signifie qu’aucun moteur n’a démarré. Une tentative suivante doit porter un nouveau nom et ne doit jamais dupliquer un processus encore actif.
+Sous Windows, utiliser Python 3.10 ou une version ultérieure avec `lxml`, ainsi que MiKTeX, XeLaTeX, BibTeX, dvisvgm et les polices TeX Gyre. Les exécutables doivent être accessibles dans `PATH`. Les versions de make4ht, TeX4ht et tex4ebook utilisées par les scripts sont fournies sous `tools/epub/dependencies/` avec leurs notices.
 
-Extraire le ZIP dans un nouveau dossier. Depuis le dossier `OpenLogic-fr`, exécuter :
+## PDF et EPUB
+
+Extraire l’archive dans un nouveau dossier, puis exécuter les commandes suivantes depuis le dossier `OpenLogic-fr`.
 
 ```powershell
-python tools/epub/prepare_inputs.py pdf
-python tools/epub/guard_tex4ebook.py pdf-build pdf-compare
-python tools/epub/prepare_inputs.py epub
-python tools/epub/guard_tex4ebook.py epub-build convert
-python tools/epub/repair_epub.py
-python tools/epub/inspect_epub.py tools/epub/openlogic-fr-ensembles-logique-premier-ordre.epub
+python -B -X utf8 tools/epub/build_full_reader.py pdf pdf-build
+python -B -X utf8 tools/epub/build_full_reader.py epub epub-build
 ```
 
-Le PDF reconstruit se trouve dans `tools/epub/direct-tex-check/source/locale/fr/reader.pdf` ; le livre numérique dans `tools/epub/openlogic-fr-ensembles-logique-premier-ordre.epub`. Le garde fixe `SOURCE_DATE_EPOCH=1788739200`. Les reçus de chaque tentative restent dans leur dossier.
+Le PDF se trouve dans `tools/epub/direct-full/source/locale/fr/reader.pdf`. L’EPUB se trouve dans `tools/epub/openlogic-fr.epub`. Les scripts vérifient les empreintes des sources et les fichiers lus par TeX. La conversion EPUB conserve les formules en MathML et les diagrammes vectoriels en SVG. Elle vérifie aussi la structure et les liens du livre numérique.
 
-La préparation EPUB vérifie les empreintes des 111 sources chargées, remplace 1 533 occurrences du raccourci de tokens et développe explicitement vingt-huit tokens à initiale majuscule selon les macros OpenLogic. Cette adaptation ne modifie pas le texte du PDF. Les cadres de règles et arbres de preuve sont conservés comme SVG avec descriptions françaises : 146 diagrammes au total. Les grandes figures et les tables de dérivation gardent une taille lisible et se parcourent horizontalement. Les 5 935 autres formules sont du MathML natif, dont 341 dans le nouveau chapitre. Les 88 notes ont leurs liens aller et retour ; les 106 exercices restent numérotés.
+Les deux commandes utilisent le même verrou TeX sous Windows. Un code de sortie `2` signifie que le verrou est occupé et qu’aucun moteur TeX n’a démarré. Pour réessayer, donner un nouveau nom à la tentative. Pour reconstruire une seconde fois après une compilation terminée, repartir d’une extraction propre.
 
-La réparation post-conversion corrige les espaces de noms MathML, les identifiants et liens de notes, les titres accentués, les entrées d’exercices vides et les métadonnées de livraison ; elle vérifie la conservation du texte des paragraphes. Les descriptions des figures sont fournies par `SEQUENT_IMAGE_ALTS.json`, `NATURAL_IMAGE_ALTS.json` et `TABLEAUX_IMAGE_ALTS.json`, ainsi que par les descriptions héritées dans le script. Les PDF des références universitaires consultées ne sont pas redistribués.
+Les [références consultées pour l’édition française](provenance/REFERENCES-CONSULTEES.md) sont accompagnées de leurs repères de lecture.
 
-Les empreintes des livrables sont publiées avec la livraison. Les scripts de reconstruction sont fournis pour permettre leur comparaison octet par octet dans cet environnement. Une installation de TeX ou de polices différente peut produire un PDF graphiquement équivalent mais d’empreinte différente.
+Les polices et la version de la distribution TeX peuvent influer sur l’empreinte des fichiers produits. La révision anglaise et les notices de licence sont conservées sous `upstream/`.

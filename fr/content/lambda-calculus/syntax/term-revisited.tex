@@ -1,0 +1,122 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: term-revisited
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{tr}
+\olsection{Les termes comme classes d'\texorpdfstring{$\alpha$}{α}-équivalence}
+
+Désormais, nous considérerons les termes à
+$\alpha$-équivalence près. Quand nous écrirons
+un terme, nous entendrons donc sa classe
+d'$\alpha$-équivalence. Par exemple,
+$\lambd[a][\lambd[b][a c]]$ désignera
+l'ensemble des termes qui lui sont
+$\alpha$-équivalents, parmi lesquels
+$\lambd[a][\lambd[b][a c]]$,
+$\lambd[b][\lambd[a][b c]]$, etc.
+
+Dans les sections précédentes, des lettres
+comme $N, Q$ désignaient des termes; elles
+désigneront désormais des classes de termes.
+Ce sont ces classes, et non leurs représentants
+pris isolément, que nous étudierons dans la
+suite. Les lettres telles que $x, y$
+continueront de désigner des variables.
+
+Nous noterons $\rep{M}$ un \emph{élément}
+arbitraire de la classe~$M$, et
+$\rep{M}[0]$, $\rep{M}[1]$, etc.,
+si nous devons en choisir plusieurs.
+
+Nous réutiliserons les notations des termes
+pour alléger les énoncés. Sur les classes,
+nous posons les définitions suivantes.
+\begin{defn}
+\begin{enumerate}
+\item $\lambd[x][N]$ est la classe contenant
+  $\lambd[x][\rep{N}]$.
+\item $PQ$ est la classe contenant
+  $\rep{P}\rep{Q}$.
+\end{enumerate}
+\end{defn}
+
+Ces opérations ne dépendent pas du choix
+des représentants, car
+l'$\alpha$-conversion est compatible avec
+l'abstraction et l'application.
+
+\begin{defn} \ollabel{def:fv}
+Les \emph{variables libres} d'une classe
+d'$\alpha$-équivalence~$M$, ou $FV(M)$,
+sont les variables libres de $\rep{M}$,
+c'est-à-dire $FV(\rep{M})$.
+\end{defn}
+
+Cette définition ne dépend pas du représentant,
+puisque $FV(\rep{M}[0]) =
+FV(\rep{M}[1])$, d'après le
+\olref[alp]{thm:fv}.
+
+Nous réutilisons aussi la notation de
+substitution pour les classes.
+\begin{defn} \ollabel{def:sub}
+La \emph{substitution} de $R$ à $y$ dans $M$,
+notée $\Subst{M}{R}{y}$, est la classe
+contenant $\Subst{{\rep{M}}}{\rep{R}}{y}$,
+pour tout choix de $\rep{M}$ et de
+$\rep{R}$ qui rend cette substitution définie.
+\end{defn}
+
+Le \olref[alp]{cor:sub} garantit l'existence de représentants
+pour lesquels la substitution est définie. Tous les couples
+de représentants qui rendent cette substitution définie
+donnent des termes dans une même classe d'$\alpha$-équivalence.
+
+Cette définition simplifie sensiblement les
+calculs. Prenons une variable $z$ distincte
+de $x$ et de $y$. Alors :
+\begin{align}
+  \Subst{\lambd[x][x]}{y}{x}
+  &\ollabel{eq:1}\\
+  &= \Subst{\lambd[z][z]}{y}{x}
+     \ollabel{eq:2}\\
+  &= \lambd[z][\Subst{z}{y}{x}]\\
+  &= \lambd[z][z].
+\end{align}
+
+Si l'on considère encore des termes ordinaires,
+la substitution de \olref{eq:1} est indéfinie
+selon les règles précédentes. Ici, elle porte
+sur des classes, ce qui permet le passage
+de \olref{eq:2} : nous pouvons remplacer
+$\lambd[x][x]$ par $\lambd[z][z]$, puisque
+ces deux termes appartiennent à la même classe.
+
+Pour la même raison, nous supposerons désormais
+que les représentants choisis satisfont toutes
+les conditions nécessaires à la substitution.
+Par exemple, devant
+$\Subst{\lambd[x][N]}{R}{y}$, nous choisirons
+le représentant $\lambd[x][N]$ de sorte que
+$x \neq y$, $x \notin FV(R)$ et que la
+substitution dans le corps soit définie.
+
+Comme il serait étrange d'appeler
+$\lambd[x][x]$ une « classe », nous
+appellerons désormais ces objets des
+$\Lambda$-termes, ou simplement des « termes »
+dans la suite de cette partie, afin de les
+distinguer des $\lambda$-termes ordinaires.
+
+Pour définir une opération sur les $\Lambda$-termes à partir
+d'une opération sur les représentants, on vérifie deux points.
+Il faut pouvoir choisir des représentants pour lesquels le
+calcul est défini. Deux choix qui rendent le calcul possible
+doivent donner des résultats $\alpha$-équivalents.
+La substitution donne un exemple de cette méthode.
+
+\end{document}

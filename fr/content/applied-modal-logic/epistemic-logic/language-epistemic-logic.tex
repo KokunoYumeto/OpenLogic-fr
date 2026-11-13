@@ -1,0 +1,96 @@
+% Partie : applied-modal-logics
+% Chapitre : epistemic-logic
+% Section : language-epistemic-logic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{el}{lan}
+
+\Needspace{10\baselineskip}\olsection{Le langage de la logique épistémique}
+
+\begin{defn}
+Soit $G$ un ensemble de symboles d'agents. Le langage de base de la
+logique épistémique à plusieurs agents contient :
+\begin{enumerate}
+  \tagitem{prvFalse}{La constante propositionnelle de !!{falsity}~$\lfalse$.}{}
+  \tagitem{prvTrue}{La constante propositionnelle de !!{truth}~$\ltrue$.}{}
+  \item Un ensemble !!{denumerable} de !!{propositional variable}s : $\Obj
+    p_0$, $\Obj p_1$, $\Obj p_2$, \dots
+  \item Les connecteurs propositionnels : \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}.
+  \item L'opérateur de connaissance $\Knows_a$, pour chaque $a \in G$.
+\end{enumerate}
+\end{defn}
+
+Si notre système ne concerne que la connaissance d'un seul agent, nous
+pouvons omettre la référence à l'ensemble~$G$ et l'indice de l'agent.
+Nous n'avons alors que l'opérateur de base~$\Knows$.
+
+\begin{defn}
+Les \emph{!!{formula}s} du langage épistémique sont définies
+inductivement comme suit :
+\begin{enumerate}
+\tagitem{prvFalse}{$\lfalse$ est une !!{formula} atomique.}{}
+
+\tagitem{prvTrue}{$\ltrue$ est une !!{formula} atomique.}{}
+
+\item Toute variable propositionnelle $\Obj p_i$ est une !!{formula} (atomique).
+
+\tagitem{prvNot}{Si $!A$ est !!a{formula}, alors $\lnot !A$ est
+  !!a{formula}.}{}
+
+\tagitem{prvAnd}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \land
+  !B)$ est !!a{formula}.}{}
+
+\tagitem{prvOr}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \lor !B)$
+  est !!a{formula}.}{}
+
+\tagitem{prvIf}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \lif !B)$
+  est !!a{formula}.}{}
+
+\tagitem{prvIff}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \liff !B)$
+  est !!a{formula}.}{}
+
+\item Si $!A$ est !!a{formula} et $a \in G$, alors $\Knows_a !A$ est
+  !!a{formula}.
+
+\tagitem{limitClause}{Rien d'autre n'est !!a{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+Si !!a{formula}~$!A$ ne contient aucun opérateur $\Knows_a$, quel que
+soit l'agent, on dit qu'elle est \emph{sans modalités}.
+
+\begin{defn}
+  L'opérateur $\Knows$ représente la connaissance individuelle,
+  tandis que $\EKnows$, souvent lu « chacun sait que », représente la
+  connaissance partagée d'un groupe. Pour un groupe fini $G' \subseteq G$,
+  on définit $\EKnows_{G'} !A$ comme une abréviation de
+  \[\bigwedge_{b \in G'} \Knows_b !A.\]
+  La conjonction vide est comprise comme une tautologie. Pour un groupe
+  infini, on conserve la lecture sémantique « chacun sait que », sans
+  traiter la conjonction infinie comme une formule du langage de base.
+\end{defn}
+
+On peut aussi étendre le langage par un opérateur exprimant une notion
+plus forte : la \emph{connaissance commune} au sein d'un groupe
+d'agents~$G$. Lorsqu'une information est une connaissance commune,
+chacun des agents la connaît, chacun sait que chacun la connaît,
+chacun sait que chacun sait que chacun la connaît, et ainsi de suite,
+à tous les ordres finis et pour tous les choix d'agents du groupe.
+La connaissance partagée ne porte que sur le premier de ces
+niveaux. Considérons un groupe $G=\{a,b\}$ et trois mondes
+$w,u,v$. Les seules flèches d'accessibilité sont de $w$ vers $u$
+pour $a$, et de $u$ vers $v$ pour $b$. Si $p$ est vrai en~$u$
+et faux en~$v$, chacun sait que $p$ au monde~$w$ : $u$ est le
+seul monde accessible en un pas. Pourtant, en~$w$, $a$ ne sait
+pas que $b$ sait que $p$. Il faut considérer aussi le chemin
+de deux pas qui mène à~$v$. Nous utiliserons $\CKnows_G !A$
+pour exprimer que~$!A$ est une connaissance commune au sein de~$G$.
+\end{document}

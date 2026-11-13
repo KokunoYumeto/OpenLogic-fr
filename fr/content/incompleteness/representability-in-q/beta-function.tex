@@ -1,0 +1,201 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: beta-function
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{bet}
+\olsection{Le lemme de la fonction bêta}
+
+Pour montrer que la récurrence primitive peut être réalisée à
+l'aide de l'addition, de la multiplication et de~$\Char{=}$,
+nous devons construire des fonctions qui manipulent des suites.
+La tâche serait plus simple si nous disposions aussi de
+l'exponentiation. Avec la récurrence primitive, nous pouvions
+définir, par exemple, le « $n$-ième nombre premier » et adopter
+un codage assez direct. Mais nous ne disposons pas ici de la
+récurrence primitive : nous voulons précisément montrer qu'on
+peut la réaliser par minimisation. Il faut donc trouver une
+méthode plus ingénieuse.
+
+\begin{lem}
+\ollabel{lem:beta}
+Il existe une fonction $\beta(d,i)$ telle que, pour toute suite
+$a_0$, \dots,~$a_n$, il existe un nombre~$d$ vérifiant
+$\beta(d,i)=a_i$ pour tout $i\le n$. De plus, $\beta$ peut être
+définie à partir des fonctions de base par la seule composition
+et la minimisation régulière.
+\end{lem}
+
+On peut voir $d$ comme un code de la suite
+$\tuple{a_0,\dots,a_n}$ et $\beta(d,i)$ comme une fonction qui en
+extrait le $i$-ième terme. Ce « codage » \emph{n'utilise pas} le
+codage par puissances de nombres premiers déjà étudié. L'énoncé
+du lemme est modeste : il ne dit ni que nous pouvons concaténer
+des suites ou leur ajouter des termes, ni même que nous pouvons
+\emph{calculer}~$d$ à partir de $a_0$, \dots,~$a_n$ avec des
+fonctions définissables par composition et minimisation régulière.
+Il affirme seulement l'existence d'une fonction de « décodage »
+pour laquelle toute suite admet un code.
+
+La notation $\beta$ vient de G\"odel. Rappelons que la difficulté
+du lemme consiste à définir une fonction~$\beta$ adéquate avec
+des moyens apparemment limités : la composition et la
+minimisation, auxquelles s'ajoutent toutefois l'addition, la
+multiplication et~$\Char{=}$. Il existe plusieurs démonstrations
+du lemme, mais l'une des plus élégantes reste la méthode
+originale de G\"odel. Elle repose sur un résultat d'arithmétique
+appelé théorème de Sunzi, traditionnellement connu sous le nom
+de « théorème des restes chinois ».
+
+\begin{defn}
+Deux entiers naturels $a$ et $b$ sont \emph{premiers entre eux} si
+leur plus grand commun diviseur vaut~$1$; autrement dit, ils
+n'ont aucun autre diviseur commun.
+\end{defn}
+
+\begin{defn}
+Pour $c>0$, les entiers naturels $a$ et $b$ sont
+\emph{congrus modulo~$c$},
+ce que l'on note $a\equiv b\mod c$, si $c\mid(a-b)$, c'est-à-dire
+s'ils ont le même reste dans la division par~$c$.
+\end{defn}
+
+Voici le théorème de Sunzi :
+\begin{thm}
+Supposons que $x_0$, \dots,~$x_n$ soient strictement positifs et
+premiers entre eux deux
+à deux. Soient $y_0$, \dots,~$y_n$ des entiers naturels quelconques.
+Alors il existe un nombre~$z$ tel que
+\begin{align*}
+z & \equiv y_0 \mod x_0 \\
+z & \equiv y_1 \mod x_1 \\
+& \vdots  \\
+z & \equiv y_n \mod x_n.
+\end{align*}
+\end{thm}
+
+Voici comment nous utiliserons ce théorème. Si les nombres $x_0$,
+\dots,~$x_n$ sont respectivement supérieurs à $y_0$,
+\dots,~$y_n$, nous pouvons prendre $z$ comme code de la suite
+$\tuple{y_0,\dots,y_n}$. Pour retrouver~$y_i$, il suffit de
+diviser $z$ par~$x_i$ et de prendre le reste. Nous devons donc
+choisir convenablement les nombres $x_0$, \dots,~$x_n$.
+
+Deux observations nous y aideront. Étant donnés
+$y_0$, \dots,~$y_n$, posons
+\begin{align*}
+j &= \max(n, y_0 + 1, \dots, y_n + 1), \\
+m &= \lcm(1,\dots,j),
+\end{align*}
+où $m$ est le plus petit commun multiple de $1$, \dots,~$j$, et
+posons
+\begin{align*}
+x_0 & = 1 + m \\
+x_1 & = 1 + 2 \cdot m \\
+x_2 & = 1 + 3 \cdot m \\
+& \vdots  \\
+x_n & = 1 + (n+1) \cdot m
+\end{align*}
+Deux propriétés en résultent :
+\begin{enumerate}
+\item\ollabel{rel-prime} $x_0,\dots,x_n$ sont premiers entre eux deux à deux.
+\item\ollabel{less} Pour tout~$i$, on a $y_i<x_i$.
+\end{enumerate}
+Pour établir \olref{rel-prime}, supposons que $i\neq k$ et qu'un
+nombre premier~$p$ divise $x_i$ et~$x_k$. Alors $p$ divise
+$1+(i+1)m$ et $1+(k+1)m$, donc leur différence :
+\[
+(1 + (i+1)m) - (1+ (k+1)m) = (i-k) m.
+\]
+Comme $p$ divise $1+(i+1)m$, il ne peut aussi diviser~$m$ :
+sinon, il diviserait~$1$. Puisqu'il divise $(i-k)m$ et qu'il
+est premier, il divise donc $i-k$. Or $0<|i-k|\le n\le j$;
+ainsi $p\le j$ et $p$ divise~$m$, le plus petit commun multiple
+de $1$, \dots,~$j$. C'est une contradiction. Aucun nombre
+premier ne divise donc deux des $x_i$. La propriété
+\olref{less} est immédiate : $y_i<j\le m<x_i$.
+
+Démontrons maintenant le lemme de la fonction~$\beta$. Rappelons
+que nous pouvons employer la fonction nulle, le successeur,
+l'addition, la multiplication, $\Char{=}$ et les projections,
+ainsi que toute fonction obtenue à partir d'elles par composition
+et minimisation appliquée à des fonctions régulières. Nous
+pouvons également employer une relation si sa fonction
+caractéristique se définit de cette manière. Comme précédemment,
+on montre que ces relations sont closes par combinaisons
+booléennes et par quantification bornée; par exemple :
+\begin{align*}
+\fn{not}(x) & \defis \Char{=}(x,0)\\
+\bmin{x \leq z}{R(x,y)} & \defis \umin{x}{(R(x,y) \lor x = z)}\\
+\bexists{x \leq z}{R(x,y)} & \defiff R(\bmin{x \leq z}{R(x,y)}, y)
+\end{align*}
+Nous pouvons alors montrer que les fonctions et relations
+suivantes se définissent elles aussi sans récurrence primitive :
+\begin{enumerate}
+\item la fonction de couplage
+  $J(x,y)=\frac{1}{2}[(x+y)(x+y+1)]+x$;
+\item les fonctions de projection
+\begin{align*}
+K(z) & = \bmin{x \leq z}{\bexists{y \leq z}{z = J(x,y)}},\\
+L(z) & = \bmin{y \leq z}{\bexists{x \leq z}{z = J(x,y)}};
+\end{align*}
+\item la relation d'ordre strict $x<y$;
+\item la relation de divisibilité $x\mid y$;
+\item la fonction $\fn{rem}(x,y)$, qui donne le reste de la division
+  de~$y$ par~$x$.
+\end{enumerate}
+Nous posons $\fn{rem}(0,y)=0$ pour rendre cette fonction totale;
+les diviseurs utilisés ci-dessous sont tous positifs.
+Définissons
+\begin{align*}
+\beta^*(d_0,d_1,i) & = \fn{rem}(1+(i+1) d_1,d_0) \text{ et}\\
+\beta(d,i) & = \beta^*(K(d),L(d),i).
+\end{align*}
+C'est la fonction cherchée. Étant donnés
+$a_0,\dots,a_n$ comme plus haut, posons
+\[
+j = \max(n,a_0+1,\dots,a_n+1),
+\]
+puis $d_1=\lcm(1,\dots,j)$. D'après \olref{rel-prime}, les
+nombres $1+d_1$, $1+2d_1$, \dots, $1+(n+1)d_1$ sont premiers
+entre eux deux à deux et, d'après \olref{less}, ils sont
+respectivement supérieurs à $a_0$, \dots, $a_n$. Le théorème de
+Sunzi fournit donc un nombre~$d_0$ tel que, pour chaque~$i$,
+\[
+d_0 \equiv a_i \mod (1+(i+1)d_1)
+\]
+et, puisque $d_1>a_i$,
+\[
+a_i = \fn{rem}(1+(i+1)d_1,d_0).
+\]
+Soit $d=J(d_0,d_1)$. Pour tout $i\le n$, nous avons
+\begin{align*}
+\beta(d,i) & =  \beta^*(d_0,d_1,i) \\
+& =  \fn{rem}(1+(i+1) d_1,d_0) \\
+& =  a_i
+\end{align*}
+comme il fallait le montrer. La preuve du lemme de la fonction
+$\beta$ est achevée.
+
+\begin{prob}
+  Montrez que les relations $x<y$ et $x\mid y$, ainsi que la
+  fonction~$\fn{rem}(x,y)$, se définissent sans récurrence
+  primitive. Vous pouvez employer la fonction nulle, le
+  successeur, l'addition, la multiplication, $\Char{=}$, les
+  projections, ainsi que la minimisation et la quantification
+  bornées.
+\end{prob}
+
+\begin{explain}
+Dans la définition de~$\beta$, on calcule le module à partir
+de $L(d)$ et de la position~$i$, puis on lit le reste de
+$K(d)$ modulo ce nombre. Le choix d'un code pour une suite
+donnée intervient seulement dans la preuve d'existence. Pour
+l'application suivante, il suffira que chaque suite finie de
+valeurs admette au moins un code.
+\end{explain}
+
+\end{document}

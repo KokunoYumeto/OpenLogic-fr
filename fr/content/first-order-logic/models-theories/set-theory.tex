@@ -1,0 +1,199 @@
+% Part: first-order-logic
+% Chapter: models-theories
+% Section: set-theory
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{mat}{set}
+
+\olsection{La théorie des ensembles}
+
+Presque toutes les mathématiques peuvent être développées dans la
+théorie des ensembles. Pour cela, plusieurs conditions doivent être
+remplies. Il faut d'abord disposer d'axiomes pour la relation~$\in$.
+Différents systèmes d'axiomes ont été élaborés, parfois avec des
+propriétés incompatibles de~$\in$. Le système appelé $\Log{ZFC}$,
+la théorie des ensembles de Zermelo--Fraenkel avec l'axiome du choix,
+se distingue : c'est de loin le plus employé et le plus étudié, car
+ses axiomes suffisent à démontrer presque tout ce que les
+mathématiciens s'attendent à pouvoir démontrer. Mais, avant de
+l'établir, il faut préciser comment nous pouvons même \emph{exprimer}
+ce que les mathématiciens souhaitent exprimer. Pour commencer, le
+langage ne contient ni !!{constant}s ni !!{function}s. Il n'est donc
+pas évident, à première vue, que nous puissions parler d'ensembles
+particuliers (comme $\emptyset$ ou $\Nat$), d'opérations sur les
+ensembles (comme $X \cup Y$ et $\Pow{X}$), ou encore de constructions
+qui font intervenir autre chose que des ensembles, telles que les
+relations et les fonctions.
+
+La relation « être un élément de » n'est pas la seule qui nous
+intéresse : « être un sous-ensemble de » paraît presque aussi
+importante. Nous pouvons toutefois \emph{définir} cette dernière à
+partir de la relation d'appartenance. Pour cela, il faut trouver
+!!a{formula}~$!A(x, y)$ du langage de la théorie des ensembles,
+satisfaite par une paire d'ensembles~$\tuple{X, Y}$ si et seulement
+si $X \subseteq Y$. Or $X$ est un sous-ensemble de~$Y$ si et
+seulement si tous les !!{element}s de~$X$ sont aussi des
+!!{element}s de~$Y$. Nous pouvons donc définir $\subseteq$ par la
+formule
+\[
+\lforall[z][(z \in x \lif z \in y)]
+\]
+Dès lors, chaque fois que nous voulons employer la relation~$\subseteq$
+dans une formule, nous pouvons utiliser à sa place cette formule
+(en remplaçant convenablement $x$ et $y$ et, si nécessaire, en
+renommant la variable liée~$z$). Par exemple, l'extensionnalité des
+ensembles signifie que, si deux ensembles~$x$ et $y$ sont chacun
+contenus dans l'autre, alors $x$ et $y$ sont égaux. On peut l'exprimer par
+$\lforall[x][\lforall[y][((x \subseteq y \land y
+    \subseteq x) \lif x = y)]]$ ou, en substituant la définition
+de~$\subseteq$, par
+\[
+\lforall[x][\lforall[y][((\lforall[z][(z \in x \lif z \in y)] \land
+    \lforall[z][(z \in y \lif z \in x)]) \lif x = y)]].
+\]
+C'est en effet l'un des axiomes de~$\Log{ZFC}$, appelé
+« axiome d'extensionnalité ».
+
+Il n'y a pas de !!{constant} pour~$\emptyset$, mais nous pouvons
+exprimer « $x$ est vide » par $\lnot \lexists[y][y \in x]$.
+« $\emptyset$ existe » devient alors l'!!{sentence}
+$\lexists[x][\lnot \lexists[y][y \in x]]$. C'est un autre axiome
+de~$\Log{ZFC}$. (Notons que l'axiome d'extensionnalité implique
+que l'ensemble vide, s'il existe, est unique.)\footnote{Précision éditoriale : l'extensionnalité seule garantit l'unicité éventuelle, et non l'existence.} Lorsque nous voulons
+parler de~$\emptyset$ dans le langage de la théorie des ensembles,
+nous écrivons plutôt « il existe un ensemble vide tel que… ».
+Par exemple, pour exprimer le fait que $\emptyset$ est un
+sous-ensemble de tout ensemble, nous pouvons écrire
+\[
+\lexists[x][(\lnot\lexists[y][y \in x] \land \lforall[z][x \subseteq
+    z])]
+\]
+où, bien entendu, il faudrait à son tour remplacer $x \subseteq z$
+par sa définition.
+
+Pour parler d'opérations sur les ensembles, telles que $X \cup Y$
+et $\Pow{X}$, nous procédons de façon semblable. Le langage de la
+théorie des ensembles ne comporte aucun symbole de fonction, mais
+nous pouvons exprimer les relations fonctionnelles $X \cup Y = Z$
+et $\Pow{X} = Y$ par
+\begin{align*}
+& \lforall[u][((u \in x \lor u \in y) \liff u \in z)]\\
+& \lforall[u][(u \subseteq x \liff u \in y )]
+\end{align*}
+car les !!{element}s de $X \cup Y$ sont exactement les ensembles
+qui appartiennent à~$X$ ou à~$Y$, tandis que les !!{element}s de
+$\Pow{X}$ sont exactement les sous-ensembles de~$X$. Cela ne nous
+permet toutefois pas d'employer $x \cup y$ ou $\Pow{x}$ comme s'il
+s'agissait de termes : nous ne pouvons utiliser que les !!{formula}s
+entières qui définissent les relations $X \cup Y = Z$ et
+$\Pow{X} = Y$. En fait, nous ne savons pas encore si ces relations
+sont toujours satisfaites, autrement dit si les réunions et les
+ensembles des parties existent toujours. Par exemple, en employant
+l'abréviation qui vient d'être définie, l'!!{sentence}
+$\lforall[x][\lexists[y][\Pow{x} = y]]$ énonce un autre axiome
+de~$\Log{ZFC}$ : l'axiome de l'ensemble des parties.
+
+Qu'en est-il des couples ordonnés et des fonctions ? Nous devons
+ici expliquer comment les considérer comme des types particuliers
+d'ensembles. Une façon de définir le couple ordonné $\tuple{x, y}$
+consiste à poser qu'il s'agit de l'ensemble $\{\{x\}, \{x, y\}\}$.
+Mais, comme précédemment, nous ne pouvons introduire !!a{function}
+qui désigne cet ensemble; nous ne pouvons définir que la relation
+$\tuple{x, y} = z$, c'est-à-dire $\{\{x\}, \{x, y\}\} = z$ :
+\[
+\lforall[u][(u \in z \liff (\lforall[v][(v \in u \liff v = x)] \lor
+  \lforall[v][(v \in u \liff (v = x \lor v = y))]))]
+\]
+Cette formule dit que les !!{element}s~$u$ de~$z$ sont exactement
+les ensembles dont $x$ est l'unique !!{element} ou dont $x$ et~$y$
+sont les seuls !!{element}s (autrement dit, les ensembles égaux
+à~$\{x\}$ ou à~$\{x, y\}$). Nous pouvons alors exprimer d'autres
+relations, par exemple $X \times Y = Z$ :
+\[
+\lforall[z][(z \in Z \liff \lexists[x][\lexists[y][(x \in
+        X \land y \in Y \land \tuple{x, y} = z)]])]
+\]
+
+Une fonction $f \colon X \to Y$ peut être conçue comme la relation
+$f(x) = y$, c'est-à-dire comme l'ensemble de couples
+$\Setabs{\tuple{x,y}}{f(x) = y}$. Nous pouvons alors dire qu'un
+ensemble~$f$ est une fonction de~$X$ dans~$Y$ si (a)~c'est une
+relation $\subseteq X \times Y$, (b)~elle est totale, c'est-à-dire
+que, pour tout $x \in X$, il existe un $y \in Y$ tel que
+$\tuple{x, y} \in f$, et (c)~elle est fonctionnelle, c'est-à-dire
+que $\tuple{x, y}, \tuple{x, y'} \in f$ implique $y = y'$ (les
+valeurs d'une fonction doivent être uniques). Ainsi, « $f$ est une
+fonction de~$X$ dans~$Y$ » peut s'écrire :
+\begin{align*}
+ \lforall[u][(u \in f \lif {}] & \lexists[x][\lexists[y][(x \in X \land y \in
+      Y \land \tuple{x, y} = u)]]) \land {}\\
+ \lforall[x][(x \in X \lif {}] &
+      (\lexists[y][(y \in Y \land \mathrm{maps}(f, x, y))] \land {}\\
+& (\lforall[y][\lforall[y'][((\mathrm{maps}(f, x, y) \land
+    \mathrm{maps}(f, x, y')) \lif y = y')]])))
+\end{align*}
+où $\mathrm{maps}(f, x, y)$ abrège $\lexists[v][(v \in f \land
+  \tuple{x, y} = v)]$ (cette !!{formula} exprime « $f(x) = y$ »).\footnote{Correction éditoriale : nous fermons la parenthèse extérieure de la condition de totalité et d'unicité, omise dans l'affichage de la source.}
+
+Il n'est pas non plus difficile d'exprimer que $f\colon X \to Y$
+est !!{injective}, par exemple :
+\begin{multline*}
+ f \colon X \to Y \land \lforall[x][\lforall[x'][((x \in X \land x' \in
+     X \land {}]] \\
+ \lexists[y][(\mathrm{maps}(f, x, y) \land \mathrm{maps}(f,
+        x', y))]) \lif x = x')
+\end{multline*}
+Une fonction~$f\colon X \to Y$ est !!{injective} si et seulement
+si, chaque fois que $f$ associe le même~$y$ à deux éléments
+$x, x' \in X$, on a $x = x'$. Si nous abrégeons cette formule par
+$\mathrm{inj}(f, X, Y)$, nous pouvons déjà énoncer dans le langage
+de la théorie des ensembles une proposition aussi peu triviale que
+le théorème de Cantor : il n'existe pas de fonction !!{injective}
+de $\Pow{X}$ dans~$X$ :
+\[
+\lforall[X][\lforall[Y][(\Pow{X} = Y \lif
+    \lnot\lexists[f][\mathrm{inj}(f, Y, X)])]]
+\]
+
+On pourrait croire que la théorie des ensembles a besoin d'un autre
+axiome garantissant l'existence d'un ensemble pour chaque propriété
+qui définit ses éléments. Si $!A(x)$ est une formule de la théorie
+des ensembles dans laquelle la variable~$x$ est libre, considérons
+l'!!{sentence}
+\[
+\lexists[y][\lforall[x][(x \in y \liff !A(x))]].
+\]
+Elle affirme qu'il existe un ensemble~$y$ dont les !!{element}s
+sont tous les $x$ qui satisfont~$!A(x)$, et eux seuls. Ce schéma
+s'appelle le « principe de compréhension ». Il paraît fort utile;
+malheureusement, il est contradictoire. Prenons
+$!A(x) \ident \lnot x \in x$ : le principe de compréhension affirme
+alors
+\[
+\lexists[y][\lforall[x][(x \in y \liff x \notin x)]],
+\]
+c'est-à-dire l'existence de l'ensemble de tous les ensembles qui ne
+sont pas !!{element}s d'eux-mêmes. Aucun tel ensemble ne peut
+exister : c'est le paradoxe de Russell. $\Log{ZFC}$ contient en
+revanche une version restreinte de ce principe, le schéma de
+séparation :
+\[
+\lforall[z][\lexists[y][\lforall[x][(x \in y \liff (x \in z \land
+      !A(x)))]]].
+\]
+Cette restriction ne conduit pas au paradoxe de Russell.\footnote{Précisions éditoriales : nous rétablissons dans l'affichage la parenthèse extérieure omise dans la source. Dans les schémas de compréhension et de séparation, la variable qui désigne l'ensemble à obtenir ne doit pas apparaître libre dans la formule qui définit ses éléments. Les autres variables libres éventuelles sont des paramètres dont on prend la clôture universelle ; les variables liées auxiliaires sont renommées au besoin.}
+
+\begin{prob}
+Montrer que le principe de compréhension est contradictoire en
+donnant !!a{derivation} qui établit
+\[
+\lexists[y][\lforall[x][(x \in y \liff x \notin x)]] \Proves \lfalse.
+\]
+On pourra d'abord montrer
+$(A \lif \lnot A) \land (\lnot A \lif A)
+\Proves \lfalse$.
+\end{prob}
+\end{document}

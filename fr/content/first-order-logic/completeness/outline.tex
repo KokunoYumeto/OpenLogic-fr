@@ -1,0 +1,184 @@
+% Part: first-order-logic
+% Chapter: completeness
+% Section: outline
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{com}{out}}
+      {\olfileid[fr]{pl}{com}{out}}
+
+\olsection{Plan de la démonstration}
+
+La démonstration du théorème de complétude est assez complexe, et il
+est facile de s'y perdre à la première lecture. En voici donc le
+plan. La première étape consiste à changer de point de vue pour
+entrevoir une stratégie. Si l'on formule la complétude ainsi : « si
+$\Gamma\Entails !A$, alors $\Gamma\Proves !A$ », il n'est pas
+évident de savoir par où commencer. Pour montrer
+$\Gamma\Proves !A$, il faut trouver !!a{derivation}, et l'hypothèse
+$\Gamma\Entails !A$ ne semble pas nous y aider. Certains systèmes
+permettent de construire directement une telle !!{derivation}, mais
+nous suivrons une autre voie. Reformulons la complétude : « si
+$\Gamma$ est cohérent, alors il est satisfaisable ». Peut-être
+pourrons-nous utiliser les informations contenues dans~$\Gamma$ et
+sa cohérence pour construire
+\iftag{FOL}{!!a{structure}}{!!a{valuation}} qui satisfait chaque
+\iftag{FOL}{!!{sentence}}{!!{formula}} de~$\Gamma$. Après tout,
+nous savons ce que nous cherchons :
+\iftag{FOL}{!!a{structure}}{!!a{valuation}} qui se comporte comme le
+décrit~$\Gamma$ !{}
+
+Si $\Gamma$ ne contient que des
+\iftag{FOL}{!!{sentence}s atomiques}{!!{propositional variable}s},
+il est facile d'en construire un modèle.\iftag{FOL}{ Pour cette
+première construction, prenons des !!{sentence}s atomiques sans
+égalité, de la forme $\Atom{P}{a_1,\dots,a_n}$, où les $a_i$ sont
+des !!{constant}s.}{}
+Il suffit de définir
+\iftag{FOL}{%
+  !!a{domain}~$\Domain{M}$ et une interprétation de~$P$ telle que
+  $\Sat{M}{\Atom{P}{a_1,\ldots,a_n}}$. Prenons
+  $\Domain{M}=\Nat$ et $\Assign{\Obj c_i}{M}=i$. Pour chaque
+  $\Atom{P}{a_1,\ldots,a_n}\in\Gamma$, mettons le tuple
+  $\tuple{k_1,\dots,k_n}$ dans $\Assign{P}{M}$, où $k_i$ est
+  l'indice de la constante~$a_i$, c'est-à-dire
+  $a_i\ident\Obj c_{k_i}$. Dans cette construction initiale,
+  $\Assign{P}{M}$ contient exactement les tuples ainsi
+  prescrits.}{%
+  !!a{valuation}~$\pAssign{v}$ telle que $\pSat{v}{p}$ pour tout
+  $p\in\Gamma$. Posons $\pAssign{v}(p)=\True$ si et seulement si
+  $p\in\Gamma$.}
+
+Supposons maintenant que $\Gamma$ contienne une !!{formula}
+$\lnot !B$, où $!B$ est atomique. On pourrait craindre que la
+construction de $\iftag{FOL}{\Struct{M}}{\pAssign{v}}$ nous empêche
+de rendre $\lnot !B$ vraie. C'est ici que la cohérence de~$\Gamma$
+intervient : si $\lnot !B\in\Gamma$, alors $!B\notin\Gamma$,
+sinon $\Gamma$ serait incohérent. Or, si $!B\notin\Gamma$, notre
+construction donne
+$\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$, donc
+$\iftag{FOL}{\Sat{M}}{\pSat{v}}{\lnot !B}$. Jusque-là, tout va bien.
+
+Que faire si $\Gamma$ contient des formules composées, non atomiques ?
+Supposons qu'il contienne $!A\land !B$. Pour rendre cette formule
+vraie, nous devons procéder comme si $!A$ et $!B$ appartenaient tous
+deux à~$\Gamma$. Si $!A\lor !B\in\Gamma$, il faut rendre au moins
+l'une des deux formules vraie, donc procéder comme si l'une d'elles
+appartenait à~$\Gamma$.
+
+Voici l'idée : ajoutons des !!{formula}s à~$\Gamma$ de façon
+(a) à conserver la cohérence de l'ensemble obtenu, (b) à décider
+chaque \iftag{FOL}{!!{sentence}}{!!{formula}}~$!A$ en y plaçant
+$!A$ ou $\lnot !A$, et (c) à faire en sorte que, s'il contient
+$!A\land !B$, il contienne
+aussi $!A$ et $!B$, tandis que, s'il contient $!A\lor !B$, il
+contienne au moins l'un des deux, etc. Poursuivons ces ajouts,
+éventuellement sans fin, et appelons $\Gamma^*$ l'ensemble formé de
+$\Gamma$ et de toutes les !!{formula}s ainsi
+ajoutées. La construction précédente fournira alors
+\iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
+dont nous pourrons démontrer par récurrence qu'elle satisfait
+\iftag{FOL}{tous les !!{sentence}s}{toutes les !!{formula}s}
+de~$\Gamma^*$, et donc tout élément de~$\Gamma$ puisque
+$\Gamma\subseteq\Gamma^*$. Les conditions (a) et (b) entraînent
+les propriétés propositionnelles décrites en~(c).
+Un ensemble vérifiant~(b) est dit \emph{complet}. Notre tâche sera
+donc d'étendre l'ensemble cohérent~$\Gamma$ en un ensemble cohérent
+et complet~$\Gamma^*$.
+
+\iftag{FOL}{%
+Une difficulté subsiste. Si $\lexists[x][!A(x)]\in\Gamma$, nous
+voudrions choisir une !!{constant}~$c$ et ajouter $!A(c)$. Mais
+pourquoi cela serait-il toujours possible ? Notre langage ne contient
+peut-être que quelques !!{constant}s, et $\Gamma$ pourrait contenir
+$\lnot !A(c)$ pour chacune d'elles. Ajouter aussi $!A(c)$ rendrait
+l'ensemble incohérent : nous ne saurions plus si $\Struct{M}$ doit
+rendre $!A(c)$ ou $\lnot !A(c)$ vraie. Il se peut même que le langage
+de~$\Gamma$ ne possède aucune constante, comme celui de la théorie
+des ensembles.
+
+La solution consiste à ajouter d'emblée une infinité de constantes,
+ainsi que des !!{sentence}s qui les relient convenablement aux
+quantificateurs. Il faudra évidemment vérifier que cela n'introduit
+pas d'incohérence.
+
+La construction initiale fonctionne bien lorsque les !!{sentence}s
+atomiques ne contiennent que des constantes. Mais le langage peut
+aussi comporter des !!{function}s. Il pourrait alors être difficile
+de trouver les fonctions sur~$\Nat$ à attribuer à ces symboles pour
+que tout fonctionne. Voici une autre idée : au lieu d'interpréter
+$\Obj c_i$ par~$i$, prenons comme domaine l'ensemble des constantes
+elles-mêmes. La !!{structure}~$\Struct M$ pourra alors attribuer
+chaque constante à elle-même : $\Assign{\Obj c_i}{M}=\Obj c_i$.
+Prenons pour $\Domain{M}$ l'ensemble de tous les
+\emph{termes clos} du langage. Il existe alors une interprétation
+naturelle des symboles de fonction par des fonctions qui prennent des
+termes en arguments et produisent des termes en valeurs. Au symbole
+$\Obj f^n_i$, nous attribuons la fonction qui envoie les $n$ termes
+$t_1,\dots,t_n$ sur le terme $\Obj f^n_i(t_1,\dots,t_n)$.
+
+Reste à traiter~$\eq$. Ce !!{predicate} a une interprétation fixée :
+$\Sat{M}{\eq[t][t']}$ si et seulement si
+$\Value{t}{M}=\Value{t'}{M}$. Si la valeur de chaque terme~$t$ est
+le terme~$t$ lui-même, la !!{structure} ne rendra vrai aucun
+!!{sentence} de la forme $\eq[t][t']$ à moins que $t$ et $t'$ ne
+soient un seul et même terme. Cela pose problème : presque toute
+théorie intéressante dans un langage comportant des !!{function}s a
+des théorèmes de la forme $\eq[t][t']$ pour des termes distincts ;
+par exemple, en arithmétique, $\eq[(\Obj 0+\Obj 0)][\Obj 0]$.
+Nous modifions donc le domaine de~$\Struct M$ : ses objets seront
+des classes de termes plutôt que des termes isolés. Deux termes
+appartiendront à la même classe lorsque les égalités de~$\Gamma^*$
+exigent qu'ils aient la même valeur. Si $\Gamma$ est une théorie
+arithmétique, l'une de ces classes contiendra par exemple
+$\Obj 0$, $(\Obj 0+\Obj 0)$, $(\Obj 0\times\Obj 0)$, etc. Elle
+sera l'interprétation de~$\Obj 0$ et la valeur de chacun de ses
+termes, notamment $(\Obj 0+\Obj 0)$. Ainsi, l'!!{sentence}
+$\eq[(\Obj 0+\Obj 0)][\Obj 0]$ sera vrai dans cette nouvelle
+!!{structure}.}{}
+
+Voici les étapes de la démonstration. Nous étudierons d'abord les
+ensembles cohérents et !!{complete}s. En particulier, nous montrerons
+qu'un tel ensemble contient $!A\land !B$ si et seulement s'il
+contient à la fois $!A$ et $!B$, qu'il contient $!A\lor !B$ si et
+seulement s'il contient au moins l'une des deux, etc.
+(\olref[ccs]{prop:ccs}).\iftag{FOL}{ Nous définirons ensuite les
+ensembles saturés. Un tel ensemble contient des implications
+qui relient les !!{sentence}s quantifiés à leurs instances
+(\olref[hen]{defn:henkin-exp}). Nous montrerons que tout ensemble
+cohérent~$\Gamma$ s'étend en un ensemble cohérent et saturé~$\Gamma'$
+(\olref[hen]{lem:henkin}). S'il est cohérent, saturé et
+!!{complete}, un ensemble vérifie en outre les propriétés suivantes :
+il contient
+\iftag{prvEx}{$\lexists[x][!A(x)]$ si et seulement s'il contient
+$!A(t)$ pour un terme clos~$t$}{}\iftag{defEx,defAll}{}{ et
+}\iftag{prvAll}{$\lforall[x][!A(x)]$ si et seulement s'il contient
+$!A(t)$ pour tout terme clos~$t$}{}.
+(\olref[hen]{prop:saturated-instances}).}{}
+Nous partirons alors de l'ensemble cohérent
+$\iftag{FOL}{\Gamma'}{\Gamma}$,\iftag{FOL}{ déjà saturé,}{} pour
+l'étendre en un ensemble~$\Gamma^*$
+\iftag{FOL}{saturé, cohérent et}{cohérent et} !!{complete}
+(\olref[lin]{lem:lindenbaum}). C'est cet ensemble qui servira à
+définir notre
+\iftag{FOL}{modèle des termes~$\Struct M(\Gamma^*)$}{!!{valuation}~$\pAssign v(\Gamma^*)$}.
+\iftag{FOL}{Le domaine du modèle des termes est l'ensemble des termes
+clos, et l'interprétation de ses !!{predicate}s est déterminée par
+les !!{sentence}s atomiques}{La valuation est déterminée par les
+!!{propositional variable}s} de~$\Gamma^*$
+(\olref[mod]{defn:termmodel}). Nous utiliserons les propriétés des
+ensembles cohérents, !!{complete}s\iftag{FOL}{ et saturés}{} pour
+montrer que
+$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!A}$ si et
+seulement si $!A\in\Gamma^*$ (\olref[mod]{lem:truth}), et donc, en
+particulier,
+$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{\Gamma}$.
+\iftag{FOL}{Enfin, dans un langage avec~$\eq$, nous définirons
+un modèle quotient des termes
+(\olref[ide]{defn:term-model-factor}) et montrerons qu'il
+satisfait~$\Gamma^*$ (\olref[ide]{lem:truth}).}{}
+
+\end{document}

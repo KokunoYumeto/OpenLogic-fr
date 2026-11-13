@@ -1,0 +1,21 @@
+% Render proof boxes as native math for the SVG. TeX4ht's MathML math hook
+% inserts a paragraph-width box, which stretches inference bars and premises.
+\long\def\OLProofHBox#1{\hbox{\everymath{}\everydisplay{}#1}}
+\newcommand\OLReplaceRemainingProofBoxes[1]{%
+  \patchcmd{#1}{\hbox}{\OLProofHBox}{\OLReplaceRemainingProofBoxes{#1}}{}%
+}
+\newcommand\OLUseNativeProofBoxes[1]{%
+  \patchcmd{#1}{\hbox}{\OLProofHBox}{\OLReplaceRemainingProofBoxes{#1}}{%
+    \PackageError{openlogic-epub}{Cannot patch proof boxes in \string#1}%
+      {Check the Bussproofs definitions used for the EPUB conversion.}%
+  }%
+}
+\OLUseNativeProofBoxes{\Axiom}
+\OLUseNativeProofBoxes{\AxiomC}
+\OLUseNativeProofBoxes{\buildConclusion}
+\OLUseNativeProofBoxes{\buildConclusionC}
+\OLUseNativeProofBoxes{\LeftLabel}
+\OLUseNativeProofBoxes{\RightLabel}
+\OLUseNativeProofBoxes{\LeftSubproofLabel}
+\OLUseNativeProofBoxes{\RightSubproofLabel}
+\OLUseNativeProofBoxes{\Deduce}

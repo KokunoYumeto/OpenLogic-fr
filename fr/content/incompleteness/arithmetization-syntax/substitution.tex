@@ -1,0 +1,57 @@
+% Part: incompleteness
+% Chapter: arithmetization-syntax
+% Section: substitution
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{art}{sub}
+\olsection{Substitution}
+
+Rappelons que la substitution consiste à remplacer par un terme~$t$
+toutes les occurrences libres d'!!a{variable}~$u$ dans
+!!a{formula}~$!A$, à condition que $t$ soit libre pour~$u$ dans~$!A$ ; le résultat s'écrit $\Subst{!A}{t}{u}$.\footnote{Précision éditoriale : cette condition, présente dans la définition antérieure de la substitution, est omise ici dans la source. La récurrence ci-dessous remplace les symboles sans renommer les variables ; hors de ce domaine, elle peut produire une capture.} Cette
+opération, effectuée sur les numéros de G\"odel des !!{variable}s,
+des !!{formula}s et des termes, est récursive primitive.
+
+\begin{prop}\ollabel{prop:subst-primrec}
+Il existe une fonction récursive primitive $\fn{Subst}(x, y, z)$
+telle que, lorsque $t$ est libre pour~$u$ dans~$!A$
+\[
+\fn{Subst}(\Gn{!A}, \Gn{t}, \Gn{u}) = \Gn{\Subst{!A}{t}{u}}.
+\]
+\end{prop}
+
+\begin{proof}
+Nous pouvons définir par récurrence primitive une fonction
+$\fn{hSubst}$ comme suit :
+\begin{multline*}
+\begin{aligned}
+\fn{hSubst}(x, y, z, 0) & = \emptyseq \\
+\fn{hSubst}(x, y, z, i+1) & =
+\end{aligned}\\
+\begin{cases}
+\fn{hSubst}(x, y, z, i) \concat y & \text{si $\fn{FreeOcc}(x, z, i)$} \\
+\fn{append}(\fn{hSubst}(x, y, z, i), (x)_{i}) & \text{sinon.}
+\end{cases}
+\end{multline*}
+Nous définissons alors $\fn{Subst}(x, y, z)$ par
+$\fn{hSubst}(x, y, z, \len{x})$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:free-for}
+La relation $\fn{FreeFor}(x, y, z)$, vraie si et seulement si le terme
+de numéro de G\"odel~$y$ est !!{free for} la variable de numéro de
+G\"odel~$z$ dans la formule de numéro de G\"odel~$x$, est récursive
+primitive.
+\end{prop}
+
+\begin{proof} Exercice. \end{proof}
+
+\begin{prob}
+Démontrer la \olref[inc][art][sub]{prop:free-for}.
+\end{prob}
+
+\end{document}

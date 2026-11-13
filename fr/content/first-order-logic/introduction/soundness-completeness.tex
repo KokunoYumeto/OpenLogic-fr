@@ -11,16 +11,14 @@
 \olsection{Correction et complétude}
 
 Nous présenterons aussi des systèmes de !!{derivation} pour la logique
-du premier ordre. Les logiciens en ont élaboré de nombreux, mais tous
-définissent la même relation de !!{derivability} entre
-!!{sentence}s. Nous disons que $!A$ est \emph{!!{derivable} à partir
-de~$\Gamma$}, et nous écrivons $\Gamma \Proves !A$, s'il existe une
-!!{derivation} d'un type défini avec précision. Les
-!!{derivation}s sont toujours des agencements finis de symboles :
-parfois des listes d'!!{sentence}s, parfois des structures plus
-complexes. Les systèmes de !!{derivation} doivent fournir un outil qui
-permet de déterminer si !!a{sentence} est entraîné par un
-ensemble~$\Gamma$. Pour qu'ils remplissent cette fonction, il faut que
+du premier ordre. Les systèmes que nous étudierons définissent la
+même relation de !!{derivability}. Nous disons que $!A$ est
+\emph{!!{derivable} à partir de~$\Gamma$}, et nous écrivons
+$\Gamma \Proves !A$, s'il existe une !!{derivation} de~$!A$ à
+partir d'hypothèses de~$\Gamma$. Les !!{derivation}s sont des
+agencements finis de symboles, parfois des listes d'!!{sentence}s,
+parfois des structures plus complexes. Elles servent à établir
+les conséquences logiques d'un ensemble~$\Gamma$. Nous voulons que
 $\Gamma \Entails !A$ si et seulement si $\Gamma \Proves !A$.
 
 Si $\Gamma \Proves !A$ mais non $\Gamma \Entails !A$, notre système de
@@ -52,12 +50,13 @@ complétude répond donc à la question suivante : quels ensembles
 d'!!{sentence}s possèdent des modèles ? Exactement les ensembles
 cohérents.
 
-Les théorèmes de correction et de complétude ont deux conséquences
-majeures : les théorèmes de compacité et de L\"owenheim--Skolem. Ce sont
-des résultats importants de la théorie des modèles, qui servent à en
-établir beaucoup d'autres. Nous en avons déjà mentionné deux : la
-logique du premier ordre ne peut exprimer ni que le !!{domain}
-d'!!a{structure} est fini, ni qu'il est !!{nonenumerable}.
+Les théorèmes de correction et de complétude conduisent aux théorèmes
+de compacité et de L\"owenheim--Skolem. Ces résultats de théorie des
+modèles expliquent les limitations déjà évoquées. Un ensemble
+d'!!{sentence}s ne peut caractériser la classe des !!{structure}s de
+!!{domain} fini. Dans un langage au plus dénombrable, il ne peut
+caractériser non plus la classe des !!{structure}s de !!{domain}
+!!{nonenumerable}.
 
 Historiquement, il a fallu beaucoup de temps pour comprendre et mettre
 au point tout cet édifice : la définition de la syntaxe et de la

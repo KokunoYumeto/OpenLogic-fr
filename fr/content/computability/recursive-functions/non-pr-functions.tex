@@ -1,0 +1,103 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: non-pr-functions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{npr}
+\olsection{Fonctions non récursives primitives}
+
+Les fonctions récursives primitives n'épuisent pas les fonctions
+calculables au sens intuitif. Il paraît clair que nous pouvons
+énumérer toutes les fonctions récursives primitives unaires sous
+la forme $f_0,f_1,f_2,~\dots$, de telle sorte que la valeur de
+$f_x$ en~$y$ soit calculable effectivement. Autrement dit, la
+fonction $g(x,y)$ définie par
+\[
+g(x,y) = f_x(y)
+\]
+est calculable. Il en va donc de même de la fonction
+\begin{eqnarray*}
+h(x) & = & g(x,x) + 1 \\
+& = & f_x(x) +1.
+\end{eqnarray*}
+Pour chaque fonction récursive primitive $f_i$, les valeurs de
+$h$ et de $f_i$ diffèrent en~$i$. Ainsi, $h$ est calculable
+mais n'est pas récursive primitive; il en va de même de~$g$.
+C'est une version « effective » de l'argument diagonal de Cantor.
+
+On peut donner des exemples plus explicites de fonctions calculables
+qui ne sont pas récursives primitives. Ainsi, notons $g^n(x)$
+l'expression $g(g(\dots g(x)))$, où $g$ apparaît $n$~fois, avec $g^0(x)=x$, et
+définissons une suite de fonctions $g_0,g_1,\dots$ par
+\begin{eqnarray*}
+g_0(x) & = & x+1 \\
+g_{n + 1}(x) & = & g_n^x(x)
+\end{eqnarray*}
+On peut vérifier que chaque fonction $g_n$ est récursive primitive.
+Chacune croît beaucoup plus vite que la précédente :
+$g_1(x)=2x$, $g_2(x)=2^x\cdot x$, et la croissance de
+$g_3(x)$ est approximativement celle d'une tour exponentielle
+formée de $x$~copies de~$2$. La fonction d'Ackermann--Péter
+correspond essentiellement à la fonction $G(x)=g_x(x)$;
+on peut montrer que celle-ci finit par dominer toute fonction
+récursive primitive.
+
+Revenons à l'énumération des fonctions récursives primitives.
+Rappelons que nous avons attribué une notation symbolique à chacune
+d'elles : il suffit donc d'énumérer ces notations. À chaque
+notation~$F$, nous pouvons associer récursivement un entier
+naturel $\#(F)$ de la manière suivante :
+\begin{eqnarray*}
+\#(0) & = & \langle 0 \rangle \\
+\#(S) & = & \langle 1 \rangle \\
+\#(\Proj{n}{i}) & = & \langle 2, n, i \rangle \\
+\#(\fn{Comp}_{k,l}[H,G_0,\dots,G_{k-1}]) & = & \langle
+3,k,l,\#(H),\#(G_0),\dots,\#(G_{k-1}) \rangle \\
+\#(\fn{Rec}_l[G,H]) & = & \langle 4, l, \#(G), \#(H) \rangle
+\end{eqnarray*}
+Nous utilisons ici le codage des suites de nombres par des entiers
+naturels présenté dans la section précédente. Chaque notation
+reçoit ainsi un code numérique. Certaines suites, et donc certains
+entiers, ne correspondent certes à aucune notation. Posons alors
+$f_i$ égal à la fonction récursive primitive unaire dont la
+notation porte le code~$i$, si $i$ code une telle notation, et
+égal à la fonction constante nulle dans le cas contraire. Nous
+obtenons ainsi une énumération explicite de toutes les fonctions
+récursives primitives unaires.
+
+(Certaines fonctions, dont la fonction constante nulle, figurent
+plusieurs fois dans cette liste. Cela ne tient pas seulement à
+notre codage : la fonction constante nulle possède elle-même
+plusieurs notations. Il existe pourtant des énumérations effectives
+sans répétition. En revanche, aucune fonction calculable
+ne décide si une notation donnée représente
+la fonction constante nulle.)\footnote{Correction éditoriale : l'impossibilité générale d'une énumération effective sans répétition, affirmée dans la source, est fausse. Voir Shih-Chao Liu, \emph{An enumeration of the primitive recursive functions without repetition}, \emph{Tohoku Mathematical Journal}, deuxième série, 12(3), 1960, p.~400–402, \href{https://doi.org/10.2748/tmj/1178244403}{doi:10.2748/tmj/1178244403}. Ce résultat ne fournit pas de décision d'égalité à la fonction nulle à partir d'une notation arbitraire.}
+
+Nous pouvons maintenant poser $g(x,y)=f_x(y)$ pour cette
+énumération. Pourquoi $g(x,y)$ est-elle calculable ?
+Intuitivement, la réponse est claire : pour calculer $g(x,y)$,
+on décode d'abord~$x$ et on vérifie s'il s'agit d'une
+notation de fonction unaire. Si c'est le cas, on calcule
+la valeur de cette fonction en~$y$; sinon, on renvoie~$0$.
+
+\begin{tagblock}{TMs}
+\begin{digress}
+Vous êtes peut-être déjà convaincu qu'avec un certain travail,
+on peut écrire un programme, en Java ou en C++ par exemple,
+qui effectue ce calcul. Nous pouvons alors invoquer la thèse
+de Church--Turing : tout ce qui est calculable au sens intuitif
+peut être calculé par une machine de Turing.
+
+Une démonstration plus directe consisterait à décrire explicitement
+une machine de Turing qui calcule~$g$. Elle éviterait tout recours
+à la thèse de Church--Turing ou à l'intuition. Nous disposerons
+bientôt des outils nécessaires pour montrer que $g$ est calculable
+au moyen d'un modèle de calcul que l'on peut \emph{simuler} sur
+une machine de Turing : celui des fonctions récursives.
+\end{digress}
+\end{tagblock}
+
+\end{document}

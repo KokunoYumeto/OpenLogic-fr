@@ -1,0 +1,99 @@
+% Part: first-order-logic
+% Chapter: model-theory
+% Section: partial-iso
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{bas}{dlo}
+\section{Ordres linéaires denses}
+
+\begin{defn}
+  Un \emph{ordre linéaire dense sans extrémités} est
+  !!a{structure}~$\Struct{M}$ pour le !!{language}
+  ne contenant qu'un !!{predicate} binaire~$<$,
+  qui satisfait les énoncés suivants :
+  \begin{enumerate}
+  \item $\lforall[x][\lnot x < x]$;
+  \item $\lforall[x][\lforall[y][\lforall[z][(x < y \lif (y < z \lif x
+    <z ))]]]$;
+  \item $\lforall[x][\lforall[y][(x< y \lor \eq[x][y] \lor y < x)]]$;
+  \item $\lforall[x][\lexists[y][x < y]]$;
+  \item $\lforall[x][\lexists[y][y < x]]$;
+  \item $\lforall[x][\lforall[y][(x < y \lif \lexists[z][(x < z \land
+        z < y))]]]$.
+ \end{enumerate}
+\end{defn}
+
+\begin{thm}\ollabel{thm:cantorQ}
+  Deux ordres linéaires denses sans extrémités
+  !!{enumerable}s sont isomorphes.
+\end{thm}
+
+\begin{proof}
+  Soient $\Struct{M_1}$ et $\Struct{M_2}$ deux ordres linéaires
+  denses sans extrémités !!{enumerable}s, avec
+  ${<_1} = \Assign{<}{M_1}$ et ${<_2} = \Assign{<}{M_2}$.
+  Soit $\PIso{I}$ l'ensemble de tous les isomorphismes
+  partiels entre ces deux structures. Il est non vide,
+  puisque $\emptyset \in \PIso{I}$. Montrons qu'il
+  possède la propriété de va-et-vient; alors
+  $\Struct{M_1} \iso[p] \Struct{M_2}$, et le théorème
+  découlera du \olref[pis]{thm:p-isom1}.
+
+  Pour la propriété d'aller, prenons $p \in \PIso{I}$
+  et supposons $p(a_i) = b_i$ pour $i = 1$, \dots,~$n$,
+  avec, quitte à réindexer,
+  $a_1 <_1 a_2 <_1 \cdots <_1 a_n$.
+  Soit $a \in \Domain{M_1}$. Si $a$ appartient déjà
+  au domaine de $p$, prenons $q=p$. Sinon, si
+  $n=0$, choisissons n'importe quel
+  $b\in\Domain{M_2}$. Pour $n>0$, choisissons
+  $b \in \Domain{M_2}$ selon la position de $a$ :\footnote{Complément éditorial : la source n'explicite ni le cas où $a$ est déjà dans le domaine, ni celui de l'application vide. Nous traitons ces deux cas avant les trois positions d'intervalle.}
+  \begin{enumerate}
+  \item si $a <_1 a_1$, prenons $b$ tel que $b <_2 b_1$;
+  \item si $a_n <_1 a$, prenons $b$ tel que $b_n <_2 b$;
+  \item si $a_i <_1 a <_1 a_{i+1}$ pour un certain $i$,
+    prenons $b$ tel que $b_i <_2 b <_2 b_{i+1}$.
+  \end{enumerate}
+  Un tel $b$ existe parce que $\Struct{M_2}$ est un
+  ordre linéaire dense sans extrémités. Dans les cas
+  où $a$ n'appartient pas au domaine de $p$, posons
+  $q = p \cup \{ \langle a, b \rangle \}$.
+  On obtient $q \in \PIso{I}$, prolongement voulu de
+  $p$. Cela établit la propriété d'aller. La propriété
+  de retour se démontre de même. Ainsi,
+  $\Struct{M_1} \iso[p] \Struct{M_2}$ et, par le
+  \olref[pis]{thm:p-isom1}, $\Struct{M_1} \iso
+  \Struct{M_2}$.
+\end{proof}
+
+\begin{prob}
+  Compléter la démonstration du
+  \olref[mod][bas][dlo]{thm:cantorQ}
+  en vérifiant que $\PIso{I}$ possède la propriété de retour.
+\end{prob}
+
+\begin{rem}
+  Soit $\Struct{S}$ un ordre linéaire dense sans
+  extrémités !!{enumerable} quelconque. Par le
+  \olref{thm:cantorQ}, on a $\Struct{S} \iso
+  \Struct{Q}$, où $\Struct{Q} = (\Rat, <)$
+  est l'ordre linéaire dense !!{enumerable} dont le
+  !!{domain} est l'ensemble $\Rat$ des nombres rationnels.
+  Reprenons la !!{structure}~$\Struct{R} =
+  (\Real, <)$ de la \olref[thm]{remark:R}. Nous avons
+  vu qu'il existe !!a{structure}~$\Struct{S}$
+  !!{enumerable} telle que $\Struct{R} \elemequiv
+  \Struct{S}$. Or $\Struct{S}$ est un ordre linéaire
+  dense sans extrémités !!{enumerable} : elle est donc
+  isomorphe, et par suite élémentairement équivalente,
+  à $\Struct{Q}$. Par transitivité de l'équivalence
+  élémentaire, $\Struct{R} \elemequiv
+  \Struct{Q}$. On aurait aussi pu le montrer
+  directement en établissant $\Struct{R}
+  \iso[p] \Struct{Q}$ par le même argument
+  de va-et-vient.
+\end{rem}
+\end{document}

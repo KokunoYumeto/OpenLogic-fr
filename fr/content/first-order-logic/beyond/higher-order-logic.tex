@@ -1,0 +1,136 @@
+% Part: first-order-logic
+% Chapter: beyond
+% Section: higher-order-logic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{byd}{hol}
+
+\olsection{Logique d'ordre supérieur}
+
+Le passage de la logique du premier ordre à celle du second ordre
+nous a permis de parler, dans le langage formel, d'ensembles d'objets
+du !!{domain} du premier ordre. Pourquoi s'arrêter là ? La logique du
+troisième ordre devrait, par exemple, nous permettre de traiter
+d'ensembles d'ensembles d'objets, voire d'ensembles contenant à la
+fois des objets et des ensembles d'objets. La logique du quatrième
+ordre nous permettrait alors de parler d'ensembles d'objets de cette
+sorte. On peut, comme on s'en doute, itérer l'idée à volonté.
+
+En pratique, la logique d'ordre supérieur est souvent formulée en
+termes de fonctions plutôt que de relations. (À des identifications
+naturelles près, la différence est sans importance.) Étant donné des
+« sortes » de base $A$, $B$, $C$,~\dots, que nous appellerons
+désormais des « types », nous pouvons en former de nouveaux en posant :
+\begin{quote}
+Si $\sigma$ et $\tau$ sont des types finis, alors $\sigma \to \tau$
+en est un aussi.
+\end{quote}
+Les types sont des « étiquettes » syntaxiques qui classent les objets
+que nous souhaitons inclure dans notre !!{domain}; $\sigma \to \tau$
+désigne les objets qui sont des fonctions prenant des objets de
+type~$\sigma$ comme arguments et produisant des objets de type~$\tau$.
+Nous pourrions, par exemple, disposer d'un type $\Omega$ de valeurs
+de vérité, « vrai » et « faux », et d'un type $\Nat$ de nombres
+naturels. On peut alors considérer les objets de type $\Nat \to
+\Omega$ comme des relations unaires, ou des sous-ensembles de $\Nat$;
+ceux de type $\Nat \to \Nat$ comme des fonctions des nombres naturels
+vers eux-mêmes; et ceux de type $(\Nat \to \Nat) \to \Nat$ comme des
+« fonctionnelles », c'est-à-dire des fonctions de type supérieur qui
+prennent des fonctions pour arguments et renvoient des nombres.
+
+Comme pour la logique du second ordre, on peut envisager la logique
+d'ordre supérieur comme une logique multi-sortée, avec une sorte pour
+chaque type d'objet considéré. Il est toutefois généralement plus
+clair de définir directement la syntaxe d'ordre supérieur. Définissons
+par exemple, par induction, l'ensemble des types finis :
+\begin{enumerate}
+\item $\Nat$ est un type fini.
+\item Si $\sigma$ et $\tau$ sont des types finis, alors $\sigma
+  \to \tau$ en est un aussi.
+\item Si $\sigma$ et $\tau$ sont des types finis, alors $\sigma \times
+  \tau$ en est un aussi.
+\end{enumerate}
+Intuitivement, $\Nat$ désigne le type des nombres naturels,
+$\sigma \to \tau$ celui des fonctions de $\sigma$ vers $\tau$, et
+$\sigma \times \tau$ celui des couples formés d'un objet de $\sigma$
+et d'un objet de $\tau$. Définissons ensuite, toujours par induction,
+un ensemble de termes :
+\begin{enumerate}
+\item Pour chaque type $\sigma$, on dispose de variables $x$, $y$,
+  $z$, \dots de type $\sigma$.
+\item $\Obj 0$ est un terme de type $\Nat$.
+\item $\Obj S$ (successeur) est un terme de type $\Nat \to \Nat$.
+\item Si $s$ est un terme de type $\sigma$, et $t$ un terme de type
+  $\Nat \to (\sigma \to \sigma)$, alors $\Obj{R}_{st}$ est un terme
+  de type $\Nat \to \sigma$.
+\item Si $s$ est un terme de type $\tau \to \sigma$ et $t$ un terme
+  de type~$\tau$, alors $s(t)$ est un terme de type $\sigma$.
+\item Si $s$ est un terme de type~$\sigma$ et $x$ une variable de
+  type~$\tau$, alors $\lambd[x][s]$ est un terme de type
+  $\tau \to \sigma$.
+\item Si $s$ est un terme de type~$\sigma$ et $t$ un terme de
+  type~$\tau$, alors $\tuple{s, t}$ est un terme de type
+  $\sigma \times \tau$.
+\item Si $s$ est un terme de type~$\sigma \times \tau$, alors
+  $p_1(s)$ est un terme de type~$\sigma$ et $p_2(s)$ un terme de
+  type~$\tau$.
+\end{enumerate}
+Intuitivement, $\Obj{R}_{st}$ désigne la fonction définie par
+récurrence au moyen de
+\begin{align*}
+\Obj{R}_{st}(0) & = s \\
+\Obj{R}_{st}(x+1) & = t(x)(\Obj{R}_{st}(x)),
+\end{align*}
+$\tuple{s, t}$ désigne le couple dont la première composante
+est~$s$ et la seconde~$t$, tandis que $p_1(s)$ et~$p_2(s)$ désignent
+les première et seconde composantes (les « projections ») de~$s$.\footnote{Précisions éditoriales : « type fini » désigne ici un type engendré par un nombre fini d'étapes syntaxiques, sans affirmer que son domaine est fini. L'étape du récurseur est écrite avec les applications successives requises par le type déclaré de $t$, là où la source écrit une application à deux arguments.}
+Enfin, $\lambd[x][s]$ désigne la fonction~$f$ définie par
+\[
+f(x) = s
+\]
+pour tout~$x$ de type~$\tau$\footnote{Correction éditoriale : le type de $x$ est $\tau$, comme dans la clause (6), et non $\sigma$, comme l'indique ici la source.}; la clause (6) fournit donc une forme
+de compréhension, qui permet de définir des fonctions à l'aide de
+termes. Les !!{formula}s se construisent à partir des énoncés
+d'!!{identity} $\eq[s][t]$ entre termes de même type, des connecteurs
+propositionnels usuels et de quantificateurs portant sur les types
+supérieurs. On peut alors prendre pour axiomes les équations
+fondamentales qui régissent les termes ainsi définis, accompagnées
+des règles logiques usuelles pour les quantificateurs et
+l'!!{identity}.
+
+Si l'on ajoute au système des types finis un type $\Omega$ de
+valeurs de vérité, il faut également des axiomes régissant son emploi.
+Avec un choix judicieux de définitions, on peut même se passer
+entièrement des !!{formula}s complexes et les remplacer par des termes
+de type $\Omega$ !{} On modifie alors le système de !!{derivation}
+en conséquence. On obtient essentiellement la \emph{théorie simple
+des types} publiée par Alonzo Church en 1940.\footnote{Correction éditoriale : la source indique les années 1930 ; l'article de Church, \emph{A Formulation of the Simple Theory of Types}, paraît dans le \emph{Journal of Symbolic Logic}, 5(2), en juin 1940, p.~56--68, \href{https://doi.org/10.2307/2266170}{doi:10.2307/2266170}.}
+
+Comme pour la logique du second ordre, plusieurs versions de la
+sémantique d'ordre supérieur sont possibles. Dans la version pleine,
+les variables de type $\sigma \to \tau$ parcourent l'ensemble de
+\emph{toutes} les fonctions des objets de type~$\sigma$ vers ceux de
+type~$\tau$. Cette sémantique est trop forte pour
+admettre un système de !!{derivation} à la fois complet et effectif.
+On peut cependant considérer une sémantique plus faible, où
+!!a{structure} se compose d'ensembles d'éléments $T_\tau$ pour
+chaque type $\tau$, ainsi que d'opérations appropriées
+d'application, de projection, etc. Si l'on précise convenablement
+ces notions, on obtient des théorèmes de complétude pour les
+systèmes de !!{derivation} décrits plus haut.
+
+La logique d'ordre supérieur est attrayante parce qu'elle fournit un
+cadre où une bonne part des mathématiques s'exprime naturellement :
+à partir de $\Nat$, on peut définir les nombres réels, les fonctions
+continues, et ainsi de suite. Elle présente un intérêt particulier
+dans le contexte de la logique intuitionniste, puisque les types y
+admettent des interprétations « constructives » claires. On peut
+en effet élaborer des versions constructives de la sémantique d'ordre
+supérieur, fondées sur la logique intuitionniste plutôt que classique;
+elles éclairent ces interprétations et sont, à bien des égards, plus
+intéressantes que leurs homologues classiques.
+
+\end{document}

@@ -1,0 +1,176 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{cardinals}{cardsasords}
+\olsection{Les cardinaux comme ordinaux}
+
+En fait, notre théorie des cardinaux utilisera sans
+vergogne notre théorie des ordinaux : nous définirons
+les cardinaux comme certains ordinaux particuliers.
+Plus précisément, nous proposerons ceci :
+
+\begin{defn}\ollabel{defcardinalasordinal}
+Si $A$ peut être bien ordonné, alors $\card{A}$
+est le plus petit ordinal $\gamma$ tel que
+$\cardeq{A}{\gamma}$. Pour tout ordinal $\gamma$,
+on dit que $\gamma$ est un \emph{cardinal} si
+et seulement si $\gamma = \card{\gamma}$.
+\end{defn}
+
+Nous venons de dire «~$A$ peut être bien ordonné~».
+Comme presque toujours en mathématiques, cette tournure
+modale n'est qu'une façon de parler d'une affirmation
+existentielle : elle signifie qu'il existe une relation
+qui met $A$ en bon ordre.
+
+Mais la \olref{defcardinalasordinal} présente une difficulté.
+Nous aimerions que \emph{tout} ensemble ait une taille,
+c'est-à-dire que $\card{A}$ existe pour chaque~$A$.
+Or la définition commence par une condition :
+«~\emph{Si} $A$ peut être bien ordonné\ldots~».
+S'il existe un ensemble $A$ qui ne peut pas être
+bien ordonné, elle ne définit tout simplement aucun
+objet~$\card{A}$.
+
+Pour utiliser la \olref{defcardinalasordinal},
+il nous faut donc la garantie que tout ensemble
+peut être bien ordonné. Cette garantie n'est
+malheureusement pas disponible dans~$\ZF$.
+Si nous voulons employer
+la \olref{defcardinalasordinal}, il faut donc
+ajouter un nouvel axiome, par exemple :
+\begin{axiom}[Bon ordre]
+Tout ensemble peut être bien ordonné.
+\end{axiom}
+Nous examinerons dans le
+\olref[choice][]{chap} si l'axiome du bon ordre
+est acceptable. Dorénavant, nous l'utiliserons
+simplement. Il devient alors assez facile de
+démontrer que les cardinaux (au sens de la
+\olref{defcardinalasordinal}) existent et se
+comportent comme il faut :
+
+\begin{lem}\ollabel{lem:CardinalsExist}
+Pour tout ensemble $A$ :
+\begin{enumerate}
+	\item\ollabel{cardaexists}
+	$\card{A}$ existe et est unique ;
+	\item\ollabel{cardaapprox}
+	$\cardeq{\card{A}}{A}$ ;
+	\item\ollabel{cardaidem}
+	$\card{A}$ est un cardinal, c'est-à-dire
+	$\card{A} = \card{\card{A}}$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Fixons $A$. D'après l'axiome du bon ordre,
+il existe un bon ordre $\tuple{A, R}$.
+Par le \olref[ordinals][ordtype]{thmOrdinalRepresentation},
+$\tuple{A, R}$ est isomorphe à un unique ordinal
+$\beta$. Donc $\cardeq{A}{\beta}$.
+Par récurrence transfinie, il existe un plus petit
+ordinal $\gamma$, unique, tel que
+$\cardeq{A}{\gamma}$. Ainsi,
+$\card{A} = \gamma$, ce qui établit
+\olref{cardaexists} et \olref{cardaapprox}.
+Pour \olref{cardaidem}, remarquons que
+si $\delta \in \gamma$, alors
+$\cardless{\delta}{A}$, par le choix de
+$\gamma$ ; de plus,
+$\cardless{\delta}{\gamma}$, puisque
+l'équipotence est une relation d'équivalence
+(\olref[sfr][siz][equ]{equinumerosityisequi}).
+Donc $\gamma = \card{\gamma}$.
+% Par l'absurde, supposons qu'il existe
+% $\delta \in \gamma$ tel que
+% $\cardeq{\gamma}{\delta}$. Comme
+% $\cardeq{A}{\gamma}$, la transitivité de
+% l'équipotence donnerait
+% $\cardeq{A}{\delta}$, contrairement à la
+% minimalité de $\gamma$.
+\end{proof}
+
+Le résultat suivant garantit le principe de Cantor,
+et davantage encore. (Les cardinaux héritent de
+l'ordre des ordinaux : $\cardfont{a} <
+\cardfont{b}$ si et seulement si
+$\cardfont{a} \in \cardfont{b}$. Dans son
+énoncé, nous emploierons des lettres gothiques
+pour les objets dont nous savons qu'ils sont
+des cardinaux. C'est un usage assez répandu.
+Une autre convention courante consiste à employer
+des lettres grecques, puisque les cardinaux sont
+des ordinaux, en les choisissant au milieu de
+l'alphabet, par exemple $\kappa, \lambda$.) :
+\begin{lem}\ollabel{lem:CardinalsBehaveRight}
+Pour tous ensembles $A$ et $B$ :
+\begin{align*}
+	\cardeq{A}{B}
+	&\text{ ssi } \card{A} = \card{B}\\
+	\cardle{A}{B}
+	&\text{ ssi } \card{A} \leq \card{B}\\
+	\cardless{A}{B}
+	&\text{ ssi } \card{A} < \card{B}
+\end{align*}
+\end{lem}
+
+\begin{proof}
+Nous démontrerons de gauche à droite la deuxième
+équivalence (les autres cas sont semblables et
+laissés en exercice). Considérons le diagramme :
+\begin{center}
+	\begin{tikzpicture}
+	\node (nodea) {$A$};
+	\node[right = 6em of nodea] (nodeb) {$B$};
+	\node[below = 2em of nodea] (nodecarda) {$\card{A}$};
+	\node[below = 2em of nodeb] (nodecardb) {$\card{B}$};
+	\draw[->] (nodea)--(nodeb);
+	\draw[<->] (nodea)--(nodecarda);
+	\draw[<->] (nodeb)--(nodecardb);
+	\draw[->, dashed] (nodecarda)--(nodecardb);
+\end{tikzpicture}
+\end{center}
+Les flèches à deux pointes représentent des
+!!{bijection}s, dont l'existence est garantie
+par le \olref{lem:CardinalsExist}. Supposer
+$\cardle{A}{B}$, c'est supposer qu'il existe
+!!a{injection} $A\to B$. En suivant les flèches
+de $\card{A}$ à $A$, puis à $B$, enfin à
+$\card{B}$, nous obtenons !!a{injection}
+$\card{A} \to \card{B}$ (la flèche en pointillés).
+\end{proof}\noindent
+Nous pouvons aussi réutiliser
+le \olref{lem:CardinalsBehaveRight} pour redémontrer
+le théorème de Schröder--Bernstein : si
+$\cardle{A}{B}$ et $\cardle{B}{A}$,
+alors $\cardeq{A}{B}$. Nous l'avons énoncé
+dans le
+\olref[sfr][siz][sb]{thm:schroder-bernstein},
+mais démontré d'abord, non sans effort, dans la
+\olref[sfr][infinite][card-sb]{sec}.
+Voici maintenant :
+
+\begin{proof}[Nouvelle démonstration de Schröder--Bernstein]
+Si $\cardle{A}{B}$ et $\cardle{B}{A}$,
+alors $\card{A} \leq \card{B}$ et
+$\card{B} \leq \card{A}$ par le
+\olref{lem:CardinalsBehaveRight}. Donc
+$\card{A} = \card{B}$ et
+$\cardeq{A}{B}$ par trichotomie et le
+\olref{lem:CardinalsBehaveRight}.
+\end{proof}
+\noindent
+Bien que cette démonstration soit très simple,
+elle repose implicitement à la fois sur le
+remplacement (pour obtenir
+le \olref[ordinals][ordtype]{thmOrdinalRepresentation})
+et sur l'axiome du bon ordre (pour garantir
+le \olref{lem:CardinalsBehaveRight}).
+La démonstration de la
+\olref[sfr][infinite][card-sb]{sec}, en revanche,
+était beaucoup plus autonome (elle peut même
+être menée dans~$\Zminus$).
+
+\end{document}

@@ -1,0 +1,68 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: no-universal-function
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{nou}
+\olsection{Absence de fonction calculable totale universelle}
+
+Il existe une fonction partielle calculable
+universelle pour les fonctions partielles
+calculables. En revanche, aucune fonction
+\emph{totale} calculable n'est universelle
+pour les fonctions calculables totales.
+
+\begin{thm}
+\ollabel{thm:no-univ}
+Il n'existe aucune fonction calculable
+\emph{totale} universelle pour les fonctions
+calculables totales. Autrement dit, aucune
+fonction totale et calculable
+$\fn{Un}'(k,x)$ ne peut posséder la propriété
+suivante : pour toute fonction calculable
+totale~$f(x)$, il existe un entier naturel~$k$
+tel que $f(x)=\fn{Un}'(k,x)$ pour tout~$x$.\footnote{Corrections éditoriales : l'introduction source écrit « total for the partial computable functions » là où le contexte exige « universal ». La reformulation du théorème omet ensuite l'hypothèse de totalité de $\fn{Un}'$ ; sans elle, la fonction universelle partielle précédente serait un contre-exemple.}
+\end{thm}
+
+\begin{proof}
+La preuve est un argument diagonal simple.
+Si $\fn{Un}'(k,x)$ était totale et calculable,
+la fonction
+\[
+d(x) = \fn{Un}'(x, x) + 1
+\]
+serait elle aussi totale et calculable.
+Or, par définition, $d(k)$ diffère de
+$\fn{Un}'(k,k)$. Pour tout~$k$, les fonctions
+$d(x)$ et $\fn{Un}'(k,x)$ diffèrent donc au
+moins en un argument, à savoir $x=k$.
+\end{proof}
+
+\begin{explain}
+Le
+\olref[uni]{thm:univ-comp} montre comment
+éviter cet argument diagonal : la fonction
+universelle doit pouvoir être partielle.
+Ainsi, $\fn{Un}$ est universelle même pour
+les fonctions calculables totales, mais elle
+n'est pas elle-même totale. L'argument
+diagonal précédent ne s'applique donc pas
+de la même manière.
+\end{explain}
+
+\begin{prob}
+  Pour comprendre pourquoi l'argument diagonal
+  de la preuve du
+  \olref{thm:no-univ} ne s'applique pas dans
+  le cas partiel, considérons la fonction
+  $f(x) \simeq \fn{Un}(x,x)+1$.
+  Est-elle partielle calculable ? Si oui,
+  elle possède un indice~$e$, c'est-à-dire
+  que $f(x) \simeq \fn{Un}(e,x)$.
+  Que peut-on dire de~$f(e)$ ?
+\end{prob}
+
+\end{document}

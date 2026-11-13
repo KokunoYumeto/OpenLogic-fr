@@ -1,0 +1,109 @@
+% Part: first-order-logic
+% Chapter: models-theories
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{mat}{int}
+\olsection{Introduction}
+
+\begin{explain}
+L'élaboration de la méthode axiomatique est un accomplissement
+majeur de l'histoire des sciences, et revêt une importance
+particulière dans l'histoire des mathématiques. Développer une
+discipline par la méthode axiomatique exige de clarifier bien des
+questions : quel est son objet ? Quels sont ses concepts les plus
+fondamentaux ? Comment sont-ils liés ? Peut-on définir tous les
+concepts de la discipline à partir de ces concepts fondamentaux ?
+À quelles lois obéissent-ils et doivent-ils obéir ?
+
+La méthode axiomatique et la logique se complètent naturellement.
+La logique formelle fournit les outils nécessaires pour formuler des
+théories axiomatiques, démontrer leurs théorèmes à partir des axiomes
+suivant des règles précisément définies et étudier systématiquement
+les propriétés de tous les systèmes qui satisfont ces axiomes.
+\end{explain}
+
+\begin{defn}
+Un ensemble d'!!{sentence}s~$\Gamma$ est \emph{clos} si, chaque fois
+que $\Gamma \Entails !A$, on a $!A \in \Gamma$. La \emph{clôture}
+d'un ensemble d'!!{sentence}s~$\Gamma$ est
+$\Setabs{!A}{\Gamma \Entails !A}$.
+
+On dit que~$\Gamma$ est \emph{axiomatisé par} un ensemble
+d'énoncés~$\Delta$ si $\Gamma$ est la clôture de~$\Delta$.
+\end{defn}
+
+\begin{explain}
+Nous pouvons considérer une théorie axiomatique comme l'ensemble des
+énoncés axiomatisé par son ensemble d'axiomes~$\Delta$. Autrement
+dit, supposons donné un langage du premier ordre dont les symboles
+non logiques désignent les notions primitives de la discipline que
+nous voulons développer axiomatiquement, ainsi qu'un ensemble
+d'!!{sentence}s qui expriment ses lois fondamentales. Nous pouvons
+alors représenter la théorie par l'ensemble de tous les énoncés de
+ce langage qui sont des conséquences des axiomes. Cela vaut aussi
+bien pour des exemples simples, avec une seule notion primitive et
+des axiomes simples, comme la théorie des ordres partiels, que pour
+des théories complexes comme la mécanique newtonienne.
+
+Voici les faits logiques qui rendent cette approche formelle de la
+méthode axiomatique si importante. Supposons que $\Gamma$ soit un
+système d'axiomes pour une théorie, c'est-à-dire un ensemble
+d'énoncés.
+\begin{enumerate}
+\item Nous pouvons énoncer précisément à quelle condition un système
+  d'axiomes caractérise une classe de !!{structure}s visée. Si une
+  certaine classe de !!{structure}s nous intéresse, le système
+  d'axiomes~$\Gamma$ la caractérise si et seulement si elle comprend
+  exactement les !!{structure}s~$\Struct M$ telles que
+  $\Sat{M}{\Gamma}$.
+\item Cela peut échouer parce qu'il existe des $\Struct M$ telles
+  que $\Sat{M}{\Gamma}$ mais que $\Struct M$ ne fait pas partie des
+  !!{structure}s visées. Nous pouvons alors ajouter des axiomes qui
+  ne sont pas vrais dans~$\Struct M$.
+\item Si, au moins, $\Gamma$ est vrai dans toutes les !!{structure}s
+  visées, alors tout énoncé~$!A$ tel que $\Gamma \Entails !A$ y est
+  vrai également. Des outils logiques, tels que les méthodes de
+  !!{derivation}, nous permettent donc d'établir qu'un énoncé est
+  vrai dans toutes les !!{structure}s visées en montrant simplement
+  qu'il découle des axiomes.
+\item Parfois, nous ne partons d'aucune !!{structure} visée et
+  commençons par les axiomes eux-mêmes : nous posons des notions
+  primitives auxquelles nous voulons imposer certaines lois, codifiées
+  par un système d'axiomes. Nous souhaitons vérifier d'emblée que
+  les axiomes ne se contredisent pas. Dans le cas contraire, aucun
+  concept ne peut obéir à ces lois et la théorie proposée est
+  incohérente. Pour écarter cette possibilité, nous pouvons trouver
+  un modèle de~$\Gamma$. S'il existe des modèles de notre théorie,
+  nous pouvons aussi les étudier et en construire à l'aide de
+  méthodes logiques.
+\item L'indépendance des axiomes est également une question
+  importante. L'un d'eux peut être une conséquence des autres et se
+  révéler ainsi redondant. Pour démontrer qu'un axiome $!A$ de
+  $\Gamma$ est redondant, nous pouvons établir
+  $\Gamma \setminus \{!A\} \Entails !A$. Pour montrer qu'il ne
+  l'est pas, nous pouvons aussi établir que
+  $(\Gamma \setminus \{!A\}) \cup \{\lnot !A\}$ est satisfaisable.
+  C'est ainsi, par exemple, qu'on a démontré l'indépendance du
+  postulat des parallèles par rapport aux autres axiomes de la
+  géométrie.
+\item Une autre question importante concerne la définissabilité
+  des concepts dans une théorie. Le choix du langage détermine de
+  quoi se composent les modèles de la théorie. Toutefois, chaque
+  aspect de celle-ci n'a pas nécessairement besoin d'y être
+  représenté séparément. Par exemple, tout ordre~$\le$ détermine
+  l'ordre strict correspondant~$<$ : dès que l'un est donné, nous
+  pouvons définir l'autre. Un modèle d'une théorie comportant un
+  tel ordre n'a donc pas besoin de contenir \emph{aussi} l'ordre
+  strict correspondant. À quelles conditions, en général, une
+  relation peut-elle être définie à partir d'autres ? Quand est-ce
+  impossible, de sorte qu'il faut l'ajouter aux notions primitives
+  du langage ?
+\end{enumerate}
+\end{explain}
+
+
+\end{document}

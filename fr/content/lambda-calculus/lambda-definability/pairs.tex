@@ -1,0 +1,94 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: pairs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{pai}
+\olsection{Couples et prédécesseur}
+
+\begin{defn}
+Le couple de $M$ et $N$, noté
+$\tuple{M,N}$, est défini par
+\[
+  \tuple{M,N} \ident \lambd[f][fMN],\quad f\notin\FV{M}\cup\FV{N}.
+\]
+\end{defn}
+
+Intuitivement, ce terme reçoit une fonction
+et l'applique aux deux composantes du
+couple. Le constructeur suivant reçoit
+deux termes et renvoie le couple qu'ils
+forment :
+\[
+  \fn{Pair} \ident \lambd[mn][\lambd[f][fmn]].
+\]
+
+Pour retrouver les composantes d'un couple,
+utilisons deux fonctions de projection :
+\begin{align*}
+  \fn{Fst} & \ident
+    \lambd[p][p(\lambd[mn][m])]\\
+  \fn{Snd} & \ident
+    \lambd[p][p(\lambd[mn][n])].
+\end{align*}
+
+\begin{prob}
+Expliquer pourquoi $\fn{Fst}$ et
+$\fn{Snd}$ renvoient respectivement
+la première et la seconde composante.
+\end{prob}
+
+Les couples permettent de $\lambda$-définir
+la fonction prédécesseur. Pour rendre
+lisible le terme de la source, nommons~$J$
+la fonction qui met à jour un couple :
+\begin{align*}
+  J & \ident
+    \lambd[p][\tuple{\fn{Snd}\,p,
+      \fn{Succ}(\fn{Snd}\,p)}],\\
+  \fn{Pred} & \ident
+    \lambd[n][\fn{Fst}(n J
+      \tuple{\num{0},\num{0}})].
+\end{align*}
+Cette écriture abrège exactement le terme
+de la source, où la définition de~$J$
+est insérée à la place de son nom.
+
+Rappelons que $\num{n}\,f x$ se réduit
+à $f^n(x)$. Ici, $f=J$ reçoit un
+couple~$p$ et renvoie celui qui contient
+en première composante la seconde
+composante de~$p$, puis en seconde
+composante le successeur de celle-ci.
+Le point de départ est
+$\tuple{\num{0},\num{0}}$.
+Après zéro itération, le résultat est
+ce couple initial. Après $n>0$
+itérations, c'est
+$\tuple{\num{n-1},\num{n}}$.
+La projection $\fn{Fst}$ en extrait
+le prédécesseur, avec
+$\fn{Pred}(\num{0})\red\num{0}$.
+
+La soustraction s'obtient en appliquant
+$\fn{Pred}$ $b$ fois à~$a$ :
+\[
+  \fn{Sub} \ident
+  \lambd[ab][b \fn{Pred}\, a].
+\]
+Sur les naturels, cette soustraction
+est tronquée à zéro lorsque $b>a$.
+
+L'invariant de l'itération peut s'écrire
+\[
+J^n\tuple{\num{0},\num{0}}
+\red \tuple{\num{\max(n-1,0)},\num{n}}.
+\]
+Le couple initial vérifie la formule pour $n=0$.
+La mise à jour $J$ place ensuite le deuxième numéral
+dans la première composante et son successeur dans la seconde.
+
+\end{document}

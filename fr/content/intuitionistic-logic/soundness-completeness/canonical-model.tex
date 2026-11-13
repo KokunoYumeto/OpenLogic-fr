@@ -1,0 +1,74 @@
+% Partie : intuitionistic-logic
+% Chapitre : soundness-completeness
+% Section : canonical-model
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sc}{mod}
+
+\olsection{Le modèle canonique}
+
+Les mondes de notre modèle seront des suites finies~$\sigma$
+d'entiers naturels, c'est-à-dire des éléments
+$\sigma \in \Nat^*$. Rappelons que $\Nat^*$ se définit par induction :
+\begin{enumerate}
+\item $\emptyseq \in \Nat^*$.
+\item Si $\sigma \in \Nat^*$ et $n \in \Nat$, alors
+  $\sigma.n \in \Nat^*$, où $\sigma.n$ désigne
+  $\sigma \concat \tuple{n}$ et $\sigma \concat \sigma'$ la
+  concaténation de $\sigma$ avec $\sigma'$.
+\item Rien d'autre n'appartient à $\Nat^*$.
+\end{enumerate}
+Nous pouvons donc utiliser $\Nat^*$ pour donner des définitions par
+induction.
+
+Soit $\tuple{!B_0, !C_0}$, $\tuple{!B_1, !C_1}$, \dots, une
+énumération de tous les couples de !!{formula}s. Étant donné un
+ensemble de !!{formula}s~$\Delta$, définissons $\Delta(\sigma)$
+par induction :
+\begin{enumerate}
+\item $\Delta(\emptyseq) = \Delta$
+\item $\Delta(\sigma.n) = {}$
+  \[
+  \begin{cases}
+    (\Delta(\sigma) \cup \{!B_n\})^* &
+    \text{si $\Delta(\sigma) \cup \{!B_n\} \Proves/ !C_n$} \\
+    \Delta(\sigma) & \text{sinon}
+  \end{cases}
+  \]
+\end{enumerate}
+Par $(\Delta(\sigma) \cup \{!B_n\})^*$, nous entendons un ensemble
+premier de !!{formula}s choisi parmi ceux dont l'existence est garantie par le
+\olref[lin]{lem:lindenbaum}, appliqué à l'ensemble
+$\Delta(\sigma) \cup \{!B_n\}$ et à la !!{formula}~$!C_n$.
+Par cette définition, si
+$\Delta(\sigma) \cup \{!B_n\} \Proves/ !C_n$, alors
+$\Delta(\sigma.n) \Proves !B_n$ et
+$\Delta(\sigma.n) \Proves/ !C_n$. De plus,
+$\Delta(\sigma) \subseteq \Delta(\sigma.n)$ pour tout~$n$.
+Si $\Delta$ est premier, $\Delta(\sigma)$ l'est pour tout~$\sigma$.
+
+\begin{defn}\ollabel{defn:canonical-model}
+  Supposons $\Delta$ premier. Le \emph{modèle canonique}
+  $\mModel{M(\Delta)}$ associé à $\Delta$ est défini ainsi :
+  \begin{enumerate}
+  \item $W = \Nat^*$ est l'ensemble des suites finies d'entiers
+    naturels.
+  \item $R$ est l'ordre partiel tel que $R\sigma\sigma'$ si et
+    seulement si $\sigma$ est un segment initial de~$\sigma'$,
+    c'est-à-dire si $\sigma' = \sigma \concat \sigma''$ pour une
+    certaine suite~$\sigma''$.
+  \item $V(p) = \Setabs{\sigma}{p \in \Delta(\sigma)}$.
+  \end{enumerate}
+\end{defn}
+
+Il est facile de vérifier que $R$ est bien un ordre partiel. La
+condition de monotonie sur~$V$ est également satisfaite. De
+$\Delta(\sigma) \subseteq \Delta(\sigma.n)$, on déduit
+$\Delta(\sigma) \subseteq \Delta(\sigma')$ lorsque
+$R\sigma\sigma'$ : il suffit de raisonner par récurrence sur la
+longueur du suffixe, en partant de~$\sigma$.
+
+\end{document}

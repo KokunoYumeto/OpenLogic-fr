@@ -1,0 +1,278 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: fixed-point-thm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{fix}
+\olsection{Le théorème du point fixe}
+
+Revenons au problème de l'arrêt. Employons
+provisoirement la notation
+$\gn{\cfind{x}(y)}$ pour $\tuple{x,y}$,
+que l'on peut voir comme un « nom » de la valeur
+$\cfind{x}(y)$. Elle permet de reformuler
+l'une de nos preuves de l'indécidabilité du
+problème de l'arrêt.
+
+Existe-t-il une fonction calculable~$h$
+ayant la propriété suivante ? Pour tous
+$x$ et~$y$,
+\[
+h(\gn{\cfind{x}(y)}) =
+\begin{cases}
+1 & \text{si $\cfind{x}(y) \fdefined$} \\
+0 & \text{sinon.}
+\end{cases}
+\]
+
+Non. Sinon, la fonction partielle
+\[
+g(x) \simeq
+\begin{cases}
+0 & \text{si $h(\gn{\cfind{x}(x)}) = 0$} \\
+\text{indéfinie} & \text{sinon}
+\end{cases}
+\]
+serait calculable et aurait donc un indice~$e$.
+Mais alors
+\[
+\cfind{e}(e) \simeq
+\begin{cases}
+0 & \text{si $h(\gn{\cfind{e}(e)}) = 0$} \\
+\text{indéfinie} & \text{sinon,}
+\end{cases}
+\]
+si bien que $\cfind{e}(e)$ serait définie si
+et seulement si elle ne l'est pas : contradiction.
+
+Regardons maintenant l'équation où figure
+$\cfind{e}$. Elle contient une forme
+d'autoréférence : la valeur de $\cfind{e}(e)$
+dépend du « nom » $\gn{\cfind{e}(e)}$.
+Le théorème du point fixe affirme qu'une telle
+construction est possible en général, et non
+seulement pour produire des contradictions.
+
+Le \olref{lem:fixed-equiv} en donne deux
+formulations équivalentes. Puisqu'elles sont
+toutes deux vraies, elles sont, au sens logique,
+équivalentes; ce qui nous intéresse surtout est
+que chacune se déduit directement de l'autre.
+Elles expriment ainsi le même théorème.
+
+\begin{lem}
+\ollabel{lem:fixed-equiv}
+Les deux énoncés suivants sont équivalents :
+\begin{enumerate}
+\item Pour toute fonction calculable partielle
+  $g(x,y)$, il existe un indice~$e$ tel que,
+  pour tout~$y$,
+\[
+\cfind{e}(y) \simeq g(e,y).
+\]
+\item Pour toute fonction calculable~$f(x)$,
+  il existe un indice~$e$ tel que, pour tout~$y$,
+\[
+\cfind{e}(y) \simeq \cfind{f(e)}(y).
+\]
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+$(1)\Rightarrow(2)$ : étant donnée~$f$,
+définissons $g$ par
+$g(x,y)\simeq\fn{Un}(f(x),y)$.
+L'énoncé (1) fournit un indice~$e$ tel que,
+pour tout~$y$,
+\begin{align*}
+\cfind{e}(y) & \simeq \fn{Un}(f(e),y) \\
+& \simeq \cfind{f(e)}(y).
+\end{align*}
+
+$(2)\Rightarrow(1)$ : étant donnée~$g$,
+le théorème $s$-$m$-$n$ fournit une fonction récursive primitive, donc totale calculable,~$f$
+telle que, pour tous $x$ et~$y$,
+$\cfind{f(x)}(y)\simeq g(x,y)$.
+Appliquons (2) pour obtenir un indice~$e$ tel que
+\begin{align*}
+\cfind{e}(y) & \simeq \cfind{f(e)}(y) \\
+& \simeq g(e,y).
+\end{align*}
+La démonstration est achevée.
+\end{proof}
+
+\begin{explain}
+Avant de prouver que (1) est vrai, et donc que
+(2) l'est aussi, mesurons ce qu'il affirme.
+Pensons à l'indice~$e$ comme à un programme :
+pour toute fonction calculable partielle~$g(x,y)$,
+on peut trouver un programme~$e$ qui calcule
+$g_e(y)\simeq g(e,y)$. Ce programme calcule
+donc une fonction qui fait référence au
+programme lui-même.
+\end{explain}
+
+\begin{thm}
+Les deux énoncés du \olref{lem:fixed-equiv}
+sont vrais. En particulier, pour toute fonction
+calculable partielle~$g(x,y)$, il existe un
+indice~$e$ tel que, pour tout~$y$,
+\[
+\cfind{e}(y) \simeq g(e,y).
+\]
+\end{thm}
+
+\begin{proof}
+Les ingrédients de la preuve étaient déjà
+présents dans la discussion du problème de
+l'arrêt. Soit $\fn{diag}(x)$ une fonction
+calculable qui, pour chaque~$x$, renvoie un
+indice de la fonction
+$f_x(y)\simeq\cfind{x}[2](x,y)$, soit
+\[
+\cfind{\fn{diag}(x)}(y) \simeq \cfind{x}[2](x,y).
+\]
+La fonction~$\fn{diag}$ transforme donc le
+programme d'une fonction binaire en programme
+d'une fonction unaire, en fixant le premier
+argument égal au code du programme initial.
+On peut la définir formellement. Posons d'abord
+\[
+s(x,y) \simeq \fn{Un}^2(x,x,y),
+\]
+où $\fn{Un}^2$ est une fonction ternaire
+universelle pour les fonctions calculables
+partielles binaires. Le théorème $s$-$m$-$n$
+donne alors une fonction récursive primitive
+$\fn{diag}$ telle que
+\[
+\cfind{\fn{diag}(x)}(y) \simeq s(x,y).
+\]
+
+Définissons maintenant $l$ par
+\[
+l(x,y) \simeq g(\fn{diag}(x),y).
+\]
+Soit $\gn{l}$ un indice de~$l$, et posons
+$e=\fn{diag}(\gn{l})$. Pour tout~$y$, on a
+\begin{align*}
+\cfind{e}(y) & \simeq \cfind{\fn{diag}(\gn{l})}(y) \\
+& \simeq \cfind{\gn{l}}[2](\gn{l}, y) \\
+& \simeq l(\gn{l}, y) \\
+& \simeq g(\fn{diag}(\gn{l}),y) \\
+& \simeq g(e, y),
+\end{align*}
+comme voulu.\footnote{Corrections éditoriales : les évaluations diagonales portent sur des fonctions binaires, d'où les marqueurs d'arité $[2]$. Les égalités entre valeurs éventuellement indéfinies s'écrivent $\simeq$ ; la chaîne source omet ces précisions.}
+\end{proof}
+
+\begin{explain}
+Que se passe-t-il concrètement ? Supposons
+que l'on veuille écrire un programme qui
+affiche son propre texte. Imaginons un langage
+doté d'une bibliothèque de fonctions sur les
+chaînes de caractères particulièrement riche.
+La fonction $\fn{diag}$ y fonctionne ainsi :
+à partir d'une chaîne~$s$, elle repère chaque
+occurrence du symbole `x' dans~$s$ et la
+remplace par une copie entre guillemets de
+la chaîne d'origine. Par exemple, appliquée à
+\begin{quote}
+\begin{verbatim}
+hello x world
+\end{verbatim}
+\end{quote}
+elle renvoie
+\begin{quote}
+\begin{verbatim}
+hello 'hello x world' world
+\end{verbatim}
+\end{quote}
+Dans ce langage, le programme recherché
+s'écrit simplement
+\begin{quote}
+\begin{verbatim}
+print(diag('print(diag(x))'))
+\end{verbatim}
+\end{quote}
+On peut vérifier qu'il produit son propre
+texte. Dans des langages usuels comme C++ ou
+Java, le même principe fonctionne, avec une
+réalisation plus compliquée.
+
+Il ne reste que quelques étapes avant de
+retrouver la preuve du théorème du point fixe.
+Supposons qu'une variante de la fonction
+$\fn{print}(x,y)$ prenne une chaîne~$x$ et
+un entier~$y$, puis affiche $x$ exactement
+$y$ fois. Alors le « programme »
+\begin{quote}
+\begin{verbatim}
+getinput(y);
+print(diag('getinput(y); print(diag(x), y)'), y)
+\end{verbatim}
+\end{quote}
+affiche son propre texte, à l'espacement de présentation près, $y$ fois sur
+l'entrée~$y$. En remplaçant le squelette
+$\fn{getinput}$--$\fn{print}$--$\fn{diag}$
+par une fonction arbitraire~$g(x,y)$, on obtient
+\begin{quote}
+\begin{verbatim}
+g(diag('g(diag(x), y)'), y)
+\end{verbatim}
+\end{quote}
+où $y$ désigne l'entrée du programme ; cette expression applique~$g$ au
+programme lui-même et à~$y$. Si l'on comprend
+« citer » comme « utiliser un indice de »,
+on retrouve la preuve formelle ci-dessus.
+
+On peut pour l'instant considérer cette preuve
+comme une astuce formelle, voire comme de la
+magie noire. Il faut néanmoins pouvoir en
+reconstruire les étapes. Lors de l'étude des
+théorèmes d'incomplétude et du théorème du
+point fixe qui leur est lié, nous verrons
+d'autres façons de comprendre le mécanisme.
+\end{explain}
+
+\begin{tagblock}{lambda}
+\begin{digress}
+La même idée permet d'obtenir un combinateur
+de point fixe. Soit un terme~$g$ du lambda-calcul;
+on cherche un terme~$k$ qui soit $\beta$-équivalent
+à~$gk$. Définissons, selon nos conventions de
+notation, les termes
+\[
+\fn{diag}(x) = xx
+\]
+et
+\[
+l(x) = g(\fn{diag}(x))
+\]
+On choisit $x$ sans occurrence libre dans $g$ ; autrement dit, $l=\lambd[x][g(xx)]$. Posons
+$k=ll$. On a alors
+\begin{align*}
+k & = (\lambd[x][g(xx)])(\lambd[x][g(xx)]) \\
+& \red  g((\lambd[x][g(xx)])(\lambd[x][g(xx)])) \\
+& = gk.
+\end{align*}
+Si l'on pose
+\[
+Y = \lambd[g][((\lambd[x][g(xx)])(\lambd[x][g(xx)]))]
+\]
+alors $Yg$ et $g(Yg)$ se réduisent à un terme
+commun; donc $Yg\equiv_\beta g(Yg)$. C'est le
+« combinateur de Curry ». Si, en revanche,
+on pose
+\[
+Y = (\lambd[xg][g(xxg)])(\lambd[xg][g(xxg)])
+\]
+alors $Yg$ se réduit effectivement à $g(Yg)$,
+ce qui est un énoncé plus fort. Cette dernière
+version de~$Y$ est le « combinateur de Turing ».
+\end{digress}
+\end{tagblock}
+
+\end{document}

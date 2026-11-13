@@ -1,0 +1,115 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{choice}{tarskiscott}
+\olsection{L'astuce de Tarski--Scott}
+
+Dans la
+\olref[cardinals][cardsasords]{defcardinalasordinal},
+nous avons défini les cardinaux comme des
+ordinaux. Pour cela, nous avons supposé
+l'axiome du bon ordre. Nous l'avons fait
+pour la seule raison que c'est l'usage courant.
+
+Avant d'aborder les questions philosophiques
+entourant le bon ordre, il est donc important
+de préciser que nous \emph{pouvons} nous écarter
+de cet usage et élaborer une théorie des
+cardinaux \emph{sans} supposer l'axiome du
+bon ordre. Nous pouvons conserver les
+définitions de $\cardeq{A}{B}$,
+$\cardle{A}{B}$ et $\cardless{A}{B}$
+données dans le \olref[sfr][siz][]{chap}.
+Il nous faudra seulement une nouvelle
+notion de \emph{cardinal}.
+
+Une idée naïve serait de définir la cardinalité
+de $A$ par :
+\[
+	\Setabs{x}{\cardeq{A}{x}}.
+\]
+Vous pouvez comparer cette idée à la définition
+frégéenne de $\# x Fx$, esquissée tout à la
+fin de la \olref[cardinals][hp]{sec}.
+Pour les raisons que nous y avons évoquées,
+cette définition échoue. Tout singleton est
+équipotent à $\{\emptyset\}$. Or de nouveaux
+singletons apparaissent à chaque étape
+successeur de la hiérarchie : il suffit
+de considérer le singleton de l'étape
+précédente. Ainsi, si $A$ est un singleton,
+$\Setabs{x}{\cardeq{A}{x}}$ ne peut être
+un ensemble, car cette collection n'aurait
+pas de rang.\footnote{Note de l'édition
+française : l'original affirme sans restriction
+que cette collection n'existe pas. Pour
+$A=\emptyset$, elle vaut pourtant
+$\{\emptyset\}$ ; l'exemple des singletons
+suffit à invalider la définition générale.}
+
+Pour contourner ce problème, nous utilisons
+une astuce due à Tarski et Scott :\footnote{
+Rappel : toutes les formules peuvent comporter
+des paramètres, sauf indication contraire.}
+
+\begin{defn}[Tarski--Scott]
+Pour toute formule $\phi(x)$, soit
+$[ x : \phi(x)] $ l'ensemble de tous les $x$
+de plus petit rang possible tels que $\phi(x)$
+(ou $\emptyset$, s'il n'existe aucun $x$
+satisfaisant $\phi$).
+\end{defn}
+
+Vérifions que cette définition est légitime.
+Dans $\ZF$,
+le \olref[spine][foundation]{zfentailsregularity}
+garantit que $\setrank{x}$ existe pour
+chaque $x$. S'il existe des objets satisfaisant
+$\phi$, nous pouvons prendre pour $\alpha$
+le plus petit rang tel que
+$(\exists x\subseteq V_\alpha)\phi(x)$,
+c'est-à-dire tel que
+$(\forall \beta \in \alpha)
+(\forall x \subseteq V_\beta)\lnot \phi(x)$.
+Nous pouvons alors définir
+$[x : \phi(x)]$ par séparation comme
+$\Setabs{x \in V_{\alpha+1}}{\phi(x)}$.
+
+L'astuce de Tarski--Scott étant justifiée,
+nous pouvons l'utiliser pour définir
+une notion de cardinalité :
+
+\begin{defn}
+La \emph{cardinalité \textsc{ts}} de $A$ est
+$\text{tsc}(A) = [x : \cardeq{A}{x}]$.
+\end{defn}
+
+La définition d'un cardinal \textsc{ts}
+n'utilise pas l'axiome du bon ordre.
+Mais, même sans cet axiome, nous pouvons
+montrer que les \emph{cardinaux \textsc{ts}}
+se comportent à peu près comme les
+\emph{cardinaux} définis dans la
+\olref[cardinals][cardsasords]{defcardinalasordinal}.
+Par exemple, si nous reformulons
+le \olref[cardinals][cardsasords]{lem:CardinalsBehaveRight}
+et
+le \olref[card-arithmetic][opps]{lem:SizePowerset2Exp}
+en termes de cardinaux \textsc{ts},
+leurs démonstrations restent valables
+dans $\ZF$, sans supposer l'axiome du
+bon ordre.
+
+Profitons-en pour signaler que l'astuce
+de Tarski--Scott permet aussi de développer
+une théorie des ordinaux. Si
+$\tuple{A, <}$ est un bon ordre, posons
+$\text{tso}(A, <) =
+[\tuple{X, R} :
+\ordeq{\tuple{A, <}}{\tuple{X, R}}]$.
+Pour en savoir plus sur cette façon de
+traiter les cardinaux et les ordinaux,
+voir \citet[chs.~9--12]{Potter2004}.
+
+\end{document}

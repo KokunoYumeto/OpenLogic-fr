@@ -81,12 +81,12 @@ De plus, cette décomposition est \emph{unique}.
 \end{prop}
 
 \begin{proof}
-Par induction sur $!A$. Supposons par exemple que $!A$ admette deux
-lectures distinctes, $(!B \lif !C)$ et $(!B' \lif !C')$. Alors $!B$
-et $!B'$ doivent être identiques, sinon l'une serait un préfixe propre
-de l'autre. Si les deux lectures de $!A$ sont distinctes, $!C$ et $!C'$
-doivent donc être deux lectures distinctes de la même chaîne de
-symboles, ce qui contredit l'hypothèse d'induction.
+La définition donne l'existence d'une décomposition. Le premier symbole
+distingue les formes atomique, négative et binaire. Pour une négation,
+la chaîne qui suit $\lnot$ est son unique constituant immédiat. Dans le
+cas binaire, les premiers constituants de deux lectures sont des préfixes
+de la même chaîne après la parenthèse ouvrante. Ils coïncident, puisqu'aucun
+n'est un préfixe propre de l'autre. Le connecteur et le second constituant sont alors déterminés.
 \end{proof}
 
 \begin{defn}[Substitution uniforme]
@@ -104,7 +104,7 @@ Pour chacune des cinq !!{formula}s ci-dessous, déterminer si elle
 peut s'écrire comme une substitution \(\Subst{!A}{!B}{\Obj p_i}\)
 où \(!A\) est (i)~\(\Obj p_0\) ; (ii)~\((\lnot \Obj p_0 \land \Obj
 p_1)\) ; (iii)~\(((\lnot \Obj p_0 \lif \Obj p_1) \land \Obj
-p_2)\). Préciser dans chaque cas la substitution correspondante.
+p_2)\). Si c'est possible, préciser la substitution correspondante.
   \begin{enumerate}
     \item \(\Obj p_1\)
     \item \((\lnot \Obj p_0 \land \Obj p_0)\)

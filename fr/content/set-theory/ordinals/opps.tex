@@ -1,0 +1,121 @@
+% Partie : set-theory
+% Chapitre : ordinals
+% Section : opps
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ordinals}{opps}
+\olsection{Ordinaux successeurs et ordinaux limites}
+
+Nous utiliserons beaucoup les ordinaux dans les prochains chapitres.
+Il sera donc utile d'introduire quelques notions simples.
+
+\begin{defn}
+Pour tout ordinal $\alpha$, son \emph{successeur} est
+$\ordsucc{\alpha} =\alpha \cup \{\alpha\}$. Nous disons que
+$\alpha$ est un ordinal \emph{successeur} s'il existe un ordinal
+$\beta$ tel que $\ordsucc{\beta} = \alpha$. Nous disons que
+$\alpha$ est un ordinal \emph{limite} si et seulement s'il n'est ni
+vide ni successeur.
+\end{defn}
+\noindent
+Le résultat suivant montre que cette notion de \emph{successeur} est
+la bonne :
+
+\begin{prop}
+Pour tout ordinal $\alpha$ :
+\begin{enumerate}
+	\item $\alpha \in \ordsucc{\alpha}$ ;
+	\item $\ordsucc{\alpha}$ est un ordinal ;
+	\item il n'existe aucun ordinal $\beta$ tel que
+	$\alpha \in \beta \in \ordsucc{\alpha}$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Il est immédiat que
+$\alpha \in \alpha \cup \{\alpha\} = \ordsucc{\alpha}$.
+De même, $\ordsucc{\alpha}$ est un ensemble transitif d'ordinaux,
+donc un ordinal par le \olref[basic]{corordtransitiveord}.
+Enfin, on ne peut avoir
+$\alpha \in \beta \in \ordsucc{\alpha}$ : dans ce cas, soit
+$\beta \in \alpha$, soit $\beta = \alpha$, en contradiction avec
+le \olref[basic]{ordordered}.
+\end{proof}
+\noindent
+Cela permet également une variante de la démonstration par récurrence
+transfinie :
+
+\begin{thm}[Récurrence transfinie simple]\ollabel{simpletransrecursion}
+Soit $\phi(x)$ une formule telle que :
+\begin{enumerate}
+	\item $\phi(\emptyset)$ ;
+	\item pour tout ordinal $\alpha$, si $\phi(\alpha)$, alors
+	$\phi(\ordsucc{\alpha})$ ;
+	\item si $\alpha$ est un ordinal limite et si
+	$(\forall \beta \in \alpha)\phi(\beta)$, alors $\phi(\alpha)$.
+\end{enumerate}
+Alors tout ordinal $\alpha$ vérifie $\phi(\alpha)$.
+\end{thm}
+
+\begin{proof}
+Supposons qu'un ordinal $\delta$ ne vérifie pas $\phi$. Par séparation,
+les éléments de $\ordsucc{\delta}$ qui ne vérifient pas $\phi$ forment
+un ensemble non vide, puisqu'il contient $\delta$. Soit $\gamma$ son
+plus petit élément. Tout ordinal $\beta \in \gamma$ vérifie donc
+$\phi(\beta)$.
+
+Si $\gamma = \emptyset$, la première hypothèse donne $\phi(\gamma)$.
+Si $\gamma = \ordsucc{\alpha}$, alors $\alpha \in \gamma$, donc
+$\phi(\alpha)$ est vraie et la deuxième hypothèse donne $\phi(\gamma)$.
+Si $\gamma$ est un ordinal limite, la troisième hypothèse donne
+$\phi(\gamma)$. Dans chacun des trois cas, on obtient une contradiction.
+\end{proof}
+\noindent
+Une dernière notation nous sera utile plus loin :
+
+\begin{defn}\ollabel{defsupstrict}
+Si $X$ est un ensemble d'ordinaux, alors
+$\supstrict(X) = \bigcup_{\alpha \in X} \ordsucc{\alpha}$.
+\end{defn}
+\noindent
+Ici, «~lsub~» signifie «~plus petite borne supérieure stricte~».
+\footnote{Certains ouvrages écrivent «~$\text{sup}(X)$~» pour cette
+notion. D'autres réservent toutefois «~$\text{sup}(X)$~» à la plus
+petite borne supérieure \emph{non stricte}, c'est-à-dire simplement
+$\bigcup X$. Si $X$ possède un plus grand élément $\alpha$, les
+deux notions divergent : la plus petite borne supérieure
+\emph{stricte} est $\ordsucc{\alpha}$, tandis que la plus petite
+borne supérieure \emph{non stricte} est $\alpha$.} Le résultat
+suivant explique pourquoi :
+
+\begin{prop}
+Si $X$ est un ensemble d'ordinaux, $\supstrict(X)$ est le plus petit
+ordinal strictement supérieur à tous les ordinaux de $X$.
+\end{prop}
+
+\begin{proof}
+Posons $U = (\bigcup X) \cup X$. Si $\alpha \in X$, alors
+$\alpha \subseteq \bigcup X$ et $\{\alpha\} \subseteq X$, donc
+$\ordsucc{\alpha} \subseteq U$. Par séparation dans l'ensemble
+des parties de $U$, nous obtenons l'ensemble
+$Y = \Setabs{\ordsucc{\alpha}}{\alpha \in X}$. On a alors
+$\supstrict(X) = \bigcup Y$. Puisque les ordinaux sont transitifs et
+que tout élément d'un ordinal est un ordinal, $\supstrict(X)$ est un
+ensemble transitif d'ordinaux, donc un ordinal par
+le \olref[basic]{corordtransitiveord}.
+
+Si $\alpha \in X$, alors $\ordsucc{\alpha} \in Y$ ; par conséquent,
+$\ordsucc{\alpha} \subseteq \bigcup Y = \supstrict(X)$ et donc
+$\alpha \in \supstrict(X)$. Ainsi, $\supstrict(X)$ est strictement
+supérieur à chaque ordinal de $X$.
+
+Réciproquement, si $\alpha \in \supstrict(X)$, alors, pour un certain
+$\beta \in X$, nous avons $\alpha \in \ordsucc{\beta} \in Y$, d'où
+$\alpha \leq \beta \in X$. Ainsi, $\supstrict(X)$ est la
+\emph{plus petite} borne supérieure stricte de $X$.
+\end{proof}
+
+\end{document}

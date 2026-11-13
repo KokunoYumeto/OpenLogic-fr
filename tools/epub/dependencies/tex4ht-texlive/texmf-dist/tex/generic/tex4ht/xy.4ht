@@ -1,0 +1,69 @@
+% xy.4ht (2025-12-28-07:08), generated from tex4ht-4ht.tex
+% Copyright (C) 2000-2009 Eitan M. Gurari
+% Copyright 2009-2025 TeX Users Group
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3c of this license or (at your option) any
+% later version. The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions
+% of LaTeX version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+%
+% The Current Maintainer of this work
+% is the TeX4ht Project <https://tug.org/tex4ht>.
+%
+% If you modify this program, changing the
+% version identification would be appreciated.
+\immediate\write-1{version 2025-12-28-07:08}
+
+
+\pend:def\xy{\a:xypic}
+\append:def\endxy{\b:xypic}
+\NewConfigure{xypic}{2}
+\def\:tempa#1#2{%
+   \def\:tempc##1{%
+     \def\:temp{%
+       \ifx #1\next \let\next^%
+                    \def\:temp########1{##1^}%
+       \else
+          \ifx #2\next \let\next_%
+                       \def\:temp########1{##1_}%
+          \else  \let\:temp##1\fi
+       \fi
+       \:temp}\futurelet\next\:temp}%
+   }
+\:CheckOption{no^} \if:Option   \else
+   \:CheckOption{^13} \if:Option   \catcode`\^13
+                      \else        \catcode`\^12 \fi
+\fi
+\:CheckOption{no_} \if:Option   \else
+   \:CheckOption{_13} \if:Option   \catcode`\_13
+                      \else        \catcode`\_12 \fi
+\fi
+\:tempa^_
+\catcode`\^7
+\catcode`\_8
+\HLet\xyFN@\:tempc
+
+\expandafter\ifx \csname xyv2version\endcsname\relax\else
+   \let\xy:diagram\diagram
+\def\diagram{\a:diagram \xy:diag}
+\def\xy:diag#1\enddiagram{\xy:diagram#1\enddiagram\b:diagram}
+\NewConfigure{diagram}{2}
+
+\fi
+\xyoption{dvips}\xyoption{ps}
+
+\ifdefined\xymatrix
+  % \xymatrixcompile fails to create a picture, so we need to disable it, but a copy is available in \:xymatrixnocompile if necessary
+  \let\xymatrix\xymatrixnocompile
+  \let\:xymatrixnocompile\xymatrixnocompile
+  \let\xymatrixcompile\xymatrixnocompile
+\fi
+
+\Hinput{xy}
+\endinput
+

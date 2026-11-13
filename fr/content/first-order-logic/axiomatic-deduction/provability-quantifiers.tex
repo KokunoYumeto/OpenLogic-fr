@@ -28,15 +28,16 @@ $\Gamma \Proves \lforall[x][!A(x)]$.
 
 \begin{proof}
 Par le théorème de la déduction,
-$\Gamma \Proves \ltrue \lif !A(c)$. Comme $c$ ne figure ni dans
-$\Gamma$ ni dans~$\ltrue$, la règle~\QR{} donne
-$\Gamma \Proves \ltrue \lif \lforall[x][!A(x)]$. Enfin,
-$\Gamma \Proves \ltrue$ puisque $\ltrue$ est un axiome; le modus
-ponens entraîne donc $\Gamma \Proves \lforall[x][!A(x)]$.
+$\Gamma \Proves \ltrue \lif !A(c)$. La constante~$c$ est absente
+des hypothèses de cette !!{derivation}, de~$\ltrue$ et de~$!A(x)$.
+Par~\QR{}, on obtient $\Gamma \Proves \ltrue \lif \lforall[x][!A(x)]$.
+Puisque $\ltrue$ est un axiome, le modus ponens donne
+$\Gamma \Proves \lforall[x][!A(x)]$.
 \end{proof}
 
 \begin{prop}
 \ollabel{prop:provability-quantifiers}
+Pour tout terme clos~$t$ :
 \begin{tagenumerate}{prvEx,prvAll}
 \tagitem{prvEx}{$!A(t) \Proves \lexists[x][!A(x)]$.}{}
 
@@ -52,13 +53,5 @@ déduction.}{}
 déduction.}{}
 \end{tagenumerate}
 \end{proof}
-
-\begin{editorial}
-À la fin de la première preuve, la source invoque une seconde fois le
-théorème de la déduction pour passer de
-$\Gamma \Proves \ltrue \lif \lforall[x][!A(x)]$ à
-$\Gamma \Proves \lforall[x][!A(x)]$. Ce passage requiert en réalité
-l'axiome~$\ltrue$ et le modus ponens; ces deux étapes sont explicitées.
-\end{editorial}
 
 \end{document}

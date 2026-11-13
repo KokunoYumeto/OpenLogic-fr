@@ -1,0 +1,92 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: composition
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{com}
+\olsection{Composition}
+
+Si $f$ et $g$ sont deux fonctions des entiers naturels à un
+argument, on peut les composer : $h(x)=f(g(x))$. La nouvelle
+fonction~$h$ est alors définie par \emph{composition} à partir
+de $f$ et de~$g$. Généralisons ce procédé aux fonctions de
+plusieurs arguments.
+
+Supposons que $f$ soit une fonction à $k$ arguments et que
+$g_0,\dots,g_{k-1}$ soient $k$ fonctions, chacune à $n$
+arguments. On peut définir une fonction~$h$ à $n$ arguments par :
+\[
+h(x_0, \dots, x_{n-1}) =
+f(g_0(x_0, \dots, x_{n-1}), \dots, g_{k-1}(x_0, \dots, x_{n-1}))
+\]
+Si $f$ et toutes les fonctions $g_i$ sont calculables, $h$ l'est
+aussi. Pour calculer $h(x_0,\dots,x_{n-1})$, on calcule d'abord,
+pour chaque $i=0,\dots,k-1$, la valeur
+$y_i=g_i(x_0,\dots,x_{n-1})$. On donne ensuite ces valeurs à~$f$
+pour obtenir $h(x_0,\dots,x_{n-1})=f(y_0,\dots,y_{k-1})$.\footnote{Correction éditoriale : les arguments de $h$ sont indexés jusqu'à $n-1$, et non $k-1$ comme dans cette phrase de la source. $n$ est l'arité du résultat ; $k$ est celle de $f$.}
+
+Cette description peut sembler trop restrictive pour rendre compte
+des façons dont on utilise des fonctions connues pour en calculer
+de nouvelles. Il arrive, d'abord, que l'on n'utilise pas tous les
+arguments d'une fonction : c'est le cas de $g(x,y,z)=\Succ(z)$,
+employée dans la définition par récurrence primitive de~$\Add$.
+Supposons que l'on dispose des fonctions suivantes :
+\[
+\Proj{n}{i}(x_0, \dots, x_{n-1}) = x_i
+\]
+On les appelle \emph{fonctions de projection} : $\Proj{n}{i}$
+est une fonction à $n$ arguments, avec $n\geq1$ et $0\leq i<n$.\footnote{Correction éditoriale : nous écrivons $\Proj{n}{i}$ dans la phrase où la source emploie $\Proj{k}{i}$. Les indices commencent à $0$ dans OpenLogic, contrairement à ceux du témoin français.} On peut alors définir $g$ par :
+\[
+g(x, y, z) = \Succ(\Proj{3}{2}(x, y, z)).
+\]
+Ici, le rôle de $f$ est tenu par la fonction à un argument
+$\Succ$, de sorte que $k=1$. La fonction à trois arguments
+$\Proj{3}{2}$ joue celui de~$g_0$. Le résultat est une fonction
+à trois arguments qui renvoie le successeur du troisième.
+
+Les projections permettent également de définir de nouvelles
+fonctions en permutant ou en identifiant des arguments. Ainsi,
+on peut définir la fonction $h(x)=\Add(x,x)$ par :
+\[
+h(x_0) = \Add(\Proj{1}{0}(x_0),\Proj{1}{0}(x_0)).
+\]
+Ici $k=2$ et $n=1$ : $\Add$ joue le rôle de $f(y_0,y_1)$,
+tandis que les rôles de $g_0(x_0)$ et de $g_1(x_0)$ sont tous deux
+tenus par $\Proj{1}{0}(x_0)$, projection à un argument, autrement
+dit la fonction identité.
+
+Si l'on dispose d'une fonction $f(y_0,y_1)$, on peut définir
+$h(x_0,x_1)=f(x_1,x_0)$ par :
+\[
+h(x_0, x_1) = f(\Proj{2}{1}(x_0, x_1),\Proj{2}{0}(x_0, x_1)).
+\]
+Ici $k=n=2$, et $\Proj{2}{1}$ et $\Proj{2}{0}$ jouent
+respectivement les rôles de $g_0$ et de~$g_1$.
+
+On pourrait aussi craindre que l'obligation d'attribuer la même
+arité~$n$ à $g_0,\dots,g_{k-1}$ ne limite ce procédé. Rappelons
+que l'\emph{arité} d'une fonction est son nombre d'arguments :
+une fonction à $n$ arguments est d'arité~$n$. Les projections
+apportent pourtant la souplesse voulue. Supposons, par exemple,
+que $f$ et $g$ aient chacune trois arguments et que $h$ soit la
+fonction à deux arguments définie par :
+\[
+h(x,y) = f(x,g(x,x,y),y).
+\]
+À l'aide des projections, on peut réécrire cette définition :
+\[
+h(x,y) = f(\Proj{2}{0}(x,y), g(\Proj{2}{0}(x,y), \Proj{2}{0}(x,y),
+\Proj{2}{1}(x,y)), \Proj{2}{1}(x,y)).
+\]
+Ainsi, $h$ est obtenue par composition de $f$ avec
+$\Proj{2}{0}$, $l$ et $\Proj{2}{1}$, où
+\[
+l(x,y) = g(\Proj{2}{0}(x,y),\Proj{2}{0}(x,y),\Proj{2}{1}(x,y)),
+\]
+c'est-à-dire que $l$ est elle-même obtenue par composition de $g$
+avec $\Proj{2}{0}$, $\Proj{2}{0}$ et~$\Proj{2}{1}$.
+
+\end{document}

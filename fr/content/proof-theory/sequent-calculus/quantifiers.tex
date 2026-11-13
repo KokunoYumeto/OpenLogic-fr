@@ -1,0 +1,219 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : quantificateurs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{seq}{qua}
+
+\olsection{Preuves régulières et substitution}
+
+Les règles quantifiées présentent quelques difficultés
+liées aux conditions sur les constantes propres des
+règles \LeftR{\lexists} et~\RightR{\lforall}.
+La plupart se résolvent en veillant à ne jamais
+réutiliser la constante~$a$ de ces inférences.
+Introduisons la définition suivante.
+
+\begin{defn}
+Une preuve~$\pi$ de \Log{G1c} ou de \Log{G3c}
+est \emph{régulière} si :
+\begin{enumerate}
+  \item aucune constante~$a$ ne sert de constante propre
+  à plus d'une inférence \LeftR{\lexists}
+  ou~\RightR{\lforall} ;
+  \item si $a$ est la constante propre d'une inférence
+  \LeftR{\lexists} ou~\RightR{\lforall},
+  ses occurrences dans~$\pi$ se trouvent uniquement
+  dans la sous-preuve située au-dessus de cette inférence.
+\end{enumerate}
+\end{defn}
+
+\begin{lem}\ollabel{lem:subst-regular}
+Soit $\pi$ une preuve régulière de séquent final
+$\Gamma \Sequent \Delta$.
+Soit $c$ une constante qui n'est pas une constante
+propre de~$\pi$, et soit $t$ un terme clos ne contenant
+aucune constante propre de~$\pi$.
+L'arbre $\Subst{\pi}{t}{c}$ obtenu en remplaçant
+chaque occurrence de~$c$ par~$t$ est une preuve régulière de même hauteur.
+Son séquent final est
+$\Subst{\Gamma}{t}{c} \Sequent \Subst{\Delta}{t}{c}$,
+où
+$\Subst{\Gamma}{t}{c} = \Setabs{!A(t)}{!A(c) \in \Gamma}$.
+Cette notation désigne ici un multiensemble :
+la substitution s'applique à chaque occurrence
+et en conserve la multiplicité. Elle ne fusionne
+pas les occurrences devenues identiques.
+La même convention vaut pour le conséquent.
+\end{lem}
+
+\begin{proof}
+  On raisonne par récurrence sur $\pheight{\pi}$.
+  Si $\pheight{\pi} = 0$, la preuve se réduit à un axiome.
+  La substitution $\Subst{\pi}{t}{c}$ donne encore
+  un axiome : toute formule~$!A(c)$ devient $!A(t)$,
+  et les deux types d'axiomes conservent leur forme.
+
+  Si $\pheight{\pi} > 0$, on distingue les cas selon
+  la dernière inférence de~$\pi$.
+  Les cas des règles structurelles, dans \Log{G1c},
+  et des règles propositionnelles sont laissés en exercice.
+  Considérons les règles quantifiées.
+  \begin{enumerate}
+    \item Si la dernière inférence est $\RightR{\lforall}$,
+    la preuve $\pi$ a la forme
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi'$}
+    \Deduce$\Gamma(c) \fCenter \Delta'(c), !A(a,c)$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\Gamma(c) \fCenter \Delta'(c), \lforall[x][!A(x,c)]$
+    \DisplayProof
+    \]
+    Par hypothèse de récurrence, $\Subst{\pi'}{t}{c}$
+    est une preuve régulière de
+    $\Gamma(t) \fCenter \Delta'(t), !A(a,t)$.
+    Puisque $a$ est une constante propre de~$\pi$,
+    elle ne figure pas dans~$t$.
+    La dernière inférence de $\Subst{\pi}{t}{c}$,
+    \[
+    \AxiomC{}
+    \RightLabel{$\Subst{\pi'}{t}{c}$}
+    \Deduce$\Gamma(t) \fCenter \Delta'(t), !A(a,t)$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\Gamma(t) \fCenter \Delta'(t), \lforall[x][!A(x,t)]$
+    \DisplayProof
+    \]
+    est donc conforme à la règle : sa conclusion
+    ne contient pas~$a$.
+    \item Si la dernière inférence est $\LeftR{\lforall}$
+    dans \Log{G3c}, la preuve $\pi$ a la forme
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi'$}
+    \Deduce$!A(s(c),c), \lforall[x][!A(x,c)], \Gamma(c) \fCenter \Delta'(c)$
+    \RightLabel{\LeftR{\lforall}}
+    \UnaryInf$\lforall[x][!A(x,c)], \Gamma(c) \fCenter \Delta'(c)$
+    \DisplayProof
+    \]
+    Par hypothèse de récurrence, $\Subst{\pi'}{t}{c}$
+    est une preuve régulière du séquent
+    \[
+    !A(s(t),t), \lforall[x][!A(x,t)], \Gamma(t) \fCenter \Delta'(t)\,.
+    \]
+    Sa dernière inférence,
+    dans $\Subst{\pi}{t}{c}$,
+    \[
+    \AxiomC{}
+    \RightLabel{$\Subst{\pi'}{t}{c}$}
+    \Deduce$!A(s(t),t), \lforall[x][!A(x,t)], \Gamma(t) \fCenter \Delta'(t)$
+    \RightLabel{\LeftR{\lforall}}
+    \UnaryInf$\lforall[x][!A(x,t)], \Gamma(t) \fCenter \Delta'(t)$
+    \DisplayProof
+    \]
+    est conforme à la règle. Le cas de \LeftR{\lforall}
+    dans~\Log{G1c} est analogue, mais plus simple.
+    Le terme d'instanciation reste clos après substitution.
+    \item Si la dernière inférence est \RightR{\lexists}
+    ou \LeftR{\lexists}, compléter l'argument en exercice.
+  \end{enumerate}
+  Dans chaque cas, on prolonge une preuve régulière,
+  ou deux dans le cas d'une règle à deux prémisses.
+  Le nouveau séquent final ne diffère de celui de $\pi$
+  que par le remplacement de $c$ par~$t$.
+  Les constantes propres de $\pi$ et de
+  $\Subst{\pi}{t}{c}$ sont les mêmes :
+  aucune n'est remplacée, et le terme substitué
+  n'en introduit aucune occurrence nouvelle.
+  Chaque constante propre conserve donc son unique
+  inférence et toutes ses occurrences restent dans
+  la sous-preuve au-dessus de cette inférence.
+  Ainsi, $\Subst{\pi}{t}{c}$ est régulière.
+  La substitution conserve aussi la structure de l'arbre,
+  et donc sa hauteur.
+\end{proof}
+
+\begin{prop}
+Toute preuve $\pi$ de \Log{G1c} ou de \Log{G3c}
+possède une preuve régulière~$\pi'$ de même structure,
+et en particulier de même hauteur, qui n'en diffère
+que par des renommages de constantes propres.
+\end{prop}
+
+\begin{proof}
+Pour cette démonstration seulement, appelons \emph{propre}
+une inférence à constante propre de~$\pi$
+si sa constante ne sert à aucune autre inférence
+et n'apparaît nulle part dans~$\pi$ en dehors
+de sa sous-preuve immédiate. Appelons-la \emph{sale}
+dans le cas contraire.
+Soit $n$ le nombre d'inférences sales de~$\pi$.
+On raisonne par récurrence forte sur~$n$.
+Si $n=0$, toutes les inférences concernées sont
+propres et $\pi$ est déjà régulière.
+Sinon, choisissons une inférence sale qui n'a
+aucune inférence sale au-dessus d'elle.
+Supposons qu'il s'agisse de \RightR{\lforall} ;
+le cas de \LeftR{\lexists} est analogue.
+La sous-preuve~$\pi_1$ qui se termine par
+cette inférence a la forme
+    \[
+    \AxiomC{}
+    \RightLabel{$\pi_2$}
+    \Deduce$\Gamma \fCenter \Delta, !A(c)$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\Gamma \fCenter \Delta, \lforall[x][!A(x)]$
+    \DisplayProof
+    \]
+La condition sur la constante propre garantit
+que $c$ n'apparaît ni dans~$\Gamma$,
+ni dans~$\Delta$, ni dans $\lforall[x][!A(x)]$.
+Toutes les inférences à constante propre situées
+dans $\pi_2$ sont propres dans la preuve entière.
+La sous-preuve $\pi_2$ est donc régulière,
+même si elle contient de telles inférences.
+La constante $c$ n'y sert pas de constante propre :
+une inférence supérieure utilisant aussi $c$
+serait sale, puisqu'elle partagerait sa constante
+avec l'inférence choisie.
+
+Choisissons une constante $a$ qui n'apparaît
+nulle part dans~$\pi$ et n'est utilisée
+par aucune de ses inférences.
+Par le \olref{lem:subst-regular}, $\Subst{\pi_2}{a}{c}$
+est une preuve régulière de
+$\Gamma \fCenter \Delta, !A(a)$.
+On peut lui appliquer~$\RightR{\lforall}$ :
+la nouvelle constante est absente de la conclusion.
+Remplaçons alors $\pi_1$ dans~$\pi$ par $\pi_1'$,
+    \[
+    \AxiomC{}
+    \RightLabel{$\Subst{\pi_2}{a}{c}$}
+    \Deduce$\Gamma \fCenter \Delta, !A(a)$
+    \RightLabel{\RightR{\lforall}}
+    \UnaryInf$\Gamma \fCenter \Delta, \lforall[x][!A(x)]$
+    \DisplayProof
+    \]
+Le séquent final de cette sous-preuve est inchangé,
+ainsi que sa structure et sa hauteur.
+L'inférence choisie est devenue propre :
+sa constante $a$ n'est employée que par elle
+et n'apparaît que dans sa sous-preuve supérieure.
+Le remplacement de $c$ par~$a$ ne rend sale
+aucune inférence auparavant propre, car il n'introduit
+aucune occurrence d'une autre constante propre.
+Le nombre d'inférences sales a donc strictement
+diminué ; il est au plus~$n-1$, et peut être moindre.
+L'hypothèse de récurrence s'applique à la preuve
+obtenue et donne le résultat.
+\end{proof}
+
+Nous ne citerons pas explicitement cette proposition
+à chaque emploi. Nous supposerons désormais les
+preuves régulières : si nécessaire, un renommage
+de leurs constantes propres les met sous cette forme.
+
+\end{document}

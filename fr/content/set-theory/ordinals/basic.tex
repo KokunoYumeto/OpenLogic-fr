@@ -1,0 +1,238 @@
+% Partie : set-theory
+% Chapitre : ordinals
+% Section : basic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ordinals}{basic}
+\olsection{Propriétés élémentaires des ordinaux}
+
+Nous avons constaté que les premiers ordinaux sont les nombres
+naturels. La principale raison de développer une théorie des ordinaux
+est d'étendre le principe de récurrence valable pour les nombres
+naturels. Nous y parviendrons par une série de résultats élémentaires.
+
+\begin{lem}\ollabel{ordmemberord}
+Tout !!{element} d'un ordinal est un ordinal.
+\end{lem}
+
+\begin{proof}
+Soit $\alpha$ un ordinal, avec $b \in \alpha$. Puisque $\alpha$
+est transitif, $b \subseteq \alpha$. La relation $\in$ est donc un
+bon ordre sur $b$, puisqu'elle est un bon ordre sur $\alpha$.
+
+Pour voir que $b$ est transitif, supposons $x \in c \in b$. Comme
+$b \subseteq \alpha$, nous avons $c \in \alpha$. La transitivité de
+$\alpha$ donne alors $c \subseteq \alpha$, donc $x \in \alpha$.
+Ainsi, $x, c, b \in \alpha$. Or $\in$ est un bon ordre sur $\alpha$
+et, par la \olref[sth][ordinals][wo]{wo:strictorder}, une relation
+transitive sur $\alpha$. De $x \in c \in b$, il suit donc que
+$x \in b$. En général, $c \subseteq b$.
+\end{proof}
+
+\begin{cor}\ollabel{ordissetofsmallerord}
+$\alpha = \Setabs{\beta \in \alpha}{\beta \text{ est un ordinal}}$
+pour tout ordinal~$\alpha$.
+\end{cor}
+
+\begin{proof}
+Cela découle immédiatement du \olref{ordmemberord}.
+\end{proof}
+
+L'idée générale des deux résultats principaux qui suivent,
+\olref{ordinductionschema} et \olref{ordtrichotomy}, est que les
+ordinaux eux-mêmes sont bien ordonnés par l'appartenance :
+
+\begin{thm}[Récurrence transfinie]\ollabel{ordinductionschema}
+Pour toute formule $\phi(x)$ :
+\[
+	\text{si }\exists \alpha \phi(\alpha)\text{, alors }\exists \alpha(\phi(\alpha)
+	\land  (\forall \beta \in \alpha) \lnot \phi(\beta))
+\]
+où les quantificateurs affichés portent implicitement sur les seuls
+ordinaux.
+\end{thm}
+
+\begin{proof}
+%\olref{ordinductionschema1}.
+Supposons que $\phi(\alpha)$ soit vraie pour un ordinal $\alpha$. Si
+$(\forall \beta \in \alpha) \lnot \phi(\beta)$, c'est terminé.
+Sinon, parmi les éléments de $\alpha$ qui satisfont $\phi$,
+il en existe un plus petit pour $\in$, puisque $\alpha$ est un ordinal.
+Cet élément est lui-même un ordinal par le
+\olref{ordmemberord}.
+% Réaudit : la source choisit déjà le plus petit témoin de phi dans alpha.
+% L'expansion explicite par séparation, correcte mais facultative, est
+% conservée dans le dossier de propositions et retirée du corps traduit.
+%
+%
+%
+%\olref{ordinductionschema2}. Supposons qu'il existe un ordinal
+%\gamma tel que \lnot\phi(\gamma). Alors, par
+%\olref{ordinductionschema1}, il existe un ordinal \in-minimal
+%\alpha tel que \lnot\phi(\alpha). Donc (\forall \beta <
+%\alpha) \phi(\beta), ce qui rend fausse la prémisse de l'implication.
+\end{proof}
+\noindent
+Notons que nous pouvons aussi exprimer \olref{ordinductionschema}
+par le schéma :
+\[
+\text{si }\forall \alpha((\forall \beta \in \alpha)\phi(\beta) \lif
+\phi(\alpha))\text{, alors }\forall \alpha\phi(\alpha)
+\]
+Il suffit d'appliquer le \olref{ordinductionschema} à
+$\lnot\phi(\alpha)$, puis d'effectuer quelques transformations
+logiques élémentaires.
+
+\begin{thm}[Trichotomie]\ollabel{ordtrichotomy}
+$\alpha \in \beta \lor \alpha = \beta \lor \beta \in \alpha$, pour
+tous ordinaux $\alpha$ et $\beta$.
+\end{thm}
+
+\begin{proof}
+La démonstration procède par double récurrence, c'est-à-dire en
+appliquant deux fois \olref{ordinductionschema}. Disons que $x$ est
+\emph{comparable} à $y$ si et seulement si
+$x \in y \lor x = y \lor y \in x$.
+
+Comme hypothèse de la première récurrence, supposons que tout ordinal
+appartenant à~$\alpha$ soit comparable à \emph{tout} ordinal. Comme
+hypothèse de la seconde, supposons que $\alpha$ soit comparable à
+tout ordinal appartenant à~$\beta$. Nous allons montrer que $\alpha$
+est comparable à~$\beta$. Par récurrence sur~$\beta$, il s'ensuivra
+que $\alpha$ est comparable à tout ordinal ; puis, par récurrence
+sur~$\alpha$, que \emph{tout} ordinal est comparable à \emph{tout}
+ordinal, comme voulu. Il suffit de supposer $\alpha \notin \beta$ et
+$\beta \notin \alpha$, puis de montrer que $\alpha = \beta$.
+
+Pour établir $\alpha \subseteq \beta$, fixons $\gamma \in \alpha$ ;
+c'est un ordinal par le \olref{ordmemberord}. La première hypothèse de
+récurrence assure donc que $\gamma$ est comparable à $\beta$. Mais,
+si $\gamma = \beta$ ou $\beta \in \gamma$, alors
+$\beta \in \alpha$ (en invoquant, au besoin, la transitivité de
+$\alpha$), contrairement à notre hypothèse. Par conséquent,
+$\gamma \in \beta$. Ainsi, $\alpha \subseteq \beta$.
+
+Un raisonnement exactement analogue, fondé sur la seconde hypothèse
+de récurrence, établit $\beta \subseteq \alpha$. Donc
+$\alpha = \beta$.
+\end{proof}\noindent Nous écrirons donc parfois $\alpha <\beta$ au
+lieu de $\alpha \in \beta$, puisque $\in$ se comporte comme une
+relation d'ordre. Ce choix ne repose sur aucune raison profonde :
+cette notation est familière, et il est plus commode d'écrire
+$\alpha \leq \beta$ que $\alpha \in \beta \lor \alpha = \beta$.
+\footnote{Nous pourrions écrire $\alpha
+\mathrel{\underline{\in}} \beta$, mais cette notation serait tout à
+fait inhabituelle.}
+
+Voici deux conséquences rapides des derniers résultats, dont la
+première met en œuvre notre nouvelle notation :
+
+\begin{cor}\ollabel{ordordered}
+Si $\exists \alpha\phi(\alpha)$, alors $\exists \alpha(\phi(\alpha)
+\land \forall \beta(\phi(\beta) \lif \alpha \leq \beta))$.
+De plus, pour tous ordinaux $\alpha, \beta, \gamma$, on a
+$\alpha \notin \alpha$ et
+$\alpha \in \beta \in \gamma \lif \alpha \in \gamma$.
+\end{cor}
+
+\begin{proof}
+Comme dans la \olref[wo]{wo:strictorder}.
+\end{proof}
+
+\begin{prob}
+Complétez le «~raisonnement exactement analogue~» dans la
+démonstration du \olref[sth][ordinals][basic]{ordtrichotomy}.
+\end{prob}
+
+\begin{cor}\ollabel{corordtransitiveord}
+$A$ est un ordinal si et seulement si $A$ est un ensemble transitif
+d'ordinaux.
+\end{cor}
+
+\begin{proof}
+\emph{De gauche à droite.} Par le \olref{ordmemberord}.
+\emph{De droite à gauche.} Si $A$ est un ensemble transitif
+d'ordinaux, alors $\in$ est un bon ordre sur $A$ par le
+\olref{ordinductionschema} et le \olref{ordtrichotomy}.
+\end{proof}
+
+Nous avons présenté le \olref{ordinductionschema} et le
+\olref{ordtrichotomy} comme affirmant que $\in$ est un bon ordre sur
+les ordinaux. Il faut pourtant être \emph{très prudent} avec ce genre
+d'affirmation, à cause du résultat suivant :
+
+\begin{thm}[Paradoxe de Burali-Forti]\ollabel{buraliforti}
+Il n'existe pas d'ensemble de tous les ordinaux.
+\end{thm}
+
+\begin{proof}
+Par l'absurde, supposons que $O$ soit l'ensemble de tous les
+ordinaux. Si $\alpha \in \beta \in O$, alors $\alpha$ est un ordinal
+par le \olref{ordmemberord}, donc $\alpha \in O$. Ainsi, $O$ est
+transitif, et c'est donc un ordinal par \olref{corordtransitiveord}.
+Il s'ensuit que $O \in O$, ce qui contredit \olref{ordordered}.
+\end{proof}
+\noindent
+Ce résultat porte le nom de \citeauthor{Burali-Forti1897}. Mais c'est
+Cantor qui, en 1899, dans une lettre à Dedekind, a le premier vu
+clairement la \emph{contradiction} qu'entraîne l'hypothèse d'un
+ensemble de tous les ordinaux. Comme l'explique van Heijenoort :
+\begin{quote}
+  Burali-Forti lui-même considérait que la contradiction établissait,
+  par \emph{réduction à l'absurde}, que l'ordre naturel des ordinaux
+  n'est qu'un ordre partiel.
+  \citep[p.~105]{Heijenoort1967}
+\end{quote}
+Si l'on met de côté l'erreur de Burali-Forti, on peut résumer ainsi
+ce qui précède : les ordinaux sont des ensembles dont chacun est bien
+ordonné par l'appartenance, et qui sont collectivement bien ordonnés
+par elle, sans constituer collectivement un ensemble.
+
+Pour terminer, voici encore quelques propriétés élémentaires des
+ordinaux qui découlent du \olref{ordinductionschema} et du
+\olref{ordtrichotomy}.
+
+\begin{prop}
+Toute suite strictement décroissante d'ordinaux est finie.
+\end{prop}
+
+\begin{proof}
+Une suite infinie strictement décroissante d'ordinaux
+$\alpha_0 > \alpha_1 > \alpha_2 > \ldots$ ne possède aucun
+élément minimal pour $<$, ce qui contredit
+\olref{ordinductionschema}.
+\end{proof}
+
+\begin{prop}\ollabel{ordinalsaresubsets}
+$\alpha \subseteq \beta \lor \beta \subseteq \alpha$, pour tous
+ordinaux $\alpha, \beta$.
+\end{prop}
+
+\begin{proof}
+Si $\alpha \in \beta$, alors $\alpha \subseteq \beta$ puisque
+$\beta$ est transitif. De même, si $\beta \in \alpha$, alors
+$\beta \subseteq \alpha$. Enfin, si $\alpha = \beta$, alors
+$\alpha \subseteq \beta$ et $\beta \subseteq \alpha$.
+\olref{ordtrichotomy} permet donc de conclure.
+\end{proof}
+
+\begin{prop}\ollabel{ordisoidentity}
+$\alpha = \beta$ si et seulement si $\ordeq{\alpha}{\beta}$, pour
+tous ordinaux $\alpha, \beta$.
+\end{prop}
+
+\begin{proof}
+Les ordinaux sont des bons ordres ; le résultat découle donc
+immédiatement de la trichotomie (\olref[basic]{ordtrichotomy}) et du
+\olref[iso]{wellordnotinitial}.
+\end{proof}
+
+\begin{prob}\ollabel{probunionordinalsordinal}
+Démontrez que, si tout élément de $X$ est un ordinal, alors
+$\bigcup X$ est un ordinal.
+\end{prob}
+
+\end{document}

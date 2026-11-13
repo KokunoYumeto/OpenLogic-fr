@@ -1,0 +1,120 @@
+% Partie : intuitionistic-logic
+% Chapitre : semantics
+% Section : topological-semantics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sem}{top}
+
+\olsection{Sémantique topologique}
+
+Une autre façon de donner une sémantique à la logique intuitionniste
+repose sur la notion mathématique de topologie.
+
+\begin{defn}
+  Soit $X$ un ensemble. Une \emph{topologie sur~$X$} est un ensemble
+  $\Top{O} \subseteq \Pow{X}$ qui satisfait les propriétés ci-dessous.
+  Les !!{element}s de~$\Top{O}$ sont appelés les \emph{ouverts} de
+  cette topologie. L'ensemble $X$ muni de $\Top{O}$ est appelé un
+  \emph{espace topologique}.
+  \begin{enumerate}
+  \item L'ensemble vide et l'espace entier sont ouverts : $\emptyset$, $X \in
+    \Top{O}$.
+  \item Les ouverts sont stables par intersections finies : si $U$, $V \in
+    \Top{O}$, alors $U \cap V \in \Top{O}$.
+  \item Les ouverts sont stables par réunions arbitraires : si $U_i \in
+    \Top{O}$ pour tout $i \in I$, alors $\bigcup \Setabs{U_i}{i \in
+      I} \in \Top{O}$.
+  \end{enumerate}
+\end{defn}
+
+Par abus de notation, nous pouvons écrire $X$ pour désigner l'espace
+topologique lorsque la collection de ses ouverts ressort du contexte.
+Il reste que $X$ désigne l'ensemble sous-jacent, et que la topologie
+est la collection d'ouverts dont il est muni.
+
+\begin{defn}
+  Un \emph{modèle topologique} de la logique propositionnelle
+  intuitionniste est un triplet $\mModel{X} = \tuple{X, \Top{O}, V}$ où
+  $\Top{O}$ est une topologie sur~$X$ et $V$ est une fonction qui
+  associe à chaque variable propositionnelle un ouvert de
+  $\Top{O}$.
+
+  Étant donné un modèle topologique~$\mModel{X}$, nous définissons
+  $\Prop{X}{!A}$ par induction comme suit :
+  \begin{enumerate}
+  \item $\Prop{X}{\lfalse} = \emptyset$
+  \item $\Prop{X}{p} = V(p)$
+  \item $\Prop{X}{!A \land !B} = \Prop{X}{!A} \cap \Prop{X}{!B}$
+  \item $\Prop{X}{!A \lor !B} = \Prop{X}{!A} \cup \Prop{X}{!B}$
+  \item $\Prop{X}{!A \lif !B} = \Interior{(X \setminus \Prop{X}{!A}) \cup
+    \Prop{X}{!B}}$
+  \end{enumerate}
+  Ici, $\Interior{V}$ associe à tout ensemble $V \subseteq X$ son
+  \emph{intérieur}, c'est-à-dire la réunion de tous les ouverts qu'il
+  contient. Autrement dit,
+  \[
+  \Interior{V} = \bigcup \Setabs{U}{U \subseteq V \text{ et } U \in \Top{O}}.
+  \]
+\end{defn}
+
+L'intérieur de tout ensemble est ouvert, puisqu'il est la réunion
+d'ouverts. Ainsi, $\Prop{X}{!A}$ est toujours un ouvert.
+
+Cette sémantique est abstraite, mais on peut en éclairer l'idée.
+Supposons que les !!{element}s, ou « points », de $X$ soient des lieux
+où l'on peut évaluer les énoncés. L'ensemble des points où $!A$ est
+vraie est la proposition exprimée par~$!A$. Tous les ensembles de
+points ne peuvent pas jouer ce rôle : seuls les !!{element}s de
+$\Top{O}$ le peuvent. On a $!A \Entails !B$ si et seulement si $!B$
+est vraie en tout point où~$!A$ est vraie, c'est-à-dire si
+$\Prop{X}{!A} \subseteq \Prop{X}{!B}$ dans chaque modèle sur un
+espace~$X$. L'énoncé absurde~$\lfalse$ n'est vrai en aucun point ;
+donc $\Prop{X}{\lfalse} = \emptyset$.
+
+Quel rapport faut-il établir entre les propositions exprimées par
+$!B \land !C$, $!B \lor !C$ et $!B \lif !C$, et celles exprimées par
+$!B$ et~$!C$, pour respecter les lois intuitionnistes valides ? Le
+critère recherché est que $!A \Proves !B$ si et seulement si
+$\Prop{X}{!A} \subseteq \Prop{X}{!B}$ dans tous les modèles
+topologiques. Nous voulons $\lfalse \Proves !A$ pour toute $!A$,
+ce qui est vérifié puisque $\emptyset \subseteq U$ pour tout $U$.
+Comme $!B \land !C \Proves !B$, il faut
+$\Prop{X}{!B \land !C} \subseteq \Prop{X}{!B}$ et, de même,
+$\Prop{X}{!B \land !C} \subseteq \Prop{X}{!C}$. Le plus grand
+ensemble satisfaisant $W \subseteq U$ et $W \subseteq V$ est
+$U \cap V$. Réciproquement, $!B \Proves !B \lor !C$ et
+$!C \Proves !B \lor !C$ ; il faut donc
+$\Prop{X}{!B} \subseteq \Prop{X}{!B \lor !C}$ et
+$\Prop{X}{!C} \subseteq \Prop{X}{!B \lor !C}$. Le plus petit
+ensemble~$W$ tel que $U \subseteq W$ et $V \subseteq W$ est
+$U \cup V$.
+
+La définition pour $\lif$ est plus délicate : $!A \lif !B$ exprime la
+proposition la plus faible qui, jointe à $!A$, entraîne $!B$. Le fait
+que $!A \lif !B$ joint à $!A$ entraîne~$!B$ découle de
+$(!A \lif !B) \land !A \Proves !B $. Ainsi, $\Prop{X}{!A \lif !B}$
+doit être le plus grand ouvert dont l'intersection avec
+$\Prop{X}{!A}$ est incluse dans $\Prop{X}{!B}$. En effet, pour
+des ouverts $U$ et $V$, la condition $W\cap U\subseteq V$
+équivaut à $W\subseteq (X\setminus U)\cup V$. Si $W$ est ouvert,
+cette dernière condition équivaut à
+$W\subseteq \Interior{(X\setminus U)\cup V}$. L'intérieur est
+donc le plus grand ouvert qui convienne.
+
+\begin{ex}
+  Prenons $X=\Real$ muni de sa topologie usuelle et
+  une valuation telle que $V(p)=(0,+\infty)$. Comme $\lnot p$
+  abrège $p\lif\lfalse$, la clause d'implication donne
+  \[
+    \Prop{X}{\lnot p} = \Interior{(-\infty,0]} = (-\infty,0).
+  \]
+  Par conséquent, $\Prop{X}{p\lor\lnot p} = \Real\setminus\{0\}$.
+  Au point~$0$, ni $p$ ni $\lnot p$ ne sont vraies. Ce modèle
+  montre que le tiers exclu n'est pas valide dans la sémantique
+  topologique.
+\end{ex}
+
+\end{document}

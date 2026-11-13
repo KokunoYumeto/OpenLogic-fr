@@ -1,0 +1,59 @@
+% Part: normal-modal-logic
+% Chapter: syntax-and-semantics
+% Section: relational-models
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{rel}
+
+\olsection{Modèles relationnels}
+
+La notion fondamentale de la sémantique des logiques modales normales
+est celle de \emph{modèle relationnel}. Un tel modèle comprend un
+ensemble de mondes reliés par une « relation d'accessibilité »
+binaire et une valuation qui précise, pour chaque
+!!{propositional variable}, dans quels mondes elle est « vraie ».
+
+\begin{defn}
+  Un \emph{modèle} pour le langage modal de base est un triplet
+  $\mModel{M} = \tuple{W, R, V}$, où
+  \begin{enumerate}
+  \item $W$ est un ensemble non vide de « mondes »;
+  \item $R$ est une relation binaire d'accessibilité sur~$W$;
+  \item $V$ est une fonction qui attribue à chaque
+    !!{propositional variable}~$p$ un ensemble~$V(p)$ de mondes
+    possibles.
+  \end{enumerate}
+  Lorsque $Rww'$ vaut, nous disons que $w'$ est \emph{accessible
+    depuis}~$w$. Lorsque $w \in V(p)$, nous disons que $p$ est
+  \emph{vraie en}~$w$.
+\end{defn}
+
+La sémantique relationnelle présente l'avantage de permettre des
+diagrammes simples, comme celui de la~\olref{fig:simple}. Les mondes y
+sont représentés par des nœuds; le monde~$w'$ est accessible
+depuis~$w$ si et seulement si une flèche va de~$w$ à~$w'$.
+De plus, nous marquons un nœud par~$\mTrue{p}$ si $w \in V(p)$,
+et par~\mFalse{p} sinon. La \olref{fig:simple} représente le modèle
+où $W = \{w_1, w_2, w_3\}$, $R = \{\tuple{w_1, w_2},\tuple{w_1,
+  w_3}\}$, $V(p) = \{w_1, w_2\}$ et $V(q) = \{w_2\}$.
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[modal]
+      \node[world] (w1) [label={[align=right]right:\mTrue{p}\\ \mFalse{q}}]{$w_1$}; 
+      \node[world] (w2) [label={[align=right]right:\mTrue{p}\\ \mTrue{q}},
+        above right=of w1]{$w_2$}; 
+      \node[world] (w3) [label={[align=right]right:\mFalse{p}\\ \mFalse{q}},
+        below right=of w1] {$w_3$};
+      \draw[->] (w1) to (w2);
+      \draw[->] (w1) to (w3);
+    \end{tikzpicture}
+  \end{center}
+  \caption{Un modèle simple.}
+  \ollabel{fig:simple}
+\end{figure}
+
+\end{document}

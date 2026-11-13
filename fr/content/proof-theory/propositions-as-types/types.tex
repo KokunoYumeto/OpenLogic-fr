@@ -1,0 +1,151 @@
+% Partie : logique intuitionniste
+% Chapitre : propositions comme types
+% Section : types
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{pty}{typ}
+
+\olsection{Types}
+
+Un terme de preuve tel que $(MN)$ ne détermine pas, à lui seul,
+les formules de la preuve qu'il encode. Les variables libres,
+c'est-à-dire les termes associés aux axiomes, ne précisent pas
+ces formules. Un contexte~$\Gamma$ fournit cette information.
+Le type du terme, s'il existe, est alors déterminé de manière
+unique. Le terme fixe aussi les règles de la dérivation dans
+la présentation à contexte commun donnée ci-dessous.
+Dans la présentation \Log{tN2i}, les hypothèses inutilisées
+peuvent toutefois être réparties de plusieurs manières entre
+les contextes des prémisses.
+
+\begin{defn}
+Un \emph{contexte} pour un terme de preuve~$N$ est un ensemble
+fini $\Gamma$ de couples $x : !A$, qui attribue au plus un type
+à chaque variable et exactement un type à chaque variable
+libre de~$N$.
+\end{defn}
+
+Le contexte peut aussi attribuer des types à des variables
+qui ne sont pas libres dans~$N$.
+Par exemple, $\Gamma = \{x:!A, y:!B, z:!C\}$ est un contexte
+pour $\pair{x}{y}$.
+Nous renommons au besoin les variables liées pour les choisir
+distinctes des variables du contexte.
+
+\begin{defn}\ollabel{defn:type}
+Soit $\Gamma$ un contexte pour~$N$.
+Le \emph{type} de~$N$ relativement à~$\Gamma$, lorsqu'il existe,
+est défini inductivement par les clauses suivantes.
+Les sous-termes sont typés dans le même contexte,
+sauf pour les extensions explicitement indiquées :
+\begin{enumerate}
+\item La variable $x$ a le type $!A$ si et seulement si
+  $x:!A \in \Gamma$.
+\item Si $N$ a le type~$!B$ relativement à $x:!A, \Gamma$,
+  alors $\lambd[\typeof{x}{!A}][N]$ a le type $!A \lif !B$.
+\item Si $N$ a le type $!A \lif !B$ et $M$ le type~$!A$,
+  alors $(NM)$ a le type~$!B$.
+\item Si $N$ a le type $!A$ et $M$ le type~$!B$, alors
+  $\pair{N}{M}$ a le type $!A \land !B$.
+\item Si $N$ a le type~$!A_1 \land !A_2$, alors
+  $\proj{i}{N}$ a le type~$!A_i$.
+\item Si $N$ a le type $!A$, alors $\inj[!B]{i}{N}$
+  a le type $!A \lor !B$ pour $i=1$, et le type
+  $!B \lor !A$ pour $i=2$.
+\item Si $M$ a le type $!A \lor !B$, si $N_1$ a le type
+  $!C$ relativement à $x_1:!A, \Gamma$, et si $N_2$
+  a le type~$!C$ relativement à $x_2:!B, \Gamma$, alors
+  $\dcase{M}{x_1}{N_1}{x_2}{N_2}$ a le type~$!C$.
+\item Si $N$ a le type~$\lfalse$, alors $\abort{!A}{N}$
+  a le type~$!A$.
+\end{enumerate}
+\end{defn}
+
+Si les conditions d'une clause ne sont pas satisfaites,
+elle n'attribue aucun type au terme.
+
+\begin{prop}
+Tout terme de preuve~$N$ a au plus un type relativement
+à un contexte~$\Gamma$ pour~$N$.
+\end{prop}
+
+\begin{proof}
+On raisonne par récurrence sur~$N$.
+Le contexte détermine le type d'une variable.
+Pour chaque autre constructeur, les types de ses sous-termes,
+s'ils existent, sont uniques par l'hypothèse de récurrence.
+Avec les annotations du constructeur, ils déterminent
+au plus un type pour le terme composé.
+Dans une application, les types du domaine et de l'argument
+doivent coïncider ; dans une analyse par cas, les deux branches
+doivent avoir le même type. Si ces conditions échouent,
+le terme n'a pas de type.
+\end{proof}
+
+Un terme bien typé possède donc exactement un type dans
+le contexte fixé. Nous écrivons $\Gamma \Sequent N : !A$
+lorsque $N$ a le type~$!A$ relativement à~$\Gamma$.
+Les clauses de la \olref{defn:type} reprennent les règles
+de \Log{tN2i} avec un contexte de base~$\Gamma$ commun.
+Les règles à lieurs étendent ce contexte dans leurs prémisses.
+Elles forment le calcul \Log{tN3i}, présenté dans le
+\olref{tab:tN3ip}.
+
+\subfile{rules-tN3}
+
+Les termes de preuve sont les termes d'une variante du
+$\lambd$-calcul : le \emph{$\lambd$-calcul typé avec produits,
+sommes et type vide}. Le $\lambd$-calcul non typé traditionnel
+ne comporte que des variables, des
+\emph{$\lambd$-abstractions}~$\lambd[x][N]$ et des applications
+$(MN)$. Il ne porte pas l'annotation~$!A$ de l'abstraction
+typée $\lambd[\typeof{x}{!A}][N]$.
+Le $\lambd$-calcul non typé est un modèle de calcul
+Turing-complet : toute fonction partielle calculable
+peut y être représentée par un terme.
+La variante munie de termes de preuve et de règles de typage
+est un modèle plus restreint, dont les principes de calcul
+restent les mêmes. Seuls les termes \emph{bien typés},
+c'est-à-dire ceux qui possèdent un type relativement
+à un contexte~$\Gamma$, y sont admis.
+Par exemple, $\lambd[x][(xx)]$ est un terme du lambda-calcul
+non typé, mais $\lambd[\typeof{x}{!A}][(xx)]$ n'est bien typé
+pour aucune formule $!A$.
+Pour typer $(xx)$, la première occurrence de $x$
+devrait avoir le type $!A \lif !B$ et la seconde le type~$!A$.
+Elles ont pourtant la même variable : ces types devraient
+coïncider, ce qui est impossible puisque $!A$ est une
+sous-formule propre de~$!A \lif !B$.
+
+Intuitivement, on peut interpréter un type comme la sorte
+d'objet désigné par un terme.
+Un terme de type $!A \land !B$ désigne un couple dont
+les composantes ont respectivement les types~$!A$ et~$!B$,
+c'est-à-dire un élément du produit~$!A \times !B$.
+Un terme de type $!A \lif !B$ représente une fonction
+des objets de type $!A$ vers ceux de type~$!B$.
+Un terme de type $!A \lor !B$ indique un objet de type
+$!A$ ou de type~$!B$, avec l'information sur le côté choisi.
+C'est le principe de l'union disjointe de $!A$ et $!B$,
+définie par $\{\tuple{i,x} : i = 1 \text{ ou } 2,
+x \in !A \text{ si } i = 1, x \in !B \text{ si } i=2\}$.
+Le type $\lfalse$ est interprété par l'ensemble vide :
+un terme de ce type ne peut donc désigner aucun objet.
+La déduction naturelle intuitionniste, y compris \Log{tN3i},
+est cohérente ; elle ne prouve pas~$\lfalse$ sans hypothèse
+ouverte. Il n'existe donc pas de terme de preuve clos,
+c'est-à-dire sans variable libre, de type~$\lfalse$.
+
+Les opérateurs du lambda-calcul typé produisent des termes
+qui désignent les objets attendus, à condition que leurs
+arguments aient les types requis.
+Ainsi, « si $N_1 : !A$ et $N_2 : !B$, alors
+$\pair{N_1}{N_2} : !A \land !B$ » signifie que
+si $N_1$ désigne un objet de type~$!A$ et $N_2$ un objet
+de type~$!B$, leur couple $\pair{N_1}{N_2}$ désigne
+un objet de type $!A \land !B$.
+
+\end{document}

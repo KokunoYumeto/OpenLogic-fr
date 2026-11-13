@@ -1,0 +1,224 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: sequences
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{seq}
+\olsection{Suites finies}
+
+L'ensemble des fonctions récursives primitives possède de
+remarquables propriétés de clôture. Nous pourrons en obtenir
+d'autres dès que nous disposerons d'un moyen convenable de
+manipuler les \emph{suites finies}. Nous coderons une suite
+finie d'entiers naturels par un entier naturel de la manière
+suivante : à
+$\langle a_0,a_1,a_2,\dots,a_k\rangle$, nous associons
+\[
+p_0^{a_0+1} \cdot p_1^{a_1+1} \cdot p_2^{a_2+1} \cdot \dots \cdot
+p_k^{a_k+1}.
+\]
+Nous ajoutons $1$ à chaque exposant afin que, par exemple,
+les suites $\langle 2,7,3\rangle$ et
+$\langle 2,7,3,0,0\rangle$ aient des codes distincts.
+Les nombres $0$ et~$1$ peuvent tous deux servir de codes à
+la suite vide; pour fixer la notation, $\emptyseq$
+désignera~$0$.
+
+Ce codage repose sur le théorème fondamental de
+l'arithmétique : tout entier naturel $n\geq2$ possède une
+unique écriture de la forme
+\[
+n = p_0^{a_0} \cdot p_1^{a_1} \cdot \dots \cdot p_k^{a_k}
+\]
+où les $a_i$ sont des entiers naturels et $a_k\geq1$.
+L'application
+$\tuple{}(a_0,\dots,a_k)=\tuple{a_0,\dots,a_k}$
+est donc injective : des suites différentes reçoivent des
+codes différents, et chaque entier représente au plus une
+suite dans ce codage.
+
+Montrons maintenant que l'on peut calculer par des fonctions
+récursives primitives la longueur d'une suite, son élément
+de rang~$i$, l'adjonction d'un élément à sa fin et la
+concaténation de deux suites.
+
+\begin{prop}
+  La fonction $\len{s}$, qui renvoie la longueur de la suite
+  codée par~$s$, est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  Soit $R(i,s)$ la relation définie par
+  \[
+  R(i, s) \text{ si et seulement si }
+  p_i \mid s \land p_{i+1} \nmid s.
+  \]
+  Elle est récursive primitive. Si $s$ code une suite non vide,
+  c'est-à-dire si
+  \[
+  s = p_0^{a_0+1} \cdot \dots \cdot p_{k}^{a_{k}+1},
+  \]
+  alors $R(i,s)$ vaut exactement lorsque $p_i$ est le plus
+  grand nombre premier divisant~$s$, autrement dit lorsque
+  $i=k$. La longueur vaut donc $i+1$ dans ce cas. Posons
+  \[
+  \len{s} =
+  \begin{cases}
+    0 & \text{si $s = 0$ ou $s = 1$} \\
+    1 + \bmin{i < s}{R(i, s)} & \text{sinon}
+  \end{cases}
+  \]
+  La minimisation est bornée : pour tout code non vide,
+  il existe un unique~$i$ vérifiant $R(i,s)$, et cet
+  indice est strictement inférieur à~$s$.
+\end{proof}
+
+\begin{prop}
+  La fonction $\fn{append}(s,a)$, qui renvoie le code obtenu
+  en ajoutant~$a$ à la fin de la suite codée par~$s$,
+  est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  Elle se définit par
+  \[
+  \fn{append}(s,a) =
+  \begin{cases}
+    2^{a+1} & \text{si $s = 0$ ou $s = 1$} \\
+    s \cdot p_{\len{s}}^{a+1} & \text{sinon.}
+  \end{cases}
+  \]
+\end{proof}
+
+\begin{prop}
+  La fonction $\fn{element}(s,i)$, qui renvoie l'élément
+  de rang~$i$ de la suite codée par~$s$ (le premier
+  élément est de rang~$0$), ou~$0$ si
+  $i\geq\len{s}$, est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  L'entier~$a$ est l'élément de rang~$i$ de~$s$
+  si et seulement si $p_i^{a+1}$ est la plus grande
+  puissance de~$p_i$ qui divise~$s$ : on a
+  $p_i^{a+1}\mid s$ et $p_i^{a+2}\nmid s$. Ainsi,
+  \[
+  \fn{element}(s,i) =
+  \begin{cases}
+    0 & \mbox{si $i \geq \len{s}$} \\
+    \bmin{a < s}{(p_i^{a+2} \nmid s)} & \text{sinon.}
+  \end{cases}
+  \]
+\end{proof}
+
+Nous emploierons désormais une notation plus courte :
+$(s)_i$ pour $\fn{element}(s,i)$, et
+$\tuple{s_0,\dots,s_k}$ pour
+\[
+\fn{append}(\fn{append}(\dots \fn{append}(\emptyseq,s_0)
+\dots),s_k).
+\]
+Si la suite~$s$ a pour longueur~$k$, ses éléments sont
+$(s)_0,\dots,(s)_{k-1}$.
+
+\begin{prop}
+  La fonction $\fn{concat}(s,t)$, qui concatène les
+  deux suites codées par $s$ et~$t$, est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  Nous cherchons une fonction $\fn{concat}$ telle que
+  \[
+    \fn{concat}(\tuple{a_0, \dots, a_k}, \tuple{b_0, \dots, b_l}) =
+    \tuple{a_0, \dots, a_k, b_0, \dots, b_l}.
+  \]
+  Définissons d'abord une fonction auxiliaire
+  $\fn{hconcat}(s,t,n)$ qui adjoint à~$s$ les $n$
+  premiers éléments de~$t$. La récurrence primitive donne
+  \begin{align*}
+    \fn{hconcat}(s,t,0) & = s\\
+    \fn{hconcat}(s,t,n+1) & = \fn{append}(\fn{hconcat}(s,t,n),(t)_n)
+    \intertext{Nous pouvons alors définir $\fn{concat}$ par}
+    \fn{concat}(s,t) & = \fn{hconcat}(s,t,\len{t}).
+  \end{align*}
+\end{proof}
+
+Nous écrirons $s\concat t$ pour $\fn{concat}(s,t)$.
+
+Pour utiliser la recherche bornée, il nous faut une borne
+sur le code d'une suite en fonction de sa longueur et de
+son plus grand élément. Supposons que $s$ code une suite
+de longueur~$k$ dont chaque élément est inférieur ou égal
+à~$x$. Son code a au plus $k$ facteurs premiers, chacun
+inférieur ou égal à~$p_{k-1}$ et élevé à une puissance
+au plus égale à~$x+1$. Pour $k\geq1$, posons
+\[
+\fn{sequenceBound}(x,k) = p_{k-1}^{k \cdot (x+1)},
+\]
+et, pour la suite vide, posons
+$\fn{sequenceBound}(x,0)=1$. Le code de la suite~$s$
+est alors inférieur ou égal à cette borne. La valeur
+pour $k=0$ évite l'indice $p_{-1}$ et se calcule par
+une définition par cas récursive primitive.\footnote{Complément éditorial : la source ne définit pas la borne lorsque $k=0$, où $p_{k-1}$ n'a pas de sens. La valeur $1$ couvre les deux codes admis de la suite vide.}
+
+Cette borne permet de définir de nouvelles fonctions
+par recherche bornée. Par exemple, on peut redéfinir
+$\fn{concat}$ : il suffit de donner une
+\emph{spécification} récursive primitive du code
+cherché et une borne de recherche. Pour les codes
+canoniques produits à partir de $\emptyseq=0$, on obtient le schéma ci-dessous. Il faut aussi exiger que le candidat $v$ soit un code de suite. Écrivons $\fn{SeqCode}(v)$ pour la relation $v\leq1\lor(v\geq2\land\bforall{i<v}{(p_{i+1}\mid v\lif p_i\mid v)})$. Cette relation récursive primitive exige une chaîne de facteurs premiers sans lacune :
+\begin{align*}
+  \fn{concat}(s,t) = {} & \bmin{v < \fn{sequenceBound}(s+t,\len{s} +
+    \len{t})}{} \\
+  & \quad(\fn{SeqCode}(v) \land \len{v} = \len{s} + \len{t} \land {}\\
+    & \qquad \bforall{i < \len{s}}{(v)_i = (s)_i} \land {} \\
+    & \qquad \bforall{j < \len{t}}{(v)_{\len{s}+j} = (t)_j})
+\end{align*}
+Le code voulu est strictement sous cette borne : pour une
+suite non vide, chaque élément est strictement inférieur à $s+t$, donc chaque exposant est au plus $s+t$ ; le produit est strictement sous la borne.
+Pour deux suites vides, le code choisi est $0<1$.\footnote{Corrections éditoriales : les deux quantifications portant sur les segments forment deux conditions distinctes dans une conjonction ; dans la source, la seconde est placée sous la première et disparaît quand le premier segment est vide. Nous ajoutons aussi le test de code : sans lui, pour $s=t=2$, la recherche trouve $v=3$ au lieu du code $6$ de la suite $\tuple{0,0}$.}
+Si l'on emploie aussi~$1$ comme code de la suite vide,
+les deux procédés peuvent rendre respectivement $1$ et~$0$
+pour deux suites vides : ces codes représentent la même suite,
+mais les fonctions numériques ne coïncident alors pas partout.
+
+\begin{prob}
+Montrer qu'il existe une fonction récursive primitive
+$\fn{sconcat}(s)$ telle que
+\[
+\fn{sconcat}(\tuple{s_0, \dots, s_k}) = s_0 \concat \dots \concat s_k.
+\]
+\end{prob}
+
+\begin{prob}
+Montrer qu'il existe une fonction récursive primitive
+$\fn{tail}(s)$ telle que
+\begin{align*}
+  \fn{tail}(\emptyseq) & = 0 \text{ et}\\
+  \fn{tail}(\tuple{s_0, \dots, s_{k}}) & = \tuple{s_1, \dots, s_{k}}.
+\end{align*}
+Pour $k=0$, le membre de droite désigne la suite vide.
+\end{prob}
+
+\begin{prop}
+  \ollabel{prop:subseq}
+  La fonction $\fn{subseq}(s,i,n)$, qui renvoie la
+  sous-suite de~$s$ de longueur~$n$ commençant à
+  l'élément de rang~$i$, est récursive primitive.
+  Cette description porte sur $i+n\leq\len{s}$;
+  hors de ce domaine, on peut convenir qu'elle renvoie
+  le code de la suite vide.\footnote{Complément éditorial : la source ne précise pas le cas où une sous-suite de cette longueur n'existe pas. Nous fixons ce retour pour donner une fonction totale.}
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrer la \olref[cmp][rec][seq]{prop:subseq}.
+\end{prob}
+
+\end{document}

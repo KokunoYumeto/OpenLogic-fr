@@ -1,0 +1,347 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: verification
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{ver}
+\olsection{Vérifier la représentation}
+
+\begin{explain}
+Pour vérifier que notre représentation fonctionne, nous devons
+établir deux implications. Si~$M$ s'arrête sur l'entrée~$w$, alors
+$!T(M,w)\lif !E(M,w)$ est valide. Réciproquement, si cet énoncé est
+valide, alors~$M$ finit effectivement par s'arrêter sur~$w$.
+
+Les stratégies diffèrent. Pour la première implication, il faut
+montrer qu'!!a{sentence} du premier ordre, à savoir
+$!T(M,w)\lif !E(M,w)$, est valide. On peut établir cette validité
+en donnant !!a{derivation}. Mais l'argument doit valoir pour tous
+$M$ et~$w$ : il porte donc sur une infinité d'!!{sentence}s, et
+non sur un seul dont nous pourrions exhiber !!a{derivation} fixe.
+Nous allons montrer par récurrence que, quels que soient~$M$ et~$w$
+et quel que soit le nombre d'étapes avant l'arrêt, il existe
+!!a{derivation} de $!T(M,w)\lif !E(M,w)$.
+
+La récurrence suit le nombre d'étapes parcourues avant d'atteindre
+une configuration d'arrêt. Nous montrerons que, pour chaque
+instant~$n$ atteint dans l'exécution de~$M$ sur~$w$,
+$!T(M,w)\Entails !C(M,w,n)$, où $!C(M,w,n)$ décrit correctement
+la configuration après~$n$ étapes. Si~$M$ s'arrête après~$n$
+étapes, cette configuration est terminale. Nous établirons aussi
+que $!C(M,w,n)\Entails !E(M,w)$ pour une telle configuration.
+Ainsi, si~$M$ s'arrête, il existe un~$n$ tel que
+$!T(M,w)\Entails !C(M,w,n)\Entails !E(M,w)$; autrement dit,
+$\Entails !T(M,w)\lif !E(M,w)$. La complétude fournit également
+une dérivation de cette implication.
+
+Pour la réciproque, supposons $\Entails !T(M,w)\lif !E(M,w)$.
+Cela signifie que $!T(M,w)\Entails !E(M,w)$ : $!E(M,w)$ est vrai
+dans toute !!{structure} où $!T(M,w)$ est vrai. Nous construirons
+une !!{structure}~$\Struct M$ de domaine~$\Nat$ satisfaisant
+$!T(M,w)$, dans laquelle les interprétations de $\Obj Q_q$ et
+de~$\Obj S_\sigma$ sont déterminées par l'exécution réelle de~$M$
+sur~$w$. Par exemple,
+$\Sat{M}{\Obj Q_q(\num{m},\num{n})}$ signifie qu'après $n$ étapes,
+$M$ est dans l'état~$q$ et sa tête lit la case~$m$. Puisque
+$\Sat{M}{!T(M,w)}$ par construction et que
+$!T(M,w)\Entails !E(M,w)$, nous aurons $\Sat{M}{!E(M,w)}$.
+Il existera alors un instant~$n\in\Domain{M}=\Nat$ auquel~$M$
+se trouve dans une configuration d'arrêt.
+\end{explain}
+
+\begin{defn}
+Soit~$!C(M,w,n)$ l'!!{sentence}
+\[
+\Obj Q_q(\num{m},\num{n})\land
+\Obj S_{\sigma_0}(\num{0},\num{n})\land\dots\land
+\Obj S_{\sigma_k}(\num{k},\num{n})\land
+\lforall[x][(\num{k}<x\lif\Obj S_\TMblank(x,\num{n}))]
+\]
+où $q$ est l'état de~$M$ à l'instant~$n$, sa tête lit alors la
+case~$m$, la case~$i$ contient~$\sigma_i$ pour $0\le i\le k$,
+et $k$ est le plus grand des deux indices suivants :
+$\len{w}$, indice de la dernière case explicitement spécifiée
+par l'entrée initiale (ou du marqueur si $w$ est vide), et
+l'indice de la case la plus à droite que la tête a visitée
+jusqu'à l'instant~$n$.
+\end{defn}
+
+\begin{lem}\ollabel{lem:halt-config-implies-halt}
+Si l'exécution de~$M$ sur~$w$ atteint une configuration d'arrêt
+après $n$ étapes, alors $!C(M,w,n)\Entails !E(M,w)$.
+\end{lem}
+
+\begin{proof}
+Supposons que~$M$ s'arrête après $n$ étapes. Il existe un état~$q$,
+une case~$m$ et un symbole~$\sigma$ tels que :
+\begin{enumerate}
+\item après $n$ étapes, $M$ est dans l'état~$q$ et lit la case~$m$,
+  qui contient~$\sigma$;
+\item la fonction de transition $\delta(q,\sigma)$ n'est pas définie.
+\end{enumerate}
+La description~$!C(M,w,n)$ contient donc les conjoints
+$\Obj Q_q(\num{m},\num{n})$ et
+$\Obj S_\sigma(\num{m},\num{n})$. Leur conjonction entraîne
+$!E(M,w)$ :
+\[
+\lexists[x][\lexists[y][(\bigvee_{\tuple{q,\sigma}\in X}
+  (\Obj Q_q(x,y)\land\Obj S_\sigma(x,y)))]]
+\]
+En effet, le couple état-symbole réellement lu appartient à~$X$,
+et $\Obj Q_{q'}(\num{m},\num{n})\land
+\Obj S_{\sigma'}(\num{m},\num{n})$ entraîne le terme correspondant
+de la disjonction lorsque $\tuple{q',\sigma'}\in X$.
+\end{proof}
+
+\begin{explain}
+Si~$M$ s'arrête sur~$w$, il existe donc un~$n$ tel que
+$!C(M,w,n)\Entails !E(M,w)$. Montrons maintenant que
+$!T(M,w)\Entails !C(M,w,n)$ pour chaque instant~$n$ atteint
+dans l'exécution.
+\end{explain}
+
+\begin{lem}
+\ollabel{lem:config}
+Pour chaque~$n$ tel que l'exécution de~$M$ sur~$w$ atteint une
+configuration après $n$ étapes, $!T(M,w)\Entails !C(M,w,n)$.
+La configuration après~$n$ étapes peut être une configuration d'arrêt.\footnote{Corrections éditoriales : la source exclut cet instant de l'énoncé du lemme, alors que la suite de la preuve l'utilise. La borne $k$ de la configuration comprend toute l'entrée explicitement donnée, même si elle finit par des blancs ; la preuve traite aussi l'entrée vide et le premier pas.}
+\end{lem}
+
+\begin{proof}
+Procédons par récurrence sur~$n$. Pour $n=0$, l'état initial et
+les symboles des cases~$0$ à~$\len{w}$ sont donnés par les
+axiomes de~$!T(M,w)$; les cases au-delà sont blanches. Si
+l'entrée est vide, la tête lit néanmoins la case~$1$ : sa
+blancheur découle de l'axiome de blancheur et de
+$\num{0}<\num{1}$. On obtient ainsi tous les conjoints de
+$!C(M,w,0)$, y compris l'énoncé de blancheur à droite de la
+borne~$k$ choisie dans sa définition.
+
+Supposons que $!T(M,w)\Entails !C(M,w,n)$ et que la configuration
+après $n$ étapes ne soit pas terminale. Nous devons montrer que
+$!T(M,w)\Entails !C(M,w,n+1)$. Soit~$q$ l'état à l'instant~$n$,
+$m$ la case lue et~$\sigma$ son symbole. La fonction de transition
+est définie en~$\tuple{q,\sigma}$ et donne une instruction de
+l'une des trois formes suivantes :
+\begin{enumerate}
+\item \ollabel{right}
+  $\delta(q,\sigma)=\tuple{q',\sigma',\TMright}$;
+\item \ollabel{left}
+  $\delta(q,\sigma)=\tuple{q',\sigma',\TMleft}$;
+\item \ollabel{stay}
+  $\delta(q,\sigma)=\tuple{q',\sigma',\TMstay}$.
+\end{enumerate}
+Examinons ces cas.
+
+\begin{enumerate}
+\item Supposons l'instruction~\olref{right}. D'après
+  la \olref[rep]{defn:tm-descr}\olref[rep]{rep-right}, $!T(M,w)$
+  contient l'énoncé
+\begin{align*}
+& \lforall[x][\lforall[y][(
+  (\Obj Q_q(x,y)\land\Obj S_\sigma(x,y))\lif {}]]\\
+&\qquad (\Obj Q_{q'}(x',y')\land
+  \Obj S_{\sigma'}(x,y')\land !A(x,y))).
+\end{align*}
+  Par instanciation universelle, en remplaçant $x$ par~$\num{m}$
+  et $y$ par~$\num{n}$, nous obtenons l'!!{sentence}
+\begin{align*}
+& (\Obj Q_q(\num{m},\num{n})\land
+  \Obj S_\sigma(\num{m},\num{n}))\lif {}\\
+&\qquad (\Obj Q_{q'}(\num{m}',\num{n}')\land
+  \Obj S_{\sigma'}(\num{m},\num{n}')\land
+  !A(\num{m},\num{n})).
+\end{align*}
+  Par l'hypothèse de récurrence, $!T(M,w)$ entraîne
+  $!C(M,w,n)$, donc en particulier les deux conjoints de
+  l'antécédent. Par modus ponens, il entraîne
+  $\Obj Q_{q'}(\num{m}',\num{n}')$,
+  $\Obj S_{\sigma'}(\num{m},\num{n}')$ et
+  $!A(\num{m},\num{n})$.
+
+  Pour chaque $i\le k$ distinct de~$m$, les axiomes d'ordre
+  établissent $\num{i}<\num{m}$ ou
+  $\num{m}<\num{i}$; la formule~$!A$ conserve donc le symbole
+  de la case~$i$. Nous obtenons les faits sur les cases
+  \emph{autres que celle où l'instruction écrit}\footnote{Correction éditoriale : l'ellipse du calcul source inclut encore le symbole ancien de la case $m$, bien que le commentaire l'exclue. Nous écrivons la conjonction avec $i\ne m$ et traitons séparément le symbole nouveau.} :
+\[
+\bigwedge_{\substack{0\le i\le k\\i\ne m}}
+  \Obj S_{\sigma_i}(\num{i},\num{n}').
+\]
+  Le symbole de la case~$m$ est celui, déjà établi,
+  $\sigma'$. De même, $!A(\num{m},\num{n})$ conserve la
+  blancheur à droite de~$k$. En effet, si $m<k$,
+  la \olref[rep]{prop:mlessk} et la transitivité de~$<$ donnent
+  $\lforall[x][(\num{k}<x\lif\num{m}<x)]$; si $m=k$,
+  cette implication est immédiate. En la combinant avec
+  $\lforall[x][(\num{k}<x\lif
+  \Obj S_\TMblank(x,\num{n}))]$ et avec~$!A$, nous obtenons
+  $\lforall[x][(\num{k}<x\lif
+  \Obj S_\TMblank(x,\num{n}'))]$.
+
+  Si $m<k$, ces faits décrivent déjà $!C(M,w,n+1)$.
+  Si $m=k$, la tête a aussi visité la case~$k+1$ après la
+  nouvelle étape : la borne de la description devient~$k+1$.
+  Il faut établir deux !!{sentence}s supplémentaires :
+  $\Obj S_\TMblank(\num{k}',\num{n}')$
+  et $\lforall[x][(\num{k}'<x\lif
+  \Obj S_\TMblank(x,\num{n}'))]$. Le premier fait découle de
+  $\num{k}<\num{k}'$ et de la blancheur déjà obtenue au-delà
+  de~$k$. Le second suit de la transitivité de~$<$; la dernière
+  étape de ce raisonnement est proposée en exercice ci-dessous.
+
+\item Supposons l'instruction~\olref{left}. D'après
+  la \olref[rep]{defn:tm-descr}\olref[rep]{rep-left}, $!T(M,w)$
+  contient la conjonction suivante, avec le terme de conservation
+  $!A(x',y)$ corrigé pour exclure la case où l'on écrit :
+\begin{align*}
+& \lforall[x][\lforall[y][(
+  (\Obj Q_q(x',y)\land\Obj S_\sigma(x',y))\lif {}]]\\
+&\qquad (\Obj Q_{q'}(x,y')\land
+  \Obj S_{\sigma'}(x',y')\land !A(x',y)))\land {}\\
+& \lforall[y][(
+  (\Obj Q_q(\num{0},y)\land
+  \Obj S_\sigma(\num{0},y))\lif {}]\\
+&\qquad (\Obj Q_{q'}(\num{0},y')\land
+  \Obj S_{\sigma'}(\num{0},y')\land
+  !A(\num{0},y))).
+\end{align*}
+  Si $m>0$, posons $l=m-1$, de sorte que $m=l+1$.
+  Le premier conjoint de cet !!{sentence} donne, par instanciation,
+\begin{align*}
+& (\Obj Q_q(\num{l}',\num{n})\land
+  \Obj S_\sigma(\num{l}',\num{n}))\lif {}\\
+&\qquad (\Obj Q_{q'}(\num{l},\num{n}')\land
+  \Obj S_{\sigma'}(\num{l}',\num{n}')\land
+  !A(\num{l}',\num{n})).
+\end{align*}
+  Si $m=0$, posons $l=0$. Le second conjoint donne l'!!{sentence}
+\begin{align*}
+& (\Obj Q_q(\num{0},\num{n})\land
+  \Obj S_\sigma(\num{0},\num{n}))\lif {}\\
+&\qquad (\Obj Q_{q'}(\num{0},\num{n}')\land
+  \Obj S_{\sigma'}(\num{0},\num{n}')\land
+  !A(\num{0},\num{n})).
+\end{align*}
+  Dans les deux cas, l'hypothèse de récurrence fournit
+  l'antécédent de l'implication applicable. Nous obtenons donc
+  $\Obj Q_{q'}(\num{l},\num{n}')$ et
+  $\Obj S_{\sigma'}(\num{m},\num{n}')$.
+  Comme $\num{l}'\ident\num{m}$ lorsque $m>0$, la formule
+  de conservation est alors $!A(\num{m},\num{n})$ dans les deux
+  cas. Elle transporte tous les symboles des autres cases et la
+  blancheur au-delà de~$k$, comme pour le déplacement à droite.
+  La tête s'étant déplacée vers la gauche ou étant restée en~$0$,
+  la borne~$k$ ne change pas. L'ensemble de ces faits est
+  précisément $!C(M,w,n+1)$.
+
+\item Le cas de l'instruction~\olref{stay} est laissé en exercice.
+\end{enumerate}
+La récurrence établit donc
+$!T(M,w)\Entails !C(M,w,n)$ à chaque instant atteint par
+l'exécution, y compris celui de l'arrêt éventuel.
+\end{proof}
+
+\begin{prob}
+Complétez le cas~\olref[tur][und][ver]{stay} dans la preuve du
+\olref[tur][und][ver]{lem:config}.
+\end{prob}
+
+\begin{prob}
+Donnez !!a{derivation} de
+$\Obj S_{\sigma_i}(\num{i},\num{n}')$ à partir de
+$\Obj S_{\sigma_i}(\num{i},\num{n})$ et de~$!A(\num{m},\num{n})$,
+en supposant $i\ne m$, c'est-à-dire $i<m$ ou $m<i$.
+\end{prob}
+
+\begin{prob}
+Donnez !!a{derivation} de
+$\lforall[x][(\num{k}'<x\lif
+\Obj S_\TMblank(x,\num{n}'))]$ à partir de
+$\lforall[x][(\num{k}<x\lif
+\Obj S_\TMblank(x,\num{n}'))]$,
+de $\lforall[x][x<x']$ et de
+$\lforall[x][\lforall[y][\lforall[z][
+((x<y\land y<z)\lif x<z)]]]$.
+\end{prob}
+
+\begin{lem}
+\ollabel{lem:valid-if-halt}
+Si~$M$ s'arrête sur l'entrée~$w$, alors
+$!T(M,w)\lif !E(M,w)$ est valide.
+\end{lem}
+
+\begin{proof}
+D'après le \olref{lem:config}, la description~$!C(M,w,n)$ de
+chaque configuration atteinte après $n$ étapes découle de~$!T(M,w)$.
+Supposons que~$M$ s'arrête après $k$ étapes. Sa tête lit alors
+une case~$m\in\Nat$, dans un état~$q$, et cette case contient
+un symbole~$\sigma$ tel que $\delta(q,\sigma)$ ne soit pas
+définie. Ainsi, $!C(M,w,k)$ décrit une configuration d'arrêt
+et contient $\Obj Q_q(\num{m},\num{k})$ ainsi que
+$\Obj S_\sigma(\num{m},\num{k})$. D'après le
+\olref{lem:halt-config-implies-halt},
+$!C(M,w,k)\Entails !E(M,w)$. Puisque
+$!T(M,w)\Entails !C(M,w,k)$, il s'ensuit
+$!T(M,w)\Entails !E(M,w)$, donc la validité de
+$!T(M,w)\lif !E(M,w)$.
+\end{proof}
+
+\begin{explain}
+Il reste à prouver la réciproque : si
+$!T(M,w)\lif !E(M,w)$ est valide, alors~$M$ s'arrête
+effectivement sur l'entrée~$w$.
+\end{explain}
+
+\begin{lem}
+\ollabel{lem:halt-if-valid}
+Si $\Entails !T(M,w)\lif !E(M,w)$, alors~$M$ s'arrête
+sur l'entrée~$w$.
+\end{lem}
+
+\begin{proof}
+Considérons la $\Lang L_M$-!!{structure}~$\Struct M$ de
+domaine~$\Nat$ qui interprète $\Obj 0$ par~$0$,
+$\prime$ par la fonction successeur et~$<$ par l'ordre usuel.
+Nous interprétons les prédicats $\Obj Q_q$ et~$\Obj S_\sigma$
+au moyen de l'exécution effective de~$M$ sur~$w$ :
+\begin{align*}
+\Assign{\Obj Q_q}{M}
+&=\Setabs{\tuple{m,n}}{\begin{array}{l}
+  \text{après $n$ étapes sur $w$, $M$ est dans l'état $q$}\\
+  \text{et sa tête lit la case $m$}
+  \end{array}},\\
+\Assign{\Obj S_\sigma}{M}
+&=\Setabs{\tuple{m,n}}{\begin{array}{l}
+  \text{après $n$ étapes sur $w$, la case $m$}\\
+  \text{contient le symbole $\sigma$}
+  \end{array}}.
+\end{align*}
+Si l'exécution s'arrête, les relations ainsi définies ne
+contiennent aucun couple correspondant à un instant ultérieur.
+Les axiomes de transition de~$!T(M,w)$ ne prescrivent alors
+aucune étape supplémentaire : leurs antécédents y sont faux.
+
+La !!{structure}~$\Struct M$ décrit donc l'exécution réelle,
+étape par étape, et $\Sat{M}{!T(M,w)}$. Si
+$\Entails !T(M,w)\lif !E(M,w)$, alors aussi
+$\Sat{M}{!E(M,w)}$, c'est-à-dire
+\[
+\Sat{M}{\lexists[x][\lexists[y][(\bigvee_{\tuple{q,\sigma}\in X}
+  (\Obj Q_q(x,y)\land\Obj S_\sigma(x,y)))]]}.
+\]
+Puisque $\Domain{M}=\Nat$, il existe donc $m,n\in\Nat$ et
+un couple~$\tuple{q,\sigma}\in X$ tels que
+$\Sat{M}{\Obj Q_q(\num{m},\num{n})\land
+\Obj S_\sigma(\num{m},\num{n})}$. Par la définition de
+$\Struct M$, cela signifie qu'après $n$ étapes sur~$w$, la
+machine~$M$ est dans l'état~$q$ et lit le symbole~$\sigma$.
+Or $\tuple{q,\sigma}\in X$ signifie que
+$\delta(q,\sigma)$ n'est pas définie. La machine s'est
+donc arrêtée.
+\end{proof}
+
+\end{document}

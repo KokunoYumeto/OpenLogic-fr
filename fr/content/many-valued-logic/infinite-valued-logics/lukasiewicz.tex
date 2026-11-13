@@ -1,0 +1,154 @@
+% Part: many-valued-logic
+% Chapter: infinite-valued-logics
+% Section: lukasiewicz
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{inf}{luk}
+
+\olsection{La logique de \L ukasiewicz}
+
+La matrice de \L ukasiewicz conserve le minimum et le maximum
+pour la conjonction et la disjonction. Le conditionnel dépend
+de l'écart entre les valeurs de son antécédent et de son conséquent.
+
+\begin{defn}\ollabel{def:lukasiewicz}
+La logique de \L ukasiewicz à une
+infinité de valeurs~$\LogLuk[\infty]$
+est définie par la matrice suivante :
+\begin{enumerate}
+  \item Le langage propositionnel usuel
+  $\Lang L_0$ avec $\lnot$, $\land$,
+  $\lor$ et $\lif$.
+  \item L'ensemble des valeurs de vérité
+  $V_\infty$.
+  \item $1$ est la seule valeur désignée,
+  c'est-à-dire $V^+=\{1\}$.
+  \item Les fonctions de vérité sont :
+  \begin{align*}
+    \tf{\lnot}[\LogLuk](x) &=1-x\\
+    \tf{\land}[\LogLuk](x,y) &=\min(x,y)\\
+    \tf{\lor}[\LogLuk](x,y) &=\max(x,y)\\
+    \tf{\lif}[\LogLuk](x,y)
+      &=\min(1,1-(x-y))
+        =\begin{cases}
+          1 & \text{si }x\le y,\\
+          1-(x-y) & \text{sinon.}
+        \end{cases}
+  \end{align*}
+\end{enumerate}
+La logique de \L ukasiewicz à $m$
+valeurs est définie de la même façon,
+à ceci près que $V=V_m$.
+\end{defn}
+
+\begin{prop}
+  La logique $\LogLuk[3]$ définie
+  par la \olref[thr][luk]{def:lukasiewicz}
+  coïncide, sous l'identification
+  $\True=1$, $\Undef=1/2$ et
+  $\False=0$, avec la logique
+  $\LogLuk[3]$ définie par la
+  \olref{def:lukasiewicz}.
+\end{prop}
+
+\begin{proof}
+  Il suffit de comparer les tables
+  de vérité des connecteurs données
+  dans la \olref[thr][luk]{def:lukasiewicz}
+  avec celles que déterminent les
+  équations de la
+  \olref{def:lukasiewicz} :
+  \begin{center}
+    \begin{tabular}{c|c}
+      $\tf{\lnot}$ & \\
+      \hline
+      $1$ & $0$ \\
+      $1/2$ & $1/2$ \\
+      $0$ & $1$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\land}[\LogLuk[3]]$ & $1$ & $1/2$ & $0$ \\
+      \hline
+      $1$ & $1$ & $1/2$ & $0$ \\
+      $1/2$ & $1/2$ & $1/2$ & $0$ \\
+      $0$ & $0$ & $0$ & $0$
+    \end{tabular}
+    \\[2ex]
+    \begin{tabular}{c|ccc}
+      $\tf{\lor}[\LogLuk[3]]$ & $1$ & $1/2$ & $0$ \\
+      \hline
+      $1$ & $1$ & $1$ & $1$ \\
+      $1/2$ & $1$ & $1/2$ & $1/2$ \\
+      $0$ & $1$ & $1/2$ & $0$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\lif}[\LogLuk[3]]$ & $1$ & $1/2$ & $0$ \\
+      \hline
+      $1$ & $1$ & $1/2$ & $0$ \\
+      $1/2$ & $1$ & $1$ & $1/2$ \\
+      $0$ & $1$ & $1$ & $1$
+    \end{tabular}
+  \end{center}
+\end{proof}
+
+\begin{prop}\ollabel{prop:luk-infty-m}
+  Si $\Gamma\Entails[\LogLuk[\infty]] !B$,
+  alors
+  $\Gamma\Entails[\LogLuk[m]] !B$
+  pour tout~$m\ge2$.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrer la
+  \olref[mvl][inf][luk]{prop:luk-infty-m}.
+\end{prob}
+
+La réciproque vaut lorsque $\Gamma$ est fini. Dans un
+contre-modèle rationnel, les valeurs des variables de $\Gamma$
+et de $!B$ ont alors un dénominateur commun $d$. Les fonctions
+de vérité se restreignent à $V_{d+1}$. En y conservant ces
+valeurs et en donnant $0$ aux autres variables, on obtient
+un contre-modèle dans cette matrice finie.
+
+Pour des prémisses infinies, prenons des variables distinctes
+$p_0,p_1,\ldots$ et écrivons $!A\liff !B$ pour
+$(!A\lif !B)\land(!B\lif !A)$. Ce biconditionnel vaut $1$
+exactement lorsque les deux valeurs coïncident. La prémisse
+$p_0\liff\lnot p_0$ impose la valeur $1/2$ à $p_0$.
+Pour chaque $i\geq 0$, ajoutons
+\[
+ p_i\liff(\lnot p_{i+1}\lif p_{i+1}).
+\]
+Le membre de droite a pour valeur le double de celle de
+$p_{i+1}$, plafonné à $1$. Par récurrence, les prémisses
+imposent donc la valeur $2^{-(i+1)}$ à $p_i$. Elles sont
+satisfaites dans $V_\infty$ et ne le sont dans aucun $V_m$,
+qui ne peut contenir toutes ces valeurs. Elles entraînent
+ainsi $p_0$ dans chaque $V_m$, tandis que dans $V_\infty$
+la valeur de $p_0$ est $1/2$.
+
+La source présente la logique de
+\L ukasiewicz à une infinité de valeurs
+comme la logique floue la plus répandue.
+Si l'on définit plutôt le conditionnel
+par $\lnot !A\lor !B$, en conservant
+les autres fonctions de vérité,
+on obtient une logique forte de Kleene
+à une infinité de valeurs.
+
+\begin{prob}
+  Montrer que
+  $(p\lif q)\lor(q\lif p)$ est
+  une tautologie de~$\LogLuk[\infty]$.
+\end{prob}
+
+\end{document}

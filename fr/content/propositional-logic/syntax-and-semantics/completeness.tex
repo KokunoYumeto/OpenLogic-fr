@@ -1,0 +1,199 @@
+% Partie : logique propositionnelle
+% Chapitre : syntaxe et sémantique
+% Section : complétude
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pl}{prp}{com}
+
+\olsection{Complétude de la logique propositionnelle}
+
+Nous considérons ici le système axiomatique classique
+pour les connecteurs propositionnels, avec le modus ponens
+comme règle d'inférence. En particulier, le théorème de
+la déduction et l'élimination de la double négation y sont
+disponibles. Une preuve utilise toujours un nombre fini
+d'hypothèses, même si l'ensemble d'hypothèses est infini.
+
+\begin{defn}
+\ollabel{def:MaxCon}
+Un ensemble~$\Gamma$ de !!{formula}s est
+\emph{maximalement cohérent} s'il est cohérent
+et si tout ensemble cohérent~$\Delta$ tel que
+$\Gamma\subseteq\Delta$ est égal à~$\Gamma$.
+\end{defn}
+
+Nous utiliserons le fait d'extension suivant :
+si $\Gamma$ est cohérent, alors, pour toute formule~$!A$,
+au moins l'un des deux ensembles
+$\Gamma\cup\{!A\}$ et $\Gamma\cup\{\lnot !A\}$
+est cohérent. En effet, si tous deux étaient incohérents,
+le théorème de la déduction donnerait, à partir de~$\Gamma$,
+$!A\lif\lfalse$ et
+$\lnot !A\lif\lfalse$. Les axiomes classiques
+permettraient alors de déduire, à partir de~$\Gamma$,
+$\lnot !A$ et $\lnot\lnot !A$, donc aussi~$!A$.
+On obtiendrait ainsi une contradiction à partir de~$\Gamma$,
+alors que cet ensemble est cohérent.
+
+\begin{lem}[Lemme de vérité]
+  \ollabel{lem:truth}
+Soit $\Gamma$ maximalement cohérent. Alors :
+\begin{enumerate}
+\item \ollabel{lem:truth-1} $!A \in \Gamma$ si et seulement si
+  $\lnot !A \notin \Gamma$ ;
+\item \ollabel{lem:truth-2} $\Gamma \Proves !A$ si et seulement si
+  $!A \in \Gamma$ ;
+\item \ollabel{lem:truth-3} $!A \lif !B \in \Gamma$ si et seulement si
+  $!A \notin \Gamma$ ou $!B \in \Gamma$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+\begin{enumerate}
+\item Si $!A\in\Gamma$, la cohérence exclut
+  $\lnot !A\in\Gamma$. Si $!A$ et $\lnot !A$
+  étaient toutes deux absentes de~$\Gamma$, le fait
+  d'extension fournirait un sur-ensemble cohérent
+  strict de~$\Gamma$. Cela contredirait sa maximalité.
+\item Si $!A\in\Gamma$, l'axiome d'hypothèse donne
+  $\Gamma\Proves !A$. Si $\Gamma\Proves !A$
+  mais $!A\notin\Gamma$, le point~\olref{lem:truth-1}
+  donne $\lnot !A\in\Gamma$. On aurait ainsi
+  $\Gamma\Proves !A$ et
+  $\Gamma\Proves\lnot !A$, ce qui contredit
+  la cohérence.
+\item Pour le sens direct, appliquer le modus ponens
+  si $!A\in\Gamma$. Pour la réciproque, distinguer
+  les cas $!B\in\Gamma$ et $!A\notin\Gamma$ ;
+  dans le second, la première assertion fournit
+  $\lnot !A\in\Gamma$. Les axiomes classiques
+  donnent respectivement
+  $!B\lif(!A\lif !B)$ et
+  $\lnot !A\lif(!A\lif !B)$.
+  Les détails des deux applications du modus ponens
+  sont laissés en exercice.
+\end{enumerate}
+\end{proof}
+
+Le sens de droite à gauche du
+\olref{lem:truth}\olref{lem:truth-2}
+est l'axiome d'hypothèse ; le sens de gauche à droite
+montre que $\Gamma$ est \emph{clos déductivement} :
+si $\Gamma\Proves !A$, alors $!A\in\Gamma$.
+
+\begin{prob}
+  Détailler le dernier cas de la preuve du
+  \olref{lem:truth}, puis vérifier directement
+  les clauses correspondant à la conjonction et
+  à la disjonction dans le système axiomatique choisi.
+\end{prob}
+
+\begin{thm}[Complétude]
+\ollabel{thm:completeness}
+Si $\Gamma$ est cohérent, alors $\Gamma$ est satisfaisable.
+\end{thm}
+
+\begin{proof}
+Comme les variables propositionnelles sont dénombrables
+et les formules sont finies, énumérons toutes les
+!!{formula}s du langage sous la forme
+$!A_0$, $!A_1$,~\dots.
+Définissons par récurrence une suite croissante
+d'ensembles de !!{formula}s
+$\Gamma_0$, $\Gamma_1$,~\dots :
+\begin{align*}
+\Gamma_0 & = \Gamma\\
+\Gamma_{n+1} & =
+\begin{cases}
+  \Gamma_n \cup \{!A_n\}
+    & \text{si $\Gamma_n\cup\{!A_n\}$ est cohérent;}\\
+  \Gamma_n \cup \{\lnot !A_n\}
+    & \text{sinon.}
+\end{cases}
+\end{align*}
+Posons ensuite
+\[
+\Gamma^*=\bigcup_{0\le n}\Gamma_n.
+\]
+Trois faits achèvent la construction :
+\begin{enumerate}
+\item Chaque $\Gamma_n$ est cohérent, par récurrence
+  sur~$n$ et par le fait d'extension démontré ci-dessus.
+\item $\Gamma^*$ est cohérent. En effet, une preuve de
+  contradiction n'emploierait qu'un nombre fini
+  de formules de~$\Gamma^*$ ; toutes figureraient
+  dans un même $\Gamma_n$, ce qui contredirait
+  le premier fait.
+\item $\Gamma^*$ est maximalement cohérent.
+  Pour chaque~$!A_n$, la construction contient
+  $!A_n$ ou $\lnot !A_n$. Un sur-ensemble
+  cohérent strict devrait ajouter une formule
+  absente de~$\Gamma^*$, alors que sa négation
+  y figure déjà.
+\end{enumerate}
+Définissons une valuation~$v$ par
+$v(p_i)=\True$ si et seulement si
+$p_i\in\Gamma^*$. Par récurrence sur la
+structure de~$!A$, le lemme de vérité donne
+$\overline v(!A)=\True$ si et seulement si
+$!A\in\Gamma^*$. Pour la négation, on utilise
+la première assertion du lemme ; pour l'implication,
+la troisième. Les clauses de conjonction et de
+disjonction découlent des axiomes correspondants
+  et de la clôture déductive : une conjonction appartient
+à~$\Gamma^*$ exactement quand ses deux conjoints
+y appartiennent, et une disjonction exactement
+quand l'un des deux disjoints y appartient.
+Les constantes logiques se traitent par leurs
+axiomes ; les connecteurs définis suivent leurs
+abréviations. Ainsi $v$ satisfait~$\Gamma^*$.
+Comme $\Gamma\subseteq\Gamma^*$, il satisfait
+aussi~$\Gamma$.
+\end{proof}
+
+\begin{cor}
+Si $\Gamma\Entails !A$, alors $\Gamma\Proves !A$.
+\end{cor}
+
+\begin{proof}
+Raisonnons par contraposée. Si
+$\Gamma\Proves/ !A$, alors
+$\Gamma\cup\{\lnot !A\}$ est cohérent :
+son incohérence, par le théorème de la déduction
+et l'axiome de double négation, entraînerait
+$\Gamma\Proves !A$. Par le théorème de complétude,
+$\Gamma\cup\{\lnot !A\}$ possède une valuation
+satisfaisante. Celle-ci satisfait~$\Gamma$ et
+rend~$!A$ fausse ; donc
+$\Gamma\Entails/ !A$.
+\end{proof}
+
+\begin{prop}[Théorème de compacité]
+\ollabel{prop:compactness}
+$\Gamma$ est satisfaisable si et seulement si
+tout sous-ensemble \emph{fini}~$\Gamma_0$
+de~$\Gamma$ est satisfaisable.
+\end{prop}
+
+\begin{proof}
+Le théorème de correction et celui de complétude
+donnent : $\Gamma$ est insatisfaisable si et
+seulement s'il est incohérent. Une dérivation
+d'incohérence ne fait intervenir qu'un nombre
+fini d'hypothèses ; il existe donc un sous-ensemble
+fini~$\Gamma_0$ déjà incohérent, et par les mêmes
+théorèmes déjà insatisfaisable. La réciproque
+est immédiate, car une valuation satisfaisant
+$\Gamma$ satisferait chacun de ses sous-ensembles.
+\end{proof}
+
+\begin{cor}
+$\Gamma\Entails !A$ si et seulement s'il existe
+un sous-ensemble fini~$\Gamma_0$ de~$\Gamma$
+tel que $\Gamma_0\Entails !A$.
+\end{cor}
+
+\end{document}

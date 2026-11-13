@@ -1,0 +1,241 @@
+% Part: first-order-logic
+% Chapter: completeness
+% Section: complete-sets
+
+% Définition des ensembles cohérents complets. Les propriétés des
+% ensembles complets nécessaires à la complétude sont établies ici à
+% partir des résultats de dérivabilité du système de preuve choisi.
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{com}{ccs}}
+      {\olfileid[fr]{pl}{com}{ccs}}
+
+\Needspace{7\baselineskip}
+\iftag{FOL}
+{\olsection{Ensembles cohérents et complets d'\usetoken{p}{sentence}}}
+{\olsection{Ensembles cohérents et complets de formules}}
+
+\begin{defn}[Ensemble complet]
+\ollabel{def:complete-set} Un ensemble~$\Gamma$
+\iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} est
+\emph{!!{complete}} si et seulement si, pour
+\iftag{FOL}{tout !!{sentence}}{toute !!{formula}}~$!A$,
+on a $!A\in\Gamma$ ou $\lnot !A\in\Gamma$.
+\end{defn}
+
+\begin{explain}
+Les ensembles !!{complete}s \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s} ne laissent aucune
+question en suspens : pour chaque \iftag{FOL}{!!{sentence}}{!!{formula}}~$!A$, $\Gamma$
+« affirme » $!A$ ou sa négation. Si l'on exige aussi la cohérence, il
+ne peut pas affirmer les deux. L'intérêt des ensembles !!{complete}s
+dépasse la démonstration du théorème de complétude. Par exemple, une
+théorie cohérente, complète et effectivement axiomatisable est
+décidable. On énumère les théorèmes à partir de l'axiomatisation
+effective jusqu'à rencontrer $!A$ ou $\lnot !A$. La complétude
+garantit que l'énumération atteindra l'un des deux, et la cohérence
+garantit l'unicité de la réponse.
+\end{explain}
+
+\begin{explain}
+Les ensembles cohérents et !!{complete}s jouent un rôle important
+dans la démonstration de complétude : nous pouvons garantir que tout
+ensemble cohérent \iftag{FOL}{d'!!{sentence}s}{de !!{formula}s}~$\Gamma$ est inclus dans un
+ensemble cohérent et !!{complete}~$\Gamma^*$. Celui-ci contient,
+pour chaque \iftag{FOL}{!!{sentence}}{!!{formula}}~$!A$, soit $!A$, soit sa négation
+$\lnot !A$, mais non les deux. C'est notamment vrai pour les
+\iftag{FOL}{!!{sentence}s atomiques}{!!{propositional variable}s}.
+À partir d'un ensemble cohérent et !!{complete}\iftag{FOL}{,
+dans un langage convenablement enrichi en !!{constant}s}{}, nous pouvons donc construire
+\iftag{FOL}{!!a{structure}}{!!a{valuation}} dont
+\iftag{FOL}{l'interprétation des !!{predicate}s}{la valeur de vérité
+attribuée aux variables propositionnelles} est définie d'après les
+\iftag{FOL}{!!{sentence}s atomiques}{!!{propositional variable}s}
+appartenant à~$\Gamma^*$. Nous montrerons ensuite que cette
+\iftag{FOL}{!!{structure}}{!!{valuation}} satisfait \iftag{FOL}{tous les !!{sentence}s}{toutes les !!{formula}s}
+de~$\Gamma^*$, et donc aussi chaque élément de~$\Gamma$.
+Pour cela, il nous faut notamment les équivalences
+$\lnot !A\in\Gamma^*$ si et seulement si
+$!A\notin\Gamma^*$, et $(!A\lor !B)\in\Gamma^*$ si et seulement
+si $!A\in\Gamma^*$ ou $!B\in\Gamma^*$.
+\end{explain}
+
+Dans la suite, nous utiliserons souvent sans les rappeler la
+réflexivité, la monotonie et la transitivité de~$\Proves$ (voir les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:ptn:sec},prfND/{fol:ntd:ptn:sec},prfAX/{fol:axd:ptn:sec},prfTab/{fol:tab:ptn:sec}}}{%
+  \tagrefs{prfSC/{pl:seq:ptn:sec},prfND/{pl:ntd:ptn:sec},prfAX/{pl:axd:ptn:sec},prfTab/{pl:tab:ptn:sec}}}).
+
+\begin{prop}
+\ollabel{prop:ccs}
+Supposons $\Gamma$ cohérent et !!{complete}. Pour
+\iftag{FOL}{des !!{sentence}s}{des !!{formula}s} $!A$ et~$!B$,
+on a les propriétés suivantes.
+\begin{enumerate}
+\item \ollabel{prop:ccs-prov-in} Si $\Gamma\Proves !A$, alors
+  $!A\in\Gamma$.
+
+\tagitem{prvAnd}{\ollabel{prop:ccs-and} $!A\land !B\in\Gamma$
+  si et seulement si $!A\in\Gamma$ et $!B\in\Gamma$.}{}
+
+\tagitem{prvOr}{\ollabel{prop:ccs-or} $!A\lor !B\in\Gamma$ si et
+  seulement si $!A\in\Gamma$ ou $!B\in\Gamma$.}{}
+
+\tagitem{prvIf}{\ollabel{prop:ccs-if} $!A\lif !B\in\Gamma$ si et
+  seulement si $!A\notin\Gamma$ ou $!B\in\Gamma$.}{}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Supposons, pour toute la démonstration, que $\Gamma$ soit cohérent
+et !!{complete}.
+\begin{enumerate}
+\item Si $\Gamma\Proves !A$, alors $!A\in\Gamma$.
+
+Supposons $\Gamma\Proves !A$ et, par l'absurde,
+$!A\notin\Gamma$. Comme $\Gamma$ est !!{complete},
+$\lnot !A\in\Gamma$. D'après les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:prv:prop:explicit-inc},
+    prfND/{fol:ntd:prv:prop:explicit-inc},
+    prfAX/{fol:axd:prv:prop:explicit-inc},
+    prfTab/{fol:tab:prv:prop:explicit-inc}}}{%
+  \tagrefs{prfSC/{pl:seq:prv:prop:explicit-inc},
+    prfND/{pl:ntd:prv:prop:explicit-inc},
+    prfAX/{pl:axd:prv:prop:explicit-inc},
+    prfTab/{pl:tab:prv:prop:explicit-inc}}},
+$\Gamma$ est incohérent, contrairement à l'hypothèse. Ainsi,
+$!A\notin\Gamma$ est impossible et $!A\in\Gamma$.
+
+\tagitem{defAnd}{}{%
+\iftag{probAnd}{Exercice.}{%
+$!A\land !B\in\Gamma$ si et seulement si $!A\in\Gamma$ et
+$!B\in\Gamma$.
+
+Pour le sens direct, supposons $!A\land !B\in\Gamma$. Par
+réflexivité, $\Gamma\Proves !A\land !B$. D'après les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:ppr:prop:provability-land},
+    prfND/{fol:ntd:ppr:prop:provability-land},
+    prfAX/{fol:axd:ppr:prop:provability-land},
+    prfTab/{fol:tab:ppr:prop:provability-land}}}{%
+  \tagrefs{prfSC/{pl:seq:ppr:prop:provability-land},
+    prfND/{pl:ntd:ppr:prop:provability-land},
+    prfAX/{pl:axd:ppr:prop:provability-land},
+    prfTab/{pl:tab:ppr:prop:provability-land}}}, point~(1),
+$\Gamma\Proves !A$ et $\Gamma\Proves !B$. Par
+\olref{prop:ccs}\olref{prop:ccs-prov-in}, $!A\in\Gamma$ et $!B\in\Gamma$.
+
+Réciproquement, supposons $!A\in\Gamma$ et $!B\in\Gamma$.
+Par réflexivité, $\Gamma\Proves !A$ et $\Gamma\Proves !B$. D'après les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:ppr:prop:provability-land},
+    prfND/{fol:ntd:ppr:prop:provability-land},
+    prfAX/{fol:axd:ppr:prop:provability-land},
+    prfTab/{fol:tab:ppr:prop:provability-land}}}{%
+  \tagrefs{prfSC/{pl:seq:ppr:prop:provability-land},
+    prfND/{pl:ntd:ppr:prop:provability-land},
+    prfAX/{pl:axd:ppr:prop:provability-land},
+    prfTab/{pl:tab:ppr:prop:provability-land}}}, point~(2),
+$\Gamma\Proves !A\land !B$. La
+\olref{prop:ccs}\olref{prop:ccs-prov-in} donne $!A\land !B\in\Gamma$.}}
+
+\tagitem{defOr}{}{%
+\iftag{probOr}{Exercice.}{%
+Montrons d'abord que $!A\lor !B\in\Gamma$ entraîne
+$!A\in\Gamma$ ou $!B\in\Gamma$. Supposons au contraire que
+$!A\lor !B\in\Gamma$, mais $!A\notin\Gamma$ et
+$!B\notin\Gamma$. La complétude de $\Gamma$ donne
+$\lnot !A\in\Gamma$ et $\lnot !B\in\Gamma$. D'après les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lor},
+    prfND/{fol:ntd:ppr:prop:provability-lor},
+    prfAX/{fol:axd:ppr:prop:provability-lor},
+    prfTab/{fol:tab:ppr:prop:provability-lor}}}{%
+  \tagrefs{prfSC/{pl:seq:ppr:prop:provability-lor},
+    prfND/{pl:ntd:ppr:prop:provability-lor},
+    prfAX/{pl:axd:ppr:prop:provability-lor},
+    prfTab/{pl:tab:ppr:prop:provability-lor}}}, point~(1),
+$\Gamma$ serait incohérent. C'est contradictoire ; donc
+$!A\in\Gamma$ ou $!B\in\Gamma$.
+
+Pour la réciproque, supposons $!A\in\Gamma$ ou
+$!B\in\Gamma$. Par réflexivité et d'après les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lor},
+    prfND/{fol:ntd:ppr:prop:provability-lor},
+    prfAX/{fol:axd:ppr:prop:provability-lor},
+    prfTab/{fol:tab:ppr:prop:provability-lor}}}{%
+  \tagrefs{prfSC/{pl:seq:ppr:prop:provability-lor},
+    prfND/{pl:ntd:ppr:prop:provability-lor},
+    prfAX/{pl:axd:ppr:prop:provability-lor},
+    prfTab/{pl:tab:ppr:prop:provability-lor}}}, point~(2),
+$\Gamma\Proves !A\lor !B$. La
+\olref{prop:ccs}\olref{prop:ccs-prov-in} donne $!A\lor !B\in\Gamma$.}}
+
+\tagitem{defIf}{}{%
+\iftag{probIf}{Exercice.}{%
+Pour le sens direct, supposons $!A\lif !B\in\Gamma$, puis,
+par l'absurde, $!A\in\Gamma$ et $!B\notin\Gamma$. Les deux
+premières appartenances donnent
+$\Gamma\Proves !A\lif !B$ et $\Gamma\Proves !A$ par
+réflexivité. D'après les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},
+    prfND/{fol:ntd:ppr:prop:provability-lif},
+    prfAX/{fol:axd:ppr:prop:provability-lif},
+    prfTab/{fol:tab:ppr:prop:provability-lif}}}{%
+  \tagrefs{prfSC/{pl:seq:ppr:prop:provability-lif},
+    prfND/{pl:ntd:ppr:prop:provability-lif},
+    prfAX/{pl:axd:ppr:prop:provability-lif},
+    prfTab/{pl:tab:ppr:prop:provability-lif}}}, point~(1),
+$\Gamma\Proves !B$. La
+\olref{prop:ccs}\olref{prop:ccs-prov-in} donne $!B\in\Gamma$, contrairement à
+l'hypothèse.
+
+Pour la réciproque, considérons d'abord le cas
+$!A\notin\Gamma$. Puisque $\Gamma$ est !!{complete},
+$\lnot !A\in\Gamma$. D'après les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},
+    prfND/{fol:ntd:ppr:prop:provability-lif},
+    prfAX/{fol:axd:ppr:prop:provability-lif},
+    prfTab/{fol:tab:ppr:prop:provability-lif}}}{%
+  \tagrefs{prfSC/{pl:seq:ppr:prop:provability-lif},
+    prfND/{pl:ntd:ppr:prop:provability-lif},
+    prfAX/{pl:axd:ppr:prop:provability-lif},
+    prfTab/{pl:tab:ppr:prop:provability-lif}}}, point~(2),
+$\Gamma\Proves !A\lif !B$. La
+\olref{prop:ccs}\olref{prop:ccs-prov-in} donne $!A\lif !B\in\Gamma$.
+
+Considérons maintenant le cas $!B\in\Gamma$. D'après les
+\iftag{FOL}{%
+  \tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},
+    prfND/{fol:ntd:ppr:prop:provability-lif},
+    prfTab/{fol:tab:ppr:prop:provability-lif},
+    prfAX/{fol:axd:ppr:prop:provability-lif}}}{%
+  \tagrefs{prfSC/{pl:seq:ppr:prop:provability-lif},
+    prfND/{pl:ntd:ppr:prop:provability-lif},
+    prfTab/{pl:tab:ppr:prop:provability-lif},
+    prfAX/{pl:axd:ppr:prop:provability-lif}}},
+point~(2), $\Gamma\Proves !A\lif !B$. La
+\olref{prop:ccs}\olref{prop:ccs-prov-in} donne $!A\lif !B\in\Gamma$.}}
+\end{enumerate}
+\end{proof}
+
+\tagprob{FOL}
+\begin{prob}
+Achever la démonstration de la \olref[fol][com][ccs]{prop:ccs}.
+\end{prob}
+\tagendprob
+
+\tagprob{notFOL}
+\begin{prob}
+Achever la démonstration de la \olref[pl][com][ccs]{prop:ccs}.
+\end{prob}
+\tagendprob
+
+\end{document}

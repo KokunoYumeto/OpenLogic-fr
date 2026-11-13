@@ -1,0 +1,598 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{choice}{vitali}
+\olsection{Annexe : le paradoxe de Vitali}
+
+Pour juger véritablement de l'acceptabilité
+de la construction de Banach--Tarski,
+il faudrait examiner sa \emph{démonstration}.
+Malheureusement, celle-ci exige bien plus
+d'algèbre que nous ne pouvons en présenter
+ici. Nous pouvons néanmoins faire quelques
+remarques susceptibles de l'éclairer,\footnote{
+Pour une étude beaucoup plus complète,
+voir \cite{Weston2003} ou \cite{Wagon2016}.}
+en nous concentrant sur le résultat suivant :
+
+\begin{thm}[Paradoxe de Vitali (dans $\ZFC$)]
+\ollabel{vitaliparadox}
+Tout cercle peut être décomposé en une
+infinité dénombrable de parties que l'on
+peut réassembler, par rotations et
+translations, pour former deux copies
+de ce cercle.
+\end{thm}
+
+Le paradoxe de Vitali est beaucoup plus
+facile à démontrer que celui de
+Banach--Tarski. Nous l'appelons ainsi
+parce qu'il découle de la construction
+par Vitali, en \citeyear{Vitali1905},
+d'un ensemble non mesurable. Mais les
+aspects ensemblistes des deux démonstrations
+sont très semblables. La différence
+essentielle est que Banach--Tarski
+considère une décomposition \emph{finie},
+tandis que le paradoxe de Vitali en
+considère une \emph{infinie dénombrable}.
+Comme le dit \citet{Weston2003},
+le paradoxe de Vitali est «~certainement
+loin d'être aussi frappant que celui
+de Banach--Tarski, mais il montre que
+des paradoxes géométriques peuvent
+survenir même dans des situations
+simples~».
+
+Le paradoxe de Vitali concerne une
+figure bidimensionnelle : un cercle.
+Nous travaillerons donc dans le plan,
+$\Real^2$. Soit $\rotationsgroup$
+l'ensemble des rotations, dans le sens
+horaire, autour de l'origine, d'angle
+$2\pi q$ radians avec
+$q\in\mathbb{Q}\cap[0,1)$.\footnote{
+Note de l'édition française : l'original
+parle d'angles dont la mesure en radians
+est rationnelle dans $[0,2\pi)$.
+Ces rotations ne sont pas fermées
+par composition ni par inversion :
+la somme de deux angles rationnels
+peut dépasser $2\pi$, qui est
+irrationnel. Il faut prendre les
+multiples \emph{rationnels du tour
+complet} $2\pi$, modulo $2\pi$.}
+Voici quelques faits algébriques
+sur $\rotationsgroup$ ; la démonstration
+éclairera l'énoncé si celui-ci
+vous paraît obscur.
+
+\begin{lem}\ollabel{rotationsgroupabelian}
+L'ensemble $\rotationsgroup$ forme
+un {groupe} abélien pour la
+composition des fonctions.
+\end{lem}
+
+\begin{proof}
+Notons $0_{\rotationsgroup}$ la rotation
+d'angle nul. C'est l'élément neutre
+de $\rotationsgroup$, puisque
+$\comp{0_{\rotationsgroup}}{\rho}
+= \comp{\rho}{0_{\rotationsgroup}}
+= \rho$ pour tout
+$\rho \in \rotationsgroup$.
+
+Chaque élément a un inverse. Si
+$\rho \in \rotationsgroup$ tourne
+d'un angle $2\pi q$, alors
+$\rho^{-1} \in \rotationsgroup$
+tourne d'un angle
+$2\pi(1-q)$, pris modulo
+$2\pi$ ; ainsi
+$\rho \circ \rho^{-1}
+= 0_\rotationsgroup$.
+
+La composition est associative :
+$\comp{\rho}{(\comp{\sigma}{\tau})}
+= \comp{(\comp{\rho}{\sigma})}{\tau}$
+pour tous
+$\rho, \sigma, \tau \in
+\rotationsgroup$.
+
+Elle est commutative :
+$\comp{\rho}{\sigma}
+= \comp{\sigma}{\rho}$
+pour tous
+$\rho, \sigma \in \rotationsgroup$.
+\end{proof}
+
+Nous pouvons même partager ce groupe
+en deux et reconstituer le groupe
+entier à partir de chacune des moitiés :
+
+\begin{lem}\ollabel{disjointgroup}
+Il existe une partition de
+$\rotationsgroup$ en deux ensembles
+disjoints, $\rotationsgroup_{1}$
+et $\rotationsgroup_{2}$, dont chacun
+permet de retrouver tout
+$\rotationsgroup$ par l'application
+$\rho\mapsto\comp{\rho}{\rho}$.
+\end{lem}
+
+\begin{proof}
+Soit $\rotationsgroup_{1}$
+l'ensemble des rotations d'angle
+$2\pi q$ pour
+$q\in\mathbb{Q}\cap[0,\nicefrac{1}{2})$ ;
+posons
+$\rotationsgroup_{2}
+= \rotationsgroup\setminus
+\rotationsgroup_1$.
+Par un calcul élémentaire,
+$\Setabs{\comp{\rho}{\rho}}
+{\rho \in \rotationsgroup_1}
+= \rotationsgroup$.
+Le même résultat vaut pour
+$\rotationsgroup_2$.
+\end{proof}
+
+Nous allons appliquer ce fait
+à la démonstration du
+\olref{vitaliparadox}.
+Soit $\onesphere$ le cercle unité :
+l'ensemble des points du plan à
+distance exactement~$1$ de l'origine,
+soit
+$\Setabs{\tuple{r,s} \in \Real^2}
+{\sqrt{r^2+s^2}=1}$.
+Pour le partager en parties,
+considérons la relation suivante
+sur $\onesphere$ :
+\[
+	r \sim s \emph{ ssi }
+	(\exists \rho \in \rotationsgroup)
+	\rho(r) = s.
+\]
+Deux points du cercle sont donc
+reliés si et seulement si l'on
+peut passer de l'un à l'autre
+par une rotation d'un nombre
+rationnel de tours autour de
+l'origine. Sans surprise :
+
+\begin{lem}
+$\sim$ est une relation d'équivalence.
+\end{lem}
+
+\begin{proof}
+C'est immédiat d'après le
+\olref{rotationsgroupabelian}.
+\end{proof}
+
+Invoquons maintenant l'axiome du
+choix pour obtenir un ensemble
+$C$ contenant exactement un
+élément de chaque classe d'équivalence
+de $\onesphere$ selon $\sim$.
+Autrement dit, considérons une
+fonction de choix $f$ sur
+l'ensemble de ces classes,\footnote{
+Puisque $\rotationsgroup$ est
+!!{enumerable}, chaque !!{element}
+de $E$ est !!{enumerable}.
+Puisque $\onesphere$ est
+!!{nonenumerable}, il découle
+du \olref{vitalicover} et de la
+\olref[card-arithmetic][simp]{kappaunionkappasize}
+que $E$ est !!{nonenumerable}.
+Il s'agit donc d'un usage du
+choix \emph{non} dénombrable.}
+\[
+	E = \Setabs{\equivrep{r}{\sim}}
+	{r \in \onesphere},
+\]
+et posons $C = \ran{f}$.
+Pour chaque rotation
+$\rho \in \rotationsgroup$,
+l'ensemble $\funimage{\rho}{C}$
+contient les points obtenus
+en appliquant $\rho$ à chacun
+des points de $C$. Les deux
+résultats suivants montrent que
+ces ensembles recouvrent tout
+le cercle, sans chevauchement.
+
+\begin{lem}\ollabel{vitalicover}
+$\onesphere =
+\bigcup_{\rho \in \rotationsgroup}
+\funimage{\rho}{C}$.
+\end{lem}
+
+\begin{proof}
+Fixons $s \in \onesphere$.
+Il existe $r \in C$ tel que
+$r \in \equivrep{s}{\sim}$,
+c'est-à-dire $r\sim s$.
+Ainsi, $\rho(r)=s$ pour
+un certain
+$\rho \in \rotationsgroup$.
+\end{proof}
+
+\begin{lem}\ollabel{vitalinooverlap}
+Si $\rho_1\neq\rho_2$, alors
+$\funimage{\rho_1}{C}
+\cap\funimage{\rho_2}{C}
+=\emptyset$.
+\end{lem}
+
+\begin{proof}
+Supposons que
+$s\in\funimage{\rho_1}{C}
+\cap\funimage{\rho_2}{C}$.
+Alors
+$s=\rho_1(r_1)=\rho_2(r_2)$
+pour certains $r_1,r_2\in C$.
+Il s'ensuit que
+$\rho_2^{-1}(\rho_1(r_1))=r_2$.
+Comme
+$\comp{\rho_1}{\rho_2^{-1}}
+\in\rotationsgroup$,
+on a $r_1\sim r_2$.
+Puisque $C$ contient exactement
+un représentant de chaque classe,
+$r_1=r_2$. Par conséquent
+$s=\rho_1(r_1)=\rho_2(r_1)$.
+Deux rotations autour de l'origine
+qui coïncident en un point du
+cercle unité sont identiques ;
+donc $\rho_1=\rho_2$.
+\end{proof}
+
+Appliquons maintenant au cercle
+nos résultats algébriques.
+
+\begin{lem}\ollabel{pseudobanachtarski}
+Il existe une partition de
+$\onesphere$ en deux ensembles
+disjoints $D_1$ et $D_2$,
+chacun pouvant être partagé
+en une infinité dénombrable
+de parties que l'on peut
+faire tourner pour former
+une copie de $\onesphere$.
+\end{lem}
+
+\begin{proof}
+Avec $\rotationsgroup_1$ et
+$\rotationsgroup_2$ du
+\olref{disjointgroup}, posons :
+\begin{align*}
+	D_{1}
+	&= \bigcup_{\rho \in \rotationsgroup_1}
+	\funimage{\rho}{C} &
+	D_{2}
+	&= \bigcup_{\rho \in \rotationsgroup_2}
+	\funimage{\rho}{C}
+\end{align*}
+C'est une partition de
+$\onesphere$ par le \olref{vitalicover},
+et $D_1,D_2$ sont disjoints
+par le \olref{vitalinooverlap}.
+Par construction, $D_1$
+se partage en un nombre
+dénombrable d'ensembles
+$\funimage{\rho}{C}$,
+avec
+$\rho\in\rotationsgroup_1$.\footnote{
+Note de l'édition française :
+l'original écrit ici $\rho\in R_1$,
+symbole qui n'a pas été défini ;
+il s'agit de $\rotationsgroup_1$.}
+On peut les faire tourner pour
+former une copie de $\onesphere$,
+car
+$\onesphere
+=\bigcup_{\rho\in\rotationsgroup}
+\funimage{\rho}{C}
+=\bigcup_{\rho\in\rotationsgroup_1}
+\funimage{(\comp{\rho}{\rho})}{C}$
+par le \olref{disjointgroup}
+et le \olref{vitalicover}.
+Le même raisonnement s'applique
+à $D_2$.
+\end{proof}
+\noindent
+Il en découle immédiatement
+le paradoxe de Vitali :
+à partir de $\onesphere$,
+nous obtenons \emph{deux}
+copies du cercle en le partageant
+en un nombre dénombrable de
+parties — les différents
+$\funimage{\rho}{C}$ —
+et en les déplaçant rigidement :
+il suffit de faire tourner
+les parties de $D_1$, puis de
+translater et de faire tourner
+les parties de $D_2$).
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+
+Récapitulons la stratégie.
+Nous avons commencé par des
+faits algébriques concernant
+un groupe de rotations du plan.
+Nous nous en sommes servis
+pour partager $\onesphere$
+en classes d'équivalence.
+Nous avons ensuite obtenu un
+«~paradoxe~» en utilisant
+l'axiome du choix pour prendre
+un représentant de chaque classe.
+
+La démonstration de
+Banach--Tarski suit exactement
+la même stratégie. La différence
+principale est que les faits
+algébriques dont elle dépend
+sont beaucoup plus compliqués
+que ceux de notre démonstration
+du paradoxe de Vitali.
+Ces faits algébriques n'ont
+toutefois rien à voir avec
+l'axiome du choix. Résumons-les
+rapidement.
+
+Pour démontrer Banach--Tarski,
+on établit d'abord un analogue
+du \olref{disjointgroup} :
+tout \emph{groupe libre à au moins
+deux générateurs} peut\footnote{
+Note de l'édition française :
+l'original dit «~tout groupe libre~».
+Le groupe libre sur un générateur
+est isomorphe à $\mathbb{Z}$ et
+n'admet pas cette décomposition
+paradoxale ; il faut au moins
+deux générateurs.}
+être partagé en quatre parties
+que l'on peut, intuitivement,
+«~déplacer~» de manière à
+reconstituer deux copies
+du groupe entier.\footnote{
+Le fait que \emph{quatre}
+parties suffisent est dû à
+\cite{Robinson1947}.
+Pour une démonstration récente,
+voir \citet[Theorem 5.2]{Wagon2016}.
+Nous suivons \citet[p.~3]{Weston2003}
+en parlant du «~déplacement~»
+des parties du groupe.}
+On montre ensuite que deux
+rotations particulières autour
+de l'origine de $\Real^3$
+engendrent un groupe libre
+de rotations $F$.\footnote{
+Voir \citet[Theorem 2.1]{Wagon2016}.}
+(Nous n'avons toujours pas
+utilisé le choix.)
+Deux points de la sphère
+sont alors dits «~semblables~»
+si une rotation de $F$
+fait passer de l'un à l'autre.
+Nous \emph{utilisons l'axiome
+du choix} pour choisir exactement
+un point dans chaque classe
+d'équivalence de points
+«~semblables~».
+En appliquant notre partage de $F$, comme
+dans le \olref{pseudobanachtarski}, nous obtenons une décomposition
+paradoxale de la sphère privée des points
+fixes des rotations non triviales de $F$.
+Ces points sont dénombrables ; un argument d'absorption permet
+de les réintégrer et d'obtenir deux copies
+de la sphère entière.\footnote{Note de l'édition française : l'original transfère directement les quatre parties du groupe à toute la sphère. L'action n'est libre qu'après retrait des points fixes ; leur réintégration exige un argument supplémentaire et ne conserve pas automatiquement ce nombre de parties.}
+On obtient ainsi
+\citep{Hausdorff1914} :
+
+\begin{thm}[Paradoxe de Hausdorff
+(dans $\ZFC$)]
+La surface de toute sphère
+peut être décomposée en un
+nombre fini de parties que
+l'on peut réassembler,
+par rotations et translations,
+pour former deux copies
+disjointes de cette sphère.
+\end{thm}
+
+Quelques astuces algébriques
+supplémentaires sont nécessaires
+pour obtenir le théorème
+complet de Banach--Tarski,
+qui porte aussi sur l'intérieur
+de la sphère. Mais, franchement,
+ce ne sont que des finitions
+algébriques. Weston écrit :
+\begin{quote}
+	[\ldots] le résultat sur
+	les groupes libres constitue
+	l'\emph{étape décisive}
+	de la démonstration du paradoxe
+	de Banach--Tarski. De ce
+	point de vue, ce paradoxe
+	porte moins sur $\Real^3$
+	que sur la complexité
+	du groupe [des translations
+	et des rotations de $\Real^3$].
+	\cite[p.~16]{Weston2003}
+\end{quote}
+Autrement dit, le fait de pouvoir
+obtenir une décomposition
+\emph{finie}, comme dans
+Banach--Tarski, ou seulement
+\emph{infinie dénombrable},
+comme dans le paradoxe de Vitali,
+tient à certaines propriétés
+des groupes utilisés en
+dimension deux ou trois.
+
+Reconnaissons que cette dernière
+observation gâche un peu la
+plaisanterie à la fin de la
+\olref[banach]{sec}.
+Puisqu'elle est bidimensionnelle,
+l'inscription «~Banach--Tarski~»
+devrait être partagée en une
+\emph{infinité} dénombrable
+de morceaux pour être réarrangée
+en «~Banach--Tarski
+Banach--Tarski~».
+Pour sauver la plaisanterie,
+il faudrait écrire en trois
+dimensions. Nous laissons
+cela en exercice.
+
+Une dernière remarque. Dans la
+\olref[banach]{sec}, nous avons
+dit que les «~parties~» de la
+sphère obtenues dans la
+décomposition ne pouvaient
+pas être \emph{toutes mesurables},
+mais ressemblaient à des
+«~éparpillements infinis~»
+impossibles à représenter.
+Il en va de même pour les
+parties obtenues grâce au
+choix dans le \olref{pseudobanachtarski}.
+Expliquons pourquoi.
+
+Il nous faut encore esquisser
+quelques notions préalables :
+ce n'est \emph{qu'une} esquisse,
+et vous pouvez consulter un
+manuel à l'article
+\emph{mesure}. Une mesure
+sur un ensemble $X$ associe
+à chaque $E$ d'une certaine
+«~$\sigma$-algèbre~» de
+parties de $X$ une valeur
+$\mu(E)\in\Real$.
+Les détails importent peu ici,
+si ce n'est que $\mu$ doit
+être dénombrablement additive :
+la mesure d'une union
+dénombrable d'ensembles
+disjoints est la somme
+de leurs mesures, c'est-à-dire
+$\mu(\bigcup_{n<\omega}X_n)
+=\sum_{n<\omega}\mu(X_n)$
+lorsque les $X_n$ sont
+deux à deux disjoints.
+Dire qu'un ensemble est
+«~non mesurable~» signifie
+ici qu'on ne peut le faire
+entrer dans le domaine de
+la mesure \emph{considérée}
+tout en conservant les
+propriétés requises.\footnote{
+Note de l'édition française :
+le terme «~mesure~» suppose
+usuellement des valeurs non négatives.
+Sur le cercle de mesure $1$,
+les parties mesurables ont une
+mesure finie entre $0$ et $1$.
+La non-mesurabilité est relative
+à la mesure considérée et aux
+invariances en question.
+%
+}
+Avec le groupe
+$\rotationsgroup$ défini
+plus haut, nous obtenons :
+
+\begin{cor}[Vitali]
+Soit $\mu$ une mesure sur
+une $\sigma$-algèbre de
+parties de $\onesphere$
+stable sous les rotations,
+telle que
+$\mu(\onesphere)=1$ et
+$\mu(X)=\mu(Y)$ lorsque
+$X$ et $Y$ sont congruents.
+Alors $\funimage{\rho}{C}$
+n'est pas mesurable pour
+tout $\rho\in\rotationsgroup$.\footnote{
+Note de l'édition française :
+nous explicitons ici la stabilité
+du domaine de la mesure sous les
+rotations, comprise dans l'usage
+d'une mesure invariante sur le cercle.
+Elle permet de passer de la
+mesurabilité d'une partie à celle
+de ses images par rotation.
+}
+\end{cor}
+
+\begin{proof}
+Raisonnons par l'absurde.
+Supposons que
+$\mu(\funimage{\sigma}{C})=r$
+pour un certain
+$\sigma\in\rotationsgroup$
+et un certain $r\in\Real$.
+Pour chaque
+$\rho\in\rotationsgroup$,
+les ensembles
+$\funimage{\rho}{C}$ et
+$\funimage{\sigma}{C}$
+sont congruents ; donc
+$\mu(\funimage{\rho}{C})=r$
+pour tout
+$\rho\in\rotationsgroup$.\footnote{
+Note de l'édition française :
+l'original quantifie ici sur
+$\rho\in C$, dont les éléments
+sont des points et non des
+rotations. La variable doit
+parcourir $\rotationsgroup$.}
+D'après le \olref{vitalicover}
+et le \olref{vitalinooverlap},
+$\onesphere=
+\bigcup_{\rho\in\rotationsgroup}
+\funimage{\rho}{C}$
+est une union dénombrable
+d'ensembles deux à deux
+disjoints. L'additivité
+dénombrable impose donc
+que $\mu(\onesphere)=1$
+soit la somme des mesures
+des $\funimage{\rho}{C}$ :
+\[
+	1=\mu(\onesphere)
+	=\sum_{\rho\in\rotationsgroup}
+	\mu(\funimage{\rho}{C})
+	=\sum_{\rho\in\rotationsgroup}r.
+\]
+Mais si $r=0$, cette somme
+vaut $0$ ; si $r>0$, elle
+vaut $\infty$. Dans les
+deux cas, elle ne vaut
+pas $1$.
+\end{proof}
+
+\end{document}

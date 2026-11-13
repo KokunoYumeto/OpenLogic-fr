@@ -72,9 +72,9 @@ $\Gamma \cup \{\lnot !A\}$. La règle~$\FalseCl$ donne une
   \AxiomC{$\Gamma, \Discharge{\lnot !A}{1}$}
   \RightLabel{$\delta_1$}
   \DeduceC{$\lfalse$}
-  \RightLabel{\FalseCl}
   \DischargeRule{\FalseCl}{1}
   \UnaryInfC{$!A$}
+%
 \end{prooftree}
 \end{proof}
 
@@ -101,8 +101,8 @@ $\Gamma \cup \{!A\}$ est incohérent.
     \BinaryInfC{$\lfalse$}
   \end{prooftree}
 Puisque $\lnot !A \in \Gamma$, toutes les hypothèses
-  !!{undischarged}s appartiennent à~$\Gamma$. Cela établit
-  $\Gamma \Proves \lfalse$.
+  !!{undischarged}s appartiennent à~$\Gamma$.
+  On a donc~\mbox{$\Gamma \Proves \lfalse$}.
 \end{proof}
 
 \begin{prop}\ollabel{prop:provability-exhaustive}
@@ -111,9 +111,9 @@ Puisque $\lnot !A \in \Gamma$, toutes les hypothèses
 \end{prop}
 
 \begin{proof}
-Il existe des !!{derivation}s $\delta_1$ et $\delta_2$ de~$\lfalse$
-à partir de $\Gamma \cup \{ !A \}$ et de $\lfalse$ à partir de
-$\Gamma \cup \{ \lnot !A \}$, respectivement. Nous obtenons alors :
+Soient $\delta_1$ et $\delta_2$ deux !!{derivation}s de~$\lfalse$,
+respectivement à partir de $\Gamma \cup \{!A\}$ et de
+$\Gamma \cup \{\lnot !A\}$. Nous obtenons alors :
 \begin{prooftree}
 \AxiomC{$\Gamma, \Discharge{\lnot !A}{2}$}
 \RightLabel{$\delta_2$}

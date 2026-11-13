@@ -1,0 +1,95 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: trees
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{tre}
+\olsection{Arbres}
+
+Il est parfois utile de représenter les arbres par des entiers
+naturels, comme nous l'avons fait pour les suites finies. Leurs
+propriétés et les opérations qui portent sur eux peuvent alors
+être étudiées au moyen de relations et de fonctions récursives
+primitives appliquées à leurs codes. Nous utiliserons à cette
+fin le codage des suites. Un arbre peut se réduire à un seul
+nœud, éventuellement étiqueté, ou comporter un nœud,
+éventuellement étiqueté, relié à plusieurs sous-arbres.
+Ce nœud est la \emph{racine} de l'arbre; les sous-arbres qui
+lui sont directement reliés sont ses \emph{sous-arbres immédiats}.
+
+Nous codons récursivement un arbre par une suite
+$\tuple{k,d_1,\dots,d_k}$, où $k$ est le nombre de
+sous-arbres immédiats et où $d_1,\dots,d_k$ sont leurs
+codes. Si les nœuds portent des étiquettes, nous pouvons
+placer celles-ci après les codes des sous-arbres immédiats.
+Un arbre réduit à un nœud d'étiquette~$l$ a ainsi pour
+code $\tuple{0,l}$; un arbre dont la racine porte
+l'étiquette~$l_1$ et qui possède deux sous-arbres réduits
+à des nœuds d'étiquettes $l_2$ et~$l_3$ a pour code
+$\tuple{2,\tuple{0,l_2},\tuple{0,l_3},l_1}$.
+
+\begin{prop}
+  \ollabel{prop:subtreeseq}
+  La fonction $\fn{SubtreeSeq}(t)$, qui renvoie le code
+  d'une suite contenant les codes de tous les sous-arbres
+  de l'arbre codé par~$t$, est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  Remarquons d'abord que
+  $\fn{ISubtrees}(t)=\fn{subseq}(t,1,(t)_0)$
+  est récursive primitive et renvoie la suite des codes
+  des sous-arbres immédiats de l'arbre~$t$.
+  Définissons une fonction auxiliaire
+  $\fn{hSubtreeSeq}(t,n)$ qui donne une suite de tous les
+  sous-arbres situés à une distance \emph{au plus}~$n$
+  de la racine. Pour $n=0$, cette suite ne contient que~$t$.
+  Pour passer de~$n$ à~$n+1$, on conserve les sous-arbres
+  déjà énumérés et on leur adjoint les sous-arbres immédiats
+  de chacun d'eux.
+
+  Si $f(x)$ est récursive primitive et renvoie des codes de
+  suites, la fonction qui concatène les images des $k$
+  premiers éléments de~$s$ est également récursive primitive :
+  $g_f(s,k)=f((s)_0)\concat\dots\concat f((s)_{k-1})$,
+  avec la convention $g_f(s,0)=\emptyseq$. En écrivant
+  $g$ pour~$g_f$, elle se définit par récurrence primitive :
+  \begin{align*}
+    g(s, 0) & = \emptyseq\\
+    g(s, k+1) & = g(s, k) \concat f((s)_k).
+  \end{align*}
+  Si $s$ est une suite de codes d'arbres,\footnote{Correction éditoriale : $k$ compte ici les éléments traités. La source les indexe de $0$ à $k$, puis emploie $k=\len{s}$, ce qui traite un élément de trop. Nous utilisons les $k$ premiers éléments avec une valeur initiale vide.}
+  $h(s)=g_{\fn{ISubtrees}}(s,\len{s})$ concatène donc
+  exactement les listes de leurs sous-arbres immédiats,
+  y compris lorsque $s$ est vide. Nous pouvons définir
+  $\fn{hSubtreeSeq}$ par
+  \begin{align*}
+    \fn{hSubtreeSeq}(t, 0) & = \tuple{t} \\
+    \fn{hSubtreeSeq}(t, n+1) & = \fn{hSubtreeSeq}(t, n) \concat
+      h(\fn{hSubtreeSeq}(t, n)).
+  \end{align*}
+  Le code d'un sous-arbre immédiat est strictement inférieur
+  au code de l'arbre qui le contient : il figure comme
+  élément de la suite qui code cet arbre, et le facteur
+  premier élevé à une puissance qui représente cet élément
+  est strictement supérieur à lui. Les codes
+  décroissent donc strictement le long de tout chemin
+  de la racine à une feuille. La distance maximale de la
+  racine à une feuille est ainsi bornée par~$t$.
+  Par conséquent $\fn{hSubtreeSeq}(t,t)$ fournit une suite
+  contenant les codes de tous les sous-arbres de l'arbre
+  codé par~$t$.\footnote{Explicitation éditoriale : la récurrence affichée conserve les listes précédentes. Elle accumule donc les distances au plus $n$, avec répétitions, contrairement au texte source qui parle seulement de la distance exacte $n$. La preuve de décroissance des codes explicite aussi la borne de profondeur.}
+\end{proof}
+
+\begin{prob}
+  La définition de $\fn{hSubtreeSeq}$ donnée dans la preuve
+  de la \olref[cmp][rec][tre]{prop:subtreeseq} peut répéter
+  certains codes. Donner une autre définition qui garantisse
+  que le code de chaque sous-arbre n'apparaisse qu'une seule
+  fois dans la liste obtenue.
+\end{prob}
+
+\end{document}

@@ -1,0 +1,102 @@
+% Partie : intuitionistic-logic
+% Chapitre : introduction
+% Section : constructive-reasoning
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{int}{cr}
+
+\olsection{Raisonnement constructif}
+
+À la différence des extensions de la logique classique par des opérateurs
+modaux ou des quantificateurs du second ordre, la logique intuitionniste
+est « non classique » en ce qu'elle restreint la logique classique.
+Cette dernière est \emph{non constructive} à plusieurs égards. La
+logique intuitionniste vise à rendre compte d'un raisonnement plus
+« constructif », caractéristique de certaines formes de mathématiques
+constructives. Les exemples suivants en éclairent les motivations.
+
+Supposons que quelqu'un affirme avoir déterminé un entier naturel~$n$
+tel que, si $n$ est pair, l'hypothèse de Riemann est vraie et, si $n$
+est impair, elle est fausse. Excellente nouvelle !{} La vérité de
+l'hypothèse de Riemann est l'un des grands problèmes ouverts des
+mathématiques. Il semble qu'on ait ramené ce problème à un calcul :
+déterminer si un nombre précis est pair ou impair.
+
+Quelle est cette valeur miraculeuse de~$n$ ? Voici comment on la décrit :
+$n$ est l'entier naturel égal à $2$ si l'hypothèse de Riemann est vraie,
+et à $3$ sinon.
+
+Furieux, vous réclamez le remboursement. Du point de vue classique,
+cette description détermine effectivement une unique valeur de $n$ ;
+mais ce que vous souhaitez, c'est une valeur de $n$ donnée
+\emph{explicitement}.
+
+Prenons un autre exemple, peut-être moins artificiel. Nous savons
+qu'élever un nombre irrationnel à une puissance rationnelle peut donner
+un résultat rationnel : par exemple, $\sqrt{2}^2 = 2$. Il est moins
+évident qu'on puisse élever un nombre irrationnel à une puissance
+\emph{irrationnelle} et obtenir encore un résultat rationnel. Le
+théorème suivant répond à cette question par l'affirmative.
+
+\begin{thm}
+Il existe des nombres irrationnels $a$ et $b$ tels que $a^b$ soit rationnel.
+\end{thm}
+
+\begin{proof}
+Considérons $\sqrt{2}^{\sqrt{2}}$. Si ce nombre est rationnel, nous
+avons terminé : il suffit de prendre $a = b = \sqrt{2}$. Sinon,
+il est irrationnel. Or
+\[
+(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}} = \sqrt{2}^{\sqrt{2} \cdot
+  \sqrt{2}} = \sqrt{2}^2 = 2,
+\]
+qui est rationnel. Dans ce cas, nous prenons donc pour $a$ le nombre
+$\sqrt{2}^{\sqrt{2}}$, et pour $b$ le nombre~$\sqrt 2$.
+\end{proof}
+
+Est-ce une démonstration valide ? La plupart des mathématiciens
+répondent oui. Mais, là encore, quelque chose nous laisse sur notre
+faim : nous avons établi l'existence d'un couple de nombres réels
+ayant une certaine propriété sans dire \emph{quel} couple convient.
+On peut démontrer le même résultat en donnant le couple $a$, $b$
+\emph{dans} la démonstration : prenons $a = \sqrt{3}$ et
+$b = \log_3 4$. Alors
+\[
+a^b = \sqrt{3}^{\log_3 4} = 3^{1/2 \cdot \log_3 4} = (3^{\log_3
+  4})^{1/2} = 4^{1/2}= 2,
+\]
+puisque $3^{\log_3 x} = x$.
+%
+%
+%
+%
+
+La logique intuitionniste vise à rendre compte d'un raisonnement où
+des démarches comme celle de la première démonstration sont exclues.
+Pour démontrer l'existence d'un $x$ satisfaisant~$!A(x)$, il faut donner
+un~$x$ précis et démontrer qu'il satisfait $!A$, comme dans la seconde
+démonstration. De même, démontrer sans hypothèses que $!A$ ou $!B$
+est vraie exige une démonstration de l'une des deux propositions.
+Cette exigence constructive ne signifie pas que toute disjonction
+déduite d'hypothèses arbitraires permette d'en déduire séparément
+un de ses membres.
+
+Formellement, on obtient la logique intuitionniste en restreignant
+d'une certaine façon un système de !!{derivation} pour la logique
+classique. Du point de vue mathématique, il s'agit simplement de
+systèmes déductifs formels ; mais, comme nous l'avons indiqué,
+ils visent à rendre compte d'un certain raisonnement mathématique.
+On peut y voir le raisonnement qu'autorise une conception philosophique
+des mathématiques, telle que l'intuitionnisme de Brouwer ; on peut
+aussi y voir un raisonnement plus « concret » et plus satisfaisant,
+dans l'esprit du constructivisme de Bishop. On peut enfin discuter
+de l'adéquation entre la description formelle et sa motivation informelle.
+Quelles que soient nos positions philosophiques, nous pouvons étudier
+la logique intuitionniste comme une logique présentée formellement ;
+pour diverses raisons, nombre de logiciens mathématiciens trouvent
+cette étude intéressante.
+
+\end{document}

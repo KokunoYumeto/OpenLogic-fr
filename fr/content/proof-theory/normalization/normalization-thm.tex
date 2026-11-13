@@ -1,0 +1,141 @@
+% Partie : théorie de la démonstration
+% Chapitre : normalisation
+% Section : théorème de normalisation
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nor}{thm}
+
+\olsection{Le théorème de normalisation}
+
+Une !!{proof} est en \emph{forme normale} si elle
+ne comporte aucun segment de coupure. Avec les
+conversions définies précédemment, cela signifie
+qu'aucune conversion par permutation ou par
+réduction ne lui est applicable.
+\emph{Normaliser} une preuve consiste à la
+transformer en une preuve normale par ces
+conversions, jusqu'à disparition de toutes les
+coupures. Le \emph{théorème de normalisation}
+affirme qu'une telle transformation est
+toujours possible.
+
+\begin{thm}\ollabel{thm:normalization}
+Toute !!{proof}~$\delta$ de \Log{N1i} peut
+être normalisée, c'est-à-dire transformée
+en une !!{proof}~$\delta'$ sans coupure,
+de même conclusion, dont les hypothèses
+ouvertes sont parmi celles de la preuve
+initiale.
+\end{thm}
+
+\begin{proof}
+Nous raisonnons par récurrence lexicographique
+sur le rang de coupure et la longueur de
+coupure de~$\delta$. L'hypothèse de récurrence
+porte sur toutes les preuves de rang plus
+petit, ou de même rang et de longueur de
+coupure plus petite.
+
+Si la longueur de coupure est~$0$, la preuve
+n'a aucune coupure : elle est déjà normale.
+Supposons donc sa longueur de coupure~$>0$.
+
+Choisissons une coupure maximale telle
+qu'aucune autre coupure maximale ne se
+termine au-dessus de sa première occurrence,
+ni au-dessus d'une autre prémisse de
+l'élimination dont sa dernière occurrence
+est la prémisse majeure, et qu'aucune autre
+coupure maximale ne contienne une telle
+prémisse voisine.
+On obtient une telle coupure en choisissant, parmi les coupures
+maximales qui n'en ont aucune au-dessus, celle dont la première
+occurrence est le plus à droite, les prémisses majeures étant
+placées à gauche. Toute coupure maximale au-dessus d'une prémisse
+voisine, ou qui la contiendrait, commencerait dans une branche à
+droite. En remontant au besoin à une coupure maximale supérieure
+dans cette branche, on contredirait le choix le plus à droite.
+
+
+Si le segment choisi a une longueur~$>1$,
+on applique la conversion par permutation
+correspondante. S'il a une longueur~$1$,
+on applique la conversion par réduction
+correspondante. Les conditions du choix
+empêchent de dupliquer une coupure
+maximale ou d'allonger un segment maximal
+passant par une prémisse voisine.
+Les segments visés sont raccourcis ou
+supprimés ; les nouvelles coupures
+créées par une réduction ont un rang
+inférieur. On obtient donc une preuve
+de rang plus petit, ou de même rang et
+de longueur de coupure plus petite.
+Après les renommages nécessaires pour
+éviter la capture et rétablir la régularité,
+l'hypothèse de récurrence s'applique.
+Les conversions préservent la conclusion
+et n'ajoutent aucune hypothèse ouverte.
+\end{proof}
+
+La démonstration donne une stratégie
+particulière : elle traite toujours une
+coupure maximale choisie de cette façon.
+Elle établit l'existence d'une suite
+terminante de conversions, appelée
+\emph{normalisation faible}.
+La \emph{normalisation forte} affirme que toute suite maximale
+de conversions est finie et s'achève en forme normale.
+Sa démonstration exige un argument de terminaison indépendant
+du choix de la coupure. La mesure ci-dessus décroît sous
+les conditions de sélection de cette preuve.
+
+
+
+
+
+
+Les définitions de segment et de coupure
+se transposent à \Log{N2i}, en considérant
+les occurrences de la formule à droite
+de chaque séquent. Les conversions de
+\Log{N1i} se transposent elles aussi :
+on recalcule les contextes d'hypothèses
+ouvertes après greffage ou suppression
+d'une branche. Les décharges et les
+conditions sur les constantes propres
+sont les mêmes. Le théorème vaut donc
+également pour~\Log{N2i}.
+
+\begin{thm}\ollabel{thm:normalization-N2i}
+Toute !!{proof}~$\delta$ de \Log{N2i} peut
+être normalisée, c'est-à-dire transformée
+en une !!{proof}~$\delta'$ sans coupure,
+de même formule finale, dont le contexte
+d'hypothèses ouvertes est inclus dans
+celui de la preuve initiale.
+\end{thm}
+
+Pour le choix du segment maximal dans la preuve de Prawitz, voir
+la section~5 de l'article d'Ernst Zimmermann,
+\href{https://doi.org/10.1007/s10849-021-09329-8}{\emph{Natural Deduction Bottom Up}} (2021).
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

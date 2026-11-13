@@ -1,0 +1,139 @@
+% Part: applied-modal-logics
+% Chapter: temporal-logic
+% Section: temporal-logic-semantics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{tl}{sem}
+
+\olsection{Sémantique de la logique temporelle}
+
+\begin{defn}
+Le langage de base de la logique temporelle contient
+\begin{enumerate}
+  \tagitem{prvFalse}{La constante propositionnelle de !!{falsity}~$\lfalse$.}{}
+  \tagitem{prvTrue}{La constante propositionnelle de !!{truth}~$\ltrue$.}{}
+  \item Un ensemble !!{denumerable} de !!{propositional variable}s : $\Obj
+    p_0$, $\Obj p_1$, $\Obj p_2$, \dots
+  \item Les connecteurs propositionnels : \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}.
+  \item Les opérateurs du passé $\Ptemp$ et $\Htemp$.
+  \item Les opérateurs du futur $\Ftemp$ et $\Gtemp$.
+\end{enumerate}
+\end{defn}
+
+Nous examinerons plus loin l'ajout éventuel d'autres sortes
+d'opérateurs modaux.
+
+\begin{defn}
+Les \emph{!!{formula}s} du langage temporel sont définies
+inductivement comme suit :
+\begin{enumerate}
+\tagitem{prvFalse}{$\lfalse$ est une !!{formula} atomique.}{}
+
+\tagitem{prvTrue}{$\ltrue$ est une !!{formula} atomique.}{}
+
+\item Chaque variable propositionnelle $\Obj p_i$ est une !!{formula} (atomique).
+
+\tagitem{prvNot}{Si $!A$ est !!a{formula}, alors $\lnot !A$ est
+  !!a{formula}.}{}
+
+\tagitem{prvAnd}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \land
+  !B)$ est !!a{formula}.}{}
+
+\tagitem{prvOr}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \lor !B)$
+  est !!a{formula}.}{}
+
+\tagitem{prvIf}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \lif !B)$
+  est !!a{formula}.}{}
+
+\tagitem{prvIff}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \liff !B)$
+  est !!a{formula}.}{}
+
+\item Si $!A$ est !!a{formula}, alors $\Ptemp  !A$, $\Htemp  !A$,
+  $\Ftemp !A$ et $\Gtemp  !A$ sont toutes des !!{formula}s.
+
+\tagitem{limitClause}{Rien d'autre n'est !!a{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+La sémantique des logiques temporelles s'exprime en termes de modèles
+relationnels, comme pour les autres logiques intensionnelles.
+
+\begin{defn}
+  Un \emph{modèle} pour le langage temporel est un triplet
+  $\mModel{M} = \tuple{T, \prec, V}$, où
+  \begin{enumerate}
+  \item $T$ est un ensemble non vide dont les éléments sont
+    interprétés comme des instants.
+  \item $\prec$ est une relation binaire sur $T$.
+  \item $V$ est une fonction qui associe à chaque !!{propositional
+    variable}~$p$ un ensemble $V(p)$ d'instants.
+  \end{enumerate}
+  Lorsque $t \prec t'$ est vérifié, nous disons que $t$ \emph{précède}~$t'$.
+  Lorsque $t \in V(p)$, nous disons que $p$ est \emph{vrai à l'instant}~$t$.
+\end{defn}
+
+Pour l'instant, nous n'imposons aucune condition à la relation de
+précédence $\prec$. La structure de nos modèles temporels n'est donc
+soumise à aucune restriction : le temps peut être linéaire, ramifié,
+circulaire, ou avoir une structure quelconque.
+
+Comme en logique modale normale, chaque modèle temporel détermine
+quelles !!{formula}s sont vraies aux différents instants. La notion
+fondamentale de la sémantique relationnelle s'exprime de la même
+façon : «~le modèle $\mModel{M}$ rend la !!{formula}~$!A$ vraie à
+l'instant~$t$~». Cette relation est définie inductivement ; pour tous
+les opérateurs non modaux, sa définition est identique à celle de la
+logique modale normale.
+
+\begin{defn}\ollabel{defn:tmodels}
+  La \emph{vérité d'!!a{formula}~$!A$ à l'instant~$t$} dans un modèle
+  $\mModel M$, notée $\mSat{M}{!A}[t]$, est définie inductivement
+  comme suit :
+  \begin{enumerate}
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Jamais $\mSat{M}{\lfalse}[t]$}.}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{Toujours $\mSat{M}{\ltrue}[t]$}.}{}
+  \item $\mSat{M}{p}[t]$ si et seulement si $t \in V(p)$
+  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    $\mSat/{M}{!B}[t]$}.}{}
+  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    $\mSat{M}{!B}[t]$ et $\mSat{M}{!C}[t]$}.}{}
+  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    $\mSat{M}{!B}[t]$ ou $\mSat{M}{!C}[t]$} (ou les deux).}{}
+  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    $\mSat/{M}{!B}[t]$ ou $\mSat{M}{!C}[t]$}.}{}
+  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    l'une des deux conditions suivantes est remplie : les relations
+    $\mSat{M}{!B}[t]$ et $\mSat{M}{!C}[t]$ sont toutes deux vérifiées,
+    ou les relations $\mSat{M}{!B}[t]$ et $\mSat{M}{!C}[t]$ ne sont ni
+    l'une ni l'autre vérifiées}.}{}
+  \item\ollabel{defn:sub:mmodels-p}
+    \indcase{!A}{\Ptemp  !B}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    $\mSat{M}{!B}[t']$ pour au moins un $t' \in T$ tel que $t' \prec t$}
+  \item\ollabel{defn:sub:mmodels-h}
+    \indcase{!A}{\Htemp  !B}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    $\mSat{M}{!B}[t']$ pour tout $t' \in T$ tel que $t' \prec t$}
+  \item\ollabel{defn:sub:mmodels-f}
+    \indcase{!A}{\Ftemp  !B}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    $\mSat{M}{!B}[t']$ pour au moins un $t' \in T$ tel que $t \prec t'$}
+  \item\ollabel{defn:sub:mmodels-g}
+    \indcase{!A}{\Gtemp  !B}{$\mSat{M}{\indfrm}[t]$ si et seulement si
+    $\mSat{M}{!B}[t']$ pour tout $t' \in T$ tel que $t \prec t'$}
+  \end{enumerate}
+\end{defn}
+
+La sémantique montre que les opérateurs $\Ptemp$ et~$\Htemp$ sont
+duaux, tout comme $\Ftemp$ et $\Gtemp$. Nous pourrions donc définir
+$\Htemp  !A$ comme $\lnot \Ptemp \lnot !A$, et procéder de même pour
+$\Gtemp$ et~$\Ftemp$. En particulier, à un instant sans
+successeur, $\Ftemp !A$ est faux et $\Gtemp !A$ est vrai, quelle
+que soit la formule~$!A$. Il en va de même pour le couple
+$\Ptemp$, $\Htemp$ à un instant sans prédécesseur.
+\end{document}

@@ -1,0 +1,118 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{story}{predicative}	
+
+\olsection{Prédicatif et imprédicatif}
+
+L'ensemble de Russell, $R$, était défini par $\Setabs{x}{x \notin
+x}$. Plus explicitement, $R$ serait l'ensemble qui contiendrait tous
+les ensembles qui ne s'appartiennent pas à eux-mêmes, et eux seuls.
+En définissant $R$, nous quantifions donc sur un domaine qui
+contiendrait $R$ (s'il existait).
+
+Il s'agit d'une définition \emph{imprédicative}. Plus généralement,
+on peut dire qu'une définition est imprédicative si et seulement si
+elle quantifie sur un domaine qui contient l'objet défini.
+
+À la suite des paradoxes, Whitehead, Russell, Poincar\'{e} et Weyl
+ont rejeté ces définitions imprédicatives comme relevant d'un «~cercle
+vicieux~» :
+\begin{quote}
+	Une analyse des paradoxes à éviter montre qu'ils résultent tous
+	d'une forme de cercle vicieux. Les cercles vicieux en question
+	naissent de la supposition qu'une collection d'objets puisse
+	contenir des membres qui ne peuvent être définis qu'au moyen de
+	la collection prise comme un tout [\ldots. \textparagraph]
+
+	Le principe qui nous permet d'éviter les totalités illégitimes
+	peut s'énoncer ainsi : «~Ce qui fait intervenir la \emph{totalité}
+	d'une collection ne doit pas être un membre de cette collection~» ;
+	ou, réciproquement : «~Si une certaine collection, à supposer
+	qu'elle forme une totalité, devait comporter des membres qui ne
+	puissent être définis qu'au moyen de cette totalité, alors cette
+	collection ne forme pas une totalité.~» Nous appellerons ce
+	principe le «~principe du cercle vicieux~», parce qu'il permet
+	d'éviter les cercles vicieux qu'entraîne la supposition de
+	totalités illégitimes.
+	\citep[p.~37]{WhiteheadRussell1910}
+\end{quote}
+Si nous suivons ces auteurs en adoptant le \emph{principe du cercle
+vicieux}, nous pourrions essayer de remplacer le désastreux schéma de
+compréhension naïve (de la \olref[sth][story][rus]{sec}) par un
+principe de ce genre :
+
+\begin{defish}
+\emph{Compréhension prédicative.} Pour toute formule $\phi$ qui ne quantifie que sur les ensembles, l'ensemble$^\prime$ $\Setabs{x}{\phi(x)}$ existe.
+\end{defish}
+
+Tant que les ensembles$^{\prime}$ ne sont pas des ensembles, aucune
+contradiction ne s'ensuit.
+
+Malheureusement, la compréhension prédicative n'est guère
+\emph{exhaustive}. Après tout, elle introduit de nouvelles entités :
+les ensembles$^{\prime}$. Il faut donc aussi considérer les formules
+qui quantifient sur les ensembles$^{\prime}$. Si ces formules donnent
+toujours un ensemble$^{\prime}$, le paradoxe de Russell réapparaît :
+il suffit de considérer l'ensemble$^{\prime}$ de tous les
+ensembles$^{\prime}$ qui ne s'appartiennent pas à eux-mêmes. Dans la
+même logique, il faut dire qu'une formule qui quantifie sur les
+ensembles$^{\prime}$ donne un ensemble$^{\prime\prime}$ correspondant.
+Il nous faudra ensuite des ensembles$^{\prime\prime\prime}$, des
+ensembles$^{\prime\prime\prime\prime}$, et ainsi de suite. Pour éviter
+une prolifération de primes, il sera plus simple de parler
+d'ensembles$_0$, d'ensembles$_1$, d'ensembles$_2$, d'ensembles$_3$,
+d'ensembles$_4$,\ldots. Cela nous conduit vers la théorie (simple)
+des types.
+
+Une telle théorie soulève quelques objections assez évidentes (même
+s'il n'est pas évident qu'elles soient \emph{décisives}). En bref : la
+théorie obtenue est lourde à manier ; elle multiplie les sortes
+d'objets qu'elle postule ; et, finalement, il n'est pas certain que
+les définitions imprédicatives soient \emph{si problématiques que
+cela}.
+
+Pour éclairer ce dernier point, considérons cette remarque de
+\citeauthor{Ramsey1925} :
+\begin{quote}
+	nous pouvons désigner un homme comme le plus grand d'un groupe, et
+	l'identifier ainsi au moyen d'une totalité dont il est lui-même
+	membre, sans qu'il y ait pour autant de cercle vicieux.
+	\citep{Ramsey1925}
+\end{quote}
+Pour Ramsey, «~l'homme le plus grand du groupe~» \emph{est} une
+définition imprédicative ; elle est pourtant manifestement
+parfaitement acceptable.
+
+On pourrait répondre que, dans ce cas, nous pourrions désigner la
+personne la plus grande par des moyens \emph{prédicatifs}. Nous
+pourrions par exemple simplement la montrer du doigt. L'objection
+contre les définitions imprédicatives devrait alors clairement être
+limitée aux entités qui ne peuvent être désignées \emph{que} de manière
+imprédicative. Mais même dans ce cas, il faudrait expliquer davantage
+pourquoi une telle «~imprédicativité essentielle~» serait si
+problématique.\footnote{Pour aller plus loin, voir \citet{Linnebo2010}.}
+
+Certes, les définitions imprédicatives posent un problème majeur si
+nous attendons d'une définition qu'elle nous fournisse une sorte de
+recette pour \emph{créer} un objet. Une définition imprédicative nous
+enfermerait alors réellement dans un cercle vicieux : pour créer
+l'objet ainsi défini, il faudrait \emph{d'abord} créer tous les objets
+(y compris celui-là), puisque sa définition fait intervenir leur
+totalité ; il faudrait donc créer cet objet avant même de l'avoir
+créé. Mais, là encore, il ne s'agit d'une objection sérieuse contre
+les ensembles définis de façon «~essentiellement imprédicative~» que
+si nous considérons les ensembles comme des choses que nous
+\emph{créons}. Et ce n'est (probablement) pas notre point de vue.
+
+Ainsi, pour le meilleur ou pour le pire, l'approche devenue courante
+ne consiste pas à adopter une position stricte sur la
+(im)\-pré\-di\-ca\-ti\-vi\-té. Elle repose plutôt sur ce que l'on
+appelle aujourd'hui l'approche cumulative et itérative. Celle-ci nous
+permettra finalement de répartir les ensembles en «~étapes~», un
+\emph{peu} comme l'approche prédicative répartit les entités entre
+ensembles$_0$, ensembles$_1$, ensembles$_2$, \ldots, mais sans
+postuler de différence de nature entre eux.
+\footnote{Note de traduction : la source décrit par erreur les ensembles qui ne sont pas non auto-appartenants, alors que la formule exige $x\notin x$ ; elle dit aussi de rejeter le principe du cercle vicieux, alors que le passage cité et le schéma suivant l'adoptent. Ces deux inversions sont corrigées ici.}
+\end{document}

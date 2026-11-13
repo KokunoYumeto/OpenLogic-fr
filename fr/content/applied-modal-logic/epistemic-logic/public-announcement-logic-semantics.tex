@@ -1,0 +1,137 @@
+% Partie : applied-modal-logics
+% Chapitre : epistemic-logic
+% Section : public-announcement-logic-semantics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{el}{psm}
+
+\olsection{Sémantique de la logique des annonces publiques}
+
+Les modèles relationnels sont les mêmes qu'en logique épistémique.
+En revanche, la sémantique de l'opérateur d'annonce publique est nouvelle.
+
+\begin{defn}\ollabel{defn:mmodels}
+  La \emph{vérité d'!!a{formula}~$!A$ en~$w$} dans
+  un modèle~$\mModel M = \tuple{W, R, V}$, notée
+  $\mSat{M}{!A}[w]$, est définie inductivement comme suit :
+  \begin{enumerate}
+  \tagitem{prvFalse}{\indcase{!A}{\lfalse}{On n'a jamais $\mSat{M}{\lfalse}[w]$}.}{}
+  \tagitem{prvTrue}{\indcase{!A}{\ltrue}{On a toujours $\mSat{M}{\ltrue}[w]$}.}{}
+  \item $\mSat{M}{p}[w]$ si et seulement si $w \in V(p)$.
+  \tagitem{prvNot}{\indcase{!A}{\lnot !B}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat/{M}{!B}[w]$}.}{}
+  \tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat{M}{!B}[w]$ et $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$} (éventuellement les deux).}{}
+  \tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat/{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$}.}{}
+  \tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    soit on a à la fois $\mSat{M}{!B}[w]$ et $\mSat{M}{!C}[w]$, soit
+    on n'a ni $\mSat{M}{!B}[w]$ ni $\mSat{M}{!C}[w]$}.}{}
+  \item\ollabel{defn:sub:mmodels-box}
+    \indcase{!A}{\Knows_a !B}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat{M}{!B}[w']$ pour tout $w' \in W$ tel que $R_a ww'$}
+  \item\ollabel{defn:sub:mmodels-pal}
+    \indcase{!A}{[!B] !C}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+    $\mSat{M}{!B}[w]$ entraîne $\mSat{M \mid !B}{!C}[w]$}
+
+  où la restriction $\mModel M \mid !B = \tuple{W', R', V'}$ est
+  définie comme suit :
+  \begin{enumerate}
+    \item $W' = \Setabs{ u \in W}{\mSat{M}{!B}[u]}$. Les mondes de
+      $\mModel M \mid !B$ sont donc les mondes de~$\mModel M$ où $!B$
+      est vraie.
+    \item $R'_a = R_a \cap (W' \times W')$. La relation d'accessibilité
+      de chaque agent est restreinte aux mondes conservés dans~$W'$.
+    \item $V'(p) = \Setabs{ u \in W'}{u \in V(p) }$. Les valuations
+      propositionnelles restent inchangées aux mondes conservés :
+      cette mise à jour informationnelle ne modifie pas la valeur de
+      vérité des variables propositionnelles en ces mondes.
+  \end{enumerate}
+  \end{enumerate}
+\end{defn}
+
+Si aucun monde ne satisfait l'annonce, la restriction est vide.
+La clause d'annonce n'y évalue toutefois aucune formule : son
+antécédent est alors faux au monde de départ. Si l'on ajoute
+l'opérateur de connaissance commune, on conserve sa clause
+sémantique précédente, appliquée au modèle courant, y compris
+aux modèles restreints.
+
+La particularité de la logique des annonces publiques est donc que
+la vérité d'!!a{formula} en un monde de~$\mModel M$ peut parfois
+nécessiter une évaluation dans un autre modèle que~$\mModel M$.
+
+La sémantique traite l'opérateur d'annonce comme un opérateur de
+type~$\Box$. Ainsi, si !!a{formula}~$!A$ ne peut être annoncée
+de manière véridique en un monde, $[!A]B$ y est vraie par vacuité,
+comme toutes les !!{formula}s en $\Box$ le sont dans un monde
+sans successeur.
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[modal]
+      \node[world] (w1) [label={below left:$p, \lnot q$}]{$w_1$};
+      \node[world] (w2) [left=of w1, label={left:$\lnot p, \lnot q$}]{$w_2$};
+      \node[world] (w3) [above=of w1, label={right:$p, q$}] {$w_3$};
+      \draw[<->] (w1) to [swap] node {$b$} (w2);
+      \draw[->,loop below] (w1) to node {$a, b$} (w1);
+      \draw[<->] (w1) to [swap] node {$a$} (w3);
+      \draw[->,loop above] (w2) to node {$a, b$} (w2) ;
+      \draw[->,loop above] (w3) to node {$a, b$} (w3) ;
+
+      \node[world](v1)[right of=w1, xshift=1.25in, label={right:$p, \lnot q$}]{$w'_1$};
+      \node[world](v3)[above of=v1,label={right:$p,q$}]{$w'_3$};
+      \draw[<->] (v1) to node {$a$} (v3);
+      \draw[->,loop below] (v1) to node {$a,b$} (v1);
+      \draw[->,loop above] (v3) to node {$a,b$} (v3) ;
+
+      \node(m)[below=of w1]{$\mModel M$};
+      \node(m')[below=of v1]{$\mModel M \mid p$};
+
+      \draw[-,dotted] (w1) to node {\footnotesize annonce de $p$}(v1) ;
+    \end{tikzpicture}
+  \end{center}
+  \caption{Avant et après l'annonce publique de $p$.}
+  \ollabel{fig:announcement-example}
+\end{figure}
+
+On peut voir une annonce publique d'!!a{formula} comme une
+réduction du modèle aux mondes où la !!{formula} était vraie.
+La \olref{fig:announcement-example} montre l'effet de l'annonce
+publique de~$p$. Les primes y désignent simplement les mêmes mondes
+après restriction. Dans cet exemple, l'agent~$b$ apprend que~$p$
+à la suite de l'annonce, tandis que l'agent~$a$ ne l'apprend pas à
+cette occasion, puisque $a$ savait déjà que~$p$ était vraie.
+
+Plus formellement, on a $\mSat{M}{\lnot \Knows_b p}[w_1]$, mais
+$\mSat{M
+\mid p}{\Knows_b p}[w'_1]$. On en déduit
+$\mSat{M}{[p] \Knows_b
+p}[w_1]$. On peut même dire davantage sur le résultat de l'annonce :
+on a $\mSat{M}{[p]\CKnows_{\{a,b\}} p}[w_1]$. Autrement dit,
+après l'annonce, $p$ devient une \emph{connaissance commune}.
+
+Mais est-ce toujours le cas ? Une annonce véridique de~$!A$
+fait-elle \emph{toujours} de $!A$ une connaissance commune ? La
+réponse, peut-être surprenante, est non. Il est même possible
+d'annoncer de manière véridique des !!{formula}s qui cessent
+d'être vraies après leur annonce. Considérons, par exemple,
+l'annonce de $p \land \lnot \Knows_b p$ en~$w_1$ dans la
+\olref{fig:announcement-example}. Les modèles $\mModel M \mid p$ et
+$\mModel M \mid (p \land \lnot \Knows_b p)$ sont ici différents :
+le premier conserve aussi le troisième monde, tandis que le second
+ne conserve que le premier.\footnote{La source affirme à tort que ces deux modèles restreints sont égaux. Le troisième monde satisfait l'annonce simple, mais pas l'annonce plus forte. Cette inégalité ne change pas le contre-exemple qui suit.} Dans chacun, l'agent b sait que p au
+premier monde conservé. Nous avons déjà établi que
+$\mSat{M \mid p}{\Knows_b
+p}[w'_1]$. L'annonce plus forte ne laisse, elle aussi, qu'un monde
+accessible à b où p est vraie. On a donc
+$\mSat{M \mid (p \land \lnot \Knows_b p)}{\lnot
+(p \land \lnot \Knows_b p)}[w'_1]$ : cette !!a{formula} devient
+fausse après son annonce.
+
+\end{document}

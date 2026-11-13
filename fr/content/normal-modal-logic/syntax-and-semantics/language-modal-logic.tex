@@ -1,0 +1,108 @@
+% Part: normal-modal-logic
+% Chapter: syntax-and-semantics
+% Section: language-modal-logic
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{lan}
+
+\olsection{Le langage de la logique modale de base}
+
+\begin{defn}
+Le langage de base de la logique modale comprend :
+\begin{enumerate}
+  \tagitem{prvFalse}{La constante propositionnelle pour la !!{falsity}~$\lfalse$.}{}
+  \tagitem{prvTrue}{La constante propositionnelle pour la !!{truth}~$\ltrue$.}{}
+  \item Un ensemble !!{denumerable} de !!{propositional variable}s : $\Obj
+    p_0$, $\Obj p_1$, $\Obj p_2$, \dots
+  \item Les connecteurs propositionnels : \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}.
+  \tagitem{prvBox}{L'opérateur modal $\Box$.}{}
+  \tagitem{prvDiamond}{L'opérateur modal $\Diamond$.}{}
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+Les \emph{!!^{formula}s} du langage modal de base sont définies
+  inductivement comme suit :
+\begin{enumerate}
+\tagitem{prvFalse}{$\lfalse$ est une !!{formula} atomique.}{}
+
+\tagitem{prvTrue}{$\ltrue$ est une !!{formula} atomique.}{}
+
+\item Toute !!{propositional variable} $\Obj p_i$ est une !!{formula}
+  atomique.
+
+\tagitem{prvNot}{Si $!A$ est !!a{formula}, alors $\lnot !A$ est
+  !!a{formula}.}{}
+
+\tagitem{prvAnd}{Si $!A$ et $!B$ sont des !!{formula}s, alors
+  $(!A \land !B)$ est !!a{formula}.}{}
+
+\tagitem{prvOr}{Si $!A$ et $!B$ sont des !!{formula}s, alors
+  $(!A \lor !B)$ est !!a{formula}.}{}
+
+\tagitem{prvIf}{Si $!A$ et $!B$ sont des !!{formula}s, alors
+  $(!A \lif !B)$ est !!a{formula}.}{}
+
+\tagitem{prvIff}{Si $!A$ et $!B$ sont des !!{formula}s, alors
+  $(!A \liff !B)$ est !!a{formula}.}{}
+
+\tagitem{prvBox}{Si $!A$ est !!a{formula}, alors $\Box !A$ est
+  !!a{formula}.}{}
+
+\tagitem{prvDiamond}{Si $!A$ est !!a{formula}, alors $\Diamond !A$
+  est !!a{formula}.}{}
+
+\tagitem{limitClause}{Rien d'autre n'est !!a{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+\begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defBox,defDiamond}
+\begin{defn}
+Les formules construites au moyen des opérateurs définis s'entendent
+selon les abréviations suivantes :
+
+\begin{tagenumerate}{defTrue,defFalse,defNot,defOr,defAnd,defIf,defIff,defBox,defDiamond}
+
+\tagitem{defTrue}{$\ltrue$ abrège
+  \iftag{prvFalse}{$\lnot\lfalse$}{$(!A \lor \lnot !A)$ pour une
+    !!{formula} atomique~$!A$ fixée}.}{}
+
+\tagitem{defFalse}{$\lfalse$ abrège
+  \iftag{prvTrue}{$\lnot\ltrue$}{$(!A \land \lnot !A)$ pour une
+    !!{formula} atomique~$!A$ fixée}.}{}
+
+\tagitem{defNot}{$\lnot !A$ abrège $!A \lif \lfalse$.}{}
+
+\tagitem{defOr}{$!A \lor !B$ abrège
+  \iftag{prvAnd}{$\lnot(\lnot !A \land \lnot !B)$}{$\lnot !A \lif
+    !B$}.}{}
+
+\tagitem{defAnd}{$!A \land !B$ abrège
+  \iftag{prvOr}{$\lnot(\lnot !A \lor \lnot !B)$}{$\lnot (!A \lif
+    \lnot !B)$}.}{}
+
+\tagitem{defIf}{$!A \lif !B$ abrège
+  \iftag{prvOr}{$(\lnot !A \lor !B)$}{$\lnot (!A \land \lnot !B)$}.}{}
+
+\tagitem{defIff}{$!A \liff !B$ abrège $(!A \lif !B) \land (!B
+  \lif !A)$.}{}
+
+\tagitem{defBox}{$\Box !A$ abrège $\lnot\Diamond\lnot !A$. }{}
+
+\tagitem{defDiamond}{$\Diamond !A$ abrège $\lnot\Box\lnot !A$.}{}
+\end{tagenumerate}
+\end{defn}
+\end{tagblock}
+
+Si !!a{formula}~$!A$ ne contient ni $\Box$ ni $\Diamond$, nous
+disons qu'elle est \emph{sans opérateur modal}.
+
+\end{document}

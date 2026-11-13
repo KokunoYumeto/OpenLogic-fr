@@ -1,0 +1,26 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: provability-from-set
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{prg}
+
+\olsection{Dérivabilité à partir d'un ensemble de \usetoken{p}{formula}}
+
+Dans la \olref[prf][prf]{sec}, nous avons défini la dérivabilité d'une
+!!{formula} dans un système~$\Sigma$. Étendons maintenant cette notion
+à la dérivabilité dans $\Sigma$ à partir des !!{formula}s d'un
+ensemble~$\Gamma$.
+
+\begin{defn}\ollabel{defn:Gammaproves}
+  Une !!{formula}~$!A$ est !!{derivable} dans un système~$\Sigma$ à
+  partir d'un ensemble de !!{formula}s $\Gamma$, ce que l'on note
+  $\Gamma \Proves[\Sigma] !A$, si et seulement s'il existe
+  $!B_1$, \dots, $!B_n \in \Gamma$, avec $n \ge 0$, tels que
+  $\Sigma \Proves !B_1 \lif (!B_2 \lif \cdots (!B_n \lif !A)
+  \cdots)$. Pour $n=0$, cette condition signifie $\Sigma \Proves !A$.
+\end{defn}
+\end{document}

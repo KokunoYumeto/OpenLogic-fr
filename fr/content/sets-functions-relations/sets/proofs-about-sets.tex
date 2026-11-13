@@ -1,0 +1,107 @@
+% Part: sets-functions-relations
+% Chapter: sets
+% Section: proofs-about-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{set}{prf}
+\olsection{Démonstrations sur les ensembles}
+
+\begin{editorial}
+Pour un exposé général des techniques de démonstration,
+voir le \olref[mth][prf][]{chap}.
+On applique ici ces techniques à une loi d'absorption.
+%
+%
+\end{editorial}
+
+\begin{explain}
+Les ensembles et les notations introduites jusqu'ici nous fournissent
+des abréviations commodes pour décrire des ensembles et exprimer leurs
+relations. Souvent, il faudra aussi démontrer des énoncés sur ces
+relations. Si vous découvrez les démonstrations mathématiques,
+commençons par un exemple simple. Nous allons montrer que, pour
+tous ensembles $X$ et $Y$, on a toujours $X\cap(X\cup Y)=X$.
+Comment démontrer une telle
+égalité d'ensembles ? Rappelons que les ensembles sont déterminés
+uniquement par leurs !!{element}s : deux ensembles sont égaux si et
+seulement s'ils ont les mêmes !!{element}s. Nous devons donc établir
+(a) que tout !!{element} de $X\cap(X\cup Y)$ appartient aussi à $X$,
+et (b), réciproquement, que tout !!{element} de $X$ appartient aussi
+à $X\cap(X\cup Y)$. Autrement dit, il faut montrer à la fois
+(a) $X\cap(X\cup Y)\subseteq X$ et
+(b) $X\subseteq X\cap(X\cup Y)$.
+
+Pour démontrer un énoncé général comme « tout !!{element}~$z$ de
+$X\cap(X\cup Y)$ appartient aussi à $X$ », on prend un~$z$
+arbitraire, on suppose $z\in X\cap(X\cup Y)$, puis on déduit de cette
+hypothèse que $z\in X$. Vous reconnaissez peut-être le schéma général
+d'une preuve conditionnelle. Nous utiliserons aussi les définitions
+des notions figurant dans l'hypothèse et dans la conclusion, ici
+celles de~$\cap$ et de~$\cup$. Voici donc la première partie de la
+démonstration :
+
+\begin{quote}
+(a) Nous voulons d'abord montrer que
+$X\cap(X\cup Y)\subseteq X$, c'est-à-dire, par définition de
+$\subseteq$, que $z\in X\cap(X\cup Y)$ entraîne $z\in X$ pour
+tout~$z$. Supposons donc $z\in X\cap(X\cup Y)$. Un objet est
+!!a{element} de l'intersection de deux ensembles si et seulement
+s'il appartient à chacun d'eux. Nous pouvons donc conclure que
+$z\in X$ et $z\in X\cup Y$. En particulier, $z\in X$, comme il
+fallait le montrer.
+\end{quote}
+
+La première moitié de la démonstration est terminée. Remarquez que
+la dernière étape utilise le fait que, si une conjonction
+($z\in X$ et $z\in X\cup Y$) découle d'une hypothèse, chacun de ses
+deux termes en découle également. Cette règle est l'« élimination de
+la conjonction », ou $\land$Elim. Démontrons maintenant~(b) :
+
+\begin{quote}
+(b) Montrons que $X\subseteq X\cap(X\cup Y)$, c'est-à-dire, par
+définition de $\subseteq$, que $z\in X$ entraîne
+$z\in X\cap(X\cup Y)$ pour tout~$z$. Supposons $z\in X$. Pour
+établir $z\in X\cap(X\cup Y)$, la définition de $\cap$ exige
+(i) $z\in X$ et (ii) $z\in X\cup Y$. La condition~(i) est notre
+hypothèse : il n'y a rien de plus à démontrer. Pour~(ii), rappelons
+qu'un objet appartient à l'union de deux ensembles si et seulement
+s'il appartient à au moins l'un des deux. Or $z\in X$ et
+$X\cup Y$ est l'union de $X$ et de $Y$ ; ainsi, $z\in X\cup Y$.
+Nous avons établi (i) $z\in X$ et (ii) $z\in X\cup Y$, d'où,
+par définition de $\cap$, $z\in X\cap(X\cup Y)$.
+\end{quote}
+
+Cette démonstration est un peu longue, mais elle montre comment on
+raisonne sur les ensembles et leurs relations. En général, on ne
+détaille pas autant les choses et, notamment, on ne répète pas toutes
+les définitions. Dans un texte plus avancé, la démonstration serait
+beaucoup plus concise. Elle pourrait prendre la forme suivante.
+\end{explain}
+
+\begin{prop}[Absorption]
+Pour tous ensembles $X$ et $Y$,
+\[
+X\cap(X\cup Y)=X.
+\]
+\end{prop}
+
+\begin{proof}
+(a) Supposons $z\in X\cap(X\cup Y)$. Alors $z\in X$, donc
+$X\cap(X\cup Y)\subseteq X$.
+
+(b) Supposons maintenant $z\in X$. Alors $z\in X\cup Y$ et, par
+conséquent, $z\in X\cap(X\cup Y)$. Donc
+$X\subseteq X\cap(X\cup Y)$.
+\end{proof}
+
+\begin{prob}
+Démontrez en détail que $X\cup(X\cap Y)=X$, puis donnez-en une
+démonstration abrégée. Indication : pour établir
+$X\cup(X\cap Y)\subseteq X$, il faut raisonner par cas, c'est-à-dire
+utiliser l'élimination de la disjonction ($\lor$Elim).
+\end{prob}
+
+\end{document}

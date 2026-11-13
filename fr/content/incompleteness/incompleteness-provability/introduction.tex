@@ -1,0 +1,114 @@
+% Part: incompleteness
+% Chapter: incompleteness-provability
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{int}
+
+\olsection{Introduction}
+
+Hilbert estimait qu'un système d'axiomes décrivant
+une structure mathématique, par exemple les entiers
+naturels, est insuffisant s'il ne permet pas de
+démontrer tous les énoncés vrais sur cette structure.
+Cet objectif, joint à son intérêt ultérieur pour les
+systèmes formels de déduction, suggère qu'il voulait
+garantir que les systèmes employés pour raisonner
+sur les entiers naturels soient non seulement
+cohérents, mais aussi \emph{complets} : tout énoncé
+de leur langage, ou sa négation, doit être
+!!{derivable}. Le premier théorème d'incomplétude
+de Gödel montre qu'il n'existe aucun système
+d'axiomes de l'arithmétique à la fois complet,
+cohérent et !!{axiomatizable}. Plus généralement,
+aucune théorie mathématique cohérente,
+!!{axiomatizable} et « suffisamment forte »
+n'est complète.
+
+Un objectif encore plus important de Hilbert,
+au cœur de son programme de justification des
+mathématiques modernes (« classiques »), était de
+trouver des preuves finitaires de cohérence pour les
+systèmes formels représentant le raisonnement
+classique. À cet égard, le second théorème
+d'incomplétude de Gödel porta un coup bien plus
+grave à son programme. Comme le premier, on peut
+l'énoncer de façon encore vague : en substance,
+aucune théorie cohérente et !!{axiomatizable} de l'arithmétique,
+suffisamment forte, ne peut démontrer sa propre cohérence. Pour l'argument présenté ici,
+« suffisamment forte » désignera une théorie
+un peu plus puissante que~$\Th{Q}$.
+
+L'idée de la démonstration originale de Gödel se
+retrouve dans le paradoxe d'Épiménide. Crétois
+lui-même, Épiménide affirmait que tous les Crétois
+sont des menteurs; la forme plus directe du paradoxe
+est « cette phrase est fausse ». En remplaçant la
+vérité par la !!{derivability}, Gödel a construit
+un !!{sentence} qui affirme indirectement qu'il
+n'est pas lui-même !!{derivable}. Si cet
+!!{sentence} était !!{derivable}, la théorie serait
+incohérente. Gödel a également montré que, dans le
+système d'axiomes qu'il considérait, la négation de
+cet !!{sentence} n'était pas !!{derivable}.
+Pour cette seconde partie, il devait supposer que
+la théorie~$\Th{T}$ était « $\omega$-cohérente ».
+Cette propriété est plus forte que la simple
+cohérence.\footnote{Toute théorie $\omega$-cohérente
+est cohérente, mais la réciproque est fausse.}
+Quelques années après Gödel, Rosser a montré que
+la seule cohérence de~$\Th{T}$ suffisait.
+
+La première difficulté consiste à construire un
+!!{sentence} qui se rapporte à lui-même. Pour
+toute !!{formula}~$!A$ du langage de~$\Th{Q}$,
+notons $\gn{!A}$ le numéral correspondant au
+nombre~$\Gn{!A}$. Distinguons les niveaux : $!A$
+est une !!{formula} du langage de~$\Th{Q}$,
+$\Gn{!A}$ est un entier naturel, et $\gn{!A}$
+est un \emph{terme} du langage de~$\Th{Q}$.
+Chaque !!{formula}~$!A$ possède ainsi un
+\emph{nom}, $\gn{!A}$, dans ce langage. Ce codage
+permet à une !!{formula} de « parler » d'autres
+!!{formula}s. Le résultat suivant est le lemme
+du point fixe.
+
+\begin{lem}
+Soit $\Th{T}$ une théorie qui étend~$\Th{Q}$,
+et soit $!B(x)$ une !!{formula} dont la seule
+variable libre est~$x$. Il existe alors un
+!!{sentence}~$!A$ tel que
+$\Th{T}\Proves !A\liff !B(\gn{!A})$.
+\end{lem}
+
+Le lemme dit que, pour toute propriété~$!B(x)$,
+on peut construire un !!{sentence}~$!A$ qui
+affirme « $!B(x)$ est vraie de moi » et que
+$\Th{T}$ « connaît » cette équivalence.
+
+Comment construire un tel !!{sentence}?
+Considérons cette version du paradoxe d'Épiménide,
+due à Quine :
+\begin{quote}
+« donne une phrase fausse quand on le fait précéder
+de sa propre citation » donne une phrase fausse quand
+on le fait précéder de sa propre citation.
+\end{quote}
+Cette phrase n'est pas directement autoréférentielle.
+Elle énonce une propriété du groupe de mots cité,
+comme les phrases suivantes :
+\begin{enumerate}
+\item « Robert » est un joli prénom.
+\item « J'ai couru. » est une phrase courte.
+\item « A trois mots » a trois mots.
+\end{enumerate}
+Mais que se passe-t-il si l'on place, devant le
+groupe de mots « donne une phrase fausse quand on
+le fait précéder de sa propre citation », sa
+propre citation? On obtient la phrase initiale.
+Elle affirme donc qu'elle est fausse.
+
+\end{document}

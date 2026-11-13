@@ -1,0 +1,110 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{story}{approach}
+\olsection{L'approche cumulative et itérative}
+
+Voici une description un peu plus détaillée de la façon dont nous
+répartirons les ensembles en étapes :
+\begin{quote}
+	Les ensembles se forment par \emph{étapes}. Pour chaque étape $S$,
+	certaines étapes la \emph{précèdent}. À l'étape $S$, toute collection
+	composée d'ensembles formés aux étapes antérieures à $S$ est
+	constituée en ensemble. Il n'existe aucun autre ensemble que ceux
+	qui sont formés à une étape. \citep[p.~323]{Shoenfield:AST}
+\end{quote}
+Il s'agit d'une esquisse de la \emph{conception cumulative et itérative
+des ensembles}. Elle servira de fondement à la théorie formelle des
+ensembles que nous présenterons dans la \olref[sth][][]{part}.
+
+Examinons cela d'un peu plus près. Dans la description de Shoenfield,
+à chaque étape, nous formons de nouveaux ensembles à partir des
+ensembles dont nous disposions aux étapes précédentes. À l'étape
+initiale, l'étape $0$, il n'y a aucune étape \emph{antérieure} et donc,
+\emph{a fortiori}, aucun ensemble disponible d'une étape antérieure.\footnote{Pourquoi supposer qu'il existe une première étape ? Voir la note
+de bas de page relative à \stagesord{} dans la \olref[z][story]{sec}.}
+Nous ne formons donc qu'un seul ensemble : celui qui n'a aucun
+!!{element}, $\emptyset$. À l'étape $1$, un seul ensemble est disponible
+des étapes antérieures ; le seul nouvel ensemble est donc
+$\{\emptyset\}$. À l'étape $2$, deux ensembles sont disponibles des
+étapes antérieures ; nous formons les deux nouveaux ensembles
+$\{\{\emptyset\}\}$ et $\{\emptyset, \{\emptyset\}\}$. À l'étape
+$3$, quatre ensembles sont disponibles des étapes antérieures ; nous
+formons donc douze nouveaux ensembles\ldots. La représentation
+cumulative et itérative des ensembles ressemble ainsi au schéma
+suivant (les nombres indiquent les étapes) :
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+	\tikzset{cut_here/.style={densely dotted}}
+	\draw (-4,6) -- (-1, 0)-- (2,6);
+	\draw[cut_here] (-5,8)--(-4,6);
+	\draw[cut_here] (2,6)--(3,8);
+	\draw(-1.5, 1)--(-0.5, 1);
+	\draw(-2, 2)--(0, 2);
+	\draw(-2.5, 3)--(0.5,3);
+	\draw(-3, 4)--(1, 4);
+	\draw(-3.5, 5)--(1.5, 5);
+	\draw(-4, 6)--(2, 6);
+	\node[label] at (0, 0) {\small 0};
+	\node[label] at (0.5, 1) {\small 1};
+	\node[label] at (1, 2) {\small 2};
+	\node[label] at (1.5, 3) {\small 3};
+	\node[label] at (2, 4) {\small 4};
+	\node[label] at (2.5, 5) {\small 5};
+	\node[label] at (3, 6) {\small 6};
+	\end{tikzpicture}
+\end{center}
+Pourquoi adopter cette conception ?
+
+D'abord, elle offre un récit agréable et maniable. Maintenant que le
+récit le plus évident, celui de la compréhension naïve, a échoué, nous
+avons besoin d'une solution qui présente ces qualités.
+
+Mais ce récit n'est pas \emph{seulement} agréable. Nous avons une bonne
+raison de penser qu'une théorie des ensembles fondée sur lui sera
+\emph{cohérente}. Voici pourquoi.
+
+Selon la conception cumulative et itérative, nous formons les
+ensembles par étapes ; leurs !!{element}s doivent être des objets
+\emph{déjà} disponibles. À toute étape~$S$, nous pouvons donc former
+l'ensemble
+\[
+	R_S = \Setabs{x}{x \notin x \text{ et $x$ était disponible avant $S$}}
+\]
+Le raisonnement qui établit le paradoxe de Russell montre alors que
+$R_S$ lui-même n'était pas disponible avant l'étape $S$. Il n'y a là
+aucune contradiction. De plus, si nous adoptons la conception
+cumulative et itérative, nous n'aurions même pas dû \emph{nous
+attendre} à pouvoir former l'ensemble de Russell lui-même. Il
+contiendrait en effet tous les ensembles qui ne s'appartiennent pas à
+eux-mêmes et qui «~seront un jour disponibles~». Bref, l'impossibilité
+démontrée de former l'ensemble de Russell n'a rien de \emph{surprenant}
+dans ce cadre ; elle correspond à ce que nous \emph{prévoyons}.
+
+%En un sens, la conception cumulative et itérative des ensembles répond
+%au paradoxe de Russell un peu comme le fait l'approche \emph{prédicativiste}.
+%Selon cette dernière, la collection de tous les ensembles$_n$ qui ne
+%s'appartiennent pas à eux-mêmes est un ensemble$_{n+1}$ ; cet
+%ensemble$_{n+1}$ ne s'appartient donc pas à lui-même. (De fait, la plupart
+%des prédicativistes considéreraient comme \emph{mal formée} la question
+%de savoir si un ensemble s'appartient à lui-même.)
+%
+%Mais il existe une différence importante entre les deux approches :
+%l'approche cumulative et itérative traite toutes les entités comme
+%étant \emph{de même nature}. Le prédicativiste admettrait sans doute
+%un ensemble$_0$ vide (c'est-à-dire un ensemble$_0$ sans !!{element})
+%et un ensemble$_1$ vide (c'est-à-dire un ensemble$_1$ sans !!{element}),
+%et il s'agirait d'\emph{entités différentes}. Dans l'approche
+%cumulative et itérative, en revanche, il n'y a qu'un seul ensemble
+%vide, $\emptyset$, disponible à chaque étape de la hiérarchie.
+%
+%L'axiome d'extensionnalité, énoncé au début de ce chapitre, vaut en
+%effet pour les éléments de cette hiérarchie (de sorte qu'il ne peut y
+%avoir \emph{qu'un seul} ensemble «~vide~»). Mais je n'entends pas
+%justifier l'extensionnalité par la conception cumulative et itérative
+%(voir \cite{Boolos1971}). Je suggère plutôt, une fois encore, d'accepter
+%l'extensionnalité parce que nous nous intéressons aux collections
+%extensionnelles.
+
+\end{document}

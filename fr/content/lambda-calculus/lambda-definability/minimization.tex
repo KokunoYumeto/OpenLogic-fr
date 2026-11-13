@@ -1,0 +1,117 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: minimization
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{min}
+\olsection{Minimisation}
+
+Les fonctions récursives générales
+s'obtiennent à partir des fonctions
+initiales $\Zero$, $\Succ$ et
+$\Proj{n}{i}$ par composition,
+récurrence primitive et minimisation
+régulière. Pour montrer qu'elles sont
+toutes $\lambda$-définissables, il
+reste à établir que la minimisation
+régulière d'une fonction
+$\lambda$-définissable est encore
+$\lambda$-définissable.
+
+\begin{lem}
+\ollabel{lem:min}
+Si $f(x_1,\dots,x_k,y)$ est régulière
+et $\lambda$-définissable, alors la
+fonction~$g$ donnée par
+\[
+  g(x_1,\dots,x_k)
+    =\umin{y}{f(x_1,\dots,x_k,y)=0}
+\]
+est aussi $\lambda$-définissable.
+\end{lem}
+
+\begin{proof}
+Supposons que le lambda-terme~$F$
+définisse la fonction régulière
+$f(\vec x,y)$. Pour définir~$g$,
+utilisons une fonction de recherche
+et un combinateur de point fixe.
+Posons
+\begin{align*}
+  \fn{Search} &\ident
+    \lambd[g][\lambd[f\,\vec x\,y][
+      \fn{IsZero}(f\,\vec x\,y)\,y\,
+      (g\,f\,\vec x\,(\fn{Succ}\,y))]],\\
+  H &\ident
+    \lambd[\vec x][
+      (Y\,\fn{Search})F\,\vec x\,\num{0}],
+\end{align*}
+où~$Y$ est le combinateur de Turing
+de la \olref[fp]{defn:Turing-Y}.
+À partir de~$y$, le terme
+$\fn{Search}$ teste si
+$f(\vec x,y)=0$. Si oui, il renvoie~$y$;
+sinon, il reprend la recherche à
+$\fn{Succ}\,y$ en conservant le même
+terme~$f$. Ainsi,
+$(Y\,\fn{Search})F\,
+\num{n_1}\dots\num{n_k}\,\num{0}$
+renvoie le plus petit~$m$ pour lequel
+$f(n_1,\dots,n_k,m)=0$.
+
+Plus précisément, si
+$f(n_1,\dots,n_k,m)=0$, alors
+\[
+  (Y\,\fn{Search})F\,
+    \num{n_1}\dots\num{n_k}\,\num{m}
+    \red\num{m}.
+\]
+Si la valeur de~$f$ est non nulle,
+on obtient
+\[
+  (Y\,\fn{Search})F\,
+    \num{n_1}\dots\num{n_k}\,\num{m}
+    \red (Y\,\fn{Search})F\,
+      \num{n_1}\dots\num{n_k}\,\num{m+1}.
+\]
+La régularité de~$f$ signifie ici
+que~$f$ est totale et que, pour
+chaque tuple $\vec n$, il existe un
+$y$ tel que $f(\vec n,y)=0$.
+Toutes les étapes précédant le
+premier zéro sont donc définies et
+la recherche l'atteint. Par conséquent,
+\[
+  (Y\,\fn{Search})F\,
+    \num{n_1}\dots\num{n_k}\,\num{0}
+    \red
+    \num{g(n_1,\dots,n_k)}.
+\]
+Le terme~$H$ définit bien~$g$.
+\end{proof}
+
+\begin{prop}
+Toute fonction récursive générale
+est $\lambda$-définissable.
+\end{prop}
+
+\begin{proof}
+Les fonctions initiales sont
+$\lambda$-définissables par le
+\olref[prf]{lem:basic}.
+Le \olref[prf]{lem:comp},
+le \olref[prf]{lem:prim} et le
+\olref{lem:min} donnent la fermeture
+par composition, récurrence primitive
+et minimisation régulière.
+\end{proof}
+
+La recherche maintient les paramètres $\vec x$ et la fonction
+$F$ à chaque appel. Seule la valeur de l'indice change.
+La totalité garantit un résultat pour chaque test et
+l'existence d'un zéro garantit que l'un d'eux arrête la recherche.
+
+\end{document}

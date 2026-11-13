@@ -1,0 +1,405 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: alpha
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{alp}
+\olsection{\texorpdfstring{$\alpha$}{α}-conversion}
+
+Quel rapport y a-t-il entre $\lambd[x][x]$
+et $\lambd[y][y]$? Les deux termes représentent
+la fonction identité, bien qu'ils soient
+syntaxiquement distincts. Ils ne diffèrent
+que par le nom de leur variable liée : on
+obtient l'un en « renommant » la variable liée
+de l'autre. C'est ce qu'on appelle une
+\emph{$\alpha$-conversion}.
+
+\begin{defn}[Changement de variable liée, $\aconvone$]
+Si un terme $M$ contient une occurrence de
+$\lambd[x][N]$, si $x\neq y$,
+$y \notin \FV{N}$ et si $\Subst{N}{y}{x}$
+est définie, remplacer cette occurrence par
+\begin{equation*}
+  \lambd[y][\Subst{N}{y}{x}]
+\end{equation*}
+donne un terme $M'$ et constitue un
+\emph{changement de variable liée}, noté
+$M \redone[\alpha] M'$.
+\end{defn}
+
+\begin{explain}
+Le changement élémentaire exige deux noms distincts, même si
+le corps ne contient aucune occurrence libre de la variable
+du lieur. La conversion en zéro changement donnera ensuite
+la réflexivité de l'$\alpha$-conversion.
+\end{explain}
+
+\begin{defn}[Compatibilité d'une relation]
+Une relation $R$ sur les termes est dite
+\emph{compatible} si elle satisfait les
+conditions suivantes :
+\begin{enumerate}
+\item Si $R N N'$, alors
+  $R \lambd[x][N] \lambd[x][N']$.
+\item Si $R P P'$, alors $R (PQ) (P'Q)$.
+\item Si $R Q Q'$, alors $R (PQ) (PQ')$.
+\end{enumerate}
+\end{defn}
+
+Reformulons donc la définition.
+\begin{defn}[Changement de variable liée, $\aconvone$]
+Le \emph{changement de variable liée}
+($\redone[\alpha]$) est la plus petite
+relation compatible sur les termes qui
+satisfait aussi la condition suivante :
+\begin{align*}
+  &\lambd[x][N] \redone[\alpha]
+   \lambd[y][\Subst{N}{y}{x}]
+   && \text{si $x \neq y$ et $y \notin \FV{N}$}\\
+  & && \text{et si $\Subst{N}{y}{x}$ est définie.}
+\end{align*}
+\end{defn}
+
+« La plus petite » signifie ici qu'elle ne
+contient que les couples imposés par la
+compatibilité et par cette condition. On
+peut donc aussi la définir par induction.
+
+\begin{defn}[Changement de variable liée, $\aconvone$]
+\ollabel{defn:aconvone}
+Le \emph{changement de variable liée}
+($\aconvone$) est défini inductivement
+comme suit :
+\begin{enumerate}
+\item Si $N \aconvone N'$, alors
+  $\lambd[x][N] \aconvone \lambd[x][N']$.
+  \ollabel{defn:aconvone1}
+\item Si $P \aconvone P'$, alors
+  $(PQ) \aconvone (P'Q)$.
+  \ollabel{defn:aconvone2}
+\item Si $Q \aconvone Q'$, alors
+  $(PQ) \aconvone (PQ')$.
+  \ollabel{defn:aconvone3}
+\item Si $x \neq y$, $y \notin \FV{N}$ et
+  $\Subst{N}{y}{x}$ est définie, alors
+  $\lambd[x][N] \redone[\alpha]
+  \lambd[y][\Subst{N}{y}{x}]$.
+  \ollabel{defn:aconvone4}
+\end{enumerate}
+\end{defn}
+
+Ces définitions sont équivalentes; nous
+laissons leur démonstration en exercice.
+Dans la suite, nous utiliserons la
+définition inductive.
+
+\begin{defn}[$\alpha$-conversion, $\aconv$]
+L'\emph{$\alpha$-conversion} ($\aconv$)
+est la plus petite relation réflexive et
+transitive sur les termes qui contient
+$\aconvone$.
+\end{defn}
+
+Comme ci-dessus, « la plus petite » signifie
+qu'on n'ajoute que les couples imposés par
+la réflexivité, la transitivité et
+$\aconvone$. On obtient ainsi la définition
+équivalente suivante.
+
+\begin{defn}[$\alpha$-conversion, $\aconv$]
+\ollabel{defn:aconv}
+L'\emph{$\alpha$-conversion} ($\aconv$)
+est définie inductivement comme suit :
+\begin{enumerate}
+\item Si $P \aconv Q$ et $Q \aconv R$,
+  alors $P \aconv R$.
+  \ollabel{defn:aconv1}
+\item Si $P \aconvone Q$, alors
+  $P \aconv Q$.
+  \ollabel{defn:aconv2}
+\item $P \aconv P$.
+  \ollabel{defn:aconv3}
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+$\lambd[x][f x]$ se $\alpha$-convertit en
+$\lambd[y][f y]$, et réciproquement. De
+manière informelle, ces deux termes désignent
+une fonction qui reçoit un argument et renvoie
+le résultat de l'application de~$f$ à celui-ci;
+$f$ est une variable de l'environnement.
+
+$\lambd[x][f x]$ ne se $\alpha$-convertit pas
+en $\lambd[x][g x]$. Ces termes renvoient
+respectivement aux variables d'environnement
+$f$ et~$g$ : ils peuvent donc se comporter
+différemment dans un environnement où
+$f$ et $g$ ont des valeurs différentes.
+\end{ex}
+
+\begin{prob}
+Les couples de termes suivants sont-ils
+$\alpha$-convertibles?
+\begin{enumerate}
+\item $\lambd[x][\lambd[y][x]]$ et
+  $\lambd[y][\lambd[x][y]]$
+\item $\lambd[x][\lambd[y][x]]$ et
+  $\lambd[c][\lambd[b][a]]$
+\item $\lambd[x][\lambd[y][x]]$ et
+  $\lambd[c][\lambd[b][a]]$
+\end{enumerate}
+\end{prob}
+
+\begin{explain}
+Les deux derniers items de l'exercice portent sur le même
+couple de termes.
+\end{explain}
+
+\begin{lem}\ollabel{lem:fv-one}
+Si $P \aconvone Q$, alors
+$\FV{P} = \FV{Q}$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par induction sur la \emph{dérivation}
+de $P \aconvone Q$.
+\begin{enumerate}
+\item Si la dernière règle est
+  \olref{defn:aconvone4}, alors $P$ est de
+  la forme $\lambd[x][N]$ et $Q$ de la forme
+  $\lambd[y][\Subst{N}{y}{x}]$, où
+  $x \neq y$, $y \notin \FV{N}$ et
+  $\Subst{N}{y}{x}$ est définie.
+  Distinguons deux cas selon que
+  $x \in \FV{N}$ ou non :
+  \begin{enumerate}
+  \item Si $x \in \FV{N}$, alors :
+    \begin{align*}
+      \FV{\lambd[y][\Subst{N}{y}{x}]}
+      &= \FV{\Subst{N}{y}{x}} \setminus \{y\}\\
+      &= ((\FV{N} \setminus \{x\}) \cup \{y\})
+         \setminus \{y\}
+         && \text{par le \olref[sub]{thm:infv}}\\
+      &= \FV{N} \setminus \{x\}\\
+      &= \FV{\lambd[x][N]}.
+    \end{align*}
+  \item Si $x \notin \FV{N}$, alors :
+    \begin{align*}
+      \FV{\lambd[y][\Subst{N}{y}{x}]}
+      &= \FV{\Subst{N}{y}{x}} \setminus \{y\}\\
+      &= \FV{N} \setminus \{y\}
+         && \text{par le \olref[sub]{thm:notinfv}}\\
+      &= \FV{N} \setminus \{x\}
+         && \text{car $x,y\notin\FV{N}$}\\
+      &= \FV{\lambd[x][N]}.
+    \end{align*}
+  \end{enumerate}
+\item Les trois autres cas sont laissés
+  en exercice.
+\end{enumerate}
+\end{proof}
+
+\begin{explain}
+Si $x$ et $y$ sont absentes des variables libres du corps,
+retirer l'une ou l'autre de cet ensemble le laisse inchangé.
+C'est le cas du changement de nom d'un lieur sans occurrence
+à lier dans son corps.
+\end{explain}
+
+\begin{prob}
+Compléter la preuve du
+\olref[lam][syn][alp]{lem:fv-one}.
+\end{prob}
+
+\begin{lem}\ollabel{lem:inv}
+Si $P \aconvone Q$, alors
+$Q \aconvone P$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par induction sur la \emph{dérivation}
+de $P \aconvone Q$.
+\begin{enumerate}
+\item Si la dernière règle est
+  \olref{defn:aconvone4}, alors $P$ est de
+  la forme $\lambd[x][N]$ et $Q$ de la forme
+  $\lambd[y][\Subst{N}{y}{x}]$, où
+  $x \neq y$, $y \notin \FV{N}$ et
+  $\Subst{N}{y}{x}$ est définie.
+  D'après le \olref[sub]{thm:clr}, on a
+  $x \notin \FV{\Subst{N}{y}{x}}$.
+  D'après le \olref[sub]{thm:inv}, la substitution
+  $\Subst{\Subst{N}{y}{x}}{x}{y}$ est définie
+  et vaut~$N$. Dès lors,
+  \olref{defn:aconvone4} donne
+  $\lambd[y][\Subst{N}{y}{x}]
+  \aconvone \lambd[x][\Subst{\Subst{N}{y}{x}}{x}{y}]
+  = \lambd[x][N]$.
+\end{enumerate}
+\end{proof}
+\begin{explain}
+Pour revenir au nom~$x$, il faut que $x$ soit absent des
+variables libres du corps obtenu. Par exemple, si $N=x$,
+le nouveau corps est~$y$ et contient $y$ libre.
+\end{explain}
+\begin{prob}
+Compléter la preuve du
+\olref[lam][syn][alp]{lem:inv}.
+\end{prob}
+
+\begin{thm}
+L'$\alpha$-conversion est une relation
+d'équivalence sur les termes : elle est
+réflexive, symétrique et transitive.
+\end{thm}
+
+\begin{proof}
+\begin{enumerate}
+\item Chaque terme $M$ peut être transformé
+  en lui-même par \emph{zéro} changement
+  de variable liée.
+\item Si $P$ se $\alpha$-convertit en $Q$
+  par une suite de changements de variables
+  liées, on peut, à partir de $Q$, inverser
+  ces changements grâce au \olref{lem:inv},
+  dans l'ordre opposé, pour retrouver~$P$.
+\item Si $P$ se $\alpha$-convertit en $Q$
+  par une suite de changements, puis $Q$
+  en $R$ par une autre suite, leur
+  concaténation convertit $P$ en $R$.
+\end{enumerate}
+\end{proof}
+
+Désormais, nous dirons que $M$ et $N$ sont
+\emph{$\alpha$-équivalents}, $M \aeq N$,
+si $M$ se $\alpha$-convertit en $N$;
+par le théorème précédent, cela équivaut
+à l'$\alpha$-conversion de $N$ en~$M$.
+
+\begin{thm}\ollabel{thm:fv}
+Si $M \aeq N$, alors $\FV{M} = \FV{N}$.
+\end{thm}
+
+\begin{proof}
+Cela découle immédiatement du
+\olref{lem:fv-one}.
+\end{proof}
+
+\begin{lem}\ollabel{lem:sub:R}
+Si $R \aeq R'$ et si $\Subst{M}{R}{y}$
+est définie, alors $\Subst{M}{R'}{y}$
+est définie et $\alpha$-équivalente à
+$\Subst{M}{R}{y}$.
+\end{lem}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[lam][syn][alp]{lem:sub:R}.
+\end{prob}
+
+Rappelons que, dans la \olref[sub]{sec}, la
+substitution est indéfinie dans certains cas.
+La conversion des termes à une forme
+$\alpha$-équivalente permet cependant de
+renommer des variables liées afin de rendre
+la substitution définie. Le théorème suivant
+affirme aussi l'indépendance du résultat,
+à $\alpha$-équivalence près.
+
+\begin{thm}\ollabel{thm:sub}
+Pour tous $M$, $R$ et~$y$, il existe un terme
+$M'$ tel que $M \aeq M'$ et que
+$\Subst{M'}{R}{y}$ soit définie. De plus,
+si $M'' \aeq M$ et si $R''$ vérifie
+$R'' \aeq R$ avec $\Subst{M''}{R''}{y}$
+définie, alors
+$\Subst{M'}{R}{y} \aeq
+\Subst{M''}{R''}{y}$.
+\end{thm}
+
+\begin{proof}
+Commençons par une observation sur l'$\alpha$-équivalence.
+Dans l'arbre d'un terme, gardons les nœuds d'application et
+d'abstraction et effaçons les noms portés par les abstractions.
+À chaque occurrence de variable, inscrivons son nom si elle est
+libre. Si elle est liée, inscrivons le nombre d'abstractions à
+franchir jusqu'à son lieur, en comptant à partir de zéro pour
+l'abstraction la plus proche.
+
+Un changement de variable liée conserve cet arbre. En effet, dans
+la \olref{defn:aconvone}, la clause \olref{defn:aconvone4}
+change exactement les occurrences liées par l'abstraction visée.
+Les conditions sur le nouveau nom et la substitution interdisent
+toute capture. La clause \olref{defn:aconvone1} permet
+d'effectuer ces changements sous une autre abstraction. Les deux
+clauses d'application permettent de les effectuer dans chaque
+branche. Il s'ensuit que des termes $\alpha$-équivalents ont le
+même arbre ainsi étiqueté.
+
+Réciproquement, supposons que deux termes aient le même arbre.
+Associons à chaque position d'abstraction un nom distinct, absent
+des deux termes. Dans chacun d'eux, parcourons les abstractions de l'intérieur
+vers l'extérieur et renommons chaque lieur par le nom choisi
+pour sa position. Au moment de renommer un lieur, tous ceux de
+son corps portent déjà des noms frais et distincts. Aucun ne
+porte donc l'ancien nom du lieur visé. Le nouveau nom est encore
+absent du terme. La substitution de renommage est ainsi définie,
+par induction sur le corps de l'abstraction. Après ce parcours,
+les deux termes sont identiques.
+En effet, les occurrences libres ont gardé leur nom et chaque
+occurrence liée porte le nouveau nom du lieur indiqué par son
+étiquette. Les deux termes sont donc $\alpha$-équivalents.
+
+Pour l'existence, appliquons le même procédé à $M$, en choisissant
+les noms des lieurs en dehors des noms de $M$, de $\FV{R}$ et de
+$\{y\}$. Le résultat $M'$ est $\alpha$-équivalent à $M$. Tout
+lieur de $M'$ est distinct de $y$ et absent de $\FV{R}$. Les
+clauses de la substitution donnent donc, par induction sur $M'$,
+que $\Subst{M'}{R}{y}$ est définie.
+
+Pour l'unicité, considérons une substitution définie
+$\Subst{U}{V}{y}$. Son arbre étiqueté s'obtient en remplaçant
+chaque feuille libre de nom $y$ de l'arbre de $U$ par l'arbre
+étiqueté de $V$. Cela se vérifie par induction sur $U$. À une
+abstraction, la condition sur le lieur assure que les variables
+libres du terme inséré restent libres. Les distances des
+occurrences liées dans ce terme restent les mêmes, puisque
+leurs lieurs se trouvent à l'intérieur du terme inséré. Comme
+$M' \aeq M''$ et $R \aeq R''$, les deux substitutions de
+l'énoncé donnent le même arbre étiqueté. La réciproque établie
+plus haut donne leur $\alpha$-équivalence.
+\end{proof}
+
+\begin{prob}
+Dans la preuve du \olref[lam][syn][alp]{thm:sub}, détailler
+l'induction qui décrit l'arbre du résultat d'une substitution
+définie. Traiter le cas d'une variable, celui d'une application
+et celui d'une abstraction.
+\end{prob}
+
+\begin{cor}\ollabel{cor:sub}
+Pour tous $M$, $R$ et~$y$, il existe un couple
+$M'$, $R'$ tel que $M' \aeq M$,
+$R \aeq R'$ et que $\Subst{M'}{R'}{y}$
+soit définie. De plus, si un autre couple
+$M'' \aeq M$, $R'' \aeq R$ vérifie
+$\Subst{M''}{R''}{y}$ définie, alors
+$\Subst{M'}{R'}{y} \aeq
+\Subst{M''}{R''}{y}$.
+\end{cor}
+
+\begin{proof}
+Pour l'existence, prenons $R'=R$ et appliquons le
+\olref{thm:sub}. Pour l'unicité, appliquons ce même
+théorème au terme de départ $M$ et au couple $M'',R''$.
+\end{proof}
+
+\end{document}

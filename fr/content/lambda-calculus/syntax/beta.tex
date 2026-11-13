@@ -1,0 +1,168 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: beta
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{bet}
+\olsection{\texorpdfstring{$\beta$}{β}-réduction}
+
+Devant $(\lambd[m][(\lambd[y][y]) m])$,
+il est naturel de supposer un lien avec
+$\lambd[m][m]$ : le second terme semble
+résulter d'une « simplification » du premier.
+La notion de \emph{$\beta$-réduction}
+formalise cette intuition.
+
+Dans la suite, nous considérons les termes à
+$\alpha$-équivalence près. La substitution sur
+ces classes est bien définie par le
+\olref[lam][syn][alp]{cor:sub}.
+
+\begin{defn}[Contraction~$\beta$, $\bredone$]
+\ollabel{defn:betacontr}
+La \emph{contraction~$\beta$} ($\bredone$)
+est la plus petite relation compatible sur
+les termes qui satisfait la condition suivante :
+\[
+  (\lambd[x][N])Q \bredone \Subst{N}{Q}{x}.
+\]
+Nous disons que $P$ se \emph{contracte par~$\beta$}
+en $Q$ si $P \bredone Q$. Un terme de la
+forme $(\lambd[x][N])Q$ est appelé un
+\emph{rédex}.
+\end{defn}
+
+\begin{prob} \ollabel{prob:def}
+Donner les définitions inductives équivalentes
+de la contraction~$\beta$, comme nous l'avons
+fait pour le changement de variable liée dans la
+\olref[lam][syn][alp]{defn:aconvone}.
+\end{prob}
+
+\begin{defn}[Réduction~$\beta$, $\bred$]
+\ollabel{defn:betared}
+La \emph{réduction~$\beta$} ($\bred$) est
+la plus petite relation réflexive et transitive
+sur les termes qui contient $\bredone$.
+Nous disons que $P$ se \emph{réduit par~$\beta$}
+en $Q$ si $P \bred Q$.
+\end{defn}
+
+Quand le contexte est clair, nous écrirons
+$\redone$ pour $\bredone$, et $\red$
+pour $\bred$. De manière informelle,
+$M \bred N$ signifie que $M$ peut être
+transformé en $N$ par zéro ou plusieurs
+contractions~$\beta$.
+
+\begin{defn}[$\beta$-normal]
+Un terme qui ne contient plus aucun rédex
+à contracter est dit \emph{$\beta$-normal}.
+\end{defn}
+
+Si $M \bred N$ et si $N$ est $\beta$-normal,
+alors $N$ est une \emph{forme normale} de~$M$.
+On peut se demander si cette forme est unique;
+la réponse est oui, comme nous le verrons
+plus loin.
+
+Considérons quelques exemples.
+\begin{enumerate}
+\item Nous avons
+\begin{align*}
+(\lambd[x][xxy]) \lambd[z][z]
+  & \redone (\lambd[z][z])(\lambd[z][z]) y \\
+  & \redone (\lambd[z][z]) y \\
+  & \redone y.
+\end{align*}
+\item « Simplifier » un terme peut en fait
+  le rendre plus complexe :
+\begin{align*}
+(\lambd[x][xxy])(\lambd[x][xxy])
+  & \redone (\lambd[x][xxy])(\lambd[x][xxy])y \\
+  & \redone (\lambd[x][xxy])(\lambd[x][xxy])yy \\
+  & \redone \dots
+\end{align*}
+\item Une contraction peut également laisser
+  le terme inchangé :
+\[
+(\lambd[x][xx])(\lambd[x][xx])
+\redone (\lambd[x][xx])(\lambd[x][xx]).
+\]
+\item Un terme peut aussi se réduire de
+  plusieurs manières. Par exemple,
+\[
+(\lambd[x][(\lambd[y][yx]) z]) v
+\redone (\lambd[y][yv]) z
+\]
+  en contractant l'application extérieure;
+  tandis que
+\[
+(\lambd[x][(\lambd[y][yx]) z]) v
+\redone (\lambd[x][zx]) v
+\]
+  résulte de la contraction intérieure.
+  Dans ce cas, les deux termes obtenus se
+  réduisent ensuite au même terme, $zv$.
+\end{enumerate}
+
+Le résultat commun du dernier exemple n'est
+pas dû au hasard : il illustre une propriété
+profonde du lambda-calcul, dite
+\emph{propriété de Church--Rosser}.
+
+\begin{digress}
+En général, on peut réduire un terme de
+plusieurs manières. On a donc proposé
+différentes stratégies; la plus courante
+est la \emph{stratégie naturelle}. Elle
+contracte toujours le rédex le plus à gauche,
+la position d'un rédex étant celle de son
+premier symbole dans le terme. Elle possède
+la propriété suivante : si une stratégie
+quelconque conduit un terme à une forme
+normale, la stratégie naturelle y conduit
+également. Dans la suite, nous l'adopterons
+sauf indication contraire.
+\end{digress}
+
+\begin{defn}[$\beta$-équivalence, $\equal$]
+La \emph{$\beta$-équivalence} ($\equal$)
+est la relation définie inductivement par
+les règles suivantes :
+\begin{enumerate}
+\item $M \equal M$.
+\item Si $M \equal N$, alors $N \equal M$.
+\item Si $M \equal N$ et $N \equal O$,
+  alors $M \equal O$.
+\item Si $M \equal N$, alors $PM \equal PN$.
+\item Si $M \equal N$, alors $MQ \equal NQ$.
+\item Si $M \equal N$, alors
+  $\lambd[x][M] \equal \lambd[x][N]$.
+\item $(\lambd[x][N])Q \equal \Subst{N}{Q}{x}$.
+\end{enumerate}
+\end{defn}
+
+Les trois premières règles rendent la
+relation réflexive, symétrique et transitive;
+les trois suivantes la rendent compatible;
+la dernière y inclut la contraction~$\beta$.
+
+De manière informelle, deux termes sont
+$\beta$-équivalents si l'on peut passer de
+l'un à l'autre par zéro ou plusieurs
+contractions~$\beta$ ou par des étapes
+inverses. Par définition, $M$ se contracte
+en sens inverse par~$\beta$ vers $N$ si et
+seulement si $N$ se contracte par~$\beta$
+vers $M$.
+
+Nous étendrons encore cette relation par
+d'autres règles et noterons l'équivalence
+ainsi obtenue $\equal[X]$, où $X$ est la
+règle ajoutée.
+
+\end{document}

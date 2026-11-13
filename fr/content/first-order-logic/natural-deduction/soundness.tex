@@ -38,8 +38,8 @@ Si $!A$ est !!{derivable} à partir d'hypothèses
 \end{thm}
 
 \begin{proof}
-Soit $\delta$ une !!{derivation} de $!A$. Nous procédons par
-récurrence sur le nombre d'inférences de~$\delta$.
+Soit $\delta$ une !!{derivation} de $!A$ dont les hypothèses ouvertes
+sont parmi $\Gamma$. Raisonnons par récurrence sur son nombre d'inférences.
 
 Pour le cas de base, supposons ce nombre égal à~$0$. La
 !!{derivation}~$\delta$ se réduit alors à un seul !!{sentence}~$!A$,
@@ -148,18 +148,18 @@ Par hypothèse de récurrence, $!A$ est une conséquence des
     \UnaryInfC{$!A \lif !B$}
   \end{prooftree}
 Par hypothèse de récurrence, $!B$ est une conséquence des
-  hypothèses !!{undischarged}s de~$\delta_1$; ainsi,
-  $\Gamma \cup \{!A\} \Entails !B$.
-  Considérons
-  \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}.
+  hypothèses !!{undischarged}s de~$\delta_1$, qui appartiennent à
+  $\Gamma \cup \{!A\}$. On a donc $\Gamma \cup \{!A\} \Entails !B$.
   Les occurrences indiquées de~$!A$ étant déchargées par la
   dernière inférence, les hypothèses !!{undischarged}s de~$\delta$
-  appartiennent à~$\Gamma$. Il faut donc montrer
+  sont parmi les éléments de~$\Gamma$. Montrons que
   $\Gamma \Entails !A \lif !B$.
   Supposons par l'absurde qu'il existe
   \iftag{FOL}{!!a{structure}~$\Struct{M}$}{!!a{valuation}~$\pAssign{v}$}
   telle que $\iftag{FOL}{\Sat{M}}{\pSat{v}}{\Gamma}$ et
   $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!A \lif !B}$.
+%
+%
   Alors $\iftag{FOL}{\Sat{M}}{\pSat{v}}{!A}$ et
   $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{!B}$.
   Mais $!B$ est une conséquence de $\Gamma \cup \{!A\}$, donc
@@ -203,28 +203,28 @@ Par hypothèse de récurrence, la prémisse $!A(a)$ est une
   $\Sat{M}{\Gamma}$. Il faut montrer que
   $\Sat{M}{\lforall[x][!A(x)]}$.
   Puisque $\lforall[x][!A(x)]$ est un !!{sentence}, cela revient
-  à montrer que $\Sat{M}{!A(x)}[s]$ pour toute affectation de
+  à montrer que $\Sat{M}{!A(x)}[s]$ pour toute assignation de
   variables~$s$ (\olref[syn][ass]{prop:sat-quant}).
-  L'ensemble $\Gamma$ ne contient que des énoncés; nous avons donc
-  $\Sat{M}{!B}[s]$ pour tout $!B \in \Gamma$, par la
-  \olref[syn][sat]{defn:satisfaction}.
+  Fixons $s$. Les éléments de $\Gamma$ étant des énoncés, on a
+  $\Sat{M}{!B}[s]$ pour tout $!B \in \Gamma$. La \olref[syn][sat]{defn:satisfaction} donne la
+  notation $\Sat{M}{!B}[s]$ pour la satisfaction relative à~$s$.
   Soit $\Struct{M'}$ la structure qui ne diffère de $\Struct{M}$
-  que par l'interprétation de $a$, fixée à $\Assign{a}{M'} = s(x)$.
+  que par l'interprétation de $a$, avec $\Assign{a}{M'} = s(x)$.
   Puisque $a$ ne figure pas dans~$\Gamma$, on a
   $\Sat{M'}{\Gamma}$ par le
   \olref[syn][ext]{cor:extensionality-sent}.
   Comme $\Gamma \Entails !A(a)$, il vient $\Sat{M'}{!A(a)}$.
-  L'!!{sentence} $!A(a)$ étant clos, nous avons aussi
-  $\Sat{M'}{!A(a)}[s]$, par la
-  \olref[syn][ass]{prop:sentence-sat-true}.
-  Par la \olref[syn][ext]{prop:ext-formulas},
-  $\Sat{M'}{!A(x)}[s]$ si et seulement si $\Sat{M'}{!A(a)}$
-  (rappelons que $!A(a)$ abrège $\Subst{!A(x)}{a}{x}$).
-  Donc $\Sat{M'}{!A(x)}[s]$.
+  Pour cet énoncé, la \olref[syn][ass]{prop:sentence-sat-true}
+  donne $\Sat{M'}{!A(a)}[s]$. Or $!A(a)$ abrège $\Subst{!A(x)}{a}{x}$
+  et $\Value{a}{M'}[s] = s(x)$. Affecter cette valeur à $x$ laisse
+  donc $s$ inchangée. La \olref[syn][ext]{prop:ext-formulas}
+  donne ainsi $\Sat{M'}{!A(x)}[s]$.
   Puisque $a$ ne figure pas dans~$!A(x)$,
   la \olref[syn][ext]{prop:extensionality} donne $\Sat{M}{!A(x)}[s]$.
-  L'affectation~$s$ étant arbitraire, on obtient
+  L'assignation~$s$ étant arbitraire, on obtient
   $\Sat{M}{\lforall[x][!A(x)]}$.
+%
+%
 
 \item La dernière inférence est \Intro{\lexists} : exercice.
 
@@ -340,18 +340,18 @@ qui satisfait $\Gamma$ satisfait aussi $\lfalse$.
 Or $\iftag{FOL}{\Sat/{M}}{\pSat/{v}}{\lfalse}$ pour toute
 \iftag{FOL}{structure~$\Struct{M}$}{valuation~$\pAssign{v}$}.
 Aucune \iftag{FOL}{structure~$\Struct{M}$}{valuation~$\pAssign{v}$}
-ne satisfait donc $\Gamma$; cet ensemble est insatisfaisable.
+ne satisfait donc $\Gamma$. Cet ensemble est insatisfaisable.
 \end{proof}
-
-\begin{editorial}
-La première propriété de l'introduction concerne explicitement
-la dérivabilité sans hypothèses. Dans le cas de l'élimination de
-la conjonction, « structure » est adapté en « valuation » pour la
-branche propositionnelle. La règle d'élimination universelle est
-désignée de manière uniforme avec les autres règles.
-L'élimination de la négation, traitée ensuite, est ajoutée à la
-liste initiale des règles à plusieurs prémisses. Les cas proposés
-en exercice restent à compléter par le lecteur.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
 
 \end{document}

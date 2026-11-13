@@ -1,0 +1,67 @@
+% Part: normal-modal-logic
+% Chapter: completeness
+% Section: completeness-K
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{com}{cmk}
+
+\olsection{Détermination et complétude pour \Log{K}}
+
+Nous pouvons maintenant utiliser le modèle canonique pour établir la
+complétude. Celle-ci découle du fait que les !!{formula}s vraies dans
+le modèle canonique de~$\Sigma$ sont exactement celles qui sont
+!!{derivable}s dans~$\Sigma$. On dit qu'un modèle ayant cette propriété
+\emph{détermine}~$\Sigma$.
+
+\begin{defn}
+  Un modèle $\mModel{M}$ \emph{détermine} une logique modale
+  normale~$\Sigma$ si et seulement si $\mSat{M}{!A}$ équivaut à $\Sigma
+  \Proves !A$, pour toute !!{formula}~$!A$.
+\end{defn}
+
+\begin{thm}[Détermination]\ollabel{thm:determination}
+  Pour une logique modale normale et cohérente~$\Sigma$, $\mSat{M^\Sigma}{!A}$ si et seulement si $\Sigma \Proves !A$.
+\end{thm}
+
+\begin{proof}
+  Si $\mSat{M^\Sigma}{!A}$, alors, pour tout ensemble $\Sigma$-cohérent
+  complet $\Delta$, on a $\mSat{M^\Sigma}{!A}[\Delta]$. Par le
+  lemme de vérité, $!A \in \Delta$ pour tout ensemble $\Sigma$-cohérent
+  complet $\Delta$. D'après le
+  \olref[lin]{cor:provability-characterization} (avec $\Gamma =
+  \emptyset$), on en déduit $\Sigma \Proves !A$.
+
+  Réciproquement, si $\Sigma \Proves !A$, alors, d'après la
+  \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-closed}, tout
+  ensemble $\Sigma$-cohérent complet $\Delta$ contient~$!A$. Par le
+  lemme de vérité, $\mSat{M^\Sigma}{!A}[\Delta]$ pour tout~$\Delta \in
+  W^\Sigma$ ; autrement dit, $\mSat{M^\Sigma}{!A}$.
+\end{proof}
+
+L'absurde $\lfalse$ est faux dans tout modèle. Par correction,
+il n'est pas dérivable dans~\Log{K}, qui est donc cohérente.
+Le modèle canonique de~\Log{K} détermine alors~\Log{K}. On en déduit
+le résultat suivant.
+
+\begin{cor}\ollabel{cor:Kcomplete}
+  La logique modale de base \Log{K} est complète relativement à la
+  classe de tous les modèles : si $\Entails !A$, alors $\Log{K}
+  \Proves !A$.
+\end{cor}
+
+\begin{proof}
+  Par contraposition, si $\Log{K} \Proves/ !A$, le théorème de
+  détermination donne $\mSat/{M^{\Log{K}}}{!A}$ ; donc $!A$ n'est pas
+  valide.
+\end{proof}
+
+Pour établir par cette méthode la complétude d'un système~$\Sigma$
+relativement à une classe de modèles, on vérifie en outre que son
+modèle canonique appartient à la classe. Pour \Log{KTB4}, par exemple,
+on cherche à établir que la relation canonique est réflexive,
+symétrique et transitive. L'appartenance à la classe demande une
+preuve et peut échouer.
+\end{document}

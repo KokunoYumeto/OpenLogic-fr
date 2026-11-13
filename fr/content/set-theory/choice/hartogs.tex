@@ -1,0 +1,146 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{choice}{hartogs}
+\olsection{Comparabilité et lemme de Hartogs}
+
+Voilà pour les avantages. Passons aux difficultés :
+sans l'axiome du choix, les choses se
+\emph{compliquent}. Pour comprendre pourquoi,
+considérons un résultat élégant dû à
+\cite{Hartogs1915} :
+
+\begin{lem}[\emph{dans $\ZF$}]\ollabel{HartogsLemma}
+Pour tout ensemble $A$, il existe un ordinal
+$\alpha$ tel que $\cardnless{\alpha}{A}$.
+\end{lem}
+
+\begin{proof}
+Si $B \subseteq A$ et $R \subseteq B^2$,
+alors $\tuple{B, R} \subseteq
+V_{\setrank{A}+4}$ d'après le
+\olref[ord-arithmetic][using-addition]{rankcomputation}.
+Par séparation, considérons donc :
+\[
+	C = \Setabs{\tuple{B, R} \in V_{\setrank{A}+5}}
+	{B\subseteq A
+	\text{ et $\tuple{B, R}$ est un bon ordre}}
+\]
+Par remplacement et par le
+\olref[ordinals][ordtype]{thmOrdinalRepresentation},
+formons l'ensemble :
+\[
+	\alpha =
+	\Setabs{\ordtype{B, R}}{\tuple{B, R} \in C}.
+\]
+D'après
+le \olref[ordinals][basic]{corordtransitiveord},
+$\alpha$ est un ordinal, car c'est un
+ensemble transitif d'ordinaux. En effet,
+si $\gamma \in \beta \in \alpha$, alors
+$\beta = \ordtype{B, R}$ pour un certain
+$B \subseteq A$ ; de plus,
+$\gamma = \ordtype{B_b, R_b}$ pour un
+$b \in B$ par le
+\olref[ordinals][iso]{wellordinitialsegment},
+si bien que $\gamma \in \alpha$.\footnote{
+Note de l'édition française : l'original
+écrit ici $B\subseteq R$, alors que
+la définition de $C$ impose $B\subseteq A$.}
+
+Pour raisonner par l'absurde, supposons
+qu'il existe !!a{injection}
+$f \colon \alpha \to A$. Posons :
+\begin{align*}
+	B &= \ran{f}\\
+	R &= \Setabs{\tuple{f(\xi), f(\eta)}}
+	{\xi,\eta\in\alpha \text{ et } \xi \in \eta}.
+\end{align*}
+\footnote{Note de l'édition française :
+l'original réutilise $\alpha$ dans la
+définition de $R$, alors que cette lettre
+désigne aussi le domaine de $f$.
+Nous explicitons les indices liés
+$\xi,\eta\in\alpha$ pour lever l'ambiguïté
+et transportons leur ordre par $f$.}
+Il est clair que
+$\alpha = \ordtype{B, R}$ et que
+$\tuple{B, R} \in C$. Donc
+$\alpha \in \alpha$, contradiction.
+\end{proof}
+
+Il en découle un résultat profond :
+
+\begin{thm}[\emph{dans $\ZF$}]
+Les assertions suivantes sont équivalentes :
+\begin{enumerate}
+	\item\ollabel{equivwo}
+	L'axiome du bon ordre ;
+	\item\ollabel{equivcompare}
+	Pour tous ensembles $A$ et $B$,
+	$\cardle{A}{B}$ ou $\cardle{B}{A}$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+\emph{\olref{equivwo} $\Rightarrow$
+\olref{equivcompare}.}
+Fixons $A$ et $B$. Par \olref{equivwo},
+il existe des bons ordres
+$\tuple{A, R}$ et $\tuple{B, S}$.
+D'après le
+\olref[ordinals][ordtype]{thmOrdinalRepresentation},
+soient $f \colon \alpha \to \tuple{A, R}$
+et $g \colon \beta \to \tuple{B, S}$
+des isomorphismes. D'après la
+\olref[sth][ordinals][basic]{ordinalsaresubsets},
+soit $\alpha \subseteq \beta$, soit
+$\beta \subseteq \alpha$.
+Dans le premier cas,
+$\comp{f^{-1}}{g} \colon A \to B$
+est !!a{injection}, et donc
+$\cardle{A}{B}$ ; dans le second,
+on obtient de même $\cardle{B}{A}$.
+
+\emph{\olref{equivcompare} $\Rightarrow$
+\olref{equivwo}.}
+Fixons $A$. D'après le \olref{HartogsLemma},
+il existe un ordinal $\beta$ tel que
+$\cardnless{\beta}{A}$.
+Par \olref{equivcompare}, nous avons
+donc $\cardle{A}{\beta}$.
+Il existe ainsi !!{injection}
+$f \colon A \to \beta$, qui permet
+de bien ordonner les éléments de $A$
+au moyen de la relation
+$\Setabs{\tuple{a, b} \in A \times A}
+{f(a) \in f(b)}$.
+\end{proof}
+\noindent
+Conséquence immédiate : si l'axiome
+du bon ordre est faux, certains ensembles
+sont \emph{littéralement incomparables}
+quant à leur taille. Dans ce cas,
+l'arithmétique cardinale transfinie
+se complique. Par exemple, nous devons
+abandonner l'idée que, si $A$ et $B$
+sont infinis, alors
+$\cardeq{A \disjointsum B}{M}$
+et $\cardeq{A \times B}{M}$,
+où $M$ est le plus grand des deux
+ensembles $A$ et $B$
+(voir le \olref[card-arithmetic][simp]{cardplustimesmax}).\footnote{
+Note de l'édition française : la formule
+de l'original contient une expression
+$\cardeq{\cardeq{A \disjointsum B}{A \times B}}{M}$
+mal formée : elle traite une assertion
+d'équipotence comme un ensemble.
+Nous formulons séparément les deux égalités
+de taille visées par le résultat cité.}
+Le problème est simple : si nous ne pouvons
+pas \emph{comparer} la taille de $A$ et de $B$,
+demander lequel est le plus grand n'a pas
+de sens.
+
+\end{document}

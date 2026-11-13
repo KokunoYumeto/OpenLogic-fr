@@ -1,0 +1,439 @@
+% Partie : théorie de la démonstration
+% Chapitre : normalisation
+% Section : conversions par réduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nor}{red}
+
+\olsection{Conversions par réduction}
+
+Une coupure de longueur~$1$ dans une preuve~$\delta$ de
+\Log{N1i} comporte une seule occurrence de formule :
+elle est la conclusion d'une introduction, ou de
+\FalseInt, et la prémisse majeure d'une élimination.
+Une \emph{conversion par réduction} supprime
+ce couple d'inférences. Des coupures peuvent alors
+apparaître ou s'allonger, et des sous-preuves
+peuvent être dupliquées. La diminution de la
+mesure exige donc les conditions de sélection
+de la coupure maximale ; elle ne résulte pas
+de la seule disparition du couple.
+
+Prenons le couple \Intro{\lif}, \Elim{\lif},
+avec $!A \ident !B \lif !C$. Une sous-preuve
+$\delta_1$ se termine par
+\[
+\AxiomC{$\Discharge{!B}{x}$}
+\RightLabel{$\delta_2$}
+\DeduceC{$!C$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!B \lif !C$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\DeduceC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DisplayProof
+\]
+Nous la remplaçons par
+\[
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\DeduceC{$!B$}
+\RightLabel{$\Subst{\delta_2}{\delta_3}{!B^x}$}
+\DeduceC{$!C$}
+\DisplayProof
+\]
+La notation $\Subst{\delta_2}{\delta_3}{!B^x}$
+désigne le greffage de toute la preuve~$\delta_3$
+à chacune des occurrences d'hypothèse~$!B$
+de la classe désignée~$x$ dans~$\delta_2$.
+Si cette classe est vide, aucun greffage n'a lieu.
+
+Avant la substitution, nous choisissons les
+étiquettes de façon à éviter toute capture :
+la classe déchargée~$x$ et les autres classes
+déchargées dans la preuve receveuse sont renommées,
+au besoin, pour ne pas rencontrer les hypothèses
+ouvertes de la preuve insérée. Les occurrences
+de la classe désignée sont ainsi supprimées ;
+une hypothèse ouverte de la preuve insérée
+ne se trouve pas déchargée par inadvertance.
+Chaque inférence de décharge de~$\delta_2$
+conserve sa classe correspondante, et chaque
+copie d'une inférence de~$\delta_3$ décharge
+les copies des hypothèses qui lui appartiennent.
+Les constantes propres sont rendues fraîches
+avant greffage et renommées séparément dans
+chaque copie pour rétablir la régularité.
+
+La conclusion reste~$!C$. Les hypothèses
+ouvertes de la nouvelle preuve sont parmi
+celles de~$\delta_1$, mais elles ne sont
+pas nécessairement toutes conservées.
+Si la décharge de~$x$ était vacante, la preuve
+d'argument~$\delta_3$ disparaît ; ses
+dépendances propres peuvent donc disparaître
+également. La projection d'une conjonction
+ou le choix d'une branche de disjonction
+peut aussi supprimer des hypothèses inutiles.
+
+Les coupures entièrement à l'extérieur de
+$\delta_1$ ne sont pas modifiées, sauf celles
+qui traversent la frontière du remplacement,
+qu'il faut examiner séparément.
+À l'intérieur des sous-preuves conservées,
+chaque copie d'une coupure conserve ses
+formules, son rang et sa longueur.
+Cela n'affirme pas que le \emph{nombre} de
+ces copies demeure le même.
+
+Deux difficultés méritent un examen détaillé.
+\begin{enumerate}
+  \item Le remplacement des occurrences
+  de~$!B^x$ par~$\delta_3$ peut multiplier
+  les coupures de cette dernière. Si certaines
+  sont maximales, la longueur de coupure
+  de la nouvelle preuve peut augmenter.
+  On choisit donc une coupure maximale
+  supérieure et située le plus à droite,
+  dans le sens précisé par le théorème :
+  les sous-preuves susceptibles d'être
+  copiées ne doivent pas contenir de
+  coupure maximale, ni participer par
+  une prémisse voisine à un segment
+  maximal. Dans l'exemple d'implication,
+  l'argument~$\delta_3$ se trouve à
+  droite de la prémisse majeure.
+
+  \item Le greffage peut créer une coupure
+  sur~$!B$. Cela arrive si une hypothèse
+  de la classe~$x$ était une prémisse
+  majeure d'élimination et si~$\delta_3$
+  se termine par une introduction,
+  par~\FalseInt, par~\Elim{\lor} ou
+  par~\Elim{\lexists}. Une occurrence
+  qui n'était qu'une hypothèse devient
+  alors un détour immédiat, ou la fin
+  d'un segment plus long. Si~$!B^x$
+  était une prémisse mineure de
+  \Elim{\lor} ou de \Elim{\lexists},
+  le segment déjà présent peut aussi
+  s'allonger. Toutefois,
+  $\depth{!B} < \depth{!B \lif !C}$.
+  Ces coupures sont donc de rang
+  inférieur à celui de la coupure
+  supprimée. Il faut également examiner
+  la frontière inférieure : une
+  éventuelle nouvelle coupure sur le
+  conséquent~$!C$ a elle aussi un rang
+  inférieur à celui de l'implication.
+\end{enumerate}
+
+Avec ce choix de la coupure, aucune coupure
+maximale n'est dupliquée et les nouvelles
+coupures ont un rang inférieur. Si d'autres
+coupures de l'ancien rang maximal demeurent,
+la longueur de coupure diminue ; sinon,
+le rang de coupure baisse.
+
+Une conversion par réduction est aussi appelée
+\emph{conversion de détour}.
+Quelques schémas sont donnés dans le
+\olref{tab:reduction-conversions} ;
+les autres sont laissés en exercice.
+Pour les schémas quantifiés, les substitutions
+de termes sont effectuées sans capture.
+Les constantes propres intérieures sont
+choisies fraîches par rapport au terme inséré.
+Dans le cas universel, la généralisation
+supprimée permet de substituer le terme
+fermé à sa constante propre dans la
+sous-preuve. Dans le cas existentiel, on
+effectue d'abord cette substitution dans
+la branche mineure, puis le greffage aux
+occurrences désignées de l'hypothèse ainsi
+instanciée. Les conditions de fraîcheur
+préservent les hypothèses restantes et
+la conclusion.
+
+\begin{table}
+\begin{multline*}
+\bottomAlignProof
+\AxiomC{$\Discharge{!B}{x}$}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!C$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!B \lif !C$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DisplayProof
+\quad \longrightarrow\quad
+\shoveright{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!B$}
+\RightLabel{$\Subst{\delta_2}{\delta_3}{!B^x}$}
+\shortDeduce
+\DeduceC{$!C$}
+\DisplayProof}
+\\[4ex]
+\shoveleft{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!C$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!B \land !C$}
+\RightLabel{\Elim{\land}[1]}
+\UnaryInfC{$!B$}
+\DisplayProof
+\quad \longrightarrow\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\DisplayProof}\qquad
+\shoveright{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!C$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!B \land !C$}
+\RightLabel{\Elim{\land}[2]}
+\UnaryInfC{$!C$}
+\DisplayProof
+\quad \longrightarrow\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!C$}
+\DisplayProof}
+\\[4ex]
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\RightLabel{\Intro{\lor}[1]}
+\UnaryInfC{$!B \lor !C$}
+\AxiomC{$\Discharge{!B}{x}$}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!D$}
+\AxiomC{$\Discharge{!C}{y}$}
+\RightLabel{$\delta_4$}
+\shortDeduce
+\DeduceC{$!D$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!D$}
+\DisplayProof
+\quad \longrightarrow\quad
+\shoveright{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B$}
+\RightLabel{$\Subst{\delta_3}{\delta_2}{!B^x}$}
+\shortDeduce
+\DeduceC{$!D$}
+\DisplayProof}
+\\[2ex]
+\shoveleft{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B(c)$}
+\RightLabel{\Intro{\lforall}}
+\UnaryInfC{$\lforall[x][!B(x)]$}
+\RightLabel{\Elim{\lforall}}
+\UnaryInfC{$!B(t)$}
+\DisplayProof
+\quad \longrightarrow\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\Subst{\delta_2}{t}{c}$}
+\shortDeduce
+\DeduceC{$!B(t)$}
+\DisplayProof}
+\\[4ex]
+\shoveright{\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B(t)$}
+\RightLabel{\Intro{\lexists}}
+\UnaryInfC{$\lexists[x][!B(x)]$}
+\AxiomC{$\Discharge{!B(c)}{x}$}
+\RightLabel{$\delta_3$}
+\shortDeduce
+\DeduceC{$!D$}
+\DischargeRule{\Elim{\lexists}}{x}
+\BinaryInfC{$!D$}
+\DisplayProof
+\quad \longrightarrow\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\shortDeduce
+\DeduceC{$!B(t)$}
+\RightLabel{$\Subst{\Subst{\delta_3}{t}{c}}{\delta_2}{!B(t)^x}$}
+\shortDeduce
+\DeduceC{$!D$}
+\DisplayProof}
+\end{multline*}
+\caption{Quelques conversions par réduction pour \Log{N1i}.}
+\ollabel{tab:reduction-conversions}
+\end{table}
+
+\begin{prob}
+Donnez la conversion par réduction pour
+\Intro{\lnot} suivie de \Elim{\lnot}.
+\end{prob}
+
+Il reste le cas où l'occurrence de coupure~$!A$
+provient de~\FalseInt. Il se traite de façon
+analogue au cas d'une introduction.
+Par exemple, on remplace
+\[
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B \lif !C$}
+\AxiomC{}
+\RightLabel{$\delta_3$}
+\DeduceC{$!B$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!C$}
+\DisplayProof
+\quad\text{par}\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!C$}
+\DisplayProof
+\]
+Une précaution supplémentaire est nécessaire
+si $!A \ident (!B \lor !C)$ ou
+$!A \ident \lexists[x][!B(x)]$.
+Dans le cas disjonctif, le remplacement
+\[
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B \lor !C$}
+\AxiomC{$\Discharge{!B}{x}$}
+\RightLabel{$\delta_3$}
+\DeduceC{$!D$}
+\AxiomC{$\Discharge{!C}{y}$}
+\RightLabel{$\delta_4$}
+\DeduceC{$!D$}
+\DischargeRule{\Elim{\lor}}{x\,y}
+\TrinaryInfC{$!D$}
+\DisplayProof
+\quad\text{par}\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!D$}
+\DisplayProof
+\]
+pourrait créer une coupure sur~$!D$ ;
+rien ne garantit
+$\depth{!D} < \depth{!B \lor !C}$.
+Il faut donc procéder comme dans la
+réduction \Intro{\lor}/\Elim{\lor} :
+on produit l'un des deux disjoints par
+absurdité, puis on greffe sa preuve dans
+la branche correspondante.
+Notons les deux preuves prolongées de
+l'absurde par le disjoint choisi à l'aide
+d'un exposant sur le nom de la sous-preuve.
+On obtient alors l'un des deux schémas :
+\[
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!B$}
+\RightLabel{$\Subst{\delta_3}{\delta_2^{!B}}{!B^x}$}
+\DeduceC{$!D$}
+\DisplayProof
+\quad\text{ou}\quad
+\bottomAlignProof
+\AxiomC{}
+\RightLabel{$\delta_2$}
+\DeduceC{$\lfalse$}
+\RightLabel{\FalseInt}
+\UnaryInfC{$!C$}
+\RightLabel{$\Subst{\delta_4}{\delta_2^{!C}}{!C^y}$}
+\DeduceC{$!D$}
+\DisplayProof
+\]
+La notation de substitution indique le
+greffage aux hypothèses désignées ; le
+trait pointillé ne représente pas une
+nouvelle règle allant arbitrairement
+du disjoint à~$!D$.
+Si la classe désignée est vide, la branche
+mineure suffit à elle seule.
+
+Dans le cas existentiel, on choisit un
+terme fermé, on l'emploie pour instancier
+la branche mineure à la place de la
+constante propre, puis on dérive l'instance
+de la matrice par~\FalseInt{} et on la
+greffe aux hypothèses désignées.
+Les seules coupures nouvelles au point
+de greffage portent ainsi sur une instance
+de la matrice, de rang inférieur à celui
+de l'existentielle. Aux autres frontières,
+les conditions de sélection excluent
+l'allongement d'un segment de rang maximal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,146 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: more-filtrations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{acc}
+
+\olsection{Filtrations et propriétés de l'accessibilité}
+
+Comme nous l'avons vu, toute filtration d'un modèle universel, sériel
+ou réflexif est, respectivement, universelle, sérielle ou réflexive.
+En revanche, une filtration d'un modèle symétrique ou transitif n'est
+pas nécessairement symétrique ou transitive. Dans certains cas, on
+peut néanmoins définir une filtration qui conserve ces propriétés.
+Pour cela, suivons la définition de la filtration la plus grossière,
+en ajoutant des conditions à la définition de~$R^*$. Supposons
+$\Gamma$ clos par sous-!!{formula}s. Considérons les
+conditions~$C_i(u,v)$ du \olref{tab:Cn-filtrations}, portant sur des
+mondes $u$, $v$ d'un modèle $\mModel{M} =\tuple{W, R, V}$. Nous
+pouvons définir $R^*[u][v]$ par des combinaisons de ces conditions.
+Si, par exemple, nous posons $R^*[u][v]$ si et seulement si
+$C_1(u,v)$, nous retrouvons exactement la filtration la plus
+grossière. Si le modèle est symétrique et si nous posons $R^*[u][v]$ si et seulement si
+$C_1(u,v)$ et $C_2(u, v)$, nous obtenons une filtration « au moins aussi
+fine » que la plus grossière : pas davantage de couples de mondes satisfont
+conjointement $C_1(u,v)$ et $C_2(u,v)$ que la seule condition
+$C_1(u,v)$. Les deux relations peuvent coïncider.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{|ll|}
+    \hline
+    \multirow{2}{*}{$C_1(u,v)$:}
+    \iftag{prvBox}{&
+      si $\Box!A \in \Gamma$ et $\mSat{M}{\Box!A}[u]$,
+      alors $\mSat{M}{!A}[v]$ ;\iftag{prvDiamond}{ et}{}\\}{}
+    \iftag{prvDiamond}{&
+      si $\Diamond!A \in \Gamma$ et $\mSat{M}{!A}[v]$,
+      alors $\mSat{M}{\Diamond!A}[u]$ ; \\}{}
+    \hline
+    \multirow{2}{*}{$C_2(u,v)$:}
+    \iftag{prvBox}{&
+      si $\Box!A \in \Gamma$ et $\mSat{M}{\Box!A}[v]$,
+      alors $\mSat{M}{!A}[u]$ ;\iftag{prvDiamond}{ et}{}\\}{}
+    \iftag{prvDiamond}{&
+      si $\Diamond!A \in \Gamma$ et $\mSat{M}{!A}[u]$,
+      alors $\mSat{M}{\Diamond!A}[v]$ ; \\}{}
+    \hline
+    \multirow{2}{*}{$C_3(u,v)$:}
+    \iftag{prvBox}{&
+      si $\Box!A \in \Gamma$ et $\mSat{M}{\Box!A}[u]$,
+      alors $\mSat{M}{\Box!A}[v]$ ;\iftag{prvDiamond}{ et}{}\\}{}
+    \iftag{prvDiamond}{&
+      si $\Diamond!A \in \Gamma$ et $\mSat{M}{\Diamond!A}[v]$,
+      alors $\mSat{M}{\Diamond!A}[u]$ ; \\}{}
+    \hline
+    \multirow{2}{*}{$C_4(u,v)$:}
+    \iftag{prvBox}{&
+      si $\Box!A \in \Gamma$ et $\mSat{M}{\Box!A}[v]$,
+      alors $\mSat{M}{\Box!A}[u]$ ;\iftag{prvDiamond}{ et}{}\\}{}
+    \iftag{prvDiamond}{&
+      si $\Diamond!A \in \Gamma$ et $\mSat{M}{\Diamond!A}[u]$,
+      alors $\mSat{M}{\Diamond!A}[v]$ ; \\}{}
+    \hline
+    \end{tabular}
+  \caption{Conditions entre mondes possibles pour définir des
+    filtrations.}
+  \ollabel{tab:Cn-filtrations}
+\end{table}
+
+\begin{thm}\ollabel{thm:more-filtrations}
+  Soit $\mModel{M} =\tuple{W,R,V}$ un modèle, avec $\Gamma$ clos
+  par sous-!!{formula}s. Supposons $W^*$ et $V^*$ définis comme dans la
+  \olref[fil]{defn:filtration}. Alors :
+  \begin{enumerate}
+  \item Supposons $R^*[u][v]$ si et seulement si $C_1(u, v) \land
+    C_2(u,v)$. Alors $R^*$ est symétrique, et $\mModel{M^*} =
+    \tuple{W^*,R^*,V^*}$ est une filtration si $\mModel{M}$ est
+    symétrique.
+  \item Supposons $R^*[u][v]$ si et seulement si $C_1(u, v)
+    \land C_3(u,v)$. Alors $R^*$ est transitive, et
+    $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ est une filtration si
+    $\mModel{M}$ est transitif.
+  \item Supposons $R^*[u][v]$ si et seulement si $C_1(u, v) \land C_2(u,v)
+    \land C_3(u,v) \land C_4(u,v)$. Alors $R^*$ est symétrique et
+    transitive, et $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ est une
+    filtration si $\mModel{M}$ est symétrique et transitif.
+  \item Supposons que $R^*$ soit définie par $R^*[u][v]$ si et
+    seulement si $C_1(u,
+    v) \land C_3(u,v) \land C_4(u,v)$. Alors $R^*$ est transitive et
+    euclidienne, et $\mModel{M^*}=\tuple{W^*,R^*,V^*}$ est une
+    filtration si $\mModel{M}$ est transitif et euclidien.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+  \begin{enumerate}
+    \item La symétrie de $R^*$ est immédiate, puisque $C_1(u,v)
+      \Leftrightarrow C_2(v,u)$ et $C_2(u,v) \Leftrightarrow
+      C_1(v,u)$. Il reste donc à montrer que, si $\mModel{M}$ est
+      symétrique, $\mModel{M^*}$ est une filtration par~$\Gamma$.
+      La condition $C_1(u,v)$ garantit que
+      \iftag{prvBox}{%
+        \iftag{prvDiamond}{%
+          \olref[fil]{defn:filtration-R2} et
+          \olref[fil]{defn:filtration-R3} de la
+          \olref[fil]{defn:filtration} sont satisfaites}{%
+          la \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R2} est satisfaite}}{%
+        la \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R3} est satisfaite}.
+      Il suffit donc de vérifier la
+      \olref[fil]{defn:filtration}\olref[fil]{defn:filtration-R1},
+      c'est-à-dire que $Ruv$ entraîne $R^*[u][v]$.
+
+      Supposons donc $Ruv$. Pour établir $R^*[u][v]$, il faut
+      vérifier $C_1(u,v)$ et $C_2(u,v)$. Pour $C_1$ :
+      \iftag{prvBox}{si $\Box!A
+        \in\Gamma$ et $\mSat{M}{\Box!A}[u]$, alors
+        $\mSat{M}{!A}[v]$ puisque $Ruv$.\iftag{prvDiamond}{ De même,
+        }{}}{}\iftag{prvDiamond}{si $\Diamond!A \in \Gamma$ et
+        $\mSat{M}{!A}[v]$, alors $\mSat{M}{\Diamond!A}[u]$ puisque
+        $Ruv$.}{} Pour $C_2$ : \iftag{prvBox}{si $\Box!A \in \Gamma$ et
+        $\mSat{M}{\Box!A}[v]$, alors $Ruv$ entraîne $Rvu$ par symétrie,
+        d'où $\mSat{M}{!A}[u]$.\iftag{prvDiamond}{ De même,
+        }{}}{}\iftag{prvDiamond}{si $\Diamond!A \in\Gamma$ et
+        $\mSat{M}{!A}[u]$, alors $\mSat{M}{\Diamond!A}[v]$, puisque
+        $Rvu$ par symétrie.}{}
+    \item Exercice.
+    \item Exercice.
+    \item Exercice.
+  \end{enumerate}
+\end{proof}
+
+\begin{prob}
+  Complétez la démonstration du \olref[nml][fil][acc]{thm:more-filtrations}.
+\end{prob}
+\begin{explain}
+Les conditions $C_1(u,v)$ et $C_2(u,v)$ s'échangent
+lorsqu'on échange $u$ et~$v$. Leur conjonction définit donc
+une relation symétrique. Pour obtenir une filtration, il
+faut en outre conserver chaque flèche héritée de~$R$.
+L'hypothèse de symétrie de~$R$ garantit ici cette conservation.
+\end{explain}
+\end{document}

@@ -1,0 +1,94 @@
+% Part: many-valued-logic
+% Chapter: syntax-and-semantics
+% Section: matrices
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{syn}{mat}
+
+\olsection{Matrices}
+
+Une logique plurivalente est donnée
+par son langage, son ensemble~$V$ de
+valeurs de vérité, un sous-ensemble
+de valeurs désignées et les fonctions
+de vérité de ses connecteurs. Ces
+données forment une \emph{matrice}.
+
+\begin{defn}[Matrice]
+\ollabel{defn:matrix}
+Une \emph{matrice} pour la logique
+$\Log L$ comprend :
+\begin{enumerate}
+\item un ensemble de connecteurs
+  constituant un langage~$\Lang L$;
+\item un ensemble non vide~$V$
+  de valeurs de vérité;
+\item un ensemble~$V^+\subseteq V$
+  de valeurs de vérité désignées;
+\item pour chaque connecteur~$\star$
+  d'arité~$n$ de~$\Lang L$, une
+  fonction de vérité
+  $\tf{\star}\colon V^n\to V$.
+  Si $n=0$, $\tf{\star}$ est
+  simplement un élément de~$V$.
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+La matrice de la logique classique
+$\LogCL{}$ se compose :
+\begin{enumerate}
+\item du langage propositionnel usuel
+  $\Lang L_0$, avec $\lfalse$,
+  $\lnot$, $\land$, $\lor$ et $\lif$;
+\item de l'ensemble des valeurs
+  $V=\{\True,\False\}$;
+\item de la seule valeur désignée
+  $\True$, c'est-à-dire
+  $V^+=\{\True\}$;
+\item de la valeur
+  $\tf{\lfalse}=\False$ et des
+  fonctions de vérité des autres
+  connecteurs données par les tables
+  usuelles (voir la \olref{fig:tf-CL}).
+\end{enumerate}
+\begin{figure}
+  \begin{center}
+      \begin{tabular}{c|c}
+        $\tf{\lnot}$ & \\
+        \hline
+        $\True$ & $\False$ \\
+        $\False$ & $\True$
+      \end{tabular}
+      \quad
+      \begin{tabular}{c|cc}
+        $\tf{\land}$ & $\True$ & $\False$ \\
+        \hline
+        $\True$ & $\True$ & $\False$ \\
+        $\False$ & $\False$ & $\False$
+      \end{tabular}
+      \quad
+      \begin{tabular}{c|cc}
+        $\tf{\lor}$ & $\True$ & $\False$ \\
+        \hline
+        $\True$ & $\True$ & $\True$ \\
+        $\False$ & $\True$ & $\False$
+      \end{tabular}
+      \quad
+      \begin{tabular}{c|cc}
+        $\tf{\lif}$ & $\True$ & $\False$ \\
+        \hline
+        $\True$ & $\True$ & $\False$ \\
+        $\False$ & $\True$ & $\True$
+      \end{tabular}
+    \end{center}
+    \caption{Fonctions de vérité de la logique
+      classique~$\LogCL$.}
+    \ollabel{fig:tf-CL}
+  \end{figure}
+\end{ex}
+
+\end{document}

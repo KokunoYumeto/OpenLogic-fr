@@ -41,21 +41,21 @@ l'\olref[prp]{ax:lif1}. Nous obtenons donc la !!{derivation} suivante :
 \end{ex}
 
 \begin{ex}\ollabel{ex:identity}
-Cherchons maintenant une !!{derivation} de $!D \lif !D$. Cette
-formule n'est pas une instance d'un axiome; il faut donc la !!{derive}
-au moyen de~\MP. L'\olref[prp]{ax:lif1} est un axiome de la forme
-$!A \lif !B$, à laquelle nous pourrions appliquer~\MP. Pour que cette
-application soit utile, le $!B$ que \MP{} permettrait de justifier
-devrait être~$!D \lif !D$, puisque c'est la formule recherchée.
-Il faudrait alors que $!A$ soit également $!D$. Nous pourrions donc
-considérer l'instance suivante de l'\olref[prp]{ax:lif1} :
+Cherchons maintenant une !!{derivation} du schéma $!D \lif !D$,
+valable pour toute !!{formula}~$!D$. Pour appliquer le modus ponens,
+l'\olref[prp]{ax:lif1} nous fournit des implications de la forme
+$!A \lif !B$. Pour obtenir la conclusion recherchée, prenons pour~$!B$
+la formule~$!D \lif !D$. Dans ce schéma d'axiome, le conséquent
+est lui-même une implication dont le conséquent est~$!A$.
+Il faut donc prendre $!A$ égal à~$!D$. Nous pourrions ainsi considérer
+l'instance suivante de l'\olref[prp]{ax:lif1} :
 \[
 !D \lif (!D \lif !D).
 \]
-Pour appliquer~\MP, il faudrait aussi justifier la seconde prémisse
-correspondante, à savoir~$!A$. Dans notre cas, ce serait~$!D$, que nous
-ne pourrons pas !!{derive} isolément. Il nous faut donc une autre
-stratégie.
+Pour appliquer~\MP, il faudrait aussi dériver la seconde prémisse,
+à savoir~$!D$. Or $!D$ peut être fausse dans une interprétation et
+donc, par le \olref[sou]{thm:soundness}, ne pas être dérivable sans
+hypothèses. Cherchons une preuve qui convienne à toute formule~$!D$.
 
 L'autre axiome qui ne fait intervenir que~$\lif$ est donné par
 l'\olref[prp]{ax:lif2}, c'est-à-dire
@@ -116,11 +116,11 @@ $!B \lif !C$ à partir de~$\Gamma$. Réunissons-les en une seule
 !!{derivation} en les concaténant, puis ajoutons les lignes~3 à~7 de
 la !!{derivation} de l'exemple précédent. La suite ainsi obtenue est
 une !!{derivation} de $!A \lif !C$ à partir de~$\Gamma$, puisque cette
-formule en est la dernière ligne. Les justifications des lignes~4
-et~7 restent valables : on remplace la référence à la ligne~1 par une
-référence à la dernière ligne de la !!{derivation} de $!A \lif !B$,
-et la référence à la ligne~2 par une référence à la dernière ligne de
-la !!{derivation} de $!B \lif !C$.
+formule en est la dernière ligne. Renvoyons, aux étapes~4 et~7 de
+l'exemple, aux dernières lignes des !!{derivation}s de $!B \lif !C$
+et de $!A \lif !B$, respectivement. Tous les autres renvois suivent
+la renumérotation des deux !!{derivation}s initiales et des lignes
+ajoutées.
 \end{proof}
 
 \begin{prob}

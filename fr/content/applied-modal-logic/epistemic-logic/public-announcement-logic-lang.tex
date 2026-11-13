@@ -1,0 +1,86 @@
+% Partie : applied-modal-logics
+% Chapitre : epistemic-logic
+% Section : public-announcement-logic-lang
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{el}{pal}
+
+\olsection{Logique des annonces publiques}
+
+Les logiques épistémiques dynamiques permettent de représenter les
+changements de connaissance des agents au fil du temps ou lorsqu'ils
+reçoivent de nouvelles informations. Plusieurs d'entre elles représentent
+ces changements par des \emph{événements} informationnels ou des
+\emph{mises à jour}. La mise à jour la plus élémentaire est une annonce
+publique : une formule est annoncée de manière véridique et tous les
+agents assistent ensemble à cette annonce. Pour la représenter, nous
+étendons le langage comme suit.
+
+\begin{defn}
+Soit $G$ un ensemble de symboles d'agents. Le langage de base de la
+logique épistémique à plusieurs agents avec annonces publiques contient :\footnote{L'inventaire de la source omet l'équivalence matérielle, pourtant admise par la clause de formation qui suit ; elle est rétablie ici.}
+\begin{enumerate}
+  \tagitem{prvFalse}{La constante propositionnelle de !!{falsity}~$\lfalse$.}{}
+  \tagitem{prvTrue}{La constante propositionnelle de !!{truth}~$\ltrue$.}{}
+  \item Un ensemble !!{denumerable} de !!{propositional variable}s : $\Obj
+    p_0$, $\Obj p_1$, $\Obj p_2$, \dots
+  \item Les connecteurs propositionnels : \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}.
+  \item L'opérateur de connaissance $\Knows_a$, pour chaque $a \in G$.
+  \item L'opérateur d'annonce publique $[!B]$, où $!B$ est !!a{formula}.
+\end{enumerate}
+\end{defn}
+
+L'opérateur d'annonce publique se comporte comme un opérateur de
+nécessité ; la définition inductive du langage en tient compte :
+
+\begin{defn}
+  Les \emph{!!{formula}s} du langage épistémique avec
+  annonces publiques sont définies inductivement comme suit :
+  \begin{enumerate}
+  \tagitem{prvFalse}{$\lfalse$ est une !!{formula} atomique.}{}
+
+  \tagitem{prvTrue}{$\ltrue$ est une !!{formula} atomique.}{}
+
+  \item Toute variable propositionnelle $\Obj p_i$ est une
+  !!{formula} (atomique).
+
+  \tagitem{prvNot}{Si $!A$ est !!a{formula}, alors $\lnot !A$ est
+  !!a{formula}.}{}
+
+  \tagitem{prvAnd}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \land
+  !B)$ est !!a{formula}.}{}
+
+  \tagitem{prvOr}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \lor !B)$
+  est !!a{formula}.}{}
+
+  \tagitem{prvIf}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \lif !B)$
+  est !!a{formula}.}{}
+
+  \tagitem{prvIff}{Si $!A$ et $!B$ sont des !!{formula}s, alors $(!A \liff !B)$
+  est !!a{formula}.}{}
+
+  \item Si $!A$ est !!a{formula} et $a \in G$, alors $\Knows_a !A$ est
+  !!a{formula}.
+
+  \item Si $!A$ et $!B$ sont des !!{formula}s, alors $[!A] !B$ est !!a{formula}.
+
+  \tagitem{limitClause}{Rien d'autre n'est !!a{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+La lecture voulue de la !!{formula} $[!A] !B$ est : « Après une annonce
+véridique de $!A$, $!B$~est vraie. » Il est parfois utile de parler
+également de connaissance commune dans le contexte des annonces
+publiques. On peut donc étendre aussi le langage par l'opérateur de
+connaissance commune~$\CKnows_G
+!A$.
+
+\end{document}

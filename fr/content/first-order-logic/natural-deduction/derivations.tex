@@ -25,18 +25,18 @@ trois !!{derivation}s suivies d'une inférence correcte.
 à partir d'un ensemble d'hypothèses~$\Gamma$ est un arbre fini
 d'!!{sentence}s qui satisfait les conditions suivantes :
 \begin{enumerate}
-\item Les !!{sentence}s situés tout en haut de l'arbre appartiennent
-  à $\Gamma$ ou sont déchargés par une inférence de l'arbre.
+\item Chaque feuille est une hypothèse qui appartient à $\Gamma$
+  ou qu'une inférence située sous elle dans l'arbre décharge.
 \item L'!!{sentence} situé tout en bas de l'arbre est~$!A$.
-\item Chaque !!{sentence} de l'arbre, à l'exception de
-  l'!!{sentence}~$!A$ situé tout en bas, est une prémisse d'une
-  application correcte d'une règle d'inférence dont la conclusion
-  se trouve immédiatement en dessous de cet !!{sentence}.
+\item Tout nœud qui n'est pas une feuille est la conclusion d'une
+  application correcte d'une règle d'inférence. Les !!{sentence}s
+  situés immédiatement au-dessus de ce nœud en sont ensemble
+  les prémisses.
 \end{enumerate}
-On dit alors que $!A$ est la \emph{conclusion} de la !!{derivation}
-et que $\Gamma$ est son contexte d'hypothèses !!{undischarged}s.
-Les hypothèses effectivement non déchargées doivent appartenir à
-$\Gamma$, sans nécessairement épuiser cet ensemble.
+On dit alors que $!A$ est la \emph{conclusion} de la !!{derivation}.
+Les hypothèses !!{undischarged}s appartiennent à $\Gamma$. Ce
+contexte peut aussi contenir des énoncés qui ne sont pas utilisés.
+%
 
 S'il existe une !!{derivation} de $!A$ à partir de~$\Gamma$,
 on dit que $!A$ est \emph{!!{derivable}} à partir de~$\Gamma$,
@@ -110,11 +110,11 @@ bien qu'il n'y ait aucune hypothèse~$!A$ à !!{discharge} :
 \end{prooftree}
 \end{ex}
 
-\begin{editorial}
-La source appelle $\Gamma$ les hypothèses non déchargées. La
-précision sur le contexte explicite sa propre définition, qui exige
-seulement que les hypothèses non déchargées appartiennent à
-$\Gamma$, sans imposer que tous ses éléments soient utilisés.
-\end{editorial}
+%
+%
+%
+%
+%
+%
 
 \end{document}

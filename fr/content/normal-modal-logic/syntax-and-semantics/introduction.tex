@@ -1,0 +1,112 @@
+% Part: normal-modal-logic
+% Chapter: syntax-and-semantics
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{int}
+
+\olsection{Introduction}
+
+La logique modale étudie les \emph{propositions modales} et les
+relations de conséquence qui les unissent. En voici quelques exemples :
+\begin{enumerate}
+\item Il est nécessaire que $2+2=4$.
+\item Il est nécessairement possible qu'il pleuve demain.
+\item Si~$!A$ est nécessairement possible, alors~$!A$ est possible.
+\end{enumerate}
+La possibilité et la nécessité ne sont pas les seules modalités :
+d'autres connecteurs unaires sont également classés parmi elles,
+par exemple « il est obligatoire que~$!A$ »,
+« il sera vrai que~$!A$ »,
+« Dana sait que~$!A$ » et « Dana croit que~$!A$ ».
+
+La logique modale apparaît déjà dans le \emph{De Interpretatione}
+d'Aristote. Celui-ci a été le premier à remarquer que la nécessité
+implique la possibilité, mais non l'inverse; que possibilité et
+nécessité se définissent l'une par l'autre; que, s'il est possible que
+$!A \land !B$ soit vrai, alors il est possible que $!A$ soit vrai
+et que $!B$ soit vrai, sans que la réciproque vaille; et que, si
+$!A \to !B$ est nécessaire, la nécessité de~$!A$ entraîne celle
+de~$!B$.
+
+La première approche moderne de la logique modale est due à C.~I.
+Lewis. Ses travaux culminent dans \emph{Symbolic Logic} (1932),
+écrit avec Langford. Lewis et Langford ne se satisfaisaient pas de la
+représentation de l'implication par le conditionnel matériel :
+$!A \lif !B$ rend mal « $!A$ implique $!B$ ». Ils proposaient
+plutôt de caractériser l'implication par « nécessairement, si $!A$,
+alors $!B$ », ce que l'on note $!A \strictif !B$. En cherchant à
+distinguer les propriétés de ces notions, Lewis a identifié cinq
+systèmes modaux, \Log{S1}, \ldots, \Log{S4} et \Log{S5}, dont les
+deux derniers sont encore utilisés.
+
+L'approche de Lewis et Langford était purement \emph{syntaxique} :
+ils choisissaient des axiomes et des règles raisonnables, puis
+examinaient ce que ceux-ci permettaient de démontrer. Une approche
+sémantique est longtemps restée difficile à établir. Rudolf Carnap
+en a proposé une première dans \emph{Meaning and Necessity} (1947),
+à l'aide de la notion de \emph{description d'état}, c'est-à-dire
+d'un ensemble d'énoncés atomiques tenus pour « vrais » dans cet état.
+Après avoir étendu la définition de la vérité aux énoncés
+quelconques~$!A$, Carnap dit que~$!A$ est \emph{nécessairement vrai}
+s'il est vrai dans toutes les descriptions d'état. Cette approche
+ne permettait pas de distinguer les modalités \emph{itérées} :
+les énoncés de la forme « Il est possible qu'il soit nécessaire que
+\ldots{} il soit possible que~$!A$ » se ramenaient toujours à la
+modalité la plus intérieure.
+
+La sémantique modale connaît une avancée majeure avec le théorème de
+complétude pour~$\Log{S5}$ que Saul Kripke publie en 1959 dans
+« A Completeness Theorem in Modal Logic » (\emph{Journal of Symbolic Logic}).
+La présentation par une relation d'accessibilité figure dans
+\href{https://doi.org/10.1002/malq.19630090502}{\emph{Semantical Analysis of Modal Logic I} (1963), p.~68--70}.
+Kripke partait de l'idée de Leibniz selon laquelle un énoncé est
+nécessairement vrai s'il est vrai « dans tous les mondes possibles ».
+Mais si l'on quantifie ainsi sur tous les mondes sans tenir compte
+du monde~$w$ où l'on évalue l'énoncé (ou de la description
+d'état~$s$ dans l'approche de Carnap), la vérité d'un énoncé précédé
+de « nécessairement » ne dépend pas de~$w$. La vérité d'un atome ou
+d'une formule où un atome se trouve hors de la portée d'une modalité
+peut toutefois varier d'un monde à l'autre.
+
+Kripke a donc supposé les mondes reliés par une \emph{relation d'accessibilité}~$R$ : un
+énoncé de la forme « Nécessairement~$!A$ » est vrai en un monde~$w$
+si et seulement si~$!A$ est vrai en tous les mondes~$w'$
+\emph{accessibles depuis}~$w$. Les sémantiques fondées sur une
+version de cette idée portent le nom de \emph{sémantiques de Kripke}
+et ont permis le développement foisonnant des logiques modales.
+
+Interprétée par la sémantique de Kripke, la logique modale nous
+montre à quoi ressemblent les \emph{structures relationnelles}
+« de l'intérieur ». Une structure relationnelle est simplement un
+ensemble muni d'une relation binaire : la classe des élèves ordonnés
+selon leur numéro de sécurité sociale en est un exemple. Les
+structures relationnelles se rencontrent cependant dans des
+domaines très divers. Outre les états du monde reliés par une
+possibilité relative, on peut considérer les états de connaissance
+d'un agent reliés par une possibilité épistémique, ou les états d'un
+système dynamique reliés par leurs transitions. La logique modale
+permet de modéliser tous ces cas : le premier relève de la logique
+modale ordinaire, ou \emph{aléthique}; les autres conduisent
+notamment aux logiques épistémique et dynamique.
+
+Nous nous concentrerons sur un aspect particulier, appelé
+\emph{théorie de la correspondance}. Kripke a notamment découvert
+que de nombreuses propriétés de la relation d'accessibilité~$R$,
+comme la transitivité ou la symétrie, peuvent être caractérisées
+\emph{dans le langage modal} lui-même au moyen de « schémas
+modaux » appropriés. Les logiciens disent, par exemple, que la
+réflexivité de~$R$ « correspond » au schéma « Si nécessairement~$!A$,
+alors~$!A$ ». Nous étudierons surtout la théorie de la
+correspondance pour plusieurs systèmes modaux classiques, dont
+\Log{S4} et \Log{S5}, obtenus en combinant les schémas
+\Ax{D}, \Ax{T}, \Ax{B}, \Ax{4} et~\Ax{5}.
+
+Dans un cadre de Kripke, la validité du schéma selon lequel la
+nécessité implique la possibilité correspond à la sérialité de~$R$.
+Chaque monde doit alors avoir au moins un successeur accessible.
+
+\end{document}

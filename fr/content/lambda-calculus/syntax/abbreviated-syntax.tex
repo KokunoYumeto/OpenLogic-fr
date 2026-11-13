@@ -1,0 +1,51 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: abbreviated-syntax
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{abb}
+\olsection{Syntaxe abrégée}
+
+Les termes définis dans la \olref[trm]{defn:term}
+sont parfois fastidieux à écrire. Il est donc
+utile d'introduire une notation plus concise.
+Il faut toutefois veiller à ce que les termes
+ainsi notés restent de lecture unique. Une
+convention courante, celle des \emph{termes
+abrégés}, est la suivante.
+
+\begin{enumerate}
+\item Quand les parenthèses sont omises,
+  l'application s'associe de gauche à droite.
+  Par exemple, si $M$, $N$, $P$ et~$Q$ sont
+  des termes, $MNPQ$ abrège $(((MN)P)Q)$.
+\item De même, quand les parenthèses sont omises,
+  l'abstraction lambda a la portée la plus
+  large possible. Par exemple,
+  $\lambd[x][MNP]$ se lit
+  $(\lambd[x][((MN)P)])$.
+\item Un lambda peut abstraire plusieurs
+  variables. Par exemple,
+  $\lambd[xyz][M]$ abrège
+  $\lambd[x][\lambd[y][\lambd[z][M]]]$.
+\end{enumerate}
+
+Par exemple,
+\[
+\lambd[xy][xxyx \lambd[z][xz]]
+\]
+abrège
+\[
+(\lambd[x][(\lambd[y][((((xx)y)x)(\lambd[z][(xz)]))])]).
+\]
+
+\begin{prob}
+Développer le terme abrégé
+$\lambd[g][(\lambd[x][g (x x)])
+  \lambd[x][g (x x)]]$.
+\end{prob}
+
+\end{document}

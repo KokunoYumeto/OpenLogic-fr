@@ -1,0 +1,99 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: main-operator
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{mai}
+
+\olsection{\printtoken{S}{main operator} d'une formule}
+
+\begin{explain}
+Il est souvent utile de parler du dernier opérateur employé pour
+construire !!a{formula}~$!A$. On l'appelle l'\emph{!!{main operator}}
+de~$!A$. Intuitivement, c'est l'opérateur le plus « extérieur »
+de~$!A$. Par exemple, l'!!{main operator} de $\lnot !A$ est
+$\lnot$, celui de $(!A \lor !B)$ est~$\lor$, et ainsi de suite.
+\end{explain}
+
+\begin{defn}[!!^{main operator}]
+\ollabel{def:main-op}
+L'\emph{!!{main operator}} d'!!a{formula}~$!A$ est défini comme suit :
+\begin{enumerate}
+\item \indcase*{!A}{!A}{$\indfrm$ n'a pas d'!!{main operator}.}
+
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{l'!!{main operator} de
+  $\indfrm$ est~$\lnot$.}}{}
+
+\tagitem{prvAnd}{\indcase{!A}{(!B \land !C)}{l'!!{main operator} de
+  $\indfrm$ est~$\land$.}}{}
+
+\tagitem{prvOr}{\indcase{!A}{(!B \lor !C)}{l'!!{main operator} de
+  $\indfrm$ est~$\lor$.}}{}
+
+\tagitem{prvIf}{\indcase{!A}{(!B \lif !C)}{l'!!{main operator} de
+  $\indfrm$ est~$\lif$.}}{}
+
+\tagitem{prvIff}{\indcase{!A}{(!B \liff !C)}{l'!!{main operator} de
+  $\indfrm$ est~$\liff$.}}{}
+
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{l'!!{main operator}
+  de $\indfrm$ est~$\lforall$.}}{}
+
+\tagitem{prvEx}{\indcase{!A}{\lexists[x][!B]}{l'!!{main operator}
+  de $\indfrm$ est~$\lexists$.}}{}
+\end{enumerate}
+\end{defn}
+
+Dans chaque cas, il s'agit de l'\emph{occurrence} précisément indiquée
+de l'!!{main operator} dans la !!{formula}. Ainsi,
+$((!D \lif !E) \lif (!E \lif !D))$ est de la forme $(!B \lif !C)$,
+avec $!B$ égal à~$(!D \lif !E)$ et $!C$ égal à~$(!E \lif !D)$ ;
+son !!{main operator} est donc la deuxième occurrence de~$\lif$.
+
+\begin{explain}
+Il s'agit d'une définition \emph{par cas} d'une fonction qui associe
+à chaque !!{formula} non atomique l'occurrence de son
+!!{main operator}.\footnote{Précision éditoriale : la source dit « récursive ». Les clauses ci-dessus sélectionnent directement un opérateur sans faire appel à la valeur de cette fonction sur les sous-formules. Il s'agit d'une définition par cas, selon la distinction explicitée dans la section suivante.} La définition inductive des !!{formula}s garantit
+que toute !!{formula}~$!A$ relève de l'un des cas de la
+\olref{def:main-op} : toute !!{formula} non atomique~$!A$ possède donc
+un !!{main operator}. Chaque !!{formula} ne relevant que d'un seul
+cas, et les !!{formula}s plus petites dont $!A$ est construite étant
+déterminées de manière unique, l'occurrence de l'!!{main operator}
+de~$!A$ est elle-même unique. Nous avons donc bien défini une fonction.
+\end{explain}
+
+Nous nommons les !!{formula}s selon leur !!{main operator}, comme
+l'indique \olref{tab:main-op}.\iftag{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
+{ Rappelons cependant que les opérateurs définis ne figurent pas
+officiellement dans les !!{formula}s : ce sont des abréviations. Ils
+ne peuvent donc pas, à proprement parler, être l'!!{main operator}
+d'une !!{formula}, et il n'est pas nécessaire de les traiter
+séparément dans les démonstrations concernant toutes les
+!!{formula}s.}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{c | c | c}
+!!^{main operator} & Type de !!{formula} & Exemple\\
+\hline
+aucun & atomique (!!{formula}) &
+\iftag{prvFalse}{$\lfalse$,}{}
+\iftag{prvTrue}{$\ltrue$,}{}
+$\Atom{R}{t_1, \dots, t_n}$,
+$\eq[t_1][t_2]$\\
+$\lnot$ & négation & $\lnot !A$ \\
+$\land$ & conjonction & $(!A \land !B)$ \\
+$\lor$ & disjonction & $(!A \lor !B)$ \\
+$\lif$ & !!{conditional} & $(!A \lif !B)$ \\
+$\liff$ & !!{biconditional} & $(!A \liff !B)$ \\
+$\lforall[][]$ & universelle (!!{formula}) & $\lforall[x][!A]$ \\
+$\lexists[][]$ & existentielle (!!{formula}) & $\lexists[x][!A]$
+\end{tabular}
+\caption{Opérateur principal et noms des !!{formula}s}
+\ollabel{tab:main-op}
+\end{table}
+
+\end{document}

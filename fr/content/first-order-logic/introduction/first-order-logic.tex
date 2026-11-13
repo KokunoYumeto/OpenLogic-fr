@@ -50,15 +50,12 @@ dans~$\Struct{M}$ » (en symboles : $\Sat{M}{!A}$) pour des
 !!{sentence}s~$!A$ et des !!{structure}s~$\Struct{M}$. Cela fait, nous
 pourrons également définir avec précision d'autres termes sémantiques,
 comme « découle de » ou « est logiquement vrai ». Ces définitions
-permettront de décider, toujours avec une précision mathématique, si,
-par exemple,
+permettront d'établir avec précision des conséquences logiques telles que
 \[
   \lforall[x][(!A(x) \lif !B(x))],\,
   \lexists[x][!A(x)] \Entails \lexists[x][!B(x)].
 \]
-La réponse sera évidemment affirmative. Si vous avez déjà appris à
-symboliser des phrases de la langue courante en logique du premier
-ordre, vous reconnaîtrez ici, par exemple, la symbolisation de
+C'est la forme de l'argument suivant.
 « Toutes les fourmis sont des insectes ; il existe des fourmis ; donc
 il existe des insectes ». Cet argument est manifestement valide : notre
 modèle mathématique de « découle de » pour le langage formel doit donc
@@ -71,13 +68,14 @@ chercher de telles !!{derivation}s, peut-être même une
 !!{derivation} montrant que la conséquence logique ci-dessus vaut. Il
 existe de nombreuses manières de présenter des !!{derivation}s : vous
 avez peut-être pratiqué ce qu'on appelle la « déduction naturelle » ou
-les « arbres de vérité », mais il en existe bien d'autres. Les systèmes
+les tableaux, aussi appelés « arbres de vérité », mais il en existe bien d'autres. Les systèmes
 de !!{derivation} visent à fournir des outils qui permettent de répondre
 aux questions des logiciens énumérées plus haut. Ainsi, une
 !!{derivation} de déduction naturelle dont
 $\lforall[x][(!A(x) \lif !B(x))]$ et $\lexists[x][!A(x)]$ sont les
 prémisses, et $\lexists[x][!B(x)]$ la conclusion (la dernière ligne),
-\emph{établit} que $\lexists[x][!B(x)]$ découle logiquement de
+établit, par correction de la déduction naturelle, que
+$\lexists[x][!B(x)]$ découle logiquement de
 $\lforall[x][(!A(x) \lif !B(x))]$ et de $\lexists[x][!A(x)]$.
 
 Mais pourquoi ? À première vue, les systèmes de !!{derivation} n'ont
@@ -93,13 +91,5 @@ si et seulement si $\lforall[x][(!A(x) \lif !B(x))]$ et
 $\lexists[x][!A(x)]$ entraînent ensemble $\lexists[x][!B(x)]$. Avant
 d'y parvenir, il faut toutefois accomplir un travail minutieux pour
 définir correctement la syntaxe et la sémantique.
-
-\begin{editorial}
-Dans trois formules de la source, le second argument de
-$\lforall[x]$ se ferme après la conséquence logique entière, au lieu de
-se fermer après $(!A(x) \lif !B(x))$ ; une seconde fermeture apparaît
-alors à la fin. Les limites d'arguments voulues sont rétablies dans les
-trois occurrences.
-\end{editorial}
 
 \end{document}

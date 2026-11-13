@@ -1,0 +1,69 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: terms
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{trm}
+\olsection{Termes}
+
+Les termes du lambda-calcul se construisent
+par induction à partir d'une réserve infinie
+de variables $\Obj{v_0}$, $\Obj{v_1}$, \dots,
+du symbole « $\lambd$ » et des parenthèses.
+Nous emploierons $x$, $y$, $z$, \dots{} pour
+désigner des variables, et $M$, $N$, $P$,
+\dots{} pour désigner des termes.
+
+\begin{defn}[Termes] \ollabel{defn:term}
+L'ensemble des \emph{termes} du lambda-calcul
+est défini inductivement par les règles suivantes :
+\begin{enumerate}
+  \item \ollabel{defn:term-var} Si $x$ est une
+    variable, alors $x$ est un terme.
+  \item \ollabel{defn:term-abs} Si $x$ est une
+    variable et $M$ un terme, alors
+    $(\lambd[x][M])$ est un terme.
+  \item \ollabel{defn:term-app} Si $M$ et $N$
+    sont des termes, alors $(MN)$ est un terme.
+\end{enumerate}
+\end{defn}
+
+Un terme $(\lambd[x][M])$ obtenu selon
+\olref{defn:term-abs} résulte d'une
+\emph{abstraction}; le~$x$ qui suit le
+symbole~$\lambd$ est appelé son
+\emph{paramètre}. Un terme $(MN)$ obtenu
+selon \olref{defn:term-app} résulte d'une
+\emph{application}.
+
+Les termes ainsi définis sont entièrement
+parenthésés. Cette écriture peut devenir
+pesante, comme le montre le terme
+$(\lambd[x][((\lambd[x][x])(\lambd[x][(xx)]))])$.
+Nous adopterons plus loin des conventions
+permettant de supprimer certaines parenthèses.
+La définition officielle permet néanmoins
+de déterminer comment un terme est construit
+selon la \olref{defn:term}. Ainsi, la dernière
+étape de la formation du terme
+$(\lambd[x][((\lambd[x][x])(\lambd[x][(xx)]))])$
+est nécessairement une abstraction de
+paramètre~$x$. Ce terme résulte de l'abstraction
+du terme $((\lambd[x][x])(\lambd[x][(xx)]))$,
+qui est l'application de deux termes. Chacun
+de ces deux termes résulte lui-même d'une
+abstraction, et ainsi de suite.
+
+\begin{prob}
+Décrire la formation du terme
+$(\lambd[g][((\lambd[x][(g (x x))])
+  (\lambd[x][(g (x x))]))])$.
+\end{prob}
+\begin{explain}
+Dans cet exercice, les parenthèses délimitent chaque application
+et chaque abstraction, suivant les règles de formation.
+\end{explain}
+\end{document}

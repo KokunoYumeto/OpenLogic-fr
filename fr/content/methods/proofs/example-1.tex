@@ -1,0 +1,265 @@
+% Partie : méthodes
+% Chapitre : démonstrations
+% Section : premier exemple
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{prf}{ex1}
+
+\olsection{Un exemple}
+
+Notre premier exemple est un fait simple concernant
+l'union et l'intersection d'ensembles. Il illustrera
+le dépliage des définitions, la démonstration de
+conjonctions et d'énoncés universels, ainsi que
+la démonstration par cas.
+
+\begin{prop}
+Pour tous ensembles $A$, $B$ et $C$,
+$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.
+\end{prop}
+
+Démontrons-le !{}
+
+\begin{proof}
+Nous voulons montrer que, pour tous ensembles
+$A$, $B$ et $C$,
+$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.
+\begin{quote}
+Commençons par déplier, dans la proposition,
+la définition de «~$=$~». Rappelons que,
+pour démontrer que deux ensembles sont
+identiques, il faut montrer qu'ils ont
+les mêmes !!{element}s. Autrement dit,
+tous les !!{element}s de $A \cup (B \cap C)$
+doivent aussi être !!{element}s de
+$(A \cup B) \cap (A \cup C)$, et
+réciproquement. «~Réciproquement~» signifie
+que tout !!{element} de
+$(A \cup B) \cap (A \cup C)$ doit aussi
+être !!a{element} de $A \cup (B \cap C)$.
+En dépliant la définition, nous découvrons
+donc une conjonction à démontrer.
+Notons-la :
+\end{quote}
+Par définition,
+$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+si et seulement si tout !!{element} de
+$A \cup (B \cap C)$ est !!a{element} de
+$(A \cup B) \cap (A \cup C)$, et si tout
+!!{element} de $(A \cup B) \cap (A \cup C)$
+est !!a{element} de $A \cup (B \cap C)$.
+\begin{quote}
+Puisqu'il s'agit d'une conjonction,
+il faut démontrer séparément chacun
+de ses membres. Commençons par le
+premier : tout !!{element} de
+$A \cup (B \cap C)$ est
+!!a{element} de
+$(A \cup B) \cap (A \cup C)$.
+
+Cet énoncé est universel. Considérons
+donc un !!{element} arbitraire de
+$A \cup (B \cap C)$ et montrons qu'il
+est aussi !!a{element} de
+$(A \cup B) \cap (A \cup C)$.
+Choisissons une variable pour nommer
+cet !!{element} arbitraire,
+par exemple~$z$. Poursuivons :
+\end{quote}
+Montrons d'abord que tout !!{element} de
+$A \cup (B \cap C)$ est
+!!a{element} de
+$(A \cup B) \cap (A \cup C)$.
+Soit $z \in A \cup (B \cap C)$.
+Nous devons montrer que
+$z \in (A \cup B) \cap (A \cup C)$.
+\begin{quote}
+Il est temps de déplier les définitions
+de $\cup$ et de~$\cap$. Par exemple,
+la définition de l'union dit que
+$A \cup B =
+  \Setabs{u}{u \in A \text{ ou } u \in B}$.
+Pour l'appliquer à «~$A \cup (B \cap C)$~»,
+il faut remplacer le «~$B$~» de la
+définition par «~$B \cap C$~». Ainsi,
+$A \cup (B \cap C) =
+  \Setabs{u}{u \in A \text{ ou } u \in B \cap C}$.
+Notre hypothèse $z \in A \cup (B \cap C)$
+signifie donc que
+$z \in
+  \Setabs{u}{u \in A \text{ ou } u \in B \cap C}$.
+Or $z \in \Setabs{u}{\dots u\dots}$
+si et seulement si $\dots z\dots$.
+Dans le cas présent, cela signifie
+$z \in A$ ou $z \in B \cap C$.
+\end{quote}
+Par définition de $\cup$, on a $z \in A$
+ou $z \in B \cap C$.
+\begin{quote}
+Nous avons une disjonction : il sera
+utile de distinguer deux cas.
+Dans chacun d'eux, nous montrerons
+la conclusion visée, à savoir
+«~$z \in (A \cup B) \cap (A \cup C)$~».
+\end{quote}
+Cas 1 : supposons $z \in A$.
+\begin{quote}
+Cette hypothèse ne nous donne guère
+d'autres informations. Regardons donc
+la conclusion à établir. Pour montrer
+que $z \in (A \cup B) \cap (A \cup C)$,
+la définition de $\cap$ nous demande
+de montrer que $z$ appartient à la
+fois à $A \cup B$ et à $A \cup C$.
+Or $z \in A \cup B$ si et seulement
+si $z \in A$ ou $z \in B$, et nous
+avons déjà $z \in A$ par l'hypothèse
+du premier cas. Le même raisonnement,
+avec $C$ à la place de $B$, donne
+$z \in A \cup C$. Nous avons raisonné
+à rebours à partir de la conclusion ;
+écrivons maintenant l'argument dans
+le sens requis par la démonstration.
+\end{quote}
+Puisque $z \in A$, nous avons
+$z \in A$ ou $z \in B$ ; par
+définition de~$\cup$, $z \in A \cup B$.
+De même, $z \in A \cup C$. Par
+définition de~$\cap$, il en résulte
+$z \in (A \cup B) \cap (A \cup C)$.
+\begin{quote}
+Le premier cas est terminé. Passons
+au second, dans lequel $z \in B \cap C$.
+\end{quote}
+Cas 2 : supposons $z \in B \cap C$.
+\begin{quote}
+Il s'agit à nouveau de l'intersection
+de deux ensembles. Appliquons la
+définition de~$\cap$ :
+\end{quote}
+Puisque $z \in B \cap C$, $z$ est
+!!a{element} de $B$ et de $C$,
+par définition de~$\cap$.
+\begin{quote}
+Revenons à la conclusion : il faut
+montrer que $z$ appartient à la
+fois à $A \cup B$ et à $A \cup C$.
+La solution est, là encore, immédiate.
+\end{quote}
+Puisque $z \in B$, nous avons
+$z \in A \cup B$. Puisque
+$z \in C$, nous avons aussi
+$z \in A \cup C$. Donc
+$z \in (A \cup B) \cap (A \cup C)$.
+\begin{quote}
+Nous venons d'appliquer de nouveau
+les définitions de $\cup$ et de $\cap$.
+Comme nous les avons déjà rappelées
+et avons déjà montré qu'un objet
+appartenant à l'un de deux ensembles
+appartient à leur union, nous pouvons
+être moins explicites cette fois.
+
+Le second cas est achevé : nous pouvons
+énoncer la conclusion de la première
+moitié de la démonstration.
+\end{quote}
+Ainsi, si $z \in A \cup (B \cap C)$,
+alors $z \in (A \cup B) \cap (A \cup C)$.
+\begin{quote}
+Il reste à montrer l'autre inclusion :
+tout !!{element} de
+$(A \cup B) \cap (A \cup C)$ est
+!!a{element} de $A \cup (B \cap C)$.
+Comme précédemment, nous traitons cet
+énoncé universel en prenant un
+!!{element} arbitraire du premier
+ensemble et en montrant qu'il appartient
+au second. Énonçons cette démarche.
+\end{quote}
+Supposons maintenant
+$z \in (A \cup B) \cap (A \cup C)$.
+Nous voulons montrer
+$z \in A \cup (B \cap C)$.
+\begin{quote}
+Notre nouvelle hypothèse est
+$z \in (A \cup B) \cap (A \cup C)$.
+Nous réutilisons ici la lettre~$z$,
+ce qui peut prêter à confusion.
+Mais les hypothèses posées dans
+la première moitié ne sont plus
+en vigueur : nous pouvons maintenant
+en poser de nouvelles à propos de~$z$.
+Si vous préférez, remplacez $z$ par
+une autre variable dans la suite.
+
+Par définition de $\cap$, $z$ appartient
+à $A \cup B$ ainsi qu'à $A \cup C$.
+En dépliant $\cup$, nous obtenons
+$z \in A$ ou $z \in B$, et aussi
+$z \in A$ ou $z \in C$. On pourrait
+penser à distinguer des cas, mais
+le «~et~» entre les deux disjonctions
+demande de l'attention. On pourrait
+croire à tort que les seules
+possibilités sont simplement :
+$z$ appartient à $A$, à $B$ ou
+à $C$. Examinons plutôt chaque
+disjonction tour à tour.
+\end{quote}
+Par définition de $\cap$,
+$z \in A \cup B$ et
+$z \in A \cup C$.
+Par définition de $\cup$,
+$z \in A$ ou $z \in B$.
+Distinguons deux cas.
+\begin{quote}
+Nous nous concentrons sur la
+première disjonction et n'avons
+pas encore déplié la seconde,
+issue de $A \cup C$ : nous
+n'en avons pas encore besoin.
+Le premier cas est $z \in A$.
+Tout !!a{element} d'un ensemble
+est aussi !!a{element} de l'union
+de cet ensemble avec un autre.
+Ce cas est donc facile :
+\end{quote}
+Cas 1 : supposons $z \in A$.
+Alors $z \in A \cup (B \cap C)$.
+\begin{quote}
+Dans le second cas, $z \in B$.
+Nous allons y déplier la
+seconde union et distinguer
+de nouveau des cas :
+\end{quote}
+Cas 2 : supposons $z \in B$.
+Puisque $z \in A \cup C$,
+$z \in A$ ou $z \in C$.
+Distinguons encore deux cas.
+
+Cas 2a : $z \in A$. Alors, de nouveau,
+$z \in A \cup (B \cap C)$.
+\begin{quote}
+Ce cas peut sembler étrange :
+nous n'avons pas eu besoin
+de l'hypothèse $z \in B$.
+Cela ne pose aucun problème.
+\end{quote}
+Cas 2b : $z \in C$. Alors
+$z \in B$ et $z \in C$, donc
+$z \in B \cap C$ et, par suite,
+$z \in A \cup (B \cap C)$.
+\begin{quote}
+Les deux distinctions de cas
+sont achevées, ainsi que la
+seconde moitié de la démonstration.
+\end{quote}
+Ainsi, si
+$z \in (A \cup B) \cap (A \cup C)$,
+alors $z \in A \cup (B \cap C)$.
+\end{proof}
+
+\end{document}

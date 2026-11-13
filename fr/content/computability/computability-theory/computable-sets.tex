@@ -1,0 +1,50 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: computable-sets
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{cps}
+\olsection{Ensembles calculables}
+
+La notion de calculabilité s'étend des
+fonctions aux ensembles :
+
+\begin{defn}
+  Soit $S$ un ensemble d'entiers naturels.
+  L'ensemble $S$ est \emph{calculable} si et
+  seulement si sa fonction caractéristique
+  $\Char{S}$ l'est. Autrement dit, $S$ est
+  calculable si et seulement si la fonction
+\[
+\Char{S}(x) =
+\begin{cases}
+1 & \text{si $x\in S$}\\
+0 & \text{sinon}
+\end{cases}
+\]
+  est calculable. De même, une relation
+  $R(x_0,\dots,x_{k-1})$ est calculable si
+  et seulement si sa fonction caractéristique
+  l'est.
+
+Les ensembles et les relations calculables
+sont également dits \emph{décidables}.
+\end{defn}
+
+\begin{explain}
+Nous disposons maintenant de plusieurs notions
+de calculabilité : pour les fonctions partielles,
+pour les fonctions totales et pour les ensembles.
+Il faut les distinguer.\iftag{TMs}{ Une machine
+de Turing qui calcule une fonction partielle
+renvoie la valeur de cette fonction pour les
+entrées où elle est définie. Une machine qui
+décide un ensemble s'arrête pour toute entrée
+et renvoie $1$ ou~$0$ selon que celle-ci
+appartient ou non à l'ensemble.}{}
+\end{explain}
+
+\end{document}

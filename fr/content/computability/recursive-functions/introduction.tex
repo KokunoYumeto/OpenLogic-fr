@@ -1,0 +1,54 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{int}
+\olsection{Introduction}
+
+Pour élaborer une théorie mathématique de la calculabilité, il faut
+d'abord en construire un \emph{modèle}. Nous voyons aujourd'hui dans
+le calcul le type d'opération qu'effectuent les ordinateurs, lesquels
+manipulent des symboles. Mais, aux débuts de la théorie de la
+calculabilité, le calcul \emph{numérique} en était l'exemple type.
+Les mathématiciens s'intéressaient depuis longtemps aux fonctions
+numériques calculables, c'est-à-dire aux fonctions
+$f\colon\Nat^n\to\Nat$ dont on peut calculer les valeurs. Il n'est
+donc pas surprenant que la théorie de la calculabilité ait d'abord
+étudié de telles fonctions. Les exemples les plus familiers,
+comme l'addition, la multiplication et l'exponentiation des entiers
+naturels, présentent un trait commun : on peut les définir
+\emph{récursivement}. Il est donc naturel de chercher à définir la
+notion générale de \emph{fonction calculable} au moyen de définitions
+récursives. Parmi les nombreuses façons de définir récursivement des
+fonctions numériques, un schéma particulièrement simple jouera ici
+un rôle central : la \emph{récurrence primitive}.
+
+Outre les fonctions calculables, on peut étudier les ensembles et
+les relations calculables. Un ensemble est calculable si l'on peut
+décider, pour tout nombre donné, s'il en est !!a{element}. Une
+relation est calculable si l'on peut décider, pour tout uplet
+$\tuple{n_1,\dots,n_k}$, s'il en est !!a{element}. Grâce à la
+\emph{fonction caractéristique} d'un ensemble ou d'une relation,
+l'étude des ensembles et des relations calculables se ramène à
+celle des fonctions calculables. On peut donc également définir
+les relations récursives primitives; la relation « $n$ divise
+$m$ », par exemple, est récursive primitive.
+
+Les fonctions récursives primitives, définissables à partir des fonctions de base par
+composition et récurrence primitive, ne sont cependant pas les seules
+fonctions numériques calculables. Parmi les diverses extensions de
+ce schéma, la plus puissante et la plus communément admise consiste
+à autoriser une recherche non bornée. On obtient ainsi la définition
+des \emph{fonctions récursives partielles}, puis celle, apparentée,
+des \emph{fonctions récursives générales}. Celles-ci sont calculables
+et totales : la définition retient exactement les fonctions
+récursives partielles qui se trouvent être totales. Les fonctions
+récursives permettent de simuler les autres modèles de calcul,
+notamment les machines de Turing et le lambda-calcul. Elles
+constituent ainsi l'un des modèles de calcul reconnus.
+
+\end{document}

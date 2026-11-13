@@ -1,0 +1,77 @@
+% Part: normal-modal-logic
+% Chapter: completeness
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{com}{int}
+
+\olsection{Introduction}
+
+Si $\Sigma$ est un système modal, le théorème de correction établit
+que, si $\Sigma \Proves !A$, alors $!A$ est valide dans toute classe
+$\mClass{C}$ de modèles où toutes les instances de toutes les
+!!{formula}s de~$\Sigma$ sont valides. Ainsi, si $\Log{K}
+\Proves !A$, alors $!A$ est vraie dans tous les modèles ; si
+$\Log{KT} \Proves !A$, $!A$ est vraie dans tous les modèles réflexifs ;
+si $\Log{KD} \Proves !A$, $!A$ est vraie dans tous les modèles sériels,
+et ainsi de suite.
+
+La complétude est la réciproque de la correction. Dire que \Log{K} est
+complet signifie, par exemple, que si une !!{formula}~$!A$ est valide,
+alors $\Proves !A$. Démontrer la complétude est bien plus difficile
+que démontrer la correction. Il est d'abord utile d'en considérer la
+contraposée : \Log{K} est complet si et seulement si, chaque fois que
+$\Proves/ !A$, il existe un contre-modèle, c'est-à-dire un
+modèle~$\mModel{M}$ tel que $\mSat/{M}{!A}$. De manière équivalente,
+en niant $!A$, on peut montrer que, chaque fois que
+$\Proves/ \lnot !A$, il existe un modèle de~$!A$. Pour construire ce
+modèle, on peut exploiter les informations contenues dans $!A$. C'est
+ce que l'on fait souvent lorsqu'on cherche un modèle pour une
+!!{formula} particulière : si l'on veut un contre-modèle à
+$p \lif \Box q$, par exemple, on sait qu'il doit comporter un monde
+où $p$ est vrai et $\Box q$ est faux. Si $\Box q$ est faux en ce
+monde, il doit exister un monde accessible depuis lui où $q$ est
+faux. Il suffit donc de savoir quelles !!{propositional variable}s
+sont vraies dans chaque monde et quels mondes sont accessibles les
+uns depuis les autres.
+
+Pour démontrer la complétude, toutefois, nous ne construisons pas un
+modèle pour une !!{formula}~$!A$ particulière. Nous voulons établir
+qu'il existe un modèle pour chaque $!A$ telle que
+$\Proves/[\Sigma] \lnot !A$. C'est une condition minimale :
+\emph{si} $\Proves[\Sigma] \lnot !A$, la correction exclut tout
+modèle de~$!A$ dans lequel $\Sigma$ est vraie. Or
+$\Proves/[\Sigma] \lnot !A$ si et seulement si $!A$ est
+$\Sigma$-cohérente. En effet, le théorème de déduction donne
+l'équivalence entre $\{!A\} \Proves[\Sigma] \lfalse$ et
+$\Proves[\Sigma] !A \lif \lfalse$. Dans ce système, cette dernière
+formule équivaut à $\lnot !A$. Notre tâche est donc de construire
+un modèle pour chaque !!{formula} $\Sigma$-cohérente.
+
+L'idée est de trouver un ensemble $\Sigma$-cohérent de !!{formula}s
+qui contienne~$!A$, mais aussi d'autres formules décrivant le
+monde où $!A$ doit être vraie. Ces ensembles sont les ensembles
+$\Sigma$-cohérents \emph{complets}. Un modèle à un seul monde ne suffit
+pas toujours pour rendre~$!A$ vraie : il faut prévoir la possibilité
+de plusieurs mondes et une relation d'accessibilité. Un
+ensemble $\Sigma$-cohérent complet contenant~$!A$ peut également
+contenir des !!{formula}s de la forme $\Box !B$ ou~$\Diamond !C$.
+Dans le premier cas, $!B$ doit être vraie dans tous les mondes
+accessibles ; dans le second, $!C$ doit être vraie dans au
+moins l'un d'eux. Pour assurer ces conditions, nous prendrons
+\emph{tous} les ensembles $\Sigma$-cohérents complets possibles comme
+ensemble des mondes. La difficulté sera de déterminer quand l'un de
+ces ensembles $\Sigma$-cohérents complets doit être accessible depuis un autre dans notre modèle.
+
+Nous montrerons que, dans le modèle ainsi défini, $!A$ est vraie en
+un monde --- qui est lui-même un ensemble $\Sigma$-cohérent complet
+--- si et seulement si $!A$ est un !!{element} de cet ensemble. Si
+$!A$ est $\Sigma$-cohérente, elle est un !!{element} d'au moins un ensemble
+$\Sigma$-cohérent complet (ce que nous démontrerons) ; il y aura donc
+un monde où $!A$ est vraie. Pour un système cohérent, nous obtiendrons ainsi un même modèle
+dans lequel toute !!{formula} $\Sigma$-cohérente~$!A$ est vraie en un
+monde. C'est le modèle \emph{canonique} de~$\Sigma$.
+\end{document}

@@ -1,0 +1,236 @@
+% Part: second-order-logic
+% Chapter: sol-and-sets
+% Section: power-of-continuum
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{set}{pow}
+
+\olsection{La puissance du continu}
+
+\begin{explain}
+La logique du second ordre permet de quantifier
+sur les sous-ensembles du !!{domain}, mais pas
+sur les ensembles de tels sous-ensembles. Pour
+le faire directement, il faudrait une logique
+\emph{du troisième ordre}. Supposons, par
+exemple, que nous voulions énoncer le théorème
+de Cantor : aucune fonction !!{injective} ne va
+de l'ensemble des parties d'un ensemble vers
+cet ensemble. Nous pourrions tenter d'écrire :
+« Pour tous ensembles~$X$ et~$P$, si $P$ est
+l'ensemble des parties de~$X$, alors
+$\cardle{P}{X}$ est faux. » Il faudrait exprimer
+que les !!{element}s de~$P$ sont exactement les
+sous-ensembles de~$X$, par exemple au moyen de
+$\lforall[Y][(P(Y)\liff Y\subseteq X)]$.
+Mais $P(Y)$ n'est pas une !!{formula} du second
+ordre : une !!{variable} de relation unaire
+comme~$P$ ne prend que des termes pour arguments.
+
+Nous pouvons toutefois \emph{simuler} une
+quantification sur des ensembles d'ensembles
+si le !!{domain} est assez grand. Une relation
+binaire~$R$ met en rapport des !!{element}s du
+!!{domain}. Pour $x\in\Domain{M}$, l'ensemble
+$\Setabs{y\in\Domain{M}}{R(x,y)}$ est celui que
+$x$ \emph{code par~$R$}. Réciproquement, si
+$Z\subseteq\Pow{\Domain{M}}$ et que
+$\Domain{M}$ contient au moins autant
+d'!!{element}s que~$Z$ contient d'ensembles,
+une relation $R\subseteq\Domain{M}^2$ peut
+faire coder chaque $Y\in Z$ par un certain~$x$.
+\end{explain}
+
+\begin{defn}
+Pour $R\subseteq\Domain{M}^2$, nous disons
+que \emph{$x$ code par~$R$} l'ensemble
+$\Setabs{y\in\Domain{M}}{R(x,y)}$.
+\end{defn}
+
+Si un !!{element}~$x\in\Domain{M}$ code
+par~$R$ un sous-ensemble de~$\Domain{M}$,
+un ensemble $Y\subseteq\Domain{M}$ code
+une collection d'ensembles : ceux que codent
+ses !!{element}s. Il peut ainsi coder par~$R$
+l'ensemble des parties de~$X$. Cela signifie que
+chaque $Z\subseteq X$ est codé par un
+$x\in Y$, et que chaque $x\in Y$ code
+un sous-ensemble de~$X$.
+
+\begin{prop}
+La !!{formula}
+\[
+\fn{Codes}(x,R,Z)\ident
+\lforall[y][(Z(y)\liff R(x,y))]
+\]
+exprime que $s(x)$ code $s(Z)$ par~$s(R)$.
+La !!{formula}
+\begin{multline*}
+\fn{Pow}(Y,R,X)\ident{}\\
+\lforall[Z][(Z\subseteq X\lif
+\lexists[x][(Y(x)\land\fn{Codes}(x,R,Z))])]\land{}\\
+\lforall[x][(Y(x)\lif
+\lforall[Z][(\fn{Codes}(x,R,Z)\lif Z\subseteq X)])]
+\end{multline*}
+exprime que $s(Y)$ code par~$s(R)$
+l'ensemble des parties de~$s(X)$ : ses !!{element}s
+codent exactement les sous-ensembles de~$s(X)$.
+\end{prop}
+
+\begin{explain}
+Ce codage permet d'exprimer des assertions sur
+les ensembles de parties en quantifiant sur
+leurs codes. Le théorème de Cantor, par exemple,
+dit qu'aucune fonction !!{injective} ne peut
+envoyer l'ensemble des codes~$Y$ de
+$\Pow{X}$ dans~$X$.
+\end{explain}
+
+\begin{prop}
+L'!!{sentence}
+\begin{multline*}
+\lforall[X][\lforall[Y][\lforall[R][(
+\fn{Pow}(Y,R,X)\lif{}\\
+\lnot\lexists[u][(
+\lforall[x][\lforall[y][((Y(x)\land Y(y)\land
+\eq[u(x)][u(y)])\lif\eq[x][y])]]\land{}\\
+\lforall[x][(Y(x)\lif X(u(x)))])])]]]
+\end{multline*}
+est valide.
+\end{prop}
+
+\begin{explain}
+L'ensemble des parties d'un ensemble
+!!{denumerable} est !!{nonenumerable} et
+plus grand que tout ensemble de cardinal~$\aleph_0$.
+La taille de $\Pow{\Nat}$ est appelée la
+\emph{puissance du continu}, car c'est aussi
+la taille de la droite réelle~$\Real$.
+Si le !!{domain} est assez grand pour coder
+l'ensemble des parties d'un ensemble~$X$ de
+cardinal~$\aleph_0$, un ensemble~$Y$ a la
+taille du continu lorsqu'il correspond
+bijectivement aux sous-ensembles de~$X$ qu'il
+code. Si le !!{domain} est trop petit pour
+contenir un sous-ensemble équipotent à~$\Real$,
+aucune relation n'y code ainsi tout
+$\Pow{X}$ pour un tel~$X$.
+\end{explain}
+
+\begin{prop}
+Si $\cardle{\Real}{\Domain{M}}$, la !!{formula}
+\begin{multline*}
+\fn{Cont}(Y)\ident
+\lexists[X][\lexists[R][(
+\fn{Aleph}_0(X)\land\fn{Pow}(Y,R,X)\land{}\\
+\lforall[x][\lforall[y][((Y(x)\land Y(y)\land
+\lforall[z][(R(x,z)\liff R(y,z))])
+\lif\eq[x][y])]])]]
+\end{multline*}
+exprime que $\cardeq{s(Y)}{\Real}$.
+\end{prop}
+
+\begin{proof}
+$\fn{Pow}(Y,R,X)$ dit que $s(Y)$ code
+par~$s(R)$ tous les sous-ensembles de~$s(X)$,
+et $\fn{Aleph}_0(X)$ dit que $s(X)$ est
+!!{denumerable}. L'ensemble $s(Y)$ a donc
+au moins la taille du continu, mais il
+pourrait être plus grand si plusieurs de ses
+!!{element}s codaient le même sous-ensemble
+de~$s(X)$. Le dernier conjoint l'exclut :
+il rend !!{injective} l'association qui envoie
+un !!{element} de~$s(Y)$ sur l'ensemble
+qu'il code par~$s(R)$. Réciproquement, si $s(Y)$ a la taille du continu, choisissons un sous-ensemble dénombrable infini $X_0$ du domaine et une bijection $b\colon s(Y)\to\Pow{X_0}$. Définissons $R_0$ par $R_0(a,z)$ si et seulement si $a\in s(Y)$ et $z\in b(a)$, les lignes hors de~$s(Y)$ étant vides. Sous la sémantique standard, $X_0$ et $R_0$ fournissent les témoins de $\fn{Cont}(Y)$.
+\end{proof}
+
+\begin{prop}
+$\cardeq{\Domain{M}}{\Real}$ si et seulement si
+\begin{multline*}
+\Sat{M}{\lexists[Y][(\fn{Cont}(Y)\land
+\lexists[u][(
+\lforall[x][Y(u(x))]\land{}\\
+\lforall[x][\lforall[y][(\eq[u(x)][u(y)]
+\lif\eq[x][y])]]\land{}\\
+\lforall[y][(Y(y)\lif
+\lexists[x][\eq[y][u(x)]])])])]}.
+\end{multline*}
+\end{prop}
+
+\begin{explain}
+L'\emph{hypothèse du continu} affirme que la
+taille du continu est le premier cardinal
+!!{nonenumerable} : autrement dit, que
+$\Pow{\Nat}$ est de cardinal~$\aleph_1$.
+\end{explain}
+
+\begin{prop}
+Dans le cadre usuel avec choix, l'hypothèse du
+continu est vraie si et seulement si l'!!{sentence}
+\[
+\fn{CH}\ident
+\lforall[X][(\fn{Aleph}_1(X)\liff\fn{Cont}(X))]
+\]
+est valide sous la sémantique standard.
+\end{prop}
+
+La validité de $\lnot\fn{CH}$ n'équivaut pas
+à la fausseté de l'hypothèse du continu.
+Dans un !!{domain} !!{enumerable}, aucun
+sous-ensemble n'a la taille de~$\aleph_1$
+ni celle du continu; $\fn{CH}$ y est donc
+toujours vrai. On peut cependant construire
+un autre !!{sentence} dont la validité
+équivaut à la négation de l'hypothèse.
+
+\begin{prop}
+Dans le cadre usuel avec choix, l'hypothèse du
+continu est fausse si et seulement si l'!!{sentence}
+\[
+\fn{NCH}\ident
+\lforall[X][(\fn{Cont}(X)\lif
+\lexists[Y][(Y\subseteq X\land
+\lnot\fn{Count}(Y)\land
+\lnot\cardeq{X}{Y})])]
+\]
+est valide sous la sémantique standard.
+\end{prop}
+
+\begin{editorial}
+La seconde formule de la première proposition
+comporte dans la source une parenthèse
+manquante à la fin de la clause qui porte
+sur les codes; nous rétablissons sa portée.
+
+La formule source du théorème de Cantor exige
+que la fonction~$u$ soit !!{injective} sur
+tout le !!{domain}, alors que le théorème
+concerne sa restriction aux codes~$Y$. Nous
+limitons l'injectivité à~$Y$, comme dans la
+section précédente.
+
+La formule source censée caractériser
+$\cardeq{\Domain{M}}{\Real}$ demande
+seulement que l'image d'une injection du
+!!{domain} \emph{contienne}~$Y$ : l'identité
+la satisfait dès qu'un ensemble de codes
+du continu existe, même si le !!{domain}
+est plus grand que le continu. Nous employons
+$\fn{Cont}(Y)$, qui exclut les codes en double,
+et une bijection explicite du !!{domain}
+sur~$Y$. Dans la preuve de $\fn{Cont}(Y)$,
+la source écrit aussi $s(Z)$ là où il faut
+$s(X)$. Nous explicitons aussi le sens réciproque de cette proposition.
+
+Les deux dernières équivalences avec
+l'hypothèse du continu utilisent les
+caractérisations des cardinaux sous l'axiome
+du choix et la sémantique standard du second
+ordre. Elles ne tranchent pas la valeur de
+vérité de l'hypothèse du continu.
+\end{editorial}
+
+\end{document}

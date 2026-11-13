@@ -1,0 +1,124 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: prop-reduce
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{ppr}
+\olsection{Propriétés de la réductibilité}
+
+Nous écrivons $A\leq_m B$ lorsque $A$ se réduit
+à~$B$. Cette notation suggère que $A$ n'est
+« pas plus difficile » que~$B$, que $B$ est au
+moins aussi difficile que~$A$, et que $\le_m$
+classe les ensembles ou problèmes de décision
+selon leur difficulté, à la manière de l'ordre
+$\le$ sur les nombres. Les deux propositions
+suivantes étayent cette intuition. La première
+établit la transitivité de $\le_m$.\footnote{La relation est un préordre : elle est réflexive et transitive, mais deux ensembles distincts peuvent se réduire l'un à l'autre. L'analogie avec l'ordre numérique exprime ici une comparaison de difficulté.}
+
+\begin{prop}
+\ollabel{prop:trans-red}
+Si $A\leq_m B$ et $B\leq_m C$, alors $A\leq_m C$.
+\end{prop}
+
+\begin{proof}
+En composant une réduction de $A$ à~$B$ et une
+réduction de $B$ à~$C$, on obtient une réduction
+de $A$ à~$C$.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref{prop:trans-red} en montrant
+que si $f$ réduit $A$ à~$B$ et $g$ réduit $B$
+à~$C$ au sens many-one, alors $\comp{f}{g}$
+réduit $A$ à~$C$ au même sens.
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:reduce}
+Soient $A$ et~$B$ deux ensembles tels que
+$A\leq_m B$.
+\begin{enumerate}
+\item Si $B$ est effectivement énumérable,
+  $A$ l'est aussi.
+\item Si $B$ est calculable, $A$ l'est aussi.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Soit $f$ une réduction many-one de $A$ à~$B$.
+Pour la première assertion, si $B$ est le
+domaine d'une fonction calculable partielle~$g$,
+alors $A$ est le domaine de $\comp{f}{g}$ :\footnote{Correction éditoriale : la source mentionne seulement une fonction partielle $g$. Pour obtenir un domaine effectivement énumérable, nous précisons que $g$ est calculable partielle.}
+\begin{align*}
+x \in A & \text{ ssi } f(x) \in B \\
+& \text{ ssi }  g(f(x)) \fdefined.
+\end{align*}
+
+Pour la seconde assertion, rappelons que si $B$
+est calculable, $B$ et~$\Complement{B}$ sont
+effectivement énumérables
+(\olref[cmp]{thm:ce-comp}). La fonction~$f$
+réduit également $\Complement{A}$ à
+$\Complement{B}$ au sens many-one. Par la
+première assertion, $A$ et~$\Complement{A}$
+sont donc effectivement énumérables. Ainsi,
+$A$ est calculable par le \olref[cmp]{thm:ce-comp}.
+(On peut aussi vérifier que
+$\Char{A}=\comp{f}{\Char{B}}$; si
+$\Char{B}$ est calculable, $\Char{A}$ l'est
+également.)
+\end{proof}
+
+\begin{prob}
+Supposons que $f$ soit une réduction many-one
+de $A$ à~$B$. Montrer que $f$ réduit aussi
+$\Complement{A}$ à $\Complement{B}$.
+\end{prob}
+
+\begin{prob}
+Montrer que si $f\colon\Nat\to\Nat$ est une
+réduction many-one de $A$ à~$B$, alors
+$\Char{A}=\comp{f}{\Char{B}}$.\footnote{Correction éditoriale : la source donne $f\colon A\to B$. Une réduction many-one est définie sur tous les entiers, y compris hors de $A$ ; son type est $f\colon\Nat\to\Nat$.}
+\end{prob}
+
+\begin{digress}
+Une notion plus générale, la \emph{réductibilité
+de Turing}, est utile dans d'autres contextes,
+notamment pour prouver l'indécidabilité. D'après le
+\olref[cmp]{cor:comp-k}, le complémentaire
+de~$K_0$ ne se réduit pas à~$K_0$ au sens
+many-one, puisqu'il n'est pas effectivement
+énumérable. Pourtant, si l'on savait répondre
+aux questions concernant~$K_0$, on saurait
+aussi répondre à celles concernant son
+complémentaire. On dit que $A$ est \emph{Turing
+réductible} à~$B$ si une procédure calculable
+peut décider l'appartenance à~$A$ en posant des
+questions sur l'appartenance à~$B$. Cette notion
+est plus souple que la réduction many-one :
+cette dernière n'autorise qu'une seule question
+sur~$B$, et la réponse « oui » ou « non » doit
+être transmise telle quelle pour~$A$.
+Si $A$ est Turing réductible à~$B$ et si $B$
+est calculable, alors $A$ est calculable.
+L'énoncé analogue échoue pour l'énumérabilité
+effective : le complémentaire de~$K_0$ est
+Turing réductible à~$K_0$ sans être
+effectivement énumérable.
+
+Il faut bien distinguer ces diverses notions
+de réduction. Dans ce chapitre, nous n'utiliserons
+que la réduction many-one. Les deux types évoqués
+ci-dessus ont aussi des analogues en complexité,
+où les machines de Turing doivent s'exécuter en
+temps polynomial : la version de la réduction
+many-one s'appelle \emph{réduction de Karp},
+et celle de la réduction de Turing,
+\emph{réduction de Cook}.
+\end{digress}
+
+\end{document}

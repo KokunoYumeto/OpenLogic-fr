@@ -1,0 +1,68 @@
+% Part: first-order-logic
+% Chapter: model-theory
+% Section: theory-of-m
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{bas}{thm}
+
+\section{La théorie d'!!a{structure}}
+
+Toute !!{structure}~$\Struct{M}$ rend certains !!{sentence}s vrais
+et d'autres faux. L'ensemble des !!{sentence}s qu'elle rend vrais
+s'appelle sa \emph{théorie}. Cet ensemble est effectivement une
+théorie : tout énoncé qui en découle doit être vrai dans chacun de
+ses modèles, notamment dans~$\Struct{M}$.
+
+\begin{defn}
+  Étant donné !!a{structure}~$\Struct M$, la \emph{théorie}
+  de $\Struct{M}$ est
+  l'ensemble $\Theory{M}$ des !!{sentence}s vrais dans $\Struct{M}$,
+  c'est-à-dire $\Theory{M} = \Setabs{!A}{\Sat{M}{!A}}$.
+\end{defn}
+
+Nous employons aussi le terme « théorie » de façon informelle pour
+désigner des ensembles d'!!{sentence}s dotés d'une interprétation
+visée, qu'ils soient ou non clos par conséquence déductive.
+
+\begin{prop}
+Pour toute $\Struct{M}$, $\Theory{M}$ est complète.
+\end{prop}
+
+\begin{proof}
+Pour tout !!{sentence}~$!A$, on a soit $\Sat{M}{!A}$, soit
+$\Sat{M}{\lnot !A}$; ainsi, soit $!A \in \Theory{M}$,
+soit $\lnot !A \in \Theory{M}$.
+\end{proof}
+
+\begin{prop}\ollabel{prop:equiv}
+  Si $\Struct{N} \models !A$ pour tout $!A \in \Theory{M}$,
+  alors $\Struct{M} \elemequiv \Struct{N}$.
+\end{prop}
+
+\begin{proof}
+Puisque $\Sat{N}{!A}$ pour tout $!A \in \Theory{M}$, on a
+$\Theory{M} \subseteq \Theory{N}$. Si $\Sat{N}{!A}$, alors
+$\Sat/{N}{\lnot !A}$; donc $\lnot !A \notin \Theory{M}$.
+Comme $\Theory{M}$ est complète, $!A \in \Theory{M}$.
+Ainsi, $\Theory{N} \subseteq \Theory{M}$, d'où
+$\Struct{M} \elemequiv \Struct{N}$.
+\end{proof}
+
+\begin{rem}\ollabel{remark:R}
+  Considérons $\Struct{R} = \langle\Real, <\rangle$, la !!{structure}
+  dont le !!{domain} est l'ensemble $\Real$ des nombres réels, dans
+  le !!{language} ne comportant qu'un !!{predicate} binaire,
+  interprété par la relation $<$ sur les réels. La !!{structure}
+  $\Struct{R}$ est !!{nonenumerable}. Cependant, puisque
+  $\Theory{R}$ est manifestement cohérente, le théorème de
+  L\"owenheim--Skolem lui donne un modèle !!{enumerable},
+  disons $\Struct{S}$; d'après la \olref{prop:equiv}, on a donc
+  $\Struct{R} \equiv \Struct{S}$. Puisque $\Struct{R}$ et
+  $\Struct{S}$ ne sont pas isomorphes, la réciproque du
+  \olref[iso]{thm:isom} est fausse en général.
+\end{rem}
+
+\end{document}

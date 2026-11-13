@@ -1,0 +1,67 @@
+% Part: normal-modal-logic
+% Chapter: syntax-and-semantics
+% Section: normal-modal-logics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{nor}
+
+\olsection{Logiques modales normales}
+
+On peut concevoir une logique modale comme un ensemble de !!{formula}s
+qui satisfait certaines conditions de fermeture. Quelques logiques
+modales présentent un intérêt particulier par leurs interprétations
+et leurs applications, mais surtout parce que leurs propriétés
+théoriques sont bien connues. Ce sont les logiques modales dites normales.
+
+\begin{defn}\ollabel{defn:modal-logic}
+Une \emph{logique modale}~$\Log L$ est un ensemble de !!{formula}s
+du langage modal de base qui
+\begin{enumerate}
+\item contient toutes les tautologies propositionnelles;
+\item est clos par substitution uniforme;
+\item est clos par modus ponens : si $!A \in \Log L$ et
+  $(!A \lif !B) \in \Log L$, alors $!B \in \Log L$.
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+Les ensembles suivants satisfont cette définition et constituent
+donc des logiques modales, bien qu'ils présentent peu d'intérêt :
+\begin{enumerate}
+\item l'ensemble de toutes les tautologies;
+\item l'ensemble de toutes les !!{formula}s, c'est-à-dire la logique
+  modale incohérente.
+\end{enumerate}
+\end{ex}
+
+\begin{defn}\label{defn:normal-modal-logic}
+Une logique modale~$\Log L$ est \emph{normale} si et seulement si
+\begin{enumerate}
+\item elle contient les deux !!{formula}s
+\begin{align}
+\tag{K} \Box(p \lif q) & \lif (\Box p \lif \Box q) \\
+\tag{Dual} \Diamond p & \liff \lnot \Box \lnot p
+\end{align}
+\item elle est close par nécessitation : si $!A \in
+  \Log L$, alors $\Box !A \in \Log L$.
+\end{enumerate}
+\end{defn}
+
+Nous rencontrerons deux façons principales de définir une logique
+modale. La théorie de la démonstration la décrit comme l'ensemble
+des !!{formula}s !!{derivable}s dans un certain système de
+!!{derivation}. La théorie des modèles la décrit comme l'ensemble
+des !!{formula}s valides dans une certaine classe de modèles.
+On retrouve ainsi la situation de la logique propositionnelle
+ordinaire, et aussi de la logique du premier ordre : on peut
+caractériser le même ensemble de !!{formula}s comme l'ensemble des
+tautologies, vraies sous toute assignation de valeurs de vérité,
+ou comme l'ensemble des !!{formula}s !!{derivable}s dans un système
+de !!{derivation}. Pour les logiques modales normales, ces deux
+approches font appel aux modèles relationnels et aux systèmes
+axiomatiques de démonstration de type Hilbert.
+
+\end{document}

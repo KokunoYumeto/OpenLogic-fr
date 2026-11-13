@@ -1,0 +1,207 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : interprétation des règles
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{seq}{irl}
+
+\olsection{Interprétation des règles}
+
+Rappelons l'interprétation d'un séquent :
+$\Gamma \Sequent \Delta$ est vrai dans une
+structure~$\Struct{M}$ si au moins une formule
+$!A \in \Gamma$ est fausse ou si au moins une formule
+$!A \in \Delta$ est vraie.
+Les règles propositionnelles de~\Log{G3c}
+expriment les conditions de vérité de leurs
+formules principales. Considérons \RightR{\lif}.
+Sa principale $!A \lif !B$ est vraie si $!A$
+est fausse ou si~$!B$ est vraie.
+Le séquent $\ \Sequent !A \lif !B$ est donc
+vrai exactement quand $!A \Sequent !B$ est vrai.
+En ajoutant les contextes $\Gamma$ et $\Delta$
+aux antécédents et aux conséquents, on obtient
+la conclusion et la prémisse de \RightR{\lif}.
+
+Pour~\LeftR{\lif}, la formule $!A \lif !B$
+est fausse exactement quand $!A$ est vraie
+et $!B$ est fausse.
+Ainsi, $!A \lif !B \Sequent \ $ est vrai
+exactement quand $\ \Sequent !A$ et
+$!B \Sequent \ $ sont tous deux vrais.
+La conclusion de \LeftR{\lif} est équivalente
+à la conjonction de ses prémisses.
+Cette équivalence rend ces règles correctes :
+si toutes les prémisses sont vraies, la conclusion
+est vraie. Elle intervient aussi dans la preuve
+de complétude du calcul.
+
+Les conditions de vérité de tout connecteur
+défini par une fonction de vérité se décrivent de cette façon par
+des séquents. Toute fonction de vérité classique
+se représente par une formule en forme normale
+conjonctive : une conjonction de disjonctions
+de formules atomiques ou de leurs négations.
+Prenons, par exemple, $!A \oplus !B$, vraie
+exactement quand une seule des formules $!A$
+et $!B$ est vraie : le \emph{ou exclusif}.
+Elle est vraie exactement quand
+$(!A \lor !B) \land (\lnot !A \lor \lnot !B)$
+est vraie, et fausse exactement quand
+$(\lnot !A \lor !B) \land (!A \lor \lnot !B)$
+est vraie. On peut donc introduire les règles pour $\oplus$ :
+\begin{align*}
+&
+\Axiom$\Gamma \fCenter \Delta, !A, !B$
+\Axiom$!A, !B, \Gamma \fCenter \Delta$
+\RightLabel{\RightR{\oplus}}
+\BinaryInf$\Gamma \fCenter \Delta, !A \oplus !B$
+\DisplayProof
+\\
+& \Axiom$!A, \Gamma \fCenter \Delta, !B$
+\Axiom$!B, \Gamma \fCenter \Delta, !A$
+\RightLabel{\LeftR{\oplus}}
+\BinaryInf$!A \oplus !B, \Gamma \fCenter \Delta$
+\DisplayProof
+\end{align*}
+qui donnent une présentation correcte et complète
+de ce connecteur : chaque conclusion est vraie
+exactement quand toutes ses prémisses sont vraies.
+
+\begin{prob}
+Supposons $!A \downarrow !B$ vraie exactement
+quand ni $!A$ ni~$!B$ n'est vraie : c'est
+le connecteur \emph{non-ou}, ou NOR.
+Quelles seraient ses règles dans \Log{G3c} ?
+Trouver deux séquents simultanément vrais
+exactement quand $!A \downarrow !B$ est vraie :
+ils donnent la règle \RightR{\downarrow}.
+Puis trouver un séquent vrai exactement quand
+$!A \downarrow !B$ est fausse :
+il donne la règle \LeftR{\downarrow}.
+\end{prob}
+
+Dans \Log{G3c}, chaque connecteur ou quantificateur
+a une règle gauche et une règle droite.
+Dans \Log{G1c}, on a cependant deux règles
+\LeftR{\land} et deux règles \RightR{\lor}.
+Le système original de Gentzen, \Log{LK},
+sur lequel \Log{G1c} est modelé, avait une
+variante~\Log{LJ} pour la logique intuitionniste.
+Cette variante a des conséquents contenant
+au plus une formule et des règles adaptées
+à cette restriction. La règle \RightR{\lor}
+de~\Log{G3c} ne convient pas, puisque sa prémisse
+contient $!A$ et~$!B$ dans le conséquent.
+Gentzen a donc employé deux règles
+\RightR{\lor} dans \Log{LJ}, et les mêmes
+dans~\Log{LK}.
+De même, \Log{G1i} a au plus une formule
+dans chaque conséquent et adapte les règles
+de~\Log{G1c}, notamment l'implication gauche.
+La variante intuitionniste de \Log{G3c}
+modifie aussi certaines règles ; elle emploie
+elle aussi deux règles \RightR{\lor}.
+
+La correction des règles structurelles de~\Log{G1c}
+est facile à vérifier. Si
+$\Gamma \Sequent \Delta$ contient une formule
+fausse à gauche ou une formule vraie à droite,
+$\Gamma \Sequent \Delta, !A$ conserve cette
+même formule, quelle que soit la valeur de $!A$.
+Si la prémisse de~\RightR{\Weakening} est
+vraie, sa conclusion l'est donc aussi.
+La réciproque ne vaut pas : la conclusion
+peut être vraie seulement parce que $!A$
+est vraie, sans que la prémisse soit vraie.
+
+À quoi servent les règles structurelles ?
+La contraction, \RightR{\Contraction}
+ou \LeftR{\Contraction}, permet notamment
+de construire une preuve de
+$\ \Sequent !A \lor \lnot !A$.
+Partant de $!A \Sequent !A$, on obtient
+$\Sequent !A, \lnot !A$ par~\RightR{\lnot}.
+On applique ensuite successivement les deux
+versions de \RightR{\lor}, en remplaçant
+d'abord $\lnot !A$, puis~$!A$, par
+$!A \lor \lnot !A$.
+Il reste le séquent
+$\ \Sequent !A \lor \lnot !A, !A \lor \lnot !A$.
+Pour finir cet arbre dans~\Log{G1c} par
+$\Sequent !A \lor \lnot !A$, on contracte
+les deux occurrences :
+\[
+\Axiom$!A \fCenter !A$
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\fCenter !A, \lnot !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$\fCenter !A, !A \lor \lnot !A$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$\fCenter !A \lor \lnot !A, !A \lor \lnot !A$
+\RightLabel{\RightR{\Contraction}}
+\UnaryInf$\fCenter !A \lor \lnot !A$
+\DisplayProof
+\]
+
+Certains séquents valides ne se prouvent pas
+dans~\Log{G1c} sans affaiblissement ni contraction.
+Prenons $!A$ et $!B$ comme deux variables
+propositionnelles distinctes, et considérons
+$!A \Sequent !B \lif !A$.
+En l'absence de règles structurelles, la dernière
+inférence devrait être \RightR{\lif} :
+seule $!B \lif !A$ pourrait être principale.
+Sa prémisse serait $!B, !A \Sequent !A$,
+qui n'est pas un axiome et ne peut être
+la conclusion d'aucune règle logique,
+puisque toutes ses formules sont atomiques.
+Les règles structurelles sont donc indispensables
+dans cet exemple. Avec \LeftR{\Weakening},
+on obtient la prémisse à partir de
+$!A \Sequent !A$ :
+\[
+\Axiom$!A \fCenter !A$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!B, !A \fCenter !A$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$!A \fCenter !B \lif !A$
+\DisplayProof
+\]
+
+Dans \Log{G3c}, affaiblissement et contraction
+ne sont pas des règles primitives : ils sont
+admissibles. L'affaiblissement est déjà incorporé
+dans les contextes des axiomes.
+Les règles à deux prémisses de \Log{G1c}
+et de \Log{G3c} partagent leurs contextes
+$\Gamma$ et $\Delta$, ce qui évite de réunir
+deux copies de chaque contexte dans la conclusion.
+Pour les règles à une prémisse, la contraction
+intervient notamment avec \RightR{\lor},
+\LeftR{\land}, \RightR{\lexists}
+et~\LeftR{\lforall} dans la présentation G1c.
+Les versions G3c évitent ces contractions explicites.
+Le calcul \Log{G2c}, présenté dans le \olref{tab:G2c},
+a au contraire des contextes indépendants
+dans ses règles à deux prémisses.
+La contraction y joue donc un rôle encore
+plus important que dans~\Log{G1c}.
+
+\subfile{rules-G2c}
+
+Pour les règles à constante propre, la preuve de
+correction fait varier l'interprétation de cette constante.
+Par exemple, si la conclusion de \RightR{\lforall}
+est fausse dans une structure, un élément du domaine
+réfute la formule universelle. On donne cet élément
+pour valeur à la constante propre, absente de la
+conclusion. La prémisse est alors fausse dans la
+%
+%
+structure ainsi obtenue.
+
+\end{document}

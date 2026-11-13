@@ -1,0 +1,267 @@
+% Partie : logique intuitionniste
+% Chapitre : propositions comme types
+% Section : normalisation
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{pty}{nor}
+
+\olsection{Normalisation}
+
+Nous allons montrer que toute dérivation bien formée
+peut être réduite à une dérivation normale : c'est la
+\emph{propriété de normalisation}. Par la correspondance
+entre propositions et types, il suffit d'étudier les
+termes de preuve bien typés. Il faut distinguer deux
+énoncés : l'existence d'une suite de réductions qui
+atteint une forme normale et la terminaison de
+\emph{toutes} les suites de réductions.
+
+Commençons par des mesures de complexité. La
+\emph{longueur}~$\len{!A}$ d'une formule est définie par
+\begin{align*}
+  \len{p} &= 0\\
+  \len{\lfalse} &= 0\\
+  \len{!A \land !B} &= \len{!A} + \len{!B} + 1\\
+  \len{!A \lor !B} &= \len{!A} + \len{!B} + 1 \\
+  \len{!A \lif !B} &= \len{!A} + \len{!B} + 1.
+\end{align*}
+Ici $p$ est atomique. Pour chacun des trois redex
+principaux, le \emph{rang de coupure} est la longueur du
+type composé immédiatement introduit puis éliminé :
+\begin{align*}
+  \cutrank{(\lambd[\typeof{x}{!A}][\typeof{N}{!B}])Q} &=
+  \len{!A} + \len{!B} + 1 \\
+  \cutrank{\ande{i}{\andi{\typeof{M}{!A}}{\typeof{N}{!B}}}} &=
+  \len{!A} + \len{!B} + 1 \\
+  \cutrank{\ore{\ori{i}{!A_{3-i}}{\typeof{M}{!A_i}}}
+    {\typeof{x_1}{!A_1}}{\typeof{N_1}{!C}}
+    {\typeof{x_2}{!A_2}}{\typeof{N_2}{!C}}} &=
+  \len{!A_1} + \len{!A_2} + 1.
+\end{align*}
+La notation d'injection indique le type de l'autre
+sommande. Les conversions de permutation ne sont pas
+des redex principaux et ne reçoivent pas ce rang.
+Posons, pour la famille finie des redex principaux de~$M$,
+\[
+  \maxrank{M} =
+  \max\bigl(\{0\}\cup
+    \{\cutrank{N}\mid N\text{ est un sous-terme redex principal de }M\}
+  \bigr).
+\]
+Ainsi, si $M$ n'a aucun redex principal, son rang maximal
+vaut~$0$ ; cela n'exclut pas une éventuelle conversion
+de permutation.
+
+\begin{lem}\ollabel{lem:subst}
+  Supposons que $M$ ne soit pas la seule variable~$x$,
+  que $x$ ait le type~$!A$ et que
+  $\Subst{M}{\typeof{N}{!A}}{\typeof{x}{!A}}$
+  soit un redex principal \emph{à la racine}.
+  Ou bien $M$ était déjà un redex principal à la racine,
+  de même rang, ou bien l'une des situations suivantes
+  crée ce redex :
+  \begin{enumerate}
+  \item $M$ est de la forme $\ande{i}{x}$ et $N$
+    est de la forme $\andi{P_1}{P_2}$ ;
+  \item $M$ est de la forme
+    $\ore{x}{x_1}{P_1}{x_2}{P_2}$ et $N$
+    est de la forme $\ori{i}{!A_{3-i}}{Q}$ ;
+  \item $M$ est de la forme $x Q$ et $N$
+    est de la forme $\lambd[y][P]$.
+  \end{enumerate}
+  Dans les trois derniers cas,
+  $\cutrank{\Subst{M}{N}{x}}=\len{!A}$.
+\end{lem}
+\begin{proof}
+  Examinons le constructeur extérieur de~$M$.
+  Une introduction ne devient pas, par substitution,
+  une élimination à la racine. Si la racine de~$M$
+  formait déjà un détour introduction--élimination,
+  la substitution ne change pas le type de la formule
+  intermédiaire, donc ne change pas son rang.
+  Sinon, pour que l'élimination extérieure devienne
+  un redex principal, sa prémisse majeure doit être
+  la variable~$x$, que~$N$ remplace par l'introduction
+  correspondante. Les seules possibilités sont
+  respectivement la projection, l'analyse par cas
+  et l'application énumérées ci-dessus. Dans chaque cas,
+  la formule introduite puis éliminée est précisément
+  le type~$!A$ de~$x$.
+\end{proof}
+
+\begin{lem}
+  Soit $R \redone R'$ une contraction principale à la
+  racine. Si le rang de chaque redex principal proprement
+  contenu dans~$R$ est strictement inférieur à
+  $\cutrank{R}$, alors
+  $\maxrank{R'}<\cutrank{R}$.
+\end{lem}
+\begin{proof}
+  Si $R$ est la projection d'un couple, $R'$ est une
+  composante du couple ; tous ses redex étaient déjà
+  des sous-termes propres de~$R$.
+  Pour une application de la forme
+  $(\lambd[\typeof{x}{!A}][N])\typeof{Q}{!A}$,
+  le réduit est $\Subst{N}{Q}{x}$.
+  Un redex qui s'y trouve provient soit d'un redex
+  propre de~$R$, éventuellement recopié lors de la
+  substitution, soit de la rencontre d'une occurrence
+  de~$x$ avec une introduction fournie par~$Q$.
+  Dans ce dernier cas, le lemme précédent donne le
+  rang~$\len{!A}$, strictement inférieur à la longueur
+  de~$!A\lif !B$, type de l'abstraction
+  immédiatement éliminée.
+  Si $R$ est l'analyse d'une injection de type
+  $!A_1\lor !A_2$, le réduit est la substitution dans
+  la branche choisie. Les redex nouvellement créés
+  ont le rang~$\len{!A_i}$, strictement inférieur à
+  $\len{!A_1\lor !A_2}$ ; les redex déjà présents dans
+  le terme injecté et les branches satisfont
+  l'hypothèse du lemme.
+\end{proof}
+
+Ces deux lemmes sont \emph{locaux} : ils examinent le
+réduit d'un redex isolé. Ils ne fournissent pas une
+mesure décroissante pour un terme entier. Par exemple,
+réduire une analyse par cas à l'intérieur d'une projection
+peut produire un nouveau redex de projection dont le
+rang est supérieur à celui de l'analyse réduite.
+La récurrence sur le rang maximal et le nombre de redex
+de ce rang demanderait de maîtriser aussi les redex
+créés au-dessus du sous-terme réduit. Le résultat global
+s'obtient par le théorème suivant.
+
+\begin{thm}
+  Tout terme de preuve bien typé de ce calcul est
+  fortement normalisant pour les contractions principales
+  et la permutation d'une projection dans une analyse
+  par cas. Toute suite de réductions est finie.
+  Par conséquent, toute dérivation correspondante
+  se réduit à une dérivation normale.
+\end{thm}
+\begin{proof}
+  Les types et les constructeurs considérés ici sont
+  ceux du lambda-calcul simplement typé avec implication,
+  produit, somme et type vide. Le théorème de
+  \href{https://arxiv.org/abs/0804.2535}{Wojdyga,
+  \emph{Short proofs of strong normalization},
+  théorème~14, arXiv:0804.2535v1} s'applique à ce calcul.
+  Ses définitions~3 et~4 contiennent les contractions
+  principales et les deux instances de la permutation
+  d'une projection dans une analyse par cas. Une suite
+  infinie pour nos règles serait donc une suite infinie
+  dans le calcul de ce théorème, ce qu'il exclut.
+  Les conversions des dérivations sont reflétées par
+%
+%
+  celles des termes de preuve.
+\end{proof}
+
+En particulier, chaque terme bien typé
+\emph{possède} une forme normale. Si l'on interprète
+la réduction vers cette forme comme l'exécution d'un
+calcul, la normalisation forte dit davantage :
+quel que soit l'ordre des contractions autorisées,
+l'exécution termine. La conservation des types assure
+que le résultat garde le type annoncé. Ainsi, si
+$N$ a le type $!A \lif !B$ et $M$ le type~$!A$,
+toute réduction complète de l'application $(NM)$
+se termine en un terme $N'$ de type~$!B$.
+Dans cette analogie, « valeur » désigne une forme
+normale ; pour un terme ouvert, cette forme peut
+encore contenir des variables libres.
+
+La terminaison et la conservation des types ne suffisent
+pas à garantir que deux ordres de réduction donnent
+le \emph{même} résultat. Il faut aussi la
+\emph{confluence}, appelée propriété de
+Church--Rosser : si $N \red N_1$ et $N \red N_2$,
+il existe un terme~$N'$ tel que $N_1 \red N'$
+et $N_2 \red N'$. Comme $N \red N'$ admet aussi
+la suite vide, $\red$ est la clôture réflexive et
+transitive de~$\redone$. Si $N_1$ et $N_2$ sont
+normaux, leur seul réduit commun est eux-mêmes ;
+ils sont donc égaux à renommage des variables liées
+près.
+
+\begin{prop}[Propriété locale de Church--Rosser]
+  Pour les trois contractions principales et la
+  conversion de permutation de la projection après
+  analyse par cas explicitées dans la section précédente,
+  si $N \redone N_1$ et $N \redone N_2$, alors
+  il existe $N'$ tel que $N_1 \red N'$ et
+  $N_2 \red N'$.
+\end{prop}
+\begin{proof}
+  Deux redex situés dans des sous-termes disjoints
+  se contractent dans l'un ou l'autre ordre et
+  aboutissent au même terme, à renommage des variables
+  liées près. Si le redex intérieur se trouve dans une
+  partie recopiée par la contraction extérieure, on
+  contracte ensuite \emph{toutes} ses copies résiduelles ;
+  s'il se trouve dans une partie éliminée, aucune
+  contraction résiduelle n'est nécessaire.
+  Par exemple, dans $\proj{1}{\pair{O_1}{O_2}}$,
+  une réduction à l'intérieur de~$O_1$ se retrouve
+  après projection dans~$O_1'$ ; une réduction à
+  l'intérieur de~$O_2$ est effacée par la projection,
+  et les deux chemins atteignent~$O_1$.
+
+  Il reste le chevauchement entre une analyse par cas
+  d'une injection et la projection extérieure qui
+  se permute avec cette analyse. Contracter d'abord
+  l'analyse, puis projeter, donne la projection de
+  la branche choisie après substitution. Permuter
+  d'abord la projection dans les deux branches, puis
+  contracter l'analyse, donne exactement ce même terme :
+  la substitution sans capture commute avec cette
+  projection. Les autres chevauchements des règles
+  énoncées sont des cas de réduction dans une
+  sous-expression ; l'argument des résidus les traite.
+  Pour une famille plus large de permutations, une
+  vérification distincte est nécessaire ; voir
+  \href{https://jssst.or.jp/files/user/taikai/2015/PPL/ppl4-3.pdf}
+  {Nakazawa et Fujita, \emph{Compositional Z:
+  Confluence Proofs for Permutative Conversion},
+  §\,3}.
+\end{proof}
+
+\begin{lem}[Lemme de Newman]
+  Si $\redone$ est fortement normalisante et localement
+  confluente, sa clôture réflexive et transitive~$\red$
+  est confluente.
+\end{lem}
+\begin{proof}
+  Procédons par récurrence bien fondée sur la relation
+  $\redone$, possible grâce à la normalisation forte.
+  Soient deux suites issues de~$N$ :
+  \begin{align*}
+    N &= N_0' \redone N_1' \redone \dots
+      \redone N_k',\\
+    N &= N_0'' \redone N_1'' \redone \dots
+      \redone N_l''.
+  \end{align*}
+  Si l'une est vide, l'extrémité de l'autre
+  est déjà un réduit commun.
+  Sinon, leurs premiers pas
+  donnent $N\redone N_1$ et $N\redone N_2$.
+  Par confluence locale, $N_1$ et $N_2$ ont un réduit
+  commun~$R$. L'hypothèse de récurrence appliquée
+  à~$N_1$ et à~$N_2$ raccorde chaque suite initiale
+  à un descendant de~$R$ ; appliquée ensuite à~$R$,
+  elle raccorde ces deux descendants. Les extrémités
+  des deux suites issues de~$N$ ont donc un réduit commun.
+\end{proof}
+
+Le théorème de normalisation forte et la propriété locale
+précédente donnent ainsi la confluence pour les conversions
+explicitement spécifiées. Chaque terme bien typé a une
+forme normale unique à renommage des variables liées près.
+Cette unicité concerne la relation de réduction fixée ;
+ajouter d'autres conversions requiert de vérifier de
+nouveau les hypothèses de confluence.
+
+\end{document}

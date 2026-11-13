@@ -1,0 +1,108 @@
+% Part: lambda-calculus
+% Chapter: church-rosser
+% Section: definitions-and-properties
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{cr}{dap}
+\olsection{Définition et propriétés}
+
+Dans ce chapitre, nous introduisons la
+propriété de Church--Rosser et quelques-unes
+de ses conséquences.
+
+\begin{defn}[Propriété de Church--Rosser, CR]
+Une relation $\xredone$ sur les termes
+vérifie la \emph{propriété de Church--Rosser}
+si, chaque fois que $M \xredone P$ et
+$M \xredone Q$, il existe un terme~$N$ tel
+que $P \xredone N$ et $Q \xredone N$.
+\end{defn}
+
+On peut voir le lambda-calcul comme un modèle
+de calcul dans lequel les termes en forme
+normale sont des « valeurs » et une relation
+de réduction fournit les « règles de calcul ».
+La propriété de Church--Rosser assure que
+deux calculs issus du même terme peuvent
+encore se rejoindre. S'ils atteignent une
+forme normale, celle-ci est donc unique.
+
+Prenons un exemple d'algèbre élémentaire :
+on peut calculer $4 \times (1+2) + 3$ de
+plusieurs manières. Si l'on commence par
+réduire $1+2$ à~$3$, on obtient
+$4 \times 3+3$. Si l'on distribue d'abord
+$4 \times (1+2)$, on obtient
+$4 \times 1+4 \times 2+3$. Les deux
+expressions se réduisent ensuite à~$12+3$.
+
+Si $\xredone$ est la réduction~$\beta$,
+la propriété de Church--Rosser entraîne
+qu'un terme qui possède une forme normale
+n'en possède qu'une. En effet, supposons
+que $M$ se réduise à deux formes normales
+$P$ et~$Q$. Il existe alors un terme~$N$
+auquel $P$ et $Q$ se réduisent tous deux.
+Puisque $P$ et $Q$ sont en forme normale,
+ces réductions ne peuvent être que réflexives :
+$P$, $Q$ et $N$ sont identiques. On peut
+donc parler de \emph{la} forme normale d'un terme.
+
+Si l'on considère le lambda-calcul comme un
+modèle de calcul, la forme normale représente
+le « résultat final » d'un calcul qui part
+du terme. Le corollaire précédent dit qu'il
+y a au plus un tel résultat, comme le calcul
+de $4 \times (1+2)+3$ donne~$15$.
+
+\begin{thm}\ollabel{thm:str}
+Si une relation $\xredone$ vérifie la
+propriété de Church--Rosser et si $\xred$
+est la plus petite relation transitive qui
+contient $\xredone$, alors $\xred$ vérifie
+elle aussi la propriété de Church--Rosser.
+\end{thm}
+
+\begin{proof}
+Supposons
+\begin{align*}
+  M & \xredone P_1 \xredone \dots \xredone P_m
+    \quad\text{et}\\
+  M & \xredone Q_1 \xredone \dots \xredone Q_n.
+\end{align*}
+Construisons une grille~$N$ de termes de
+hauteur $m+1$ et de largeur $n+1$.
+Le terme $N_{i,j}$ occupe la ligne~$i$
+et la colonne~$j$. Nous voulons que
+$N_{i,j}\xredone N_{i+1,j}$ et
+$N_{i,j}\xredone N_{i,j+1}$ partout où
+ces cases existent. Posons :
+\begin{align*}
+  N_{0,0} &= M \\
+  N_{i,0} &= P_i && \text{si }1\le i\le m \\
+  N_{0,j} &= Q_j && \text{si }1\le j\le n \\
+  \intertext{et, pour les cases intérieures :}
+  N_{i,j} &= R.
+\end{align*}
+Ici, $R$ est un terme tel que
+$N_{i-1,j}\xredone R$ et
+$N_{i,j-1}\xredone R$. Pour chaque case
+intérieure, les deux termes précédents
+sont issus en un pas de $N_{i-1,j-1}$;
+la propriété de Church--Rosser assure
+donc l'existence de~$R$. On construit
+ainsi la grille de proche en proche.
+
+Enfin, $N_{m,0}\xredone\dots\xredone N_{m,n}$
+et $N_{0,n}\xredone\dots\xredone N_{m,n}$.
+En posant $P=P_m=N_{m,0}$ et
+$Q=Q_n=N_{0,n}$, ces deux chaînes montrent
+que $P\xred N_{m,n}$ et $Q\xred N_{m,n}$.
+La propriété de Church--Rosser de $\xred$
+en découle.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,69 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: other-recursions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{ore}
+\olsection{Autres formes de récurrence}
+
+Le codage des couples et des suites permet de justifier des
+formes moins ordinaires, mais utiles, de récurrence primitive.
+Il est par exemple souvent commode de définir deux fonctions
+à la fois, comme ici :
+\begin{align*}
+h_0(\vec x, 0) & = f_0(\vec x) \\
+h_1(\vec x, 0) & = f_1(\vec x) \\
+h_0(\vec x, y+1) & = g_0(\vec x, y, h_0(\vec x, y), h_1(\vec x, y)) \\
+h_1(\vec x, y+1) & = g_1(\vec x, y, h_0(\vec x, y), h_1(\vec x, y))
+\end{align*}
+C'est une \emph{récurrence mutuelle}. On peut également
+définir $h(\vec x,y+1)$ à partir de \emph{toutes} les valeurs
+$h(\vec x,0),\dots,h(\vec x,y)$, par exemple :
+\begin{align*}
+h(\vec x, 0) & = f(\vec x) \\
+h(\vec x, y+1) & = g(\vec x, y, \tuple{h(\vec x, 0), \dots, h(\vec x, y)}).
+\end{align*}
+Le schéma suivant exprime la même idée de manière plus concise :
+\[
+h(\vec x, y) = g(\vec x, y, \tuple{h(\vec x, 0), \dots, h(\vec x, y-1)})
+\]
+Lorsque $y=0$, le dernier argument de~$g$ est, par
+convention, la suite vide. Dans les deux formulations, le
+calcul de la valeur suivante peut utiliser toute la suite
+des valeurs déjà obtenues. On parle de \emph{récurrence
+sur la suite des valeurs}. Elle permet notamment de
+justifier des définitions de la forme
+\begin{align*}
+h(\vec x, y) & = \begin{cases}
+  g(\vec x, y, h(\vec x, k(\vec x, y))) & \text{si $k(\vec x, y) < y$} \\
+  f(\vec x) & \text{sinon}
+\end{cases}
+\end{align*}
+La valeur de $h$ en~$y$ peut donc dépendre de sa valeur
+en \emph{n'importe quel} rang antérieur donné par~$k$.
+
+\begin{prob}
+  Définir par récurrence sur la suite des valeurs la fonction
+  reste~$r(x,y)$. Pour $x,y$ naturels et $y>0$, $r(x,y)$
+  est l'unique entier inférieur à~$y$ tel que
+  $x=z\times y+r(x,y)$ pour un certain~$z$.
+  On convient que $r(x,0)=0$.
+\end{prob}
+
+Réfléchissez à la manière de retrouver ces fonctions au
+moyen de la récurrence primitive ordinaire. Une dernière
+variante autorise aussi la modification des
+\emph{paramètres} au cours du calcul :
+\begin{align*}
+h(\vec x, 0) & = f(\vec x) \\
+h(\vec x, y+1) & = g(\vec x, y, h(k(\vec x), y))
+\end{align*}
+Ici $k(\vec x)$ fournit un nouveau tuple de paramètres de
+même arité que~$\vec x$. On suppose $f$, $g$ et chaque composante de $k$ récursives primitives.
+Cette variante se ramène elle aussi à la récurrence primitive ordinaire. La construction demande
+un peu de soin : pour vous guider, déroulez le calcul à la main.
+
+\end{document}

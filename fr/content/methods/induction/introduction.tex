@@ -1,0 +1,99 @@
+% Partie : méthodes
+% Chapitre : induction mathématique
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{mth}{ind}{int}
+
+\olsection{Introduction}
+
+L'induction mathématique est une
+méthode de démonstration importante
+qui, sous différentes formes,
+s'emploie dans presque tous les
+domaines de la logique, de
+l'informatique théorique et des
+mathématiques. Elle est nécessaire
+pour démontrer de nombreux
+résultats de logique.
+
+On oppose souvent l'induction
+à la déduction et on la décrit
+comme le passage du particulier
+au général. Supposons, par
+exemple, que nous ayons observé
+de nombreuses émeraudes vertes
+et aucune émeraude qui ne soit
+pas verte. Nous pourrions en
+conclure que toutes les
+émeraudes sont vertes.
+Cette inférence est inductive :
+elle passe de nombreux cas
+particuliers (cette émeraude
+est verte, celle-là est verte,
+etc.) à un énoncé général
+(toutes les émeraudes sont
+vertes). L'induction
+\emph{mathématique} conclut,
+elle aussi, à un énoncé
+général, mais elle est
+très différente de cette
+«~induction simple~».
+
+En termes très généraux,
+une démonstration par
+induction mathématique
+établit que tous les
+objets mathématiques
+d'un certain type
+possèdent une propriété.
+Dans le cas le plus
+simple, ces objets
+sont les nombres
+naturels. On établit
+alors qu'ils possèdent
+tous une propriété en
+montrant que :
+\begin{enumerate}
+    \item $0$ possède la propriété ;
+    \item chaque fois qu'un nombre~$k$
+      la possède, $k+1$ la possède aussi.
+\end{enumerate}
+Le raisonnement par récurrence
+sur les nombres naturels
+permet souvent de démontrer
+des énoncés généraux
+concernant d'autres objets
+mathématiques auxquels
+on peut associer un nombre.
+Par exemple, chaque ensemble
+fini possède un nombre fini~$n$
+d'éléments. Si l'on démontre
+par récurrence que, pour
+chaque~$n$, «~tous les
+ensembles finis de cardinal~$n$
+sont $\dots$~», on obtient
+un résultat sur tous
+les ensembles finis.
+
+L'induction s'étend aussi
+aux objets mathématiques
+qui sont \emph{définis
+inductivement}. Ainsi,
+les expressions d'un
+langage formel, comme
+celles de la logique
+du premier ordre,
+reçoivent une définition
+inductive. L'\emph{induction
+structurelle} permet de
+démontrer des résultats
+concernant toutes ces
+expressions. Elle est
+particulièrement utile
+et très employée
+en logique.
+
+\end{document}

@@ -1,0 +1,122 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{his}{set}{pathology}
+\olsection{Pathologies}
+
+La définition de la \emph{limite} permit toutefois des constructions
+assez «~pathologiques~».
+
+Vers les années 1830, Bolzano découvrit une fonction
+\emph{continue partout}, mais \emph{dérivable nulle part}.
+Malheureusement, il ne publia jamais cette découverte : les
+mathématiciens ne rencontrèrent cette idée qu'en 1872, lorsque
+Weierstrass la redécouvrit indépendamment.\footnote{L'histoire est
+documentée par les notes de bas de page, très détaillées, de
+l'article de Wikipédia sur
+\href{http://en.wikipedia.org/wiki/Weierstrass_function}{la
+fonction de Weierstrass}.} Le résultat était pour le moins
+surprenant. Il est facile de trouver des fonctions, telles que
+$|x|$, qui sont continues partout mais non dérivables en un point
+particulier. Une fonction continue partout et dérivable
+\emph{nulle part} est d'une tout autre nature. Essayons un instant
+d'imaginer comment la tracer : pour qu'elle soit continue, il doit
+être possible de la dessiner sans jamais lever le crayon ; mais,
+pour qu'elle ne soit dérivable en aucun point, il faudrait en changer
+sans cesse et brusquement la direction.
+
+D'autres «~pathologies~» suivirent. Le 5 janvier 1874, Cantor posa
+à Dedekind, dans une lettre, le problème suivant :
+\begin{quote}
+Peut-on établir une correspondance biunivoque entre une surface
+(par exemple un carré avec son bord) et une ligne (par exemple un
+segment avec ses extrémités), de telle sorte qu'à chaque point de
+la surface corresponde un point de la ligne et, réciproquement,
+qu'à chaque point de la ligne corresponde un point de la surface ?
+
+Pour le moment, il me semble encore très difficile de répondre à
+cette question, bien qu'ici aussi l'on soit si fortement porté à
+répondre \emph{non} que l'on aimerait considérer la démonstration
+comme presque superflue. [Cité dans \citealt{Gouvea2011}.]
+\end{quote}
+Mais, en 1877, Cantor démontra qu'il s'était trompé. Une ligne et
+un carré ont en fait exactement le même nombre de points. Le
+29 juin 1877, il écrivit à Dedekind :
+«~\emph{je le vois, mais je ne le crois pas}~». Dans le
+«~récit reçu~» de l'histoire des mathématiques, ces mots sont
+souvent présentés comme le signe que ces nouveaux résultats
+paraissaient \emph{littéralement incroyables} aux mathématiciens
+de l'époque. La correspondance est présentée dans
+\citet{Gouvea2011}, et nous y reviendrons dans la
+\olref[his][set][mythology]{sec}. La démonstration de Cantor est
+esquissée dans la \olref[his][set][cantorplane]{sec}.
+
+Inspiré par le résultat de Cantor, Peano se demanda s'il était
+possible d'appliquer une ligne \emph{de façon continue} sur un
+plan.\footnote{Précision de l'édition française : la source anglaise
+emploie ici «~smoothly~», qui peut suggérer «~de manière lisse~».
+Il faut comprendre «~de façon continue~» : l'image d'une courbe
+lisse ne peut remplir une région plane.} Ce serait une
+\emph{courbe remplissant l'espace}. En \citeyear{Peano1890},
+Peano construisit précisément une telle courbe. Le résultat est
+véritablement contraire à l'intuition : Euclide avait défini une
+ligne comme une «~longueur sans largeur~» (Livre~I, définition~2),
+mais Peano montra qu'en repliant convenablement une ligne, on peut
+en quelque sorte transformer sa longueur en largeur. En
+\citeyear{Hilbert1891}, Hilbert décrivit une courbe remplissant
+l'espace un peu plus intuitive, accompagnée de dessins. Elle se
+construit par étapes ; en voici les six premières :
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=20pt, yshift=20pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=40pt, angle=90, axiom=L, order=1}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=110pt, yshift=10pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=20pt, angle=90, axiom=L, order=2}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=205pt, yshift=5pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=10pt, angle=90, axiom=L, order=3}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=2.5pt, yshift=-97.5pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=5pt, angle=90, axiom=L, order=4}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=101.25pt, yshift=-98.75pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=2.5pt, angle=90, axiom=L, order=5}] lindenmayer system;
+\end{scope}
+\begin{scope}[xshift=200.625pt, yshift=-99.375pt]
+	\draw [oldiagcolorC, l-system={Hilbert curve, step=1.25pt, angle=90, axiom=L, order=6}] lindenmayer system;
+\end{scope}
+\draw[gray] (0pt,0pt) rectangle (80pt, 80pt);
+\draw[gray] (100pt,0pt) rectangle (180pt, 80pt);
+\draw[gray] (200pt,0pt) rectangle (280pt, 80pt);
+\draw[gray] (0pt,-100pt) rectangle (80pt, -20pt);
+\draw[gray] (100pt,-100pt) rectangle (180pt, -20pt);
+\draw[gray] (200pt,-100pt) rectangle (280pt, -20pt);
+\end{tikzpicture}
+\end{center}
+À la limite, notion désormais définie rigoureusement, le carré
+entier apparaît uniformément !!{colorC}. Au passage, la courbe de
+Hilbert est continue partout mais dérivable nulle part. Comme on le
+verra dans la \olref[his][set][hilbertcurve]{sec}, elle remplit un carré
+de côté~$2^{-n}$ pendant chaque intervalle de durée~$4^{-n}$ de
+l'étape~$n$. Fixons un instant~$t$ et choisissons un de ces intervalles
+qui le contient. Deux sommets voisins du carré sont distants
+de~$2^{-n}$. L'un d'eux est donc à une distance d'au moins~$2^{-n-1}$
+de~$h(t)$. Il est atteint à un instant~$s_n$ du même intervalle, avec
+$0<|s_n-t|\leq 4^{-n}$. La norme du quotient des accroissements est
+ainsi au moins~$2^{n-1}$. Ces quotients ne sont pas bornés quand
+$s_n$ tend vers~$t$, ce qui exclut une dérivée en~$t$.
+
+Pour le meilleur ou pour le pire, ces constructions géométriques
+«~pathologiques~» furent perçues comme une raison de se méfier de
+l'intuition géométrique. Elles devinrent presque une
+\emph{propagande} en faveur d'une nouvelle manière de faire des
+mathématiques, qui allait culminer dans la théorie des ensembles.
+Dans le récit que la discipline bâtit ensuite sur sa propre histoire,
+on répéta souvent que ces résultats étaient à la fois parfaitement
+rigoureux et profondément déconcertants. Ils servaient donc un double
+but : mettre en garde contre le recours à l'intuition géométrique
+et montrer la fécondité de nouvelles façons de penser.
+
+\end{document}

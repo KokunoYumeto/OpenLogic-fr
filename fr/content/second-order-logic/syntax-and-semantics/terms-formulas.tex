@@ -1,0 +1,119 @@
+% Part: second-order-logic
+% Chapter: syntax-and-semantics
+% Section: terms-formulas
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{syn}{frm}
+
+\olsection{Termes et \printtoken{p}{formula}}
+
+Comme en logique du premier ordre, les expressions
+de la logique du second ordre sont construites à
+partir d'un vocabulaire de base comprenant des
+\emph{!!{variable}s}, des \emph{!!{constant}s},
+des \emph{!!{predicate}s} et parfois des
+\emph{!!{function}s}. Avec les connecteurs
+logiques, les quantificateurs et les signes de
+ponctuation tels que les parenthèses et les
+virgules, ces symboles permettent de former des
+\emph{termes} et des \emph{!!{formula}s}.
+La différence est que la logique du second ordre
+possède, outre les variables d'objet, des
+variables de relation et de fonction, sur lesquelles
+elle permet également de quantifier. Ses symboles
+logiques sont donc ceux du premier ordre, auxquels
+s'ajoutent :
+
+\begin{enumerate}
+\item Pour chaque arité~$n$, un ensemble
+  dénombrable de !!{variable}s de relation du
+  second ordre : $\Obj{V^n_0}$, $\Obj{V^n_1}$,
+  $\Obj{V^n_2}$, \dots
+\item Pour chaque arité~$n$, un ensemble dénombrable de
+  !!{variable}s de fonction du second ordre : $\Obj{u^n_0}$,
+  $\Obj{u^n_1}$, $\Obj{u^n_2}$, \dots
+\end{enumerate}
+
+De même que $x$, $y$, $z$ sont des métavariables
+pour les variables du premier ordre~$\Obj{v_i}$,
+nous emploierons $X$, $Y$, $Z$, etc., comme
+métavariables pour les variables de relation
+$\Obj{V^n_i}$, et $u$, $v$, etc., comme
+métavariables pour les variables de fonction
+$\Obj{u^n_i}$.
+
+\begin{explain}
+On spécifie les symboles non logiques d'un langage
+du second ordre comme ceux d'un langage du premier
+ordre : en énumérant ses !!{constant}s, ses
+!!{function}s et ses !!{predicate}s.
+
+En logique du premier ordre, on inclut d'ordinaire
+l'!!{identity}~$\eq$. Les symboles non logiques
+d'un langage~$\Lang{L}$ y sont essentiels pour
+exprimer des choses intéressantes. Il existe bien
+des !!{sentence}s qui n'en utilisent aucun, mais
+l'!!{identity} seule ne permet pas de dire
+grand-chose. En logique du second ordre, la réserve
+illimitée de variables de relation et de fonction
+permet d'exprimer ce qu'exprimerait un langage du
+premier ordre sans avoir à fixer un stock particulier
+de symboles non logiques.\footnote{Les variables libres servent alors de paramètres d'interprétation pour les symboles remplacés.}
+\end{explain}
+
+\begin{defn}[Termes du second ordre]
+L'ensemble des \emph{termes du second ordre} de
+$\Lang L$, noté $\TrmSOL[L]$, s'obtient en
+ajoutant à la \olref[fol][syn][frm]{defn:terms}
+la clause suivante ; les clauses héritées s’appliquent aussi aux termes du second ordre :
+\begin{enumerate}
+\item Si $u$ est une variable de fonction à
+  $n$ arguments et si $t_1$, \dots, $t_n$ sont
+  des termes, alors $\Atom{u}{t_1,\ldots,t_n}$
+  est un terme.
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+Un terme du second ordre ressemble donc à un
+terme du premier ordre, sauf que, là où le terme
+du premier ordre contient un
+!!{function}~$\Obj{f^n_i}$, celui du second ordre
+peut contenir à sa place une variable de
+fonction~$\Obj{u^n_i}$.
+\end{explain}
+
+\begin{defn}[Formules du second ordre]
+L'ensemble des \emph{!!{formula}s du second ordre}
+$\FrmSOL[L]$ du langage~$\Lang L$ s'obtient en
+ajoutant à la \olref[fol][syn][frm]{defn:formulas}
+les clauses suivantes ; les clauses héritées s’appliquent aux termes du second ordre :
+\begin{enumerate}
+\item Si $X$ est une variable de prédicat à
+  $n$ arguments et si $t_1$, \dots, $t_n$ sont
+  des termes du second ordre de~$\Lang L$, alors
+  $\Atom{X}{t_1,\ldots,t_n}$ est une
+  !!{formula} atomique.
+
+\tagitem{prvAll}{Si $!A$ est une !!{formula} et
+  $u$ une variable de fonction, alors
+  $\lforall[u][!A]$ est une !!{formula}.}{}
+
+\tagitem{prvAll}{Si $!A$ est une !!{formula} et
+  $X$ une variable de prédicat, alors
+  $\lforall[X][!A]$ est une !!{formula}.}{}
+
+\tagitem{prvEx}{Si $!A$ est une !!{formula} et
+  $u$ une variable de fonction, alors
+  $\lexists[u][!A]$ est une !!{formula}.}{}
+
+\tagitem{prvEx}{Si $!A$ est une !!{formula} et
+  $X$ une variable de prédicat, alors
+  $\lexists[X][!A]$ est une !!{formula}.}{}
+\end{enumerate}
+\end{defn}
+
+\end{document}

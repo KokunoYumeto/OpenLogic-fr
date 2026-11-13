@@ -1,0 +1,102 @@
+% Part: first-order-logic
+% Chapter: beyond
+% Section: modal-logics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{byd}{mod}
+
+\olsection{Logiques modales}
+
+Considérons cet énoncé conditionnel :
+\begin{quote}
+  Si Jeremy est seul dans cette pièce, alors il est ivre et nu,
+  et il danse sur les chaises.
+\end{quote}
+Un tel énoncé peut être vrai au sens de l'implication matérielle
+tout en étant trompeur : il semble suggérer entre l'antécédent et
+la conclusion un lien plus fort que la simple condition selon
+laquelle l'antécédent est faux ou la conclusion vraie. Sa
+formulation laisse entendre que l'affirmation est vraie non
+seulement dans ce monde particulier, où elle pourrait l'être
+trivialement parce que Jeremy n'est pas seul dans la pièce,
+mais encore que la conclusion \emph{aurait été} vraie
+\emph{si} l'antécédent l'avait été. On peut donc comprendre
+l'énoncé comme vrai non seulement dans ce monde, mais dans
+tout monde « possible »; autrement dit, comme
+\emph{nécessairement} vrai, plutôt que simplement vrai
+dans le monde où nous sommes.
+
+La logique modale a été conçue pour rendre compte d'une telle
+nécessité. On obtient la logique propositionnelle modale en
+ajoutant à la logique propositionnelle ordinaire un opérateur
+« boîte » : si $!A$ est !!a{formula}, alors $\Box !A$ en est
+une aussi. Intuitivement, $\Box !A$ affirme que $!A$ est
+\emph{nécessairement} vraie, ou vraie dans tout monde possible.
+On prend généralement $\Diamond !A$ comme abréviation de
+$\lnot \Box \lnot !A$ et on le lit : « $!A$ est
+\emph{possiblement} vraie ». On peut aussi, bien entendu,
+ajouter des modalités à la logique des prédicats.
+
+Les !!{structure}s de Kripke fournissent une sémantique de la
+logique modale; c'est d'ailleurs à cette dernière que Kripke
+destinait initialement cette sémantique. Au lieu de se limiter
+aux ordres partiels, on considère plus généralement un ensemble
+$P$ de « mondes possibles » et une relation binaire
+d'« accessibilité » $\Atom{R}{x,y}$ entre ces mondes.
+Intuitivement, $\Atom{R}{p,q}$ signifie que le monde~$q$
+est compatible avec~$p$ : si nous nous trouvons dans le
+monde~$p$, nous devons envisager que le monde ait pu
+être comme~$q$.
+
+On qualifie parfois la logique modale d'« intensionnelle »,
+par opposition à une logique « extensionnelle ». La
+sémantique visée d'une logique extensionnelle, telle que la
+logique classique, ne se réfère qu'à un seul monde, le monde
+« actuel »; celle d'une logique intensionnelle repose sur
+une ontologie plus élaborée. Outre la nécessité, les modalités
+peuvent servir à représenter d'autres constructions
+linguistiques : on réinterprète alors $\Box$ et $\Diamond$
+suivant l'application. Par exemple :
+\begin{enumerate}
+\item En logique de la démontrabilité, $\Box !A$ se lit
+  « $!A$ est démontrable » et $\Diamond !A$,
+  « ajouter $!A$ à la théorie de fond est cohérent ».
+\item En logique épistémique, $\Box !A$ peut se lire
+  « Je sais que $!A$ » ou « Je crois que $!A$ ».
+\item En logique temporelle, $\Box !A$ peut signifier
+  « $!A$ est toujours vraie » et $\Diamond !A$,
+  « $!A$ est parfois vraie ».
+\end{enumerate}
+
+Il est naturel d'ajouter à la logique des règles et des axiomes
+sur la modalité. Le système $\Log{S4}$ comprend, par exemple,
+les axiomes et règles usuels de la logique propositionnelle,
+ainsi que les axiomes suivants :
+\begin{align*}
+& \Box (!A \lif !B) \lif (\Box !A \lif \Box !B)\\
+& \Box !A \lif !A \\
+& \Box !A \lif \Box \Box !A
+\intertext{Il comprend aussi la règle de nécessitation : si $!A$ est un théorème,
+  on peut conclure $\Box !A$. Le système $\Log{S5}$ ajoute
+  l'axiome suivant :}
+& \Diamond !A \lif \Box \Diamond !A
+\end{align*}
+La nécessitation ne s'applique donc pas à une formule admise seulement comme hypothèse locale.\footnote{Précision éditoriale : la source ne mentionne pas cette restriction, nécessaire à la correction de la règle.} D'autres variantes de ces axiomes conviennent à d'autres
+applications; on considère généralement, par exemple, que
+S5 caractérise la nécessité logique. On peut souvent trouver
+une sémantique pour laquelle le système de !!{derivation}
+est correct et complet en imposant des conditions naturelles
+à la relation d'accessibilité des !!{structure}s de Kripke.
+Ainsi, $\Log{S4}$ correspond à la classe de celles où
+la relation d'accessibilité est réflexive et transitive.
+Pour $\Log{S5}$, on peut notamment se restreindre aux
+!!{structure}s de Kripke où cette relation est
+{\em universelle}, c'est-à-dire où chaque monde est
+accessible depuis tout autre. Dans ces !!{structure}s,
+$\Box !A$ vaut si et seulement si $!A$ vaut dans
+tous les mondes.
+
+\end{document}

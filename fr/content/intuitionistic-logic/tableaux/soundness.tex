@@ -1,0 +1,237 @@
+% Partie : intuitionistic-logic
+% Chapitre : tableaux
+% Section : soundness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{tab}{sou}
+
+\olsection{Correction des \usetoken{p}{tableau} intuitionnistes}
+
+\begin{explain}
+  Pour montrer que les !!{tableau}s intuitionnistes sont corrects, il
+  faut établir que, si les hypothèses
+  \[
+  \sFmla{\True}{!B_1}[1], \dots, \sFmla{\True}{!B_n}[1], \sFmla{\False}{!A}[1]
+  \]
+  admettent un !!{tableau} fermé, alors $!B_1, \dots, !B_n \Entails
+  !A$. Il est plus simple de prouver la contraposée : s'il existe un
+  modèle~$\mModel{M}$ et un monde~$w$ tels que
+  $\mSat{M}{!B_i}[w]$ pour tout $i=1$, \dots,~$n$, mais
+  $\mSat/{M}{!A}[w]$, aucun !!{tableau} issu de ces hypothèses ne
+  peut être fermé. Ce contre-modèle montre que les hypothèses
+  initiales du !!{tableau} sont satisfaisables. La stratégie
+  consiste à montrer que, si toutes les !!{formula}s préfixées d'une
+  branche d'!!a{tableau} sont satisfaisables, l'application d'une
+  règle laisse au moins une branche prolongée satisfaisable. Puisque
+  les branches fermées ne sont pas satisfaisables, tout !!{tableau}
+  construit à partir d'!!{formula}s préfixées satisfaisables possède
+  au moins une branche ouverte.
+
+  Pour appliquer cette stratégie aux tableaux intuitionnistes, nous
+  devons définir la satisfaisabilité des formules signées munies de
+  préfixes relativement à un modèle relationnel. La preuve découle
+  ensuite des règles et de la persistance de la vérité.
+\end{explain}
+
+\begin{defn}
+  Soit $P$ un ensemble de préfixes, c'est-à-dire $P \subseteq
+  (\PosInt)^* \setminus \{\emptyseq\}$, et soit $\mModel{M}$ un
+  modèle. Une fonction~$f\colon P \to W$ est une
+  \emph{interprétation de}~$P$ dans~$\mModel{M}$ si, pour tous
+  préfixes~$\sigma,\tau\in P$, lorsque $\tau$ prolonge $\sigma$,
+  on a $Rf(\sigma)f(\tau)$. En particulier, cela vaut lorsque
+  $\tau=\sigma.n$.
+
+  Relativement à une interprétation des préfixes~$P$, nous posons :
+  \begin{enumerate}
+  \item $\mModel{M}$ satisfait $\sFmla{\True}{!A}[\sigma]$ si et
+    seulement si $\mSat{M}{!A}[f(\sigma)]$ ;
+  \item $\mModel{M}$ satisfait $\sFmla{\False}{!A}[\sigma]$ si et
+    seulement si $\mSat/{M}{!A}[f(\sigma)]$.
+  \end{enumerate}
+\end{defn}
+
+La condition sur~$f$ s'applique aussi à toute extension utilisée
+$\tau$ de~$\sigma$, souvent notée $\sigma.{*}$ : on a alors
+$Rf(\sigma)f(\tau)$. Sur une branche construite à partir des
+hypothèses de préfixe~$1$, les préfixes présents sont fermés par
+préfixes initiaux ; une nouvelle extension~$\sigma.n$ ne possède
+donc encore aucun descendant présent sur la branche.
+
+\begin{defn}
+  Soit $\Gamma$ un ensemble de !!{formula}s préfixées, et soit
+  $P(\Gamma)$ l'ensemble des préfixes qui y figurent. Si $f$ est une
+  interprétation de~$P(\Gamma)$ dans~$\mModel{M}$, nous disons que
+  $\mModel{M}$ satisfait $\Gamma$ relativement à~$f$, et écrivons
+  $\mSat{M}{\Gamma}[f]$, si $\mModel{M}$ satisfait chacune des
+  !!{formula}s préfixées de~$\Gamma$ relativement à~$f$.
+  L'ensemble~$\Gamma$ est \emph{satisfaisable} s'il existe un
+  modèle~$\mModel{M}$ et une interprétation~$f$ de $P(\Gamma)$ tels
+  que $\mSat{M}{\Gamma}[f]$.
+\end{defn}
+
+\begin{prop}
+  Si $\Gamma$ contient $\sFmla{\True}{!A}[\sigma]$ et
+  $\sFmla{\False}{!A}[\sigma.{*}]$ pour une !!{formula}~$!A$ et un
+  préfixe~$\sigma$, ou contient
+  $\sFmla{\True}{\lfalse}[\sigma]$, alors $\Gamma$ n'est pas
+  satisfaisable.
+\end{prop}
+
+\begin{proof}
+  Comme $\mSat/{M}{\lfalse}[f(\sigma)]$ pour tout monde, un
+  ensemble~$\Gamma$ contenant
+  $\sFmla{\True}{\lfalse}[\sigma]$ n'est pas satisfaisable.
+
+  Supposons maintenant que $\Gamma$ contienne
+  $\sFmla{\True}{!A}[\sigma]$ et
+  $\sFmla{\False}{!A}[\tau]$, où $\tau$ est une extension utilisée
+  de~$\sigma$. Si $\mSat{M}{!A}[f(\sigma)]$, alors, puisque
+  $Rf(\sigma)f(\tau)$, la persistance de la vérité
+  (\olref[sem][rel]{prop:true-monotonic}) donne
+  $\mSat{M}{!A}[f(\tau)]$. Cela contredit
+  $\mSat/{M}{!A}[f(\tau)]$.
+\end{proof}
+
+\begin{thm}[Correction]
+  \ollabel{thm:tableau-soundness}
+  Si $P(\Gamma)$ est fermé par préfixes initiaux non vides et si
+  $\Gamma$ admet un !!{tableau} fermé, alors $\Gamma$ n'est pas
+  satisfaisable.
+\end{thm}
+
+\begin{proof}
+Une branche d'!!a{tableau} est \emph{satisfaisable} si et seulement
+si l'ensemble des !!{signed formula}s qu'elle porte l'est ;
+!!a{tableau} est satisfaisable s'il possède au moins une branche
+satisfaisable.
+
+Montrons que l'application d'une règle d'inférence à un !!{tableau}
+satisfaisable produit encore un !!{tableau} satisfaisable. Cela
+établira le théorème : tout !!{tableau} fermé résulte de règles
+appliquées au !!{tableau} constitué des hypothèses de~$\Gamma$. Si
+$\Gamma$ était satisfaisable, tout !!{tableau} ainsi obtenu le
+serait également. Or un !!{tableau} fermé n'est pas satisfaisable,
+car toutes ses branches sont fermées et donc non satisfaisables.
+
+Supposons un !!{tableau} satisfaisable, c'est-à-dire !!a{tableau}
+possédant au moins une branche satisfaisable.
+L'application d'une règle ajoute des !!{signed formula}s à une
+branche ou partage celle-ci en deux. Si le !!{tableau} possède une
+branche satisfaisable que la règle ne touche pas, celle-ci reste
+satisfaisable dans le nouveau
+!!{tableau}. Il suffit donc d'examiner l'application d'une règle à
+une branche satisfaisable.
+
+Soit $\Gamma$ l'ensemble des !!{signed formula}s de cette branche,
+et soit $\sFmla{S}{!A}[\sigma] \in \Gamma$ la !!{signed formula} à
+laquelle la règle est appliquée. Sans partage, il faut montrer que
+$\Gamma$ augmenté des conclusions reste satisfaisable. Avec
+partage, il suffit de montrer qu'au moins l'une des deux nouvelles
+branches est satisfaisable.
+\begin{enumerate}
+\item Appliquons $\TRule{\True}{\lnot}$ à
+  $\sFmla{\True}{\lnot !B}[\sigma] \in \Gamma$. Pour toute
+  extension utilisée~$\tau$ de~$\sigma$, la branche reçoit, parmi ses
+  !!{signed formula}s,
+  $\sFmla{\False}{!B}[\tau]$. Supposons
+  $\mSat{M}{\Gamma}[f]$. Alors
+  $\mSat{M}{\lnot !B}[f(\sigma)]$ ; aucun monde~$w$ tel que
+  $Rf(\sigma)w$ ne force~$!B$. En particulier,
+  $\mSat/{M}{!B}[f(\tau)]$. La même interprétation satisfait donc
+  la branche prolongée.
+\item Appliquons $\TRule{\False}{\lnot}$ à
+  $\sFmla{\False}{\lnot !B}[\sigma] \in \Gamma$ : exercice.
+\item Appliquons $\TRule{\True}{\land}$ à
+  $\sFmla{\True}{!B \land !C}[\sigma] \in \Gamma$. La branche
+  reçoit deux nouvelles !!{signed formula}s :
+  $\sFmla{\True}{!B}[\sigma]$ et
+  $\sFmla{\True}{!C}[\sigma]$. Si
+  $\mSat{M}{\Gamma}[f]$, alors
+  $\mSat{M}{!B \land !C}[f(\sigma)]$ ; donc
+  $\mSat{M}{!B}[f(\sigma)]$ et
+  $\mSat{M}{!C}[f(\sigma)]$. Le modèle satisfait les deux nouvelles
+  formules signées relativement à~$f$.
+\item Appliquons $\TRule{\False}{\lor}$ à
+  $\sFmla{\False}{!B \lor !C}[\sigma] \in \Gamma$ : exercice.
+\item Appliquons $\TRule{\False}{\lif}$ à
+  $\sFmla{\False}{!B \lif !C}[\sigma] \in \Gamma$. La branche
+  reçoit deux nouvelles !!{signed formula}s :
+  $\sFmla{\True}{!B}[\sigma.n]$ et
+  $\sFmla{\False}{!C}[\sigma.n]$, où $\sigma.n$ est nouveau sur la
+  branche, c'est-à-dire $\sigma.n \notin P(\Gamma)$.
+
+  Puisque $\Gamma$ est satisfaisable, il existe un modèle
+  $\mModel{M}$ et une interprétation~$f$ de $P(\Gamma)$ tels que
+  $\mSat{M}{\Gamma}[f]$, en particulier
+  $\mSat/{M}{!B \lif !C}[f(\sigma)]$. La définition de
+  l'implication fournit donc un monde~$w \in W$ tel que
+  $Rf(\sigma)w$, $\mSat{M}{!B}[w]$ et
+  $\mSat/{M}{!C}[w]$. Définissons $f'$ sur
+  $P(\Gamma) \cup \{\sigma.n\}$ par $f'(\sigma.n)=w$ et
+  $f'(\rho)=f(\rho)$ pour $\rho\in P(\Gamma)$. Les préfixes de la
+  branche étant fermés par préfixes initiaux, aucun ancien préfixe ne
+  prolonge $\sigma.n$ ; si $\rho$ est un préfixe initial de
+  $\sigma.n$, la transitivité de~$R$ et $Rf(\sigma)w$ donnent
+  $Rf'(\rho)f'(\sigma.n)$. Ainsi, $f'$ est une interprétation de
+  $P(\Gamma) \cup \{\sigma.n\}$. Elle satisfait encore~$\Gamma$,
+  et les deux nouvelles formules sont vraies au monde~$w$ avec leurs
+  signes respectifs. Par conséquent,
+  $\Gamma \cup \{\sFmla{\True}{!B}[\sigma.n],
+  \sFmla{\False}{!C}[\sigma.n]\}$ est satisfaisable.
+\end{enumerate}
+
+Examinons maintenant les règles qui partagent une branche en deux.
+\begin{enumerate}
+\item Appliquons $\TRule{\False}{\land}$ à
+  $\sFmla{\False}{!B \land !C}[\sigma] \in \Gamma$. La branche
+  gauche reçoit $\sFmla{\False}{!B}[\sigma]$ et la droite
+  $\sFmla{\False}{!C}[\sigma]$. Si
+  $\mSat{M}{\Gamma}[f]$, alors
+  $\mSat/{M}{!B \land !C}[f(\sigma)]$ ; il s'ensuit que
+  $\mSat/{M}{!B}[f(\sigma)]$ ou
+  $\mSat/{M}{!C}[f(\sigma)]$. Dans le premier cas, la branche
+  gauche est satisfaisable ; dans le second, la droite l'est.
+\item Appliquons $\TRule{\True}{\lor}$ à
+  $\sFmla{\True}{!B \lor !C}[\sigma] \in \Gamma$ : exercice.
+\item Appliquons $\TRule{\True}{\lif}$ à
+  $\sFmla{\True}{!B \lif !C}[\sigma] \in \Gamma$ : exercice.
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Complétez la preuve du
+\olref[int][tab][sou]{thm:tableau-soundness}.
+\end{prob}
+
+\begin{cor}
+\ollabel{cor:entailment-soundness}
+Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
+\end{cor}
+
+\begin{proof}
+  Si $\Gamma \Proves !A$, il existe $!B_1$, \dots, $!B_n \in
+  \Gamma$ tels que
+  $\Delta = \{\sFmla{\False}{!A}[1], \sFmla{\True}{!B_1}[1],
+  \dots, \sFmla{\True}{!B_n}[1]\}$ admette un !!{tableau} fermé.
+  Montrons que $\Gamma \Entails !A$. Supposons le contraire : il
+  existe un modèle~$\mModel{M}$ et un monde~$w$ tels que
+  $\mSat{M}{!B_i}[w]$ pour $i=1$, \dots,~$n$, mais
+  $\mSat/{M}{!A}[w]$. Posons $f(1)=w$ ; alors $f$ interprète
+  $P(\Delta)$ dans~$\mModel{M}$, et $\mModel{M}$ satisfait~$\Delta$
+  relativement à~$f$. Mais, par le
+  \olref{thm:tableau-soundness}, $\Delta$ n'est pas satisfaisable,
+  puisqu'il admet un !!{tableau} fermé et que $P(\Delta)=\{1\}$ est
+  fermé par préfixes initiaux non vides. Cette contradiction établit
+  bien $\Gamma \Entails !A$.
+\end{proof}
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est vraie dans tous les modèles.
+\end{cor}
+
+\end{document}

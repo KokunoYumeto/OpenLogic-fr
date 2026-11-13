@@ -1,0 +1,210 @@
+% Partie : logique intuitionniste
+% Chapitre : propositions comme types
+% Section : réduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{pty}{red}
+
+\olsection{Réduction}
+
+Dans une dérivation en déduction naturelle, une règle
+d'introduction immédiatement suivie de la règle
+d'élimination correspondante forme un détour que l'on
+peut « réduire ». Par exemple, une \Intro{\land}
+suivie de $\Elim{\land}$ peut être supprimée :
+la conclusion de l'élimination est l'un des conjoints
+introduits, et la preuve de ce conjoint figure déjà
+parmi les prémisses de l'introduction.
+On peut donc utiliser directement cette sous-preuve :
+\begin{gather*}
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!A_1$}
+  \AxiomC{}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!A_2$}
+  \RightLabel{$\Intro{\land}$}
+  \BinaryInfC{$!A_1 \land !A_2$}
+  \RightLabel{$\Elim{\land}_i$}
+  \UnaryInfC{$!A_i$}
+  \DisplayProof\bottomAlignProof
+  \quad
+  \redone
+  \quad
+  \AxiomC{}
+  \RightLabel{$\delta_i$}
+  \DeduceC{$!A_i$}
+  \DisplayProof
+\end{gather*}
+
+Cette simplification suggère une relation de réduction
+sur les termes de preuve correspondants. Si $N_1$
+est le terme de preuve de~$\delta_1$ et $N_2$
+celui de~$\delta_2$, le terme de la preuve de gauche
+se réduit en une étape au terme de la preuve de droite :
+\[
+  \proj{i}{\pair{N_1}{N_2}} \redone N_i
+\]
+Dans le lambda-calcul typé avec produits, c'est la
+règle de $\beta$-réduction du type produit.
+
+Un tel couple introduction--élimination est ici
+appelé une \emph{coupure}, ou un détour réductible.
+Dans le lambda-calcul typé, le terme à gauche de
+$\redone$ est un \emph{redex} ; celui à droite en est
+le \emph{réduit}. Dans le $\lambd$-calcul non typé pur,
+les redex $\beta$ sont les applications d'une
+abstraction à un argument, comme
+$(\lambd[x][N])Q$, où la variable $x$ est liée dans $N$.
+Notre syntaxe typée comporte
+en outre $\pair{N}{M}$, $\proj{i}{N}$,
+$\inj[!A]{i}{N}$, $\dcase{N}{x_1}{M_1}{x_2}{M_2}$
+et $\abort{!A}{N}$ ; elle possède les redex
+correspondant aux constructeurs et destructeurs
+ajoutés. Le type vide n'ajoute toutefois aucun
+redex introduction--élimination, faute de constructeur.
+
+La disjonction possède une réduction analogue :
+\begin{gather*}
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta$}
+  \DeduceC{$!A_i$}
+  \RightLabel{$\Intro{\lor}$}
+  \UnaryInfC{$!A_1 \lor !A_2$}
+  \AxiomC{$\Discharge{!A_1}{x_1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C$}
+  \AxiomC{$\Discharge{!A_2}{x_2}$}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!C$}
+  \DischargeRule{$\Elim{\lor}$}{x_1,x_2}
+  \TrinaryInfC{$!C$}
+  \DisplayProof\bottomAlignProof
+  \quad
+  \redone
+  \quad
+  \AxiomC{}
+  \RightLabel{$\delta$}
+  \DeduceC{$!A_i$}
+  \RightLabel{$\delta_i$}
+  \DeduceC{$!C$}
+  \DisplayProof
+\end{gather*}
+Elle correspond à la réduction suivante des termes de preuve :
+\begin{gather*}
+  \dcase{\inj[!A_{3-i}]{i}{M}}{x_1}{N_1}{x_2}{N_2} \redone \Subst{N_i}{M}{x_i}
+\end{gather*}
+où $M$ est le terme de preuve de~$\delta$ et $N_i$
+celui de~$\delta_i$. C'est la règle de $\beta$-réduction
+du type somme. Dans $\Subst{N_i}{M}{x_i}$,
+on remplace les occurrences de $x_i$ libres dans
+le terme de la branche~$N_i$ par~$M$,
+en évitant toute capture de variables.
+
+Pour le type fonction, la réduction supprime
+le détour $\Intro\lif$ suivi de $\Elim\lif$ :
+\begin{gather*}
+  \bottomAlignProof
+  \AxiomC{$\Discharge{!A}{x}$}
+  \RightLabel{$\delta$}
+  \DeduceC{$!B$}
+  \DischargeRule{$\Intro{\lif}$}{x}
+  \UnaryInfC{$!A \lif !B$}
+  \AxiomC{}
+  \RightLabel{$\delta'$}
+  \DeduceC{$!A$}
+  \RightLabel{$\Elim{\lif}$}
+  \BinaryInfC{$!B$}
+  \DisplayProof\bottomAlignProof
+  \quad
+  \redone
+  \quad
+  \AxiomC{}
+  \RightLabel{$\delta'$}
+  \DeduceC{$!A$}
+  \RightLabel{$\delta$}
+  \DeduceC{$!B$}
+  \DisplayProof
+\end{gather*}
+Sur les termes de preuve, c'est la $\beta$-réduction usuelle :
+\begin{gather*}
+  (\lambd[\typeof{x}{!A}][N]M)
+  \redone \Subst{N}{M}{x}
+\end{gather*}
+
+Outre ces conversions qui suppriment un détour,
+on peut considérer des \emph{conversions de permutation}.
+Elles s'appliquent, par exemple, lorsqu'une
+\Elim{\lor} est suivie d'une autre règle d'élimination :
+\begin{multline*}
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta$}
+  \DeduceC{$!A_j$}
+  \RightLabel{$\Intro{\lor}[j]$}
+  \UnaryInfC{$!A_1 \lor !A_2$}
+  \AxiomC{$\Discharge{!A_1}{x_1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C_1 \land !C_2$}
+  \AxiomC{$\Discharge{!A_2}{x_2}$}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!C_1 \land !C_2$}
+  \DischargeRule{$\Elim{\lor}$}{x_1,x_2}
+  \TrinaryInfC{$!C_1 \land !C_2$}
+  \RightLabel{\Elim{\land}[i]}
+  \UnaryInfC{$!C_i$}
+  \DisplayProof\bottomAlignProof
+  \quad
+  \redone
+  \\
+  \AxiomC{}
+  \RightLabel{$\delta$}
+  \DeduceC{$!A_j$}
+  \RightLabel{$\Intro{\lor}[j]$}
+  \UnaryInfC{$!A_1 \lor !A_2$}
+  \AxiomC{$\Discharge{!A_1}{x_1}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C_1 \land !C_2$}
+  \RightLabel{\Elim{\land}[i]}
+  \UnaryInfC{$!C_i$}
+  \AxiomC{$\Discharge{!A_2}{x_2}$}
+  \RightLabel{$\delta_2$}
+  \DeduceC{$!C_1 \land !C_2$}
+  \RightLabel{\Elim{\land}[i]}
+  \UnaryInfC{$!C_i$}
+  \DischargeRule{$\Elim{\lor}$}{x_1,x_2}
+  \TrinaryInfC{$!C_i$}
+  \DisplayProof
+\end{multline*}
+Dans ce schéma, $M$ est le terme de la disjonction majeure
+$!A_1 \lor !A_2$, introduction comprise. Les termes $N_1$ et $N_2$
+sont ceux des branches. La conversion sur les termes lambda est :
+\[
+  \proj{i}{\dcase{M}{x_1}{N_1}{x_2}{N_2}} \redone 
+\dcase{M}{x_1}{\proj{i}{N_1}}{x_2}{\proj{i}{N_2}}
+\]
+
+Les détours peuvent se trouver à l'intérieur d'une preuve :
+on applique alors la conversion à la sous-preuve concernée.
+De même, une réduction élémentaire s'applique à un sous-terme.
+Si $N$ est un sous-terme de $M$ et $N \redone N'$,
+remplacer cette occurrence de $N$ dans~$M$ par $N'$
+produit un terme $M'$ tel que $M \redone M'$.
+Nous écrivons $M \red M'$ lorsqu'il existe une suite
+$M = M_1\redone M_2 \redone \dots \redone M_k = M'$ ;
+le cas $k=1$ désigne la suite vide et donc $M=M'$.
+Cette seconde relation est ainsi la clôture réflexive et
+transitive de~$\redone$.
+
+Une preuve à laquelle aucune conversion ne s'applique,
+ni dans une sous-preuve, est dite \emph{normale}.
+De même, un terme lambda dont aucun sous-terme
+n'admet de conversion est \emph{normal}.
+Un terme lambda normal est aussi une \emph{forme normale}.
+
+\end{document}

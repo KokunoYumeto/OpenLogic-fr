@@ -1,0 +1,270 @@
+% Partie : intuitionistic-logic
+% Chapitre : introduction
+% Section : natural-deduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{int}{ntd}
+
+\olsection{Déduction naturelle}
+
+La déduction naturelle sans la règle $\FalseCl$ est un système
+standard de !!{derivation} pour la logique intuitionniste. Nous
+rappelons ses règles et les motivons au moyen de l'interprétation BHK.
+Pour chacune, si les prémisses ont des constructions, la conclusion
+en a une aussi. La règle $\FalseInt$, qui tire n'importe quelle
+formule de l'absurde, reste admise : elle n'est pas la règle
+classique $\FalseCl$.
+
+Les !!{derivation}s en déduction naturelle pouvant comporter des
+hypothèses non déchargées, nous devons comprendre une !!{derivation}
+de $!A$ à partir d'hypothèses !!{undischarged}s~$\Gamma$ comme une
+fonction transformant des constructions de tous les $!B \in \Gamma$
+en une construction de~$!A$. S'il existe une !!{derivation} de~$!A$
+sans hypothèse !!{undischarged}, il existe alors une construction
+de~$!A$ au sens de BHK. Dans la discussion, nous omettrons toutefois
+la mention de~$\Gamma$ lorsqu'elle n'est pas nécessaire.
+
+Une hypothèse~$!A$ constitue à elle seule une !!{derivation}
+de~$!A$ à partir de l'hypothèse !!{undischarged}~$!A$. Cela
+concorde avec l'interprétation BHK : la fonction identité transforme
+toute construction de~$!A$ en une construction de~$!A$.
+
+\subsection{Conjonction}
+
+\begin{defish}
+\AxiomC{$!A$}
+\AxiomC{$!B$}
+\RightLabel{\Intro{\land}}
+\BinaryInfC{$!A \land !B$}
+\DisplayProof
+\hfill
+\begin{tabular}{l}
+\AxiomC{$!A \land !B$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!A$}
+\DisplayProof
+\\[3ex]
+\AxiomC{$!A \land !B$}
+\RightLabel{\Elim{\land}}
+\UnaryInfC{$!B$}
+\DisplayProof
+\end{tabular}
+\end{defish}
+
+Supposons que $N_1$ et $N_2$ soient des constructions de $!A_1$
+et de $!A_2$, respectivement. Nous obtenons alors une construction
+de $!A_1 \land !A_2$ : le couple $\tuple{N_1, N_2}$.
+
+Réciproquement, selon BHK, une construction de $!A_1 \land !A_2$\footnote{La source répète le premier membre de la conjonction dans cette phrase. Le second membre est rétabli conformément aux deux projections et aux types des constructions qui suivent.}
+est un couple $\tuple{N_1, N_2}$. Si nous possédons un tel couple,
+ses projections donnent une construction de chaque membre : $N_1$
+construit~$!A_1$ et $N_2$ construit $!A_2$.
+
+\subsection{Implication}
+
+\begin{defish}
+  \AxiomC{$\Discharge{!A}{u}$}
+  \DeduceC{$!B$}
+  \DischargeRule{$\Intro{\lif}$}{u}
+  \UnaryInfC{$!A \lif !B$}
+  \DisplayProof
+\hfill
+  \AxiomC{$!A \lif !B$}
+  \AxiomC{$!A$}
+  \RightLabel{$\Elim{\lif}$}
+  \BinaryInfC{$!B$}
+  \DisplayProof
+\end{defish}
+
+Si nous avons une !!{derivation} de~$!B$ à partir de
+l'hypothèse !!{undischarged}~$!A$, alors nous disposons d'une
+fonction~$f$ transformant les constructions de~$!A$ en
+constructions de~$!B$. Cette même fonction est une construction
+de $!A \lif !B$. Ainsi, si la prémisse de $\Intro\lif$ a une
+construction conditionnée par une construction de~$!A$, sa
+conclusion $!A \lif !B$ en a une aussi.
+
+Inversement, supposons que $N$ construise $!A$ et que $f$
+construise $!A \lif !B$. Une construction de $!A \lif !B$
+est une fonction qui transforme les constructions de $!A$ en
+constructions de~$!B$. Le résultat $f(N)$ est donc une
+construction de~$!B$, c'est-à-dire de la conclusion de
+$\Elim\lif$.
+
+\subsection{Disjonction}
+
+\begin{defish}
+\begin{tabular}{l}
+\AxiomC{$!A$}
+\RightLabel{\Intro{\lor}}
+\UnaryInfC{$!A \lor !B$}
+\DisplayProof
+\\[3ex]
+\AxiomC{$!B$}
+\RightLabel{\Intro{\lor}}
+\UnaryInfC{$!A \lor !B$}
+\DisplayProof
+\end{tabular}
+\hfill
+\AxiomC{$!A \lor !B$}
+\AxiomC{$\Discharge{!A}{n}$}
+\DeduceC{$!C$}
+\AxiomC{$\Discharge{!B}{n}$}
+\DeduceC{$!C$}
+\DischargeRule{\Elim{\lor}}{n}
+\TrinaryInfC{$!C$}
+\DisplayProof
+\end{defish}
+
+À partir d'une construction~$N_i$ de~$!A_i$, nous formons une
+construction~$\tuple{i, N_i}$ de~$!A_1 \lor !A_2$. Inversement,
+supposons donnée une construction de~$!A_1 \lor !A_2$, soit un
+couple $\tuple{i, N_i}$ où $N_i$ construit~$!A_i$, ainsi que
+des fonctions $f_1$ et $f_2$ transformant, respectivement, les
+constructions de $!A_1$ et de $!A_2$ en constructions de~$!C$.
+Alors $f_i(N_i)$ construit~$!C$, la conclusion de~$\Elim\lor$.
+
+\subsection{Absurde}
+
+\begin{defish}
+  \AxiomC{$\lfalse$}
+  \RightLabel{\FalseInt}
+  \UnaryInfC{$!A$}
+  \DisplayProof
+\end{defish}
+
+S'il existe une !!{derivation} de~$\lfalse$ à partir des
+hypothèses !!{undischarged}s~$!B_1$, \dots, $!B_n$, alors une
+fonction~$f(M_1, \dots, M_n)$ transforme des constructions de
+$!B_1$, \dots, $!B_n$ en une construction de~$\lfalse$.
+Comme $\lfalse$ n'a aucune construction, il ne peut y avoir
+simultanément de constructions de tous les $!B_1$, \dots, $!B_n$.
+Par conséquent, $f$ possède aussi la propriété conditionnelle
+suivante : \emph{si} $M_1$, \dots, $M_n$ construisent, respectivement,
+$!B_1$, \dots, $!B_n$, \emph{alors} $f(M_1, \dots, M_n)$ construit
+également~$!A$. Cela ne postule pas l'existence d'une construction
+de l'absurde.
+
+\subsection{Règles pour $\lnot$}
+
+Puisque $\lnot !A$ est défini comme $!A \lif \lfalse$, des règles
+propres à~$\lnot$ ne sont pas nécessaires à strictement parler.
+Voici néanmoins la forme qu'elles auraient :
+
+\begin{defish}
+\AxiomC{$\Discharge{!A}{n}$}
+\noLine
+\DeduceC{$\lfalse$}
+\DischargeRule{\Intro{\lnot}}{n}
+\UnaryInfC{$\lnot !A$}
+\DisplayProof
+\hfill
+\AxiomC{$\lnot !A$}
+\AxiomC{$!A$}
+\RightLabel{\Elim{\lnot}}
+\BinaryInfC{$\lfalse$}
+\DisplayProof
+\end{defish}
+
+
+\subsection{Exemples de \usetoken{p}{derivation}}
+
+\begin{enumerate}
+\item $\Proves !A \lif (\lnot !A \lif \lfalse)$, c'est-à-dire $\Proves !A
+  \lif ((!A \lif \lfalse) \lif \lfalse)$
+  \begin{prooftree}
+    \AxiomC{$\Discharge{!A}{2}$}
+    \AxiomC{$\Discharge{!A \lif \lfalse}{1}$}
+    \RightLabel{\Elim\lif}
+    \BinaryInfC{$\lfalse$}
+    \DischargeRule{\Intro\lif}{1}
+    \UnaryInfC{$(!A \lif \lfalse)\lif \lfalse$}
+    \DischargeRule{\Intro\lif}{2}
+    \UnaryInfC{$!A \lif (!A \lif \lfalse) \lif \lfalse$}
+  \end{prooftree}
+
+\item $\Proves ((!A \land !B) \lif !C) \lif (!A \lif (!B \lif !C))$
+  \begin{prooftree}
+    \AxiomC{$\Discharge{(!A \land !B) \lif !C}{3}$}
+    \AxiomC{$\Discharge{!A}{2}$}
+    \AxiomC{$\Discharge{!B}{1}$}
+    \RightLabel{\Intro\land}
+    \BinaryInfC{$!A \land !B$}
+    \RightLabel{\Elim\lif}
+    \BinaryInfC{$!C$}
+    \DischargeRule{\Intro\lif}{1}
+    \UnaryInfC{$!B \lif !C$}
+    \DischargeRule{\Intro\lif}{2}
+    \UnaryInfC{$!A \lif (!B \lif !C)$}
+    \DischargeRule{\Intro\lif}{3}
+    \UnaryInfC{$((!A \land !B) \lif !C) \lif (!A \lif (!B \lif !C))$}
+  \end{prooftree}
+
+\item $\Proves \lnot(!A \land \lnot !A)$, c'est-à-dire $\Proves (!A \land (!A
+  \lif \lfalse))\lif \lfalse$
+  \begin{prooftree}
+    \AxiomC{$\Discharge{!A \land (!A \lif \lfalse)}{1}$}
+    \RightLabel{\Elim\land}
+    \UnaryInfC{$!A \lif \lfalse$}
+    \AxiomC{$\Discharge{!A \land (!A \lif \lfalse)}{1}$}
+    \RightLabel{\Elim\land}
+    \UnaryInfC{$!A$}
+    \RightLabel{\Elim\lif}
+    \BinaryInfC{$\lfalse$}
+    \DischargeRule{\Intro\lif}{1}
+    \UnaryInfC{$(!A \land (!A \lif \lfalse))\lif \lfalse$}
+  \end{prooftree}
+
+\Needspace{18\baselineskip}
+\item $\Proves \lnot\lnot(!A \lor \lnot !A)$, c'est-à-dire $\Proves ((!A \lor
+  (!A \lif \lfalse))\lif \lfalse)\lif \lfalse$
+  \begin{prooftree}\hskip-3em
+    \AxiomC{$\Discharge{(!A \lor (!A \lif \lfalse))\lif \lfalse}{2}$}
+    \AxiomC{$\Discharge{(!A \lor (!A \lif \lfalse))\lif \lfalse}{2}$}
+    \AxiomC{$\Discharge{!A}{1}$}
+    \RightLabel{\Intro\lor}
+    \UnaryInfC{$!A \lor (!A \lif \lfalse)$}
+    \RightLabel{\Elim\lif}
+    \BinaryInfC{$\lfalse$}
+    \DischargeRule{\Intro\lif}{1}
+    \UnaryInfC{$!A \lif \lfalse$}
+    \RightLabel{\Intro\lor}
+    \UnaryInfC{$!A \lor (!A \lif \lfalse)$}
+    \RightLabel{\Elim\lif}
+    \insertBetweenHyps{\hskip -4em}
+    \BinaryInfC{$\lfalse$}
+    \DischargeRule{\Intro\lif}{2}
+    \UnaryInfC{$((!A \lor (!A \lif \lfalse))\lif \lfalse)\lif \lfalse$}
+  \end{prooftree}
+\end{enumerate}
+
+\begin{prop}
+  Si $\Gamma \Proves !A$ en déduction naturelle intuitionniste,
+  alors $\Gamma \Proves !A$ en logique classique. En particulier,
+  tout théorème intuitionniste $!A$ est aussi un théorème classique.
+\end{prop}
+
+\begin{proof}
+  Chacune des règles de la déduction naturelle intuitionniste est
+  aussi une règle de la déduction naturelle classique. Toute
+  !!{derivation} intuitionniste est donc également une
+  !!{derivation} classique.
+\end{proof}
+
+\begin{prob}
+  Donnez des !!{derivation}s intuitionnistes des !!{formula}s suivantes :
+  \begin{enumerate}
+    \item $(\lnot !A \lor !B) \lif (!A \lif !B)$
+    \item $\lnot\lnot\lnot !A \lif \lnot !A$
+    \item $\lnot\lnot (!A \land !B) \liff (\lnot\lnot !A\land \lnot \lnot !B)$
+    \item $\lnot (!A \lor !B) \liff (\lnot !A \land \lnot !B)$
+    \item $(\lnot !A \lor \lnot !B) \lif \lnot (!A \land !B)$
+    \item $\lnot\lnot ( !A \land !B) \lif  (\lnot\lnot !A \lor
+    \lnot\lnot !B)$
+  \end{enumerate}
+\end{prob}
+
+\end{document}

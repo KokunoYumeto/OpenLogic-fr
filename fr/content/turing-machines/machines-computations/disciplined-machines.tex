@@ -1,0 +1,111 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: disciplined-machines
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{dis}
+\olsection{Machines disciplinées}
+
+\begin{explain}
+Dans la \olref[hal]{sec}, nous avons considéré des machines de
+Turing dotées d'un unique état d'arrêt désigné~$h$ : si elles
+s'arrêtent, c'est nécessairement dans cet état. Elles sont
+en ce sens plus « disciplinées » que les machines de Turing
+que nous autorisons en général. On pourrait imposer d'autres
+restrictions à leur comportement. Par exemple, nous n'avons
+pas interdit à une machine d'effacer le marqueur de début du
+ruban dans la case~$0$, ni de tenter de déplacer sa tête vers
+la gauche depuis cette case. Notre définition prévoit que
+la tête reste alors dans la case~$0$; dans d'autres définitions,
+la machine s'arrête. On souhaite parfois aussi pouvoir supposer
+que, si une machine s'arrête, sa tête lit la case~$1$.
+\end{explain}
+
+\begin{defn}\ollabel{defn:disciplined}
+Une machine de Turing~$M$ est \emph{disciplinée} si et
+seulement si :
+\begin{enumerate}
+    \item elle possède un unique état d'arrêt désigné~$h$;
+    \item si elle s'arrête, sa tête lit alors la case~$1$;
+    \item elle n'efface jamais le symbole $\TMendtape$ de
+      la case~$0$;
+    \item elle ne tente jamais de déplacer sa tête vers la
+      gauche depuis la case~$0$.
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+Nous avons déjà expliqué comment transformer une machine de
+Turing en une machine de même comportement quant à l'arrêt
+et à la sortie, munie d'un état
+d'arrêt désigné. On ajoute un nouvel état~$h$ puis, pour toute
+paire $\tuple{q,\sigma}$ d'un état de la machine initiale et
+d'un symbole sur laquelle sa fonction~$\delta$ n'est pas
+définie, on ajoute l'instruction
+$\delta(q,\sigma)=\tuple{h,\sigma,N}$. Aucune instruction
+ne part du nouvel état~$h$.\footnote{Précision éditoriale : les transitions sont ajoutées seulement pour les états anciens ; en ajouter au nouvel état $h$ empêcherait celui-ci d'être un état d'arrêt.}
+
+On peut aussi, bien que la preuve soit fastidieuse, transformer
+toute machine de Turing~$M$ en une machine disciplinée~$M'$
+qui s'arrête sur les mêmes entrées et produit les mêmes sorties.
+Par exemple, si la machine s'arrête alors que sa tête ne lit
+pas la case~$1$, on peut ajouter des instructions qui ramènent
+la tête vers un marqueur réservé à la case~$0$, puis la
+déplacent d'une case vers la droite avant l'arrêt. Il faut
+également faire en sorte que ce marqueur soit préservé et
+reconnaissable pendant la simulation.\footnote{Précision éditoriale : le marqueur source peut être écrasé ou apparaître ailleurs. Le retour vers la case $0$ suppose donc un marqueur réservé et préservé par la simulation ; il ne suffit pas de chercher une occurrence quelconque de l'ancien symbole.} Nous vous laissons
+réfléchir au traitement des autres conditions.
+\end{explain}
+
+\begin{ex}
+    La machine d'addition de l'\olref[una]{ex:adder} est
+    transformée ici en machine disciplinée. Le résultat apparaît
+    dans la \olref{fig:adder-disc}.\footnote{Correction éditoriale : comme dans le premier diagramme d'addition, la transition source de $q_0$ lisant un trait mène à $q_1$ ; nous la corrigeons en une boucle sur $q_0$.}
+    \begin{figure}\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state]         (A)              {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+  \node[state]         (C) [below right of=B] {$q_2$};
+  \node[state]         (D) [below left of=C] {$q_3$};
+  \node[state]         (H) [left of=D] {$h$};
+
+  \path (A) edge node {\TMtrans{\TMblank}{\TMstroke}{\TMstay}} (B)
+           edge [loop below] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (A)
+        (B) edge [loop below] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (B)
+            edge node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (C)
+        (C) edge node {\TMtrans{\TMstroke}{\TMblank}{\TMleft}} (D)
+        (D) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (D)
+        edge node {\TMtrans{\TMendtape}{\TMendtape}{\TMright}} (H);
+\end{tikzpicture}
+\]\caption{Machine d'addition disciplinée}
+\ollabel{fig:adder-disc}
+\end{figure}
+\end{ex}
+
+\begin{prop}\ollabel{prop:disciplined}
+Pour toute machine de Turing~$M$, il existe une machine
+de Turing disciplinée~$M'$ telle que, si $M$ s'arrête avec
+la sortie~$O$, alors $M'$ s'arrête avec la sortie~$O$,
+et que, si $M$ ne s'arrête pas, $M'$ ne s'arrête pas non plus.
+En particulier, toute fonction
+$f\colon\Nat^n \to \Nat$ calculable par une machine de
+Turing est aussi calculable par une machine disciplinée.
+\end{prop}
+
+\begin{prob}\label{tur:mac:dis:prob:disc-succ}
+Donnez une machine disciplinée qui calcule $f(x)=x+1$.
+\end{prob}
+
+\begin{prob}\label{tur:mac:dis:prob:copier}
+Trouvez une machine disciplinée qui, sur l'entrée
+$\TMstroke^n$, produit la sortie
+$\TMstroke^n \concat \TMblank \concat \TMstroke^n$.
+\end{prob}
+
+\end{document}

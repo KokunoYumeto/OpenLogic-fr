@@ -35,29 +35,29 @@ hypothèses; si !!a{sentence} se trouve sous un, deux ou trois autres
 !!{sentence}s, il doit en résulter par une application correcte d'une
 règle d'inférence. Les !!{sentence}s au-dessus du trait d'inférence
 sont les \emph{prémisses}, et l'!!{sentence} situé en dessous est la
-\emph{conclusion} de l'inférence. Les règles vont par paires : une
-règle d'introduction et une règle d'élimination pour chaque
-!!{operator}. Elles introduisent un !!{operator} dans la conclusion
-ou retirent un !!{operator} d'une prémisse. Certaines règles
-permettent de \emph{!!{discharge}} une hypothèse d'un type donné.
-Pour indiquer quelle inférence décharge quelle hypothèse, on attribue
-une même étiquette à l'hypothèse et à l'inférence. On écrit alors
-l'hypothèse sous la forme «~$\Discharge{!A}{n}$~».
+\emph{conclusion} de l'inférence. Pour les connecteurs usuels\iftag{FOL}{ et les quantificateurs}{},
+on distingue les règles d'introduction et d'élimination. Une règle
+d'introduction fait apparaître un !!{operator} comme symbole principal
+de la conclusion. Une règle d'élimination exploite une prémisse dont
+cet !!{operator} est le symbole principal. Certaines règles permettent
+de \emph{!!{discharge}} une hypothèse d'un type donné. On donne alors
+la même étiquette à l'hypothèse, notée «~$\Discharge{!A}{n}$~», et à l'inférence.
 
 % N'inclure cette phrase que si l'un des symboles land, lor, lif ou lnot est défini.
 
 \iftag{notprvNot,notprvAnd,notprvOr,notprvIf}{}%
     {On considère habituellement des règles pour tous les !!{operator}s $\land$, $\lor$, $\lif$, $\lnot$ et $\lfalse$, même si certains d'entre eux sont définis à partir des autres.}
 
-\Needspace{7\baselineskip}
-\begin{editorial}
-La liste initiale de la source omet \FalseCl, qui permet pourtant
-de décharger une hypothèse, comme le montre sa règle ci-dessous.
-Dans la description des arbres, « séquents » a été corrigé en
-« énoncés », conformément aux objets de ce système. L'organisation
-en introduction et élimination décrit les connecteurs usuels;
-les deux règles particulières pour $\lfalse$ sont présentées
-séparément dans la section suivante.
-\end{editorial}
+La section suivante présente les deux règles propres à $\lfalse$.
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
 
 \end{document}

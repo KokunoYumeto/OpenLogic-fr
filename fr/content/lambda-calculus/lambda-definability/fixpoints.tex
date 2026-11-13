@@ -1,0 +1,252 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: fixpoints
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{fp}
+
+\olsection{Points fixes}
+
+Supposons que nous voulions définir la
+factorielle par récurrence au moyen d'un
+terme~$\fn{Fac}$ satisfaisant
+\[
+  \fn{Fac} \ident
+  \lambd[n][\fn{IsZero}\,n\,\num{1}\,
+    (\fn{Mult}\,n\,(
+      \fn{Fac}(\fn{Pred}\,n)))].
+\]
+Autrement dit, la factorielle de~$n$
+vaut~$1$ si $n=0$, et sinon~$n$ fois
+la factorielle de~$n-1$. Mais cette
+égalité ne peut pas servir telle quelle
+de définition d'un lambda-terme :
+$\fn{Fac}$ figure déjà dans son propre
+second membre. Une définition par
+abréviation ordinaire n'emploie, elle,
+que des termes définis auparavant.
+Ainsi, on pourrait poser
+\[
+  \fn{Mult} \ident
+  \lambd[ab][a(\fn{Add}\,b)\,\num{0}].
+\]
+On remplacerait ensuite $\fn{Add}$
+par son terme définissant, puis les
+abréviations que ce terme contiendrait
+éventuellement. Le résultat serait
+un lambda-terme pur.
+
+Cette élimination ne fonctionne pas
+pour la définition récursive envisagée.
+Remplaçons une seule occurrence de
+$\fn{Fac}$ à droite par l'expression
+qui devait la définir :
+\begin{align*}
+  \fn{Fac} &\ident
+    \lambd[n].\,\fn{IsZero}\,n\,\num{1}\\
+    &\quad(\fn{Mult}\,n\,
+        ((\lambd[m][\fn{IsZero}\,m\,\num{1}\,
+          (\fn{Mult}\,m\,
+            (\fn{Fac}(\fn{Pred}\,m)))])
+          (\fn{Pred}\,n))).
+\end{align*}
+Le membre droit contient encore
+$\fn{Fac}$. Répéter la substitution
+allonge toujours l'expression sans
+jamais produire de lambda-terme pur.
+Cette manière de définir la factorielle,
+ou une fonction récursive quelconque,
+ne convient donc pas.
+
+L'équation récursive donne néanmoins
+une indication. Si un terme~$f$
+représentait déjà la factorielle,
+alors le terme
+\[
+  \fn{Fac}' \ident
+  \lambd[g][\lambd[n][
+    \fn{IsZero}\,n\,\num{1}\,
+      (\fn{Mult}\,n\,(g(\fn{Pred}\,n)))]]
+\]
+appliqué à~$f$ représenterait aussi
+la factorielle. Nous pouvons voir
+$\fn{Fac}'$ comme un terme qui reçoit
+un terme représentant une fonction et
+en renvoie un autre. Sur les numéraux,
+$\fn{Fac}'\,f$ et~$f$ donnent alors
+les mêmes valeurs factorielles. Un
+terme~$f$ tel que $\fn{Fac}'\,f\equal[\beta]f$ est
+un \emph{point fixe} de~$\fn{Fac}'$.
+
+Le lambda-calcul contient des termes
+qui produisent un point fixe à partir
+d'un terme donné. Ils permettent de
+transformer $\fn{Fac}'$ en une véritable
+définition de la factorielle.
+
+\begin{defn}
+\ollabel{defn:Turing-Y}
+Le \emph{combinateur de point fixe $Y$}
+est le terme
+\[
+  Y \ident
+  (\lambd[ux][x(uux)])
+  (\lambd[ux][x(uux)]).
+\]
+\end{defn}
+
+\begin{thm}
+Pour tout terme~$g$, on a
+$Yg\red g(Yg)$. Par conséquent,
+$Yg$ est un point fixe de~$g$.
+\end{thm}
+
+\begin{proof}
+Abrégeons $\lambd[ux][x(uux)]$ par~$U$;
+ainsi $Y\ident UU$. Alors
+\begin{align*}
+  Yg &\ident (\lambd[ux][x(uux)])U\,g\\
+     &\red (\lambd[x][x(UUx)])g\\
+     &\red g(UUg)\ident g(Yg).
+\end{align*}
+Les termes $Yg$ et $g(Yg)$ sont donc
+$\beta$-équivalents, ce qui établit
+la propriété de point fixe.
+\end{proof}
+
+L'occurrence de~$Yg$ peut toujours
+être développée à nouveau :
+\begin{align*}
+  Yg &\red g(Yg)\\
+     &\red g(g(Yg))\\
+     &\red g(g(g(Yg)))\\
+     &\ldots
+\end{align*}
+On peut imaginer~$Yg$ comme une
+application indéfiniment répétée
+de~$g$. Ajouter encore une application
+de~$g$ ne change pas son comportement
+de point fixe. Cette suite de réductions
+est infinie; appliqué à un terme~$N$,
+$(Yg)N$ admet de même les réductions
+successives $(g(Yg))N$,
+$(g(g(Yg)))N$, etc. Une autre suite
+de réductions peut néanmoins atteindre
+une forme normale.
+
+Prenons la factorielle. Définissons
+$\fn{Fac}\ident Y\,\fn{Fac}'$. On a
+\begin{align*}
+  \fn{Fac}\,\num{3}
+    &\red Y\,\fn{Fac}'\,\num{3}\\
+    &\red \fn{Fac}'(Y\,\fn{Fac}')\,\num{3}\\
+    &\red \fn{IsZero}\,\num{3}\,\num{1}\,
+      (\fn{Mult}\,\num{3}\,
+        (\fn{Fac}(\fn{Pred}\,\num{3})))\\
+    &\red \fn{Mult}\,\num{3}\,
+      (\fn{Fac}\,\num{2}).
+  \intertext{De même,}
+  \fn{Fac}\,\num{2}
+    &\red \fn{Mult}\,\num{2}\,
+      (\fn{Fac}\,\num{1}),\\
+  \fn{Fac}\,\num{1}
+    &\red \fn{Mult}\,\num{1}\,
+      (\fn{Fac}\,\num{0}).
+  \intertext{En revanche,}
+  \fn{Fac}\,\num{0}
+    &\red \fn{IsZero}\,\num{0}\,\num{1}\,
+      (\fn{Mult}\,\num{0}\,
+        (\fn{Fac}(\fn{Pred}\,\num{0})))\\
+    &\red \num{1}.
+  \intertext{L'ensemble de ces calculs donne}
+  \fn{Fac}\,\num{3}
+    &\red \fn{Mult}\,\num{3}\,
+      (\fn{Mult}\,\num{2}\,
+        (\fn{Mult}\,\num{1}\,\num{1}))
+     \red \num{6}.
+\end{align*}
+À zéro, le sélecteur $\fn{IsZero}$
+écarte la branche récursive; il n'est
+pas nécessaire de la réduire pour
+obtenir~$\num{1}$.
+
+La même méthode vaut pour une équation
+récursive générale. Supposons
+\[
+  g\,x_1\dots x_n\equal[\beta]N,
+\]
+où~$N$ peut contenir $g$ et les
+variables $x_1,\dots,x_n$. Posons
+\[
+  B\ident\lambd[g][
+    \lambd[x_1\dots x_n][N]],
+  \qquad G\ident YB.
+\]
+Le théorème du point fixe donne
+\begin{align*}
+  G &\red B G\\
+    &\red \lambd[x_1\dots x_n]
+      [\Subst{N}{G}{g}],\\
+  G\,x_1\dots x_n
+    &\red \Subst{N}{G}{g}.
+\end{align*}
+Le terme~$G$ satisfait donc l'équation
+récursive à $\beta$-équivalence près.
+
+Le combinateur~$Y$ de la
+\olref{defn:Turing-Y} est dû à
+Alan Turing. Alonzo Church avait proposé
+une autre version, que nous noterons
+$Y_C$ :
+\[
+  Y_C\ident\lambd[g][
+    (\lambd[x][g(xx)])
+    (\lambd[x][g(xx)])].
+\]
+Le combinateur de Church donne une
+propriété un peu plus faible :
+$Y_Cg\equal[\beta]g(Y_Cg)$, mais,
+pour un terme~$g$ arbitraire,
+on n'a pas la réduction dirigée
+$Y_Cg\bred g(Y_Cg)$.
+Fixons~$g$ et prenons~$x$ avec $x\notin\FV{g}$. Posons
+$V_g\ident\lambd[x][g(xx)]$.
+On obtient
+\begin{align*}
+  V_gV_g &\red g(V_gV_g),\\
+  Y_Cg &\red V_gV_g\red g(V_gV_g),\\
+  g(Y_Cg) &\red g(V_gV_g).
+\end{align*}
+Les deux termes ont donc un réduit
+commun et sont $\beta$-équivalents.
+Cette propriété suffit souvent pour
+les applications.
+
+\begin{editorial}
+La source affirme aussi qu’un terme représentant la factorielle est $\beta$-équivalent à son image par $\fn{Fac}'$. L’égalité des valeurs sur les numéraux ne suffit pas à cette conclusion ; la définition d’un point fixe conserve l’équation $\beta$ plus forte, et le terme $Y\,\fn{Fac}'$ la satisfait. Le paramètre de $V_g$ est choisi frais pour~$g$. La source répète ici la formule
+$\lambd[ab][a(\fn{Add}\,a)\,\num{0}]$
+pour la multiplication. Elle calcule
+$a^2$, indépendamment de~$b$;
+l'argument de $\fn{Add}$ est corrigé
+en~$b$, comme dans la section sur les
+fonctions arithmétiques. Le développement
+initial de $\fn{Fac}$ dans la source
+coupe le corps de l'abstraction au
+mauvais endroit et réutilise~$n$
+dans les deux abstractions. La formule
+française garde les deux branches dans
+le corps et renomme la variable
+intérieure~$m$. Les lignes omises dans
+le calcul de la factorielle sont de
+simples réductions de définitions;
+le résultat~$\num{6}$ est indiqué.
+La relation dirigée, propre au
+combinateur de Turing, reste distincte
+de l'équivalence par réduit commun
+pour celui de Church.
+\end{editorial}
+
+\end{document}

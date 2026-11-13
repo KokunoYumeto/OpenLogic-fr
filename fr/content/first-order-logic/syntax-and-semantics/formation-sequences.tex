@@ -1,0 +1,275 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: formation-sequences
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{fseq}
+
+\olsection{Séquences de formation}
+
+Définir les !!{formula}s de manière inductive, puis démontrer leurs
+propriétés par induction, est une méthode élégante et efficace. Il
+peut toutefois être utile d'envisager leur construction de bas en
+haut, étape par étape. Nous le faisons ici à l'aide de la notion de
+\emph{séquence de formation}.
+%
+Pour montrer comment introduire ainsi les termes et les !!{formula}s
+sans renvoyer à leurs définitions inductives, nous définissons
+d'abord une chaîne quelconque de symboles d'un langage~$\Lang L$.
+
+\begin{defn}[Chaînes de symboles]
+\ollabel{defn:string}
+Soit $\Lang L$ un langage du premier ordre. Une \emph{chaîne sur
+$\Lang L$} est une suite finie de symboles de~$\Lang L$. Lorsque
+le contexte fixe clairement ce langage, nous parlerons simplement
+de \emph{chaîne}.
+\end{defn}
+
+\begin{ex}
+Pour tout langage du premier ordre~$\Lang L$, les
+$\Lang L$-!!{formula}s sont des chaînes sur~$\Lang L$, mais la
+réciproque est fausse. Par exemple, \[)(\Obj v_0\lif\lexists\] est une
+chaîne sur~$\Lang L$ sans être une $\Lang L$-!!{formula}.
+\end{ex}
+
+\begin{defn}[Séquences de formation des termes]
+\ollabel{defn:fseq-trm}
+Une suite finie de chaînes sur~$\Lang L$, notée
+$\tuple{t_0,\dotsc,t_n}$, est une \emph{séquence de formation}
+d'un terme~$t$ si $t \ident t_n$ et si, pour tout $i \leq n$, soit
+$t_i$ est !!a{variable} ou !!a{constant}, soit $\Lang L$ contient
+un !!{function}~$f$ à $k$ places et il existe des indices
+$m_1,\dotsc,m_k < i$ tels que
+$t_i \ident f(t_{m_1},\dotsc,t_{m_k})$.\footnote{Précision éditoriale : la source numérote ici les arguments de zéro à k, ce qui en donne k plus un pour un symbole de fonction à k places. Nous les numérotons de un à k pour conserver l'arité annoncée.} Au besoin, nous parlerons
+de \emph{séquence de formation d'un terme} pour distinguer ce cas.
+\end{defn}
+
+\begin{ex}
+La suite
+\[
+    \tuple{\Obj c_0, \Obj v_0, \Atom{\Obj f^2_0}{\Obj c_0, \Obj v_0}, \Atom{\Obj f^1_0}{\Atom{\Obj f^2_0}{\Obj c_0, \Obj v_0}}}
+\]
+est une séquence de formation du terme
+$\Atom{\Obj f^1_0}{\Atom{\Obj f^2_0}{\Obj c_0, \Obj v_0}}$,
+de même que
+\[
+    \tuple{\Obj v_0, \Obj c_0, \Atom{\Obj f^2_0}{\Obj c_0, \Obj v_0}, \Atom{\Obj f^1_0}{\Atom{\Obj f^2_0}{\Obj c_0, \Obj v_0}}}.
+\]
+\end{ex}
+
+\begin{defn}[Séquences de formation des formules]
+\ollabel{defn:fseq-frm}
+Une suite finie de chaînes sur~$\Lang L$, notée
+$\tuple{!A_0,\dotsc,!A_n}$, est une \emph{séquence de formation}
+de~$!A$ si $!A \ident !A_n$ et si, pour tout $i \leq n$, soit
+$!A_i$ est une !!{formula} atomique, soit il existe $j,k < i$ et
+!!a{variable}~$x$ tels que l'une des conditions suivantes soit
+vérifiée :
+\begin{enumerate}
+    \tagitem{prvNot}{$!A_i \ident \lnot !A_j$.}{}%
+    \tagitem{prvAnd}{$!A_i \ident (!A_j \land !A_k)$.}{}%
+    \tagitem{prvOr}{$!A_i \ident (!A_j \lor !A_k)$.}{}%
+    \tagitem{prvIf}{$!A_i \ident (!A_j \lif !A_k)$.}{}%
+    \tagitem{prvIff}{$!A_i \ident (!A_j \liff !A_k)$.}{}%
+    \tagitem{prvAll}{$!A_i \ident \lforall[x][!A_j]$.}{}%
+    \tagitem{prvEx}{$!A_i \ident \lexists[x][!A_j]$.}{}%
+\end{enumerate}
+Au besoin, nous parlerons de \emph{séquence de formation d'une
+formule} pour distinguer ce cas.
+\end{defn}
+
+\begin{ex}
+\[
+\tuple{
+    \Atom{\Obj A^1_0}{\Obj v_0},
+    \Atom{\Obj A^1_1}{\Obj c_1},
+    (\Atom{\Obj A^1_1}{\Obj c_1} \land \Atom{\Obj A^1_0}{\Obj v_0}),
+    \lexists[\Obj v_0][(\Atom{\Obj A^1_1}{\Obj c_1} \land \Atom{\Obj A^1_0}{\Obj v_0})]
+}
+\]
+est une séquence de formation de
+$\lexists[\Obj v_0][(\Atom{\Obj A^1_1}{\Obj c_1} \land
+\Atom{\Obj A^1_0}{\Obj v_0})]$ ; la suite suivante en est aussi une :
+\begin{multline*}
+\tuple{
+    \Atom{\Obj A^1_0}{\Obj v_0},
+    \Atom{\Obj A^1_1}{\Obj c_1},
+    (\Atom{\Obj A^1_1}{\Obj c_1} \land \Atom{\Obj A^1_0}{\Obj v_0}),
+    \Atom{\Obj A^1_1}{\Obj c_1},\\
+    \lforall[\Obj v_1][\Atom{\Obj A^1_0}{\Obj v_0}],
+    \lexists[\Obj v_0][(\Atom{\Obj A^1_1}{\Obj c_1} \land \Atom{\Obj A^1_0}{\Obj v_0})]
+}.
+\end{multline*}
+%
+Le second exemple montre qu'une séquence de formation peut comporter
+des éléments superflus : des !!{formula}s répétées ou sans rôle dans
+la construction de la dernière.
+\end{ex}
+
+\begin{prop}\ollabel{prop:formed}
+Toute !!{formula}~$!A$ de~$\Frm[L]$ possède une séquence de formation.
+\end{prop}
+
+\begin{proof}
+Si $!A$ est atomique, la suite $\tuple{!A}$ est une séquence de
+formation de~$!A$.
+%
+Supposons maintenant que $!B$ et~$!C$ possèdent respectivement les
+séquences de formation $\tuple{!B_0,\dotsc,!B_n}$ et
+$\tuple{!C_0,\dotsc,!C_m}$.
+%
+\begin{enumerate}
+  \tagitem{prvNot}{Si $!A \ident \lnot !B$, alors
+      $\tuple{!B_0,\dotsc,!B_n,\lnot !B_n}$ est une séquence
+      de formation de~$!A$.}{}
+  \tagitem{prvAnd}{Si $!A \ident (!B \land !C)$, alors
+      $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \land !C_m)}$
+      est une séquence de formation de~$!A$.}{}
+  \tagitem{prvOr}{Si $!A \ident (!B \lor !C)$, alors
+      $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lor !C_m)}$
+      est une séquence de formation de~$!A$.}{}
+  \tagitem{prvIf}{Si $!A \ident (!B \lif !C)$, alors
+      $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \lif !C_m)}$
+      est une séquence de formation de~$!A$.}{}
+  \tagitem{prvIff}{Si $!A \ident (!B \liff !C)$, alors
+      $\tuple{!B_0,\dotsc,!B_n,!C_0,\dotsc,!C_m,(!B_n \liff !C_m)}$
+      est une séquence de formation de~$!A$.}{}
+  \tagitem{prvAll}{Si $!A \ident \lforall[x][!B]$, alors
+      $\tuple{!B_0,\dotsc,!B_n,\lforall[x][!B_n]}$
+      est une séquence de formation de~$!A$.}{}
+  \tagitem{prvEx}{Si $!A \ident \lexists[x][!B]$, alors
+      $\tuple{!B_0,\dotsc,!B_n,\lexists[x][!B_n]}$
+      est une séquence de formation de~$!A$.}{}
+\end{enumerate}
+Par le principe d'induction sur les !!{formula}s, toute !!{formula}
+possède une séquence de formation.
+\end{proof}
+
+Nous pouvons aussi établir la réciproque. C'est important : les deux
+définitions des !!{formula}s sont équivalentes et donnent le même
+ensemble. Nous pourrons également démontrer des théorèmes sur les
+!!{formula}s par induction ordinaire sur la longueur des séquences
+de formation.
+
+\begin{lem}
+\ollabel{lem:fseq-init}
+Si $\tuple{!A_0,\dotsc,!A_n}$ est une séquence de formation de~$!A_n$
+et si $k \leq n$, alors $\tuple{!A_0,\dotsc,!A_k}$ est une séquence
+de formation de~$!A_k$.
+\end{lem}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[fol][syn][fseq]{lem:fseq-init}.
+\end{prob}
+
+\begin{thm}
+\ollabel{thm:fseq-frm-equiv}
+$\Frm[L]$ est l'ensemble des chaînes~$!A$ sur~$\Lang L$ pour
+lesquelles il existe une séquence de formation d'une formule.
+\end{thm}
+
+\begin{proof}
+Soit $F$ l'ensemble des chaînes de symboles du langage~$\Lang L$
+qui possèdent une séquence de formation. Nous avons vu dans la
+\olref[fol][syn][fseq]{prop:formed} que $\Frm[L] \subseteq F$ ;
+démontrons l'inclusion réciproque.
+
+Supposons que $!A$ possède une séquence de formation
+$\tuple{!A_0,\dotsc,!A_n}$. Nous montrons que $!A \in \Frm[L]$
+par induction forte sur~$n$.\footnote{Précision éditoriale : dans cette preuve, la source confond longueur et dernier indice de la séquence, mentionne un langage non défini et emploie une notation d'équivalence au lieu de l'identité syntaxique. Nous rétablissons le dernier indice, le langage fixé dans l'énoncé et l'identité syntaxique.} Notre hypothèse d'induction affirme
+que toute chaîne ayant une séquence de formation dont le dernier
+indice est $m < n$ appartient à~$\Frm[L]$.
+Par définition, soit $!A \ident !A_n$ est atomique, soit il existe
+$j,k < n$ tels que l'un des cas suivants se présente :
+\begin{enumerate}
+    \tagitem{prvNot}{$!A \ident \lnot !A_j$.}{}%
+    \tagitem{prvAnd}{$!A \ident (!A_j \land !A_k)$.}{}%
+    \tagitem{prvOr}{$!A \ident (!A_j \lor !A_k)$.}{}%
+    \tagitem{prvIf}{$!A \ident (!A_j \lif !A_k)$.}{}%
+    \tagitem{prvIff}{$!A \ident (!A_j \liff !A_k)$.}{}%
+    \tagitem{prvAll}{$!A \ident \lforall[x][!A_j]$.}{}%
+    \tagitem{prvEx}{$!A \ident \lexists[x][!A_j]$.}{}%
+\end{enumerate}
+Raisonnons par cas. Si $!A$ est atomique, alors
+$!A_n \in \Frm[L]$. Supposons plutôt que
+$!A \ident (!A_j \land !A_k)$. D'après le
+\olref[fol][syn][fseq]{lem:fseq-init},
+$\tuple{!A_0,\dotsc,!A_j}$ et $\tuple{!A_0,\dotsc,!A_k}$
+sont des séquences de formation de $!A_j$ et~$!A_k$. Leurs indices
+terminaux étant inférieurs à~$n$, l'hypothèse d'induction donne
+$!A_j,!A_k \in \Frm[L]$ ; la définition des !!{formula}s donne
+alors $(!A_j \land !A_k) \in \Frm[L]$. Les autres cas se traitent
+de la même façon.
+\end{proof}
+
+Les séquences de formation des termes possèdent des propriétés
+analogues à celles des !!{formula}s.
+
+\begin{prop}
+\ollabel{prop:fseq-trm-equiv}
+$\Trm[L]$ est l'ensemble des chaînes~$t$ sur~$\Lang L$ pour
+lesquelles il existe une séquence de formation d'un terme.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[fol][syn][fseq]{prop:fseq-trm-equiv}.
+Indication : employer une méthode analogue à la démonstration du
+\olref[fol][syn][fseq]{thm:fseq-frm-equiv}.
+\end{prob}
+
+Deux sortes d'éléments superflus peuvent figurer dans une séquence de
+formation : les éléments répétés et ceux qui ne contribuent pas à la
+construction de la formule ou du terme final. Nous pouvons éliminer
+les deux sortes en considérant les séquences de formation minimales.
+
+\begin{defn}[Séquences de formation minimales]
+\ollabel{defn:minimal-fseq}
+Une séquence $\tuple{!A_0, \ldots, !A_n}$ de formation de~$!A$
+est \emph{minimale} si toute autre séquence de
+formation~$s$ de~$!A$ a une longueur supérieure ou égale à~$n+1$.
+
+De même, une séquence de formation $\tuple{t_0, \ldots, t_n}$
+d'un terme~$t$ est \emph{minimale} si toute autre séquence de
+formation~$s$ de~$t$ a une longueur supérieure ou égale à~$n+1$.
+\end{defn}
+
+Une formule ou un terme peut posséder plusieurs séquences de formation
+minimales, mais toutes contiennent exactement les mêmes chaînes.
+
+\begin{prop}
+\ollabel{prop:subformula-equivs}
+Les propositions suivantes sont équivalentes :
+\begin{enumerate}
+    \item $!B$ est !!a{subformula} de~$!A$.
+    \item $!B$ figure dans toute séquence de formation de~$!A$.
+    \item $!B$ figure dans une séquence de formation minimale de~$!A$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[fol][syn][fseq]{prop:subformula-equivs}.
+\end{prob}
+
+\begin{history}
+Les séquences de formation ont été introduites par Raymond Smullyan
+dans son manuel \emph{First-Order Logic} \citep{Smullyan1968}.
+Des propriétés supplémentaires en ont été établies par
+\citet{Zuckerman1973}.
+\end{history}
+
+\end{document}

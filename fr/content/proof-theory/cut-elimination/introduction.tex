@@ -1,0 +1,129 @@
+% Partie : théorie de la démonstration
+% Chapitre : élimination des coupures
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{cut}{int}
+
+\olsection{Introduction}
+
+La règle \Cut{} est la suivante :
+\[
+\Axiom$\Gamma \fCenter \Delta, !A$
+\Axiom$!A, \Pi \fCenter \Lambda$
+\RightLabel{\Cut}
+\BinaryInf$\Gamma, \Pi \fCenter \Delta, \Lambda$
+\DisplayProof
+\]
+La !!{formula}~$!A$ est appelée \emph{formule de coupure}.
+
+La règle \Cut{} figurait dans le calcul des séquents~\Log{LK}
+original de Gentzen. Son \emph{Hauptsatz}, ou « théorème principal »,
+affirme que tout séquent !!{provable} dans~\Log{LK} est aussi
+!!{provable} sans la règle \Cut{} : les coupures peuvent être
+éliminées des preuves de~\Log{LK}. Nos systèmes \Log{G1c} et
+\Log{G3c} ne contiennent pas \Cut, mais la même question se pose :
+peut-on éliminer \Cut{} des !!{proof}s qui emploient cette règle
+en plus de celles de \Log{G1c}, ou de \Log{G3c} ?
+Dans la terminologie déjà introduite, ceci revient à demander
+si \Cut{} est admissible dans \Log{G1c}, ou dans \Log{G3c}.
+
+Le théorème d'élimination des coupures est peut-être le résultat
+le plus important et le plus célèbre de la théorie de la démonstration.
+Il établit d'abord que \Log{G1c} et \Log{G3c} se passent d'une règle
+qui semble, à première vue, indispensable. En formalisant des
+démonstrations usuelles, on doit en effet pouvoir employer des lemmes :
+les mathématiciens démontrent des résultats, puis s'en servent pour
+en démontrer d'autres. On peut formaliser la preuve d'un résultat $L$,
+le lemme, par une !!{proof} du séquent $\Sequent L$.
+On formalise ensuite la preuve du second résultat~$R$, qui emploie~$L$,
+par une !!{proof} du séquent $L \Sequent R$.
+Comment savoir qu'il existe une preuve de~$R$, c'est-à-dire une
+!!{proof} du seul séquent $\Sequent R$ ?
+Il faut pouvoir combiner les deux !!{proof}s ; la règle \Cut{}
+le permettrait.
+
+Nous avons indiqué que \Log{G1c} et \Log{G3c} sont complets :
+ils démontrent tous les séquents valides. Ce résultat peut être
+établi directement. À l'époque où Gentzen développait ses travaux,
+seule la complétude de systèmes axiomatiques de dérivation était
+connue. Pour établir celle de \Log{LK}, il a traduit les
+!!{derivation}s du système axiomatique en !!{proof}s de~\Log{LK}.
+Cette traduction faisait un usage essentiel de \Cut{}.
+
+L'élimination des coupures concerne aussi d'autres logiques,
+qui possèdent elles aussi des calculs de séquents.
+Pour certaines, une preuve directe de complétude peut être difficile,
+voire hors de portée des méthodes disponibles. Une traduction
+depuis un autre système, faisant intervenir \Cut, fournit alors
+une voie pour établir la complétude. Une preuve de l'élimination
+des coupures par les méthodes de la théorie de la démonstration
+permet ensuite d'établir que \Cut{} est superflu et que le système
+sans \Cut{} est complet.
+
+L'élimination des coupures permet également d'obtenir d'autres
+résultats présentant un intérêt propre. Nous examinerons deux
+applications : le lemme d'interpolation de Craig et le théorème
+de Herbrand.
+
+Les preuves de l'élimination des coupures montrent généralement
+comment transformer une !!{proof} utilisant \Cut{} en une preuve
+sans coupure. Ces transformations sont habituellement locales :
+on remplace une portion d'une !!{proof}, généralement une
+sous-!!{proof} se terminant par \Cut, par une autre sous-!!{proof}
+du même séquent, où cette coupure a été supprimée ou remplacée
+par d'autres. Ces arguments donnent des algorithmes qui transforment,
+étape par étape, les !!{proof}s avec coupures en preuves sans coupure.
+
+Cette information supplémentaire est utile dans les applications.
+Par exemple, une preuve par la théorie des modèles du lemme
+d'interpolation établit que, si $!A \lif !B$ est valide, un
+interpolant existe ; laissons pour le moment sa définition de côté.
+Un argument fondé sur l'élimination des coupures donne un algorithme
+qui prend une !!{proof} de $!A \lif !B$ et produit un interpolant.
+Cet argument de théorie de la démonstration est donc
+\emph{constructif}.
+
+Deux méthodes usuelles permettent de démontrer l'élimination des
+coupures. La première, qui remonte à Gentzen, supprime les coupures
+les plus hautes d'une preuve et répète l'opération jusqu'à ce
+qu'il n'en reste aucune. La seconde, due à Sch\"utte et Tait,
+vise les coupures les plus complexes : on supprime successivement
+les coupures maximales, au sens où aucune autre coupure ne porte
+sur une !!{formula} de profondeur supérieure.
+Chaque méthode a ses avantages et ses limites. Pour certains
+systèmes, l'une se met aisément en œuvre tandis que l'autre
+est difficile, voire ne s'applique pas sous la forme envisagée.
+Nous présenterons donc les deux.
+
+Nous démontrerons l'élimination des coupures pour~\Log{G3c}.
+Plus précisément, nous éliminerons la \emph{coupure à contexte commun}
+\CutCS{} :
+\[
+\Axiom$\Gamma \fCenter \Delta, !A$
+\Axiom$!A, \Gamma \fCenter \Delta$
+\RightLabel{\CutCS}
+\BinaryInf$\Gamma \fCenter \Delta$
+\DisplayProof
+\]
+Si un calcul des séquents autorise l'affaiblissement et la contraction,
+comme règles primitives dans \Log{G1c} ou comme règles admissibles
+dans \Log{G3c}, \Cut{} permet de simuler \CutCS, et réciproquement.
+Nous choisissons \CutCS{} parce que la première méthode est plus
+simple à décrire sous cette forme, et que la seconde méthode sera
+présentée avec cette version à contexte commun.
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

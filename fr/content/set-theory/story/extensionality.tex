@@ -1,0 +1,36 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{story}{extensionality}
+\olsection{Extensionnalité}
+
+La première chose à dire est que ce sont leurs !!{element}s qui
+permettent de distinguer les ensembles. Plus précisément :
+
+\begin{axiom}[Extensionnalité]
+Si les ensembles $A$ et $B$ ont les mêmes !!{element}s, alors $A$ et $B$
+sont le même ensemble.
+\[
+  \lforall[A][\lforall[B][(\lforall[x][(x \in A \liff x \in B)] \lif
+  \eq[A][B])]]
+\]
+\end{axiom}
+
+Nous avons admis ce principe tout au long de la \olref[sfr][][]{part}.
+Il mérite pourtant d'être rappelé. L'axiome d'extensionnalité exprime
+l'idée fondamentale qu'un ensemble est déterminé par ses !!{element}s.
+(On peut ainsi opposer les ensembles aux \emph{concepts} : les mêmes
+objets peuvent relever de nombreux concepts distincts.)
+
+Pourquoi adopter ce principe ? On peut soutenir que rejeter
+l'extensionnalité reviendrait à renoncer à toute théorie qu'on pourrait
+encore appeler \emph{théorie des ensembles}. La théorie des ensembles
+n'est rien d'autre que la théorie des collections extensionnelles.
+
+Le véritable défi, dans la \olref[sth][][]{part}, consiste toutefois à
+formuler des principes qui nous disent \emph{quels ensembles existent}.
+Or la seule réponse vraiment «~évidente~» à cette question est une
+réponse dont on peut démontrer qu'elle est fausse.
+
+\end{document}

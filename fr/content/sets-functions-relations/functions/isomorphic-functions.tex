@@ -1,0 +1,60 @@
+% Partie : ensembles, fonctions et relations
+% Chapitre : fonctions
+% Section : isomorphismes
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sfr}{fun}{iso}
+\olsection{Isomorphismes}
+
+\begin{explain}
+Un \emph{isomorphisme} est une bijection qui
+préserve la structure spécifiée sur les ensembles
+qu'elle relie, ici les relations entre leurs
+!!{element}s. Considérons
+$X=\{1,2,3\}$ et $Y=\{4,5,6\}$,
+munis des relations usuelles de successeur,
+d'infériorité et de supériorité, restreintes
+à chacun de ces ensembles. Une !!{bijection}
+$f\colon X\to Y$ préserve ces trois relations
+si, pour tous $i,j\in X$, on a
+$i<j$ si et seulement si $f(i)<f(j)$,
+$i>j$ si et seulement si $f(i)>f(j)$,
+et $j$ est le successeur de $i$ si et seulement
+si $f(j)$ est le successeur de $f(i)$.
+Une telle bijection est un isomorphisme
+pour ces structures munies des trois relations.
+\end{explain}
+
+\begin{defn}[Isomorphisme]
+Soient $U=\langle X,R\rangle$ et
+$V=\langle Y,S\rangle$, où $X$ et $Y$
+sont des ensembles et $R$ et $S$ des
+relations binaires respectivement sur $X$ et
+sur $Y$. Une !!{bijection}~$f$ de $X$
+sur $Y$ est un \emph{isomorphisme} de $U$
+sur $V$ si elle préserve la relation
+distinguée : pour tous $x_1,x_2\in X$,
+$\tuple{x_1,x_2}\in R$ si et seulement si
+$\tuple{f(x_1),f(x_2)}\in S$.
+\end{defn}
+
+\begin{ex}
+Reprenons $X=\{1,2,3\}$ et
+$Y=\{4,5,6\}$, mais distinguons
+cette fois une seule relation dans chaque
+structure : l'ordre strict $<$ sur~$X$
+et l'ordre strict $>$ sur~$Y$.
+La fonction $f\colon X\to Y$ définie
+par $f(x)=7-x$ est un isomorphisme
+de $\tuple{X,<}$ sur $\tuple{Y,>}$ :
+pour $i,j\in X$, $i<j$ équivaut à
+$f(i)>f(j)$, puisque $7-i>7-j$ équivaut à $i<j$.
+L'image du successeur de~$1$ illustre la différence
+entre les deux exemples. On a $f(2)=5$, qui est
+le prédécesseur de~$f(1)=6$.
+\end{ex}
+
+\end{document}

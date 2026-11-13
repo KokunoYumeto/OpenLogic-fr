@@ -1,0 +1,144 @@
+% Partie : logique intuitionniste
+% Chapitre : propositions comme types
+% Section : conservation des types
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{pty}{tpr}
+
+\olsection{Conservation des types}
+
+Les conversions par réduction et permutation étudiées
+précédemment se définissent aussi directement dans
+\Log{tN2i} et \Log{tN3i}.
+Dans \Log{tN3i}, le type d'un terme lambda~$N$
+relativement au contexte~$\Gamma$ est la formule~$!A$
+pour laquelle $\Gamma \Sequent N : !A$ est prouvable.
+Les réductions des termes reflètent les conversions
+des preuves. Une étape de réduction conserve le type
+du terme lambda dans le même contexte~$\Gamma$.
+C'est la \emph{conservation des types}.
+
+\begin{prop}
+Si $N$ a le type~$!A$ relativement à $\Gamma$
+et si $N \redone N'$, alors $N'$ a aussi le type~$!A$
+relativement à~$\Gamma$.
+\end{prop}
+
+\begin{proof}
+Établissons d'abord le lemme de substitution typée.
+Si $\Gamma,x:!B \Sequent P:!C$ et
+$\Gamma \Sequent Q:!B$, alors
+$\Gamma \Sequent \Subst{P}{Q}{x}:!C$.
+On renomme les lieurs pour éviter toute capture.
+Dans \Log{tN3i}, on peut ajouter une affectation
+fraîche à chaque contexte d'une dérivation. Les axiomes
+et les règles restent valides après renommage des lieurs
+si nécessaire. On peut donc affaiblir le typage de~$Q$.
+
+On raisonne par récurrence sur le typage de~$P$.
+Pour $x$, on utilise le typage de~$Q$. Les autres
+variables gardent leur axiome. Sous une abstraction
+ou dans une branche d'analyse par cas, on applique
+l'hypothèse de récurrence dans le contexte étendu,
+puis on réapplique la règle. Pour les autres
+constructeurs, on applique l'hypothèse de récurrence
+aux sous-termes dans leur contexte initial.
+%
+Le type final est ainsi conservé.
+
+Ce lemme traite les réductions de fonction et de somme ;
+la réduction d'un produit choisit directement l'une
+des deux preuves de composante. Par exemple, l'introduction
+d'un couple suivie de sa projection donne :
+\[
+  \bottomAlignProof
+  \AxiomC{}
+  \Deduce$\Gamma \fCenter N_1 : !B_1$
+  \AxiomC{}
+  \Deduce$\Gamma \fCenter N_2 : !B_2$
+  \RightLabel{\Intro{\land}}
+  \BinaryInf$\Gamma \fCenter \pair{N_1}{N_2} : !B_1 \land !B_2$
+  \RightLabel{\Elim{\land}[i]}
+  \UnaryInf$\Gamma \fCenter \proj{i}{\pair{N_1}{N_2}} : !B_i$
+  \DisplayProof
+  \quad\redone\quad
+  \bottomAlignProof
+  \AxiomC{}
+  \Deduce$\Gamma \fCenter N_i : !B_i$
+  \DisplayProof
+  \]
+Le terme de la preuve à droite est~$N_i$,
+exactement le réduit de $\proj{i}{\pair{N_1}{N_2}}$.
+
+Pour une \Intro{\lif} suivie d'une \Elim{\lif},
+la conversion s'écrit :
+\begin{multline*}
+  \bottomAlignProof
+  \AxiomC{$\delta_2$}
+  \Deduce$x: !B_1, \Gamma \fCenter N : !B_2$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter \lambd[\typeof{x}{!B_1}][N] : !B_1 \lif !B_2$
+  \AxiomC{}
+  \RightLabel{$\delta_3$}
+  \Deduce$\Gamma \fCenter M : !B_1$
+  \RightLabel{\Elim{\lif}}
+  \BinaryInf$\Gamma \fCenter (\lambd[\typeof{x}{!B_1}][N] M) : !B_2$
+  \DisplayProof
+  \quad\redone\\
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_3$}
+  \Deduce$\Gamma \fCenter M : !B_1$
+  \RightLabel{$\Subst{\delta_2}{\delta_3}{x:!B_1}$}
+  \Deduce$\Gamma \fCenter \Subst{N}{M}{x} : !B_2$
+  \DisplayProof
+  \end{multline*}
+Le terme de la preuve à droite est
+$\Subst{N}{M}{x}$, le réduit du terme de gauche.
+La sous-preuve~$\delta_2$ se transforme par le lemme
+de substitution : ses axiomes pour $x:!B_1$,
+de la forme $\Gamma' \Sequent x:!B_1$, sont remplacés
+par la preuve~$\delta_3$
+de $\Gamma \Sequent M:!B_1$, avec renommage
+des variables liées et maintien des hypothèses
+communes. Le résultat est une preuve de
+$\Gamma \Sequent \Subst{N}{M}{x}:!B_2$.
+
+Les conversions de permutation conservent également
+le type. Dans l'exemple de la projection après une
+analyse par cas, chaque branche avait un type produit ;
+projeter dans chaque branche donne le même type de
+composante que projeter après l'analyse.
+Enfin, considérons une preuve~$\delta$ et un sous-terme
+redex~$M$ dont la sous-dérivation~$\delta_1$ aboutit
+à $\Gamma' \Sequent M:!B$. Une réduction produit
+un terme~$M'$ ; le cas à la racine fournit une
+sous-dérivation~$\delta_1'$ de
+$\Gamma' \Sequent M':!B$.
+En remplaçant $\delta_1$ par~$\delta_1'$ puis en
+réappliquant les règles qui entouraient le sous-terme,
+on obtient une preuve~$\delta'$ de
+$\Gamma \Sequent N':!A$.
+\end{proof}
+
+La correspondance entre les preuves et la réduction
+des termes donne aussi une propriété de
+\emph{progression}.
+Si un terme bien typé~$N$ n'est pas en forme normale,
+il contient un redex~$M$. La sous-dérivation de typage
+qui aboutit à $\Gamma' \Sequent M:!B$ admet la conversion
+correspondante. En remplaçant ce redex par son réduit,
+on obtient un terme~$N'$ et, par conservation des types,
+une preuve de $\Gamma \Sequent N':!A$.
+Ainsi, un terme bien typé qui n'est pas normal peut
+encore se réduire. Cette progression, jointe à la
+conservation des types, signifie qu'une réduction
+ne reste pas bloquée sur un terme bien typé non normal :
+elle produit un autre terme bien typé de même type.
+Elle n'affirme pas à elle seule que toutes les suites
+de réduction terminent.
+
+\end{document}

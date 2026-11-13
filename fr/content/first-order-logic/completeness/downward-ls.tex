@@ -1,0 +1,79 @@
+% Partie : logique du premier ordre
+% Chapitre : complétude
+% Section : Löwenheim--Skolem descendant
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{com}{dls}
+\olsection{Le théorème de Löwenheim--Skolem}
+
+Dans le langage au plus dénombrable fixé ici, le théorème de
+Löwenheim--Skolem affirme notamment que toute théorie ayant un
+modèle infini possède aussi un modèle !!{enumerable}.
+Il en découle que tout ensemble d'!!{sentence}s qui admet un
+modèle !!{nonenumerable} admet aussi un modèle !!{enumerable}.
+Un ensemble d'!!{sentence}s ne peut donc imposer que son
+!!{domain} soit !!{nonenumerable}.
+
+\begin{thm}
+\ollabel{thm:downward-ls}
+Si $\Gamma$ est cohérent, il possède un modèle !!{enumerable},
+c'est-à-dire qu'il est satisfaisable dans !!a{structure} dont le
+domaine est fini ou !!{denumerable}.
+\end{thm}
+
+\begin{proof}
+Si $\Gamma$ est cohérent, la !!{structure}~$\Struct M$ construite
+dans la démonstration du théorème de complétude a un domaine dont la
+taille ne dépasse pas celle de l'ensemble des termes clos du
+langage enrichi~$\Lang L'$. Ce domaine est formé soit des termes
+clos, soit de leurs classes d'équivalence. Comme $\Lang L'$ est
+au plus dénombrable, il en va de même de l'ensemble de ses termes
+clos et du domaine de~$\Struct M$. Le réduit au langage initial
+a le même domaine.
+\end{proof}
+
+\begin{thm}
+\ollabel{noidentity-ls}
+Si $\Gamma$ est un ensemble cohérent d'!!{sentence}s dans le
+langage du premier ordre sans identité, il possède un modèle
+!!{denumerable}, c'est-à-dire qu'il est satisfaisable dans !!a{structure}
+dont le domaine est infini et !!{enumerable}.
+\end{thm}
+
+\begin{proof}
+Si $\Gamma$ est cohérent et qu'aucun de ses énoncés ne contient
+l'identité, la !!{structure}~$\Struct M$ construite dans la
+démonstration de la complétude a pour domaine exactement l'ensemble
+des \emph{termes clos} du langage enrichi~$\Lang L'$.
+Cet ensemble est infini dénombrable, puisque le langage est au
+plus dénombrable et que les constantes ajoutées par l'expansion
+de Henkin sont des termes clos distincts. La structure~$\Struct M$
+est donc !!{denumerable}.
+\end{proof}
+
+\begin{ex}[Paradoxe de Skolem]
+La théorie des ensembles de Zermelo--Fraenkel avec axiome du choix,
+$\Log{ZFC}$, est un
+cadre assez puissant pour exprimer pratiquement tous les énoncés
+mathématiques, y compris ceux qui portent sur la taille des
+ensembles. Ainsi, $\Log{ZFC}$ démontre que l'ensemble~$\Real$ des
+nombres réels est !!{nonenumerable}, et aussi le théorème de Cantor
+selon lequel l'ensemble des parties de tout ensemble est plus grand
+que cet ensemble lui-même. Si $\Log{ZFC}$ est cohérent, tous ses
+modèles sont infinis et contiennent des !!{element}s que la théorie
+décrit comme !!{nonenumerable}, par exemple celui qui représente
+l'ensemble des parties des entiers naturels. Pourtant, d'après le
+théorème de Löwenheim--Skolem, $\Log{ZFC}$ possède aussi des
+modèles !!{enumerable} : vus de l'extérieur, ces modèles sont au
+plus dénombrables, bien qu'ils contiennent des ensembles «
+!!{nonenumerable}s » au sens interne du modèle. De l'extérieur, on
+peut énumérer les objets que le modèle considère comme appartenant à
+son ensemble des parties de~$\omega$. La non-dénombrabilité interne
+exclut une bijection représentée dans le modèle entre cet ensemble
+et ses entiers.
+\end{ex}
+
+\end{document}

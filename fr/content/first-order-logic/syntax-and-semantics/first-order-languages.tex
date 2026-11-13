@@ -1,0 +1,171 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: first-order-languages
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{fol}
+
+\olsection{Langages du premier ordre}
+
+Les expressions de la logique du premier ordre sont construites à
+partir d'un vocabulaire de base comprenant des \emph{!!{variable}s},
+des \emph{!!{constant}s}, des \emph{!!{predicate}s} et parfois des
+\emph{!!{function}s}. Avec les connecteurs logiques, les
+quantificateurs et les signes de ponctuation, comme les parenthèses
+et les virgules, ces symboles permettent de former des \emph{termes}
+et des \emph{!!{formula}s}.
+
+\begin{explain}
+De façon informelle, les !!{predicate}s désignent des propriétés et
+des relations, les !!{constant}s des objets individuels, et les
+!!{function}s des applications. À l'exception de l'!!{identity}~$\eq$,
+ces symboles sont les \emph{symboles non logiques} ; leur ensemble
+constitue un langage. Tout langage du premier ordre~$\Lang L$ est
+déterminé par ses symboles non logiques. Dans le cas le plus général,
+$\Lang L$ contient une infinité de symboles de chaque sorte.
+\end{explain}
+
+Dans le cas général, nous utilisons les symboles suivants en logique
+du premier ordre :
+
+\begin{enumerate}
+\item Symboles logiques
+\begin{enumerate}
+\item Connecteurs logiques et quantificateurs :
+  \startycommalist
+  \iftag{prvNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{prvAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{prvOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{prvIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{prvIff}{\ycomma $\liff$ (!!{biconditional})}{}%
+  \iftag{prvAll}{\ycomma $\lforall$ (quantificateur universel)}{}%
+  \iftag{prvEx}{\ycomma $\lexists$ (quantificateur existentiel)}{}.
+\tagitem{prvFalse}{La constante propositionnelle de
+  !!{falsity}~$\lfalse$.}{}
+\tagitem{prvTrue}{La constante propositionnelle de
+  !!{truth}~$\ltrue$.}{}
+\item L'!!{identity} binaire~$\eq$.
+\item Un ensemble !!{denumerable} de !!{variable}s : $\Obj v_0$,
+  $\Obj v_1$, $\Obj v_2$, \dots
+\end{enumerate}
+\item Symboles non logiques, qui constituent le \emph{langage standard}
+  de la logique du premier ordre
+\begin{enumerate}
+\item Un ensemble !!{denumerable} de !!{predicate}s à $n$ places
+  pour chaque $n>0$ : $\Obj A^n_0$, $\Obj A^n_1$,
+  $\Obj A^n_2$, \dots
+\item Un ensemble !!{denumerable} de !!{constant}s : $\Obj c_0$,
+  $\Obj c_1$, $\Obj c_2$, \dots.
+\item Un ensemble !!{denumerable} de !!{function}s à $n$ places
+  pour chaque $n>0$ : $\Obj f^n_0$, $\Obj f^n_1$,
+  $\Obj f^n_2$, \dots
+\end{enumerate}
+\item Signes de ponctuation : (, ) et la virgule.
+\end{enumerate}
+
+La plupart de nos définitions et de nos résultats porteront sur le
+langage standard complet de la logique du premier ordre. Selon
+l'application envisagée, nous pourrons toutefois restreindre le
+langage à quelques !!{predicate}s, !!{constant}s et !!{function}s.
+
+\begin{ex}
+Le langage~$\Lang L_A$ de l'arithmétique contient un unique
+!!{predicate} à deux places~$<$, une unique !!{constant}~$\Obj 0$,
+un !!{function} à une place~$\prime$, et deux !!{function}s à deux
+places, $+$ et~$\times$.
+\end{ex}
+
+\begin{ex}
+Le langage~$\Lang L_Z$ de la théorie des ensembles ne contient qu'un
+seul !!{predicate} à deux places~$\in$.
+\end{ex}
+
+\begin{ex}
+Le langage~$\Lang L_\le$ des ordres ne contient que le
+!!{predicate} à deux places~$\le$.
+\end{ex}
+
+Il s'agit, là encore, de conventions : ces symboles ne sont
+officiellement que des alias. Ainsi, $<$, $\in$ et $\le$ sont des
+alias de $\Obj A^2_0$, $\Obj 0$ de $\Obj c_0$, $\prime$ de
+$\Obj f^1_0$, $+$ de $\Obj f^2_0$ et $\times$ de $\Obj f^2_1$.
+
+\iftag{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}{%
+Outre les connecteurs primitifs et
+\iftag{notprvEx,notprvAll}{le quantificateur}{les quantificateurs}
+introduits ci-dessus, nous utilisons aussi les symboles
+\emph{définis} suivants :
+\startycommalist
+  \iftag{defNot}{\ycomma $\lnot$ (négation)}{}%
+  \iftag{defAnd}{\ycomma $\land$ (conjonction)}{}%
+  \iftag{defOr}{\ycomma $\lor$ (disjonction)}{}%
+  \iftag{defIf}{\ycomma $\lif$ (!!{conditional})}{}%
+  \iftag{defIff}{\ycomma $\liff$ (!!{biconditional})}{}%
+  \iftag{defAll}{\ycomma $\lforall$ (quantificateur universel)}{}%
+  \iftag{defEx}{\ycomma $\lexists$ (quantificateur existentiel)}{}%
+  \iftag{defFalse}{\ycomma !!{falsity}~$\lfalse$}{}%
+  \iftag{defTrue}{\ycomma !!{truth}~$\ltrue$}}{}.
+
+\begin{tagblock}{defNot,defOr,defAnd,defIf,defIff,defTrue,defFalse,defEx,defAll}
+\begin{explain}
+Un symbole défini ne fait pas officiellement partie du langage : il
+est introduit comme une abréviation informelle. Il permet de raccourcir
+des !!{formula}s qui, écrites avec les seuls symboles primitifs,
+seraient assez longues. L'avantage est évident ; plus encore, les
+démonstrations deviennent plus courtes. Tout symbole primitif doit en
+effet être traité séparément dans les démonstrations. Plus il y a de
+symboles primitifs, plus celles-ci sont longues.
+\end{explain}
+\end{tagblock}
+
+% Autres symboles
+
+\begin{intro}
+Vous connaissez peut-être une terminologie ou des symboles différents
+de ceux employés ci-dessus. Les ouvrages et les enseignants en logique
+utilisent couramment $\sim$, $\neg$ ou~!\ pour la « négation », et
+$\wedge$, $\cdot$ ou $\&$ pour la « conjonction ». Pour le
+« conditionnel » ou l'« implication », on rencontre souvent
+$\rightarrow$, $\Rightarrow$ et $\supset$.
+\iftag{prvIff,defIff}{Les symboles du « biconditionnel », de la
+  « bi-implication » ou de l'« équivalence (matérielle) » sont
+  $\leftrightarrow$, $\Leftrightarrow$ et $\equiv$.}{}
+\iftag{prvFalse,defFalse}{Le symbole $\lfalse$ est appelé, selon les
+  auteurs, « fausseté », « falsum », « absurdité » ou « bottom ».}{}
+\iftag{prvTrue,defTrue}{Le symbole $\ltrue$ est appelé « vérité »,
+  « verum » ou « top ».}{}
+
+On emploie habituellement des lettres minuscules du début de
+l'alphabet latin, par exemple $a$, $b$, $c$, pour les !!{constant}s,
+parfois appelées noms, et des lettres minuscules de la fin de
+l'alphabet, par exemple $x$, $y$, $z$, pour les !!{variable}s. Les
+quantificateurs se combinent avec des !!{variable}s, comme~$x$ ;
+pour le quantificateur universel, on trouve notamment les notations
+$\forall x$, $(\forall x)$, $(x)$, $\Pi x$ et $\bigwedge_x$ ; pour
+le quantificateur existentiel, $\exists x$, $(\exists x)$, $(Ex)$,
+$\Sigma x$ et $\bigvee_x$.
+\end{intro}
+
+\begin{explain}
+Nous pourrions prendre tous les !!{operator}s propositionnels et les
+deux quantificateurs comme symboles primitifs du langage. Nous
+pourrions aussi choisir un ensemble plus réduit de symboles primitifs
+et traiter les autres !!{operator}s comme des symboles définis. Parmi
+les ensembles de connecteurs booléens fonctionnellement complets
+figurent $\{ \lnot, \lor \}$, $\{ \lnot, \land \}$ et
+$\{ \lnot, \lif\}$ ; chacun peut être combiné avec l'un ou l'autre
+des quantificateurs pour obtenir un langage du premier ordre d'une
+expressivité complète.
+
+Vous connaissez peut-être deux autres !!{operator}s : la barre de
+Sheffer~$|$, nommée d'après Henry Sheffer, et la flèche de
+Peirce~$\downarrow$, également appelée « dagger de Quine ». Dans
+leurs interprétations usuelles respectives, « non-et » (nand) et
+« non-ou » (nor), chacun de ces opérateurs est à lui seul
+fonctionnellement complet.
+\end{explain}
+
+\end{document}

@@ -1,0 +1,284 @@
+% Part: normal-modal-logic
+% Chapter: tableaux
+% Section: rules-for-K
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{tab}{rul}
+
+\olsection{Règles pour \Ax{K}}
+
+Les règles pour les connecteurs propositionnels ordinaires sont les
+mêmes que dans les !!{tableau}s propositionnels signés, auxquels on
+ajoute des préfixes. Dans chaque cas, la règle appliquée à une
+!!{formula} signée $\sFmla{S}{!A}[\sigma]$ produit de nouvelles
+!!{formula}s portant elles aussi le préfixe~$\sigma$. Cela se
+comprend intuitivement : si, par exemple, $!A \land !B$ est vraie au
+monde désigné par~$\sigma$, alors $!A$ et $!B$ sont vraies en
+$\sigma$ (sans que cela impose leur vérité aux autres mondes). Les
+règles propositionnelles sont rassemblées dans le
+\olref{tab:prop-rules}.
+\iftag{prvIff}{Pour le biconditionnel primitif, $\sFmla{\True}{!A\liff!B}[\sigma]$ scinde la branche en deux : l’une reçoit $\sFmla{\True}{!A}[\sigma]$ et $\sFmla{\True}{!B}[\sigma]$, l’autre $\sFmla{\False}{!A}[\sigma]$ et $\sFmla{\False}{!B}[\sigma]$. De même, $\sFmla{\False}{!A\liff!B}[\sigma]$ produit une branche avec $\sFmla{\True}{!A}[\sigma]$ et $\sFmla{\False}{!B}[\sigma]$, et une autre avec $\sFmla{\False}{!A}[\sigma]$ et $\sFmla{\True}{!B}[\sigma]$. Chaque branche reçoit les deux formules indiquées au même préfixe.}{}
+\begin{table}
+  \[\def\arraystretch{3}\begin{array}{|c|c|}
+    \hline
+    \AxiomC{\sFmla{\True}{\lnot !A}[\sigma]}
+    \RightLabel{\TRule{\True}{\lnot}}
+    \UnaryInfC{\sFmla{\False}{!A}[\sigma]}
+    \DisplayProof
+    &
+    \AxiomC{\sFmla{\False}{\lnot !A}[\sigma]}
+    \RightLabel{\TRule{\False}{\lnot}}
+    \UnaryInfC{\sFmla{\True}{!A}[\sigma]}
+    \DisplayProof
+    \\[1ex]
+    \hline
+    \AxiomC{\sFmla{\True}{!A \land !B}[\sigma]}
+    \RightLabel{\TRule{\True}{\land}}
+    \UnaryInfC{\sFmla{\True}{!A}[\sigma]}
+    \noLine
+    \UnaryInfC{\sFmla{\True}{!B}[\sigma]}
+    \DisplayProof
+    &
+    \AxiomC{\sFmla{\False}{!A \land !B}[\sigma]}
+    \RightLabel{\TRule{\False}{\land}}
+    \UnaryInfC{$\sFmla{\False}{!A}[\sigma] \quad \mid \quad
+      \sFmla{\False}{!B}[\sigma]$}
+    \DisplayProof
+    \\[2ex]
+    \hline
+    \AxiomC{\sFmla{\True}{!A \lor !B}[\sigma]}
+    \RightLabel{\TRule{\True}{\lor}}
+    \UnaryInfC{$\sFmla{\True}{!A}[\sigma] \quad \mid \quad
+      \sFmla{\True}{!B}[\sigma]$}
+    \DisplayProof
+    &
+    \AxiomC{\sFmla{\False}{!A \lor !B}[\sigma]}
+    \RightLabel{\TRule{\False}{\lor}}
+    \UnaryInfC{\sFmla{\False}{!A}[\sigma]}
+    \noLine
+    \UnaryInfC{\sFmla{\False}{!B}[\sigma]}
+    \DisplayProof
+    \\[2ex]
+    \hline
+    \AxiomC{\sFmla{\True}{!A \lif !B}[\sigma]}
+    \RightLabel{\TRule{\True}{\lif}}
+    \UnaryInfC{$\sFmla{\False}{!A}[\sigma] \quad \mid
+      \quad \sFmla{\True}{!B}[\sigma]$}
+    \DisplayProof
+    &
+    \AxiomC{\sFmla{\False}{!A \lif !B}[\sigma]}
+    \RightLabel{\TRule{\False}{\lif}}
+    \UnaryInfC{\sFmla{\True}{!A}[\sigma]}
+    \noLine
+    \UnaryInfC{\sFmla{\False}{!B}[\sigma]}
+    \DisplayProof
+    \\[2ex]
+    \hline
+  \end{array}\]
+  \caption{Règles des !!{tableau}s préfixés pour les connecteurs
+    propositionnels}
+  \ollabel{tab:prop-rules}
+\end{table}
+
+La condition de fermeture est la même que pour les !!{tableau}s
+ordinaires, à ceci près que les préfixes, et pas seulement les
+!!{formula}s, doivent coïncider. Une branche est donc fermée si elle
+contient à la fois
+\[
+\sFmla{\True}{!A}[\sigma] \quad\text{et}\quad \sFmla{\False}{!A}[\sigma]
+\]
+pour un certain préfixe $\sigma$ et une !!{formula}~$!A$.
+\iftag{prvFalse}{Une branche contenant $\sFmla{\True}{\lfalse}[\sigma]$ est également fermée ; $\sFmla{\False}{\lfalse}[\sigma]$ n’exige aucune décomposition.}{} \iftag{prvTrue}{Une branche contenant $\sFmla{\False}{\ltrue}[\sigma]$ est également fermée ; $\sFmla{\True}{\ltrue}[\sigma]$ n’exige aucune décomposition.}{}
+Les règles qui posent les hypothèses sont elles aussi celles des
+!!{tableau}s ordinaires, sauf que nous attribuons toujours aux
+hypothèses le préfixe~$1$. (Le choix du préfixe importe peu, pourvu
+qu'il soit le même pour toutes les hypothèses.) Ainsi, nous disons que
+\[
+!B_1, \dots, !B_n \Proves !A
+\]
+si et seulement s'il existe un tableau fermé pour les hypothèses
+\[
+\sFmla{\True}{!B_1}[1], \dots, \sFmla{\True}{!B_n}[1],
+\sFmla{\False}{!A}[1].
+\]
+
+Pour les règles modales de
+\iftag{prvBox}{\iftag{prvDiamond}{$\Box$ et~}{$\Box$}}{}\iftag{prvDiamond}{$\Diamond$}{},
+le préfixe de la conclusion d'une règle appliquée à !!a{formula} de
+préfixe~$\sigma$ est $\sigma.n$. Toutefois, les valeurs permises de
+$n$ dépendent du signe~$\True$ ou~$\False$.
+
+\iftag{prvBox}{La règle $\TRule{\True}{\Box}$ prolonge une branche
+  contenant $\sFmla{\True}{\Box !A}[\sigma]$ par
+  $\sFmla{\True}{!A}[\sigma.n]$.}{}
+\iftag{prvDiamond}{La règle $\TRule{\False}{\Diamond}$ prolonge une
+  branche contenant $\sFmla{\False}{\Diamond !A}[\sigma]$ par
+  $\sFmla{\False}{!A}[\sigma.n]$.}{}
+\iftag{notprvBox,notprvDiamond}{Cette règle}{Chacune de ces règles}
+ne peut s'appliquer que si le préfixe~$\sigma.n$ figure \emph{déjà}
+sur la branche considérée. Nous dirons qu'un tel préfixe est
+« utilisé » sur cette branche.
+
+\iftag{prvBox}{La règle $\TRule{\False}{\Box}$ prolonge une branche
+  contenant $\sFmla{\False}{\Box !A}[\sigma]$ par
+  $\sFmla{\False}{!A}[\sigma.n]$.}{}
+\iftag{prvDiamond}{La règle $\TRule{\True}{\Diamond}$ prolonge une
+  branche contenant $\sFmla{\True}{\Diamond !A}[\sigma]$ par
+  $\sFmla{\True}{!A}[\sigma.n]$.}{}
+\iftag{notprvBox,notprvDiamond}{Cette règle}{Chacune de ces règles},
+en revanche, ne peut s'appliquer que si le préfixe~$\sigma.n$ ne figure
+\emph{pas encore} sur la branche considérée. Nous dirons qu'un tel
+préfixe est « nouveau » pour cette branche.
+
+Ces règles figurent dans le \olref{tab:rules-K}.
+
+\begin{table}
+  \begin{center}
+    \def\arraystretch{3}\def\fCenter{}
+    \begin{tabular}{|c|c|}
+    \hline
+    \iftag{prvBox}{
+      \AxiomC{\sFmla{\True}{\Box !A}[\sigma]}
+      \RightLabel{\TRule{\True}{\Box}}
+      \UnaryInfC{\sFmla{\True}{!A}[\sigma.n]}
+      \DisplayProof
+      &
+      \AxiomC{\sFmla{\False}{\Box !A}[\sigma]}
+      \RightLabel{\TRule{\False}{\Box}}
+      \UnaryInfC{\sFmla{\False}{!A}[\sigma.n]}
+      \DisplayProof\\
+      $\sigma.n$ est utilisé & $\sigma.n$ est nouveau
+      \\[1ex]
+      \hline}{}
+    \iftag{prvDiamond}{
+      \AxiomC{\sFmla{\True}{\Diamond !A}[\sigma]}
+      \RightLabel{\TRule{\True}{\Diamond}}
+      \UnaryInfC{\sFmla{\True}{!A}[\sigma.n]}
+      \DisplayProof
+      &
+      \AxiomC{\sFmla{\False}{\Diamond !A}[\sigma]}
+      \RightLabel{\TRule{\False}{\Diamond}}
+      \UnaryInfC{\sFmla{\False}{!A}[\sigma.n]}
+      \DisplayProof\\
+      $\sigma.n$ est nouveau & $\sigma.n$ est utilisé
+      \\[1ex]
+      \hline}{}
+    \end{tabular}
+  \end{center}
+  \caption{Les règles modales pour \Ax{K}.}
+  \ollabel{tab:rules-K}
+\end{table}
+
+La condition imposant un préfixe déjà utilisé pour
+\iftag{prvBox}{\TRule{\True}{\Box}}{\TRule{\False}{\Diamond}} est
+indispensable. Sans elle, on considérerait à tort le !!{tableau}
+suivant comme fermé :
+\iftag{notprvBox,notprvDiamond}{%
+  \iftag{prvBox}{%
+  \begin{oltableau}
+    [\pFmla{\True}{\Box \formula{A}}{1}, just = \TAss
+      [\pFmla{\False}{\lnot\Box\lnot \formula{A}}{1}, just = \TAss
+        [\pFmla{\True}{\formula{A}}{1.1}, just = {\TRule{\True}{\Box}[1]}
+          [\pFmla{\True}{\Box\lnot\formula{A}}{1},
+            just ={\TRule{\False}{\lnot}[2]}
+            [\pFmla{\True}{\lnot\formula{A}}{1.1},
+              just = {\TRule{\True}{\Box}[4]}
+              [\pFmla{\False}{\formula{A}}{1.1},
+                  just ={\TRule{\True}{\lnot}[5]}, close]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  }{
+  \begin{oltableau}
+    [\pFmla{\True}{\lnot\Diamond\lnot \formula{A}}{1}, just = \TAss
+      [\pFmla{\False}{\Diamond\formula{A}}{1}, just = \TAss
+        [\pFmla{\False}{\formula{A}}{1.1}, just = {\TRule{\False}{\Diamond}[2]}
+          [\pFmla{\False}{\Diamond\lnot\formula{A}}{1},
+            just ={\TRule{\True}{\lnot}[1]}
+            [\pFmla{\False}{\lnot\formula{A}}{1.1},
+              just = {\TRule{\False}{\Diamond}[4]}
+              [\pFmla{\True}{\formula{A}}{1.1},
+                  just ={\TRule{\True}{\lnot}[5]}, close]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+}}{
+  \begin{oltableau}
+    [\pFmla{\True}{\Box \formula{A}}{1}, just = \TAss
+      [\pFmla{\False}{\Diamond \formula{A}}{1}, just = \TAss
+        [\pFmla{\True}{\formula{A}}{1.1}, just = {\TRule{\True}{\Box}[1]}
+          [\pFmla{\False}{\formula{A}}{1.1},
+            just = {\TRule{\False}{\Diamond}[2]}, close]
+        ]
+      ]
+    ]
+\end{oltableau}}
+
+Or $\Box \formula{A} \Entails/ \Diamond \formula{A}$ : notre système
+de démonstration serait donc incorrect. De même,
+$\Diamond \formula{A} \Entails/ \Box \formula{A}$. Sans l'obligation
+d'employer un préfixe nouveau pour
+\iftag{prvBox}{\TRule{\False}{\Box}}{\TRule{\True}{\Diamond}},
+on obtiendrait le tableau fermé suivant : \iftag{notprvBox,notprvDiamond}{%
+  \iftag{prvBox}{%
+  \begin{oltableau}
+    [\pFmla{\True}{\lnot\Box\lnot \formula{A}}{1}, just = \TAss
+      [\pFmla{\False}{\Box \formula{A}}{1}, just = \TAss
+        [\pFmla{\False}{\formula{A}}{1.1}, just = {\TRule{\False}{\Box}[2]}
+          [\pFmla{\False}{\Box\lnot\formula{A}}{1},
+            just ={\TRule{\True}{\lnot}[1]}
+            [\pFmla{\False}{\lnot\formula{A}}{1.1},
+              just = {\TRule{\False}{\Box}[4]}
+              [\pFmla{\True}{\formula{A}}{1.1},
+                  just ={\TRule{\False}{\lnot}[5]}, close]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+  }{
+  \begin{oltableau}
+    [\pFmla{\True}{\Diamond \formula{A}}{1}, just = \TAss
+      [\pFmla{\False}{\lnot\Diamond\lnot\formula{A}}{1}, just = \TAss
+        [\pFmla{\True}{\formula{A}}{1.1}, just = {\TRule{\True}{\Diamond}[1]}
+          [\pFmla{\True}{\Diamond\lnot\formula{A}}{1},
+            just ={\TRule{\False}{\lnot}[2]}
+            [\pFmla{\True}{\lnot\formula{A}}{1.1},
+              just = {\TRule{\True}{\Diamond}[4]}
+              [\pFmla{\False}{\formula{A}}{1.1},
+                  just ={\TRule{\True}{\lnot}[5]}, close]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{oltableau}
+}}{
+  \begin{oltableau}
+    [\pFmla{\True}{\Diamond \formula{A}}{1}, just = \TAss,name=one
+      [\pFmla{\False}{\Box \formula{A}}{1}, just = \TAss, name=two
+        [\pFmla{\True}{\formula{A}}{1.1}, just = {\TRule{\True}{\Diamond}[1]}
+          [\pFmla{\False}{\formula{A}}{1.1},
+            just = {\TRule{\False}{\Box}[2]}, close]
+        ]
+      ]
+    ]
+  \end{oltableau}}
+\begin{explain}
+Les règles propositionnelles décomposent les formules au monde
+désigné par le préfixe. Les règles modales qui exigent un préfixe
+successeur déjà utilisé exploitent une relation d'accessibilité
+déjà établie. Celles qui exigent un préfixe nouveau introduisent
+un témoin dont on peut choisir le monde.
+\end{explain}
+\end{document}

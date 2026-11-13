@@ -19,8 +19,8 @@ agencements d'!!{sentence}s, le calcul des séquents manipule des
 !A_1, \dots, !A_m \Sequent !B_1, \dots, !B_n,
 \]
 c'est-à-dire un couple de suites d'!!{sentence}s, séparées par le
-symbole de séquent~$\Sequent$. Chacune des deux suites peut être vide.
-Une !!{derivation} dans le calcul des séquents est un arbre de séquents
+symbole de séquent~$\Sequent$. Leurs longueurs $m$ et $n$ sont indépendantes
+et peuvent être nulles. Une !!{derivation} est un arbre de séquents
 dont ceux qui figurent tout en haut ont une forme particulière (on les
 appelle « séquents initiaux » ou « axiomes »), tandis que tout autre
 séquent se déduit de ceux qui se trouvent immédiatement au-dessus de
@@ -34,15 +34,15 @@ de $!A, \Gamma \Sequent \Delta, !B$ à
 $\Gamma \Sequent \Delta, !A \lif !B$, quels que soient $\Gamma$,
 $\Delta$, $!A$ et~$!B$. En particulier, $\Gamma$ et~$\Delta$ peuvent
 être vides.
-\begin{editorial}
-Note de l'édition française : dans l'expression générale du séquent,
-l'indice final de la suite de droite est noté $n$ au lieu de $m$ dans
-l'original. Les deux suites ont des longueurs indépendantes.
-\end{editorial}
+%
+%
+%
+%
+%
 
 La relation $\Proves$ fondée sur le calcul des séquents se définit
 ainsi : $\Gamma \Proves !A$ si et seulement s'il existe une suite
-$\Gamma_0$ dont chaque terme $!A$ appartient à~$\Gamma$, et une
+$\Gamma_0$ dont tous les termes appartiennent à~$\Gamma$, et une
 !!{derivation} ayant le séquent~$\Gamma_0 \Sequent !A$ à sa racine.
 $!A$ est un théorème du calcul des séquents si le séquent
 $\Sequent !A$ admet une !!{derivation}. Par exemple, la

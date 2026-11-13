@@ -85,16 +85,16 @@ est vide, c'est-à-dire s'ils n'ont aucun !!{element} en commun.
 
 \begin{ex}
 Si deux ensembles n'ont aucun !!{element} en commun, leur
-intersection est vide. Dans l'exemple suivant, on suppose que
-$a$, $b$ et $c$ sont distincts de $0$ et de $1$ :\footnote{Cette
-hypothèse, implicite dans l'exemple original, est rendue explicite.}
+intersection est vide. Par exemple, si $a$, $b$ et $c$ sont
+distincts de $0$ et de $1$, alors
+%
 $\{ a, b, c\} \cap \{ 0, 1\} = \emptyset$.
 
 S'ils ont des !!{element}s en commun, leur intersection est
 l'ensemble de ces !!{element}s. En supposant ici $c\neq d$,
-on a $\{a, b, c \} \cap \{a, b, d \} = \{a, b\}$.\footnote{Précision
-de l'édition française : l'hypothèse $c\neq d$ suffit pour cet exemple.
-Sans elle, un élément commun supplémentaire pourrait apparaître.}
+on a $\{a, b, c \} \cap \{a, b, d \} = \{a, b\}$.
+%
+%
 
 L'intersection d'un ensemble et de l'un de ses sous-ensembles
 est simplement le plus petit des deux :
@@ -140,18 +140,18 @@ l'ensemble des objets communs à tous les éléments de~$A$ :
  & = \Setabs{x}{\text{pour tout } B \in A, x \in B}
 \end{align*}
 \end{defn}
-\noindent\emph{Précision de l'édition française.}
-L'hypothèse $A\neq\emptyset$ est nécessaire ici : sans elle, la
-condition universelle serait vérifiée par tout objet. Si l'on travaille
-dans un ensemble ambiant fixé $U$, on peut en revanche définir
-l'intersection de la famille vide comme étant $U$.
+Pour une famille vide, la condition universelle est satisfaite par
+tout objet. Dans un ensemble ambiant fixé~$U$, l'intersection de
+la famille vide est donc~$U$.
+%
+%
 
 \begin{ex}
 Supposons que $A = \{ \{ a, b \}, \{ a, d, e \}, \{ a, d \} \}$,
-avec $b\neq d$.\footnote{Précision de l'édition française :
-l'hypothèse $b\neq d$, implicite dans l'exemple original,
-garantit que les trois ensembles n'ont aucun élément commun autre que $a$.}
+avec $b\neq d$.
 Alors $\bigcup A = \{ a, b, d, e \}$ et $\bigcap A = \{ a \}$.
+%
+%
 \end{ex}
 \begin{prob}
 	Montrer que, si $A$ est un ensemble et $A \in B$,

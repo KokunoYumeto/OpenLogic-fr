@@ -1,0 +1,289 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: minimization-representable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{min}
+\olsection{La minimisation régulière est représentable dans $\Th{Q}$}
+
+Considérons la recherche non bornée. Supposons que $g(x,z)$ soit
+totale, régulière et représentable dans~$\Th{Q}$, par la
+!!{formula}~$!A_g(x,z,y)$. Définissons
+$f(z)=\umin{x}{[g(x,z)=0]}$. Nous cherchons une
+!!{formula}~$!A_f(z,y)$ représentant~$f$. La valeur de~$f(z)$
+est l'entier~$x$ tel que (a) $g(x,z)=0$ et (b) aucun entier
+plus petit ne possède cette propriété : pour tout $w<x$,
+$g(w,z)\neq0$. Le choix suivant est donc naturel :
+\[
+!A_f(z,y) \ident !A_g(y, z, \Obj 0) \land \lforall[w][(w < y \lif \lnot
+  !A_g(w, z, \Obj 0))].
+\]
+Dans le cas général, il faudrait remplacer $z$ par
+$z_0,\dots,z_k$.\footnote{Les variables liées de $!A_g$ sont renommées avant les substitutions pour éviter toute capture ; $w$ est choisie distincte des variables d’entrée et de sortie.}
+
+La démonstration exige encore quelques lemmes sur ce que
+$\Th{Q}$ est capable de démontrer.
+
+\begin{lem}
+\ollabel{lem:succ}
+Pour toute !!{constant}~$a$ et tout entier naturel~$n$,
+\[
+\Th{Q} \Proves \eq[(a' + \num n)][(a + \num n)'].
+\]
+\end{lem}
+
+\begin{proof}
+Raisonnons, comme d'habitude, par récurrence sur~$n$. Pour
+$n=0$, il faut démontrer dans~$\Th{Q}$ l'égalité
+$\eq[(a'+\Obj 0)][(a+\Obj 0)']$. Or
+\begin{align}
+  \Th{Q} & \Proves \eq[(a' + \Obj 0)][a'] \quad \text{par l'axiome $Q_4$}
+  \ollabel{step1}\\
+  \Th{Q} & \Proves  \eq[(a + \Obj 0)][a] \quad \text{par l'axiome $Q_4$}
+  \ollabel{step2} \\
+  \Th{Q} & \Proves \eq[(a + \Obj 0)'][a'] \quad \text{d'après \olref{step2}}
+  \ollabel{step3} \\
+  \Th{Q} & \Proves \eq[(a' + \Obj 0)][(a + \Obj 0)'] \quad
+  \text{d'après \olref{step1} et \olref{step3}}\notag
+\end{align}
+Supposons maintenant
+$\Th{Q}\Proves\eq[(a'+\num n)][(a+\num n)']$ et
+montrons que
+$\Th{Q}\Proves\eq[(a'+\num{n}')][(a+\num{n}')']$,
+puisque $\num{n+1}=\num n'$. Nous obtenons
+\begin{align}
+  \Th{Q} & \Proves \eq[(a' + \num n')][(a' + \num n)'] \quad
+  \text{par l'axiome $!Q_5$} \ollabel{step5}\\
+  \Th{Q} & \Proves \eq[(a' + \num n)'][(a + \num n')'] \quad
+  \text{par récurrence, substitution et $!Q_5$} \ollabel{step6}\\
+  \Th{Q} & \Proves \eq[(a' + \num n')][(a + \num n')'] \quad
+  \text{d'après \olref{step5} et \olref{step6}.} \notag
+\end{align}
+Pour la deuxième ligne, on applique le successeur à l'égalité
+de l'hypothèse de récurrence, puis $!Q_5$ à
+$a+\num n'$ : les deux membres obtenus valent
+$((a+\num n)')'$.
+\end{proof}
+
+Précisons que ce lemme est plus faible que
+$\Th{Q}\Proves\lforall[x][\lforall[y][(x'+y)=(x+y)']]$.
+Cet !!{sentence} est vrai dans~$\Struct{N}$, mais
+$\Th{Q}$ ne le démontre pas.
+
+\begin{lem}
+\ollabel{lem:less-zero}
+$\Th{Q} \Proves \lforall[x][\lnot x < \Obj 0]$.
+\end{lem}
+
+\begin{proof}
+Nous raisonnons informellement, en indiquant seulement comment
+construire la !!{derivation} formelle.
+
+Pour une !!{constant} arbitraire~$a$, il faut démontrer
+$\lnot a<\Obj 0$. D'après la définition de~$<$, il suffit de
+démontrer $\lnot\lexists[y][\eq[(y'+a)][\Obj 0]]$ dans~$\Th{Q}$.
+Supposons le contraire et prenons un témoin~$b$ tel que
+$\eq[(b'+a)][\Obj 0]$. L'axiome~$!Q_3$ donne
+$\eq[a][\Obj 0]\lor\lexists[y][\eq[a][y']]$.
+Distinguons ces deux cas.
+
+Premier cas : $\eq[a][\Obj 0]$. Alors
+$\eq[(b'+\Obj 0)][\Obj 0]$. L'axiome~$!Q_4$ donne
+$\eq[(b'+\Obj 0)][b']$, donc $\eq[b'][\Obj 0]$.
+Mais $!Q_2$ donne aussi $\eq/[b'][\Obj 0]$ : contradiction.
+
+Second cas : $\eq[a][c']$ pour un certain~$c$. Nous avons
+alors $\eq[(b'+c')][\Obj 0]$. D'après $!Q_5$,
+$\eq[(b'+c)'][\Obj 0]$, ce qui contredit encore $!Q_2$.
+\end{proof}
+
+\begin{lem}
+\ollabel{lem:less-nsucc}
+Pour tout entier naturel~$n$,
+\[
+  \Th{Q} \Proves
+  \lforall[x][(x < \num {n+1} \lif (\eq[x][\Obj 0] \lor \dots \lor
+    \eq[x][\num n]))].
+\]
+\end{lem}
+
+\begin{proof}
+Procédons par récurrence sur~$n$. Pour $n=0$, il faut
+montrer $a<\num 1\lif\eq[a][\Obj 0]$, avec~$a$
+arbitraire. Supposons d'abord $a<\num 1$. Par l'axiome
+définissant~$<$, nous obtenons
+$\lexists[y][\eq[(y'+a)][\Obj 0']]$, puisque
+$\num 1\ident\Obj 0'$.
+
+Soit $b$ un témoin : $\eq[(b'+a)][\Obj 0']$.
+L'axiome~$!Q_3$ donne soit $\eq[a][\Obj 0]$, et il n'y a
+rien à faire, soit $\eq[a][c']$ pour un certain~$c$. Dans ce
+dernier cas, $\eq[(b'+c')][\Obj 0']$. D'après $!Q_5$,
+$\eq[(b'+c)'][\Obj 0']$, puis $!Q_1$ donne
+$\eq[(b'+c)][\Obj 0]$. L'axiome~$!Q_8$ entraîne alors
+$c<\Obj 0$, en contradiction avec \olref{lem:less-zero}.
+
+Pour l'étape de récurrence, supposons établi le cas~$n$ et
+montrons le cas~$n+1$. Si $a<\num{n+2}$, $!Q_3$ fournit
+soit $\eq[a][\Obj 0]$, soit $\eq[a][b']$ pour un~$b$.
+Dans le premier cas, la disjonction
+$\eq[a][\Obj 0]\lor\dots\lor\eq[a][\num{n+1}]$
+est immédiate. Dans le second, $b'<\num{n+2}$, autrement dit
+$b'<\num{n+1}'$. Par $!Q_8$, il existe un~$c$ tel que
+$\eq[(c'+b')][\num{n+1}']$. Par $!Q_5$,
+$\eq[(c'+b)'][\num{n+1}']$; par $!Q_1$,
+$\eq[(c'+b)][\num{n+1}]$. L'axiome~$!Q_8$ donne
+$b<\num{n+1}$. L'hypothèse de récurrence fournit
+$\eq[b][\Obj 0]\lor\dots\lor\eq[b][\num n]$.
+En appliquant le successeur et $\eq[a][b']$, nous obtenons
+$\eq[a][\num 1]\lor\dots\lor\eq[a][\num{n+1}]$.
+
+On peut aussi établir la réciproque. Pour chaque entier fixé $j$ avec
+$0\leq j\leq n$, posons $d=n-j$. Le
+\olref{lem:succ}, puis le lemme d'addition
+\olref[inc][req][bre]{lem:q-proves-add}, donnent
+$\Th{Q}\Proves\eq[(\num d'+\num j)][\num{n+1}]$.
+L'axiome~$!Q_8$ fournit donc
+$\Th{Q}\Proves\num j<\num{n+1}$.
+Si $a=\num j$, la substitution des égaux donne
+$a<\num{n+1}$. Chaque membre de la disjonction implique
+ainsi l'inégalité voulue, ce qui établit l'autre sens de
+l'équivalence. Ce raisonnement est une récurrence extérieure
+à~$\Th{Q}$ : pour chaque $n$, la disjonction est finie.
+\end{proof}
+
+\begin{lem}
+\ollabel{lem:trichotomy}
+Pour tout entier naturel~$m$,
+\[
+  \Th{Q} \Proves
+  \lforall[y][((y < \num{m} \lor \num{m} < y) \lor \eq[y][\num{m}])].
+\]
+\end{lem}
+
+\begin{proof}
+Raisonnons par récurrence sur~$m$. Pour $m=0$,
+l'axiome~$!Q_3$ donne
+$\Th{Q}\Proves\lforall[y][(\eq[y][\Obj 0]\lor
+\lexists[z][\eq[y][z']])]$.
+Soit $a$ arbitraire. Si $\eq[a][\Obj 0]$, la disjonction
+voulue suit immédiatement. Sinon, $\eq[a][b']$ pour un~$b$.
+La logique de l'égalité donne alors
+$\eq[(b'+\Obj 0)][(a+\Obj 0)]$. Par $!Q_4$,
+$\eq[(a+\Obj 0)][a]$, d'où
+$\eq[(b'+\Obj 0)][a]$ et
+$\lexists[z][\eq[(z'+\Obj 0)][a]]$.
+L'axiome~$!Q_8$ donne $\Obj 0<a$, donc la disjonction.
+
+Supposons maintenant
+\begin{align*}
+  \Th{Q} & \Proves \lforall[y][((y < \num{m} \lor \num{m} < y) \lor
+    \eq[y][\num{m}])]
+  \intertext{et montrons que}
+  \Th{Q} & \Proves \lforall[y][((y < \num{m+1} \lor \num{m+1} < y) \lor
+    \eq[y][\num{m+1}])]
+\end{align*}
+Soit $a$ arbitraire. Par $!Q_3$, ou bien
+$\eq[a][\Obj 0]$, ou bien $\eq[a][b']$ pour un~$b$.
+Dans le premier cas, $!Q_4$ donne
+$\eq[\num m'+a][\num{m+1}]$, et $!Q_8$ donne
+$a<\num{m+1}$.
+
+Dans le second cas, l'hypothèse de récurrence donne
+$(b<\num m\lor\num m<b)\lor\eq[b][\num m]$.
+Examinons les trois possibilités.
+
+Si $b<\num m$, alors, d'après $!Q_8$, il existe un~$c$
+tel que $\eq[(c'+b)][\num m]$. En appliquant le
+successeur, nous avons $\eq[(c'+b)'][\num m']$.
+L'axiome~$!Q_5$ donne
+$\eq[(c'+b')][(c'+b)']$; ainsi
+$\eq[(c'+b')][\num{m+1}]$. En prenant $c$ pour témoin
+dans~$!Q_8$, nous obtenons $b'<\num{m+1}$, puis
+$a<\num{m+1}$.
+
+Si $\num m<b$, $!Q_8$ fournit un~$c$ tel que
+$\eq[(c'+\num m)][b]$. En appliquant le successeur,
+$\eq[(c'+\num m)'][b']$. L'axiome~$!Q_5$ donne
+$\eq[(c'+\num m')][b']$. Puisque $\eq[a][b']$ et
+$\num m'=\num{m+1}$, il en résulte
+$\eq[(c'+\num{m+1})][a]$, donc $\num{m+1}<a$
+par $!Q_8$.
+
+Enfin, si $\eq[b][\num m]$, le successeur donne
+$\eq[b'][\num m']$, donc $\eq[a][\num{m+1}]$.
+Chaque membre de la disjonction au rang~$m$ conduit donc au
+membre correspondant au rang~$m+1$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:rep-minimization}
+Si $g$ est totale et régulière et si $!A_g(x,z,y)$ représente
+$g(x,z)$ dans~$\Th{Q}$, alors
+\[
+!A_f(z,y) \ident !A_g(y, z, \Obj 0) \land \lforall[w][(w < y \lif \lnot
+  !A_g(w, z, \Obj 0))]
+\]
+représente $f(z)=\umin{x}{[g(x,z)=0]}$.
+\end{prop}
+
+\begin{proof}
+Montrons d'abord que, si $f(n)=m$, alors
+$\Th{Q}\Proves !A_f(\num n,\num m)$, c'est-à-dire
+\begin{align}
+  \Th{Q} & \Proves !A_g(\num{m}, \num{n}, \Obj 0) \land \lforall[w][(w <
+    \num{m} \lif \lnot !A_g(w, \num{n}, \Obj 0))]. \notag
+  \intertext{Puisque $!A_g$ représente $g$ et que $g(m,n)=0$, nous avons}
+\Th{Q} & \Proves !A_g(\num{m}, \num{n}, \Obj 0). \notag
+\intertext{Pour chaque $k<m$, la minimalité de $m$ donne $g(k,n)\neq0$, donc}
+\Th{Q} & \Proves \lnot !A_g(\num{k}, \num{n}, \Obj 0). \notag
+\intertext{Nous en déduisons}
+\Th{Q} & \Proves \lforall[w][(w < \num{m} \lif \lnot
+  !A_g(w, \num{n}, \Obj 0))]. \ollabel{rep-less}
+\end{align}
+Pour justifier la troisième ligne, la condition d'unicité de
+la représentation de~$g$ donne, à l'entrée $(k,n)$,
+$!A_g(\num k,\num n,\Obj 0)\lif\eq[\Obj 0][\num{g(k,n)}]$.
+Le \olref[inc][req][bre]{lem:q-proves-neq} fournit la
+négation de cette dernière égalité, puisque $g(k,n)\neq0$.
+La dernière ligne découle du \olref{lem:less-zero} si $m=0$,
+et du \olref{lem:less-nsucc} sinon.
+
+Montrons ensuite que, si $f(n)=m$, alors
+$\Th{Q}\Proves\lforall[y][(!A_f(\num n,y)\lif
+\eq[y][\num m])]$. Nous esquissons de nouveau la preuve
+informellement et laissons au lecteur sa formalisation.
+
+Supposons $!A_f(\num n,b)$. Il en résulte (a)
+$!A_g(b,\num n,\Obj 0)$ et (b)
+$\lforall[w][(w<b\lif\lnot !A_g(w,\num n,\Obj 0))]$.
+Par le \olref{lem:trichotomy},
+$(b<\num m\lor\num m<b)\lor\eq[b][\num m]$.
+Montrons que chacune des deux inégalités conduit à une
+contradiction.
+
+Si $\num m<b$, (b) donne
+$\lnot !A_g(\num m,\num n,\Obj 0)$.
+Mais $m=f(n)$ implique $g(m,n)=0$ et, comme $!A_g$
+représente~$g$, nous avons
+$\Th{Q}\Proves !A_g(\num m,\num n,\Obj 0)$ : contradiction.
+
+Si $b<\num m$, la ligne \olref{rep-less} donne
+$\lnot !A_g(b,\num n,\Obj 0)$, en contradiction avec~(a).
+Il reste donc $\eq[b][\num m]$, comme voulu.
+\end{proof}
+
+\begin{explain}
+La régularité de~$g$ assure qu'à chaque entrée correspond
+un premier zéro. Pour vérifier l'instance positive de la
+représentation, le \olref{lem:less-nsucc} ramène les valeurs
+strictement inférieures à un numéral fixé à une disjonction
+finie. Pour vérifier l'unicité, le \olref{lem:trichotomy}
+permet de comparer une valeur candidate à ce numéral,
+même lorsque la candidate est une variable du langage.
+\end{explain}
+
+\end{document}

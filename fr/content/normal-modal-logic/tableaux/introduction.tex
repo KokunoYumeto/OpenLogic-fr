@@ -1,0 +1,64 @@
+% Part: normal-modal-logic
+% Chapter: tableaux
+% Section: introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{tab}{int}
+
+\olsection{Introduction}
+
+Les !!{tableau}s sont des arbres ramifiés vers le bas dont les nœuds
+portent des !!{signed formula}s, c'est-à-dire des couples formés d'un
+signe de vérité ($\True$ ou $\False$) et d'!!a{sentence} :
+\[
+\sFmla{\True}{!A} \text{ ou } \sFmla{\False}{!A}.
+\]
+!!^a{tableau} commence par un certain nombre d'\emph{hypothèses}.
+Chaque autre !!{signed formula} résulte de l'application d'une règle
+d'inférence. Certaines règles ajoutent une ou plusieurs !!{signed
+formula}s à l'extrémité d'une branche ; d'autres ajoutent deux
+nouvelles extrémités et créent ainsi deux branches. Les règles
+propositionnelles produisent des !!{signed formula}s dont la !!{formula}
+est moins complexe que celle de la !!{signed formula} à laquelle elles
+sont appliquées. Lorsqu'une branche contient à la fois
+$\sFmla{\True}{!A}$ et $\sFmla{\False}{!A}$, on dit qu'elle est
+\emph{fermée}. Si toutes les branches d'!!a{tableau} sont fermées,
+le !!{tableau} entier est fermé. Un !!{tableau} fermé constitue
+!!a{derivation} montrant que l'ensemble des !!{signed formula}s qui
+ont servi à commencer le !!{tableau} n'est pas satisfaisable. Cela
+permet de définir une relation $\Proves$ : $\Gamma \Proves !A$ si et
+seulement s'il existe un ensemble fini~$\Gamma_0 = \{!B_1,
+\dots, !B_n\} \subseteq \Gamma$ tel qu'un !!{tableau} fermé ait
+pour hypothèses
+\[
+\{\sFmla{\False}{!A}, \sFmla{\True}{!B_1}, \dots, \sFmla{\True}{!B_n}\}.
+\]
+
+Pour les logiques modales, il faut étendre la notion de !!{signed
+formula} et ajouter des règles pour
+\iftag{prvBox}{$\Box$\iftag{prvDiamond}{ et
+    $\Diamond$}}{$\Diamond$}. Outre un signe ($\True$ ou
+$\False$), les !!{formula}s des !!{tableau}s modaux portent des
+\emph{préfixes}~$\sigma$. Ces préfixes sont des suites non vides
+d'entiers strictement positifs : $\sigma \in (\PosInt)^* \setminus
+\{\emptyseq\}$. Nous les écrivons sans les chevrons
+$\tuple{\ }$ et séparons leurs !!{element}s par des points~$.$
+plutôt que par des virgules $,$. Si $\sigma$ est un préfixe,
+$\sigma.n$ désigne $\sigma
+\concat \tuple{n}$ ; par exemple, si $\sigma = 1.2.1$, alors
+$\sigma.3$ est $1.2.1.3$. Ainsi,
+\[
+\sFmla{\True}{\Box !A \lif !A}[1.2]
+\]
+est une \emph{!!{signed formula} préfixée} (ou, plus brièvement, une
+\emph{!!{formula} préfixée}).
+
+Intuitivement, le préfixe désigne un monde d'un modèle susceptible de
+satisfaire les !!{formula}s d'une branche d'!!a{tableau} ; si
+$\sigma$ désigne un monde, alors $\sigma.n$ désigne un monde
+accessible depuis celui que désigne~$\sigma$.
+
+\end{document}

@@ -1,0 +1,51 @@
+% Partie : intuitionistic-logic
+% Chapitre : soundness-completeness
+% Section : completeness-thm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sc}{cpl}
+
+\Needspace{8\baselineskip}\olsection{Théorème de complétude}
+
+\begin{thm}\ollabel{thm:completeness}
+  Si $\Gamma \Entails !A$, alors $\Gamma \Proves !A$.
+\end{thm}
+
+\begin{proof}
+  Prouvons la contraposée. Supposons $\Gamma \Proves/ !A$. Par le
+  \olref[lin]{lem:lindenbaum}, il existe un ensemble premier~$\Gamma^*
+  \supseteq \Gamma$ tel que $\Gamma^* \Proves/ !A$. Considérons le
+  modèle canonique~$\mModel{M(\Gamma^*)}$ associé à $\Gamma^*$, défini
+  dans la \olref[mod]{defn:canonical-model}. Pour tout $!B \in \Gamma$,
+  nous avons $\Gamma^* \Proves !B$. Remarquons que
+  $\Gamma^*(\emptyseq) = \Gamma^*$. Le lemme de vérité
+  (\olref[tru]{lem:truth}) donne
+  $\mSat{M(\Gamma^*)}{!B}[\emptyseq]$ pour tout $!B \in \Gamma$,
+  tandis que $\mSat/{M(\Gamma^*)}{!A}[\emptyseq]$. Ainsi,
+  $\Gamma \Entails/ !A$.
+\end{proof}
+
+\begin{prob}
+  Montrez que si $!A$ ne contient que des !!{propositional variable}s,
+  $\lor$ et~$\land$, alors $\Entails/ !A$. Déduisez-en que $\lif$
+  n'est pas définissable en logique intuitionniste à partir de $\lor$
+  et~$\land$.
+\end{prob}
+
+\begin{prob}
+  En utilisant le théorème de complétude, démontrez que si
+  $\Proves !A \lor !B$, alors $\Proves !A$ ou $\Proves !B$.
+  (Indication : supposez $\mSat/{M_1}{!A}$ et
+  $\mSat/{M_2}{!B}$, puis construisez un modèle~$\mModel{M}$ tel que
+  $\mSat/{M}{!A \lor !B}$.)
+\end{prob}
+
+\begin{prob}
+  Montrez que si $\mModel{M}$ est un modèle relationnel dont l'ordre
+  est linéaire, alors $\mSat{M}{(!A \lif !B)\lor(!B \lif !A)}$.
+\end{prob}
+
+\end{document}

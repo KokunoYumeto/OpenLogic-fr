@@ -1,0 +1,169 @@
+% Part: incompleteness
+% Chapter: incompleteness-provability
+% Section: first-incompleteness-thm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{1in}
+
+\olsection{Le premier théorème d'incomplétude}
+
+Nous pouvons maintenant présenter la démonstration
+originale du premier théorème d'incomplétude de
+Gödel. Soit $\Th{T}$ une théorie axiomatisée par un
+ensemble calculable, dans un langage qui étend
+celui de l'arithmétique, et qui contient les axiomes
+de~$\Th{Q}$. Elle représente donc, en particulier,
+les fonctions totales et les relations calculables.
+
+Nous avons expliqué que, pour un codage raisonnable
+des !!{formula}s et des preuves par des nombres,
+la relation $\Prf[\Th{T}](x,y)$ est calculable.
+Elle signifie que $x$ est le numéro de Gödel d'une
+!!{derivation}, dans~$\Th{T}$, de la !!{formula}
+dont le numéro de Gödel est~$y$. Pour la théorie
+particulière qu'il considérait, Gödel a même montré
+que cette relation est récursive primitive, au moyen
+des 45 fonctions et relations énumérées dans son
+article. La quarante-cinquième, $x B y$, est
+précisément $\Prf[\Th{T}](x,y)$ pour ce choix de
+$\Th{T}$. Rappelons que là où Gödel écrivait
+« récursif », nous dirions aujourd'hui « récursif
+primitif ».
+
+La relation $\Prf[\Th{T}](x,y)$ étant calculable,
+elle est représentable dans~$\Th{T}$. Notons
+$\OPrf[\Th{T}](x,y)$ une !!{formula} qui la
+représente et posons
+$\OProv[\Th{T}](y)=
+\lexists[x][\OPrf[\Th{T}](x,y)]$.
+Cette !!{formula} décrit la quarante-sixième
+relation de la liste de Gödel, $\fn{Bew}(y)$.
+Selon Gödel, c'est la seule relation dont on ne
+« peut affirmer qu'elle est récursive ». Il voulait
+probablement dire que sa définition ne permet pas
+de conclure à sa calculabilité. Pour une théorie cohérente
+contenant~$\Th{Q}$, sa relation de démontrabilité n'est effectivement
+pas calculable.
+
+Supposons maintenant que $\Th{T}$ soit une théorie
+!!{axiomatizable} contenant~$\Th{Q}$. La relation
+$\Prf[\Th{T}](x,y)$ est décidable; une
+!!{formula}~$\OPrf[\Th{T}](x,y)$ la représente
+donc dans~$\Th{Q}$. Gardons la notation
+$\OProv[\Th{T}](y)$ ci-dessus. Le lemme du point
+fixe fournit un !!{sentence}~$!G_\Th{T}$ tel
+que $\Th{Q}$, donc aussi $\Th{T}$, démontre
+\begin{equation}
+\ollabel{eqn:qpf}
+!G_\Th{T}\liff\lnot\OProv[\Th{T}](\gn{!G_\Th{T}}).
+\end{equation}
+L'!!{sentence}~$!G_\Th{T}$ affirme donc, en
+substance : « $!G_\Th{T}$ n'est pas démontrable
+dans~$\Th{T}$ ».
+
+\begin{lem}
+\ollabel{lem:cons-G-unprov}
+Si $\Th{T}$ est une théorie cohérente,
+!!{axiomatizable} et étendant~$\Th{Q}$, alors
+$\Th{T}\Proves/ !G_\Th{T}$.
+\end{lem}
+
+\begin{proof}
+Supposons que $\Th{T}$ démontre $!G_\Th{T}$.
+Il existe alors effectivement une !!{derivation}
+de cet !!{sentence}; pour un certain entier~$m$,
+la relation
+$\Prf[\Th{T}](m,\Gn{!G_\Th{T}})$ est vraie.
+Par représentation, $\Th{Q}$ démontre
+$\OPrf[\Th{T}](\num m,\gn{!G_\Th{T}})$,
+donc aussi
+$\lexists[x][\OPrf[\Th{T}](x,\gn{!G_\Th{T}})]$,
+c'est-à-dire
+$\OProv[\Th{T}](\gn{!G_\Th{T}})$.
+L'équivalence ci-dessus (\olref{eqn:qpf}) permet
+alors à $\Th{Q}$ de démontrer $\lnot !G_\Th{T}$;
+$\Th{T}$, qui étend $\Th{Q}$, le démontre aussi.
+Si $\Th{T}$ démontrait $!G_\Th{T}$, elle
+démontrerait donc aussi sa négation, en contradiction
+avec sa cohérence.
+\end{proof}
+
+\begin{defn}
+\ollabel{thm:oconsis-q}
+Une théorie~$\Th{T}$ est \emph{$\omega$-cohérente}
+si, pour tout !!{sentence} de la forme
+$\lexists[x][!A(x)]$, lorsqu'elle démontre
+$\lnot !A(\num 0)$, $\lnot !A(\num 1)$,
+$\lnot !A(\num 2)$, \dots, elle ne démontre pas
+$\lexists[x][!A(x)]$.
+\end{defn}
+
+Toute théorie $\omega$-cohérente est cohérente.
+En effet, une théorie incohérente démontre tout
+!!{sentence}; elle démontre donc, pour chaque~$n$,
+$\lnot !A(\num n)$, ainsi que
+$\lexists[x][!A(x)]$. Elle est donc
+$\omega$-incohérente. Par contraposition,
+la $\omega$-cohérence implique la cohérence.
+
+\begin{lem}
+\ollabel{lem:omega-cons-G-unref}
+Si $\Th{T}$ est une théorie $\omega$-cohérente,
+!!{axiomatizable} et étendant~$\Th{Q}$, alors
+$\Th{T}\Proves/\lnot !G_\Th{T}$.
+\end{lem}
+
+\begin{proof}
+Montrons que, si $\Th{T}$ démontre
+$\lnot !G_\Th{T}$, elle est $\omega$-incohérente.
+Supposons donc cette négation démontrable.
+Si $\Th{T}$ est incohérente, le résultat est
+immédiat. Sinon, elle est cohérente; le lemme
+précédent (\olref{lem:cons-G-unprov}) montre
+qu'elle ne démontre pas $!G_\Th{T}$.
+Il n'existe donc aucune !!{derivation} de cet
+!!{sentence} dans~$\Th{T}$. Par la clause
+négative de représentation, $\Th{Q}$ démontre
+\[
+\lnot\OPrf[\Th{T}](\num 0,\gn{!G_\Th{T}}),
+\lnot\OPrf[\Th{T}](\num 1,\gn{!G_\Th{T}}),
+\lnot\OPrf[\Th{T}](\num 2,\gn{!G_\Th{T}}),\dots
+\]
+et $\Th{T}$ les démontre aussi. D'autre part,
+par l'équivalence ci-dessus (\olref{eqn:qpf}),
+$\lnot !G_\Th{T}$ équivaut à
+$\lexists[x][\OPrf[\Th{T}](x,\gn{!G_\Th{T}})]$.
+La théorie $\Th{T}$ est donc $\omega$-incohérente.
+\end{proof}
+
+\begin{prob}
+Toute théorie $\omega$-cohérente est cohérente.
+Montrez que la réciproque est fausse : il existe
+des théories cohérentes qui ne sont pas
+$\omega$-cohérentes. Pour cela, montrez que
+$\Th{Q}\cup\{\lnot !G_\Th{Q}\}$ est cohérente,
+mais $\omega$-incohérente.
+\end{prob}
+
+\begin{thm}
+\ollabel{thm:first-incompleteness}
+Toute théorie~$\Th{T}$ $\omega$-cohérente,
+!!{axiomatizable} et étendant~$\Th{Q}$ est
+incomplète.
+\end{thm}
+
+\begin{proof}
+Si $\Th{T}$ est $\omega$-cohérente, elle est
+cohérente. Le premier lemme
+(\olref{lem:cons-G-unprov}) donne donc
+$\Th{T}\Proves/ !G_\Th{T}$. Le second
+(\olref{lem:omega-cons-G-unref}) donne
+$\Th{T}\Proves/\lnot !G_\Th{T}$.
+La théorie est incomplète, car elle ne démontre
+ni $!G_\Th{T}$ ni sa négation.
+\end{proof}
+
+\end{document}

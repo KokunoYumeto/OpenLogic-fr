@@ -1,0 +1,132 @@
+% Part: normal-modal-logic
+% Chapter: axioms-systems
+% Section: normal-logics
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{prf}{nor}
+
+\olsection{Logiques modales normales}
+
+Tout ensemble de !!{formula}s modales ne se caractérise pas aisément
+comme l'ensemble des formules !!{derivable}s à partir de certains
+axiomes. Nous voulons que les logiques modales possèdent des
+propriétés convenables. D'abord, tout ce que nous pouvons !!{derive}
+en logique propositionnelle classique doit rester !!{derivable}, en
+tenant compte du fait que les !!{formula}s peuvent maintenant
+contenir aussi \iftag{prvBox}{$\Box$\iftag{prvDiamond}{
+    et~}{}}{}\iftag{prvDiamond}{$\Diamond$}{}. Pour cela, nous
+exigeons qu'une logique modale contienne toutes les instances
+tautologiques et soit close par modus ponens.
+
+\begin{defn}
+  Une \emph{logique modale} est un ensemble~$\Sigma$ de
+  !!{formula}s modales qui :
+  \begin{enumerate}
+  \item contient toutes les tautologies;
+  \item est clos par substitution : si $!A \in \Sigma$ et si
+    $!D_1$, \dots, $!D_n$ sont des !!{formula}s, alors
+    \[
+    \SSubst{!A}{\subst{!D_1}{p_1}, \dots, \subst{!D_n}{p_n}} \in \Sigma,
+    \]
+    \item est clos par \emph{modus ponens} : si $!A$ et $!A
+      \lif !B \in \Sigma$, alors $!B \in \Sigma$.
+  \end{enumerate}
+\end{defn}
+
+Pour utiliser la sémantique relationnelle des logiques modales, nous
+devons en outre inclure toutes les !!{formula}s valides dans tous les
+modèles modaux. Cette exigence est satisfaite dès que toutes les
+instances de \Ax{K}\iftag{prvDiamond}{ et de~\Dual{}}{} sont
+!!{derivable}s et que, si une !!{formula}~$!A$ est !!{derivable},
+$\Box !A$ l'est également. Une logique modale qui remplit ces
+conditions est dite \emph{normale}. (Il existe aussi des logiques
+modales non normales, mais les modèles relationnels usuels ne leur
+conviennent pas.)
+
+\begin{defn}
+  Une logique modale~$\Sigma$ est \emph{normale} si elle contient
+  \begin{align*}
+    \tag{\Ax{K}} & \Box(p \lif q) \lif (\Box p \lif \Box q),
+    \iftag{prvDiamond}{\\
+      \tag{\Dual} & \Diamond p \liff \lnot\Box\lnot p}{}
+  \end{align*}
+  et si elle est close par \emph{nécessitation} : si
+  $!A \in \Sigma$, alors $\Box !A \in \Sigma$.
+\end{defn}
+
+Une implication tautologique transmet la \emph{vérité en un monde}
+de son antécédent à son conséquent. La règle \Nec{} préserve la
+\emph{vérité dans un modèle}, puisque si une formule est vraie en
+tout monde, elle est vraie en tous les successeurs de chaque monde.
+Elle préserve donc la validité dans un cadre et dans une classe de
+cadres. Pour voir ce qui peut se passer en un monde donné, prenons
+un monde~$w$ où $p$ est vraie et un successeur de~$w$ où $p$ est
+fausse. En~$w$, $p$ est vraie et $\Box p$ est fausse.
+
+\begin{prop}\ollabel{prop:rk}
+  Toute logique modale normale est close par la règle \RK,
+  \begin{prooftree}
+    \AxiomC{$!A_1 \lif (!A_2 \lif \cdots (!A_{n-1} \lif !A_n)\cdots)$}
+    \RightLabel{\RK}
+    \UnaryInfC{$\Box!A_1 \lif (\Box!A_2 \lif \cdots (\Box!A_{n-1}
+      \lif \Box!A_n)\cdots).$}
+  \end{prooftree}
+\end{prop}
+
+\begin{proof}
+  Raisonnons par récurrence sur~$n$. Si $n = 1$, la règle n'est autre
+  que \Nec, et toute logique modale normale est close par \Nec.
+
+  Supposons le résultat vrai pour $n-1$ et montrons-le pour~$n$.
+
+  Supposons que
+  \begin{align*}
+  & !A_1 \lif (!A_2 \lif \cdots (!A_{n-1} \lif !A_n)\cdots) \in \Sigma
+  \intertext{Par hypothèse de récurrence, nous avons}
+  & \Box!A_1 \lif (\Box!A_2 \lif \cdots \Box(!A_{n-1} \lif !A_n)\cdots)
+  \in \Sigma
+  \intertext{Comme $\Sigma$ est une logique modale normale, elle
+    contient toutes les instances de~$\Ax{K}$, en particulier}
+  & \Box(!A_{n-1} \lif !A_n) \lif (\Box!A_{n-1} \lif \Box!A_n) \in \Sigma
+  \intertext{Par modus ponens et à l'aide d'instances tautologiques
+    appropriées, nous obtenons}
+  & \Box!A_1 \lif (\Box!A_2 \lif \cdots (\Box!A_{n-1}
+  \lif \Box!A_n)\cdots) \in \Sigma. 
+  \end{align*}
+\end{proof}
+
+\begin{prop}\ollabel{prop:notDiamondBot}
+  Toute logique modale normale~$\Sigma$ contient
+  $\lnot\Diamond\lfalse$.
+\end{prop}
+
+\begin{prob}
+  Démontrer la \olref[nml][prf][nor]{prop:notDiamondBot}.
+\end{prob}
+
+\begin{prop}
+  Soient $!A_1$, \dots, $!A_n$ des !!{formula}s. Il existe une plus
+  petite logique modale \emph{normale}~$\Sigma$ contenant toutes les
+  instances de $!A_1$, \dots, $!A_n$.
+\end{prop}
+
+\begin{proof}
+  Étant donnés $!A_1$, \dots, $!A_n$, définissons $\Sigma$ comme
+  l'intersection de toutes les logiques modales normales contenant
+  toutes les instances de $!A_1$, \dots, $!A_n$. Cette famille est
+  non vide :
+  $\Frm[L]$, l'ensemble de toutes les !!{formula}s, est une telle
+  logique modale. Son intersection est encore une logique modale
+  normale et contient les instances requises.
+\end{proof}
+
+\begin{defn}
+La plus petite logique modale normale contenant $!A_1$, \dots,
+$!A_n$ s'appelle un \emph{système modal} et se note
+$\Log{K} !A_1 \dots !A_n$. La plus petite logique modale normale se
+note~\Log{K}.
+\end{defn}
+\end{document}

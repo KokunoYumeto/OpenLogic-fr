@@ -1,0 +1,122 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{replacement}{extrinsic}
+\olsection[Considérations extrinsèques]{Considérations extrinsèques sur le remplacement}
+
+Commençons par examiner une tentative de justification
+\emph{extrinsèque} du remplacement. Boolos en propose une :
+\begin{quote}
+  [\ldots] la raison d'adopter les axiomes de remplacement est fort
+  simple : ils ont de nombreuses conséquences souhaitables et
+  (apparemment) aucune conséquence indésirable. Outre les théorèmes
+  concernant la conception itérative, ces conséquences comprennent
+  une théorie satisfaisante, sinon idéale, des nombres infinis, ainsi
+  qu'un résultat très souhaitable qui justifie les définitions
+  inductives sur les relations bien fondées.
+  \citep[229]{Boolos1971}
+\end{quote}
+L'idée essentielle de Boolos est que nous devrions justifier le
+remplacement par ses fruits. Les fruits précis qu'il mentionne sont
+ceux dont nous avons parlé dans les chapitres précédents. Le
+remplacement nous a permis de montrer que les ordinaux de von Neumann
+représentent remarquablement bien les types d'ordre des ensembles
+bien ordonnés (c'est notre «~théorie satisfaisante, sinon idéale,
+des nombres infinis~»).
+Il nous a aussi permis de définir les $V_\alpha$, d'établir la notion
+de rang et de démontrer le schéma de récurrence selon $\in$ (ce sont
+nos «~théorèmes concernant la conception itérative~»). Enfin, le
+remplacement nous permet de démontrer le théorème de récursion
+transfinie (ce sont les «~définitions inductives sur les relations
+bien fondées~»).
+
+Il s'agit, en effet, de conséquences souhaitables. Mais suffisent-elles
+à \emph{justifier} le remplacement ? \emph{Non}. Ou du moins, pas
+directement.
+
+Voici une première difficulté. Nous avons énuméré certaines conséquences
+souhaitables du remplacement, mais nous aurions pu obtenir nombre
+d'entre elles autrement. Ce fait est moins connu qu'il ne devrait
+l'être ; prenons donc le temps d'expliquer la situation.
+
+Il existe une théorie simple des ensembles, la théorie des niveaux
+(\emph{Level Theory}), abrégée $\LT$.\footnote{Les premières versions
+de $\LT$ sont proposées par \citet{Montague1965} et \citet{Scott1974} ;
+\citet{Potter2004} l'a simplifiée et lui a consacré un livre ; plus
+récemment, \citet{ButtonLT1} a encore simplifié $\LT$.}
+Les axiomes de $\LT$ sont simplement l'extensionnalité, la séparation
+et l'affirmation que tout ensemble est un sous-ensemble d'un certain
+\emph{niveau}. La notion de «~niveau~» est habilement définie de
+sorte que les niveaux se comportent comme nos bons vieux $V_\alpha$.
+Les axiomes de $\LT$ se déduisent de $\ZF$. La théorie $\LT$ est
+\emph{beaucoup} plus faible que $\ZF$. En effet, $\LT$ ne donne ni
+l'axiome de la paire, ni celui
+de l'ensemble des parties, ni celui de l'infini, ni celui du
+remplacement. Appelons $\Zr$ la théorie obtenue en ajoutant l'infini
+et l'ensemble des parties à $\LT$ ; on obtient alors aussi la paire,
+si bien que $\Zr$ est au moins aussi forte que $\Z$. Mais $\Zr$ est en
+fait strictement plus forte que $\Z$, car elle affirme en outre que
+tout ensemble a un rang (d'où ma proposition de l'appeler $\Zr$).
+De fait, $\Zr$ fournit une théorie des ordinaux parfaitement
+satisfaisante, des résultats qui stratifient la hiérarchie en étapes
+bien ordonnées, une démonstration de la récurrence selon $\in$ et
+une \emph{version} de la récursion transfinie.
+
+En somme, bien que Boolos ne l'ait pas su, toutes les conséquences
+souhaitables qu'il mentionne pouvaient être obtenues \emph{sans}
+le remplacement : il lui suffisait d'utiliser $\Zr$ plutôt que $\Z$.
+
+(Étant donné cela, pourquoi avons-nous suivi la voie habituelle en
+vous enseignant $\ZF$ plutôt que $\LT$ et $\Zr$ ? Pour deux raisons.
+Premièrement, pour des raisons purement historiques, commencer par
+$\LT$ est assez inhabituel ; nous voulions vous permettre de lire les
+présentations plus classiques de la théorie des ensembles.
+Deuxièmement, lorsque vous serez prêts à aborder $\LT$ et $\Zr$,
+vous pourrez simplement lire \citealt{Potter2004} et
+\citealt{ButtonLT1}.)
+
+Bien entendu, puisque $\Zr$ est strictement plus faible que $\ZF$,
+il existe des résultats que $\ZF$ démontre et que $\Zr$ laisse
+indécidés. On pourrait donc tenter de justifier le remplacement
+sur des bases extrinsèques en invoquant l'un de ces résultats.
+Mais, dès que l'on sait utiliser $\Zr$, il devient assez difficile
+de trouver beaucoup d'énoncés qui (a) soient établis par le
+remplacement et non autrement, et (b) soient intuitivement vrais.
+(Pour plus de détails, voir \citealt[\S13.2]{Potter2004}.)
+
+L'essentiel est le suivant : pour fournir une justification
+extrinsèque convaincante du remplacement, il faudrait trouver un
+résultat que l'on \emph{ne peut pas} obtenir sans lui. Et ce n'est
+pas une tâche facile.
+
+Examinons une autre difficulté que rencontre toute tentative de
+justification purement extrinsèque du remplacement. (Elle est
+peut-être plus fondamentale que la première.) Boolos ne se contente
+pas de dire que le remplacement a beaucoup de conséquences
+souhaitables. Il affirme aussi qu'il n'a «~(apparemment) aucune
+conséquence indésirable~». Mais la réserve «~apparemment~», entre
+parenthèses, est assurément décisive.
+
+Rappelons comment nous en sommes arrivés là : la compréhension
+naïve a conduit à une contradiction, à laquelle nous avons répondu
+en adoptant la conception cumulative et itérative des ensembles.
+Cette conception s'accompagne d'un récit qui, nous l'espérons,
+nous assure de sa cohérence. Mais si nous ne pouvons pas justifier
+le remplacement à partir de ce récit, nous n'avons (pour l'instant)
+aucune raison de croire que $\ZF$ est cohérente. Ou plutôt : nous
+n'avons aucune raison de croire que $\ZF$ est cohérente, sinon le fait (peut-être
+contingent) que personne n'a \emph{encore} découvert de contradiction.
+C'est exactement en ce sens que la remarque de Boolos semble se
+réduire à ceci : «~(apparemment) $\ZF$ est cohérente~». Nous devrions
+exiger une garantie de cohérence plus solide.
+
+Cette difficulté touche toute tentative \emph{purement} extrinsèque
+de justifier le remplacement, c'est-à-dire toute justification
+formulée uniquement en termes des conséquences (connues) de $\ZF$.
+Nous voudrons donc chercher une justification \emph{intrinsèque}
+du remplacement, qui fasse voir comment le récit que nous avons
+fait des ensembles nous engage, d'une certaine manière, «~déjà~»
+à accepter le remplacement.
+
+\end{document}

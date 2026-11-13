@@ -1,0 +1,225 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: representing-tms
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{rep}
+\olsection{Représenter les machines de Turing}
+
+\begin{explain}
+Pour représenter les machines de Turing et leur comportement par
+!!a{sentence} de logique du premier ordre, il nous faut définir un
+langage approprié. Celui-ci comporte deux sortes de ressources :
+des !!{predicate}s décrivant les configurations de la machine et
+des expressions permettant de numéroter les étapes du calcul
+(les « instants ») et les positions sur le ruban.
+
+Nous introduisons deux familles de !!{predicate}s binaires :
+pour chaque état~$q$, !!a{predicate}~$\Obj Q_q$; pour chaque
+symbole du ruban~$\sigma$, !!a{predicate}~$\Obj S_\sigma$.
+Les premiers servent à décrire l'état de~$M$ et la position de sa
+tête; les seconds, le contenu du ruban.
+
+Pour exprimer les positions de la tête et le nombre d'étapes
+exécutées, nous devons pouvoir représenter des nombres. Nous
+utilisons à cette fin !!a{constant}~$\Obj 0$ et un symbole de fonction
+unaire~$\prime$, la fonction successeur. Par convention, ce symbole
+s'écrit \emph{après} son argument, sans parenthèses.
+
+À chaque nombre~$n$ correspond un terme canonique~$\num{n}$,
+le \emph{numéral} de~$n$, qui le représente dans~$\Lang L_M$.
+Ainsi, $\num{0}$ est $\Obj 0$, $\num{1}$ est $\Obj 0'$,
+$\num{2}$ est $\Obj 0''$, et ainsi de suite. Plus précisément :
+\begin{align*}
+\num{0} & = \Obj 0 \\
+\num{n+1} &= \num{n}'
+\end{align*}
+Le terme~$\num{0}$, c'est-à-dire $\Obj 0$, désigne à la fois la
+case la plus à gauche du ruban et l'instant qui précède la première
+étape du calcul : celui de la configuration initiale. Le terme
+$\num{1}$, c'est-à-dire $\Obj 0'$, désigne à la fois la case située
+immédiatement à droite de cette première case et l'instant qui suit
+la première étape; et ainsi de suite.
+
+Nous introduisons également !!a{predicate}~$<$ pour exprimer
+l'ordre des positions sur le ruban (« à gauche de ») et celui des
+étapes du calcul (« avant »).
+
+Le langage étant fixé, nous pouvons énumérer les « axiomes » de
+$!T(M,w)$ : ce sont les !!{sentence}s qui, pris ensemble, décrivent
+le comportement de~$M$ sur l'entrée~$w$. Certains !!{sentence}s
+portent sur $\Obj 0$, $\prime$ et~$<$; d'autres !!{sentence}s
+décrivent la configuration initiale; les derniers !!{sentence}s
+décrivent la configuration qui résulte de l'exécution de chaque
+instruction.
+\end{explain}
+
+\begin{defn}
+\ollabel{defn:tm-descr}
+Étant donné une machine de Turing $M=\tuple{Q,\Sigma,q_0,\delta}$,
+le langage~$\Lang L_M$ comprend :
+\begin{enumerate}
+\item Pour chaque état $q\in Q$, un !!{predicate} binaire
+  $\Obj Q_q(x,y)$. Intuitivement, $\Obj Q_q(\num{m},\num{n})$
+  signifie qu'après $n$ étapes, $M$ est dans l'état~$q$ et sa tête
+  lit la case d'indice~$m$ (la case la plus à gauche a l'indice~$0$).
+\item Pour chaque symbole $\sigma\in\Sigma$, un !!{predicate}
+  binaire $\Obj S_\sigma(x,y)$. Intuitivement,
+  $\Obj S_\sigma(\num{m},\num{n})$ signifie qu'après $n$ étapes,
+  la case d'indice~$m$ contient le symbole~$\sigma$.
+\item Une !!{constant} $\Obj 0$.
+\item Un !!{function} unaire $\prime$.
+\item Un !!{predicate} binaire $<$.
+\end{enumerate}
+\end{defn}
+
+Les !!{sentence}s qui décrivent le fonctionnement de la machine
+de Turing~$M$ sur l'entrée $w=\sigma_{i_1}\dots\sigma_{i_k}$
+sont les suivants :
+\begin{enumerate}
+\item Axiomes portant sur les nombres et sur~$<$ :
+\begin{enumerate}
+\item !!^a{sentence} affirmant que tout nombre est inférieur à son
+  successeur :
+\[
+\lforall[x][x<x']
+\]
+\item !!^a{sentence} assurant la transitivité de~$<$ :
+\[
+\lforall[x][\lforall[y][\lforall[z][
+  ((x<y\land y<z)\lif x<z)]]]
+\]
+\end{enumerate}
+\item Axiomes décrivant la configuration initiale :
+\begin{enumerate}
+\item Avant la première étape, la machine~$M$ est dans l'état
+  initial~$q_0$ et sa tête lit la case~$1$ :
+\[
+\Obj Q_{q_0}(\num{1},\num{0})
+\]
+\item Les $k+1$ premières cases contiennent respectivement les
+  symboles $\TMendtape$, $\sigma_{i_1}$, \dots,
+  $\sigma_{i_k}$ :
+\[
+\Obj S_\TMendtape(\num{0},\num{0})\land
+\Obj S_{\sigma_{i_1}}(\num{1},\num{0})\land
+\dots\land
+\Obj S_{\sigma_{i_k}}(\num{k},\num{0})
+\]
+  Si $k=0$, cette conjonction se réduit au premier terme.
+\item Toutes les autres cases sont blanches :
+\[
+\lforall[x][(\num{k}<x\lif\Obj S_\TMblank(x,\num{0}))]
+\]
+\end{enumerate}
+\item Axiomes décrivant le passage d'une configuration à la
+  suivante :
+
+Dans ce qui suit, $!A(x,y)$ désigne la conjonction, pour tous les
+symboles $\sigma\in\Sigma$, des !!{formula}s de la forme
+\[
+\lforall[z][
+  (((z<x\lor x<z)\land\Obj S_\sigma(z,y))
+  \lif\Obj S_\sigma(z,y'))]
+\]
+Les variables $x$ et~$y$ restent libres dans~$!A(x,y)$.\footnote{Correction éditoriale : la source appelle ces conjoints des énoncés ; ce sont des formules ouvertes, qui deviennent closes lorsque leurs variables libres sont liées dans les axiomes de transition.}
+Nous employons $!A(\num{m},\num{n})$ pour exprimer qu'après $n+1$
+étapes, le contenu du ruban est le même qu'après $n$ étapes,
+sauf éventuellement dans la case~$m$.
+\begin{enumerate}
+\item \ollabel{rep-right} Pour chaque instruction
+  $\delta(q_i,\sigma)=\tuple{q_j,\sigma',\TMright}$,
+  l'!!{sentence} :
+\begin{align*}
+& \lforall[x][\lforall[y][(
+  (\Obj Q_{q_i}(x,y)\land\Obj S_\sigma(x,y))\lif {}]]\\
+&\qquad (\Obj Q_{q_j}(x',y')\land\Obj S_{\sigma'}(x,y')
+  \land !A(x,y)))
+\end{align*}
+Si, après $y$ étapes, la machine est dans l'état~$q_i$ et sa tête
+lit la case~$x$ contenant~$\sigma$, alors, une étape plus tard,
+elle est dans l'état~$q_j$ et lit la case~$x+1$; la case~$x$
+contient désormais~$\sigma'$, tandis que toutes les autres cases
+conservent leur contenu.
+
+\item \ollabel{rep-left} Pour chaque instruction
+  $\delta(q_i,\sigma)=\tuple{q_j,\sigma',\TMleft}$,
+  l'!!{sentence} :
+\begin{align*}
+& \lforall[x][\lforall[y][(
+  (\Obj Q_{q_i}(x',y)\land\Obj S_\sigma(x',y))\lif {}]]\\
+&\qquad (\Obj Q_{q_j}(x,y')\land\Obj S_{\sigma'}(x',y')
+  \land !A(x',y)))\land {}\\
+& \lforall[y][(
+  (\Obj Q_{q_i}(\num{0},y)\land\Obj S_\sigma(\num{0},y))\lif {}]\\
+&\qquad (\Obj Q_{q_j}(\num{0},y')
+  \land\Obj S_{\sigma'}(\num{0},y')
+  \land !A(\num{0},y)))
+\end{align*}
+Examinons ce fonctionnement. Cette fois, le point de départ n'est
+pas « la tête lit la case~$x$ », mais « la tête lit la case~$x+1$ ».
+Après un déplacement vers la gauche, elle lit la case~$x$, alors
+que l'écriture a eu lieu dans la case~$x+1$. Cette formulation évite
+d'avoir à introduire une soustraction ou une fonction prédécesseur.
+Le terme de conservation est donc $!A(x',y)$ : il exclut de la
+conservation la case~$x+1$, celle où l'instruction écrit.\footnote{Correction éditoriale : la source emploie ici $!A(x,y)$, ce qui conserverait l'ancien symbole de la case écrite $x+1$. Nous remplaçons ce terme par $!A(x',y)$ dans cette clause et dans sa vérification.}
+
+Les nombres de la forme $x+1$ sont $1$, $2$, \dots{} : le premier
+conjoint ne couvre donc pas le cas où la tête lit la case~$0$ et
+reçoit l'instruction d'aller à gauche. Elle ne peut alors reculer
+et reste en place. Le second conjoint traite ce cas : si, après
+$y$ étapes, la tête lit la case~$0$ dans l'état~$q_i$ et que cette
+case contient~$\sigma$, alors, une étape plus tard, la tête lit
+encore la case~$0$, l'état est~$q_j$ et cette case contient
+$\sigma'$; les autres cases conservent leur contenu.
+
+\item \ollabel{rep-stay} Pour chaque instruction
+  $\delta(q_i,\sigma)=\tuple{q_j,\sigma',\TMstay}$,
+  l'!!{sentence} :
+\begin{align*}
+& \lforall[x][\lforall[y][(
+  (\Obj Q_{q_i}(x,y)\land\Obj S_\sigma(x,y))\lif {}]]\\
+&\qquad (\Obj Q_{q_j}(x,y')\land\Obj S_{\sigma'}(x,y')
+  \land !A(x,y)))
+\end{align*}
+\end{enumerate}
+\end{enumerate}
+Notons~$!T(M,w)$ la conjonction de tous les !!{sentence}s qui
+précèdent, pour la machine de Turing~$M$ et l'entrée~$w$.
+
+Pour exprimer que~$M$ finit par s'arrêter, cherchons !!a{sentence}
+affirmant qu'après un certain nombre d'étapes, la fonction de
+transition n'est pas définie. Soit~$X$ l'ensemble des couples
+$\tuple{q,\sigma}$ pour lesquels $\delta(q,\sigma)$ n'est pas
+définie. Notons alors~$!E(M,w)$ l'!!{sentence}
+\[
+\lexists[x][\lexists[y][(\bigvee_{\tuple{q,\sigma}\in X}
+  (\Obj Q_q(x,y)\land\Obj S_\sigma(x,y)))]]
+\]
+La disjonction vide, si $X=\varnothing$, vaut $\bot$.
+
+Si nous employons une machine de Turing dotée d'un état d'arrêt
+désigné~$h$, dans lequel tout arrêt a lieu et dont aucune instruction ne part, la définition se simplifie : l'!!{sentence}~$!E(M,w)$
+\[
+\lexists[x][\lexists[y][\Obj Q_h(x,y)]]
+\]
+exprime que la machine finit par s'arrêter.
+
+\begin{prop}
+\ollabel{prop:mlessk}
+Si $m<k$, alors $!T(M,w)\Entails\num{m}<\num{k}$.
+\end{prop}
+
+\begin{proof}
+La preuve est laissée en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrez la \olref[tur][und][rep]{prop:mlessk}.
+Indication : raisonnez par récurrence sur~$k-m$.
+\end{prob}
+
+\end{document}

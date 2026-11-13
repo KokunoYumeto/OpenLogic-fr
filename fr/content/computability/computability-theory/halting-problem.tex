@@ -1,0 +1,125 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: halting-problem
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{hlt}
+\olsection{Le problème de l'arrêt}
+
+Par construction, la fonction partielle calculable
+universelle~$\fn{Un}(e,x)$ est définie si et
+seulement si le calcul de la fonction de code~$e$
+produit une valeur pour l'entrée~$x$. Il est
+naturel de demander si l'on peut décider
+effectivement quand cela se produit. La réponse
+est négative. Dans le modèle des machines de
+Turing, cela signifie que le problème de savoir
+si une machine donnée s'arrête sur une entrée
+donnée est indécidable par calcul. Le théorème
+suivant exprime donc l'« indécidabilité du
+problème de l'arrêt ». Nous en donnerons deux
+preuves : la première prolonge la discussion
+précédente, la seconde est plus directe.
+
+\begin{thm}
+\ollabel{thm:halting-problem}
+Soit
+\[
+h(e, x)  =
+\begin{cases}
+1 & \text{si $\fn{Un}(e,x)$ est définie}\\
+0 & \text{sinon.}
+\end{cases}
+\]
+Alors $h$ n'est pas calculable.
+\end{thm}
+
+\begin{proof}
+Supposons que $h$ soit calculable. Nous allons
+voir que cela permettrait de définir une
+fonction calculable totale universelle.
+Posons
+\[
+\fn{Un'}(e,x) =
+\begin{cases}
+\fn{Un}(e,x) & \text{si $h(e,x)=1$}\\
+0 & \text{sinon.}
+\end{cases}
+\]
+La fonction $\fn{Un'}(e,x)$ serait alors totale,
+et calculable si $h$ l'était. On peut par
+exemple définir $g$ par récurrence primitive :
+\begin{align*}
+g(0, e, x) & \simeq 0 \\
+g(y+1, e, x) & \simeq \fn{Un}(e,x);
+\end{align*}
+Cette récurrence conserve $g(0,e,x)=0$ même si $\fn{Un}(e,x)$ diverge ; elle ne calcule $\fn{Un}(e,x)$ qu'aux rangs positifs. On obtient alors
+\[
+\fn{Un'}(e,x) \simeq g(h(e,x),e,x).
+\]
+Comme $\fn{Un'}(e,x)$ coïncide avec
+$\fn{Un}(e,x)$ là où cette dernière est
+définie, $\fn{Un'}$ serait universelle
+pour les fonctions partielles calculables
+qui se trouvent être totales. Cela contredit le
+\olref[nou]{thm:no-univ}.
+\end{proof}
+
+\begin{proof}
+Supposons encore $h(e,x)$ calculable.
+Définissons la fonction~$g$ par
+\[
+g(x) =
+\begin{cases}
+  0           & \text{si $h(x,x)=0$}\\
+  \fundefined & \text{sinon.}
+\end{cases}
+\]
+La fonction $g$ est partielle calculable.
+On peut, par exemple, la définir par
+$\umin{y}{h(x,x)=0}$. Elle possède donc
+un indice~$e$ tel que
+$g(x) \simeq \fn{Un}(e,x)$ pour tout~$x$.
+La valeur $g(e)$ est-elle définie ?
+Si elle l'est, la définition de~$g$
+donne $h(e,e)=0$ (puisque $h$ est totale
+par définition et ne prend que les
+valeurs~$0$ et~$1$). Par définition de~$h$,
+$\fn{Un}(e,e)$ est alors indéfinie.
+L'égalité extensionnelle
+$g(x) \simeq \fn{Un}(e,x)$ implique que
+$g(e)$ est indéfinie : contradiction.
+Si, au contraire, $g(e)$ est indéfinie,
+alors $h(e,e)\neq 0$, donc $h(e,e)=1$.
+Il s'ensuit que $\fn{Un}(e,e)$ est définie
+et, par la même égalité extensionnelle,
+que $g(e)$ est définie : nouvelle
+contradiction.
+\end{proof}
+
+\begin{tagblock}{TMs}
+\begin{explain}
+On peut aussi exprimer cet argument à l'aide
+de machines de Turing. Supposons qu'une machine~$H$
+reçoive la description d'une machine~$E$ et
+une entrée~$x$, et décide si $E$ s'arrête
+sur~$x$. Nous pourrions alors construire
+une machine~$G$ qui, recevant une seule
+entrée~$x$, fait exécuter~$H$ afin de savoir
+si la machine $M_x$ d'indice~$x$ s'arrête
+sur l'entrée~$x$, puis adopte le comportement
+opposé. Si $H$ annonce que $M_x$ s'arrête,
+$G$ entre dans une boucle infinie; si
+$H$ annonce que $M_x$ ne s'arrête pas,
+$G$ s'arrête aussitôt. Que ferait $G$
+sur son propre indice ? Elle s'arrêterait
+si et seulement si elle ne s'arrêtait
+pas : contradiction. Une telle machine~$H$
+n'existe donc pas.
+\end{explain}
+\end{tagblock}
+
+\end{document}

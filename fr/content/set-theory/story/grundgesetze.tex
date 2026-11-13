@@ -1,0 +1,70 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{story}{blv}
+
+\olsection{Annexe : la loi fondamentale V de Frege}
+
+Dans la \olref[rus]{sec}, nous avons expliqué que Russell avait
+formulé son paradoxe comme une difficulté pour le système exposé par
+Frege dans ses \emph{Grundgesetze}. Le système de Frege ne comprenait
+pas de formulation directe de la compréhension naïve. Dans cette
+annexe, nous expliquerons donc très brièvement ce qu'il
+\emph{comprenait}, puis son rapport avec la compréhension naïve et
+avec le paradoxe de Russell.
+
+Le système de Frege relève de la \emph{logique du second ordre} et
+devait formaliser la notion d'\emph{extension d'un concept}.\footnote{À
+strictement parler, Frege cherche à formaliser une notion plus
+générale : le «~parcours de valeurs~» d'une fonction. Les extensions
+de concepts en constituent un cas particulier. Pour les détails,
+voir \citet[pp.\ 8--9]{Heck2012}.} En nous inspirant de la notation de
+Frege, nous écrirons $\fregeext{x}{F(x)}$ pour \emph{l'extension du
+concept~$F$}. Ce dispositif prend un \emph{prédicat}, «~$F$~», et
+en fait un \emph{terme} (du premier ordre),
+«~$\fregeext{x}{F(x)}$~». Frege s'en est servi pour proposer la
+\emph{définition} suivante de l'appartenance :
+\[
+	a \in b =_\text{df} \exists G(b = \fregeext{x}{G(x)} \land Ga)
+\]
+En gros, $a \in b$ si et seulement si $a$ tombe sous un concept dont
+l'extension est $b$. (Le quantificateur «~$\exists G$~» est du second
+ordre.) Frege soutenait également le principe suivant, connu sous le
+nom de \emph{loi fondamentale V} :
+$$\fregeext{x}{F(x)} = \fregeext{x}{G(x)} \liff \forall x (Fx \liff Gx)$$
+En gros, deux concepts ont la même extension si et seulement s'ils
+sont coextensifs. (Ici encore, «~$F$~» et «~$G$~» sont en position de
+prédicat.) Un principe simple relie maintenant l'appartenance à la
+satisfaction d'une propriété :
+
+\begin{lem}[dans les \emph{Grundgesetze}]\ollabel{lem:Fregeextensions}
+$\forall F \forall a(a \in \fregeext{x}{F(x)} \liff Fa)$
+\end{lem}
+
+\begin{proof}
+Fixons $F$ et $a$. Alors $a \in \fregeext{x}{F(x)}$ si et seulement
+si $\exists G(\fregeext{x}{F(x)}
+= \fregeext{x}{G(x)} \land Ga)$ (par définition de l'appartenance),
+si et seulement si $\exists G(\forall x(Fx \liff Gx) \land Ga)$
+(par la loi fondamentale V), si et seulement si $Fa$ (par la logique
+élémentaire du second ordre).
+\end{proof}
+
+On en déduit presque aussitôt la compréhension naïve :
+
+\begin{lem}[dans les \emph{Grundgesetze}.]
+$\forall F \exists s \forall a (a \in s \liff Fa)$
+\end{lem}
+
+\begin{proof}
+Fixons $F$. Le \olref{lem:Fregeextensions} donne alors $\forall a (a \in
+\fregeext{x}{F(x)} \liff Fa)$ ; on obtient donc
+$\exists s\forall a(a \in s \liff Fa)$ par généralisation
+existentielle. Puisque $F$ était arbitraire, le résultat s'ensuit.
+\end{proof}
+
+Le paradoxe de Russell s'ensuit si l'on prend $F$ tel que
+$\forall x(Fx \liff x \notin x)$.
+
+\end{document}

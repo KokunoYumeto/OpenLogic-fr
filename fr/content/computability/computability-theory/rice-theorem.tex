@@ -1,0 +1,156 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: rice-theorem
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{rce}
+\olsection{Le théorème de Rice}
+
+Les particularités de $\fn{Tot}$ ne jouent aucun
+rôle dans la preuve de la \olref[tot]{prop:total}.
+Nous avons conçu $h(x,y)$ pour qu'elle coïncide
+avec la fonction constante $j(y)=0$ exactement
+lorsque $x\in K$; nous aurions pu la faire
+coïncider, dans ce cas, avec n'importe quelle
+autre fonction calculable partielle. Cette
+observation mène à un théorème plus général :
+grossièrement, aucune propriété non triviale
+des fonctions calculables partielles n'est décidable.
+
+Rappelons que $\cfind{0}$, $\cfind{1}$,
+$\cfind{2}$,~\dots est notre énumération
+canonique des fonctions calculables partielles.
+
+\begin{thm}[Théorème de Rice]
+Soit $C$ un ensemble quelconque de fonctions
+calculables partielles, et posons
+$A=\Setabs{n}{\cfind{n}\in C}$.
+Si $A$ est calculable, alors soit $C$ est vide,
+soit $C$ est l'ensemble de toutes les fonctions
+calculables partielles.
+\end{thm}
+
+Un \emph{ensemble d'indices} est un ensemble~$A$
+tel que, si les indices $n$ et~$m$ calculent la
+même fonction, ils appartiennent tous deux à~$A$
+ou n'y appartiennent ni l'un ni l'autre.
+L'ensemble~$A$ du théorème possède manifestement
+cette propriété. Réciproquement, si $A$ est un
+ensemble d'indices et $C$ l'ensemble des fonctions
+calculées par ces indices, alors
+$A=\Setabs{n}{\cfind{n}\in C}$.
+
+\begin{explain}
+En ces termes, le théorème de Rice affirme
+qu'aucun ensemble d'indices non trivial n'est
+décidable. Pour en comprendre la portée, il
+faut distinguer les \emph{programmes}, objets
+syntaxiques d'un langage de programmation, des
+fonctions qu'ils calculent. Certaines questions
+sur les programmes et leurs indices sont
+effectivement décidables : ce programme contient-il
+plus de 150 symboles ? Plus de 22 lignes ?
+Une instruction « while » ? La chaîne
+« hello world » apparaît-elle comme argument
+d'une instruction « print » ? Le théorème de
+Rice dit qu'aucune question non triviale sur la
+\emph{fonction} calculée par un programme
+n'est décidable. Par exemple : le programme
+s'arrête-t-il sur l'entrée~$0$ ? S'arrête-t-il
+pour au moins une entrée ? Produit-il parfois
+un nombre pair ?
+\end{explain}
+
+\begin{proof}[Démonstration du théorème de Rice]
+Supposons que $C$ ne soit ni vide ni égal à
+l'ensemble de toutes les fonctions calculables
+partielles, et que $A$ soit l'ensemble des indices
+des fonctions de~$C$. Nous montrerons que, si
+$A$ était calculable, on pourrait résoudre le
+problème de l'arrêt. Donc $A$ n'est pas calculable.
+
+On peut supposer, sans perte de généralité,
+que la fonction~$f$ nulle part définie n'appartient
+pas à~$C$; dans le cas contraire, on échange~$C$
+et son complémentaire parmi les fonctions
+calculables partielles. Soit $g$ une fonction
+quelconque de~$C$. Si l'on pouvait décider~$A$,
+on pourrait distinguer les indices calculant~$f$
+de ceux calculant~$g$, et exploiter cette
+distinction pour résoudre le problème de l'arrêt.
+
+Voici comment. À l'aide de la fonction partielle
+calculable universelle, définissons
+\[
+h(x,y) \simeq
+\begin{cases}
+\text{indéfinie} & \text{si $\cfind{x}(x) \fundefined$} \\
+g(y) & \text{sinon.}
+\end{cases}
+\]
+Pour calculer $h$, on lance d'abord le calcul
+de $\cfind{x}(x)$. S'il s'arrête, on calcule
+ensuite $g(y)$ et, si ce second calcul s'arrête
+à son tour, on renvoie sa valeur. Plus
+formellement, on peut écrire
+\[
+h(x,y) \simeq \Proj{2}{0}(g(y),\fn{Un}(x,x)).
+\]
+Ici $\Proj{2}{0}(z_0,z_1)=z_0$ est la projection
+calculable à deux arguments qui renvoie le
+premier. La fonction~$h$ est donc une composée
+de fonctions calculables partielles : le membre
+de droite est défini et vaut~$g(y)$ exactement
+lorsque $\fn{Un}(x,x)$ et $g(y)$ sont tous deux
+définis.
+
+Pour $x$ fixé, si $\cfind{x}(x)$ n'est pas
+définie, $h(x,y)$ n'est définie pour aucun~$y$;
+si $\cfind{x}(x)$ est définie, alors
+$h(x,y)\simeq g(y)$. Ainsi, selon~$x$,
+la fonction $y\mapsto h(x,y)$ coïncide soit
+avec~$f$, soit avec~$g$. Décider si
+$\cfind{x}(x)$ est définie revient à savoir
+laquelle de ces deux possibilités se réalise,
+ou encore si la fonction
+$h_x(y)\simeq h(x,y)$ appartient à~$C$.
+Un test calculable d'appartenance à~$A$
+permettrait de le savoir.
+
+Plus précisément, $h$ étant calculable partielle,
+elle possède un indice~$e$ tel que
+$h\simeq\cfind{e}[2]$. Le théorème
+$s$-$m$-$n$ fournit une fonction récursive
+primitive~$s$ telle que, pour chaque~$x$,
+$\cfind{s(e,x)}(y)\simeq h_x(y)$.
+Si $\cfind{x}(x)\fdefined$, alors
+$\cfind{s(e,x)}$ coïncide avec~$g$ et
+$s(e,x)\in A$. En revanche, si
+$\cfind{x}(x)\uparrow$, elle coïncide
+avec~$f$ et $s(e,x)\notin A$. Pour tout~$x$,
+on a donc $x\in K$ si et seulement si
+$s(e,x)\in A$. Si $A$ était calculable,
+$K$ le serait aussi, contradiction.\footnote{Corrections éditoriales : $h$ est binaire, donc son indice s'écrit $h\simeq\cfind{e}[2]$, plutôt que $h=\cfind{e}$ dans la source. Nous employons $\simeq$ dans la spécialisation. La portée du théorème est la fonction partielle calculée, non toute propriété du comportement d'exécution.}
+\end{proof}
+
+Le théorème de Rice a de nombreuses applications.
+Le corollaire suivant en donne quelques exemples.
+\begin{cor}
+Les ensembles suivants sont indécidables :
+\begin{enumerate}
+\item $\Setabs{x}{\text{$17$ appartient à l'image de $\cfind{x}$}}$;
+\item $\Setabs{x}{\text{$\cfind{x}$ est constante}}$;
+\item $\Setabs{x}{\text{$\cfind{x}$ est totale}}$;
+\item $\Setabs{x}{\text{pour tous $y<y'$, $\cfind{x}(y) \fdefined$ et,
+    si $\cfind{x}(y') \fdefined$, alors $\cfind{x}(y) < \cfind{x}(y')$}}$.
+\end{enumerate}
+\end{cor}
+
+\begin{proof}
+Ce sont tous des ensembles d'indices non triviaux. Dans le quatrième cas, prendre $y'=y+1$ montre que la condition impose la totalité ; elle caractérise donc les fonctions totales strictement croissantes, et non les seules fonctions croissantes sur leur domaine partiel.
+\end{proof}
+
+\end{document}

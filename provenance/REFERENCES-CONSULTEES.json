@@ -1,0 +1,1260 @@
+{
+  "titre": "Références consultées pour l’édition française",
+  "revision_originale": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
+  "references": [
+    {
+      "titre": "Calcul propositionnel, chapitre3",
+      "auteurs": [],
+      "url": "https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap3-good.pdf",
+      "empreinte_sha256": "2181c62547b28d457b61afb9e97af796f82eac93c01d4caec690e68e511495d1",
+      "octets": 201850,
+      "reperes": [
+        "Définitions 3.2–3.5, propositions 3.1–3.3, remarque 3.2 et exercice 3.1"
+      ]
+    },
+    {
+      "titre": "Chapitre 2: Définition de la logique propositionnelle; Cours 2: Syntaxe de la logique propositionnelle et preuves par induction",
+      "auteurs": [],
+      "url": "https://www.irif.fr/~kesner/enseignement/ol3/chap2-1.pdf",
+      "empreinte_sha256": "3ef2b1ebb25e194a89e747654f8c5e0815087080dc84a1c57795967edc457167",
+      "octets": 355361,
+      "reperes": [
+        "Diapositive 101, « Une subtilité », troisième point"
+      ]
+    },
+    {
+      "titre": "INF421 — Amphi5: Arbres et forêts",
+      "auteurs": [],
+      "url": "https://www.irif.fr/~jep/PDF/Inf421/Amphi5.pdf",
+      "empreinte_sha256": "e072dd94cb0f5bc009404f82e377a973bf98c5dfb5b9b7ea8ff24a7e2a61ccd7",
+      "octets": 241428,
+      "reperes": [
+        "Diapositive 29, « Ensembles préfixiels », définition et exemple avec ε"
+      ]
+    },
+    {
+      "titre": "Les logiques non classiques",
+      "auteurs": [],
+      "url": "https://www.alliot.fr/noncls.shtml.fr",
+      "empreinte_sha256": "921063fb193a8365386ee193b8a75f567cfe81bcbbef07302a20686f5c58bbd7",
+      "octets": 71316,
+      "reperes": [
+        "§ 0.2, possibilité et nécessité ; § 0.4.1, axiome K et nécessitation ; § 0.10.2, dualité des opérateurs et structure du temps"
+      ]
+    },
+    {
+      "titre": "Systèmes de Preuve",
+      "auteurs": [],
+      "url": "https://lsv.ens-paris-saclay.fr/~goubault/propf003.html",
+      "empreinte_sha256": "ecd0b8b24dc34ad4994ca66e98de3ffc7e3c49f1c9587f06be6c12e5e3561e98",
+      "octets": 42351,
+      "reperes": [
+        "§ 3.1, définition 11, théorèmes 12–16 et suite du théorème 16 ; § 3.3, définitions 21–22 et figure 3"
+      ]
+    },
+    {
+      "titre": "Chapitre V. Une axiomatique pour l’appartenance",
+      "auteurs": [
+        "Adrien Deloro"
+      ],
+      "url": "https://webusers.imj-prg.fr/~adrien.deloro/Chap5.pdf",
+      "empreinte_sha256": "137c513571526567cce0bc831e3c69d37afae6ff11cf767c2f22563b752fa940",
+      "octets": 1697995,
+      "reperes": [
+        "p. 68, § 27 et § 27.1"
+      ]
+    },
+    {
+      "titre": "Compléments au chapitre II (« Éléments de logique »)",
+      "auteurs": [
+        "Adrien Deloro"
+      ],
+      "url": "https://webusers.imj-prg.fr/~adrien.deloro/Comp2.pdf",
+      "empreinte_sha256": "5115cff4b3eaffe597136995ab3fe8dcb3dc04dcfb54c98f2dfa4a3aee1271a9",
+      "octets": 1277733,
+      "reperes": [
+        "pp. 52–53, § J.1, définitions B et C ; p. 55 et pp. 56–57, § J.2 ; pp. 61, 63–64, § J.3"
+      ]
+    },
+    {
+      "titre": "Complétude, incomplétude (chapitre IV du Cours de Logique mathématique)",
+      "auteurs": [
+        "Adrien Deloro"
+      ],
+      "url": "https://webusers.imj-prg.fr/~adrien.deloro/Chap4.pdf",
+      "empreinte_sha256": "6f88f7759eface16549d0f67cd6dad0b2dac7c1e017b7cd93b7a77bcd87edf1a",
+      "octets": 1629955,
+      "reperes": [
+        "p. 48, exercices 20.3(a), 20.4 et 20.5 ; p. 55, théorème de Tennenbaum ; pp. 64–65, variation 7 et remarque suivante"
+      ]
+    },
+    {
+      "titre": "Éléments de logique (chapitre II du Cours de Logique mathématique)",
+      "auteurs": [
+        "Adrien Deloro"
+      ],
+      "url": "https://webusers.imj-prg.fr/~adrien.deloro/Chap2.pdf",
+      "empreinte_sha256": "196529d611eaa141d76ec239686b3c0acab913a8a5b69af07bbcbda3b4604383",
+      "octets": 1583225,
+      "reperes": [
+        "p. 36, axiomes de Peano ; p. 46, interpolation de Craig et lemme de Robinson ; pp. 47, 50–53, § 9–9.3 ; p. 65, exemple d’arithmétique non standard"
+      ]
+    },
+    {
+      "titre": "Inférence d’invariants pour le model checking de systèmes paramétrés",
+      "auteurs": [
+        "Alain Mebsout"
+      ],
+      "url": "https://usr.lmf.cnrs.fr/cubicle/papers/thesis-mebsout.pdf",
+      "empreinte_sha256": "1d7747ae48d08f0b214ac3dba5ae54bed63bd7c0b7116012421102b352a23422",
+      "octets": 1931376,
+      "reperes": [
+        "pp. 37–38, § 2.4.1, définition 2.4.1"
+      ]
+    },
+    {
+      "titre": "Mathématiques de base (MIS101, cours2005–2006)",
+      "auteurs": [
+        "Alain Yger"
+      ],
+      "url": "https://www.math.u-bordeaux.fr/~ayger/coursmismi0506.pdf",
+      "empreinte_sha256": "7ebbe05de294f12cd25e5208d5613e42f76672483acc50277a5f3d39044449ce",
+      "octets": 1524359,
+      "reperes": [
+        "pp. 19–20, propositions 1.1, 1.2 et 1.4, et § 1.9.4 ; p. 24, § 2.1.1 ; p. 27, § 2.2.1"
+      ]
+    },
+    {
+      "titre": "Réalisabilité et forcing",
+      "auteurs": [
+        "Alexandre Miquel"
+      ],
+      "url": "https://www.college-de-france.fr/sites/default/files/documents/xavier-leroy/UPL2068194386079609987_Miquel.pdf",
+      "empreinte_sha256": "88f0d44975ee5473395be703b34fa02b4111c30bea5b4445cb5cbf8da9a8da4d",
+      "octets": 620828,
+      "reperes": [
+        "PDF, pp. 27–28"
+      ],
+      "date": "2019-01-16"
+    },
+    {
+      "titre": "Déduction naturelle pour le calcul des prédicats",
+      "auteurs": [
+        "Alexis Saurin"
+      ],
+      "url": "https://www.irif.fr/_media/users/saurin/teaching/lmfi/cours-01.pdf",
+      "empreinte_sha256": "bc8fcd47e3335e26a2ef57a9384aa1cd7526c3bc7b28802633460f57ca9cdceb",
+      "octets": 327196,
+      "reperes": [
+        "p. 1 et § 1.1–1.3 ; p. 3, proposition 1.4 ; § 2.1, définitions 2.1, 2.3 et 2.7, remarques 2.4–2.5, notation 2.6 ; pp. 6–7, définitions et lemmes 2.8–2.11"
+      ]
+    },
+    {
+      "titre": "A class of enumerable sets",
+      "auteurs": [
+        "An. A. Muchnik",
+        "S. E. Positselskii"
+      ],
+      "url": "https://www.mathnet.ru/php/getFT.phtml?jrnid=rm&option_lang=eng&paperid=163&what=fullteng",
+      "empreinte_sha256": "e777aa68debb805b42bc50d11c195aa38cdfd595cf267b37a7ac3d201c576938",
+      "octets": 186957,
+      "reperes": [
+        "p. 640, théorème 1 et r-séparabilité ; p. 641, référence [12]"
+      ],
+      "date": "1999"
+    },
+    {
+      "titre": "Perspectives hétérodoxes de Russell sur la question des fondements",
+      "auteurs": [
+        "Anne-Françoise Schmid"
+      ],
+      "url": "https://www.numdam.org/item/PHSC_2005__9_S2_175_0/",
+      "empreinte_sha256": "dfd3b2ec93fa3c604268cb6272afd4cb10d94868e63fce1545481daccbda38ae",
+      "octets": 38910,
+      "reperes": [
+        "Résumé"
+      ]
+    },
+    {
+      "titre": "Systèmes de preuves pour logiques modales",
+      "auteurs": [
+        "Anthony Lick"
+      ],
+      "url": "https://lsv.ens-paris-saclay.fr/Publis/PAPERS/PDF/m2-lick.pdf",
+      "empreinte_sha256": "6bf6b52c1b9d830aed0397080e6bfab09981dd2a4c8aa65218e2da51b47f1be5",
+      "octets": 508244,
+      "reperes": [
+        "p. 3, § 2.1, définitions 2.2–2.3 ; pp. 4–5, définitions 2.6 et 2.9, lemme 2.8, théorème 2.12"
+      ]
+    },
+    {
+      "titre": "Algèbre commutative et introduction à la géométrie algébrique",
+      "auteurs": [
+        "Antoine Chambert-Loir"
+      ],
+      "url": "https://webusers.imj-prg.fr/~antoine.chambert-loir/publications/teach/Dea-1999.pdf",
+      "empreinte_sha256": "fc3e174992b2a69544f03c0ffa8556c99007ae889021a749249e7bcc6d40863c",
+      "octets": 1395011,
+      "reperes": [
+        "p. 4, § 1.3, définition et paragraphe sur les chaînes"
+      ],
+      "edition": "Cours accéléré de 3e cycle, automne 1999, Université Pierre et Marie Curie",
+      "date": "1999"
+    },
+    {
+      "titre": "Des nombres infinis ? Ordinaux, cardinaux, infiniment petit et infiniment grand",
+      "auteurs": [
+        "Antoine Chambert-Loir"
+      ],
+      "url": "https://webusers.imj-prg.fr/~antoine.chambert-loir/enseignement/2024-25/nombres/20250219-Infini.html",
+      "empreinte_sha256": "5931837a0f96f882ee21f33980f71c6e8667886af2bd46fb28bfc01c2f45a574",
+      "octets": 34068,
+      "reperes": [
+        "Cardinaux, dernier exemple et paragraphe suivant",
+        "Infiniment petits, infiniment grands, premier paragraphe"
+      ],
+      "edition": "Qu’est-ce qu’un nombre ?, notes de cours 2024–2025",
+      "date": "2025-02-19"
+    },
+    {
+      "titre": "Calculabilité et incomplétude - Notes de cours",
+      "auteurs": [
+        "Arnaud Durand",
+        "Paul Rozière"
+      ],
+      "url": "https://www.irif.fr/~roziere/m2cf2/calculabilite93.pdf",
+      "empreinte_sha256": "0515eb3b7f024672adf0c3bbda5f8004474cbd66e5f1d125a9e7da4aac0e8b43",
+      "octets": 713095,
+      "reperes": [
+        "pp. 3–7, 9–10, 12–13, 15–18 et 31, chap. 1 ; pp. 33–41, 43–47, 50–51 et 53–54, chap. 2 ; pp. 56–59, 67–71, 74–78 et 80–89, chap. 3"
+      ]
+    },
+    {
+      "titre": "FAQ LaTeX GUTenberg",
+      "auteurs": [
+        "Association GUTenberg"
+      ],
+      "url": "https://mirrors.ctan.org/help/faq-fr-gutenberg/pdf/faqlatexgutenberg-sombre.pdf",
+      "empreinte_sha256": "4e0fc84225adaab49df30eed06a9e46932a8d06157b86ef608b7e7a469604049",
+      "octets": 22679023,
+      "reperes": [
+        "p. 62, § 2.1.1, « Aide-mémoire LaTeX » ; p. 230, § 8.8.11"
+      ]
+    },
+    {
+      "titre": "L'alphabet grec",
+      "auteurs": [
+        "Aurore Billard"
+      ],
+      "url": "https://odysseum.eduscol.education.fr/l-alphabet-grec",
+      "empreinte_sha256": "4a89ab5ad23d2514b4e4be1bf8801d3401fc9c95ba592f3a396a46bce437426a",
+      "octets": 108024,
+      "reperes": [
+        "Introduction, point 2 ; « Composition de l’alphabet », lignes consacrées à bêta, thêta et khi"
+      ]
+    },
+    {
+      "titre": "Référentiel OCR",
+      "auteurs": [
+        "Bibliothèque nationale de France"
+      ],
+      "url": "https://www.bnf.fr/sites/default/files/2018-11/ref_num_ocr_v2.pdf",
+      "empreinte_sha256": "7775d6190deb20065f368ace5d9f068471cc6a2ffa99a5a41e6bb7fbfc63a2df",
+      "octets": 3597780,
+      "reperes": [
+        "p. 20, § 4.2.4"
+      ],
+      "date": "2015-04-28"
+    },
+    {
+      "titre": "Continuité et dérivabilité des fonctions",
+      "auteurs": [
+        "Bruno Duchesne"
+      ],
+      "url": "https://www.imo.universite-paris-saclay.fr/~bruno.duchesne/enseignement/methodes_numeriques/continuit%C3%A9-et-d%C3%A9rivabilit%C3%A9-des-fonctions.html",
+      "empreinte_sha256": "2a46269bd1f3b8991bdfdd69094fdc87717a5b8d4451ce7c019f182af5307f55",
+      "octets": 87956,
+      "reperes": [
+        "§ 2.4, définition 2.7 et équation (2.1)"
+      ],
+      "edition": "Méthodes numériques, BUT 1, IUT d’Orsay, chapitre 2 en ligne"
+    },
+    {
+      "titre": "À quoi l’on pense. Pertinence et difficultés de la théorie meinongienne des attitudes assomptives",
+      "auteurs": [
+        "Bruno Langlet"
+      ],
+      "url": "https://www.college-de-france.fr/fr/agenda/seminaire/philosophie-du-langage-et-de-esprit/quoi-on-pense-pertinence-et-difficultes-de-la-theorie-meinongienne-des-attitudes-assomptives",
+      "empreinte_sha256": "e577b74f7d49fa768b7932b2296f6e41f2f0d8be6c2529e879c784cb770fade2",
+      "octets": 148526,
+      "reperes": [
+        "Résumé du séminaire, deuxième phrase"
+      ],
+      "date": "2025-01-20"
+    },
+    {
+      "titre": "Vrai – Véridique, Dictionnaire de l’argumentation",
+      "auteurs": [
+        "Christian Plantin"
+      ],
+      "url": "https://icar.cnrs.fr/dicoplantin/vrai-veridique/",
+      "empreinte_sha256": "98910620fec52f1ebc507e1bc1345220dfad00779aa8484f74e8c9bf3f77fc8f",
+      "octets": 64992,
+      "reperes": [
+        "§ 1, paragraphe consacré à Tarski"
+      ]
+    },
+    {
+      "titre": "Machine de Turing réalisée (La)",
+      "auteurs": [
+        "Christophe Gombert",
+        "Hugo Deboise"
+      ],
+      "url": "https://images.cnrs.fr/video/3001",
+      "empreinte_sha256": "9884e83cc756701554bd8032609ca523cda5d49c24a8d83e86b62cde6e0639d7",
+      "octets": 59466,
+      "reperes": [
+        "Résumé"
+      ]
+    },
+    {
+      "titre": "Vériconditionnel",
+      "auteurs": [
+        "Claire Beyssade"
+      ],
+      "url": "https://dicosem.llf-paris.fr/w/index.php?title=V%C3%A9riconditionnel&oldid=3659",
+      "empreinte_sha256": "e09f8ac88ab07aff1a009464692681caf6809f23a55e44a7d870ff33e07422a1",
+      "octets": 34082,
+      "reperes": [
+        "§ 2, « Opérateur vérifonctionnel » ; § 3, premier et dernier paragraphes"
+      ]
+    },
+    {
+      "titre": "The Stored Program",
+      "auteurs": [
+        "Computer History Museum"
+      ],
+      "url": "https://www.computerhistory.org/revolution/story/87",
+      "empreinte_sha256": "faca4c41c437f4560023bbcff345bee20bc89069d39aca8abc9f3085655045ad",
+      "octets": 11145,
+      "reperes": [
+        "« The Stored Program » et « The Manchester Baby Breaks New Ground »"
+      ]
+    },
+    {
+      "titre": "Timeline of Computer History: 1941 — Konrad Zuse finishes the Z3 Computer",
+      "auteurs": [
+        "Computer History Museum"
+      ],
+      "url": "https://www.computerhistory.org/timeline/1941/",
+      "empreinte_sha256": "7cc75713eb4c4f80f24c321f0c903bde0abcbbe711c0cf629eb68aeb96f84dea",
+      "octets": 60997,
+      "reperes": [
+        "Chronologie, entrée de 1941 sur le Z3 de Konrad Zuse"
+      ]
+    },
+    {
+      "titre": "Le problème de Freudenthal et son hypothèse implicite",
+      "auteurs": [
+        "Daniel Audet"
+      ],
+      "url": "https://www.amq.math.ca/wp-content/uploads/bulletin/vol54/no1/06a-maitre-freudenthal.pdf",
+      "empreinte_sha256": "0209b66be73e0db2ea182dd5b996979e6980bee75b0b616b43856dc0b30f885e",
+      "octets": 2179970,
+      "reperes": [
+        "Annexe 2, p. 23 (PDF, p. 11)"
+      ]
+    },
+    {
+      "titre": "Partie II : Typage simple et calcul propositionnel",
+      "auteurs": [
+        "David A. Madore"
+      ],
+      "url": "https://perso.telecom-paristech.fr/madore/inf110/notes-inf110-02-typage.pdf",
+      "empreinte_sha256": "d733872b766dba5f0f6682206597b2c2eb611dbff98e7bbac656587d89b1d441",
+      "octets": 918113,
+      "reperes": [
+        "pp. II–6, II–8, II–17–18 et II–31–32 ; diapositives 16, 22–24, 50–56 et 99, 101–102"
+      ]
+    },
+    {
+      "titre": "Frege, du nombre au concept",
+      "auteurs": [
+        "F. Schmitz"
+      ],
+      "url": "https://www.caphi-philo.fr/wp-content/uploads/2010/02/nb_concept_Frege-6de.pdf",
+      "empreinte_sha256": "239fb221443bb917f1255e2a69a6c4defe418098c5dfbe95aadb5954938af844",
+      "octets": 466306,
+      "reperes": [
+        "p. 39, § 3.2, extension de concept chez Frege"
+      ]
+    },
+    {
+      "titre": "Outils logiques et algorithmiques, deuxième partie : Graphes",
+      "auteurs": [
+        "Florent Hivert",
+        "Thibaut Balabonski"
+      ],
+      "url": "https://perso.lisn.upsaclay.fr/hivert/COURS/OLA/OLA2-graphes.pdf",
+      "empreinte_sha256": "24332eaa63fe7110aee5d5238e315bf724537e0398370bfbde4503e27b465148",
+      "octets": 1036275,
+      "reperes": [
+        "pp. 24–25, définitions et graphes orientés ; p. 37, « Récurrence bien fondée »"
+      ],
+      "date": "2026",
+      "licence": "CC BY-SA 3.0 France",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/fr/"
+    },
+    {
+      "titre": "Outils logiques et algorithmiques, troisième partie : Arbres",
+      "auteurs": [
+        "Florent Hivert",
+        "Thibaut Balabonski"
+      ],
+      "url": "https://perso.lisn.upsaclay.fr/hivert/COURS/OLA/OLA3-arbres.pdf",
+      "empreinte_sha256": "8b28a735c15965d7f71af02fcd1d6fdcfd0fbdf6f01f0ab1fce6b39708ea8d95",
+      "octets": 997635,
+      "reperes": [
+        "p. 58, § 8.4 ; pp. 66–67, § 9.2, caractérisation récursive et dimensions des arbres"
+      ],
+      "date": "2026",
+      "licence": "CC BY-SA 3.0 France",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/fr/"
+    },
+    {
+      "titre": "Sur une courbe qui remplit toute une aire plane",
+      "auteurs": [
+        "Florian Ivorra"
+      ],
+      "url": "https://culturemath.ens.fr/thematiques/lycee/sur-une-courbe-qui-remplit-toute-une-aire-plane",
+      "empreinte_sha256": "4aa4716804d1cb3d5d36012596c25c63defb808c3820a64924c4b755435dcce8",
+      "octets": 112419,
+      "reperes": [
+        "Section « Sur une courbe qui remplit toute une aire plane », paragraphes sur Peano et Hilbert après les développements triadiques"
+      ],
+      "edition": "CultureMath, ENS, article en ligne",
+      "date": "2021-05-28"
+    },
+    {
+      "titre": "Découvrir l’infini, construire des infinis. Sur l’œuvre de Georg Cantor (1845–1918)",
+      "auteurs": [
+        "Florian Reverchon"
+      ],
+      "url": "https://culturemath.ens.fr/thematiques/logique/decouvrir-l-infini-construire-des-infinis",
+      "empreinte_sha256": "227f632a2f71a4c81d74439c9fceade8861ff53ad0af935a8882ec57565744cd",
+      "octets": 96100,
+      "reperes": [
+        "Introduction et passages sur Cantor, Dedekind et Bolzano"
+      ]
+    },
+    {
+      "titre": "Théorie des modèles 1",
+      "auteurs": [
+        "Françoise Point"
+      ],
+      "url": "https://orbi.umons.ac.be/bitstream/20.500.12907/27162/1/Bac3-2018-2019.pdf",
+      "empreinte_sha256": "b2eee66bfa747542f7acbe47013620b479d99f9572de96f65fd694bc16a40363",
+      "octets": 789364,
+      "reperes": [
+        "p. 1, § 1.1, définition 1.1.1 ; p. 22, définitions entre la remarque 3.2.2 et le lemme 3.2.3"
+      ]
+    },
+    {
+      "titre": "De la combinatoire algébrique à la phénoménologie",
+      "auteurs": [
+        "Frédéric Patras"
+      ],
+      "url": "https://sites.math.rutgers.edu/~zeilberg/akherim/patras23.pdf",
+      "empreinte_sha256": "126d2b7d4333c69845b73b0147bc8efb03952427406287fb0a259efb82576ba0",
+      "octets": 680504,
+      "reperes": [
+        "p. 16, deux derniers paragraphes"
+      ]
+    },
+    {
+      "titre": "Cours OCaml : Cours 5, récursivité (listes, ordre supérieur)",
+      "auteurs": [
+        "Gabriel Scherer"
+      ],
+      "url": "https://gallium.inria.fr/~scherer/tmp/cours-ocaml-paris8-2020.org.html",
+      "empreinte_sha256": "2eacdf80fb24c6be386ec729c494b977b6d5a7c18fc607504ce04ade4e218cc3",
+      "octets": 54952,
+      "reperes": [
+        "Cours 5, § 5.2, fold_left et fold_right"
+      ]
+    },
+    {
+      "titre": "Ueber eine elementare Frage der Mannigfaltigkeitslehre",
+      "auteurs": [
+        "Georg Cantor"
+      ],
+      "url": "https://www.aleph1.info/Resource?method=get&name=cantor1.pdf&obj=Pdf&pageend=220&pagestart=215",
+      "empreinte_sha256": "3b7edbfa0fcac73f58c226d7fca1989841ca7b09039c8ac3a1bf9e338e892bce",
+      "octets": 695279,
+      "reperes": [
+        "pp. 76–77 de la pagination originale (PDF, pp. 3–4), construction diagonale et généralisation"
+      ]
+    },
+    {
+      "titre": "Le système des Types du second ordre et la cohérence de l’Arithmétique",
+      "auteurs": [
+        "Giuseppe Longo"
+      ],
+      "url": "https://www.di.ens.fr/users/longo/files/Notes-de-Cours/incomple08chap4.pdf",
+      "empreinte_sha256": "38584c04e296224c5964baef1bdc32a2882afabaf72c0cdc1f999abdcbc89482",
+      "octets": 302169,
+      "reperes": [
+        "p. 3, « Remarque (le bien fondé des définitions imprédicatives) »"
+      ]
+    },
+    {
+      "titre": "Notes de cours, DEA Cognition, Ch. 1 : Propositions et Types",
+      "auteurs": [
+        "Giuseppe Longo"
+      ],
+      "url": "https://www.di.ens.fr/users/longo/files/Notes-de-Cours/cogni1.pdf",
+      "empreinte_sha256": "fcfc5e69163345d5f809dcc4e63658039e85205bf6bde322b46ee90ffa90b413",
+      "octets": 170873,
+      "reperes": [
+        "PDF, pp. 13–14"
+      ]
+    },
+    {
+      "titre": "Sur une courbe, qui remplit toute une aire plane",
+      "auteurs": [
+        "Giuseppe Peano"
+      ],
+      "url": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/peano.pdf",
+      "empreinte_sha256": "8b6a6d6da4c21ef7d7c7a31ee3709a9dd7e1508949537436a92b47723d977eae",
+      "octets": 271915,
+      "reperes": [
+        "p. 157, paragraphe introductif et résumé",
+        "p. 160, paragraphes sur Cantor, Netto et la correspondance de Peano"
+      ],
+      "edition": "Mathematische Annalen 36, p. 157–160",
+      "date": "1890"
+    },
+    {
+      "titre": "Die Grundlagen der Arithmetik",
+      "auteurs": [
+        "Gottlob Frege"
+      ],
+      "url": "https://www.gutenberg.org/cache/epub/48312/pg48312-images.html",
+      "empreinte_sha256": "4c93e640726bc6c7b9d12782814547d3c147b856aa0a3307aafbb2a607af976a",
+      "octets": 350070,
+      "reperes": [
+        "§ 70, p. 82 de la pagination originale, exemple du serveur"
+      ],
+      "date": "1884"
+    },
+    {
+      "titre": "Coopération au sein d'une constellation de satellites",
+      "auteurs": [
+        "Grégory Bonnet"
+      ],
+      "url": "https://depozit.isae.fr/theses/2008/2008_Bonnet_Gregory.pdf",
+      "empreinte_sha256": "46eb9de2a3863127eb60269b6158a1e34741f00b0ecbd7208b16a57e0533effa",
+      "octets": 1826677,
+      "reperes": [
+        "Chap. 3, § 4.1, p. 59 (PDF, p. 77)"
+      ]
+    },
+    {
+      "titre": "Bonnes démonstrations en déduction modulo",
+      "auteurs": [
+        "Guillaume Burel"
+      ],
+      "url": "https://docnum.univ-lorraine.fr/public/SCD_T_2009_0014_BUREL.pdf",
+      "empreinte_sha256": "0aed0f32a0444985ec72b117057c71397512564a8c5f8980b8e2b7f5c60acfe2",
+      "octets": 2272771,
+      "reperes": [
+        "p. 29, § 2.2.2 ; p. 83, § 3.2, sous le tableau 3.1 ; p. 159, § 5.3.1, formules (5.1)–(5.7)"
+      ]
+    },
+    {
+      "titre": "Constructive and Classical Reasonings",
+      "auteurs": [
+        "Hajime Ishihara"
+      ],
+      "url": "https://www.jaist.ac.jp/~mizuhito/jss12/CCR.pdf",
+      "empreinte_sha256": "4d32af746fcd21511d4cf8eb59bac9b1729adf5c39dc7e3153df9a4b052e60b8",
+      "octets": 263251,
+      "reperes": [
+        "PDF, pp. 63–64, « Intuitionistic sequent calculus G3i »"
+      ]
+    },
+    {
+      "titre": "The True (?) Story of Hilbert’s Infinite Hotel",
+      "auteurs": [
+        "Helge Kragh"
+      ],
+      "url": "https://arxiv.org/pdf/1403.0059",
+      "empreinte_sha256": "2e086dae49650b4036a1908dc1e033e3c68f6534b8d15dc9c3decd1228f0e8c9",
+      "octets": 607649,
+      "reperes": [
+        "p. 8, paragraphe sur l’hôtel de Hilbert"
+      ],
+      "date": "2014"
+    },
+    {
+      "titre": "Introduction à la Logique Mathématique, Première partie : Théorie des ensembles",
+      "auteurs": [
+        "Itaï Ben Yaacov",
+        "Thomas Blossier",
+        "Julien Melleray"
+      ],
+      "url": "https://math.univ-lyon1.fr/~altinel/Master/TdE.pdf",
+      "empreinte_sha256": "5efef77c4b4d45d8072c4ab9f046f49b72430a3ccda4c56ba6fb34c85070c450",
+      "octets": 455018,
+      "reperes": [
+        "pp. 1–3, p. 5, pp. 7, 10–11, 15–16, 19–20, 22–24 et 32–33"
+      ]
+    },
+    {
+      "titre": "The real numbers: Stevin to Hilbert",
+      "auteurs": [
+        "J. J. O’Connor",
+        "E. F. Robertson"
+      ],
+      "url": "https://mathshistory.st-andrews.ac.uk/HistTopics/Real_numbers_2/",
+      "empreinte_sha256": "25495167ecb05051bcd41485fe5cfdf746de790e96cf410a37a5d3cae045a382",
+      "octets": 115708,
+      "reperes": [
+        "Passages sur les travaux de Cauchy et sur les publications de Cantor"
+      ]
+    },
+    {
+      "titre": "Lambda-calcul et langages fonctionnels",
+      "auteurs": [
+        "Jean Goubault-Larrecq"
+      ],
+      "url": "https://lsv.ens-paris-saclay.fr/~goubault/Lambda/lambda.pdf",
+      "empreinte_sha256": "44efb3783358a4762fb2ee113005ab66aed6575156ad4b1d934a99cd6ac5e051",
+      "octets": 632581,
+      "reperes": [
+        "pp. 20–21, § 3.4, théorème 4 et début de sa démonstration"
+      ]
+    },
+    {
+      "titre": "S4 et logiques non monotones",
+      "auteurs": [
+        "Jean Goubault-Larrecq"
+      ],
+      "url": "https://lsv.ens-paris-saclay.fr/~goubault/modalf002.html",
+      "empreinte_sha256": "80e0afc04140b29055365b382a5658633dbef906c5d2aedf087430c156757922",
+      "octets": 66669,
+      "reperes": [
+        "§ 2.4, définition 4 et théorèmes 7 et 9"
+      ]
+    },
+    {
+      "titre": "Le paradoxe dans la communication. Implications épistémologiques et usages thérapeutiques",
+      "auteurs": [
+        "Jean-Curt Keller"
+      ],
+      "url": "https://docnum.univ-lorraine.fr/public/UPV-M/Theses/2006/Keller.Jean_Curt.LMZ0603.pdf",
+      "empreinte_sha256": "3044eed946062545f68b4826970fda064ab313347702b16ac5665bcbdf17a02e",
+      "octets": 2594206,
+      "reperes": [
+        "p. 179, « La théorie de la révision des croyances », principes de révision et note 163"
+      ],
+      "date": "2006"
+    },
+    {
+      "titre": "L’ensemble de tous les ensembles",
+      "auteurs": [
+        "Jean-Paul Delahaye"
+      ],
+      "url": "https://www.cristal.univ-lille.fr/profil/jdelahay/pls%3A2010%3A201.pdf",
+      "empreinte_sha256": "57b01ac193825881fb1874a23f3ea503c65478f31853782b297aec996743730f",
+      "octets": 863210,
+      "reperes": [
+        "p. 150 (PDF, p. 5), tableau « Les progrès en théorie des ensembles » et colonne de droite"
+      ]
+    },
+    {
+      "titre": "Algorithmique IV (UE-41) — TD1. Généralités",
+      "auteurs": [
+        "Jean-Pierre Zanotti"
+      ],
+      "url": "https://zanotti.univ-tln.fr/ALGO/II/CTD01-UE41.pdf",
+      "empreinte_sha256": "f0dfc7201a7a0954cf53f6a19da2c746359c26e9a3d187a4f16ece46caa96414",
+      "octets": 432604,
+      "reperes": [
+        "p. 5, § 3, « Initialisation », colonne de droite"
+      ]
+    },
+    {
+      "titre": "Normativité et vérité : récuser ou réfuter ?",
+      "auteurs": [
+        "Jean-Yves Girard"
+      ],
+      "url": "https://girard.perso.math.cnrs.fr/creteil.pdf",
+      "empreinte_sha256": "5e966bbfe85f9b0387b77ea33e5f0fcc252cb2a93b53103c2e0c829c1cfed034",
+      "octets": 287304,
+      "reperes": [
+        "p. 6, annexe A, « Herbrand », disjonction et méthode de Gentzen"
+      ]
+    },
+    {
+      "titre": "The power of mathematics",
+      "auteurs": [
+        "John Conway"
+      ],
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CD7AEA146792B5021A0FFE300CA8BC1F/9780511541407c3_p36-50_CBO.pdf/the-power-of-mathematics.pdf",
+      "empreinte_sha256": "7d9ac310f099aa515bab7e43aabc0985e80fcfa405526af7398a27a2b64fef95",
+      "octets": 2987010,
+      "reperes": [
+        "pp. 37–38, « Squares », descente géométrique attribuée à Stanley Tennenbaum"
+      ]
+    },
+    {
+      "titre": "Le changement de langage dans l’activité mathématique",
+      "auteurs": [
+        "Judith Njomgang Ngansop",
+        "Patrick Tchonang Youkap"
+      ],
+      "url": "https://emf.unige.ch/download_file/view/483/293",
+      "empreinte_sha256": "8b169732312c243fc6dac3b1ad8f3872f6add710221f8d8fddc074013dc34430",
+      "octets": 913346,
+      "reperes": [
+        "p. 754 (PDF, p. 44), § 5, « L’implication »"
+      ],
+      "date": "2015"
+    },
+    {
+      "titre": "Jérôme Euzenat bibliography",
+      "auteurs": [
+        "Jérôme Euzenat"
+      ],
+      "url": "https://moex.inria.fr/~euzenat/JE-area.html#euzenat1987b",
+      "empreinte_sha256": "a2b0562e0bd1621902881f4e41a5e4234c3af2979d078d0a62dad1776a645be8",
+      "octets": 581611,
+      "reperes": [
+        "Résumé de l’article d’Euzenat et Rechenmann (1987), premier paragraphe"
+      ]
+    },
+    {
+      "titre": "Stevin numbers and reality",
+      "auteurs": [
+        "Karin Usadi Katz",
+        "Mikhail G. Katz"
+      ],
+      "url": "https://arxiv.org/pdf/1107.3688",
+      "empreinte_sha256": "92eb2e8885fd1a4eed1237f16f1e699d4bc913f1cb3d6487ea4223444be5f5c8",
+      "octets": 1507176,
+      "reperes": [
+        "§ 2, « Stevin’s construction of the real numbers » (PDF, pp. 2–4)"
+      ],
+      "date": "2012"
+    },
+    {
+      "titre": "Fondamentaux des mathématiques 1",
+      "auteurs": [
+        "Laurent Pujo-Menjouet"
+      ],
+      "url": "https://math.univ-lyon1.fr/~pujo/fondmath1.pdf",
+      "empreinte_sha256": "c14587a046755a4d8d4139644d48990087b4f9ab4557e160b42d35e4a98854bf",
+      "octets": 16377602,
+      "reperes": [
+        "p. 2, § 0.1, points 3 et 4 ; p. 6, § 0.4 ; p. 56, § 2.6.1–2.6.2 ; p. 58, § 2.6.5, introduction et point 1"
+      ]
+    },
+    {
+      "titre": "Logique modale propositionnelle : une vue cavalière",
+      "auteurs": [
+        "M. Eytan"
+      ],
+      "url": "https://www.numdam.org/item/MSH_1977__57__27_0.pdf",
+      "empreinte_sha256": "a1325c1f1a53d4446eef60d09a5992eb12d76d03a8dc71433a5cf833055f7680",
+      "octets": 1408511,
+      "reperes": [
+        "pp. 32–33, § 4.1–4.3 ; pp. 35–36, § 6.1"
+      ],
+      "date": "1977"
+    },
+    {
+      "titre": "De la non-certitude en mathématique. La philosophie idoine de Ferdinand Gonseth",
+      "auteurs": [
+        "Marc Sage"
+      ],
+      "url": "https://www.normalesup.org/~sage/Reflexions/lophisc/MemoireDefIMarc23.pdf",
+      "empreinte_sha256": "3c8d2c6c6d81c63548cf9c0b3f173241639a5b1bc4e93412844882210d8784c9",
+      "octets": 1123266,
+      "reperes": [
+        "pp. 103–105, axiomes de l’infini, chaînes minimales et théorème de récurrence"
+      ]
+    },
+    {
+      "titre": "Fonctions primitives récursives et non primitives",
+      "auteurs": [
+        "Mathieu Mari"
+      ],
+      "url": "https://www.di.ens.fr/~mmari/content/papers/Fonctions_rec.pdf",
+      "empreinte_sha256": "92ad36f61ffb47a2e5aed67c9ae8b0585fd264387941f8ee59d88330c79b0c4e",
+      "octets": 2892786,
+      "reperes": [
+        "p. 1, légende et résumé"
+      ]
+    },
+    {
+      "titre": "La vérité du futur contingent : Lukasiewicz, Tarski ou van Fraassen ?",
+      "auteurs": [
+        "Michael Groneberg"
+      ],
+      "url": "https://poincare.univ-lorraine.fr/sites/poincare.univ-lorraine.fr/files/users/documents/philosophia-scientiae/groneberg.pdf",
+      "empreinte_sha256": "756cd57806b8204251849a068106d4b6362d2f013a56067496e3786613aea7b5",
+      "octets": 708321,
+      "reperes": [
+        "PDF, p. 10, paragraphe précédant le § 5"
+      ]
+    },
+    {
+      "titre": "Set Theory and its Philosophy: A Critical Introduction",
+      "auteurs": [
+        "Michael Potter"
+      ],
+      "url": "https://ndl.ethernet.edu.et/bitstream/123456789/19163/1/14.pdf.pdf",
+      "empreinte_sha256": "8fcf87c81b282792007d2d5444ea5bfb213ecbbc0c117da7c245e77f5e4ba7df",
+      "octets": 1469393,
+      "reperes": [
+        "p. 23, discussion de Frege ; p. 60 (PDF, p. 75), § 4.4 ; pp. 95–98, définitions par récurrence ; pp. 157–158, lemme 9.2.2 et théorème 9.2.3"
+      ],
+      "date": "2004"
+    },
+    {
+      "titre": "Introduction à la logique — Support de cours",
+      "auteurs": [
+        "Michel Masson",
+        "Gauthier Picard",
+        "Antoine Zimmermann"
+      ],
+      "url": "https://www.emse.fr/~zimmermann/Teaching/Logique/Livret/",
+      "empreinte_sha256": "e89958578d8be5bd12cad5496437c5efde2bac4d5a09f706d0295dc53ace8e1b",
+      "octets": 146239,
+      "reperes": [
+        "« Mise sous forme prénexe » et « Skolémisation », définitions et premier exemple"
+      ]
+    },
+    {
+      "titre": "Dynamic Epistemic Logic with Quantification And Normative Systems",
+      "auteurs": [
+        "Mo Liu"
+      ],
+      "url": "https://docnum.univ-lorraine.fr/public/DDOC_T_2023_0077_LIU.pdf",
+      "empreinte_sha256": "3535cc7af2f6b78108f3eb3e8ca655d35f852e414f4b731912e78b25c5c706c4",
+      "octets": 1206491,
+      "reperes": [
+        "p. 106 (PDF, p. 119), résumé étendu en français, paragraphe sur PAL"
+      ]
+    },
+    {
+      "titre": "Les mêmes et les doubles : la tension entre l’imitation et la représentation ou les paradoxes de l’identité fictionnelle",
+      "auteurs": [
+        "Nicolas Erdrich"
+      ],
+      "url": "https://docnum.univ-lorraine.fr/public/DDOC_T_2021_0260_ERDRICH.pdf",
+      "empreinte_sha256": "03caa7af18fae1ab3510bef1969bf8cd9b865ead4898ef098cc1dea1d3917c2c",
+      "octets": 3871115,
+      "reperes": [
+        "p. 5, quatre premiers paragraphes"
+      ],
+      "date": "2021-11-25"
+    },
+    {
+      "titre": "Digital Computer Newsletter, Vol. 1, No. 2",
+      "auteurs": [
+        "Office of Naval Research, Mathematical Sciences Division"
+      ],
+      "url": "https://nsarchive.gwu.edu/media/16888/ocr",
+      "empreinte_sha256": "6eb7c6d5611bdf8d98d022a1098cbf8f3151c6537d2205286ae5c9889dac358d",
+      "octets": 43255,
+      "reperes": [
+        "p. 4, paragraphe consacré au BINAC"
+      ]
+    },
+    {
+      "titre": "Notes de cours d’Analyse réelle I",
+      "auteurs": [
+        "Olivier Collin"
+      ],
+      "url": "https://saliola.github.io/maths/teaching/MAT2160-2015H/documents/analyse1.pdf",
+      "empreinte_sha256": "3fb8643a14fe7bbe356832de15bedc5fab946008aa21b0a5136839c115820f5f",
+      "octets": 695354,
+      "reperes": [
+        "pp. 15, 17–22 et 95"
+      ]
+    },
+    {
+      "titre": "Complétude en logiques",
+      "auteurs": [
+        "Olivier Hermant"
+      ],
+      "url": "https://www.cri.minesparis.psl.eu/~hermant/docs/2017/hdr_draft.pdf",
+      "empreinte_sha256": "a709f4c6825cdd13a714d7850e49598bf7d320b7a8286ac0e91b0ba72067fb87",
+      "octets": 920457,
+      "reperes": [
+        "pp. 14–15, 23–29, 32, 55, 72, 90, 100, 103–104 ; § 2.1.4, définition 2.1.11"
+      ]
+    },
+    {
+      "titre": "Le λ-calcul comme modèle de calculabilité",
+      "auteurs": [
+        "Pablo Rauzy"
+      ],
+      "url": "https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Redaction/2009-2010/pablo.rauzy.pdf",
+      "empreinte_sha256": "e024c925818a066358e58bf972ff1c9012719103ac7f874547a05d6f2176d4ca",
+      "octets": 206264,
+      "reperes": [
+        "p. 3, § 1.4, « Réductions », dernier paragraphe"
+      ]
+    },
+    {
+      "titre": "Identité et référence : la théorie des noms propres chez Frege et Kripke",
+      "auteurs": [
+        "Pascal Engel"
+      ],
+      "url": "https://presses.ens.psl.eu/media/upload/Identite%CC%81s%20et%20re%CC%81fe%CC%81rences-secure.pdf",
+      "empreinte_sha256": "80cc13031d76730e743ec3c313e3cab8db9a61ed10341a79af2bd64a56a6e205",
+      "octets": 11315661,
+      "reperes": [
+        "p. 34, nominalisation et concept « cheval »"
+      ],
+      "date": "1985"
+    },
+    {
+      "titre": "La théorie élémentaire de la fonction de couplage de Cantor des entiers naturels est décidable",
+      "auteurs": [
+        "Patrick Cégielski",
+        "Serge Grigorieff",
+        "Denis Richard"
+      ],
+      "url": "https://www.lacl.fr/cegielski/Cegielski_Grigorieff_Richard_2000_TheoryCantorBijection.pdf",
+      "empreinte_sha256": "14969bf6222bca608f9753c89bd36a3030708a3e728533c2f047d74e0c5a6b13",
+      "octets": 110258,
+      "reperes": [
+        "p. 107, titre et deux premiers paragraphes de l’introduction"
+      ]
+    },
+    {
+      "titre": "Logique, chapitre VII : Logique du premier ordre",
+      "auteurs": [
+        "Patrick Dehornoy"
+      ],
+      "url": "https://dehornoy.lmno.cnrs.fr/Surveys/DehornoyChap7.pdf",
+      "empreinte_sha256": "5d706799dbc57974c12fbc9b0a70a9ff5421b60bded017bff6481a089231f4c9",
+      "octets": 713231,
+      "reperes": [
+        "p. 180, ouverture du chap. 1 ; pp. 204–205, propositions 3.7–3.9 et corollaire 3.11 ; pp. 215–216, appendice sur les logiques du second ordre"
+      ]
+    },
+    {
+      "titre": "M114 : Implications et équivalences, conjonctions et disjonctions",
+      "auteurs": [
+        "Patrick Massot"
+      ],
+      "url": "https://www.imo.universite-paris-saclay.fr/~patrick.massot/enseignement/math114/02_imp_equiv_et_ou.html",
+      "empreinte_sha256": "45bc51cfd2d6edb1d8b4e0a82d4d6aa00fa774c3258ffdc56d25b50da8586790",
+      "octets": 93307,
+      "reperes": [
+        "« Démonstration d’une implication », « La disjonction » et « Utilisation d’une disjonction »"
+      ]
+    },
+    {
+      "titre": "M114 : Prédicats et quantificateurs",
+      "auteurs": [
+        "Patrick Massot"
+      ],
+      "url": "https://www.imo.universite-paris-saclay.fr/~patrick.massot/enseignement/math114/03_predicats_quantificateurs.html",
+      "empreinte_sha256": "fbd81b672d9531681926cebab6520fc1423a5672f253f4cec8c967c43194992e",
+      "octets": 56049,
+      "reperes": [
+        "« Utilisation d’un énoncé quantifié existentiellement », premier paragraphe"
+      ]
+    },
+    {
+      "titre": "What Numbers Could Not Be",
+      "auteurs": [
+        "Paul Benacerraf"
+      ],
+      "url": "https://gwern.net/doc/philosophy/ontology/1965-benacerraf.pdf",
+      "empreinte_sha256": "643be4277098439cab89fb1e51436bdbc4add6cba2985ceefa86a3c463b83e00",
+      "octets": 429381,
+      "reperes": [
+        "pp. 54–55, ouverture du § II ; p. 62, paragraphe précédant le § III"
+      ],
+      "date": "1965"
+    },
+    {
+      "titre": "Lambda calculs et catégories",
+      "auteurs": [
+        "Paul-André Melliès"
+      ],
+      "url": "https://www.irif.fr/~mellies/mpri/mpri-ens/ens-mellies-cours-4.pdf",
+      "empreinte_sha256": "f6edfd0a6f0acf967309ff7fc0da5e8b0d65d75fe02ed3451957a53c7328e2a9",
+      "octets": 162215,
+      "reperes": [
+        "Diapositive 11, universalité du λ-calcul et combinateur de point fixe Y"
+      ]
+    },
+    {
+      "titre": "Logique, L3 Informatique",
+      "auteurs": [
+        "Peter Habermehl"
+      ],
+      "url": "https://www.irif.fr/~haberm/cours/logique1314/partie1p4.pdf",
+      "empreinte_sha256": "099497cb650f5be842f0a48c288740e9499f5fdfab9b14a12c93cd0cc7c0b4b4",
+      "octets": 405837,
+      "reperes": [
+        "Diapositives 8, 10–21, 29, 32, 34, 36, 54, 56–63"
+      ],
+      "date": "2014-03-11"
+    },
+    {
+      "titre": "Les tableaux de Beth : syntaxe ou sémantique ?",
+      "auteurs": [
+        "Philippe de Rouilhan"
+      ],
+      "url": "https://www.numdam.org/item/PHSC_1998-1999__3_4_303_0.pdf",
+      "empreinte_sha256": "3e552c60bc00f07401f3a2aff42c31780a281c64e91433fccf1b255eb90a1cb6",
+      "octets": 1787743,
+      "reperes": [
+        "p. 306, « Critère de validité de Beth » ; p. 308, méthode des tableaux de Beth ; p. 311, arithmétique et ordre logique"
+      ]
+    },
+    {
+      "titre": "Éléments d’analyse et d’algèbre",
+      "auteurs": [
+        "Pierre Colmez"
+      ],
+      "url": "https://www.math.polytechnique.fr/perso/harinck/DocEv/ColmezEV2.pdf",
+      "empreinte_sha256": "f2db04f94a91f9d3e0447b578e64c284d3b6a75df391e2ba6b0d1bdbbd1c36e9",
+      "octets": 1318971,
+      "reperes": [
+        "pp. 11–12, § 2.2 ; p. 81, § 12.2 ; p. 82, § 12.3 et notes 44–45"
+      ]
+    },
+    {
+      "titre": "Quatre pas vers l’Algèbre",
+      "auteurs": [
+        "Quang-Thai Ngo"
+      ],
+      "url": "https://lysenko.perso.math.cnrs.fr/enseignement/QuatrePasAlgebre.pdf",
+      "empreinte_sha256": "205c0f55989f88189b0651929492c3a27159b73743efc86aaa8eeaad91ec82d6",
+      "octets": 777293,
+      "reperes": [
+        "p. 9 (PDF, p. 10), paragraphe commençant par « La logique qu’on vient de voir »"
+      ]
+    },
+    {
+      "titre": "Outils Logiques",
+      "auteurs": [
+        "Ralf Treinen"
+      ],
+      "url": "https://www.irif.fr/~kesner/enseignement/ol3/poly.pdf",
+      "empreinte_sha256": "ad109641d0aae5603c95aefd748d45001e1780aaba979cc086b0867712f7438b",
+      "octets": 675668,
+      "reperes": [
+        "pp. 29–30, § 3.3, définition 7, généralisation et contre-exemple"
+      ]
+    },
+    {
+      "titre": "Essays on the Theory of Numbers",
+      "auteurs": [
+        "Richard Dedekind",
+        "Wooster Woodruff Beman (traducteur)"
+      ],
+      "url": "https://www.gutenberg.org/files/21016/21016-pdf.pdf",
+      "empreinte_sha256": "d8e8bc66697760a2de36a704d82f70e1ebf526b1b344051929a17d5247cbf6ec",
+      "octets": 468165,
+      "reperes": [
+        "p. 14, préface de la première édition ; pp. 27–28, §§ 36–48 ; p. 31, §§ 64–66 et notes 20–21 ; p. 33, §§ 71–72 ; p. 34, §§ 79–80 ; pp. 46–48, §§ 132–134"
+      ]
+    },
+    {
+      "titre": "Was sind und was sollen die Zahlen?",
+      "auteurs": [
+        "Richard Dedekind"
+      ],
+      "url": "https://www.math.ru.nl/werkgroepen/gmfw/bronnen/dedekind1.html",
+      "empreinte_sha256": "ed8c78df5e23705225895cb47f650bf45d6a4463bec2f9c947ca2a93411cbffe",
+      "octets": 65130,
+      "reperes": [
+        "« Vorwort zur ersten Auflage », début de la préface"
+      ]
+    },
+    {
+      "titre": "Etude et Extraction de Règles graduelles floues : Définition d’algorithmes efficaces",
+      "auteurs": [
+        "Sarra Ayouni"
+      ],
+      "url": "https://www.lirmm.fr/~poncelet/publications/papers/theseAyouni.pdf",
+      "empreinte_sha256": "3a02f24873cd7a9cab2b74381175033bba4bdaa897548243a1e35f522ff7a273",
+      "octets": 2970253,
+      "reperes": [
+        "pp. 17–18, § 1.4, définitions 10–14, exemple 4 et tableau 1.2"
+      ]
+    },
+    {
+      "titre": "Logique intermédiaire (PHI-3508), plan de cours",
+      "auteurs": [
+        "Serge Robert"
+      ],
+      "url": "https://philo.uqam.ca/wp-content/uploads/sites/72/2022/10/phi3508_serge_robert_221.pdf",
+      "empreinte_sha256": "a6c17319048ff0d66c84767046bdc471e83fd538c7f601aa05ffeeb447b11749",
+      "octets": 1902786,
+      "reperes": [
+        "p. 1, §§ 1–2, description du cours et prérequis"
+      ]
+    },
+    {
+      "titre": "An enumeration of the primitive recursive functions without repetition",
+      "auteurs": [
+        "Shih-Chao Liu"
+      ],
+      "url": "https://www.jstage.jst.go.jp/article/tmj1949/12/3/12_3_400/_pdf/-char/en",
+      "empreinte_sha256": "2a86a617f7f832e4f6cb88b87eb4b64b98ec8f0ae6697fa287a68c16dc6721c2",
+      "octets": 213617,
+      "reperes": [
+        "pp. 400–401, théorème, démonstration et distinction finale avec un test effectif d’annulation"
+      ]
+    },
+    {
+      "titre": "Parité : portraits, biographies, témoignages",
+      "auteurs": [
+        "Société Mathématique de France"
+      ],
+      "url": "https://smf.emath.fr/smf-dossiers-et-ressources/parite-portraits",
+      "empreinte_sha256": "4077340f62edf34054d2c705c449ba0851319afaede5bcd9c1888376e3a240cd",
+      "octets": 78513,
+      "reperes": [
+        "Rubrique des biographies"
+      ]
+    },
+    {
+      "titre": "Introduction à la logique : notes de préparation à l’agrégation d’informatique",
+      "auteurs": [
+        "Sylvain Schmitz"
+      ],
+      "url": "https://www.irif.fr/~schmitz/teach/2022_agreg/notes.pdf",
+      "empreinte_sha256": "97324125da00657242d4098ba847f933366cff4511f5b602c562146cbd80d423",
+      "octets": 935855,
+      "reperes": [
+        "pp. 3–5, 7–10, 17–19, 21–23, 43, 52, 97, 103, 109, 122, 124, 126–127"
+      ],
+      "licence": "CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "titre": "Colossus",
+      "auteurs": [
+        "The National Museum of Computing"
+      ],
+      "url": "https://www.tnmoc.org/colossus",
+      "empreinte_sha256": "06c6279da5fb9d993c7a9d3774eede110f4b8e00aab1d9ec220e46d78a9e762d",
+      "octets": 136330,
+      "reperes": [
+        "« The Colossus Computer »"
+      ]
+    },
+    {
+      "titre": "Introduction à la Logique Mathématique : Seconde partie, Théorie des modèles",
+      "auteurs": [
+        "Thomas Blossier",
+        "Julien Melleray"
+      ],
+      "url": "https://math.univ-lyon1.fr/~melleray/M1-17-partie2.pdf",
+      "empreinte_sha256": "aa2333aabcc09d7486c534e65b7a58cadd760b33464f8bd3362aef84f57d528e",
+      "octets": 518010,
+      "reperes": [
+        "pp. 1–5, 9–10, 13–18 et 36–37"
+      ]
+    },
+    {
+      "titre": "Lambda-calcul: syntaxe et sémantique",
+      "auteurs": [
+        "Thomas Ehrhard"
+      ],
+      "url": "https://www.irif.fr/~ehrhard/pub/mpri-15-16.pdf",
+      "empreinte_sha256": "167b0271139ba503799beae385a2cb253da371df6ccd7880c1ce07d0a8277fe6",
+      "octets": 841093,
+      "reperes": [
+        "p. 7, chap. 1, § 1.1, paragraphe précédant la définition de la substitution parallèle"
+      ]
+    },
+    {
+      "titre": "50 Years of Army Computing: From ENIAC to MSRC",
+      "auteurs": [
+        "Thomas J. Bergin (dir.), U.S. Army Research Laboratory"
+      ],
+      "url": "https://www.govinfo.gov/content/pkg/GOVPUB-D105-PURL-LPS58495/pdf/GOVPUB-D105-PURL-LPS58495.pdf",
+      "empreinte_sha256": "5dc0cc3a46918dfe562d9fd1b2825c3bcea6065c291b070ee7034182039f9a0c",
+      "octets": 2545849,
+      "reperes": [
+        "p. 2 (PDF, p. 14), construction de l’ENIAC"
+      ]
+    },
+    {
+      "titre": "Certification de programmes impératifs d’ordre supérieur avec mécanismes de contrôle",
+      "auteurs": [
+        "Tristan Crolard"
+      ],
+      "url": "https://cedric.cnam.fr/sys/crolard/HDR/memoire.pdf",
+      "empreinte_sha256": "f4e946f21887592445fab91a3cfbe7b72fa057fe27fbdb15b6ff7f6451c5891f",
+      "octets": 2003290,
+      "reperes": [
+        "p. 15, paragraphe commençant par « Remarquez que l’argument ci-dessus se généralise »"
+      ]
+    },
+    {
+      "titre": "Temps, dualité et vérité : Étude sur les traces d'une dualité temporelle métaontologique dans quelques langages élémentaires",
+      "auteurs": [
+        "Vincent Wistrand"
+      ],
+      "url": "https://pepite-depot.univ-lille.fr/LIBRE/EDSHS/2024/2024ULILH004.pdf",
+      "empreinte_sha256": "d0c00fd91333504d5b431657239d0f6ad6971fb9f87f9ea117c83fb6a53b4f2e",
+      "octets": 865090,
+      "reperes": [
+        "pp. 13, 40 et 42"
+      ]
+    },
+    {
+      "titre": "Lectures on the Infinite",
+      "auteurs": [
+        "William Ewald",
+        "Wilfried Sieg"
+      ],
+      "url": "https://link.springer.com/chapter/10.1007/978-3-540-69444-1_4",
+      "empreinte_sha256": "86688549324c04e58dc011d6c0421eeb76596870771b9ff42d5cd16d6f21249b",
+      "octets": 222206,
+      "reperes": [
+        "Chap. 4, première phrase du résumé"
+      ],
+      "date": "2013"
+    },
+    {
+      "titre": "Ma collaboration avec Julia Robinson",
+      "auteurs": [
+        "Youri Matiassevitch"
+      ],
+      "url": "https://smf.emath.fr/system/files/filepdf/Gaz-59.pdf",
+      "empreinte_sha256": "530104848cb2b1ac930293c8b9458eca9740bda3419830a1b0acafc8ecabf325",
+      "octets": 10034265,
+      "reperes": [
+        "p. 27, énoncé de Hilbert et traduction en note ; pp. 30–31, équations (4)–(5) et ouverture de la p. 31"
+      ]
+    },
+    {
+      "titre": "Introduction au lambda-calcul pur",
+      "auteurs": [
+        "Yves Bertot"
+      ],
+      "url": "https://www-sop.inria.fr/members/Yves.Bertot/courses/lambda-pur.pdf",
+      "empreinte_sha256": "d022f288e779bf454eb45e694cfe85113c339275fd4dd60b9c05daf2683ee6b0",
+      "octets": 298987,
+      "reperes": [
+        "pp. 1–5, § 1.1–1.5 ; p. 9, § 3.2, confluence globale"
+      ]
+    }
+  ]
+}

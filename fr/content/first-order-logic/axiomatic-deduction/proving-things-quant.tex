@@ -14,7 +14,7 @@
 Donnons une !!{derivation} de
 $(\lforall[x][!A(x)] \land \lforall[y][!B(y)]) \lif
 \lforall[x][(!A(x) \land !B(x))]$.
-
+Choisissons une constante~$a$ qui ne figure pas dans cette formule.
 Remarquons d'abord que
 \begin{align*}
   (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif \lforall[x][!A(x)]\\
@@ -27,9 +27,9 @@ Remarquons d'abord que
     \lforall[y][!B(y)] & \lif !B(a)\\
     \intertext{sont respectivement des instances de l'\olref[prp]{ax:land2} et de l'\olref[qua]{ax:q1},}
     (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif !B(a)\\
-    \intertext{est !!{derivable} d'après la \olref[pro]{prop:chain}. Une instance appropriée de l'\olref[prp]{ax:land3} et deux applications de~\MP{} montrent alors que}
+    \intertext{est !!{derivable} d'après la \olref[pro]{prop:chain}. Notons $!H$ la conjonction des deux universelles. La même proposition, avec $!H \lif !A(a)$ et l'instance de l'\olref[prp]{ax:land3}, donne $!H \lif (!B(a) \lif (!A(a) \land !B(a)))$. L'\olref[prp]{ax:lif2} et deux applications de~\MP{} donnent alors}
     (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif (!A(a) \land !B(a))\\
-    \intertext{est !!{derivable}. Nous pouvons enfin appliquer \QR{} et obtenir}
+    \intertext{Les conditions sur la constante~$a$ sont satisfaites. Par~\QR{}, on obtient}
 (\lforall[x][!A(x)] \land \lforall[y][!B(y)]) & \lif \lforall[x][(!A(x) \land !B(x))].
 \end{align*}
 \end{ex}

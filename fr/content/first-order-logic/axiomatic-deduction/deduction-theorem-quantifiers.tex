@@ -17,20 +17,33 @@ $\Gamma \Proves !A \lif !B$.
 \end{thm}
 
 \begin{proof}
-Nous procédons de nouveau par récurrence sur la longueur de la
-!!{derivation} de~$!B$ à partir de $\Gamma \cup \{!A\}$.
+Il suffit de traiter l'ensemble fini des hypothèses effectivement
+utilisées autres que~$!A$, puis de revenir à~$\Gamma$ par la
+\olref[ptn]{prop:monotonicity}. Prenons cet ensemble fini pour~$\Gamma$.
+Par le \olref[ptn]{lem:renaming-parameters}, choisissons dans la
+!!{derivation} de~$!B$ des constantes propres absentes de~$\Gamma$ et
+de~$!A$.
 
-Le cas de base est identique à celui de la preuve du
-\olref[ded]{thm:deduction-thm}.
+Procédons par récurrence sur la longueur de la !!{derivation}.
+Pour le cas de base, pour une dernière ligne qui est une hypothèse
+ou un axiome, et pour un dernier modus ponens, raisonnons comme
+dans la preuve du \olref[ded]{thm:deduction-thm}.
 
-Pour l'étape de récurrence, supposons de nouveau que la !!{derivation}
-de~$!B$ à partir de $\Gamma \cup \{!A\}$ se termine par une étape~$!B$
-justifiée par une règle d'inférence. Si cette règle est le modus
-ponens, nous raisonnons comme dans la preuve du
-\olref[ded]{thm:deduction-thm}. Si la règle est~\QR, supposons que
-$!B \ident !C \lif \lforall[x][!D(x)]$ et qu'une !!{formula} de la
-forme $!C \lif !D(a)$ figure plus tôt dans la !!{derivation}, où $a$
-ne figure ni dans~$!C$, ni dans~$!A$, ni dans~$\Gamma$. Nous avons donc
+Supposons que la dernière ligne soit obtenue par la règle
+universelle~\QR. Alors $!B \ident !C \lif \lforall[x][!D(x)]$ et la
+!!{derivation} comporte une ligne antérieure $!C \lif !D(a)$.
+La constante~$a$ est absente de~$\Gamma$, de~$!A$, de~$!C$ et de~$!D(x)$.
+
+Pour le calcul qui suit, on dispose des deux schémas propositionnels
+qui permettent de passer entre
+$!A \lif (!C \lif !E)$ et $(!A \land !C) \lif !E$.
+À partir de $!A \land !C$, les axiomes de projection donnent $!A$ et
+$!C$. À partir de $!A$ et de $!C$, l'axiome de conjonction donne
+$!A \land !C$. Dans les deux cas, le modus ponens donne $!E$ à partir
+de la forme d'implication correspondante. On décharge les hypothèses
+par la partie propositionnelle du théorème de la déduction.
+
+Nous avons alors
 \begin{align*}
   \Gamma \cup \{!A\} & \Proves !C \lif !D(a),\\
   \intertext{et l'hypothèse de récurrence s'applique; ainsi,}
@@ -39,7 +52,7 @@ ne figure ni dans~$!C$, ni dans~$!A$, ni dans~$\Gamma$. Nous avons donc
   & \Proves (!A \lif (!C \lif !D(a))) \lif ((!A \land !C) \lif !D(a));\\
   \intertext{le modus ponens donne donc}
   \Gamma & \Proves (!A \land !C) \lif !D(a).\\
-  \intertext{Comme la condition de fraîcheur de l'eigenvariable reste satisfaite, nous pouvons ajouter une étape justifiée par~\QR{} et obtenir}
+  \intertext{La constante~$a$ est absente des hypothèses, de $!A\land !C$ et de la matrice. Par~\QR{}, nous obtenons}
     \Gamma & \Proves (!A \land !C) \lif \lforall[x][!D(x)].\\
   \intertext{Nous avons aussi}
   & \Proves ((!A \land !C) \lif \lforall[x][!D(x)])
@@ -49,21 +62,13 @@ ne figure ni dans~$!C$, ni dans~$!A$, ni dans~$\Gamma$. Nous avons donc
 \end{align*}
 Autrement dit, $\Gamma \Proves !A \lif !B$.
 
-Nous laissons en exercice le cas où $!B$ est justifiée par~\QR, mais
-est de la forme $\lexists[x][!D(x)] \lif !C$.
+Nous laissons en exercice le cas où $!B$ est obtenue par la règle
+existentielle~\QR{} et a la forme $\lexists[x][!D(x)] \lif !C$.
 \end{proof}
 
 \begin{prob}
 Achever la preuve du
 \olref[fol][axd][ddq]{thm:deduction-thm-q}.
 \end{prob}
-
-\begin{editorial}
-Dans la source, l'avant-dernière formule affichée manque d'une
-parenthèse fermante. Surtout, la phrase qui suit le calcul conclut
-$\Gamma \Proves !B$, alors que le calcul établit
-$\Gamma \Proves !A \lif !B$, qui est précisément la conclusion du
-théorème. La parenthèse et la conclusion ont été rétablies.
-\end{editorial}
 
 \end{document}

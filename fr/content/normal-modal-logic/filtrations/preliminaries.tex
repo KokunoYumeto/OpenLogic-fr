@@ -1,0 +1,77 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: preliminaries
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{pre}
+
+\olsection{Préliminaires}
+
+Les filtrations permettent d'établir que certains systèmes de logique
+modale ont la \emph{propriété du modèle fini}. Si une !!{formula} est vraie
+(ou fausse) en un monde d'un modèle de la classe considérée, elle l'est
+aussi en un monde d'un modèle \emph{fini} de cette classe. Pour en déduire
+la décidabilité par une recherche bornée, on utilise une borne effective
+sur la taille du modèle et un test effectif d'appartenance des cadres
+finis à la classe. Les filtrations sont
+définies relativement à des ensembles de !!{formula}s clos par
+sous-formules.
+
+\begin{defn}\ollabel{defn:modallyclosed}
+  Un ensemble $\Gamma$ de !!{formula}s est \emph{clos par sous-formules}
+  s'il contient toute sous-formule de chaque !!{formula} de~$\Gamma$.
+  De plus, $\Gamma$ est \emph{modalement clos} s'il est clos par
+  sous-formules et si $!A \in \Gamma$ entraîne $\Box!A,
+  \Diamond!A \in \Gamma$.
+\end{defn}
+
+Par exemple, pour une !!{formula}~$!A$, l'ensemble de toutes ses
+sous-!!{formula}s est clos par sous-!!{formula}s. Dans une filtration
+par cet ensemble, $!A$ est vraie en la classe~$[w]$ si et seulement si
+elle est vraie en~$w$ dans le modèle initial.
+
+L'ensemble des mondes d'une filtration de~$\mModel{M}$ par~$\Gamma$
+est l'ensemble des classes de la relation d'équivalence suivante.
+
+\begin{defn}
+Soit $\mModel{M} =\tuple{W, R, V}$ et supposons $\Gamma$ clos par
+sous-!!{formula}s. Définissons la relation $\equiv$ sur $W$ entre deux
+mondes qui rendent vraies les mêmes !!{formula}s de $\Gamma$ :
+\[
+u \equiv v \quad \text{si et seulement si } \quad
+\forall !A \in \Gamma : \mSat{M}{!A}[u] \Leftrightarrow \mSat{M}{!A}[v].
+\]
+La classe d'équivalence~$[w]_\equiv$ d'un monde~$w$, ou simplement
+$[w]$, est l'ensemble des mondes $\equiv$-équivalents à~$w$ :
+\[
+[w] = \Setabs{v}{v \equiv w}.
+\]
+\end{defn}
+
+\begin{prop}
+  Étant donnés $\mModel{M}$ et $\Gamma$, la relation $\equiv$ ainsi
+  définie est une relation d'équivalence : elle est réflexive,
+  symétrique et transitive.
+\end{prop}
+
+\begin{proof}
+  La relation $\equiv$ est réflexive, car $w$ rend vraies exactement
+  les mêmes !!{formula}s de~$\Gamma$ que lui-même. Elle est symétrique :
+  si $u$ rend vraies les mêmes !!{formula}s de~$\Gamma$ que $v$,
+  alors $v$ fait de même par rapport à~$u$. Elle est transitive : si
+  $u$ rend vraies les mêmes !!{formula}s de~$\Gamma$ que~$v$, et $v$
+  les mêmes que $w$, alors $u$ rend vraies les mêmes !!{formula}s
+  de~$\Gamma$ que~$w$.
+\end{proof}
+
+Comme toute relation d'équivalence, $\equiv$ partage~$W$ en classes
+formant une \emph{partition} : ce sont des sous-ensembles de~$W$ deux
+à deux disjoints, et leur réunion est~$W$. Tout $w \in W$ est un !!{element} d'une de ces
+classes, à savoir~$[w]$, puisque $w \equiv w$. Les classes $[w]$
+recouvrent donc~$W$. Elles sont deux à deux disjointes : si
+$u \in [w]$ et $u \in [v]$, alors $u \equiv w$ et $u \equiv v$ ; par
+symétrie et transitivité, $w \equiv v$, d'où $[w] = [v]$.
+\end{document}

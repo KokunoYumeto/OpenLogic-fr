@@ -1,0 +1,132 @@
+% Part: lambda-calculus
+% Chapter: syntax
+% Section: de-bruijn
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{syn}{deb}
+
+\olsection{Indices de de Bruijn}
+
+L'$\alpha$-équivalence est très naturelle :
+des termes $\alpha$-équivalents ont le
+« même sens ». On peut même définir une
+syntaxe des lambda-termes qui ne distingue
+pas les termes que l'on peut convertir
+l'un en l'autre par $\alpha$-conversion.
+La représentation la plus connue remplace
+les variables par leurs \emph{indices de
+de Bruijn}.
+
+Dans $\lambd[x][M]$, la variable~$x$
+nomme explicitement le paramètre de la
+fonction; on peut donc l'employer dans~$M$
+pour y faire référence. Avec les indices de
+de Bruijn, les paramètres n'ont plus de
+nom : une occurrence dans le corps reçoit
+un nombre qui indique combien d'abstractions
+la séparent de celle qui la lie. Considérons
+par exemple $\lambd[x][\lambd[y][y x]]$.
+L'abstraction extérieure lie~$x$ et
+l'abstraction intérieure lie~$y$. Le
+sous-terme $y x$ est dans la portée de
+l'abstraction intérieure : aucune abstraction
+ne sépare $y$ de son $\lambd[y]$, tandis
+qu'une abstraction sépare $x$ de son
+$\lambd[x]$. On écrit donc $0\, 1$
+pour $y x$, et $\lambd[][\lambd[][0\, 1]]$
+pour le terme entier.
+
+\begin{explain}
+L'espace dans $0\,1$ sépare les deux indices d'une application.
+Chaque indice peut lui-même s'écrire avec plusieurs chiffres.
+\end{explain}
+
+\begin{defn}
+Les termes de de Bruijn se définissent
+inductivement comme suit :
+\begin{enumerate}
+\item $n$, où $n$ est un entier naturel.
+\item $PQ$, où $P$ et $Q$ sont des termes
+  de de Bruijn.
+\item $\lambd[][N]$, où $N$ est un terme
+  de de Bruijn.
+\end{enumerate}
+\end{defn}
+
+La traduction formelle des lambda-termes
+ordinaires en termes indicés est la suivante.
+\begin{defn}
+\begin{align*}
+  F_\Gamma(x) &= \Gamma(x) \\
+  F_\Gamma(PQ) &= F_\Gamma(P)F_\Gamma(Q) \\
+  F_\Gamma(\lambd[x][N])
+    &= \lambd[][F_{x,\Gamma}(N)]
+\end{align*}
+Ici, $\Gamma$ est une liste de variables
+indicée à partir de zéro, et $\Gamma(x)$
+désigne la position de la première occurrence
+de $x$ dans $\Gamma$. Par exemple, si
+$\Gamma$ est la liste $x,y,z$,
+$\Gamma(x)$ vaut $0$ et $\Gamma(z)$ vaut $2$.
+
+La notation $x,\Gamma$ désigne la liste
+obtenue en plaçant $x$ en tête de $\Gamma$.
+Ainsi, si $\Gamma$ est la liste précédente,
+$w,\Gamma$ est la liste $w,x,y,z$.
+La traduction est définie lorsque toute
+variable libre du terme figure dans la liste
+initiale $\Gamma$.
+\end{defn}
+
+\begin{explain}
+Le contexte se lit depuis le lieur le plus proche. Par exemple,
+dans $\lambd[x][\lambd[y][\lambd[x][x y]]]$, le dernier
+$x$ reçoit l'indice~$0$ et $y$ reçoit l'indice~$1$.
+Le contexte du corps est la liste $x,y,x$.
+\end{explain}
+
+On retrouve un lambda-terme ordinaire à
+partir d'un terme de de Bruijn comme suit.
+
+\begin{defn}
+\begin{align*}
+  G_\Gamma(n) &= \Gamma[n] \\
+  G_\Gamma(PQ) &= G_\Gamma(P) G_\Gamma(Q) \\
+  G_\Gamma(\lambd[][N])
+    &= \lambd[x][G_{x,\Gamma}(N)]
+\end{align*}
+Ici encore, $\Gamma$ est une liste de
+variables indicée à partir de zéro, et
+$\Gamma[n]$ désigne la variable en
+position~$n$. Par exemple, si $\Gamma$
+est la liste $x,y,z$, alors $\Gamma[1]$
+est $y$.
+
+Dans la dernière équation, on choisit
+une variable $x$ absente de $\Gamma$.
+\end{defn}
+
+\begin{explain}
+Le décodage n'est défini que si chaque indice
+rencontré possède une entrée dans le contexte
+courant.
+Une abstraction prolonge ce contexte d'une entrée. Pour
+retrouver exactement les indices d'un terme en le décodant
+puis en le recodant, il suffit que le contexte initial
+contienne des noms distincts. Avec le contexte $x,x$, par
+exemple, l'indice~$1$ se décode en $x$, qui se recode en~$0$.
+\end{explain}
+
+Nous énonçons quelques résultats sans les
+démontrer.
+
+\begin{prop}
+Si $M \aconvone M'$ et si $\Gamma$ est une
+liste contenant $\FV{M}$, alors
+$F_\Gamma(M) \eqs F_\Gamma(M')$.
+\end{prop}
+
+\end{document}

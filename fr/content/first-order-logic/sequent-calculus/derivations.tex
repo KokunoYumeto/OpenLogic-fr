@@ -26,9 +26,9 @@ arbre fini de séquents qui satisfait aux conditions suivantes :
 \begin{enumerate}
 \item Les séquents situés tout en haut de l'arbre sont des séquents initiaux.
 \item Le séquent situé tout en bas de l'arbre est~$S$.
-\item Tout séquent de l'arbre autre que $S$ est une prémisse d'une
-  application correcte d'une règle d'inférence dont la conclusion
-  se trouve immédiatement sous ce séquent dans l'arbre.
+\item Tout séquent qui n'est pas une feuille est la conclusion d'une
+  application correcte d'une règle d'inférence dont les prémisses
+  sont exactement les séquents situés immédiatement au-dessus de lui.
 \end{enumerate}
 On dit alors que $S$ est le \emph{séquent final} de la
 !!{derivation} et que $S$ est \emph{!!{derivable} dans $\Log{LK}$}

@@ -1,0 +1,50 @@
+% Part: first-order-logic
+% Chapter: model-theory
+% Section: substructures
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{bas}{sub}
+\olsection{Sous-\printtoken{p}{structure}}
+
+Le !!{domain} d'!!a{structure}~$\Struct{M}$ peut être un sous-ensemble
+de celui d'une autre !!{structure}~$\Struct{M'}$. Mais il ne suffit
+évidemment pas que $\Domain{M} \subseteq \Domain{M'}$ pour considérer
+$\Struct{M}$ comme une « partie » de $\Struct{M'}$ : il faut aussi que
+$\Struct{M}$ et $\Struct{M'}$ s'accordent sur l'interprétation des
+symboles du langage, du moins sur leur partie commune~$\Domain{M}$.
+
+\begin{defn}
+\ollabel{defn:substructure}
+Soient $\Struct M$ et $\Struct M'$ des !!{structure}s pour un même
+langage~$\Lang L$. On dit que $\Struct M$ est une
+\emph{sous-!!{structure}} de $\Struct M'$, et que $\Struct M'$ est une
+\emph{extension} de $\Struct M$, ce que l'on note
+$\Struct M \substruct \Struct M'$, si et seulement si :
+\begin{enumerate}
+\item $\Domain{M} \subseteq \Domain{M'}$;
+\item pour chaque constante $c \in \Lang L$, $\Assign{c}{M} =
+    \Assign{c}{M'}$;
+\item pour chaque !!{function} $n$-aire $f \in \Lang L$,
+  $\Assign{f}{M}(a_1, \dots, a_n) = \Assign{f}{M'}(a_1, \dots, a_n)$
+  pour tous $a_1$, \dots, $a_n \in \Domain{M}$;
+\item pour chaque !!{predicate} $n$-aire $R \in \Lang L$,
+  $\langle a_1, \dots, a_n\rangle \in \Assign{R}{M}$ si et seulement
+  si $\langle a_1, \dots, a_n\rangle \in \Assign{R}{M'}$, pour tous
+  $a_1$, \dots, $a_n \in \Domain{M}$.
+\end{enumerate}
+\end{defn}
+
+\begin{rem}
+\ollabel{rem:substructure}
+Si le langage ne contient ni constante ni !!{function}, tout
+sous-ensemble \emph{non vide} $N \subseteq \Domain{M}$ détermine une
+sous-!!{structure}~$\Struct{N}$ de $\Struct M$, de !!{domain}
+$\Domain{N} = N$, en posant $\Assign{R}{N} = \Assign{R}{M} \cap N^n$.\footnote{Précision éditoriale : la source autorise tout sous-ensemble ; nous excluons le sous-ensemble vide, puisque les domaines des structures sont non vides.}
+\end{rem}
+
+% Faut-il démontrer quelque chose ici ? Ajouter des exemples ?
+
+\end{document}

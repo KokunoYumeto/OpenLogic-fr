@@ -1,0 +1,62 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{replacement}{strength}
+\olsection{La force du remplacement}
+
+Commençons par une observation simple sur la force du remplacement :
+tant que nous ne dépassons pas $\Z$, nous ne pouvons démontrer
+l'existence d'aucun ordinal de von Neumann supérieur ou égal à
+$\omega + \omega$.
+
+Voici, dans ses grandes lignes, pourquoi. En travaillant dans~$\ZF$,
+considérons l'ensemble $V_{\omega+\omega}$. Il sert de domaine à un
+\emph{modèle} de~$\Z$. Pour le voir, introduisons une notation pour la
+\emph{relativisation} d'une formule :
+\begin{defn}\ollabel{formularelativization}
+	Pour tout ensemble $M$ et toute formule $\phi$, soit $\phi^M$ la formule
+	obtenue en restreignant à $M$ tous les quantificateurs de $\phi$.
+	Autrement dit, on remplace «~$\lexists[x]$~» par
+	«~$(\lexists[x \in M])$~», et «~$\lforall[x]$~» par
+	«~$(\lforall[x \in M])$~».
+\end{defn}\noindent
+On peut montrer que, pour chaque axiome $\phi$ de~$\Z$, on a
+$\ZF \vdash \phi^{V_{\omega+\omega}}$. Mais $\omega+\omega$
+n'appartient pas à $V_{\omega+\omega}$, d'après
+le \olref[spine][rank]{ordsetrankalpha}. Ainsi, si $\ZF$ est cohérente, $\Z$ est compatible avec
+la non-existence de $\omega+\omega$.
+
+Voilà pourquoi nous avons dit, dans la
+\olref[ordinals][replacement]{sec}, que le
+\olref[ordinals][ordtype]{thmOrdinalRepresentation} ne peut être
+démontré sans le remplacement. En effet, il est facile, dans~$\Z$,
+de définir explicitement un bon ordre qui devrait, intuitivement,
+avoir pour type d'ordre $\omega+\omega$. Nous en avons d'ailleurs donné
+un exemple informel dans la \olref[ordinals][idea]{sec}, en présentant
+l'ordre suivant sur les entiers naturels :
+\begin{align*}
+	n \lessdot m \text{ si et seulement si }&
+	\text{soit }n < m\text{ et }m-n\text{ est pair,}\\
+	& \text{soit $n$ est pair et $m$ est impair.}
+\end{align*}
+Mais si $\omega+\omega$ n'existe pas, ce bon ordre n'est isomorphe
+à aucun ordinal. $\Z$ ne démontre donc \emph{pas}
+le \olref[ordinals][ordtype]{thmOrdinalRepresentation}.
+
+Inversement, le remplacement nous permet de démontrer l'existence
+de $\omega+\omega$, et donc aussi celle de $V_{\omega+\omega}$.
+Et ce n'est pas tout. Pour \emph{tout} bon ordre que nous pouvons
+définir, le \olref[ordinals][ordtype]{thmOrdinalRepresentation}
+nous assure qu'il existe un ordinal $\alpha$ isomorphe à ce bon
+ordre, et donc que $V_\alpha$ existe. De manière directe, le
+remplacement garantit ainsi que la hiérarchie des ensembles doit
+être \emph{très haute}.
+
+Dans les sections suivantes, puis de nouveau dans la
+\olref[card-arithmetic][fix]{sec}, nous verrons mieux jusqu'à
+quelle hauteur le remplacement force la hiérarchie à s'étendre.
+Pour l'instant, retenons simplement que le remplacement
+\emph{exige réellement} une justification !
+
+\end{document}

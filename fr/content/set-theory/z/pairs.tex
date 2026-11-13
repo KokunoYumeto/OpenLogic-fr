@@ -1,0 +1,79 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{z}{pairs}
+\olsection{La paire}
+
+Examinons maintenant l'axiome suivant :
+
+\begin{axiom}[Paire]
+Pour deux ensembles quelconques $a, b$, l'ensemble $\{a, b\}$ existe.
+\[
+	\forall a \forall b \exists P \forall x (x \in P \liff (x = a \lor x = b))
+\]
+\end{axiom}
+
+Voici comment justifier cet axiome à partir de la conception
+itérative. Supposons que $a$ soit disponible à l'étape $S$ et que
+$b$ soit disponible à l'étape $T$. Soit $M$ la plus tardive des étapes
+$S$ et $T$. Puisque $a$ et $b$ sont tous deux disponibles à l'étape
+$M$, la collection $\{a,b\}$ peut être constituée en ensemble à
+n'importe quelle étape postérieure à $M$.
+
+Mais un instant !{} Pourquoi supposer qu'il \emph{existe} une étape
+après $M$ ? S'il n'y en a aucune, notre justification échoue. Pour
+justifier l'axiome de la paire, nous devons donc ajouter un principe
+au récit donné dans la \olref[sth][z][story]{sec}, à savoir :
+\begin{enumerate}
+	\item[] \stagessucc. Il n'existe pas de dernière étape.
+\end{enumerate}
+Ce principe est-il justifié ? Rien, dans le récit de Shoenfield,
+n'énonce \emph{explicitement} qu'il n'existe pas de dernière étape.
+Même si, à strictement parler, il s'agit d'un ajout à notre récit,
+ce principe s'accorde bien avec l'idée fondamentale selon laquelle
+les ensembles se forment par étapes. Nous l'admettrons simplement
+dans la suite, et admettrons donc aussi l'axiome de la paire.
+
+Grâce à ce nouvel axiome, nous pouvons démontrer l'existence de bien
+d'autres ensembles. Par exemple :
+
+\begin{prop}\ollabel{prop:pairsconsequences}
+Quels que soient les ensembles $a$ et $b$, les ensembles suivants existent :
+	\begin{enumerate}
+		\item\ollabel{singleton} $\{a\}$
+		\item\ollabel{binunion} $a \cup b$
+		\item\ollabel{tuples} $\tuple{a, b}$
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\olref{singleton}. Par l'axiome de la paire, $\{a, a\}$ existe ;
+c'est $\{a\}$ par extensionnalité.
+
+\olref{binunion}. Par l'axiome de la paire, $\{a, b\}$ existe.
+Or $a \cup b = \bigcup \{a, b\}$ existe par l'axiome de l'union.
+
+\olref{tuples}. D'après \olref{singleton}, $\{a\}$ existe. Par
+l'axiome de la paire, $\{a, b\}$ existe. Enfin,
+$\{\{a\}, \{a, b\}\} = \tuple{a, b}$ existe encore par l'axiome de la
+paire.
+\end{proof}
+
+\begin{prob}
+Montrez que, pour trois ensembles quelconques $a, b, c$, l'ensemble
+$\{a, b, c\}$ existe.
+\end{prob}
+
+\begin{prob}
+Montrez que, pour des ensembles quelconques $a_1, \ldots, a_n$, l'ensemble
+$\{a_1, \ldots, a_n\}$ existe.
+\end{prob}
+
+%\begin{proof} Par deux applications de l'axiome de la paire,
+%   $\{\{a_1, a_2\}, \{a_1, a_3\}\}$ existe. Par l'axiome de l'union
+%   et l'extensionnalité,
+%   $\bigcup \{\{a_1, a_2\}, \{a_1, a_3\}\} = \{a_1, a_2, a_3\}$ existe.
+%   Répétez ce procédé autant de fois que nécessaire. \end{proof}
+
+\end{document}

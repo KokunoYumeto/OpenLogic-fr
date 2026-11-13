@@ -7,7 +7,7 @@
 \begin{document}
 
 \olfileid[fr]{sfr}{arith}{cuts}
-\olsection{De $\Rat$ à $\Real$}
+\olsection{De \texorpdfstring{$\Rat$}{ℚ} à \texorpdfstring{$\Real$}{ℝ}}
 
 La propriété de la borne supérieure exprime, pour l'essentiel, la manière
 dont un point $\alpha$ partage la droite réelle sans laisser de lacune :
@@ -51,7 +51,7 @@ admet un majorant, alors il admet un plus petit majorant. Plus précisément,
 il existe une coupure $\lambda$ qui majore $S$, c'est-à-dire que
 $(\forall \alpha \in S)\alpha \subseteq \lambda$, et $\lambda$ est la plus
 petite de ces coupures, c'est-à-dire que
-$(\forall \beta \in \Real)((\forall \alpha \in S)\alpha \subseteq \beta \lif \lambda \subseteq \beta)$.
+$(\forall \beta \in \Real)\bigl(\bigl[(\forall \alpha \in S)\,\alpha \subseteq \beta\bigr] \lif \lambda \subseteq \beta\bigr)$.
 Voici la démonstration :
 
 \begin{thm}\ollabel{realcompleteness}
@@ -65,7 +65,7 @@ $\lambda = \bigcup S$.
 Montrons d'abord que $\lambda$ est une coupure :
 \begin{enumerate}
 \item Puisque $S$ est non vide, il contient au moins une coupure, elle-même
-non vide ; ainsi $\emptyset \neq \lambda$.\footnote{Correction éditoriale : la source déduit à tort l'existence d'une coupure dans $S$ du fait que $S$ admet un majorant. C'est l'hypothèse $S\neq\emptyset$ qui intervient ici. La majoration est utilisée ensuite pour montrer que la réunion est propre.}
+non vide, d'où $\emptyset \neq \lambda$.
 Puisque $S$ est un ensemble de coupures, $\lambda \subseteq \Rat$.
 Comme $S$ admet une coupure majorante, un rationnel $p \in \Rat$
 extérieur à cette coupure n'appartient à aucune coupure $\alpha \in S$.
@@ -108,7 +108,7 @@ Définissons ensuite :
 Pour traiter les autres cas du produit, posons d'abord
 $0_\Real \times \alpha = 0_\Real = \alpha \times 0_\Real$ pour toute
 coupure $\alpha$, puis définissons l'opposé :
-% La source suggère en commentaire de poser d'abord l'annulation par la coupure nulle ; cette règle est rendue explicite ci-dessus.
+%
 \begin{align*}
 	-\alpha &= \Setabs{p - q}{p,q \in \Rat \land p < 0 \land q \notin \alpha}.
 \end{align*}
@@ -125,5 +125,5 @@ Il faut vérifier que chacune de ces définitions produit toujours une
 coupure. Il restera enfin à établir, par une démonstration élémentaire
 mais longue, que les coupures ainsi munies de ces opérations ont toutes
 les propriétés attendues. Nous reportons ces vérifications à la
-\olref[check]{sec}.\footnote{Corrections et précisions éditoriales : la notation $0^\mathbb{R}$ du produit positif est remplacée par $0_\Real$, la coupure nulle déjà définie. Les cas où un facteur est nul et l'autre strictement négatif manquaient dans les définitions actives ; la règle d'annulation, suggérée par un commentaire source, les complète. Dans la définition de l'opposé, les domaines rationnels de $p$ et $q$, implicites dans le contexte original, sont écrits explicitement.}
+\olref[check]{sec}.
 \end{document}

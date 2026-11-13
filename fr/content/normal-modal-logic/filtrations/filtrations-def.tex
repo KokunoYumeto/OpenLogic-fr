@@ -1,0 +1,190 @@
+% Part: normal-modal-logic
+% Chapter: filtrations
+% Section: filtrations-def
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{fil}{fil}
+
+\olsection{Filtrations}
+
+Plutôt que de définir « la » filtration de $\mModel{M}$ par
+$\Gamma$, nous préciserons à quelles conditions un modèle~$\mModel{M^*}$
+est une filtration de~$\mModel{M}$. Toutes les filtrations ont le même
+ensemble de mondes~$W^*$ et la même valuation~$V^*$. Leurs relations
+d'accessibilité~$R^*$ peuvent cependant différer. Pour définir une
+filtration, $R^*$ doit satisfaire plusieurs conditions. Ce sont
+précisément celles dont nous aurons besoin pour démontrer le résultat
+principal : $\mSat{M}{!A}[w]$ si et seulement si
+$\mSat{M^*}{!A}[{[w]}]$, pourvu que $!A \in \Gamma$.
+
+\begin{defn}\ollabel{defn:filtration}
+  Supposons $\Gamma$ clos par sous-formules et $\mModel{M} = \tuple{W,
+    R, V}$. Une \emph{filtration de $\mModel{M}$ par $\Gamma$} est
+  tout modèle $\mModel{M^*} = \tuple{W^*,R^*,V^*}$ tel que :
+  \begin{enumerate}
+  \item $W^* = \Setabs{[w]}{w \in W}$ ;
+  \item \ollabel{defn:filtration-R}%
+    pour tous $u,v \in W$ :
+    \begin{enumerate}
+    \item \ollabel{defn:filtration-R1}%
+      si $Ruv$, alors $R^*[u][v]$ ;
+    \tagitem{prvBox}{\ollabel{defn:filtration-R2}%
+      si $R^*[u][v]$, alors, pour toute $\Box !A \in \Gamma$, si
+      $\mSat{M}{\Box!A}[u]$, alors $\mSat{M}{!A}[v]$}{} ;
+    \tagitem{prvDiamond}{\ollabel{defn:filtration-R3}%
+      si $R^*[u][v]$, alors, pour toute $\Diamond !A \in \Gamma$, si
+      $\mSat{M}{!A}[v]$, alors $\mSat{M}{\Diamond!A}[u]$.}{}
+    \end{enumerate}
+  \item $V^*(p) = \Setabs{[u]}{u \in V(p)}$.
+  \end{enumerate}
+\end{defn}
+
+Examinons ce qu'est $V^*(p)$ : l'ensemble des classes
+d'équivalence~$[w]$ des mondes~$w$ où $p$ est vraie dans~$\mModel{M}$.
+Si $w \in V(p)$, alors $[w] \in V^*(p)$ par définition. La réciproque
+n'est toutefois pas toujours vraie : de $[w] \in V^*(p)$, on ne peut
+pas nécessairement conclure que $w \in V(p)$. Si $[w] \in V^*(p)$,
+on sait seulement que
+$[w] = [u]$ pour \emph{un certain}~$u \in V(p)$. Puisque $[w] = [u]$
+signifie que $w \equiv u$, de $[w] \in V^*(p)$ on peut seulement
+conclure que $w \equiv u$ pour un certain $u \in V(p)$.
+
+\begin{thm}\ollabel{thm:filtrations}
+  Si $\mModel{M^*}$ est une filtration de $\mModel{M}$ par $\Gamma$,
+  alors, pour tout $!A \in \Gamma$ et tout $w \in W$,
+  $\mSat{M}{!A}[w]$ si et seulement si $\mSat{M^*}{!A}[{[w]}]$.
+\end{thm}
+
+\begin{proof}
+  Procédons par récurrence sur $!A$, en utilisant la clôture de
+  $\Gamma$ par sous-formules. Puisque $!A \in \Gamma$ et que
+  $\Gamma$ est clos par sous-!!{formula}s, toutes les sous-!!{formula}s
+  de~$!A$ appartiennent aussi à $\Gamma$. L'hypothèse de récurrence
+  s'applique donc, à chaque étape, aux sous-!!{formula}s de~$!A$.
+  \begin{enumerate}
+    \tagitem{prvFalse}{\indcase{!A}{\lfalse}{Ni
+        $\mSat{M}{\indfrm}[w]$ ni $\mSat{M^*}{\indfrm}[{[w]}]$.}}{}
+    \tagitem{prvTrue}{\indcase{!A}{\ltrue}{À la fois
+        $\mSat{M}{\indfrm}[w]$ et $\mSat{M^*}{\indfrm}[{[w]}]$.}}{}
+    \item \indcase{!A}{p}{L'implication directe est immédiate :
+      $\mSat{M}{\indfrm}[w]$ exige $w \in V(p)$, ce qui entraîne
+      $[w] \in V^*(p)$, c'est-à-dire
+      $\mSat{M^*}{\indfrm}[{[w]}]$. Réciproquement, supposons
+      $\mSat{M^*}{\indfrm}[{[w]}]$, soit $[w] \in V^*(p)$. Il existe
+      alors un $v \in V(p)$ tel que $w \equiv v$. On a donc
+      $\mSat{M}{p}[v]$. Puisque $w \equiv v$, $w$ et $v$ rendent
+      vraies les mêmes !!{formula}s de $\Gamma$. Or, par hypothèse,
+      $p \in \Gamma$ ; de $\mSat{M}{p}[v]$, il suit donc
+      $\mSat{M}{\indfrm}[w]$.}
+
+    \tagitem{prvNot}{\iftag{probNot}{Exercice.}{\indcase{!A}{\lnot
+          !B}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+          $\mSat/{M}{!B}[w]$. Par hypothèse de récurrence,
+          $\mSat/{M}{!B}[w]$ si et seulement si
+          $\mSat/{M^*}{!B}[{[w]}]$. Enfin,
+          $\mSat/{M^*}{!B}[{[w]}]$ si et seulement si
+          $\mSat{M^*}{\indfrm}[{[w]}]$.}}}{}
+
+    \tagitem{prvAnd}{\iftag{probAnd}{Exercice.}{\indcase{!A}{(!B \land
+          !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+          $\mSat{M}{!B}[w]$ et $\mSat{M}{!C}[w]$. Par hypothèse de
+          récurrence, $\mSat{M}{!B}[w]$ si et seulement si
+          $\mSat{M^*}{!B}[{[w]}]$, et $\mSat{M}{!C}[w]$ si et
+          seulement si $\mSat{M^*}{!C}[{[w]}]$. Or,
+          $\mSat{M^*}{\indfrm}[{[w]}]$ si et seulement si
+          $\mSat{M^*}{!B}[{[w]}]$ et
+          $\mSat{M^*}{!C}[{[w]}]$.}}}{}
+
+    \tagitem{prvOr}{\iftag{probOr}{Exercice.}{\indcase{!A}{(!B \lor
+          !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+          $\mSat{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$. Par hypothèse de
+          récurrence, $\mSat{M}{!B}[w]$ si et seulement si
+          $\mSat{M^*}{!B}[{[w]}]$, et $\mSat{M}{!C}[w]$ si et
+          seulement si $\mSat{M^*}{!C}[{[w]}]$. Or,
+          $\mSat{M^*}{\indfrm}[{[w]}]$ si et seulement si
+          $\mSat{M^*}{!B}[{[w]}]$ ou
+          $\mSat{M^*}{!C}[{[w]}]$.}}}{}
+
+    \tagitem{prvIf}{\iftag{probIf}{Exercice.}{\indcase{!A}{(!B \lif
+          !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+          $\mSat/{M}{!B}[w]$ ou $\mSat{M}{!C}[w]$. Par hypothèse de
+          récurrence, $\mSat{M}{!B}[w]$ si et seulement si
+          $\mSat{M^*}{!B}[{[w]}]$, et $\mSat{M}{!C}[w]$ si et
+          seulement si $\mSat{M^*}{!C}[{[w]}]$. Or,
+          $\mSat{M^*}{\indfrm}[{[w]}]$ si et seulement si
+          $\mSat/{M^*}{!B}[{[w]}]$ ou
+          $\mSat{M^*}{!C}[{[w]}]$.}}}{}
+
+    \tagitem{prvIff}{\iftag{probIff}{Exercice.}{\indcase{!A}{(!B \liff
+          !C)}{$\mSat{M}{\indfrm}[w]$ si et seulement si
+          $\mSat{M}{!B}[w]$ et $\mSat{M}{!C}[w]$, ou bien
+          $\mSat/{M}{!B}[w]$ et $\mSat/{M}{!C}[w]$. Par hypothèse
+          de récurrence, $\mSat{M}{!B}[w]$ si et seulement si
+          $\mSat{M^*}{!B}[{[w]}]$, et $\mSat{M}{!C}[w]$ si et
+          seulement si $\mSat{M^*}{!C}[{[w]}]$. Or,
+          $\mSat{M^*}{\indfrm}[{[w]}]$ si et seulement si
+          $\mSat{M^*}{!B}[{[w]}]$ et
+          $\mSat{M^*}{!C}[{[w]}]$, ou bien
+          $\mSat/{M^*}{!B}[{[w]}]$ et
+          $\mSat/{M^*}{!C}[{[w]}]$.}}}{}
+
+    \tagitem{prvBox}{\iftag{probBox}{Exercice.}{\indcase{!A}{\Box
+          !B}{Supposons $\mSat{M}{\indfrm}[w]$ ; pour montrer
+          $\mSat{M^*}{\indfrm}[{[w]}]$, soit $v$ tel que
+          $R^*[w][v]$. Par la
+          \olref{defn:filtration}\olref{defn:filtration-R2},
+          $\mSat{M}{!B}[v]$ ; l'hypothèse de récurrence donne alors
+          $\mSat{M^*}{!B}[{[v]}]$. Comme $v$ est arbitraire,
+          $\mSat{M^*}{\indfrm}[{[w]}]$.
+
+          Réciproquement, supposons
+          $\mSat{M^*}{\indfrm}[{[w]}]$ et prenons un $v$ arbitraire
+          tel que $Rwv$. Par la
+          \olref{defn:filtration}\olref{defn:filtration-R1},
+          $R^*[w][v]$ ; d'où $\mSat{M^*}{!B}[{[v]}]$. Par hypothèse
+          de récurrence, $\mSat{M}{!B}[v]$. Puisque $v$ est
+          arbitraire, $\mSat{M}{\indfrm}[w]$.}}}{}
+
+    \tagitem{prvDiamond}{\iftag{probDiamond}{Exercice.}{\indcase{!A}{\Diamond
+          !B}{Supposons $\mSat{M}{\indfrm}[w]$. Il existe alors
+          $v \in W$ tel que $Rwv$ et $\mSat{M}{!B}[v]$.
+          L'hypothèse de récurrence donne
+          $\mSat{M^*}{!B}[{[v]}]$, et la
+          \olref{defn:filtration}\olref{defn:filtration-R1} donne
+          $R^*[w][v]$. Ainsi, $\mSat{M^*}{\indfrm}[{[w]}]$.
+
+          Supposons maintenant $\mSat{M^*}{\indfrm}[{[w]}]$. Il
+          existe alors $[v] \in W^*$ tel que $R^*[w][v]$ et
+          $\mSat{M^*}{!B}[{[v]}]$. Par hypothèse de récurrence,
+          $\mSat{M}{!B}[v]$. Par la
+          \olref{defn:filtration}\olref{defn:filtration-R3},
+          $\mSat{M}{\indfrm}[w]$.}}}{}
+  \end{enumerate}
+\end{proof}
+
+\begin{prob}
+  Complétez la démonstration du \olref[nml][fil][fil]{thm:filtrations}.
+\end{prob}
+
+La préservation de la vérité en chaque monde entraîne aussi la
+préservation de la vérité dans un modèle et de la validité dans une
+classe de modèles.
+
+\begin{cor}
+  Supposons $\Gamma$ clos par sous-formules. Alors :
+  \begin{enumerate}
+  \item Si $\mModel{M^*}$ est une filtration de $\mModel{M}$ par
+    $\Gamma$, alors, pour tout $!A \in \Gamma$ :
+    $\mSat{M}{!A}$ si et seulement si $\mSat{M^*}{!A}$.
+  \item Si $\mClass{C}$ est une classe de modèles et si
+    $\Gamma(\mClass{C})$ est la classe des $\Gamma$-filtrations des
+    modèles de $\mClass{C}$, alors toute !!{formula}~$!A \in \Gamma$
+    est valide dans $\mClass{C}$ si et seulement si elle est valide
+    dans $\Gamma(\mClass{C})$.
+  \end{enumerate}
+\end{cor}
+
+\end{document}

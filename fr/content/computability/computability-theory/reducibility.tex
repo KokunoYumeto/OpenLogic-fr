@@ -1,0 +1,88 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: reducibility
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{red}
+\olsection{Réductibilité}
+
+\begin{explain}
+Nous savons maintenant qu'au moins un ensemble,
+$K_0$, est effectivement énumérable sans être
+calculable. Il en existe d'autres. La méthode des
+réductions permet de montrer que d'autres ensembles
+ont ces propriétés, sans reprendre chaque fois
+les définitions de départ.
+
+De façon générale, une « réduction » de l'ensemble
+$A$ à l'ensemble~$B$ transforme une réponse à la
+question de savoir si des !!{element}s appartiennent
+à~$B$ en une réponse à la question correspondante
+pour~$A$. Nous étudierons la \emph{réduction many-one},
+mais il existe d'autres notions de réduction, aux
+propriétés diverses. Elles jouent aussi un rôle
+central en complexité des calculs, où l'efficacité
+entre en jeu. Par exemple, un ensemble est dit
+« NP-complet » s'il appartient à NP et si tout
+problème de NP s'y réduit par une notion semblable
+à celle définie ci-dessous, mais qui exige en plus
+que la réduction soit calculable en temps polynomial.
+
+Nous avons déjà employé implicitement une réduction.
+Définissons
+\[
+K = \Setabs{x}{\cfind{x}(x) \fdefined},
+\]
+soit $K=\Setabs{x}{x\in W_x}$. La preuve de
+l'indécidabilité du problème de l'arrêt
+(\olref[hlt]{thm:halting-problem}) montre directement
+que $K$ n'est pas calculable. Rappelons que
+\[
+K_0 = \Setabs{\tuple{e, x}}{\cfind{e}(x) \fdefined },
+\]
+soit $K_0=\Setabs{\tuple{e,x}}{x\in W_e}$.\footnote{Correction éditoriale : la reformulation source inverse la paire en $\tuple{x,e}$. Nous conservons l'ordre $\tuple{e,x}$ de la définition affichée : indice du programme, puis entrée.}
+De toute preuve de la non-calculabilité de~$K$,
+on déduit facilement celle de~$K_0$ : si $K_0$
+était calculable, on pourrait décider si
+!!a{element}~$x$ appartient à~$K$ en demandant
+si la paire $\tuple{x,x}$ appartient à~$K_0$.
+La fonction~$f$ définie par
+$f(x)=\tuple{x,x}$ est une \emph{réduction}
+de $K$ à~$K_0$.
+\end{explain}
+
+\begin{defn}
+Soient $A$ et~$B$ des ensembles d'entiers naturels.
+Une fonction calculable $f\colon\Nat\to\Nat$ est une
+\emph{réduction many-one} de $A$ à~$B$ si, pour tout
+entier naturel~$x$,
+\[
+x \in A \quad \text{si et seulement si} \quad f(x) \in B.
+\]
+S'il existe une telle fonction~$f$, on dit que $A$
+est \emph{many-one réductible} à~$B$, et l'on écrit
+$A\leq_m B$. Si chaque ensemble est many-one
+réductible à l'autre, on dit que $A$ et~$B$ sont
+\emph{many-one équivalents}, et l'on écrit
+$A\equiv_m B$.
+\end{defn}
+
+Si la fonction~$f$ de cette définition est en outre
+injective, on parle de \emph{réduction injective}
+(ou « one-one ») de $A$ à~$B$. La plupart des
+réductions données ci-dessous possèdent cette
+propriété plus forte, que nous n'utiliserons pas.
+
+\begin{digress}
+Il est vrai, mais nullement évident, que la
+réductibilité injective est strictement plus
+forte que la réductibilité many-one. Autrement
+dit, il existe des ensembles infinis $A$ et~$B$
+tels que $A$ soit many-one réductible à~$B$,
+mais non réductible à~$B$ par une fonction injective.
+\end{digress}
+
+\end{document}

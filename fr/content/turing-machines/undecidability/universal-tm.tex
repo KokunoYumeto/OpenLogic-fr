@@ -1,0 +1,151 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: universal-tm
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{uni}
+\olsection{Machines de Turing universelles}
+
+Dans la \olref[enu]{sec}, nous avons vu comment décrire toute machine
+de Turing par une suite finie d'entiers. Cette suite code les états,
+l'alphabet, l'état initial et les instructions de la machine. Nous
+avons également observé que l'ensemble de ces descriptions est
+!!{enumerable}. Puisqu'il est !!{denumerable}, il existe
+une application !!{surjective} de~$\Nat$ sur cet ensemble de
+descriptions. Une telle application !!{surjective} peut, par
+exemple, se construire par la méthode en zigzag de Cantor. Elle
+énumère ainsi toutes les descriptions
+de machines de Turing. Fixons une énumération effective, indexée
+par $0,1,2,\dots$\footnote{Précision éditoriale : la source commence verbalement à la première machine, mais emploie ensuite un indice $e\in\Nat$. Nous incluons explicitement l'indice zéro.} : nous pouvons alors parler de la machine
+d'indice~$0$, de celle d'indice~$1$, de celle d'indice~$e$, etc.
+Ces nombres sont appelés des \emph{indices}. Pour les entrées arithmétiques considérées ici, nous prenons des représentants dont l'alphabet contient $\TMendtape$, $\TMblank$ et $\TMstroke$, codés respectivement par $1$, $2$ et $3$.\footnote{Précision éditoriale : la définition générale n'impose que le marqueur et le blanc, mais une entrée unaire positive utilise aussi le trait. Une machine dépourvue de ce symbole peut être étendue par des boucles immobiles sur sa lecture, sans changer son comportement sur ses entrées initialement admissibles.}
+
+\begin{defn}
+Si~$M$ est la machine d'indice~$e$ dans l'énumération fixée,
+on dit que~$e$ est un \emph{indice} de~$M$. Nous notons~$M_e$
+la machine d'indice~$e$.
+\end{defn}
+
+Une même machine peut avoir plusieurs indices : deux descriptions
+de~$M$ peuvent, par exemple, énumérer ses instructions dans des
+ordres différents et recevoir ainsi des indices différents.
+
+Il importe de choisir l'énumération des descriptions de manière
+que l'on puisse calculer effectivement la description de~$M_e$
+à partir de son indice~$e$, et calculer effectivement un indice
+d'une machine~$M$ à partir de sa description. C'est possible : on énumère systématiquement les suites finies d'entiers positifs, on vérifie si chacune décrit une machine, puis on garde les descriptions valides. Ces vérifications sont finies : les états et symboles doivent appartenir aux listes annoncées, les directions être valides et les instructions donner une seule valeur pour chaque paire état--symbole.
+D'après la thèse de Church--Turing, il existe donc une machine
+de Turing qui, recevant~$e$, retrouve la description de~$M_e$
+et l'écrit en sortie sur son ruban. Cette sortie consiste en une
+suite de blocs de symboles~$\TMstroke$, chacun représentant un
+entier positif de la description de~$M_e$.
+
+Il devient alors naturel de demander quelles fonctions des indices
+de machines de Turing sont elles-mêmes calculables par de telles
+machines, et quelles propriétés de ces indices sont décidables.
+Par exemple, la fonction qui associe à~$e$ le nombre d'états de~$M_e$
+est calculable par machine de Turing. Sur une entrée formée d'un
+seul bloc de $e$ symboles~$\TMstroke$, une telle machine commence
+par décoder l'indice~$e$ en une description de~$M_e$. Le ruban
+porte alors une suite de blocs de symboles~$\TMstroke$ représentant
+les entiers de cette description. Le premier !!{element} de la
+suite est le nombre d'états : il reste donc à effacer tous les
+blocs sauf le premier, puis à s'arrêter.
+
+Voici un résultat remarquable.
+
+\begin{thm}\ollabel{thm:universal-tm}
+Il existe une \emph{machine de Turing universelle}~$U$ qui,
+sur l'entrée $\tuple{e,n}$ :
+\begin{enumerate}
+\item s'arrête si et seulement si~$M_e$ s'arrête sur l'entrée~$n$;
+\item si~$M_e$ s'arrête avec la sortie~$m$, s'arrête elle aussi
+  avec la sortie~$m$.
+\end{enumerate}
+La machine~$U$ calcule donc la fonction
+$f\colon \Nat \times \Nat \pto \Nat$ définie par $f(e,n)=m$
+si~$M_e$, lancée sur l'entrée~$n$, s'arrête avec la sortie~$m$,
+et non définie dans les autres cas.
+\end{thm}
+
+\begin{proof}
+Écrire la table de transition complète de~$U$ serait une entreprise
+extrêmement longue. Nous pouvons néanmoins décrire les grandes
+étapes d'une procédure effective, puis invoquer la thèse de
+Church--Turing. Au départ, le ruban de~$U$ porte un bloc de
+$e$ symboles~$\TMstroke$ suivi d'un~$\TMblank$, puis d'un bloc de
+$n$ symboles~$\TMstroke$. La machine décode d'abord l'indice~$e$
+et écrit la description de~$M_e$ à droite de l'entrée~$n$.
+Elle obtient une liste d'entiers, c'est-à-dire des blocs de
+symboles~$\TMstroke$ séparés par des~$\TMblank$, qui code
+les instructions de~$M_e$. À droite de cette description,
+$U$ inscrit ensuite le numéro de l'état initial de~$M_e$
+et le nombre~$1$, position initiale de sa tête. Ces entiers
+sont, eux aussi, représentés en unaire par des blocs de
+symboles~$\TMstroke$. Puis~$U$ copie l'entrée de longueur~$n$
+plus à droite, en remplaçant chaque~$\TMstroke$ par un bloc
+de trois symboles~$\TMstroke$ : le code de ce symbole est~$3$,
+alors que ceux de~$\TMendtape$ et de~$\TMblank$ sont
+respectivement~$1$ et~$2$. À gauche de cette suite de blocs,
+séparés sur le ruban de~$U$ par des~$\TMblank$, elle inscrit
+un seul~$\TMstroke$, code du marqueur~$\TMendtape$. Elle ajoute à la fin un bloc de deux traits, code d'une case blanche ; la case simulée de rang $1$ existe ainsi même si $n=0$.
+
+Le ruban de~$U$ contient alors l'indice~$e$, l'entrée~$n$,
+la description de~$M_e$, le numéro de son état initial
+(« état courant »), le nombre~$1$ (« position courante de la
+tête ») et le contenu initial de son « ruban ». Ce dernier
+est une suite de blocs de symboles~$\TMstroke$, séparés par
+des~$\TMblank$, dont les longueurs codent les symboles de~$M_e$. Les blocs de ce « ruban » simulé sont numérotés à partir de zéro : le premier code la case~$0$, et le bloc de rang~$k$ code la case~$k$.
+
+Pour simuler~$M_e$ sur l'entrée~$n$, $U$ répète les opérations
+suivantes :
+\begin{enumerate}
+\item relever le nombre~$k$ de la « position courante de la tête »,
+  égal à~$1$ au départ;
+\item atteindre le $k$-ième bloc du « ruban » et lire le
+  « symbole » qu'il code ; si cette case dépasse la partie représentée, prolonger celle-ci par des blocs de deux traits, codes de cases blanches;
+\item\ollabel{find-inst}%
+  chercher l'instruction correspondant à l'« état » et au
+  « symbole » courants;
+\item revenir au $k$-ième bloc du « ruban » et remplacer le
+  « symbole » par le code de celui que~$M_e$ écrirait;
+\item remplacer le numéro de l'« état courant » par celui du
+  nouvel état;
+\item modifier le compteur de la « position courante » selon
+  le déplacement prescrit : retirer un~$\TMstroke$ pour aller
+  à gauche lorsque $k>0$, en ajouter un pour aller à droite,
+  et ne rien changer si la tête reste en place. À la case~$0$,
+  un déplacement vers la gauche laisse le compteur à~$0$;
+\item recommencer.\footnote{Nous passons ici sur quelques
+  difficultés. Par exemple, lorsque~$U$ augmente le compteur de
+  la « position courante de la tête », elle peut manquer de place
+  et devoir décaler tout le « ruban » vers la droite.}
+\end{enumerate}
+Si~$M_e$ ne s'arrête jamais sur l'entrée~$n$, $U$ ne s'arrête
+pas non plus et sa sortie n'est pas définie.\footnote{Précisions éditoriales : le schéma source ne mentionne ni le maintien sur place ni le blocage du déplacement gauche en case $0$ ; nous suivons la définition formelle. Nous explicitons aussi la case blanche initiale et le prolongement blanc de la représentation finie du ruban.}
+
+Supposons maintenant qu'à l'étape~\olref{find-inst}, la description
+de~$M_e$ ne contienne aucune instruction pour le couple
+« état »--« symbole » courant. La machine~$M_e$ s'arrêterait
+alors. $U$ efface la partie de son ruban située à gauche du
+« ruban » simulé. Pour en produire la sortie, elle écarte le
+code de la case~$0$, comme le fait la définition de la sortie
+de~$M_e$, et ignore les cases blanches finales.\footnote{Correction éditoriale : la source ne retire pas explicitement le code de la case $0$ ni les blancs finaux avant de tester les codes des traits. Sans ces retraits, elle traiterait le code du marqueur ou celui d'une case blanche finale comme une sortie non numérique.} Elle écrit à
+gauche sur son propre ruban un~$\TMstroke$ pour chaque bloc de
+trois symboles~$\TMstroke$ rencontré dans les autres cases
+pertinentes, en effaçant progressivement le « ruban » simulé.
+Si ces cases ne contiennent qu'un bloc de $m$ symboles
+$\TMstroke$ après décodage, le ruban de~$U$ porte finalement
+un seul bloc de longueur~$m$.
+
+Si, parmi ces cases pertinentes, $U$ rencontre un code autre
+qu'un bloc de trois symboles~$\TMstroke$, elle inscrit $\TMendtape$ dans la case~$1$ de son propre ruban, puis s'arrête
+avec une sortie qui n'est pas un seul bloc de
+symboles~$\TMstroke$. Cette sortie ne représente donc pas un
+nombre naturel : dans ce cas, $f(e,n)$ n'est pas définie.
+\end{proof}
+
+\end{document}

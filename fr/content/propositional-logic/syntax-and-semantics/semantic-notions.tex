@@ -14,10 +14,10 @@ Définissons les notions sémantiques suivantes :
 
 \begin{defn}
 \begin{enumerate}
-\item Une !!{formula}~$!A$ est \emph{satisfaisable} s'il existe
-  une~$\pAssign{v}$ telle que $\pSat{v}{!A}$ ; elle est
-  \emph{insatisfaisable} s'il n'existe aucune $\pAssign{v}$ telle
-  que $\pSat{v}{!A}$.
+\item Une !!{formula}~$!A$ est \emph{satisfaisable} s'il existe une
+  !!{valuation}~$\pAssign{v}$ telle que $\pSat{v}{!A}$.
+  Elle est \emph{insatisfaisable} si aucune !!{valuation}~$\pAssign{v}$
+  ne satisfait $!A$.
 \item Une !!{formula}~$!A$ est une \emph{tautologie} si
   $\pSat{v}{!A}$ pour toute !!{valuation}~$\pAssign{v}$.
 \item Une !!{formula}~$!A$ est \emph{contingente} si elle est
@@ -34,14 +34,14 @@ Définissons les notions sémantiques suivantes :
 \end{defn}
 
 \begin{prob}
-Pour chacune des quatre !!{formula}s suivantes, déterminer si elle est
+\begin{samepage}Pour chacune des quatre !!{formula}s suivantes, déterminer si elle est
 (a)~satisfaisable, (b)~une tautologie et (c)~contingente.
 \begin{enumerate}
   \item \((\Obj p_0 \lif (\lnot \Obj p_1 \lif \lnot \Obj p_0))\).
   \item \(((\Obj p_0 \land \lnot \Obj p_1) \lif (\lnot \Obj p_0 \land \Obj p_2)) \liff ((\Obj p_2 \lif \Obj p_0) \lif (\Obj p_0 \lif \Obj p_1))\).
   \item \((\Obj p_0 \liff \Obj p_1) \lif (\Obj p_2 \liff \lnot \Obj p_1)\).
   \item \(((\Obj p_0 \liff (\lnot \Obj p_1 \land \Obj p_2)) \lor (\Obj p_2 \lif (\Obj p_0 \liff \Obj p_1)))\).
-\end{enumerate}
+\end{enumerate}\end{samepage}
 \end{prob}
 
 \begin{prop}

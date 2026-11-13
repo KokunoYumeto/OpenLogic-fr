@@ -36,14 +36,14 @@ $\Gamma \Sequent \Delta$ est vrai si et seulement si
 (!A_1 \land \cdots \land !A_m) \lif (!B_1 \lor \cdots \lor
 !B_n)
 \]
-est vrai. Deux cas particuliers se présentent : celui où $\Gamma$
-est vide et celui où $\Delta$~est vide. Lorsque $\Gamma$ est vide,
-c'est-à-dire lorsque $m = 0$, $\quad \Sequent \Delta$ est vrai si et
-seulement si $!B_1 \lor \dots \lor !B_n$ est vrai. Lorsque $\Delta$
-est vide, c'est-à-dire lorsque $n = 0$, $\Gamma \Sequent \quad$ est
-vrai si et seulement si $\lnot(!A_1 \land \dots \land !A_m)$ est vrai.
-On dit qu'un séquent est valide si et seulement si l'!!{sentence}
-correspondant est valide.
+est vrai. Si seul $\Gamma$ est vide ($m = 0$), $\quad \Sequent \Delta$
+est vrai si et seulement si $!B_1 \lor \dots \lor !B_n$ est vrai.
+Si seul $\Delta$ est vide ($n = 0$), $\Gamma \Sequent \quad$ est vrai
+si et seulement si $\lnot(!A_1 \land \dots \land !A_m)$ est vrai.
+Si les deux suites sont vides, le séquent est toujours faux.
+Un séquent est valide s'il est vrai dans toute
+\iftag{FOL}{!!{structure}}{!!{valuation}} du langage. Dans les cas où un
+!!{sentence} lui correspond ci-dessus, sa validité équivaut à la sienne.
 \end{explain}
 
 Si $\Gamma$ est une suite d'!!{sentence}s, on note $\Gamma, !A$
@@ -71,10 +71,10 @@ un séquent placé sous un ou deux autres doit s'en déduire par une
 application correcte d'une règle d'inférence. Les règles de
 $\Log{LK}$ se répartissent en deux grandes catégories : les règles
 \emph{logiques} et les règles \emph{structurelles}. Les règles
-logiques portent le nom de l'!!{main operator} de l'!!{sentence} qui
-contient $!A$ et/ou $!B$ dans le séquent inférieur. Chacune existe
-en deux versions : l'une permet d'obtenir un séquent où
-l'!!{sentence} contenant le !!{operator} figure à gauche, l'autre
-un séquent où cet !!{sentence} figure à droite.
+logiques portent le nom de l'!!{main operator} de l'!!{sentence}
+principal du séquent de conclusion. Dans les schémas, cet !!{sentence}
+est construit à partir de $!A$ ou de $!A$ et $!B$. Il peut être introduit
+à gauche ou à droite du séquent, selon la version gauche ou droite
+de la règle.
 
 \end{document}

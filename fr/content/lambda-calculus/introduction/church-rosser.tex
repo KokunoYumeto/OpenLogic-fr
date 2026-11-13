@@ -1,0 +1,48 @@
+% Part: lambda-calculus
+% Chapter: introduction
+% Section: church-rosser
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{int}{cr}
+\olsection{La propriété de Church--Rosser}
+
+\begin{thm}
+\ollabel{thm:church-rosser}
+Soient $M$, $N_1$ et $N_2$ des termes tels
+que $M\red N_1$ et $M\red N_2$. Il existe
+alors un terme~$P$ tel que $N_1\red P$
+et $N_2\red P$.
+\end{thm}
+
+\begin{cor}
+Si $M$ peut se réduire à une forme normale,
+cette forme normale est unique à $\alpha$-équivalence près.
+\end{cor}
+
+\begin{proof}
+Si $M\red N_1$ et $M\red N_2$, le théorème
+précédent donne un terme~$P$ auquel $N_1$
+et $N_2$ se réduisent tous deux. Si $N_1$
+et $N_2$ sont des formes normales, cela
+n'est possible que si $N_1\ident P\ident N_2$.
+\end{proof}
+
+Enfin, deux termes $M$ et~$N$ sont dits
+\emph{$\beta$-équivalents}, ou simplement
+\emph{équivalents}, s'ils se réduisent à
+un même terme : il existe alors un~$P$
+tel que $M\red P$ et $N\red P$. Nous
+écrivons $M\equal[\beta] N$. À l'aide du
+\olref{thm:church-rosser}, on peut vérifier
+que $\equal[\beta]$ est une relation
+d'équivalence et que, pour tous $M$ et~$N$,
+si $M\red N$ ou $N\red M$, alors
+$M\equal[\beta] N$. On peut même montrer
+que $\equal[\beta]$ est la \emph{plus petite}
+relation d'équivalence possédant cette
+propriété.
+
+\end{document}

@@ -1,0 +1,101 @@
+% Partie : logique intuitionniste
+% Chapitre : propositions comme types
+% Section : des termes aux preuves
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{pty}{tp}
+
+\olsection{Reconstruire des \usetoken{p}{derivation} à partir des termes de preuve}
+
+Considérons le sens inverse : reconstruire à partir d'un terme
+de preuve~$N$ une preuve dans \Log{N2i}.
+On fixe un contexte contenant une affectation $x:!A$
+pour chaque variable libre~$x$ de~$N$. On vérifie ensuite
+que $N$ est bien typé dans ce contexte.
+Le typage donne l'arbre de la dérivation annotée.
+Commençons cependant par un exemple sans variable libre :
+\[
+\lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}]
+\]
+Ce terme est de la forme $\lambd[\typeof{x}{!A \land !B}][N_1]$.
+La seule règle de \Log{tN2i} qui produit un terme de cette
+forme est~\Intro{\lif}. La preuve encodée par~$N$
+se termine donc par cette règle :
+\[
+  \Axiom$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !C$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif !C$
+  \DisplayProof
+  \]
+Nous ne connaissons pas encore $!C$, mais l'antécédent
+de l'implication finale est $!A \land !B$, et le contexte
+de la prémisse doit contenir $x:!A \land !B$.
+
+Le terme associé à cette prémisse est déjà déterminé :
+$\pair{\proj{2}{x}}{\proj{1}{x}}$.
+La preuve qu'il encode se termine nécessairement par
+\Intro{\land}. La formule $!C$ est donc une conjonction,
+$!C \ident (!C_1 \land !C_2)$.
+La reconstruction se poursuit :
+\[
+  \Axiom$x : !A\land !B \fCenter \proj{2}{x} : !C_1$
+  \Axiom$x : !A\land !B \fCenter \proj{1}{x} : !C_2$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !C_1 \land !C_2$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif (!C_1 \land !C_2)$
+  \DisplayProof
+  \]
+Le terme de preuve $\proj{2}{x}$ indique que le séquent
+supérieur gauche est obtenu par \Elim{\land}[2] :
+sa prémisse a donc la forme $!D \land !C_1$.
+À droite, l'inférence qui produit $!C_2$ est
+\Elim{\land}[1], et sa prémisse a la forme
+$!C_2 \land !E$ :
+\[
+  \Axiom$x : !A\land !B \fCenter x: !D\land !C_1$
+  \RightLabel{\Elim\land[2]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{2}{x} : !C_1$
+  \Axiom$x : !A\land !B \fCenter x: !C_2\land !E$
+  \RightLabel{\Elim\land[1]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{1}{x} : !C_2$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !C_1 \land !C_2$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif (!C_1 \land !C_2)$
+  \DisplayProof
+  \]
+Les termes des séquents supérieurs sont maintenant des
+variables : ces séquents sont des axiomes.
+On en déduit $!C_1$, $!C_2$, $!D$ et $!E$.
+À gauche, $!D \ident !A$ et $!C_1 \ident !B$,
+sans quoi le séquent ne serait pas un axiome.
+À droite, $!C_2 \ident !A$ et $!E \ident !B$
+pour la même raison. La preuve est entièrement reconstruite :
+\[
+  \Axiom$x : !A\land !B \fCenter x: !A\land !B$
+  \RightLabel{\Elim\land[2]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{2}{x} : !B$
+  \Axiom$x : !A\land !B \fCenter x: !A\land !B$
+  \RightLabel{\Elim\land[1]}
+  \UnaryInf$x : !A\land !B \fCenter \proj{1}{x} : !A$
+  \RightLabel{\Intro\land}
+  \BinaryInf$x : !A\land !B \fCenter \pair{\proj{2}{x}}{\proj{1}{x}} : 
+    !B \land !A$
+  \RightLabel{\Intro\lif}
+  \UnaryInf$\fCenter \lambd[\typeof{x}{!A \land
+  !B}][\pair{\proj{2}{x}}{\proj{1}{x}}] : (!A \land !B) \lif (!B \land !A)$
+  \DisplayProof
+  \]
+En effaçant les termes de preuve des conséquents, on retrouve la dérivation de \Log{N2i}.
+\end{document}

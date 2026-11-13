@@ -1,0 +1,207 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: examples
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{exa}
+\olsection{Exemples de fonctions récursives primitives}
+
+Nous connaissons déjà quelques fonctions récursives primitives :
+l'addition~$\Add$ et la multiplication~$\Mult$. La fonction
+identité $\fn{id}(x)=x$ est récursive primitive, puisqu'elle
+n'est autre que~$\Proj{1}{0}$. Les fonctions constantes
+$\fn{const}_n(x)=n$ le sont également : elles s'obtiennent
+par compositions successives de $\Zero$ et de~$\Succ$.
+Cela permet d'employer des constantes dans les définitions
+récursives primitives. Ainsi, pour définir $f(x)=2\cdot x$,
+on peut composer la fonction constante de valeur~$2$
+avec la multiplication :
+$f(x)=\Mult(\fn{const}_2(x),\Proj{1}{0}(x))$.
+Nous utiliserons désormais cette méthode.
+
+\begin{prop}
+  La fonction d'exponentiation
+  $\fn{exp}(x,y)=x^y$ est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  On peut définir $\fn{exp}$ par récurrence primitive :
+  \begin{align*}
+    \fn{exp}(x, 0) & = 1\\
+    \fn{exp}(x, y+1) & = \Mult(x, \fn{exp}(x,y)).
+    \intertext{À strictement parler, cette écriture ne donne pas
+      encore une définition à partir de fonctions dont on sait
+      qu'elles sont récursives primitives. Sous la forme requise,
+      elle devient :}
+    \fn{exp}(x, 0) & = f(x)\\
+    \fn{exp}(x, y+1) & = g(x, y, \fn{exp}(x,y)).
+    \intertext{où}
+    f(x) & = \Succ(\Zero(x)) = 1\\
+    g(x, y, z) & = \Mult(\Proj{3}{0}(x, y, z), \Proj{3}{2}(x, y, z)) = x \cdot z
+  \end{align*}
+  Les fonctions $f$ et~$g$ s'obtiennent donc par composition
+  à partir de fonctions récursives primitives.
+\end{proof}
+
+\begin{prop}
+  La fonction prédécesseur $\fn{pred}(y)$, définie par
+  \[
+  \fn{pred}(y) = \begin{cases}
+    0 & \text{si $y=0$}\\
+    y-1 & \text{sinon}
+  \end{cases}
+  \]
+  est récursive primitive.
+\end{prop}
+
+\begin{proof}
+ Observons que
+ \begin{align*}
+   \fn{pred}(0) & = 0 \text{ et}\\
+   \fn{pred}(y+1) & = y.
+ \end{align*}
+ Ces équations ressemblent à une définition par récurrence
+ primitive, mais le schéma formel exige au moins un argument
+ supplémentaire~$x$. Il est également inhabituel que la
+ définition de $\fn{pred}(y+1)$ n'utilise pas la valeur
+ précédente~$\fn{pred}(y)$. Définissons d'abord
+ $\fn{pred}'(x,y)$ par
+ \begin{align*}
+   \fn{pred}'(x, 0) & = \Zero(x) = 0,\\
+   \fn{pred}'(x, y+1) & = \Proj{3}{1}(x, y, \fn{pred'}(x, y)) = y.
+ \end{align*}
+ La composition donne alors, par exemple,
+ $\fn{pred}(x)=\fn{pred}'(\Zero(x),\Proj{1}{0}(x))$.
+\end{proof}
+
+\begin{prop}
+  La fonction factorielle
+  $\fn{fac}(x)=\fact{x}=1\cdot2\cdot3\cdot\dots\cdot x$
+  est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  Les équations récursives naturelles sont
+  \begin{align*}
+    \fn{fac}(0) &= 1\\
+    \fn{fac}(y+1) & = \fn{fac}(y) \cdot (y+1).
+    \intertext{Pour obtenir la forme exigée, définissons d'abord
+      une fonction~$h$ à deux arguments :}
+    h(x, 0) & = \fn{const}_1(x)\\
+    h(x, y+1) & = g(x, y, h(x, y))
+    \intertext{où
+      $g(x,y,z)=\Mult(\Proj{3}{2}(x,y,z),
+      \Succ(\Proj{3}{1}(x,y,z)))$, puis posons}
+    \fn{fac}(y) & = h(\Proj{1}{0}(y), \Proj{1}{0}(y)) = h(y,y).
+  \end{align*}
+  Dans la suite, nous omettrons parfois ces développements
+  formels en compositions et en récurrences primitives.
+\end{proof}
+
+\begin{prop}
+  La soustraction tronquée $x\tsub y$, définie par
+  \[
+  x \tsub y = \begin{cases}
+    0 & \text{si $x<y$}\\
+    x-y & \text{sinon}
+  \end{cases}
+  \]
+  est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  On a :
+  \begin{align*}
+    x \tsub 0 & = x\\
+    x \tsub (y+1) & = \fn{pred}(x \tsub y)
+  \end{align*}
+\end{proof}
+
+\begin{prop}
+ La distance entre $x$ et $y$, $\left|x-y\right|$,
+ est récursive primitive.
+\end{prop}
+
+\begin{proof}
+  Puisque $\left|x-y\right|=(x\tsub y)+(y\tsub x)$,
+  la distance s'obtient par composition à partir de
+  l'addition et de $\tsub$, qui sont récursives primitives.
+\end{proof}
+
+\begin{prop}
+  Le maximum de $x$ et de $y$, $\fn{max}(x,y)$,
+  est récursif primitif.
+\end{prop}
+
+\begin{proof}
+  On peut définir $\fn{max}(x,y)$ par composition
+  à partir de l'addition et de $\tsub$ :
+  \[
+  \fn{max}(x,y) \defis x + (y \tsub x).
+  \]
+  Si $x$ est le maximum, donc si $x\ge y$, on a
+  $y\tsub x=0$, d'où $x+(y\tsub x)=x+0=x$.
+  Si $y$ est le maximum, $y\tsub x=y-x$,
+  d'où $x+(y\tsub x)=x+(y-x)=y$.
+\end{proof}
+
+\begin{prop}
+  \ollabel{prop:min-pr}
+  Le minimum de $x$ et de $y$, $\fn{min}(x,y)$,
+  est récursif primitif.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrer la \olref[cmp][rec][exa]{prop:min-pr}.
+\end{prob}
+
+\begin{prob}
+Montrer que \[
+f(x, y) =
+2^{(2^{\iddots^{2^{x}}})}\raisebox{1ex}{\bigg\rbrace}
+\raisebox{1ex}{\text {$y$ occurrences de $2$}}\]
+est récursive primitive.
+\end{prob}
+
+\begin{prob}
+Montrer que la division entière
+$d(x,y)=\lfloor x/y\rfloor$, c'est-à-dire la division
+où l'on néglige la partie après la virgule, est récursive
+primitive. Pour $y=0$, on convient que $d(x,y)=0$.
+Donner une définition explicite de~$d$ au moyen de
+la récurrence primitive et de la composition.
+\end{prob}
+
+\begin{prop}
+L'ensemble des fonctions récursives primitives est
+clos par les deux opérations suivantes :
+\begin{enumerate}
+\item Sommes finies : si $f(\vec x,z)$ est récursive primitive,
+la fonction suivante l'est aussi :
+\[
+g(\vec x, y) \defis \sum_{z = 0}^y f(\vec x, z).
+\]
+\item Produits finis : si $f(\vec x,z)$ est récursive primitive,
+la fonction suivante l'est aussi :
+\[
+h(\vec x, y) \defis \prod_{z = 0}^y f(\vec x, z).
+\]
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Par exemple, les sommes finies sont définies récursivement par
+\begin{align*}
+  g(\vec x, 0) & = f(\vec x, 0)\\
+  g(\vec x, y+1) & = g(\vec x, y) + f(\vec x, y+1).
+\end{align*}
+\end{proof}
+
+\end{document}

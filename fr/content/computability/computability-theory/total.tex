@@ -1,0 +1,65 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: total
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{tot}
+\olsection{La totalité est indécidable}
+
+Voyons un autre emploi du théorème $s$-$m$-$n$
+pour établir qu'un ensemble n'est pas calculable.
+Notons $\fn{Tot}$ l'ensemble des indices des
+fonctions calculables totales, c'est-à-dire
+\[
+\fn{Tot} = \Setabs{x}{\text{pour tout $y$, $\cfind{x}(y)\fdefined$}}.
+\]
+
+\begin{prop}
+\ollabel{prop:total}
+$\fn{Tot}$ n'est pas calculable.
+\end{prop}
+
+\begin{proof}
+Il suffit de réduire $K$ à $\fn{Tot}$.
+Définissons $h(x,y)$ par
+\[
+h(x,y) \simeq
+\begin{cases}
+0 & \text{si $x \in K$} \\
+\fundefined & \text{sinon}
+\end{cases}
+\]
+La valeur de $h(x,y)$ ne dépend pas de~$y$.
+Cette fonction est calculable partielle : sur
+l'entrée $(x,y)$, on simule $\cfind{x}$ sur
+l'entrée~$x$; si ce calcul s'arrête, on renvoie~$0$,
+et sinon le calcul ne s'arrête pas. Ainsi
+$h(x,y)\simeq\Zero(\umin{s}{T(x,x,s)})$,
+où $\Zero$ est la fonction constante égale à zéro. La composition de fonctions partielles exige que la recherche intérieure termine : si aucun témoin $s$ n'existe, cette expression reste indéfinie, même si $\Zero$ ignore la valeur de son argument.
+
+Le théorème $s$-$m$-$n$ fournit une fonction
+récursive primitive~$k(x)$ telle que, pour tous
+$x$ et~$y$,
+\[
+\cfind{k(x)}(y) \simeq
+\begin{cases}
+0 & \text{si $x \in K$} \\
+\fundefined & \text{sinon}
+\end{cases}
+\]
+La fonction $\cfind{k(x)}$ est donc totale si
+$x\in K$, et n'est définie nulle part sinon.
+Par conséquent, $k$ réduit $K$ à~$\fn{Tot}$.
+\end{proof}
+
+\begin{digress}
+En fait, $\fn{Tot}$ n'est même pas effectivement
+énumérable : sa complexité se situe plus haut
+dans la « hiérarchie arithmétique ». Nous
+n'aurons pas besoin de ce renforcement ici.
+\end{digress}
+
+\end{document}

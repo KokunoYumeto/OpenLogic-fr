@@ -1,0 +1,204 @@
+% Part: first-order-logic
+% Chapter: syntax-and-semantics
+% Section: unique-readability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{unq}
+
+\olsection{Lecture unique}
+
+\begin{explain}
+La manière dont nous avons défini les !!{formula}s garantit que
+chacune possède une \emph{lecture unique} : il n'y a essentiellement
+qu'une seule façon de la construire selon nos règles de formation,
+et une seule façon de l'« interpréter ». Sinon, certaines
+!!{formula}s seraient ambiguës et admettraient plusieurs lectures ou
+interprétations, ce que nous voulons évidemment éviter. Surtout, sans
+cette propriété, la plupart des définitions et des démonstrations qui
+suivent ne seraient pas valables.
+
+Pour le comprendre, voyons ce qui se passerait si nous avions donné
+des règles de formation ne garantissant pas la lecture unique.
+Supposons, par exemple, que nous ayons omis les parenthèses dans la
+règle relative aux connecteurs et autorisé ceci :
+\begin{quote}
+Si $!A$ et $!B$ sont des !!{formula}s, alors $!A \lif !B$ en est une.
+\end{quote}
+À partir d'une !!{formula} atomique~$!D$, nous pourrions former
+$!D \lif !D$, puis, avec~$!D$, obtenir $!D \lif !D \lif !D$. Mais
+cette dernière construction peut se faire de deux façons :
+\begin{enumerate}
+\item Prendre $!A$ pour~$!D$ et $!B$ pour~$!D \lif !D$.
+\item Prendre $!A$ pour~$!D \lif !D$ et $!B$ pour~$!D$.
+\end{enumerate}
+La !!{formula}~$!D \lif !D \lif !D$ admet donc deux lectures.
+Elle est de la forme $!B \lif !C$ avec $!B$ égal à~$!D$ et $!C$
+égal à~$!D \lif !D$ ; mais elle est \emph{aussi} de la forme
+$!B \lif !C$
+avec $!B$ égal à~$!D \lif !D$ et $!C$ égal à~$!D$.
+
+Dans ce cas, nos définitions ne fonctionneraient pas toujours. Par
+exemple, pour définir l'!!{main operator} d'une !!{formula}, nous
+disons que, dans une !!{formula} de la forme $!B \lif !C$, il s'agit
+de l'occurrence indiquée de~$\lif$. Or, si $!D \lif !D \lif !D$
+correspond à $!B \lif !C$ des deux façons ci-dessus, la première
+occurrence de~$\lif$ est l'!!{main operator} dans un cas, et la
+seconde dans l'autre. Nous voulons pourtant que l'!!{main operator}
+soit une \emph{fonction} de la !!{formula} : chaque !!{formula} non
+atomique doit posséder exactement une occurrence de son !!{main operator}.
+\end{explain}
+
+\begin{lem}
+Dans !!a{formula}~$!A$, le nombre de parenthèses ouvrantes est égal
+au nombre de parenthèses fermantes.
+\end{lem}
+
+\begin{proof}
+Nous raisonnons par induction sur la construction de~$!A$. Il faut
+d'abord vérifier la propriété pour toutes les !!{formula}s atomiques
+(cas de base), puis montrer que, si elle vaut pour des !!{formula}s
+données, elle vaut aussi pour celles que l'on construit à partir
+d'elles (étape d'induction).
+
+Notons $l(!A)$ le nombre de parenthèses ouvrantes et $r(!A)$ celui
+des parenthèses fermantes dans~$!A$ ; définissons de même $l(t)$ et
+$r(t)$ pour un terme~$t$.
+
+\begin{prob}
+    Montrer que $l(t) = r(t)$ pour tout terme~$t$.
+\end{prob}
+
+\begin{enumerate}
+\tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\indfrm$ contient $0$
+    parenthèse ouvrante et $0$ parenthèse fermante.}}{}
+
+\tagitem{prvTrue}{\indcase{!A}{\ltrue}{$\indfrm$ contient $0$
+    parenthèse ouvrante et $0$ parenthèse fermante.}}{}
+
+\item \indcase{!A}{\Atom{R}{t_1,\dots,t_n}}{$l(\indfrm) = 1 + l(t_1) +
+  \dots + l(t_n) = 1 + r(t_1) + \dots + r(t_n) = r(\indfrm)$. Nous
+  utilisons ici le fait, laissé en exercice, que $l(t) = r(t)$ pour
+  tout terme~$t$.}
+
+\item \indcase{!A}{\eq[t_1][t_2]}{$l(\indfrm) = l(t_1) + l(t_2) =
+  r(t_1) + r(t_2) = r(\indfrm)$.}
+
+\tagitem{prvNot}{\indcase{!A}{\lnot !B}{Par hypothèse d'induction,
+    $l(!B) = r(!B)$. Donc $l(\indfrm) = l(!B) = r(!B) =
+    r(\indfrm)$.}}{}
+
+\item \indcase{!A}{(!B \ast !C)}{Par hypothèse d'induction, $l(!B) =
+  r(!B)$ et $l(!C) = r(!C)$. Donc $l(\indfrm) = 1 + l(!B) + l(!C) =
+  1 + r(!B) + r(!C) = r(\indfrm)$.}
+
+\tagitem{prvAll}{\indcase{!A}{\lforall[x][!B]}{Par hypothèse
+    d'induction, $l(!B) = r(!B)$. Donc $l(\indfrm) = l(!B) = r(!B) =
+    r(\indfrm)$.}}{}
+
+% Afficher le cas existentiel si prvEx et non prvAll.
+\tagitem{prvAll,notprvEx}{}{\indcase{!A}{\lexists[x][!B]}{Par
+    hypothèse d'induction, $l(!B) = r(!B)$. Donc $l(\indfrm) = l(!B)
+    = r(!B) = r(\indfrm)$.}}
+
+% Dire « de même » si prvEx et prvAll.
+\tagitem{notprvAll,notprvEx}{}{\indcase{!A}{\lexists[x][!B]}{De même.}}
+\end{enumerate}
+\end{proof}
+
+\begin{defn}[Préfixe propre]
+Une chaîne de symboles~$!B$ est un \emph{préfixe propre} d'une chaîne
+de symboles~$!A$ si la concaténation de~$!B$ avec une chaîne non vide
+donne~$!A$.
+\end{defn}
+
+\begin{lem}\ollabel{lem:no-prefix}
+Si $!A$ est !!a{formula} et $!B$ un préfixe propre de~$!A$, alors
+$!B$ n'est pas !!a{formula}.
+\end{lem}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[fol][syn][unq]{lem:no-prefix}.
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:unique-atomic}
+Si $!A$ est !!a{formula} atomique, elle vérifie une et une seule des
+conditions suivantes.
+\begin{enumerate}
+\tagitem{prvFalse}{$!A \ident \lfalse$.}{}
+\tagitem{prvTrue}{$!A \ident \ltrue$.}{}
+\item $!A \ident \Atom{R}{t_1,\dots,t_n}$, où $R$ est un !!{predicate}
+  à $n$ places, $t_1$,~\dots, $t_n$ sont des termes ; $R$ et chacun
+  des termes $t_1$,~\dots, $t_n$ sont déterminés de façon unique.
+\item $!A \ident \eq[t_1][t_2]$, où $t_1$ et $t_2$ sont des termes
+  déterminés de façon unique.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[fol][syn][unq]{prop:unique-atomic}. Indication :
+formuler et démontrer pour les termes une version du
+\olref[fol][syn][unq]{lem:no-prefix}.
+\end{prob}
+
+\begin{prop}[Lecture unique]
+Toute !!{formula} vérifie une et une seule des conditions suivantes.
+\begin{enumerate}
+\item $!A$ est atomique.
+
+\tagitem{prvNot}{$!A$ est de la forme $\lnot !B$.}{}
+
+\tagitem{prvAnd}{$!A$ est de la forme $(!B \land !C)$.}{}
+
+\tagitem{prvOr}{$!A$ est de la forme $(!B \lor !C)$.}{}
+
+\tagitem{prvIf}{$!A$ est de la forme $(!B \lif !C)$.}{}
+
+\tagitem{prvIff}{$!A$ est de la forme $(!B \liff !C)$.}{}
+
+\tagitem{prvAll}{$!A$ est de la forme $\lforall[x][!B]$.}{}
+
+\tagitem{prvEx}{$!A$ est de la forme $\lexists[x][!B]$.}{}
+\end{enumerate}
+De plus, dans chaque cas, $!B$, ou bien $!B$ et $!C$, sont déterminées
+de façon unique. Ainsi, il n'existe pas deux paires distinctes $!B$,
+$!C$ et $!B'$, $!C'$ telles que $!A$ soit à la fois de la forme
+\iftag{prvIf}{$(!B \lif !C)$ et $(!B' \lif !C')$.}{
+    \iftag{prvOr}{$(!B \lor !C)$ et $(!B' \lor !C')$.}{
+      \iftag{prvAnd}{$(!B \land !C)$ et $(!B' \land !C')$.}{}}}
+\end{prop}
+
+\begin{proof}
+Les règles de formation imposent à toute !!{formula} non atomique de
+commencer par une parenthèse ouvrante~(, \iftag{prvNot}{$\lnot$,}{}
+ou par un quantificateur. Toute !!{formula} qui commence par l'un des
+symboles suivants est, en revanche, nécessairement atomique :
+!!a{predicate}, !!a{function}, !!a{constant}, !!a{variable}%
+\iftag{prvFalse}{, $\lfalse$}{}\iftag{prvTrue}{, $\ltrue$}{}.
+
+Il nous reste donc seulement à montrer que si $!A$ est de la forme
+$(!B \ast !C)$ et aussi de la forme $(!B' \mathbin{\ast'} !C')$,
+alors $!B \ident !B'$, $!C \ident !C'$ et $\ast = {\ast'}$.
+
+Supposons donc que $!A \ident (!B \ast !C)$ et
+$!A \ident (!B' \mathbin{\ast'} !C')$. Soit $!B \ident !B'$, soit
+ce n'est pas le cas. Dans le premier cas, $\ast = {\ast'}$ et
+$!C \ident !C'$ : ce sont alors des sous-chaînes de~$!A$ qui
+commencent au même endroit et ont la même longueur. Dans le second
+cas, $!B \not\ident !B'$. Puisque $!B$ et $!B'$ sont des sous-chaînes
+de~$!A$ commençant au même endroit, l'une est un préfixe propre de
+l'autre. Or cela contredit \olref{lem:no-prefix}.
+\end{proof}
+
+\end{document}

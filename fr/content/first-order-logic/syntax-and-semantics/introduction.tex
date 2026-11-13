@@ -1,0 +1,83 @@
+% Partie : logique du premier ordre
+% Chapitre : syntaxe et sémantique
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{syn}{int}
+
+\olsection{Introduction}
+
+Pour développer la théorie et la métathéorie de la logique du
+premier ordre, il nous faut d'abord définir la syntaxe et la
+sémantique de ses expressions. Celles-ci sont les termes et
+les !!{formula}s. Les termes sont construits à partir de
+!!{variable}s, de !!{constant}s et de !!{function}s.
+La combinaison de !!{predicate}s et de termes fournit les
+!!{formula}s les plus simples, dites « atomiques ». À partir de ces
+!!{formula}s atomiques, nous pouvons ensuite construire des
+!!{formula}s plus complexes au moyen de connecteurs logiques
+et de quantificateurs. Il existe de nombreuses façons de
+définir les règles de formation ; nous n'en présentons qu'une.
+D'autres systèmes choisiront d'autres symboles, d'autres
+ensembles de connecteurs primitifs, ou emploieront autrement
+les parenthèses, voire les supprimeront entièrement, comme
+dans la notation dite polonaise. Toutes ces approches ont
+cependant un point commun : les règles de formation
+définissent \emph{inductivement} l'ensemble des termes et des
+!!{formula}s. Lorsque ces règles sont convenablement
+définies, chaque expression ne peut être construite que
+d'une seule façon, à des différences inessentielles près.
+Cette définition inductive donne des expressions
+\emph{à lecture unique} et permet de leur attribuer un sens
+par la même méthode : une définition inductive.
+
+Attribuer un sens aux expressions relève de la sémantique.
+Sa notion centrale est celle de satisfaction dans
+!!a{structure}. Une !!{structure} attribue un sens aux
+éléments constitutifs du langage. Son !!{domain} est un
+ensemble non vide d'objets. Les quantificateurs portent sur
+ce domaine ; les !!{constant}s sont interprétées par des
+éléments du domaine, les !!{function}s par des fonctions de
+l'arité correspondante, dont les arguments et les valeurs sont
+dans ce domaine, et les !!{predicate}s par des relations sur le domaine.
+Le !!{domain}, muni de ces interprétations du vocabulaire de
+base, constitue !!a{structure}. Des !!{variable}s peuvent
+figurer dans les !!{formula}s. Pour en donner la sémantique,
+il faut aussi leur associer des !!{element}s du !!{domain} :
+c'est ce que fait une assignation de variables.
+La relation de satisfaction rassemble enfin ces éléments.
+Une !!{formula} peut être satisfaite dans
+!!a{structure}~$\Struct{M}$ relativement à une assignation de
+variables~$s$ ; on écrit alors $\Sat{M}{!A}[s]$.
+Cette relation est elle aussi définie par induction sur la
+construction de~$!A$. Les tables de vérité des connecteurs
+logiques permettent, par exemple, de définir la satisfaction
+de $!A\land !B$ à partir de la satisfaction, ou de la
+non-satisfaction, de $!A$ et de~$!B$.
+Il s'avère alors que l'assignation de variables ne joue
+aucun rôle lorsque la !!{formula}~$!A$ est !!a{sentence},
+c'est-à-dire lorsqu'elle n'a aucune variable libre.
+Nous pouvons donc parler simplement d'!!{sentence}s
+satisfaits, ou non, dans des !!{structure}s.
+
+À partir de la relation de satisfaction $\Sat{M}{!A}$ pour
+les !!{sentence}s, nous pouvons définir les notions sémantiques
+fondamentales de validité, de conséquence logique et de
+satisfaisabilité. Un !!{sentence} est valide, ce que l'on note
+$\Entails !A$, si toute structure le satisfait.
+Il est une conséquence logique d'un ensemble d'%
+!!{sentence}s, ce que l'on note $\Gamma\Entails !A$, si toute
+!!{structure} qui satisfait tous les !!{sentence}s
+de~$\Gamma$ satisfait aussi~$!A$.
+Enfin, un ensemble d'!!{sentence}s est satisfaisable s'il existe
+!!a{structure} qui satisfait simultanément tous ses
+!!{sentence}s. Les !!{formula}s étant définies inductivement,
+et la satisfaction étant à son tour définie par induction
+sur leur construction, nous pouvons recourir à l'induction
+pour établir des propriétés de notre sémantique et relier
+les notions sémantiques ainsi définies.
+
+\end{document}

@@ -1,0 +1,400 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : exemples de preuves
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{seq}{ex}
+
+\olsection{Exemples de preuves}
+
+Pour construire une preuve, il est souvent commode de partir
+du séquent final et de remonter vers les axiomes.
+On choisit dans le séquent une formule principale,
+on écrit au-dessus de lui les prémisses d'une règle
+dont il est la conclusion, puis on recommence.
+Supposons, par exemple, que l'on veuille prouver
+\[(!C \land !D) \lif !E \Sequent !C \lif (!D \lif !E)\]
+La formule $!C \lif (!D \lif !E)$ est de la forme
+$!A \lif !B$ et figure à droite du séquent.
+En comparant le séquent au schéma de la règle
+$\RightR{\lif}$ de \Log{G1c},
+\[\Axiom$ !A, \Gamma \fCenter \Delta, !B$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A \lif !B $
+\DisplayProof\]
+on prend $\Gamma = \{(!C \land !D) \lif !E\}$,
+$\Delta = \emptyset$, $!A \ident !C$
+et $!B \ident !D \lif !E$.
+La dernière inférence d'une preuve pourrait donc être
+\[\Axiom$ !C, (!C \land !D) \lif !E \fCenter !D \lif !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$(!C \land !D) \lif !E \fCenter !C \lif (!D \lif !E)$
+\DisplayProof\]
+En recommençant avec $!D \lif !E$ comme formule principale,
+on obtient
+\[\Axiom$ !D, !C, (!C \land !D) \lif !E \fCenter !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$!C, (!C \land !D) \lif !E \fCenter !D \lif !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$(!C \land !D) \lif !E \fCenter !C \lif (!D \lif !E)$
+\DisplayProof\]
+On choisit ensuite $(!C \land !D) \lif !E$ et
+on emploie la règle $\LeftR{\lif}$ de \Log{G1c},
+\[\Axiom$ \Gamma \fCenter \Delta, !A$
+\Axiom$ !B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$ !A \lif !B, \Gamma \fCenter \Delta$
+\DisplayProof\]
+ce qui donne
+\[\Axiom$!D, !C \fCenter !E, !C \land !D$
+\Axiom$!D, !C, !E \fCenter !E$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$ !D, !C, (!C \land !D) \lif !E \fCenter !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$!C, (!C \land !D) \lif !E \fCenter !D \lif !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$(!C \land !D) \lif !E \fCenter !C \lif (!D \lif !E)$
+\DisplayProof\]
+En prenant $!C \land !D$ comme formule principale
+dans le séquent supérieur gauche et en appliquant
+la règle $\RightR{\land}$, on obtient
+\[
+\Axiom$!D, !C \fCenter !E, !C$
+\Axiom$!D, !C \fCenter !E, !D$
+\RightLabel{\RightR{\land}}
+\BinaryInf$!D, !C \fCenter !E, !C \land !D$
+\Axiom$!D, !C, !E \fCenter !E$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$ !D, !C, (!C \land !D) \lif !E \fCenter !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$!C, (!C \land !D) \lif !E \fCenter !D \lif !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$(!C \land !D) \lif !E \fCenter !C \lif (!D \lif !E)$
+\DisplayProof
+\]
+Toutes les règles employées jusqu'ici sont communes
+à \Log{G1c} et à~\Log{G3c}. Les séquents supérieurs
+du fragment ainsi construit ont chacun une formule
+commune à leurs deux membres. Ils ne sont toutefois
+pas nécessairement des axiomes.
+
+Dans \Log{G1c}, il faut les prouver à partir d'axiomes
+de la forme $!A \Sequent !A$. Les règles
+d'affaiblissement le permettent. Par exemple,
+le séquent supérieur gauche $!D, !C \Sequent !E, !C$
+se prouve ainsi :
+\[
+\Axiom$!C \fCenter !C$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!D, !C \fCenter !C$
+\RightLabel{\RightR{\Weakening}}
+\UnaryInf$!D, !C \fCenter !E, !C$
+\DisplayProof
+\]
+La preuve complète dans \Log{G1c} est donc
+\[
+\Axiom$!C \fCenter !C$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!D, !C \fCenter !C$
+\RightLabel{\RightR{\Weakening}}
+\UnaryInf$!D, !C \fCenter !E, !C$
+\Axiom$!D \fCenter !D$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!D, !C \fCenter !D$
+\RightLabel{\RightR{\Weakening}}
+\UnaryInf$!D, !C \fCenter !E, !D$
+\RightLabel{\RightR{\land}}
+\BinaryInf$!D, !C \fCenter !E, !C \land !D$
+\Axiom$!E \fCenter !E$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!C, !E \fCenter !E$
+\RightLabel{\LeftR{\Weakening}}
+\UnaryInf$!D, !C, !E \fCenter !E$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$ !D, !C, (!C \land !D) \lif !E \fCenter !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$!C, (!C \land !D) \lif !E \fCenter !D \lif !E$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$(!C \land !D) \lif !E \fCenter !C \lif (!D \lif !E)$
+\DisplayProof
+\]
+Sa structure, et en particulier sa hauteur, ne dépend
+pas des formules $!C$, $!D$ et~$!E$ choisies.
+On peut remplacer ces symboles par des formules
+quelconques et obtenir encore une preuve
+de~\Log{G1c}. Cette preuve est \emph{schématique}.
+
+Dans \Log{G3c}, les axiomes d'identité ont la forme
+$!A, \Gamma \Sequent \Delta, !A$, avec $!A$ atomique.
+Le séquent $!D, !C \Sequent !E, !C$ ressemble donc
+à un tel axiome, avec $\Gamma = \{!D\}$ et
+$\Delta = \{!E\}$, mais il n'en est effectivement
+un que si $!C$ est atomique. Le fragment construit
+plus haut est une preuve complète de \Log{G3c}
+si $!C$, $!D$ et $!E$ sont atomiques.
+
+Pour des formules quelconques, nous n'avons donc pas
+encore établi, dans \Log{G3c},
+\[\Log{G3c} \Proves (!C \land !D) \lif !E \fCenter !C \lif (!D \lif
+!E),\]
+En pratique, le fragment suffit néanmoins, à condition
+de développer ses feuilles en preuves. En effet,
+tout séquent $!A, \Gamma \Sequent \Delta, !A$
+se prouve dans \Log{G3c}, même si $!A$ n'est pas
+atomique. On le montre par récurrence sur
+la profondeur~$\depth{!A}$ de~$!A$.
+
+\begin{defn}\ollabel{defn:depth}
+La \emph{profondeur}~$\depth{!A}$ d'une formule
+se définit comme suit :
+\begin{enumerate}
+  \item Si $!A$ est atomique, $\depth{!A} = 0$.
+  \item Si $!A \ident \lnot !B$, $!A \ident \lforall[x][!B]$
+  ou $!A \ident \lexists[x][!B]$,
+  alors $\depth{!A} = \depth{!B} + 1$.
+  \item Si $!A \ident (!B \land !C)$,
+  $(!B \lor !C)$ ou $(!B \lif !C)$,
+  alors $\depth{!A} = \max(\depth{!B},\depth{!C}) + 1$.
+\end{enumerate}
+\end{defn}
+
+On montre facilement que $\depth{A(x)} = \depth{A(t)}$
+pour tout terme~$t$. Dans une règle logique,
+la formule principale a une profondeur strictement
+supérieure à celle des formules actives issues de
+sa décomposition. Une copie de la principale
+conservée dans la prémisse garde la même profondeur.
+Ce fait ne concerne pas les règles structurelles.
+Par exemple :
+\begin{align*}
+\depth{P(x)} = \depth{P(a)} & = 0,\\
+\depth{\lforall[x][P(x)]} & = 1,\\
+\depth{(\lforall[x][P(x)] \lif P(a))} & = \max(1,0) + 1 = 2.
+\end{align*}
+On peut ainsi démontrer des résultats par récurrence
+sur~$\depth{!A}$, notamment le suivant.
+
+\begin{prop}\ollabel{prop:G1c-axioms}
+Pour toute formule~$!A$, il existe dans $\Log{G1c}$
+une preuve de $!A \Sequent !A$ dont tous les axiomes
+sont atomiques.
+\end{prop}
+
+\begin{proof}
+  On raisonne par récurrence sur~$\depth{!A}$.
+  Si $\depth{!A} = 0$, alors $!A$ est atomique,
+  et $!A \Sequent !A$ constitue déjà une preuve
+  de~\Log{G1c} de la forme voulue.
+  Si $\depth{!A} > 0$, la formule $!A$ est construite
+  à partir de formules de profondeur moindre :
+  par exemple $!A \ident \lnot !B$,
+  $!A \ident (!B \land !C)$ ou
+  $!A \ident \lforall[x][!B(x)]$.
+  L'hypothèse de récurrence affirme que, pour toute
+  formule $!D$ telle que $\depth{!D} < \depth{!A}$,
+  on a $\Log{G1c} \Proves !D \Sequent !D$
+  à partir d'axiomes atomiques.
+
+  Si $!A \ident \lnot !B$, alors
+  $\depth{!B} < \depth{!A}$. Par hypothèse de
+  récurrence, il existe dans \Log{G1c} une preuve~$\pi_1$
+  de $!B \Sequent !B$ à partir d'axiomes atomiques.
+  On la prolonge en une preuve de
+  $\lnot !B \Sequent \lnot !B$ :
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!B \fCenter !B$
+  \RightLabel{\LeftR{\lnot}}
+  \UnaryInf$\lnot !B, !B \fCenter $
+  \RightLabel{\RightR{\lnot}}
+  \UnaryInf$\lnot !B \fCenter \lnot !B$
+  \DisplayProof
+\]
+
+  Si $!A \ident (!B \land !C)$, alors
+  $\depth{!B} < \depth{!A}$ et $\depth{!C} < \depth{!A}$.
+  Par hypothèse de récurrence, il existe dans \Log{G1c}
+  des preuves~$\pi_1$ et~$\pi_2$ de $!B \Sequent !B$
+  et de $!C \Sequent !C$ à partir d'axiomes atomiques.
+  On les prolonge en une preuve de
+  $!B \land !C \Sequent !B \land !C$ :
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!B \fCenter !B$
+  \RightLabel{\LeftR{\Weakening}}
+  \UnaryInf$!B, !C \fCenter !B$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!B \land !C, !C\fCenter !B$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!B \land !C, !B \land !C \fCenter !B$
+  \AxiomC{}
+  \RightLabel{$\pi_2$}
+  \Deduce$!C \fCenter !C$
+  \RightLabel{\LeftR{\Weakening}}
+  \UnaryInf$!B, !C \fCenter !C$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!B \land !C, !B \fCenter !C$
+  \RightLabel{\LeftR{\land}}
+  \UnaryInf$!B \land !C, !B \land !C \fCenter !C$
+  \RightLabel{\RightR{\land}}
+  \BinaryInf$!B \land !C, !B \land !C \fCenter !B \land !C$
+  \RightLabel{\LeftR{\Contraction}}
+  \UnaryInf$!B \land !C \fCenter !B \land !C$
+  \DisplayProof
+  \]
+
+  Supposons maintenant $!A \ident \lforall[x][B(x)]$.
+  Choisissons une constante~$c$ qui n'apparaît pas
+  dans $\lforall[x][B(x)]$. Puisque
+  $\depth{B(c)} = \depth{!B(x)} < \depth{!A}$,
+  l'hypothèse de récurrence fournit une preuve~$\pi_1$,
+  dans \Log{G1c}, de $!B(c) \Sequent !B(c)$
+  à partir d'axiomes atomiques. On la prolonge en
+  une preuve de
+  $\lforall[x][B(x)] \Sequent \lforall[x][B(x)]$ :
+  \[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!B(c) \fCenter !B(c)$
+  \RightLabel{\LeftR{\lforall}}
+  \UnaryInf$\lforall[x][!B(x)] \fCenter !B(c)$
+  \RightLabel{\RightR{\lforall}}
+  \UnaryInf$\lforall[x][!B(x)] \fCenter \lforall[x][!B(x)]$
+  \DisplayProof
+\]
+
+  Les autres cas sont laissés en exercice.
+\end{proof}
+
+\begin{prob}
+  Compléter la preuve de la \olref{prop:G1c-axioms}
+  dans les cas $!A \ident (!B \lor !C)$,
+  $!A \ident (!B \lif !C)$ et
+  $!A \ident \lexists[x][B(x)]$.
+\end{prob}
+
+Dans le cas $!A \ident \lnot !B$, on aurait aussi
+pu employer la preuve
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$!B \fCenter !B$
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$\fCenter !B, \lnot !B$
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !B \fCenter \lnot !B$
+\DisplayProof
+\]
+Le calcul intuitionniste \Log{G1i} autorise au plus
+une formule dans le conséquent de chaque séquent.
+Dans le premier arbre, \LeftR{\lnot} précède \RightR{\lnot},
+et chaque séquent satisfait cette restriction. C'est donc
+aussi une preuve dans~\Log{G1i}. Dans le second arbre,
+le séquent intermédiaire contient à droite $!B$ et~$\lnot !B$.
+%
+%
+%
+
+Même dans \Log{G1c}, on ne peut pas intervertir
+les règles du cas $!A \ident \lforall[x][!B(x)]$.
+L'arbre suivant \emph{n'est pas} une preuve :
+\[
+  \AxiomC{}
+  \RightLabel{$\pi_1$}
+  \Deduce$!B(c) \fCenter !B(c)$
+  \RightLabel{\RightR{\lforall}}
+  \UnaryInf$!B(c) \fCenter \lforall[x][!B(x)]$
+  \RightLabel{\LeftR{\lforall}}
+  \UnaryInf$\lforall[x][!B(x)] \fCenter \lforall[x][!B(x)]$
+  \DisplayProof
+\]
+En effet, la condition sur la constante propre
+de~$\RightR{\lforall}$ n'est pas satisfaite :
+la constante choisie figure encore dans l'antécédent
+de la conclusion de cette inférence.
+
+\begin{prop}\ollabel{prop:G3c-axioms}
+Tout séquent de la forme
+$!A, \Gamma \Sequent \Delta, !A$ est prouvable
+dans~\Log{G3c}, même si $!A$ n'est pas atomique.
+\end{prop}
+
+\begin{proof}
+La preuve ressemble à celle de la \olref{prop:G1c-axioms},
+mais il faut formuler l'hypothèse de récurrence
+pour tous les contextes. Le cas
+$n = \depth{!A} = 0$ est immédiat :
+si $n=0$, $!A$ est atomique, et
+$!A, \Gamma \Sequent \Delta, !A$
+est un axiome de~\Log{G3c}.
+
+Supposons $n>0$. L'hypothèse de récurrence est la
+suivante : pour toute formule $!D$ telle que
+$\depth{!D} < n$ et tous contextes $\Pi$ et
+$\Lambda$, on a
+$\Log{G3c} \Proves !D, \Pi \Sequent \Lambda, !D$.
+Considérons le cas $!A \ident (!B \land !C)$.
+On applique deux fois l'hypothèse :
+avec $!D = !B$, $\Pi = !C, \Gamma$
+et $\Lambda = \Delta$, pour obtenir une
+preuve~$\pi_1$ de $!B, !C, \Gamma \Sequent \Delta, !B$ ;
+puis avec $!D = !C$, $\Pi = !B, \Gamma$
+et $\Lambda = \Delta$, pour obtenir une
+preuve~$\pi_2$ de $!B, !C, \Gamma \Sequent \Delta, !C$.
+Voici la preuve de
+$!B \land !C, \Gamma \Sequent \Delta, !B \land !C$ :
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$!B, !C, \Gamma \fCenter \Delta, !B$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!B \land !C, \Gamma \fCenter \Delta, !B$
+\AxiomC{}
+\RightLabel{$\pi_2$}
+\Deduce$!B, !C, \Gamma \fCenter \Delta, !C$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!B \land !C, \Gamma \fCenter \Delta, !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$!B \land !C, \Gamma \fCenter \Delta, !B \land !C$
+\DisplayProof
+\]
+
+Si $!A \ident \lforall[x][!B(x)]$, on choisit
+une constante qui n'apparaît ni dans
+$\lforall[x][!B(x)]$, ni dans $\Gamma$,
+ni dans~$\Delta$. On la note~$c$.
+L'hypothèse de récurrence, avec $!D = !B(c)$,
+$\Pi = \lforall[x][!B(x)], \Gamma$
+et $\Lambda = \Delta$, donne une preuve~$\pi_1$
+de $!B(c), \lforall[x][!B(x)], \Gamma \Sequent \Delta, !B(c)$.
+On obtient alors
+\[
+\AxiomC{}
+\RightLabel{$\pi_1$}
+\Deduce$!B(c), \lforall[x][!B(x)], \Gamma \fCenter \Delta, !B(c)$
+\RightLabel{\LeftR{\lforall}}
+\UnaryInf$\lforall[x][!B(x)], \Gamma \fCenter \Delta, !B(c)$
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$\lforall[x][!B(x)], \Gamma \fCenter \Delta, \lforall[x][!B(x)]$
+\DisplayProof
+\]
+La condition sur la constante propre
+de $\RightR{\lforall}$ est satisfaite par
+le choix de~$c$.
+Les cas restants se traitent de même et sont
+à compléter dans l'exercice suivant.
+\end{proof}
+
+\begin{prob}
+  Compléter la preuve de la \olref{prop:G3c-axioms}
+  dans les cas $!A \ident (!B \lif !C)$
+  et $!A \ident \lexists[x][B(x)]$.
+  Traiter également la négation et la disjonction.
+\end{prob}
+
+\end{document}

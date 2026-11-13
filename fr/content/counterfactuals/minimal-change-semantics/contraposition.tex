@@ -1,0 +1,71 @@
+% Partie : counterfactuals
+% Chapitre : minimal-change-semantics
+% Section : contraposition
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{min}{cpo}
+
+\olsection{Contraposition}
+
+Les conditionnels matériels et stricts sont équivalents à leur
+contraposée. Ce n'est pas le cas des conditionnels contrefactuels.
+Voici un exemple dû à Kratzer :
+\begin{quote}
+  Si Goethe n'était pas mort en 1832, il serait tout de même mort à ce
+  jour.
+
+  Si Goethe était encore en vie à ce jour, il serait mort en 1832.
+\end{quote}
+Le premier énoncé est vrai : les êtres humains ne vivent pas pendant
+des siècles. Le second est manifestement faux : si Goethe était
+encore en vie aujourd'hui, il ne pourrait pas être mort en 1832.
+
+\begin{ex}\ollabel{ex:contraposition-counterex}
+  La sémantique des sphères invalide la contraposition : on a $p
+  \cif q \Entails/ \lnot q \cif \lnot p$. Interprétons~$p$ comme
+  « Goethe n'est pas mort en 1832 » et~$q$ comme « Goethe n'est plus en
+  vie aujourd'hui ». Nous pouvons représenter cette situation par un
+  modèle $\mModel{M} = \tuple{W, O, V}$ où $W =
+  \{w, w_1, w_2\}$, $O_w = \{\{w\}, \{w, w_1\}, \{w, w_1, w_2\}\}$,
+  $V(p) = \{w_1, w_2\}$ et $V(q) = \{w, w_1\}$. % Précision facultative conservée hors du texte traduit.
+%
+%
+   Le monde~$w$ est le monde actuel, où Goethe est mort en 1832
+  et n'est plus en vie ; $w_1$ est un monde proche où Goethe est mort,
+  disons, en 1833, et n'est plus en vie ; $w_2$ est un monde plus
+  éloigné où Goethe est encore vivant.
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=.6,layerwidth=1.5]\tiny
+  \spheresystem{3}
+  \begin{scope}
+    \clip \propositionplot{0}{.8}{50}{4.5} -- (4.5,-4.5) -- (-4.5,-4.5) -- (-4.5,4.5) -- (4.5,4.5);
+    \spherelayer{3}
+  \end{scope}
+  \propositionintersect{0}{2}{110}{5.5}
+  \proposition{0}{.8}{50}{4.5}
+  \path (0,0) node[world] {$w$};
+  \spherepos{0}{2}{node[world] {$w_1$}}
+  \spherepos{-50}{3}{node[world] {$w_2$}}
+  \spherepos{28}{3}{node {$q$}}
+  \spherepos{42}{3}{node {$\lnot q$}}
+  \spherepos{-55}{4}{node {$p$}}
+  \spherepos{-67}{4}{node {$\lnot p$}}
+\end{tikzpicture}
+\caption{Contre-exemple à la contraposition}
+\ollabel{fig:contraposition}
+\end{center}
+\end{figure}
+Il existe une sphère admettant~$p$, $S =
+\{w, w_1\}$, et $p \lif q$ est vrai dans tous ses mondes ; donc
+$\mSat{M}{p \cif q}[w]$. En revanche, la sphère admettant~$\lnot q$,
+$\{w, w_1, w_2\}$, contient le monde~$w_2$, où
+$q$ est faux et~$p$ est vrai ; donc
+$\mSat/{M}{\lnot q \lif \lnot p}[w_2]$. Le conditionnel obtenu par
+contraposition est ainsi faux au monde central.
+\end{ex}
+
+\end{document}

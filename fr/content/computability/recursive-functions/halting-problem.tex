@@ -1,0 +1,100 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: halting-problem
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{hlt}
+\olsection{Le problème de l'arrêt}
+
+Le \emph{problème de l'arrêt} consiste, sous sa forme générale,
+à décider, étant donnés la description~$e$ d'une fonction
+partielle calculable, par exemple son programme, et un entier~$n$,
+si son calcul sur l'entrée~$n$ s'arrête, autrement dit s'il
+produit un résultat. Alan Turing a montré que ce problème
+ne peut lui-même être résolu par une fonction calculable :
+la fonction
+\[
+h(e, n) =
+\begin{cases}
+1 & \text{si le calcul $e$ s'arrête sur l'entrée $n$}\\
+0 & \text{sinon,}
+\end{cases}
+\]
+n'est pas calculable.
+
+Pour les fonctions récursives partielles, l'indice~$e$ du
+théorème de forme normale de Kleene peut jouer le rôle
+de description d'un programme. Si $f$ est une fonction
+récursive partielle, tout entier~$e$ pour lequel l'équation
+du théorème est satisfaite est un indice de~$f$. La
+construction du théorème définit, pour \emph{tout}
+entier~$e$, une fonction récursive partielle par
+\[
+\cfind{e}(x) \simeq U(\mu s \; T(e, x, s))
+\]
+Inversement, pour toute fonction récursive partielle unaire
+$f\colon \Nat \to \Nat$, il existe un $e \in \Nat$ tel que
+$\cfind{e}(x) \simeq f(x)$ pour tout $x \in \Nat$.
+Il existe même une infinité de tels indices. La
+\emph{fonction d'arrêt}~$h$ est définie par
+\[
+h(e, x) =
+\begin{cases}
+1 & \text{si $\cfind{e}(x) \fdefined$}\\
+0 & \text{sinon.}
+\end{cases}
+\]
+Ainsi, $h(e,x)=0$ exactement lorsque le calcul
+$\cfind{e}(x)$ ne donne aucune valeur. Certains entiers
+peuvent ne coder aucune description de programme dans un
+codage particulier; ils désignent néanmoins ici une
+fonction récursive partielle par la formule précédente.\footnote{Correction éditoriale : pour cette numérotation définie par $T$ et $U$, tout entier $e$ détermine $\cfind{e}$. Nous supprimons donc les alternatives où l'entier ne serait l'indice d'aucune fonction, présentes dans la source ; elles ne s'appliquent pas à cette définition.}
+
+\begin{thm}
+\ollabel{thm:halting-problem}
+La fonction d'arrêt~$h$ n'est pas récursive partielle.
+\end{thm}
+
+\begin{proof}
+Supposons que $h$ soit récursive partielle. Elle est totale
+par définition; cette hypothèse en ferait donc une fonction
+récursive. Définissons
+\[
+d(y) =
+\begin{cases}
+1 & \text{si $h(y, y) = 0$}\\
+\umin{x}{x \neq x} & \text{sinon.}
+\end{cases}
+\]
+Aucun entier~$x$ ne vérifie $x \neq x$; par conséquent,
+$\umin{x}{x \neq x}$ est indéfini. Il s'ensuit que
+\begin{enumerate}
+\item $d(y) \fdefined$ si et seulement si
+  $\cfind{y}(y) \fundefined$;
+\item $d(y) \fundefined$ si et seulement si
+  $\cfind{y}(y) \fdefined$.
+\end{enumerate}
+Comme $h$ est supposée récursive partielle et totale,
+la définition par cas ci-dessus rendrait $d$ récursive
+partielle. Pour le voir sans évaluer une branche indéfinie, on peut écrire $d(y)\simeq 1+\umin{z}{h(y,y)=0}$. Le théorème de forme normale lui donnerait
+alors un indice~$e_d$. Examinons $h(e_d,e_d)$,
+qui vaut nécessairement $0$ ou~$1$ :
+\begin{enumerate}
+\item Si $h(e_d,e_d)=1$, alors
+  $\cfind{e_d}(e_d) \fdefined$. Mais
+  $\cfind{e_d}\simeq d$, tandis que $d(e_d)$
+  est défini si et seulement si $h(e_d,e_d)=0$ :
+  contradiction.
+\item Si $h(e_d,e_d)=0$, alors
+  $\cfind{e_d}(e_d) \fundefined$. Or
+  $\cfind{e_d}\simeq d$ et, par définition de~$d$,
+  $d(e_d) \fdefined$ : contradiction.
+\end{enumerate}
+Les deux cas étant impossibles, $h$ ne peut être
+récursive partielle.
+\end{proof}
+
+\end{document}

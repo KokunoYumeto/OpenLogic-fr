@@ -1,0 +1,92 @@
+% Section: truth-in-model
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{syn}{tru}
+
+\olsection{Vérité dans un modèle}
+
+Nous voulons parfois savoir quelles !!{formula}s sont vraies en
+tous les mondes d'un modèle donné. Introduisons une notation.
+
+\begin{defn}
+  !!^a{formula}~$!A$ est \emph{vraie dans un modèle}
+  $M = \tuple{W, R, V}$, ce que nous notons $\mSat{M}{!A}$,
+  si et seulement si $\mSat{M}{!A}[w]$ pour tout $w \in W$.
+\end{defn}
+
+\begin{prop}\ollabel{prop:truthfacts}
+  \begin{enumerate}
+  \item Si $\mSat{M}{!A}$, alors $\mSat/{M}{\lnot !A}$, mais
+    \emph{pas} réciproquement.
+  \item Si $\mSat{M}{!A \lif !B}$, alors
+    $\mSat{M}{!A}$ seulement si $\mSat{M}{!B}$, mais
+    \emph{pas} réciproquement.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+  \item Si $\mSat{M}{!A}$, alors $!A$ est vraie en tous les mondes
+    de~$W$. Comme $W \neq \emptyset$, on ne peut pas avoir aussi
+    $\mSat{M}{\lnot!A}$ : $!A$ serait alors à la fois vraie
+    et fausse dans au moins un monde.
+
+    Inversement, si $\mSat/{M}{\lnot !A}$, alors $!A$ est vraie
+    dans au moins un monde~$w \in W$. Cela ne signifie pas que
+    $\mSat{M}{!A}[w]$ pour \emph{tout}~$w \in W$. Dans le modèle
+    de la~\olref[rel]{fig:simple}, par exemple,
+    $\mSat/{M}{\lnot p}$ et $\mSat/{M}{p}$.
+  \item Supposons $\mSat{M}{!A \lif !B}$ et $\mSat{M}{!A}$.
+    Pour établir $\mSat{M}{!B}$, choisissons un monde arbitraire
+    $w \in W$. Nous avons alors
+    $\mSat{M}{!A \lif !B}[w]$ et $\mSat{M}{!A}[w]$, donc
+    $\mSat{M}{!B}[w]$. Le monde~$w$ étant arbitraire,
+    $\mSat{M}{!B}$.
+
+    Pour réfuter la réciproque, il nous faut un modèle
+    $\mModel{M}$ dans lequel $\mSat{M}{!A}$ seulement si
+    $\mSat{M}{!B}$, mais $\mSat/{M}{!A \lif !B}$.
+    Reprenons le modèle de la~\olref[rel]{fig:simple} :
+    $\mSat/{M}{p}$; donc l'implication « $\mSat{M}{p}$ seulement
+    si $\mSat{M}{q}$ » est vraie par vacuité. Pourtant,
+    $\mSat/{M}{p \lif q}$, car $p$ est vraie et $q$ fausse
+    en~$w_1$.
+  \end{enumerate}
+\end{proof}
+
+\begin{prob}
+  Considérons le modèle~$\mModel{M}$ ci-dessous pour le langage
+  dont les seules !!{propositional variable}s sont $p_1$, $p_2$
+  et~$p_3$ :
+  \begin{center}
+    \begin{tikzpicture}[modal]
+      \node[world] (w1) [label={[align=right]left:\mTrue{p_1}\\\mFalse{p_2}\\\mFalse{p_3}}]
+            {$w_1$} ; 
+      \node[world] (w2) [label={[align=right]right:\mTrue{p_1}\\\mTrue{p_2}\\\mFalse{p_3}},
+        below right=of w1]  {$w_2$}; 
+      \node[world] (w3) [label={[align=right]right:\mTrue{p_1}\\\mTrue{p_2}\\\mTrue{p_3}},
+        above right=of w2] {$w_3$};
+      \draw[reflexive above] (w3) to (w3); 
+      \draw[->] (w1) to (w2);
+      \draw[->] (w2) to (w3);
+      \draw[->] (w1) to (w3); 
+    \end{tikzpicture}
+  \end{center}
+  Les !!{formula}s et schémas suivants sont-ils vrais dans le
+  modèle~$\mModel{M}$, c'est-à-dire en chacun des mondes
+  de~$\mModel{M}$ ?
+  Justifiez vos réponses.
+  \begin{enumerate}
+  \item $p\lif \Diamond p$ (pour $p$ atomique);
+  \item $!A\lif \Diamond !A$ (pour $!A$ quelconque);
+  \item $\Box p \lif p$ (pour $p$ atomique);
+  \item $\lnot p \lif \Diamond \Box p$ (pour $p$ atomique);
+  \item $\Diamond \Box !A$ (pour $!A$ quelconque);
+  \item $\Box \Diamond p$ (pour $p$ atomique).
+  \end{enumerate}
+\end{prob}
+
+\end{document}

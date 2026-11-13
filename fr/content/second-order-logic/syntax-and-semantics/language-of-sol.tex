@@ -1,0 +1,58 @@
+% Partie : logique du second ordre
+% Chapitre : syntaxe et sémantique
+% Section : langage de la logique du second ordre
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sol}{syn}{lan}
+
+\olsection{Le langage de la logique du second ordre}
+
+Comme en logique du premier ordre, les expressions
+se forment à partir d'un vocabulaire de base
+comprenant des \emph{!!{variable}s}, des
+\emph{!!{constant}s}, des \emph{!!{predicate}s}
+et parfois des \emph{!!{function}s}. Avec les
+connecteurs logiques, les quantificateurs et les
+signes de ponctuation, notamment les parenthèses
+et les virgules, on construit des \emph{termes}
+et des \emph{!!{formula}s}. La nouveauté est que
+la logique du second ordre possède aussi des
+variables de relation et de fonction, sur lesquelles
+on peut quantifier. À ses symboles logiques du
+premier ordre s'ajoutent donc :
+
+\begin{enumerate}
+\item Pour chaque arité~$n$ admise, un ensemble
+  infini dénombrable de !!{variable}s de relation
+  du second ordre :
+  $\Obj V_0^n$, $\Obj V_1^n$, $\Obj V_2^n$, \dots
+\item Pour chaque arité~$n$ admise, un ensemble
+  infini dénombrable de !!{variable}s de fonction
+  du second ordre :
+  $\Obj u_0^n$, $\Obj u_1^n$, $\Obj u_2^n$, \dots
+\end{enumerate}
+
+En logique du premier ordre, on inclut
+habituellement l'!!{identity}~$\eq$.
+Les symboles non logiques d'un langage~$\Lang{L}$
+permettent de désigner des relations, fonctions
+et objets particuliers. Certaines !!{sentence}s
+n'en contiennent aucun, mais le seul symbole
+d'égalité exprime peu de propriétés spécifiques.
+En logique du second ordre, les variables de
+relation et de fonction fournissent, à chaque
+arité, des places pour ces symboles : on peut
+ainsi reformuler des schémas d'énoncés du premier
+ordre sans fixer d'avance de vocabulaire non
+logique. Pour retrouver l'interprétation d'un
+symbole dans une structure donnée, on affecte à
+la variable libre correspondante la relation ou
+la fonction que ce symbole désigne. Quantifier
+sur cette variable fait varier les relations ou
+les fonctions considérées et change en général
+les conditions de vérité.
+
+\end{document}

@@ -1,0 +1,314 @@
+% Part: first-order-logic
+% Chapter: completeness
+% Section: construction-of-model
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\iftag{FOL}
+      {\olfileid[fr]{fol}{com}{mod}}
+      {\olfileid[fr]{pl}{com}{mod}}
+
+\olsection{Construction d'un modèle}
+
+\begin{explain}
+\iftag{FOL}{Nous laissons pour l'instant de côté~$\eq$ : nous voulons
+  seulement montrer qu'un ensemble cohérent~$\Gamma$ d'!!{sentence}s
+  où $\eq$ ne figure pas est satisfaisable. Étendons d'abord
+  $\Gamma$ en un ensemble cohérent, !!{complete} et saturé
+  $\Gamma^*$. La définition du modèle~$\Struct{M(\Gamma^*)}$ est
+  alors simple. Prenons pour domaine l'ensemble des termes clos de
+  $\Lang{L'}$. Interprétons chaque !!{constant} par elle-même, et
+  plus généralement chaque terme clos~$t$ de sorte que
+  $\Value{t}{M(\Gamma^*)}=t$. Attribuons aux !!{predicate}s des
+  extensions telles qu'un !!{sentence} atomique soit vrai dans
+  $\Struct{M(\Gamma^*)}$ si et seulement s'il appartient à
+  $\Gamma^*$. Ainsi, les !!{sentence}s atomiques de~$\Gamma^*$
+  seront vrais dans ce modèle. Les autres le seront grâce à la
+  cohérence, à la complétude et à la saturation de~$\Gamma^*$.}{Nous
+  pouvons maintenant définir !!a{valuation} qui rend vraies toutes
+  les !!{formula}s~$!A\in\Gamma$. Appliquons d'abord le lemme de
+  Lindenbaum pour obtenir un ensemble cohérent et complet
+  $\Gamma^*\supseteq\Gamma$. Les !!{propositional variable}s de
+  $\Gamma^*$ détermineront la valuation~$\pAssign v(\Gamma^*)$.}
+\end{explain}
+
+\iftag{FOL}{%
+\begin{defn}[Modèle des termes]
+\ollabel{defn:termmodel}
+Soit $\Gamma^*$ un ensemble cohérent, !!{complete} et saturé d'%
+!!{sentence}s dans un langage~$\Lang L$ contenant au moins une
+constante, comme après l'expansion de Henkin. Le \emph{modèle des
+termes}~$\Struct M(\Gamma^*)$ associé à~$\Gamma^*$ est la
+!!{structure} définie ainsi.
+\begin{enumerate}
+\item Le !!{domain}~$\Domain{M(\Gamma^*)}$ est l'ensemble de tous les
+  termes clos de~$\Lang L$.
+\item Une !!{constant}~$c$ s'interprète par elle-même :
+  $\Assign{c}{M(\Gamma^*)}=c$.
+\item À un !!{function}~$f$ d'arité~$n$, on attribue la
+  fonction qui, aux termes clos $t_1,\dots,t_n$, associe le terme
+  clos $f(t_1,\dots,t_n)$ :
+\[
+\Assign{f}{M(\Gamma^*)}(t_1, \dots, t_n) = f(t_1,\dots, t_n)
+\]
+\item Si $R$ est un !!{predicate} d'arité~$n$, alors
+  \[
+  \tuple{t_1, \dots,
+  t_n} \in \Assign{R}{M(\Gamma^*)} \quad\Longleftrightarrow\quad \Atom{R}{t_1, \dots,
+    t_n} \in \Gamma^*.
+  \]
+\end{enumerate}
+\end{defn}
+}{%
+\begin{defn}
+\ollabel{defn:termmodel}
+Soit $\Gamma^*$ un ensemble cohérent et complet de !!{formula}s.
+Nous définissons la valuation
+\[
+\pAssign v(\Gamma^*)(p) = \begin{cases}
+  \True & \text{si $p \in \Gamma^*$}\\
+  \False & \text{si $p \notin \Gamma^*$}
+  \end{cases}
+\]
+\end{defn}
+}
+
+\iftag{FOL}{%
+Vérifions que $\Value{t}{M(\Gamma^*)}=t$ pour tout terme clos~$t$.
+
+\begin{lem}
+\ollabel{lem:val-in-termmodel} Soit $\Struct M(\Gamma^*)$ le modèle
+des termes de la \olref{defn:termmodel}. Alors
+$\Value{t}{M(\Gamma^*)}=t$ pour tout terme clos~$t$.
+\end{lem}
+\begin{proof}
+Raisonnons par récurrence sur la construction de~$t$. Si $t$ est une
+!!{constant}, l'égalité découle directement de la définition du
+modèle. Supposons ensuite que $t_1,\ldots,t_n$ soient des termes clos
+vérifiant $\Value{t_i}{M(\Gamma^*)}=t_i$, et que $f$ soit un
+!!{function} d'arité~$n$. Alors
+\begin{align*}
+\Value{f(t_1,\ldots,t_n)}{M(\Gamma^*)} &= \Assign{f}{M(\Gamma^*)}(\Value{t_1}
+ {M(\Gamma^*)},
+\ldots, \Value{t_n}{M(\Gamma^*)}) \\
+&= \Assign{f}{M(\Gamma^*)}(t_1, \dots, t_n) \\
+&= f(t_1,\dots, t_n).
+\end{align*}
+L'égalité vaut donc pour tout terme clos~$t$.
+\end{proof}
+}
+
+\iftag{FOL}{%
+\begin{explain}
+  \iftag{prvEx}{Une !!{structure}~$\Struct{M}$ peut rendre vrai un
+    !!{sentence} existentiel~$\lexists[x][!A(x)]$ sans rendre
+    vraie aucune instance~$!A(t)$.}{}
+  \iftag{prvAll}{Une !!{structure}~$\Struct{M}$ peut rendre vraies
+    toutes les instances~$!A(t)$ d'un !!{sentence} universel
+    $\lforall[x][!A(x)]$ sans rendre vrai ce dernier.}{}
+  En général, tout !!{element} du !!{domain}~$\Domain{M}$ n'est pas
+  nécessairement la valeur d'un terme clos : la !!{structure} peut
+  ne pas être couverte par les termes. C'est pourquoi la relation de
+  satisfaction est définie à l'aide d'assignations aux variables.
+  Dans le modèle des termes~$\Struct{M(\Gamma^*)}$, cependant, chaque
+  !!{element} est désigné par un terme clos. Le résultat suivant
+  précise cette propriété.
+\end{explain}
+
+\begin{prop}
+\ollabel{prop:quant-termmodel}
+Soit $\Struct M(\Gamma^*)$ le modèle des termes de la
+\olref{defn:termmodel}. Supposons que les !!{variable}s libres
+de~$!A(x)$ appartiennent à~$\{x\}$.
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{$\Sat{M(\Gamma^*)}{\lexists[x][!A(x)]}$ si et
+  seulement si $\Sat{M(\Gamma^*)}{!A(t)}$ pour au moins un terme
+  clos~$t$.}{}
+\tagitem{prvAll}{$\Sat{M(\Gamma^*)}{\lforall[x][!A(x)]}$ si et
+  seulement si $\Sat{M(\Gamma^*)}{!A(t)}$ pour tout terme clos~$t$.}{}
+\end{tagenumerate}
+\end{prop}
+
+\begin{proof}
+\begin{tagenumerate}{prvEx,prvAll}
+\tagitem{prvEx}{%
+  \iftag{probEx}{Exercice.}{D'après la
+    \olref[syn][ass]{prop:sat-quant},
+    $\Sat{M(\Gamma^*)}{\lexists[x][!A(x)]}$ si et seulement s'il
+    existe une assignation~$s$ telle que
+    $\Sat{M(\Gamma^*)}{!A(x)}[s]$. Comme
+    $\Domain{M(\Gamma^*)}$ est l'ensemble des termes clos de
+    $\Lang{L}$, cela revient à dire qu'il existe une assignation~$s$
+    et un terme clos~$t$ tels que $s(x)=t$ et
+    $\Sat{M(\Gamma^*)}{!A(x)}[s]$. La valeur de~$t$ est~$t$.
+    Par la \olref[fol][syn][ext]{prop:ext-formulas}, cette dernière
+    assertion équivaut à $\Sat{M(\Gamma^*)}{!A(t)}[s]$ lorsque
+    $s(x)=t$. Enfin, la
+    \olref[fol][syn][ass]{prop:sentence-sat-true} donne
+    $\Sat{M(\Gamma^*)}{!A(t)}[s]$ si et seulement si
+    $\Sat{M(\Gamma^*)}{!A(t)}$, puisque $!A(t)$ est un
+    !!{sentence}.}}{}
+\tagitem{prvAll}{%
+  \iftag{probAll}{Exercice.}{D'après la
+    \olref[syn][ass]{prop:sat-quant},
+    $\Sat{M(\Gamma^*)}{\lforall[x][!A(x)]}$ si et seulement si,
+    pour toute assignation~$s$,
+    $\Sat{M(\Gamma^*)}{!A(x)}[s]$. Le domaine étant constitué des
+    termes clos de~$\Lang{L}$, chaque valeur~$s(x)$ est un tel
+    terme~$t$, et tout terme clos peut être choisi comme valeur de
+    $x$. La valeur du terme~$t$ est~$t$. Par la
+    \olref[fol][syn][ext]{prop:ext-formulas},
+    $\Sat{M(\Gamma^*)}{!A(x)}[s]$ si et seulement si
+    $\Sat{M(\Gamma^*)}{!A(t)}[s]$ pour $s(x)=t$. Par la
+    \olref[fol][syn][ass]{prop:sentence-sat-true}, cette dernière
+    condition équivaut à $\Sat{M(\Gamma^*)}{!A(t)}$, car $!A(t)$
+    est un !!{sentence}.}}{}
+\end{tagenumerate}
+\end{proof}
+}{}
+
+\tagprob[FOL]{probEx,probAll}
+\begin{prob}
+Achever la démonstration de la
+\olref[fol][com][mod]{prop:quant-termmodel}.
+\end{prob}
+\tagendprob
+
+\begin{lem}[Lemme de vérité]
+\ollabel{lem:truth} Soit $!A$ \iftag{FOL}{un !!{sentence}}{une !!{formula}}.
+\iftag{FOL}{Supposons que $!A$ ne contienne pas
+$\eq$. Alors}{}
+$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!A}$ si et
+seulement si $!A\in\Gamma^*$.
+\end{lem}
+
+\begin{proof}
+Démontrons les deux sens simultanément par récurrence sur le nombre
+de connecteurs\iftag{FOL}{ et de quantificateurs}{} de~$!A$.
+\iftag{FOL}{La substitution d'un terme clos dans une formule conserve
+ce nombre. Dans un cas quantifié, les instances de la matrice ont donc
+un opérateur logique de moins que l'énoncé quantifié.}{}
+\begin{enumerate}
+\tagitem{prvFalse}{\indcase{!A}{\lfalse}
+  {$\iftag{FOL}{\Sat/{M(\Gamma^*)}{\lfalse}}{\pSat/{v(\Gamma^*)}{\lfalse}}$
+    par définition de la satisfaction. D'autre part,
+    $\lfalse\notin\Gamma^*$ puisque $\Gamma^*$ est cohérent.}}{}
+
+\tagitem{prvTrue}{\indcase{!A}{\ltrue}
+  {$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{\ltrue}$
+    par définition de la satisfaction. D'autre part,
+    $\ltrue\in\Gamma^*$ car $\Gamma^*$ est cohérent et
+    !!{complete}, et $\Gamma^*\Proves\ltrue$.}}{}
+
+\tagitem{FOL}{\indcase{!A}{R(t_1, \dots, t_n)}
+  {$\Sat{M(\Gamma^*)}{\Atom{R}{t_1, \dots, t_n}}$ si et seulement si
+    $\tuple{t_1,\dots,t_n}\in\Assign{R}{M(\Gamma^*)}$, par
+    définition de la satisfaction et par le
+    \olref{lem:val-in-termmodel}, si et seulement si
+    $R(t_1,\dots,t_n)\in\Gamma^*$, par la construction de
+    $\Struct M(\Gamma^*)$.}}{\indcase{!A}{p}
+  {$\pSat{v(\Gamma^*)}{p}$ si et seulement si
+    $\pAssign v(\Gamma^*)(p)=\True$, par définition de la
+    satisfaction, si et seulement si $p\in\Gamma^*$, par la
+    construction de~$\pAssign v(\Gamma^*)$.}}
+
+\tagitem{prvNot}{%
+  \indcase{!A}{\lnot !B}
+    {$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{\indfrm}$
+    si et seulement si
+    $\iftag{FOL}{\Sat/{M(\Gamma^*)}{!B}}{\pSat/{v(\Gamma^*)}{!B}}$,
+    par définition de la satisfaction. Par hypothèse de récurrence,
+    cette dernière condition équivaut à $!B\notin\Gamma^*$.
+    Puisque $\Gamma^*$ est cohérent et !!{complete},
+    $!B\notin\Gamma^*$ si et seulement si
+    $\lnot !B\in\Gamma^*$.}}{}
+
+\tagitem{prvAnd}{%
+\iftag{probAnd}{%
+  \indcase!{!A}{!B \land !C}{}}{%
+  \indcase{!A}{!B \land !C}
+    {$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{\indfrm}$
+    si et seulement si
+    $\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!B}$ et
+    $\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!C}$,
+    par définition de la satisfaction, si et seulement si
+    $!B\in\Gamma^*$ et $!C\in\Gamma^*$, par hypothèse de
+    récurrence. D'après la
+    \olref[ccs]{prop:ccs}\olref[ccs]{prop:ccs-and}, cela équivaut à
+    $(!B\land !C)\in\Gamma^*$.}}}{}
+
+\tagitem{prvOr}{%
+\iftag{probOr}{%
+  \indcase!{!A}{!B \lor !C}{}}{%
+  \indcase{!A}{!B \lor !C}
+    {$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{\indfrm}$
+    si et seulement si
+    $\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!B}$ ou
+    $\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!C}$,
+    par définition de la satisfaction, si et seulement si
+    $!B\in\Gamma^*$ ou $!C\in\Gamma^*$, par hypothèse de
+    récurrence. D'après la
+    \olref[ccs]{prop:ccs}\olref[ccs]{prop:ccs-or}, cela équivaut à
+    $(!B\lor !C)\in\Gamma^*$.}}}{}
+
+\tagitem{prvIf}{%
+\iftag{probIf}{%
+  \indcase!{!A}{!B \lif !C}{}}{%
+  \indcase{!A}{!B \lif !C}
+    {$\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{\indfrm}$
+    si et seulement si
+    $\iftag{FOL}{\Sat/{M(\Gamma^*)}}{\pSat/{v(\Gamma^*)}}{!B}$ ou
+    $\iftag{FOL}{\Sat{M(\Gamma^*)}}{\pSat{v(\Gamma^*)}}{!C}$,
+    par définition de la satisfaction, si et seulement si
+    $!B\notin\Gamma^*$ ou $!C\in\Gamma^*$, par hypothèse de
+    récurrence. D'après la
+    \olref[ccs]{prop:ccs}\olref[ccs]{prop:ccs-if}, cela équivaut à
+    $(!B\lif !C)\in\Gamma^*$.}}}{}
+
+\iftag{FOL}{%
+\tagitem{prvAll}{%
+  \iftag{probAll}{%
+    \indcase!{!A}{\lforall[x][!B(x)]}{}}{%
+    \indcase{!A}{\lforall[x][!B(x)]}{%
+      $\Sat{M(\Gamma^*)}{\indfrm}$ si et seulement si
+      $\Sat{M(\Gamma^*)}{!B(t)}$ pour tout terme clos~$t$,
+      d'après la \olref{prop:quant-termmodel}. Par hypothèse de
+      récurrence, cela équivaut à $!B(t)\in\Gamma^*$ pour tout
+      terme clos~$t$. Par la
+      \olref[hen]{prop:saturated-instances}, cela équivaut à
+      $\lforall[x][!B(x)]\in\Gamma^*$.}}}{}
+
+\tagitem{prvEx}{%
+  \iftag{probEx}{%
+    \indcase!{!A}{\lexists[x][!B(x)]}{}}{%
+    \indcase{!A}{\lexists[x][!B(x)]}{%
+      $\Sat{M(\Gamma^*)}{\indfrm}$ si et seulement si
+      $\Sat{M(\Gamma^*)}{!B(t)}$ pour au moins un terme clos~$t$,
+      d'après la \olref{prop:quant-termmodel}. Par hypothèse de
+      récurrence, cela équivaut à $!B(t)\in\Gamma^*$ pour au
+      moins un terme clos~$t$. Par la
+      \olref[hen]{prop:saturated-instances}, cela équivaut à
+      $\lexists[x][!B(x)]\in\Gamma^*$.}}}{}
+}{}
+\end{enumerate}
+\end{proof}
+
+\tagprob[FOL]{probOr,probAnd,probIf,probEx,probAll}
+
+\begin{prob}
+Achever la démonstration du \olref[fol][com][mod]{lem:truth}.
+\end{prob}
+
+\tagendprob
+
+\tagprob[notFOL]{probOr,probAnd,probIf}
+
+\begin{prob}
+Achever la démonstration du \olref[pl][com][mod]{lem:truth}.
+\end{prob}
+
+\tagendprob
+
+\end{document}

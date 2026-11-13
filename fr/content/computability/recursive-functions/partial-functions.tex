@@ -1,0 +1,122 @@
+% Part: computability
+% Chapter: recursive-functions
+% Section: partial-functions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{rec}{par}
+\olsection{Fonctions récursives partielles}
+
+Pour motiver la définition des fonctions récursives, remarquons que
+notre preuve de l'existence de fonctions calculables mais non
+récursives primitives établit bien davantage. Elle n'utilisait
+que la possibilité d'énumérer des fonctions \emph{totales}
+$f_0,f_1,\dots$ de manière que $f_x(y)$ soit calculable en
+fonction de $x$ et de~$y$. Le raisonnement s'applique donc à
+\emph{toute classe de fonctions totales énumérable de cette
+manière}. Nous voici devant une difficulté : nous aimerions
+décrire explicitement toutes les fonctions calculables totales,
+mais aucune énumération effective de telles fonctions ne peut
+être exhaustive.\footnote{Précision éditoriale : la contradiction diagonale utilise la totalité de chaque fonction énumérée et une évaluation calculable uniforme. Elle ne contredit ni une description non effective des fonctions totales calculables ni l'énumération des fonctions partielles.}
+
+Pour en sortir, il faut admettre les fonctions \emph{partielles}.
+Nous verrons qu'il est possible d'énumérer les fonctions
+partielles calculables.\iftag{TMs}{ En fait, nous le savons
+presque déjà, puisque les machines de Turing peuvent être
+énumérées systématiquement.}{} Nous reviendrons à l'argument
+diagonal pour comprendre pourquoi il ne s'applique plus de
+la même façon lorsque des fonctions partielles sont admises.
+
+Que faut-il ajouter aux fonctions récursives primitives pour
+obtenir toutes les fonctions récursives partielles ? Il faut
+procéder en deux temps :
+\begin{enumerate}
+\item Adapter leur définition afin d'autoriser les fonctions
+  partielles.
+\item \emph{Ajouter} un schéma de définition qui produise
+  de nouvelles fonctions partielles.
+\end{enumerate}
+
+La première étape est simple. Nous partons de nouveau de la
+fonction nulle, du successeur et des projections, puis appliquons
+la composition et la récurrence primitive. Il suffit d'adapter
+ces deux opérations au cas où certains des termes en jeu ne
+sont pas définis. Si $f$ et $g$ sont des fonctions partielles,
+nous écrirons $f(x) \fdefined$ lorsque $f$ est définie en~$x$,
+c'est-à-dire lorsque $x$ appartient à son domaine, et
+$f(x) \fundefined$ dans le cas contraire. La notation
+$f(x) \simeq g(x)$ signifie que les deux valeurs sont
+indéfinies, ou qu'elles sont toutes deux définies et égales.
+Nous emploierons ces notations également pour des termes plus
+complexes. Si $h$ et $g_0,\dots,g_k$ sont des fonctions
+partielles, nous convenons que
+\[
+h(g_0(\vec x),\dots,g_k(\vec x))
+\]
+est défini si et seulement si chaque $g_i$ est définie
+en~$\vec x$ et si $h$ est définie au tuple de valeurs
+$(g_0(\vec x),\dots,g_k(\vec x))$. Dans ces conditions, les
+définitions de la composition et de la récurrence primitive
+restent celles données plus haut, avec « $\simeq$ » à la
+place de « $=$ ».
+
+L'opération que nous ajoutons est la \emph{recherche non bornée},
+ou \emph{minimisation non bornée}. Pour toute fonction partielle
+$f(x,\vec z)$ à valeurs dans les entiers naturels, définissons
+$\mu x \; f(x,\vec z)$ comme
+\begin{quote}
+  le plus petit $x$ tel que $f(0,\vec z),f(1,\vec z),
+  \dots,f(x,\vec z)$ soient toutes définies et que
+  $f(x,\vec z)=0$, s'il existe un tel~$x$.
+\end{quote}
+Dans le cas contraire, $\mu x \; f(x,\vec z)$ est indéfini.
+Cette condition détermine la valeur de manière unique.
+
+\begin{explain}
+Notre définition ne fait appel ni\iftag{TMs}{ aux machines
+de Turing ni}{} aux algorithmes, ni à un modèle de calcul
+particulier. Comme pour la composition et la récurrence
+primitive, la recherche non bornée possède néanmoins une
+interprétation opératoire. Pour une fonction partielle
+calculable, les arguments hors de son domaine correspondent
+aux calculs qui ne s'arrêtent pas. Pour calculer
+$\mu x \; f(x,\vec z)$, on calcule successivement
+$f(0,\vec z),f(1,\vec z),f(2,\vec z),\dots$ jusqu'à obtenir~$0$.
+Si l'un de ces calculs intermédiaires ne s'arrête pas,
+la recherche ne s'arrête pas non plus.
+\end{explain}
+
+Pour toute relation $R(x,\vec z)$, posons
+$\mu x \; R(x,\vec z)=\mu x \; (1 \tsub \Char{R}(x,\vec z))$.
+Autrement dit, $\mu x \; R(x,\vec z)$ renvoie le plus petit~$x$
+qui satisfait~$R$. Si $f(x,\vec z)$ est totale,
+$\mu x \; f(x,\vec z)$ coïncide donc avec
+$\mu x \; (f(x,\vec z)=0)$. La définition initiale est
+cependant plus générale : $f$ peut n'être pas définie
+partout, alors que la fonction caractéristique d'une
+relation est toujours totale.
+
+\begin{defn}
+La classe des \emph{fonctions récursives partielles} est la plus
+petite classe de fonctions partielles d'arités quelconques,
+des entiers naturels dans les entiers naturels, qui contient
+la fonction nulle, le successeur et les projections, et qui
+est close par composition, récurrence primitive et recherche
+non bornée.
+\end{defn}
+
+Certaines fonctions récursives partielles sont \emph{totales},
+c'est-à-dire définies pour tous leurs arguments.
+
+\begin{defn}
+\ollabel{defn:recursive-fn}
+La classe des \emph{fonctions récursives} est celle des
+fonctions récursives partielles qui sont totales.
+\end{defn}
+
+On dit parfois « fonction récursive totale » pour souligner
+qu'une fonction récursive est définie partout.
+
+\end{document}

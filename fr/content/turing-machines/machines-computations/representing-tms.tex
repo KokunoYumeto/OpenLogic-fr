@@ -1,0 +1,327 @@
+% Part: turing-machines
+% Chapter: machines-computations
+% Section: representing-tms
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{mac}{rep}
+\olsection{Représenter les machines de Turing}
+
+\begin{explain}
+On peut représenter visuellement une machine de
+Turing par un \emph{diagramme d'états}. Celui-ci
+est formé de nœuds reliés par des flèches.
+Chaque nœud représente un état de la machine;
+chaque flèche, une instruction exécutable à partir
+de cet état. Le détail de l'instruction figure
+au-dessus ou au-dessous de la flèche correspondante.
+Considérons la machine suivante, qui n'a que deux
+états internes, $q_0$ et~$q_1$, et une seule
+instruction :
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state]   (A)              {$q_0$};
+  \node[state]   (B) [right of=A] {$q_1$};
+
+  \path (A) edge  node {\TMtrans{\TMblank}{\TMstroke}{\TMright}} (B);
+\end{tikzpicture}
+\]
+Rappelons que la machine possède une tête de
+lecture-écriture et un ruban portant l'entrée.
+L'instruction se lit ainsi : \emph{si, dans
+l'état~$q_0$, la tête lit~$\TMblank$, écrire
+$\TMstroke$, déplacer la tête vers la droite
+et passer dans l'état~$q_1$}. Autrement dit,
+la fonction de transition associe à
+$\tuple{q_0,\TMblank}$ le triplet
+$\tuple{q_1,\TMstroke,\TMright}$.
+\end{explain}
+
+\begin{ex}
+\emph{Machine paire} : la machine de Turing suivante
+s'arrête si et seulement si le ruban porte un nombre
+pair de symboles $\TMstroke$, à condition que tous
+ces symboles précèdent le premier $\TMblank$ du
+ruban.
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state]         (A)              {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+
+  \path (A) edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (B)
+        (B) edge [loop above] node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (B)
+            edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (A);
+\end{tikzpicture}
+\]
+
+Le diagramme correspond à la fonction de transition
+suivante :
+\begin{align*}
+\delta(q_0, \TMstroke) & = \tuple{q_1, \TMstroke, \TMright},\\
+\delta(q_1, \TMstroke) & = \tuple{q_0, \TMstroke, \TMright},\\
+\delta(q_1, \TMblank)  & = \tuple{q_1, \TMblank, \TMright}
+\end{align*}
+\end{ex}
+
+\begin{explain}
+Cette machine ne s'arrête que si l'entrée contient
+un nombre pair de traits. Sinon, elle continue,
+en théorie, de fonctionner indéfiniment. Pour
+déterminer le résultat d'une machine sur une entrée,
+on peut suivre la succession de ses \emph{configurations}.
+Nous en donnerons plus loin une définition formelle.
+Pour le moment, imaginons simplement une suite de
+diagrammes décrivant la machine à chaque instant
+du calcul. Une configuration indique le contenu
+du ruban, l'état courant et la position de la
+tête de lecture-écriture.
+
+Suivons la machine paire sur une entrée de quatre
+symboles $\TMstroke$. Nous nous attendons à ce
+qu'elle s'arrête. Nous l'exécuterons ensuite sur
+trois symboles $\TMstroke$ : elle fonctionnera
+alors indéfiniment.
+
+La machine commence dans l'état~$q_0$, avec la
+tête sur le premier~$\TMstroke$. Sa configuration
+initiale se note :
+\[
+\TMendtape \TMstroke_0 \TMstroke \TMstroke \TMstroke \TMblank \ldots
+\]
+L'indice~$0$ placé sur le premier~$\TMstroke$
+indique que la tête lit ce symbole dans l'état~$q_0$.\footnote{Correction éditoriale : la glose source parle ici de l'état « one », mais le diagramme, la configuration et l'instruction indiquent tous $q_0$.}
+L'instruction applicable est
+$\delta(q_0,\TMstroke)=\tuple{q_1,\TMstroke,\TMright}$ :
+la tête se déplace donc d'une case vers la droite
+et la machine passe dans l'état~$q_1$.
+\[
+\TMendtape \TMstroke \TMstroke_1 \TMstroke \TMstroke \TMblank \ldots
+\]
+Comme la tête lit maintenant un~$\TMstroke$
+dans l'état~$q_1$, elle suit l'instruction
+$\delta(q_1,\TMstroke)=\tuple{q_0,
+  \TMstroke,\TMright}$. On obtient :
+\[
+\TMendtape \TMstroke \TMstroke \TMstroke_0 \TMstroke \TMblank \ldots
+\]
+Les deux instructions s'appliquent de nouveau
+dans le même ordre, ce qui donne les deux
+configurations suivantes :
+\[
+\TMendtape \TMstroke \TMstroke \TMstroke \TMstroke_1 \TMblank \ldots
+\]
+\[
+\TMendtape \TMstroke \TMstroke \TMstroke \TMstroke \TMblank_0 \ldots
+\]
+La machine lit alors un~$\TMblank$ dans
+l'état~$q_0$. Le diagramme ne prévoit aucune
+instruction pour cette situation : la machine
+s'est arrêtée, et l'entrée est donc acceptée.
+
+Partons maintenant d'une entrée de trois symboles
+$\TMstroke$. Les premières instructions sont les
+mêmes; seul le contenu du ruban change :
+\[
+\TMendtape \TMstroke_0 \TMstroke \TMstroke \TMblank \ldots
+\]
+\[
+\TMendtape \TMstroke \TMstroke_1 \TMstroke \TMblank \ldots
+\]
+\[
+\TMendtape \TMstroke \TMstroke \TMstroke_0 \TMblank \ldots
+\]
+\[
+\TMendtape \TMstroke \TMstroke \TMstroke \TMblank_1 \ldots
+\]
+Après avoir franchi tous les $\TMstroke$,
+la tête lit un~$\TMblank$ dans l'état~$q_1$.
+Le diagramme prescrit alors
+$\delta(q_1,\TMblank)=\tuple{q_1,
+\TMblank,\TMright}$. Comme toutes les cases
+suivantes du ruban contiennent $\TMblank$,
+la machine répète cette instruction
+\emph{indéfiniment}, reste dans l'état~$q_1$
+et se déplace toujours plus à droite. Elle
+ne s'arrête jamais et n'accepte donc pas l'entrée.
+\end{explain}
+
+\begin{explain}
+Toutes les machines ne s'arrêtent pas. Si une
+machine s'arrête quand aucune instruction n'est
+applicable, on peut construire une machine qui
+ne s'arrête jamais en prévoyant, dans chaque état,
+une flèche pour chaque symbole. Pour que la machine
+paire fonctionne indéfiniment même sur une entrée
+paire, il suffit d'ajouter une instruction pour
+la lecture de $\TMblank$ dans l'état~$q_0$.
+\end{explain}
+
+\begin{ex}
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state] (A)              {$q_0$};
+  \node[state]         (B) [right of=A] {$q_1$};
+
+  \path
+  (A) edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (B)
+      edge [loop above] node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (A)
+  (B) edge [loop above] node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (B)
+      edge [bend left] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (A);
+\end{tikzpicture}
+\]
+\end{ex}
+
+\begin{explain}
+On peut également représenter une machine de
+Turing par une \emph{table de transition}. Les
+symboles de l'alphabet du ruban figurent en
+colonnes et les états de la machine en lignes.
+À l'intersection d'un état et d'un symbole, la
+case donne le reste de l'instruction : nouvel
+état, nouveau symbole et sens du déplacement.
+La table permet de repérer aisément les situations
+où la machine s'arrête : toute case vide marque
+une absence d'instruction. Ces points d'arrêt ne
+sont pas toujours aussi visibles dans un diagramme
+d'états ou une liste d'instructions.
+\end{explain}
+
+\begin{ex}
+Voici la table de la machine paire\footnote{Correction éditoriale : la source inverse le nouvel état et le symbole écrit dans les cases remplies de cette table. Nous suivons l'ordre annoncé dans le texte : nouvel état, symbole écrit, direction.} :
+\[
+\centering
+\begin{tabular}{lllll}
+\cline{2-4}
+\multicolumn{1}{l|}{}      & \multicolumn{1}{c|}{$\TMblank$}
+& \multicolumn{1}{c|}{$\TMstroke$}     & \multicolumn{1}{c|}{$\TMendtape$}   &  \\ \cline{1-4}
+\multicolumn{1}{|l|}{$q_0$} & \multicolumn{1}{l|}{}
+& \multicolumn{1}{l|}{\TMtrans{q_1}{\TMstroke}{\TMright}} &
+\multicolumn{1}{l|}{\phantom{\TMtrans{q_1}{\TMstroke}{\TMright}}} &  \\ \cline{1-4}
+\multicolumn{1}{|l|}{$q_1$} & \multicolumn{1}{l|}{\TMtrans{q_1}{\TMblank}{\TMright}}
+& \multicolumn{1}{l|}{\TMtrans{q_0}{\TMstroke}{\TMright}} &
+\multicolumn{1}{l|}{\phantom{\TMtrans{q_1}{\TMstroke}{\TMright}}} &  \\ \cline{1-4}
+\end{tabular}
+\]
+On voit que la machine s'arrête lorsqu'elle
+lit~$\TMblank$ dans l'état~$q_0$.
+\end{ex}
+
+\begin{explain}
+Jusqu'ici, nous n'avons considéré que des machines
+qui lisent et acceptent une entrée. Une machine de
+Turing peut aussi écrire. Considérons, parmi
+beaucoup d'autres exemples possibles, une
+\emph{machine doubleuse} : si le ruban contient
+initialement un bloc de~$n$ symboles $\TMstroke$,
+elle produit un bloc de~$2n$ symboles $\TMstroke$.
+\end{explain}
+
+\begin{ex}
+  \ollabel{ex:doubler} Avant de construire une machine
+  doubleuse, il faut choisir une \emph{stratégie}.
+  Notre machine ne peut pas mémoriser dans ses seuls états un nombre arbitrairement grand de
+  symboles $\TMstroke$ déjà lus; elle doit donc
+  les suivre sur le ruban. Une méthode consiste à
+  séparer l'entrée de la sortie par un~$\TMblank$.
+  La machine efface le premier~$\TMstroke$ de
+  l'entrée, traverse le reste de celle-ci, laisse
+  une case~$\TMblank$ puis écrit deux nouveaux
+  symboles $\TMstroke$. Elle revient ensuite
+  chercher le second~$\TMstroke$ de l'entrée
+  et le double à son tour. Pour chaque symbole
+  $\TMstroke$ de l'entrée, elle en écrit donc
+  deux dans la sortie. L'effacement progressif
+  de l'entrée garantit qu'aucun symbole n'est
+  oublié ni traité deux fois. Une fois l'entrée
+  entièrement effacée, le ruban contient un bloc
+  de~$2n$ symboles $\TMstroke$. Le diagramme de
+  la machine obtenue figure dans la \olref{fig:doubler}.
+  \begin{figure}
+\[
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[initial,state] (1)              {$q_0$};
+  \node[state]         (2) [right of=1] {$q_1$};
+  \node[state]         (3) [right of=2] {$q_2$};
+  \node[state]         (4) [below of=3] {$q_3$};
+  \node[state]         (5) [left of=4]  {$q_4$};
+  \node[state]         (6) [left of=5]  {$q_5$};
+
+  \path (1) edge node {\TMtrans{\TMstroke}{\TMblank}{\TMright}} (2)
+    (2) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (2)
+      edge node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (3)
+    (3) edge [loop above] node {\TMtrans{\TMstroke}{\TMstroke}{\TMright}} (3)
+        edge node {\TMtrans{\TMblank}{\TMstroke}{\TMright}} (4)
+    (4) edge [loop below] node {\TMtrans{\TMblank}{\TMstroke}{\TMleft}} (4)
+        edge node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (5)
+    (5) edge [loop below]  node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (5)
+        edge              node {\TMtrans{\TMblank}{\TMblank}{\TMleft}} (6)
+    (6) edge [loop below] node {\TMtrans{\TMstroke}{\TMstroke}{\TMleft}} (6)
+        edge              node {\TMtrans{\TMblank}{\TMblank}{\TMright}} (1);
+\end{tikzpicture}
+\]
+\caption{Une machine doubleuse}
+\ollabel{fig:doubler}
+\end{figure}
+\end{ex}
+
+\begin{prob}
+Choisissez une entrée et suivez les configurations
+successives de la machine doubleuse de l'\olref[tur][mac][rep]{ex:doubler}.
+\end{prob}
+
+\begin{prob}
+Concevez une machine de Turing d'alphabet
+$\{\TMendtape,\TMblank,A,B\}$ qui accepte,
+c'est-à-dire s'arrête sur, toute chaîne de $A$
+et de $B$ contenant autant de $A$ que de $B$
+\emph{et} dans laquelle tous les $A$ précèdent
+tous les $B$. Elle doit rejeter, c'est-à-dire
+ne pas s'arrêter sur, les chaînes où ces nombres
+diffèrent ou où un $A$ vient après un~$B$.
+Par exemple, elle doit accepter $AABB$ et $AAABBB$,
+mais rejeter $AAB$ et $AABBAABB$.
+\end{prob}
+
+\begin{prob}
+Concevez une machine de Turing d'alphabet
+$\{\TMendtape,\TMblank,A,B\}$ qui prend pour
+entrée une chaîne quelconque~$\alpha$ de $A$
+et de $B$, et la duplique pour produire
+$\alpha\alpha$. Par exemple, l'entrée $ABBA$
+doit produire $ABBAABBA$.
+\end{prob}
+
+\begin{prob}
+\emph{Ordonnée ?} Concevez une machine de Turing
+d'alphabet $\{\TMendtape,\TMblank,A,B\}$ qui,
+sur une suite finie de $A$ et de $B$, détermine
+si tous les $A$ précèdent tous les $B$. Elle
+doit laisser la chaîne d'entrée sur le ruban,
+puis s'arrêter si la chaîne est « ordonnée »
+et tourner indéfiniment sinon.
+\end{prob}
+
+\begin{prob}
+\emph{Trieuse} : concevez une machine de Turing
+d'alphabet $\{\TMendtape,\TMblank,A,B\}$ qui
+réordonne une suite finie de $A$ et de $B$ de
+façon que tous les $A$ soient à gauche de tous
+les~$B$. Par exemple, $BABAA$ doit devenir
+$AAABB$, et $ABBABB$ doit devenir $AABBBB$.
+\end{prob}
+
+\end{document}

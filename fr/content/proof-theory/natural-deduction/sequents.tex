@@ -1,0 +1,198 @@
+% Partie : théorie de la démonstration
+% Chapitre : déduction naturelle
+% Section : séquents
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nat}{seq}
+
+\olsection{Déduction naturelle avec séquents : \Log{N2c} et~\Log{N2i}}
+
+!!^a{proof}~$\delta$ dans \Log{N1c} ou \Log{N1i} établit
+que sa !!{formula} finale~$!A$ découle de ses hypothèses
+ouvertes. Si $\Gamma$ est l'ensemble des !!{formula}s~$!B$
+telles que $!B^x$ apparaisse comme hypothèse ouverte
+dans~$\delta$, on peut écrire $\delta \Proves \Gamma
+\Sequent !A$. Cela suggère de présenter la déduction
+naturelle au moyen de séquents. Chaque séquent indique
+alors les hypothèses ouvertes dont dépend la formule
+à droite : ce sont les hypothèses ouvertes de la
+sous-!!{proof} qui se termine par ce séquent. Cette
+présentation, appelée déduction naturelle avec séquents,
+donne les systèmes \Log{N2c} et~\Log{N2i}.
+
+Pour rapprocher les présentations \Log{N1} et \Log{N2},
+prenons pour ensembles~$\Gamma$ à gauche des ensembles de
+!!{formula}s étiquetées~$x:!B$. Les règles de \Log{N1}
+n'agissent que sur les !!{formula}s prémisses, c'est-à-dire
+les !!{formula}s finales des sous-!!{proof}s immédiates.
+De même, les formules principales et actives de \Log{N2}
+se trouvent dans le conséquent. À gauche, le \emph{contexte}
+réunit les hypothèses étiquetées encore ouvertes.
+
+Les étiquettes doivent être compatibles dans l'arbre entier :
+une même étiquette ne désigne pas deux formules différentes.
+Dans un schéma de décharge, le contexte résiduel ne
+contient pas la classe étiquetée que l'on retire.
+
+Dans les !!{proof}s de \Log{N2}, les séquents initiaux
+remplacent les hypothèses ; ce sont des axiomes de la forme
+\[x:!A \Sequent !A.\]
+Les règles correspondent exactement à celles de \Log{N1}
+et figurent dans le \olref{tab:N2}.
+
+\subfile{rules-N2}
+
+Comme dans les systèmes \Log{N1}, les règles
+\Intro{\lif}, \Intro{\lnot}, \Elim{\lor}, \Elim{\lexists}
+et, dans le système classique, \FalseCl peuvent s'appliquer
+avec une décharge vacante. Dans les systèmes \Log{N2},
+la classe à décharger peut donc être absente du contexte
+de la prémisse concernée.
+
+
+
+\begin{prop}
+Si $\delta$ est une !!{proof} de~$!A$ dans~\Log{N1c}
+(respectivement \Log{N1i}), il existe une
+!!{proof}~$\delta'$ de $\Gamma \Sequent !A$ dans~\Log{N2c}
+(respectivement \Log{N2i}), où $\Gamma$ est l'ensemble
+des~$x:!B$ tels que $!B^x$ soit une hypothèse ouverte
+de~$\delta$.
+\end{prop}
+
+\begin{proof}
+Procédons par récurrence sur $n=\pheight{\delta}$.
+Si $n=0$, $\delta$ est une unique hypothèse ouverte~$!A^x$.
+Alors $\Gamma = \{x:!A\}$, et $\Gamma \Sequent !A$ est
+un axiome de \Log{N2c} ou~\Log{N2i}.
+
+Si $n>0$, distinguons les cas selon la dernière inférence
+de~$\delta$. Nous en traitons un ; les autres sont laissés
+en exercice.
+
+Supposons que la dernière inférence soit $\Intro{\lif}$.
+Alors $\delta$ se termine par
+\[
+  \AxiomC{$\Discharge{!B}{x}$}
+  \RightLabel{$\delta_1$}
+  \DeduceC{$!C$}
+  \DischargeRule{\Intro{\lif}}{x}
+  \UnaryInfC{$!B \lif !C$}
+  \DisplayProof
+  \]
+L'hypothèse de récurrence donne une
+!!{proof}~$\delta_1'$ de $\Gamma' \Sequent !C$ dans~\Log{N2c}
+(respectivement \Log{N2i}), où $\Gamma'$ est l'ensemble des
+hypothèses étiquetées ouvertes dans~$\delta_1$.
+Si $!B^x$ est une hypothèse ouverte de $\delta_1$, elle
+est déchargée par \Intro{\lif}. L'ensemble des hypothèses
+ouvertes de~$\delta$ est donc
+$\Gamma = \Gamma' \setminus \{x:!B\}$.
+Ainsi, $\delta_1'$ est une !!{proof}
+de~$x:!B, \Gamma \Sequent !C$, et l'on prend pour $\delta'$
+\[
+  \AxiomC{}
+  \RightLabel{$\delta_1'$}
+  \Deduce$x:!B, \Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+Si $!B^x$ n'est pas une hypothèse ouverte de~$\delta_1$,
+l'inférence \Intro{\lif} ne décharge aucune hypothèse.
+Les hypothèses ouvertes de $\delta$ et de $\delta_1$
+sont alors les mêmes. Comme la formule de contexte
+$x:!B$ n'est pas requise dans la prémisse de \Intro{\lif}
+dans~\Log{N2c} ou~\Log{N2i}, on prend pour $\delta'$
+\[
+  \AxiomC{}
+  \RightLabel{$\delta_1'$}
+  \Deduce$\Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+Les autres dernières règles se traitent de manière analogue.
+\end{proof}
+
+\begin{prop}
+Si $\delta$ est une !!{proof} de $\Gamma \Sequent !A$
+dans \Log{N2c} (respectivement \Log{N2i}), il existe une
+!!{proof}~$\delta'$ dans \Log{N1c} (respectivement \Log{N1i})
+de !!{formula} finale~$!A$, dont les hypothèses ouvertes
+sont exactement les $!B^x$ correspondant aux
+$x:!B \in \Gamma$.
+\end{prop}
+
+\begin{proof}
+Procédons encore par récurrence sur la !!{height}~$n$
+de~$\delta$. Si $n=0$, $\delta$ est un axiome
+$x:!A \Sequent !A$, et la !!{proof}~$\delta'$ est
+l'hypothèse~$!A^x$.
+
+Si $n>0$, distinguons les cas selon la dernière inférence.
+Par exemple, si c'est~$\Intro{\lif}$, $\delta$ se termine par
+\[
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$x:!B, \Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \quad\text{ ou }\quad
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_1$}
+  \Deduce$\Gamma \fCenter !C$
+  \RightLabel{\Intro{\lif}}
+  \UnaryInf$\Gamma \fCenter !B \lif !C$
+  \DisplayProof
+  \]
+L'hypothèse de récurrence donne une
+!!{proof}~$\delta_1'$ de~$!C$ dans~\Log{N1c}
+(respectivement \Log{N1i}), avec exactement les hypothèses
+ouvertes étiquetées du contexte de la prémisse.
+Dans le premier cas, $!B^x$ est une hypothèse ouverte de
+cette sous-preuve ; dans le second, elle ne l'est pas.
+On obtient la !!{proof}~$\delta'$ en appliquant
+\Intro{\lif}, avec décharge dans le premier cas et
+sans décharge dans le second :
+\[
+  \bottomAlignProof
+  \AxiomC{$\Discharge{!B}{x}$}
+  \RightLabel{$\delta_1'$}
+  \DeduceC{$!C$}
+  \DischargeRule{\Intro{\lif}}{x}
+  \UnaryInfC{$!B \lif !C$}
+  \DisplayProof
+  \quad\text{ ou }\quad
+  \bottomAlignProof
+  \AxiomC{}
+  \RightLabel{$\delta_1'$}
+  \DeduceC{$!C$}
+  \RightLabel{\Intro{\lif}}
+  \UnaryInfC{$!B \lif !C$}
+  \DisplayProof
+  \]
+Les autres règles se traitent de même ; pour les règles
+de quantification, le contexte enregistre précisément
+les hypothèses ouvertes auxquelles s'applique la
+condition de la constante propre.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

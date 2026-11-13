@@ -1,0 +1,171 @@
+% Partie : intuitionistic-logic
+% Chapitre : soundness-completeness
+% Section : soundness-nd
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sc}{snd}
+
+\olsection{Correction de la déduction naturelle}
+
+Nous allons démontrer la correction de la déduction naturelle pour la
+sémantique relationnelle : si !!a{formula} est !!{derivable} à partir
+d'un ensemble d'hypothèses, alors cet ensemble entraîne la
+!!{formula}.
+
+\begin{thm}[Correction]
+  \ollabel{thm:soundness}
+  Si $\Gamma \Proves !A$, alors $ \Gamma \Entails !A$.
+\end{thm}
+
+\begin{proof}
+  Nous démontrons que si $\Gamma \Proves !A$, alors
+  $\Gamma \Entails !A$. La preuve procède par récurrence sur la
+  !!{derivation} de~$!A$ à partir de~$\Gamma$.
+
+  \begin{enumerate}
+  \item Si la !!{derivation} se réduit à l'hypothèse~$!A$, nous avons
+    $!A \Proves !A$ et devons montrer $!A \Entails !A$. Supposons
+    $\mSat{M}{!A}[w]$. Alors, trivialement,
+    $\mSat{M}{!A}[w]$.
+
+  \item La !!{derivation} se termine par $\Intro{\land}$ :
+    \iftag{probAnd}{Exercice.}{Les !!{derivation}s des prémisses
+      $!B$ à partir des hypothèses !!{undischarged}s~$\Gamma$ et
+      de~$!C$ à partir des hypothèses !!{undischarged}s~$\Delta$
+      établissent $\Gamma \Proves !B$ et $\Delta \Proves !C$.
+      Par hypothèse de récurrence, $\Gamma \Entails !B$ et
+      $\Delta \Entails !C$. Il faut montrer
+      $\Gamma \cup \Delta \Entails !B \land !C$, car les hypothèses
+      !!{undischarged}s de la !!{derivation} entière sont celles de
+      $\Gamma$ réunies à celles de $\Delta$. Supposons
+      $\mSat{M}{\Gamma \cup \Delta}[w]$. Alors
+      $\mSat{M}{\Gamma}[w]$ aussi. Puisque $\Gamma \Entails !B$,
+      nous avons $\mSat{M}{!B}[w]$ et, de même,
+      $\mSat{M}{!C}[w]$. Donc $\mSat{M}{!B \land !C}[w]$.}
+
+  \item La !!{derivation} se termine par $\Elim{\land}$ :
+    \iftag{probAnd}{Exercice.}{La !!{derivation} de la prémisse
+      $!B \land !C$ à partir des hypothèses !!{undischarged}s
+      $\Gamma$ établit $\Gamma \Proves !B \land !C$. Par hypothèse
+      de récurrence, $\Gamma \Entails !B \land !C$. Il faut montrer
+      $\Gamma \Entails !B$. Supposons $\mSat{M}{\Gamma}[w]$.
+      Puisque $\Gamma \Entails !B \land !C$, nous avons
+      $\mSat{M}{!B \land !C}[w]$, donc $\mSat{M}{!B}[w]$.
+      De même, si $\Elim\land$ conclut~$!C$, alors
+      $\Gamma \Entails !C$.}
+
+  \item La !!{derivation} se termine par $\Intro{\lor}$ :
+    \iftag{probOr}{Exercice.}{Supposons que la prémisse soit $!B$
+      et que les hypothèses !!{undischarged}s de la !!{derivation}
+      concluant~$!B$ soient $\Gamma$. Alors $\Gamma \Proves !B$
+      et, par hypothèse de récurrence, $\Gamma \Entails !B$.
+      Il faut montrer $\Gamma \Entails !B \lor !C$. Supposons
+      $\mSat{M}{\Gamma}[w]$. Puisque $\Gamma \Entails !B$,
+      nous avons $\mSat{M}{!B}[w]$, donc aussi
+      $\mSat{M}{!B \lor !C}[w]$. De même, si la prémisse est~$!C$,
+      nous avons $\Gamma \Entails !C$.}
+
+  \item La !!{derivation} se termine par~$\Elim{\lor}$ :
+    \iftag{probOr}{Exercice.}{Les !!{derivation}s concluant les
+      prémisses établissent $!B \lor !C$ à partir des hypothèses
+      !!{undischarged}s~$\Gamma$, $!D$ à partir des hypothèses
+      !!{undischarged}s $\Delta_1 \cup \{!B\}$ et $!D$ à partir des
+      hypothèses !!{undischarged}s~$\Delta_2 \cup \{!C\}$. Ainsi,
+      $\Gamma \Proves !B \lor !C$,
+      $\Delta_1 \cup \{!B\} \Proves !D$ et
+      $\Delta_2 \cup \{!C\} \Proves !D$. Par hypothèse de récurrence,
+      $\Gamma \Entails !B \lor !C$,
+      $\Delta_1 \cup \{!B\} \Entails !D$ et
+      $\Delta_2 \cup \{!C\} \Entails !D$. Il faut démontrer
+      $\Gamma \cup \Delta_1 \cup \Delta_2 \Entails !D$.
+
+    Supposons $\mSat{M}{\Gamma \cup \Delta_1 \cup \Delta_2}[w]$.
+    Alors $\mSat{M}{\Gamma}[w]$ et, puisque
+    $\Gamma \Entails !B \lor !C$, nous avons
+    $\mSat{M}{!B \lor !C}[w]$. Par définition de
+    $\mSat{M}{}$, on a soit $\mSat{M}{!B}[w]$, soit
+    $\mSat{M}{!C}[w]$. Distinguons les deux cas.
+    (a)~$\mSat{M}{!B}[w]$. Alors
+    $\mSat{M}{\Delta_1 \cup \{!B\}}[w]$. Puisque
+    $\Delta_1 \cup \{!B\} \Entails !D$, nous obtenons
+    $\mSat{M}{!D}[w]$.
+    (b)~$\mSat{M}{!C}[w]$. Alors
+    $\mSat{M}{\Delta_2 \cup \{!C\}}[w]$. Puisque
+    $\Delta_2 \cup \{!C\} \Entails !D$, nous obtenons
+    $\mSat{M}{!D}[w]$. Dans les deux cas,
+    $\mSat{M}{!D}[w]$, comme voulu.}
+
+  \item La !!{derivation} se termine par $\Intro{\lif}$ et conclut
+    $!B\lif !C$. Sa prémisse est~$!C$, et la !!{derivation} de cette
+    prémisse a pour hypothèses !!{undischarged}s~$\Gamma \cup
+    \{!B\}$. Ainsi, $\Gamma \cup \{!B\} \Proves !C$ et, par
+    hypothèse de récurrence, $\Gamma \cup \{!B\} \Entails !C$.
+    Il faut montrer $\Gamma \Entails !B \lif !C$.
+
+    Supposons $\mSat{M}{\Gamma}[w]$. Nous voulons montrer que,
+    pour tout $w'$ tel que $Rww'$, si $\mSat{M}{!B}[w']$, alors
+    $\mSat{M}{!C}[w']$. Supposons donc $Rww'$ et
+    $\mSat{M}{!B}[w']$. Par la \olref[sem][rel]{prop:true-monotonic},
+    $\mSat{M}{\Gamma}[w']$. Puisque
+    $\Gamma \cup \{!B\} \Entails !C$, nous avons
+    $\mSat{M}{!C}[w']$, comme voulu.
+
+  \item La !!{derivation} se termine par $\Elim{\lif}$ et conclut
+    $!C$. Ses prémisses sont $!B \lif !C$ et $!B$, obtenues par des
+    !!{derivation}s à partir des hypothèses !!{undischarged}s
+    $\Gamma$ et $\Delta$. Ainsi, $\Gamma \Proves !B \lif !C$ et
+    $\Delta \Proves !B$. Par hypothèse de récurrence,
+    $\Gamma \Entails !B \lif !C$ et $\Delta \Entails !B$.
+    Il faut montrer $\Gamma \cup \Delta \Entails !C$.
+
+    Supposons $\mSat{M}{\Gamma \cup \Delta}[w]$. Puisque
+    $\mSat{M}{\Gamma}[w]$ et $\Gamma \Entails !B \lif !C$,
+    nous avons $\mSat{M}{!B \lif !C}[w]$. Par définition,
+    pour tout $w'$ tel que $Rww'$, si $\mSat{M}{!B}[w']$,
+    alors $\mSat{M}{!C}[w']$. Comme $R$ est réflexive,
+    $w$ est parmi les $w'$ tels que $Rww'$ ; ainsi,
+    $\mSat{M}{!B}[w]$ implique $\mSat{M}{!C}[w]$. Puisque
+    $\mSat{M}{\Delta}[w]$ et $\Delta \Entails !B$,
+    nous avons $\mSat{M}{!B}[w]$, donc $\mSat{M}{!C}[w]$,
+    comme voulu.
+
+  \item La !!{derivation} se termine par $\FalseInt$ et conclut
+    $!A$. Sa prémisse est $\lfalse$ et les hypothèses
+    !!{undischarged}s de la !!{derivation} de cette prémisse sont
+    $\Gamma$. Alors $\Gamma \Proves \lfalse$ et, par hypothèse de
+    récurrence, $\Gamma \Entails \lfalse$. Il faut montrer
+    $\Gamma \Entails !A$.
+
+    Raisonnons par l'absurde. Si $\Gamma \Entails/ !A$, il existe
+    un modèle~$\mModel{M}$ et un monde~$w$ tels que
+    $\mSat{M}{\Gamma}[w]$ et $\mSat/{M}{!A}[w]$. Puisque
+    $\Gamma \Entails \lfalse$, nous aurions
+    $\mSat{M}{\lfalse}[w]$. C'est impossible, car, par définition,
+    $\mSat/{M}{\lfalse}[w]$. Donc $\Gamma \Entails !A$.
+  \item La !!{derivation} se termine par $\Intro\lnot$ : exercice.
+  \item La !!{derivation} se termine par $\Elim\lnot$ : exercice.
+  \end{enumerate}
+\end{proof}
+
+\begin{prob}
+  Complétez la preuve du \olref[int][sc][snd]{thm:soundness}. Pour les
+  cas de $\Intro\lnot$ et $\Elim\lnot$, utilisez la définition de
+  $\mSat{M}{\lnot !A}[w]$ dans la
+  \olref[int][sem][rel]{defn:true-at-w} : ne traitez pas
+  $\lnot !A$ comme une abréviation de $!A \lif \lfalse$.
+\end{prob}
+
+\begin{prob}
+  Montrez que les !!{formula}s suivantes ne sont pas !!{derivable}s
+  en logique intuitionniste :
+  \begin{enumerate}
+    \item $(!A \lif !B) \lor (!B \lif !A)$
+    \item $(\lnot\lnot !A \lif !A) \lif (!A \lor \lnot !A)$
+    \item $(!A \lif !B \lor !C) \lif \bigl((!A \lif !B)\lor(!A \lif !C)\bigr)$
+  \end{enumerate}
+\end{prob}
+
+\end{document}

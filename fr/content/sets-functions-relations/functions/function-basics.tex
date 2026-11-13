@@ -69,8 +69,8 @@ chaque entier strictement positif~$n$ possède deux racines carrées,
 $\sqrt{n}$ et~$-\sqrt{n}$. On obtient une fonction en ne retenant que
 la racine carrée positive ou nulle :
 $\sqrt{\phantom{X}} \colon \Nat \to \Real$.
-\footnote{Précision éditoriale : on inclut la racine nulle pour que
-la fonction soit aussi définie en zéro, qui appartient à son domaine.}
+Pour $n=0$, cette règle donne la valeur $0$.
+%
 \end{ex}
 
 \begin{ex}
@@ -103,8 +103,8 @@ Soit $g \colon \Nat \to \Nat$ définie par $g(x) = x+2-1$.
 C’est une fonction qui reçoit des entiers naturels et renvoie des
 entiers naturels. À un entier naturel~$x$, elle associe le prédécesseur
 du successeur du successeur de~$x$, soit $x+1$.
-\footnote{Correction éditoriale : l’original appelait l’entrée
-$n$ avant de la désigner par $x$ ; on emploie ici la même lettre.}
+%
+%
 \end{ex}
 
 \begin{explain}
@@ -132,13 +132,13 @@ h(x) =
 \end{cases}
 \]
 Tout entier naturel étant pair ou impair, cette fonction renvoie toujours
-un entier naturel. Dans une telle définition par cas disjoints, toute
-entrée possible doit relever d’un cas et d’un seul. Il faut parfois
-démontrer que les cas sont exhaustifs et mutuellement exclusifs.
-\footnote{Précision éditoriale : l’original présente cette condition comme
-une exigence générale. Des cas peuvent aussi se recouper, à condition
-qu’ils attribuent la même valeur aux entrées communes ; toutes les entrées
-doivent néanmoins être couvertes.}
+un entier naturel. Dans une définition par cas disjoints, toute entrée
+possible doit relever d’un cas et d’un seul. Il faut parfois démontrer
+que les cas sont exhaustifs et mutuellement exclusifs.
+En général, les cas doivent couvrir le domaine. Ils peuvent se recouper
+à condition qu’ils attribuent la même valeur aux entrées communes.
+%
+%
 \end{ex}
 
 \end{document}

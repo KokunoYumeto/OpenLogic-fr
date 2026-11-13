@@ -1,0 +1,58 @@
+% Part: many-valued-logic
+% Chapter: syntax-and-semantics
+% Section: formulas
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{syn}{fml}
+
+\olsection{Formules}
+
+\begin{defn}[Formule]
+\ollabel{defn:formulas}
+L'ensemble~$\Frm[L]$ des
+\emph{formules} d'un langage
+propositionnel~$\Lang L$ est défini
+par induction comme suit :
+\begin{enumerate}
+\item Toute variable propositionnelle
+  $\Obj p_i$ est une formule atomique.
+\item Tout connecteur d'arité~$0$
+  (constante propositionnelle) de
+  $\Lang L$ est une formule atomique.
+\item Si $\star$ est un connecteur d'arité~$n\geq1$ de $\Lang L$
+  et si $!A_1,\dots,!A_n$ sont des formules, alors
+  $\star(!A_1,\dots,!A_n)$ est une formule.
+\tagitem{limitClause}{Rien d'autre
+  n'est une formule.}{}
+\end{enumerate}
+Si $\star$ est unaire, nous écrirons
+souvent $\star !A_1$ au lieu de
+$\star(!A_1)$. S'il est binaire,
+nous écrirons souvent
+$(!A_1\star !A_2)$ au lieu de
+$\star(!A_1,!A_2)$.
+\end{defn}
+
+Comme d'habitude, nous omettrons
+souvent les parenthèses extérieures.
+
+\begin{ex}
+Dans le langage usuel~$\Lang{L_0}$,
+$\Obj p_1\lif(\Obj p_1\land
+\lnot\Obj p_2)$ est une formule.
+Dans le langage de la logique produit,
+on l'écrirait plutôt
+$\Obj p_1\lif(\Obj p_1\odot
+\lnot\Obj p_2)$. Si nous ajoutons
+au langage le connecteur unaire
+$\triangle$, nous obtenons aussi
+des formules telles que
+$\triangle(\Obj p_1\land\Obj p_2)
+\lif(\triangle\Obj p_1\land
+\triangle\Obj p_2)$.
+\end{ex}
+
+\end{document}

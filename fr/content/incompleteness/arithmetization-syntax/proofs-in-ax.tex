@@ -1,0 +1,257 @@
+% Part: incompleteness
+% Chapter: arithmetization-syntax
+% Section: proofs-in-ax
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{art}{pax}
+\olsection{\usetoken{P}{derivation} axiomatiques}
+
+\begin{explain}
+Pour arithmétiser les !!{derivation}s axiomatiques, nous devons les
+représenter par des nombres. Comme ces !!{derivation}s sont de
+simples suites de !!{formula}s, il est naturel de coder chacune
+d'elles par le code de la suite des codes des !!{formula}s qu'elle
+contient. Les tests de cette section portent sur les dérivations
+dont toutes les lignes sont des énoncés.
+\end{explain}
+
+\begin{defn}
+Si $\delta$ est une !!{derivation} axiomatique formée des
+!!{formula}s $!A_1$, \dots,~$!A_n$, alors son numéro de G\"odel
+$\Gn{\delta}$ est
+\[
+\tuple{\Gn{!A_1}, \dots, \Gn{!A_n}}.
+\]
+\end{defn}
+
+\begin{ex}
+  Considérons la !!{derivation} très simple :
+  \begin{derivation}
+  1. & $!B \lif (!B \lor !A)$ \\
+  2. & $(!B \lif (!B \lor !A)) \lif (!A  \lif (!B \lif (!B \lor !A)))$\\
+  3. & $!A  \lif (!B \lif (!B \lor !A))$
+  \end{derivation}
+  Le numéro de G\"odel de cette !!{derivation} est
+  \begin{align*}
+  \openTuple\,
+    & \Gn{!B \lif (!B \lor !A)}, \\
+    &\Gn{(!B \lif (!B \lor !A)) \lif (!A  \lif (!B \lif (!B \lor !A)))},\\
+    & \Gn{!A  \lif (!B \lif (!B \lor !A))} \,\closeTuple.
+  \end{align*}
+\end{ex}
+
+\begin{explain}
+Une fois cette représentation des !!{derivation}s fixée, nous
+devons montrer que nous pouvons les manipuler par des opérations
+récursives primitives et exprimer ainsi leurs propriétés et
+relations essentielles. Certaines opérations sont simples : si $d$
+est le numéro de G\"odel d'!!a{derivation}, alors
+$(d)_{\len{d}-1}$ est le numéro de G\"odel de sa !!{formula}
+finale. D'autres propriétés sont beaucoup plus difficiles à
+traiter; nous en esquisserons au moins la méthode. Notre objectif
+est de montrer que la relation « $\delta$ est !!a{derivation}
+de~$!A$ à partir de~$\Gamma$ » est récursive primitive sur les
+numéros de G\"odel de $\delta$ et de~$!A$.
+\end{explain}
+
+\begin{prop}
+\ollabel{prop:followsby}
+Les relations suivantes sont récursives primitives :
+\begin{enumerate}
+\item $!A$ est un axiome.
+\item La ligne~$i$ de~$\delta$ est justifiée par modus ponens.
+\item La ligne~$i$ de~$\delta$ est justifiée par \QR.
+\item $\delta$ est une !!{derivation} correcte.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Nous devons montrer que les relations correspondantes entre les
+numéros de G\"odel des !!{formula}s et des !!{derivation}s sont
+récursives primitives.
+\begin{enumerate}
+\item Nous disposons d'une liste de schémas d'axiomes; $!A$ est un
+  axiome si elle est de la forme prescrite par l'un de ces schémas.
+  La liste étant finie, il suffit de montrer que, pour chaque
+  schéma, nous pouvons déterminer par un test récursif primitif si
+  $!A$ en est une instance. Considérons par exemple le schéma
+  \[
+  !B \lif (!C \lif !B).
+  \]
+  La !!{formula}~$!A$ en est une instance s'il existe des
+  !!{formula}s $!B$ et $!C$ telles que nous obtenions $!A$ en
+  concaténant `$($', $!B$, `$\lif$', `$($', $!C$, `$\lif$',
+  $!B$ et~`$))$'. Nous pouvons tester cette propriété sur le
+  numéro de G\"odel~$n$ de~$!A$ : la concaténation des suites
+  est récursive primitive et les numéros de G\"odel de $!B$ et
+  de $!C$ sont inférieurs à celui de~$!A$ lorsqu'il s'agit de
+  sous-!!{formula}s de~$!A$. Nous définissons donc
+  \begin{multline*}
+  \fn{IsAx}_{!B \lif (!C \lif !B)}(n) \defiff \bexists{b< n}{
+    \bexists{c < n}{(\fn{Sent}(b) \land \fn{Sent}(c) \land {}}}\\ n =
+  \Gn{(} \concat b \concat \Gn{\lif} \concat \Gn{(} \concat c \concat
+  \Gn{\lif} \concat b \concat \Gn{))}).
+  \end{multline*}
+  Une définition analogue pour chaque schéma d'axiomes permet,
+  par disjonction, de définir $\fn{IsAx}(n)$ : « $n$ est le
+  numéro de G\"odel d'un axiome ».
+\item La ligne~$i$ de~$\delta$ est justifiée par modus ponens si
+  et seulement s'il existe deux lignes antérieures $j,k<i$ telles
+  que la ligne~$j$ porte une !!{formula}~$!A$, la ligne~$k$
+  porte $!A \lif !B$ et la ligne~$i$ porte~$!B$.
+  \begin{multline*}
+    \fn{MP}(d, i) \defiff \bexists{j < i}{\bexists{k < i}{}}\\
+    (d)_k = \Gn{(} \concat (d)_j
+      \concat \Gn{\lif} \concat (d)_i \concat \Gn{)}
+  \end{multline*}
+  La quantification bornée, la concaténation et l'égalité étant
+  récursives primitives, cette formule définit une relation
+  récursive primitive.
+\item Une ligne de~$\delta$ est justifiée par \QR{} si elle est de
+  la forme $!B \lif \lforall[x][!A(x)]$, si une ligne antérieure
+  porte $!B \lif !A(c)$ pour une !!{constant}~$c$ et si $c$
+  n'apparaît ni dans~$!B$ ni dans~$!A(x)$. Cela revient aux conditions suivantes :
+  \begin{enumerate}
+  \item il existe !!a{sentence}~$!B$ et
+  \item !!a{formula}~$!A(x)$ dont $x$ est la seule variable
+    éventuellement libre, tels que
+  \item la ligne~$i$ porte $!B \lif \lforall[x][!A(x)]$,
+  \item une ligne~$j<i$ porte $!B \lif \Subst{!A}{c}{x}$ pour une
+    constante~$c$,
+  \item et $c$ n'apparaît ni dans~$!B$ ni dans~$!A(x)$.
+  \end{enumerate}
+  Toutes ces conditions sont récursives primitives : les numéros
+  de G\"odel de $!B$, de $!A(x)$ et de $x$ sont inférieurs à celui
+  de la !!{formula} de la ligne~$i$. Pour borner le code de $c$,
+  posons $N(d)=\sum_{r<\len{d}}\len{(d)_r}$ et
+  $K(d,j)=1+\max((d)_j,\Gn{\Obj c_{N(d)}})$. Si $x$ a une occurrence
+  libre dans $!A(x)$, la constante choisie figure à la ligne~$j$ et son
+  numéro de G\"odel est inférieur à $(d)_j$. Sinon, la substitution
+  laisse $!A(x)$ inchangée. Parmi les $N(d)+1$ premières constantes,
+  l'une au moins est absente de toutes les lignes, puisque celles-ci
+  contiennent au total $N(d)$ symboles. Dans les deux cas, une
+  constante convenable, si elle existe, a un code inférieur à $K(d,j)$.
+  On obtient
+  \begin{multline*}
+    \fn{QR}_1(d, i) \defiff \bexists{j < i}{\bexists{b < (d)_i}{\bexists{x <
+        (d)_i}{\bexists{a < (d)_i}{\bexists{c < K(d,j)}{(}}}}}
+    \\ \fn{Var}(x) \land \fn{Const}(c) \land {} \\
+    (d)_i = \Gn{(} \concat
+    b \concat \Gn{\lif} \concat \Gn{\lforall} \concat x \concat a
+    \concat \Gn{)} \land {}\\
+    (d)_j = \Gn{(} \concat b \concat
+    \Gn{\lif} \concat \fn{Subst}(a,c,x) \concat \Gn{)} \land {}\\ \fn{Sent}(b)
+    \land \fn{Sent}(\fn{Subst}(a,c,x)) \land {} \bforall{k <
+      \len{b}}{(b)_k \neq (c)_0}\land{}\\ \fn{Frm}(a)\land\bforall{k<\len{a}}{(a)_k\neq(c)_0})
+  \end{multline*}
+  Nous supposons ici que $c$ et $x$ sont les numéros de G\"odel
+  de la constante et de la variable considérées comme des termes,
+  et non les codes de leurs seuls symboles. Pour vérifier que $x$
+  est la seule variable qui puisse être libre dans~$!A(x)$, nous
+  testons si $\Subst{!A(x)}{c}{x}$ est !!a{sentence}; nous imposons
+  aussi que le code de chaque symbole de~$!B$ diffère du code
+  $(c)_0$ du symbole de~$c$.
+
+  Nous laissons en exercice l'autre version de~\QR.
+\item $d$ est le numéro de G\"odel d'!!a{derivation} correcte si et
+  seulement si chacune de ses lignes est un axiome ou se justifie
+  par modus ponens ou par~\QR. Ainsi,
+  \begin{multline*}
+  \fn{Deriv}(d) \defiff \fn{SeqCode}(d)\land0<\len{d}\land{}\\
+  \bforall{i<\len{d}}{\bigl(\fn{Sent}((d)_i)\land
+    (\fn{IsAx}((d)_i)\lor\fn{MP}(d,i)\lor\fn{QR}(d,i))\bigr)}
+  \end{multline*}
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Définissez les relations suivantes sur le modèle de la
+\olref[inc][art][pax]{prop:followsby} :
+\begin{enumerate}
+\item $\fn{IsAx}_{!A \lif (!B \lif (!A \land !B))}(n)$,
+\item $\fn{IsAx}_{\lforall[x][!A(x)] \lif !A(t)}(n)$,
+\item $\fn{QR}_{2}(d, i)$, pour l'autre version de~\QR.
+\end{enumerate}
+\end{prob}
+
+\begin{prop}
+Supposons que $\Gamma$ soit un ensemble récursif primitif
+d'!!{sentence}s. Alors la relation $\Prf[\Gamma](x, y)$, qui
+exprime « $x$ est le code d'!!a{derivation}~$\delta$ de~$!A$ à
+partir de~$\Gamma$ et $y$ est le numéro de G\"odel de~$!A$ »,
+est récursive primitive.
+\end{prop}
+
+\begin{proof}
+Supposons que l'appartenance $y \in \Gamma$ soit exprimée par le
+prédicat récursif primitif~$R_\Gamma(y)$. Nous devons montrer que
+$\Prf[\Gamma](x, y)$ est récursive primitive, avec $y$ numéro de
+G\"odel d'!!a{sentence}~$!A$ et $x$ code d'!!a{derivation}
+de~$!A$ à partir de~$\Gamma$.
+
+Exigeons que $y$ code un énoncé et que $x$ code une suite
+non vide d'énoncés dont le dernier a pour code~$y$. On cherche
+un ensemble $I$ de positions dans cette suite. Les ensembles
+possibles se codent par les masques binaires inférieurs à
+$2^{\len{x}}$. Pour $i\in I$, on vérifie $R_\Gamma((x)_i)$.
+Pour $i\notin I$, on vérifie que la ligne est un axiome ou
+qu'elle est justifiée par modus ponens ou par~\QR{} à partir de
+lignes antérieures. Dans les deux cas de~\QR, on impose à
+la constante témoin d'être absente de toutes les lignes
+dont la position appartient à~$I$. Le même $I$ sert à toutes
+les vérifications. Les recherches bornées et les tests
+récursifs primitifs de la proposition précédente donnent ainsi
+un test récursif primitif de $\Prf[\Gamma](x,y)$.
+\end{proof}
+
+\begin{explain}
+Le théorème de la déduction donne une autre manière de coder
+les témoins de la dérivabilité à partir de~$\Gamma$. On a
+$\Gamma \Proves !A$ si et seulement s'il existe une liste finie
+d'!!{sentence}s $!B_1$, \dots, $!B_n$ appartenant à~$\Gamma$
+telle que $\{!B_1, \dots, !B_n\} \Proves !A$. Par le théorème de
+déduction, cela équivaut à
+$\Proves (!B_1 \lif (!B_2 \lif \cdots (!B_n \lif !A)\cdots))$.
+On peut vérifier par un test récursif primitif si un énoncé de
+numéro de G\"odel~$z$ possède cette forme. Dans
+$\fn{Cert}_{\Gamma}(x,y)$, $x$ est le code d'une !!{derivation}
+du conditionnel emboîté à partir de~$\emptyset$ et $y$ est
+le code de son conséquent final.
+
+À partir d'une suite d'!!{sentence}s et d'un !!{sentence} destiné
+à être le conséquent, la récurrence primitive suivante construit
+un conditionnel qui prend tous les éléments de la suite pour
+antécédents :
+\begin{align*}
+  \fn{hCond}(s, y, 0) & = y \\
+  \fn{hCond}(s, y, n+1) & = \Gn{(} \concat (s)_{n} \concat \Gn{\lif}
+  \concat \fn{hCond}(s, y, n) \concat \Gn{)}\\
+  \fn{Cond}(s, y) & = \fn{hCond}(s, y, \len{s})\\
+  \intertext{La récurrence place les antécédents dans l'ordre inverse de la liste. On pose}
+  \fn{Cert}_{\Gamma}(x,y) & \defiff \fn{Sent}(y)\land\fn{Deriv}(x)\land{} \\
+  &\quad\bexists{s < \fn{sequenceBound}(x,x)}{(} \\
+  &\qquad (x)_{\len{x}-1} = \fn{Cond}(s,y) \land {} \\
+  &\qquad\fn{SeqCode}(s)\land\bforall{i<\len{s}}{R_\Gamma((s)_i)}).
+\end{align*}
+La borne portant sur~$s$ vient du fait que chaque $(s)_i$ est le
+numéro de G\"odel d'une sous-!!{formula} de la dernière ligne de
+la !!{derivation} et est donc inférieur à $(x)_{\len{x}-1}$.
+Le nombre d'antécédents $!B$ appartenant à~$\Gamma$, autrement
+dit la longueur de~$s$, est inférieur à la longueur de la
+!!{formula} inscrite sur la dernière ligne de la !!{derivation}
+codée par~$x$. On peut donc prendre $\fn{sequenceBound}(x,x)$
+comme borne stricte : les codes des antécédents sont inférieurs
+à~$x$ et leur nombre est inférieur à~$x$.
+Si $y=\Gn{!A}$ pour un énoncé~$!A$, l'existence d'un
+$x$ satisfaisant $\fn{Cert}_{\Gamma}(x,y)$ équivaut à
+$\Gamma \Proves !A$. Dans un sens, on applique le modus ponens
+successivement avec les antécédents appartenant à~$\Gamma$.
+Dans l'autre, on applique le théorème de la déduction aux
+hypothèses de la dérivation, en choisissant l'ordre de la liste~$s$
+pour produire le conditionnel obtenu.
+\end{explain}
+
+\end{document}

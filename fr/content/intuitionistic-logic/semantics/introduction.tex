@@ -1,0 +1,78 @@
+% Partie : intuitionistic-logic
+% Chapitre : semantics
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{int}{sem}{int}
+
+\olsection{Introduction}
+
+Aucune logique ne peut être décrite de façon satisfaisante sans
+sémantique, et la logique intuitionniste ne fait pas exception. Pour
+la logique classique, la sémantique fondée sur les !!{valuation}s
+s'impose comme référence ; pour la logique intuitionniste, plusieurs
+sémantiques se font concurrence. Aucune ne rend compte de la
+signification des connecteurs d'une manière qui soit entièrement
+satisfaisante du point de vue intuitionniste.
+
+La sémantique fondée sur les !!{relational model}s, semblable à celle
+des logiques modales, est peut-être la plus répandue. Elle détermine
+dans quels mondes les !!{propositional variable}s sont vraies ; ces
+mondes sont reliés par une relation d'accessibilité. Cette relation
+est toujours un ordre partiel : elle est réflexive, antisymétrique et
+transitive.
+
+Intuitivement, on peut considérer les mondes comme des états de
+connaissance ou des « situations où l'on dispose de certaines
+justifications ». Un état~$w'$ est accessible depuis~$w$ si, pour ce
+que nous savons, $w'$ est un état de connaissance futur possible,
+compatible avec ce que l'on sait en~$w$. Une proposition connue ne
+cesse pas de l'être : si $!A$ est connue en~$w$ et si~$Rww'$, alors
+$!A$ reste connue en~$w'$. La « connaissance » est donc monotone
+relativement à la relation d'accessibilité.
+
+Si, par analogie avec la logique épistémique, on dit que $!A$ est
+« connue » lorsqu'elle est vraie dans tous les états accessibles,
+la réflexivité et la persistance du forçage font ici coïncider cette
+condition avec le forçage local. Ainsi, $!A \land !B$ est connue
+en~$w$ si, dans tous les états accessibles, $!A$ et~$!B$ le sont.
+Puisque $R$ est réflexive et que ce qui est forcé reste forcé dans les
+états futurs, $!A \land !B$ est connue en~$w$ si et seulement si $!A$
+et~$!B$ sont connues en~$w$. Pour la même raison, $!A \lor !B$ est
+connue en~$w$ si et seulement si au moins l'une des deux l'est. Ainsi,
+pour $\land$ et $\lor$, les conditions de vérité des connecteurs
+coïncident avec celles de la logique classique au monde considéré.
+
+En revanche, la condition de vérité de l'implication diffère de celle
+de la logique classique. $!A \lif !B$ est connue en~$w$ si et seulement
+si, dans aucun monde~$w'$ tel que~$Rww'$, $!A$ n'est connue sans que
+$!B$ le soit aussi. Il ne suffit pas que $!A$ ne soit pas connue ou
+que $!B$ soit connue en~$w$. Si nous ne connaissons ni $!A$ ni~$!B$
+en~$w$, il peut exister un état futur~$w'$ tel que~$Rww'$ où, en~$w'$,
+$!A$ devient connue sans que $!B$ le devienne.
+
+Nous ne connaissons $\lnot !A$ que s'il n'existe aucun état futur
+possible dans lequel nous connaissions~$!A$. En effet, si $!A$
+pouvait devenir connue, il existerait un tel état où $!A$ serait
+connue. Comme nous ne pouvons connaître $\lfalse$, nous y
+connaîtrions $!A$ sans connaître~$\lfalse$.
+
+Dans cette interprétation, le principe du tiers exclu échoue :
+certaines formules~$!A$ ne sont pas encore connues, mais pourraient
+le devenir. Pour une telle !!a{formula}~$!A$, ni $!A$ ni~$\lnot !A$
+ne sont connues, donc $!A \lor \lnot !A$ ne l'est pas non plus.
+Nous savons cependant, par exemple, que $\lnot(!A
+\land \lnot !A)$ : aucun état futur dans lequel $!A$ et~$\lnot !A$
+seraient toutes deux connues n'est possible. Cela ne dépend pas du
+fait que nous connaissions ou non~$!A$ ou~$\lnot !A$.
+
+Les !!^{relational model}s ne constituent pas l'unique sémantique
+possible de la logique intuitionniste. Il existe aussi une sémantique
+topologique : les propositions y sont interprétées par des ouverts
+d'un espace topologique, et les connecteurs par des opérations sur
+ces ensembles (par exemple, $\land$ correspond à l'intersection).
+
+\end{document}

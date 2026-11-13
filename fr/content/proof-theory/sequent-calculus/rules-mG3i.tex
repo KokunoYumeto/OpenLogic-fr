@@ -1,0 +1,90 @@
+% Partie : théorie de la démonstration
+% Chapitre : calcul des séquents
+% Section : règles de mG3i
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\begin{table}
+\begin{tabular}{@{}c@{}c@{}}
+\multicolumn{2}{@{}c@{}}{Axiomes}\\[2ex]
+$!C, \Gamma \Sequent \Delta, !C$ & $\lfalse, \Gamma \Sequent \Delta$
+\\[2ex]
+\multicolumn{2}{@{}c@{}}{Règles logiques}\\[2ex]
+\Axiom$\lnot !A, \Gamma \fCenter \Delta, !A $
+\RightLabel{\LeftR{\lnot}}
+\UnaryInf$\lnot !A, \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$!A, \Gamma \fCenter$
+\RightLabel{\RightR{\lnot}}
+\UnaryInf$ \Gamma \fCenter \Delta, \lnot !A $
+\DisplayProof
+\\[4ex]
+\Axiom$ !A, !B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$ !A \land !B, \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$\Gamma \fCenter \Delta, !A$
+\Axiom$ \Gamma \fCenter \Delta, !B$
+\RightLabel{\RightR{\land}}
+\BinaryInf$ \Gamma \fCenter \Delta, !A \land !B $
+\DisplayProof
+\\[4ex]\Axiom$!A, \Gamma \fCenter \Delta$
+\Axiom$!B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$!A \lor !B, \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$\Gamma \fCenter \Delta, !A, !B$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A \lor !B$
+\DisplayProof
+\\[4ex]
+\Axiom$!A \lif !B, \Gamma \fCenter \Delta, !A$
+\Axiom$ !B, \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lif}}
+\BinaryInf$!A \lif !B, \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$ !A, \Gamma \fCenter !B$
+\RightLabel{\RightR{\lif}}
+\UnaryInf$ \Gamma \fCenter \Delta, !A \lif !B $
+\DisplayProof
+\\[4ex]
+\Axiom$ !A(t), \lforall[x][!A(x)], \Gamma \fCenter \Delta$
+\RightLabel{\LeftR{\lforall}}
+\UnaryInf$ \lforall[x][!A(x)],\Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$ \Gamma \fCenter !A(a) $
+\RightLabel{\RightR{\lforall}}
+\UnaryInf$ \Gamma \fCenter \lforall[x][!A(x)]$
+\DisplayProof
+\\[4ex]
+\Axiom$ !A(a), \Gamma \fCenter \Delta $
+\RightLabel{\LeftR{\lexists}}
+\UnaryInf$ \lexists[x][!A(x)], \Gamma \fCenter \Delta$
+\DisplayProof
+&
+\Axiom$ \Gamma \fCenter \Delta, \lexists[x][!A(x)], !A(t) $
+\RightLabel{\RightR{\lexists}}
+\UnaryInf$ \Gamma \fCenter \Delta, \lexists[x][!A(x)]$
+\DisplayProof
+\end{tabular}
+\caption{Règles de \Log{mG3i}, calcul intuitionniste à conséquent
+multiple. Dans $\RightR{\forall}$ et $\LeftR{\exists}$, la
+constante~$a$ doit être absente de la conclusion de l'inférence.
+$\Gamma$ et $\Delta$ sont des multiensembles finis de formules.
+Les termes d'instanciation sont clos.
+Dans les axiomes d'identité, la formule~$!C$ doit être atomique.
+Le texte original mentionne aussi \Log{mG1m}, obtenu à partir de
+\Log{mG1i} en retirant les axiomes $\lfalse, \Gamma \Sequent \Delta$.}
+%
+%
+\ollabel{tab:mG3i}
+\end{table}
+
+\end{document}

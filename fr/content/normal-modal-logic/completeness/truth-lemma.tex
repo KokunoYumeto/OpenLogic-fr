@@ -1,0 +1,155 @@
+% Part: normal-modal-logic
+% Chapter: completeness
+% Section: truth-lemma
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{com}{tru}
+
+\olsection{Lemme de vérité}
+
+Le modèle canonique~$\mModel{M^\Sigma}$ est défini de telle sorte que
+$\mSat{M^\Sigma}{!A}[\Delta]$ si et seulement si $!A \in \Delta$.
+Pour les !!{propositional variable}s, cela découle directement de la
+définition de $V^\Sigma$. Il faut toutefois vérifier cette équivalence
+pour toutes les !!{formula}s. Nous procédons par récurrence. L'étape de
+récurrence traite les !!{formula}s qui comportent des connecteurs
+propositionnels (en utilisant la \olref[ccs]{prop:ccs-properties}) et
+des opérateurs modaux (en invoquant les résultats de la
+\olref[mod]{sec}).
+
+\begin{prop}[Lemme de vérité]
+  \ollabel{prop:truthlemma}
+  Pour toute !!{formula}~$!A$, on a $\mSat{M^\Sigma}{!A}[\Delta]$ si et
+  seulement si $!A \in \Delta$.
+\end{prop}
+
+\begin{proof}
+  Raisonnons par récurrence sur~$!A$.
+  \begin{enumerate}
+    \tagitem{prvFalse}{\indcase{!A}{\lfalse}{$\mSat/{M^\Sigma}{\lfalse}[\Delta]$
+        d'après la \olref[syn][trw]{defn:mmodels}, et $\lfalse \notin \Delta$
+        d'après la
+        \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lfalse}.}}{}
+
+    \tagitem{prvTrue}{\indcase{!A}{\ltrue}{$\mSat{M^\Sigma}{\ltrue}[\Delta]$
+        d'après la \olref[syn][trw]{defn:mmodels}, et $\ltrue \in \Delta$ d'après
+        la \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-ltrue}.}}{}
+
+    \item \indcase{!A}{p}{$\mSat{M^\Sigma}{p}[\Delta]$ si et seulement si $\Delta \in
+      V^\Sigma(p)$, d'après la \olref[syn][trw]{defn:mmodels}. De plus, $\Delta
+      \in V^\Sigma(p)$ si et seulement si $p \in \Delta$, par définition
+      de~$V^\Sigma$.}
+
+    \tagitem{prvNot}{\indcase{!A}{\lnot !B}{%
+        \iftag{probNot}{Exercice.}{$\mSat{M^\Sigma}{\lnot !B}[\Delta]$
+          si et seulement si $\mSat/{M^\Sigma}{!B}[\Delta]$
+          (\olref[syn][trw]{defn:mmodels}), si et seulement si $!B \notin \Delta$
+          (par hypothèse de récurrence), si et seulement si $\lnot !B \in \Delta$
+          (d'après la
+          \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lnot}).}}}{}
+
+    \tagitem{prvAnd}{\indcase{!A}{!B \land !C}{%
+        \iftag{probAnd}{Exercice.}{$\mSat{M^\Sigma}{!B \land
+            !C}[\Delta]$ si et seulement si $\mSat{M^\Sigma}{!B}[\Delta]$ et
+          $\mSat{M^\Sigma}{!C}[\Delta]$ (d'après la
+          \olref[syn][trw]{defn:mmodels}), si et seulement si $!B \in \Delta$ et $!C
+          \in \Delta$ (par hypothèse de récurrence), si et seulement si $!B \land !C \in
+          \Delta$ (d'après la
+          \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-land}).}}}{}
+
+    \tagitem{prvOr}{\indcase{!A}{!B \lor !C}{%
+        \iftag{probOr}{Exercice.}{$\mSat{M^\Sigma}{!B \lor
+            !C}[\Delta]$ si et seulement si $\mSat{M^\Sigma}{!B}[\Delta]$ ou
+          $\mSat{M^\Sigma}{!C}[\Delta]$ (d'après la
+          \olref[syn][trw]{defn:mmodels}), si et seulement si $!B \in \Delta$ ou $!C
+          \in \Delta$ (par hypothèse de récurrence), si et seulement si $!B \lor !C \in
+          \Delta$ (d'après la
+          \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lor}).}}}{}
+
+    \tagitem{prvIf}{\indcase{!A}{!B \lif !C}{%
+        \iftag{probIf}{Exercice.}{$\mSat{M^\Sigma}{!B \lif
+            !C}[\Delta]$ si et seulement si $\mSat/{M^\Sigma}{!B}[\Delta]$ ou
+          $\mSat{M^\Sigma}{!C}[\Delta]$ (d'après la
+          \olref[syn][trw]{defn:mmodels}), si et seulement si $!B \notin \Delta$ ou
+          $!C \in \Delta$ (par hypothèse de récurrence), si et seulement si $!B \lif !C
+          \in \Delta$ (d'après la
+          \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-lif}).}}}{}
+
+    \tagitem{prvIff}{\indcase{!A}{!B \liff !C}{%
+        \iftag{probIff}{Exercice.}{$\mSat{M^\Sigma}{!B \liff
+            !C}[\Delta]$ si et seulement si ou bien $\mSat{M^\Sigma}{!B}[\Delta]$ et
+          $\mSat{M^\Sigma}{!C}[\Delta]$, ou bien
+          $\mSat/{M^\Sigma}{!B}[\Delta]$ et
+          $\mSat/{M^\Sigma}{!C}[\Delta]$ (d'après la
+          \olref[syn][trw]{defn:mmodels}), si et seulement si ou bien $!B \in \Delta$
+          et $!C \in \Delta$, ou bien $!B \notin \Delta$ et $!C \notin
+          \Delta$ (par hypothèse de récurrence), si et seulement si $!B \liff !C \in
+          \Delta$ (d'après la
+          \olref[ccs]{prop:ccs-properties}\olref[ccs]{prop:ccs-liff}).}}}{}
+
+    \tagitem{prvBox}{\indcase{!A}{\Box !B}{%
+        \iftag{probBox}{Exercice.}{Supposons d'abord
+          $\mSat{M^\Sigma}{\Box !B}[\Delta]$. D'après la
+          \olref[syn][trw]{defn:mmodels}, pour tout $\Delta'$ tel que
+          $R^\Sigma \Delta\Delta'$, on a
+          $\mSat{M^\Sigma}{!B}[\Delta']$. Par hypothèse de récurrence,
+          pour tout $\Delta'$ tel que $R^\Sigma \Delta\Delta'$, on a $!B \in
+          \Delta'$. Par définition de $R^\Sigma$, pour tout $\Delta'$
+          tel que $\Box^{-1} \Delta \subseteq \Delta'$, on a $!B \in
+          \Delta'$. D'après la \olref[mod]{prop:box}, $\Box !B \in
+          \Delta$.
+
+          Supposons maintenant $\Box !B \in \Delta$. Soit $\Delta' \in W^\Sigma$
+          tel que $R^\Sigma \Delta\Delta'$, c'est-à-dire $\Box^{-1}\Delta
+          \subseteq \Delta'$. Puisque $\Box !B \in \Delta$, on a $!B \in
+          \Box^{-1} \Delta$. Donc $!B \in \Delta'$. Par hypothèse de
+          récurrence, $\mSat{M^\Sigma}{!B}[\Delta']$. Comme
+          $\Delta'$ est arbitraire parmi ceux pour lesquels $R^\Sigma \Delta\Delta'$,
+          pour tout $\Delta' \in W^\Sigma$ tel que $R^\Sigma
+          \Delta\Delta'$, on a $\mSat{M^\Sigma}{!B}[\Delta']$. D'après
+          la \olref[syn][trw]{defn:mmodels}, $\mSat{M^\Sigma}{\Box
+            !B}[\Delta]$.}}}{}
+
+    \tagitem{prvDiamond}{\indcase{!A}{\Diamond !B}{%
+        \iftag{probDiamond}{Exercice.}{Supposons d'abord
+          $\mSat{M^\Sigma}{\Diamond !B}[\Delta]$. D'après la
+          \olref[syn][trw]{defn:mmodels}, il existe un $\Delta'$ tel que
+          $R^\Sigma \Delta\Delta'$ et $\mSat{M^\Sigma}{!B}[\Delta']$.
+          Par hypothèse de récurrence, il existe un $\Delta'$ tel que
+          $R^\Sigma \Delta\Delta'$ et $!B \in \Delta'$. Par définition
+          de $R^\Sigma$,\iftag{prvBox}{ il existe un $\Delta'$ tel que
+            $\Box^{-1} \Delta \subseteq \Delta'$ et $!B \in \Delta'$.
+            D'après le \olref[mod]{lem:box-iff-diamond},}{} il existe un $\Delta'$ tel
+          que $\Diamond \Delta' \subseteq \Delta$ et $!B \in
+          \Delta'$. Puisque $!B \in \Delta'$, on a $\Diamond !B \in \Diamond
+          \Delta'$ ; donc $\Diamond !B \in \Delta$.
+
+          Supposons maintenant $\Diamond !B \in \Delta$. D'après la
+          \olref[mod]{prop:diamond}, il existe un ensemble
+          $\Sigma$-cohérent complet $\Delta' \in W^\Sigma$ tel que
+          $\Diamond \Delta' \subseteq \Delta$ et $!B \in
+          \Delta'$.\iftag{prvBox}{ D'après le \olref[mod]{lem:box-iff-diamond},
+            il existe un $\Delta' \in W^\Sigma$ tel que $\Box^{-1}
+            \Delta \subseteq \Delta'$ et $!B \in \Delta'$.}{} Par
+          définition de $R^\Sigma$, on a $R^\Sigma \Delta\Delta'$ ; il
+          existe donc un $\Delta' \in W^\Sigma$ tel que $R^\Sigma
+          \Delta\Delta'$ et $!B \in \Delta'$. Par hypothèse de récurrence, $\mSat{M^\Sigma}{!B}[\Delta']$. D'après la
+          \olref[syn][trw]{defn:mmodels}, $\mSat{M^\Sigma}{\Diamond
+            !B}[\Delta]$.}}}{}
+  \end{enumerate}
+\end{proof}
+
+\begin{probtag}{probFalse,probTrue,probNot,probAnd,probOr,probIf,probIff,probBox,probDiamond}
+  Compléter la démonstration de la \olref[nml][com][tru]{prop:truthlemma}.
+\end{probtag}
+\begin{explain}
+Pour la possibilité, la preuve suit un monde accessible.
+L'hypothèse de récurrence y relie la vérité de la sous-formule
+à son appartenance à l'ensemble de formules qui constitue ce
+monde. La caractérisation de l'accessibilité relie ensuite
+cet ensemble au monde de départ.
+\end{explain}
+\end{document}

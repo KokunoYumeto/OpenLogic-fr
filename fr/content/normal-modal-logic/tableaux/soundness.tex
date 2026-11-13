@@ -1,0 +1,282 @@
+% Part: normal-modal-logic
+% Chapter: tableaux
+% Section: soundness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{tab}{sou}
+
+\olsection{Correction pour \Log{K}}
+
+\begin{explain}
+Comme pour les tableaux propositionnels signés, on démontre la
+correction en suivant une branche satisfaisable. Les règles
+modales demandent aussi une interprétation des préfixes qui
+respecte les relations entre un préfixe et ses successeurs.
+\end{explain}
+
+\begin{explain}
+  Pour montrer que les !!{tableau}s préfixés sont corrects, nous devons
+  montrer que, si
+  \[
+  \sFmla{\True}{!B_1}[1], \dots, \sFmla{\True}{!B_n}[1], \sFmla{\False}{!A}[1]
+  \]
+  admet un !!{tableau} fermé, alors $!B_1, \dots, !B_n \Entails !A$.
+  Il est plus simple de démontrer la contraposée : s'il existe un
+  $\mModel{M}$ et un monde~$w$ tels que $\mSat{M}{!B_i}[w]$ pour tout
+  $i=1$, \dots,~$n$, mais $\mSat/{M}{!A}[w]$, aucun !!{tableau} ne peut
+  se fermer. Ce contre-modèle montre que les hypothèses initiales du
+  !!{tableau} sont satisfaisables. La stratégie consiste à montrer que,
+  lorsque l’ensemble des !!{formula}s préfixées d'une branche d'%
+  !!a{tableau} est satisfaisable, chaque application d'une règle
+  produit au moins une branche prolongée qui l'est aussi. Comme les
+  branches fermées ne sont pas satisfaisables, tout !!{tableau} issu
+  d'un ensemble satisfaisable de !!{formula}s préfixées possède au
+  moins une branche ouverte.
+
+  Pour appliquer cette stratégie au cas modal, nous devons étendre la
+  définition de « satisfaisable » aux formules modales munies de
+  préfixes. Une fois cette définition posée, la démonstration est
+  directe.
+\end{explain}
+
+\begin{defn}
+  Soit $P$ un ensemble de préfixes, c'est-à-dire $P \subseteq (\PosInt)^*
+  \setminus \{\emptyseq\}$, et soit $\mModel{M}$ un modèle. Une
+  fonction~$f\colon P \to W$ est une \emph{interprétation de}~$P$
+  dans~$\mModel{M}$ si, chaque fois que $\sigma$ et $\sigma.n$
+  appartiennent tous deux à~$P$, on a $Rf(\sigma)f(\sigma.n)$.
+
+  Relativement à une interprétation des préfixes de~$P$, nous posons :
+  \begin{enumerate}
+  \item $\mModel{M}$ satisfait $\sFmla{\True}{!A}[\sigma]$ si et seulement si
+    $\mSat{M}{!A}[f(\sigma)]$.
+  \item $\mModel{M}$ satisfait $\sFmla{\False}{!A}[\sigma]$ si et seulement si
+    $\mSat/{M}{!A}[f(\sigma)]$.
+  \end{enumerate}
+\end{defn}
+
+\begin{defn}
+  Soit $\Gamma$ un ensemble de !!{formula}s préfixées, et soit $P(\Gamma)$
+  l'ensemble des préfixes qui y figurent. Si $f$ est une interprétation
+  de~$P(\Gamma)$ dans $\mModel{M}$, nous disons que $\mModel{M}$ satisfait
+  $\Gamma$ relativement à~$f$, ce que nous notons $\mSat{M}{\Gamma}[f]$,
+  si $\mModel{M}$ satisfait chaque !!{formula} préfixée de~$\Gamma$
+  relativement à~$f$. L'ensemble $\Gamma$ est \emph{satisfaisable} s'il
+  existe un modèle~$\mModel{M}$ et une interprétation~$f$ de
+  $P(\Gamma)$ tels que $\mSat{M}{\Gamma}[f]$.
+\end{defn}
+
+\begin{prop}
+  Si $\Gamma$ contient à la fois $\sFmla{\True}{!A}[\sigma]$ et
+  $\sFmla{\False}{!A}[\sigma]$, pour une !!{formula}~$!A$ et un
+  préfixe~$\sigma$, alors $\Gamma$ n'est pas satisfaisable.
+\end{prop}
+
+\begin{proof}
+  Il ne peut exister un modèle~$\mModel{M}$ et une interprétation~$f$ de
+  $P(\Gamma)$ tels que l'on ait à la fois $\mSat{M}{!A}[f(\sigma)]$ et
+  $\mSat/{M}{!A}[f(\sigma)]$.
+\end{proof}
+
+\begin{thm}[Correction]
+  \ollabel{thm:tableau-soundness}
+  Supposons $P(\Gamma)$ clos par préfixes non vides. Si $\Gamma$ admet un !!{tableau} fermé,
+  alors $\Gamma$ n'est pas satisfaisable.
+\end{thm}
+
+\begin{proof}
+Nous disons qu'une branche d'!!a{tableau} est satisfaisable si et
+seulement si l'ensemble des !!{signed formula}s qui y figurent est
+satisfaisable ; !!a{tableau} est satisfaisable s'il possède au moins
+une branche satisfaisable.
+
+La clôture par préfixes non vides est préservée par les règles ; un préfixe nouveau n’a donc aucun descendant déjà présent. Montrons qu'une application d'une règle d'inférence à un !!{tableau}
+satisfaisable produit toujours un !!{tableau} satisfaisable. Cela
+établira le théorème : tout !!{tableau} fermé résulte d'applications
+de règles d'inférence au !!{tableau} formé des seules hypothèses
+de~$\Gamma$. Si $\Gamma$ était satisfaisable, tout !!{tableau}
+construit à partir de lui le serait donc aussi. Or un !!{tableau}
+fermé ne peut être satisfaisable : toutes ses branches sont fermées,
+et une branche fermée n'est pas satisfaisable.
+
+Supposons que nous ayons un !!{tableau} satisfaisable, c'est-à-dire
+!!a{tableau} possédant au moins une branche satisfaisable. L'application d'une règle
+d'inférence ajoute des !!{signed formula}s à une branche ou scinde
+celle-ci en deux. Si le !!{tableau} possède une branche satisfaisable
+qui n'est pas touchée par
+cette application, elle reste satisfaisable dans le !!{tableau}
+prolongé, qui est donc satisfaisable. Il suffit ainsi d'examiner le
+cas où la règle s'applique à une branche satisfaisable.
+
+Soit $\Gamma$ l'ensemble des !!{signed formula}s de cette branche, et
+soit $\sFmla{S}{!A}[\sigma] \in \Gamma$ la !!{signed formula} à laquelle
+s'applique la règle. Si la règle ne scinde pas la branche, nous devons
+montrer que la branche prolongée, c'est-à-dire $\Gamma$ avec les
+conclusions de la règle, reste satisfaisable. Si la règle scinde la
+branche, nous devons montrer qu'au moins une des deux branches
+obtenues est satisfaisable.
+
+Examinons d'abord les règles qui ne scindent pas la branche.
+\begin{enumerate}
+\item On prolonge la branche en appliquant $\TRule{\True}{\lnot}$ à
+  $\sFmla{\True}{\lnot !B}[\sigma] \in \Gamma$. La branche prolongée
+  contient alors les !!{signed formula}s de $\Gamma \cup
+  \{\sFmla{\False}{!B}[\sigma]\}$. Supposons $\mSat{M}{\Gamma}[f]$.
+  En particulier, $\mSat{M}{\lnot !B}[f(\sigma)]$. Donc
+  $\mSat/{M}{!B}[f(\sigma)]$, c'est-à-dire que $\mModel{M}$ satisfait
+  $\sFmla{\False}{!B}[\sigma]$ relativement à~$f$.
+\item On prolonge la branche en appliquant $\TRule{\False}{\lnot}$ à
+  $\sFmla{\False}{\lnot !B}[\sigma] \in \Gamma$ : exercice.
+\item On prolonge la branche en appliquant $\TRule{\True}{\land}$ à
+  $\sFmla{\True}{!B \land !C}[\sigma] \in \Gamma$, ce qui ajoute deux
+  !!{signed formula}s à la branche :
+  $\sFmla{\True}{!B}[\sigma]$ et $\sFmla{\True}{!C}[\sigma]$. Supposons
+  $\mSat{M}{\Gamma}[f]$, en particulier $\mSat{M}{!B \land
+    !C}[f(\sigma)]$. Alors $\mSat{M}{!B}[f(\sigma)]$ et
+  $\mSat{M}{!C}[f(\sigma)]$. Ainsi, $\mModel{M}$ satisfait à la fois
+  $\sFmla{\True}{!B}[\sigma]$ et $\sFmla{\True}{!C}[\sigma]$
+  relativement à~$f$.
+\item On prolonge la branche en appliquant $\TRule{\False}{\lor}$ à
+  $\sFmla{\False}{!B \lor !C}[\sigma] \in \Gamma$ : exercice.
+\item On prolonge la branche en appliquant $\TRule{\False}{\lif}$ à
+  $\sFmla{\False}{!B \lif !C}[\sigma] \in \Gamma$. Cela ajoute deux
+  !!{signed formula}s à la branche : $\sFmla{\True}{!B}[\sigma]$ et
+  $\sFmla{\False}{!C}[\sigma]$. Supposons
+  $\mSat{M}{\Gamma}[f]$, en particulier
+  $\mSat/{M}{!B \lif !C}[f(\sigma)]$. Alors
+  $\mSat{M}{!B}[f(\sigma)]$ et
+  $\mSat/{M}{!C}[f(\sigma)]$. Ainsi,
+  $\mModel{M}, f$ satisfait à la fois
+  $\sFmla{\True}{!B}[\sigma]$ et $\sFmla{\False}{!C}[\sigma]$.
+
+\iftag{prvBox}{%
+\item On prolonge la branche en appliquant $\TRule{\True}{\Box}$ à
+  $\sFmla{\True}{\Box !B}[\sigma] \in \Gamma$ :
+  \iftag{probBox}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\True}{!B}[\sigma.n]$ à la branche, pour un
+    $\sigma.n \in P(\Gamma)$ (car $\sigma.n$ doit être déjà utilisé).
+    Supposons $\mSat{M}{\Gamma}[f]$, en particulier $\mSat{M}{\Box
+      !B}[f(\sigma)]$. Comme $f$ est une interprétation des préfixes
+    et que $\sigma$, $\sigma.n \in P(\Gamma)$, nous savons que
+    $Rf(\sigma)f(\sigma.n)$. Par conséquent,
+    $\mSat{M}{!B}[f(\sigma.n)]$ ; autrement dit, $\mModel{M}, f$
+    satisfait $\sFmla{\True}{!B}[\sigma.n]$.}
+
+\item On prolonge la branche en appliquant $\TRule{\False}{\Box}$ à
+  $\sFmla{\False}{\Box !B}[\sigma] \in \Gamma$ :
+  \iftag{probBox}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\False}{!B}[\sigma.n]$, où $\sigma.n$ est un
+    nouveau préfixe sur la branche, c'est-à-dire $\sigma.n \notin P(\Gamma)$.
+    Puisque $\Gamma$ est satisfaisable, il existe un $\mModel{M}$ et
+    une interprétation~$f$ de $P(\Gamma)$ tels que $\mSat{M}{\Gamma}[f]$,
+    en particulier $\mSat/{M}{\Box !B}[f(\sigma)]$. Nous devons montrer
+    que $\Gamma \cup \{\sFmla{\False}{!B}[\sigma.n]\}$ est
+    satisfaisable. Pour cela, définissons une interprétation de
+    $P(\Gamma) \cup \{\sigma.n\}$ comme suit :
+
+  Puisque $\mSat/{M}{\Box !B}[f(\sigma)]$, il existe un $w \in W$ tel que
+  $Rf(\sigma)w$ et $\mSat/{M}{!B}[w]$. Soit $f'$ identique à $f$, sauf
+  que $f'(\sigma.n) = w$. Comme $f'(\sigma) = f(\sigma)$ et
+  $Rf(\sigma)w$, nous avons $Rf'(\sigma)f'(\sigma.n)$, de sorte que $f'$
+  est une interprétation de $P(\Gamma) \cup \{\sigma.n\}$. De plus,
+  $\mSat/{M}{!B}[f'(\sigma.n)]$. Comme $f(\sigma') = f'(\sigma')$ pour
+  tout préfixe $\sigma' \in P(\Gamma)$, $\mSat{M}{\Gamma}[f']$. Ainsi,
+  $\mModel{M}, f'$ satisfait $\Gamma \cup
+  \{\sFmla{\False}{!B}[\sigma.n]\}$.}
+  }{}
+
+\iftag{prvDiamond}{%
+\item On prolonge la branche en appliquant $\TRule{\True}{\Diamond}$ à
+  $\sFmla{\True}{\Diamond !B}[\sigma] \in \Gamma$ :
+  \iftag{probDiamond}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\True}{!B}[\sigma.n]$, où $\sigma.n$ est un
+    nouveau préfixe sur la branche, c'est-à-dire $\sigma.n \notin P(\Gamma)$.
+    Puisque $\Gamma$ est satisfaisable, il existe un $\mModel{M}$ et
+    une interprétation~$f$ de $P(\Gamma)$ tels que $\mSat{M}{\Gamma}[f]$,
+    en particulier $\mSat{M}{\Diamond !B}[f(\sigma)]$. Nous devons montrer
+    que $\Gamma \cup \{\sFmla{\True}{!B}[\sigma.n]\}$ est
+    satisfaisable. Pour cela, définissons une interprétation de
+    $P(\Gamma) \cup \{\sigma.n\}$ comme suit :
+
+  Puisque $\mSat{M}{\Diamond !B}[f(\sigma)]$, il existe un $w \in W$ tel que
+  $Rf(\sigma)w$ et $\mSat{M}{!B}[w]$. Soit $f'$ identique à $f$, sauf
+  que $f'(\sigma.n) = w$. Comme $f'(\sigma) = f(\sigma)$ et
+  $Rf(\sigma)w$, nous avons $Rf'(\sigma)f'(\sigma.n)$, de sorte que $f'$
+  est une interprétation de $P(\Gamma) \cup \{\sigma.n\}$. De plus,
+  $\mSat{M}{!B}[f'(\sigma.n)]$. Comme $f(\sigma') = f'(\sigma')$ pour
+  tout préfixe $\sigma' \in P(\Gamma)$, $\mSat{M}{\Gamma}[f']$. Ainsi,
+  $\mModel{M}, f'$ satisfait $\Gamma \cup
+  \{\sFmla{\True}{!B}[\sigma.n]\}$.}
+\item On prolonge la branche en appliquant $\TRule{\False}{\Diamond}$ à
+  $\sFmla{\False}{\Diamond !B}[\sigma] \in \Gamma$ :
+  \iftag{probDiamond}{Exercice.}{Cela ajoute une nouvelle !!{signed
+      formula}~$\sFmla{\False}{!B}[\sigma.n]$ à la branche, pour un
+    $\sigma.n \in P(\Gamma)$ (car $\sigma.n$ doit être déjà utilisé).
+    Supposons $\mSat{M}{\Gamma}[f]$, en particulier
+    $\mSat/{M}{\Diamond !B}[f(\sigma)]$. Comme $f$ est une interprétation
+    des préfixes et que $\sigma$, $\sigma.n \in P(\Gamma)$, nous savons
+    que $Rf(\sigma)f(\sigma.n)$. Par conséquent,
+    $\mSat/{M}{!B}[f(\sigma.n)]$ ; autrement dit, $\mModel{M}, f$
+    satisfait $\sFmla{\False}{!B}[\sigma.n]$.}
+  }{}
+\end{enumerate}
+Examinons maintenant les règles qui scindent la branche en deux.
+\begin{enumerate}
+\item On prolonge la branche en appliquant $\TRule{\False}{\land}$ à
+  $\sFmla{\False}{!B \land !C}[\sigma] \in \Gamma$, ce qui produit
+  deux branches : la branche gauche passe par
+  $\sFmla{\False}{!B}[\sigma]$ et la branche droite par
+  $\sFmla{\False}{!C}[\sigma]$. Supposons $\mSat{M}{\Gamma}[f]$, en
+  particulier $\mSat/{M}{!B \land !C}[f(\sigma)]$. Alors
+  $\mSat/{M}{!B}[f(\sigma)]$ ou $\mSat/{M}{!C}[f(\sigma)]$. Dans le
+  premier cas, $\mModel{M}, f$ satisfait $\sFmla{\False}{!B}[\sigma]$ ;
+  la branche gauche est donc satisfaisable. Dans le second cas,
+  $\mModel{M}, f$ satisfait $\sFmla{\False}{!C}[\sigma]$ ; la branche
+  droite est donc satisfaisable.
+\item On prolonge la branche en appliquant $\TRule{\True}{\lor}$ à
+    $\sFmla{\True}{!B \lor !C}[\sigma] \in \Gamma$ : exercice.
+\item On prolonge la branche en appliquant $\TRule{\True}{\lif}$ à
+    $\sFmla{\True}{!B \lif !C}[\sigma] \in \Gamma$ : exercice.
+\end{enumerate}
+\iftag{prvFalse,prvTrue}{Les fermetures par constante sont impossibles à satisfaire par leur sémantique.}{} \iftag{prvIff}{Pour le biconditionnel vrai, les deux opérandes ont la même valeur : la branche prolongée avec leurs deux signes vrais, ou avec leurs deux signes faux, est satisfaite. Pour le biconditionnel faux, leurs valeurs sont opposées : l’une des deux branches prolongées avec ces signes est satisfaite. Le préfixe reste le même.}{}\end{proof}
+
+\begin{prob}
+Complétez la démonstration du \olref[nml][tab][sou]{thm:tableau-soundness}.
+\end{prob}
+
+\begin{cor}
+\ollabel{cor:entailment-soundness}
+Si $\Gamma \Proves !A$, alors $\Gamma \Entails !A$.
+\end{cor}
+
+\begin{proof}
+  Si $\Gamma \Proves !A$, il existe des $!B_1$, \dots, $!B_n \in
+  \Gamma$ tels que $\Delta = \{\sFmla{\False}{!A}[1], \sFmla{\True}{!B_1}[1],
+  \dots, \sFmla{\True}{!B_n}[1]\}$ admet un !!{tableau} fermé. Nous
+  voulons montrer que $\Gamma \Entails !A$. Supposons le contraire :
+  pour un certain $\mModel{M}$ et un monde $w$, on a
+  $\mSat{M}{!B_i}[w]$ pour $i=1$, \dots,~$n$, mais
+  $\mSat/{M}{!A}[w]$. Posons $f(1) = w$ ; alors $f$ est une
+  interprétation de~$P(\Delta)$ dans~$\mModel{M}$, et $\mModel{M}$
+  satisfait~$\Delta$ relativement à~$f$. Or, d'après le
+  \olref{thm:tableau-soundness}, $\Delta$ n'est pas satisfaisable,
+  puisqu'il admet un !!{tableau} fermé : contradiction. Donc
+  $\Gamma \Entails !A$.
+\end{proof}
+
+\begin{cor}
+\ollabel{cor:weak-soundness}
+Si $\Proves !A$, alors $!A$ est vraie dans tous les modèles.
+\end{cor}
+\begin{explain}
+Si l'ensemble des préfixes est clos par segments initiaux non
+vides, un préfixe nouveau ne peut avoir de descendant sur la
+branche. On peut donc l'interpréter par un monde témoin accessible
+depuis le monde de son parent, sans imposer de nouvelle
+condition d'accessibilité vers un monde déjà attribué à un
+préfixe de la branche.
+\end{explain}
+\end{document}

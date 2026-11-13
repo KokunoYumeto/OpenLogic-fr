@@ -35,11 +35,11 @@ des graphes. Voici la représentation d’un arbre fini :
 \end{tikzpicture}
 \end{center}
 
-Le nœud~$r$, situé tout en bas, est la racine. Tout nœud autre que $r$
-possède exactement un nœud parent immédiatement au-dessous de lui.
-On peut interpréter la relation entre un nœud~$x$ et un nœud~$y$ que
-l’on atteint depuis~$x$ en suivant les arêtes vers le haut en disant
-que $x$ est un \emph{ancêtre} de~$y$.
+Dans cet arbre, le nœud~$r$, situé tout en bas, est la racine.
+Tout autre nœud possède exactement un parent, situé immédiatement
+au-dessous de lui. Un nœud~$x$ est un \emph{ancêtre} de~$y$ si
+l’on atteint~$y$ depuis~$x$ en remontant une ou plusieurs arêtes.
+%
 
 La relation d’ascendance dans un arbre est un ordre partiel strict.
 Cela motive la définition ensembliste. Pour l’énoncer, nous avons besoin
@@ -93,9 +93,9 @@ Soit $T = \tuple{A, \le}$ un arbre. Une \emph{branche} de~$T$ est une
 chaîne maximale dans~$T$, c’est-à-dire un ensemble $B \subseteq A$
 tel que, pour tous $x, y \in B$, on ait $x \le y$ ou $y \le x$,
 et que, pour tout $z \in A \setminus B$, il existe $u \in B$ tel que
-l’on n’ait ni $z \le u$ ni $u \le z$.\footnote{Correction éditoriale :
-le domaine est bien celui de l’arbre. L’original écrivait ici la lettre
-$X$, qui n’avait pas été définie, à la place de $A$.}
+l’on n’ait ni $z \le u$ ni $u \le z$.
+%
+%
 %
 On note $[T]$ l’ensemble de toutes les branches de $T$.
 \end{defn}
@@ -118,9 +118,9 @@ possède une infinité de successeurs~$sn$, un pour chaque $n \in \Nat$.
 Toute partie non vide $A \subseteq \Nat^*$ stable par passage aux
 segments initiaux est un \emph{sous-arbre} de~$\Nat^*$.
 (Autrement dit, si $s \in A$ et $s' \sqsubseteq s$, alors $s' \in A$.)
-\footnote{Précision éditoriale : la condition « non vide » assure la
-présence d’une racine, exigée par notre définition d’un arbre ;
-l’original ne la précisait pas.}
+En particulier, $A$ contient la suite vide, qui est un segment initial
+de toute suite. La suite vide est donc la racine de ce sous-arbre.
+%
 Tout arbre fini peut être représenté par un sous-arbre fini de~$\Nat^*$.
 \end{ex}
 

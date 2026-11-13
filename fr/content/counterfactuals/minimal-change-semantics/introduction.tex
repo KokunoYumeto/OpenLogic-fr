@@ -1,0 +1,73 @@
+% Partie : counterfactuals
+% Chapitre : minimal-change-semantics
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cnt}{min}{int}
+
+\olsection{Introduction}
+
+Stalnaker et Lewis ont proposé des analyses de conditionnels
+contrefactuels tels que « Si l'on frottait cette allumette, elle
+s'enflammerait. » Leurs propositions visaient à préciser les
+conditions de vérité de tels énoncés. L'idée qui leur est commune est
+la suivante : pour évaluer un conditionnel contrefactuel, il faut
+considérer les mondes possibles qui diffèrent le moins du monde actuel
+tout en rendant l'antécédent vrai. Si le conséquent est vrai dans ces
+mondes, le contrefactuel est vrai. Supposons, par exemple, que je
+tienne une allumette et un carnet d'allumettes dans ma main. Dans le
+monde actuel, je me contente de les regarder et de me demander ce
+qui se passerait si je frottais l'allumette. Le changement minimal qui
+conduit à un monde où je la frotte consiste à décider de le faire,
+puis à la frotter. Il est minimal parce que rien d'autre ne change :
+je ne saute pas en l'air, le frottement de l'allumette n'enflamme pas
+aussi mes cheveux, mes doigts ne perdent pas soudain toute leur force
+et personne ne m'asperge d'eau par surprise avec un pistolet à eau
+Super Soaker. Dans cette autre situation possible, l'allumette
+s'enflamme. Il est donc vrai que, si je la frottais, elle
+s'enflammerait.
+
+Cette idée intuitive peut recevoir une sémantique formelle pour les
+logiques des conditionnels contrefactuels. Lewis a introduit le
+symbole « $\boxright$ » pour le contrefactuel, tandis que Stalnaker
+employait « $>$ ». Nous utiliserons~$\cif$ et l'ajouterons comme
+connecteur binaire à la logique propositionnelle. Ainsi, en plus des
+!!{formula}s de la forme $!A \lif !B$, nous aurons des !!{formula}s
+de la forme~$!A \cif !B$. La sémantique formelle, comme la sémantique
+relationnelle de la logique modale, repose sur des modèles dans
+lesquels les !!{formula}s sont évaluées en des mondes. La condition
+de satisfaction qui définit $\mSat{M}{!A \cif !B}[w]$ fait
+intervenir $\mSat{M}{!A}[w']$ et $\mSat{M}{!B}[w']$ pour certains
+autres mondes~$w'$. De quels mondes~$w'$ s'agit-il ? Intuitivement,
+ceux qui sont les plus proches de~$w$ parmi les mondes où
+$\mSat{M}{!A}[w']$ vaut. Le modèle
+doit donc également comporter une relation de « proximité ».
+
+Lewis a proposé une représentation graphique instructive des
+situations contrefactuelles. Chaque monde possible se trouve au
+centre d'un ensemble de sphères emboîtées contenant d'autres mondes :
+nous les dessinons sous forme de cercles concentriques. Les mondes
+situés entre deux sphères sont aussi proches les uns que les autres
+du monde central ; ceux d'une sphère intérieure en sont plus proches,
+et ceux d'une sphère extérieure en sont plus éloignés.
+\begin{center}
+\begin{tikzpicture}[scale=.7]\small
+  \spheresystem{5}
+  \draw (0,0) node {$w$};
+  \propositionintersect{0}{4}{40}{3.5}
+  {\tikzset{proposition/.append={smooth,tension=1.4}}
+  \proposition[shift={(1.6,-1)}]{90}{1}{30}{4}}
+  \path (1.5,3) node[below] {$\formula{B}$};
+  \path (3,0) node {$\formula{A}$};
+\end{tikzpicture}
+\end{center}
+Les mondes-$!A$ les plus proches sont les mondes~$w'$ où~$!A$ est vraie
+et qui se trouvent dans la plus petite sphère autour du monde
+central~$w$ qui contient de tels mondes (zone grise). Intuitivement,
+$!A \cif !B$ est vrai en~$w$ si~$!B$ est vrai dans tous les mondes-$!A$
+les plus proches.
+
+\end{document}

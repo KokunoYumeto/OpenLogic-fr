@@ -22,8 +22,8 @@ de~$A$ sont dits \emph{$R$-équivalents} si~$Rxy$.
 
 Les relations d’équivalence conduisent à la notion de \emph{classe
 d’équivalence}. Une relation d’équivalence découpe son domaine en blocs
-qui forment une partition.\footnote{Précision terminologique : l’original
-emploie ici « partitions » pour désigner les blocs d’une même partition.}
+qui forment une partition.
+%
 Dans chaque bloc, tous les objets sont en relation les uns avec les autres ;
 aucun objet d’un bloc n’est en relation avec un objet d’un autre bloc.
 Il est parfois utile de parler \emph{directement} de ces blocs.
@@ -37,8 +37,8 @@ de $A$ par~$R$ est $\equivclass{A}{R} = \Setabs{\equivrep{x}{R}}{x \in A}$,
 c’est-à-dire l’ensemble de ces classes d’équivalence.
 \end{defn}
 
-Le résultat suivant justifie cette définition et explique pourquoi les
-classes d’équivalence forment bien les blocs d’une partition de~$A$.
+Chaque élément appartient à sa classe par réflexivité. Si deux classes ont un élément commun, la symétrie et la transitivité relient leurs représentants.
+Le résultat suivant montre alors que ces classes coïncident. Les classes forment donc les blocs d'une partition de~$A$.
 
 \begin{prop}
 Si $R \subseteq A^2$ est une relation d’équivalence, alors $Rxy$ si et
@@ -63,22 +63,22 @@ $y \in \equivrep{x}{R}$. On a donc $Rxy$.
 
 \begin{ex}
 L’arithmétique modulaire fournit un exemple intéressant de relation
-d’équivalence. Pour tous $a,b \in \Nat$ et $n \in \PosInt$,\footnote{Précision
-éditoriale : on prend ici les deux nombres dans les entiers naturels,
-zéro compris, pour que la relation soit définie sur tout le domaine du
-quotient ci-dessous. L’original les rangeait avec le module parmi les
-entiers strictement positifs.}
-on pose $a \equiv_n b$ si et seulement si la division de $a$ par~$n$
-donne le même reste que celle de $b$ par~$n$. En symboles : $a \equiv_n b$
-si et seulement s’il existe $k \in \Int$ tel que $a - b = kn$.
-Pour tout~$n$, $\equiv_n$ est une relation d’équivalence. Elle détermine
-exactement $n$ classes d’équivalence distinctes ; autrement dit,
-$\equivclass{\Nat}{\equiv_n}$ possède $n$ !!{element}s. Ces classes sont :
-l’ensemble des nombres divisibles par $n$ sans reste, soit
-$\equivrep{0}{\equiv_n}$ ; l’ensemble des nombres dont la division par $n$
-donne le reste~$1$, soit $\equivrep{1}{\equiv_n}$ ; \ldots ; et l’ensemble
-des nombres dont la division par~$n$ donne le reste~$n-1$, soit
-$\equivrep{n-1}{\equiv_n}$.
+d’équivalence. Pour $a,b \in \Nat$ et $n \in \PosInt$, on pose
+$a \equiv_n b$ si et seulement si la division de $a$ par~$n$
+donne le même reste que celle de $b$ par~$n$. Autrement dit,
+$a \equiv_n b$ si et seulement s'il existe $k \in \Int$
+tel que $a-b=kn$.
+Pour tout~$n$, $\equiv_n$ est une relation d'équivalence. Elle détermine
+exactement $n$ classes d'équivalence distinctes. Chaque reste
+$r$ parmi $0,1,\ldots,n-1$ détermine une classe
+$\equivrep{r}{\equiv_n}$ formée des nombres de reste~$r$.
+Ainsi, $\equivrep{0}{\equiv_n}$ contient les multiples de~$n$.
+Si $n\ge 2$, $\equivrep{1}{\equiv_n}$ contient les nombres de reste~$1$.
+Le dernier reste est $n-1$, d'où la classe $\equivrep{n-1}{\equiv_n}$.
+Le quotient $\equivclass{\Nat}{\equiv_n}$ possède donc $n$ !!{element}s.
+Pour $n=1$, il se réduit à l'unique classe $\equivrep{0}{\equiv_1}$.
+%
+%
 \end{ex}
 
 \begin{prob}

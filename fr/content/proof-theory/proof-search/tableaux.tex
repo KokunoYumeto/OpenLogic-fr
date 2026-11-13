@@ -1,0 +1,301 @@
+% Partie : théorie de la démonstration
+% Chapitre : recherche de preuves
+% Section : tableaux
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{ps}{tab}
+
+\olsection{Tableaux}
+
+Les systèmes de tableaux sont des systèmes de preuve
+étroitement liés aux calculs des séquents. Ils conviennent
+particulièrement bien à la recherche de preuves, à la
+main comme dans un programme. Un tableau est un arbre
+de formules plutôt qu'un arbre de séquents. Ses règles
+reflètent celles du calcul des séquents, à la différence
+des règles de déduction naturelle. Construire un tableau
+revient à chercher explicitement un modèle ; on parle
+donc aussi de \emph{tableaux sémantiques} ou
+d'\emph{arbres de vérité}. Une preuve est obtenue
+lorsque cette recherche clôt toutes les branches.
+
+Un tableau \emph{signé} est un arbre de formules
+signées, de la forme $\sFmla{\True}{!A}$ ou
+$\sFmla{\False}{!A}$. L'arbre se développe vers
+le bas. Les formules initiales expriment ce que
+l'on cherche à prouver. Pour le séquent
+$!A, !B \Sequent !C, !D$, on commence par
+$\sFmla{\True}{!A}, \sFmla{\True}{!B},
+\sFmla{\False}{!C}, \sFmla{\False}{!D}$.
+Une structure dans laquelle $!A$ et $!B$ sont
+vraies et $!C$ et $!D$ fausses constitue un
+contre-modèle de $!A, !B \Sequent !C, !D$.
+
+On prolonge une feuille, située au bas de l'arbre,
+par des règles qui ajoutent des nœuds sur la même
+branche ou créent deux branches distinctes.
+La formule signée à laquelle on applique la
+règle peut se trouver n'importe où au-dessus
+de la feuille, sur cette même branche.
+Les règles du système classique \Log{Tc}
+figurent dans le \olref{tab:Tc}.
+
+\subfile{rules-Tc}
+
+Ces règles correspondent aux règles de \Log{G3c}
+lues à rebours. Les signes $\True$ et $\False$
+indiquent respectivement une formule principale
+dans l'antécédent ou dans le conséquent.
+Dans le tableau, les formules antérieures restent
+visibles sur la branche après leur traitement.
+
+Une branche est \emph{close} si elle contient
+à la fois $\sFmla{\True}{!A}$ et
+$\sFmla{\False}{!A}$, ou si elle contient
+l'absurde marqué vrai. Un tableau est clos
+lorsque toutes ses branches le sont.
+Voici un tableau clos pour
+$!A \lor (!B \land !C) \Sequent (!A \lor !B) \land
+(!A \lor !C)$, commençant par
+$\sFmla{\True}{!A \lor (!B \land !C)}$
+et $\sFmla{\False}{(!A \lor !B) \land (!A \lor !C)}$ :
+\begin{oltableau}
+  [\sFmla{\True}{\formula{A} \lor (\formula{B} \land \formula{C})},
+    just=\TAss, checked
+    [\sFmla{\False}{(\formula{A} \lor \formula{B}) \land
+        (\formula{A} \lor \formula{C})}, just=\TAss, checked
+      [\sFmla{\True}{\formula{A}}, just={\TRule{\True}{\lor}[1]}
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{B}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\False}{\formula{A}},
+            just={\TRule{\False}{\lor}[4]}
+            [\sFmla{\False}{\formula{C}},
+              just={\TRule{\False}{\lor}[4]}, close]
+          ]
+        ]
+      ]
+      [\sFmla{\True}{\formula{B} \land \formula{C}},
+        just={\TRule{\True}{\lor}[1]}, checked
+        [\sFmla{\False}{\formula{A} \lor \formula{B}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\True}{\formula{B}},
+            just={\TRule{\True}{\land}[3]}, move by=2
+            [\sFmla{\True}{\formula{C}},
+              just={\TRule{\True}{\land}[3]}
+              [\sFmla{\False}{\formula{A}},
+                just={\TRule{\False}{\lor}[4]}
+                [\sFmla{\False}{\formula{B}},
+                  just={\TRule{\False}{\lor}[4]},close
+                ]
+              ]
+            ]
+          ]
+        ]
+        [\sFmla{\False}{\formula{A} \lor \formula{C}},
+          just={\TRule{\False}{\land}[2]}, checked
+          [\sFmla{\True}{\formula{B}},
+            just={\TRule{\True}{\land}[3]}, move by=2
+              [\sFmla{\True}{\formula{C}},
+                just={\TRule{\True}{\land}[3]}
+                [\sFmla{\False}{\formula{A}},
+                  just={\TRule{\False}{\lor}[4]}
+                  [\sFmla{\False}{\formula{C}},
+                  just={\TRule{\False}{\lor}[4]},close
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+\end{oltableau}
+
+Une coche indique que la règle correspondante
+a été appliquée à la formule sur toutes les
+branches concernées situées au-dessous.
+Le symbole $\otimes$ indique une branche close.
+Les numéros après les règles désignent la ligne
+de la formule signée à laquelle la règle
+est appliquée, sur la même branche.
+
+À l'étape $0$, on écrit les formules initiales en haut
+du tableau. Sans formule initiale, on part d'une branche
+vide. À l'étape $n+1$, pour chaque branche encore
+ouverte, on cherche, de haut en bas, la première
+formule signée non atomique encore à traiter,
+hors des deux formes quantifiées réutilisables.
+Si elle existe, on applique sa règle. On coche
+une formule ordinaire après l'avoir traitée
+sur toutes les branches ouvertes concernées.
+Le tableau ci-dessus illustre ces développements
+propositionnels.
+
+Les formes $\sFmla{\True}{\lforall}$ et
+$\sFmla{\False}{\lexists}$ ne sont pas cochées
+définitivement : elles demandent un traitement
+particulier. Les règles $\TRule{\True}{\forall}$
+et $\TRule{\False}{\lexists}$ doivent produire
+toutes les instances requises par les termes
+clos. À chaque étape, après le traitement
+ordinaire, on applique donc la règle, sur chaque
+branche restée ouverte, aux occurrences réutilisables
+déjà présentes au début de l'étape. On conserve pour
+chacune, sur cette branche, l'historique des termes
+déjà employés.
+
+Le terme $t$ choisi est le premier terme~$t$
+non encore employé pour cette occurrence,
+construit à partir des constantes de la branche
+et des symboles de fonction des formules
+initiales. L'ensemble associé contient au
+départ les constantes initiales, ou $\Obj c_0$
+s'il n'y en a aucune ; il conserve ensuite
+les constantes ajoutées. On ajoute l'instance
+$\sFmla{\True}{!B(t)}$ ou~$\sFmla{\False}{!B(t)}$,
+même si elle apparaît déjà sur la branche.
+Sans fonction d'arité positive, on teste si la liste
+finie des constantes a été épuisée. Dans ce cas, on
+passe à l'occurrence suivante. Avec une telle fonction,
+le parcours trouve toujours un terme encore inutilisé.
+Les règles à constante propre choisissent
+une constante absente de l'ensemble associé,
+et l'y ajoutent. Les historiques et ensembles
+sont copiés lors des ramifications.
+
+La recherche s'arrête avec succès dès que toutes
+les branches sont closes. Si une étape n'ajoute
+aucun nœud et qu'une branche reste ouverte,
+elle s'arrête sans succès : une telle branche
+est finie et saturée.
+
+Si cette recherche ne produit pas un tableau
+clos, elle fournit soit une branche ouverte
+finie saturée, soit un arbre infini à
+ramifications finies, qui possède une branche
+infinie. Dans le cas fini, toutes les règles
+ordinaires ont été appliquées et toutes les
+instances réutilisables sur le domaine de
+termes ont été produites. Dans le cas infini,
+l'équité et l'énumération assurent la même
+saturation. Comme dans la \olref[cpl]{sec},
+on définit une structure~$\Struct{M}$ telle que
+$\Sat{M}{!A}$ lorsque $\sFmla{\True}{!A}$
+figure sur la branche, et $\Sat/{M}{!A}$
+lorsque $\sFmla{\False}{!A}$ y figure.
+On prend
+$\Theta = \Setabs{!A}{\sFmla{\True}{!A} \text{ sur la branche}}$
+et
+$\Xi = \Setabs{!A}{\sFmla{\False}{!A} \text{ sur la branche}}$.
+
+Pour traduire un tableau clos en une preuve
+de \Log{G3c}, on associe des séquents aux
+blocs de prolongement. Si les formules initiales
+correspondent à $\Gamma \Sequent \Delta$,
+chacun des nœuds initiaux reçoit le même
+séquent $\Gamma \Sequent \Delta$.
+Lorsqu'on prolonge la branche sur
+$\sFmla{\True}{!A}$, son séquent a la forme
+$!A, \Pi \Sequent \Lambda$ ; pour
+$\sFmla{\False}{!A}$, il a la forme
+$\Pi \Sequent \Lambda, !A$.
+Une règle \TRule{\True}{\star} correspond
+à \LeftR{\star}, avec la même formule
+principale ; une règle \TRule{\False}{\star}
+correspond à \RightR{\star}.
+Les prémisses sont les séquents associés
+aux branches après l'ajout du bloc de formules.
+À une clôture sur $\sFmla{\True}{!A}$
+et $\sFmla{\False}{!A}$ correspond un
+séquent $!A, \Pi \Sequent \Lambda, !A$.
+Plusieurs nœuds successifs d'un même bloc
+peuvent recevoir le même séquent ; on
+supprime ces répétitions dans la preuve.
+
+La clôture sur $\sFmla{\True}{\lfalse}$
+%
+correspond à l'axiome de l'absurde de \Log{G3c}.
+Une clôture sur une formule composée utilise
+la preuve d'identité de la
+\olref[pt][seq][ex]{prop:G3c-axioms}.
+Ces deux conventions sont nécessaires pour
+que « tableau clos » donne une preuve du
+calcul avec ses seuls axiomes atomiques.
+
+Pour une conversion générale, on garde
+dans le séquent de branche toutes les
+formules déjà présentes, y compris celles
+qui ont été traitées, avec leurs multiplicités.
+Une expansion ordinaire ajoute ses formules
+actives tout en laissant la principale dans
+le contexte. En appliquant la règle logique
+de \Log{G3c} aux preuves des branches ainsi
+prolongées, on obtient donc deux copies
+de la principale dans la conclusion.
+On les contracte par la
+\olref[pt][seq][inv]{prop:G3c-cont-adm}.
+Pour l'universelle vraie et l'existentielle
+fausse, la règle de \Log{G3c} conserve déjà
+la principale ; aucune duplication
+supplémentaire n'est nécessaire.
+Les règles à constante propre satisfont
+leur condition, puisque la constante choisie
+est absente de toute la branche antérieure.
+
+Une récurrence, depuis les feuilles closes
+vers la racine du tableau fini, fournit ainsi
+les preuves de tous les séquents de branche.
+La contraction est admissible : on remplace
+chacune de ses utilisations par la transformation
+de preuves correspondante. Le résultat final
+emploie uniquement les règles de \Log{G3c}.
+Les contractions réconcilient la persistance des
+formules dans le tableau avec leur traitement
+%
+dans le calcul des séquents.
+
+Pour l'exemple précédent, on peut obtenir
+la preuve plus concise suivante. Si les
+formules aux feuilles d'identité ne sont
+pas atomiques, ces feuilles sont à développer
+en leurs preuves d'identité.
+{\small\[
+\Axiom$!A \fCenter !A, !B$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$!A \fCenter !A \lor !B$
+\Axiom$!A \fCenter !A, !C$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$!A \fCenter !A \lor !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$!A \fCenter (!A \lor !B) \land (!A \lor !C)$
+\Axiom$!B, !C \fCenter !A, !B$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$!B, !C \fCenter !A \lor !B$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!B \land !C \fCenter !A \lor !B$
+\Axiom$!B, !C \fCenter !A, !C$
+\RightLabel{\RightR{\lor}}
+\UnaryInf$!B, !C \fCenter !A \lor !C$
+\RightLabel{\LeftR{\land}}
+\UnaryInf$!B \land !C \fCenter !A \lor !C$
+\RightLabel{\RightR{\land}}
+\BinaryInf$!B \land !C \fCenter (!A \lor !B) \land
+(!A \lor !C)$
+\RightLabel{\LeftR{\lor}}
+\BinaryInf$!A \lor (!B \land !C) \fCenter (!A \lor !B) \land
+(!A \lor !C)$
+\DisplayProof
+\]}
+
+\end{document}

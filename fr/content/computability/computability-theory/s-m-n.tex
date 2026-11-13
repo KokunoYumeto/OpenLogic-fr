@@ -1,0 +1,52 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: s-m-n
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{smn}
+\olsection{Le théorème $s$-$m$-$n$}
+
+\begin{explain}
+Le théorème suivant porte le nom de « théorème
+$s$-$m$-$n$ », pour une raison qui apparaîtra
+bientôt. La difficulté principale est de bien
+comprendre son énoncé; une fois celui-ci compris,
+le résultat semblera assez naturel.
+\end{explain}
+
+\begin{thm}
+\ollabel{thm:s-m-n}
+  Pour chaque paire d'entiers naturels $n$ et~$m$,
+  il existe une fonction récursive primitive~$s^m_n$
+  telle que, pour toute suite d'entiers
+  $e$, $a_0$, \dots, $a_{m-1}$,
+  $y_0$, \dots, $y_{n-1}$, on ait
+  \[
+  \cfind{s^m_n(e, a_0, \dots, a_{m-1})}[n](y_0, \dots, y_{n-1}) \simeq
+  \cfind{e}[m+n](a_0, \dots, a_{m-1}, y_0, \dots, y_{n-1}).
+\]
+\end{thm}
+
+\begin{explain}
+Il est utile de considérer $s^m_n$ comme une
+fonction agissant sur des \emph{programmes}.
+Elle reçoit un programme~$e$ calculant une
+fonction à $(m+n)$~arguments, ainsi que
+les entrées fixées $a_0,\dots,a_{m-1}$,
+et renvoie un programme de code
+$s^m_n(e,a_0,\dots,a_{m-1})$ qui calcule
+la fonction des $n$~arguments restants. Si $m=0$, aucune entrée n'est fixée ; si $n=0$, on admet ici les programmes sans entrée, qui produisent une valeur ou divergent.
+\iftag{TMs}{Si $e$ décrit une machine de Turing,
+$s^m_n(e,a_0,\dots,a_{m-1})$ est le code d'une
+machine qui, sur l'entrée $y_0,\dots,y_{n-1}$,
+place d'abord $a_0,\dots,a_{m-1}$ en tête
+de la suite d'entrées, puis exécute~$e$.
+Chaque $s^m_n$ est alors une fonction
+récursive primitive qui produit le code
+de la machine correspondante.}{}\footnote{Corrections éditoriales : dans l'explication source, deux occurrences de $x$ sont remplacées par l'indice de programme $e$ déjà fixé. La valeur de $s^m_n$ est un code de machine, plutôt que la machine elle-même.}
+\end{explain}
+
+\end{document}

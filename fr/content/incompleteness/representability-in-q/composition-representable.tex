@@ -1,0 +1,115 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: composition-representable
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{req}{cmp}
+\olsection{La composition est représentable dans $\Th{Q}$}
+
+Supposons que la fonction $h$ soit définie par
+\[
+h(x_0,\dots,x_{l-1}) = f(g_0(x_0,\dots,x_{l-1}), \dots,
+g_{k-1}(x_0,\dots,x_{l-1})).
+\]
+Nous disposons déjà de !!{formula}s $!A_f,!A_{g_0},\dots,
+!A_{g_{k-1}}$ représentant respectivement $f,g_0,\dots,
+g_{k-1}$. Il faut trouver une !!{formula}~$!A_h$ qui représente~$h$.\footnote{Les variables liées des formules représentantes sont renommées au préalable pour que les substitutions soient sans capture. Les variables intermédiaires $y$, puis $y_0,\dots,y_{k-1}$, sont choisies distinctes des variables d’entrée et de sortie.}
+
+Commençons par le cas simple où toutes les fonctions sont unaires :
+$h(x)=f(g(x))$. Si $!A_f(y,z)$ représente~$f$ et si $!A_g(x,y)$
+représente~$g$, nous cherchons une !!{formula}~$!A_h(x,z)$
+représentant~$h$. Or $h(x)=z$ si et seulement s'il existe un~$y$
+tel que $z=f(y)$ et $y=g(x)$. En effet, si $h(x)=z$, on peut
+prendre $y=g(x)$; réciproquement, si un tel~$y$ existe, alors
+$z=f(y)=f(g(x))$. La !!{formula}
+$\lexists[y][(!A_g(x,y)\land !A_f(y,z))]$ est donc une candidate
+naturelle pour~$!A_h(x,z)$. Il reste à vérifier que $\Th{Q}$
+démontre les !!{formula}s requises.
+
+\begin{prop}
+\ollabel{prop:rep1}
+Si $h(n)=m$, alors $\Th{Q}\Proves !A_h(\num{n},\num{m})$.
+\end{prop}
+
+\begin{proof}
+Supposons $h(n)=m$, donc $f(g(n))=m$, et posons $k=g(n)$.
+Alors
+\begin{align*}
+  \Th{Q} & \Proves !A_g(\num{n}, \num{k})
+  \intertext{puisque $!A_g$ représente~$g$, et}
+  \Th{Q} & \Proves !A_f(\num{k}, \num{m})
+  \intertext{puisque $!A_f$ représente~$f$. Par conséquent,}
+  \Th{Q} & \Proves !A_g(\num{n}, \num{k}) \land !A_f(\num{k}, \num{m})
+  \intertext{et donc aussi}
+  \Th{Q} & \Proves \lexists[y][(!A_g(\num{n}, y) \land !A_f(y, \num{m}))],
+\end{align*}
+c'est-à-dire $\Th{Q}\Proves !A_h(\num{n},\num{m})$.
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:rep2}
+Si $h(n)=m$, alors
+$\Th{Q}\Proves\lforall[z][(!A_h(\num{n},z)\lif z=\num{m})]$.
+\end{prop}
+
+\begin{proof}
+Supposons $h(n)=m$, donc $f(g(n))=m$, et posons $k=g(n)$.
+Alors
+\begin{align*}
+  \Th{Q} & \Proves \lforall[y][(!A_g(\num{n}, y) \lif \eq[y][\num{k}])]
+  \intertext{puisque $!A_g$ représente~$g$, et}
+  \Th{Q} & \Proves \lforall[z][(!A_f(\num{k}, z) \lif \eq[z][\num{m}])]
+  \intertext{puisque $!A_f$ représente~$f$. Les règles logiques donnent alors}
+  \Th{Q} & \Proves \lforall[z][(\lexists[y][(!A_g(\num{n}, y) \land
+      !A_f(y, z))] \lif \eq[z][\num{m}])].
+\end{align*}
+En effet, tout témoin $y$ de l'existentielle est égal à
+$\num{k}$ d'après la première implication; en remplaçant $y$
+par ce numéral dans $!A_f(y,z)$, la seconde donne
+$z=\num{m}$. Ainsi, en renommant la variable liée,
+$\Th{Q}\Proves\lforall[y][(!A_h(\num n,y)\lif\eq[y][\num m])]$.
+\end{proof}
+
+La même idée s'applique au cas plus général où $f$ et les $g_i$
+ont une arité supérieure à~$1$.
+
+\begin{prop}
+\ollabel{prop:rep-composition}
+Si $!A_f(y_0,\dots,y_{k-1},z)$ représente
+$f(y_0,\dots,y_{k-1})$ dans~$\Th{Q}$ et si, pour chaque~$i$,
+$!A_{g_i}(x_0,\dots,x_{l-1},y)$ représente
+$g_i(x_0,\dots,x_{l-1})$ dans~$\Th{Q}$, alors la !!{formula}
+\begin{multline*}
+  \lexists[y_0\dots][\lexists[y_{k-1}][(!A_{g_0}(x_0,\dots,x_{l-1},y_0) \land
+      \dots \land {}]]\\
+  !A_{g_{k-1}}(x_0,\dots,x_{l-1},y_{k-1}) \land !A_f(y_0,\dots,y_{k-1},z))
+\end{multline*}
+représente la fonction
+\[
+h(x_0, \dots, x_{l-1}) = f(g_0(x_0, \dots, x_{l-1}), \dots, g_{k-1}(x_0,
+\dots, x_{l-1})).
+\]
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+En vous inspirant des démonstrations de la
+\olref[inc][req][cmp]{prop:rep1} et de la
+\olref[inc][req][cmp]{prop:rep2}, démontrez en détail la
+\olref[inc][req][cmp]{prop:rep-composition}.
+\end{prob}
+
+\begin{explain}
+Dans le cas unaire, la \olref[inc][req][cmp]{prop:rep1} établit
+l'instance positive et la \olref[inc][req][cmp]{prop:rep2}
+établit l'unicité de la valeur. Le même dédoublement guide la
+démonstration du cas de plusieurs fonctions intermédiaires.
+\end{explain}
+
+\end{document}

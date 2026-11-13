@@ -1,0 +1,74 @@
+% Part: incompleteness
+% Chapter: theories-computability
+% Section: consis-with-q
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{tcp}{con}
+
+\olsection{Les théories cohérentes avec $\Th{Q}$ sont indécidables}
+
+Le théorème suivant affirme davantage que la seule
+indécidabilité de~$\Th{Q}$ : toute théorie qui ne
+contredit pas~$\Th{Q}$ est indécidable.
+
+\begin{thm}
+Soit $\Th{T}$ une théorie dans le langage de
+l'arithmétique, cohérente avec~$\Th{Q}$,
+c'est-à-dire telle que $\Th{T}\cup\Th{Q}$ soit
+cohérente. Alors $\Th{T}$ est indécidable.
+\end{thm}
+
+\begin{proof}
+Rappelons que $\Th{Q}$ possède huit axiomes
+$!Q_1$, \dots, $!Q_8$. Nous pouvons les remplacer
+par l'axiome unique $!E=!Q_1\land\dots\land !Q_8$.
+
+Supposons $\Th{T}$ décidable et cohérente avec
+$\Th{Q}$. Posons, pour les !!{sentence}s arithmétiques,
+\[
+C=\Setabs{!A}{\Th{T}\Proves !E\lif !A}.
+\]
+Le test des codes d'!!{sentence}s est calculable. Comme $!E$ est fixé
+et que $\Th{T}$ est décidable, $C$ est calculable; les autres codes sont exclus de~$C$.
+Montrons qu'il sépare $\Th{Q}$ de $\Th{\bar Q}$,
+ce qui contredira leur inséparabilité effective.
+
+Si $!A$ appartient à~$\Th{Q}$, il est démontrable
+à partir de ses axiomes. Le théorème de la déduction
+donne alors une !!{derivation}, en logique du premier
+ordre, de $!E\lif !A$. Cette implication est donc
+un théorème de~$\Th{T}$, et $!A\in C$.
+
+Si, en revanche, $!A$ appartient à~$\Th{\bar Q}$,
+la logique du premier ordre démontre
+$!E\lif\lnot !A$. Si $\Th{T}$ démontrait aussi
+$!E\lif !A$, elle démontrerait $\lnot !E$;
+$\Th{T}\cup\Th{Q}$ serait alors incohérente.
+Notre hypothèse l'exclut. Ainsi $\Th{T}$ ne
+démontre pas $!E\lif !A$, donc $!A\notin C$.
+
+Nous avons $\Th{Q}\subseteq C$ et
+$\Th{\bar Q}\subseteq\Complement{C}$.
+L'ensemble calculable~$C$ serait un séparateur,
+contradiction.
+\end{proof}
+
+Ce théorème a une portée considérable. Il implique
+par exemple le résultat suivant.
+
+\begin{cor}
+La logique du premier ordre pour le langage de
+l'arithmétique, c'est-à-dire l'ensemble
+$\Setabs{!A}{\text{$!A$ est démontrable en logique du premier ordre}}$,
+est indécidable.
+\end{cor}
+
+\begin{proof}
+Cet ensemble est la théorie des conséquences de
+$\emptyset$, qui est cohérente avec~$\Th{Q}$.
+\end{proof}
+
+\end{document}

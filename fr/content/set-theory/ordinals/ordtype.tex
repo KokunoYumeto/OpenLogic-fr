@@ -1,0 +1,91 @@
+% Partie : set-theory
+% Chapitre : ordinals
+% Section : ordtype
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{ordinals}{ordtype}
+\olsection{Les ordinaux comme types d'ordre}
+
+Munis du remplacement, et travaillant donc à présent dans
+$\ZFminus$, nous pouvons enfin démontrer le résultat recherché :
+
+\begin{thm}\ollabel{thmOrdinalRepresentation}
+Tout bon ordre est isomorphe à un unique ordinal.
+\end{thm}
+
+\begin{proof}
+Soit $\tuple{A, <}$ un bon ordre. Par la
+\olref[basic]{ordisoidentity}, il est isomorphe à au plus un ordinal.
+Pour raisonner par l'absurde, supposons qu'il ne soit isomorphe à
+\emph{aucun} ordinal. Nous allons d'abord rendre $\tuple{A, <}$
+«~aussi petit que possible~». Plus précisément, s'il existe un
+segment initial propre $\tuple{A_a, <_a}$ qui n'est isomorphe à
+aucun ordinal, choisissons le plus petit $a \in A$ qui possède cette
+propriété, puis posons $B = A_a$ et $\mathord{\lessdot} =
+\mathord{<_a}$. Sinon, posons $B = A$ et $\mathord{\lessdot} =
+\mathord{<}$.
+
+Par construction, chaque segment initial propre de $B$ est isomorphe
+à un ordinal, unique d'après ce qui précède. Le remplacement assure
+donc l'existence de l'ensemble suivant, qui est une fonction :
+\[
+	f = \Setabs{\tuple{\beta, b}}{b \in B\text{ et }\ordeq{\beta}{\tuple{B_b, \lessdot_b}}}
+\]
+Pour achever la contradiction, nous allons montrer que $f$ est un
+isomorphisme $\alpha \to B$ pour un certain ordinal $\alpha$.
+
+Il est clair que $\ran{f} = B$. Par le
+\olref[iso]{lemordsegments}, $f$ préserve l'ordre, c'est-à-dire que
+$\gamma \in \beta$ si et seulement si
+$f(\gamma) \lessdot f(\beta)$. Pour montrer que $\dom{f}$ est un
+ordinal, il suffit, par le \olref[basic]{corordtransitiveord}, de
+montrer qu'il est transitif. Fixons donc $\beta \in \dom{f}$ : pour
+un certain $b$, nous avons
+$\ordeq{\beta}{\tuple{B_b, \lessdot_b}}$. Si
+$\gamma \in \beta$, alors $\gamma \in \dom{f}$ par le
+\olref[iso]{wellordinitialsegment}. Ainsi,
+$\beta \subseteq \dom{f}$.
+\end{proof}
+
+Ce résultat autorise la définition suivante, que nous souhaitions
+donner depuis la \olref[vn]{sec} :
+
+\begin{defn}
+Si $\tuple{A, <}$ est un bon ordre, son type d'ordre,
+$\ordtype{A, <}$, est l'unique ordinal $\alpha$ tel que
+$\ordeq{\tuple{A, < }}{\alpha}$.
+\end{defn}
+
+Cette définition permet aussi d'établir deux propriétés utiles :
+
+\begin{cor}\ollabel{ordtypesworklikeyouwant}
+Si $\tuple{A, <}$ et $\tuple{B, \lessdot}$ sont des bons ordres :
+\begin{align*}
+	\ordtype{A, <} = \ordtype{B, \lessdot}&\text{ ssi }\ordeq{\tuple{A, <}}{\tuple{B, \lessdot}}\\
+	\ordtype{A, <} \in \ordtype{B, \lessdot}&\text{ ssi }\ordeq{\tuple{A, <}}{\tuple{B_b, \lessdot_b}}\text{ pour un certain }b \in B
+\end{align*}
+\end{cor}
+
+\begin{proof}
+La première égalité découle de la \olref[basic]{ordisoidentity}. Pour
+démontrer la seconde, posons $\ordtype{A, <} = \alpha$ et
+$\ordtype{B, \lessdot} = \beta$, et soit $f \colon \beta \to B$
+notre isomorphisme d'ordre.
+Si $\alpha \in \beta$, la restriction de $f$ à $\alpha$ est un
+isomorphisme de $\alpha$ sur $B_{f(\alpha)}$. Ainsi,
+$\tuple{A, <}$ est isomorphe à ce segment initial de $B$.
+Réciproquement, supposons $\tuple{A, <}$ isomorphe à $B_b$ pour
+un certain $b \in B$. Posons $\gamma=f^{-1}(b)$ ; alors
+$\gamma \in \beta$ et la restriction de $f$ à $\gamma$ est un
+isomorphisme sur $B_b$. Les ordinaux $\alpha$ et $\gamma$ sont
+donc isomorphes, puis égaux. Ainsi, $\alpha \in \beta$.
+Ces arguments s'appuient sur les résultats donnés
+par la \olref[iso]{ordisounique},
+le \olref[iso]{wellordinitialsegment} et le
+\olref[basic]{ordissetofsmallerord}.
+\end{proof}
+
+\end{document}

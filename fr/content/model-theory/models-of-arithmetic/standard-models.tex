@@ -1,0 +1,208 @@
+% Part: model-theory
+% Chapter: models-of-arithmetic
+% Section: standard-models
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mod}{mar}{stm}
+\olsection{Modèles standards de l'arithmétique}
+
+Le !!{language} de l'arithmétique~$\Lang{L_A}$ est destiné
+à parler des nombres, plus précisément des entiers naturels.
+Le modèle standard~$\Struct{N}$ joue donc un rôle particulier :
+c'est celui que nous voulons décrire. En logique, cependant,
+les propriétés structurelles nous intéressent souvent davantage
+que les objets qui composent le domaine. Deux !!{structure}s
+isomorphes partagent ces propriétés. Nous appellerons donc
+également « standard » toute !!{structure} isomorphe à~$\Struct{N}$.
+
+\begin{defn}
+Une !!{structure} pour $\Lang{L_A}$ est \emph{standard}
+si elle est isomorphe à~$\Struct{N}$.
+\end{defn}
+
+\begin{prop}
+\ollabel{prop:standard-domain}
+Si une !!{structure}~$\Struct{M}$ est standard, son domaine
+est l'ensemble des valeurs des numéraux standards, c'est-à-dire
+\[
+  \Domain{M}=\Setabs{\Value{\num{n}}{M}}{n\in\Nat}.
+\]
+\end{prop}
+
+\begin{proof}
+Il est clair que
+$\Value{\num{n}}{M}\in\Domain{M}$ pour tout~$n$.
+Réciproquement, soit $x\in\Domain{M}$. Puisque
+$\Struct{M}$ est standard, il existe un isomorphisme
+$g\colon\Nat\to\Domain{M}$. Il préserve la valeur des termes,
+donc
+$g(n)=g(\Value{\num{n}}{N})=\Value{\num{n}}{M}$.
+Comme $g$ est !!{surjective}, $x=g(n)$ pour un certain
+$n\in\Nat$, et par conséquent
+$x=\Value{\num{n}}{M}$.
+\end{proof}
+
+\begin{explain}
+Dans une !!{structure} standard~$\Struct{M}$, les numéraux
+standards $\num{0}$, $\num{1}$, $\num{2}$, \dots,
+c'est-à-dire les termes $\Obj{0}$, $\Obj{0}'$,
+$\Obj{0}''$, etc., nomment tous les !!{element}s du
+domaine. Cela ne signifie pas que ces !!{element}s
+\emph{soient} des entiers naturels : les numéraux permettent
+simplement de les désigner comme ils désignent les éléments
+de~$\Domain{N}$.
+\end{explain}
+
+\begin{prob}
+Montrer que la réciproque de la
+\olref[mod][mar][stm]{prop:standard-domain} est fausse :
+donner une !!{structure}~$\Struct{M}$ telle que
+$\Domain{M}=
+\Setabs{\Value{\num{n}}{M}}{n\in\Nat}$
+mais qui ne soit pas isomorphe à~$\Struct{N}$.
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:thq-standard}
+Si $\Sat{M}{\Th{Q}}$ et si
+$\Domain{M}=
+\Setabs{\Value{\num{n}}{M}}{n\in\Nat}$,
+alors $\Struct{M}$ est standard.
+\end{prop}
+
+\begin{proof}
+Définissons $g\colon\Nat\to\Domain{M}$ par
+$g(n)=\Value{\num{n}}{M}$. L'hypothèse sur le
+domaine assure que $g$ est !!{surjective}.
+Elle est aussi !!{injective} : si $n\neq m$,
+alors $\Th{Q}\Proves\eq/[\num{n}][\num{m}]$.
+Puisque $\Sat{M}{\Th{Q}}$, il s'ensuit que
+$\Sat{M}{\eq/[\num{n}][\num{m}]}$ et donc
+$g(n)\neq g(m)$.
+
+Vérifions que cette bijection est un isomorphisme.
+\begin{enumerate}
+\item Puisque $\Assign{\Obj{0}}{N}=0$ et
+  $\num{0}$ est le terme $\Obj{0}$,
+  \[
+    g(\Assign{\Obj{0}}{N})=g(0)
+    =\Value{\num{0}}{M}=\Assign{\Obj{0}}{M}.
+  \]
+\item Dans $\Struct{N}$, le symbole $\prime$ désigne
+  le successeur. Or $\num{n+1}$ est le terme
+  $\num{n}'$, donc
+  \[
+    g(\Assign{\prime}{N}(n))
+    =g(n+1)=\Value{\num{n+1}}{M}
+    =\Assign{\prime}{M}(\Value{\num{n}}{M})
+    =\Assign{\prime}{M}(g(n)).
+  \]
+\item Dans $\Struct{N}$, $+$ désigne l'addition.
+  Puisque
+  $\Th{Q}\Proves\num{n+m}=(\num{n}+\num{m})$,
+  on a
+  \begin{align*}
+    g(\Assign{+}{N}(n,m))
+      &=g(n+m)=\Value{\num{n+m}}{M}\\
+      &=\Value{\num{n}+\num{m}}{M}\\
+      &=\Assign{+}{M}(
+          \Value{\num{n}}{M},\Value{\num{m}}{M})\\
+      &=\Assign{+}{M}(g(n),g(m)).
+  \end{align*}
+\item La vérification de
+  $g(\Assign{\times}{N}(n,m))
+  =\Assign{\times}{M}(g(n),g(m))$
+  est laissée en exercice.
+\item Enfin,
+  $\tuple{n,m}\in\Assign{<}{N}$ si et seulement
+  si $n<m$. Si $n<m$, alors
+  $\Th{Q}\Proves\num{n}<\num{m}$ et,
+  comme $\Struct{M}$ est un modèle de~$\Th{Q}$,
+  $\tuple{g(n),g(m)}\in\Assign{<}{M}$.
+  Si $n\not<m$, la théorie $\Th{Q}$ démontre
+  $\lnot\num{n}<\num{m}$; par conséquent,
+  $\tuple{g(n),g(m)}\notin\Assign{<}{M}$.
+  L'appartenance à la relation $<$ est donc
+  préservée dans les deux sens.
+\end{enumerate}
+\end{proof}
+
+\begin{explain}
+La fonction $g$ est la manière naturelle d'envoyer
+$\Nat$ dans le domaine d'une !!{structure}~$\Struct{M}$
+pour $\Lang{L_A}$ : chaque telle !!{structure} possède
+des !!{element}s nommés par $\num{0}$, $\num{1}$,
+$\num{2}$, etc. Si $\Struct{M}$ satisfait les
+assertions fondamentales sur ces numéraux qui sont
+vraies dans~$\Struct{N}$, et si $g$ est bijective,
+elle devient un isomorphisme. Lorsque les numéraux
+nomment tous les !!{element}s de~$\Domain{M}$,
+cet isomorphisme est unique.
+\end{explain}
+
+\begin{prop}
+\ollabel{prop:thq-unique-iso}
+Si $\Struct{M}$ est standard, la fonction $g$ de
+la preuve de la \olref{prop:thq-standard} est le seul
+isomorphisme de $\Struct{N}$ sur~$\Struct{M}$.
+\end{prop}
+
+\begin{proof}
+Soit $h\colon\Nat\to\Domain{M}$ un isomorphisme.
+Montrons par récurrence sur~$n$ que $g(n)=h(n)$.
+Au rang $0$, on a
+$g(0)=\Assign{\Obj{0}}{M}$ par définition de~$g$;
+comme $h$ est un isomorphisme,
+$h(0)=h(\Assign{\Obj{0}}{N})
+=\Assign{\Obj{0}}{M}$.
+
+Supposons $g(n)=h(n)$. Alors
+\begin{align*}
+g(n+1)
+  &=\Value{\num{n+1}}{M}
+     &&\text{par définition de $g$}\\
+  &=\Value{\num{n}'}{M}
+     &&\text{car $\num{n+1}\ident\num{n}'$}\\
+  &=\Assign{\prime}{M}(\Value{\num{n}}{M})
+     &&\text{par définition de la valeur d'un terme}\\
+  &=\Assign{\prime}{M}(g(n))
+     &&\text{par définition de $g$}\\
+  &=\Assign{\prime}{M}(h(n))
+     &&\text{par hypothèse de récurrence}\\
+  &=h(\Assign{\prime}{N}(n))
+     &&\text{car $h$ est un isomorphisme}\\
+  &=h(n+1).
+\end{align*}
+\end{proof}
+
+\begin{explain}
+Tout ensemble !!{denumerable}~$M$ est en bijection
+avec~$\Nat$ et peut donc servir de domaine à un
+modèle standard~$\Struct{M}$. Pour en obtenir un,
+on choisit $z\in M$ comme valeur de $\Obj{0}$,
+puis une fonction $s$ pour interpréter $\prime$.
+L'orbite $z,s(z),s^2(z),\dots$ doit être
+\emph{tout}~$M$, sans répétition; l'isomorphisme
+$n\mapsto s^n(z)$ fixe alors les interprétations
+de $+$, de $\times$ et de~$<$. En particulier,
+$s$ est une bijection de $M$ sur
+$M\setminus\{z\}$. Cette seule condition de
+bijection ne suffit toutefois pas : une autre
+orbite de $s$, disjointe de celle de~$z$,
+donnerait une !!{structure} non standard.\footnote{Précision éditoriale : la source n'impose ici que les propriétés d'injectivité et d'image du successeur. Une orbite supplémentaire peut encore les satisfaire. L'orbite de $z$ doit donc épuiser le domaine pour que la structure construite soit standard ; l'image de $s$ est $M\setminus\{z\}$, et non $M$.}
+
+La valeur $z$ ne peut appartenir à l'image de~$s$,
+car $\lforall[x][\eq/[\Obj 0][x']]$ est vrai
+dans~$\Struct{N}$. La fonction $s$ doit être
+!!{injective}, comme le successeur dans~$\Struct{N}$;
+elle doit aussi atteindre chaque élément de
+$M\setminus\{z\}$, puisque
+$\lforall[x][(\eq[x][\Obj 0]\lor
+\lexists[y][\eq[y'][x]])]$ est vrai dans
+le modèle standard.
+\end{explain}
+
+\end{document}

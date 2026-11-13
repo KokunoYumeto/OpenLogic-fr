@@ -1,0 +1,294 @@
+% Part: incompleteness
+% Chapter: representability-in-q
+% Section: sigma1-completeness
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{inp}{s1c}
+\olsection{Complétude \texorpdfstring{$\Sigma_1$}{Sigma-1}}
+
+Malgré l'incomplétude de~$\Th{Q}$ et de ses extensions
+cohérentes et axiomatisables, nous avons vu que $\Th{Q}$
+démontre de nombreux faits élémentaires sur les numéraux.
+Cette capacité va en réalité bien plus loin. Pour en préciser
+la portée, introduisons les !!{formula}s $\Delta_0$,
+$\Sigma_1$ et $\Pi_1$. Schématiquement, une !!{formula}
+$\Sigma_1$ a la forme $\lexists[x][!B(x)]$, où $!B$ se
+construit à l'aide des connecteurs propositionnels et de
+quantificateurs bornés seulement. Nous montrerons que, si un
+!!{sentence}~$!A$ de classe $\Sigma_1$ est vrai dans
+$\Struct{N}$, alors $\Th{Q}\Proves !A$
+(\olref{thm:sigma1-completeness}).
+
+\begin{defn}
+\ollabel{defn:bd-quant}
+Une \emph{!!{formula} existentielle bornée} a la forme
+$\lexists[x][(x<t\land !A(x))]$, où $t$ est un terme ne
+contenant pas librement~$x$. Nous l'écrivons par convention
+$\bexists{x<t}{!A(x)}$.
+%
+Une \emph{!!{formula} universelle bornée} a la forme
+$\lforall[x][(x<t\lif !A(x))]$, sous la même condition
+sur~$t$. Nous l'écrivons par convention
+$\bforall{x<t}{!A(x)}$.
+\end{defn}
+
+\begin{defn}
+\ollabel{defn:delta0-sigma1-pi1-frm}
+Une !!{formula}~$!B$ est $\Delta_0$ si elle se construit à
+partir de !!{formula}s atomiques au moyen des seuls
+connecteurs propositionnels et quantificateurs bornés.
+%
+Une !!{formula}~$!A$ est $\Sigma_1$ si
+$!A\ident\lexists[x][!B(x)]$ avec $!B$ de classe $\Delta_0$.
+%
+Une !!{formula}~$!A$ est $\Pi_1$ si
+$!A\ident\lforall[x][!B(x)]$ avec $!B$ de classe $\Delta_0$.
+\end{defn}
+
+\begin{lem}
+\ollabel{lem:q-proves-clterm-id}
+Si $t$ est un terme clos et $\Value{t}{N}=n$, alors
+$\Th{Q}\Proves\eq[t][\num n]$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par récurrence sur la complexité de~$t$.
+Pour le cas initial, $\Value{\Obj 0}{N}=0$ et
+$\Th{Q}\Proves\eq[\Obj 0][\num 0]$, puisque
+$\num 0\ident\Obj 0$.
+%
+Pour l'étape de récurrence, soient $t_1,t_2$ des termes
+dont les valeurs sont respectivement $n_1,n_2$, et
+supposons
+$\Th{Q}\Proves\eq[t_1][\num{n_1}]$ et
+$\Th{Q}\Proves\eq[t_2][\num{n_2}]$.
+
+La valeur de $t_1'$ est $n_1+1$. En appliquant les règles
+de l'égalité à l'hypothèse de récurrence,
+$\Th{Q}\Proves\eq[t_1'][{\num{n_1}}']$.
+Par définition des numéraux,
+$\num{n_1}'=\num{n_1+1}$; le cas du successeur est établi.
+
+Pour l'addition,
+\[
+      \Value{(t_1 + t_2)}{N}
+    = \Value{t_1}{N} + \Value{t_2}{N}
+    = n_1 + n_2.
+\]
+Les hypothèses de récurrence et la substitution des égaux
+donnent d'abord
+$\Th{Q}\Proves\eq[t_1+t_2][\num{n_1}+t_2]$,
+puis
+$\Th{Q}\Proves\eq[t_1+t_2][\num{n_1}+\num{n_2}]$.
+Or \olref[inc][req][bre]{lem:q-proves-add} donne
+$\Th{Q}\Proves
+\eq[\num{n_1}+\num{n_2}][\num{n_1+n_2}]$.
+La transitivité de l'égalité conclut.
+
+Le même raisonnement s'applique à la multiplication, à
+l'aide du \olref[inc][req][bre]{lem:q-proves-mult}.
+%
+Ces cas épuisent les termes clos de l'arithmétique :
+pour chacun d'eux, si $\Value{t}{N}=n$, alors
+$\Th{Q}\Proves\eq[t][\num n]$.
+\end{proof}
+
+\begin{prob}
+Détaillez le cas de la multiplication dans la preuve du
+\olref{lem:q-proves-clterm-id}.
+\end{prob}
+
+\begin{lem}
+\ollabel{lem:atomic-completeness}
+Soient $t_1,t_2$ des termes clos. Alors
+\begin{enumerate}
+\item Si $\Value{t_1}{N}=\Value{t_2}{N}$,
+      $\Th{Q}\Proves\eq[t_1][t_2]$.
+\item Si $\Value{t_1}{N}\neq\Value{t_2}{N}$,
+      $\Th{Q}\Proves\eq/[t_1][t_2]$.
+\item Si $\Value{t_1}{N}<\Value{t_2}{N}$,
+      $\Th{Q}\Proves t_1<t_2$.
+\item Si $\Value{t_2}{N}\leq\Value{t_1}{N}$,
+      $\Th{Q}\Proves\lnot(t_1<t_2)$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+Posons $n=\Value{t_1}{N}$ et $m=\Value{t_2}{N}$.
+Le \olref{lem:q-proves-clterm-id} donne
+$\Th{Q}\Proves\eq[t_1][\num n]$ et
+$\Th{Q}\Proves\eq[t_2][\num m]$.
+Si $n=m$, la réflexivité et la transitivité de l'égalité
+fournissent $\Th{Q}\Proves\eq[t_1][t_2]$.
+Si $n\neq m$, \olref[inc][req][bre]{lem:q-proves-neq}
+donne $\Th{Q}\Proves\eq/[\num n][\num m]$;
+la substitution des égaux fournit
+$\Th{Q}\Proves\eq/[t_1][t_2]$.
+
+Pour les deux cas concernant~$<$, utilisons l'axiome~$!Q_8$ :
+pour tous $x,y$,
+$x<y\liff\lexists[z][\eq[z'+x][y]]$.
+Supposons d'abord $n<m$ et choisissons
+$k=m-n-1$. Le terme clos ${\num k}'+\num n$ a la
+valeur~$m$; par le premier cas du présent lemme,
+$\Th{Q}\Proves\eq[{\num k}'+\num n][\num m]$.
+En remplaçant les numéraux par $t_1,t_2$, nous obtenons
+$\Th{Q}\Proves\eq[{\num k}'+t_1][t_2]$.
+L'introduction de l'existentiel et le sens droit-gauche
+de~$!Q_8$ donnent $\Th{Q}\Proves t_1<t_2$.
+
+Supposons maintenant $m\leq n$. Si $m=0$,
+\olref[inc][req][min]{lem:less-zero} donne
+$\Th{Q}\Proves\lnot(t_1<\num 0)$, et
+$\eq[t_2][\num 0]$ permet de remplacer la borne par~$t_2$.
+Si $m>0$, écrivons $m=r+1$. D'après le
+\olref[inc][req][min]{lem:less-nsucc}, dans~$\Th{Q}$,
+$t_1<t_2$ impliquerait
+$\eq[t_1][\Obj 0]\lor\dots\lor\eq[t_1][\num r]$.
+Or, pour chaque $j\leq r$, nous avons $j<n$ et
+\olref[inc][req][bre]{lem:q-proves-neq} donne
+$\Th{Q}\Proves\eq/[\num n][\num j]$.
+Comme $\Th{Q}\Proves\eq[t_1][\num n]$, aucun des
+membres de la disjonction n'est possible. Ainsi
+$\Th{Q}\Proves\lnot(t_1<t_2)$.
+\end{proof}
+
+\begin{lem}
+\ollabel{lem:bounded-quant-equiv}
+Supposons que $!A$ soit une !!{formula}, que $t$ soit un
+terme clos et que $k=\Value{t}{N}$. Alors
+\begin{enumerate}
+\item $\Th{Q}\Proves\bforall{x<t}{!A(x)}$ si et seulement si
+      $\Th{Q}\Proves !A(\num 0)\land\dots\land
+      !A(\num{k-1})$.
+\item $\Th{Q}\Proves\bexists{x<t}{!A(x)}$ si et seulement si
+      $\Th{Q}\Proves !A(\num 0)\lor\dots\lor
+      !A(\num{k-1})$.
+\end{enumerate}
+Pour $k=0$, la conjonction vide vaut $\ltrue$ et la
+disjonction vide vaut $\lfalse$.
+\end{lem}
+
+\begin{proof}
+Démontrons le cas du quantificateur universel borné.
+Si $\Value{t}{N}=0$, le membre gauche est démontrable
+dans~$\Th{Q}$ : d'après le
+\olref[inc][req][min]{lem:less-zero}, aucun~$x$
+n'est inférieur à~$\num 0$. Le membre droit est alors
+la conjonction vide $\ltrue$, elle aussi démontrable.
+
+Supposons donc $\Value{t}{N}=k+1$. D'après le
+\olref{lem:q-proves-clterm-id}, nous pouvons remplacer
+la borne~$t$ par~$\num{k+1}$ dans~$\Th{Q}$.
+Si $\Th{Q}\Proves\bforall{x<\num{k+1}}{!A(x)}$,
+alors, pour chaque $n\leq k$,
+\olref{lem:atomic-completeness} donne
+$\Th{Q}\Proves\num n<\num{k+1}$.
+La logique fournit donc
+$\Th{Q}\Proves !A(\num n)$; en réunissant les
+$k+1$ instances, nous obtenons
+$\Th{Q}\Proves !A(\num 0)\land\dots\land !A(\num k)$.
+
+Inversement, supposons cette conjonction démontrable
+dans~$\Th{Q}$ et raisonnons sous l'hypothèse
+$x<\num{k+1}$. D'après le
+\olref[inc][req][min]{lem:less-nsucc},
+$\eq[x][\num 0]\lor\dots\lor\eq[x][\num k]$.
+La substitution des égaux et la disjonction des
+instances démontrées donnent~$!A(x)$.
+Nous obtenons ainsi
+$\bforall{x<\num{k+1}}{!A(x)}$.
+
+Le cas du quantificateur existentiel borné se démontre
+de façon analogue.
+\end{proof}
+
+\begin{prob}
+Détaillez le cas existentiel dans la preuve du
+\olref{lem:bounded-quant-equiv}.
+\end{prob}
+
+\begin{lem}
+\ollabel{lem:delta0-completeness}
+Si $!A$ est un !!{sentence}~$\Delta_0$ vrai dans
+$\Struct{N}$, alors $\Th{Q}\Proves !A$.
+\end{lem}
+
+\begin{proof}
+Nous prouvons simultanément que $\Th{Q}$ démontre tout énoncé
+$\Delta_0$ vrai dans~$\Struct{N}$ et qu'elle démontre la négation
+de tout énoncé $\Delta_0$ faux dans~$\Struct{N}$. La récurrence
+porte sur le nombre de connecteurs et de quantificateurs de la
+formule. Pour une sous-formule qui comporte des variables libres,
+on applique l'hypothèse de récurrence à ses instances closes
+obtenues en substituant des numéraux. Cette substitution
+ne change pas le nombre de connecteurs et de quantificateurs.
+
+Le cas atomique découle du \olref{lem:atomic-completeness}.
+La logique pure donne $\ltrue$ et $\lnot\lfalse$.
+Pour les connecteurs propositionnels, on utilise les deux clauses
+de l'hypothèse de récurrence. Ainsi, pour une conjonction vraie,
+on démontre les deux membres. Pour une conjonction fausse, on
+démontre la négation d'un membre faux. Pour une disjonction vraie,
+on démontre l'un des membres vrais. Pour une disjonction fausse,
+on démontre les négations des deux membres. Pour $\lnot !A$,
+on applique l'hypothèse de récurrence à~$!A$. Si $!A$ est vraie,
+la preuve de~$!A$ donne celle de~$\lnot\lnot !A$.
+Pour l'implication et le biconditionnel, les valeurs de vérité
+des deux membres déterminent de même laquelle de la formule
+ou de sa négation découle de leurs instances signées.
+
+Pour $\bforall{x<t}{!A(x)}$, la borne~$t$ est close et
+$k=\Value{t}{N}$. Si l'énoncé est vrai, chaque instance
+$!A(\num n)$ pour $n<k$ est vraie. L'hypothèse de récurrence donne
+une preuve de chacune dans~$\Th{Q}$. Le
+\olref{lem:bounded-quant-equiv}
+donne $\Th{Q}\Proves\bforall{x<t}{!A(x)}$.
+Si l'énoncé est faux, une instance est fausse pour un $n<k$.
+On démontre sa négation et l'inégalité $\num n<t$, puis la
+négation de l'universelle bornée. Le cas de l'existentielle
+bornée se traite de même, à l'aide de la disjonction finie.
+Lorsque $k=0$, on applique les conventions du
+\olref{lem:bounded-quant-equiv} pour la conjonction et la
+disjonction vides.
+\end{proof}
+
+\begin{prob}
+Détaillez le cas existentiel de la preuve du
+\olref{lem:delta0-completeness}.
+\end{prob}
+
+\begin{thm}
+\ollabel{thm:sigma1-completeness}
+Si un !!{sentence}~$!A$ de classe $\Sigma_1$ est vrai
+dans~$\Struct{N}$, alors $\Th{Q}\Proves !A$.
+\end{thm}
+
+\begin{proof}
+Écrivons $!A\ident\lexists[x][!B(x)]$, avec~$!B$
+de classe $\Delta_0$. Si cet !!{sentence} est vrai
+dans~$\Struct{N}$, il existe un entier naturel~$n$
+et une assignation~$s$ telle que $s(x)=n$ et
+$\Sat{N}{!B(x)}[s]$. Les règles de satisfaction
+pour la substitution donnent
+$\Sat{N}{!B(\num n)}$.
+Cette instance est un !!{sentence}~$\Delta_0$;
+par le \olref{lem:delta0-completeness},
+$\Th{Q}\Proves !B(\num n)$. L'introduction
+de l'existentiel donne enfin
+$\Th{Q}\Proves\lexists[x][!B(x)]$, c'est-à-dire
+$\Th{Q}\Proves !A$.
+\end{proof}
+
+\begin{explain}
+Pour un énoncé $\Delta_0$ clos, chaque borne se ramène à un
+numéral une fois ses paramètres remplacés. Les quantificateurs
+bornés se traitent donc par des preuves portant sur un nombre
+fini d'instances. Pour un énoncé $\Sigma_1$ vrai, un seul témoin
+standard suffit à produire une telle preuve.
+\end{explain}
+
+\end{document}

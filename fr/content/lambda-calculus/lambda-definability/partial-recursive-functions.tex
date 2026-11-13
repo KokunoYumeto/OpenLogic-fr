@@ -1,0 +1,111 @@
+% Part: lambda-calculus
+% Chapter: lambda-definability
+% Section: partial-recursive-functions
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{rep}{par}
+\olsection{Fonctions récursives partielles \texorpdfstring{$\lambda$}{λ}-définissables}
+
+Les fonctions récursives partielles
+s'obtiennent à partir des fonctions
+initiales par composition, récurrence
+primitive et minimisation non bornée.
+Elles se distinguent des fonctions
+récursives générales par le fait que
+les fonctions auxquelles on applique
+la recherche non bornée n'ont pas à
+être régulières. Sans cette exigence,
+une fonction obtenue par minimisation
+peut ne pas être définie sur certaines
+entrées.
+
+On pourrait croire que la méthode
+employée pour les fonctions récursives
+générales, qui sont totales, démontre
+aussi que toutes les fonctions
+récursives partielles sont
+$\lambda$-définissables. Par exemple,
+si $F$ et~$G$ définissent respectivement
+$f$ et~$g$, le terme
+$\lambd[x][F(Gx)]$ semble définir
+leur composition. Lorsque $g(x)$
+est indéfinie, toutefois, $Gx$
+n'a pas de forme normale. Souvent,
+$F(Gx)$ n'en a pas non plus, comme
+il le faudrait; mais cela n'est
+pas garanti. Prenons
+\[
+  F\ident\lambd[x][\num{0}].
+\]
+Même si $Gx$ n'a pas de forme normale,
+$F(Gx)\red\num{0}$ en a une.
+
+On peut représenter toute fonction récursive partielle par une
+recherche non bornée qui ne comporte que des tests totaux. Le
+théorème de forme normale de Kleene permet de choisir ces tests.
+
+\begin{thm}
+\ollabel{thm:partial-recursive-lambda}
+Toute fonction récursive partielle est $\lambda$-définissable.
+\end{thm}
+
+\begin{proof}
+Soit $f$ une fonction récursive partielle à $k$ arguments.
+D'après le \olref[cmp][rec][nft]{thm:kleene-nf}, on peut écrire
+\[
+  f(\vec x)\simeq u(\umin{s}{R(\vec x,s)}),
+\]
+où $R$ est récursive primitive et $u$ est récursive primitive.
+Pour $k>1$, on compose la relation de Kleene avec un codage
+récursif primitif des tuples et on fixe l'indice de $f$.
+Pour $k=0$, on fixe aussi une entrée factice. Soit $C$ un
+lambda-terme qui définit la fonction récursive primitive
+$1-\Char{R}$ et soit $U$ un lambda-terme qui définit~$u$.
+Ces représentants existent par les constructions pour les
+fonctions récursives primitives. Sur des numéraux de Church,
+$C$ renvoie $\num{0}$ si le test réussit et $\num{1}$ sinon.
+
+Utilisons le sélecteur $D(M,N,Z)=Z(K(N))M$ et le successeur
+de l'introduction au lambda-calcul, ainsi que le combinateur
+de Turing $Y$. Posons
+\[
+  L\ident\lambd[g][\lambd[\vec x\,s][
+    D(U(s),g(\vec x,\fn{Succ}(s)),C(\vec x,s))]] .
+\]
+Le terme $\lambd[\vec x][(Y L)(\vec x,\num{0})]$
+définit~$f$. Pour $k=0$, on omet l'abstraction et le passage
+du tuple vide. L'écriture des termes est comprise à renommage
+près des variables liées.
+
+Vérifions la recherche. Si $Z\red\num{0}$, alors
+$D(a,b,Z)\red a$ pour des variables fraîches $a,b$.
+Si $Z\red\num{1}$, alors $D(a,b,Z)\red b$.
+Le théorème de standardisation assure que la réduction externe
+gauche atteint cette variable
+(\href{https://lsv.ens-paris-saclay.fr/~goubault/Lambda/lambda.pdf\#page=20}%
+{Goubault-Larrecq, \emph{Lambda-calcul et langages fonctionnels},
+\S\,3.4, théorème~4}). Jusqu'à cette variable, la réduction
+n'effectue que des pas de tête : une variable de tête et ses
+arguments resteraient en place dans toute réduction ultérieure.
+En remplaçant $a,b$ par des termes quelconques, ces mêmes pas
+de tête conduisent à la branche choisie avant toute contraction
+dans les branches.
+
+Après le dépliage de $Y L$, ce calcul de tête choisit donc
+$U(s)$ si le test réussit et l'appel suivant sinon. Au départ,
+$s=\num{0}$. À chaque appel suivant, $s$ est remplacé par
+$\fn{Succ}(s)$, qui se réduit au numéral suivant. Les
+représentations de $C$ et de $U$ restent correctes sur ces
+arguments, puisque la réduction se propage dans les applications.
+Si un premier témoin $s_0$ existe, le terme atteint la branche
+$U(s)$ avec $s\red\num{s_0}$, puis le numéral de $u(s_0)$.
+Si aucun témoin n'existe, les dépliages et les sélections donnent
+une réduction de tête infinie. Une telle réduction est le
+préfixe de la stratégie externe gauche ; par standardisation,
+le terme ne possède alors aucune forme normale.
+\end{proof}
+
+\end{document}

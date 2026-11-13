@@ -1,0 +1,51 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: universal-part-function
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{uni}
+\olsection{La fonction partielle calculable universelle}
+
+\begin{thm}
+\ollabel{thm:univ-comp}
+Il existe une fonction partielle calculable
+universelle~$\fn{Un}(e,x)$. Autrement dit,
+il existe une fonction $\fn{Un}(e,x)$ telle que :
+\begin{enumerate}
+\item $\fn{Un}(e,x)$ est partielle calculable.
+\item Pour toute fonction partielle calculable
+  unaire~$f(x)$, il existe un entier naturel~$e$
+  tel que $f(x) \simeq \fn{Un}(e,x)$ pour tout~$x$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+Posons $\fn{Un}(e,x) \simeq U(\umin{s}{T(e,x,s)})$,
+où $U$ et $T$ sont ceux du théorème de forme
+normale de Kleene
+(\olref[nfm]{thm:normal-form}).
+\end{proof}
+
+\begin{explain}
+Le théorème précise que les fonctions partielles
+calculables admettent une énumération effective.
+Si $f_e$ désigne la fonction définie par
+$f_e(x) \simeq \fn{Un}(e,x)$, la suite
+$f_0,f_1,f_2,\dots$ comprend toutes les fonctions
+partielles calculables, et la valeur de $f_e(x)$
+se calcule « uniformément » à partir de $e$
+et de~$x$, lorsqu'elle est définie. Pour
+simplifier, nous avons pris une fonction binaire
+universelle pour les fonctions unaires; en codant
+les suites de nombres, on peut étendre cette
+construction à un nombre quelconque d'arguments.
+Par exemple, si $f(x,y,z)$ est une fonction
+récursive partielle à trois arguments, alors
+$g(x) \simeq f((x)_0,(x)_1,(x)_2)$ est une
+fonction récursive partielle unaire.\footnote{Correction éditoriale : la source appelle ici $g$ une fonction récursive unaire sans préciser sa partialité. Celle-ci doit être conservée après le codage des arguments. Nous employons aussi $\simeq$ dans la définition de $f_e$ pour couvrir les valeurs indéfinies.}
+\end{explain}
+
+\end{document}

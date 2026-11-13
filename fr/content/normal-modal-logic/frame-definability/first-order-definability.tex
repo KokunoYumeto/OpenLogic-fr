@@ -1,0 +1,116 @@
+% Section: first-order-definability
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{frd}{fol}
+
+\olsection{Définissabilité au premier ordre}
+
+Nous avons vu que certaines propriétés des relations
+d'accessibilité des cadres peuvent être définies par des
+!!{formula}s modales. La symétrie des cadres, par exemple, est
+définie par la !!{formula}~\Ax{B},
+$p \lif \Box\Diamond p$. Toutes les conditions rencontrées
+jusqu'ici s'expriment aussi par des !!{formula}s du premier
+ordre dans un !!{language} ne comportant qu'un seul
+!!{predicate} binaire. Ainsi, la symétrie est définie par
+$\lforall[x][\lforall[y][(\Atom{Q}{x,y} \lif \Atom{Q}{y, x})]]$ :
+une !!{structure} du premier ordre~$\Struct{M}$ telle que
+$\Domain{M} = W$ et $\Assign{Q}{M} = R$ satisfait cet
+énoncé si et seulement si $R$ est symétrique. Cela suggère
+la définition suivante.
+
+\begin{defn}
+  Une classe~$\mClass{F}$ de cadres est
+  \emph{définissable au premier ordre} s'il existe un
+  !!{sentence}~$!A$ dans le langage du premier ordre ayant
+  pour seul !!{predicate} binaire~$Q$, tel que
+  $\mModel{F} = \tuple{W, R} \in \mClass{F}$ si et seulement si
+  $\Sat{M}{!A}$ dans la !!{structure} du premier
+  ordre~$\Struct{M}$ où $\Domain{M} = W$ et
+  $\Assign{Q}{M} = R$.
+\end{defn}
+
+Les propriétés étudiées jusqu'ici et les !!{formula}s modales
+qui les définissent font toutefois figure d'exceptions. Une
+!!{formula} modale ne définit pas nécessairement une classe
+de cadres définissable au premier ordre; inversement, toute
+classe de cadres définissable au premier ordre n'est pas
+nécessairement définissable par une formule modale.
+
+La formule de Löb fournit un contre-exemple à la première
+affirmation :
+\begin{equation}
+\Box(\Box p \lif p) \lif \Box p. \tag{\Ax{W}}
+\end{equation}
+\Ax{W} définit la classe des cadres transitifs dont la relation
+est inversement bien fondée. Une relation est \emph{bien fondée}
+s'il n'existe aucune suite infinie $w_1$, $w_2$, \dots{} telle que
+$Rw_2w_1$, $Rw_3w_2$, \dots. Par exemple, la relation $<$
+sur~$\Nat$ est bien fondée, contrairement à $<$ sur~$\Int$.
+Une relation est \emph{inversement bien fondée} si sa relation
+réciproque est bien fondée. Ainsi, il n'existe pour elle
+aucune suite infinie $w_1$, $w_2$, \dots{} telle que
+$Rw_1w_2$, $Rw_2w_3$, \dots.
+
+Il n'existe cependant aucun énoncé du premier ordre qui définisse
+la classe des relations transitives et inversement bien fondées.
+Supposons en effet que~$\Sat{M}{!F}$ si et seulement si
+$R = \Assign{Q}{M}$ est transitive et inversement bien fondée.
+Étendons le langage par de nouvelles constantes
+$a_1$, $a_2$, \dots{} et, pour chaque $n \ge 2$,
+définissons l'!!{sentence}~$!A_n$ par
+\[
+(\Atom{Q}{a_1,a_2} \land \dots \land
+    \Atom{Q}{a_{n-1},a_{n}})
+\]
+Considérons alors l'ensemble d'!!{sentence}s
+\[
+\Gamma = \{!F, !A_2, !A_3, \dots\}.
+\]
+Tout sous-ensemble fini de $\Gamma$ est satisfaisable.
+Choisissons $k \ge 2$ au moins aussi grand que tous les indices
+$i$ pour lesquels $!A_i$ appartient au sous-ensemble considéré;
+si aucun n'y figure, prenons $k = 2$. Construisons une
+!!{structure}~$\Struct{M_k}$ telle que
+$\Domain{M_k} = \{1, \dots, k\}$ et
+$\Assign{Q}{M_k} = <$, avec
+$\Assign{a_i}{M_k} = i$ pour $i \le k$ et
+$\Assign{a_i}{M_k} = 1$ pour $i > k$.
+La relation $<$ sur $\{1, \dots, k\}$ est transitive et
+inversement bien fondée, donc $\Sat{M_k}{!F}$.
+Par construction, $\Sat{M_k}{!A_i}$ pour tout $i$ tel que
+$2 \le i \le k$.
+Le théorème de compacité du premier ordre donne alors un
+modèle~$\Struct{M}$ de $\Gamma$. Puisque
+$\Sat{M}{!F}$, la relation $\Assign{Q}{M}$ est
+inversement bien fondée par hypothèse. Or, puisque
+tous les $!A_n$ appartiennent à $\Gamma$, la suite
+$\Assign{a_1}{M}$, $\Assign{a_2}{M}$, \dots{}
+forme une chaîne infinie pour $\Assign{Q}{M}$,
+contrairement à cette propriété.
+
+La propriété d'universalité fournit un contre-exemple à la
+seconde affirmation : $Ruv$ pour tous les mondes $u$ et $v$.
+La classe des cadres universels est définissable au premier
+ordre par $\lforall[x][\lforall[y][\Atom{Q}{x,y}]]$.
+Cependant, aucune formule modale n'est valide dans tous les
+cadres universels et dans ceux-là seulement. En effet, les
+formules valides dans tous les cadres universels sont
+exactement celles qui sont valides dans tous les cadres
+réflexifs, symétriques et transitifs. Tout cadre de ce
+dernier type se décompose en classes d'équivalence; dans
+chacune, la relation est universelle, et la vérité d'une
+formule modale en un monde ne dépend que de sa classe.
+Or certains cadres réflexifs, symétriques et transitifs ne
+sont pas universels. Toute !!{formula} valide dans tous
+les cadres universels est donc également valide dans
+certains cadres non universels.
+Dans la dernière preuve, l'invariance par restriction à une
+classe d'équivalence se vérifie par induction sur les formules.
+La valuation se restreint à cette classe et, à tout monde de
+la classe, l'ensemble des mondes accessibles reste exactement
+le même. Les clauses des modalités sont donc préservées.
+\end{document}

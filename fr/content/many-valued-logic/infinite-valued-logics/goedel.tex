@@ -1,0 +1,180 @@
+% Part: many-valued-logic
+% Chapter: infinite-valued-logics
+% Section: goedel
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{inf}{god}
+
+\olsection{Les logiques de G\"odel}
+
+Les mêmes opérations définissent la matrice de G\"odel sur
+les valeurs rationnelles et sur chacune des chaînes finies
+$V_m$. La comparaison de ces matrices porte sur les
+tautologies et sur la conséquence à partir de prémisses.
+
+\begin{defn}\ollabel{def:goedel}
+La logique de G\"odel à une infinité
+de valeurs~$\LogGod[\infty]$ est
+définie par la matrice suivante :
+\begin{enumerate}
+  \item Le langage propositionnel usuel
+  $\Lang L_0$ avec $\lfalse$,
+  $\lnot$, $\land$, $\lor$ et $\lif$.
+  \item L'ensemble des valeurs de vérité
+  $V_\infty$.
+  \item $1$ est la seule valeur désignée,
+  c'est-à-dire $V^+=\{1\}$.
+  \item Les fonctions de vérité sont :
+  \begin{align*}
+    \tf{\lfalse} &=0\\
+    \tf{\lnot}[\LogGod](x)
+      &=\begin{cases}
+        1 & \text{si }x=0,\\
+        0 & \text{sinon,}
+      \end{cases}\\
+    \tf{\land}[\LogGod](x,y) &=\min(x,y)\\
+    \tf{\lor}[\LogGod](x,y) &=\max(x,y)\\
+    \tf{\lif}[\LogGod](x,y)
+      &=\begin{cases}
+        1 & \text{si }x\le y,\\
+        y & \text{sinon.}
+      \end{cases}
+  \end{align*}
+\end{enumerate}
+La logique de G\"odel à $m$ valeurs
+est définie de la même façon, à ceci
+près que $V=V_m$.
+\end{defn}
+
+\begin{prop}
+  La logique $\LogGod[3]$ définie
+  par la \olref[thr][god]{defn:goedel}
+  coïncide, sous l'identification
+  $\True=1$, $\Undef=1/2$ et
+  $\False=0$, avec la logique
+  $\LogGod[3]$ définie par la
+  \olref{def:goedel}.
+\end{prop}
+
+\begin{proof}
+  Il suffit de comparer les tables
+  de vérité des connecteurs données
+  dans la \olref[thr][god]{defn:goedel}
+  avec celles que déterminent les
+  équations de la
+  \olref{def:goedel} :
+  \begin{center}
+    \begin{tabular}{c|c}
+      $\tf{\lnot}[\LogGod[3]]$ & \\
+      \hline
+      $1$ & $0$ \\
+      $1/2$ & $0$ \\
+      $0$ & $1$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\land}[\LogGod]$ & $1$ & $1/2$ & $0$ \\
+      \hline
+      $1$ & $1$ & $1/2$ & $0$ \\
+      $1/2$ & $1/2$ & $1/2$ & $0$ \\
+      $0$ & $0$ & $0$ & $0$
+    \end{tabular}
+    \\[2ex]
+    \begin{tabular}{c|ccc}
+      $\tf{\lor}[\LogGod]$ & $1$ & $1/2$ & $0$ \\
+      \hline
+      $1$ & $1$ & $1$ & $1$ \\
+      $1/2$ & $1$ & $1/2$ & $1/2$ \\
+      $0$ & $1$ & $1/2$ & $0$
+    \end{tabular}
+    \quad
+    \begin{tabular}{c|ccc}
+      $\tf{\lif}[\LogGod]$ & $1$ & $1/2$ & $0$ \\
+      \hline
+      $1$ & $1$ & $1/2$ & $0$ \\
+      $1/2$ & $1$ & $1$ & $0$ \\
+      $0$ & $1$ & $1$ & $1$
+    \end{tabular}
+  \end{center}
+\end{proof}
+
+\begin{prop}\ollabel{prop:god-infty-m}
+  Si $\Gamma\Entails[\LogGod[\infty]] !B$,
+  alors
+  $\Gamma\Entails[\LogGod[m]] !B$
+  pour tout~$m\ge2$.
+\end{prop}
+
+\begin{proof}
+  Exercice.
+\end{proof}
+
+\begin{prob}
+  Démontrer la
+  \olref[mvl][inf][god]{prop:god-infty-m}.
+\end{prob}
+
+La réciproque vaut si $\Gamma$ est fini. Supposons qu'une
+valuation dans $V_\infty$ désigne toutes les prémisses et donne
+à $!B$ une valeur inférieure à $1$. Les valeurs des variables
+de $\Gamma$ et de $!B$ ont un dénominateur commun $d$.
+Elles appartiennent à $V_{d+1}$. Comme les opérations de G\"odel
+se restreignent à cette chaîne, on obtient le même contre-modèle
+en donnant la valeur $0$ aux variables restantes.
+
+Pour voir le rôle de la finitude, prenons des variables
+$p_0,p_1,\ldots,q$ deux à deux distinctes et, pour tout $i\geq 0$,
+la prémisse $(p_{i+1}\lif p_i)\lif q$. Si $q$ a une valeur
+inférieure à $1$, chaque prémisse impose que la valeur de
+$p_{i+1}$ dépasse strictement celle de $p_i$ et que celle de
+$p_i$ soit au plus la valeur de $q$. Une chaîne finie ne
+peut contenir une telle suite. Dans $V_\infty$, on peut donner
+à $q$ la valeur $1/2$ et à $p_i$ la valeur $1/2-1/(i+2)$.
+Toutes les prémisses valent alors $1$ et $q$ vaut $1/2$.
+
+Comme $\LogGod[3]$,
+$\LogGod[\infty]$ admet comme
+tautologies toutes les formules
+valides intuitionnistement. Les mêmes
+exemples de non-tautologies pour
+$\LogGod[3]$ restent des
+non-tautologies pour
+$\LogGod[\infty]$ :
+\begin{align*}
+  & p\lor\lnot p && (p\lif q)\lif(\lnot p\lor q) \\
+  & \lnot\lnot p\lif p && \lnot(\lnot p\land\lnot q)\lif(p\lor q) \\
+  & ((p\lif q)\lif p)\lif p && \lnot(p\lif q)\lif(p\land\lnot q)
+\end{align*}
+L'exemple d'une formule non valide
+intuitionnistement mais tautologique
+dans~$\LogGod[3]$,
+$(p\lif q)\lor(q\lif p)$, est aussi
+une tautologie de~$\LogGod[\infty]$.
+En fait, l'ensemble des tautologies
+de~$\LogGod[\infty]$ est celui de la
+logique intuitionniste augmentée du
+schéma
+$(!A\lif !B)\lor(!B\lif !A)$.
+Michael Dummett l'a montré; c'est
+pourquoi $\LogGod[\infty]$ est
+souvent appelée \emph{logique de
+G\"odel--Dummett}~$\Log{LC}$.
+
+\begin{prob}
+  Montrer que
+  $(p\lif q)\lor(q\lif p)$ est une
+  tautologie de~$\LogGod[\infty]$.
+\end{prob}
+
+\begin{prob}
+  Montrer que
+  $(p\lif q)\lor(q\lif r)\lor(r\lif s)$,
+  qui est une tautologie de
+  $\LogGod[3]$, n'est pas une
+  tautologie de~$\LogGod[\infty]$.
+\end{prob}
+
+\end{document}

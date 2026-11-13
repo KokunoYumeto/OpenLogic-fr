@@ -41,17 +41,17 @@ $f\colon A \to B$ mais aucune !!{bijection} $g\colon A \to B$,
 c'est-à-dire si $\cardle{A}{B}$ et $\cardneq{A}{B}$.
 \end{defn}
 
-Cette relation est irréflexive et transitive ; on laisse également
-la vérification en exercice. Avec cette notation, $A$ est
-!!{enumerable} si et seulement si $\cardle{A}{\Nat}$, et $A$ est
-!!{nonenumerable} si et seulement si $\cardless{\Nat}{A}$.\footnote{
-Précision éditoriale : la seconde caractérisation utilise une
-hypothèse de choix laissée implicite dans l'original. Sous l'axiome
+Cette relation est irréflexive et transitive. La vérification est
+laissée en exercice. Avec cette notation, $A$ est !!{enumerable}
+si et seulement si $\cardle{A}{\Nat}$. La non-dénombrabilité signifie
+donc la négation de $\cardle{A}{\Nat}$. Sous l'axiome
 du choix, tout ensemble infini contient une partie équipotente à
-$\Nat$, ce qui justifie l'injection de $\Nat$ dans~$A$. Sans
-hypothèse de choix, la définition générale de la non-dénombrabilité
-reste la négation de $\cardle{A}{\Nat}$ ; on ne peut pas en déduire
-en général $\cardless{\Nat}{A}$.}
+$\Nat$. Sous cette hypothèse, $A$ est !!{nonenumerable} si et
+seulement si $\cardless{\Nat}{A}$. Pour les ensembles de parties
+qui suivent, l’injection qui envoie chaque entier sur son singleton
+suffit pour comparer les tailles.
+%
+%
 On peut ainsi reformuler
 \oliflabeldef{sfr:siz:nen-alt:thm:nonenum-pownat}{%
 le résultat du \olref[sfr][siz][nen-alt]{thm:nonenum-pownat}
@@ -71,12 +71,12 @@ $f \colon A \to \Pow{A}$ : si $x \neq y$, alors
 $\{x\} \neq \{y\}$ par extensionnalité, donc $f(x) \neq f(y)$.
 Ainsi, $\cardle{A}{\Pow{A}}$.
 
-\begin{editorial}
-Si la \olref[nen]{sec} est présente, nous donnons la démonstration
-détaillée ; sinon, nous donnons une démonstration plus brève,
-correspondant à la \olref[nen-alt]{sec}.
-Le lecteur complet conserve les deux démonstrations, dans cet ordre.
-\end{editorial}
+\begin{explain}
+La démonstration détaillée \oliflabeldef{sfr:siz:nen:sec}{(voir la \olref[nen]{sec}) }{}écarte toute surjection.
+La démonstration condensée \oliflabeldef{sfr:siz:nen-alt:sec}{(voir la \olref[nen-alt]{sec}) }{}part d'une bijection supposée.
+Le sous-ensemble construit par la diagonale diffère dans les deux cas
+de l'image de chaque élément de~$A$.
+\end{explain}
 
 \frproofversions{Démonstration détaillée.}{Démonstration condensée.}{sfr:siz:nen:sec}{%
   Montrons maintenant qu'il ne peut exister de fonction
@@ -100,11 +100,11 @@ Le lecteur complet conserve les deux démonstrations, dans cet ordre.
   donc $x \in \overline{A}$ ; tout $x \in \overline{A}$
   satisfait lui-même cette condition. Ainsi, pour chaque
   $x \in A$, on a $x \in g(x)$ si et seulement si
-  $x \notin \overline{A}$, et donc $g(x) \neq \overline{A}$.\footnote{
-  Note de traduction : l'original écrit ici « pour chaque
-  $x \in \overline{A}$ ». Il faut considérer chaque $x \in A$
-  pour exclure $\overline{A}$ de toute l'image de~$g$ ; les deux
-  cas de l'argument sont explicités en conséquence.}
+  $x \notin \overline{A}$, et donc $g(x) \neq \overline{A}$.
+  %
+  %
+  %
+  %
   Autrement dit, $\overline{A}$ n'appartient pas à l'image de~$g$,
   ce qui contredirait la surjectivité de~$g$.}{
   Il reste à montrer que $\cardneq{A}{\Pow{A}}$. Raisonnons par

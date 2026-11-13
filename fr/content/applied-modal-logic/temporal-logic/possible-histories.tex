@@ -1,0 +1,89 @@
+% Part: applied-modal-logics
+% Chapter: temporal-logic
+% Section: possible-histories
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{aml}{tl}{poss}
+
+\olsection{Histoires possibles}
+
+Les modèles relationnels de la logique temporelle que nous avons
+utilisés sont très souples, puisque nous ne sommes pas tenus
+d'imposer des restrictions à la relation d'accessibilité. Ils
+peuvent donc se ramifier dans le passé comme dans le futur. Nous
+pourrions toutefois envisager une conception plus «~modale~» de la
+ramification, en considérant des suites d'événements comme des
+histoires possibles. Cela n'exige pas nécessairement de modifier
+notre langage, même si nous pourrions aussi lui ajouter les
+opérateurs modaux «~usuels~» $\Box$ et~$\Diamond$. Nous pourrions
+également ajouter des relations d'accessibilité épistémiques afin
+de représenter l'évolution des connaissances des agents au fil du
+temps.
+
+\begin{defn}
+  Un \emph{modèle à histoires possibles} pour le langage temporel est
+  un triplet $\mModel{M} = \tuple{T, C, V}$, où
+  \begin{enumerate}
+    \item $T$ est un ensemble non vide, interprété comme un ensemble
+      d'états temporels.
+    \item $C$ est un ensemble de chemins de calcul, ou
+      \emph{histoires possibles} d'un système. Autrement dit,
+      $C$~est un ensemble de suites~$\sigma$ d'états $s_1$, $s_2$,~$s_3$,
+      \dots, où chaque $s_i \in T$.
+    \item $V$ est une fonction qui associe à chaque !!{propositional
+      variable}~$p$ un ensemble~$V(p)$ d'instants.
+  \end{enumerate}
+  Pour simplifier, nous supposerons généralement que, si une histoire
+  appartient à~$C$, tous ses suffixes y appartiennent aussi. Par
+  exemple, si ($s_1$, $s_2$,~$s_3$) est une suite de~$C$, alors
+  ($s_2$, $s_3$) et la suite à un seul terme~$s_3$ en sont aussi.
+  Dans une histoire $\sigma=(s_1,s_2,\ldots)$, nous distinguons
+  l'occurrence d'indice~$i$ de l'état~$s_i$ qui s'y trouve. Deux
+  indices différents peuvent désigner des occurrences du même
+  état. La variable~$p$ est vraie à l'occurrence~$i$ si
+  $s_i \in V(p)$.
+\end{defn}
+
+Dans un modèle~$\mModel M$, la vérité d'!!a{formula} est
+maintenant évaluée à une occurrence~$i$ dans une histoire~$\sigma$.
+Les clauses pour les connecteurs vérifonctionnels gardent la forme
+donnée dans la~\olref[sem]{defn:tmodels} : leurs sous-formules
+sont évaluées à la même occurrence de la même histoire. L'opérateur
+du futur~$\Ftemp$ avance dans cette histoire. L'opérateur
+$\Diamond$ permet de choisir une histoire qui passe par le même état.
+
+\begin{defn}\ollabel{defn:phmodels}
+  On note $\mSat{M}{!A}[i,\sigma]$ la \emph{vérité
+  d'!!a{formula}~$!A$ à l'occurrence~$i$ de l'histoire~$\sigma$}
+  dans~$\mModel M$. Soit $\sigma=(s_1,s_2,\ldots)\in C$.
+  \begin{enumerate}
+  \item\ollabel{defn:sub:phmodels-f} \indcase{!A}{\Ftemp
+    !B}{$\mSat{M}{\indfrm}[i,\sigma]$ si et seulement si
+    $\mSat{M}{!B}[j,\sigma]$ pour au moins un indice~$j$ de
+    $\sigma$ tel que $i<j$.}
+  \item\ollabel{defn:sub:phmodels-diamond} \indcase{!A}{\Diamond
+    !B}{$\mSat{M}{\indfrm}[i,\sigma]$ si et seulement si
+    $\mSat{M}{!B}[j,\sigma']$ pour au moins une histoire
+    $\sigma'=(s'_1,s'_2,\ldots)\in C$ et un indice~$j$ de
+    $\sigma'$ tels que $s'_j=s_i$.}
+  \end{enumerate}
+\end{defn}
+
+Les autres opérateurs temporels et modaux peuvent être définis de
+façon analogue. Nous pouvons désormais représenter des énoncés qui
+combinent temps verbal et modalité. Par exemple, «~$p$~ne se produira
+pas, mais pourrait se produire~» peut être représenté par la formule
+$\lnot \Ftemp p \land \Diamond \Ftemp p$. Cette formule est vraie à une occurrence après laquelle $p$ ne
+vaut jamais dans l'histoire choisie, s'il existe une occurrence
+du même état après laquelle $p$ vaut dans une histoire possible.
+
+Par exemple, prenons une histoire $(t,u,t)$, ses suffixes
+non vides et $V(p)=\{u\}$. Dans l'histoire $(t,u,t)$,
+$\Ftemp p$ est vrai à la première occurrence de~$t$ et faux
+à la dernière. En revanche, $\Diamond\Ftemp p$ est vrai aux
+deux occurrences, car la première occurrence de~$t$ est un
+témoin dans les deux cas.
+\end{document}

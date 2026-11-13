@@ -1,0 +1,184 @@
+% Partie : logique du premier ordre
+% Chapitre : complétude
+% Section : ensembles maximalement cohérents
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{fol}{com}{mcs}
+\olsection{Ensembles maximalement cohérents d'\usetoken{p}{sentence}}
+
+\begin{defn}[Ensemble maximalement cohérent]
+\ollabel{mcs}
+Un ensemble~$\Gamma$ d'!!{sentence}s est
+\emph{maximalement cohérent} si et seulement si :
+\begin{enumerate}
+\item $\Gamma$ est cohérent ;
+\item tout ensemble $\Gamma'$ d'!!{sentence}s du même langage
+tel que $\Gamma\subsetneq\Gamma'$ est incohérent.
+\end{enumerate}
+\end{defn}
+
+\begin{explain}
+Une définition équivalente est la suivante : un ensemble
+$\Gamma$ d'énoncés est \emph{maximalement cohérent} si et
+seulement si :
+\begin{enumerate}
+\item $\Gamma$ est cohérent ;
+\item pour tout énoncé $!A$, si $\Gamma\cup\{!A\}$ est
+cohérent, alors $!A\in\Gamma$.
+\end{enumerate}
+Autrement dit, on ne peut ajouter à un ensemble maximalement
+cohérent~$\Gamma$ des !!{sentence}s qui n'y figurent pas déjà
+sans rendre le nouvel ensemble incohérent.
+\end{explain}
+
+\begin{explain}
+Les ensembles maximalement cohérents jouent un rôle important
+dans la démonstration de complétude. Nous pouvons garantir que
+tout ensemble cohérent d'!!{sentence}s~$\Gamma$ est inclus
+dans un ensemble maximalement cohérent~$\Gamma^*$, et qu'un
+tel ensemble contient, pour chaque !!{sentence}~$!A$, soit
+$!A$, soit sa négation $\lnot !A$. Cela vaut notamment pour
+les !!{sentence}s atomiques. À partir d'un ensemble
+maximalement cohérent dans un langage convenablement enrichi
+de !!{constant}s, nous pouvons donc construire !!a{structure}
+dont l'interprétation des !!{predicate}s dépend des
+!!{sentence}s atomiques appartenant à~$\Gamma^*$.
+Nous pouvons ensuite montrer que cette !!{structure} rend
+vrais tous les !!{sentence}s de~$\Gamma^*$, et donc aussi
+ceux de~$\Gamma$. Pour établir ce dernier fait, il faut que
+$\lnot !A\in\Gamma^*$ si et seulement si $!A\notin\Gamma^*$,
+que $(!A\lor !B)\in\Gamma^*$ si et seulement si
+$!A\in\Gamma^*$ ou $!B\in\Gamma^*$, et ainsi de suite.
+\end{explain}
+
+\begin{prop}\ollabel{prop:mcs}
+Supposons que $\Gamma$ soit maximalement cohérent. Alors :
+\begin{enumerate}
+\item \ollabel{prop:mcs-prov-in}
+Si $\Gamma\Proves !A$, alors $!A\in\Gamma$.
+
+\item \ollabel{prop:mcs-either-or}
+Pour tout énoncé $!A$, soit $!A\in\Gamma$, soit
+$\lnot !A\in\Gamma$.
+
+\tagitem{prvAnd}{\ollabel{prop:mcs-and}
+$(!A\land !B)\in\Gamma$ si et seulement si
+$!A\in\Gamma$ et $!B\in\Gamma$.}{}
+
+\tagitem{prvOr}{\ollabel{prop:mcs-or}
+$(!A\lor !B)\in\Gamma$ si et seulement si
+$!A\in\Gamma$ ou $!B\in\Gamma$.}{}
+
+\tagitem{prvIf}{\ollabel{prop:mcs-if}
+$(!A\lif !B)\in\Gamma$ si et seulement si
+$!A\notin\Gamma$ ou $!B\in\Gamma$.}{}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Dans toute la démonstration, supposons que $\Gamma$ soit
+maximalement cohérent.
+\begin{enumerate}
+\item Si $\Gamma\Proves !A$, alors $!A\in\Gamma$.
+
+Supposons que $\Gamma\Proves !A$ et, par l'absurde, que
+$!A\notin\Gamma$. La maximalité de $\Gamma$ implique que
+$\Gamma\cup\{!A\}$ est incohérent, donc que
+$\Gamma\cup\{!A\}\Proves\lfalse$. D'après les
+\tagrefs{prfSC/{fol:seq:prv:prop:provability-contr},prfND/{fol:ntd:prv:prop:provability-contr}},
+$\Gamma$ est incohérent, contrairement à l'hypothèse.
+Ainsi, $!A\notin\Gamma$ est impossible et $!A\in\Gamma$.
+
+\item Pour tout énoncé $!A$, soit $!A\in\Gamma$, soit
+$\lnot !A\in\Gamma$.
+
+Supposons, par l'absurde, qu'un énoncé~$!A$ vérifie
+$!A\notin\Gamma$ et $\lnot !A\notin\Gamma$.
+Par maximalité, $\Gamma\cup\{!A\}$ et
+$\Gamma\cup\{\lnot !A\}$ sont alors tous deux incohérents.
+Ainsi, $\Gamma\cup\{!A\}\Proves\lfalse$ et
+$\Gamma\cup\{\lnot !A\}\Proves\lfalse$. D'après les
+\tagrefs{prfSC/{fol:seq:prv:prop:provability-exhaustive},prfND/{fol:ntd:prv:prop:provability-exhaustive}},
+$\Gamma$ est incohérent, ce qui est contradictoire.
+Il n'existe donc pas de tel !!{sentence}~$!A$ :
+pour tout énoncé $!A$, on a $!A\in\Gamma$ ou
+$\lnot !A\in\Gamma$.
+
+\tagitem{defAnd}{}{%
+\iftag{probAnd}{Exercice.}{%
+$(!A\land !B)\in\Gamma$ si et seulement si
+$!A\in\Gamma$ et $!B\in\Gamma$.
+
+Pour le sens direct, supposons que $(!A\land !B)\in\Gamma$.
+Alors $\Gamma\Proves !A\land !B$. D'après les
+\tagrefs{prfSC/{fol:seq:ppr:prop:provability-land},prfND/{fol:ntd:ppr:prop:provability-land}}, point~(1),
+$\Gamma\Proves !A$ et $\Gamma\Proves !B$.
+La \olref{prop:mcs-prov-in} donne $!A\in\Gamma$ et
+$!B\in\Gamma$, comme souhaité.
+
+Réciproquement, supposons que $!A\in\Gamma$ et
+$!B\in\Gamma$. Alors $\Gamma\Proves !A$ et
+$\Gamma\Proves !B$. D'après les
+\tagrefs{prfSC/{fol:seq:ppr:prop:provability-land},prfND/{fol:ntd:ppr:prop:provability-land}}, point~(2),
+$\Gamma\Proves !A\land !B$. La \olref{prop:mcs-prov-in}
+donne donc $(!A\land !B)\in\Gamma$.}}
+
+\tagitem{defOr}{}{%
+\iftag{probOr}{Exercice.}{%
+$(!A\lor !B)\in\Gamma$ si et seulement si
+$!A\in\Gamma$ ou $!B\in\Gamma$.
+
+Pour la contraposée du sens direct, supposons que
+$!A\notin\Gamma$ et $!B\notin\Gamma$. Nous voulons
+montrer que $(!A\lor !B)\notin\Gamma$.
+Par maximalité de $\Gamma$,
+$\Gamma\cup\{!A\}\Proves\lfalse$ et
+$\Gamma\cup\{!B\}\Proves\lfalse$. D'après les
+\tagrefs{prfSC/{fol:seq:ppr:prop:provability-lor},prfND/{fol:ntd:ppr:prop:provability-lor}}, point~(1),
+$\Gamma\cup\{(!A\lor !B)\}$ est incohérent.
+Par conséquent, $(!A\lor !B)\notin\Gamma$, comme souhaité.
+
+Réciproquement, supposons que $!A\in\Gamma$ ou
+$!B\in\Gamma$. Alors $\Gamma\Proves !A$ ou
+$\Gamma\Proves !B$. D'après les
+\tagrefs{prfSC/{fol:seq:ppr:prop:provability-lor},prfND/{fol:ntd:ppr:prop:provability-lor}}, point~(2),
+$\Gamma\Proves !A\lor !B$. La \olref{prop:mcs-prov-in}
+donne donc $(!A\lor !B)\in\Gamma$, comme souhaité.}}
+
+\tagitem{defIf}{}{%
+\iftag{probIf}{Exercice.}{%
+$(!A\lif !B)\in\Gamma$ si et seulement si
+$!A\notin\Gamma$ ou $!B\in\Gamma$.
+
+Pour le sens direct, supposons que $(!A\lif !B)\in\Gamma$.
+Supposons, par l'absurde, que $!A\in\Gamma$ et
+$!B\notin\Gamma$. Alors $\Gamma\Proves !A\lif !B$
+et $\Gamma\Proves !A$. D'après les
+\tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},prfND/{fol:ntd:ppr:prop:provability-lif}}, point~(1),
+$\Gamma\Proves !B$. La \olref{prop:mcs-prov-in} donne
+alors $!B\in\Gamma$, contrairement à l'hypothèse.
+
+Pour la réciproque, considérons d'abord le cas
+$!A\notin\Gamma$. Par la \olref{prop:mcs-either-or},
+$\lnot !A\in\Gamma$, donc $\Gamma\Proves\lnot !A$.
+D'après les
+\tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},prfND/{fol:ntd:ppr:prop:provability-lif}}, point~(2),
+$\Gamma\Proves !A\lif !B$. La \olref{prop:mcs-prov-in}
+donne de nouveau $(!A\lif !B)\in\Gamma$, comme souhaité.
+
+Considérons maintenant le cas $!B\in\Gamma$.
+Alors $\Gamma\Proves !B$ ; d'après les
+\tagrefs{prfSC/{fol:seq:ppr:prop:provability-lif},prfND/{fol:ntd:ppr:prop:provability-lif}}, point~(2),
+$\Gamma\Proves !A\lif !B$. La \olref{prop:mcs-prov-in}
+donne donc $(!A\lif !B)\in\Gamma$.}}
+\end{enumerate}
+\end{proof}
+
+\begin{prob}
+Achever la démonstration de la \olref[fol][com][mcs]{prop:mcs}.
+\end{prob}
+
+\end{document}

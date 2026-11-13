@@ -1,0 +1,109 @@
+% Part: incompleteness
+% Chapter: arithmetization-syntax
+% Section: coding-formulas
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{inc}{art}{frm}
+\olsection{Codage des \printtoken{p}{formula}}
+
+Une fois définie de façon récursive primitive la relation
+$\fn{Term}(x)$, nous pouvons nous en servir pour définir de la même
+manière la relation correspondante pour les !!{formula}s,
+$\fn{Frm}(x)$.
+
+\begin{prop}
+La relation $\fn{Atom}(x)$, vraie si et seulement si $x$ est le
+numéro de G\"odel d'!!a{formula} atomique, est récursive primitive.
+\end{prop}
+
+\begin{proof}
+Le nombre $x$ est le numéro de G\"odel d'!!a{formula} atomique si
+et seulement si l'un des cas suivants se présente\footnote{Corrections éditoriales : dans le premier cas, la borne source $z<x$ est trop petite pour certains codes de listes d'arguments. Nous utilisons une borne récursive primitive de suite et exigeons aussi un code valide de longueur égale à l'arité du prédicat.} :
+\begin{enumerate}
+\item Il existe $0<n<x$, $j<x$ et $z<\fn{sequenceBound}(x,\len{x})$ tels que $\fn{SeqCode}(z)$, $\len{z}=n$ et, pour chaque $i<n$,
+  $\fn{Term}((z)_i)$, avec $x = $
+\[
+\Gn{\Obj P^n_j(} \concat \fn{flatten}(z) \concat \Gn{)}.
+\]
+\item Il existe $z_1, z_2 < x$ tels que $\fn{Term}(z_1)$,
+  $\fn{Term}(z_2)$ et $x = $
+\[
+\Gn{{\eq}(} \concat z_1 \concat \Gn{,} \concat z_2 \concat{\Gn{)}}.
+\]
+  \tagitem{prvFalse}{$x = \Gn{\lfalse}$.}{}
+  \tagitem{prvTrue}{$x = \Gn{\ltrue}$.}{}
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+\ollabel{prop:frm-primrec}
+La relation $\fn{Frm}(x)$, vraie si et seulement si $x$ est le
+numéro de G\"odel d'!!a{formula}, est récursive primitive.
+\end{prop}
+
+\begin{proof}
+Une suite de symboles~$s$ est !!a{formula} si et seulement s'il
+existe une suite de formation $s_0$, \dots, $s_{k-1} = s$ de
+!!{formula}s consignant la construction de~$s$ à partir de
+!!{formula}s atomiques selon les règles de formation. Pour borner
+la recherche d'une telle suite, posons $m=\len{x}$, où $x$ est le
+numéro de G\"odel de~$s$. On peut choisir une suite de formation
+comportant au plus $m$ sous-formules. Chaque code de symbole de~$s$
+est au plus~$x$; par le codage en puissances de nombres premiers,
+le numéro de G\"odel de chaque $s_i$ est donc au plus
+$B(x)=\prod_{r<m}p_r^{x+1}$. Le code de la suite de formation
+$\tuple{s_0, \dots, s_{k-1}}$ est alors au plus
+$C(x)=\prod_{r<m}p_r^{B(x)+1}$. Ces bornes sont
+récursives primitives. Le dernier terme de la suite a pour code~$x$,
+et le code de la suite entière peut dépasser~$x$. On vérifie donc que
+$x$ est un code de suite, puis on cherche parmi les codes au plus
+égaux à~$C(x)$ un code de suite de formation non vide se terminant
+par~$x$. Pour chaque terme de cette suite, on teste s'il code une
+formule atomique ou s'il s'obtient à partir de termes antérieurs
+par une règle de formation. Tous ces tests s'effectuent par
+quantifications bornées.
+\end{proof}
+
+\begin{prob}
+Donner une preuve détaillée de la \olref[inc][art][frm]{prop:frm-primrec}
+en suivant la première preuve de la
+\olref[inc][art][trm]{prop:term-primrec}.
+\end{prob}
+
+\begin{prop}
+\ollabel{prop:freeocc-primrec}
+La relation $\fn{FreeOcc}(x, z, i)$, vraie si et seulement si le
+$i$-ième symbole de la formule de numéro de G\"odel~$x$ est une
+occurrence libre de la variable de numéro de G\"odel~$z$, est
+récursive primitive.
+\end{prop}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer la \olref[inc][art][frm]{prop:freeocc-primrec}. On pourra
+utiliser le fait que toute sous-suite contiguë d'!!a{formula} qui
+est elle-même !!a{formula} en est une sous-!!{formula}.
+\end{prob}
+
+\begin{prop}
+La propriété $\fn{Sent}(x)$, vraie si et seulement si $x$ est le
+numéro de G\"odel d'!!a{sentence}, est récursive primitive.
+\end{prop}
+
+\begin{proof}
+Un !!{sentence} est !!a{formula} sans occurrence libre de
+!!{variable}s. Donc $\fn{Sent}(x)$ est vraie si et seulement si\footnote{Correction éditoriale : la source ne teste que l'absence d'occurrences libres ; nous ajoutons $\fn{Frm}(x)$ pour exclure les codes qui ne représentent pas une formule.}
+\begin{multline*}
+\fn{Frm}(x)\land\bforall{i<\len{x}}{\bforall{z<x}{}}\\
+(\bexists{j<z}{z=\Gn{\Obj v_j}} \lif \lnot\fn{FreeOcc}(x,z,i)).
+\end{multline*}
+\end{proof}
+
+
+\end{document}

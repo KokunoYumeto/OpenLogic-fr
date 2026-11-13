@@ -1,0 +1,98 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: russells-paradox
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{rus}
+\olsection{Comparaison avec le paradoxe de Russell}
+
+Il est instructif de comparer les arguments
+de cette section au paradoxe de Russell :
+\begin{enumerate}
+\item Le paradoxe de Russell : posons
+  $S = \Setabs{x}{x \notin x}$. Alors
+  $S\in S$ si et seulement si $S\notin S$,
+  ce qui est contradictoire.\footnote{Correction éditoriale : la source écrit $X\notin S$ avec un $X$ non défini ; la condition appliquée à $S$ donne bien $S\notin S$.}
+
+  \emph{Conclusion :} un tel ensemble~$S$
+  n'existe pas. Supposer l'existence d'un
+  « ensemble de tous les ensembles » est
+  incompatible avec les axiomes usuels de
+  la théorie des ensembles, par exemple ceux de ZF.
+
+\item Une variante du paradoxe de Russell :
+  soit $F$ la « fonction » définie de
+  l'ensemble de toutes les fonctions vers
+  $\{0,1\}$ par
+  \[
+  F(f) =
+  \begin{cases}
+    1 & \text{si $f$ appartient au domaine de $f$ et $f(f)=0$}\\
+    0 & \text{sinon}
+  \end{cases}
+  \]
+  Un raisonnement semblable montre que
+  $F(F)=0$ si et seulement si $F(F)=1$ :
+  contradiction.
+
+  \emph{Conclusion :} $F$ n'est pas une
+  fonction au sens ensembliste. L'« ensemble de toutes les
+  fonctions » est trop grand pour être
+  le domaine d'une fonction.
+
+\item L'argument diagonal : soient
+  $f_0,f_1,\dots$ l'énumération des fonctions
+  partielles calculables, et
+  $G\colon\Nat\to\{0,1\}$ la fonction définie par
+  \[
+  G(x) =
+  \begin{cases}
+    1 & \text{si $f_x(x)\downarrow = 0$}\\
+    0 & \text{sinon}
+  \end{cases}
+  \]
+  Si $G$ était calculable, elle coïnciderait
+  avec une fonction $f_k$ de la liste.
+  Mais alors $G(k)=1$ si et seulement si
+  $G(k)=0$ : contradiction.
+
+  \emph{Conclusion :} $G$ n'est pas calculable.
+  Selon les axiomes de la théorie des ensembles,
+  $G$ reste néanmoins une fonction : il n'y
+  a pas ici de paradoxe, mais une distinction
+  à clarifier.
+\end{enumerate}
+
+Les expressions « fonction partielle »,
+« fonction calculable » et « fonction
+partielle calculable » peuvent prêter à
+confusion. L'ensemble de toutes les
+fonctions partielles de $\Nat$ dans
+$\Nat$ forme une vaste collection.
+Certaines sont totales, certaines
+calculables, certaines possèdent les
+deux propriétés, et d'autres aucune.
+Rappelons que, sans autre précision,
+« fonction » désigne ici une fonction
+totale. Nous distinguons donc :
+\begin{enumerate}
+\item les fonctions calculables;
+\item les fonctions partielles calculables
+  qui ne sont pas totales;
+\item les fonctions qui ne sont pas calculables;
+\item les fonctions partielles qui ne sont
+  ni totales ni calculables.
+\end{enumerate}
+Pour visualiser ces cas, on peut dessiner
+un grand carré représentant les fonctions
+partielles de $\Nat$ dans $\Nat$, puis
+y délimiter deux régions qui se recoupent :
+celle des fonctions totales et celle des
+fonctions partielles calculables. Chercher
+un exemple dans chacune des régions du
+diagramme est un bon exercice.
+
+\end{document}

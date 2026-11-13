@@ -1,0 +1,84 @@
+% Part: many-valued-logic
+% Chapter: sequent-calculus
+% Section: rules-and-proofs
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{mvl}{seq}{rul}
+
+\olsection{Règles et \usetoken{p}{derivation}}
+
+Dans un séquent, $\Gamma, \Delta, \Pi, \Lambda$ désignent des suites
+finies de !!{formula}s. Dans une logique à $n$ valeurs, nous fixons un
+ordre sur les valeurs de vérité. La place~$i$ correspond à la
+$i$-ième valeur.
+
+\begin{defn}[Séquent]
+Un \emph{séquent à $n$ places} est une expression de la forme
+\[
+\Gamma_1 \nSequent \dots \nSequent \Gamma_n
+\]
+où chaque $\Gamma_i$ est une suite finie, éventuellement vide,
+de !!{formula}s du langage~$\Lang L$.
+\end{defn}
+
+\begin{defn}[Séquent initial]
+Un \emph{séquent initial à $n$ places} est un séquent à $n$ places de la
+forme $!A \nSequent \dots \nSequent !A$, pour toute !!{formula}~$!A$
+du langage.
+
+Si le langage contient un connecteur d'arité~$0$, c'est-à-dire une
+constante propositionnelle~$\star$, nous admettons aussi comme séquent
+initial $\dots \nSequent \star \nSequent \dots$ : $\star$ figure
+uniquement à la place correspondant à sa valeur de vérité
+$\tf{\star}\in V$, les autres places étant vides.
+\end{defn}
+
+Pour chaque connecteur d'une logique à $n$ valeurs~$\Log{L}$, il y a
+une règle logique pour chacune des valeurs que ce connecteur peut
+prendre dans~$\Log{L}$. Les !!{derivation}s d'un calcul des séquents
+à $n$ places pour~$\Log{L}$ sont des arbres de séquents dont les
+séquents situés tout en haut sont initiaux. Tout séquent placé sous un
+ou plusieurs autres doit s'en déduire correctement par une règle
+d'inférence relative aux connecteurs de~$\Log{L}$.
+
+\begin{defn}[Théorèmes]
+!!^a{formula}~$!A$ est un \emph{théorème} d'une logique à $n$
+valeurs~$\Log{L}$ s'il existe !!a{derivation} du séquent à $n$ places
+qui contient~$!A$ à chacune des places correspondant à une valeur
+désignée de~$\Log{L}$ et dont les autres places sont vides. Nous
+écrivons $\Proves[\Log{L}] !A$ si $!A$ est un théorème, et
+$\Proves/[\Log{L}] !A$ dans le cas contraire.
+\end{defn}
+
+\begin{defn}[!!^{derivability}]
+!!^a{formula}~$!A$ est \emph{!!{derivable} de} l'ensemble
+de !!{formula}s~$\Gamma$ dans une logique à $n$ valeurs~$\Log{L}$,
+ce que nous notons $\Gamma\Proves[\Log{L}] !A$, s'il existe un
+sous-ensemble fini~$\Gamma_0\subseteq\Gamma$ et une suite~$\Gamma_0'$
+énumérant les !!{formula}s de~$\Gamma_0$ tels que le séquent suivant
+admette !!a{derivation} :
+\[
+\Lambda_1 \nSequent \dots \nSequent \Lambda_n.
+\]
+Ici, $\Lambda_i$ est $!A$ si la place~$i$ correspond à une valeur
+désignée; dans le cas contraire, $\Lambda_i$ est~$\Gamma_0'$.
+Si $!A$ n'est pas !!{derivable} de~$\Gamma$, nous écrivons
+$\Gamma\Proves/[\Log{L}] !A$.
+\end{defn}
+
+Par exemple, la logique à trois valeurs de \L ukasiewicz possède un
+calcul des séquents à trois places. Dans un séquent
+$\Gamma \nSequent \Pi \nSequent \Delta$, $\Gamma$ correspond
+à~$\False$, $\Pi$ à~$\Undef$ et $\Delta$ à~$\True$. Les axiomes sont
+$!A \nSequent !A \nSequent !A$. Puisque seule la valeur~$\True$ est désignée,
+$\Gamma\Proves[\LogLuk[3]] !A$ si et seulement s'il existe une
+suite~$\Gamma_0'$ énumérant un sous-ensemble fini de~$\Gamma$
+telle que $\Gamma_0' \nSequent \Gamma_0' \nSequent !A$ admette
+!!a{derivation}. Si $\Undef$ était aussi désignée, le séquent à
+dériver serait $\Gamma_0' \nSequent !A \nSequent !A$, avec la même
+condition sur~$\Gamma_0'$.
+
+\end{document}

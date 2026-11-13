@@ -27,21 +27,21 @@ le début est :
 \[
 1{,}41421356237\ldots
 \]
-Il est très facile de représenter ces développements en théorie des
-ensembles : il suffit de les considérer comme des fonctions
-$d \colon \Nat \to \Nat$, où $d(n)$ est le chiffre décimal de rang $n$
-qui nous intéresse. Il faut ensuite adapter un peu cette représentation
-pour tenir compte de ce qui précède la virgule, ici simplement $1$.
-Une autre adaptation, au moyen d'une relation d'équivalence, garantit
-par exemple que $0{,}999\ldots=1$. Il n'est cependant pas difficile de
-donner, dans l'esprit de Stevin, une construction parfaitement rigoureuse
+On peut représenter les chiffres après la virgule par une fonction
+$d \colon \Nat \to \{0,\ldots,9\}$, où $d(n)$ est le chiffre décimal de rang $n$.
+Pour représenter tous les réels, il faut aussi coder le signe et la partie
+entière. Dans l'exemple précédent, la partie entière vaut $1$.
+Une relation d'équivalence permet ensuite d'identifier les deux
+écritures éventuelles d'un même nombre, comme $0{,}999\ldots=1$.
+On obtient ainsi, dans l'esprit de Stevin, une construction rigoureuse
 des réels en théorie des ensembles.
-\begin{editorial}
-Les valeurs de $d$ sont des chiffres : elles doivent donc appartenir à
-$\{0,\ldots,9\}$, restriction laissée implicite dans la source. Pour
-représenter tous les réels, il faut également coder le signe et la partie
-entière, puis identifier les deux écritures éventuelles d'un même nombre.
-\end{editorial}
+%
+%
+%
+%
+%
+%
+%
 
 Stevin ne sera pas notre sujet principal ; pour en savoir davantage,
 voir \citealt{KatzKatz2012}. Considérons plutôt une idée très proche.
@@ -94,18 +94,18 @@ où $m$ et $n$ parcourent les naturels.
 L'idée reste celle d'une précision prescrite : pour un degré de
 précision mesuré par $\epsilon$, on trouve un rang $\ell$ au-delà
 duquel les termes sont suffisamment proches les uns des autres.
-Notre suite $1$, $1{,}4$, $1{,}414$, $1{,}4142$, $1{,}41421$\ldots
+Notre suite $(1\,;\,1{,}4\,;\,1{,}414\,;\,1{,}4142\,;\,1{,}41421\,;\,\ldots)$
 illustre cette idée : pour approcher $\sqrt{2}$ avec une erreur
 inférieure à $\nicefrac{1}{10^n}$, il suffit de considérer les termes
 situés après celui de rang $n$.
-\begin{editorial}
-Le langage de la limite réelle reste ici une motivation intuitive,
-ou renvoie au réel déjà construit par coupures. La définition de
-Cauchy n'affirme pas qu'une limite existe dans $\Rat$ : elle compare
-deux termes de la suite. Pour obtenir la condition de Cauchy à partir
-d'approximations d'erreur donnée, on prend chaque erreur inférieure à
+On utilise ici $\sqrt{2}$ tel qu'il a été construit par coupures
+pour motiver la définition. Le critère de Cauchy compare deux termes
+de la suite et s'exprime dans $\Rat$. Pour passer de ces approximations
+au critère de Cauchy, on prend chaque erreur inférieure à
 $\epsilon/2$ et on applique l'inégalité triangulaire.
-\end{editorial}
+%
+%
+%
 
 On pourrait alors être tenté de dire qu'un réel \emph{est} simplement
 une suite de Cauchy. Ce serait toutefois trop naïf, comme dans les
@@ -135,12 +135,12 @@ f\Realequiv g\quad\text{si et seulement si }(f-g)\text{ tend vers }0.
 Il faut vérifier que $\Realequiv$ est une relation d'équivalence ;
 c'est bien le cas. On peut alors définir les réels comme les classes,
 pour $\Realequiv$, de toutes les suites de Cauchy de $\Nat$ dans $\Rat$.
-\begin{editorial}
-La source écrit d'abord « relations d'équivalence » là où il faut
-« classes d'équivalence ». De même, ce sont les classes de suites qui
-formeront un corps ordonné dans les énoncés qui suivent. Une suite
-représentante et sa classe sont désormais distinguées partout.
-\end{editorial}
+Une suite représentante et sa classe jouent des rôles différents.
+Les classes sont les éléments du corps ordonné que nous allons construire.
+%
+%
+%
+%
 
 \begin{prob}
 Posons $f(n)=0$ pour tout $n$ et $g(n)=\frac{1}{(n+1)^2}$.
@@ -163,11 +163,11 @@ où $(f+g)(n)=f(n)+g(n)$ et $(f\times g)(n)=f(n)\times g(n)$.
 Il faut bien sûr vérifier que $(f+g)$, $(f-g)$ et $(f\times g)$ sont
 des suites de Cauchy lorsque $f$ et $g$ en sont ; c'est effectivement
 le cas, et nous vous laissons cette vérification.
-\begin{editorial}
 Il faut également vérifier que les opérations sur les classes ne
-dépendent pas des représentants choisis. La stabilité des suites de
-Cauchy sous les opérations ne suffit pas, à elle seule, à l'établir.
-\end{editorial}
+dépendent pas des représentants choisis. Il s'agit de montrer que
+le résultat obtenu appartient à la même classe après tout changement
+de représentants.
+%
 
 Définissons enfin l'ordre. La classe $\equivrep{f}{}$ est
 \emph{strictement positive} si et seulement si
@@ -184,28 +184,28 @@ dans chaque classe d'équivalence.
 %\equivrep{f}{}\leq\equivrep{g}{}\text{ ssi }&\equivrep{f}{}=\equivrep{g}{}\text{ ou }\\
 %&( \exists \ell\in\Nat)(\forall n\in\Nat)(\ell<n\lif f(n)\leq g(n))
 %\end{align*}
-Une fois cette vérification faite, les propriétés algébriques attendues
-s'établissent assez facilement. Autrement dit :
-\begin{editorial}
-Nous avons corrigé $0_\Rat$ en $0_\Real$ dans la définition de
-positivité. La condition que la classe soit non nulle est essentielle :
-une suite peut être strictement positive à chaque rang et tendre vers
-zéro. Pour justifier l'ordre et les inverses, on utilise le fait
-suivant : si une suite de Cauchy $u$ ne tend pas vers zéro, il existe
-un rationnel $\delta>0$ tel qu'à partir d'un certain rang,
-$|u(n)|>\delta$ et tous les $u(n)$ ont le même signe. En effet, il
-existe $\epsilon_0>0$ rationnel tel que des termes arbitrairement
-tardifs aient une valeur absolue au moins égale à $\epsilon_0$.
-Au-delà d'un rang où les écarts entre termes sont inférieurs à
-$\epsilon_0/2$, tous les termes sont donc du même signe et de valeur
-absolue supérieure à $\epsilon_0/2$. Ce fait montre aussi que le signe
-de la classe ne change pas lorsqu'on remplace $u$ par une suite
-équivalente. Pour une classe non nulle, on peut prendre comme
-représentante de l'inverse la suite égale à $1/u(n)$ à partir de ce
-rang, et à $1$ avant celui-ci. La vérification qu'elle est de Cauchy
-utilise
+La condition que la classe soit non nulle est essentielle : une suite
+peut être strictement positive à chaque rang et tendre vers zéro.
+Pour justifier l'ordre et les inverses, considérons une suite de Cauchy
+$u$ qui ne tend pas vers zéro. Il existe un rationnel $\epsilon_0>0$
+tel que des termes arbitrairement tardifs vérifient
+$|u(n)|\geq\epsilon_0$. Posons $\delta=\epsilon_0/2$ et choisissons
+un rang après lequel les écarts entre termes sont inférieurs à $\delta$.
+Choisissons ensuite un indice $k$ strictement après ce rang, avec
+$|u(k)|\geq\epsilon_0$. Tout terme de cette queue a donc le signe
+de $u(k)$ et une valeur absolue strictement supérieure à $\delta$.
+Si l’on remplace $u$ par une suite équivalente, l’écart entre les
+deux suites finit par être inférieur à $\delta/2$. Le signe reste
+donc le même. On peut prendre comme représentante de l'inverse la
+suite égale à $1/u(n)$ à partir de ce rang, et à $1$ avant celui-ci.
+C'est une suite de Cauchy puisque, pour $m,n$ assez grands,
 $|1/u(m)-1/u(n)|\leq |u(m)-u(n)|/\delta^2$.
-\end{editorial}
+Le produit avec $u$ est finalement égal à $1$, donc sa classe est $1_\Real$.
+Ces observations permettent d'établir le résultat suivant.
+%
+%
+%
+%
 \begin{thm}\ollabel{thm:cauchyorderedfield}
 Les classes d'équivalence de suites de Cauchy forment un corps ordonné.
 \end{thm}
@@ -272,11 +272,11 @@ Leur longueur est donc au plus $(p-q)/2^n$. Deux termes suffisamment
 tardifs de l'une ou l'autre suite appartiennent au même intervalle,
 aussi petit que voulu. En particulier, $(f-g)$ tend vers $0$,
 d'où $\equivrep{f}{}=\equivrep{g}{}$.
-\emph{Précision éditoriale :} la source affirme que l'écart est divisé
-exactement par deux à chaque étape. Avec ses deux conditions larges,
-les deux premières branches peuvent s'appliquer simultanément, lorsque
-le milieu est un maximum de $\mathcal A$ ; l'écart devient alors nul.
-L'inégalité ci-dessus couvre aussi ce cas. Par construction, pour
+À chaque étape, au moins une borne est remplacée par le milieu.
+Les deux premières branches peuvent s'appliquer simultanément si
+le milieu est un maximum de $\mathcal A$. L'écart devient alors nul.
+L'inégalité ci-dessus couvre aussi ce cas.
+Par construction, pour
 chaque $n$, $(f(n))_\Real$ majore $\mathcal A$, et il existe
 $h\in S$ tel que $(g(n))_\Real\leq\equivrep{h}{}$.
 

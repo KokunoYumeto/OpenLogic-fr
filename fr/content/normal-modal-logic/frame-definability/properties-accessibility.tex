@@ -1,0 +1,203 @@
+% Section: properties-accessibility
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{nml}{frd}{acc}
+
+\olsection{Propriétés des relations d'accessibilité}
+
+De nombreuses !!{formula}s modales caractérisent des propriétés
+simples, et parfois familières, de la relation d'accessibilité.
+Dans un premier sens, tout modèle dont la relation possède une
+propriété donnée rend vraie la !!{formula} correspondante,
+ainsi que toutes ses instances par substitution. Commençons par
+cinq exemples classiques de propriétés des relations
+d'accessibilité et des formules dont elles garantissent la vérité.
+
+\begin{thm}\ollabel{thm:soundschemas}
+  Soit $\mModel{M} = \tuple{W, R, V}$ un modèle. Si $R$ possède
+  l'une des propriétés indiquées à gauche dans le
+  \olref{tab:five}, toute instance de la !!{formula} correspondante,
+  indiquée à droite, est vraie dans~$\mModel{M}$.
+\end{thm}
+
+\begin{table}[t]
+    \begin{tabular}{| l || l |}
+      \hline
+      {\emph{Si $R$ est \dots}} & {\emph{alors \dots est vraie dans~$\mModel{M}$ :}} \\
+      \hline \hline
+      \emph{sérielle} : $\forall u \exists v Ruv$ & \hbox to.43\textwidth
+           {$\Box p \lif \Diamond p$ \hfill (\Ax{D})} \\
+      \hline
+      \emph{réflexive} : $\forall w Rww$
+      & \hbox to.43\textwidth
+          {$\Box p \lif p$ \hfill (\Ax{T})} \\
+      \hline
+      \emph{symétrique} : &  \hbox to .43\textwidth
+           {$p \lif \Box\Diamond p$ \hfill (\Ax{B})} \\
+           $\forall u\forall v(Ruv \lif Rvu)$ & \\
+      \hline
+      \emph{transitive} : & \hbox to.43\textwidth
+           {$\Box p \lif \Box \Box p$ \hfill (\Ax{4})} \\
+      $\forall u \forall v \forall w ((Ruv \land Rvw) \lif Ruw)$ & \\
+      \hline 
+      \emph{euclidienne} : & \hbox to .43\textwidth
+        {$\Diamond p \lif \Box\Diamond p$ \hfill (\Ax{5})} \\
+      $\forall w \forall u \forall v ((Rwu \land Rwv) \lif Ruv)$ &\\
+      \hline
+    \end{tabular}
+    \caption{Cinq faits de correspondance.}
+    \ollabel{tab:five}
+  \end{table} 
+
+
+\begin{proof}
+  Traitons le cas de \Ax{B}. Pour établir qu'un schéma est vrai
+  dans un modèle, il faut montrer que chacune de ses instances
+  est vraie en tous les mondes de ce modèle. Soit donc
+  $!A \lif \Box\Diamond !A$ une instance quelconque de \Ax{B},
+  et soit $w \in W$ un monde arbitraire. Supposons que
+  l'antécédent $!A$ soit vrai en $w$; montrons que
+  $\Box \Diamond !A$ l'est aussi en $w$. Il suffit de montrer
+  que $\Diamond !A$ est vraie en tout monde $w'$ accessible
+  depuis $w$. Or, pour tout $w'$ tel que $Rww'$, la symétrie
+  donne $Rw'w$ (voir la \olref{fig:Bsymm}). Puisque
+  $\mSat{M}{!A}[w]$, nous avons
+  $\mSat{M}{\Diamond !A}[w']$. Le monde $w'$ tel que $Rww'$
+  étant arbitraire, $\mSat{M}{\Box\Diamond!A}[w]$.
+
+  Nous laissons les autres cas en exercice.
+\end{proof}
+
+\begin{prob}
+  Complétez la preuve du
+  \olref[nml][frd][acc]{thm:soundschemas}.
+\end{prob}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}[modal]
+      \node[world] (w1) [label={below:$\mSat{{}}{\formula{A}}$\\
+          $\mSat{{}}{\Box\Diamond \formula{A}}$}] {$w$}; 
+      \node[world] (w2) [label=below:{$\mSat{{}}{\Diamond \formula{A}}$},
+        right=of w1] {$w'$}; 
+      \draw[->, bend left] (w1) to (w2); 
+      \draw[->, bend left] (w2) to (w1); 
+    \end{tikzpicture}
+  \end{center}
+\caption{L'argument fondé sur la symétrie.}
+\ollabel{fig:Bsymm}
+\end{figure}
+
+Les réciproques du \olref{thm:soundschemas} ne valent pas en général :
+le fait qu'un modèle vérifie un schéma n'implique pas que sa
+relation d'accessibilité possède la propriété correspondante.
+Pour \Ax{T} et la réflexivité, considérons d'abord un modèle
+où le schéma échoue : posons $W = \{w\}$,
+$R = \emptyset$ et $V(p) = \emptyset$. La relation $R$
+n'est pas réflexive; pourtant $\mSat{M}{\Box p}[w]$ et
+$\mSat/{M}{p}[w]$, si bien que cette instance de \Ax{T}
+est fausse dans~$\mModel{M}$. D'autres instances, par exemple
+$\Box \lnot p \lif \lnot p$, y sont vraies. Il est moins
+immédiat de construire un modèle non réflexif~$\mModel{M}$
+où \emph{toutes les instances par substitution} de~\Ax{T}
+sont vraies. De tels modèles existent néanmoins :
+
+\begin{prop}\ollabel{prop:reflexive}
+  Soit $\mModel{M} = \tuple{W, R, V}$ un modèle tel que
+  $W = \{u, v\}$ et $R = \{(u,v),(v,u)\}$ : les deux mondes
+  sont reliés l'un à l'autre, mais aucun à lui-même. Supposons
+  en outre que, pour tout $p$,
+  $u \in V(p) \Leftrightarrow v \in V(p)$. Alors :
+  \begin{enumerate}
+  \item Pour toute $!A$, $\mSat{M}{!A}[u]$ si et seulement si
+    $\mSat{M}{!A}[v]$ (procédez par induction sur $!A$).
+  \item Toute instance de~\Ax{T} est vraie dans $\mModel{M}$.
+  \end{enumerate}
+  Puisque $\mModel{M}$ n'est pas réflexif (sa relation est même
+  \emph{irréflexive}), la réciproque du
+  \olref{thm:soundschemas} échoue pour \Ax{T}. Des arguments
+  analogues valent pour certains autres schémas du
+  \olref{thm:soundschemas}, mais pas pour tous.
+\end{prop}
+
+\begin{prob}
+  Démontrez les assertions de la
+  \olref[nml][frd][acc]{prop:reflexive}.
+\end{prob}
+
+Nous nous concentrerons sur les cinq !!{formula}s classiques
+\Ax{D}, \Ax{T}, \Ax{B}, \Ax{4} et \Ax{5}, mais
+le \olref{tab:anotherfive} présente quelques autres propriétés des
+relations d'accessibilité. La relation~$R$ est
+\emph{partiellement fonctionnelle} si chaque monde donne accès
+à au plus un monde. Si chaque monde donne accès à exactement
+un monde, nous disons qu'elle est \emph{fonctionnelle}.
+Les relations fonctionnelles sont donc précisément celles qui
+sont à la fois sérielles et partiellement fonctionnelles.
+Ce terme indique que la relation d'accessibilité se comporte
+comme une fonction, éventuellement partielle. Une relation
+est \emph{faiblement dense} si, chaque fois que $Ruv$, il existe
+un monde~$w$ « entre » $u$ et~$v$. En un certain sens, la
+densité faible inverse la transitivité : dans une relation
+transitive, si l'on peut atteindre $v$ depuis~$u$ en passant
+par~$w$, on peut aussi l'atteindre directement; dans une
+relation faiblement dense, si l'on peut atteindre $v$
+directement depuis~$u$, on peut également y parvenir en passant
+par un certain monde~$w$. Une relation est
+\emph{faiblement dirigée} si, chaque fois que l'on peut
+atteindre les mondes $u$ et~$v$ depuis un monde~$w$, on peut
+atteindre un même monde~$t$ depuis $u$ et depuis~$v$.
+On parle aussi parfois de « propriété du diamant » ou de
+« confluence ».
+
+\begin{table}[t]
+    \begin{tabular}{| p{.50\textwidth} || p{.43\textwidth} |}
+      \hline
+      {\emph{Si $R$ est \dots}} & {\emph{alors \dots est vraie dans~$\mModel{M}$ :}} \\
+      \hline \hline
+      \emph{partiellement fonctionnelle} : &
+      \multirow{2}{*}{$\Diamond p \lif \Box p$} \\
+      $ \forall w \forall u \forall v ((Rwu \land Rwv) \lif u =v )$ & \\
+      \hline
+      \multirow{2}{*}{\emph{fonctionnelle} : $\forall w \exists v \forall u(Rwu \liff \eq[u][v]) $}
+      & \multirow{2}{*}{$\Diamond p \liff \Box p$} \\
+      & \\
+      \hline
+      \emph{faiblement dense} : &  \multirow{2}{*}{$\Box \Box p \lif
+        \Box p$} \\
+      $\forall u\forall v(Ruv \lif \exists w(Ruw \land Rwv))$ & \\
+      \hline
+      \emph{faiblement connexe} : &
+      \multirow{3}{*}{\hbox to.43\textwidth{$
+        \begin{array}{@{}l@{}}
+          \Box ((p \land \Box p) \lif q) \lor {} \\
+          \qquad \Box ((q \land \Box q) \lif p)
+        \end{array}$ \hfill (\Ax{L})}
+      } \\
+      $\forall w \forall u \forall v ((Rwu \land Rwv) \lif {}$ &\\
+      \qquad $(Ruv \lor u=v \lor Rvu))$ & \\
+      \hline 
+      \emph{faiblement dirigée} : & \multirow{3}{*}{\hbox to .43\textwidth
+        {$\Diamond\Box p \lif \Box\Diamond p$\hfill (\Ax{G})}} \\
+      $\forall w \forall u \forall v ((Rwu \land Rwv) \lif {}$ & \\
+      \qquad $\exists t (Rut \land Rvt))$ & \\
+      \hline
+    \end{tabular}
+    \caption{Cinq autres faits de correspondance.}
+    \ollabel{tab:anotherfive}
+  \end{table} 
+
+\begin{prob}
+  Soit $\mModel{M} = \tuple{W, R, V}$ un modèle. Montrez que,
+  si $R$ satisfait l'une des propriétés indiquées à gauche
+  dans le \olref[nml][frd][acc]{tab:anotherfive}, toute instance
+  de la formule correspondante, indiquée à droite, est vraie
+  dans~$\mModel{M}$.
+\end{prob}
+\begin{editorial}Les relations des deux exemples non réflexifs sont précisées : dans le singleton, la relation est vide ; dans le modèle à deux mondes, elle contient exactement les deux flèches entre mondes distincts. La source ne précisait pas ces exclusions des boucles. Elles sont nécessaires pour que ces exemples aient bien la non-réflexivité annoncée.\end{editorial}
+
+
+\end{document}

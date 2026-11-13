@@ -1,0 +1,50 @@
+% Part: computability
+% Chapter: computability-theory
+% Section: coding-computations
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{cmp}{thy}{cod}
+\olsection{Codage des calculs}
+
+Dans les modèles de calcul usuels, on peut accomplir
+les opérations suivantes :
+\begin{enumerate}
+\item Décrire systématiquement les \emph{définitions}
+  des fonctions calculables. Les descriptions de machines
+  de Turing, les définitions récursives et les programmes
+  écrits dans un langage de programmation en sont des exemples.
+\item Décrire l'enregistrement complet du calcul d'une
+  fonction, donnée par une définition, sur une entrée
+  donnée. Pour une machine de Turing, il peut s'agir de
+  la suite des configurations à chaque étape : état
+  de la machine et contenu du ruban.
+\item Vérifier si un enregistrement proposé décrit
+  effectivement le calcul d'une fonction ayant une
+  définition donnée sur une entrée donnée, pour laquelle
+  la fonction est définie, c'est-à-dire où le calcul s'arrête.
+\item Extraire d'un enregistrement complet la valeur de
+  la fonction sur l'entrée considérée. Pour une machine
+  de Turing qui s'arrête, le contenu du ruban à la
+  dernière étape fournit, par exemple, cette valeur.
+\end{enumerate}
+
+Grâce au codage, on peut attribuer à chaque description
+d'une fonction calculable un \emph{indice} numérique
+permettant de retrouver effectivement les instructions
+qu'elle contient. On peut de même coder par un seul
+entier l'enregistrement complet d'un calcul. La relation
+arithmétique « $s$ code l'enregistrement d'un calcul terminé de
+la fonction d'indice~$e$ sur l'entrée~$x$ » et la
+fonction « résultat de la suite de calcul de code~$s$ »
+sont alors calculables; en fait, elles sont récursives
+primitives.
+
+Ce fait fondamental permet de démontrer plusieurs résultats
+importants et parfois surprenants sur la calculabilité,
+indépendamment du modèle de calcul choisi parmi ceux
+qui admettent un tel codage.\footnote{Précision éditoriale : « every model » dans la source est compris ici comme un modèle effectif usuel muni d'un codage approprié. La relation de vérification porte sur un calcul terminé, pas sur un simple préfixe.}
+
+\end{document}

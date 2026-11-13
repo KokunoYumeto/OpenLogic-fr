@@ -1,0 +1,54 @@
+% Part: turing-machines
+% Chapter: undecidability
+% Section: decision-problem
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{tur}{und}{dec}
+\olsection{Le problème de la décision}
+
+On dit que la logique du premier ordre est \emph{décidable}
+s'il existe une méthode effective pour déterminer si un
+!!{sentence} donné est valide. Or il n'existe aucune méthode
+de ce genre : le problème consistant à décider la validité
+des énoncés du premier ordre est insoluble. Nous supposons fixé un codage effectif des énoncés sur un alphabet fini ; les noms indexés des symboles sont écrits comme des chaînes finies.
+
+Pour établir ce résultat négatif, nous montrerons que le
+problème de la décision ne peut être résolu par une machine
+de Turing. Autrement dit, aucune machine qui reçoit sur son
+ruban un !!{sentence} du premier ordre ne s'arrête toujours
+avec la sortie~$1$ ou~$0$ selon que cet !!{sentence} est valide ou
+non. D'après la thèse de Church--Turing, toute fonction
+effectivement calculable est calculable par machine de Turing.
+Si la « fonction de validité » était effectivement calculable,
+elle le serait donc par une machine de Turing. Puisqu'elle ne
+l'est pas, elle n'est pas non plus effectivement calculable.
+
+Notre stratégie consiste à réduire le problème de l'arrêt
+au problème de la décision. Voici ce que cela signifie.
+Nous avons démontré que la fonction~$h(e,w)$, qui vaut~$1$
+si la machine désignée par~$e$ s'arrête sur l'entrée~$w$
+et~$0$ sinon, n'est pas calculable par machine de Turing. Ici $w$ désigne un mot d'entrée fini ; son arrêt est déjà indécidable puisque les entrées unaires du problème précédent en sont un cas particulier.
+Nous montrerons que, s'il existait une machine de Turing
+décidant la validité des énoncés du premier ordre, nous
+pourrions construire une machine calculant~$h$. Puisque
+c'est impossible, aucune machine ne décide la validité.
+
+La première étape consiste à montrer que, pour toute
+machine de Turing~$M$ et toute entrée~$w$, nous pouvons
+décrire effectivement !!a{sentence} $!T(M, w)$ qui représente
+les instructions de~$M$ et l'entrée~$w$, ainsi que
+!!a{sentence}~$!E(M, w)$ qui exprime que « $M$ finit par
+s'arrêter », de telle sorte que :
+\begin{quote}
+  $\Entails !T(M, w) \lif !E(M,w)$ si et seulement si~$M$
+  s'arrête sur l'entrée~$w$.
+\end{quote}
+L'essentiel de la preuve consistera à décrire ces énoncés
+$!T(M, w)$ et~$!E(M, w)$, puis à vérifier que
+$!T(M, w) \lif !E(M, w)$ est valide si et seulement si~$M$
+s'arrête sur l'entrée~$w$.
+
+\end{document}

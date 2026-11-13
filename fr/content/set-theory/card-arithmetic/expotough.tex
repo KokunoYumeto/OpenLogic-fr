@@ -1,0 +1,161 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+\olfileid[fr]{sth}{card-arithmetic}{expotough}
+
+\olsection[Quelques simplifications]{Quelques simplifications de l'exponentiation cardinale}
+
+La définition de $\canonord$ était un peu compliquée,
+mais elle nous a donné un résultat utile pour
+l'addition et la multiplication cardinales,
+\olref[simp]{cardplustimesmax}. L'exponentiation
+transfinie, en revanche, ne se simplifie pas
+aussi facilement. Pour expliquer pourquoi,
+commençons par un résultat qui étend une règle
+familière du cas fini, bien que sa démonstration
+se situe à un niveau d'abstraction élevé :
+
+\begin{prop}\ollabel{simplecardexpo}
+$\cardexpo{\cardfont{a}}{\cardfont{b} \cardplus \cardfont{c}} =
+\cardexpo{\cardfont{a}}{\cardfont{b}} \cardtimes
+\cardexpo{\cardfont{a}}{\cardfont{c}}$ et
+$\cardexpo{(\cardexpo{\cardfont{a}}{\cardfont{b}})}{\cardfont{c}} =
+\cardexpo{\cardfont{a}}{\cardfont{b} \cardtimes \cardfont{c}}$,
+pour tous cardinaux $\cardfont{a}, \cardfont{b},
+\cardfont{c}$.
+\end{prop}
+
+\begin{proof}
+Pour la première égalité, considérons une fonction
+$f \colon
+(\cardfont{b}\disjointsum\cardfont{c})
+\to \cardfont{a}$. «~Découpons-la~» en définissant
+$f_\cardfont{b}(\beta) = f(\beta, 0)$ pour
+chaque $\beta \in \cardfont{b}$, et
+$f_\cardfont{c}(\gamma) = f(\gamma, 1)$
+pour chaque $\gamma \in \cardfont{c}$.
+L'application
+$f \mapsto \tuple{f_\cardfont{b},f_\cardfont{c}}$\footnote{
+Note de l'édition française : l'original écrit ici
+$f_\cardfont{b} \times f_\cardfont{c}$ ;
+l'image doit être le couple des deux fonctions,
+élément du produit de leurs espaces de fonctions.}
+est !!a{bijection}
+$\funfromto{\cardfont{b} \disjointsum \cardfont{c}}
+{\cardfont{a}}
+\to (\funfromto{\cardfont{b}}{\cardfont{a}}
+\times \funfromto{\cardfont{c}}{\cardfont{a}})$.
+
+Pour la seconde égalité, considérons une fonction
+$f \colon \cardfont{c} \to
+(\funfromto{\cardfont{b}}{\cardfont{a}})$ ;
+pour chaque $\gamma \in \cardfont{c}$,
+nous avons donc une fonction
+$f(\gamma) \colon \cardfont{b} \to \cardfont{a}$.
+Définissons alors
+$f^*(\beta, \gamma) = (f(\gamma))(\beta)$
+pour chaque
+$\tuple{\beta, \gamma} \in
+\cardfont{b} \times \cardfont{c}$.
+L'application $f \mapsto f^*$ est
+!!a{bijection}
+$\funfromto{\cardfont{c}}
+{(\funfromto{\cardfont{b}}{\cardfont{a}})}
+\to \funfromto{\cardfont{b} \times \cardfont{c}}
+{\cardfont{a}}$.\footnote{Note de l'édition
+française : l'original met
+$\cardfont{b}\cardtimes\cardfont{c}$
+à la place de
+$\cardfont{b}\times\cardfont{c}$
+comme domaine de $f^*$.
+La fonction construite agit sur les couples
+du produit cartésien ; la cardinalité de ce
+produit est
+$\cardfont{b}\cardtimes\cardfont{c}$.}
+\end{proof}
+
+Nous aimerions maintenant disposer d'un moyen
+simple de calculer
+$\cardexpo{\cardfont{a}}{\cardfont{b}}$
+lorsque les cardinaux sont infinis.
+Voici un premier pas dans cette direction :
+
+\begin{prop}\ollabel{cardexpo2reduct}
+Si $2 \leq \cardfont{a} \leq \cardfont{b}$
+et si $\cardfont{b}$ est infini, alors
+$\cardexpo{\cardfont{a}}{\cardfont{b}} =
+\cardexpo{2}{\cardfont{b}}$.
+\end{prop}
+
+\begin{proof}
+\begin{align*}
+	\cardexpo{2}{\cardfont{b}} &\leq
+	\cardexpo{\cardfont{a}}{\cardfont{b}}
+	\text{, puisque $2 \leq \cardfont{a}$}\\
+	&\leq \cardexpo{(2^\cardfont{a})}{\cardfont{b}}
+	\text{, par le \olref[opps]{lem:SizePowerset2Exp}}\\
+	&= \cardexpo{2}{\cardfont{a} \cardtimes \cardfont{b}}
+	\text{, par la \olref{simplecardexpo}}\\
+	&= \cardexpo{2}{\cardfont{b}}
+	\text{, par le \olref[simp]{cardplustimesmax}}
+\end{align*}
+\end{proof}
+
+Il ne faut guère espérer simplifier davantage,
+car $\cardfont{b} < \cardexpo{2}{\cardfont{b}}$
+par \olref[card-arithmetic][opps]{cantorcor}.\footnote{
+Note de l'édition française : l'original renvoie ici
+au lemme qui identifie
+$\card{\Pow{A}}$ et $2^{\card{A}}$ ;
+l'inégalité stricte est formulée dans le corollaire
+de Cantor cité ici.}
+Cela ne nous dit cependant pas quoi conclure
+pour $\cardexpo{\cardfont{a}}{\cardfont{b}}$
+si $\cardfont{b} < \cardfont{a}$.
+Bien sûr, si $\cardfont{b}$ est \emph{fini},
+nous savons comment procéder.
+
+\begin{prop}
+Si $\cardfont{a}$ est infini et si
+$0 < n \in \omega$, alors
+$\cardexpo{\cardfont{a}}{n} = \cardfont{a}$.\footnote{
+Note de l'édition française : l'original suppose seulement
+$n \in \omega$ ; pour $n=0$, on a
+$\cardexpo{\cardfont{a}}{0}=1$.
+Il faut donc exclure ce cas.}
+\end{prop}
+
+\begin{proof}
+$\cardexpo{\cardfont{a}}{n}
+= \cardfont{a} \cardtimes \cardfont{a}
+\cardtimes \ldots \cardtimes \cardfont{a}
+= \cardfont{a}$,
+par le \olref[simp]{cardplustimesmax}.
+\end{proof}
+\noindent
+De plus, dans certains autres cas, nous pouvons
+déterminer la taille de
+$\cardexpo{\cardfont{a}}{\cardfont{b}}$ :
+
+\begin{prop}
+Si $2 \leq \cardfont{b} < \cardfont{a} \leq
+\cardexpo{2}{\cardfont{b}}$ et si $\cardfont{b}$
+est infini, alors
+$\cardexpo{\cardfont{a}}{\cardfont{b}}
+= \cardexpo{2}{\cardfont{b}}$.
+\end{prop}
+
+\begin{proof}
+$\cardexpo{2}{\cardfont{b}}
+\leq \cardexpo{\cardfont{a}}{\cardfont{b}}
+\leq
+\cardexpo{(\cardexpo{2}{\cardfont{b}})}{\cardfont{b}}
+= \cardexpo{2}{\cardfont{b}\cardtimes\cardfont{b}}
+= \cardexpo{2}{\cardfont{b}}$,
+en raisonnant comme dans la \olref{cardexpo2reduct}.
+\end{proof}
+\noindent
+Au-delà de ces cas, les choses deviennent
+nettement plus subtiles.
+
+\end{document}

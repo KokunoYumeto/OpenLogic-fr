@@ -1,0 +1,89 @@
+% Partie : théorie de la démonstration
+% Chapitre : normalisation
+% Section : introduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{pt}{nor}{int}
+
+\olsection{Introduction}
+
+Si vous avez démontré l'implication~$!A \lif !B$,
+vous pouvez l'employer dans une !!{proof} de~$!B$
+au moyen de~\Elim{\lif}, pourvu que vous disposiez
+aussi d'une !!{proof}~$\delta_1$ de~$!A$.
+La preuve de~$!A \lif !B$ peut se terminer par
+\Intro{\lif}, qui transforme une !!{proof}~$\delta_2$
+de~$!B$ sous l'hypothèse ouverte~$!A$ en une
+preuve de~$!A \lif !B$. Dans ce cas, la
+!!{proof} finale a la forme
+\[
+\AxiomC{$\Discharge{!A}{x}$}
+\RightLabel{$\delta_2$}
+\DeduceC{$!B$}
+\DischargeRule{\Intro{\lif}}{x}
+\UnaryInfC{$!A \lif !B$}
+\AxiomC{}
+\RightLabel{$\delta_1$}
+\DeduceC{$!A$}
+\RightLabel{\Elim{\lif}}
+\BinaryInfC{$!B$}
+\DisplayProof
+\]
+Réemployer une preuve déjà obtenue de~$!A \lif !B$
+peut faciliter votre travail ; l'arbre obtenu comporte
+néanmoins un détour. On introduit $!A \lif !B$ pour
+l'éliminer aussitôt. Il devrait être possible de
+démontrer~$!B$ plus directement.
+
+C'est effectivement possible. Les détours de ce
+genre --- une règle d'introduction suivie de la
+règle d'élimination correspondante --- peuvent être
+supprimés en déduction naturelle. Cette transformation
+est appelée \emph{normalisation} ; elle donne une
+!!{proof} \emph{normale}, ou \emph{en forme normale}.
+Des éliminations de disjonction ou d'existentielle
+peuvent séparer les deux règles d'un détour : les
+sections suivantes étendent la définition pour
+traiter également ces cas.
+
+Comme l'élimination des coupures en calcul des
+séquents, la démonstration de ce résultat exige
+de nombreux cas. Le traitement classique de
+\Log{N1c} est plus délicat que le traitement
+intuitionniste de \Log{N1i}, qui sera développé
+dans ce chapitre. De même que l'élimination des
+coupures montre que la règle \Cut{} n'ajoute
+aucun séquent démontrable au calcul, la
+normalisation montre que les détours n'ajoutent
+aucune conclusion démontrable.
+
+Les deux résultats présentent d'autres analogies.
+Une preuve normale peut être beaucoup plus longue
+qu'une preuve plus courte de la même conclusion
+comportant des détours. De même, une preuve avec
+coupures peut être beaucoup plus courte que toute
+preuve sans coupure du même séquent.
+La normalisation intuitionniste conduit aussi à
+la propriété de la sous-formule, comme l'élimination
+des coupures en calcul des séquents. Cette propriété
+se rapporte aux formules de la conclusion
+\emph{et des hypothèses ouvertes}. Au premier
+ordre, elle tient compte des instances des
+sous-formules quantifiées. L'absurde peut faire
+exception lorsque la négation est primitive.
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

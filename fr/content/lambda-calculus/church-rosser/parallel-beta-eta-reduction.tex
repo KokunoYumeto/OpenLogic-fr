@@ -1,0 +1,248 @@
+% Part: lambda-calculus
+% Chapter: church-rosser
+% Section: parallel-beta-eta-reduction
+
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{lam}{cr}{pbe}
+\olsection{Réduction~\texorpdfstring{$\beta\eta$}{βη} parallèle}
+
+Nous étudions la réduction~$\beta\eta$ parallèle et sa
+propriété de Church--Rosser. Les règles s'appliquent aux
+termes considérés à $\alpha$-équivalence près. La substitution
+sur ces classes est définie par le \olref[lam][syn][alp]{cor:sub}.
+
+\begin{defn}[Réduction~$\beta\eta$ parallèle,
+$\beredpar$]\ollabel{defn:beredpar}
+La \emph{réduction~$\beta\eta$ parallèle}
+($\beredpar$) sur les termes est définie
+inductivement par les règles suivantes :
+\begin{enumerate}
+\item \ollabel{defn:beredpar1}
+  $x \beredpar x$.
+\item \ollabel{defn:beredpar2}
+  Si $N \beredpar N'$, alors
+  $\lambd[x][N] \beredpar \lambd[x][N']$.
+\item \ollabel{defn:beredpar3}
+  Si $P \beredpar P'$ et $Q \beredpar Q'$,
+  alors $PQ \beredpar P'Q'$.
+\item \ollabel{defn:beredpar4}
+  Si $N \beredpar N'$ et $Q \beredpar Q'$,
+  alors $(\lambd[x][N])Q \beredpar
+  \Subst{N'}{Q'}{x}$.
+\item \ollabel{defn:beredpar5}
+  Si $N \beredpar N'$, alors
+  $\lambd[x][Nx]\beredpar N'$,
+  à condition que $x\notin\FV{N}$.
+\end{enumerate}
+\end{defn}
+
+Si $M\beredpar M'$, alors $\FV{M'}\subseteq\FV{M}$.
+On le vérifie par induction sur la dérivation. L'application
+réunit les ensembles de variables libres et l'abstraction en
+retire le lieur. Dans la règle de contraction~$\beta$, les
+variables libres de la substitution sont contenues dans
+$(\FV{N'}\setminus\{x\})\cup\FV{Q'}$. Dans la règle~$\eta$,
+l'hypothèse $x\notin\FV{N}$ donne
+$\FV{\lambd[x][Nx]}=\FV{N}$.
+
+Les règles sont invariantes par permutation des noms de variables.
+Cela se vérifie sur chaque règle. En particulier, appliquer la
+même permutation aux trois arguments d'une substitution permute
+le résultat, puisque la substitution remplace les occurrences
+libres et évite la capture. On peut ainsi ouvrir une abstraction
+avec un nom frais dans une dérivation. On échange le nom de son
+lieur avec un nom absent de la dérivation et des autres termes
+considérés. La permutation agit sur le corps dans la prémisse.
+L'abstraction obtenue représente la même classe. Dans une
+contraction~$\eta$, le terme dont le lieur est retiré conserve
+sa classe puisque ce nom n'y est pas libre.
+
+\begin{thm}\ollabel{thm:refl}
+$M \beredpar M$.
+\end{thm}
+
+\begin{proof}
+Exercice.
+\end{proof}
+
+\begin{prob}
+Démontrer le \olref[lam][cr][pbe]{thm:refl}.
+\end{prob}
+
+\begin{defn}[Développement~$\beta\eta$ complet]
+\ollabel{defn:becd}
+Le \emph{développement~$\beta\eta$ complet}
+$\becd{M}$ de~$M$ est défini par les clauses
+suivantes. Lorsqu'un terme est à la fois
+une abstraction et un rédex~$\eta$
+admissible, la dernière clause prévaut
+sur la clause générale d'abstraction :
+\begin{align}
+  \becd{x} &= x \ollabel{defn:becd1} \\
+  \becd{(\lambd[x][N])}
+    &= \lambd[x][\becd{N}] \ollabel{defn:becd2}\\
+  \becd{(PQ)} &= \becd{P}\becd{Q}
+    && \text{si $P$ n'est pas une abstraction $\lambd$}
+    \ollabel{defn:becd3} \\
+  \becd{((\lambd[x][N])Q)}
+    &= \Subst{\becd{N}}{\becd{Q}}{x}
+    \ollabel{defn:becd4} \\
+  \becd{(\lambd[x][Nx])}
+    &= \becd{N} \ollabel{defn:becd5}
+    && \text{si $x\notin\FV{N}$}
+\end{align}
+\end{defn}
+
+Tous les appels récursifs portent sur des sous-termes stricts.
+Le choix de la clause dépend de la structure du terme et, pour
+un rédex~$\eta$, du lien entre le lieur et l'argument du corps,
+ainsi que de la condition sur les variables libres. Deux
+représentants $\alpha$-équivalents ont le même arbre étiqueté
+au sens du \olref[lam][syn][alp]{thm:sub}. Sous un même nom
+frais, leurs corps correspondants sont $\alpha$-équivalents.
+La définition est donc indépendante du représentant par
+induction sur le terme, en utilisant la substitution sur
+les classes dans la clause de contraction~$\beta$.
+Les mêmes clauses donnent $\FV{\becd{M}}\subseteq\FV{M}$
+par induction sur $M$.
+
+\begin{lem}\ollabel{lem:comp}
+Si $M \beredpar M'$ et $R \beredpar R'$,
+alors $\Subst{M}{R}{y}\beredpar
+\Subst{M'}{R'}{y}$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par induction sur la dérivation
+de $M\beredpar M'$. Les quatre premiers
+cas suivent la preuve du
+\olref[pb]{lem:comp}. Les règles de variable, d'application,
+d'abstraction et de contraction~$\beta$ y sont les mêmes.
+Dans le dernier de ces cas, l'identité de composition
+s'applique aux termes des prémisses avec le lieur choisi frais.
+
+Si la dernière étape applique la règle
+\olref{defn:beredpar5}, écrivons
+$M=\lambd[x][Nx]$ et $M'=N'$, avec
+$x\notin\FV{N}$ et $N\beredpar N'$.
+Choisissons par conversion~$\alpha$ un
+représentant dont $x$ est frais pour
+$y$, $R$ et $R'$. L'hypothèse
+d'induction donne
+$\Subst{N}{R}{y}\beredpar
+\Subst{N'}{R'}{y}$.
+De plus, $x\notin\FV{\Subst{N}{R}{y}}$.
+La règle \olref{defn:beredpar5}
+donne donc
+\[
+  \lambd[x][\Subst{N}{R}{y}x]
+  \beredpar \Subst{N'}{R'}{y},
+\]
+ce qui est l'objectif sous le
+représentant frais choisi.
+\end{proof}
+
+\begin{lem}\ollabel{lem:cont}
+Si $M \beredpar M'$, alors
+$M'\beredpar\becd{M}$.
+\end{lem}
+
+\begin{proof}
+Raisonnons par induction forte sur le nombre de nœuds du
+terme de départ. Pour les applications, nous prouvons
+d'abord l'assertion auxiliaire suivante :
+\[
+  P\beredpar P',\quad Q\beredpar Q'
+  \quad\Longrightarrow\quad P'Q'\beredpar\becd{(PQ)}.
+\]
+Si $P$ n'est pas une abstraction, les hypothèses d'induction
+sur $P$ et $Q$ donnent $P'\beredpar\becd{P}$ et
+$Q'\beredpar\becd{Q}$. La règle d'application donne la
+conclusion. Si $P=\lambd[x][N]$ et si la réduction de $P$
+se termine par la règle d'abstraction, alors
+$P'=\lambd[x][N']$ avec $N\beredpar N'$. Les hypothèses
+d'induction sur $N$ et $Q$, puis la règle de
+contraction~$\beta$, donnent
+$P'Q'\beredpar\Subst{\becd{N}}{\becd{Q}}{x}=\becd{(PQ)}$.
+
+Il reste, pour cette assertion, le cas où
+$P=\lambd[x][Lx]$ avec $x\notin\FV{L}$ et où la
+\olref{defn:beredpar5} donne $P'$ à partir de
+$L\beredpar P'$. L'application $LQ$ est strictement
+plus petite que $PQ$. L'assertion auxiliaire pour $LQ$
+donne $P'Q'\beredpar\becd{(LQ)}$.
+Il suffit de vérifier que
+\[
+  \becd{((\lambd[x][Lx])Q)}\aeq\becd{(LQ)}.
+\]
+Choisissons $x$ frais pour $Q$ également. Si $L$
+n'est pas une abstraction, le premier membre s'obtient
+en substituant $\becd{Q}$ à $x$ dans $\becd{L}x$,
+ce qui donne $\becd{L}\becd{Q}$. Ici $x$ n'est pas
+libre dans $\becd{L}$. Si $L=\lambd[z][U]$, prenons
+$x$ et $z$ distincts et frais pour $Q$, et $x$ frais
+pour $U$. Le premier membre s'obtient en substituant
+$\becd{Q}$ à $x$ dans $\Subst{\becd{U}}{x}{z}$.
+Puisque $x$ n'est pas libre dans $\becd{U}$, ces deux
+substitutions reviennent à insérer $\becd{Q}$ aux
+occurrences libres de $z$ de $\becd{U}$, à
+$\alpha$-équivalence près. C'est le second membre,
+par la clause de contraction~$\beta$.
+L'assertion auxiliaire est ainsi établie pour $PQ$.
+
+Considérons maintenant la dernière règle de
+$M\beredpar M'$.
+\begin{enumerate}
+\item Si $M$ est une variable, alors $M'=M=\becd{M}$.
+\item Si la dernière règle est celle d'application, on vient
+  d'établir la conclusion. Si elle contracte un rédex~$\beta$,
+  écrivons $M=(\lambd[x][N])Q$ et
+  $M'=\Subst{N'}{Q'}{x}$. L'hypothèse d'induction donne
+  $N'\beredpar\becd{N}$ et $Q'\beredpar\becd{Q}$.
+  Le \olref{lem:comp} donne la conclusion.
+\item Si la dernière règle contracte un rédex~$\eta$,
+  alors $M=\lambd[x][Lx]$ et $L\beredpar M'$.
+  L'hypothèse d'induction donne
+  $M'\beredpar\becd{L}=\becd{M}$.
+\item Si la dernière règle est celle d'abstraction, écrivons
+  $M=\lambd[x][N]$ et $M'=\lambd[x][N']$, avec
+  $N\beredpar N'$. Si $M$ n'est pas un rédex~$\eta$,
+  l'hypothèse d'induction sur $N$ et la règle d'abstraction
+  donnent la conclusion comme dans le \olref[pb]{lem:cont}.
+  Supposons donc $N=Lx$ et $x\notin\FV{L}$.
+  \begin{enumerate}
+  \item Si $N\beredpar N'$ se termine par la règle
+    d'application, $N'=L'x$ avec $L\beredpar L'$.
+    L'hypothèse d'induction donne $L'\beredpar\becd{L}$.
+    La préservation des variables libres donne
+    $x\notin\FV{L'}$. La contraction~$\eta$ donne donc
+    $\lambd[x][L'x]\beredpar\becd{L}=\becd{M}$.
+  \item Si $N\beredpar N'$ se termine par la
+    contraction~$\beta$, alors $L=\lambd[z][U]$ et
+    $N'=\Subst{U'}{x}{z}$, avec $U\beredpar U'$.
+    Choisissons $z\neq x$. Puisque $x\notin\FV{L}$,
+    $x\notin\FV{U}$ et donc $x\notin\FV{U'}$.
+    Ainsi, $\lambd[x][\Subst{U'}{x}{z}]$ est
+    $\alpha$-équivalent à $\lambd[z][U']$.
+    Cette dernière abstraction est un réduit parallèle
+    de $L$. L'hypothèse d'induction appliquée à $L$
+    donne le pas vers $\becd{L}=\becd{M}$.
+  \end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\begin{thm}\ollabel{thm:cr}
+$\beredpar$ vérifie la propriété de
+Church--Rosser.
+\end{thm}
+
+\begin{proof}
+Le \olref{lem:cont} donne à deux réduits parallèles de $M$
+un même successeur, $\becd{M}$, en un pas parallèle.
+C'est la propriété de Church--Rosser.
+\end{proof}
+
+\end{document}

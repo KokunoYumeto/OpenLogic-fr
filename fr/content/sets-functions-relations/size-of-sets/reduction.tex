@@ -52,9 +52,9 @@ une énumération $Z_{1}$, $Z_{2}$, $Z_{3}$, \dots
 
 Définissons $f \colon \Pow{\PosInt} \to \Bin^\omega$ en associant
 à chaque $Z$ la suite $s$ telle que $s(n) = 1$ si et seulement si
-$n \in Z$, et $s(n) = 0$ sinon.\footnote{Note de traduction :
-l'original nomme ici la suite $s_k$ sans définir l'indice $k$.
-Nous écrivons $s$ pour la suite associée au seul ensemble $Z$.}
+$n \in Z$, et $s(n) = 0$ sinon.
+%
+%
 Cela définit bien une fonction : pour tout $Z \subseteq \PosInt$,
 chaque $n \in \PosInt$ appartient ou n'appartient pas à~$Z$.
 Par exemple, l'ensemble $2\PosInt = \{2, 4, 6, \dots\}$ des entiers
@@ -101,11 +101,11 @@ $f(x_2)$, \dots{} contiennent tous les éléments de~$B$. Par exemple,
 h(n) = \underbrace{000\dots0}_{\text{$n$ zéros}}111\dots
 \]
 définit une fonction $h\colon \PosInt \to \Bin^\omega$, alors que
-$\PosInt$ est !!{enumerable}.\footnote{Note de traduction : l'original
-affiche seulement un mot fini de $n$ zéros, qui n'appartient pas à
-$\Bin^\omega$. Nous le complétons ici par une infinité de $1$.
-Cette fonction n'est pas surjective : la suite constante égale à $0$,
-par exemple, n'est l'image d'aucun entier.}
+$\PosInt$ est !!{enumerable}. La suite constante égale à $0$ ne
+figure dans l’image de $h$ pour aucun $n$, car $h(n)$ vaut $1$
+à partir de la position $n+1$. Ainsi $h$ n’est pas surjective.
+%
+%
 \end{explain}
 
 \begin{prob}

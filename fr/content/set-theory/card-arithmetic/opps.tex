@@ -1,0 +1,184 @@
+\documentclass[../../../include/open-logic-section]{subfiles}
+
+\begin{document}
+
+\olfileid[fr]{sth}{card-arithmetic}{opps}
+\olsection{Définition des opérations fondamentales}
+
+Comme nous n'avons pas à tenir compte de l'ordre,
+l'arithmétique cardinale se définit plus facilement que
+l'arithmétique ordinale. Nous allons définir simultanément
+l'addition, la multiplication et l'exponentiation.
+
+\begin{defn}
+Si $\cardfont{a}$ et $\cardfont{b}$ sont des cardinaux :
+\begin{align*}
+	\cardfont{a} \cardplus \cardfont{b} &\defis
+	\card{\cardfont{a} \disjointsum \cardfont{b}}\\
+	\cardfont{a} \cardtimes \cardfont{b} &\defis
+	\card{\cardfont{a} \times \cardfont{b}}\\
+	\cardexpo{\cardfont{a}}{\cardfont{b}} &\defis
+	\card{\funfromto{\cardfont{b}}{\cardfont{a}}}
+\end{align*}
+où $\funfromto{X}{Y} = \Setabs{f}{f \text{ est une fonction } X \to Y}$.
+(Il est facile de montrer que $\funfromto{X}{Y}$ existe
+pour tous ensembles $X$ et $Y$ ; nous laissons cela en exercice.)
+\end{defn}
+
+\begin{prob}
+Démontrez dans $\Zminus$ que $\funfromto{X}{Y}$ existe
+pour tous ensembles $X$ et~$Y$. Dans $\ZF$, calculez
+$\setrank{\funfromto{X}{Y}}$ à partir de
+$\setrank{X}$ et $\setrank{Y}$, sur le modèle du
+\olref[sth][ord-arithmetic][using-addition]{rankcomputation}.
+\end{prob}
+
+Quelques explications peuvent éclairer cette définition.
+Pour l'addition, nous utilisons la somme disjointe
+$\disjointsum$, définie dans la
+\olref[ord-arithmetic][add]{defdissum} ; on voit
+facilement que notre définition donne le bon résultat
+pour les cas finis. Pour la multiplication,
+la \olref[sfr][set][pai]{cardnmprod} nous dit que,
+si $A$ possède $n$ éléments et $B$ en possède $m$,
+alors $A \times B$ possède $n \cdot m$ éléments :
+notre définition étend simplement cette idée à la
+multiplication transfinie. Il en va de même pour
+l'exponentiation : nous étendons l'idée du cas fini
+au cas transfini. Sous certains aspects, l'arithmétique
+cardinale transfinie ressemble même beaucoup plus à
+l'arithmétique «~ordinaire~» que ne le fait
+l'arithmétique ordinale transfinie :
+
+\begin{prop}\ollabel{cardplustimescommute}
+$\cardplus$ et $\cardtimes$ sont commutatives et associatives.
+\end{prop}
+
+\begin{proof}
+Pour la commutativité, d'après le
+\olref[cardinals][cardsasords]{lem:CardinalsBehaveRight},
+il suffit d'observer que
+$\cardeq{(\cardfont{a} \disjointsum
+\cardfont{b})}{(\cardfont{b} \disjointsum \cardfont{a})}$
+et
+$\cardeq{(\cardfont{a} \times \cardfont{b})}
+{(\cardfont{b} \times \cardfont{a})}$.
+Nous laissons l'associativité en exercice.
+\end{proof}
+
+\begin{prob}
+Démontrez que $\cardplus$ et $\cardtimes$ sont associatives.
+\end{prob}
+
+\begin{prop}
+$A$ est infini si et seulement si
+$\card{A} \cardplus 1 = 1 \cardplus \card{A} = \card{A}$.
+\end{prop}
+
+\begin{proof}
+Comme dans le
+\olref[cardinals][classing]{generalinfinitycharacter},
+cela découle du
+\olref[ord-arithmetic][using-addition]{ordinfinitycharacter}
+et du \olref[cardinals][cardsasords]{lem:CardinalsBehaveRight}.
+\end{proof}
+
+Nous voyons pourquoi il nous faut des symboles distincts
+pour l'addition et la multiplication ordinales et cardinales :
+il s'agit réellement d'opérations \emph{différentes}.
+Les deux résultats suivants montrent que les deux
+exponentiations diffèrent elles aussi.
+(Rappelons que la \olref[z][infinity-again]{defnomega}
+implique $2 = \{0, 1\}$.) 
+
+\begin{lem}\ollabel{lem:SizePowerset2Exp}
+$\card{\Pow{A}} = \cardexpo{2}{\card{A}}$,
+pour tout ensemble $A$.
+\end{lem}
+
+\begin{proof}
+Pour chaque sous-ensemble $B \subseteq A$,
+définissons $\chi_B \in \funfromto{A}{2}$ par :
+\begin{align*}
+	\chi_{B}(x) &\defis
+	\begin{cases}
+		1 & \text{si }x\in B\\
+		0 & \text{sinon.}
+	\end{cases}
+\end{align*}
+Posons maintenant $f(B) = \chi_B$ ; cela définit
+!!a{bijection} $f \colon \Pow{A}
+\to \funfromto{A}{2}$. Donc
+$\cardeq{\Pow{A}}{\funfromto{A}{2}}$.
+Par suite,
+$\cardeq{\Pow{A}}{\funfromto{\card{A}}{2}}$,
+et ainsi
+$\card{\Pow{A}} = \card{\funfromto{\card{A}}{2}}
+= 2^{\card{A}}$.
+\end{proof}
+
+Cette démonstration concise englobe pour l'essentiel
+la discussion de la \olref[sfr][siz][red-alt]{sec}.
+Nous y avons montré comment «~ramener~» la
+non-dénombrabilité de $\Pow{\omega}$ à celle de
+l'ensemble des suites binaires infinies
+$\Bin^\omega$. En effet, $\Bin^{\omega}$
+n'est autre que $\funfromto{\omega}{2}$ ;
+la démonstration précédente montre que le
+raisonnement de la \olref[sfr][siz][red-alt]{sec}
+reste valable si l'on remplace~$\omega$
+par n'importe quel ensemble~$A$.
+Ce résultat entraîne également un fait immédiat
+sur l'exponentiation cardinale :
+
+\begin{cor}\ollabel{cantorcor}
+$\cardfont{a} < \cardexpo{2}{\cardfont{a}}$
+pour tout cardinal~$\cardfont{a}$.
+\end{cor}
+
+\begin{proof}
+Cela découle du théorème de Cantor
+(\olref[sfr][siz][car]{thm:cantor}) et du
+\olref{lem:SizePowerset2Exp}.
+\end{proof}
+\noindent
+Ainsi, $\omega < \cardexpo{2}{\omega}$.
+Attention toutefois : il s'agit ici de
+l'exponentiation \emph{cardinale}. Pour
+l'exponentiation \emph{ordinale}, au contraire,
+$\omega = \ordexpo{2}{\omega}$
+(voir la \olref[ord-arithmetic][expo]{sec}).
+
+Puisque nous parlons d'exponentiation cardinale,
+nous pouvons préciser de quelle «~manière~»
+$\Real$ est !!{nonenumerable}.
+
+\begin{thm}\ollabel{continuumis2aleph0}
+$\card{\Real} = \cardexpo{2}{\omega}$
+\end{thm}
+
+\begin{proof}[Esquisse de démonstration]
+Il existe plusieurs façons de le prouver. La plus
+directe consiste à montrer que
+$\cardle{\Pow{\omega}}{\Real}$ et
+$\cardle{\Real}{\Pow{\omega}}$, puis à appliquer
+le théorème de Schröder--Bernstein pour obtenir
+$\cardeq{\Real}{\Pow{\omega}}$, et enfin
+le \olref[card-arithmetic][opps]{lem:SizePowerset2Exp}
+pour conclure que
+$\card{\Real} = \cardexpo{2}{\omega}$.
+Nous laissons comme exercice (instructif) la
+construction d'injections
+$f \colon \Pow{\omega} \to \Real$
+et $g \colon \Real \to \Pow{\omega}$.
+\end{proof}
+
+\begin{prob}
+Complétez la démonstration du
+\olref[sth][card-arithmetic][opps]{continuumis2aleph0}
+en montrant que
+$\cardle{\Pow{\omega}}{\Real}$ et
+$\cardle{\Real}{\Pow{\omega}}$.
+\end{prob}
+
+\end{document}
