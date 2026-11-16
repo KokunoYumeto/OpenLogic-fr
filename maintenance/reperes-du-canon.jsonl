@@ -1,0 +1,389 @@
+{"id":"GL04","source":"FR-LSV-GOUBAULT-PROOFS","repere":"§3.1, theorem 15 and the two paragraphs following theorem 16"}
+{"id":"L01","source":"FR-LYON-TdE-2011","repere":"printed p.1, §1 opening and principles (i)–(ii)","page_pdf":5}
+{"id":"L02","source":"FR-LYON-TdE-2011","repere":"printed p.1, pair paragraph and Exercise 1.1.1","page_pdf":5}
+{"id":"L03","source":"FR-LYON-TdE-2011","repere":"printed p.1, product paragraph","page_pdf":5}
+{"id":"L04","source":"FR-LYON-TdE-2011","repere":"printed p.1, paragraphs beginning Comment représenter and À partir","page_pdf":5}
+{"id":"L05","source":"FR-LYON-TdE-2011","repere":"printed p.2, Notation 1.1.2","page_pdf":6}
+{"id":"L06","source":"FR-LYON-TdE-2011","repere":"printed p.2, Cantor proof and Russell paragraph","page_pdf":6}
+{"id":"L07","source":"FR-LYON-TdE-2011","repere":"printed p.2, Axiom I and following paragraph","page_pdf":6}
+{"id":"L08","source":"FR-LYON-TdE-2011","repere":"printed p.3, Axiom III","page_pdf":7}
+{"id":"L09","source":"FR-LYON-TdE-2011","repere":"printed p.3, separation principle","page_pdf":7}
+{"id":"L10","source":"FR-LYON-TdE-2011","repere":"printed p.24, Definition 4.3.1 and parenthesis","page_pdf":28}
+{"id":"L11","source":"FR-LYON-TdE-2011","repere":"printed p.24, Lemma 4.3.3 proof and Remark 4.3.4","page_pdf":28}
+{"id":"H01","source":"FR-IRIF-HABERM-1314","repere":"slide 8, Ensembles, lower-right quadrant","page_pdf":2}
+{"id":"H02","source":"FR-IRIF-HABERM-1314","repere":"slide 29, upper-left quadrant","page_pdf":8}
+{"id":"H03","source":"FR-IRIF-HABERM-1314","repere":"slide 32, lower-right quadrant","page_pdf":8}
+{"id":"H04","source":"FR-IRIF-HABERM-1314","repere":"slide 10, upper-right quadrant, opening definition","page_pdf":3}
+{"id":"H05","source":"FR-IRIF-HABERM-1314","repere":"slide 11, lower-left quadrant","page_pdf":3}
+{"id":"H06","source":"FR-IRIF-HABERM-1314","repere":"slide 10, upper-right quadrant, five relational properties","page_pdf":3}
+{"id":"H07","source":"FR-IRIF-HABERM-1314","repere":"slide 12, lower-right quadrant","page_pdf":3}
+{"id":"H08","source":"FR-IRIF-HABERM-1314","repere":"slide 13, upper-left quadrant","page_pdf":4}
+{"id":"H09","source":"FR-IRIF-HABERM-1314","repere":"slide 14, upper-right quadrant","page_pdf":4}
+{"id":"H10","source":"FR-IRIF-HABERM-1314","repere":"slide 15, lower-left quadrant","page_pdf":4}
+{"id":"H11","source":"FR-IRIF-HABERM-1314","repere":"slide 16, lower-right quadrant","page_pdf":4}
+{"id":"H12","source":"FR-IRIF-HABERM-1314","repere":"slide 9, upper-left quadrant, Cartesian-product definition only","page_pdf":3}
+{"id":"L13","source":"FR-LYON-TdE-2011","repere":"printed p.2, §2 opening paragraphs, universe and membership relation","page_pdf":6}
+{"id":"H13","source":"FR-IRIF-HABERM-1314","repere":"slide 20, lower-right quadrant","page_pdf":5}
+{"id":"H14","source":"FR-IRIF-HABERM-1314","repere":"slide 21, upper-left quadrant, first definition only","page_pdf":6}
+{"id":"H15","source":"FR-IRIF-HABERM-1314","repere":"slide 17, upper-left quadrant, inverse and image formulas only","page_pdf":5}
+{"id":"L14","source":"FR-LYON-TdE-2011","repere":"printed p.5, Definition 2.1.1 and 2.1.2; paragraph on induced well-order","page_pdf":9}
+{"id":"G01","source":"FR-SACLAY-OLA2-2026","repere":"printed p.24, Définitions and drawing paragraphs","page_pdf":2}
+{"id":"G02","source":"FR-SACLAY-OLA2-2026","repere":"printed p.25, Aparté : graphes orientés","page_pdf":3}
+{"id":"G03","source":"FR-SACLAY-OLA2-2026","repere":"printed p.24, drawing and adjacency paragraphs","page_pdf":2}
+{"id":"T01","source":"FR-SACLAY-OLA3-2026","repere":"printed p.66, §9.2 Caractérisation récursive and Vocabulaire","page_pdf":12}
+{"id":"T02","source":"FR-SACLAY-OLA3-2026","repere":"printed p.67, first paragraph, tree viewed as graph","page_pdf":13}
+{"id":"T03","source":"FR-SACLAY-OLA3-2026","repere":"printed p.67, Dimensions, proofs 1–3","page_pdf":13}
+{"id":"L15","source":"FR-LYON-TdE-2011","repere":"printed p.1, application paragraph, domain/image formulas and f:X→Y notation","page_pdf":5}
+{"id":"H16","source":"FR-IRIF-HABERM-1314","repere":"slide 17, upper-left quadrant, function definition and domain/image formulas","page_pdf":5}
+{"id":"H17","source":"FR-IRIF-HABERM-1314","repere":"slide 19, lower-left quadrant, three definitions and examples","page_pdf":5}
+{"id":"H18","source":"FR-IRIF-HABERM-1314","repere":"slide 18, upper-right quadrant, composition definition","page_pdf":5}
+{"id":"P01","source":"FR-PIAGET-1949-REL17","repere":"connexité : §17, paragraphe La logique des relations distingue"}
+{"id":"P02","source":"FR-BUCCHIONI-2012-P64","repere":"PDF98, page imprimée64, item6","page_pdf":98}
+{"id":"P03","source":"FR-PATRAS-COMBINATOIRE-P16","repere":"PDF16, page imprimée16, deux derniers paragraphes","page_pdf":16}
+{"id":"P04","source":"FR-PATEY-2017-WKL","repere":"PDF47, diapositive40/50 complète","page_pdf":47}
+{"id":"P05","source":"FR-ERDRICH-2021","repere":"printed p.5, first four paragraphs","page_pdf":28}
+{"id":"P06","source":"FR-ENS-IDENTITE","repere":"printed p.34, discussion of nominalisation and concept cheval","page_pdf":35}
+{"id":"P07","source":"FR-BUCCHIONI-2012-P64","repere":"printed p.154, complete page, Neale discussion of Brutus/César","page_pdf":188}
+{"id":"Y01","source":"FR-BORDEAUX-YGER-2005","repere":"printed19, §1.9.4 composition and definitions of left/right invertibility","page_pdf":23}
+{"id":"Y02","source":"FR-BORDEAUX-YGER-2005","repere":"printed19, proposition1.2 and its proof","page_pdf":23}
+{"id":"Y03","source":"FR-BORDEAUX-YGER-2005","repere":"printed20, opening proof of proposition1.4 only","page_pdf":24}
+{"id":"Y04","source":"FR-BORDEAUX-YGER-2005","repere":"printed19, opening paragraph and proposition1.1, before §1.9.4","page_pdf":23}
+{"id":"V01","source":"FR-ENS-REVERCHON-2019","repere":"opening paragraph, sentence beginning Ce geste, aux implications philosophiques fortes"}
+{"id":"K01","source":"FR-CRAS-COUPLAGE-2000","repere":"printed107, title and first two paragraphs of Introduction","page_pdf":1}
+{"id":"H19","source":"FR-IRIF-HABERM-1314","repere":"slide56, lower-right quadrant, Sémantique de la logique propositionnelle","page_pdf":14}
+{"id":"H20","source":"FR-IRIF-HABERM-1314","repere":"slides57–60, especially slide60 Tables de vérité","page_pdf":15}
+{"id":"L16","source":"FR-LYON-TdE-2011","repere":"printed24, Remark4.3.4 and following group example, empty-product sentence","page_pdf":28}
+{"id":"L17","source":"FR-LYON-TdE-2011","repere":"printed24, Lemma4.3.2 and its proof","page_pdf":28}
+{"id":"L18","source":"FR-LYON-TdE-2011","repere":"printed19, Definition4.1.1 and following paragraph","page_pdf":23}
+{"id":"L19","source":"FR-LYON-TdE-2011","repere":"printed19, Theorem4.1.2 and proof; following paragraph","page_pdf":23}
+{"id":"F01","source":"DE-FREGE-GRUNDLAGEN-1884","repere":"§70, paragraph beginning Betrachten wir folgendes Beispiel! Wenn ein Kellner, original printed82"}
+{"id":"Ca01","source":"DE-CANTOR-1892","repere":"PDF3–4 / original printed76–77, diagonal construction and paragraph beginning sondern namentlich; binary-valued-functions generalization"}
+{"id":"Y05","source":"FR-BORDEAUX-YGER-2005","repere":"printed 24, §2.1.1, paragraphs beginning En revanche and L’ensemble Z, then the class-addition paragraph","page_pdf":28}
+{"id":"Y06","source":"FR-BORDEAUX-YGER-2005","repere":"printed 27, §2.2.1, opening definition and Le point de vue abstrait through the sum/product formulas","page_pdf":31}
+{"id":"Y07","source":"FR-BORDEAUX-YGER-2005","repere":"printed 24, compatibility inequalities following L’ordre sur Z est compatible avec ces deux opérations","page_pdf":28}
+{"id":"Co01","source":"FR-UQAM-COLLIN-ANALYSE1","repere":"printed 15, definitions 4.2–4.3","page_pdf":15}
+{"id":"Co02","source":"FR-UQAM-COLLIN-ANALYSE1","repere":"printed 17, definition 5.1 and explanatory paragraph immediately after it","page_pdf":17}
+{"id":"Co03","source":"FR-UQAM-COLLIN-ANALYSE1","repere":"printed 18, rational embedding, definition 5.2 and final order display","page_pdf":18}
+{"id":"Co04","source":"FR-UQAM-COLLIN-ANALYSE1","repere":"printed 19, proposition 5.3; then addition and zero-cut paragraphs","page_pdf":19}
+{"id":"Co05","source":"FR-UQAM-COLLIN-ANALYSE1","repere":"printed 20, multiplication paragraph and displayed positive product only","page_pdf":20}
+{"id":"Co06","source":"FR-UQAM-COLLIN-ANALYSE1","repere":"printed 21, theorem 3, explanatory paragraph and complete union proof continued at top of 22","page_pdf":21}
+{"id":"Co07","source":"FR-UQAM-COLLIN-ANALYSE1","repere":"printed 22, theorem 4 and its proof","page_pdf":22}
+{"id":"M01","source":"FR-COLMEZ-ANALYSE-ALGEBRE","repere":"printed 82, §12.3 first bullet, phrase naming the least-upper-bound property only","page_pdf":90}
+{"id":"M02","source":"FR-COLMEZ-ANALYSE-ALGEBRE","repere":"printed 82, §12.3 second bullet and footnotes 44–45","page_pdf":90}
+{"id":"CW01","source":"EN-CONWAY-2006","repere":"printed 37–38, Squares, geometric descent and explicit attribution to Stanley Tennenbaum","page_pdf":2}
+{"id":"M03","source":"FR-COLMEZ-ANALYSE-ALGEBRE","repere":"printed 11, §2.2 continuation, paragraph beginning En général, on aime bien que E/R hérite","page_pdf":19}
+{"id":"M04","source":"FR-COLMEZ-ANALYSE-ALGEBRE","repere":"printed 12, second bullet on sum/product and fourth bullet including the zero-ring paragraph","page_pdf":20}
+{"id":"M05","source":"FR-COLMEZ-ANALYSE-ALGEBRE","repere":"printed 81, §12.2 Entiers relatifs, nombres rationnels, both construction bullets","page_pdf":89}
+{"id":"M06","source":"FR-COLMEZ-ANALYSE-ALGEBRE","repere":"printed 82, §12.3 third bullet only","pages_pdf":[90]}
+{"id":"KK01","source":"EN-KATZ-KATZ-2012","repere":"§2 Stevin’s construction of the real numbers, starting at bottom of PDF2 and ending before §3 on PDF4","pages_pdf":[2,3,4]}
+{"id":"OR01","source":"EN-OCONNOR-ROBERTSON-2005","repere":"HTML: paragraphs beginning By the beginning of the nineteenth century through Cauchy himself; later Two years after the publication through Cantor also published (web lines12–21,44–49)","pages_pdf":[]}
+{"id":"B01","source":"EN-BENACERRAF-1965","repere":"printed54, §II opening;55 through And so it went;62 complete paragraph starting Where does that leave us, before §III","pages_pdf":[8,9,16]}
+{"id":"R01","source":"FR-PHSC-BETH-1998","repere":"printed311, paragraph beginning Plus intéressant pour nous through the full sentence ending grand livre de l’arithmétique, excluding next sentence continued on312","pages_pdf":[10]}
+{"id":"Sg01","source":"FR-SAGE-DEDEKIND-2015","repere":"printed103–105: definitions of a chain and minimal chain; printed104 observation4; printed105 sentence defining chain. Excludes opening categorical claim and proof of minimality.","pages_pdf":[104,105,106]}
+{"id":"Sg02","source":"FR-SAGE-DEDEKIND-2015","repere":"printed105, final subsection N vérifie le théorème de récurrence, formula and complete proof only","pages_pdf":[106]}
+{"id":"Dk01","source":"EN-DEDEKIND-BEMAN-GUTENBERG","repere":"Gutenberg printed27–28, §§36–48, with end of §42 across the page break","pages_pdf":[32,33]}
+{"id":"Dk02","source":"EN-DEDEKIND-BEMAN-GUTENBERG","repere":"Gutenberg printed33, §§71–72 in full","pages_pdf":[38]}
+{"id":"Dk03","source":"EN-DEDEKIND-BEMAN-GUTENBERG","repere":"Gutenberg printed34, §§79–80 in full","pages_pdf":[39]}
+{"id":"Pt01","source":"EN-POTTER-2004","repere":"printed95–98, complete pages; adopted scope: recursive definition justification, addition/multiplication/exponentiation equations and opening warning on circular induction","pages_pdf":[110,111,112,113]}
+{"id":"L20","source":"FR-LYON-TdE-2011","repere":"printed11, §3 opening two forms of induction; paragraph beginning D’une manière semblable and through definition2.3.2; terminology only for ordinal construction","pages_pdf":[15]}
+{"id":"Pt02","source":"EN-POTTER-2004","repere":"printed157–158, lemma9.2.2 with piecewise map and proof across page break; theorem9.2.3 and complete proof","pages_pdf":[172,173]}
+{"id":"Dk04","source":"EN-DEDEKIND-BEMAN-GUTENBERG","repere":"Gutenberg printed31, §§64–66 and notes20–21","pages_pdf":[36]}
+{"id":"Kr01","source":"EN-KRAGH-HILBERT-2014","repere":"p8 hotel paragraph citing Hilbert2013p730; prose surrounding it","pages_pdf":[8]}
+{"id":"Sg03","source":"FR-SAGE-DEDEKIND-2015","repere":"printed103, Axiomes de l'infini, paragraph Motivons les deux conditions and displayed injectivity/nonattainment conditions","pages_pdf":[104]}
+{"id":"Es01","source":"EN-EWALD-SIEG-2013-CH4","repere":"publisher chapter4 page, Abstract, opening sentence"}
+{"id":"Dk05","source":"EN-DEDEKIND-BEMAN-GUTENBERG","repere":"Gutenberg printed14, preface first edition; opening sentences through immediate result from the laws of thought","pages_pdf":[19]}
+{"id":"Dk06","source":"EN-DEDEKIND-BEMAN-GUTENBERG","repere":"Gutenberg printed46–48, §§132–133 complete and §134 explanation","pages_pdf":[51,52,53]}
+{"id":"Pt03","source":"EN-POTTER-2004","repere":"printed23, paragraph beginning It seems in fact to be Frege through Sinaceur1973 reference","pages_pdf":[38]}
+{"id":"R02","source":"FR-PHSC-BETH-1998","repere":"printed311, paragraph Naturellement through arithmétique cardinale; full opening discussion of first/higher order also read","pages_pdf":[10]}
+{"id":"Dg01","source":"DE-DEDEKIND-ZAHLEN-RU","repere":"Vorwort zur ersten Auflage, opening Was beweisbar ist through halte before Meine Hauptantwort"}
+{"id":"H21","source":"FR-IRIF-HABERM-1314","repere":"slides34,36","page_pdf":9}
+{"id":"H22","source":"FR-IRIF-HABERM-1314","repere":"slide54","page_pdf":14}
+{"id":"H23","source":"FR-IRIF-HABERM-1314","repere":"slide61","page_pdf":16}
+{"id":"H24","source":"FR-IRIF-HABERM-1314","repere":"slide62","page_pdf":16}
+{"id":"H25","source":"FR-IRIF-HABERM-1314","repere":"slide63","page_pdf":16}
+{"id":"PLX01","source":"FR-POLYTECH-INF412-CH3","repere":"proposition3.1 et exercice3.1","page_pdf":2}
+{"id":"PLX02","source":"FR-POLYTECH-INF412-CH3","repere":"définition3.2 et proposition3.2","page_pdf":3}
+{"id":"PLX03","source":"FR-POLYTECH-INF412-CH3","repere":"définitions3.3–3.4 et remarque3.2","page_pdf":4}
+{"id":"PLX04","source":"FR-POLYTECH-INF412-CH3","repere":"proposition3.3 et définition3.5","page_pdf":6}
+{"id":"CB01","source":"FR-LLF-BEYSSADE-VERICONDITIONNEL","repere":"§2 Opérateur vérifonctionnel, premier paragraphe; §3, premier et dernier paragraphes"}
+{"id":"SCH01","source":"FR-IRIF-SCHMITZ-2022","repere":"printed43, §5.1.5 and theorem5.8","page_pdf":51}
+{"id":"SCH02","source":"FR-IRIF-SCHMITZ-2022","repere":"printed97, chapter9 summary and final paragraphs","page_pdf":105}
+{"id":"SCH03","source":"FR-IRIF-SCHMITZ-2022","repere":"printed103, §9.3 and theorem9.10","page_pdf":111}
+{"id":"SCH04","source":"FR-IRIF-SCHMITZ-2022","repere":"printed122, §11.1, paragraphs1–3","page_pdf":130}
+{"id":"SAU01","source":"FR-IRIF-SAURIN-2021","repere":"§1.1, three examples and introduction/elimination discussion","page_pdf":2}
+{"id":"SAU02","source":"FR-IRIF-SAURIN-2021","repere":"definition2.1","page_pdf":4}
+{"id":"SAU03","source":"FR-IRIF-SAURIN-2021","repere":"notation2.6","page_pdf":6}
+{"id":"GL01","source":"FR-LSV-GOUBAULT-PROOFS","repere":"§3.1, definition11"}
+{"id":"GL02","source":"FR-LSV-GOUBAULT-PROOFS","repere":"§3.1, theorems12–14"}
+{"id":"EYT01","source":"FR-MSH-MODALE-1977","repere":"printed35, §6.1, definition and propositional rows","page_pdf":10}
+{"id":"EYT02","source":"FR-MSH-MODALE-1977","repere":"printed36, closed configurations and final definition","page_pdf":11}
+{"id":"SCH05","source":"FR-IRIF-SCHMITZ-2022","repere":"printed122, left marginal note beside figure11.1","page_pdf":130}
+{"id":"SCH06","source":"FR-IRIF-SCHMITZ-2022","repere":"printed3, chapter1 summary, final paragraph","page_pdf":11}
+{"id":"SCH07","source":"FR-IRIF-SCHMITZ-2022","repere":"printed109, paragraph after neg_e code block","page_pdf":117}
+{"id":"SAU04","source":"FR-IRIF-SAURIN-2021","repere":"§1.2, definition1.1 and example1.2","page_pdf":3}
+{"id":"SAU05","source":"FR-IRIF-SAURIN-2021","repere":"definition2.3 and remark2.4, first item","page_pdf":5}
+{"id":"SAU06","source":"FR-IRIF-SAURIN-2021","repere":"remark2.5, §2.1 final paragraph and definition2.7 beginning","page_pdf":6}
+{"id":"GL03","source":"FR-LSV-GOUBAULT-PROOFS","repere":"§3.3, definitions21–22 and paragraphs around figure3"}
+{"id":"SCH08","source":"FR-IRIF-SCHMITZ-2022","repere":"printed124, section11.2, Recherche de preuve and Points de choix paragraphs","page_pdf":132}
+{"id":"SAU07","source":"FR-IRIF-SAURIN-2021","repere":"§1.3 Des règles pour l’égalité, displayed introduction and elimination rules","page_pdf":4}
+{"id":"SCH09","source":"FR-IRIF-SCHMITZ-2022","repere":"printed9, §2.2 first paragraph and satisfaction definition","page_pdf":17}
+{"id":"SCH10","source":"FR-IRIF-SCHMITZ-2022","repere":"printed10, §2.3 and property2.6, before §2.4","page_pdf":18}
+{"id":"SAU08","source":"FR-IRIF-SAURIN-2021","repere":"Notation of natural-deduction trees, definition2.3 and remark2.4","page_pdf":5}
+{"id":"SCH11","source":"FR-IRIF-SCHMITZ-2022","repere":"Printed52, section6.5, theorem6.13 and corollary6.14","page_pdf":60}
+{"id":"SCH12","source":"FR-IRIF-SCHMITZ-2022","repere":"printed4–5, §§1.2–1.3, definitions of formulas and free/bound variables","pages_pdf":[12,13]}
+{"id":"SCH13","source":"FR-IRIF-SCHMITZ-2022","repere":"printed7–8, chapter2 summary, §2.1 and examples2.1–2.4","pages_pdf":[15,16]}
+{"id":"SCH14","source":"FR-IRIF-SCHMITZ-2022","repere":"printed21–23, chapter3 summary, §§3.1–3.2 and lemma3.5","pages_pdf":[29,30,31]}
+{"id":"R03","source":"FR-PHSC-BETH-1998","repere":"printed306, CRITÈRE DE VALIDITÉ DE BETH and following construction paragraphs","page_pdf":5}
+{"id":"R04","source":"FR-PHSC-BETH-1998","repere":"printed308, paragraph beginning La méthode des tableaux de Beth","page_pdf":7}
+{"id":"SCH15","source":"FR-IRIF-SCHMITZ-2022","repere":"printed3–4, chapter1 summary, §1.1 Signatures and opening of §1.2 Formules","pages_pdf":[11,12]}
+{"id":"L21","source":"FR-LYON-TdE-2011","repere":"printed p.3, §2 axioms IV–VI and the heading on restricted comprehension/separation","page_pdf":7}
+{"id":"MEB01","source":"FR-PARISSUD-MEBSOUT-2014","repere":"printed pp.37–38, §2.4.1, definition 2.4.1 and well-typed term/atom clauses","pages_pdf":[45,46]}
+{"id":"CRO01","source":"FR-PARISEST-CROLARD-2010","repere":"printed p.15, paragraph beginning Remarquez que l’argument ci-dessus se généralise","page_pdf":17}
+{"id":"DHR01","source":"FR-CNRS-DEHORNOY-2007-CH7","repere":"printed pp.215–216, Appendix: logiques du second ordre, introduction, Peano categoricity proposition, AC_omega finiteness proof, compactness/Löwenheim–Skolem proposition","pages_pdf":[37,38]}
+{"id":"BUR01","source":"FR-LORRAINE-BUREL-2009","repere":"printed p.29, §2.2.2 final λ-calculs paragraph on Church's simple theory of types","page_pdf":38}
+{"id":"HER01","source":"FR-MINES-HERMANT-2017","repere":"printed p.90, §3.3.1 opening, figure 3.5 and theorem 3.3.1","page_pdf":90}
+{"id":"HER02","source":"FR-MINES-HERMANT-2017","repere":"printed p.55, §2.5, definition 2.5.1 and adjacent correction discussion","page_pdf":55}
+{"id":"EYT03","source":"FR-MSH-MODALE-1977","repere":"printed p.33, §4.2–4.3 on Kripke models and S4/S5 accessibility","page_pdf":8}
+{"id":"BME01","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.1, chapter 4, §4.1, Definition 4.1(1)","page_pdf":5}
+{"id":"BME02","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.2, §4.2, Definition 4.3 through function clause","page_pdf":6}
+{"id":"BME03","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.3, §4.2, Definition 4.3 relation clause and Remark 4.4(1)","page_pdf":7}
+{"id":"BME04","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.15, §4.6, Notation before Exercise 4.44","page_pdf":19}
+{"id":"BME05","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.17, §5.1, Theorem 5.1 and Exercise 5.3(1)","page_pdf":21}
+{"id":"PNT01","source":"FR-UMONS-POINT-2019-MODELES","repere":"printed p.1, §1.1, Definition 1.1.1 and paragraphs on expansion/reduct","page_pdf":5}
+{"id":"BME06","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.4, §4.2, Definition 4.8 and Example 4.9","page_pdf":8}
+{"id":"BME07","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.5, §4.2, Proposition 4.15 and Example 4.16","page_pdf":9}
+{"id":"BME08","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.9, §4.5, Definition 4.24 and Proposition 4.27","page_pdf":13}
+{"id":"BME09","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.10, §4.5, Corollary 4.28 and Proposition 4.29","page_pdf":14}
+{"id":"BME10","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.14, §4.5, theory item 7 and Remark 4.40","page_pdf":18}
+{"id":"DEL01","source":"FR-IMJ-DELORO-2026-MODELES","repere":"printed p.47, §9 and §9.1, Definition 0-isomorphisme","page_pdf":47}
+{"id":"DEL02","source":"FR-IMJ-DELORO-2026-MODELES","repere":"printed p.50, §9.2, Definition ∞-isomorphisme","page_pdf":50}
+{"id":"DEL03","source":"FR-IMJ-DELORO-2026-MODELES","repere":"printed p.51, §9.2, countable isomorphism lemma and §9.3 heading","page_pdf":51}
+{"id":"DEL04","source":"FR-IMJ-DELORO-2026-MODELES","repere":"printed p.52, §9.3, quantifier-rank definition and satisfaction lemma","page_pdf":52}
+{"id":"DEL05","source":"FR-IMJ-DELORO-2026-MODELES","repere":"printed p.53, §9.3, Remarks after satisfaction lemma","page_pdf":53}
+{"id":"BME11","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.18, §5.1, Corollary 5.7 and Example 5.8(1)","page_pdf":22}
+{"id":"BME12","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.13, §4.6, Corollary 4.38","page_pdf":17}
+{"id":"DEL06","source":"FR-IMJ-DELORO-2026-MODELES","repere":"printed p.36, Chapter II, first-order Peano arithmetic axiom list","page_pdf":36}
+{"id":"BUR02","source":"FR-LORRAINE-BUREL-2009","repere":"printed p.159, §5.3.1, formulas (5.1)–(5.7)","page_pdf":168}
+{"id":"DEL07","source":"FR-IMJ-DELORO-2026-MODELES","repere":"printed p.46, §8 concluding notes, Craig interpolation lemma and Robinson disjoint satisfiability lemma","page_pdf":46}
+{"id":"BME13","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.15, §4.7, Definition 4.45","page_pdf":19}
+{"id":"BME14","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p.16, §4.7, Examples 4.49–4.53","page_pdf":20}
+{"id":"DEL08","source":"FR-IMJ-DELORO-2026-COMP2","repere":"printed p.52, §J.1, Définition B (logique abstraite)","page_pdf":52}
+{"id":"DEL09","source":"FR-IMJ-DELORO-2026-COMP2","repere":"printed p.53, §J.1, Définition C (logique régulière)","page_pdf":53}
+{"id":"DEL10","source":"FR-IMJ-DELORO-2026-COMP2","repere":"printed p.55, §J.2, countable Löwenheim and back-and-forth proposition","page_pdf":55}
+{"id":"DEL11","source":"FR-IMJ-DELORO-2026-COMP2","repere":"printed p.61, §J.3, Lindström proposition","page_pdf":61}
+{"id":"DEL12","source":"FR-IMJ-DELORO-2026-COMP2","repere":"printed p.64, §J.3, step 3 and conclusion","page_pdf":64}
+{"id":"DUR01","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.3, chapter 1 and §1.1 opening, Définition 1.1.1(i)","page_pdf":3}
+{"id":"DUR02","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.4, Définition 1.1.1(ii)–(iii) and opening examples","page_pdf":4}
+{"id":"DUR03","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.5, §1.1.1 examples and §1.1.2 first closure properties","page_pdf":5}
+{"id":"DUR04","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.6, §1.1.2 logical/set closure, cases and bounded minimization","page_pdf":6}
+{"id":"DUR05","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.7, §1.1.3 prime and divisibility examples","page_pdf":7}
+{"id":"DUR06","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.9, §1.1.4 finite-list coding and operations","page_pdf":9}
+{"id":"DUR07","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.10, Exercice 4, Codage des listes par décomposition en nombres premiers","page_pdf":10}
+{"id":"DUR08","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.67, §3.2.1 Les arbres binaires étiquetés and Codage des arbres binaires étiquetés","page_pdf":67}
+{"id":"DUR09","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.68, Lemme 3.2.2 and Fonctions sur les arbres","page_pdf":68}
+{"id":"DUR10","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.9, Récurrence primitive sur la suite des valeurs and Lemme 1.1.2","page_pdf":9}
+{"id":"DUR11","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.10, Exercice 5 Définition par récurrences mutuelles","page_pdf":10}
+{"id":"DUR12","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.12, §1.2.1 Évaluation des fonctions récursives primitives","page_pdf":12}
+{"id":"DUR13","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.13, §1.2.2 Fonction d’Ackermann","page_pdf":13}
+{"id":"DUR14","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.15, §1.2.3 Fonctions partielles μ-récursives","page_pdf":15}
+{"id":"DUR15","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.16, Définition 1.2.3 and Définition 1.2.4","page_pdf":16}
+{"id":"DUR16","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.17, Définition 1.2.5 and Fait 1.2.6","page_pdf":17}
+{"id":"DUR17","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.34, §2.2.1 Forme normale de Kleene and Corollaire 2.2.2","page_pdf":34}
+{"id":"DUR18","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.35, §2.2.2 Propriété d’énumération","page_pdf":35}
+{"id":"DUR19","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.40, §2.3.3 Problème de l’arrêt : la méthode diagonale","page_pdf":40}
+{"id":"DUR20","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.41, direct diagonal proof of Diag and Théorème 2.3.9","page_pdf":41}
+{"id":"DUR21","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.33, Chapitre 2 Résultats fondamentaux de calculabilité, §2.1","page_pdf":33}
+{"id":"DUR22","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.36, Théorème 2.2.6 théorème s-m-n ou de paramétrisation","page_pdf":36}
+{"id":"DUR23","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.37, continuation of Théorème 2.2.6 and program-parameterization explanation","page_pdf":37}
+{"id":"DUR24","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.38, Définition / Proposition 2.3.3 and Fait 2.3.4","page_pdf":38}
+{"id":"DUR25","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.39, Proposition 2.3.5 and Proposition 2.3.6","page_pdf":39}
+{"id":"DUR26","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.50, §2.6.1 Réduction many-one and Définition 2.6.1","page_pdf":50}
+{"id":"DUR27","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.51, Fait 2.6.3 and Définition 2.6.4","page_pdf":51}
+{"id":"DUR28","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.53, §2.6.3 Définition 2.6.16","page_pdf":53}
+{"id":"DUR29","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.54, Proposition 2.6.17 and Fait 2.6.18","page_pdf":54}
+{"id":"DUR30","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.43, §2.3.5 Théorème de Rice and Théorème 2.3.13","page_pdf":43}
+{"id":"DUR31","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.44, continuation of Rice proof and Corollaire 2.3.14","page_pdf":44}
+{"id":"DUR32","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.45, Théorème 2.4.1 and corollary","page_pdf":45}
+{"id":"DUR33","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.46, §2.4.3 Démonstration du théorème du point fixe","page_pdf":46}
+{"id":"DUR34","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.47, §2.4.3 conclusion and Théorème 2.4.4","page_pdf":47}
+{"id":"DUR35","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.18, §1.3 paragraph following the goto-machine instructions","page_pdf":18}
+{"id":"SCH16","source":"FR-IRIF-SCHMITZ-2022","repere":"printed p.18 (physical p.26), Trakhtenbrot proof, Turing-machine tuple","page_pdf":26}
+{"id":"DUR36","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.31, §1.5.3 Thèse de Church, model-equivalence paragraph and thesis statement","page_pdf":31}
+{"id":"DUR37","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.75, Proposition 3.4.7 and preceding Lemma 3.4.6","page_pdf":75}
+{"id":"DUR38","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.80, subsection L'arithmétique finie Q de Robinson","page_pdf":80}
+{"id":"DUR39","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.82, subsection L'arithmétique de Peano and Proposition 3.5.13","page_pdf":82}
+{"id":"DUR40","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.83, section 3.6.1 Définition 3.6.1 and footnote 2","page_pdf":83}
+{"id":"DUR41","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p.84, opening comparison and section 3.6.2","page_pdf":84}
+{"id":"BER01","source":"FR-INRIA-BERTOT-2006-LAMBDA","repere":"printed p.1, §1.1 Syntaxe","page_pdf":1}
+{"id":"BER02","source":"FR-INRIA-BERTOT-2006-LAMBDA","repere":"printed p.2, conventions de parenthésage and §1.2 α-équivalence","page_pdf":2}
+{"id":"BER03","source":"FR-INRIA-BERTOT-2006-LAMBDA","repere":"printed p.3, §1.3 Application","page_pdf":3}
+{"id":"BER04","source":"FR-INRIA-BERTOT-2006-LAMBDA","repere":"printed p.4, §1.4 Substitution","page_pdf":4}
+{"id":"BER05","source":"FR-INRIA-BERTOT-2006-LAMBDA","repere":"printed p.5, §1.5 Exécution dans le λ-calcul","page_pdf":5}
+{"id":"BER06","source":"FR-INRIA-BERTOT-2006-LAMBDA","repere":"printed p.9, §3.2 Confluence globale","page_pdf":9}
+{"id":"MEL01","source":"FR-IRIF-MELLIES-2009-LAMBDA","repere":"slide 11, 'Kleene 1936: le λ-calcul est universel'","page_pdf":11}
+{"id":"MEL02","source":"FR-IRIF-MELLIES-2009-LAMBDA","repere":"slide 11, final Remarque on the fixed-point combinator Y","page_pdf":11}
+{"id":"KES01","source":"FR-IRIF-LECTURE-UNIQUE-2017","repere":"physical slide 101, Une subtilité, third bullet","page_pdf":101}
+{"id":"EHR01","source":"FR-IRIF-EHRHARD-2016-DE-BRUIJN","repere":"physical and printed p.7, chapter 1 §1.1 Syntaxe, paragraph before the parallel-substitution definition","page_pdf":7}
+{"id":"RAZ01","source":"FR-IRIF-RAUZY-2010-ETA","repere":"physical and printed p.3, §1.4 Réductions, final paragraph","page_pdf":3}
+{"id":"TEMP01","source":"FR-LILLE-WISTRAND-TEMPS-2024","repere":"Printed/PDF page 13","pages_pdf":[13]}
+{"id":"TEMP02","source":"FR-LILLE-WISTRAND-TEMPS-2024","repere":"Printed/PDF page 40","pages_pdf":[40]}
+{"id":"TEMP03","source":"FR-LILLE-WISTRAND-TEMPS-2024","repere":"Printed/PDF page 42","pages_pdf":[42]}
+{"id":"TEMP04","source":"FR-ALLIOT-NONCLASSIQUES","repere":"Section 0.10.2, selected operator/duality and time-shape paragraphs; HTML anchor htoc26"}
+{"id":"TEMP05","source":"FR-ALLIOT-NONCLASSIQUES","repere":"Section 0.10.2, selected operator/duality and time-shape paragraphs; HTML anchor htoc26"}
+{"id":"EPI01","source":"FR-ISAE-BONNET-2008","repere":"Chapter 3, section 4.1, printed p. 59 / PDF p. 77","pages_pdf":[77]}
+{"id":"EPI02","source":"FR-ISAE-BONNET-2008","repere":"Chapter 3, section 4.1, printed p. 59 / PDF p. 77","pages_pdf":[77]}
+{"id":"EPI03","source":"FR-AMQ-AUDET-2014","repere":"Appendix 2, printed p. 23 / PDF p. 11","pages_pdf":[11]}
+{"id":"EPI04","source":"FR-AMQ-AUDET-2014","repere":"Appendix 2, printed p. 23 / PDF p. 11","pages_pdf":[11]}
+{"id":"EPI05","source":"FR-AMQ-AUDET-2014","repere":"Appendix 2, printed p. 23 / PDF p. 11","pages_pdf":[11]}
+{"id":"EPI06","source":"FR-LORRAINE-LIU-2023","repere":"French extended summary, printed p. 106 / PDF p. 119, PAL paragraph","pages_pdf":[119]}
+{"id":"EPI07","source":"FR-LORRAINE-LIU-2023","repere":"French extended summary, printed p. 106 / PDF p. 119, PAL paragraph","pages_pdf":[119]}
+{"id":"EPI08","source":"FR-LORRAINE-LIU-2023","repere":"French extended summary, printed p. 106 / PDF p. 119, PAL paragraph","pages_pdf":[119]}
+{"id":"INT01","source":"FR-CDF-MIQUEL-REALISABILITE","repere":"PDF page 27; original French page inspected","pages_pdf":[27]}
+{"id":"INT02","source":"FR-CDF-MIQUEL-REALISABILITE","repere":"PDF page 28; original French page inspected","pages_pdf":[28]}
+{"id":"INT03","source":"FR-ENS-LONGO-LOGIQUE-CONSTRUCTIVE","repere":"PDF page 13; original French page inspected","pages_pdf":[13]}
+{"id":"INT04","source":"FR-ENS-LONGO-LOGIQUE-CONSTRUCTIVE","repere":"PDF page 14; original French page inspected","pages_pdf":[14]}
+{"id":"INT05","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"PDF page 31, printed page II–31; original French page inspected","pages_pdf":[31]}
+{"id":"INT06","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"PDF page31, printedII–31, transparency101: Sémantique des cadres de Kripke; original re-inspected during416–420","pages_pdf":[31]}
+{"id":"INT07","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"PDF page 32, printed page II–32; original French page inspected","pages_pdf":[32]}
+{"id":"INT08","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"PDF page 32, printed page II–32; original French page inspected","pages_pdf":[32]}
+{"id":"CF01","source":"FR-CDF-CONDITIONNELS-CONTREFACTUELS","repere":"Original French HTML seminar abstract, Résumé, sentence 2","pages_pdf":[]}
+{"id":"CF02","source":"FR-UNIGE-CONDITIONNEL-MATERIEL","repere":"PDF page 44, printed page 754, section 5 ‘L’implication’; original French page inspected","pages_pdf":[44]}
+{"id":"LON01","source":"FR-ENS-LONGO-INCOMPLETE","repere":"physical and printed p.3, 'Remarque (le bien fondé des définitions imprédicatives)'","page_pdf":3}
+{"id":"DEL13","source":"FR-IMJ-DELORO-CHV-2026","repere":"physical and printed p.68, §27 introduction and §27.1 'Remarque (vision itérative)'","page_pdf":68}
+{"id":"JPD01","source":"FR-LILLE-DELAHAY-2010-NFU","repere":"physical p.5, printed p.150, 'Les progrès en théorie des ensembles' table and right column","page_pdf":5}
+{"id":"FSCH01","source":"FR-CAPHI-FREGE-2009","repere":"physical and printed p.39, §3.2, paragraphs on Fregean 'extension de concept'","page_pdf":39}
+{"id":"LPAIR01","source":"FR-LYON-TdE-2011","repere":"printed p.3, 'Axiome de la paire' heading and its following formula","page_pdf":7}
+{"id":"LPOWER01","source":"FR-LYON-TdE-2011","repere":"printed p.3, IV. 'Axiome de l'ensemble des parties' and its following formula","page_pdf":7}
+{"id":"GREEK01","source":"FR-EDUSCOL-ALPHABET-2021","repere":"Composition de l'alphabet, 24-letter table, theta and chi rows"}
+{"id":"GREEK02","source":"FR-EDUSCOL-ALPHABET-2021","repere":"Introductory item 2 (eta/omega), and Composition paragraph on beta"}
+{"id":"PNT02","source":"FR-UMONS-POINT-2019-MODELES","repere":"printed p.22, definitions between remark 3.2.2 and lemma 3.2.3","page_pdf":26}
+{"id":"FOLD01","source":"FR-INRIA-OCAML-2020-FOLD","repere":"Cours 5, §5.2 fold_left et fold_right, displayed equations, length/sum examples and order explanation"}
+{"id":"NML01","source":"FR-ALLIOT-NONCLASSIQUES","repere":"§0.4.1, Le système T: K axiom and nécessitation rule only; full surrounding §0.3–0.4.2 read"}
+{"id":"HER03","source":"FR-MINES-HERMANT-2017","repere":"physical/printed p.72, theorem 3.2.1 and paragraph beginning La preuve","page_pdf":72}
+{"id":"GIR01","source":"FR-CNRS-GIRARD-HERBRAND","repere":"physical/printed p.6, appendix A Herbrand, paragraphs on the disjunction and Méthode Gentzen","page_pdf":6}
+{"id":"PRX01","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"physical p.13 / printed p.9, exercise 4.23, entire prenex characterization","page_pdf":13}
+{"id":"SAU09","source":"FR-IRIF-SAURIN-2021","repere":"physical/printed p.7, definition 2.8, proposition 2.9, lemmas 2.10–2.11","page_pdf":7}
+{"id":"SAU10","source":"FR-IRIF-SAURIN-2021","repere":"physical/printed p.3, proposition 1.4","page_pdf":3}
+{"id":"HER04","source":"FR-MINES-HERMANT-2017","repere":"physical/printed p.100, procedural cut reduction and normal-form paragraphs","pages_pdf":[100]}
+{"id":"HER05","source":"FR-MINES-HERMANT-2017","repere":"physical/printed pp.103–104, nonadjacent introduction/elimination example and commutative-cut discussion","pages_pdf":[103,104]}
+{"id":"HER06","source":"FR-MINES-HERMANT-2017","repere":"physical/printed pp.26–27, figure 2.2 discussion and definitions 2.2.3–2.2.5","pages_pdf":[26,27]}
+{"id":"HER07","source":"FR-MINES-HERMANT-2017","repere":"physical/printed pp.28–29, proposition 2.2.6, theorem 2.2.7 and its proof, definition 2.2.8","pages_pdf":[28,29]}
+{"id":"HER08","source":"FR-MINES-HERMANT-2017","repere":"physical/printed pp.23–24, section 2.2 opening, definition 2.2.1 and proposition 2.2.2","pages_pdf":[23,24]}
+{"id":"HER09","source":"FR-MINES-HERMANT-2017","repere":"physical/printed p.25, signed-formula explanation and tableau/sequent correspondence paragraphs","pages_pdf":[25]}
+{"id":"SCH17","source":"FR-IRIF-SCHMITZ-2022","repere":"physical134-135 / printed126-127, section11.2.2, definition paragraph and lemma11.8 proof","pages_pdf":[134,135]}
+{"id":"ISH01","source":"EN-JAIST-ISHIHARA-2012","repere":"physical63–64, two slides titled Intuitionistic sequent calculus G3i","pages_pdf":[63,64]}
+{"id":"MAD01","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"printed II–6, transparency16, Curry–Howard first overview","page_pdf":6}
+{"id":"MAD02","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"printed II–8, transparencies22–24, types/préterms and typing rules","page_pdf":8}
+{"id":"MAD03","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"printed II–17, transparencies50–53, proof/program diagrams for implication, products and sums","page_pdf":17}
+{"id":"MAD04","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"printed II–18, continuation of transparency53 and transparencies54–56","page_pdf":18}
+{"id":"L22","source":"FR-LYON-TdE-2011","repere":"printed p.3, Exercice 1.2.1, sentence after the exercise","page_pdf":7}
+{"id":"L23","source":"FR-LYON-TdE-2011","repere":"printed p.15, Chapter 3 opening and Principe du bon ordre","page_pdf":19}
+{"id":"L24","source":"FR-LYON-TdE-2011","repere":"printed p.3, paragraph following Axiom V, opening sentence","page_pdf":7}
+{"id":"L25","source":"FR-LYON-TdE-2011","repere":"printed p.33, heading preceding proof of Theorem 5.3.2","page_pdf":37}
+{"id":"L26","source":"FR-LYON-TdE-2011","repere":"printed p.33, proof of Theorem 5.3.2, limit-ordinal case","page_pdf":37}
+{"id":"L27","source":"FR-LYON-TdE-2011","repere":"printed p.32, proof of Proposition 5.2.8, concluding sentence","page_pdf":36}
+{"id":"HER10","source":"FR-MINES-HERMANT-2017","repere":"printed p.25, §2.2, semi-valuation discussion around Definition 2.2.1","page_pdf":25}
+{"id":"HER11","source":"FR-MINES-HERMANT-2017","repere":"printed p.14, §2.1.1, prose above and below Definition 2.1.1","page_pdf":14}
+{"id":"BUR03","source":"FR-LORRAINE-BUREL-2009","repere":"printed p.83, §3.2, text immediately below Table 3.1","page_pdf":92}
+{"id":"L28","source":"FR-LYON-TdE-2011","repere":"printed p.7, §2 opening and proof immediately above","page_pdf":11}
+{"id":"SCH18","source":"FR-IRIF-SCHMITZ-2022","repere":"printed p.127, Example 11.9 opening sentence","page_pdf":135}
+{"id":"EMSE01","source":"FR-EMSE-MASSON-PICARD-ZIMMERMANN","repere":"Sections Mise sous forme prénexe (definition and renaming paragraph) and Skolémisation (introductory paragraph and first example)"}
+{"id":"DEL14","source":"FR-IMJ-DELORO-CHIV-2026","repere":"p. 48, exercices 20.3(a), 20.4 et 20.5","pages_pdf":[48]}
+{"id":"DEL15","source":"FR-IMJ-DELORO-CHIV-2026","repere":"p. 55, notes conclusives, théorème de Tennenbaum","pages_pdf":[55]}
+{"id":"DEL16","source":"FR-IMJ-DELORO-CHIV-2026","repere":"pp. 64–65, Variation 7 et remarque suivante","pages_pdf":[64,65]}
+{"id":"DEL17","source":"FR-IMJ-DELORO-2026-COMP2","repere":"physical/printed pp.56–57, §J.2, first proof under countable Skolem; steps 1–3 and comparison with single-sentence Lowenheim","pages_pdf":[56,57]}
+{"id":"DEL18","source":"FR-IMJ-DELORO-2026-COMP2","repere":"physical/printed p.63, §J.3, step 2: heights and tuple-relation typing","pages_pdf":[63]}
+{"id":"LIU01","source":"EN-TMJ-LIU-1960","repere":"Printed pp.400–401, theorem and proof; concluding distinction from effective zero-test","page_pdf":1,"pages_pdf":[1,2]}
+{"id":"MP01","source":"EN-RMS-MUCHNIK-POSITSELSKII-1999","repere":"Printed p.640, r-separability and Theorem 1; p.641 bibliography [12]","page_pdf":1,"pages_pdf":[1,2]}
+{"id":"TURH01","source":"EN-TNMOC-COLOSSUS","repere":"The Colossus Computer"}
+{"id":"TURH02","source":"EN-CHM-Z3-1941","repere":"1941 timeline: Konrad Zuse finishes the Z3 Computer"}
+{"id":"TURH03","source":"EN-CHM-STORED-PROGRAM","repere":"The Stored Program; The Manchester Baby Breaks New Ground"}
+{"id":"TURH04","source":"EN-ONR-DCN-1949-2","repere":"The BINAC paragraph, printed p.4 in archival OCR"}
+{"id":"TURH05","source":"EN-ARL-BERGIN-2000","repere":"printed p.2, physical p.14, ENIAC construction paragraph","page_pdf":14}
+{"id":"SCH19","source":"FR-IRIF-SCHMITZ-2022","repere":"printed pp.17–18 (physical25–26), Corollaire2.16, §2.5.2 and Théorème2.18 with opening reduction","pages_pdf":[25,26]}
+{"id":"SCH20","source":"FR-IRIF-SCHMITZ-2022","repere":"printed p.19 (physical27), Prédicats sur les configurations and initial-configuration paragraph","pages_pdf":[27]}
+{"id":"DUR42","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed/physical pp.82–83, §3.5.6, Lemme3.5.14, Corollaire3.5.15 and Exercice23","pages_pdf":[82,83]}
+{"id":"DUR43","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed/physical p.86, Théorème3.6.9 and §3.6.5 Définition3.6.10–Proposition3.6.12","pages_pdf":[86]}
+{"id":"DUR44","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed/physical pp.87–88, §3.7, Théorème3.7.1 and three provability conditions i–iii","pages_pdf":[87,88]}
+{"id":"DUR45","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed/physical69–70, §3.2.2 Lemmata3.2.5–3.2.8","pages_pdf":[69,70]}
+{"id":"DUR46","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"physical/printed57–59, §3.1.2, theorem3.1.6, lemmas3.1.7–3.1.8, proposition3.1.9, lemmas3.1.10–3.1.12","pages_pdf":[57,58,59]}
+{"id":"DUR47","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"physical/printed81, proposition3.5.12 and exercise22","pages_pdf":[81]}
+{"id":"DUR48","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"physical/printed56 §3.1;77 §3.5.3 proposition3.5.6;84–85 §3.6.2–3.6.4 facts3.6.5–3.6.8","pages_pdf":[56,77,84,85]}
+{"id":"DUR49","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"physical/printed43 theorem2.3.12 and separator definition;74 lemmas3.4.3–3.4.5;75 lemma3.4.6 and proposition3.4.7","pages_pdf":[43,74,75]}
+{"id":"DUR50","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"physical/printed76 §3.5.2;78 lemma3.5.9;87 lemma3.6.13 and theorem3.7.1","pages_pdf":[76,78,87]}
+{"id":"DUR51","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"physical/printed86 theorem3.6.9;88 conditionsi–iii;89 propositions3.7.2–3.7.3","pages_pdf":[86,88,89]}
+{"id":"DUR52","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"physical/printed70 theorem3.3.1;71 diagonal proof and semantic fixed point","pages_pdf":[70,71]}
+{"id":"DHR02","source":"FR-CNRS-DEHORNOY-2007-CH7","repere":"printed204–205, propositions3.7–3.9 and corollary3.11","pages_pdf":[26,27]}
+{"id":"L29","source":"FR-LYON-TdE-2011","repere":"printed20 cardinal successors and aleph hierarchy; printed23 cardinal exponentiation, HC and HGC","pages_pdf":[24,27]}
+{"id":"NGO01","source":"FR-CNRS-NGO-2002-ALGEBRE","repere":"Physical10, printed9, paragraph beginning La logique qu’on vient de voir","page_pdf":10}
+{"id":"GRO01","source":"FR-LORRAINE-GRONEBERG-FUTUR","repere":"Physical10, first paragraph before section5","page_pdf":10}
+{"id":"HER12","source":"FR-MINES-HERMANT-2017","repere":"physical/printed14–15, §2.1.1, Definition2.1.1, Figure2.1 and adjacent context/structural-rule discussion","pages_pdf":[14,15]}
+{"id":"EYT04","source":"FR-MSH-MODALE-1977","repere":"printed32, §§4.1–4.2, historicalS5-to-T/S4 paragraph and Kripke model/clausesM1–M6","page_pdf":7}
+{"id":"MAD05","source":"FR-TELECOM-MADORE-LOGIQUE-TYPAGE","repere":"Physical31–32, printedII–31/32; transparency99 defines cadre/model,101 distinguishes truth in a model from all valuations on a frame,102 supplies adjacent intuitionistic scope.","pages_pdf":[31,32]}
+{"id":"BME15","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"Physical21, printed17, theorem5.1; complete page and original inspected during421–425","page_pdf":21}
+{"id":"LCA01","source":"FR-LYON-TdE-2011","repere":"printed22, definitions4.2.9/11 and exercise4.2.13","page_pdf":26}
+{"id":"LCA02","source":"FR-LYON-TdE-2011","repere":"printed23, beth recursion and definition4.2.15","page_pdf":27}
+{"id":"LH01","source":"FR-LYON-TdE-2011","repere":"physical14/printed10, theorem2.2.17 and proof"}
+{"id":"POTTS01","source":"EN-POTTER-2004","repere":"physical75/printed60, §4.4 definition"}
+{"id":"FRIND01","source":"FR-SACLAY-OLA2-2026","repere":"printed37, Récurrence bien fondée, principle and its explanatory paragraph","page_pdf":15}
+{"id":"FRIND02","source":"FR-TOULON-ZANOTTI-UE41-TD1","repere":"printed5, right column, 3 Initialisation","page_pdf":5}
+{"id":"FRIND03","source":"FR-SACLAY-OLA3-2026","repere":"printed58, section8.4, principle and list-constructor example","page_pdf":4}
+{"id":"FRIND04","source":"FR-IRIF-SCHMITZ-2022","repere":"printed22, section3.1, proofs of lemmas3.1 and3.2","page_pdf":30}
+{"id":"FRIND05","source":"FR-IRIF-PIN-INF421-AMPHI5","repere":"slide29, Ensembles préfixiels, definition and epsilon example","page_pdf":29}
+{"id":"FCAL01","source":"FR-UQAM-COLLIN-ANALYSE1","repere":"physical95/printed95, chapter5section1definition1.1 and adjoining difference-quotient paragraph","page_pdf":95}
+{"id":"SAU-EXEL06","source":"FR-IRIF-SAURIN-2021","repere":"Page physique et imprimée 6, remarque 2.4, deuxième point en haut de page","page_pdf":6}
+{"id":"BME16","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"pages imprimées 36–37, lemme 7.23 et étape paire dans la preuve du théorème 7.24","pages_pdf":[40,41]}
+{"id":"HER13","source":"FR-MINES-HERMANT-2017","repere":"§2.1.4, définition 2.1.11 et construction par étapes","pages_pdf":[20,21]}
+{"id":"HER14","source":"FR-MINES-HERMANT-2017","repere":"§2.2.1, premier paragraphe","pages_pdf":[23]}
+{"id":"HER15","source":"FR-MINES-HERMANT-2017","repere":"page imprimée 32, définition 2.3.3 et paragraphe qui précède","page_pdf":32}
+{"id":"SCH21","source":"FR-IRIF-SCHMITZ-2022","repere":"Printed p. 9, §2.2 Sémantique, definition and inductive satisfaction clauses","page_pdf":17}
+{"id":"BME17","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"Printed p. 13, §4.6 Théories et modèles, definition 4.39(1), (3) and (4)","page_pdf":17}
+{"id":"AYO01","source":"FR-LIRMM-AYOUNI-2012","repere":"Pages imprimées 17–18, §1.4, définitions 10–14 et tableau 1.2","pages_pdf":[31,32]}
+{"id":"TRE01","source":"FR-IRIF-TREINEN-2012","repere":"Pages imprimées et physiques 29–30, §3.3, définition 7, généralisation et contre-exemple","pages_pdf":[29,30]}
+{"id":"NML02","source":"FR-ALLIOT-NONCLASSIQUES","repere":"§0.2, lignes HTML 182–196, paragraphe sur la possibilité et la nécessité"}
+{"id":"LIC01","source":"FR-LSV-SYSTEMES-PREUVES-MODALES","repere":"Pages imprimées 4–5, définitions 2.6 et 2.9, lemme 2.8, théorème 2.12","pages_pdf":[4,5]}
+{"id":"LIC02","source":"FR-LSV-SYSTEMES-PREUVES-MODALES","repere":"Page imprimée 3, §2.1, définitions 2.2–2.3","pages_pdf":[3]}
+{"id":"GLM01","source":"FR-LSV-GOUBAULT-MODAL","repere":"§2.4, définition 4, lignes HTML 458–486"}
+{"id":"GLM02","source":"FR-LSV-GOUBAULT-MODAL","repere":"§2.4, théorèmes 7 et 9, lignes HTML 559–635"}
+{"id":"LAXI01","source":"FR-LYON-TdE-2011","repere":"printed p. 3, axiom V and its two following paragraphs","page_pdf":7}
+{"id":"LAXI02","source":"FR-LYON-TdE-2011","repere":"printed p. 5, paragraph beginning L’idée, dans notre optique de comptage","page_pdf":9}
+{"id":"LCHO01","source":"FR-LYON-TdE-2011","repere":"printed p. 15, AC, fonction de choix and theorem 3.0.8","page_pdf":19}
+{"id":"LCHO02","source":"FR-LYON-TdE-2011","repere":"printed p. 16, proof of theorem 3.0.8, implications (ii) ⇒ (iii) and (iii) ⇒ (i)","page_pdf":20}
+{"id":"PJM01","source":"FR-LYON-PUJO-FONDAMENTAUX","repere":"printed p. 6, §0.4, opening and numbered statement types","page_pdf":15}
+{"id":"PJM02","source":"FR-LYON-PUJO-FONDAMENTAUX","repere":"printed p. 56, §2.6.1–2.6.2","page_pdf":65}
+{"id":"MAS01","source":"FR-ORSAY-MASSOT-M114","repere":"Démonstration d'une implication; original HTML lines 237–244"}
+{"id":"MAS02","source":"FR-ORSAY-MASSOT-M114","repere":"La disjonction et Utilisation d'une disjonction; original HTML lines 982–1001"}
+{"id":"MAS03","source":"FR-ORSAY-MASSOT-M114-QUANT","repere":"Utilisation d’un énoncé quantifié existentiellement, opening paragraph; original HTML lines 513–528"}
+{"id":"PJM03","source":"FR-LYON-PUJO-FONDAMENTAUX","repere":"printed p. 2, §0.1, points 3 and 4","page_pdf":11}
+{"id":"PJM04","source":"FR-LYON-PUJO-FONDAMENTAUX","repere":"printed p. 58, §2.6.5, opening and item 1 only","page_pdf":67}
+{"id":"SMFBIO01","source":"FR-SMF-PORTRAITS","repere":"HTML line 595, heading of the biographies section"}
+{"id":"BME18","source":"FR-LYON-BLOSSIER-MELLERAY-2017-MODELES","repere":"printed p. 1, Chapter 4, opening paragraph before §4.1","page_pdf":5}
+{"id":"DEL19","source":"FR-IMJ-DELORO-2026-MODELES","repere":"printed p. 65, §10, Exemple (arithmétique non standard)","page_pdf":65}
+{"id":"DUR53","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p. 69, §3.2.2, opening and Lemme 3.2.5","page_pdf":69}
+{"id":"DUR54","source":"FR-IRIF-DURAND-ROZIERE-2021","repere":"printed p. 75, Proposition 3.4.7, Remark and §3.5–3.5.1","page_pdf":75}
+{"id":"SAU11","source":"FR-IRIF-SAURIN-2021","repere":"printed p. 1, course title and opening paragraph of §1","page_pdf":1}
+{"id":"EUZ01","source":"FR-INRIA-EUZENAT-BIB","repere":"HTML line 238, author abstract of Euzenat and Rechenmann (1987), first paragraph"}
+{"id":"DHR03","source":"FR-CNRS-DEHORNOY-2007-CH7","repere":"printed p. 180, chapter overview and §1 opening","page_pdf":2}
+{"id":"DHR04","source":"FR-CNRS-DEHORNOY-2007-CH7","repere":"printed p. 215, appendix opening through the explanation of (4.5)","page_pdf":37}
+{"id":"AYO02","source":"FR-LIRMM-AYOUNI-2012","repere":"printed p. 17, §1.4, definitions 10–12 and example 4","page_pdf":31}
+{"id":"REV02","source":"FR-ENS-REVERCHON-2019","repere":"HTML lines 758 and 781, historical discussion of Cantor, Dedekind and Bolzano"}
+{"id":"UQAM01","source":"FR-UQAM-ROBERT-PHI3508","repere":"printed p. 1, §§1–2, course description and prerequisite","page_pdf":1}
+{"id":"GUT01","source":"FR-GUTENBERG-FAQ-2024","repere":"printed p. 62, §2.1.1 Aide-mémoire LaTeX","page_pdf":98}
+{"id":"GUT02","source":"FR-GUTENBERG-FAQ-2024","repere":"printed p. 230, §8.8.11, final explanatory paragraph","page_pdf":266}
+{"id":"PLV01","source":"FR-ICAR-PLANTIN-VRAI","repere":"HTML line 141, §1, paragraph on Tarski"}
+{"id":"AFS01","source":"FR-NUMDAM-SCHMID-RUSSELL","repere":"HTML lines 693–695, abstract"}
+{"id":"CIT01","source":"FR-CNRS-IMAGES-TURING","repere":"HTML lines 406–407, abstract"}
+{"id":"MARI01","source":"FR-ENS-MARI-PETER","repere":"p. 1, légende et résumé"}
+{"id":"MATJ01","source":"FR-SMF-MATIYASEVICH-ROBINSON","repere":"p. 27, énoncé de Hilbert et traduction en note"}
+{"id":"MATJ02","source":"FR-SMF-MATIYASEVICH-ROBINSON","repere":"pp. 30–31, équations (4)–(5) et ouverture de la p. 31"}
+{"id":"GLN01","source":"FR-LSV-GOUBAULT-LAMBDA-STANDARDIZATION","repere":"PDF and printed p. 20, §3.4, théorème 4","page_pdf":20,"pages_pdf":[20]}
+{"id":"GLN02","source":"FR-LSV-GOUBAULT-LAMBDA-STANDARDIZATION","repere":"PDF and printed p. 21, §3.4, début de la démonstration","page_pdf":21,"pages_pdf":[21]}
+{"id":"BNFFRA01","source":"FR-BNF-OCR-2015","repere":"p. 20, § 4.2.4, Typographies mal reconnues par l’OCR","page_pdf":20}
+{"id":"KELMIN01","source":"FR-LORRAINE-KELLER-2006","repere":"p. 179, 1. La théorie de la révision des croyances, paragraphe sur les deux principes et note 163","page_pdf":180}
+{"id":"FCCAR01","source":"FR-IMJ-CHAMBERTLOIR-INFINI-2025","repere":"Cardinaux, dernier exemple et paragraphe suivant"}
+{"id":"FCINF01","source":"FR-IMJ-CHAMBERTLOIR-INFINI-2025","repere":"Infiniment petits, infiniment grands, premier paragraphe"}
+{"id":"FCHIL01","source":"FR-ENS-IVORRA-PEANO","repere":"Section « Sur une courbe qui remplit toute une aire plane », paragraphes sur Peano et Hilbert après les développements triadiques"}
+{"id":"FCDER01","source":"FR-ORSAY-DUCHESNE-ANALYSE","repere":"§ 2.4, définition 2.7 et équation (2.1)"}
+{"id":"FCPEA01","source":"FR-PEANO-COURBE-1890","repere":"p. 157, paragraphe introductif et résumé","page_pdf":2}
+{"id":"FCPEA02","source":"FR-PEANO-COURBE-1890","repere":"p. 160, paragraphes sur Cantor, Netto et la correspondance de Peano","page_pdf":5}
+{"id":"FCNOE01","source":"FR-IMJ-CHAMBERTLOIR-ALGEBRE-1999","repere":"p. 4, § 1.3, définition et paragraphe sur les chaînes","page_pdf":12}

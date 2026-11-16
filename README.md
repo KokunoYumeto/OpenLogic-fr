@@ -4,6 +4,8 @@ L’édition française de l’*Open Logic Text* présente la théorie des ensem
 
 ## Lire et télécharger
 
+[Retrouver les passages anglais et français et leurs références](maintenance/README.md).
+
 [Lire le volume en PDF](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v1.0.0/openlogic-fr.pdf) · [Télécharger l’EPUB](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v1.0.0/openlogic-fr.epub) · [Télécharger les sources LaTeX](https://github.com/KokunoYumeto/OpenLogic-fr/releases/download/v1.0.0/openlogic-fr-sources.zip).
 
 Le texte comprend des définitions, des démonstrations, des exemples et des exercices. L’archive contient 722 unités françaises éditables et les fichiers de reconstruction. Le lecteur en assemble 717. Les cinq autres sont des fichiers d’assemblage alternatifs.
